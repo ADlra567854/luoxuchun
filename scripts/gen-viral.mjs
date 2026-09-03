@@ -49,14 +49,41 @@ function mdToHtml(md) {
   const lines = String(md).replace(/\r\n/g, '\n').split('\n')
   let h = '', code = false, buf = [], ul = false, ol = false
   const inline = (s) => String(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-  for (const raw of lines) {
+  const closeLists = () => { h += ul ? '</ul>\n' : ''; ul = false; h += ol ? '</ol>\n' : ''; ol = false }
+  // GFM 管道表格 → 带内联样式的 <table>（截图锚点），修复 2026-09-03 前表格被当普通段落输出 bug
+  const isSep = (s) => /^\|?[\s:|-]+\|[\s:|-]*$/.test(s) && s.includes('|') && !/[^|\s:-]/.test(s.replace(/\|/g, ''))
+  const parseRow = (s) => s.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim())
+  const tdStyle = 'padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left'
+  const thStyle = 'padding:9px 12px;border-bottom:1px solid var(--line);background:rgba(255,140,90,.13);color:var(--gold);text-align:left;font-weight:700'
+  for (let i = 0; i < lines.length; i++) {
+    const raw = lines[i]
     const t = raw.trim()
-    if (t.startsWith('```')) { if (code) { h += '<pre><code>' + esc(buf.join('\n')) + '</code></pre>\n'; buf = []; code = false } else { h += ul ? '</ul>\n' : ''; ul = false; h += ol ? '</ol>\n' : ''; ol = false; code = true } continue }
+    if (t.startsWith('```')) { if (code) { h += '<pre><code>' + esc(buf.join('\n')) + '</code></pre>\n'; buf = []; code = false } else { closeLists(); code = true } continue }
     if (code) { buf.push(raw); continue }
-    if (!t) { h += ul ? '</ul>\n' : ''; ul = false; h += ol ? '</ol>\n' : ''; ol = false; continue }
-    if (/^#{1,3}\s/.test(t)) { const m = t.match(/^(#{1,3})\s+(.*)$/); const lv = Math.min(m[1].length, 3); h += ul ? '</ul>\n' : ''; ul = false; h += ol ? '</ol>\n' : ''; ol = false; h += '<h' + lv + '>' + inline(m[2]) + '</h' + lv + '>\n'; continue }
+    if (!t) { closeLists(); continue }
+    if (/^#{1,3}\s/.test(t)) { const m = t.match(/^(#{1,3})\s+(.*)$/); const lv = Math.min(m[1].length, 3); closeLists(); h += '<h' + lv + '>' + inline(m[2]) + '</h' + lv + '>\n'; continue }
     if (/^[-*]\s+/.test(t)) { if (!ul) { h += '<ul>\n'; ul = true } h += '<li>' + inline(t.replace(/^[-*]\s+/, '')) + '</li>\n'; continue }
     if (/^\d+[.、]\s+/.test(t)) { if (!ol) { h += '<ol>\n'; ol = true } h += '<li>' + inline(t.replace(/^\d+[.、]\s+/, '')) + '</li>\n'; continue }
+    // 表格：本行含 | 且下一行是分隔行
+    if (t.includes('|') && i + 1 < lines.length && isSep(lines[i + 1].trim())) {
+      const rows = [parseRow(t)]
+      i++ // 跳过分隔行
+      while (i + 1 < lines.length) {
+        const nxt = lines[i + 1].trim()
+        if (!nxt.includes('|')) break
+        rows.push(parseRow(nxt)); i++
+      }
+      const cols = rows[0].length
+      const ths = rows[0].map((c) => '<th style="' + thStyle + '">' + inline(c) + '</th>').join('')
+      const trs = rows.slice(1).map((r) => {
+        const tds = Array.from({ length: cols }, (_, ci) => '<td style="' + tdStyle + (ci === 0 ? ';font-weight:700;color:var(--cyan)' : '') + '">' + inline(r[ci] || '') + '</td>').join('')
+        return '<tr>' + tds + '</tr>'
+      }).join('')
+      closeLists()
+      h += '<table style="width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:14px;line-height:1.6;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)">' +
+           '<thead><tr>' + ths + '</tr></thead><tbody>' + trs + '</tbody></table>\n'
+      continue
+    }
     h += '<p>' + inline(t) + '</p>\n'
   }
   h += ul ? '</ul>\n' : ''; h += ol ? '</ol>\n' : ''

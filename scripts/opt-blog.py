@@ -48,8 +48,10 @@ def inject_post(fp, prev, nextp):
         return 'skip'
     title = title_of(fp)
     cover = dark_cover(title)
-    # 封面插到 <article> 之后；仅当 article 内尚无任何 1200x240 封面 SVG 时注入（避免与 gen-viral「爆款生产线」新头图叠加成双头图）
-    if '<article>' in html and not re.search(r'<article[^>]*>\s*<svg viewBox="0 0 1200 240"', html):
+    # 封面插到 <article> 之后；仅当 article 块内【任意位置】尚无 1200x240 封面 SVG 时注入
+    # （修复 2026-09-03 复发：gen-viral 模板是 <h1> 在前、封面在后，旧守卫只查 article 后紧跟 svg
+    #   永远匹配不上 → 每次新「爆款生产线」文章都被重复注入旧「深度长文」头图成双头图）
+    if '<article>' in html and not re.search(r'<article[^>]*>[\s\S]*?<svg viewBox="0 0 1200 240"', html):
         html = html.replace('<article>', '<article>\n' + cover, 1)
     # 上一篇/下一篇 + 返回目录 + 出处
     def link(p):

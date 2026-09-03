@@ -38,3 +38,8 @@
 - `gen-daily.mjs projects` 成功：智谱 GLM-4.7-Flash 免费通道直出，无降级，追加 2 个新项目：**cophire**（CohereForAI/cophire，稀疏专家模型，heat 5）、**OpenDevin**（OpenDevin/OpenDevin，自主软件工程 AI Agent，heat 5）
 - 项目总数：113 → 115
 - `prepare-deploy.mjs` 成功：deploy 193.3 MB，密钥注入断言通过；源与 deploy 副本均为 115 个项目、一致（true），cophire 与 OpenDevin 均已同步
+
+### 2026-09-03（第六次执行 · 10:07）
+- `gen-daily.mjs projects`：智谱 GLM 429 自动降级方舟豆包接手成功，追加 1 个新项目：**crawl4ai**（unclecode/crawl4ai，面向 AI Agent 与 RAG 管线的 LLM 友好开源网页爬虫，heat 5）
+- 项目总数：115 → 116
+- `prepare-deploy.mjs` 成功：deploy 305.6 MB，密钥注入断言通过（DeepSeek/ARK/ZHIPU 三通道均 ✓）；源与 deploy 副本均为 116 个项目、一致（true），crawl4ai 已同步

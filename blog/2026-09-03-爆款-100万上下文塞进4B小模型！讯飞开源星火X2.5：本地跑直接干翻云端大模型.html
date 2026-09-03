@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8">
+<html lang="zh-CN"><head>
+<meta property="og:description" content="很多人对参数和上下文长度没实感，先给个最直白的参照：普通4B级别的开源小模型，之前主流上下文窗口是8K-32K，撑死能装下一本3万字的小册子；云端旗舰大模型普遍是128K-200K上下文，能装下一本20万字的中篇小说。">
+<meta name="keywords" content="本地跑直接干翻云端大模型,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content="很多人对参数和上下文长度没实感，先给个最直白的参照：普通4B级别的开源小模型，之前主流上下文窗口是8K-32K，撑死能装下一本3万字的小册子；云端旗舰大模型普遍是128K-200K上下文，能装下一本20万字的中篇小说。"><meta charset="UTF-8">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型 · AI 创作纪元（离线版）</title><style>
@@ -24,25 +27,20 @@ article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px
 article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
 article th{background:#141f3a;color:var(--gold)}
 article hr{border:none;border-top:1px dashed var(--line);margin:30px 0}
-</style></head>
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/2026-09-03-%E7%88%86%E6%AC%BE-100%E4%B8%87%E4%B8%8A%E4%B8%8B%E6%96%87%E5%A1%9E%E8%BF%9B4B%E5%B0%8F%E6%A8%A1%E5%9E%8B%EF%BC%81%E8%AE%AF%E9%A3%9E%E5%BC%80%E6%BA%90%E6%98%9F%E7%81%ABX2.5%EF%BC%9A%E6%9C%AC%E5%9C%B0%E8%B7%91%E7%9B%B4%E6%8E%A5%E5%B9%B2%E7%BF%BB%E4%BA%91%E7%AB%AF%E5%A4%A7%E6%A8%A1%E5%9E%8B.html">
+<meta property="og:title" content="100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/2026-09-03-%E7%88%86%E6%AC%BE-100%E4%B8%87%E4%B8%8A%E4%B8%8B%E6%96%87%E5%A1%9E%E8%BF%9B4B%E5%B0%8F%E6%A8%A1%E5%9E%8B%EF%BC%81%E8%AE%AF%E9%A3%9E%E5%BC%80%E6%BA%90%E6%98%9F%E7%81%ABX2.5%EF%BC%9A%E6%9C%AC%E5%9C%B0%E8%B7%91%E7%9B%B4%E6%8E%A5%E5%B9%B2%E7%BF%BB%E4%BA%91%E7%AB%AF%E5%A4%A7%E6%A8%A1%E5%9E%8B.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content="很多人对参数和上下文长度没实感，先给个最直白的参照：普通4B级别的开源小模型，之前主流上下文窗口是8K-32K，撑死能装下一本3万字的小册子；云端旗舰大模型普遍是128K-200K上下文，能装下一本20万字的中篇小说。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型 · AI 创作纪元（离线版）","description":"很多人对参数和上下文长度没实感，先给个最直白的参照：普通4B级别的开源小模型，之前主流上下文窗口是8K-32K，撑死能装下一本3万字的小册子；云端旗舰大模型普遍是128K-200K上下文，能装下一本20万字的中篇小说。","url":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/2026-09-03-%E7%88%86%E6%AC%BE-100%E4%B8%87%E4%B8%8A%E4%B8%8B%E6%96%87%E5%A1%9E%E8%BF%9B4B%E5%B0%8F%E6%A8%A1%E5%9E%8B%EF%BC%81%E8%AE%AF%E9%A3%9E%E5%BC%80%E6%BA%90%E6%98%9F%E7%81%ABX2.5%EF%BC%9A%E6%9C%AC%E5%9C%B0%E8%B7%91%E7%9B%B4%E6%8E%A5%E5%B9%B2%E7%BF%BB%E4%BA%91%E7%AB%AF%E5%A4%A7%E6%A8%A1%E5%9E%8B.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/2026-09-03-%E7%88%86%E6%AC%BE-100%E4%B8%87%E4%B8%8A%E4%B8%8B%E6%96%87%E5%A1%9E%E8%BF%9B4B%E5%B0%8F%E6%A8%A1%E5%9E%8B%EF%BC%81%E8%AE%AF%E9%A3%9E%E5%BC%80%E6%BA%90%E6%98%9F%E7%81%ABX2.5%EF%BC%9A%E6%9C%AC%E5%9C%B0%E8%B7%91%E7%9B%B4%E6%8E%A5%E5%B9%B2%E7%BF%BB%E4%BA%91%E7%AB%AF%E5%A4%A7%E6%A8%A1%E5%9E%8B.html"},"image":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/assets/img/og-cover.png","datePublished":"2026-09-03","author":{"@type":"Organization","name":"白驹全局大脑"},"publisher":{"@type":"Organization","name":"白驹全局大脑"}}</script>
+</head>
 <body>
 <nav><div class="logo">白驹 · ccowork</div><a href="index.html"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i> 博客目录</a></nav>
 <article>
-<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
-  <defs>
-    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
-  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
-  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
-  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
-  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹全局大脑 · 深度长文</text>
-  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">100万上下文塞进4B小模型！讯飞开源星火X</text>
-  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹全局大脑 · 深度长文 · 每日更新</text>
-  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">🧠</text>
-</svg>
+
 <h1>100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型</h1>
 <svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
   <defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
@@ -59,12 +57,7 @@ article hr{border:none;border-top:1px dashed var(--line);margin:30px 0}
 <p>很多人对参数和上下文长度没实感，先给个最直白的参照：普通4B级别的开源小模型，之前主流上下文窗口是8K-32K，撑死能装下一本3万字的小册子；云端旗舰大模型普遍是128K-200K上下文，能装下一本20万字的中篇小说。而这次讯飞开源的星火X2.5 4B版本，直接把上下文窗口拉到了100万tokens，换算成中文大概是70万-80万字，相当于一整套《三体》全本+两本专业教材塞进去，还能精准定位到某一页的某句话。</p>
 <p>更狠的是它只有4B参数。什么概念？现在主流端侧跑的7B模型，量化后占内存大概5-6G，而4B模型4-bit量化后只占2.5G左右内存，不需要4090这种高端显卡，普通轻薄本、甚至旗舰手机就能本地跑，不用连网、不用传数据、没有token费用。这里要提前说清楚：100万上下文的长文本能力、以及不同硬件的实际运行速度，以讯飞官方开源仓库的测试数据为准。</p>
 <p>给大家列个直观的参数对比表，一眼就能看出差距：</p>
-<p>| 模型类型       | 参数规模 | 典型上下文长度 | 运行最低内存要求 | 单千tokens推理成本（参考） |</p>
-<p>|----------------|----------|----------------|------------------|----------------------------|</p>
-<p>| 云端旗舰大模型 | 70B+     | 128K-200K      | 云端A100集群     | 0.01-0.05元                |</p>
-<p>| 主流开源大模型 | 7B-14B   | 32K-128K       | 8G以上显存       | 本地0成本                  |</p>
-<p>| 讯飞星火X2.5   | 4B       | 1000K          | 2.5G以上内存     | 本地0成本                  |</p>
-<h2>实测不吹水：4B小模型真能打平云端？</h2>
+<table style="width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:14px;line-height:1.6;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)"><thead><tr><th style="padding:9px 12px;border-bottom:1px solid var(--line);background:rgba(255,140,90,.13);color:var(--gold);text-align:left;font-weight:700">模型类型</th><th style="padding:9px 12px;border-bottom:1px solid var(--line);background:rgba(255,140,90,.13);color:var(--gold);text-align:left;font-weight:700">参数规模</th><th style="padding:9px 12px;border-bottom:1px solid var(--line);background:rgba(255,140,90,.13);color:var(--gold);text-align:left;font-weight:700">典型上下文长度</th><th style="padding:9px 12px;border-bottom:1px solid var(--line);background:rgba(255,140,90,.13);color:var(--gold);text-align:left;font-weight:700">运行最低内存要求</th><th style="padding:9px 12px;border-bottom:1px solid var(--line);background:rgba(255,140,90,.13);color:var(--gold);text-align:left;font-weight:700">单千tokens推理成本（参考）</th></tr></thead><tbody><tr><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left;font-weight:700;color:var(--cyan)">云端旗舰大模型</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">70B+</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">128K-200K</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">云端A100集群</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">0.01-0.05元</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left;font-weight:700;color:var(--cyan)">主流开源大模型</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">7B-14B</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">32K-128K</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">8G以上显存</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">本地0成本</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left;font-weight:700;color:var(--cyan)">讯飞星火X2.5</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">4B</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">1000K</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">2.5G以上内存</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text);text-align:left">本地0成本</td></tr></tbody></table><h2>实测不吹水：4B小模型真能打平云端？</h2>
 <p>我自己拿官方开源的4-bit量化版本，在16G内存的普通轻薄本上跑了三个大家最常用的场景，结果确实超出预期。第一个场景是长文档问答：我把一份120页的上市公司年报（大概18万tokens）直接喂进去，问它“第三季度的研发投入同比变化是多少，对应的核心项目进展有哪三个”，它20秒就给出了准确答案，还标了对应的页码，之前用某云端70B模型测同样的问题，不仅花了1分钟，还把第二季度的数错当成了第三季度的。</p>
 <p>第二个场景是代码辅助：我把一个有12个文件、总长度3万tokens的小型Python项目源码全喂进去，让它找登录模块的SQL注入漏洞，它不仅精准定位到了未做参数转义的两行代码，还直接给出了修复后的代码片段，不用我一个文件一个文件贴给它。第三个场景是内容创作：我把20篇同赛道的爆款公众号文章（大概15万tokens）喂进去，让它总结共同的结构和金句风格，输出的选题框架比我自己花2小时整理的还全。</p>
 <p>当然也不是没有缺点：在复杂逻辑推理、多轮数学计算上，它和70B级别的云端旗舰模型还是有明显差距，比如做奥数题、复杂的架构设计的时候，正确率大概是云端大模型的70%左右，毕竟参数规模摆在这里，不可能样样都强。另外100万上下文的全量加载，在普通轻薄本上如果喂满80万字，大概需要1分钟左右的加载时间，不是秒出，但胜在不用排队、不用传文件。</p>

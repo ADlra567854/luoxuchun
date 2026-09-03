@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="AI 创作 开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作 这是《最新开源对话式 AI 项目全景》的进阶篇。">
+<meta name="keywords" content="开源AI进阶-网络安全一人公司与手机操作,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content="AI 创作 开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作 这是《最新开源对话式 AI 项目全景》的进阶篇。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>开源AI进阶-网络安全一人公司与手机操作 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E5%BC%80%E6%BA%90AI%E8%BF%9B%E9%98%B6-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8%E4%B8%8E%E6%89%8B%E6%9C%BA%E6%93%8D%E4%BD%9C.html">
+<meta property="og:title" content="开源AI进阶-网络安全一人公司与手机操作 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E5%BC%80%E6%BA%90AI%E8%BF%9B%E9%98%B6-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8%E4%B8%8E%E6%89%8B%E6%9C%BA%E6%93%8D%E4%BD%9C.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="开源AI进阶-网络安全一人公司与手机操作 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content="AI 创作 开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作 这是《最新开源对话式 AI 项目全景》的进阶篇。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"开源AI进阶-网络安全一人公司与手机操作 · AI 创作纪元（离线版）","description":"AI 创作 开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作 这是《最新开源对话式 AI 项目全景》的进阶篇。","url":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E5%BC%80%E6%BA%90AI%E8%BF%9B%E9%98%B6-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8%E4%B8%8E%E6%89%8B%E6%9C%BA%E6%93%8D%E4%BD%9C.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E5%BC%80%E6%BA%90AI%E8%BF%9B%E9%98%B6-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8%E4%B8%8E%E6%89%8B%E6%9C%BA%E6%93%8D%E4%BD%9C.html"},"image":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/assets/img/og-cover.png","datePublished":"2026-08-30","author":{"@type":"Organization","name":"白驹全局大脑"},"publisher":{"@type":"Organization","name":"白驹全局大脑"}}</script>
+</head>
+<body><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/cover-开源AI进阶-网络安全一人公司与手机操作.png" alt="开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作" style="width:100%;border-radius:16px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../index.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="开源AI进阶-网络安全一人公司与手机操作" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹全局大脑 · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">开源AI进阶-网络安全一人公司与手机操作</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹全局大脑 · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)"></text>
+</svg>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · AI 创作纪元</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>15 分钟</span><span class="blog-tag">AI 创作</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作</h1>
+<blockquote>
+<p>这是《最新开源对话式 AI 项目全景》的进阶篇。上一篇教你把项目跑起来，这一篇回答三个更实际的问题：
+① 开源 AI 和<strong>网络安全</strong>什么关系，怎么用它、怎么不踩坑？
+② 开源 AI 怎么帮你撑起一家<strong>一人公司</strong>？
+③ 这些开源项目，怎么在<strong>手机</strong>上操作？</p>
+</blockquote>
+<hr>
+<h2>第一部分 · 开源 AI 与网络安全</h2>
+<h3>1.1 先说风险：开源 ≠ 自动安全</h3>
+<p>2026 年最响的一次安全警报，来自现象级项目 OpenClaw。它火的同时，安全审计发现：全网有 <strong>4 万多个暴露在公网的 OpenClaw 实例，其中 1.5 万个存在远程代码执行（RCE）风险</strong>。根源很典型：</p>
+<ul>
+<li>它默认信任 <code>localhost</code> 流量，且不强制身份验证；</li>
+<li>很多人图省事用 nginx/Caddy 反向代理对外暴露，结果所有外部请求都被当成「来自本机」的可信流量；</li>
+<li>早期版本甚至允许「a」这种一位数密码。</li>
+</ul>
+<p><strong>教训</strong>：开源 AI 的「本地优先」隐私优势，会因为一次错误的端口暴露而瞬间归零。</p>
+<h3>1.2 开源 AI 的安全红线（跑之前先做）</h3>
+<ol>
+<li><strong>不要把服务端口绑到 <code>0.0.0.0</code> 暴露公网</strong>，只保留 <code>127.0.0.1</code> 本地回环。</li>
+<li><strong>远程访问用零信任组网</strong>（Tailscale 等），把范围限制在你自己的可信设备上，而不是挂反向代理。</li>
+<li><strong>默认关闭宽松鉴权</strong>，<code>allowInsecureAuth</code> 这类选项只在完全信任的局域网内开。</li>
+<li><strong>最小权限</strong>：Agent 每接一个新服务（邮箱、GitHub、智能家居），攻击面就扩大一分，只授权真正需要的。</li>
+<li><strong>敏感数据不上云</strong>：身份证、密码、商业机密，用本地 Ollama 跑，数据不出本机。</li>
+</ol>
+<h3>1.3 反过来：用开源 AI 做网络安全</h3>
+<p>开源 AI 不只是「被保护的对象」，它本身就是安全从业者的利器：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>怎么用开源 AI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代码审计</td>
+<td>用 DeepSeek V4 / GLM 读代码，找 SQL 注入、越权、硬编码密钥</td>
+</tr>
+<tr>
+<td>日志分析</td>
+<td>把海量日志喂给 Kimi K3（长上下文），自动归纳异常模式</td>
+</tr>
+<tr>
+<td>威胁情报</td>
+<td>联网搜索 + 本地模型总结，生成可读的情报简报</td>
+</tr>
+<tr>
+<td>钓鱼识别</td>
+<td>用本地模型判断邮件/链接是否可疑（数据不出本机，适合处理敏感样本）</td>
+</tr>
+<tr>
+<td>渗透测试辅助</td>
+<td>让模型写 PoC 脚本、解读漏洞报告、生成检测规则</td>
+</tr>
+<tr>
+<td>安全知识库</td>
+<td>GPT4All LocalDocs 把安全规范/漏洞库做成离线问答</td>
+</tr>
+</tbody></table>
+<p><strong>关键</strong>：安全场景用<strong>本地部署</strong>（Ollama）最合适——你处理的样本和日志，不该送到别人的云端。</p>
+<hr>
+<h2>第二部分 · 开源 AI 撑起一人公司</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-开源AI进阶-网络安全一人公司与手机操作.png" alt="开源AI进阶-网络安全一人公司与手机操作 · AI 创作纪元（离线版） · 第二部分 · 开源 AI 撑起一人公司" loading="lazy"></figure>
+
+<h3>2.1 成本账：为什么开源 AI 是一人公司的核武器</h3>
+<p>请一个兼职虚拟助理，市场价每月 500-2000 美元。而用开源 AI 搭一个 24 小时不休息的「数字员工」：</p>
+<ul>
+<li>软件：开源免费（OpenClaw / Open WebUI / Coze 都是 MIT/Apache）；</li>
+<li>模型：网页免费，或 API 按量（DeepSeek Flash 输入 $0.14/百万 token）；</li>
+<li>实测：用 Claude Sonnet 级别模型接 OpenClaw 处理邮件分拣、线索跟进、网页调研，<strong>月度 API 花费约 5-15 美元（几十到一百块人民币）</strong>；</li>
+<li>纯本地（Ollama）跑，成本趋近于零。</li>
+</ul>
+<p><strong>结论：过去「雇人」才能做的事，现在一个人用几十块钱就能搞定。</strong></p>
+<h3>2.2 一人公司的开源 AI 岗位清单</h3>
+<table>
+<thead>
+<tr>
+<th>岗位</th>
+<th>开源 AI 方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客服</td>
+<td>OpenClaw 接微信/飞书/Telegram，自动分拣+起草回复</td>
+</tr>
+<tr>
+<td>销售跟进</td>
+<td>OpenClaw 新线索进来几分钟内发个性化跟进，3/7 天后自动补发</td>
+</tr>
+<tr>
+<td>内容编辑</td>
+<td>DeepSeek 写初稿 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 你注入观点 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 多平台分发</td>
+</tr>
+<tr>
+<td>设计</td>
+<td>Stable Diffusion / Flux 本地出图</td>
+</tr>
+<tr>
+<td>视频</td>
+<td>ComfyUI + 可灵/即梦，一个人出片</td>
+</tr>
+<tr>
+<td>开发</td>
+<td>DeepSeek-Reasonix / Cursor 接本地模型写代码</td>
+</tr>
+<tr>
+<td>运营</td>
+<td>n8n + 开源模型做自动化流水线（热点监控<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>选题<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>初稿<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>终审）</td>
+</tr>
+<tr>
+<td>财务/文档</td>
+<td>GPT4All LocalDocs 本地知识库问答</td>
+</tr>
+</tbody></table>
+<h3>2.3 从「一人公司」到「个人 IP」</h3>
+<p>开源 AI 让「持续输出」从拼意志力变成拼流程。核心公式不变：</p>
+<pre><code>个人 IP = 定位 × 内容 × 持续输出
+</code></pre>
+<p>开源 AI 同时压低了这三样的成本——而这，正是一人公司能成立、能长大的根本原因。</p>
+<hr>
+<h2>第三部分 · 手机上操作开源项目</h2>
+<h3>3.1 先认清现实：手机能跑什么</h3>
+<p>手机跑的是<strong>小模型（1B-4B）</strong>，够日常问答、总结、翻译，但别指望它跟桌面 RTX 4090 比。速度参考：</p>
+<table>
+<thead>
+<tr>
+<th>手机</th>
+<th>模型</th>
+<th>速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>骁龙 8 Elite</td>
+<td>Qwen3 1.7B</td>
+<td>~40 tokens/s</td>
+</tr>
+<tr>
+<td>骁龙 8+</td>
+<td>Qwen2.5 0.5B</td>
+<td>40-60 tokens/s</td>
+</tr>
+<tr>
+<td>iPhone 16 Pro</td>
+<td>Llama 3.2 3B Q4</td>
+<td>~15 tokens/s</td>
+</tr>
+</tbody></table>
+<p><strong>全程离线、飞行模式也能用、零 API key、零费用。</strong></p>
+<h3>3.2 方案 A：傻瓜式（推荐 99% 的人）</h3>
+<p><strong>安卓</strong> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 下载 <strong>MLC Chat</strong>（或 PocketPal AI），模型商店里直接选 Qwen3 1.7B / Phi-4 Mini，下载（1.5-3GB）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 加载 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 开聊。</p>
+<p><strong>iPhone</strong> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 下载 <strong>PocketPal AI</strong> 或 <strong>LLM Farm</strong>，内置模型列表一键下载 Llama 3.2 1B / Phi-3 Mini，苹果 Neural Engine 自动加速，无需配置。</p>
+<p><strong>首选 PocketPal AI</strong>：双平台免费、开源、模型库最大、持续维护。</p>
+<h3>3.3 方案 B：动手派（安卓 Termux + Ollama）</h3>
+<pre><code class="language-bash"># 1. 从 F-Droid 装 Termux（不要用 Play 商店旧版）
+pkg update &amp;&amp; pkg upgrade -y
+pkg install wget curl git python -y
+# 2. 装 Ollama
+curl -fsSL https://ollama.com/install.sh | sh
+# 3. 拉小模型（Qwen 0.5B 仅 300MB）
+ollama pull qwen:0.5b-instruct
+ollama run qwen:0.5b-instruct
+</code></pre>
+<h3>3.4 方案 C：iPhone 进阶（自定义 GGUF）</h3>
+<p>从 Hugging Face 下载 GGUF 文件（如 <code>Llama-3.2-3B-Instruct-Q4_K_M.gguf</code>，约 1.8GB），存到「文件」App，在 PocketPal 里「添加自定义模型」导入即可。</p>
+<h3>3.5 手机模型怎么选</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>大小</th>
+<th>内存</th>
+<th>适合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SmolLM2 1.7B</td>
+<td>~1GB</td>
+<td>4GB+</td>
+<td>超快、轻量</td>
+</tr>
+<tr>
+<td>Llama 3.2 1B</td>
+<td>~0.8GB</td>
+<td>4GB+</td>
+<td>快速闲聊</td>
+</tr>
+<tr>
+<td><strong>Llama 3.2 3B</strong></td>
+<td>~2GB</td>
+<td>8GB+</td>
+<td>手机最佳平衡</td>
+</tr>
+<tr>
+<td>Gemma 4 2B/4B</td>
+<td>0.7-1.5GB</td>
+<td>4-8GB</td>
+<td>谷歌品质、多语言、有 agent 能力</td>
+</tr>
+<tr>
+<td>Phi-3 Mini 3.8B</td>
+<td>~2.4GB</td>
+<td>8GB+</td>
+<td>推理、代码</td>
+</tr>
+<tr>
+<td>Qwen2.5 3B</td>
+<td>~2GB</td>
+<td>8GB+</td>
+<td>中文、代码</td>
+</tr>
+</tbody></table>
+<p><strong>中文任务优先 Qwen 系列；要轻快选 Gemma 4 小尺寸；要推理选 Phi-3 Mini。</strong></p>
+<h3>3.6 手机运行的坑</h3>
+<ul>
+<li><strong>屏幕常亮</strong>：iOS 会限制后台 CPU，推理时保持亮屏。</li>
+<li><strong>内存带宽是瓶颈</strong>：手机跑模型卡的是内存带宽，不是算力。</li>
+<li><strong>别跑超过 4B 的稠密模型</strong>：会慢到崩溃。</li>
+<li><strong>选对量化</strong>：手机用 Q4 量化最合适。</li>
+</ul>
+<hr>
+<h2>一键打包下载</h2>
+<p>这三篇（全景 + 进阶 + 主站全部内容）已打包成一个 zip，见网站「四大作品」区的下载按钮，点一下即可全部下载到本地，离线也能看。</p>
+<blockquote>
+<p>本系列持续更新。开源世界每月变一次，随时回来拿最新清单。</p>
+</blockquote>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="提示词工程实战.html" style="color:var(--gold);font-weight:700;text-decoration:none">提示词工程实战：把 AI 用出十倍效</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>博客目录</a>
+  <span style="font-size:13px"><a href="最新开源对话式AI项目全景与一键使用指南.html" style="color:var(--gold);font-weight:700;text-decoration:none">最新开源对话式AI项目全景与一键使用</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8"><i class="cc-ic" data-ic="pin" aria-hidden="true"></i>出处声明：本页内容为白驹全局大脑原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body></html>

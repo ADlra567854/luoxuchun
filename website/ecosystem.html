@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 全生态知识库,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 全生态知识库 · AI 创作纪元">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · 全生态知识库 · AI 创作纪元</title>
+<script src="../data/embedded.js"></script>
+<script src="../data/knowledge.js"></script>
+<script src="./assets/marked.min.js"></script>
+<script src="/ai-client.js"></script>
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c; --purple:#8b5cf6;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:8px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.glow{position:fixed;z-index:0;pointer-events:none;filter:blur(90px);opacity:.4;animation:float 14s ease-in-out infinite alternate}
+.glow.a{width:520px;height:520px;left:-140px;top:-120px;background:radial-gradient(circle,rgba(56,225,255,.3),transparent 70%)}
+.glow.b{width:600px;height:600px;right:-180px;top:22%;background:radial-gradient(circle,rgba(240,185,92,.18),transparent 70%);animation-delay:-5s}
+.glow.c{width:500px;height:500px;left:32%;bottom:-180px;background:radial-gradient(circle,rgba(139,92,246,.2),transparent 70%);animation-delay:-9s}
+@keyframes float{from{transform:translateY(-16px)}to{transform:translateY(20px)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff;white-space:nowrap}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:22px;font-size:13.5px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px;white-space:nowrap}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+
+.wrap{position:relative;z-index:5;max-width:1180px;margin:0 auto;padding:110px 24px 80px}
+.hero{position:relative;text-align:center;padding:46px 30px;border-radius:24px;margin-bottom:26px;overflow:hidden;
+  background:rgba(255,255,255,.35);border:1px solid var(--line);backdrop-filter:blur(6px)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:url('../assets/img/cloud-garden.webp') center 30%/cover no-repeat;opacity:.42}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(30px,5vw,52px);letter-spacing:3px;animation:rise .9s ease-out}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero p{color:var(--muted);max-width:720px;margin-top:14px;font-size:15px;animation:rise 1s .1s ease-out both}
+.hero .kicker{font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--ice);margin-bottom:14px;display:inline-block;
+  border:1px solid rgba(94,234,212,.3);padding:6px 16px;border-radius:99px;background:rgba(94,234,212,.05)}
+
+/* 层级筛选 */
+.layers{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 24px}
+.lchip{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:99px;padding:7px 15px;font-size:12.5px;cursor:pointer;transition:.22s;backdrop-filter:blur(8px)}
+.lchip:hover{border-color:var(--ice);color:var(--ice)}
+.lchip.on{background:var(--grad);color:#03121a;font-weight:600;border-color:transparent}
+.search{width:100%;margin-bottom:18px;background:var(--bg2,#0a0f1e);border:1px solid var(--line);border-radius:12px;color:var(--text);
+  padding:12px 16px;font-size:14px;outline:none;transition:.2s;font-family:inherit}
+.search:focus{border-color:var(--ice);box-shadow:0 0 0 3px rgba(94,234,212,.12)}
+/* 全文搜索结果 */
+.sres{display:none;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:18px;max-height:260px;overflow-y:auto}
+.sres.show{display:block}
+.sres .sr-item{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);font-size:12.5px}
+.sres .sr-item:last-child{border-bottom:none}
+.sres .sr-item b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text)}
+.sres .sr-item span{display:none}
+.sres .sr-item .ask{flex-shrink:0;background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--gold);border-radius:7px;padding:3px 10px;font-size:11px;cursor:pointer;transition:.2s;font-family:inherit}
+.sres .sr-item .ask:hover{color:var(--ice);border-color:var(--ice)}
+.sres .sr-none{font-size:12.5px;color:var(--dim)}
+
+/* 模块卡片 */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.mcard{position:relative;display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--panel);border:1px solid var(--line);
+  border-radius:16px;padding:20px;cursor:pointer;backdrop-filter:blur(10px);transition:.32s;overflow:hidden;color:inherit;font-family:inherit}
+.mcard::after{content:"";position:absolute;inset:0;background:radial-gradient(400px 160px at 12% 0%,rgba(94,234,212,.1),transparent 60%);opacity:0;transition:.32s}
+.mcard:hover{transform:translateY(-5px);border-color:rgba(94,234,212,.4);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.mcard:hover::after{opacity:1}
+.mcard .ico{font-size:26px}
+.mcard h3{font-family:var(--serif);font-size:16.5px;letter-spacing:1px}
+.mcard p{color:var(--muted);font-size:12px;line-height:1.55;min-height:38px}
+.mcard .cnt{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:1px}
+.mcard:hover .cnt{color:var(--gold)}
+.mcard.hide{display:none}
+.mcard .mimg{width:100%;height:104px;object-fit:cover;border-radius:10px;border:1px solid var(--line);margin-bottom:10px;transition:.35s}
+.mcard:hover .mimg{transform:scale(1.03)}
+
+/* 详情面板 */
+.detail{display:none;margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px;backdrop-filter:blur(12px);animation:rise .45s ease-out}
+.detail.show{display:block}
+.detail .d-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.detail h2{font-family:var(--serif);font-size:24px;letter-spacing:2px}
+.detail h2 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.detail .d-desc{color:var(--muted);font-size:13.5px;margin-bottom:18px}
+.detail .d-ai{background:rgba(240,185,92,.08);border:1px dashed rgba(240,185,92,.4);color:var(--gold);border-radius:10px;padding:10px 16px;font-size:13px;margin-bottom:18px;cursor:pointer;transition:.25s;display:inline-block;margin-right:8px}
+.detail .d-ai:hover{background:rgba(240,185,92,.16)}
+.summary-box{grid-column:1/-1;background:linear-gradient(135deg,rgba(56,225,255,.07),rgba(139,92,246,.07));border:1px solid rgba(56,225,255,.3);border-radius:14px;padding:16px 18px}
+.summary-box b{color:var(--ice);font-size:13px;letter-spacing:1px}
+.summary-box ul{margin:8px 0 0 0;padding-left:20px}
+.summary-box li{margin:5px 0;font-size:13px;color:var(--text)}
+.summary-box p{margin:6px 0;color:var(--muted);font-size:12.5px}
+.summary-box strong{color:var(--gold)}
+.rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.row{background:var(--bg2,#0a0f1e);border:1px solid var(--line);border-radius:12px;padding:13px 15px;transition:.25s}
+.row:hover{border-color:rgba(94,234,212,.35);transform:translateY(-2px)}
+.row b{display:block;font-size:13.5px;margin-bottom:4px}
+.row p{color:var(--muted);font-size:12px;line-height:1.55}
+.row .ask{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:11px;color:var(--cyan);cursor:pointer;border:none;background:none;padding:0}
+.row .ask:hover{color:var(--gold)}
+/* 实体知识块 */
+.kbox{background:var(--bg2,#0a0f1e);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:18px}
+.kcover{width:100%;max-height:170px;object-fit:cover;border-radius:12px;margin-bottom:14px;border:1px solid var(--line)}
+.kintro{font-size:13.5px;line-height:1.8;color:var(--text);margin-bottom:12px}
+.kpoints{margin:0;padding-left:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px 18px}
+.kpoints li{font-size:12.5px;color:var(--muted);line-height:1.6}
+.ktips{margin-top:12px;font-size:12.5px;color:var(--gold);background:rgba(240,185,92,.08);border:1px dashed rgba(240,185,92,.4);border-radius:9px;padding:8px 13px}
+footer{border-top:1px solid var(--line);padding:36px 24px;text-align:center;color:var(--dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+.mcard .fav{position:absolute;top:10px;right:10px;font-size:16px;cursor:pointer;filter:grayscale(1);opacity:.5;transition:.2s;z-index:3}
+.mcard .fav.on{filter:none;opacity:1;color:var(--gold)}
+.d-filter{width:100%;background:var(--bg2,#0a0f1e);border:1px solid var(--line);border-radius:10px;color:var(--text);padding:10px 14px;font-size:13px;outline:none;margin:6px 0 12px;font-family:inherit}
+.d-filter:focus{border-color:var(--ice)}
+.d-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.d-tools button{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--bg2,#0a0f1e);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;transition:.2s}
+.d-tools button:hover{color:var(--ice);border-color:var(--ice)}
+.row .copy{display:inline-block;margin-top:8px;margin-right:12px;font-family:var(--mono);font-size:11px;color:var(--green);cursor:pointer;border:none;background:none;padding:0}
+.row .copy:hover{color:var(--gold)}
+.rows.collapsed .row p{display:none}
+.rows.collapsed .row .ask,.rows.collapsed .row .copy{display:none}
+.layer-fav{order:-1}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ecosystem.html">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ecosystem.html">
+<meta name="twitter:title" content="ccowork · 全生态知识库 · AI 创作纪元">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-ecosystem.png" alt="ccowork · 全生态知识库 · AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<canvas id="stars"></canvas>
+<div class="glow a"></div><div class="glow b"></div><div class="glow c"></div>
+<div class="grain"></div>
+
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="../index.html">首页</a>
+    <a href="./agent.html">智能体</a>
+    <a href="./chat.html">AI 对话</a>
+    <a href="./portal.html">知识收纳站</a>
+    <a href="./ecosystem.html" class="active">全生态知识库</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="kicker">22 大模块 · 132 个子模块 · 数据驱动</span>
+    <h1>全生态<span>知识库</span></h1>
+    <p>整合桌面资源、AI 创作超级项目与未来产业内容：行业实战、AI 前沿、工科实训、创新创业、科研学术、职场技能、个人成长、创意设计、数据分析、法律、心理、国际视野、可持续发展……每个模块点击即读，还能一键让智能体深入讲解。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  </div>
+
+  <div class="layers" id="layers"></div>
+  <input class="search" id="modSearch" type="text" placeholder=" 搜索模块或条目（如：教育 / 专利 / 机械设计…）">
+  <div class="sres" id="searchResults"></div>
+  <div class="mod-grid" id="modGrid"></div>
+
+  <div class="detail" id="detail">
+    <div class="d-head">
+      <h2 id="dTitle"></h2>
+      <span class="d-ai" id="dAi"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>让智能体讲解整个模块</span>
+      <span class="d-ai" id="dSum"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>生成模块摘要</span>
+    </div>
+    <div class="d-desc" id="dDesc"></div>
+    <input class="d-filter" id="dFilter" type="text" placeholder=" 在本模块内搜索条目…">
+    <div class="d-tools"><button id="dExpand" type="button"><i class="cc-ic" data-ic="chevron-down"></i> 展开全部</button><button id="dCollapse" type="button"><i class="cc-ic" data-ic="chevron-up"></i> 收起全部</button></div>
+    <div class="rows" id="dRows"></div>
+  </div>
+</div>
+
+<footer>
+  <div style="font-family:var(--serif);letter-spacing:3px;font-size:15px">AI 创作纪元</div>
+  <p style="margin-top:6px"><a href="../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回首页</a> · 全生态知识库 · 离线可读</p>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  // ---------- 模块清单（22 大模块 / 15 层） ----------
+  var MODULES = [
+    // 第一层：桌面资源
+    { n:'industry-guide', i:'', t:'行业实战手册', d:'10 大行业 AI 落地场景、工具与技巧', l:'第一层' },
+    { n:'frontiers', i:'', t:'AI 前沿全景', d:'技术突破 · 能力跃升 · 应用爆发 · 产业格局', l:'第一层' },
+    { n:'security', i:'', t:'AI 安全指南', d:'8 大安全风险与防护策略', l:'第一层' },
+    { n:'cases', i:'', t:'成功案例库', d:'20 个真实案例 · 四大领域', l:'第一层' },
+    { n:'majors', i:'', t:'各专业 AI 地图', d:'6 大类 30+ 专业 AI 应用指南', l:'第一层' },
+    { n:'roadmap', i:'', t:'AI 学习路线图', d:'6 阶段 12 周速成计划', l:'第一层' },
+    { n:'models', i:'', t:'全球大模型对比', d:'2025/2026 全球大模型格局', l:'第一层' },
+    { n:'showcase', i:'', t:'AI 知识网络', d:'里程碑成果 · 前辈人物 · 研究方向', l:'第一层' },
+    { n:'chronicle', i:'', t:'AI 全景编年史', d:'1950–2026 完整历史', l:'第一层' },
+    { n:'china-tech', i:'', t:'中国科技故事', d:'两弹一星到 DeepSeek', l:'第一层' },
+    // 第二层：未来产业
+    { n:'future-industry', i:'', t:'未来产业趋势', d:'量子计算 · 新能源 · 脑机接口 · 核聚变', l:'第二层' },
+    { n:'careers', i:'', t:'职业规划与就业', d:'未来 10 年职业趋势与技能需求', l:'第二层' },
+    { n:'real-estate', i:'', t:'房地产与生活', d:'房价趋势 · 租房指南 · 生活成本', l:'第二层' },
+    { n:'national-security', i:'', t:'国防与国家安全', d:'网络安全 · AI 军事 · 航天国防', l:'第二层' },
+    { n:'startup', i:'', t:'高科技创业指南', d:'创业案例 · 融资流程 · 商业模式', l:'第二层' },
+    { n:'cases-extended', i:'', t:'成功案例深度研究', d:'整合桌面案例并扩展未来产业案例', l:'第二层' },
+    { n:'future-skills', i:'', t:'未来技能预测', d:'未来 5–10 年技能趋势与核心能力', l:'第二层' },
+    { n:'learning-paths', i:'', t:'终身学习路径', d:'大学到职场的持续学习策略', l:'第二层' },
+    // 第三层：实用指南
+    { n:'ai-tools', i:'', t:'AI 工具全景图', d:'对话 · 绘图 · 视频 · 语音 · 编程全生态', l:'第三层' },
+    { n:'deepseek-guide', i:'', t:'DeepSeek 使用宝典', d:'100+ 条可复制提示词', l:'第三层' },
+    { n:'ip-guide', i:'', t:'个人 IP 打造指南', d:'个人品牌建设与变现', l:'第三层' },
+    { n:'ai-money', i:'', t:'AI 赚钱实战手册', d:'AI 时代赚钱方法与策略', l:'第三层' },
+    { n:'internet-money', i:'', t:'互联网赚钱案例库', d:'直播 · 短视频 · 副业成败案例', l:'第三层' },
+    { n:'self-study', i:'', t:'零成本自学指南', d:'免费学习资源与路径', l:'第三层' },
+    { n:'deployment', i:'', t:'部署教程大全', d:'手机 / 电脑 / 云端 AI 部署', l:'第三层' },
+    { n:'anti-scam', i:'', t:'防诈骗安全指南', d:'AI 诈骗识别与预防', l:'第三层' },
+    { n:'ai-pros-cons', i:'', t:'AI 利弊深度分析', d:'AI 对社会的影响分析', l:'第三层' },
+    { n:'open-source', i:'', t:'开源软件教程中心', d:'各类开源软件使用教程', l:'第三层' },
+    { n:'blogger-views', i:'', t:'大博主观点与趋势', d:'行业专家观点与趋势分析', l:'第三层' },
+    // 第四层：工科实训
+    { n:'engineering-lab', i:'', t:'工科实训大模块', d:'机械 · 数字孪生 · 电子 · 自动化 · 智能制造', l:'第四层' },
+    { n:'cad-ai', i:'', t:'AI 辅助机械设计', d:'CAD+AI · 参数化建模 · 有限元分析', l:'第四层' },
+    { n:'digital-twin', i:'', t:'数字孪生与仿真', d:'实时映射 · AI 仿真优化 · 工业应用', l:'第四层' },
+    { n:'ee-ai', i:'', t:'电子工程 AI 应用', d:'电路设计 · PCB · 嵌入式 · 物联网', l:'第四层' },
+    { n:'automation', i:'', t:'自动化与控制', d:'PLC · 控制系统 · 工业机器人', l:'第四层' },
+    { n:'smart-manufacturing', i:'', t:'智能制造实训', d:'工业 4.0 · 智能工厂 · MES · 预测维护', l:'第四层' },
+    { n:'engineering-careers', i:'', t:'专业规划与前景', d:'机械 / 电子 / 自动化职业路径', l:'第四层' },
+    // 第五至十四层：各领域
+    { n:'innovation-lab', i:'', t:'创新创业实验室', d:'想法验证 · 商业模式画布 · MVP · 融资', l:'第五层' },
+    { n:'research-assistant', i:'', t:'科研学术助手', d:'论文写作 · 文献管理 · 科研方法', l:'第六层' },
+    { n:'workplace-skills', i:'', t:'职场技能提升', d:'沟通 · 领导力 · 项目管理 · 时间管理', l:'第七层' },
+    { n:'personal-growth', i:'', t:'个人成长与发展', d:'情绪管理 · 目标设定 · 心理健康', l:'第八层' },
+    { n:'creative-design', i:'', t:'创意设计工作坊', d:'UI/UX · 平面 · 视频 · 摄影 · 设计思维', l:'第九层' },
+    { n:'data-analytics', i:'', t:'数据分析与商业智能', d:'Excel · 可视化 · 统计 · 机器学习', l:'第十层' },
+    { n:'legal', i:'', t:'法律与知识产权', d:'专利 · 版权 · 商标 · 合同', l:'第十一层' },
+    { n:'mental-health', i:'', t:'心理健康与压力管理', d:'学业压力 · 情绪调节 · 心理援助', l:'第十二层' },
+    { n:'global-perspective', i:'', t:'国际视野与跨文化', d:'留学 · 跨文化沟通 · 国际就业', l:'第十三层' },
+    { n:'sustainability', i:'', t:'可持续发展与绿色科技', d:'环保 · 碳中和 · 绿色创业', l:'第十四层' },
+    // 附加：AI 创作超级项目
+    { n:'ai-creator', i:'', t:'AI 创作超级项目', d:'书（七篇 24 章）· 指南 · 产出（全文内置）', l:'第十五层' }
+  ];
+
+  // 模块封面图映射（AI 生成，assets/img/）——必须定义在 renderMods 之前
+  var COVER = {
+    'industry-guide':'cover-industry.webp','frontiers':'hero-epoch.webp','security':'cover-research.webp','cases':'cover-book.webp',
+    'majors':'hero-epoch.webp','roadmap':'cover-book.webp','models':'hero-epoch.webp','showcase':'hero-epoch.webp',
+    'chronicle':'cover-ai70.webp','china-tech':'cover-future.webp','future-industry':'cover-future.webp','careers':'cover-growth.webp',
+    'real-estate':'cover-global.webp','national-security':'cover-future.webp','startup':'cover-growth.webp','cases-extended':'cover-industry.webp',
+    'future-skills':'cover-growth.webp','learning-paths':'cover-book.webp','engineering-lab':'cover-engineering.webp',
+    'cad-ai':'cover-engineering.webp','digital-twin':'cover-engineering.webp','ee-ai':'cover-engineering.webp',
+    'automation':'cover-engineering.webp','smart-manufacturing':'cover-engineering.webp','engineering-careers':'cover-engineering.webp',
+    'innovation-lab':'cover-growth.webp','research-assistant':'cover-research.webp','workplace-skills':'cover-growth.webp',
+    'personal-growth':'cover-growth.webp','creative-design':'cover-design.webp','data-analytics':'cover-data.webp',
+    'legal':'cover-book.webp','mental-health':'cover-growth.webp','global-perspective':'cover-global.webp',
+    'sustainability':'cover-future.webp','ai-creator':'cover-book.webp','ai-tools':'cover-prompts.webp',
+    'deepseek-guide':'cover-deepseek.webp','ip-guide':'cover-book.webp','ai-money':'cover-book.webp',
+    'internet-money':'cover-book.webp','self-study':'cover-book.webp','deployment':'cover-engineering.webp',
+    'anti-scam':'cover-research.webp','ai-pros-cons':'cover-data.webp','open-source':'cover-engineering.webp',
+    'blogger-views':'hero-epoch.webp','industries':'cover-industry.webp'
+  };
+
+  var fav = (function(){ try{ return new Set(JSON.parse(localStorage.getItem('eco_fav'))||[]); }catch(e){ return new Set(); } })();
+  function saveFav(){ try{ localStorage.setItem('eco_fav', JSON.stringify([...fav])); }catch(e){} }
+  var layers = ['全部',' 我的收藏'].concat(MODULES.map(function(m){return m.l;}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+  var layerEl = document.getElementById('layers');
+  layerEl.innerHTML = layers.map(function(l){ return '<button class="lchip'+(l==='全部'?' on':'')+(l===' 我的收藏'?' layer-fav':'')+'" data-l="'+l+'" type="button">'+l+'</button>'; }).join('');
+
+  var grid = document.getElementById('modGrid');
+  function renderMods(filter){
+    var list = MODULES;
+    if(filter === ' 我的收藏') list = MODULES.filter(function(m){ return fav.has(m.n); });
+    grid.innerHTML = list.map(function(m){
+      var hide = (filter && filter!=='全部' && filter!==' 我的收藏' && m.l!==filter) ? ' hide' : '';
+      var img = '../assets/img/' + (COVER[m.n] || 'hero-epoch.webp');
+      var on = fav.has(m.n) ? ' on' : '';
+      return '<div class="mcard'+hide+'" data-n="'+m.n+'" data-t="'+m.t+'" data-d="'+m.d+'">'
+        + '<span class="fav'+on+'" data-fav="'+m.n+'" title="收藏"></span>'
+        + '<img class="mimg" src="'+img+'" alt="'+m.t+'" loading="lazy" onerror="this.style.display=\'none\'">'
+        + '<span class="ico">'+m.i+'</span><h3>'+m.t+'</h3><p>'+m.d+'</p><span class="cnt">'+m.n+'.json</span></div>';
+    }).join('');
+    grid.querySelectorAll('.mcard').forEach(function(c){
+      c.addEventListener('click', function(e){
+        if(e.target.classList.contains('fav')) return;
+        openDetail(c.dataset.n, c.dataset.t, c.dataset.d, c.querySelector('.ico').textContent);
+      });
+      var fv = c.querySelector('.fav');
+      fv.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(fav.has(c.dataset.n)){ fav.delete(c.dataset.n); fv.classList.remove('on'); }
+        else { fav.add(c.dataset.n); fv.classList.add('on'); }
+        saveFav();
+        if(layerEl.querySelector('.lchip.on') && layerEl.querySelector('.lchip.on').dataset.l === ' 我的收藏') renderMods(' 我的收藏');
+      });
+    });
+  }
+  renderMods('全部');
+
+  layerEl.querySelectorAll('.lchip').forEach(function(ch){
+    ch.addEventListener('click', function(){
+      layerEl.querySelectorAll('.lchip').forEach(function(x){ x.classList.remove('on'); });
+      ch.classList.add('on');
+      renderMods(ch.dataset.l);
+      document.getElementById('detail').classList.remove('show');
+    });
+  });
+
+  // 搜索过滤
+  var searchEl = document.getElementById('modSearch');
+  var sresEl = document.getElementById('searchResults');
+  searchEl.addEventListener('input', function(){
+    var q = searchEl.value.trim();
+    grid.querySelectorAll('.mcard').forEach(function(c){
+      var hit = !q || c.dataset.t.indexOf(q) !== -1 || c.dataset.d.indexOf(q) !== -1 || c.dataset.n.indexOf(q) !== -1;
+      c.classList.toggle('hide', !hit);
+    });
+    // 全文搜索：扫描 EMBEDDED 全部条目（标题/描述），显示匹配结果
+    if(q.length < 2){ sresEl.innerHTML = ''; sresEl.classList.remove('show'); return; }
+    var E = window.EMBEDDED || {};
+    var hits = [];
+    var modTitle = {};
+    Object.keys(E).forEach(function(k){
+      modTitle[k] = E[k].title || k;
+      (E[k].items || []).forEach(function(it){
+        if(hits.length >= 12) return;
+        var t = String(it.title || ''), d = String(it.description || '');
+        if(t.indexOf(q) !== -1 || d.indexOf(q) !== -1){
+          hits.push({ k:k, t:t, d:d });
+        }
+      });
+    });
+    if(!hits.length){ sresEl.innerHTML = '<span class="sr-none">未找到「'+q+'」相关条目，可点下方模块让智能体讲解</span>'; sresEl.classList.add('show'); return; }
+    sresEl.innerHTML = hits.map(function(h, i){
+      return '<div class="sr-item"><b>[' + (modTitle[h.k] || h.k) + '] ' + h.t + '</b>'
+        + '<span>' + h.d.slice(0, 60) + '</span>'
+        + '<button class="ask" data-q="'+encodeURIComponent('请结合「'+(modTitle[h.k]||h.k)+'」模块内容讲解：'+h.t)+'" type="button"> 讲解 </button></div>';
+    }).join('');
+    sresEl.classList.add('show');
+    sresEl.querySelectorAll('.ask').forEach(function(b){
+      b.addEventListener('click', function(){ location.href = './agent.html?ask=' + b.dataset.q; });
+    });
+  });
+
+  // ---------- 数据加载（fetch  失败回退内置 EMBEDDED） ----------
+  var cache = {};
+  function loadData(name){
+    if(cache[name]) return Promise.resolve(cache[name]);
+    return fetch('../data/' + name + '.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .catch(function(){
+        var e = (window.EMBEDDED || {})[name];
+        if(e) return e;
+        return { error:true, message:'数据加载失败：'+name };
+      })
+      .then(function(d){ cache[name]=d; return d; });
+  }
+
+  var detail = document.getElementById('detail');
+  var dTitle = document.getElementById('dTitle');
+  var dDesc = document.getElementById('dDesc');
+  var dRows = document.getElementById('dRows');
+  var dAi = document.getElementById('dAi');
+  var currentMod = null;
+  var dKnowledgeHtml = '';
+  var currentRows = [];
+
+  // ---------- 最近浏览 + 复制 + toast ----------
+  var recent = (function(){ try{ return JSON.parse(localStorage.getItem('eco_recent'))||[]; }catch(e){ return []; } })();
+  function pushRecent(n){ recent = recent.filter(function(x){return x!==n;}); recent.unshift(n); recent = recent.slice(0,10); try{ localStorage.setItem('eco_recent', JSON.stringify(recent)); }catch(e){} }
+  function toastE(m){ var t=document.createElement('div'); t.textContent=m; t.style.cssText='position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:#0e1426;border:1px solid var(--line);color:var(--ice);padding:10px 18px;border-radius:10px;font-size:13px;z-index:400;opacity:0;transition:.25s'; document.body.appendChild(t); requestAnimationFrame(function(){ t.style.opacity='1'; }); setTimeout(function(){ t.style.opacity='0'; setTimeout(function(){ t.remove(); },250); },1500); }
+  function copyText(txt){
+    txt = txt || '';
+    if(!txt.trim()){ toastE('无内容可复制'); return; }
+    function fb(){ var ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); toastE(' 已复制'); }catch(e){ toastE('复制失败'); } document.body.removeChild(ta); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(function(){ toastE(' 已复制'); }, fb); }
+    else fb();
+  }
+  var dFilter = document.getElementById('dFilter');
+  dFilter.addEventListener('input', function(){
+    var kw = dFilter.value.trim().toLowerCase();
+    dRows.querySelectorAll('.row').forEach(function(r){
+      if(!r.dataset.t) return;
+      var hit = !kw || decodeURIComponent(r.dataset.t).toLowerCase().indexOf(kw) !== -1;
+      r.style.display = hit ? '' : 'none';
+    });
+  });
+  document.getElementById('dExpand').addEventListener('click', function(){ dRows.classList.remove('collapsed'); });
+  document.getElementById('dCollapse').addEventListener('click', function(){ dRows.classList.add('collapsed'); });
+
+  function openDetail(name, title, desc, ico){
+    currentMod = { name:name, title:title, desc:desc };
+    pushRecent(name);
+    dFilter.value = '';
+    dRows.classList.remove('collapsed');
+    dTitle.innerHTML = ico + ' <span>' + title + '</span>';
+    dDesc.textContent = desc;
+    // 实体知识 + 封面图（内置，离线可读）
+    var k = (window.KNOWLEDGE || {})[name];
+    var cover = '../assets/img/' + (COVER[name] || 'hero-epoch.webp');
+    var khtml = '';
+    if(k){
+      khtml = '<div class="kbox" style="margin-bottom:18px">'
+        + '<img class="kcover" src="'+cover+'" alt="'+title+'" onerror="this.style.display=\'none\'">'
+        + '<div class="kintro">'+k.intro+'</div>'
+        + (k.points && k.points.length ? '<ul class="kpoints">'+k.points.map(function(p){ return '<li>'+p+'</li>'; }).join('')+'</ul>' : '')
+        + (k.tips ? '<div class="ktips"> '+k.tips+'</div>' : '')
+        + '</div>';
+    } else {
+      khtml = '<img class="kcover" src="'+cover+'" alt="'+title+'" onerror="this.style.display=\'none\'" style="width:100%;max-height:180px;object-fit:cover;border-radius:14px;margin-bottom:16px">';
+    }
+    dKnowledgeHtml = khtml;
+    dRows.innerHTML = khtml + '<div class="row"><b>加载中…</b></div>';
+    detail.classList.add('show');
+    detail.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    loadData(name).then(function(d){
+      if(d.error){ dRows.innerHTML = dKnowledgeHtml + '<div class="row"><b> 数据不可用</b><p>'+d.message+'</p></div>'; return; }
+      // 提取全部条目：合并各模块所有命名字段 + 嵌套展开
+      var ALL_KEYS = ['categories','items','stories','chapters','directions','tools','concepts','areas','majors','industries','trends','milestones','eras','events','advice','resources','sections','learningPaths','bestPractices','practicalTips','volumes','advantages','disadvantages','socialImpacts','ethicalConsiderations','futureOutlook','adaptationStrategies','keyInsights','practicalAdvice','examples','stages','weeklyPlan'];
+      var items = [];
+      ALL_KEYS.forEach(function(k){ if(Array.isArray(d[k]) && d[k].length) items = items.concat(d[k]); });
+      // 去重
+      var seen = {}, uniq = [];
+      items.forEach(function(it){ var key = typeof it==='string' ? it : JSON.stringify(it); if(!seen[key]){ seen[key]=1; uniq.push(it); } });
+      items = uniq;
+      var flat = [];
+      function pushRow(it){
+        if(typeof it === 'string'){ flat.push({ title: it.slice(0,80), desc: '' }); return; }
+        if(!it || typeof it !== 'object'){ flat.push({ title:'未命名', desc:'' }); return; }
+        // 嵌套分组：categories.items 展开
+        if(Array.isArray(it.items) && it.items.length){
+          flat.push({ title: (it.title || it.name || ''), desc: it.description || '', group:true });
+          it.items.forEach(pushRow);
+          return;
+        }
+        var yr = it.year ? String(it.year) : '';
+        flat.push({
+          title: it.title || it.name || (yr ? yr+' '+(it.event||'') : it.event) || it.week || '未命名',
+          desc: it.description || it.text || it.summary || it.significance || it.impact || it.goal || ''
+        });
+      }
+      items.forEach(pushRow);
+      if(!flat.length){ dRows.innerHTML = dKnowledgeHtml + '<div class="row"><b>该模块暂无列表条目</b><p>可点上方按钮让智能体讲解。</p></div>'; return; }
+      var total = flat.length;
+      var shown = flat.slice(0, 200);
+      currentRows = shown;
+      var listHtml = shown.map(function(it, i){
+        var head = '<b>'+(it.group ? ' ' : (i+1)+'. ')+it.title+'</b>';
+        var q = encodeURIComponent('请结合「'+title+'」模块内容讲解：'+it.title);
+        var copyTxt = (it.title||'') + (it.desc ? '\n'+it.desc : '');
+        return '<div class="row" data-t="'+encodeURIComponent((it.title||'')+' '+(it.desc||''))+'">'+head+'<p>'+(it.desc||'')+'</p>'
+          + '<button class="ask" data-q="'+q+'" type="button"> 智能体深入讲解 </button>'
+          + '<button class="copy" data-copy="'+encodeURIComponent(copyTxt)+'" type="button"> 复制</button></div>';
+      }).join('') + (total > 200 ? '<div class="row"><b>… 共 '+total+' 条，仅显示前 200 条</b></div>' : '');
+      dRows.innerHTML = dKnowledgeHtml + listHtml;
+      dRows.querySelectorAll('.ask').forEach(function(b){
+        b.addEventListener('click', function(){ location.href = './agent.html?ask=' + b.dataset.q; });
+      });
+      dRows.querySelectorAll('.copy').forEach(function(b){
+        b.addEventListener('click', function(){ copyText(decodeURIComponent(b.dataset.copy)); });
+      });
+    });
+  }
+
+  dAi.addEventListener('click', function(){
+    if(!currentMod) return;
+    location.href = './agent.html?ask=' + encodeURIComponent('请结合「'+currentMod.title+'」模块（'+currentMod.desc+'），给我一份系统性的讲解与使用建议');
+  });
+
+  // ---------- 生成模块摘要（DeepSeek · 页内直出） ----------
+  var dSum = document.getElementById('dSum');
+  function escS(s){ return String(s||'').replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c] }) }
+  dSum.addEventListener('click', function(){
+    if(!currentMod) return;
+    if(dSum.textContent.indexOf('') === 0) return;
+    dSum.textContent = ' 摘要生成中…';
+    var name = currentMod.name;
+    // 取该模块内置条目文本（EMBEDDED），作为摘要素材
+    var e = (window.EMBEDDED || {})[name];
+    var items = (e && e.items || []).slice(0, 12);
+    var material = items.map(function(it){ return (it.title||'') + '：' + (it.description||''); }).join('\n').slice(0, 3000);
+    if(!material) material = currentMod.desc + '（该模块暂无内置条目）';
+    AI.complete({ messages:[{ role:'user', content:'请为「'+currentMod.title+'」模块生成一份简洁摘要（3-5 条要点，含一句话定义+核心内容+实践提示），用 Markdown：\n\n参考内容：\n' + material }], maxTokens:600 })
+      .then(function(t){
+        var box = document.createElement('div');
+        box.className = 'summary-box';
+        box.innerHTML = '<b> 模块摘要</b>' + (window.marked && window.marked.parse ? window.marked.parse(t) : escS(t));
+        dRows.insertBefore(box, dRows.firstChild);
+        dSum.textContent = ' 生成模块摘要';
+      })
+      .catch(function(err){
+        dSum.textContent = ' 摘要失败';
+        setTimeout(function(){ dSum.textContent = ' 生成模块摘要'; }, 2500);
+        alert('摘要生成失败：' + (err && err.message || err));
+      });
+  });
+
+  // ---------- 粒子星空 ----------
+  var cv = document.getElementById('stars'), ctx = cv.getContext('2d');
+  var W, H, pts = [];
+  function resize(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
+  resize(); addEventListener('resize', resize);
+  var COLORS = ['94,234,212','56,225,255','91,140,255','240,185,92'];
+  var n = Math.min(110, Math.floor(W*H/17000));
+  for(var i=0;i<n;i++) pts.push({ x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.6+.4, vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3, c:COLORS[Math.random()*4|0] });
+  (function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283);
+      ctx.fillStyle = 'rgba('+p.c+',.5)'; ctx.fill();
+      for(var j=i+1;j<pts.length;j++){
+        var q = pts[j], dx=p.x-q.x, dy=p.y-q.y, d2=dx*dx+dy*dy;
+        if(d2 < 13000){ ctx.strokeStyle='rgba('+p.c+','+(0.13*(1-d2/13000))+')'; ctx.lineWidth=.6;
+          ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
+      }
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["生态收纳","AI智能体","部署基础","Dify"], title: 'AI 生态 · 部署使用视频' });</script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

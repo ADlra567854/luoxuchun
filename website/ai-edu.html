@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="AI 赋能教育：国家与地方政策、学校真实案例、正确率 62%94% 的实证数据、老师/学生/管理者提示词与工具清单。">
+<meta name="keywords" content="AI 赋能教育 · 政策×案例×提示词,AI 创作纪元,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="AI 赋能教育：国家与地方政策、学校真实案例、正确率 62%94% 的实证数据、老师/学生/管理者提示词与工具清单。">
+<title>AI 赋能教育 · 政策×案例×提示词 | AI 创作纪元</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f0b95c;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:20px;font-size:13.5px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-cta{padding:8px 16px;border:1px solid rgba(56,225,255,.4);border-radius:99px;color:var(--cyan)!important;font-size:12.5px}
+@media(max-width:1000px){.nav-links{display:none}}
+.hero{min-height:86vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:130px 24px 60px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(6,8,15,.5),rgba(6,8,15,.9) 70%),url('/assets/img/ai-bg-robot.webp') center/cover no-repeat}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:99px;letter-spacing:2px;margin-bottom:26px}
+.hero h1{font-size:clamp(32px,5.6vw,72px);font-weight:900;line-height:1.2;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:780px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:24px auto 30px}
+.hero .btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.hero .btn{padding:12px 28px;border-radius:99px;font-size:14.5px;font-weight:600;text-decoration:none;transition:.3s}
+.hero .btn-p{background:var(--grad);color:#04101f}
+.hero .btn-g{border:1px solid var(--line);color:var(--text)}
+.hero .btn:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(79,140,255,.4)}
+section{max-width:1180px;margin:0 auto;padding:64px 24px}
+.sec-head{margin-bottom:34px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(24px,3.2vw,38px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:760px;margin-top:10px}
+.stats{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center;transition:.3s}
+.stat:hover{border-color:rgba(56,225,255,.5);transform:translateY(-4px)}
+.stat b{display:block;font-size:clamp(20px,2.6vw,30px);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
+.stat span{color:var(--muted);font-size:12.5px}
+.stat i{display:block;font-style:normal;color:var(--gold);font-size:11px;margin-top:6px}
+.grid{display:grid;gap:20px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+@media(max-width:520px){.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.3s}
+.card:hover{border-color:rgba(79,140,255,.5);transform:translateY(-4px)}
+.card h3{font-size:17.5px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:13.5px}
+.card b{color:var(--text)}
+.card .tag{display:inline-block;margin-top:10px;font-size:11.5px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:99px;padding:3px 12px}
+.prompt-title{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--gold);font-size:13px;font-weight:600}
+.prompt-title::before{content:""}
+.prompt-box{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  font-family:Consolas,monospace;font-size:12.8px;color:#b9c8ea;position:relative;margin-top:10px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.prompt-box .copy{position:absolute;top:10px;right:10px;background:#18223c;border:1px solid var(--line);color:var(--muted);
+  border-radius:8px;padding:3px 10px;font-size:11.5px;cursor:pointer;transition:.2s;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.prompt-box .copy:hover{color:var(--cyan);border-color:var(--cyan)}
+.prompt-box .copy.done{color:#04101f;background:var(--grad);border-color:transparent}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),var(--purple))}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-item::before{content:"";position:absolute;left:-21px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(56,225,255,.15)}
+.tl-item h4{font-size:15.5px}
+.tl-item .time{color:var(--gold);font-size:12px;letter-spacing:1px}
+.tl-item p{color:var(--muted);font-size:13.5px;margin-top:4px}
+.src{font-size:11.5px;color:#5d6f94;margin-top:4px}
+footer{border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+</style>
+<link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-edu.html">
+<meta property="og:title" content="AI 赋能教育 · 政策×案例×提示词 | AI 创作纪元">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-edu.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 赋能教育 · 政策×案例×提示词 | AI 创作纪元">
+<meta name="twitter:description" content="AI 赋能教育：国家与地方政策、学校真实案例、正确率 62%94% 的实证数据、老师/学生/管理者提示词与工具清单。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-ai-edu.png" alt="AI 赋能教育 · 政策×案例×提示词 | AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="../index.html" style="color:var(--gold)"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 白驹总站</a>
+    <a href="./index.html">首页</a>
+    <a href="./ai-money.html">AI赚钱</a>
+    <a href="./manju.html">AI漫剧</a>
+    <a href="./ai-edu.html" class="active">AI教育</a>
+    <a href="./ai-jobs.html">AI就业</a>
+    <a href="./personality.html">性格测试</a>
+    <a href="./ai-projects.html">作品大全</a>
+    <a href="./works.html">作品库</a>
+    <a href="./portal.html">收纳站</a>
+  </div>
+  <a class="nav-cta" href="./chat.html"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>去对话</a>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="tag">AI 赋能教育</div>
+  <h1>AI 进校园，不是将来，<span>是现在</span></h1>
+  <p class="sub">教育部 2026 部署会把"人工智能+教育"列为重点；广西一所小学用 AI 智能组卷，一学期把小数运算正确率从 62% 拉到 94%。老师、学生、管理者该怎么接住这波红利？看下文。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  <div class="btns">
+    <a class="btn btn-p" href="#policy"><i class="cc-ic" data-ic="file-text"></i> 看政策</a>
+    <a class="btn btn-g" href="#cases"><i class="cc-ic" data-ic="bar-chart-3"></i> 看案例数据</a>
+    <a class="btn btn-g" href="#prompts"><i class="cc-ic" data-ic="terminal"></i> 拿提示词</a>
+  </div>
+</section>
+
+<section id="policy">
+  <div class="sec-head"><div class="kicker">政策时间线</div><h2><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>国家与地方都在推"人工智能+教育"</h2></div>
+  <div class="tl">
+    <div class="tl-item"><span class="time">2026.03.31</span><h4>教育部部署会：「人工智能+教育」贯穿全场</h4><p>教育部召开国家教育数字化战略行动 2026 年部署会，把"人工智能赋能教育行动"列为十五五重点；此前国务院已出台《关于深入实施"人工智能+"行动的意见》，教育部等九部门《关于加快推进教育数字化的意见》专章部署教育智能化。国家智慧教育平台开通"双千"计划：千余个微专业 + 职业能力培训课程。</p></div>
+    <div class="tl-item"><span class="time">江苏</span><h4>江苏省"人工智能+"行动方案</h4><p>推广智能学伴、智能教师的人机协同教学；面向中小学上线 <b>6 个学科智能体、20 个教学智能体</b>；智能评卷系统已投入考试评价；推动 36 所本科高校、53 所高职开设 AI 专业，立项 15 个省级 AI 学院。</p></div>
+    <div class="tl-item"><span class="time">贵州</span><h4>《推进人工智能赋能教育行动方案（2026—2030）》</h4><p>到 2027 年建成省级 AI 教育算力共享平台与特色资源库，培育 <b>100 所省级数字化转型试点校</b>；到 2030 年基本建成大中小学及职业院校 AI 一体化培养体系。</p></div>
+    <div class="tl-item"><span class="time">重庆</span><h4>《"人工智能+教育"行动方案》（8 部门联合）</h4><p>推广"AI 学伴"自适应学习路径规划；到 2026 年底教育智能终端、智能体应用普及率 <b>70%+</b>，2027 年底 <b>80%+</b>，建成 150 所创新特色学校。</p></div>
+    <div class="tl-item"><span class="time">东莞</span><h4>中小学"人工智能+教育"先导计划</h4><p>联合华为打造"鸿蒙之城"智慧校园；遴选 <b>60 所市级应用创新项目学校</b>，100 名应用先锋导师、266 名种子教师，<b>37 个案例入选国家级 AI 教育优秀场景</b>（全省第一）。</p></div>
+    <div class="tl-item"><span class="time">福建</span><h4>2026 年 100 个"人工智能+教育"典型案例</h4><p>厦门大学"翻转客"智能体教学创新、福州大学具身智能医学实训、福建师大心理快筛"心镜智析"、各类智慧作业与教研案例共 <b>100 个</b>，覆盖高校到中小学。</p></div>
+  </div>
+  <p class="src">来源：教育部官网部署会通稿、各地政府/教育厅文件、人民日报报道</p>
+</section>
+
+<section id="cases">
+  <div class="sec-head"><div class="kicker">真实案例与数据</div><h2><i class="cc-ic" data-ic="school" aria-hidden="true"></i>AI 已经改变了这些学校</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-ai-edu.png" alt="AI 赋能教育 · 政策×案例×提示词 · " loading="lazy"></figure>
+<p>全部来自公开报道，数字可查。</p></div>
+  <div class="stats">
+    <div class="stat"><b>62%<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>94%</b><span>广西某小学四年级小数运算正确率</span><i>AI 智能组卷+分层练习+一对一辅导，一学期</i></div>
+    <div class="stat"><b>5900+</b><span>省级名师网络工作室孵化学科带头人</span><i>浙江 340 余个工作室</i></div>
+    <div class="stat"><b>1000+</b><span>海南乡村学校开齐英语/科学/音乐</span><i>依托国家智慧教育平台</i></div>
+    <div class="stat"><b>12 学科</b><span>同济"一网通学"知识图谱覆盖</span><i>AI 智能体沉浸式未来课堂</i></div>
+  </div>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><h3><i class="cc-ic" data-ic="sprout" aria-hidden="true"></i>浙江 · 云端结对</h3><p>最偏远的嵊泗中学与杭州学军中学云端结对，教学质量稳步提升。教育均衡靠"一块屏 + AI"跑起来。</p><span class="tag">教育均衡</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="flask-conical" aria-hidden="true"></i>同济 · 未来课堂</h3><p>AI 智能体为师生打造沉浸式未来课堂，全校实施覆盖式 AI 素养提升工程——"懂 AI、用 AI 成为共识"。</p><span class="tag">高校</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="ruler" aria-hidden="true"></i>广西 · 精准教学</h3><p>依托平台智能组卷分层定制练习，教师用数据分析做一对一辅导，四年级小数运算正确率从 62% 提至 94%。</p><span class="tag">小学 · 正确率 +32pct</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i>东莞 · 智慧校园</h3><p>智能课堂、智能作业、智能体测三场景试点；线上慕课访问超 30 万人次，智慧冬令营覆盖 102 万人次。</p><span class="tag">体系化推进</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>世界数字教育大会 · 20 项签约</h3><p>2026 大会签署 20 项 AI 教育国际合作，覆盖欧洲、东南亚、非洲、中亚；面向全球开放"全球 AI 教育服务平台"与 60 门终身学习精品课。</p><span class="tag">国际合作</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>福建 · 100 个典型案例</h3><p>从高校智能体到小学智慧作业、从心理健康大模型到闽南文化数字人，福建一口气公布 100 个应用场景案例。</p><span class="tag">场景全覆盖</span></div>
+  </div>
+</section>
+
+<section id="prompts">
+  <div class="sec-head"><div class="kicker">拿来就用</div><h2><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>老师 / 学生 / 管理者的 AI 提示词</h2><p>复制进任意 AI 对话（本站 chat / agent 即可），立刻开工。</p></div>
+  <div class="grid g2">
+    <div class="card"><h3><i class="cc-ic" data-ic="user" aria-hidden="true"></i> 老师工作台</h3>
+      <div class="prompt-title">备课教案</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是资深学科教师。为《【课题】》写一份 45 分钟教案：教学目标、重难点、导入、讲授（含提问）、随堂练习、分层作业、板书设计。参考新课程标准。</div>
+      <div class="prompt-title">自动出题+答案</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是命题专家。围绕《【知识点】》出 15 题：5 选择 + 5 填空 + 5 解答，按难度递增，附答案与解析，并标注每题的考察能力。</div>
+      <div class="prompt-title">智能组卷分层</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>根据班级数据【粘贴】把 30 道题分成 A/B/C 三层：A 层基础巩固、B 层能力提升、C 层拓展挑战，每层 10 题，说明分层依据。</div>
+    </div>
+    <div class="card"><h3> 学生工作台</h3>
+      <div class="prompt-title">错题精讲</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是耐心家教。把这道错题讲透：①错在哪 ②正确思路 ③同类题 1 道练手 ④一句话记忆口诀。题目：【粘贴】。</div>
+      <div class="prompt-title">论文大纲</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是论文导师。为《【题目】》设计大纲：引言、文献综述、研究方法、结果、讨论、结论，每章 3 个要点 + 引用建议 + 常见误区提示。</div>
+      <div class="prompt-title">英语润色</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是英语母语编辑。把我的作文改到地道：保留原意、修正语法、升级词汇、批注每处修改原因。原文：【粘贴】。</div>
+    </div>
+    <div class="card"><h3><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>管理者 / 班主任</h3>
+      <div class="prompt-title">作业评语</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是班主任。为【学生情况】写 3 句鼓励式评语：先肯定、再指不足、最后给方法。语气温和不空话，落到具体行为。</div>
+      <div class="prompt-title">家长沟通话术</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是家校沟通顾问。家长反馈【问题】时，帮我起草回复：共情 + 情况说明 + 家校配合建议 + 邀请面谈。语气专业温和。</div>
+      <div class="prompt-title">教学质量分析</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是教务分析。根据成绩数据【粘贴】输出：整体分布、班级差异、薄弱知识点 Top5、针对性改进建议（含教师行动与学生行动）。</div>
+    </div>
+    <div class="card"><h3><i class="cc-ic" data-ic="school" aria-hidden="true"></i>学校 / 机构 AI 落地清单</h3>
+      <div class="prompt-title">AI 落地规划</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是教育信息化顾问。我校【规模/阶段】，请给一份 AI 进校落地规划：优先场景（备课/作业/评价/心理）、所需工具、试点班级方案、教师培训计划、半年里程碑。分四阶段列。</div>
+      <div class="prompt-title">课程设计</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>为【学段】设计一学期 AI 素养课程：每章主题、课时、项目式作业（动手做）、评价方式，共 16 课时。面向零基础教师也可上。</div>
+      <div class="prompt-title">AI 工具选型</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>帮我对比【候选工具 A/B/C】用于【场景】：功能、成本、隐私合规、教师上手难度、学生端体验，表格输出并给推荐。</div>
+    </div>
+  </div>
+  <p class="src">提示词可直接在 chat.html / agent.html 使用；本页为教育场景版，更多岗位提示词见「AI赚钱」页的工作台大全。</p>
+</section>
+
+<footer>
+  <div class="logo">AI 创作纪元</div>
+  <p style="margin-top:8px">AI 赋能教育 · 政策与案例来自公开报道，数据以官方口径为准<br>© 2026 AI 创作纪元</p>
+</footer>
+
+<script src="/module.js"></script>
+<script src="/responsive.js"></script>
+<script>
+(function(){
+'use strict'
+var bar=document.createElement('div');bar.style.cssText='position:fixed;top:0;left:0;height:3px;width:0;z-index:9990;background:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6)';document.body.appendChild(bar)
+function onScroll(){var h=document.documentElement;var st=h.scrollTop||document.body.scrollTop;var sh=h.scrollHeight-h.clientHeight||1;bar.style.width=(st/sh*100)+'%'}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll()
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.copy');if(!b)return
+  var box=b.closest('.prompt-box');var text=box?box.textContent.replace('复制','').trim():''
+  var done=function(){b.textContent='已复制 ';b.classList.add('done');setTimeout(function(){b.textContent='复制';b.classList.remove('done')},1500)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){fb()})}else fb()
+  function fb(){var ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}
+})
+})()
+</script>
+
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["教育","知识库"], title: 'AI 赋能教育 · 教学实操视频' });</script>
+<script src="/baiju-widget.js"></script>
+<script src="/ccowork.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

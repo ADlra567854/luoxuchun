@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="白驹主站运行分析：现状盘点、运行链路、短板诊断、技能驱动改进方案（P0/P1/P2），以及 AI 业务中心落地。">
+<meta property="og:title" content="网站运行分析 · 白驹全局大脑 · 技能驱动改进方案">
+<meta name="keywords" content="网站分析,改进方案,技能驱动,白驹全局大脑,AI 创作纪元">
+<meta name="description" content="白驹主站运行分析：现状盘点、运行链路、短板诊断、技能驱动改进方案（P0/P1/P2），以及 AI 业务中心落地。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/site-industrial.css">
+<title>网站运行分析 · 技能驱动改进方案 · 白驹全局大脑</title>
+<style>
+:root{
+  --nav-bg:rgba(255,255,255,.82); --nav-line:rgba(227,235,245,.95);
+  --nav-shadow:0 2px 16px rgba(31,45,77,.07);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+}
+body[data-theme="deep"]{
+  --nav-bg:rgba(8,5,28,.70); --nav-line:rgba(255,255,255,.08);
+  --nav-shadow:0 2px 16px rgba(0,0,0,.35);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#8b5cf6,#38e1ff 55%,#e879fa);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* 导航 */
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:9px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+.burger{display:none}
+
+/* 文章 */
+.wrap{max-width:1000px;margin:0 auto;padding:40px 24px 70px}
+.art-head{margin-bottom:34px}
+.art-head .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;background:var(--grad);color:#fff;font-size:12px;font-weight:800}
+.art-head h1{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.3;margin:16px 0 8px}
+.art-head .meta{color:var(--muted);font-size:13px}
+.art-head .divider{height:1px;margin-top:22px;background:linear-gradient(90deg,var(--grad),transparent)}
+
+h2{font-size:22px;font-weight:900;margin:44px 0 6px;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--grad),transparent)}
+h3{font-size:16.5px;font-weight:800;margin:22px 0 8px}
+p{color:var(--text);opacity:.92;font-size:14.5px;margin:10px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--card-shadow);margin:14px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:16px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:var(--card-shadow)}
+.stat b{display:block;font-size:24px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow)}
+th,td{padding:11px 14px;text-align:left;font-size:13.5px;border-bottom:1px solid var(--line)}
+th{background:var(--grad);color:#fff;font-weight:800}
+tr:last-child td{border-bottom:none}
+td b{color:var(--blue)}
+.pill{display:inline-block;font-size:11px;font-weight:900;padding:3px 10px;border-radius:99px;margin-right:6px}
+.pill.p0{background:#ff5c5c;color:#fff}
+.pill.p1{background:#f0a93c;color:#fff}
+.pill.p2{background:#22b07d;color:#fff}
+.tag3{display:inline-block;font-size:11px;font-weight:800;color:var(--blue);background:var(--chip-bg);border:1px solid var(--chip-line);padding:2px 10px;border-radius:99px;margin:2px 4px 2px 0}
+ul{margin:8px 0 8px 22px}
+ul li{font-size:14px;margin:6px 0}
+</style>
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/improvement-plan.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/improvement-plan.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="网站运行分析 · 技能驱动改进方案 · 白驹全局大脑">
+<meta name="twitter:description" content="白驹主站运行分析：现状盘点、运行链路、短板诊断、技能驱动改进方案（P0/P1/P2），以及 AI 业务中心落地。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-improvement-plan.png" alt="网站运行分析 · 技能驱动改进方案 · 白驹全局大脑" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+<nav class="top">
+  <a class="brand" href="/index.html"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><span class="nm">白驹 · ccowork</span></a>
+  <button class="burger" onclick="document.querySelector('.top .links').classList.toggle('open')"><i class="cc-ic" data-ic="menu"></i></button>
+  <div class="links">
+    <a href="/index.html"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>对话</a>
+    <a href="/website/workstation.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>工作站</a>
+    <a href="/website/map-guide.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图指引</a>
+    <a href="/website/biz-center.html"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>业务中心</a>
+    <a href="/website/ai-academy.html"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 学院</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="切换亮暗主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="art-head">
+    <span class="badge"><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i>运行分析 · 技能驱动改进方案</span>
+    <h1>白驹主站怎么跑得更好？<br>1008 技能 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 全站升级路线图</h1>
+    <div class="meta">小驭 · 2026-08-30 · 基于主站实盘盘点 + 技能弹药库映射</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>64</b><span>主站页面</span></div>
+    <div class="stat"><b>30</b><span>博客文章</span></div>
+    <div class="stat"><b>78</b><span>数据文件</span></div>
+    <div class="stat"><b>1008</b><span>技能弹药</span></div>
+    <div class="stat"><b>104</b><span>ai-hive 模型</span></div>
+    <div class="stat"><b>0 元</b><span>智谱日更成本</span></div>
+  </div>
+
+  <h2>一、现状盘点：家底很厚，短板清晰</h2>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>已建立的优势</h3>
+    <ul>
+      <li><b>内容矩阵完整</b>：对话工作台 / 白区 / AI 学院（30+ 章）/ 27 篇博客 / 12 条新闻 / 五卷全书 / 实验室 / 作品集，覆盖面广</li>
+      <li><b>真实功能落地</b>：智谱 GLM-4.7-Flash 免费接入（0 成本日更）、ai-hive 104 模型网关、腾讯地图连接器（42 处真实 POI + 县级直查）、Playwright 零 JS 错误验证</li>
+      <li><b>架构可扩展</b>：全站双主题设计语言 + 注入层（ccowork.js/module.js）+ 数据文件驱动，改一处全站生效</li>
+    </ul>
+    <h3><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>需要补的短板</h3>
+    <ul>
+      <li><b>技能 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 内容映射还浅</b>：1008 技能只映射了提示词（66 模板）和业务中心（10 线），AI 学院 / 博客 / 白区还没系统吃技能红利</li>
+      <li><b>AI 学院内容深度不均匀</b>：30 章里部分章节偏目录化，缺少「技能实操」板块（如：用 RAG 技能搭个真问答、用数据技能跑个真分析）</li>
+      <li><b>转化路径弱</b>：没有"访客 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 留下 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 业务"的清晰漏斗，业务中心刚建，缺案例展示与在线询价</li>
+      <li><b>搜索 / SEO 未吃满</b>：64 页但 sitemap 索引不全，长尾词（"AI 变现""提示词模板"）没做聚合页</li>
+    </ul>
+  </div>
+
+  <h2>二、运行链路：这条线要打通</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-improvement-plan.png" alt="网站运行分析 · 技能驱动改进方案 · 白驹全局大脑 · 二、运行链路：这条线要打通" loading="lazy"></figure>
+
+  <div class="card">
+    <p><b>内容生产线</b>：智谱免费模型（gen-daily.mjs 每日日更）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 新闻/博客/工具深挖 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 发布即部署（复用 cd4b0031 链接）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 老罗实测挑刺 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 小驭修复闭环 <i class="cc-ic" data-ic="check-circle" aria-hidden="true"></i> 已通</p>
+    <p><b>能力生产线</b>：1008 技能 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 10 大能力域 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 提示词模板 / 业务中心 / 场馆矩阵 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 直接给用户用 <i class="cc-ic" data-ic="check-circle" aria-hidden="true"></i> 刚通</p>
+    <p><b>模型底座</b>：智谱免费（日常）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 方舟/DeepSeek（兜底）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ai-hive 104 模型（按量高端）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> WebLLM（浏览器本地）四层，成本趋零 <i class="cc-ic" data-ic="check-circle" aria-hidden="true"></i> 已通</p>
+    <p><b>待打通</b>：<b>访客转化链路</b> —— 内容吸引 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 对话试用 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 业务中心下单 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 交付变现，中间缺「案例 + 询价 + 私域」环节。</p>
+  </div>
+
+  <h2>三、技能驱动改进方案（按优先级）</h2>
+
+  <h3><i class="cc-ic cc-dot" data-ic="circle" style="color:#ef4444" aria-hidden="true"></i>P0 · 立即做（已部分落地）</h3>
+  <table>
+    <tr><th>项</th><th>动作</th><th>技能支撑</th><th>状态</th></tr>
+    <tr><td>提示词模板库</td><td>10 大技能域 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 66 个实战模板 + 复制按钮</td><td>prompt-engineering / 技能盘点</td><td><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>已上线</td></tr>
+    <tr><td>AI 业务中心</td><td>10 条业务线 + 4 步流程 + 4 个套餐</td><td>10 大技能域映射</td><td><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>已上线</td></tr>
+    <tr><td>地图指引 v3</td><td>42 真实 POI + 全国县级直查 + 红色教育</td><td>tencent-map 连接器</td><td><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>已上线</td></tr>
+    <tr><td>免费模型底座</td><td>智谱 GLM-4.7-Flash 全站默认（0 成本）</td><td>智谱 API</td><td><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>已上线</td></tr>
+  </table>
+
+  <h3><i class="cc-ic cc-dot" data-ic="circle" style="color:#f97316" aria-hidden="true"></i>P1 · 一周内做</h3>
+  <table>
+    <tr><th>项</th><th>动作</th><th>技能支撑</th><th>预期效果</th></tr>
+    <tr><td>AI 学院"技能实操营"</td><td>每个能力域配 1 个真实操：RAG 问答 Demo / 数据看板 Demo / 提示词调优 Demo</td><td>rag / data-viz / prompt 技能</td><td>访客从"看教程"变"动手做"，留存<i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i></td></tr>
+    <tr><td>业务中心补案例</td><td>10 条业务线各挂 1 个真实案例（已交付作品截图/链接）</td><td>作品集数据</td><td>信任感<i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i>，询价转化<i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i></td></tr>
+    <tr><td>博客技能化翻新</td><td>27 篇博客按技能域打标签 + 文末挂对应技能模板</td><td>blogwatcher / 内容技能</td><td>长尾 SEO<i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i>，互链<i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i></td></tr>
+    <tr><td>搜索索引补全</td><td>sitemap 覆盖全部 64 页 + 长尾词聚合页</td><td>SEO / 内容技能</td><td>自然流量<i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i></td></tr>
+  </table>
+
+  <h3><i class="cc-ic cc-dot" data-ic="circle" style="color:#22c55e" aria-hidden="true"></i>P2 · 稳定迭代</h3>
+  <table>
+    <tr><th>项</th><th>动作</th><th>技能支撑</th><th>预期效果</th></tr>
+    <tr><td>AI 应用市场</td><td>把 lab 仿真 + 编译模式作品商品化展示（可订阅/授权）</td><td>dev / cloudbase / 支付</td><td>新收入线</td></tr>
+    <tr><td>行业分站</td><td>按技能域扩分站（金融 AI / 设计 AI / 教育 AI）</td><td>content-research / 行业技能</td><td>覆盖全行业</td></tr>
+    <tr><td>访客私域</td><td>留资表单 + 微信客服 + 定时内容推送</td><td>weixin / 效率技能</td><td>复访<i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i>，转化<i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i></td></tr>
+    <tr><td>数据驾驶舱</td><td>站内访问统计 + 内容热度 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 驱动选题</td><td>data-viz / dashboard</td><td>运营数据化</td></tr>
+  </table>
+
+  <h2>四、新业务：技能弹药库的变现路径</h2>
+  <div class="card">
+    <p><b>已落地</b>：<a href="/website/biz-center.html" style="color:var(--blue);font-weight:800"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>AI 业务中心</a> —— 10 条业务线（文档/设计/数据/金融/开发/AI 工程/多模态/腾讯生态/效率/安全），4 个组合套餐，四步交付流程。</p>
+    <p><b>下一步变现组合</b>：</p>
+    <ul>
+      <li><b>工具订阅</b>：lab 仿真脚本 + 编译模式小工具 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打包成付费工具箱（月费/年费）</li>
+      <li><b>定制交付</b>：业务中心接单 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 用技能栈实际交付（文档/站点/小程序/数据分析）</li>
+      <li><b>内容变现</b>：AI 学院课程 + 认证体系 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 知识付费</li>
+      <li><b>企业服务</b>：给本地企业做 AI 落地（RAG 知识库/智能客服/数据看板），配合地图指引做本地获客</li>
+    </ul>
+    <p style="margin-top:12px"><b>成本结构</b>：智谱免费模型 0 元日更 + ai-hive 按量（高端模型才用）+ 部署复用免费链接 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <b>边际成本趋零</b>，接多少单都是净赚。</p>
+  </div>
+
+  <h2>五、结论</h2>
+  <div class="card">
+    <p>主站已经从「内容站」升级为「<b>内容 + 能力 + 业务</b>」三合一工作台：内容吸流量、能力留住人、业务变现。下一阶段核心是 <b>P1 四件事</b>（技能实操营 / 业务案例 / 博客翻新 / 搜索补全），把 1008 技能的红利吃透，然后按 P2 扩行业分站和私域。</p>
+    <p style="margin-top:8px"><b>老罗要做的</b>：挑 1-2 条业务线先跑通（建议「数据智能」或「AI 应用」套餐，客单价高、技能栈现成），我把 P1 清单逐项落地。</p>
+  </div>
+
+</div>
+
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.getElementById('themeBtn') && document.getElementById('themeBtn').addEventListener('click', ccoworkTheme);
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

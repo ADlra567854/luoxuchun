@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>README-一键开箱 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style></head>
+<body>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="index.html">← 返回总览</a></nav>
+<article><h1>README · 一键开箱启动本地网站</h1>
+<p>本项目 <code>website/</code> 目录是一个纯静态网站（HTML/CSS，无需安装任何依赖、无需构建）。
+下面三种方式都能打开它，从「双击即看」到「发到网上让手机访问」，由简到繁。</p>
+<hr>
+<h2>方式一：双击脚本，一键启动（最简单，推荐）</h2>
+<table>
+<thead>
+<tr>
+<th>你的系统</th>
+<th>操作</th>
+<th>脚本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td><strong>双击 <code>start.cmd</code></strong>（项目根目录下）</td>
+<td><code>start.cmd</code></td>
+</tr>
+<tr>
+<td>macOS / Linux</td>
+<td>终端执行 <code>chmod +x start.sh &amp;&amp; ./start.sh</code></td>
+<td><code>start.sh</code></td>
+</tr>
+</tbody></table>
+<p>脚本会做三件事：</p>
+<ol>
+<li>自动切到项目根目录（<code>cd /d %~dp0</code> 或 <code>cd &quot;$(dirname &quot;$0&quot;)&quot;</code>）；</li>
+<li>自动找 Python（<code>python</code> / <code>python3</code> / <code>py</code>），找不到会给出安装提示；</li>
+<li>用 <code>python -m http.server 8000 --bind 0.0.0.0</code> 启动一个本地静态服务器。</li>
+</ol>
+<p>启动成功后，浏览器打开：</p>
+<pre><code>http://localhost:8000/website/
+</code></pre>
+<blockquote>
+<p>停止服务：回到那个命令行窗口，按 <code>Ctrl+C</code> 即可。
+若双击 <code>start.cmd</code> 一闪而过：多半是没装 Python，或没勾选 &quot;Add python.exe to PATH&quot;；
+先按方式二手动跑一次看报错。</p>
+</blockquote>
+<hr>
+<h2>方式二：手动用 Python 起服务器（一条命令）</h2>
+<p>只要电脑装了 Python（3.x），任何系统通用：</p>
+<pre><code class="language-bash"># 1) 进入项目根目录（有 website/ 的那一层）
+cd /d C:\Users\35683\CodeBuddy\20260815143624    # Windows（cmd）
+# 或
+cd ~/你的路径/项目根目录                            # macOS / Linux
+
+# 2) 启动服务器（默认监听 8000 端口）
+python -m http.server 8000
+# （macOS/Linux 若提示找不到 python，改用 python3 -m http.server 8000）
+
+# 3) 浏览器打开
+#    http://localhost:8000/website/
+</code></pre>
+<blockquote>
+<p>服务器启动后会一直占用这个终端窗口，按 <code>Ctrl+C</code> 停止。
+端口 8000 被占用时，换成别的端口，如 <code>python -m http.server 8080</code>，网址也相应改成 <code>:8080/</code>。</p>
+</blockquote>
+<hr>
+<h2>方式三：部署到网上（让手机在任何地方都能访问）</h2>
+<p>本地服务器只能让「和你同一台电脑 / 同一 WiFi」的设备访问。
+想让手机<strong>走出家门也能打开</strong>，就把它免费部署到公网：</p>
+<ul>
+<li><strong>GitHub Pages</strong>：按 <code>lab/cicd/自动部署指南.md</code> 一步步做，得到 <code>https://用户名.github.io/仓库名/</code>。</li>
+<li><strong>Vercel / Netlify</strong>：网页拖拽上传 <code>website/</code> 文件夹，几十秒得到一个 <code>https://xxx.vercel.app</code> 或 <code>https://xxx.netlify.app</code> 网址。</li>
+</ul>
+<p>详细命令与截图位见 <code>lab/cicd/自动部署指南.md</code>。</p>
+<hr>
+<h2>附：手机访问本机 8000 端口（同一 WiFi 下）</h2>
+<p><strong>前提</strong>：手机和电脑连的是<strong>同一个 WiFi</strong>（路由器）。手机数据流量（4G/5G）访问不到本机。</p>
+<h3>第 1 步：查出电脑的本机 IP（局域网 IP）</h3>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>命令</th>
+<th>看哪一行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td><code>ipconfig</code></td>
+<td>找「无线局域网适配器 WLAN」或「以太网适配器」下的 <strong>IPv4 地址</strong>，形如 <code>192.168.x.x</code></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><code>ipconfig getifaddr en0</code></td>
+<td>直接打印，形如 <code>192.168.x.x</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>hostname -I</code> 或 <code>ip addr</code></td>
+<td>第一个 <code>192.168.x.x</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>📸【截图位：<code>ipconfig</code> 输出，红框标出 IPv4 地址】</p>
+</blockquote>
+<h3>第 2 步：用 <code>--bind 0.0.0.0</code> 启动（让服务器对外网卡也监听）</h3>
+<pre><code class="language-bash">python -m http.server 8000 --bind 0.0.0.0
+</code></pre>
+<blockquote>
+<p><code>--bind 0.0.0.0</code> 表示监听<strong>所有网卡</strong>（含局域网网卡）。缺少它时，部分环境可能只监听
+127.0.0.1（本机回环），手机就连不上了。本项目自带的 <code>start.cmd</code> / <code>start.sh</code>
+<strong>已经写上了 <code>--bind 0.0.0.0</code></strong>，直接双击即可，无需手动加。</p>
+</blockquote>
+<h3>第 3 步：手机浏览器打开</h3>
+<pre><code>http://192.168.1.100:8000/website/
+        └────┬────┘
+          换成你第 1 步查到的本机 IP
+</code></pre>
+<blockquote>
+<p>📸【截图位：手机浏览器地址栏输入 <code>http://192.168.x.x:8000/website/</code>，显示网站首页】</p>
+</blockquote>
+<h3>打不开？逐条排查</h3>
+<ol>
+<li><strong>电脑防火墙拦截了 8000 端口</strong>（最常见）。Windows 首次运行 <code>python</code> 起服务器时，
+若弹出「Windows Defender 防火墙」提示，<strong>勾选「专用网络」并点「允许访问」</strong>；
+没弹窗也可手动在「防火墙 → 允许应用通过防火墙」里放行 Python。</li>
+<li><strong>手机没和电脑连同一个 WiFi</strong>（例如手机用了数据流量）。确认两边都在同一路由器下。</li>
+<li><strong>IP 填错</strong>：确认填的是电脑的 IPv4（<code>192.168.x.x</code> / <code>10.x.x.x</code>），不是公网 IP，
+也不是 <code>127.0.0.1</code>（那是电脑自己）。</li>
+<li><strong>端口占用</strong>：换 <code>8080</code> 等其它端口重试。</li>
+</ol>
+<blockquote>
+<p>想彻底摆脱「同一 WiFi」限制，就用上面的<strong>方式三</strong>部署到公网，手机随时随地可访问。</p>
+</blockquote>
+<hr>
+<h2>三种方式对比</h2>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>门槛</th>
+<th>谁能访问</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① 双击脚本</td>
+<td>零（装个 Python 就行）</td>
+<td>本机</td>
+<td>本地预览、开发调试</td>
+</tr>
+<tr>
+<td>② 手动命令</td>
+<td>极低</td>
+<td>本机</td>
+<td>无脚本环境、临时预览</td>
+</tr>
+<tr>
+<td>③ 部署到网上</td>
+<td>需一个 GitHub 账号</td>
+<td>任何人（含手机 4G/5G）</td>
+<td>分享给别人、长期在线</td>
+</tr>
+</tbody></table>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+</body></html>

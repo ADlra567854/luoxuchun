@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  9 分钟 实验室 算法与数据结构入门 编程的&amp;quot;内功&amp;quot;。">
+<meta name="keywords" content="算法与数据结构入门,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  9 分钟 实验室 算法与数据结构入门 编程的&quot;内功&quot;。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算法与数据结构入门 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/algorithms/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8.html">
+<meta property="og:title" content="算法与数据结构入门 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/algorithms/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="算法与数据结构入门 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  9 分钟 实验室 算法与数据结构入门 编程的&amp;quot;内功&amp;quot;。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-lab-algorithms-算法与数据结构入门.png" alt="算法与数据结构入门 · AI 创作纪元（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>9 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>算法与数据结构入门</h1>
+<blockquote>
+<p>编程的&quot;内功&quot;。会算法，才能写出快、稳、省内存的代码。</p>
+</blockquote>
+<h2>一、本目录可运行代码</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>01_sorting.py</code></td>
+<td>冒泡 / 快排 / 归并（含耗时对比）</td>
+</tr>
+<tr>
+<td><code>02_search.py</code></td>
+<td>线性查找 vs 二分查找</td>
+</tr>
+<tr>
+<td><code>03_structures.py</code></td>
+<td>链表、栈、队列、二叉树</td>
+</tr>
+<tr>
+<td><code>04_graph.py</code></td>
+<td>图遍历 BFS / DFS</td>
+</tr>
+<tr>
+<td><code>05_dynamic_programming.py</code></td>
+<td>记忆化斐波那契 + 0/1 背包</td>
+</tr>
+</tbody></table>
+<p>跑法：<code>python 01_sorting.py</code></p>
+<h2>二、必会核心（按优先级）</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-算法与数据结构入门.png" alt="算法与数据结构入门 · AI 创作纪元（离线版） · 二、必会核心（按优先级）" loading="lazy"></figure>
+
+<ol>
+<li><strong>复杂度</strong>：大 O 表示法（O(1)/O(logn)/O(n)/O(nlogn)/O(n²)），判断算法快慢。</li>
+<li><strong>数组/字符串</strong>：遍历、双指针、滑动窗口。</li>
+<li><strong>哈希表</strong>：O(1) 查找，两数之和这类题。</li>
+<li><strong>栈/队列</strong>：括号匹配、BFS。</li>
+<li><strong>链表</strong>：反转、快慢指针。</li>
+<li><strong>树/图</strong>：DFS/BFS、递归。</li>
+<li><strong>排序</strong>：快排/归并思想。</li>
+<li><strong>动态规划</strong>：记忆化、状态转移。</li>
+</ol>
+<h2>三、用 AI 学算法</h2>
+<pre><code>请用大白话 + 一张图，给我讲懂「动态规划」和「贪心」的区别，
+并举一个我能理解的例子。再用 Python 写出来并逐步讲解。
+</code></pre>
+<ul>
+<li>刷题：LeetCode（中文站）、洛谷。</li>
+<li>心法：先想清楚「暴力解」再优化；每道题让 AI 讲「为什么这样做」。</li>
+</ul>
+<h2>四、检验标准</h2>
+<p>能不看答案，用 Python 手写出：二分查找、快排、链表反转、BFS、斐波那契（记忆化）。这就是面试/竞赛的及格线。</p>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body></html>

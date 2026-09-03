@@ -1,0 +1,176 @@
+{
+  "title": "AI安全指南",
+  "description": "8大AI安全风险与防护策略，保护你的数据和隐私",
+  "lastUpdated": "2026-08-16",
+  "risks": [
+    {
+      "id": "risk01",
+      "number": "01",
+      "name": "数据隐私泄露",
+      "risk": "在云端AI输入敏感信息（密码、商业机密、个人隐私）可能被记录或泄露。",
+      "protection": [
+        "敏感信息脱敏后再输入",
+        "使用本地部署模型（Ollama）",
+        "阅读平台隐私政策",
+        "定期删除聊天记录"
+      ],
+      "severity": "high",
+      "category": "数据安全"
+    },
+    {
+      "id": "risk02",
+      "number": "02",
+      "name": "AI生成虚假信息",
+      "risk": "AI可能生成看似真实但完全错误的信息（幻觉）。",
+      "protection": [
+        "关键信息人工核实",
+        "要求AI提供信息来源",
+        "交叉验证多个AI的回答",
+        "对专业领域保持怀疑"
+      ],
+      "severity": "medium",
+      "category": "信息安全"
+    },
+    {
+      "id": "risk03",
+      "number": "03",
+      "name": "深度伪造（Deepfake）",
+      "risk": "AI伪造的音频/视频可能被用于诈骗、诽谤。",
+      "protection": [
+        "对可疑音视频保持警惕",
+        "通过其他渠道验证",
+        "使用数字水印技术",
+        "不随意分享个人生物特征信息"
+      ],
+      "severity": "high",
+      "category": "身份安全"
+    },
+    {
+      "id": "risk04",
+      "number": "04",
+      "name": "提示词注入攻击",
+      "risk": "恶意用户通过精心构造的输入，让AI执行非预期操作（如泄露系统提示词）。",
+      "protection": [
+        "不在提示词中包含敏感信息",
+        "对用户输入进行过滤",
+        "使用系统级提示词隔离用户输入"
+      ],
+      "severity": "medium",
+      "category": "系统安全"
+    },
+    {
+      "id": "risk05",
+      "number": "05",
+      "name": "模型投毒",
+      "risk": "攻击者在训练数据中注入恶意样本，影响模型行为。",
+      "protection": [
+        "使用可信来源的模型",
+        "对模型输出进行监控",
+        "定期更新模型版本"
+      ],
+      "severity": "medium",
+      "category": "模型安全"
+    },
+    {
+      "id": "risk06",
+      "number": "06",
+      "name": "AI依赖症",
+      "risk": "过度依赖AI导致自身能力退化。",
+      "protection": [
+        "保持独立思考习惯",
+        "AI做初稿，人做优化",
+        "定期进行无AI工作训练",
+        "培养AI无法替代的能力"
+      ],
+      "severity": "low",
+      "category": "个人发展"
+    },
+    {
+      "id": "risk07",
+      "number": "07",
+      "name": "版权侵权",
+      "risk": "AI生成内容可能侵犯他人版权，或自己的内容被AI训练使用。",
+      "protection": [
+        "商用前确认平台版权条款",
+        "不直接复制AI生成内容",
+        "使用原创内容训练",
+        "关注AI版权法规动态"
+      ],
+      "severity": "medium",
+      "category": "法律风险"
+    },
+    {
+      "id": "risk08",
+      "number": "08",
+      "name": "算法偏见",
+      "risk": "AI可能基于有偏见的训练数据做出歧视性判断。",
+      "protection": [
+        "对AI决策保持批判性思维",
+        "重要决策人工复核",
+        "关注AI系统的公平性审计报告"
+      ],
+      "severity": "medium",
+      "category": "伦理风险"
+    }
+  ],
+  "bestPractices": [
+    {
+      "id": "practice01",
+      "title": "输入前思考",
+      "description": "在输入敏感信息前，思考：如果这个信息被泄露，会有什么后果？",
+      "category": "数据安全"
+    },
+    {
+      "id": "practice02",
+      "title": "输出后验证",
+      "description": "AI输出的内容，尤其是事实性信息，一定要人工核实。",
+      "category": "信息安全"
+    },
+    {
+      "id": "practice03",
+      "title": "保持独立思考",
+      "description": "AI是工具，不是替代品。保持自己的判断力和批判性思维。",
+      "category": "个人发展"
+    },
+    {
+      "id": "practice04",
+      "title": "定期更新知识",
+      "description": "AI技术发展快，安全风险也在变化，要定期学习新的安全知识。",
+      "category": "持续学习"
+    }
+  ],
+  "tools": [
+    {
+      "id": "tool01",
+      "name": "本地部署模型",
+      "description": "使用Ollama等工具在本地部署模型，避免数据上传到云端。",
+      "useCase": "处理敏感数据时",
+      "category": "隐私保护"
+    },
+    {
+      "id": "tool02",
+      "name": "隐私检查工具",
+      "description": "使用隐私检查工具扫描输入内容，识别敏感信息。",
+      "useCase": "输入前检查",
+      "category": "数据安全"
+    },
+    {
+      "id": "tool03",
+      "name": "事实核查工具",
+      "description": "使用事实核查工具验证AI输出的信息。",
+      "useCase": "输出后验证",
+      "category": "信息安全"
+    }
+  ],
+  "principles": [
+    "AI是强大的工具，但工具本身无善恶",
+    "关键在于使用者的判断力和责任感",
+    "在享受AI便利的同时，永远保持警惕和独立思考"
+  ],
+  "stats": {
+    "totalRisks": 8,
+    "highSeverity": 2,
+    "mediumSeverity": 5,
+    "lowSeverity": 1
+  }
+}

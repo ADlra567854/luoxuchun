@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 刷题,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 刷题 · AI 创作纪元">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · 刷题 · AI 创作纪元</title>
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c; --ok:#4ade80; --err:#ff5c8a;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:8px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:20px;font-size:13.5px;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+.wrap{position:relative;z-index:5;max-width:860px;margin:0 auto;padding:104px 24px 70px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,44px);letter-spacing:3px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:10px;font-size:14px}
+.subj{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 20px}
+.sbtn{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:12px;padding:12px 22px;font-size:14px;cursor:pointer;transition:.25s;font-family:inherit}
+.sbtn:hover{border-color:var(--ice);color:var(--ice);transform:translateY(-2px)}
+.sbtn.on{background:var(--grad);color:#03121a;font-weight:700;border-color:transparent}
+.qcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;backdrop-filter:blur(10px);animation:rise .4s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.qcard .qmeta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--dim);margin-bottom:10px}
+.qcard .qmeta b{color:var(--ice)}
+.qcard h3{font-size:17px;line-height:1.7;margin-bottom:16px}
+.opt{display:block;width:100%;text-align:left;background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--text);
+  border-radius:12px;padding:13px 16px;font-size:14px;margin-bottom:10px;cursor:pointer;transition:.2s;font-family:inherit}
+.opt:hover{border-color:var(--ice)}
+.opt.right{border-color:var(--ok);background:rgba(74,222,128,.1);color:var(--ok)}
+.opt.wrong{border-color:var(--err);background:rgba(255,92,138,.1);color:var(--err)}
+.opt:disabled{cursor:default}
+.explain{margin-top:14px;background:rgba(94,234,212,.06);border:1px dashed rgba(94,234,212,.35);border-radius:12px;padding:13px 16px;font-size:13.5px;color:var(--muted);display:none;line-height:1.7}
+.explain.show{display:block}
+.next{margin-top:16px;padding:12px 30px;border:none;border-radius:12px;background:var(--grad);color:#03121a;font-size:14.5px;font-weight:700;cursor:pointer;transition:.25s}
+.next:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,140,255,.4)}
+.score{text-align:center;padding:40px 20px}
+.score .snum{font-family:var(--serif);font-size:64px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.score .snote{color:var(--muted);margin-top:8px}
+.ai-btn{display:inline-block;margin-top:22px;padding:12px 26px;border:1px solid rgba(240,185,92,.4);color:var(--gold);border-radius:12px;text-decoration:none;font-size:14px;transition:.25s}
+.ai-btn:hover{background:rgba(240,185,92,.1)}
+footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;color:var(--dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/quiz.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/quiz.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 刷题 · AI 创作纪元">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-quiz.png" alt="ccowork · 刷题 · AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<canvas id="stars"></canvas>
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="../index.html">首页</a>
+    <a href="./agent.html">智能体</a>
+    <a href="./quiz.html" class="active"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>刷题</a>
+    <a href="./resume.html"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>简历</a>
+    <a href="./voice.html"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i>语音台</a>
+    <a href="./news.html"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i>新闻</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>刷题 · <span>题库</span></h1>
+    <p>内置题库离线自测，答完自动判分；想刷更多，一键让智能体出题。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  </div>
+  <div class="subj" id="subjRow"></div>
+  <div id="quizBox"></div>
+</div>
+<footer>
+  <div style="font-family:var(--serif);letter-spacing:3px;font-size:15px">AI 创作纪元</div>
+  <p style="margin-top:6px"><a href="../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回首页</a> · 内置题库 + AI 出题 · 2026</p>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var BANKS = {
+    '英语词汇': [
+      { q:'"Mitigate" 最接近的意思是？', opts:['加剧','缓解','忽略','转移'], a:1, exp:'Mitigate = 使缓和、减轻（make less severe）。' },
+      { q:'"Feasible" 的反义词是？', opts:['Possible','Impractical','Likely','Visible'], a:1, exp:'Feasible = 可行的；反义 impractical（不切实际）。' },
+      { q:'"Comprehensive" 意为？', opts:['理解的','综合的/全面的','竞争的','压缩的'], a:1, exp:'Comprehensive = 全面的、综合的（covering everything）。' },
+      { q:'"Revenue" 和 "Profit" 的区别是？', opts:['完全相同','Revenue 是收入，Profit 是利润','Profit 含成本','Revenue 是税后'], a:1, exp:'Revenue 总收入，Profit = Revenue − 成本。' },
+      { q:'"Sophisticated" 的褒义用法意为？', opts:['复杂的/精密的','幼稚的','快速的','简单的'], a:0, exp:'可表"精密的、老练的"（sophisticated system）。' }
+    ],
+    '高等数学': [
+      { q:'lim(x0) (sin x)/x = ?', opts:['0','1','∞','不存在'], a:1, exp:'重要极限，值 = 1，可用洛必达或夹逼证明。' },
+      { q:'函数 f(x)=x³ 的导数 f\'(1) = ?', opts:['1','2','3','6'], a:2, exp:'f\'(x)=3x²，f\'(1)=3。' },
+      { q:'∫ x dx = ?（不定积分）', opts:['x²+C','x²/2+C','2x+C','ln x+C'], a:1, exp:'∫x dx = x²/2 + C。' },
+      { q:'d/dx [e^x] = ?', opts:['e^x','xe^(x-1)','ln x','1/x'], a:0, exp:'e^x 的导数就是它自己。' },
+      { q:'曲线 y=x² 在 x=1 处的切线斜率是？', opts:['0','1','2','4'], a:2, exp:'斜率 = y\' = 2x，x=1 时 = 2。' }
+    ],
+    '计算机': [
+      { q:'时间复杂度 O(n log n) 的排序算法是？', opts:['冒泡排序','快速排序（平均）','选择排序','插入排序'], a:1, exp:'快排平均 O(n log n)；冒泡/选择/插入均为 O(n²)。' },
+      { q:'TCP 三次握手的第一步是？', opts:['ACK','SYN','FIN','RST'], a:1, exp:'客户端发 SYN  服务端回 SYN+ACK  客户端 ACK。' },
+      { q:'下面哪个是进程和线程的正确描述？', opts:['进程是线程的子集','线程共享进程内存','线程有独立地址空间','进程间通信更快'], a:1, exp:'同一进程的线程共享内存；进程有独立地址空间。' },
+      { q:'HTTP 状态码 404 表示？', opts:['服务器错误','未找到资源','请求成功','重定向'], a:1, exp:'404 Not Found，资源不存在。' },
+      { q:'Python 中 dict 的查找时间复杂度平均是？', opts:['O(1)','O(n)','O(log n)','O(n²)'], a:0, exp:'哈希表实现，平均 O(1)。' }
+    ],
+    '政治': [
+      { q:'党的二十大报告指出，中国式现代化的本质要求之一是？', opts:['资本主导','共同富裕','零和博弈','封闭排外'], a:1, exp:'中国式现代化是全体人民共同富裕的现代化。' },
+      { q:'我国的基本经济制度是？', opts:['单一公有制','私有制为主','公有制为主体、多种所有制共同发展','混合所有制'], a:2, exp:'社会主义基本经济制度：公有制为主体、多种所有制经济共同发展等。' },
+      { q:'全面深化改革的总目标是？', opts:['实现完全私有化','完善和发展中国特色社会主义制度，推进国家治理体系和治理能力现代化','扩大对外开放','实现工业化'], a:1, exp:'总目标即完善和发展制度、推进治理现代化。' },
+      { q:'新时代我国社会主要矛盾是？', opts:['生产力和生产关系的矛盾','人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾','城乡矛盾','供需矛盾'], a:1, exp:'新时代主要矛盾为"美好生活需要 vs 不平衡不充分发展"。' },
+      { q:'"两个一百年"奋斗目标中第一个是？', opts:['全面建成社会主义现代化强国','建党一百年时全面建成小康社会','实现共同富裕','建成世界科技强国'], a:1, exp:'第一个百年：建党百年时全面建成小康社会（已实现）。' }
+    ]
+  };
+
+  var subjRow = document.getElementById('subjRow');
+  subjRow.innerHTML = Object.keys(BANKS).map(function(s){ return '<button class="sbtn" data-s="'+s+'" type="button">'+s+'</button>'; }).join('');
+  var quizBox = document.getElementById('quizBox');
+  var current = null, idx = 0, right = 0, done = false;
+
+  function renderQ(){
+    var list = BANKS[current];
+    if(idx >= list.length){
+      quizBox.innerHTML = '<div class="qcard score"><div class="snum">'+right+' / '+list.length+'</div>'
+        + '<div class="snote">正确率 '+Math.round(right/list.length*100)+'%</div>'
+        + ' 让智能体出更多 '+current+' 题 </a>'
+        + '<div style="margin-top:14px"><button class="next" onclick="location.reload()"> 再来一轮</button></div></div>';
+      return;
+    }
+    var it = list[idx];
+    quizBox.innerHTML = '<div class="qcard">'
+      + '<div class="qmeta"><span>科目 · <b>'+current+'</b></span><span>'+(idx+1)+' / '+list.length+'</span></div>'
+      + '<h3>'+it.q+'</h3>'
+      + it.opts.map(function(o,i){ return '<button class="opt" data-i="'+i+'" type="button">'+String.fromCharCode(65+i)+'. '+o+'</button>'; }).join('')
+      + '<div class="explain" id="explain">'+it.exp+'</div>'
+      + '<button class="next" id="nextBtn" type="button" style="display:none">下一题 </button></div>';
+    quizBox.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click', function(){
+        if(done) return; done = true;
+        var pick = Number(b.dataset.i);
+        quizBox.querySelectorAll('.opt').forEach(function(x){ x.disabled = true; });
+        if(pick === it.a){ b.classList.add('right'); right++; }
+        else{ b.classList.add('wrong'); quizBox.querySelector('.opt[data-i="'+it.a+'"]').classList.add('right'); }
+        var ex = document.getElementById('explain'); ex.classList.add('show');
+        document.getElementById('nextBtn').style.display = 'inline-block';
+      });
+    });
+    document.getElementById('nextBtn').addEventListener('click', function(){ idx++; done=false; renderQ(); });
+  }
+
+  subjRow.addEventListener('click', function(e){
+    var b = e.target.closest('.sbtn'); if(!b) return;
+    subjRow.querySelectorAll('.sbtn').forEach(function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    current = b.dataset.s; idx = 0; right = 0; done = false;
+    renderQ();
+  });
+  // 默认科目
+  current = Object.keys(BANKS)[0];
+  subjRow.querySelector('.sbtn').classList.add('on');
+  renderQ();
+
+  // 粒子
+  var cv=document.getElementById('stars'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;} rs(); addEventListener('resize',rs);
+  var C=['94,234,212','56,225,255','91,140,255','240,185,92'];
+  var n=Math.min(90,Math.floor(W*H/19000));
+  for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,c:C[Math.random()*4|0]});
+  (function dr(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba('+p.c+',.5)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<11000){ctx.strokeStyle='rgba('+p.c+','+(0.11*(1-d2/11000))+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}
+    }
+    requestAnimationFrame(dr);
+  })();
+})();
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

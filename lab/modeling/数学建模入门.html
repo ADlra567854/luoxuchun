@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  18 分钟 实验室 数学建模入门 面向工科生与竞赛入门者的数学建模（Mathematical Modeling）讲义。">
+<meta name="keywords" content="数学建模入门,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  18 分钟 实验室 数学建模入门 面向工科生与竞赛入门者的数学建模（Mathematical Modeling）讲义。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数学建模入门 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/modeling/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8.html">
+<meta property="og:title" content="数学建模入门 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/modeling/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="数学建模入门 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  18 分钟 实验室 数学建模入门 面向工科生与竞赛入门者的数学建模（Mathematical Modeling）讲义。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-lab-modeling-数学建模入门.png" alt="数学建模入门 · AI 创作纪元（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>18 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>数学建模入门</h1>
+<blockquote>
+<p>面向工科生与竞赛入门者的数学建模（Mathematical Modeling）讲义。
+覆盖：什么是建模 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 建模流程 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 常用模型分类 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 国赛/美赛简介 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 一个完整微分方程建模例子。</p>
+</blockquote>
+<hr>
+<h2>一、什么是数学建模</h2>
+<p><strong>数学建模</strong>，就是<strong>用数学的语言（方程、函数、图、概率……）去描述和解决现实问题</strong>。</p>
+<p>现实问题是模糊、复杂、多因素的；数学建模要做的，是在合理的简化下，把关键因素&quot;翻译&quot;成数学对象，用数学方法求解，再把结果&quot;翻译&quot;回现实检验。</p>
+<blockquote>
+<p>一句话：数学建模 = <strong>现实问题  数学问题</strong> 的双向翻译过程。</p>
+</blockquote>
+<p>它与&quot;做数学题&quot;的最大区别是：</p>
+<table>
+<thead>
+<tr>
+<th>做数学题</th>
+<th>数学建模</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>题目已抽象好，条件齐全</td>
+<td>问题模糊，条件要自己找、自己取舍</td>
+</tr>
+<tr>
+<td>答案唯一、精确</td>
+<td>答案不唯一，只有&quot;更好&quot;没有&quot;最好&quot;</td>
+</tr>
+<tr>
+<td>考计算能力</td>
+<td>考<strong>抽象、简化、检验、表达</strong>的综合能力</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>二、建模流程（六步法）</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-数学建模入门.png" alt="数学建模入门 · AI 创作纪元（离线版） · 二、建模流程（六步法）" loading="lazy"></figure>
+
+<p>经典流程是一条<strong>可回溯、可迭代</strong>的链，任何一步发现问题都要回头修正。</p>
+<h3>1. 问题分析（Problem）</h3>
+<p>搞清楚要回答什么：目标是什么、约束是什么、有哪些数据可用。</p>
+<blockquote>
+<p>常见误区：一上来就急着列公式，结果建了个&quot;正确但答非所问&quot;的模型。</p>
+</blockquote>
+<h3>2. 模型假设（Assumptions）</h3>
+<p>这是建模的<strong>灵魂</strong>。现实太复杂，必须抓住主要矛盾、忽略次要因素：</p>
+<ul>
+<li>假设要<strong>合理</strong>（有依据）且<strong>必要</strong>（能简化）；</li>
+<li>假设要<strong>写清楚</strong>，因为后续检验和报告都围绕假设展开；</li>
+<li>假设过多 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 模型失真；假设过少 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 模型不可解。<strong>在&quot;够用&quot;与&quot;可解&quot;之间找平衡。</strong></li>
+</ul>
+<h3>3. 模型建立（Modeling）</h3>
+<p>用数学结构把变量、关系、规律组织起来：</p>
+<ul>
+<li>选择模型类型（微分方程？优化？统计？……，见第三节）；</li>
+<li>写出方程、目标函数、约束条件；</li>
+<li>定义清楚符号和量纲。</li>
+</ul>
+<h3>4. 模型求解（Solving）</h3>
+<ul>
+<li>解析求解（能解则解）；</li>
+<li>数值求解（本 lab 的 <code>numerical/</code> 脚本就是为此准备的：牛顿法、RK4、数值积分……）；</li>
+<li>计算机模拟（蒙特卡洛、仿真）。</li>
+</ul>
+<h3>5. 模型检验（Validation）</h3>
+<p><strong>没有检验的模型不是模型，只是公式。</strong></p>
+<ul>
+<li>用已知数据/特例检验：结果是否合理、量纲是否对、边界情况是否退化正确；</li>
+<li>与实际数据/实验对比，算误差；</li>
+<li>灵敏度分析：改变参数看结果是否稳定，找出关键参数；</li>
+<li>不通过 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 回到步骤 2 改假设或步骤 3 改模型。</li>
+</ul>
+<h3>6. 模型报告（Report）</h3>
+<p>清晰表达：问题重述 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 假设 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 求解 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 检验 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 结论与改进。竞赛中报告就是最终成果。</p>
+<pre><code>问题 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 假设 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 建模 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 求解 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 检验 ──不通过──<i class="cc-ic" data-ic="play" aria-hidden="true"></i> 修改假设/模型
+                                  │
+                                  通过
+                                   
+                                 报告
+</code></pre>
+<hr>
+<h2>三、常用模型分类</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>适用问题</th>
+<th>典型模型/方法</th>
+<th>数学工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>微分方程模型</strong></td>
+<td>随时间/空间连续变化的过程</td>
+<td>传染病 SIR、人口增长、热传导、振动、电路</td>
+<td>常/偏微分方程，RK4 等数值解</td>
+</tr>
+<tr>
+<td><strong>优化模型</strong></td>
+<td>在约束下求最好方案</td>
+<td>线性规划、整数规划、非线性规划、动态规划</td>
+<td>单纯形法、梯度法、拉格朗日乘子</td>
+</tr>
+<tr>
+<td><strong>统计/概率模型</strong></td>
+<td>数据驱动、含随机性</td>
+<td>回归、时间序列、假设检验、贝叶斯</td>
+<td>概率论、数理统计、机器学习</td>
+</tr>
+<tr>
+<td><strong>图论/网络模型</strong></td>
+<td>对象之间的关系</td>
+<td>最短路、最小生成树、最大流、PageRank</td>
+<td>图论、组合优化</td>
+</tr>
+<tr>
+<td><strong>蒙特卡洛模型</strong></td>
+<td>难以解析、可随机模拟</td>
+<td>求积分、排队、风险评估、π 的估计</td>
+<td>随机数、大数定律、抽样</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>实际竞赛/工程中常<strong>混合使用</strong>：比如&quot;传染病 + 优化疫苗分配&quot;，就是微分方程模型和优化模型的组合。</p>
+</blockquote>
+<hr>
+<h2>四、国赛与美赛简介</h2>
+<h3>1. 全国大学生数学建模竞赛（CUMCM，&quot;国赛&quot;）</h3>
+<ul>
+<li><strong>主办</strong>：中国工业与应用数学学会；每年 9 月左右，<strong>3 天 3 夜</strong>（72 小时）。</li>
+<li><strong>形式</strong>：3 人一队，从 A/B/C（本科）题中选一题，提交<strong>一篇论文</strong>。</li>
+<li><strong>赛题方向</strong>：工程、经济、管理、社会问题，近年偏重大数据与跨学科。</li>
+<li><strong>奖项</strong>：省奖、国奖（一/二等奖）。是工科生含金量很高的竞赛之一。</li>
+</ul>
+<h3>2. 美国大学生数学建模竞赛（MCM/ICM，&quot;美赛&quot;）</h3>
+<ul>
+<li><strong>主办</strong>：COMAP；每年 1~2 月，<strong>4 天</strong>（96 小时）。</li>
+<li><strong>形式</strong>：3 人一队，6 题选 1，提交英文论文。</li>
+<li><strong>题型</strong>：MCM（A 连续型、B 离散型、C 数据型）+ ICM（D 运筹、E 环境、F 政策）。</li>
+<li><strong>奖项</strong>：Successful Participant、Honorable Mention（H 奖）、Meritorious（M 奖）、Finalist（F 奖）、Outstanding（O 奖）。</li>
+</ul>
+<h3>3. 竞赛要点</h3>
+<ul>
+<li>队友搭配：<strong>建模 + 编程 + 写作</strong> 三人分工；</li>
+<li>工具链：Python（NumPy/SciPy/Matplotlib）、MATLAB、LaTeX/Word 写论文；</li>
+<li>制胜关键是<strong>清晰的思路 + 可检验的模型 + 完整的论文</strong>，而不是花哨的算法堆砌。</li>
+</ul>
+<hr>
+<h2>五、完整小例子：传染病传播的 SIR 模型（微分方程建模）</h2>
+<h3>问题</h3>
+<p>一种传染病在一个封闭人群（总人数 N，无出生死亡、无流动）中传播，想预测感染者人数随时间的变化，以及疫情最终会感染多少人。</p>
+<h3>第 1 步：问题分析</h3>
+<p>关心的是 <strong>易感者 S、感染者 I、康复者 R</strong> 三类人群数量的动态变化。</p>
+<h3>第 2 步：模型假设</h3>
+<ol>
+<li>总人口不变：<code>S + I + R = N</code>（常数）；</li>
+<li>感染者与易感者<strong>均匀混合</strong>，单位时间每个感染者接触并传染 <code>β·S</code> 个易感者；</li>
+<li>感染者以速率 <code>γ</code> 康复并获得免疫（不再被感染）；</li>
+<li>忽略潜伏期、出生、死亡、人口流动。</li>
+</ol>
+<h3>第 3 步：模型建立（SIR 模型）</h3>
+<pre><code>dS/dt = -β·S·I        （易感者因接触感染而减少）
+dI/dt =  β·S·I - γ·I  （新增感染 减去 康复）
+dR/dt =        γ·I    （康复者增加）
+初值：S(0)=S0, I(0)=I0, R(0)=0
+</code></pre>
+<p>关键量 <strong>基本再生数</strong> <code>R0 = β·S0 / γ</code>：它表示一个感染者平均传染多少人。</p>
+<ul>
+<li><code>R0 &gt; 1</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 疫情扩散；<code>R0 &lt; 1</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 疫情自然消退。</li>
+</ul>
+<h3>第 4 步：模型求解（用本 lab 的 RK4 数值方法）</h3>
+<p>SIR 是一组耦合的非线性 ODE，一般没有初等解析解，用四阶龙格-库塔法数值求解。核心思路与 <code>numerical/02_runge_kutta.py</code> 完全一致，只是把标量 y 换成向量 <code>(S, I, R)</code>：</p>
+<pre><code class="language-python">import math
+
+def sir_derivs(state, beta, gamma, N):
+    &quot;&quot;&quot;返回 (dS/dt, dI/dt, dR/dt)&quot;&quot;&quot;
+    S, I, R = state
+    dS = -beta * S * I / N
+    dI =  beta * S * I / N - gamma * I
+    dR =  gamma * I
+    return (dS, dI, dR)
+
+def rk4_sir(state0, beta, gamma, N, h, n_steps):
+    &quot;&quot;&quot;向量形式的四阶龙格-库塔，求解 SIR 模型&quot;&quot;&quot;
+    S, I, R = state0
+    history = [(0.0, S, I, R)]
+    for k in range(n_steps):
+        def f(state):  # 统一封装为 f(state) -&gt; 导数向量
+            return sir_derivs(state, beta, gamma, N)
+        # 计算 4 个斜率（每个都是三元组）
+        k1 = f((S, I, R))
+        k2 = f((S + h/2*k1[0], I + h/2*k1[1], R + h/2*k1[2]))
+        k3 = f((S + h/2*k2[0], I + h/2*k2[1], R + h/2*k2[2]))
+        k4 = f((S + h*k3[0],     I + h*k3[1],     R + h*k3[2]))
+        S = S + h/6*(k1[0] + 2*k2[0] + 2*k3[0] + k4[0])
+        I = I + h/6*(k1[1] + 2*k2[1] + 2*k3[1] + k4[1])
+        R = R + h/6*(k1[2] + 2*k2[2] + 2*k3[2] + k4[2])
+        history.append(((k+1)*h, S, I, R))
+    return history
+
+if __name__ == &quot;__main__&quot;:
+    N = 10000.0          # 总人口
+    beta = 0.3           # 传染率
+    gamma = 0.1          # 康复率（平均病程 1/gamma = 10 天）
+    S0, I0, R0 = 9990.0, 10.0, 0.0
+    R_naught = beta * S0 / (gamma * N)
+    print(f&quot;基本再生数 R0 = {R_naught:.3f}&quot;)
+
+    hist = rk4_sir((S0, I0, R0), beta, gamma, N, h=0.1, n_steps=2000)
+    # 打印几个关键时间点的结果
+    print(f&quot;{&#39;t&#39;:&gt;6} {&#39;S&#39;:&gt;10} {&#39;I&#39;:&gt;10} {&#39;R&#39;:&gt;10}&quot;)
+    for t, S, I, R in hist[::200]:   # 每 200 步(20天)取一次
+        print(f&quot;{t:&gt;6.0f} {S:&gt;10.0f} {I:&gt;10.0f} {R:&gt;10.0f}&quot;)
+    # 最终疫情规模
+    _, S_end, I_end, R_end = hist[-1]
+    print(f&quot;\n疫情结束时：康复者 R = {R_end:.0f}，占比 {R_end/N:.1%}&quot;)
+</code></pre>
+<blockquote>
+<p>这段代码可以直接存成 <code>sir_model.py</code> 用 <code>python sir_model.py</code> 运行，结果会显示：<code>R0 = 3.0 &gt; 1</code>，疫情扩散，最终大部分人口被感染后康复。</p>
+</blockquote>
+<h3>第 5 步：模型检验</h3>
+<ul>
+<li><strong>量纲检查</strong>：S、I、R 始终非负且总和恒等于 N；</li>
+<li><strong>退化特例</strong>：若 <code>β = 0</code>（不传染），感染人数应指数衰减 <code>I(t)=I0·e^{-γt}</code>，与解析解一致；</li>
+<li><strong>灵敏度</strong>：改变 <code>β</code>、<code>γ</code> 观察 <code>R0</code> 和最终感染规模的敏感性——<code>R0</code> 是关键控制量；</li>
+<li><strong>与现实对照</strong>：与真实疫情曲线比较，若不吻合则回到假设（如加入潜伏期 E <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> SEIR 模型、加入人口流动）。</li>
+</ul>
+<h3>第 6 步：报告</h3>
+<p>按六步流程写出：问题 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 假设 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 求解 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 检验 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 结论（如&quot;降低传染率 β 或加快康复 γ，使 R0&lt;1 即可控制疫情&quot;）。</p>
+<blockquote>
+<p>这个例子完整展示了一条建模链：<strong>物理直觉（三类人 + 传染机理）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 微分方程 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 数值求解（RK4）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 检验 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 结论</strong>。工科中的&quot;水库水位&quot;&quot;RC 电路充放电&quot;&quot;弹簧阻尼振动&quot;等，思路完全同构。</p>
+</blockquote>
+<hr>
+<h2>六、给初学者的三条建议</h2>
+<ol>
+<li><strong>从抄模型开始</strong>：先读懂、复现经典模型（SIR、Logistic 人口、最短路），再谈创新。</li>
+<li><strong>假设是命门</strong>：写论文时&quot;模型假设&quot;这一节比&quot;模型&quot;本身更能体现水平。</li>
+<li><strong>一切以检验收尾</strong>：建模不是&quot;列完方程就完事&quot;，而是&quot;结果能不能解释现实、经不经得起质疑&quot;。</li>
+</ol>
+<hr>
+<p><em>本文档与 <code>../numerical/</code> 目录配套：数值方法是模型求解的核心工具。</em></p>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body></html>

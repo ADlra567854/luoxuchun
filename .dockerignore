@@ -1,0 +1,30 @@
+# 白驹全局大脑 · Docker 构建忽略规则
+# 原则：源码+运行必要文件入镜像，开发工具/临时文件/密钥一律不进
+
+node_modules
+_archive
+_cdp_tmp
+.workbuddy
+.git
+.gitignore
+.env
+.env.example
+*.log
+_shot.mjs
+_scan-links.mjs
+_check.mjs
+_shot-*.png
+verify-shot.png
+verify-baiju.png
+tmp_bili.html
+tmp_bili_desktop.html
+tmp_mb.html
+
+# 开发脚本（生产镜像不需要）
+scripts/
+_internal/
+docs/
+*.py
+
+# 运行时数据（容器内生成，不进镜像）
+data/server-stats.json

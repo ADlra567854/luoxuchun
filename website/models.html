@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 2025 全球大模型对比 · AI 创作纪元, viewport-fit=cover">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · 2025 全球大模型对比 · AI 创作纪元</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+
+/* ---------- 导航 ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:26px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-links a.active{color:var(--pink)}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:120px 24px 60px;position:relative;
+  background:radial-gradient(900px 500px at 20% 10%,rgba(79,140,255,.16),transparent 60%),
+             radial-gradient(800px 500px at 85% 30%,rgba(139,92,246,.14),transparent 60%),
+             radial-gradient(700px 600px at 50% 100%,rgba(56,225,255,.10),transparent 60%),var(--bg)}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:99px;letter-spacing:2px;margin-bottom:28px;animation:float 4s ease-in-out infinite}
+.hero h1{font-size:clamp(34px,5.6vw,72px);font-weight:900;line-height:1.2;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:800px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:26px auto 40px}
+.stats{display:flex;gap:56px;margin-top:60px;flex-wrap:wrap;justify-content:center}
+.stat b{display:block;font-size:36px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:13px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ---------- 布局 ---------- */
+section{max-width:1180px;margin:0 auto;padding:84px 24px}
+.sec-head{margin-bottom:48px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(28px,3.6vw,44px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:760px;margin-top:12px}
+
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+@media(max-width:520px){.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;transition:.3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 10% 0%,rgba(79,140,255,.10),transparent 60%);opacity:0;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:rgba(79,140,255,.5);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.card:hover::before{opacity:1}
+.card .icon{font-size:32px;margin-bottom:14px}
+.card h3{font-size:19px;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px}
+.card .pill{display:inline-block;margin-top:14px;font-size:12px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:99px;padding:3px 12px}
+.card .rank{position:absolute;top:18px;right:20px;font-size:30px;font-weight:900;opacity:.16;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- 分组标题 ---------- */
+.group-title{display:flex;align-items:center;gap:14px;margin:44px 0 22px;font-size:20px;font-weight:800}
+.group-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.group-title .dot{width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px rgba(79,140,255,.15)}
+
+/* ---------- 表格 ---------- */
+.ds-table{width:100%;border-collapse:collapse;font-size:13.5px;overflow:hidden;border-radius:14px}
+.ds-table th,.ds-table td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.ds-table th{background:#131d33;color:var(--cyan);font-size:12.5px;letter-spacing:1px;white-space:nowrap}
+.ds-table tr:hover td{background:rgba(79,140,255,.06)}
+.ds-table td:first-child{font-weight:700;color:var(--text);white-space:nowrap}
+.ds-table td{color:var(--muted)}
+.ds-table .open{color:var(--cyan);font-weight:700}
+.ds-table .closed{color:var(--pink);font-weight:700}
+.tag-cn{display:inline-block;font-size:11px;color:var(--bg);background:var(--grad);border-radius:6px;padding:1px 7px;font-weight:700;margin-left:6px;vertical-align:middle}
+
+/* ---------- 调用框 ---------- */
+.prompt-box{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:22px 24px;font-family:Consolas,monospace;font-size:13.5px;color:#b9c8ea;position:relative;margin-top:14px}
+.prompt-box b{color:var(--cyan)}
+
+/* ---------- 时间线 ---------- */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),var(--purple))}
+.tl-item{position:relative;margin-bottom:34px}
+.tl-item::before{content:"";position:absolute;left:-31px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(56,225,255,.15)}
+.tl-item h4{font-size:17px}
+.tl-item .time{color:var(--cyan);font-size:12px;letter-spacing:1px}
+.tl-item p{color:var(--muted);font-size:14px;margin-top:6px}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:46px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+footer a{color:var(--cyan);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+.src{font-size:12px;color:var(--muted);margin-top:26px;line-height:2}
+.src a{color:var(--cyan);text-decoration:none}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/models.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/models.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 2025 全球大模型对比 · AI 创作纪元">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-models.png" alt="ccowork · 2025 全球大模型对比 · AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="logo">AI 创作纪元</div>
+  <div class="nav-links">
+    <a href="./index.html">返回首页</a>
+    <a class="active" href="./models.html">大模型对比</a>
+    <a href="./chronicle.html">AI 编年史</a>
+    <a href="#overview">格局总览</a>
+    <a href="#deepseek">DeepSeek 时刻</a>
+    <a href="#compare">横向对比</a>
+    <a href="#guide">选型建议</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="tag">2025 · GLOBAL LLM LANDSCAPE</div>
+  <h1>2025 全球大模型对比<br><span>AI 创作纪元</span></h1>
+  <p class="sub">2025 是 AI 大模型格局被彻底重写的一年：OpenAI、Anthropic、Google 三强发布新一代前沿模型，
+  而以 DeepSeek 为首的中国力量凭借「开源 + 极致性价比」首次真正跻身全球第一梯队——
+  顶级智能不再昂贵，选择权回到每一个创作者手中。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  <div class="stats">
+    <div class="stat"><b>3</b><span>海外前沿实验室</span></div>
+    <div class="stat"><b>7+</b><span>国产第一梯队</span></div>
+    <div class="stat"><b>1/10</b><span>国产价格量级</span></div>
+    <div class="stat"><b>2025</b><span>格局重塑之年</span></div>
+  </div>
+</header>
+
+<!-- ================= 格局总览 ================= -->
+<section id="overview">
+  <div class="sec-head">
+    <div class="kicker">Chapter 01</div>
+    <h2>格局总览：三强领跑，国产并进</h2>
+    <p>截至 2025 年底，全球大模型竞争进入「双极时代」：海外由 OpenAI、Anthropic、Google 三足鼎立，
+    国产则以 DeepSeek 为旗手、阿里、智谱、月之暗面、字节、百度群雄并起。最强通用能力仍属海外，但国产在
+    <b style="color:var(--cyan)">中文、推理、性价比、开源生态</b> 四个战场实现了实质性超车。</p>
+  </div>
+
+  <div class="group-title"><span class="dot"></span><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>海外三强 · 最新一代</div>
+  <div class="grid g3">
+    <div class="card">
+      <span class="rank">01</span>
+      <div class="icon"><i class="cc-ic cc-dot" data-ic="circle" style="color:#22c55e" aria-hidden="true"></i></div>
+      <h3>OpenAI · GPT-5 系列</h3>
+      <p>2025 年 8 月发布 GPT-5，随后 11 月迭代至 <b style="color:var(--text)">GPT-5.1 / GPT-5.2</b>。通用能力与 Agent 智能体综合最强，
+      在 SuperCLUE 中文年度测评中夺冠。默认深度推理（thinking），可调节思考强度，代码与多模态（图像/语音）领先。</p>
+      <span class="pill">闭源 · 综合最强 · Agent 旗舰</span>
+    </div>
+    <div class="card">
+      <span class="rank">02</span>
+      <div class="icon"><i class="cc-ic cc-dot" data-ic="circle" style="color:#f97316" aria-hidden="true"></i></div>
+      <h3>Anthropic · Claude 系列</h3>
+      <p>2025 年 11 月发布 <b style="color:var(--text)">Claude Opus 4.5</b> 与 Sonnet 4.5。以<b style="color:var(--text)">长上下文（1M token）、代码工程、Agentic Coding</b> 见长，
+      是开发者写代码、构建智能体的首选。写作风格细腻克制，长文档处理能力一骑绝尘。</p>
+      <span class="pill">闭源 · 代码/长文 · 企业最爱</span>
+    </div>
+    <div class="card">
+      <span class="rank">03</span>
+      <div class="icon"><i class="cc-ic cc-dot" data-ic="circle" style="color:#3b82f6" aria-hidden="true"></i></div>
+      <h3>Google · Gemini 2.5 / 3</h3>
+      <p>2025 年 3 月发布 <b style="color:var(--text)">Gemini 2.5 Pro</b>，年底推出 <b style="color:var(--text)">Gemini 3 Pro</b>。拥有<b style="color:var(--text)">百万级上下文</b>与最强的原生多模态能力（原生图像/视频/音频理解），
+      深度绑定 Google 生态，是「读图读视频 + 长报告」场景的利器。</p>
+      <span class="pill">闭源 · 多模态最强 · 百万上下文</span>
+    </div>
+  </div>
+
+  <div class="group-title"><span class="dot"></span> 国产第一梯队 · 最新一代</div>
+  <div class="grid g3">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="cpu"></i></div>
+      <h3>DeepSeek · V3.1 / R1<span class="tag-cn">开源</span></h3>
+      <p>2025 年 1 月 <b style="color:var(--text)">R1</b> 引爆全球，8 月升级 <b style="color:var(--text)">V3.1 / V3.2</b>。混合专家（MoE）架构，671B 总参数、37B 激活，
+      推理、代码、数学对标顶尖闭源，成本仅为其零头，是「极致性价比 + 完全开源」的代名词。</p>
+      <span class="pill">开源 · 性价比之王 · 国产旗手</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="cloud" aria-hidden="true"></i></div>
+      <h3>阿里 · Qwen3<span class="tag-cn">开源</span></h3>
+      <p>2025 年 4 月发布 <b style="color:var(--text)">Qwen3</b> 全家族（含 235B-A22B MoE 旗舰），支持「思考/非思考」双模式切换，
+      开源权重 + 阿里云百炼生态，是国产开源生态最完整、最受开发者欢迎的底座之一。</p>
+      <span class="pill">开源 · 生态最全 · 双模式</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i></div>
+      <h3>智谱 · GLM-4.5 / GLM-5<span class="tag-cn">开源</span></h3>
+      <p>2025 年迭代至 <b style="color:var(--text)">GLM-4.6 / GLM-5</b>，主打「Agentic」能力与自主智能体（AutoGLM），
+      在中文理解、工具调用、端侧智能（手机/眼镜）落地领先，是「模型即智能体」路线的重要玩家。</p>
+      <span class="pill">开源 · 智能体 · 中文强</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="moon" aria-hidden="true"></i></div>
+      <h3>月之暗面 · Kimi K2<span class="tag-cn">开源</span></h3>
+      <p>2025 年 7 月发布 <b style="color:var(--text)">Kimi K2</b>，以「长上下文 + 强 Agent」著称，1T 参数稀疏模型，
+      在代码与数学基准上对标全球最前列，同时 Kimi 对话产品以「超长文本阅读」占据用户心智。</p>
+      <span class="pill">开源 · 长上下文 · 强 Agent</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="music"></i></div>
+      <h3>字节 · 豆包 / 深度思考</h3>
+      <p>2025 年豆包大模型（Doubao）持续迭代，依托抖音/飞书生态用户量领先，<b style="color:var(--text)">豆包 App 长期霸榜</b>，
+      主打对话体验、多模态与「深度思考」推理，是 C 端用户规模最大的国产模型之一。</p>
+      <span class="pill">闭源 · C 端第一 · 多模态</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="tag"></i></div>
+      <h3>通义 / 文心</h3>
+      <p>阿里 <b style="color:var(--text)">通义千问</b>（Qwen 开源线的商业化闭环）与百度 <b style="color:var(--text)">文心大模型</b>（2025 年升级文心 5.0、开源文心 ERNIE）持续进化，
+      背靠搜索与云生态，在中文知识、企业落地、检索增强（RAG）场景积累深厚。</p>
+      <span class="pill">中文知识 · 企业落地</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DeepSeek 时刻 ================= -->
+<section id="deepseek">
+  <div class="sec-head">
+    <div class="kicker">Chapter 02</div>
+    <h2>DeepSeek 时刻：2025 的「斯普特尼克时刻」</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-models.png" alt="ccowork · 2025 全球大模型对比 · AI 创作纪元 · DeepSeek 时刻：2025 的「斯普特尼克时刻」" loading="lazy"></figure>
+
+    <p>2025 年 1 月，一家中国小公司用一次开源，改写了全球 AI 的叙事逻辑——它证明：<b style="color:var(--cyan)">顶级智能，可以不靠天价算力堆出来。</b></p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="time">2025.01 · R1 引爆全球</div>
+      <h4>开源推理模型 DeepSeek-R1 发布</h4>
+      <p>R1 以「纯强化学习训练出思维链」的技术路径，在数学、代码、推理上对标 OpenAI o1，却把权重完全开源。
+      发布后 App 登顶美区 App Store 免费榜，被全球媒体称为中国 AI 的「斯普特尼克时刻」，一夜震动硅谷与华尔街。</p>
+    </div>
+    <div class="tl-item">
+      <div class="time">极低训练成本 · 约 560 万美元</div>
+      <h4>用「算法创新」替代「算力堆料」</h4>
+      <p>V3 以 MoE（混合专家）架构 + 671B 总参数、37B 激活参数，配合 Multi-Head Latent Attention、FP8 混合精度等工程创新，
+      以远低于同行的训练成本，达到逼近 GPT-4 级的能力——打破了「大模型必须烧几百亿美元」的固有认知。</p>
+    </div>
+    <div class="tl-item">
+      <div class="time">开源 + 白菜价 API</div>
+      <h4>把推理成本打下一个数量级</h4>
+      <p>R1/V3 的 API 价格仅为主流闭源模型的十分之一量级，且完全开放权重、可本地部署。全球开发者与创作者第一次
+      能以「几块钱」跑出「几十美元」的效果，AI 民主化从此真正落地。</p>
+    </div>
+    <div class="tl-item">
+      <div class="time">意义 · 国产首次跻身第一梯队</div>
+      <h4>从「追赶者」到「定义规则者」</h4>
+      <p>DeepSeek 的意义不止于一个模型：它证明开源路线能跑赢闭源叙事，倒逼 OpenAI、Google 等巨头降价、开源；
+      更重要的是——它让「国产大模型」第一次在全球能力榜上与顶尖实验室同台，并凭借「便宜一个数量级」占据生态位。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 横向对比 ================= -->
+<section id="compare">
+  <div class="sec-head">
+    <div class="kicker">Chapter 03</div>
+    <h2>横向对比：一张表看清全局</h2>
+    <p>以「能力 × 价格 × 开放度」三个维度横向对比主流旗舰。价格单位为 <b style="color:var(--cyan)">美元 / 每百万 token 量级</b>（2025 年底公开定价，输入/输出），
+    实际以官方最新价格为准；国产模型普遍便宜一个数量级。</p>
+  </div>
+
+  <div style="overflow-x:auto">
+    <table class="ds-table">
+      <tr>
+        <th>模型</th>
+        <th>通用能力</th>
+        <th>推理</th>
+        <th>代码</th>
+        <th>中文</th>
+        <th>价格（$ / 1M token）</th>
+        <th>开源/闭源</th>
+        <th>多模态</th>
+        <th>上下文</th>
+      </tr>
+      <tr>
+        <td>GPT-5.1</td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td>
+        <td>≈ $1.25 / $10</td><td class="closed">闭源</td><td>图像 / 语音</td><td>400K</td>
+      </tr>
+      <tr>
+        <td>Claude Opus 4.5</td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td>
+        <td>≈ $5 / $25</td><td class="closed">闭源</td><td>图像</td><td>1M</td>
+      </tr>
+      <tr>
+        <td>Gemini 3 Pro</td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td>
+        <td>≈ $2 / $12</td><td class="closed">闭源</td><td>原生全模态</td><td>1M+</td>
+      </tr>
+      <tr>
+        <td>DeepSeek V3.1 / R1</td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td>
+        <td>≈ $0.3 / $1.5</td><td class="open">开源</td><td>文本为主</td><td>128K</td>
+      </tr>
+      <tr>
+        <td>Qwen3（235B-A22B）</td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td>
+        <td>≈ $0.3 / $0.9</td><td class="open">开源</td><td>图像 / 视频</td><td>128K</td>
+      </tr>
+      <tr>
+        <td>GLM-5</td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td>
+        <td>≈ $0.3 / $0.9</td><td class="open">开源</td><td>图像 / 视频</td><td>128K</td>
+      </tr>
+      <tr>
+        <td>Kimi K2</td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td>
+        <td>≈ $0.4 / $1.2</td><td class="open">开源</td><td>文本为主</td><td>128K</td>
+      </tr>
+      <tr>
+        <td>豆包（Doubao）</td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></td><td><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i></td>
+        <td>≈ $0.1 / $0.3</td><td class="closed">闭源</td><td>图像 / 视频 / 语音</td><td>256K</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="grid g3" style="margin-top:44px">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="trophy" aria-hidden="true"></i></div>
+      <h3>2025 全球中文大模型榜单</h3>
+      <p>海外巨头（GPT-5 / Claude / Gemini）包揽综合前三，但<b style="color:var(--text)">国产在中文、推理、代码、性价比等细分领域超车</b>；
+      DeepSeek 稳居「开源模型」榜首，Qwen、GLM、Kimi 紧随其后。</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i></div>
+      <h3>SuperCLUE 2025 年度测评</h3>
+      <p>国内权威中文基准：<b style="color:var(--text)">GPT-5.1 综合夺冠，DeepSeek 为开源模型第一</b>，
+      在中文理解与推理上国产模型已与海外顶配「贴身肉搏」，性价比维度大幅领先。</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i></div>
+      <h3>Gaia2 Agent Leaderboard</h3>
+      <p>面向智能体的权威评测中，GPT-5 与 Claude 领跑，<b style="color:var(--text)">DeepSeek 等开源模型表现亮眼</b>——
+      「全球前五已有两款中国造，且便宜一个数量级」成为 2025 年最常被引用的判断。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 选型建议 ================= -->
+<section id="guide">
+  <div class="sec-head">
+    <div class="kicker">Chapter 04</div>
+    <h2>给创作者 / 个人 IP 的选型建议</h2>
+    <p>没有「最好」的模型，只有「最合适」的模型。选型公式：<b style="color:var(--cyan)">任务匹配 × 单次成本 × 隐私与可控性</b>。</p>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></div>
+      <h3>长文写作 / 中文创作 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek / 豆包</h3>
+      <p>写公众号、小红书、知乎、小说、脚本，中文语感和成本是首要考量。DeepSeek V3.1 与 R1 的中文写作质量顶配、价格白菜，
+      豆包 C 端体验顺滑、多模态辅助出图，是个人 IP 量产内容的黄金组合。</p>
+      <span class="pill">性价比首选</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i></div>
+      <h3>写代码 / 构建工具 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Claude / DeepSeek</h3>
+      <p>复杂工程、Agentic Coding、长代码库重构首选 Claude（Opus/Sonnet 4.5）；预算有限、需要海量生成时用 DeepSeek / Kimi K2 做主力，
+      Claude 做关键模块精修，二者搭配能省 80% 成本。</p>
+      <span class="pill">工程能力优先</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="image" aria-hidden="true"></i></div>
+      <h3>读图 / 读视频 / 多模态 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Gemini / GPT-5</h3>
+      <p>要理解图片、视频、音频并产出结构化内容（如视频拆解、海报分析、长报告），Gemini 原生多模态 + 百万上下文最强；
+      GPT-5 则胜在「多模态 + Agent 工具调用」的综合场景。</p>
+      <span class="pill">多模态首选</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div>
+      <h3>深度推理 / 选题策划 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek-R1</h3>
+      <p>需要「想清楚」的活——选题分析、剧情逻辑校验、商业策划、数学推导，R1 的思维链推理几乎免费，效果对齐 OpenAI 同档；
+      追求极限 Agent 能力再上 GPT-5。</p>
+      <span class="pill">推理质价比</span>
+    </div>
+  </div>
+
+  <div class="group-title"><span class="dot"></span><i class="cc-ic" data-ic="banknote" aria-hidden="true"></i>性价比怎么算</div>
+  <div class="grid g3">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="calculator" aria-hidden="true"></i></div>
+      <h3>算单篇成本，不算「月费幻觉」</h3>
+      <p>一篇 2000 字文章约消耗 6~8K token。用 GPT-5 约 ¥0.5，用 DeepSeek 约 ¥0.05——差距 10 倍。
+      高频产出时，选对模型一个月能省出几百上千元。</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="scale" aria-hidden="true"></i></div>
+      <h3>「强模型定调 + 便宜模型量产」</h3>
+      <p>用贵模型打磨模板、定风格、审关键稿，用国产模型跑批量初稿与改写。80% 的活儿交给便宜模型，20% 的精品交给顶配。</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="box" aria-hidden="true"></i></div>
+      <h3>善用缓存与长上下文复用</h3>
+      <p>把「设定文档 / 风格参考 / 产品知识库」固定放在上下文里命中缓存，DeepSeek 缓存命中价格再降一个量级，
+      长文档场景直接选 128K+ 上下文模型，省去反复拼接的隐性成本。</p>
+    </div>
+  </div>
+
+  <div class="group-title"><span class="dot"></span><i class="cc-ic" data-ic="lock" aria-hidden="true"></i>自部署 vs 云 API</div>
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="house" aria-hidden="true"></i></div>
+      <h3>开源 + 本地自部署</h3>
+      <p><b style="color:var(--text)">适合</b>：隐私敏感数据、稳定可控、长期高频、有硬件/技术能力的创作者与团队。
+      <br><b style="color:var(--text)">路径</b>：Ollama / vLLM 拉取 DeepSeek、Qwen3 蒸馏版（7B~70B）跑本地，或租 GPU 部署满血版；
+      数据不出本机，边际成本趋近于零，但需承担硬件与维护成本。</p>
+      <span class="pill">隐私 + 长期成本</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="cloud" aria-hidden="true"></i></div>
+      <h3>云 API / 官方服务</h3>
+      <p><b style="color:var(--text)">适合</b>：快速上手、弹性用量、需要最新最强模型的创作者。
+      <br><b style="color:var(--text)">路径</b>：DeepSeek 官方 API（兼容 OpenAI 格式）、阿里云百炼（Qwen3）、硅基流动等平台统一接入多家开源模型；
+      零维护、按量付费，是「个人 IP 起步」的最优解。</p>
+      <span class="pill">零维护 + 弹性</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <h3 style="color:var(--cyan)"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>一句话选型清单</h3>
+    <div class="prompt-box">
+      <b>写作量产</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek / 豆包 &nbsp;|&nbsp; <b>写代码</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Claude + DeepSeek &nbsp;|&nbsp;
+      <b>多模态</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Gemini / GPT-5 &nbsp;|&nbsp; <b>深度推理</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek-R1 &nbsp;|&nbsp;
+      <b>隐私自部署</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Qwen3 / DeepSeek 蒸馏版 &nbsp;|&nbsp; <b>极客省钱</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 开源 + 缓存命中
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">AI 创作纪元</div>
+  <p style="margin-top:10px"><a href="./index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回首页</a> · 2025 全球大模型对比 · 由 AI 协同创作 · 2026</p>
+  <p class="src">数据与结论参考：<a href="https://www.cluebenchmarks.com/superclue_2509" target="_blank">SuperCLUE 2025 年度测评</a> ·
+  <a href="https://www.chinaz.com/ainews/25249.shtml" target="_blank">2025 全球中文大模型榜单</a> ·
+  <a href="https://huggingface.co/blog/meta-agents-research-environments/gaia2-new-models-evaluation" target="_blank">Gaia2 Leaderboard</a> ·
+  各厂商官方定价。价格为量级参考，请以官方最新为准。</p>
+</footer>
+
+<script>
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.12});
+document.querySelectorAll('.card,.tl-item').forEach(el=>{
+  el.style.opacity=0;el.style.transform='translateY(26px)';
+  el.style.transition='opacity .6s ease,transform .6s ease';io.observe(el);});
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["DeepSeek","Ollama","部署基础"], title: '模型 · 部署使用视频' });</script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

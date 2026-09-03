@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="AI 实战中心：8 个真实项目、4 条产品线——从外语学习到企业管理，每个项目都是 AI 开发的实战范例。独立运行，统一设计，一键直达。">
+<meta name="keywords" content="AI 实战中心,白驹全局大脑,ccowork,AI 创作纪元,AI 项目,实战项目">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="AI 实战中心：8 个真实项目、4 条产品线——从外语学习到企业管理，每个项目都是 AI 开发的实战范例。独立运行，统一设计，一键直达。">
+<title>AI 实战中心 · 8 项目 4 产品线枢纽 | 白驹全局大脑</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f0b95c;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+
+/* ---------- 导航（玻璃拟态） ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px;display:flex;align-items:center;gap:8px}
+.logo .ico{width:32px;height:32px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);-webkit-text-fill-color:#fff}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;padding:8px 14px;border-radius:9px;font-size:14px;font-weight:600}
+.nav-links a:hover{color:var(--cyan);background:rgba(56,225,255,.08)}
+.nav-links a.active{color:var(--cyan);background:rgba(56,225,255,.1);border:1px solid rgba(56,225,255,.25)}
+.nav-cta{padding:9px 20px;border:none;border-radius:99px;background:var(--grad);color:#fff;font-weight:800;font-size:13.5px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.30);transition:.2s;white-space:nowrap;text-decoration:none}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.42)}
+.burger{display:none;background:none;border:none;color:var(--text);font-size:20px;cursor:pointer}
+@media(max-width:1000px){
+  nav{padding:12px 20px;flex-wrap:wrap;gap:10px}
+  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:4px;padding:10px 0;border-top:1px solid var(--line);margin-top:8px}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:10px 14px;width:100%}
+  .burger{display:block}
+}
+
+/* ---------- Hero ---------- */
+.hero{min-height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:130px 24px 60px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(700px 400px at 20% 20%,rgba(79,140,255,.18),transparent 60%),
+    radial-gradient(600px 400px at 80% 30%,rgba(139,92,246,.16),transparent 60%),
+    radial-gradient(800px 500px at 50% 100%,rgba(56,225,255,.10),transparent 60%),
+    linear-gradient(180deg,rgba(6,8,15,.5),rgba(6,8,15,.95) 80%),
+    url('/assets/img/ai-bg-neural.webp') center/cover no-repeat,var(--bg)}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:7px 20px;border-radius:99px;letter-spacing:2px;margin-bottom:26px;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(32px,5.5vw,62px);font-weight:900;letter-spacing:2px;line-height:1.2}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:760px;color:var(--muted);font-size:clamp(14.5px,1.5vw,17px);margin:20px auto 0;line-height:1.8}
+.hero .stats{display:flex;gap:48px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+.hero .stat b{display:block;font-size:32px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .stat span{color:var(--muted);font-size:13px}
+
+/* ---------- 通用区段 ---------- */
+section{max-width:1180px;margin:0 auto;padding:60px 24px}
+.sec-head{margin-bottom:32px;text-align:center}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(26px,3.5vw,42px);font-weight:800;margin-top:10px}
+.sec-head p{color:var(--muted);max-width:720px;margin:12px auto 0}
+
+/* ---------- Tab 切换 ---------- */
+.tabs-wrap{display:flex;justify-content:center;margin-bottom:36px}
+.tabs{display:inline-flex;gap:6px;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:99px;flex-wrap:wrap;justify-content:center}
+.tab{padding:10px 22px;border-radius:99px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:13.5px;font-weight:600;transition:.25s;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--grad);color:#04101f;font-weight:800;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+.tab .count{font-size:11px;opacity:.7;margin-left:4px}
+
+/* ---------- 项目卡片网格 ---------- */
+.pgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:.3s;position:relative;overflow:hidden}
+.pcard::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 10% 0%,rgba(79,140,255,.08),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
+.pcard:hover{border-color:rgba(56,225,255,.5);transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.pcard:hover::before{opacity:1}
+.pcard .top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.pcard h3{font-size:19px;font-weight:800}
+.status{font-size:11.5px;padding:4px 12px;border-radius:99px;font-weight:700;letter-spacing:.5px;white-space:nowrap}
+.status.live{color:var(--cyan);border:1px solid rgba(56,225,255,.4);background:rgba(56,225,255,.08)}
+.status.dev{color:var(--gold);border:1px solid rgba(240,185,92,.4);background:rgba(240,185,92,.08)}
+.status.half{color:var(--pink);border:1px solid rgba(255,92,138,.4);background:rgba(255,92,138,.08)}
+.status.todo{color:var(--muted);border:1px solid rgba(143,160,196,.3);background:rgba(143,160,196,.06)}
+.pcard .desc{font-size:14px;color:var(--muted);line-height:1.7}
+.tech-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tech-tag{font-size:11px;color:var(--blue);border:1px solid rgba(79,140,255,.25);background:rgba(79,140,255,.06);border-radius:99px;padding:3px 10px;font-weight:600}
+.highlights{list-style:none;display:flex;flex-direction:column;gap:6px}
+.highlights li{font-size:13px;color:var(--text);display:flex;align-items:flex-start;gap:8px;line-height:1.6}
+.highlights li::before{content:"";color:var(--cyan);flex:none;font-size:12px;margin-top:2px}
+.card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.btn-primary{padding:9px 18px;border-radius:99px;background:var(--grad);color:#04101f;font-size:13px;font-weight:800;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(79,140,255,.35)}
+.btn-ghost{padding:9px 18px;border-radius:99px;border:1px solid var(--line);color:var(--muted);font-size:13px;font-weight:600;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.card-footer .line-tag{font-size:11px;color:var(--purple);font-weight:700;letter-spacing:.5px}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:50px 24px 36px;text-align:center;color:var(--muted);font-size:13px;background:var(--bg2)}
+.foot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;text-align:left;margin-bottom:36px}
+.foot-brand .logo{font-size:18px;margin-bottom:10px;display:inline-flex}
+.foot-brand p{font-size:13px;line-height:1.8;color:var(--muted)}
+.foot-col b{display:block;color:var(--text);font-size:14px;margin-bottom:14px;font-weight:700}
+.foot-col a{display:block;color:var(--muted);text-decoration:none;font-size:13px;padding:4px 0;transition:.2s}
+.foot-col a:hover{color:var(--cyan)}
+.foot-bar{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;max-width:1100px;margin:0 auto;font-size:12.5px}
+.foot-bar .brand-chain a{color:var(--cyan);text-decoration:none;margin:0 6px}
+.foot-bar .brand-chain a:hover{text-decoration:underline}
+@media(max-width:768px){
+  .foot-inner{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:480px){
+  .foot-inner{grid-template-columns:1fr}
+  .foot-bar{flex-direction:column;text-align:center}
+}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:640px){
+  .pgrid{grid-template-columns:1fr}
+  .hero .stats{gap:28px}
+  .hero .stat b{font-size:26px}
+}
+</style>
+<link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-war-room.html">
+<meta property="og:title" content="AI 实战中心 · 8 项目 4 产品线枢纽 | 白驹全局大脑">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-war-room.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 实战中心 · 8 项目 4 产品线枢纽 | 白驹全局大脑">
+<meta name="twitter:description" content="AI 实战中心：8 个真实项目、4 条产品线——从外语学习到企业管理，每个项目都是 AI 开发的实战范例。独立运行，统一设计，一键直达。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-ai-war-room.png" alt="AI 实战中心 · 8 项目 4 产品线枢纽 | 白驹全局大脑" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+<!-- ============ 导航 ============ -->
+<nav>
+  <div class="logo"><span class="ico"><i class="cc-mark" aria-hidden="true"></i></span>白驹全局大脑</div>
+  <button class="burger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="菜单"><i class="cc-ic" data-ic="menu"></i></button>
+  <div class="nav-links">
+    <a href="../index.html">首页</a>
+    <a href="./book/">AI 全书</a>
+    <a href="./ai-academy.html">AI 学院</a>
+    <a href="./ai-war-room.html" class="active">实战中心</a>
+    <a href="./skill-hub.html">工具库</a>
+    <a href="./brand.html">关于</a>
+  </div>
+  <a class="nav-cta" href="../index.html"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>启动工作台</a>
+</nav>
+
+<!-- ============ Hero ============ -->
+<header class="hero">
+  <div class="tag"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>AI 实战中心</div>
+  <h1><span>8 个真实项目</span> · 4 条产品线</h1>
+  <p class="sub">从外语学习到企业管理，每个项目都是 AI 开发的实战范例。<br>独立运行，统一设计，一键直达。</p>
+  <div class="stats">
+    <div class="stat"><b>10</b><span>实战项目</span></div>
+    <div class="stat"><b>4</b><span>产品线</span></div>
+    <div class="stat"><b>6</b><span>技术栈</span></div>
+    <div class="stat"><b>3</b><span>已上线</span></div>
+  </div>
+</header>
+
+<!-- ============ 项目展示 ============ -->
+<section id="projects">
+  <div class="sec-head">
+    <div class="kicker">PRODUCT LINES</div>
+    <h2>四大产品线 · 全景项目矩阵</h2>
+    <p>按业务领域划分产品线，每个项目都是独立可运行的完整产品，覆盖外语、内容、教育、工具四大方向。</p>
+  </div>
+
+  <div class="tabs-wrap">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-line="lang" type="button"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>外语学习线<span class="count">3</span></button>
+      <button class="tab" data-line="content" type="button"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>内容 IP 线<span class="count">2</span></button>
+      <button class="tab" data-line="edu" type="button"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>K12 教育线<span class="count">2</span></button>
+      <button class="tab" data-line="tool" type="button"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工具/框架线<span class="count">3</span></button>
+    </div>
+  </div>
+
+  <div class="pgrid" id="pgrid"></div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="logo"><span class="ico"><i class="cc-mark" aria-hidden="true"></i></span>白驹全局大脑</div>
+      <p>AI 实战中心：把每一个 AI 项目做深、做实、做上线。<br>从外语学习到企业管理，用实战验证 AI 的真实价值。</p>
+    </div>
+    <div class="foot-col">
+      <b>产品线</b>
+      <a href="#projects" onclick="switchTab('lang')"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>外语学习线</a>
+      <a href="#projects" onclick="switchTab('content')"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>内容 IP 线</a>
+      <a href="#projects" onclick="switchTab('edu')"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>K12 教育线</a>
+      <a href="#projects" onclick="switchTab('tool')"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工具/框架线</a>
+    </div>
+    <div class="foot-col">
+      <b>资源</b>
+      <a href="./ai-academy.html"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 学院</a>
+      <a href="./book/"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>AI 全书</a>
+      <a href="./skill-hub.html"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工具库</a>
+      <a href="../blog/index.html"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>博客</a>
+    </div>
+    <div class="foot-col">
+      <b>关于</b>
+      <a href="./brand.html">白驹品牌</a>
+      <a href="../index.html">启动工作台</a>
+      <a href="./portal.html">知识收纳站</a>
+    </div>
+  </div>
+  <div class="foot-bar">
+    <span>© 2026 白驹全局大脑 · AI 实战中心 · 本地优先</span>
+    <span class="brand-chain">
+      <a href="../index.html">总站</a>·
+      <a href="./ai-academy.html">学院</a>·
+      <a href="./book/">全书</a>·
+      <a href="./ai-war-room.html">实战</a>·
+      <a href="./skill-hub.html">工具</a>
+    </span>
+  </div>
+</footer>
+
+<script src="/module.js"></script>
+<script src="/ccowork.js"></script>
+<script>
+/* 实战中心 · 项目数据 */
+(function(){
+  'use strict'
+
+  var projects = [
+    //  外语学习线
+    {
+      line: 'lang', lineName: '外语学习线',
+      name: '环球语堂 · 全站式外语学堂',
+      status: '开发中', statusClass: 'dev',
+      desc: '沉浸式多语种学习平台，10 国外语 + AI 对话 + 词汇语法训练',
+      tech: ['HTML/CSS/JS', 'Node.js', 'PWA'],
+      highlights: ['10 国外语全覆盖', 'AI 口语陪练 24/7', '离线可用 PWA'],
+      link: '#',
+      linkText: '进入项目',
+      source: '#',
+      sourceText: '源码/文档',
+      updated: '2026-08-28'
+    },
+    {
+      line: 'lang', lineName: '外语学习线',
+      name: '多语种 AI 教练',
+      status: '半成品', statusClass: 'half',
+      desc: 'Web + 微信小程序双端 AI 外语学习应用',
+      tech: ['React', 'Express', '微信小程序'],
+      highlights: ['双端数据同步', '12 个完整页面', '学习路径追踪'],
+      link: '#',
+      linkText: '待整理',
+      source: '#',
+      sourceText: '源码/文档',
+      updated: '2026-08-15'
+    },
+    {
+      line: 'lang', lineName: '外语学习线',
+      name: 'polyglot-master（重型旗舰）',
+      status: '远期规划', statusClass: 'todo',
+      desc: 'Next.js 全栈多语种学习平台，Prisma + PostgreSQL 企业级架构',
+      tech: ['Next.js 16', 'React 19', 'Prisma', 'PostgreSQL'],
+      highlights: ['8 大学习模块', '全栈架构设计', '企业级可扩展'],
+      link: '#',
+      linkText: '待建',
+      source: '#',
+      sourceText: '技术方案',
+      updated: '2026-08-01'
+    },
+    //  内容 IP 线
+    {
+      line: 'content', lineName: '内容 IP 线',
+      name: '白驹全局大脑（本站）',
+      status: '已上线', statusClass: 'live',
+      desc: 'AI 时代个人 IP 引擎，博客 + 书系 + 学院 + 工具 + 智能体五合一',
+      tech: ['HTML/CSS/JS', 'Node.js', 'PWA'],
+      highlights: ['1159+ 文件规模', '全自动日更体系', '内置 AI 对话'],
+      link: '/',
+      linkText: '进入项目',
+      source: './brand.html',
+      sourceText: '关于本站',
+      updated: '2026-08-30'
+    },
+    {
+      line: 'content', lineName: '内容 IP 线',
+      name: '内容矩阵日更体系',
+      status: '运行中', statusClass: 'live',
+      desc: '全自动内容生产线，新闻 / 博文 / 书稿 / 工具库每日更新',
+      tech: ['Node.js 脚本', 'LLM API'],
+      highlights: ['7 条自动化管线', '每日稳定产出', '三级降级容错'],
+      link: '../blog/index.html',
+      linkText: '查看博客',
+      source: '#',
+      sourceText: '架构说明',
+      updated: '2026-08-29'
+    },
+    //  K12 教育线
+    {
+      line: 'edu', lineName: 'K12 教育线',
+      name: '初中全生活智能平台（小程序）',
+      status: '待启动', statusClass: 'todo',
+      desc: '初中生全场景 AI 助手，学习 + 生活 + 成长一站式',
+      tech: ['微信小程序', '云开发'],
+      highlights: ['全场景覆盖', '校园定制功能', '家长端同步'],
+      link: '#',
+      linkText: '待建',
+      source: '#',
+      sourceText: '产品规划',
+      updated: '2026-07-20'
+    },
+    {
+      line: 'edu', lineName: 'K12 教育线',
+      name: '校园学习资料库',
+      status: '半成品', statusClass: 'half',
+      desc: '中小学全科学习资源站，题库 + 知识点 + 学习方法',
+      tech: ['静态站', 'Markdown 内容'],
+      highlights: ['全科覆盖', '结构化知识体系', '免费开放'],
+      link: '#',
+      linkText: '待整理',
+      source: '#',
+      sourceText: '内容目录',
+      updated: '2026-08-10'
+    },
+    //  工具/框架线
+    {
+      line: 'tool', lineName: '工具/框架线',
+      name: '智能体框架（DSH 研究）',
+      status: '研究中', statusClass: 'half',
+      desc: 'DeepSeek Harness Agent 框架研究与二次开发',
+      tech: ['TypeScript', 'Monorepo', 'Cordis'],
+      highlights: ['官方框架深度研究', '插件化架构', '13000+ 文件'],
+      link: '#',
+      linkText: '待整理',
+      source: '#',
+      sourceText: '研究笔记',
+      updated: '2026-08-25'
+    },
+    {
+      line: 'tool', lineName: '工具/框架线',
+      name: '保安入职管理平台',
+      status: '高完成度', statusClass: 'dev',
+      desc: '四端全栈劳务派遣制保安入职管理系统',
+      tech: ['Spring Boot', 'Vue3', '微信小程序', 'Java 网关'],
+      highlights: ['60 项断言全过', '四端联动', '生产级架构'],
+      link: '#',
+      linkText: '待部署',
+      source: '#',
+      sourceText: '项目文档',
+      updated: '2026-08-20'
+    },
+    {
+      line: 'tool', lineName: '工具/框架线',
+      name: '常亮哨兵工具',
+      status: '已完成', statusClass: 'live',
+      desc: '电脑防休眠 / 防熄屏小工具，轻量实用',
+      tech: ['Python'],
+      highlights: ['轻量零依赖', '一键运行', '实用必备'],
+      link: '#',
+      linkText: '待整理',
+      source: '#',
+      sourceText: '下载/源码',
+      updated: '2026-07-15'
+    }
+  ]
+
+  var currentLine = 'lang'
+  var grid = document.getElementById('pgrid')
+  var tabs = document.getElementById('tabs')
+
+  function render(line){
+    var list = projects.filter(function(p){ return p.line === line })
+    grid.innerHTML = list.map(function(p){
+      var techHtml = p.tech.map(function(t){ return '<span class="tech-tag">'+t+'</span>' }).join('')
+      var hlHtml = p.highlights.map(function(h){ return '<li>'+h+'</li>' }).join('')
+      return '<div class="pcard">'+
+        '<div class="top">'+
+          '<h3>'+p.name+'</h3>'+
+          '<span class="status '+p.statusClass+'">'+p.status+'</span>'+
+        '</div>'+
+        '<p class="desc">'+p.desc+'</p>'+
+        '<div class="tech-tags">'+techHtml+'</div>'+
+        '<ul class="highlights">'+hlHtml+'</ul>'+
+        '<div class="card-actions">'+
+          '<a href="'+p.link+'" class="btn-primary"> '+p.linkText+'</a>'+
+          '<a href="'+p.source+'" class="btn-ghost"> '+p.sourceText+'</a>'+
+        '</div>'+
+        '<div class="card-footer">'+
+          '<span class="line-tag">'+p.lineName+'</span>'+
+          '<span>更新：'+p.updated+'</span>'+
+        '</div>'+
+      '</div>'
+    }).join('')
+  }
+
+  tabs.addEventListener('click', function(e){
+    var btn = e.target.closest('.tab')
+    if(!btn) return
+    currentLine = btn.getAttribute('data-line')
+    tabs.querySelectorAll('.tab').forEach(function(t){
+      t.classList.toggle('active', t === btn)
+    })
+    render(currentLine)
+  })
+
+  // 全局切换函数（供页脚链接调用）
+  window.switchTab = function(line){
+    var btn = tabs.querySelector('.tab[data-line="'+line+'"]')
+    if(btn){ btn.click() }
+  }
+
+  // 初始渲染
+  render(currentLine)
+})()
+</script>
+</body>
+</html>

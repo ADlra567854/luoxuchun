@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="AI 创作 最新开源对话式 AI 项目全景 · 一键使用指南 这份清单基于 2026 年 8 月的 GitHub 与公开资料整理。">
+<meta name="keywords" content="最新开源对话式AI项目全景与一键使用指南,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content="AI 创作 最新开源对话式 AI 项目全景 · 一键使用指南 这份清单基于 2026 年 8 月的 GitHub 与公开资料整理。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最新开源对话式AI项目全景与一键使用指南 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E6%9C%80%E6%96%B0%E5%BC%80%E6%BA%90%E5%AF%B9%E8%AF%9D%E5%BC%8FAI%E9%A1%B9%E7%9B%AE%E5%85%A8%E6%99%AF%E4%B8%8E%E4%B8%80%E9%94%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html">
+<meta property="og:title" content="最新开源对话式AI项目全景与一键使用指南 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E6%9C%80%E6%96%B0%E5%BC%80%E6%BA%90%E5%AF%B9%E8%AF%9D%E5%BC%8FAI%E9%A1%B9%E7%9B%AE%E5%85%A8%E6%99%AF%E4%B8%8E%E4%B8%80%E9%94%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="最新开源对话式AI项目全景与一键使用指南 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content="AI 创作 最新开源对话式 AI 项目全景 · 一键使用指南 这份清单基于 2026 年 8 月的 GitHub 与公开资料整理。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"最新开源对话式AI项目全景与一键使用指南 · AI 创作纪元（离线版）","description":"AI 创作 最新开源对话式 AI 项目全景 · 一键使用指南 这份清单基于 2026 年 8 月的 GitHub 与公开资料整理。","url":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E6%9C%80%E6%96%B0%E5%BC%80%E6%BA%90%E5%AF%B9%E8%AF%9D%E5%BC%8FAI%E9%A1%B9%E7%9B%AE%E5%85%A8%E6%99%AF%E4%B8%8E%E4%B8%80%E9%94%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E6%9C%80%E6%96%B0%E5%BC%80%E6%BA%90%E5%AF%B9%E8%AF%9D%E5%BC%8FAI%E9%A1%B9%E7%9B%AE%E5%85%A8%E6%99%AF%E4%B8%8E%E4%B8%80%E9%94%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html"},"image":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/assets/img/og-cover.png","datePublished":"2026-08-30","author":{"@type":"Organization","name":"白驹全局大脑"},"publisher":{"@type":"Organization","name":"白驹全局大脑"}}</script>
+</head>
+<body><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/cover-最新开源对话式AI项目全景与一键使用指南.png" alt="最新开源对话式 AI 项目全景 · 一键使用指南" style="width:100%;border-radius:16px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../index.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="最新开源对话式AI项目全景与一键使用指南" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹全局大脑 · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">最新开源对话式AI项目全景与一键使用指南</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹全局大脑 · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)"></text>
+</svg>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · AI 创作纪元</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>18 分钟</span><span class="blog-tag">AI 创作</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>最新开源对话式 AI 项目全景 · 一键使用指南</h1>
+<blockquote>
+<p>这份清单基于 2026 年 8 月的 GitHub 与公开资料整理。目标就一个：把当前最火的<strong>开源对话式 AI 项目</strong>全部罗列出来，讲清它们的<strong>共同特点</strong>，然后<strong>每一个都教你一键跑起来</strong>——不限量、免费、数据不出本机。</p>
+</blockquote>
+<hr>
+<h2>一、它们有什么共同特点（先看懂规律）</h2>
+<p>翻遍 2026 年 GitHub Trending 上的开源 AI 项目，你会发现一个清晰的共识。几乎所有热门项目都具备下面这些共同点：</p>
+<ol>
+<li><strong>开源权重（open weights）</strong> —— 模型本身可下载，MIT / Apache 2.0 这类宽松协议居多，可以自由商用、私有化部署。</li>
+<li><strong>OpenAI 兼容接口</strong> —— 几乎所有项目都提供 <code>OpenAI 兼容 API</code>，这意味着你原来的代码一行不改，换个地址就能切到本地开源模型。</li>
+<li><strong>本地优先（local-first）</strong> —— 数据不出本机，隐私合规。这是 2026 年最强烈的一股趋势：开发者用 star 投票，票都投给了「能自己跑」的东西。</li>
+<li><strong>一键 / 一行命令部署</strong> —— 从 Ollama 的一行命令，到 OpenClaw 的一条安装脚本，门槛被压到「普通人十分钟上手」。</li>
+<li><strong>模型无关（model-agnostic）</strong> —— 工具和模型解耦，一个界面可以接 DeepSeek、Qwen、Llama、GLM 任意模型，自由切换。</li>
+<li><strong>低成本甚至免费</strong> —— 网页/本地免费，API 按量付费且价格极低（DeepSeek 把成本打到了西方同行的零头）。</li>
+</ol>
+<p><strong>一句话总结这个时代的规律：价值不在「谁的模型更强」，而在「能不能自己跑、能不能拼起来、能不能白嫖别人的工程力」。</strong></p>
+<hr>
+<h2>二、对话式大模型（模型本身）</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-最新开源对话式AI项目全景与一键使用指南.png" alt="最新开源对话式AI项目全景与一键使用指南 · AI 创作纪元（离线版） · 二、对话式大模型（模型本身）" loading="lazy"></figure>
+
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>出品方</th>
+<th>规模</th>
+<th>协议</th>
+<th>特点</th>
+<th>一键命令（Ollama）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DeepSeek V4</strong></td>
+<td>深度求索</td>
+<td>V4-Pro / V4-Flash</td>
+<td>MIT</td>
+<td>性价比之王、1M 上下文、四种模式</td>
+<td><code>ollama run deepseek-v4</code></td>
+</tr>
+<tr>
+<td><strong>GLM-5</strong></td>
+<td>智谱 Z.AI</td>
+<td>744B MoE / 40B 激活</td>
+<td>MIT</td>
+<td>当前最大开源权重、推理顶级</td>
+<td><code>ollama pull glm5</code></td>
+</tr>
+<tr>
+<td><strong>Qwen3.6</strong></td>
+<td>阿里</td>
+<td>35B-A3B 等全系</td>
+<td>Apache 2.0</td>
+<td>中文强、能塞进笔记本</td>
+<td><code>ollama run qwen3.6</code></td>
+</tr>
+<tr>
+<td><strong>Kimi K3</strong></td>
+<td>月之暗面</td>
+<td>2.78T（思考型）</td>
+<td>开放权重</td>
+<td>超强多步推理、262K 上下文</td>
+<td><code>ollama run kimi-k3</code></td>
+</tr>
+<tr>
+<td><strong>Mistral Large 3</strong></td>
+<td>Mistral</td>
+<td>675B MoE</td>
+<td>Mistral</td>
+<td>欧洲语言、高级推理</td>
+<td><code>ollama pull mistral-large</code></td>
+</tr>
+<tr>
+<td><strong>Llama 4</strong></td>
+<td>Meta</td>
+<td>全系</td>
+<td>开放权重</td>
+<td>开源生态底座、微调最多</td>
+<td><code>ollama run llama4</code></td>
+</tr>
+<tr>
+<td><strong>MiniMax M3</strong></td>
+<td>MiniMax</td>
+<td>MoE</td>
+<td>开放权重</td>
+<td>中文、多模态</td>
+<td>官方渠道</td>
+</tr>
+<tr>
+<td><strong>MiMo-V2.5-Pro</strong></td>
+<td>小米</td>
+<td>MoE</td>
+<td>开放权重</td>
+<td>中文、性价比</td>
+<td>官方渠道</td>
+</tr>
+<tr>
+<td><strong>DeepSeek Coder V2</strong></td>
+<td>深度求索</td>
+<td>16B / 236B</td>
+<td>MIT</td>
+<td>代码生成专用</td>
+<td><code>ollama run deepseek-coder-v2</code></td>
+</tr>
+<tr>
+<td><strong>Qwen3-Coder</strong></td>
+<td>阿里</td>
+<td>480B MoE</td>
+<td>Apache 2.0</td>
+<td>Agent 编程、SWE-bench 66.5%</td>
+<td><code>ollama pull qwen3-coder</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>选型速记：<strong>中文日常</strong>用 DeepSeek/Qwen；<strong>推理/数学</strong>用 GLM-5/Kimi K3；<strong>写代码</strong>用 DeepSeek Coder/Qwen3-Coder；<strong>本地小机器</strong>用 Qwen3.6 或 Llama 小尺寸。</p>
+</blockquote>
+<hr>
+<h2>三、一键运行工具（跑模型 + 对话界面）</h2>
+<h3>3.1 Ollama —— 一行命令跑模型（16.5 万星）</h3>
+<p>「本地 AI 的 Docker」，把跑开源模型做到一行命令。</p>
+<pre><code class="language-bash"># 安装（macOS / Linux）
+curl -fsSL https://ollama.ai/install.sh | sh
+# Windows 直接下载安装包
+
+# 一键跑模型
+ollama run deepseek-v4
+ollama run qwen3.6
+ollama run llama4
+
+# 自带 OpenAI 兼容 API（默认 11434 端口）
+curl http://localhost:11434/v1/chat/completions \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;model&quot;:&quot;qwen3.6&quot;,&quot;messages&quot;:[{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;你好&quot;}]}&#39;
+</code></pre>
+<p><strong>适用</strong>：所有人，入门首选。</p>
+<h3>3.2 LM Studio —— 桌面 GUI 一键跑</h3>
+<p>下载即用的桌面客户端，图形界面选模型、下载、聊天，自带本地 API 服务器。适合不想碰命令行的用户。</p>
+<p><strong>一键使用</strong>：官网下载安装包 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打开 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 搜索模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 下载 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 点「Chat」开聊。</p>
+<h3>3.3 GPT4All —— 零配置桌面客户端（7 万星）</h3>
+<p>主打「隐私至上 + 零配置」，内置 1000+ 预量化模型浏览器，一键下载即用，还支持把 PDF/文档拖进去建立本地知识库（LocalDocs，完全离线 RAG）。</p>
+<p><strong>一键使用</strong>：下载安装 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打开 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 下载 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 聊天 / 拖文档问答。</p>
+<h3>3.4 Jan —— 桌面客户端的「颜值天花板」（2.5 万星）</h3>
+<p>设计精美，macOS/Windows/Linux 三端一致，内置模型目录 + 一键下载 + 智能 GPU 检测，还能一键开启 OpenAI 兼容 API 对接编程工具。</p>
+<p><strong>一键使用</strong>：下载安装 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 下载 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 聊天；设置里打开「本地 API」即可对接 Cursor/Aider。</p>
+<h3>3.5 Open WebUI —— 自托管 ChatGPT 界面（14.8 万星）</h3>
+<p>功能最全的自托管聊天界面，接 Ollama + OpenAI API，带 RAG、多用户、语音、插件。</p>
+<pre><code class="language-bash"># 一键（pip 方式）
+pip install open-webui
+open-webui serve
+# 或 Docker
+docker run -d -p 3000:8080 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+</code></pre>
+<p><strong>适用</strong>：想搭一个「私有版 ChatGPT」的个人或团队。</p>
+<h3>3.6 OpenClaw —— 本地优先个人 AI 助理（38 万星，史上涨星最快）</h3>
+<p>2026 年的现象级项目：一个跑在你自己设备上的个人 AI 助理，通过你<strong>已在用的聊天渠道</strong>（微信/飞书/WhatsApp/Telegram/Slack 等 20+ 平台）回复你。模型无关，既能接闭源模型，也能通过 Ollama 完全本地化。</p>
+<pre><code class="language-bash"># 一键安装
+curl -fsSL https://openclaw.ai/install.sh | bash
+# Windows（PowerShell）
+iwr -useb https://openclaw.ai/install.ps1 | iex
+# 初始化向导
+openclaw onboard --install-daemon
+# 查看状态 / 打开控制台
+openclaw gateway status
+openclaw dashboard
+</code></pre>
+<p><strong>适用</strong>：想要「24 小时不休息、月成本几十块数字员工」的超级个体。</p>
+<blockquote>
+<p><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>安全红线：不要把它暴露到公网；用 Tailscale 等零信任组网做远程访问；默认保持鉴权关闭状态。</p>
+</blockquote>
+<h3>3.7 llama.cpp —— 最成熟的本地推理引擎</h3>
+<p>纯 C/C++ 推理，CPU 都能跑，是 GGUF 量化格式的「老家」。</p>
+<pre><code class="language-bash"># macOS
+brew install llama.cpp
+# Windows
+winget install llama.cpp   # 或 GitHub Release 下载预编译包
+# 运行
+./main -m models/7b.gguf -p &quot;你好&quot;
+# 启动 OpenAI 兼容服务
+llama-server -m models/7b.gguf --port 8080
+</code></pre>
+<h3>3.8 vLLM —— 生产级推理「工业标准」（4 万星）</h3>
+<p>吞吐量王者（PagedAttention），搭「私有版 OpenAI API」最靠谱的选择。</p>
+<pre><code class="language-bash">pip install vllm
+vllm serve Qwen/Qwen2.5-7B-Instruct --port 8000
+</code></pre>
+<h3>3.9 AirLLM —— 4GB 显存跑 70B（3 万星）</h3>
+<p>分层加载技术，让消费级小显卡也能推理超大模型（速度慢，但「能跑」）。</p>
+<pre><code class="language-bash">pip install airllm
+# 支持 Llama/Qwen/DeepSeek/Kimi/Gemma/Phi 等
+</code></pre>
+<h3>3.10 Unsloth —— 单卡微调大模型（5 万星）</h3>
+<p>2-5 倍训练加速、显存降 50-80%，RTX 4090 就能微调 70B，还有免费 Colab 一键微调。</p>
+<pre><code class="language-bash">pip install unsloth
+</code></pre>
+<hr>
+<h2>四、无限使用 &amp; 免费的正确姿势</h2>
+<ol>
+<li><strong>网页白嫖</strong>：DeepSeek、GLM、Kimi、Qwen 的官方网页版都免费（DeepSeek 网页完全免费无上限）。</li>
+<li><strong>本地免费</strong>：用 Ollama 跑开源权重，数据不出本机，零 API 费。</li>
+<li><strong>API 按量</strong>：DeepSeek V4-Flash 输入 $0.14/百万 token，跑一天几毛钱；开「上下文缓存」还能再省 90%。</li>
+<li><strong>量化降门槛</strong>：Q4_K_M 量化，6-8GB 显存跑 7B，普通笔记本也能玩。</li>
+</ol>
+<hr>
+<h2>五、一张表：我应该用哪个？</h2>
+<table>
+<thead>
+<tr>
+<th>你的需求</th>
+<th>首选</th>
+<th>一键命令 / 操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>就想聊天、入门</td>
+<td>Ollama + 任意模型</td>
+<td><code>ollama run qwen3.6</code></td>
+</tr>
+<tr>
+<td>不碰命令行</td>
+<td>LM Studio / Jan</td>
+<td>下载安装包 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 点选模型</td>
+</tr>
+<tr>
+<td>私有版 ChatGPT</td>
+<td>Open WebUI</td>
+<td><code>pip install open-webui &amp;&amp; open-webui serve</code></td>
+</tr>
+<tr>
+<td>24 小时数字员工</td>
+<td>OpenClaw</td>
+<td><code>curl -fsSL https://openclaw.ai/install.sh | bash</code></td>
+</tr>
+<tr>
+<td>文档问答知识库</td>
+<td>GPT4All（LocalDocs）</td>
+<td>下载 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 拖 PDF 进去</td>
+</tr>
+<tr>
+<td>高并发 API 服务</td>
+<td>vLLM</td>
+<td><code>pip install vllm &amp;&amp; vllm serve ...</code></td>
+</tr>
+<tr>
+<td>小显卡跑大模型</td>
+<td>AirLLM</td>
+<td><code>pip install airllm</code></td>
+</tr>
+<tr>
+<td>定制专属模型</td>
+<td>Unsloth</td>
+<td><code>pip install unsloth</code></td>
+</tr>
+<tr>
+<td>极致 CPU 推理</td>
+<td>llama.cpp</td>
+<td><code>brew install llama.cpp</code></td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p>本文档持续更新。开源世界每月都在变，随时回来这里，看最新的项目与命令。</p>
+</blockquote>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="开源AI进阶-网络安全一人公司与手机操作.html" style="color:var(--gold);font-weight:700;text-decoration:none">开源AI进阶-网络安全一人公司与手机</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>博客目录</a>
+  <span style="font-size:13px"><a href="深度长文.html" style="color:var(--gold);font-weight:700;text-decoration:none">深度长文</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8"><i class="cc-ic" data-ic="pin" aria-hidden="true"></i>出处声明：本页内容为白驹全局大脑原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body></html>

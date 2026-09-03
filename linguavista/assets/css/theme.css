@@ -1,0 +1,456 @@
+/* ============================================================
+ * 环球语堂 · 双主题系统（深空纪元 / 云顶天空）
+ * 继承白驹主站 CSS 变量命名体系，新增语种色与学习相关变量
+ * 体系：data-theme="deep" | "cloud"
+ * 用法：<body data-theme="deep">
+ * ============================================================ */
+
+/* ---------- 重置与基础 ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ---------- 主题切换过渡 ---------- */
+body.theme-transitioning *,
+body.theme-transitioning {
+  transition: background-color 0.4s ease, color 0.4s ease,
+    border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+/* ============================================================
+ * 深空纪元（deep）· 默认主题
+ * ============================================================ */
+body[data-theme="deep"] {
+  /* 基础色 */
+  --bg: #030014;
+  --bg2: #0a0f1e;
+  --bg3: #0f172a;
+  --card: #101728;
+  --card-hover: #182238;
+  --panel: rgba(13, 19, 32, 0.62);
+  --panel-strong: rgba(8, 12, 22, 0.92);
+  --line: rgba(120, 160, 220, 0.16);
+  --line-strong: rgba(120, 160, 220, 0.28);
+
+  /* 品牌色 */
+  --ice: #5eead4;
+  --cyan: #38e1ff;
+  --blue: #5b8cff;
+  --gold: #f0b95c;
+  --purple: #8b5cf6;
+  --pink: #e879fa;
+  --green: #2ed3a0;
+  --red: #ff5c8a;
+  --orange: #f59e0b;
+  --err: #ff5c8a;
+  --success: #2ed3a0;
+  --warning: #f0b95c;
+
+  /* 文本色 */
+  --text: #e9f0fb;
+  --text-secondary: #b8c7de;
+  --muted: #8fa3bd;
+  --dim: #5a6b85;
+
+  /* 渐变 */
+  --grad: linear-gradient(120deg, #38e1ff, #5b8cff 45%, #8b5cf6);
+  --grad-hero: linear-gradient(120deg, #8b5cf6, #38e1ff 55%, #e879fa);
+  --grad-success: linear-gradient(120deg, #2ed3a0, #38e1ff);
+  --grad-warm: linear-gradient(120deg, #f0b95c, #ff8a5c);
+  --grad-text: linear-gradient(120deg, #38e1ff, #5b8cff, #8b5cf6);
+
+  /* 组件 token */
+  --nav-bg: rgba(8, 5, 28, 0.7);
+  --nav-line: rgba(255, 255, 255, 0.08);
+  --nav-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  --glass-strong: rgba(8, 12, 22, 0.95);
+  --gear-bg: rgba(8, 12, 22, 0.9);
+  --float-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+  --card-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 14px 40px rgba(0, 0, 0, 0.5);
+  --nav-chip-bg: rgba(120, 160, 220, 0.1);
+  --chip-bg: rgba(255, 255, 255, 0.07);
+  --chip-line: rgba(255, 255, 255, 0.12);
+
+  /* 输入控件 */
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(120, 160, 220, 0.2);
+  --input-focus: rgba(56, 225, 255, 0.4);
+
+  /* 语种色 */
+  --lang-en: #38bdf8;
+  --lang-ja: #f472b6;
+  --lang-ko: #a78bfa;
+  --lang-fr: #fbbf24;
+  --lang-es: #4ade80;
+  --lang-de: #fb923c;
+  --lang-it: #f87171;
+  --lang-pt: #c084fc;
+  --lang-ru: #60a5fa;
+  --lang-ar: #f97316;
+
+  /* 学习状态色 */
+  --status-new: #38e1ff;
+  --status-learning: #f0b95c;
+  --status-review: #8b5cf6;
+  --status-mastered: #2ed3a0;
+  --status-relearning: #ff5c8a;
+
+  /* 难度色 */
+  --level-easy: #2ed3a0;
+  --level-medium: #f0b95c;
+  --level-hard: #ff8a5c;
+  --level-expert: #ff5c8a;
+
+  /* 背景图 */
+  background-image: linear-gradient(
+      180deg,
+      rgba(3, 0, 20, 0.92),
+      rgba(3, 0, 20, 0.96)
+    ),
+    var(--wall-img, none);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* 深空主题 · 选区 */
+body[data-theme="deep"] ::selection {
+  background: rgba(94, 234, 212, 0.28);
+  color: #fff;
+}
+
+/* 深空主题 · 滚动条 */
+body[data-theme="deep"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+body[data-theme="deep"] ::-webkit-scrollbar-track {
+  background: #05070d;
+}
+body[data-theme="deep"] ::-webkit-scrollbar-thumb {
+  background: #1c2b45;
+  border-radius: 8px;
+}
+body[data-theme="deep"] ::-webkit-scrollbar-thumb:hover {
+  background: #2a3f60;
+}
+
+/* ============================================================
+ * 云顶天空（cloud）· 浅色主题
+ * ============================================================ */
+body[data-theme="cloud"] {
+  /* 基础色 */
+  --bg: #f4f7fc;
+  --bg2: #ffffff;
+  --bg3: #eef4fb;
+  --card: #ffffff;
+  --card-hover: #f8faff;
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.96);
+  --line: rgba(90, 140, 190, 0.2);
+  --line-strong: rgba(90, 140, 190, 0.35);
+
+  /* 品牌色 */
+  --ice: #0e7490;
+  --cyan: #0891b2;
+  --blue: #2563eb;
+  --gold: #b45309;
+  --purple: #7c3aed;
+  --pink: #db2777;
+  --green: #059669;
+  --red: #e11d48;
+  --orange: #ea580c;
+  --err: #e11d48;
+  --success: #059669;
+  --warning: #d97706;
+
+  /* 文本色 */
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --muted: #64748b;
+  --dim: #94a3b8;
+
+  /* 渐变 */
+  --grad: linear-gradient(120deg, #4f8cff, #38b6ff 50%, #8b5cf6);
+  --grad-hero: linear-gradient(120deg, #4f8cff, #38b6ff 50%, #8b5cf6);
+  --grad-success: linear-gradient(120deg, #10b981, #06b6d4);
+  --grad-warm: linear-gradient(120deg, #f59e0b, #f97316);
+  --grad-text: linear-gradient(120deg, #0891b2, #2563eb, #7c3aed);
+
+  /* 组件 token */
+  --nav-bg: rgba(255, 255, 255, 0.82);
+  --nav-line: rgba(227, 235, 245, 0.95);
+  --nav-shadow: 0 2px 16px rgba(31, 45, 77, 0.07);
+  --glass-strong: rgba(255, 255, 255, 0.96);
+  --gear-bg: rgba(255, 255, 255, 0.85);
+  --float-shadow: 0 24px 70px rgba(37, 99, 235, 0.18);
+  --card-shadow: 0 6px 24px rgba(31, 45, 77, 0.06);
+  --card-shadow-hover: 0 14px 40px rgba(31, 45, 77, 0.12);
+  --nav-chip-bg: rgba(120, 160, 220, 0.12);
+  --chip-bg: rgba(120, 160, 220, 0.1);
+  --chip-line: rgba(120, 160, 220, 0.25);
+
+  /* 输入控件 */
+  --input-bg: #ffffff;
+  --input-border: rgba(90, 140, 190, 0.3);
+  --input-focus: rgba(37, 99, 235, 0.25);
+
+  /* 语种色（浅色版本，更深更饱和） */
+  --lang-en: #0284c7;
+  --lang-ja: #db2777;
+  --lang-ko: #7c3aed;
+  --lang-fr: #d97706;
+  --lang-es: #059669;
+  --lang-de: #ea580c;
+  --lang-it: #dc2626;
+  --lang-pt: #9333ea;
+  --lang-ru: #2563eb;
+  --lang-ar: #ea580c;
+
+  /* 学习状态色 */
+  --status-new: #0891b2;
+  --status-learning: #d97706;
+  --status-review: #7c3aed;
+  --status-mastered: #059669;
+  --status-relearning: #e11d48;
+
+  /* 难度色 */
+  --level-easy: #059669;
+  --level-medium: #d97706;
+  --level-hard: #ea580c;
+  --level-expert: #e11d48;
+
+  /* 背景图 */
+  background-image: linear-gradient(
+      180deg,
+      rgba(244, 247, 252, 0.92),
+      rgba(248, 252, 255, 0.96)
+    ),
+    var(--wall-img, none);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* 云顶主题 · 选区 */
+body[data-theme="cloud"] ::selection {
+  background: rgba(56, 189, 248, 0.28);
+  color: #0f172a;
+}
+
+/* 云顶主题 · 滚动条 */
+body[data-theme="cloud"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+body[data-theme="cloud"] ::-webkit-scrollbar-track {
+  background: #e0edf8;
+}
+body[data-theme="cloud"] ::-webkit-scrollbar-thumb {
+  background: #9cc6e4;
+  border-radius: 8px;
+}
+body[data-theme="cloud"] ::-webkit-scrollbar-thumb:hover {
+  background: #7ab5da;
+}
+
+/* ============================================================
+ * 全局通用工具类
+ * ============================================================ */
+
+/* 渐变文字 */
+.grad-text {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* 毛玻璃效果 */
+.glass {
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+}
+
+.glass-strong {
+  background: var(--glass-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--line);
+}
+
+/* 卡片基础 */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--line-strong);
+}
+
+/* 文本截断 */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 隐藏滚动条 */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 容器 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 间距工具 */
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mt-8 { margin-top: 32px; }
+.mb-1 { margin-bottom: 4px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.mb-8 { margin-bottom: 32px; }
+
+/* flex 工具 */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: 4px; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.gap-6 { gap: 24px; }
+
+/* 字体粗细 */
+.font-light { font-weight: 300; }
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
+
+/* 文本大小 */
+.text-xs { font-size: 12px; }
+.text-sm { font-size: 13px; }
+.text-base { font-size: 14px; }
+.text-lg { font-size: 16px; }
+.text-xl { font-size: 18px; }
+.text-2xl { font-size: 20px; }
+.text-3xl { font-size: 24px; }
+.text-4xl { font-size: 30px; }
+
+/* 文本颜色 */
+.text-primary { color: var(--text); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--muted); }
+.text-dim { color: var(--dim); }
+.text-blue { color: var(--blue); }
+.text-cyan { color: var(--cyan); }
+.text-gold { color: var(--gold); }
+.text-green { color: var(--green); }
+.text-red { color: var(--red); }
+.text-purple { color: var(--purple); }
+
+/* 响应式显示 */
+@media (max-width: 768px) {
+  .hidden-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .hidden-desktop { display: none !important; }
+}

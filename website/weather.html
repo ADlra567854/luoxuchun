@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 天气日历,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 天气日历 · AI 创作纪元">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · 天气日历 · AI 创作纪元</title>
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:8px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:20px;font-size:13.5px;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+.wrap{position:relative;z-index:5;max-width:1080px;margin:0 auto;padding:104px 24px 70px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,46px);letter-spacing:3px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:10px;font-size:14px}
+.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:24px 0}
+.bar select{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 14px;font-size:14px;outline:none;cursor:pointer;font-family:inherit}
+.bar select:focus{border-color:var(--ice)}
+.city-search{display:flex;gap:6px}
+.city-search input{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 14px;font-size:13px;outline:none;width:220px;font-family:inherit}
+.city-search input:focus{border-color:var(--ice)}
+.city-search button{background:var(--grad);color:#03121a;border:none;border-radius:10px;padding:0 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.city-search button:hover{filter:brightness(1.1)}
+@media(max-width:640px){.city-search input{width:150px}}
+.bar .note{color:var(--dim);font-size:12px}
+.weather{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:26px}
+.wcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;backdrop-filter:blur(8px)}
+.wcard.now{background:linear-gradient(160deg,rgba(56,225,255,.12),rgba(91,140,255,.06)),var(--panel);border-color:rgba(56,225,255,.3)}
+.wcard .wcity{font-size:13px;color:var(--muted);letter-spacing:1px}
+.wcard .wtmp{font-family:var(--serif);font-size:52px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin:4px 0}
+.wcard .wdesc{font-size:14px;color:var(--text)}
+.wcard .wmeta{color:var(--dim);font-size:12px;margin-top:6px;line-height:1.8}
+.wcard .wemoji{font-size:40px;margin-bottom:6px}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:26px}
+@media(max-width:720px){.days{grid-template-columns:repeat(4,1fr)}}
+.day{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;transition:.25s}
+.day:hover{border-color:rgba(94,234,212,.35);transform:translateY(-2px)}
+.day .dw{font-size:11px;color:var(--dim)}
+.day .dt{font-family:var(--mono);font-size:11px;color:var(--muted);margin:2px 0}
+.day .de{font-size:22px}
+.day .dth{font-size:11px;color:var(--text)}
+.day.today{border-color:var(--gold);background:rgba(240,185,92,.08)}
+.cal{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.month{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;backdrop-filter:blur(8px)}
+.month h3{font-family:var(--serif);font-size:15px;margin-bottom:10px;color:var(--ice);letter-spacing:1px}
+.month .head,.month .row{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.month .head span{font-family:var(--mono);font-size:10px;color:var(--dim);text-align:center;padding:3px 0}
+.cell{font-size:11.5px;text-align:center;padding:5px 0;border-radius:7px;color:var(--muted);position:relative}
+.cell.blank{visibility:hidden}
+.cell.today{background:var(--gold);color:#03121a;font-weight:700}
+.cell.holiday{color:var(--gold);font-weight:600}
+.cell .hf{display:block;font-size:8.5px;color:var(--dim);font-weight:400;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.cell.today .hf{color:#5a3c00}
+footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;color:var(--dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/weather.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/weather.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 天气日历 · AI 创作纪元">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-weather.png" alt="ccowork · 天气日历 · AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<canvas id="stars"></canvas>
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="../index.html">首页</a>
+    <a href="./agent.html">智能体</a>
+    <a href="./news.html"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i>每日新闻</a>
+    <a href="./weather.html" class="active"><i class="cc-ic" data-ic="cloud-sun" aria-hidden="true"></i>天气日历</a>
+    <a href="./quiz.html"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>刷题</a>
+    <a href="./resume.html"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>简历</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1><i class="cc-ic" data-ic="cloud-sun" aria-hidden="true"></i>天气 · <span>日历</span></h1>
+    <p>实时天气来自 Open-Meteo（免费接口）；日历内置 2026 年公历与中国主要节假日，每天自动更新。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  </div>
+  <div class="bar">
+    <div class="city-search">
+      <input id="searchInput" type="text" placeholder=" 搜索城市（如：苏州 / 东京 / 纽约）…" autocomplete="off">
+      <button id="searchBtn" type="button"><i class="cc-ic" data-ic="search"></i> 搜索</button>
+    </div>
+    <select id="citySel"></select>
+    <span class="note" id="wNote">加载天气中…</span>
+  </div>
+  <div class="weather" id="weather"></div>
+  <div class="days" id="days"></div>
+  <div class="cal" id="cal"></div>
+</div>
+<footer>
+  <div style="font-family:var(--serif);letter-spacing:3px;font-size:15px">AI 创作纪元</div>
+  <p style="margin-top:6px"><a href="../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回首页</a> · 天气数据 Open-Meteo · 节假日以官方发布为准</p>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var CITIES = [
+    ['北京',39.9042,116.4074],['上海',31.2304,121.4737],['广州',23.1291,113.2644],['深圳',22.5431,114.0579],
+    ['杭州',30.2741,120.1551],['成都',30.5728,104.0668],['武汉',30.5928,114.3055],['西安',34.3416,108.9398],
+    ['南京',32.0603,118.7969],['重庆',29.5630,106.5516],['长沙',28.2282,112.9388],['郑州',34.7466,113.6254],
+    ['青岛',36.0671,120.3826],['昆明',24.8801,102.8329],['厦门',24.4798,118.0894],['哈尔滨',45.8038,126.5349]
+  ];
+  var sel = document.getElementById('citySel');
+  sel.innerHTML = CITIES.map(function(c,i){ return '<option value="'+i+'">'+c[0]+'</option>'; }).join('');
+  sel.value = '0';
+
+  // ---------- 城市搜索（Open-Meteo Geocoding） ----------
+  var searchInput = document.getElementById('searchInput');
+  function doSearch(){
+    var q = searchInput.value.trim();
+    if(!q){ note.textContent = ' 请输入城市名'; return; }
+    note.textContent = ' 搜索「' + q + '」…';
+    fetch('https://geocoding-api.open-meteo.com/v1/search?name=' + encodeURIComponent(q) + '&count=5&language=zh&format=json')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        var rs = (d.results || []).slice(0, 5);
+        if(!rs.length){ note.textContent = ' 未找到城市：' + q + '（试试拼音或英文名）'; return; }
+        var base = CITIES.length;
+        rs.forEach(function(r){
+          if(!CITIES.some(function(c){ return c[0] === r.name; })){
+            CITIES.push([r.name + (r.admin1 && r.admin1 !== r.name ? '·' + r.admin1 : ''), r.latitude, r.longitude]);
+          }
+        });
+        sel.innerHTML = CITIES.map(function(c,i){ return '<option value="'+i+'">'+c[0]+'</option>'; }).join('');
+        sel.value = base;
+        loadWeather();
+        note.textContent = ' 已搜索到，选择城市查看天气';
+      })
+      .catch(function(e){ note.textContent = ' 搜索失败：' + (e && e.message || e); });
+  }
+  document.getElementById('searchBtn').addEventListener('click', doSearch);
+  searchInput.addEventListener('keydown', function(e){ if(e.key === 'Enter') doSearch(); });
+
+  var WMO = {
+    0:' 晴',1:' 多云',2:' 阴',3:' 阴',45:' 雾',48:' 雾凇',
+    51:' 毛毛雨',53:' 毛毛雨',55:' 毛毛雨',56:' 冻雨',57:' 冻雨',
+    61:' 小雨',63:' 中雨',65:' 大雨',66:' 冻雨',67:' 冻雨',
+    71:' 小雪',73:' 中雪',75:' 大雪',77:' 雪粒',80:' 阵雨',81:' 阵雨',82:' 强阵雨',
+    85:' 阵雪',86:' 阵雪',95:' 雷雨',96:' 雷雨',99:' 强雷雨'
+  };
+  function wmoText(code){ return WMO[code] || ' ' + code; }
+
+  var weatherEl = document.getElementById('weather');
+  var daysEl = document.getElementById('days');
+  var note = document.getElementById('wNote');
+
+  function loadWeather(){
+    var c = CITIES[Number(sel.value)];
+    note.textContent = '加载 ' + c[0] + ' 天气中…';
+    var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + c[1] + '&longitude=' + c[2]
+      + '&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m'
+      + '&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia%2FShanghai&forecast_days=7';
+    fetch(url).then(function(r){ return r.json(); }).then(function(d){
+      note.textContent = c[0] + ' · 实时数据';
+      var cur = d.current;
+      weatherEl.innerHTML = '<div class="wcard now"><div class="wcity">'+c[0]+' · 现在</div>'
+        + '<div class="wemoji">'+wmoText(cur.weather_code).split(' ')[0]+'</div>'
+        + '<div class="wtmp">'+Math.round(cur.temperature_2m)+'°</div>'
+        + '<div class="wdesc">'+wmoText(cur.weather_code).split(' ').slice(1).join(' ')+'</div>'
+        + '<div class="wmeta">湿度 '+cur.relative_humidity_2m+'% · 风速 '+cur.wind_speed_10m+' km/h</div></div>';
+      // 7 天预报
+      var week = ['日','一','二','三','四','五','六'];
+      var now = new Date();
+      daysEl.innerHTML = d.daily.time.map(function(t,i){
+        var dt = new Date(t + 'T00:00');
+        var today = now.toDateString() === dt.toDateString();
+        return '<div class="day'+(today?' today':'')+'"><div class="dw">周'+week[dt.getDay()]+'</div>'
+          + '<div class="dt">'+(t.slice(5))+'</div><div class="de">'+wmoText(d.daily.weather_code[i]).split(' ')[0]+'</div>'
+          + '<div class="dth">'+Math.round(d.daily.temperature_2m_max[i])+'° / '+Math.round(d.daily.temperature_2m_min[i])+'°</div></div>';
+      }).join('');
+    }).catch(function(e){
+      note.textContent = '天气加载失败（可能离线）：' + (e.message||e);
+      weatherEl.innerHTML = '<div class="wcard"><div class="wdesc">离线时天气不可用，日历仍可查看</div></div>';
+    });
+  }
+  loadWeather();
+  sel.addEventListener('change', loadWeather);
+
+  // ---------- 2026 日历（公历 + 主要节假日） ----------
+  var HOLIDAYS = {
+    '01-01':'元旦','02-17':'春节','02-18':'春节','02-19':'春节','04-05':'清明',
+    '05-01':'劳动节','06-19':'端午','09-25':'中秋','10-01':'国庆','10-02':'国庆','10-03':'国庆'
+  };
+  var cal = document.getElementById('cal');
+  var weekHead = ['日','一','二','三','四','五','六'];
+  var now = new Date();
+  var html = '';
+  for(var m=0;m<12;m++){
+    var first = new Date(2026, m, 1);
+    var daysInMonth = new Date(2026, m+1, 0).getDate();
+    var cells = '';
+    for(var i=0;i<first.getDay();i++) cells += '<span class="cell blank">·</span>';
+    for(var d=1;d<=daysInMonth;d++){
+      var dd = String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+      var hf = HOLIDAYS[dd] || '';
+      var cls = 'cell' + (hf ? ' holiday' : '') + ((now.getFullYear()===2026 && now.getMonth()===m && now.getDate()===d) ? ' today' : '');
+      cells += '<span class="'+cls+'">'+d+(hf?'<span class="hf">'+hf+'</span>':'')+'</span>';
+    }
+    html += '<div class="month"><h3>2026 年 '+(m+1)+' 月</h3><div class="head">'+weekHead.map(function(w){return '<span>'+w+'</span>';}).join('')+'</div><div class="row">'+cells+'</div></div>';
+  }
+  cal.innerHTML = html;
+
+  // 粒子
+  var cv=document.getElementById('stars'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;} rs(); addEventListener('resize',rs);
+  var C=['94,234,212','56,225,255','91,140,255','240,185,92'];
+  var n=Math.min(90,Math.floor(W*H/19000));
+  for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,c:C[Math.random()*4|0]});
+  (function dr(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba('+p.c+',.5)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<11000){ctx.strokeStyle='rgba('+p.c+','+(0.11*(1-d2/11000))+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}
+    }
+    requestAnimationFrame(dr);
+  })();
+})();
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

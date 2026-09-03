@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 总站,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 总站 · AI 创作纪元（全站导航台）">
+<meta property="og:description" content="ccowork · 总站：白驹为门，总站管全局。一张图看懂全站所有分站，按体系分组，配 AIGC 封面，悬停有动效。">
+<meta name="description" content="ccowork · 总站：白驹为门，总站管全局。一张图看懂全站所有分站，按体系分组，配 AIGC 封面，悬停有动效。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · 总站 · AI 创作纪元（全站导航台）</title>
+<style>
+:root{--bg:#05070d;--card:rgba(15,22,38,.72);--line:rgba(120,160,220,.16);--blue:#5b8cff;--cyan:#38e1ff;--ice:#5eead4;--gold:#f0b95c;--text:#eaf1fc;--muted:#8fa3bd;--grad:linear-gradient(120deg,#5eead4,#38b6ff 55%,#5b8cff)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.8;overflow-x:hidden}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:6px}
+
+/* ===== 视频动效 HERO 背景 ===== */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bg-glow{position:fixed;z-index:0;pointer-events:none;filter:blur(100px);opacity:.5;animation:drift 18s ease-in-out infinite}
+.bg-glow.a{width:600px;height:600px;left:-160px;top:-140px;background:radial-gradient(circle,rgba(56,225,255,.30),transparent 70%)}
+.bg-glow.b{width:680px;height:680px;right:-200px;top:20%;background:radial-gradient(circle,rgba(240,185,92,.20),transparent 70%);animation-delay:-6s}
+.bg-glow.c{width:560px;height:560px;left:32%;bottom:-200px;background:radial-gradient(circle,rgba(91,140,255,.24),transparent 70%);animation-delay:-12s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
+
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(5,7,13,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav a.back{color:var(--muted);text-decoration:none;font-size:14px}
+nav a.back:hover{color:var(--cyan)}
+
+.hero{position:relative;z-index:5;text-align:center;padding:84px 24px 34px}
+.hero .tag{display:inline-block;font-size:12.5px;color:var(--ice);border:1px solid rgba(94,234,212,.35);background:rgba(94,234,212,.06);padding:6px 18px;border-radius:99px;letter-spacing:2px;margin-bottom:22px}
+.hero h1{font-size:clamp(32px,5.4vw,58px);font-weight:900;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:16px;font-size:15px;max-width:680px;margin-left:auto;margin-right:auto}
+.hero .typed{margin-top:20px;font-family:Consolas,monospace;font-size:clamp(13px,1.6vw,16px);color:var(--ice);min-height:1.6em}
+.hero .typed::after{content:"▌";animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* 层级说明条 */
+.tier{position:relative;z-index:5;max-width:1180px;margin:6px auto 0;padding:0 24px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.tier .pill{font-size:12.5px;padding:8px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--muted)}
+.tier .pill b{color:var(--ice)}
+.tier .pill.door b{color:var(--gold)}
+
+.wrap{position:relative;z-index:5;max-width:1180px;margin:0 auto;padding:24px 24px 90px}
+.group{margin:46px 0 8px;display:flex;align-items:center;gap:16px}
+.group b{font-size:21px;white-space:nowrap;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.group::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:16px}
+
+/* ===== 配图按钮卡 ===== */
+a.card{position:relative;display:block;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  background:var(--card);backdrop-filter:blur(10px);text-decoration:none;color:inherit;
+  transition:transform .35s ease,border-color .35s,box-shadow .35s;min-height:190px}
+a.card:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(56,225,255,.5);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+a.card .pic{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.6;
+  transition:transform .8s ease,opacity .4s;animation:kenburns 16s ease-in-out infinite}
+a.card:hover .pic{transform:scale(1.08);opacity:.82}
+@keyframes kenburns{0%,100%{transform:scale(1) translate(0,0)}50%{transform:scale(1.07) translate(-8px,-6px)}}
+a.card .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,13,.18) 0%,rgba(5,7,13,.82) 78%)}
+a.card .body{position:relative;z-index:2;padding:18px 20px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;min-height:190px}
+a.card .ico{font-size:22px}
+a.card h3{font-size:16px;margin:6px 0 4px}
+a.card p{font-size:12.5px;color:#b9c8e2}
+a.card .go{position:absolute;top:14px;right:14px;z-index:2;font-size:11px;color:var(--ice);border:1px solid rgba(94,234,212,.4);border-radius:99px;padding:3px 12px;background:rgba(5,7,13,.5);backdrop-filter:blur(4px)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+footer{position:relative;z-index:5;text-align:center;color:var(--muted);font-size:13px;padding:40px 0;border-top:1px solid var(--line)}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/hub.html">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/hub.html">
+<meta name="twitter:title" content="ccowork · 总站 · AI 创作纪元（全站导航台）">
+<meta name="twitter:description" content="ccowork · 总站：白驹为门，总站管全局。一张图看懂全站所有分站，按体系分组，配 AIGC 封面，悬停有动效。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-hub.png" alt="ccowork · 总站 · AI 创作纪元（全站导航台）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-glow a"></div><div class="bg-glow b"></div><div class="bg-glow c"></div>
+
+<nav>
+  <div class="logo">AI 创作纪元 · 总站</div>
+  <a class="back" href="../index.html"><i class="cc-mark" aria-hidden="true"></i>回到白驹（门）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="tag">全站导航台 · 一张图看懂所有分站</span>
+  <h1>总站<span>导航台</span></h1>
+  <p>本站只有<strong style="color:var(--ice)">两级</strong>：白驹是「门」（首页/大脑），本页是「总站」（地图），其余全部是「分站」。不再有套娃式的第二个总站。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  <div class="typed" id="typed"></div>
+</header>
+
+<div class="tier">
+  <span class="pill door"> <b>门</b>：根 index.html（白驹全局大脑）</span>
+  <span class="pill"><i class="cc-ic" data-ic="compass" aria-hidden="true"></i><b>总站</b>：本页（你在这里）</span>
+  <span class="pill"><i class="cc-ic" data-ic="folder-open" aria-hidden="true"></i><b>分站</b>：下面所有卡片</span>
+</div>
+
+<div class="wrap">
+  <div class="group"><b>① 门与大脑（入口）</b></div>
+  <div class="grid">
+    <a class="card" href="../index.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-global.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-mark" aria-hidden="true"></i></div><h3>白驹全局大脑（门 · 首页）</h3><p>对话 + 白区工作台 + 编译模式 + 工具整合</p></div></a>
+    <a class="card" href="./workstation.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-data.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i></div><h3>白驹工作站</h3><p>IDE × GitHub 免登录 × 浏览器运行代码</p></div></a>
+    <a class="card" href="./chat.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-chatgpt.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><h3>AI 对话工作台</h3><p>开箱即用的对话页</p></div></a>
+    <a class="card" href="./voice.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-design.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i></div><h3>AI 语音台</h3><p>语音输入 / 播报</p></div></a>
+    <a class="card" href="./agent.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-future.webp)"></div><div class="shade"></div><div class="body"><div class="ico"></div><h3>全能智能体</h3><p>多工具调度 Agent</p></div></a>
+    <a class="card" href="./brand.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-global.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div><h3>品牌官网（分站）</h3><p>一站式 AI 创作工作站总览</p></div></a>
+    <a class="card" href="./study.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-growth.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></div><h3>自学中心（分站）</h3><p>真实案例 + 五条学习路线，没有围墙的大学</p></div></a>
+  </div>
+
+  <div class="group"><b>② 创作与变现</b></div>
+  <div class="grid">
+    <a class="card" href="./manju.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-videogen.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></div><h3>AI 漫剧指南</h3><p>从创意到分账，一个人做一条剧</p></div></a>
+    <a class="card" href="./gallery.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-imagegen.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i></div><h3>AI 绘画生图</h3><p>即梦 / ComfyUI / SD 实战与模板</p></div></a>
+    <a class="card" href="./prompts-guide.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-prompts.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></div><h3>提示词实战指南</h3><p>40+ 可复制模板 + 术语解释</p></div></a>
+    <a class="card" href="./prompts100.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-prompts.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i></div><h3>提示词百宝库</h3><p>100 条精选提示词模板</p></div></a>
+    <a class="card" href="./ai-money.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-growth.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="banknote" aria-hidden="true"></i></div><h3>AI 赚钱全攻略</h3><p>漫剧 × 办公 × 岗位工作台</p></div></a>
+    <a class="card" href="./comic.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-videogen.webp)"></div><div class="shade"></div><div class="body"><div class="ico"></div><h3>AI 漫剧书库</h3><p>分镜脚本与剧本参考</p></div></a>
+    <a class="card" href="./reader.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-book.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></div><h3>书稿阅读器</h3><p>《AI 实战全书》在线阅读</p></div></a>
+  </div>
+
+  <div class="group"><b>③ 教育 · 就业 · 成长</b></div>
+  <div class="grid">
+    <a class="card" href="./ai-edu.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-growth.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i></div><h3>AI 赋能教育</h3><p>政策 × 案例 × 提示词</p></div></a>
+    <a class="card" href="./ai-jobs.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-engineering.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i></div><h3>AI 赋能就业</h3><p>数据 × 岗位 × 提示词</p></div></a>
+    <a class="card" href="./quiz.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-design.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="flask-conical" aria-hidden="true"></i></div><h3>刷题测验</h3><p>知识点自测</p></div></a>
+    <a class="card" href="./resume.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-engineering.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i></div><h3>AI 简历</h3><p>一键生成简历</p></div></a>
+    <a class="card" href="./majors.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-engineering.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="school" aria-hidden="true"></i></div><h3>大学各专业 × AI</h3><p>学业规划地图</p></div></a>
+    <a class="card" href="./personality.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-growth.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div><h3>AI 性格测试</h3><p>找到你的 AI 人格</p></div></a>
+  </div>
+
+  <div class="group"><b>④ 书稿与资源库</b></div>
+  <div class="grid">
+    <a class="card" href="./book/index.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-book.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div><h3>章节书库</h3><p>20 个章节页面逐页精读</p></div></a>
+    <a class="card" href="./works.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-book.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="archive" aria-hidden="true"></i></div><h3>作品内容库</h3><p>全部作品一页读尽</p></div></a>
+    <a class="card" href="./ai-projects.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-global.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="trophy" aria-hidden="true"></i></div><h3>开源作品大全</h3><p>100 个真实项目 · 个人/团队分开</p></div></a>
+    <a class="card" href="./portal.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-data.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="folder-open" aria-hidden="true"></i></div><h3>AI 知识收纳站</h3><p>全方向知识分类检索</p></div></a>
+    <a class="card" href="./ecosystem.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-future.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="puzzle" aria-hidden="true"></i></div><h3>全生态知识库</h3><p>AI 生态图谱</p></div></a>
+  </div>
+
+  <div class="group"><b>⑤ 工具 · 开发 · 部署</b></div>
+  <div class="grid">
+    <a class="card" href="./devbase.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-design.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i></div><h3>开发者基地</h3><p>开源实战公开课</p></div></a>
+    <a class="card" href="./roadmap.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-engineering.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="map" aria-hidden="true"></i></div><h3>学习路线图</h3><p>零基础到系统进阶</p></div></a>
+    <a class="card" href="./lab.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-engineering.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i></div><h3>工科实训基地</h3><p>编程/数控/仿真，代码可复制</p></div></a>
+    <a class="card" href="./local-ai.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-deepseek.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div><h3>本地 AI 部署</h3><p>Ollama 实战</p></div></a>
+    <a class="card" href="./local-deploy.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-deepseek.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></div><h3>本地部署手册</h3><p>Ollama / SD 本地 AI 指南</p></div></a>
+    <a class="card" href="./opensource.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-design.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="box" aria-hidden="true"></i></div><h3>开源 AI 项目</h3><p>开源资源一站览</p></div></a>
+    <a class="card" href="./start.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-global.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i></div><h3>上手起步</h3><p>新手第一步</p></div></a>
+  </div>
+
+  <div class="group"><b>⑥ 格局 · 前沿 · 资讯</b></div>
+  <div class="grid">
+    <a class="card" href="./chronicle.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-research.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i></div><h3>AI 全景编年史</h3><p>1950—2026 六卷超长卷</p></div></a>
+    <a class="card" href="./frontiers.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-future.webp)"></div><div class="shade"></div><div class="body"><div class="ico"></div><h3>AI 前沿全景</h3><p>最新研究方向追踪</p></div></a>
+    <a class="card" href="./showcase.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-future.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="trophy" aria-hidden="true"></i></div><h3>里程碑成果</h3><p>前辈们的真实战绩</p></div></a>
+    <a class="card" href="./models.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-deepseek.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="dna" aria-hidden="true"></i></div><h3>模型横评</h3><p>2026 旗舰模型对比</p></div></a>
+    <a class="card" href="./china-tech.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-research.webp)"></div><div class="shade"></div><div class="body"><div class="ico"></div><h3>中国科技故事</h3><p>中国 AI 的征途</p></div></a>
+    <a class="card" href="./news.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-data.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></div><h3>AI 每日新闻</h3><p>今日 AI 快讯</p></div></a>
+    <a class="card" href="./index.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-deepseek.webp)"></div><div class="shade"></div><div class="body"><div class="ico"></div><h3>DeepSeek 全栈指南</h3><p>DeepSeek 专题分站</p></div></a>
+    <a class="card" href="./cases.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-design.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i></div><h3>实战案例库</h3><p>真实 AI 应用案例</p></div></a>
+    <a class="card" href="./industry.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-industry.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i></div><h3>行业实战手册</h3><p>各行业 AI 落地指南</p></div></a>
+    <a class="card" href="./faq.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-prompts.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="circle-help" aria-hidden="true"></i></div><h3>FAQ 50问</h3><p>AI 常见问题全解答</p></div></a>
+    <a class="card" href="./security.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-design.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="shield" aria-hidden="true"></i></div><h3>AI 安全指南</h3><p>风险与防护策略</p></div></a>
+    <a class="card" href="./videos.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-videogen.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="video" aria-hidden="true"></i></div><h3>教程视频</h3><p>全平台教学 / 部署 / 计划</p></div></a>
+    <a class="card" href="./weather.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-data.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="cloud-sun" aria-hidden="true"></i></div><h3>天气日历</h3><p>天气 + 本地记事</p></div></a>
+    <a class="card" href="./settings.html"><span class="go">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span><div class="pic" style="background-image:url(./assets/img/cover-deepseek.webp)"></div><div class="shade"></div><div class="body"><div class="ico"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></div><h3>模型设置</h3><p>大脑 / 模型统一调度</p></div></a>
+  </div>
+</div>
+
+<footer>AI 创作纪元 · 总站 · 全站导航台 · 2026 ｜ 白驹为门，总站管全局，其余皆分站</footer>
+
+<script>
+/* 粒子星河背景（视频感动效） */
+const cv=document.getElementById('bg-canvas'),cx=cv.getContext('2d');
+let W,H,stars=[];
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;
+  stars=Array.from({length:Math.min(160,W/8)},()=>({
+    x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+0.4,
+    vx:(Math.random()-.5)*0.15,vy:(Math.random()-.5)*0.15,tw:Math.random()*Math.PI*2}));}
+resize();addEventListener('resize',resize);
+(function loop(){requestAnimationFrame(loop);
+  cx.clearRect(0,0,W,H);
+  cx.strokeStyle='rgba(80,130,220,.06)';cx.lineWidth=1;
+  for(let i=0;i<stars.length;i++)for(let j=i+1;j<stars.length;j++){
+    const a=stars[i],b=stars[j],dx=a.x-b.x,dy=a.y-b.y,d=dx*dx+dy*dy;
+    if(d<110*110){cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke();}}
+  stars.forEach(s=>{s.x+=s.vx;s.y+=s.vy;s.tw+=0.03;
+    if(s.x<0)s.x=W;if(s.x>W)s.x=0;if(s.y<0)s.y=H;if(s.y>H)s.y=0;
+    const a=0.35+0.35*Math.sin(s.tw);
+    cx.fillStyle='rgba(140,190,255,'+a+')';
+    cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);cx.fill();});
+})();
+/* 打字机 */
+const lines=["驶向全站的任意一页……","每一张卡片都配了 AIGC 生成的封面","悬停卡片，看画面呼吸","白驹在首页等你发号施令"];
+const tp=document.getElementById('typed');let li=0,ci=0,del=false;
+(function type(){const s=lines[li];tp.textContent=s.slice(0,ci);
+  if(!del){ci++;if(ci>s.length){del=true;setTimeout(type,1700);return}}
+  else{ci--;if(ci<0){del=false;li=(li+1)%lines.length;ci=0}}
+  setTimeout(type,del?24:64)})();
+/* 入场 */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.08});
+document.querySelectorAll('.card,.group').forEach(el=>{el.classList.add('reveal');io.observe(el);});
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

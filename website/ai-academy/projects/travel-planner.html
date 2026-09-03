@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="AI 学院,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content=" TravelPlanner 行程规划师  白驹 · 全局大脑 · AI 学院 毕业设计 15 号  2026-08-22  难度：进阶  约 6 小时 出行 15 号毕业设计：TravelPlanne…">
+<meta property="og:title" content="TravelPlanner 行程规划师 · AI 学院毕业设计 · 白驹全局大脑">
+<meta property="og:description" content="AI 学院毕业设计项目：多约束行程编排、景点推荐与实时调整的旅行 Agent">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>TravelPlanner 行程规划师 · AI 学院 · 白驹全局大脑</title>
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-academy/projects/travel-planner.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-academy/projects/travel-planner.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TravelPlanner 行程规划师 · AI 学院 · 白驹全局大脑">
+<meta name="twitter:description" content=" TravelPlanner 行程规划师  白驹 · 全局大脑 · AI 学院 毕业设计 15 号  2026-08-22  难度：进阶  约 6 小时 出行 15 号毕业设计：TravelPlanne…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud">
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../../ai-academy-projects.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 项目库</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../../assets/pg/pg-website-ai-academy-projects-travel-planner.png" alt="TravelPlanner 行程规划师 · AI 学院 · 白驹全局大脑" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<h1><i class="cc-ic" data-ic="plane" aria-hidden="true"></i>TravelPlanner 行程规划师</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · AI 学院 毕业设计 15 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-22</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">出行</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>15 号毕业设计：TravelPlanner 行程规划师</h1>
+
+<p>本项目解决传统旅行规划需跨平台查攻略、拼交通、算预算且遇突发情况难调整的痛点，带你从零搭建多约束旅行Agent，掌握工具调用、约束求解、ReAct推理等工程化能力，可直接落地为实用出行工具。</p>
+<h2>项目简介</h2>
+<p>TravelPlanner 行程规划师是面向个人出行场景的垂直领域 Agent 应用，基于大模型推理能力整合多源出行数据，支持在时间、预算、出行人数、偏好标签等多重约束下自动生成可执行的每日行程，同时可根据实时交通、天气、景点临时关闭等事件动态调整方案。项目从真实出行需求出发，覆盖从用户意图解析、多工具信息检索、约束满足编排到行程可视化输出的全链路，所有组件均采用开源可部署方案，无需依赖付费闭源生态即可完整复现。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="../../../assets/body/bb-travel-planner.png" alt="TravelPlanner 行程规划师 · AI 学院 · 白驹全局大脑 · 功能特性" loading="lazy"></figure>
+
+<ul>
+<li>多约束行程编排：支持输入出行日期、总预算、同行人群（亲子/情侣/独自）、步行耐受度、偏好标签（人文/自然/美食）等8类约束，自动生成小时级 granularity 的每日行程，自动规避跨城通勤时间冲突</li>
+<li>多源景点/餐饮推荐：对接高德开放平台POI、大众点评公开评分、小红书热门标签数据，基于用户偏好做混合召回，自动过滤评分低于4.2、近期有差评预警的点位</li>
+<li>实时行程调整：接入和风天气实时API、12306余票/延误信息、景点临时闭园通知，遇到突发情况自动生成替代方案并同步更新全链路时间、预算变动</li>
+<li>预算自动核算：分交通、住宿、门票、餐饮、伴手礼5个类目实时统计花费，超预算时自动给出高性价比替换选项（如将收费景点替换为同类型免费点位）</li>
+<li>行程导出分享：支持生成Markdown格式行程单、高德地图可导入的路书KML文件，可直接分享给同行人协同编辑</li>
+<li>自然语言交互：支持用户用口语化指令调整行程（如“把第三天的爬山换成室内展馆”“预算砍20%”），无需重新填写表单</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>大模型推理层</td><td>Qwen2-7B-Instruct（本地部署）/ GPT-3.5-turbo（云端可选）</td><td>负责意图解析、约束抽取、行程推理、自然语言交互</td></tr>
+<tr><td>Agent框架</td><td>LangChain v0.2 + LangGraph</td><td>实现ReAct推理循环、工具调用编排、多轮对话状态管理</td></tr>
+<tr><td>约束求解模块</td><td>Google OR-Tools</td><td>解决时间窗口、路径最短、预算上限等多约束组合优化问题，避免大模型生成逻辑冲突的行程</td></tr>
+<tr><td>工具层</td><td>高德地图Web服务API、和风天气API、12306非官方查询接口、Chroma向量数据库</td><td>提供POI检索、路径规划、天气查询、余票查询、本地攻略知识库检索能力</td></tr>
+<tr><td>前端层</td><td>Streamlit</td><td>快速搭建可交互Web界面，支持行程可视化、参数调整、文件导出</td></tr>
+<tr><td>数据存储</td><td>SQLite</td><td>存储用户历史行程、POI缓存数据，减少重复API调用</td></tr>
+</tbody>
+</table>
+<p>架构说明：整体采用分层设计，用户输入首先进入大模型推理层做意图识别与约束抽取，结构化参数传入约束求解模块做初始行程框架生成，再由Agent循环调用工具层接口填充点位、交通、天气等实时数据，生成的初步行程经冲突校验（如景点开放时间、通勤时长）后返回前端，若用户触发调整或系统检测到实时事件变动，则重新进入推理循环做局部更新，所有外部API返回结果均做24小时缓存以降低调用成本。</p>
+<h2>核心代码骨架</h2>
+<pre><code># 核心模块1：多约束行程编排主逻辑（langgraph节点定义）
+from langgraph.graph import StateGraph, END
+from ortools.constraint_solver import pywrapcp
+from tools import amap_poi_search, weather_query, route_plan
+
+class TravelState(TypedDict):
+    user_constraints: dict  # 解析后的用户约束：时间、预算、偏好等
+    poi_candidates: list   # 候选景点/餐饮列表
+    schedule: list         # 最终行程
+    budget_calc: dict      # 预算统计
+    error_msg: str
+
+def constraint_extract_node(state: TravelState, llm):
+    """节点1：从用户自然语言输入中抽取结构化约束"""
+    prompt = f"从以下用户需求抽取出行约束，输出JSON：{state['user_input']}"
+    state["user_constraints"] = llm.invoke(prompt, response_format="json")
+    return state
+
+def poi_recall_node(state: TravelState):
+    """节点2：基于约束召回候选POI，过滤低评分点位"""
+    pois = amap_poi_search(city=state["user_constraints"]["city"],
+                          tags=state["user_constraints"]["prefer_tags"],
+                          radius=3000)  # 优先召回住宿点3公里范围内点位
+    state["poi_candidates"] = [p for p in pois if p["score"] &gt;= 4.2]
+    return state
+
+def schedule_solve_node(state: TravelState):
+    """节点3：用OR-Tools求解满足时间、预算、路径约束的最优行程"""
+    solver = pywrapcp.Solver("travel_schedule")
+    # 定义决策变量：每个时间段选择的POI、通勤方式
+    # 添加约束：单日步行距离&lt;8km、总花费&lt;预算上限、点位开放时间匹配
+    # 优化目标：总通勤时间最短、偏好标签匹配度最高
+    state["schedule"] = solver.SolveAndReturnSolution()
+    state["budget_calc"] = calc_total_cost(state["schedule"])
+    return state
+
+# 构建LangGraph工作流
+workflow = StateGraph(TravelState)
+workflow.add_node("constraint_extract", constraint_extract_node)
+workflow.add_node("poi_recall", poi_recall_node)
+workflow.add_node("schedule_solve", schedule_solve_node)
+workflow.set_entry_point("constraint_extract")
+workflow.add_edge("constraint_extract", "poi_recall")
+workflow.add_edge("poi_recall", "schedule_solve")
+workflow.add_edge("schedule_solve", END)
+app = workflow.compile()</code></pre>
+<pre><code># 核心模块2：实时行程调整触发逻辑
+def realtime_monitor(schedule):
+    """后台线程监控实时事件，触发行程调整"""
+    for day in schedule:
+        for point in day["points"]:
+            # 检查天气：若遇暴雨则替换室外点位
+            weather = weather_query(point["location"], point["time"])
+            if weather["rainfall"] &gt; 10 and point["type"] == "outdoor":
+                trigger_adjust(point, reason="暴雨预警", replace_type="indoor")
+            # 检查交通：若通勤路线拥堵时长超30分钟则替换路线
+            route = route_plan(point["from"], point["to"], point["depart_time"])
+            if route["duration"] &gt; point["reserved_time"] * 1.5:
+                trigger_adjust(point, reason="交通拥堵", reroute=True)</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：安装Python 3.10+，创建虚拟环境并安装依赖：<code>pip install langchain==0.2.11 langgraph==0.1.1 ortools==9.10.4067 streamlit==1.37.0 chromadb==0.5.3 requests python-dotenv</code></li>
+<li>申请API密钥：分别注册高德开放平台、和风天气开发者账号，获取Web服务API Key，本地新建<code>.env</code>文件写入<code>AMAP_KEY=你的密钥</code>、<code>WEATHER_KEY=你的密钥</code></li>
+<li>初始化本地缓存：运行<code>python init_db.py</code>，自动创建SQLite缓存库并导入热门城市TOP200景点基础数据（项目仓库自带data/poi_base.json种子数据）</li>
+<li>配置大模型：若使用本地Qwen2-7B，先启动Ollama服务并执行<code>ollama run qwen2:7b-instruct</code>；若使用云端GPT，在<code>.env</code>中追加<code>OPENAI_API_KEY=你的密钥</code>即可自动切换</li>
+<li>启动应用：在项目根目录执行<code>streamlit run app.py --server.port 8501</code>，浏览器访问<code>http://localhost:8501</code>即可进入交互界面</li>
+<li>功能验证：在输入框输入“国庆3天和朋友去杭州，预算2000/人，喜欢自然风景和本地美食，不要太赶”，等待3-5秒即可生成完整行程，可点击“实时检查”按钮触发天气/交通校验</li>
+<li>导出测试：生成行程后点击“导出KML路书”，验证文件可正常导入高德地图APP查看路线</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>多模态行程生成：接入Stable Diffusion文生图模型，为每个景点自动生成打卡攻略配图，同时支持用户上传旅行参考图，识别图中景点风格后匹配相似点位</li>
+<li>社交协同功能：加入多人协同编辑模块，支持同行人通过链接共同调整行程，自动合并多人偏好冲突（如有人想逛博物馆有人想逛街时，自动拆分半日自由活动时间）</li>
+<li>行程记忆模块：对接用户历史旅行记录，基于过往出行偏好（如常住酒店品牌、常选餐饮口味）做个性化推荐，避免重复推荐去过的点位</li>
+<li>端侧部署适配：将模型压缩为Qwen2-1.8B量化版本，适配手机端部署，无需云端服务即可在离线状态下生成基础行程，适合境外无网络场景使用</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握垂直领域Agent的全链路搭建方法，理解LangGraph状态管理、工具调用的工程实现逻辑，能够独立完成从需求拆解到可交互应用的落地</li>
+<li>学会大模型与传统约束求解工具的结合方案，解决纯大模型生成结构化内容时易出现逻辑冲突、约束不满足的问题，提升输出可靠性</li>
+<li>掌握外部API对接、缓存优化、实时事件触发等工程技巧，能够将Demo级应用优化为可稳定运行的实用工具</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>替换现有POI检索工具，接入小红书公开笔记爬取模块（基于Playwright），将近期热门打卡点加入候选池，要求实现“近3个月笔记提及量>100”的过滤规则</li>
+<li>新增预算超支调整节点，当核算总预算超过用户设定值时，自动按“交通>住宿>门票>餐饮”的优先级替换高消费选项，最终预算误差控制在5%以内</li>
+</ol>
+
+
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:12px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 AI 学院「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+
+</article>
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

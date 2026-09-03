@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="DeepSeek Harness,插件化智能体运行时实战  · AI 学院,AI 学院,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content="什么是 DeepSeek Harness DeepSeek Harness 是深度求索团队于 2026-08-13 开源的 v0.1 开发者预览版智能体运行时框架，采用 MIT 开源协议，官方 GitHub 仓库可查（信…">
+<meta property="og:title" content="DeepSeek Harness：插件化智能体运行时实战 · AI 学院 · 白驹全局大脑">
+<meta property="og:description" content="AI 学院第28章 · Model + Harness = Agent：全栈插件化 Agent 运行时框架、四种模式与插件开发">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>DeepSeek Harness：插件化智能体运行时实战 · AI 学院 · 白驹全局大脑</title>
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-academy/chapter-28.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-academy/chapter-28.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek Harness：插件化智能体运行时实战 · AI 学院 · 白驹全局大脑">
+<meta name="twitter:description" content="DeepSeek Harness：插件化智能体运行时实战  白驹 · 全局大脑 · AI 学院 第28章  2026-08-28  60 分钟 教程  AI 生成 · 以官方为准 AI 学院 · 第 28 …">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud">
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../../website/ai-academy.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 学院首页</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-website-ai-academy-chapter-28.png" alt="DeepSeek Harness：插件化智能体运行时实战 · AI 学院 · 白驹全局大脑" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<h1>DeepSeek Harness：插件化智能体运行时实战</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · AI 学院 第28章</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-28</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>60 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="第28章 DeepSeek Harness：插件化智能体运行时实战" style="width:100%;height:auto;border-radius:16px;margin:0 0 22px;box-shadow:0 10px 28px rgba(31,45,77,.15)">
+  <defs>
+    <linearGradient id="covGrad28" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f8cff"/><stop offset=".5" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#covGrad28)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.10)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.07)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.06)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">AI 学院 · 第 28 章 · 每日新增</text>
+  <text x="56" y="142" font-size="46" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">DeepSeek Harness：插件化智能体运行时实战</text>
+  <text x="56" y="184" font-size="19" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">Model + Harness = Agent：全栈插件化 Agent 运行时框架、四种模式与插件开发</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)"></text>
+</svg>
+<h1>第28章 DeepSeek Harness：插件化智能体运行时实战</h1>
+
+<p>本章将带你掌握 DeepSeek Harness 这一开源智能体运行时的核心逻辑与实战用法，学完后你可独立完成多工具调度任务、接入任意主流大模型、开发自定义技能插件，搭建可落地的本地智能体工作流，无需从零搭建Agent 执行链路。</p>
+<h2>什么是 DeepSeek Harness</h2>
+<p>DeepSeek Harness 是深度求索团队于 2026-08-13 开源的 v0.1 开发者预览版智能体运行时框架，采用 MIT 开源协议，官方 GitHub 仓库可查（信息请以官方最新发布为准）。官方明确给出核心公式：<strong>Model + Harness = Agent</strong>，它本身不包含任何大模型权重，定位是连接大模型与真实环境的中介执行层，负责把模型输出的推理决策转化为可落地的真实动作。</p>
+<p>和模型本身的推理能力不同，Harness 解决的是“模型想做但做不了”的问题：比如模型判断需要读取本地文件、执行Python代码、检索网页信息，这些动作本身无法由模型直接完成，必须由运行时层调度对应能力执行后，再把结果返回给模型继续推理。你可以通过官方仓库的 README 查看完整定位说明，运行<code>git clone https://github.com/deepseek-ai/DeepSeek-Harness.git</code>即可拉取官方源码核验。</p>
+<h2>为什么需要独立的智能体执行层</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-chapter-28.png" alt="DeepSeek Harness：插件化智能体运行时实战 · AI 学院 · 白 · 为什么需要独立的智能体执行层" loading="lazy"></figure>
+
+<p>大模型本身仅具备文本推理与生成能力，所有涉及与真实世界交互的动作——包括本地文件读写、代码沙箱执行、公网网页检索、多工具串行/并行调度、会话状态持久化——都无法通过模型API直接完成，必须由专门的执行层负责动作落地、结果校验、异常处理，否则Agent只能停留在“文本输出”阶段，无法完成真实任务。</p>
+<p>当前AI Agent生态有三类核心组件，定位差异明确可互补：</p>
+<ul>
+<li>编排层（如LangGraph、LlamaIndex Workflows）：负责定义任务的节点流转逻辑、分支判断规则，偏向工作流的顶层设计</li>
+<li>协议层（如MCP模型上下文协议）：负责定义工具调用的统一数据格式、通信标准，解决不同工具与模型的兼容性问题</li>
+<li>执行层（如DeepSeek Harness、Claude Code内置运行时）：负责实际承接模型/编排层的指令，在隔离环境中执行真实动作、返回结构化结果</li>
+</ul>
+<p>三者并非替代关系：你可以用LangGraph定义复杂业务工作流，通过MCP协议接入第三方工具，最终用DeepSeek Harness作为底层执行器跑通全链路。验证方式：可分别查阅三类项目的官方文档定位说明，对比功能边界。</p>
+<h2>核心架构：一切皆插件</h2>
+<p>DeepSeek Harness 基于成熟的 Cordis 插件系统构建，核心设计原则是“一切皆插件”：框架核心仅保留插件加载、事件总线、服务容器三个最小能力，所有业务能力全部以插件形式存在，可通过配置层自由组合、按需加载，无需修改核心源码。</p>
+<p>目前官方定义的可插拔能力覆盖Agent运行全链路：</p>
+<table>
+<thead><tr><th>插件类型</th><th>核心能力</th><th>官方默认插件示例</th></tr></thead>
+<tbody>
+<tr><td>模型插件</td><td>对接不同大模型提供方的API</td><td>deepseek、openai、anthropic</td></tr>
+<tr><td>工具插件</td><td>提供可被模型调用的原子能力</td><td>file_reader、code_runner、web_search</td></tr>
+<tr><td>技能插件</td><td>封装特定领域的多步工作流</td><td>repo_analyze、batch_file_rename</td></tr>
+<tr><td>沙箱插件</td><td>提供代码/命令执行的隔离环境</td><td>local_sandbox、docker_sandbox</td></tr>
+<tr><td>存储插件</td><td>会话历史、插件配置的持久化</td><td>sqlite_storage、json_storage</td></tr>
+<tr><td>UI插件</td><td>提供不同形态的交互入口</td><td>cli、web_console</td></tr>
+</tbody>
+</table>
+<p>所有插件通过服务注册与事件总线协作：比如模型插件输出工具调用指令后，会触发<code>tool.call</code>事件，调度器插件匹配到对应工具插件后，调用沙箱插件执行动作，执行完成后触发<code>tool.result</code>事件返回给模型插件，全程无硬编码依赖。验证方式：拉取源码后查看<code>src/core</code>与<code>src/plugins</code>目录结构，核心代码量不足1000行，其余全部为插件实现。</p>
+<h2>四种运行模式与选型逻辑</h2>
+<p>DeepSeek Harness 提供四种预设运行模式，覆盖从简单命令行任务到复杂插件开发的全场景，用户可根据任务复杂度直接选型，无需手动逐个配置插件组合。</p>
+<p>四种模式的适用场景与核心配置如下：</p>
+<ul>
+<li><strong>标准模式</strong>：加载完整默认插件组合（模型、文件工具、代码执行、网页检索、CLI交互），适合日常通用任务，比如分析本地代码库、整理文档、处理表格数据，是最常用的默认模式</li>
+<li><strong>PTC（Programmatic Tool Call）程序化工具调用模式</strong>：关闭自然语言交互入口，直接接收结构化的工具调用指令，支持多步工具的串行/并行编排、异常重试、结果校验，适合对接上层工作流、嵌入业务系统做复杂自动化任务</li>
+<li><strong>极简模式</strong>：仅加载核心CLI、模型插件与1-2个指定工具，无多余依赖、启动速度小于1秒，适合快速执行单步/少步命令行任务，比如批量重命名文件、查询接口信息</li>
+<li><strong>创造模式</strong>：加载插件开发调试工具、环境检查工具、热重载能力，不加载默认业务插件，适合自定义插件开发、本地环境兼容性排查、新功能试验</li>
+</ul>
+<p>选型逻辑可简单归纳为：日常任务用标准模式、系统对接用PTC模式、快速命令用极简模式、插件开发用创造模式。验证方式：运行<code>dsh --list-modes</code>可查看本地支持的所有运行模式列表。</p>
+<h2>安装、启动与模型接入</h2>
+<p>DeepSeek Harness 提供跨平台的一键安装脚本，支持macOS、Linux、Windows WSL2环境，安装完成后通过全局<code>dsh</code>命令行入口操作，所有命令以官方README为准。</p>
+<p>官方标准安装命令如下：</p>
+<pre><code># macOS/Linux 一键安装
+curl -fsSL https://harness.deepseek.com/install.sh | bash
+# Windows PowerShell 安装
+irm https://harness.deepseek.com/install.ps1 | iex</code></pre>
+<p>安装完成后可运行<code>dsh --version</code>验证安装成功，运行<code>dsh web</code>即可启动本地Web控制台，默认端口为3845（若端口冲突可通过<code>--port</code>参数修改，以官方文档为准）。模型接入方面，官方宣称支持DeepSeek、OpenAI、Anthropic、Google、Kimi等近40家大模型提供方，你只需在首次启动时按照提示输入对应模型的API Key即可完成接入，也可通过<code>dsh config set model.provider <provider_name></code>命令切换模型，支持的模型列表可运行<code>dsh model list-providers</code>查看，具体兼容情况请以官方文档为准。</p>
+<h2>实战：极简模式下的本地代码库检索任务</h2>
+<p>我们以“统计本地DeepSeek Harness源码中所有Cordis相关的API调用次数、整理调用位置”这一真实任务为例，使用极简模式完成全流程操作，全程无需手动写代码。</p>
+<p>具体操作步骤如下：</p>
+<ol>
+<li>首先进入拉取好的DeepSeek Harness源码目录，运行以下命令启动极简模式，仅加载文件检索、代码分析工具：</li>
+</ol>
+<pre><code>    dsh run --mode minimal --plugins file_reader,code_analyzer "统计当前目录下所有.ts/.js文件中Cordis框架的API调用次数，列出每个调用的文件路径、行号与调用方法，最终输出Markdown格式的统计表格"</code></pre>
+<ol>
+<li>命令执行后，Harness会自动完成：递归遍历目录下的符合后缀的文件、读取文件内容、匹配Cordis相关API（如<code>ctx.plugin()</code>、<code>ctx.service()</code>、<code>ctx.on()</code>等）、统计结果并生成表格，全程无需人工干预。</li>
+<li>若需要把结果保存到本地文件，可直接在指令中追加要求，或运行<code>dsh run --mode minimal --plugins file_reader,code_analyzer,file_writer "上述统计任务完成后，把结果保存到当前目录的cordis-usage.md文件中"</code>。</li>
+</ol>
+<p>执行完成后你可直接打开生成的<code>cordis-usage.md</code>文件核验结果，也可运行<code>dsh history</code>查看本次任务的执行日志、每一步的工具调用记录。注意：所有命令参数请以官方最新README为准，若插件名称有调整可通过<code>dsh plugin list</code>查看本地已安装的插件列表。</p>
+<h2>插件开发入门与生态现状</h2>
+<p>DeepSeek Harness 的插件生态采用统一的<code>dsh-plugin</code>标签管理，截至v0.1预览版发布时，GitHub 上带<code>dsh-plugin</code>标签的公开仓库已有近百个，覆盖办公自动化、数据处理、科研工具、硬件控制等多个场景，具体数量请以GitHub实时搜索结果为准。</p>
+<p>官方规范的标准插件结构非常简单，无需复杂的工程配置，核心仅需两个部分：</p>
+<ol>
+<li><code>SKILL.md</code>文件：用于描述插件的能力、触发关键词、参数说明，供模型自动识别何时调用该插件</li>
+<li><code>index.ts</code>/<code>index.js</code>文件：用于注册服务、监听事件、实现具体业务逻辑</li>
+</ol>
+<p>一个最简单的“当前时间查询”插件示例代码如下：</p>
+<pre><code>// index.js 示例插件：查询当前时间
+module.exports = (ctx) =&gt; {
+  // 注册名为get_current_time的工具
+  ctx.tool.register('get_current_time', {
+    description: '获取当前系统的本地时间',
+    parameters: {},
+    run: async () =&gt; {
+      return new Date().toLocaleString('zh-CN')
+    }
+  })
+}</code></pre>
+<p>插件开发完成后，可运行<code>dsh plugin install ./your-plugin-path</code>本地安装测试，测试通过后可发布到npm仓库并打上<code>dsh-plugin</code>标签，其他用户即可通过<code>dsh plugin install <package-name></code>直接安装复用。验证方式：运行<code>dsh plugin create my-first-plugin</code>可通过官方脚手架生成标准插件模板，查看模板内的文件结构即可确认规范。</p>
+<h2>生态进展与运行时安全</h2>
+<p>根据深度求索官方公告，DeepSeek Harness 已上线国家超算互联网平台，用户可直接在超算互联网的应用市场一键部署云端Harness环境，同时官方已提供QQ Bot、企业微信机器人的官方接入插件，支持把Harness能力直接对接群聊场景，最新生态动态请以官方公告为准。</p>
+<p>智能体运行时直接对接本地环境与公网，安全是核心考量，Harness默认提供三层安全防护机制：</p>
+<ul>
+<li>最小权限原则：默认所有插件仅拥有执行自身功能所需的最小权限，比如文件读取插件默认仅能访问当前工作目录下的文件，访问上级目录需要用户手动授权</li>
+<li>沙箱隔离：默认所有代码执行、命令运行都在独立的隔离沙箱中，无法直接访问宿主机的敏感文件、网络端口，若使用Docker沙箱插件可实现进程级、文件系统级的完全隔离</li>
+<li>插件来源审查：官方插件市场的所有插件都会经过安全扫描，用户安装第三方非官方插件时会弹出明确的风险提示，要求用户确认插件所需权限后才可安装</li>
+</ul>
+<p>你可通过<code>dsh sandbox status</code>命令查看当前沙箱的运行状态、权限配置，若需要执行高风险操作可手动切换到Docker沙箱模式。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>明确DeepSeek Harness的定位：它是MIT协议开源的智能体执行层框架，本身不是大模型，核心作用是承接模型推理结果、调度工具完成真实动作，官方公式为Model + Harness = Agent</li>
+<li>掌握Harness的插件化架构：所有能力均以插件形式存在，支持四种运行模式适配不同场景，可对接近40家主流大模型提供方</li>
+<li>理解Agent生态的分层逻辑：编排层、协议层、执行层定位互补，Harness作为执行层可与LangGraph、MCP等工具无缝协作</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>按照官方安装文档完成DeepSeek Harness本地安装，接入你常用的大模型API Key，运行<code>dsh --version</code>与<code>dsh doctor</code>确认环境正常</li>
+<li>使用极简模式完成一个真实任务：批量把当前目录下所有<code>.txt</code>文件的文件名从中文改为拼音首字母格式，验证执行结果</li>
+<li>基于官方脚手架开发一个简单的自定义插件，实现“查询当前本机CPU使用率”的工具能力，本地安装后在标准模式下调用验证</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>可重点阅读DeepSeek Harness官方文档中关于PTC程序化工具调用模式的部分，尝试把Harness作为执行层对接LangGraph编排的工作流，实现一个自动化的论文数据抓取与分析Agent，具体接口规范请以官方最新文档为准。</p>
+
+
+<!-- ====== 出处声明 ====== -->
+<div class="blog-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:12px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>出处声明</b>
+  <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本文由本站 AI 创作整理，内容基于公开知识/官方资料提炼，<b>信息请以官方发布为准</b>；
+    涉及的历史事件、产品与数据均可在公开渠道查证，本站不编造来源。引用外部内容遵循其原始许可，标注出处即可。
+  </p>
+</div>
+
+</article>
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

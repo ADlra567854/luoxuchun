@@ -1,0 +1,54 @@
+# 白驹全局大脑 · AI 创作纪元 — git 忽略规则（2026-08-30 建立）
+# 原则：源码入库，可再生成的产物/部署副本/密钥一律不入库
+
+# 依赖与构建产物
+node_modules/
+package-lock.json
+dist/
+build/
+out/
+
+# 部署副本（prepare-deploy.mjs 可随时重新生成）
+deploy/
+_archive/
+
+# 密钥与本地配置（严禁入库）
+.env
+.env.local
+*.key
+*.pem
+_gh_cred.txt
+_gh_push.log
+
+# 部署平台运行时配置（环境特定）
+.edgeone/
+
+# 根目录备份压缩包（可再生成）
+/*.zip
+
+# 运行时与日志
+*.log
+*.pid
+tmp/
+.tmp/
+data/server-stats.json
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 测试产物截图
+verify-*.png
+screenshot-*.png
+
+# LLM 调用失败日志（运行时噪音，不入库）
+_fill-*.json
+
+# LLM 生成游标状态（书系/内容生成的续写位置，运行时状态不入库）
+.gen-cursor.json
+
+# 可再生成的打包产物（gen-book-pdf*.mjs 随时可重打）
+website/book/*.zip
+_tmp-*

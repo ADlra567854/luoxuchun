@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:title" content="博客目录 · 白驹全局大脑 · 深度长文">
+<meta name="description" content="白驹全局大脑博客目录：AI 创业、工具实测、学习路线、行业洞察等深度长文全部收录，共 43 篇。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>博客目录 · 白驹全局大脑</title>
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<style>
+.hero{position:relative;overflow:hidden;background:var(--hero-grad);padding:56px 24px 44px}
+.hero::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:260px;height:260px;bottom:-80px;left:-60px;border-radius:50%;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%);pointer-events:none}
+.hero .inner{position:relative;max-width:1080px;margin:0 auto;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(30px,4.5vw,52px);font-weight:900;color:#fff;margin:14px 0 12px;letter-spacing:1px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+.hero .sub{color:rgba(255,255,255,.95);font-size:15px;max-width:760px;margin:0 auto;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow)}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35)}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;flex-wrap:wrap}
+nav.top .links a{padding:9px 13px;border-radius:9px;font-size:14px;color:var(--muted);font-weight:600;white-space:nowrap;text-decoration:none}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+nav.top .theme-btn{width:38px;height:38px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer}
+section.block{max-width:1180px;margin:36px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:99px}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;transition:.2s;box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(79,140,255,.4)}
+.pcard .pico{width:40px;height:40px;border-radius:11px;background:linear-gradient(120deg,#f5c26b,#ff8c5a 50%,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 10px rgba(139,92,246,.22)}
+.pcard h4{font-size:14.5px;font-weight:800}
+.pcard p{font-size:12.5px;color:var(--muted);flex:1;line-height:1.6}
+.pcard .go{font-size:12px;font-weight:700;color:var(--blue)}
+</style>
+</head>
+<body data-theme="cloud">
+<nav class="top">
+  <div class="brand"><span class="logo">🐎</span><span class="nm">白驹 · ccowork</span></div>
+  <div class="links">
+    <a href="../index.html">💬 首页</a>
+    <a href="../website/hub.html">🌐 知识库</a>
+    <a href="../website/ai-academy.html">🎓 AI 学院</a>
+    <a href="index.html" class="cur">📝 博客</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="切换亮暗主题">🌙</button>
+  </div>
+</nav>
+<section class="hero">
+  <div class="inner">
+    <div class="badge">🐎 白驹 · 全局大脑 · 博客目录</div>
+    <h1>43 篇深度长文</h1>
+    <p class="sub">AI 创业复盘 · 工具横评实测 · 学习路线验证 · 行业应用指南 · 前沿洞察 —— 全部真实可核验，按需取读。</p>
+  </div>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">全部文章</span></h2><span class="tag">43 篇 · 持续更新</span></div>
+  <div class="proj-grid">
+    <a class="pcard" href="2026-09-03-爆款-100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型.html"><span class="pico">🧠</span><h4>100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-09-03-爆款-3个新能力反超GPT-4o？OpenAI Astra突袭上线：普通用户零成本上手.html"><span class="pico">🤖</span><h4>3个新能力反超GPT-4o？OpenAI Astra突袭上线</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-AI-创业生存指南：告别“套壳”，死磕垂直代理.html"><span class="pico">💼</span><h4>2026 AI 创业生存指南：告别“套壳”，死磕垂直代理</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="深度长文.html"><span class="pico">📘</span><h4>我用 DeepSeek 重构了整个创作流程：一篇万字长文的完</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="最新开源对话式AI项目全景与一键使用指南.html"><span class="pico">🔓</span><h4>最新开源对话式AI项目全景与一键使用指南</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="提示词工程实战.html"><span class="pico">🧭</span><h4>提示词工程实战：把 AI 用出十倍效果</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="开源AI进阶-网络安全一人公司与手机操作.html"><span class="pico">🔓</span><h4>开源AI进阶-网络安全一人公司与手机操作</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="大模型原理与Transformer.html"><span class="pico">🧠</span><h4>大模型原理与Transformer：一次看懂 AI 的大脑</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="制造业AI应用实战.html"><span class="pico">🏭</span><h4>制造业AI应用实战</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="中国AI发展史.html"><span class="pico">🤖</span><h4>中国AI发展史</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="公务员AI应用指南.html"><span class="pico">🏛</span><h4>公务员AI应用指南</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI视频制作实战.html"><span class="pico">🎬</span><h4>AI 视频制作实战：一个人做出一条视频</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI绘画从入门到精通.html"><span class="pico">🎨</span><h4>AI绘画从入门到精通</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI编程进阶实战.html"><span class="pico">👨‍💻</span><h4>AI编程进阶实战</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI未来趋势-数字物理量子新质材料.html"><span class="pico">🤖</span><h4>AI未来趋势-数字物理量子新质材料</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI时代工科学习-编程计算机数控仿真实战.html"><span class="pico">🎓</span><h4>AI时代工科学习-编程计算机数控仿真实战</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI教育应用实战.html"><span class="pico">🏫</span><h4>AI教育应用实战</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI实战全书.html"><span class="pico">🤖</span><h4>AI实战全书</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI变现实操手册.html"><span class="pico">🤖</span><h4>AI变现实操手册</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI医疗应用指南.html"><span class="pico">🏥</span><h4>AI医疗应用指南</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI创业实战指南.html"><span class="pico">💼</span><h4>AI创业实战指南</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="AI写作完全指南.html"><span class="pico">🤖</span><h4>AI写作完全指南</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="Agent智能体实战.html"><span class="pico">🐎</span><h4>Agent 智能体实战：从概念到亲手搭建</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年中AI视频创作落地观察：别追参数了，这3个方法能把变现效率拉满.html"><span class="pico">🎬</span><h4>2026年中AI视频创作落地观察：别追参数了，这3个方法能把</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年中AI视频创作落地观察：别卷参数了，这3个实操方向才是普通人的变现路径.html"><span class="pico">🎬</span><h4>2026年中AI视频创作落地观察：别卷参数了，这3个实操方向</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到落地路线.html"><span class="pico">🎓</span><h4>2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心.html"><span class="pico">💼</span><h4>2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开.html"><span class="pico">💼</span><h4>2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年8月实测：别迷信“全AI办公”，这4个落地场景才是真的省时间.html"><span class="pico">💻</span><h4>2026年8月实测：别迷信“全AI办公”，这4个落地场景才是</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年8月AI工具横评：别追概念，这4款工具真能帮你每天省2小时.html"><span class="pico">🧰</span><h4>2026年8月AI工具横评：别追概念，这4款工具真能帮你每天</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年8月AI工具横评：3类高频场景实测，避开90%的功能宣传陷阱.html"><span class="pico">🧰</span><h4>2026年8月AI工具横评：3类高频场景实测，避开90%的功</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年8月AI变现实录：别追风口了，这3个低门槛路径已经有人月入5万+.html"><span class="pico">🤖</span><h4>2026年8月AI变现实录：别追风口了，这3个低门槛路径已经</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流.html"><span class="pico">💼</span><h4>2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026.9.1-大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI.html"><span class="pico">🧠</span><h4>2026.9.1 大模型落地观察：别追参数神话，这3个技术方</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026.08.25-AI智能体现状：别再做Demo了，这3个可落地方案我跑了3个月ROI超300%.html"><span class="pico">🤖</span><h4>2026.08.25 AI智能体现状：别再做Demo了，这3</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-年-AI-视频创作实战：从提示词到导演的完整工作流.html"><span class="pico">🎬</span><h4>2026 年 AI 视频创作实战：从提示词到导演的完整工作流</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html"><span class="pico">🎓</span><h4>2026 AI 进阶实战：从模型原理到 Agent 部署的完</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-09-02-本周AI大事记-2026年9月第1周.html"><span class="pico">🤖</span><h4>本周 AI 大事记</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-09-01-爆款-3个Agent协作开源AI助手实测.html"><span class="pico">🔓</span><h4>3个Agent协作+记了30天对话不丢失，我测了刚上线的开源</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-08-31-本周AI大事记-2026年8月第5周.html"><span class="pico">🤖</span><h4>本周 AI 大事记</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-08-30-爆款-5个免费AI工具救了我大学4年：从期末3天突击80+到本科发2篇普刊，绩点从2..html"><span class="pico">🧰</span><h4>5个免费AI工具救了我大学4年：从期末3天突击80+到本科发</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-08-30-爆款-17个AI工具按场景怎么选：别再乱花钱了，真正每天用的是这6个.html"><span class="pico">🧰</span><h4>17个AI工具按场景怎么选：别再乱花钱了，真正每天用的是这6</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+    <a class="pcard" href="2026-08-28-爆款-每天加班3小时到准点走：我用3个AI工具把周工作量压到16小时，老板还以为我招了.html"><span class="pico">🧰</span><h4>每天加班3小时到准点走：我用3个AI工具把周工作量压到16小</h4><p>深度长文 · 真实可核验 · 白驹全局大脑</p><span class="go">阅读文章 →</span></a>
+  </div>
+</section>
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="logo-row"><span class="logo">🐎</span><b>白驹 · ccowork</b></div>
+      <p>博客目录：把散落的 AI 洞察装进一个大脑。</p>
+    </div>
+    <div class="foot-col"><b>入口</b><a href="../website/ai-academy.html">AI 学院</a><a href="../website/ai-academy-journey.html">成长故事曲线</a><a href="../website/ai-academy-roadmap.html">学习路线图</a></div>
+    <div class="foot-col"><b>资源</b><a href="../website/ai-academy-projects.html">毕业设计项目库</a><a href="../website/ai-academy-jobs.html">岗位地图</a><a href="../website/ai-academy-interview.html">面试题库</a></div>
+  </div>
+  <div class="foot-bar"><span>© 2026 ccowork · 白驹全局大脑</span><span>内容原创或标注出处 · 不侵犯作者权益</span></div>
+</footer>
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.textContent=next==='deep'?'☀️':'🌙';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.textContent=t==='deep'?'☀️':'🌙';});
+</script>
+</body>
+</html>

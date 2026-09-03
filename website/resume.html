@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 简历,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 简历 · AI 创作纪元">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · 简历 · AI 创作纪元</title>
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:8px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:20px;font-size:13.5px;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+.wrap{position:relative;z-index:5;max-width:1060px;margin:0 auto;padding:104px 24px 70px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,44px);letter-spacing:3px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:10px;font-size:14px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.form{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(10px)}
+.form label{display:block;font-size:12.5px;color:var(--muted);margin:14px 0 6px}
+.form input,.form textarea{width:100%;background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--text);border-radius:10px;
+  padding:11px 13px;font-size:14px;outline:none;transition:.2s;font-family:inherit;resize:vertical}
+.form input:focus,.form textarea:focus{border-color:var(--ice);box-shadow:0 0 0 3px rgba(94,234,212,.12)}
+.form .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{padding:11px 22px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:.25s;border:none;text-decoration:none;display:inline-block}
+.btn-primary{background:var(--grad);color:#03121a}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,140,255,.4)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+/* 简历预览（打印样式独立） */
+.preview{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;backdrop-filter:blur(10px)}
+.preview .empty{color:var(--dim);text-align:center;padding:60px 20px;font-size:14px}
+/* 简历模板选择 */
+.tpl-bar{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:12.5px;color:var(--dim)}
+.tpl-btn{background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 14px;font-size:12.5px;cursor:pointer;transition:.2s;font-family:inherit}
+.tpl-btn:hover{color:var(--cyan);border-color:var(--cyan)}
+.tpl-btn.on{background:var(--grad);color:#03121a;font-weight:700;border-color:transparent}
+/* 模板：科技 */
+.preview.tpl-tech{background:linear-gradient(135deg,#0a1628,#0d1b30);border:1px solid rgba(56,225,255,.35);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.preview.tpl-tech .rv .rv-name{font-family:Consolas,monospace;letter-spacing:1px;background:linear-gradient(120deg,#5eead4,#38e1ff)}
+.preview.tpl-tech .rv .rv-head{border-bottom:1px dashed rgba(56,225,255,.4)}
+.preview.tpl-tech .rv .rv-target{color:#5eead4;font-family:Consolas,monospace}
+.preview.tpl-tech .rv .rv-sec{color:#5eead4;border-bottom:1px solid rgba(56,225,255,.25);font-family:Consolas,monospace}
+.preview.tpl-tech .rv .rv-contact{color:#8fa3bd}
+/* 模板：经典 */
+.preview.tpl-classic{background:#fdfdf6;border:1px solid #d8cdb0;color:#2c2c2c;box-shadow:0 14px 40px rgba(120,100,60,.14)}
+.preview.tpl-classic .rv{color:#2c2c2c}
+.preview.tpl-classic .rv .rv-head{text-align:center;border-bottom:2px solid #8a6d3b;padding-bottom:14px}
+.preview.tpl-classic .rv .rv-name{font-family:"Source Han Serif SC","SimSun",serif;background:none;color:#8a6d3b;-webkit-background-clip:unset;background-clip:unset}
+.preview.tpl-classic .rv .rv-target{color:#8a6d3b;font-weight:600}
+.preview.tpl-classic .rv .rv-contact{color:#6b5d3f}
+.preview.tpl-classic .rv .rv-sec{color:#8a6d3b;border-bottom:1px solid #cbb98a;font-family:"Source Han Serif SC","SimSun",serif}
+.rv{color:var(--text)}
+.rv .rv-head{border-bottom:2px solid var(--grad);padding-bottom:14px;margin-bottom:16px}
+.rv .rv-name{font-family:var(--serif);font-size:30px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rv .rv-target{font-size:15px;color:var(--ice);margin-top:4px}
+.rv .rv-contact{font-size:12.5px;color:var(--muted);margin-top:6px}
+.rv h4{font-size:14px;color:var(--gold);margin:16px 0 8px;letter-spacing:1px}
+.rv p{font-size:13.5px;color:var(--text);line-height:1.8}
+.rv .rv-skills{display:flex;flex-wrap:wrap;gap:8px}
+.rv .rv-skills span{border:1px solid var(--line);background:var(--bg2);border-radius:99px;padding:3px 12px;font-size:12px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;color:var(--dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+@media print{
+  body *{visibility:hidden}
+  #printArea,#printArea *{visibility:visible}
+  #printArea{position:absolute;left:0;top:0;width:100%;background:#fff;color:#111;padding:30px}
+  .rv .rv-name{background:none;color:#111}
+  .rv .rv-contact{color:#444}
+  .rv h4{color:#b8860b}
+  .rv .rv-skills span{border-color:#ccc;color:#333}
+  .rv p,.rv{color:#111}
+}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/resume.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/resume.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 简历 · AI 创作纪元">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-resume.png" alt="ccowork · 简历 · AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<canvas id="stars"></canvas>
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="../index.html">首页</a>
+    <a href="./agent.html">智能体</a>
+    <a href="./quiz.html"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>刷题</a>
+    <a href="./resume.html" class="active"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>简历</a>
+    <a href="./voice.html"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i>语音台</a>
+    <a href="./news.html"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i>新闻</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>简历 <span>生成器</span></h1>
+    <p>填写信息 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 实时预览 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打印/导出 PDF <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 让智能体优化措辞。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  </div>
+  <div class="cols">
+    <div class="form">
+      <div class="row2">
+        <div><label>姓名</label><input id="f_name" placeholder="张三"></div>
+        <div><label>求职意向</label><input id="f_target" placeholder="AI 产品经理 / 前端开发"></div>
+      </div>
+      <div class="row2">
+        <div><label>电话</label><input id="f_phone" placeholder="138****8888"></div>
+        <div><label>邮箱</label><input id="f_email" placeholder="name@mail.com"></div>
+      </div>
+      <label>教育背景</label><input id="f_edu" placeholder="XX大学 · 计算机科学 · 2022-2026">
+      <label>技能（逗号分隔）</label><input id="f_skills" placeholder="Python, AI 工具应用, 数据分析, 英语 CET-6">
+      <label>项目/经历</label><textarea id="f_proj" rows="4" placeholder="一句话一件事：做了什么、用了什么、结果如何（可多行）"></textarea>
+      <label>自我介绍</label><textarea id="f_about" rows="3" placeholder="2-3 句话介绍自己与优势"></textarea>
+      <div class="actions">
+        <button class="btn btn-primary" id="genBtn" type="button"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i>生成简历</button>
+        <button class="btn btn-ghost" id="printBtn" type="button"><i class="cc-ic" data-ic="printer" aria-hidden="true"></i>打印 / 存 PDF</button>
+        <button class="btn btn-ghost" id="aiBtn" type="button"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI 优化建议</button>
+      </div>
+    </div>
+    <div class="preview" id="printArea">
+      <div class="tpl-bar">
+        <span>模板：</span>
+        <button class="tpl-btn on" data-tpl="" type="button"><i class="cc-ic" data-ic="minimize-2"></i> 简约</button>
+        <button class="tpl-btn" data-tpl="tech" type="button"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>科技</button>
+        <button class="tpl-btn" data-tpl="classic" type="button"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>经典</button>
+      </div>
+      <div class="empty" id="rvEmpty">填写左侧信息，点「<i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i> 生成简历」预览</div>
+      <div id="rvBox"></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div style="font-family:var(--serif);letter-spacing:3px;font-size:15px">AI 创作纪元</div>
+  <p style="margin-top:6px"><a href="../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回首页</a> · 简历生成器 · 2026</p>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var rvEmpty = document.getElementById('rvEmpty');
+  var rvBox = document.getElementById('rvBox');
+
+  // ---------- 模板切换（简约 / 科技 / 经典） ----------
+  var printArea = document.getElementById('printArea');
+  document.querySelectorAll('.tpl-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.tpl-btn').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      printArea.classList.remove('tpl-tech', 'tpl-classic');
+      if(b.dataset.tpl) printArea.classList.add('tpl-' + b.dataset.tpl);
+      try{ localStorage.setItem('ccowork.resume-tpl', b.dataset.tpl || '') }catch(e){}
+    });
+  });
+  try{
+    var savedTpl = localStorage.getItem('ccowork.resume-tpl') || '';
+    if(savedTpl){
+      printArea.classList.add('tpl-' + savedTpl);
+      document.querySelectorAll('.tpl-btn').forEach(function(x){ x.classList.toggle('on', x.dataset.tpl === savedTpl); });
+    }
+  }catch(e){}
+
+  function esc(s){ return String(s||'').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function build(){
+    var d = {
+      name: document.getElementById('f_name').value.trim() || '（姓名）',
+      target: document.getElementById('f_target').value.trim() || '求职意向',
+      phone: document.getElementById('f_phone').value.trim(),
+      email: document.getElementById('f_email').value.trim(),
+      edu: document.getElementById('f_edu').value.trim(),
+      skills: document.getElementById('f_skills').value.trim(),
+      proj: document.getElementById('f_proj').value.trim(),
+      about: document.getElementById('f_about').value.trim()
+    };
+    var contact = [d.phone, d.email].filter(Boolean).join(' · ');
+    var skillsHtml = d.skills ? '<h4>技能</h4><div class="rv-skills">' + d.skills.split(/[,，]/).map(function(s){ return '<span>'+esc(s.trim())+'</span>'; }).join('') + '</div>' : '';
+    var projHtml = d.proj ? '<h4>项目 / 经历</h4>' + d.proj.split(/\n+/).map(function(l){ return '<p>• ' + esc(l.trim()) + '</p>'; }).join('') : '';
+    var aboutHtml = d.about ? '<h4>自我介绍</h4><p>' + esc(d.about).replace(/\n/g,'<br>') + '</p>' : '';
+    rvBox.innerHTML = '<div class="rv"><div class="rv-head"><div class="rv-name">'+esc(d.name)+'</div>'
+      + '<div class="rv-target">'+esc(d.target)+'</div>'
+      + (contact ? '<div class="rv-contact">'+esc(contact)+'</div>' : '') + '</div>'
+      + (d.edu ? '<h4>教育背景</h4><p>'+esc(d.edu)+'</p>' : '')
+      + skillsHtml + projHtml + aboutHtml + '</div>';
+    rvEmpty.style.display = 'none';
+    return d;
+  }
+
+  document.getElementById('genBtn').addEventListener('click', build);
+  document.getElementById('printBtn').addEventListener('click', function(){ build(); window.print(); });
+  document.getElementById('aiBtn').addEventListener('click', function(){
+    var d = build();
+    var txt = '姓名：'+d.name+'\n意向：'+d.target+'\n教育：'+d.edu+'\n技能：'+d.skills+'\n项目：'+d.proj+'\n自我：'+d.about;
+    location.href = './agent.html?ask=' + encodeURIComponent('请帮我优化这份简历：指出薄弱点并给出改写建议（分点输出）。\n\n' + txt);
+  });
+
+  // 粒子
+  var cv=document.getElementById('stars'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;} rs(); addEventListener('resize',rs);
+  var C=['94,234,212','56,225,255','91,140,255','240,185,92'];
+  var n=Math.min(90,Math.floor(W*H/19000));
+  for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,c:C[Math.random()*4|0]});
+  (function dr(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba('+p.c+',.5)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<11000){ctx.strokeStyle='rgba('+p.c+','+(0.11*(1-d2/11000))+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}
+    }
+    requestAnimationFrame(dr);
+  })();
+})();
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["简历"], title: 'AI 简历 · 制作视频' });</script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

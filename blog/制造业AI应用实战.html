@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="一、智能质检 场景 表面缺陷检测（划痕、凹陷、色差） 尺寸测量 装配完整性检查 AI方案 图像采集 ：工业相机拍摄产品图像 AI识别 ：深度学习模型识别缺陷 自动分拣 ：NG品自动剔除 数据分析 ：缺陷类型统计，追溯工艺…">
+<meta name="keywords" content="制造业AI应用实战,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content="一、智能质检 场景 表面缺陷检测（划痕、凹陷、色差） 尺寸测量 装配完整性检查 AI方案 图像采集 ：工业相机拍摄产品图像 AI识别 ：深度学习模型识别缺陷 自动分拣 ：NG品自动剔除 数据分析 ：缺陷类型统计，追溯工艺…"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>制造业AI应用实战 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html">
+<meta property="og:title" content="制造业AI应用实战 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="制造业AI应用实战 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content="一、智能质检 场景 表面缺陷检测（划痕、凹陷、色差） 尺寸测量 装配完整性检查 AI方案 图像采集 ：工业相机拍摄产品图像 AI识别 ：深度学习模型识别缺陷 自动分拣 ：NG品自动剔除 数据分析 ：缺陷类型统计，追溯工艺…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"制造业AI应用实战 · AI 创作纪元（离线版）","description":"一、智能质检 场景 表面缺陷检测（划痕、凹陷、色差） 尺寸测量 装配完整性检查 AI方案 图像采集 ：工业相机拍摄产品图像 AI识别 ：深度学习模型识别缺陷 自动分拣 ：NG品自动剔除 数据分析 ：缺陷类型统计，追溯工艺…","url":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html"},"image":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/assets/img/og-cover.png","datePublished":"2026-08-30","author":{"@type":"Organization","name":"白驹全局大脑"},"publisher":{"@type":"Organization","name":"白驹全局大脑"}}</script>
+</head>
+<body><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/cover-制造业AI应用实战.png" alt="制造业AI应用实战" style="width:100%;border-radius:16px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../index.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="制造业AI应用实战" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹全局大脑 · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">制造业AI应用实战</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹全局大脑 · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)"></text>
+</svg>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · AI 创作纪元</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>10 分钟</span><span class="blog-tag">AI 创作</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>制造业AI应用实战</h1>
+<blockquote>
+<p>制造业是AI落地的主战场。从质检到预测性维护，从供应链优化到智能排产，AI正在重塑制造的每个环节。</p>
+</blockquote>
+<hr>
+<h2>一、智能质检</h2>
+<h3>场景</h3>
+<ul>
+<li>表面缺陷检测（划痕、凹陷、色差）</li>
+<li>尺寸测量</li>
+<li>装配完整性检查</li>
+</ul>
+<h3>AI方案</h3>
+<ol>
+<li><strong>图像采集</strong>：工业相机拍摄产品图像</li>
+<li><strong>AI识别</strong>：深度学习模型识别缺陷</li>
+<li><strong>自动分拣</strong>：NG品自动剔除</li>
+<li><strong>数据分析</strong>：缺陷类型统计，追溯工艺问题</li>
+</ol>
+<h3>效果</h3>
+<ul>
+<li>检测速度：从人工30秒/件提升到AI 0.1秒/件</li>
+<li>准确率：从人工85%提升到AI 99.5%+</li>
+<li>一致性：AI不会疲劳，24小时稳定工作</li>
+</ul>
+<hr>
+<h2>二、预测性维护</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-制造业AI应用实战.png" alt="制造业AI应用实战 · AI 创作纪元（离线版） · 二、预测性维护" loading="lazy"></figure>
+
+<h3>场景</h3>
+<p>设备突发故障导致停产，损失巨大。</p>
+<h3>AI方案</h3>
+<ol>
+<li><strong>数据采集</strong>：振动、温度、电流等传感器数据</li>
+<li><strong>特征提取</strong>：AI识别异常模式</li>
+<li><strong>故障预测</strong>：提前数天/数周预警</li>
+<li><strong>维护建议</strong>：推荐维护时间和备件</li>
+</ol>
+<h3>效果</h3>
+<ul>
+<li>非计划停机减少50-70%</li>
+<li>维护成本降低20-30%</li>
+<li>设备寿命延长10-20%</li>
+</ul>
+<hr>
+<h2>三、智能排产</h2>
+<h3>场景</h3>
+<p>多品种、小批量、交期紧，人工排产困难。</p>
+<h3>AI方案</h3>
+<ol>
+<li><strong>输入</strong>：订单、产能、物料、设备状态</li>
+<li><strong>优化</strong>：AI算法生成最优排产方案</li>
+<li><strong>动态调整</strong>：插单、设备故障时自动重排</li>
+<li><strong>可视化</strong>：甘特图展示，一目了然</li>
+</ol>
+<h3>效果</h3>
+<ul>
+<li>排产时间从数小时缩短到几分钟</li>
+<li>设备利用率提升10-20%</li>
+<li>交期达成率提升15-30%</li>
+</ul>
+<hr>
+<h2>四、供应链优化</h2>
+<h3>1. 需求预测</h3>
+<p><strong>AI应用</strong>：</p>
+<ul>
+<li>分析历史销售数据、市场趋势、季节因素</li>
+<li>预测未来需求，优化库存</li>
+<li>减少缺货和积压</li>
+</ul>
+<h3>2. 智能采购</h3>
+<p><strong>AI应用</strong>：</p>
+<ul>
+<li>自动比价，推荐最优供应商</li>
+<li>预测原材料价格波动</li>
+<li>优化采购时机和批量</li>
+</ul>
+<h3>3. 物流优化</h3>
+<p><strong>AI应用</strong>：</p>
+<ul>
+<li>路径规划，降低运输成本</li>
+<li>装载优化，提高车辆利用率</li>
+<li>实时追踪，异常预警</li>
+</ul>
+<hr>
+<h2>五、工艺优化</h2>
+<h3>1. 参数调优</h3>
+<p><strong>场景</strong>：注塑、焊接、涂装等工艺参数优化</p>
+<p><strong>AI方案</strong>：</p>
+<ul>
+<li>输入历史工艺数据和质量数据</li>
+<li>AI找出最优参数组合</li>
+<li>实时调整，稳定质量</li>
+</ul>
+<h3>2. 能耗优化</h3>
+<p><strong>AI方案</strong>：</p>
+<ul>
+<li>分析设备能耗数据</li>
+<li>AI识别节能机会</li>
+<li>优化设备运行策略</li>
+</ul>
+<hr>
+<h2>六、数字孪生</h2>
+<h3>概念</h3>
+<p>物理工厂的虚拟映射，实时同步。</p>
+<h3>AI应用</h3>
+<ol>
+<li><strong>仿真优化</strong>：在虚拟环境中测试新工艺，不影响实际生产</li>
+<li><strong>预测分析</strong>：基于实时数据预测未来状态</li>
+<li><strong>远程运维</strong>：专家远程诊断，AR辅助维修</li>
+</ol>
+<hr>
+<h2>七、实施路径</h2>
+<h3>第一步：数据准备</h3>
+<ul>
+<li>评估现有数据（设备数据、质量数据、ERP数据）</li>
+<li>补齐传感器和数据采集系统</li>
+<li>数据清洗和标注</li>
+</ul>
+<h3>第二步：单点试点</h3>
+<ul>
+<li>选择一个痛点场景（如质检）</li>
+<li>小范围试点，验证效果</li>
+<li>积累经验，培养团队</li>
+</ul>
+<h3>第三步：规模推广</h3>
+<ul>
+<li>复制成功经验到其他产线</li>
+<li>建设AI中台，统一管理</li>
+<li>持续优化，迭代升级</li>
+</ul>
+<hr>
+<h2>八、注意事项</h2>
+<ol>
+<li><strong>数据质量</strong>：AI的效果取决于数据质量，垃圾进垃圾出</li>
+<li><strong>场景选择</strong>：优先选择数据充足、规则明确、价值高的场景</li>
+<li><strong>人才储备</strong>：培养既懂制造又懂AI的复合型人才</li>
+<li><strong>渐进推进</strong>：不要追求一步到位，小步快跑</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>核心理念</strong>：制造业AI不是「机器换人」，而是「人机协作」——AI处理重复和计算，人专注创新和决策。</p>
+</blockquote>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="大模型原理与Transformer.html" style="color:var(--gold);font-weight:700;text-decoration:none">大模型原理与Transformer：</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>博客目录</a>
+  <span style="font-size:13px"><a href="提示词工程实战.html" style="color:var(--gold);font-weight:700;text-decoration:none">提示词工程实战：把 AI 用出十倍效</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8"><i class="cc-ic" data-ic="pin" aria-hidden="true"></i>出处声明：本页内容为白驹全局大脑原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body></html>

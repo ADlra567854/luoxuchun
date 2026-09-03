@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="技能库：全量盘点 WorkBuddy 已安装的 1000+ 技能与插件，按 10 大分类梳理，搜索即得。这是白驹主站升级的能力弹药库。">
+<meta name="keywords" content="技能库,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="技能库 · 白驹全局大脑 · 1000+ 能力弹药库">
+<meta name="description" content="技能库：全量盘点 WorkBuddy 已安装的 1000+ 技能与插件，按 10 大分类梳理，搜索即得。这是白驹主站升级的能力弹药库。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/site-industrial.css">
+<title>技能库 · 白驹全局大脑 · 1000+ 能力弹药库</title>
+<style>
+:root{
+  --nav-bg:rgba(255,255,255,.82); --nav-line:rgba(227,235,245,.95);
+  --nav-shadow:0 2px 16px rgba(31,45,77,.07);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+}
+body[data-theme="deep"]{
+  --nav-bg:rgba(8,5,28,.70); --nav-line:rgba(255,255,255,.08);
+  --nav-shadow:0 2px 16px rgba(0,0,0,.35);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#8b5cf6,#38e1ff 55%,#e879fa);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+
+/* 导航 */
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:9px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+nav.top .cta{padding:10px 20px;border:none;border-radius:99px;background:var(--grad);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.30);transition:.2s;white-space:nowrap}
+nav.top .cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.42)}
+.burger{display:none}
+
+/* Hero */
+#gate{position:relative;overflow:hidden;background:var(--hero-grad);transition:background .35s ease}
+#gate::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+body[data-theme="deep"] #gate::before{background:radial-gradient(circle,rgba(34,225,255,.5),transparent 70%)}
+#gate .inner{position:relative;max-width:1080px;margin:0 auto;padding:56px 20px 44px;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:99px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+#gate h1{font-size:clamp(32px,4.8vw,54px);font-weight:900;letter-spacing:1px;color:#fff;line-height:1.25;margin-top:14px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+#gate .sub{color:rgba(255,255,255,.95);font-size:15px;margin:14px auto 0;max-width:760px;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+
+/* 统计条 */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:26px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center;box-shadow:var(--card-shadow)}
+.stat b{display:block;font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12.5px;color:var(--muted)}
+
+/* 搜索 */
+.searchbar{position:sticky;top:64px;z-index:30;background:var(--bg);padding:14px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.searchbar input{flex:1;min-width:220px;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:14.5px;outline:none;transition:.18s}
+.searchbar input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,140,255,.12)}
+.searchbar input::placeholder{color:var(--muted)}
+.cat-chips{display:flex;gap:6px;flex-wrap:wrap}
+.cat-chips button{padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:12.5px;font-weight:700;cursor:pointer;transition:.16s;white-space:nowrap}
+.cat-chips button:hover{color:var(--blue);border-color:var(--blue)}
+.cat-chips button.on{background:var(--grad);color:#fff;border-color:transparent}
+
+/* 技能网格 */
+.wrap{max-width:1120px;margin:0 auto;padding:10px 20px 60px}
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:18px}
+.sk{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:.18s;cursor:default}
+.sk:hover{border-color:var(--blue);box-shadow:var(--card-shadow-h);transform:translateY(-2px)}
+.sk b{font-size:14px;display:flex;align-items:center;gap:6px}
+.sk b::before{content:"";font-size:12px;opacity:.6}
+.sk p{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sk .tag{display:inline-block;margin-top:8px;font-size:10.5px;font-weight:800;color:var(--blue);background:var(--chip-bg);border:1px solid var(--chip-line);padding:2px 8px;border-radius:99px}
+.empty{grid-column:1/-1;text-align:center;padding:50px 0;color:var(--muted)}
+.res-bar{display:flex;justify-content:space-between;align-items:center;margin-top:18px;font-size:13px;color:var(--muted)}
+.res-bar b{color:var(--blue);font-size:16px}
+
+/* 说明 */
+.howto{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.howto .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.howto .card b{font-size:15px;display:flex;gap:8px;align-items:center}
+.howto .card p{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.7}
+
+@media(max-width:760px){
+  nav.top{flex-wrap:wrap;height:auto;padding:10px 16px;gap:10px}
+  nav.top .links{order:3;width:100%;margin-left:0}
+  .burger{display:block;background:none;border:none;font-size:20px;color:var(--text);cursor:pointer}
+  nav.top .links{display:none}
+  nav.top .links.open{display:flex}
+  .searchbar{position:static}
+}
+</style>
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/skill-hub.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/skill-hub.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="技能库 · 白驹全局大脑 · 1000+ 能力弹药库">
+<meta name="twitter:description" content="技能库：全量盘点 WorkBuddy 已安装的 1000+ 技能与插件，按 10 大分类梳理，搜索即得。这是白驹主站升级的能力弹药库。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-skill-hub.png" alt="技能库 · 白驹全局大脑 · 1000+ 能力弹药库" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+<!-- 总站导航 -->
+<nav class="top">
+  <a class="brand" href="/index.html"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><span class="nm">白驹 · ccowork</span></a>
+  <button class="burger" onclick="document.querySelector('.top .links').classList.toggle('open')"><i class="cc-ic" data-ic="menu"></i></button>
+  <div class="links">
+    <a href="/index.html"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>对话</a>
+    <a href="/website/workstation.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>工作站</a>
+    <a href="/website/tech-museum.html"><i class="cc-ic" data-ic="telescope"></i> 科技馆</a>
+    <a href="/website/ai-build-hall.html"><i class="cc-ic" data-ic="hard-hat"></i> AI 建造</a>
+    <a href="/website/map-guide.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图指引</a>
+    <a href="/website/skill-hub.html" class="cur"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>技能库</a>
+    <a href="/website/ai-academy.html"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 学院</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="切换亮暗主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+    <a class="cta" href="/website/map-guide.html"><i class="cc-ic" data-ic="map"></i> 去地图指引</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="gate">
+  <div class="inner">
+    <div class="badge"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>技能库 · 白驹主站升级的能力弹药库</div>
+    <h1>1000+ 技能 · 全部盘点<br><span style="background:linear-gradient(120deg,#fff,#d6e9ff);-webkit-background-clip:text;background-clip:text;color:transparent">搜索即得 · 随叫随用</span></h1>
+    <p class="sub">本页是对 WorkBuddy 已安装全部技能 / 插件 / 连接器的一次全量盘点与知识点梳理 —— 它们是升级白驹主站（工作台）的弹药库：文档、设计、数据、金融、开发、AI 工程、多模态、腾讯生态……一个入口全掌握。</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b id="stTotal">0</b><span>技能总数</span></div>
+    <div class="stat"><b id="stCat">0</b><span>能力分类</span></div>
+    <div class="stat"><b id="stTop">0</b><span>最大分类：设计与前端</span></div>
+    <div class="stat"><b><i class="cc-mark" aria-hidden="true"></i></b><span>白驹全局大脑</span></div>
+  </div>
+
+  <div class="searchbar">
+    <input id="q" type="text" placeholder=" 搜索技能，如：pdf / RAG / 数据分析 / 微信小程序…" autocomplete="off">
+    <div class="cat-chips" id="chips"></div>
+  </div>
+  <div class="res-bar"><span>共 <b id="resCount">0</b> 个技能</span><span id="curCat">全部</span></div>
+  <div class="sk-grid" id="grid"></div>
+
+  <h2 style="font-size:20px;font-weight:900;margin:44px 0 4px"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>这些技能怎么用？</h2>
+  <p style="color:var(--muted);font-size:13.5px;margin-bottom:16px">技能不是摆着看的 —— 你说一句需求，小驭自动加载对应技能、按里面验证过的流程干活。</p>
+  <div class="howto">
+    <div class="card"><b><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>文档办公（101）</b><p>docx / pptx / xlsx / pdf / 腾讯文档 —— 直接产出 Word 报告、PPT、真表格、PDF。</p></div>
+    <div class="card"><b><i class="cc-ic" data-ic="palette" aria-hidden="true"></i>设计与前端（199）</b><p>frontend-design / ui-design / 主题引擎 —— 快速出高质量页面，跟设计稿对接。</p></div>
+    <div class="card"><b><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>数据分析（119）</b><p>SQL / 可视化 / 看板 / 统计 —— 数据清洗、分析、图表一把梭。</p></div>
+    <div class="card"><b><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI 与模型（88）</b><p>RAG / 提示词 / Agent / 评估 —— 搭知识库、调智能体的方法论全套。</p></div>
+    <div class="card"><b><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>开发工程（86）</b><p>API / 部署 / 测试 / 架构 —— 从脚手架到上线的完整链路。</p></div>
+    <div class="card"><b><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>腾讯生态（10）</b><p>微信小程序 / 腾讯地图 / 支付 / 云开发 —— 腾讯全家桶直接吃现成。</p></div>
+  </div>
+</div>
+
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+<script src="/data/skills.js"></script>
+<script>
+(function(){
+  var S = window.SKILLS;
+  var grid = document.getElementById('grid');
+  var chips = document.getElementById('chips');
+  var q = document.getElementById('q');
+  var cur = '全部';
+  if (!S || !S.skills) { grid.innerHTML = '<div class="empty">技能数据加载失败</div>'; return; }
+
+  // 统计
+  document.getElementById('stTotal').textContent = S.total;
+  document.getElementById('stCat').textContent = Object.keys(S.categories).length;
+  var maxK = '设计与前端', maxV = 0;
+  Object.keys(S.categories).forEach(function(k){ if (S.categories[k] > maxV) { maxV = S.categories[k]; maxK = k; } });
+  document.getElementById('stTop').textContent = maxV;
+  document.getElementById('stTop').nextElementSibling.textContent = '最大分类：' + maxK;
+
+  // chips
+  var cats = ['全部'].concat(Object.keys(S.categories));
+  cats.forEach(function(c, i){
+    var b = document.createElement('button');
+    var n = c === '全部' ? S.total : S.categories[c];
+    b.textContent = c + '（' + n + '）';
+    b.dataset.cat = c;
+    if (i === 0) b.classList.add('on');
+    b.onclick = function(){ cur = c; document.querySelectorAll('#chips button').forEach(function(x){x.classList.remove('on')}); b.classList.add('on'); doRender(); };
+    chips.appendChild(b);
+  });
+
+  function doRender(){
+    var kw = q.value.trim().toLowerCase();
+    var list = S.skills.filter(function(s){
+      if (cur !== '全部' && s.c !== cur) return false;
+      if (kw) {
+        var hay = (s.n + ' ' + s.d).toLowerCase();
+        return hay.indexOf(kw) !== -1;
+      }
+      return true;
+    });
+    document.getElementById('resCount').textContent = list.length;
+    document.getElementById('curCat').textContent = (cur === '全部' ? '全部技能' : cur) + (kw ? ' · 搜索「' + q.value + '」' : '');
+    grid.innerHTML = '';
+    var shown = list.slice(0, 400);
+    shown.forEach(function(s){
+      grid.innerHTML += '<div class="sk"><b>' + escapeHtml(s.n) + '</b>' +
+        (s.d ? '<p>' + escapeHtml(s.d) + '</p>' : '') +
+        '<span class="tag">' + s.c + '</span></div>';
+    });
+    if (!shown.length) grid.innerHTML = '<div class="empty">没有匹配的技能，换个关键词试试 </div>';
+    else if (list.length > 400) grid.innerHTML += '<div class="empty">… 共 ' + list.length + ' 条，已显示前 400 条（缩小范围可查看更多）</div>';
+  }
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }) }
+
+  var timer = null;
+  q.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(doRender, 200); });
+  doRender();
+})();
+</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.getElementById('themeBtn') && document.getElementById('themeBtn').addEventListener('click', ccoworkTheme);
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

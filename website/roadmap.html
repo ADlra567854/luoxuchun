@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · AI 学习路线图 · 从零基础到系统进阶 · AI 创作纪元, viewport-fit=cover">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · AI 学习路线图 · 从零基础到系统进阶 · AI 创作纪元</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a;
+  --green:#2fd17b; --gold:#ffd166;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+
+/* ---------- 导航 ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:22px;font-size:13px;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-links a.cur{color:var(--cyan);font-weight:700}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{min-height:74vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:130px 24px 60px;position:relative;
+  background:radial-gradient(900px 500px at 20% 10%,rgba(79,140,255,.16),transparent 60%),
+             radial-gradient(800px 500px at 85% 30%,rgba(139,92,246,.14),transparent 60%),
+             radial-gradient(700px 600px at 50% 100%,rgba(56,225,255,.10),transparent 60%),var(--bg)}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:99px;letter-spacing:2px;margin-bottom:28px}
+.hero h1{font-size:clamp(34px,5.6vw,72px);font-weight:900;line-height:1.2;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:780px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:26px auto 40px}
+.btns{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.btn{padding:14px 34px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:.3s;border:1px solid transparent}
+.btn-primary{background:var(--grad);color:#04101f}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(79,140,255,.4)}
+.btn-ghost{border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.stats{display:flex;gap:56px;margin-top:60px;flex-wrap:wrap;justify-content:center}
+.stat b{display:block;font-size:36px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:13px}
+
+/* ---------- 布局 ---------- */
+section{max-width:1180px;margin:0 auto;padding:90px 24px}
+.sec-head{margin-bottom:48px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(28px,3.6vw,44px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:760px;margin-top:12px}
+
+/* ---------- 建议路径时间轴 ---------- */
+.timeline{position:relative;padding-left:34px;max-width:900px}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),var(--purple))}
+.tl-item{position:relative;margin-bottom:30px}
+.tl-item::before{content:"";position:absolute;left:-31px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(56,225,255,.15)}
+.tl-item .time{color:var(--cyan);font-size:12px;letter-spacing:1px}
+.tl-item h4{font-size:17px}
+.tl-item a{color:inherit;text-decoration:none}
+.tl-item h4 a:hover{color:var(--cyan)}
+.tl-item p{color:var(--muted);font-size:14px;margin-top:6px}
+
+/* ---------- 阶段卡片 ---------- */
+.stages{display:grid;gap:26px}
+.stage-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px;position:relative;overflow:hidden;transition:.3s}
+.stage-card::before{content:"";position:absolute;inset:0;background:radial-gradient(480px 220px at 8% 0%,rgba(79,140,255,.10),transparent 60%);opacity:0;transition:.3s}
+.stage-card:hover{transform:translateY(-5px);border-color:rgba(79,140,255,.5);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.stage-card:hover::before{opacity:1}
+.stage-head{display:flex;align-items:center;gap:18px;margin-bottom:14px;position:relative}
+.stage-num{flex:0 0 64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#04101f;background:var(--grad)}
+.stage-head .tt h3{font-size:24px}
+.stage-head .tt .sub{color:var(--cyan);font-size:12px;letter-spacing:2px}
+.stage-desc{color:var(--muted);font-size:14px;margin-bottom:20px;position:relative}
+.pages{display:grid;gap:10px;margin-bottom:20px;position:relative}
+.page{display:flex;align-items:baseline;gap:12px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;transition:.2s}
+.page:hover{border-color:var(--cyan)}
+.page a{color:var(--cyan);font-weight:700;text-decoration:none;white-space:nowrap;flex:0 0 auto}
+.page a:hover{text-decoration:underline}
+.page .why{color:var(--muted);font-size:13px}
+@media(max-width:640px){.page{flex-direction:column;gap:4px}.page a{white-space:normal}}
+.done{background:linear-gradient(120deg,rgba(47,209,123,.12),rgba(56,225,255,.08));border:1px solid rgba(47,209,123,.4);border-radius:12px;padding:14px 18px;font-size:14px;position:relative}
+.done b{color:#4ade80}
+
+/* ---------- 速成计划表 ---------- */
+.plan-table{width:100%;border-collapse:collapse;font-size:14px;overflow:hidden;border-radius:14px}
+.plan-table th,.plan-table td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.plan-table th{background:#131d33;color:var(--cyan);font-size:13px;letter-spacing:1px}
+.plan-table tr:hover td{background:rgba(79,140,255,.06)}
+.plan-table td:first-child{font-weight:700;color:var(--text);white-space:nowrap}
+.plan-table td:nth-child(2){white-space:nowrap}
+.plan-table td{color:var(--muted)}
+.plan-table .stage-tag{display:inline-block;font-size:11px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:99px;padding:1px 10px}
+.table-wrap{overflow-x:auto}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:46px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+footer .back{margin-top:20px}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/roadmap.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/roadmap.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · AI 学习路线图 · 从零基础到系统进阶 · AI 创作纪元">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-roadmap.png" alt="ccowork · AI 学习路线图 · 从零基础到系统进阶 · AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="logo">AI 创作纪元</div>
+  <div class="nav-links">
+    <a href="./roadmap.html" class="cur">学习路线图</a>
+    <a href="./index.html">返回首页</a>
+    <a href="./showcase.html" style="color:var(--gold)">成果展示</a>
+    <a href="./chronicle.html" style="color:var(--pink)">AI 编年史</a>
+    <a href="./frontiers.html" style="color:var(--gold)">AI 前沿全景</a>
+    <a href="./chat.html" style="color:var(--cyan)">AI 对话</a>
+    <a href="./works.html" style="color:var(--cyan)">作品库</a>
+    <a href="./models.html" style="color:var(--cyan)">模型对比</a>
+    <a href="./devbase.html" style="color:#4ade80">开发者基地</a>
+    <a href="./opensource.html" style="color:#4ade80">开源项目</a>
+    <a href="./book/index.html">全书书稿</a>
+    <a href="../lab/index.html" style="color:var(--green)">工科实训</a>
+    DeepSeek 指南</a>
+    提示词工程</a>
+    工具全景</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="tag">AI LEARNING ROADMAP · 循序渐进 · 6 阶段</div>
+  <h1>零基础，也能<span>照着走完的 AI 之路</span></h1>
+  <p class="sub">把站点里散落的板块串成一条循序渐进的学习路径——
+  从「认识 AI」到「会用工具」、从「学会创作」到「懂点技术」、从「动手实践」到「系统进阶」。
+  每走完一个阶段，你都有一个看得见的里程碑。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  <div class="btns">
+    <a class="btn btn-primary" href="#stage0"><i class="cc-ic" data-ic="rocket"></i> 从阶段 0 开始</a>
+    <a class="btn btn-ghost" href="#plan"><i class="cc-ic" data-ic="calendar-clock"></i> 查看 3 个月速成计划</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>6</b><span>大学习阶段</span></div>
+    <div class="stat"><b>19</b><span>个核心页面</span></div>
+    <div class="stat"><b>12</b><span>周速成计划</span></div>
+    <div class="stat"><b>6</b><span>个毕业标志</span></div>
+  </div>
+</header>
+
+<!-- ================= 建议路径时间轴 ================= -->
+<section id="path">
+  <div class="sec-head">
+    <div class="kicker">Suggested Path</div>
+    <h2>建议路径 · 时间轴概览</h2>
+    <p>一条主线，六个台阶：先看全景建立认知，再上手工具，接着产出作品，然后深入原理，最后动手实践并收束成体系。点击任意节点可跳到对应阶段。</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item"><div class="time">STAGE 0 · 第 1-2 周</div><h4><a href="#stage0">认识 AI —— 建立全局认知</a></h4><p>看前沿全景、编年史与成果展示，知道 AI 从哪来、能干什么。</p></div>
+    <div class="tl-item"><div class="time">STAGE 1 · 第 3-4 周</div><h4><a href="#stage1">会用工具 —— 上手对话引擎</a></h4><p>掌握 DeepSeek 与提示词工程，学会与 AI 高效沟通。</p></div>
+    <div class="tl-item"><div class="time">STAGE 2 · 第 5-6 周</div><h4><a href="#stage2">学会创作 —— 把工具变成作品</a></h4><p>走通视频与写作流水线，照作品库样板做出自己的第一件作品。</p></div>
+    <div class="tl-item"><div class="time">STAGE 3 · 第 7-8 周</div><h4><a href="#stage3">懂点技术 —— 从会用到懂原理</a></h4><p>读懂模型差异与开源生态，能在本地跑起开源模型。</p></div>
+    <div class="tl-item"><div class="time">STAGE 4 · 第 9-10 周</div><h4><a href="#stage4">动手实践 —— 把 AI 用进工科</a></h4><p>进入实训实验室，跑通编程、数控与仿真脚本。</p></div>
+    <div class="tl-item"><div class="time">STAGE 5 · 第 11-12 周</div><h4><a href="#stage5">系统进阶 —— 收束成体系</a></h4><p>通读全书书稿与中国科技，建立自己的 AI 世界观与判断力。</p></div>
+  </div>
+</section>
+
+<!-- ================= 六大阶段 ================= -->
+<section id="stages">
+  <div class="sec-head">
+    <div class="kicker">Six Stages</div>
+    <h2>六大阶段 · 每一步都看得到终点</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-roadmap.png" alt="ccowork · AI 学习路线图 · 从零基础到系统进阶 · AI 创作纪元 · 六大阶段 · 每一步都看得到终点" loading="lazy"></figure>
+
+    <p>每个阶段一张卡片：先看哪几页、为什么看它、以及学完它的标志。按顺序走，零基础也能逐级通关。</p>
+  </div>
+
+  <div class="stages">
+
+    <!-- 阶段 0 -->
+    <div class="stage-card" id="stage0">
+      <div class="stage-head">
+        <div class="stage-num">0</div>
+        <div class="tt"><div class="sub">STAGE 0 · 建立全局认知</div><h3>认识 AI</h3></div>
+      </div>
+      <p class="stage-desc">先不急着动手，先建立整体认知：AI 从哪来、现在是什么格局、能做出什么。有了全局观，后面学什么都接得上。</p>
+      <div class="pages">
+        <div class="page"><a href="./frontiers.html">AI 前沿全景</a><span class="why">看懂当下 AI 的版图与趋势，建立全局观。</span></div>
+        <div class="page"><a href="./chronicle.html">AI 编年史</a><span class="why">了解 70 年发展脉络，知道每个里程碑为什么重要。</span></div>
+        <div class="page"><a href="./showcase.html">成果展示</a><span class="why">看到真实成品，建立「我也能做出来」的信心。</span></div>
+      </div>
+      <div class="done"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i><b>学完的标志</b>：能用三句话向别人讲清楚「AI 是什么、怎么发展来的、现在能做什么」。</div>
+    </div>
+
+    <!-- 阶段 1 -->
+    <div class="stage-card" id="stage1">
+      <div class="stage-head">
+        <div class="stage-num">1</div>
+        <div class="tt"><div class="sub">STAGE 1 · 上手核心工具</div><h3>会用工具</h3></div>
+      </div>
+      <p class="stage-desc">零基础第一步：先上手最核心的对话引擎，学会与 AI 高效沟通。这是所有后续创作的地基。</p>
+      <div class="pages">
+        <div class="page">DeepSeek 指南</a><span class="why">认识主力引擎的用法、版本与成本，选对使用方式。</span></div>
+        <div class="page">提示词工程</a><span class="why">背熟万能公式「角色+任务+上下文+约束」，让输出质量翻倍。</span></div>
+        <div class="page">工具全景</a><span class="why">建立「什么任务该用什么工具」的选型地图。</span></div>
+        <div class="page"><a href="./chat.html">AI 对话</a><span class="why">亲手体验多轮对话与深度推理，把理论变成手感。</span></div>
+      </div>
+      <div class="done"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i><b>学完的标志</b>：能独立用 DeepSeek 完成一次带「角色 + 任务 + 约束」的提问，并得到满意的结果。</div>
+    </div>
+
+    <!-- 阶段 2 -->
+    <div class="stage-card" id="stage2">
+      <div class="stage-head">
+        <div class="stage-num">2</div>
+        <div class="tt"><div class="sub">STAGE 2 · 产出第一件作品</div><h3>学会创作</h3></div>
+      </div>
+      <p class="stage-desc">把工具变成作品：从脚本到成片、从提纲到成文。关键是「人机接力」——你出灵魂，AI 出血肉。</p>
+      <div class="pages">
+        <div class="page">视频剪辑</a><span class="why">掌握「编剧<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>出图<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>出视频<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>配音<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>剪辑」的完整链路。</span></div>
+        <div class="page">AI 写作</a><span class="why">学会人机接力，从一篇博文一路写到长文甚至小说。</span></div>
+        <div class="page"><a href="./works.html">作品库</a><span class="why">拆解四件完整作品，照着样板做出自己的第一件。</span></div>
+      </div>
+      <div class="done"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i><b>学完的标志</b>：独立产出一件完整小作品（一支短片 / 一篇长文 / 一部短篇），并发布出去。</div>
+    </div>
+
+    <!-- 阶段 3 -->
+    <div class="stage-card" id="stage3">
+      <div class="stage-head">
+        <div class="stage-num">3</div>
+        <div class="tt"><div class="sub">STAGE 3 · 理解底层原理</div><h3>懂点技术</h3></div>
+      </div>
+      <p class="stage-desc">从「会用」进阶到「懂原理」：能自己判断选型、能自己部署，不再人云亦云。</p>
+      <div class="pages">
+        <div class="page"><a href="./models.html">模型对比</a><span class="why">看懂主流模型差异，学会按任务正确选型。</span></div>
+        <div class="page"><a href="./opensource.html">开源项目</a><span class="why">认识可本地运行的开源 AI 生态，摆脱闭源依赖。</span></div>
+        <div class="page"><a href="./devbase.html">开发者基地</a><span class="why">逐行上手 Ollama、Dify 等工具，附六周入门路线。</span></div>
+      </div>
+      <div class="done"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i><b>学完的标志</b>：能在本地跑起一个开源模型，并说清楚它和闭源模型的区别。</div>
+    </div>
+
+    <!-- 阶段 4 -->
+    <div class="stage-card" id="stage4">
+      <div class="stage-head">
+        <div class="stage-num">4</div>
+        <div class="tt"><div class="sub">STAGE 4 · 真实动手实践</div><h3>动手实践</h3></div>
+      </div>
+      <p class="stage-desc">把 AI 用进工科：编程、计算机、数控、仿真，代码复制就能跑、结果可验证。这是最「硬」的一段。</p>
+      <div class="pages">
+        <div class="page"><a href="../lab/index.html">工科实训</a><span class="why">进入实训实验室：五大类动手清单 + 可运行脚本 + 数控 G 代码。</span></div>
+        <div class="page"><a href="../lab/simlab.html">仿真一键运行</a><span class="why">网页内直接跑 PID、振动、电路、抛体、蒙特卡洛，滑杆调参实时出图。</span></div>
+      </div>
+      <div class="done"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i><b>学完的标志</b>：至少跑通 3 个仿真脚本，并用 pytest 验证结果正确。</div>
+    </div>
+
+    <!-- 阶段 5 -->
+    <div class="stage-card" id="stage5">
+      <div class="stage-head">
+        <div class="stage-num">5</div>
+        <div class="tt"><div class="sub">STAGE 5 · 收束成体系</div><h3>系统进阶</h3></div>
+      </div>
+      <p class="stage-desc">最后一步：把零散的知识收束成完整体系，并读懂中国科技底色，形成自己的判断力。</p>
+      <div class="pages">
+        <div class="page"><a href="./book/index.html">全书书稿</a><span class="why">二十余章完整体系，从入门到研究方向，是一部 AI 百科全书。</span></div>
+        <div class="page"><a href="./china-tech.html">中国科技</a><span class="why">读懂中国科技底色，理解 DeepSeek 为什么诞生在中国。</span></div>
+      </div>
+      <div class="done"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i><b>学完的标志</b>：能自成体系地讲清 AI 的过去、现在与未来，并规划好自己的下一步。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= 3 个月速成计划 ================= -->
+<section id="plan">
+  <div class="sec-head">
+    <div class="kicker">3-Month Crash Plan</div>
+    <h2>3 个月速成计划 · 每周学什么</h2>
+    <p>每周投入 3~5 小时，12 周走完全程。节奏：前四周打认知与工具基础，中间四周产作品、啃技术，最后四周动手实践、收束成体系。</p>
+  </div>
+  <div class="table-wrap">
+    <table class="plan-table">
+      <tr><th>周次</th><th>阶段</th><th>学习内容</th><th>产出 / 达标标志</th></tr>
+      <tr><td>第 1 周</td><td><span class="stage-tag">阶段0</span></td><td>AI 前沿全景 + AI 编年史</td><td>能讲清 AI 是什么、从哪来</td></tr>
+      <tr><td>第 2 周</td><td><span class="stage-tag">阶段0</span></td><td>成果展示 showcase</td><td>列出 3 个想复刻的案例</td></tr>
+      <tr><td>第 3 周</td><td><span class="stage-tag">阶段1</span></td><td>DeepSeek 指南 + AI 对话</td><td>独立完成高质量多轮对话</td></tr>
+      <tr><td>第 4 周</td><td><span class="stage-tag">阶段1</span></td><td>提示词工程 + 工具全景</td><td>背熟万能公式，建立工具地图</td></tr>
+      <tr><td>第 5 周</td><td><span class="stage-tag">阶段2</span></td><td>视频剪辑 + AI 写作</td><td>产出脚本或文章初稿</td></tr>
+      <tr><td>第 6 周</td><td><span class="stage-tag">阶段2</span></td><td>作品库 works</td><td>完成并发布第一件作品</td></tr>
+      <tr><td>第 7 周</td><td><span class="stage-tag">阶段3</span></td><td>模型对比 models</td><td>能按任务选出合适模型</td></tr>
+      <tr><td>第 8 周</td><td><span class="stage-tag">阶段3</span></td><td>开源项目 + 开发者基地</td><td>本地跑通一个开源模型</td></tr>
+      <tr><td>第 9 周</td><td><span class="stage-tag">阶段4</span></td><td>工科实训 lab</td><td>跑通编程与数控示例</td></tr>
+      <tr><td>第 10 周</td><td><span class="stage-tag">阶段4</span></td><td>仿真一键运行</td><td>3 个仿真脚本 + pytest 通过</td></tr>
+      <tr><td>第 11 周</td><td><span class="stage-tag">阶段5</span></td><td>全书书稿 book</td><td>通读全书，建立完整体系</td></tr>
+      <tr><td>第 12 周</td><td><span class="stage-tag">阶段5</span></td><td>中国科技 china-tech</td><td>形成自己的 AI 判断力并输出总结</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">AI 创作纪元</div>
+  <p style="margin-top:10px">AI 学习路线图 · 从零基础到系统进阶 · 由 AI 协同创作 · 2026</p>
+  <div class="back"><a class="btn btn-primary" href="./index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回首页</a></div>
+</footer>
+
+<script>
+// 阅读进度条
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+// 卡片入场动画
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.1});
+document.querySelectorAll('.stage-card,.tl-item').forEach(el=>{
+  el.style.opacity=0;el.style.transform='translateY(24px)';
+  el.style.transition='opacity .6s ease,transform .6s ease';io.observe(el);});
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

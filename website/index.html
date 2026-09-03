@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · DeepSeek 全栈指南（分站）, viewport-fit=cover">
+<meta property="og:description" content="ccowork · DeepSeek 全栈指南：对话、推理、视频、图像、写作、部署一站式工作流。">
+<meta name="description" content="ccowork · DeepSeek 全栈指南：对话、推理、视频、图像、写作、部署一站式工作流。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · DeepSeek 全栈指南（分站）</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+
+/* ---------- 导航 ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:26px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--cyan)}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:120px 24px 60px;position:relative;
+  background:radial-gradient(900px 500px at 20% 10%,rgba(79,140,255,.16),transparent 60%),
+             radial-gradient(800px 500px at 85% 30%,rgba(139,92,246,.14),transparent 60%),
+             radial-gradient(700px 600px at 50% 100%,rgba(56,225,255,.10),transparent 60%),var(--bg)}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:99px;letter-spacing:2px;margin-bottom:28px;animation:float 4s ease-in-out infinite}
+.hero h1{font-size:clamp(38px,6.5vw,84px);font-weight:900;line-height:1.2;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:760px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:26px auto 40px}
+.btns{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.btn{padding:14px 34px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:.3s;border:1px solid transparent}
+.btn-primary{background:var(--grad);color:#04101f}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(79,140,255,.4)}
+.btn-ghost{border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.stats{display:flex;gap:56px;margin-top:70px;flex-wrap:wrap;justify-content:center}
+.stat b{display:block;font-size:36px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:13px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ---------- 布局 ---------- */
+section{max-width:1180px;margin:0 auto;padding:90px 24px}
+.sec-head{margin-bottom:48px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(28px,3.6vw,44px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:720px;margin-top:12px}
+
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+.works{align-items:stretch}
+.works .card{display:flex;flex-direction:column;height:100%}
+.works .card p{flex:1}
+@media(max-width:520px){.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;transition:.3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 10% 0%,rgba(79,140,255,.10),transparent 60%);opacity:0;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:rgba(79,140,255,.5);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.card:hover::before{opacity:1}
+.card .icon{font-size:32px;margin-bottom:14px}
+.card h3{font-size:19px;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px}
+.card .pill{display:inline-block;margin-top:14px;font-size:12px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:99px;padding:3px 12px}
+
+/* ---------- DeepSeek 章节 ---------- */
+.ds-table{width:100%;border-collapse:collapse;font-size:14px;overflow:hidden;border-radius:14px}
+.ds-table th,.ds-table td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left}
+.ds-table th{background:#131d33;color:var(--cyan);font-size:13px;letter-spacing:1px}
+.ds-table tr:hover td{background:rgba(79,140,255,.06)}
+.ds-table td:first-child{font-weight:700;color:var(--text)}
+.ds-table td{color:var(--muted)}
+
+.steps{counter-reset:step;display:grid;gap:18px}
+.step{display:flex;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+.step::before{counter-increment:step;content:counter(step);flex:0 0 46px;height:46px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#04101f;background:var(--grad)}
+.step h4{margin-bottom:6px}
+.step p{color:var(--muted);font-size:14px}
+.step code{background:#0a0f1e;border:1px solid var(--line);border-radius:8px;padding:2px 8px;color:var(--cyan);font-size:13px}
+
+/* ---------- 提示词 ---------- */
+.prompt-box{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:22px 24px;font-family:Consolas,monospace;font-size:13.5px;color:#b9c8ea;position:relative;margin-top:14px}
+.prompt-box .copy{position:absolute;top:12px;right:12px;background:#18223c;border:1px solid var(--line);color:var(--muted);
+  border-radius:8px;padding:4px 12px;font-size:12px;cursor:pointer;transition:.2s}
+.prompt-box .copy:hover{color:var(--cyan);border-color:var(--cyan)}
+.prompt-box b{color:var(--cyan)}
+
+/* ---------- 时间线（视频工作流） ---------- */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),var(--purple))}
+.tl-item{position:relative;margin-bottom:34px}
+.tl-item::before{content:"";position:absolute;left:-31px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(56,225,255,.15)}
+.tl-item h4{font-size:17px}
+.tl-item .time{color:var(--cyan);font-size:12px;letter-spacing:1px}
+.tl-item p{color:var(--muted);font-size:14px;margin-top:6px}
+
+/* ---------- 作品入口 ---------- */
+.works a{display:block;text-decoration:none;color:inherit}
+.work-badge{font-size:12px;color:var(--pink);letter-spacing:2px}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:46px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/index.html">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/index.html">
+<meta name="twitter:title" content="ccowork · DeepSeek 全栈指南（分站）">
+<meta name="twitter:description" content="ccowork · DeepSeek 全栈指南：对话、推理、视频、图像、写作、部署一站式工作流。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-index.png" alt="ccowork · DeepSeek 全栈指南（分站）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<button id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题" style="position:fixed;top:14px;right:14px;z-index:99;width:38px;height:38px;border-radius:19px;border:1px solid rgba(120,160,220,.3);background:rgba(8,12,22,.9);color:#f0b95c;font-size:18px;cursor:pointer"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="logo">AI 创作纪元</div>
+  <div class="nav-links">
+    <a href="../index.html" style="color:var(--gold);font-weight:700"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 白驹总站</a>
+    <a href="./showcase.html" style="color:var(--gold)">成果展示</a>
+    <a href="./portal.html" style="color:var(--cyan)">知识收纳站</a>
+    <a href="./chronicle.html" style="color:var(--pink)">AI 编年史</a>
+    <a href="./devbase.html" style="color:#4ade80">开发者基地</a>
+    <a href="#workbench" style="color:var(--cyan)">AI 工作台</a>
+    <a href="./works.html" style="color:var(--cyan)">作品库</a>
+    <a href="./models.html" style="color:var(--cyan)">模型对比</a>
+    <a href="./frontiers.html" style="color:var(--gold)">AI 前沿全景</a>
+    <a href="./chat.html" style="color:var(--cyan)">AI 对话</a>
+    <a href="./local-ai.html" style="color:var(--cyan)">本地AI</a>
+    <a href="./opensource.html" style="color:#4ade80">开源项目</a>
+    <a href="./roadmap.html" style="color:var(--purple)">学习路线</a>
+    <a href="./majors.html" style="color:var(--purple)">大学专业</a>
+    <a href="./ai-academy.html" style="color:var(--purple)"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 学院</a>
+    <a href="../blog/index.html" style="color:var(--purple)"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>博客目录</a>
+    <a href="#deepseek">DeepSeek 指南</a>
+    <a href="#tools">工具全景</a>
+    <a href="#video">视频剪辑</a>
+    <a href="#writing">AI 写作</a>
+    <a href="#prompt">提示词工程</a>
+    <a href="#cases">实战案例</a>
+    <a href="#ip">个人 IP</a>
+    <a href="#china">中国科技</a>
+    <a href="#works">四大作品</a>
+    <a href="./book/">全书书稿</a>
+    <a href="../lab/" style="color:var(--green)">工科实训</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="tag">DEEPSEEK  全栈 AI 工具 · 终极指南 <i class="cc-ic" data-ic="x" aria-hidden="true"></i></div>
+  <h1>一个人，就是<br><span>一支创作军团</span></h1>
+  <p class="sub">本站是关于「如何使用 DeepSeek 与所有主流 AI 工具」的超级知识工程：
+  从提示词工程到 AI 视频剪辑、AI 写作、AI 绘画与视频生成、自动化工作流——
+  并配套一部小说、一篇深度长文、一部视频与这个网站本身，全部由 AI 协同完成。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  <div class="btns">
+    <a class="btn btn-primary" href="#deepseek"><i class="cc-ic" data-ic="graduation-cap"></i> 开始学习</a>
+    <a class="btn btn-ghost" href="#works"><i class="cc-ic" data-ic="grid-2x2"></i> 查看四大作品</a>
+    <i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i> 一键打包下载</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>12</b><span>大知识模块</span></div>
+    <div class="stat"><b>50+</b><span>AI 工具详解</span></div>
+    <div class="stat"><b>30+</b><span>提示词模板</span></div>
+    <div class="stat"><b>4</b><span>件完整作品</span></div>
+  </div>
+</header>
+
+<!-- ============ 知识网络总入口 ============ -->
+<div style="max-width:1180px;margin:0 auto;padding:8px 24px 40px;text-align:center">
+  <div style="font-size:13px;color:#38e1ff;letter-spacing:3px;margin-bottom:14px">知识网络 · 统一入口</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+    <a href="./showcase.html" style="padding:12px 22px;border-radius:12px;background:#101728;border:1px solid #1e2a44;color:#ffd166;font-weight:700;text-decoration:none"><i class="cc-ic" data-ic="award" aria-hidden="true"></i>成果展示</a>
+    <a href="./portal.html" style="padding:12px 22px;border-radius:12px;background:#101728;border:1px solid #1e2a44;color:#38e1ff;font-weight:700;text-decoration:none"><i class="cc-ic" data-ic="box" aria-hidden="true"></i>知识收纳站</a>
+    <a href="./book/" style="padding:12px 22px;border-radius:12px;background:#101728;border:1px solid #1e2a44;color:#8b5cf6;font-weight:700;text-decoration:none"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>全书书稿</a>
+    <a href="./chronicle.html" style="padding:12px 22px;border-radius:12px;background:#101728;border:1px solid #1e2a44;color:#ff5c8a;font-weight:700;text-decoration:none"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>AI 编年史</a>
+  </div>
+</div>
+
+<!-- ================= DeepSeek ================= -->
+<section id="deepseek">
+  <div class="sec-head">
+    <div class="kicker">Module 01</div>
+    <h2>DeepSeek 完全指南</h2>
+    <p>DeepSeek 是当前最受关注的开源大模型之一，以极强的推理能力、超低的 API 成本和完全开放的权重著称。掌握它，就掌握了 AI 创作的发动机。</p>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div>
+      <h3>DeepSeek-V3：通用创作主力</h3>
+      <p>混合专家（MoE）架构，671B 总参数、37B 激活参数。擅长长文写作、文案生成、代码辅助、翻译润色。写小说、写博文、写脚本的主力模型。</p>
+      <span class="pill">写作 / 对话 / 代码</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="microscope" aria-hidden="true"></i></div>
+      <h3>DeepSeek-R1：深度推理引擎</h3>
+      <p>专攻复杂推理的模型，会先输出"思维链"再给出答案。适合剧情逻辑校验、选题分析、结构化策划、数学与代码难题。</p>
+      <span class="pill">推理 / 策划 / 分析</span>
+    </div>
+  </div>
+
+  <div style="margin-top:44px;overflow-x:auto">
+    <table class="ds-table">
+      <tr><th>使用方式</th><th>适合人群</th><th>成本</th><th>要点</th></tr>
+      <tr><td>官方网页 / App</td><td>所有人</td><td>免费</td><td>开启"深度思考(R1)"处理复杂任务；开启联网搜索获取最新资料</td></tr>
+      <tr><td>官方 API</td><td>开发者</td><td>极低（百万 token 数元）</td><td>兼容 OpenAI SDK 格式，可接入任何支持自定义 API 的工具</td></tr>
+      <tr><td>第三方平台</td><td>进阶用户</td><td>免费~低</td><td>腾讯元宝、硅基流动等渠道均提供满血版 R1</td></tr>
+      <tr><td>本地部署</td><td>技术玩家</td><td>硬件成本</td><td>Ollama 一键部署蒸馏版（1.5B~70B），隐私数据不出本机</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-top:44px">
+    <div class="steps">
+      <div class="step"><div><h4>明确角色与任务</h4><p>不要问"帮我写个文案"，而是：<code>你是一位有10年经验的科技专栏作家，请为……</code>。角色越具体，输出越专业。</p></div></div>
+      <div class="step"><div><h4>给足上下文与约束</h4><p>提供背景资料、目标读者、字数要求、风格参考、禁止事项。R1 对结构化输入的响应质量极高。</p></div></div>
+      <div class="step"><div><h4>迭代式追问</h4><p>第一轮出框架 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 第二轮扩写细节 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 第三轮换风格重写 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 第四轮让 R1 自我批判："请找出上文的 5 个逻辑漏洞并修复"。</p></div></div>
+      <div class="step"><div><h4>组合工具使用</h4><p>DeepSeek 负责"想清楚"，再交给专业工具"做出来"：文本<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>即梦/可灵出视频、Midjourney 出图、剪映完成剪辑。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 工具全景 ================= -->
+<section id="tools">
+  <div class="sec-head">
+    <div class="kicker">Module 02</div>
+    <h2>AI 工具全景图</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-index.png" alt="ccowork · DeepSeek 全栈指南（分站） · AI 工具全景图" loading="lazy"></figure>
+
+    <p>创作链路中的每一个环节，都有对应的 AI 工具。选型的核心原则：大模型做大脑，垂直工具做手脚。</p>
+  </div>
+  <div class="grid g3">
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><h3>对话与推理</h3><p>DeepSeek、ChatGPT、Claude、Kimi、豆包、通义千问。负责选题、策划、文案、改稿。长文档优先 Kimi，推理优先 R1。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></div><h3>视频生成</h3><p>可灵、即梦、Runway、Pika、Sora、腾讯混元视频。文生视频 / 图生视频 / 视频特效，单镜头 5~10 秒，靠剪辑连成故事。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i></div><h3>图像生成</h3><p>Midjourney、即梦、Stable Diffusion、Flux、混元图像。封面、分镜、插图、海报的主力生产力。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="scissors" aria-hidden="true"></i></div><h3>智能剪辑</h3><p>剪映专业版（AI 字幕/智能剪口播/图文成片）、CapCut、必剪。AI 粗剪 + 人工精修是最高效的组合。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i></div><h3>配音与音效</h3><p>剪映 AI 配音、ElevenLabs、魔音工坊；Suno、海绵音乐生成 BGM；音效库用爱给网。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></div><h3>写作增强</h3><p>DeepSeek 起草 + Claude 润色 + 秘塔写作猫校对，三件套覆盖从初稿到成稿的全流程。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="search" aria-hidden="true"></i></div><h3>检索与研究</h3><p>秘塔 AI 搜索、Perplexity、DeepSeek 联网模式。写深度内容前，先用 AI 搜索做资料综述。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i></div><h3>自动化与 Agent</h3><p>Coze、Dify、n8n、CodeBuddy。把重复流程（热点监控<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>选题<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>初稿<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>排版）编成自动化流水线。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div><h3>建站与发布</h3><p>CodeBuddy / Cursor 生成网站，CloudBase / EdgeOne Pages 一键部署，从想法到上线只需一小时。</p></div>
+  </div>
+</section>
+
+<!-- ================= 视频剪辑 ================= -->
+<section id="video">
+  <div class="sec-head">
+    <div class="kicker">Module 03</div>
+    <h2>AI 视频剪辑完整工作流</h2>
+    <p>本项目配套视频《如何用 AI 一天做出一部电影感短片》即按此流程制作。核心公式：<b style="color:var(--cyan)">DeepSeek 编剧 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> AI 出图 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> AI 出视频 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> AI 配音配乐 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 剪映成片</b>。</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item"><div class="time">STEP 1 · 剧本与分镜</div><h4>用 DeepSeek 写脚本</h4><p>提示词："你是资深短视频编导，为主题《XX》写一个 60 秒分镜脚本，包含景别、画面描述、旁白、时长，输出为表格"。R1 会先推演叙事节奏再给分镜。</p></div>
+    <div class="tl-item"><div class="time">STEP 2 · 视觉素材</div><h4>AI 生成镜头画面</h4><p>把每个分镜的画面描述喂给即梦/可灵/混元视频。技巧：先生成关键帧图片（Midjourney/即梦），再用"图生视频"让画面动起来，可控性远高于纯文生视频。</p></div>
+    <div class="tl-item"><div class="time">STEP 3 · 声音设计</div><h4>AI 配音 + AI 配乐</h4><p>旁白文案交给 ElevenLabs 或剪映 AI 配音；BGM 用 Suno 按"情绪+风格+时长"生成；关键节点加音效（转场 whoosh、环境声）。</p></div>
+    <div class="tl-item"><div class="time">STEP 4 · 剪辑合成</div><h4>剪映专业版成片</h4><p>素材导入时间线 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 智能字幕识别旁白 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 按脚本节奏卡点 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 加转场/调色/电影黑边 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 导出 4K。口播类视频直接用"智能剪口播"去气口。</p></div>
+    <div class="tl-item"><div class="time">STEP 5 · 分发优化</div><h4>AI 写标题与封面</h4><p>让 DeepSeek 生成 20 个标题做 A/B 选择，用即梦生成高点击率封面图，发布时按平台调性改写简介（抖音短钩子 / B站长信息 / 小红书种草体）。</p></div>
+  </div>
+</section>
+
+<!-- ================= AI 写作 ================= -->
+<section id="writing">
+  <div class="sec-head">
+    <div class="kicker">Module 04</div>
+    <h2>AI 写作：从博文到长篇小说</h2>
+    <p>AI 写作的关键不是"一键生成"，而是"人机接力"：人出灵魂，AI 出血肉。</p>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></div>
+      <h3>深度博文流水线</h3>
+      <p>① AI 搜索做资料综述 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ② DeepSeek-R1 列三级大纲 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ③ 分节扩写（每节单独给上下文）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ④ 注入个人经历与观点 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ⑤ R1 扮演"杠精编辑"挑刺 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ⑥ 终稿润色。万字长文 2 小时完成。</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></div>
+      <h3>长篇小说共创法</h3>
+      <p>① 先建"世界观设定文档"与"人物卡"<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ② 让 R1 设计主线冲突与章纲 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ③ 逐章生成，每章开头复述前情保持连贯 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ④ 用"角色扮演对话"打磨台词 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ⑤ 全书逻辑一致性审查。本项目小说《AI 创作纪元》即由此法写成。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 提示词工程 ================= -->
+<section id="prompt">
+  <div class="sec-head">
+    <div class="kicker">Module 05</div>
+    <h2>提示词工程：万能公式与模板库</h2>
+    <p>万能公式：<b style="color:var(--cyan)">角色 + 任务 + 上下文 + 约束 + 输出格式 + 示例</b>。以下模板可直接复制使用。</p>
+  </div>
+  <div class="grid g2">
+    <div>
+      <h3 style="font-size:16px;color:var(--cyan)">模板 · 爆款选题</h3>
+      <div class="prompt-box"><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button><b># 角色</b>：百万粉丝科技博主
+<b># 任务</b>：围绕"DeepSeek 使用技巧"产出 10 个短视频选题
+<b># 约束</b>：标题≤20字，含数字或悬念，注明目标情绪（好奇/焦虑/共鸣）
+<b># 输出</b>：表格（标题 / 核心钩子 / 目标情绪 / 预估完播率）</div>
+    </div>
+    <div>
+      <h3 style="font-size:16px;color:var(--cyan)">模板 · 分镜脚本</h3>
+      <div class="prompt-box"><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button><b># 角色</b>：资深短视频编导
+<b># 任务</b>：为主题《XX》写 60 秒分镜脚本
+<b># 约束</b>：8-12 个镜头，每镜头 3-8 秒，画面描述需可直接作为 AI 视频生成提示词
+<b># 输出</b>：表格（镜号 / 景别 / 画面描述 / 旁白 / 时长）</div>
+    </div>
+    <div>
+      <h3 style="font-size:16px;color:var(--cyan)">模板 · 长文润色</h3>
+      <div class="prompt-box"><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button><b># 角色</b>：苛刻的资深主编
+<b># 任务</b>：批判并改写以下文章
+<b># 步骤</b>：1. 列出 5 个最大问题 2. 给出改写策略 3. 输出终稿
+<b># 约束</b>：保留原意，删除所有空话套话，每段必须有信息增量</div>
+    </div>
+    <div>
+      <h3 style="font-size:16px;color:var(--cyan)">模板 · 小说章节</h3>
+      <div class="prompt-box"><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button><b># 角色</b>：获奖类型小说作家
+<b># 任务</b>：依据【世界观】【人物卡】【章纲】撰写第 N 章
+<b># 约束</b>：3000 字，场景先行、对话驱动，章末留钩子；禁止解释性旁白
+<b># 上下文</b>：前情摘要 + 本章必须推进的 3 个情节点</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 实战案例 ================= -->
+<section id="cases">
+  <div class="sec-head">
+    <div class="kicker">Module 06</div>
+    <h2>实战案例库</h2>
+    <p>六个真实可复制的 AI 创作案例，覆盖从 0 到 1 的完整路径。</p>
+  </div>
+  <div class="grid g3">
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="video" aria-hidden="true"></i></div><h3>案例 1：AI 短片</h3><p>DeepSeek 编剧 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 即梦图生视频 12 个镜头 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Suno 配乐 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 剪映成片。总耗时 6 小时，成本不足 50 元，播放量破百万。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></div><h3>案例 2：万字深度文</h3><p>R1 三级大纲 + 分节扩写 + 杠精编辑法，2 小时产出行业分析长文，被多个平台转载。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div><h3>案例 3：连载小说</h3><p>设定文档先行，每周 3 章的 AI 共创节奏，30 天完成 10 万字中篇，签约网文平台。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div><h3>案例 4：个人网站</h3><p>CodeBuddy 一句话生成整站，CloudBase 一键部署，从想法到上线 1 小时——本站即是证明。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="smartphone" aria-hidden="true"></i></div><h3>案例 5：矩阵账号</h3><p>一条素材用 AI 改写成 5 个平台版本（抖音/B站/小红书/公众号/知乎），单人运营矩阵。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></div><h3>案例 6：自动化流水线</h3><p>Coze 工作流：热点监控 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 自动选题 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> R1 初稿 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 人工终审，内容产能提升 10 倍。</p></div>
+  </div>
+</section>
+
+<!-- ================= 四大作品 ================= -->
+<section id="works">
+  <div class="sec-head">
+    <div class="kicker">Module 07</div>
+    <h2>作品集 · 点开即读全文</h2>
+    <p>每一张卡片都不是简介——点开直接进入完整内容。四大作品 + 书稿章节 + 特别卷，全部建成。</p>
+  </div>
+  <div class="grid g2 works">
+    <span class="work-badge">作品 04 · 全书</span><div class="icon"><i class="cc-ic" data-ic="book" aria-hidden="true"></i></div><h3>《AI 实战全书》</h3><p>六大篇完整书稿：对话 AI 入门、工具全书、提示词十大模板、AI 赚钱八条路径、专属助手打造、四周学习路线图。</p></a>
+    <a class="card" href="./book/index.html"><span class="work-badge">书稿 · 章节书库</span><div class="icon"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div><h3>《AI 工具简史与实战全书》书库</h3><p>20 个章节页面：AI 七十年、DeepSeek 发展史、图像/视频生成简史、提示词完全指南、AI 变现路线图、各行各业学 AI……</p></a>
+    <span class="work-badge">作品 01 · 小说</span><div class="icon"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></div><h3>《AI 创作纪元》</h3><p>一部关于"最后一个不用 AI 的作家"的中篇小说，八章完整结构，探讨人与 AI 的共生与边界。</p></a>
+    <span class="work-badge">作品 02 · 博文</span><div class="icon"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></div><h3>《我用 DeepSeek 重构了整个创作流程》</h3><p>万字深度长文，完整公开从选题、写作、出图到视频剪辑的每一步提示词与决策。</p></a>
+    <span class="work-badge">作品 03 · 视频</span><div class="icon"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></div><h3>《一个人就是一支创作军团》</h3><p>3 分钟电影感短片，含完整分镜脚本、旁白、AI 生成镜头素材与剪辑说明。</p></a>
+    <span class="work-badge">拓展 · 开源清单</span><div class="icon"><i class="cc-ic" data-ic="box" aria-hidden="true"></i></div><h3>《最新开源对话式 AI 项目全景》</h3><p>2026 年最火的开源 AI 项目全罗列：共同特点 + 每个项目的一键使用命令，十分钟跑起来。</p></a>
+    <span class="work-badge">拓展 · 进阶篇</span><div class="icon"><i class="cc-ic" data-ic="shield" aria-hidden="true"></i></div><h3>《网络安全 · 一人公司 · 手机操作》</h3><p>开源 AI 与网络安全的红线、一人公司工具栈、手机上跑开源模型的完整教程。</p></a>
+    <span class="work-badge">拓展 · 工科实战</span><div class="icon"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i></div><h3>《AI 时代工科学习实战》</h3><p>编程 / 计算机 / 数控 G 代码 / 实训 / 仿真模拟——全部带真实代码，复制就能跑。</p></a>
+    <a class="card" href="./devbase.html"><span class="work-badge">特别卷 · 开发者基地</span><div class="icon"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i></div><h3>《开发者基地 DEVBASE》</h3><p>11 章公开课程：GitHub 开源项目全录 + 真实提示词演示 + 一键上手命令 + 手机全套玩法。</p></a>
+    <a class="card" href="./chronicle.html"><span class="work-badge">特别卷 · 编年史</span><div class="icon"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i></div><h3>《AI 全景编年史》</h3><p>1950—2026 六卷超长卷：世界与中国史、18 位人物列传、2026 模型横评、六大领域影响篇。</p></a>
+  </div>
+</section>
+
+<!-- ================= 个人 IP ================= -->
+<section id="ip">
+  <div class="sec-head">
+    <div class="kicker">Module 08</div>
+    <h2>用 AI 打造你的个人主流 IP</h2>
+    <p>个人 IP 不是网红、不是流量，而是「当你不在场时，别人如何介绍你」。AI 时代，一个人就能开一家内容公司。核心公式：<b style="color:var(--cyan)">个人 IP = 定位 × 内容 × 持续输出</b>。</p>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="target"></i></div>
+      <h3>定位：找到你的赛道</h3>
+      <p>让 DeepSeek 帮你盘点资源、做交叉定位、验证赛道。公式：你能做的 × 别人需要的 × 别人还没做好的。越窄，越容易被记住。</p>
+      <span class="pill">定位三步法</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i></div>
+      <h3>内容：搭一条流水线</h3>
+      <p>选题 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 生产 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 分发。一篇长文拆成 5 个平台版本；一条脚本复用成图文、口播、直播。AI 负责体量，你负责灵魂。</p>
+      <span class="pill">一鱼多吃</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="users" aria-hidden="true"></i></div>
+      <h3>一个人，就是一支队伍</h3>
+      <p>编剧用 DeepSeek、美术用即梦、摄影用可灵、配音用剪映、运营用 Coze——过去一个团队的岗位，现在一个人加一套 AI 全包。</p>
+      <span class="pill">AI 组合拳</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="banknote" aria-hidden="true"></i></div>
+      <h3>变现：从轻到重</h3>
+      <p>流量变现 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 知识变现 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 产品变现 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 品牌变现。先做「知识变现」——你的知识 + AI 能力就是现成的产品，边际成本几乎为零。</p>
+      <span class="pill">四条路径</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 中国科技 ================= -->
+<section id="china">
+  <div class="sec-head">
+    <div class="kicker">Module 09</div>
+    <h2>中国科技故事</h2>
+    <p>理解 DeepSeek 为什么诞生在中国，要先读懂中国科技的底色：从两弹一星到高铁，从北斗到量子，从华为到大疆。这是一条与 AI 并行的主线。</p>
+  </div>
+  <div class="grid g3">
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="radiation"></i></div><h3>两弹一星</h3><p>从「一穷二白」到「镇国重器」。用算盘算出的原子弹，1964 年蘑菇云腾空、打破核垄断。核心精神：核心技术，只能靠自己拼出来。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="train-front" aria-hidden="true"></i></div><h3>中国高铁</h3><p>从「引进」到「领跑」。4 万公里运营里程世界第一，复兴号跑出中国速度。路径：先虚心学，再拼命追，最后跑在最前。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="satellite" aria-hidden="true"></i></div><h3>北斗导航</h3><p>银河号事件后的觉醒。26 年三步走，2020 全球组网。短报文通信救过无数条命——自己的卫星，谁也关不掉。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i></div><h3>中国航天</h3><p>从东方红一号到空间站，从嫦娥探月到天问探火。中国人的星辰大海，一步一个脚印。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="satellite" aria-hidden="true"></i></div><h3>华为与 5G</h3><p>一家公司的长征。5G 标准与设备全球领先，用极致研发在封锁中突围。</p></div>
+    <div class="card"><div class="icon"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div><h3>DeepSeek 逆袭</h3><p>用开源 + 极致性价比改写全球 AI 格局。约 560 万美元训练成本，撬动万亿市值叙事——中国 AI 的「斯普特尼克时刻」。</p></div>
+  </div>
+  <div style="text-align:center;margin-top:30px"><a href="./china-tech.html" class="btn btn-ghost"><i class="cc-ic" data-ic="arrow-right"></i> 阅读全部中国科技故事 </a></div>
+</section>
+
+<!-- ================= 开箱即用工作台 ================= -->
+<section id="workbench">
+  <div class="sec-head">
+    <div class="kicker">Module 10</div>
+    <h2>开箱即用 · AI 工作台</h2>
+    <p>下面内嵌的是开源项目 <b style="color:var(--cyan)">DeepSeek Harness</b>——一套开源、可复用、可组合的 AI 基础设施（插件生态）。它正在本地实时运行，你可以直接在下方体验，无需跳转、开箱即用。</p>
+  </div>
+  <div style="border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card)">
+    <iframe src="http://127.0.0.1:3080" style="width:100%;height:760px;border:none;display:block" title="DeepSeek Harness 开源 AI 工作台" loading="lazy"></iframe>
+  </div>
+  <p style="color:var(--muted);font-size:13px;margin-top:14px;text-align:center">若上方空白，说明本地 Harness 服务未启动 —— 在终端运行 <code style="background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--cyan)">dsh web</code> 后刷新即可。</p>
+</section>
+
+<footer>
+  <div class="logo">AI 创作纪元</div>
+  <div class="fbtns">
+    <a class="fb fb-main" href="../index.html"><i class="cc-mark" aria-hidden="true"></i>白驹总站（首页）</a>
+    <a class="fb fb-main" href="./hub.html" style="background:linear-gradient(120deg,#38e1ff,#8b5cf6)"><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>总站导航台</a>
+    <a class="fb" href="./workstation.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>白驹工作站</a>
+     实战全书</a>
+    <a class="fb" href="./chronicle.html"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>编年史</a>
+    <a class="fb" href="./devbase.html"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>开发者基地</a>
+  </div>
+  <p style="margin-top:14px;font-size:13px">全部页面见 <a href="./hub.html" style="color:var(--cyan)">总站导航台</a> —— 统一风站，一张图收尽。</p>
+  <p style="margin-top:16px">DeepSeek × 全栈 AI 工具终极指南 · 由 AI 协同创作 · 2026</p>
+</footer>
+<style>
+.fbtns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px;max-width:860px;margin-left:auto;margin-right:auto}
+.fb{display:inline-block;padding:11px 22px;border:1px solid var(--line);border-radius:12px;color:var(--muted);
+  text-decoration:none;font-size:14px;transition:.25s;background:var(--card)}
+.fb:hover{color:var(--cyan);border-color:var(--cyan);transform:translateY(-2px)}
+.fb-main{background:var(--grad);color:#04101f;font-weight:800;border:none}
+.fb-main:hover{color:#04101f;box-shadow:0 8px 26px rgba(79,140,255,.4)}
+</style>
+
+<script>
+// 阅读进度条
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+// 复制按钮
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  navigator.clipboard.writeText(b.parentElement.innerText.replace('复制','').trim());
+  b.textContent='已复制';setTimeout(()=>b.textContent='复制',1500);}));
+// 卡片入场动画
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.12});
+document.querySelectorAll('.card,.step,.tl-item').forEach(el=>{
+  el.style.opacity=0;el.style.transform='translateY(26px)';
+  el.style.transition='opacity .6s ease,transform .6s ease';io.observe(el);});
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

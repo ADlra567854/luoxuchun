@@ -1,0 +1,287 @@
+{
+  "title": "AI全景编年史",
+  "description": "从图灵到2026，人与机器相互塑造的七十六年",
+  "lastUpdated": "2026-08-16",
+  "volumes": [
+    {
+      "id": "v0",
+      "name": "卷零 · 前线快报",
+      "subtitle": "LIVE WIRE · 持续更新",
+      "description": "历史不是只发生在过去。这一周，牌桌上又落下了几张新牌。",
+      "events": [
+        {
+          "date": "2026.8.13",
+          "category": "开源地震",
+          "title": "DeepSeek 开源 Harness：模型的“身体”来了",
+          "description": "DeepSeek 发布并开源首个智能体运行框架 DeepSeek Harness（DSH）v0.1 开发者预览版：不是新模型，而是让模型调用文件系统、终端、网页、代码工具的基础设施，核心设计原则只有六个字——“一切皆插件”。",
+          "formula": "Model + Harness = Agent",
+          "impact": "上线一个半小时 GitHub Star 破 2.4 万，刷新平台纪录，被视为补齐 Vibe Coding 入口的关键一子。",
+          "tags": ["一切皆插件", "省 Token", "Agent 可自改装"]
+        },
+        {
+          "date": "2026.8.3",
+          "category": "开源超大杯",
+          "title": "阿里发布 Qwen3.8-Max",
+          "description": "通义千问家族迄今规模最大、能力最强的模型，旗舰首次开源，此前缺席的基准分全部补齐。",
+          "impact": "Qwen 系列继续以“全尺寸矩阵 + 完全开源”压制开源生态位，长期霸榜 HuggingFace 下载榜。"
+        },
+        {
+          "date": "2026.7-8",
+          "category": "普惠时刻",
+          "title": "ChatGPT 推送 GPT-5.6 全家桶",
+          "description": "OpenAI 发布 GPT-5.6 系列（Sol / Terra / Luna 三档），8 月更新更激进：免费用户首次获得无限文本对话与“Think”推理能力——推理模型从付费墙后走向全民，数亿人的 AI 体验被一次性抬升。"
+        },
+        {
+          "date": "2026.8.13",
+          "category": "价格战",
+          "title": "Gemini 3.7 Flash 同日对垒",
+          "description": "Google 同日发布 Gemini 3.7 Flash，定位“最智能的工作马模型”，主打编码与 Agent 能力并限时半价。三巨头在同一周贴身肉搏——2026 年的模型竞争，已是“高性价比工作马”的白刃战。"
+        }
+      ]
+    },
+    {
+      "id": "v1",
+      "name": "卷一 · 世界 AI 编年史",
+      "subtitle": "VOLUME I",
+      "description": "人工智能的历史是一部“三起两落”的历史：每一次狂喜都迎来寒冬，每一次寒冬都埋下下一次爆发的种子。",
+      "eras": [
+        {
+          "id": "era1",
+          "name": "第一幕 · 诞生与第一次狂想",
+          "period": "1950—1973",
+          "events": [
+            {
+              "year": "1950",
+              "title": "图灵之问",
+              "figure": "艾伦·图灵",
+              "description": "发表《计算机器与智能》，开篇即问“机器能思考吗”，并提出模仿游戏（图灵测试）作为判定标准。"
+            },
+            {
+              "year": "1956",
+              "title": "达特茅斯会议：学科诞生",
+              "figure": "约翰·麦卡锡、马文·明斯基、香农 等",
+              "description": "在达特茅斯学院召开夏季研讨会，“人工智能（Artificial Intelligence）”一词正式诞生。"
+            },
+            {
+              "year": "1957—1969",
+              "title": "感知机与早期繁荣",
+              "figure": "罗森布拉特",
+              "description": "发明感知机，神经网络第一次成为现实；《纽约时报》惊呼“海军期望电子计算机的雏形将能行走、说话、观看、书写、自我复制并意识到自身存在”。"
+            }
+          ]
+        },
+        {
+          "id": "era2",
+          "name": "第二幕 · 两次寒冬",
+          "period": "1974—1993",
+          "events": [
+            {
+              "year": "1973",
+              "title": "莱特希尔报告：第一次寒冬",
+              "description": "英国发表莱特希尔报告，尖锐批评 AI“言过其实”，英美政府相继大幅削减经费。教训写进教科书：承诺超过交付，信任就会崩塌。"
+            },
+            {
+              "year": "1980s",
+              "title": "专家系统复兴与再度破灭",
+              "description": "以 XCON 为代表的专家系统一度创造十亿美元级产业，日本“五代机”计划震惊西方；但规则系统的脆弱与维护成本，让 AI 在 1987 年后滑入第二次寒冬。"
+            },
+            {
+              "year": "1986",
+              "title": "寒冬里的火种",
+              "figure": "辛顿、鲁梅尔哈特、威廉姆斯",
+              "description": "推广反向传播算法，让多层神经网络可训练。当时无人问津，二十年后它成为深度学习革命的引信。"
+            }
+          ]
+        },
+        {
+          "id": "era3",
+          "name": "第三幕 · 深度学习爆发",
+          "period": "2006—2022",
+          "events": [
+            {
+              "year": "2006",
+              "title": "深度学习复兴",
+              "figure": "辛顿",
+              "description": "发表《一种深度置信网络的快速学习算法》，深度学习重新成为研究热点。"
+            },
+            {
+              "year": "2012",
+              "title": "ImageNet 大赛",
+              "figure": "辛顿团队",
+              "description": "AlexNet 在 ImageNet 图像识别大赛中以深度学习方法大幅领先，深度学习正式进入主流视野。"
+            },
+            {
+              "year": "2016",
+              "title": "AlphaGo 击败李世石",
+              "figure": "DeepMind",
+              "description": "谷歌 DeepMind 的 AlphaGo 击败围棋世界冠军李世石，AI 首次在复杂策略游戏中战胜人类顶尖选手。"
+            },
+            {
+              "year": "2017",
+              "title": "Transformer 架构诞生",
+              "figure": "谷歌团队",
+              "description": "论文《Attention Is All You Need》提出 Transformer 架构，成为此后所有大语言模型的基础。"
+            },
+            {
+              "year": "2020",
+              "title": "GPT-3 发布",
+              "figure": "OpenAI",
+              "description": "1750亿参数的 GPT-3 发布，展示了大语言模型的惊人能力，开启了“大力出奇迹”的时代。"
+            },
+            {
+              "year": "2022",
+              "title": "ChatGPT 横空出世",
+              "figure": "OpenAI",
+              "description": "ChatGPT 发布，两个月内用户破亿，成为历史上增长最快的消费级应用，AI 真正进入大众视野。"
+            }
+          ]
+        },
+        {
+          "id": "era4",
+          "name": "第四幕 · 大模型时代",
+          "period": "2023—2026",
+          "events": [
+            {
+              "year": "2023",
+              "title": "GPT-4 发布",
+              "figure": "OpenAI",
+              "description": "GPT-4 发布，支持多模态输入，能力大幅提升，成为行业标杆。"
+            },
+            {
+              "year": "2024",
+              "title": "开源模型崛起",
+              "figure": "Meta、阿里、谷歌",
+              "description": "LLaMA、Qwen、Gemma 等开源模型崛起，大模型从闭源走向开源，技术民主化加速。"
+            },
+            {
+              "year": "2025",
+              "title": "DeepSeek 时刻",
+              "figure": "DeepSeek",
+              "description": "DeepSeek-R1 发布，开源、高性能、低成本，成为全球关注的焦点，标志中国 AI 进入世界前列。"
+            },
+            {
+              "year": "2026",
+              "title": "Agent 元年",
+              "figure": "各大公司",
+              "description": "AI Agent 成为主题，从“聊天机器人”走向“智能助手”，AI 开始真正改变工作方式。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pioneers": [
+    {
+      "name": "艾伦·图灵",
+      "englishName": "Alan Turing",
+      "role": "计算机科学之父",
+      "icon": "🧮",
+      "contribution": "提出图灵机和图灵测试，奠定了计算机科学和人工智能的理论基础。",
+      "quote": "机器能思考吗？"
+    },
+    {
+      "name": "约翰·麦卡锡",
+      "englishName": "John McCarthy",
+      "role": "人工智能之父",
+      "icon": "🧠",
+      "contribution": "提出“人工智能”一词，发明 LISP 语言，组织达特茅斯会议。",
+      "quote": "人工智能是让机器做事，如果由人来做则需要智能。"
+    },
+    {
+      "name": "马文·明斯基",
+      "englishName": "Marvin Minsky",
+      "role": "认知科学家",
+      "icon": "🔬",
+      "contribution": "人工智能早期奠基人之一，MIT 人工智能实验室联合创始人。",
+      "quote": "人工智能是让机器完成人类能做的事。"
+    },
+    {
+      "name": "杰弗里·辛顿",
+      "englishName": "Geoffrey Hinton",
+      "role": "深度学习之父",
+      "icon": "🎓",
+      "contribution": "反向传播算法发明人，深度学习复兴的关键人物，2024 年诺贝尔物理学奖得主。",
+      "quote": "深度学习将改变世界。"
+    },
+    {
+      "name": "伊恩·古德费洛",
+      "englishName": "Ian Goodfellow",
+      "role": "GAN 之父",
+      "icon": "🎨",
+      "contribution": "发明生成对抗网络（GAN），开创了 AI 生成内容的新时代。",
+      "quote": "对抗性训练是让 AI 更聪明的关键。"
+    },
+    {
+      "name": "德米斯·哈萨比斯",
+      "englishName": "Demis Hassabis",
+      "role": "DeepMind 创始人",
+      "icon": "🎮",
+      "contribution": "创立 DeepMind，开发 AlphaGo 和 AlphaFold，推动 AI 在科学领域的应用。",
+      "quote": "AI 将帮助人类解决最困难的科学问题。"
+    },
+    {
+      "name": "萨姆·奥特曼",
+      "englishName": "Sam Altman",
+      "role": "OpenAI CEO",
+      "icon": "💡",
+      "contribution": "领导 OpenAI，推出 ChatGPT 和 GPT 系列，推动 AI 进入大众视野。",
+      "quote": "AGI 将是人类历史上最具变革性的技术。"
+    },
+    {
+      "name": "梁文锋",
+      "englishName": "Liang Wenfeng",
+      "role": "DeepSeek 创始人",
+      "icon": "🚀",
+      "contribution": "创立 DeepSeek，推出高性能开源大模型，推动中国 AI 发展。",
+      "quote": "AI 应该是普惠的，而不是少数人的特权。"
+    }
+  ],
+  "milestones": [
+    {
+      "year": "1950",
+      "event": "图灵测试提出",
+      "significance": "定义了机器智能的测试标准"
+    },
+    {
+      "year": "1956",
+      "event": "达特茅斯会议",
+      "significance": "人工智能学科正式诞生"
+    },
+    {
+      "year": "1986",
+      "event": "反向传播算法",
+      "significance": "让神经网络训练成为可能"
+    },
+    {
+      "year": "2012",
+      "event": "AlexNet 获胜",
+      "significance": "深度学习进入主流视野"
+    },
+    {
+      "year": "2016",
+      "event": "AlphaGo 击败李世石",
+      "significance": "AI 在复杂策略游戏中战胜人类"
+    },
+    {
+      "year": "2017",
+      "event": "Transformer 架构",
+      "significance": "奠定大语言模型的基础"
+    },
+    {
+      "year": "2022",
+      "event": "ChatGPT 发布",
+      "significance": "AI 进入大众视野"
+    },
+    {
+      "year": "2025",
+      "event": "DeepSeek 时刻",
+      "significance": "中国 AI 进入世界前列"
+    }
+  ],
+  "stats": {
+    "totalYears": 76,
+    "totalEvents": 50,
+    "totalPioneers": 10,
+    "totalMilestones": 8
+  }
+}

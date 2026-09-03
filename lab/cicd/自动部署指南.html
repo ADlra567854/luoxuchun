@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  20 分钟 实验室 自动部署指南：从「本地文件夹」到「手机上能访问的网址」 目标：把项目里的 website/ 目录（纯静态 HTML）变成一个 …">
+<meta name="keywords" content="自动部署指南,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  20 分钟 实验室 自动部署指南：从「本地文件夹」到「手机上能访问的网址」 目标：把项目里的 website/ 目录（纯静态 HTML）变成一个 …"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自动部署指南 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/cicd/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97.html">
+<meta property="og:title" content="自动部署指南 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/cicd/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="自动部署指南 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  20 分钟 实验室 自动部署指南：从「本地文件夹」到「手机上能访问的网址」 目标：把项目里的 website/ 目录（纯静态 HTML）变成一个 …">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-lab-cicd-自动部署指南.png" alt="自动部署指南 · AI 创作纪元（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>20 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>自动部署指南：从「本地文件夹」到「手机上能访问的网址」</h1>
+<blockquote>
+<p>目标：把项目里的 <code>website/</code> 目录（纯静态 HTML）变成一个<strong>手机浏览器也能打开的网址</strong>。
+全程免费，只用一个 GitHub 账号。零门槛，跟着一步步做即可。</p>
+<p>配套文件：<code>deploy-github-pages.yml</code>（复制到仓库 <code>.github/workflows/</code> 即用）。</p>
+</blockquote>
+<hr>
+<h2>总览：我们要走哪几步</h2>
+<pre><code>本地文件夹 website/
+        │
+        │  ① git init + 推送到 GitHub（让代码上云）
+        
+GitHub 仓库（云端代码）
+        │
+        │  ② 放入 workflow 文件（告诉 GitHub &quot;怎么自动部署&quot;）
+        │  ③ Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Pages <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选 GitHub Actions（开启发布开关）
+        
+GitHub Pages 自动构建 + 发布
+        │
+        │  ④ 拿到网址 https://用户名.github.io/仓库/
+        
+手机浏览器打开网址 <i class="cc-ic" data-ic="check-circle" aria-hidden="true"></i>
+</code></pre>
+<blockquote>
+<p>补充：如果不想折腾 Git，第 ⑤ 节有 <strong>Vercel / Netlify 拖拽上传</strong> 的替代方案，3 分钟也能上线。</p>
+</blockquote>
+<hr>
+<h2>① 把本地文件夹推到 GitHub（git init + push）</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-自动部署指南.png" alt="自动部署指南 · AI 创作纪元（离线版） · ① 把本地文件夹推到 GitHub（git init + p" loading="lazy"></figure>
+
+<h3>1.1 先建好远程空仓库（网页操作）</h3>
+<ol>
+<li>打开 <a href="https://github.com">https://github.com</a>，登录后点右上角 <strong>＋ <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> New repository</strong>。<blockquote>
+<p>【截图位：GitHub 首页右上角 + 号 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> New repository】</p>
+</blockquote>
+</li>
+<li>Repository name 填一个英文名，例如 <code>my-site</code>（仓库名会出现在最终网址里）。</li>
+<li>可见性选 <strong>Public</strong>（公开仓库免费使用 GitHub Pages；私有仓库的 Pages 需要付费计划）。</li>
+<li><strong>不要勾选</strong> &quot;Add a README / .gitignore / license&quot;（保持空仓库，方便推送）。</li>
+<li>点 <strong>Create repository</strong>，记下页面上显示的仓库地址，形如：<pre><code>https://github.com/你的用户名/my-site.git
+</code></pre>
+<blockquote>
+<p>【截图位：新建仓库页面，红框标出仓库名、Public、仓库地址】</p>
+</blockquote>
+</li>
+</ol>
+<h3>1.2 在项目根目录执行 git 命令（本机操作）</h3>
+<p>在项目根目录（<code>C:\Users\35683\CodeBuddy\20260815143624</code>，也就是有 <code>website/</code>、<code>lab/</code> 的这层）打开终端，依次执行：</p>
+<pre><code class="language-bash"># 1) 初始化 git 仓库（首次做一次）
+git init
+
+# 2) 把所有文件加入暂存区
+git add .
+
+# 3) 提交第一个版本
+git commit -m &quot;init: 初始提交（网站 + 实验室内容）&quot;
+
+# 4) 默认分支改名为 main（GitHub 默认分支名）
+git branch -M main
+
+# 5) 关联远程仓库（把下面的地址换成你自己的）
+git remote add origin https://github.com/你的用户名/my-site.git
+
+# 6) 推送到 GitHub
+git push -u origin main
+</code></pre>
+<blockquote>
+<p>【截图位：终端执行 <code>git push -u origin main</code> 成功，显示 <code>Branch &#39;main&#39; set up to track</code>】</p>
+<p>推送时若提示输入账号密码：GitHub 已不支持密码登录，需在
+GitHub <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Developer settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Personal access tokens 生成一个
+<strong>Personal Access Token</strong> 当密码用；或直接用 GitHub Desktop / VSCode 登录推送，更省事。</p>
+</blockquote>
+<p>推送成功后，刷新 GitHub 仓库页面，就能看到 <code>website/</code>、<code>lab/</code> 等目录出现在网页上了。</p>
+<blockquote>
+<p>【截图位：GitHub 仓库首页显示代码文件树】</p>
+</blockquote>
+<hr>
+<h2>② 把 workflow 放进 <code>.github/workflows/</code></h2>
+<p>GitHub Actions 靠 <code>.github/workflows/</code> 目录下的 <code>.yml</code> 文件来决定「什么时候、干什么」。</p>
+<ol>
+<li>在<strong>仓库根目录</strong>新建两个文件夹层级：<code>.github</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 里面再建 <code>workflows</code>。</li>
+<li>把本目录的 <code>deploy-github-pages.yml</code> 复制进去，最终路径必须是：<pre><code>.github/workflows/deploy-github-pages.yml
+</code></pre>
+</li>
+</ol>
+<blockquote>
+<p>注意：<code>.github</code> 开头带点，是<strong>隐藏文件夹</strong>。Windows 文件资源管理器里看不到时，
+打开「查看 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 隐藏的项目」勾选即可。</p>
+</blockquote>
+<p><strong>两种操作方式，任选其一：</strong></p>
+<ul>
+<li><p><strong>方式 A（终端，最快）</strong>，在项目根目录执行：</p>
+<pre><code class="language-bash"># Windows PowerShell / macOS / Linux 通用
+mkdir -p .github/workflows
+cp lab/cicd/deploy-github-pages.yml .github/workflows/deploy-github-pages.yml
+
+git add .github/workflows/deploy-github-pages.yml
+git commit -m &quot;deploy: 接入 GitHub Pages 自动部署&quot;
+git push
+</code></pre>
+</li>
+<li><p><strong>方式 B（网页，直观）</strong>：在 GitHub 仓库页面点 <strong>Add file <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Create new file</strong>，
+文件名框输入 <code>.github/workflows/deploy-github-pages.yml</code>，
+把 <code>deploy-github-pages.yml</code> 的内容粘贴进去，直接点 <strong>Commit new file</strong>。</p>
+<blockquote>
+<p>【截图位：网页新建文件，文件名框已填 <code>.github/workflows/deploy-github-pages.yml</code>】</p>
+</blockquote>
+</li>
+</ul>
+<p>推送到 main 分支后，GitHub 会<strong>自动触发</strong>这次部署（因为 workflow 里的 <code>paths</code> 包含了本工作流文件本身）。</p>
+<hr>
+<h2>③ 开启 GitHub Pages（Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Pages <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> GitHub Actions）</h2>
+<p>这一步是「总开关」，只需设置<strong>一次</strong>：</p>
+<ol>
+<li>打开 GitHub 仓库页面，点顶部 <strong>Settings</strong> 标签。</li>
+<li>左侧菜单点 <strong>Pages</strong>。</li>
+<li>找到 <strong>Build and deployment</strong> 区域，把 <strong>Source</strong> 从默认的 <code>Deploy from a branch</code> 改成 <strong>GitHub Actions</strong>。<blockquote>
+<p>【截图位：Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Pages 页面，红框标出 Source 下拉框选 GitHub Actions】</p>
+</blockquote>
+</li>
+<li>页面会自动保存，无需其它操作。</li>
+</ol>
+<blockquote>
+<p>如果你已经先推了 workflow 再开这个开关也没关系——开好后，去 <strong>Actions</strong> 标签页
+找到刚才那次失败的运行记录，点右上角 <strong>Re-run all jobs</strong>（或手动触发一次）即可。
+或者到 Actions <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 左侧选中该 workflow <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 点 <strong>Run workflow</strong> 按钮手动跑一次。</p>
+</blockquote>
+<hr>
+<h2>④ 拿网址，手机访问</h2>
+<h3>4.1 确认部署成功</h3>
+<ol>
+<li>打开仓库 <strong>Actions</strong> 标签页，选中左侧的「部署 website 到 GitHub Pages」workflow。<blockquote>
+<p>【截图位：Actions 运行列表，两条任务 build + deploy 均显示绿色 <i class="cc-ic" data-ic="check-circle" aria-hidden="true"></i>】</p>
+</blockquote>
+</li>
+<li>点进最新一次运行，<code>deploy</code> 任务成功后，页面顶部会有一个 <strong>可直接点击的站点链接</strong>（来自 <code>environment.url</code>）。</li>
+<li>部署成功后回到 <strong>Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Pages</strong>，页面顶部也会显示一行绿字：<blockquote>
+<p>Your site is live at <strong>https://用户名.github.io/仓库名/</strong>
+【截图位：Pages 页面顶部 &quot;Your site is live at ...&quot; 绿字横幅】</p>
+</blockquote>
+</li>
+</ol>
+<h3>4.2 最终网址的规律</h3>
+<table>
+<thead>
+<tr>
+<th>仓库类型</th>
+<th>网址格式</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户/组织主页仓库（仓库名 = <code>用户名.github.io</code>）</td>
+<td><code>https://用户名.github.io/</code></td>
+<td><code>https://alice.github.io/</code></td>
+</tr>
+<tr>
+<td>普通项目仓库（本项目这种）</td>
+<td><code>https://用户名.github.io/仓库名/</code></td>
+<td><code>https://alice.github.io/my-site/</code></td>
+</tr>
+</tbody></table>
+<p><strong>本项目属于第二种</strong>，网址形如：</p>
+<pre><code>https://你的用户名.github.io/my-site/
+</code></pre>
+<h3>4.3 手机访问</h3>
+<ul>
+<li><strong>手机连任意网络（WiFi / 4G/5G）</strong>，打开浏览器，输入上面的网址即可访问。</li>
+<li>因为 GitHub Pages 是<strong>公网服务</strong>，所以手机<strong>不需要和电脑在同一 WiFi</strong>，走到哪都能打开。</li>
+</ul>
+<blockquote>
+<p><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>常见坑：打开后是 404 或空白。</p>
+<ol>
+<li>等 1~2 分钟，Pages 首次发布有缓存延迟。</li>
+<li>确认 Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Pages 的 Source 是 <strong>GitHub Actions</strong>（不是 branch）。</li>
+<li>确认 <code>upload-pages-artifact</code> 的 <code>path</code> 写的是 <code>website</code>（子目录），不是仓库根。</li>
+<li>确认网址里带了 <code>/&lt;仓库名&gt;/</code> 这一层（普通项目仓库必须有）。</li>
+<li>确认 <code>website/index.html</code> 里的链接是<strong>相对路径</strong>（如 <code>./chat.html</code>、<code>../lab/...</code>），
+而不是以 <code>/</code> 开头的绝对路径——否则在子路径下会跳错。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>进阶：想让网址不带 <code>/仓库名/</code>，可以到 Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Pages 配置 <strong>Custom domain</strong>
+（绑定你自己的域名），或把仓库改名为 <code>用户名.github.io</code>。</p>
+</blockquote>
+<hr>
+<h2>⑤ 替代方案：Vercel / Netlify（拖拽或 CLI 一键）</h2>
+<p>不想装 Git、不想管 Actions？用「<strong>拖拽上传</strong>」或「<strong>CLI 一键</strong>」，3 分钟也能上线，还自带全球 CDN。</p>
+<h3>方案 A：Vercel（推荐，最省事）</h3>
+<p><strong>方式一：网页拖拽（零命令）</strong></p>
+<ol>
+<li>打开 <a href="https://vercel.com">https://vercel.com</a>，用 GitHub 账号一键登录。</li>
+<li>点 <strong>Add New <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Project <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Import</strong> 导入你的 GitHub 仓库；没有仓库就选 <strong>Deploy</strong> 后用 <strong>Upload</strong> 直接上传 <code>website/</code> 文件夹。<blockquote>
+<p>【截图位：Vercel 导入页面，红框标出 Import 与拖拽上传区】</p>
+</blockquote>
+</li>
+<li>关键配置：<strong>Root Directory 填 <code>website</code></strong>（让它只发布网站目录），框架选 <strong>Other</strong>。</li>
+<li>点 <strong>Deploy</strong>，约 30 秒出结果，得到一个 <code>https://xxx.vercel.app</code> 网址，手机直接访问。</li>
+<li>之后每次 <code>git push</code> 到 main 都<strong>自动重新部署</strong>。</li>
+</ol>
+<p><strong>方式二：CLI 一键（命令行）</strong></p>
+<pre><code class="language-bash"># 1) 全局安装 Vercel CLI
+npm i -g vercel
+
+# 2) 进入 website 目录，一键部署（首次会引导你登录）
+cd website
+vercel            # 预览部署
+vercel --prod     # 生产部署（正式网址）
+</code></pre>
+<h3>方案 B：Netlify（同样免费，拖拽极简）</h3>
+<p><strong>方式一：网页拖拽（最快）</strong></p>
+<ol>
+<li>打开 <a href="https://app.netlify.com">https://app.netlify.com</a> 登录。</li>
+<li>进入 <strong>Sites</strong> 页面，把 <code>website/</code> 文件夹<strong>直接拖进虚线框</strong>。<blockquote>
+<p>【截图位：Netlify Sites 页面的拖拽上传虚线框】</p>
+</blockquote>
+</li>
+<li>松手即开始上传，几秒后生成 <code>https://xxx.netlify.app</code> 网址，手机即可访问。</li>
+<li>想改内容：重新拖拽覆盖，或关联 GitHub 仓库实现自动部署。</li>
+</ol>
+<p><strong>方式二：CLI 一键（命令行）</strong></p>
+<pre><code class="language-bash"># 1) 全局安装 Netlify CLI
+npm i -g netlify-cli
+
+# 2) 进入 website 目录，一键部署（首次会引导你登录/授权）
+cd website
+netlify deploy --prod --dir .
+</code></pre>
+<h3>三个平台怎么选</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>上手难度</th>
+<th>优点</th>
+<th>何时选</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GitHub Pages</strong></td>
+<td>中（要懂点 git）</td>
+<td>全在 GitHub 生态、免费、稳定</td>
+<td>已有 GitHub 账号、想练 CI/CD</td>
+</tr>
+<tr>
+<td><strong>Vercel</strong></td>
+<td>低</td>
+<td>拖拽/CLI 皆可、CDN 快、PR 预览</td>
+<td>想最快上线、要全球加速</td>
+</tr>
+<tr>
+<td><strong>Netlify</strong></td>
+<td>最低</td>
+<td>拖拽上传最傻瓜</td>
+<td>只想拖个文件夹立刻出网址</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>附：一页速查命令</h2>
+<pre><code class="language-bash"># ── 第一次推送 ─────────────────────────────────────────────
+git init
+git add .
+git commit -m &quot;init&quot;
+git branch -M main
+git remote add origin https://github.com/你的用户名/my-site.git
+git push -u origin main
+
+# ── 接入自动部署（workflow 就位后）─────────────────────────
+mkdir -p .github/workflows
+cp lab/cicd/deploy-github-pages.yml .github/workflows/deploy-github-pages.yml
+git add .github/workflows/deploy-github-pages.yml
+git commit -m &quot;deploy: GitHub Pages 自动部署&quot;
+git push
+
+# ── 后续每次更新网站 ───────────────────────────────────────
+# 改完 website/ 里的文件后：
+git add website
+git commit -m &quot;update: 更新网站内容&quot;
+git push
+# <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> GitHub 自动重新部署，1~2 分钟后手机刷新即可看到新版
+</code></pre>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body></html>

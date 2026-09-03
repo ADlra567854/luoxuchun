@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="白驹技能实操营：1008 技能弹药库不是摆设——粘贴文档即可 RAG 问答，选模板即可生成专业提示词，全程智谱免费模型驱动。">
+<meta name="keywords" content="技能实操营,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="白驹技能实操营：1008 技能弹药库不是摆设——粘贴文档即可 RAG 问答，选模板即可生成专业提示词，全程智谱免费模型驱动。">
+<title>技能实操营 · 白驹全局大脑 · 1008 弹药库真能跑</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xx+xml" onerror="this.href='/favicon.ico'">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/site-industrial.css">
+<style>
+:root{ --grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6); }
+*{box-sizing:border-box}
+body{margin:0;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:#3b82f6;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 60px}
+.back{display:inline-block;margin:18px 0 6px;font-size:14px;color:var(--muted)}
+.hero{padding:18px 0 8px}
+.hero h1{font-size:34px;font-weight:900;margin:6px 0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .badge{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--grad);border-radius:99px;padding:4px 12px}
+.hero p.lead{color:var(--muted);font-size:15px;max-width:760px}
+.cc-pg-cover{margin:18px 0 26px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.12)}
+.cc-pg-cover img{display:block;width:100%;height:clamp(180px,30vw,320px);object-fit:cover}
+.card{background:var(--card);border:1px solid var(--card-line,rgba(120,160,220,.18));border-radius:16px;padding:22px;margin:22px 0;box-shadow:0 6px 18px rgba(31,45,77,.05)}
+.card h2{font-size:21px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.card .hint{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+label{font-size:13px;font-weight:600;color:var(--muted);display:block;margin:12px 0 6px}
+textarea,input,select{width:100%;border:1px solid var(--card-line,rgba(120,160,220,.25));border-radius:10px;padding:11px 12px;font-size:14px;font-family:inherit;background:var(--card);color:var(--text);resize:vertical}
+textarea{min-height:120px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row>*{flex:1;min-width:200px}
+.btn{cursor:pointer;border:none;border-radius:12px;padding:11px 18px;font-size:14px;font-weight:700;color:#fff;background:var(--grad);box-shadow:0 6px 16px rgba(79,140,255,.28);transition:.15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:#3b82f6;border:1px solid rgba(120,160,220,.4);box-shadow:none}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.out{margin-top:14px;padding:16px;border-radius:12px;background:rgba(79,140,255,.06);border:1px solid rgba(120,160,220,.2);min-height:60px;white-space:pre-wrap;font-size:14.5px}
+.varbox{margin:10px 0;padding:12px;border:1px dashed rgba(120,160,220,.4);border-radius:10px;background:rgba(79,140,255,.04)}
+.varbox label{margin:0 0 5px}
+.domgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0}
+.domchip{padding:12px;border-radius:12px;border:1px solid rgba(120,160,220,.25);background:var(--card);cursor:pointer;transition:.15s;text-align:center;font-weight:600;font-size:13.5px}
+.domchip:hover{border-color:#3b82f6;transform:translateY(-2px)}
+.domchip .ic{font-size:22px;display:block;margin-bottom:4px}
+.kpi{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
+.kpi .b{flex:1;min-width:140px;background:var(--card);border:1px solid var(--card-line,rgba(120,160,220,.2));border-radius:14px;padding:16px;text-align:center}
+.kpi .b .n{font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kpi .b .t{font-size:12.5px;color:var(--muted)}
+.note{font-size:12.5px;color:var(--muted);margin-top:8px}
+.cobadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1a7f54;background:rgba(40,200,120,.12);border:1px solid rgba(40,200,120,.3);border-radius:99px;padding:3px 10px;margin-left:8px}
+</style>
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/skill-lab.html">
+<meta property="og:title" content="技能实操营 · 白驹全局大脑 · 1008 弹药库真能跑">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/skill-lab.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="技能实操营 · 白驹全局大脑 · 1008 弹药库真能跑">
+<meta name="twitter:description" content="白驹技能实操营：1008 技能弹药库不是摆设——粘贴文档即可 RAG 问答，选模板即可生成专业提示词，全程智谱免费模型驱动。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/website/ai-academy.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回 AI 学院</a>
+  <div class="hero">
+    <span class="badge"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>技能实操营</span><span class="cobadge"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>智谱免费模型驱动</span>
+    <h1>1008 技能弹药库，真能跑</h1>
+    <p class="lead">不是摆设、不是列表。把任意资料粘进来就能 RAG 问答，选个模板就能生成专业提示词——全程由智谱 <code>glm-4.7-flash</code> 免费模型驱动，开箱即用，零成本。</p>
+  </div>
+
+  <!-- 封面 -->
+  <figure class="cc-pg-cover"><img src="../assets/pg/pg-website-skill-lab.png" alt="技能实操营：1008 技能弹药库驱动的白驹工作台" loading="lazy"></figure>
+
+  <!-- 模块一：RAG 迷你问答 -->
+  <section class="card">
+    <h2><i class="cc-ic" data-ic="search" aria-hidden="true"></i>① RAG 迷你问答 · 粘贴即问</h2>
+    <p class="hint">把你的笔记 / 文档 / 产品资料粘进左边，提问，白驹只基于你给的资料回答，<b>不瞎编</b>。底层：智谱免费模型 + 检索增强提示。</p>
+    <label>① 粘贴知识库资料（任意文本，建议 &lt; 5 万字）</label>
+    <textarea id="ragDoc" placeholder="例：白驹全局大脑是本地优先的 AI 工作台，把分散的 AI 入口、工作站、助手、工具收拢成中央枢纽……"></textarea>
+    <label>② 输入问题</label>
+    <input id="ragQ" placeholder="例：白驹全局大脑的核心定位是什么？" />
+    <div class="row" style="margin-top:14px;align-items:flex-end">
+      <button class="btn" id="ragBtn" onclick="ragAsk()"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>开始问答</button>
+      <button class="btn ghost" onclick="document.getElementById('ragDoc').value='';document.getElementById('ragQ').value='';document.getElementById('ragOut').textContent=''"><i class="cc-ic" data-ic="eraser"></i> 清空</button>
+    </div>
+    <div class="out" id="ragOut">回答会显示在这里……</div>
+    <p class="note">提示：首次使用若提示需 Key，点页面右上角  填入智谱 Key 即可；部署版已内置免费默认 Key，直接可用。</p>
+  </section>
+
+  <!-- 模块二：智能提示词生成器 -->
+  <section class="card">
+    <h2><i class="cc-ic" data-ic="puzzle" aria-hidden="true"></i>② 智能提示词生成器 · 模板库直出</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-skill-lab.png" alt="技能实操营 · 白驹全局大脑 · 1008 弹药库真能跑 · " loading="lazy"></figure>
+
+    <p class="hint">从「技能驱动提示词模板库」选一个场景，填几个变量，一键生成可直接复制的专业提示词；还能让智谱帮你优化。</p>
+    <label>选能力域</label>
+    <div class="domgrid" id="domGrid"></div>
+    <label>选具体模板</label>
+    <select id="pSel" onchange="renderVars()"><option value="">— 请先选能力域 —</option></select>
+    <div id="varArea"></div>
+    <div class="row" style="margin-top:14px;align-items:flex-end">
+      <button class="btn" onclick="genPrompt()"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>生成完整提示词</button>
+      <button class="btn ghost" onclick="copyPrompt()"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制</button>
+      <button class="btn ghost" onclick="optimizePrompt()"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i>智谱优化</button>
+    </div>
+    <label>生成结果</label>
+    <textarea id="pOut" style="min-height:150px" placeholder="生成的提示词会显示在这里……"></textarea>
+    <p class="note">优化功能调用智谱免费模型，对提示词做结构化增强（角色/约束/示例/输出格式）。</p>
+  </section>
+
+  <!-- 模块三：1008 技能如何驱动白驹 -->
+  <section class="card">
+    <h2><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>③ 1008 技能如何驱动白驹</h2>
+    <p class="hint">白驹主站不是把技能列出来，而是把技能当<b>升级引擎</b>：每个板块的内容、模板、路线图都由对应域的技能持续喂养、迭代。</p>
+    <div class="kpi" id="kpiBox">
+      <div class="b"><div class="n" id="kSkill">1008</div><div class="t">已安装技能 / 插件</div></div>
+      <div class="b"><div class="n" id="kDomain">10</div><div class="t">能力域</div></div>
+      <div class="b"><div class="n">0¥</div><div class="t">生图 / 文本推理成本</div></div>
+    </div>
+    <div class="domgrid" id="domainList"></div>
+    <p class="note">数据来自 <code>window.SKILLS</code> 与 <code>window.PROMPT_TEMPLATES</code>：技能域实时盘点，模板库随技能更新。</p>
+  </section>
+
+  <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:30px">白驹全局大脑 · 技能实操营 ｜ 用免费模型，把 1008 技能变成真能力</p>
+</div>
+
+<script src="/ai-client.js"></script>
+<script src="/data/prompt-templates.js"></script>
+<script src="/data/skills.js"></script>
+<script>
+// ---------- 模块一：RAG 问答 ----------
+async function ragAsk(){
+  const doc = (document.getElementById('ragDoc').value||'').trim()
+  const q = (document.getElementById('ragQ').value||'').trim()
+  const out = document.getElementById('ragOut')
+  if(!doc || !q){ out.textContent=' 请先粘贴资料并输入问题。'; return }
+  const btn = document.getElementById('ragBtn'); btn.disabled=true; out.textContent='思考中…'
+  const docTrim = doc.length>120000 ? doc.slice(0,120000) : doc
+  const msgs = [
+    {role:'system', content:'你是严谨的检索问答助手。只根据【资料】回答，资料中没有的信息明确回答"资料中未提及"，不要编造或补充资料外知识。用中文简洁作答。'},
+    {role:'user', content:'【资料】\n'+docTrim+'\n\n【问题】'+q}
+  ]
+  try{
+    await window.AI.chat({
+      provider:'zhipu', messages:msgs,
+      onDelta:(t)=>{ if(out.textContent==='思考中…') out.textContent=''; out.textContent+=t },
+      onError:(e)=>{ out.textContent=' '+e.message }
+    })
+  }catch(e){ out.textContent=' '+e.message }
+  btn.disabled=false
+}
+
+// ---------- 模块二：提示词生成器 ----------
+const T = (window.PROMPT_TEMPLATES||[])
+let curTpl = ''
+function buildDomainGrid(){
+  const g = document.getElementById('domGrid')
+  if(!T.length){ g.innerHTML='<p class="note">模板库未加载（需 /data/prompt-templates.js）。</p>'; return }
+  g.innerHTML=''
+  T.forEach((d,i)=>{
+    const c=document.createElement('div'); c.className='domchip'; c.innerHTML='<span class="ic">'+d.icon+'</span>'+d.domain
+    c.onclick=()=>{ selectDomain(i); document.querySelectorAll('.domchip').forEach(x=>x.style.borderColor=''); c.style.borderColor='#3b82f6' }
+    g.appendChild(c)
+  })
+}
+function selectDomain(i){
+  const d=T[i]; const sel=document.getElementById('pSel'); sel.innerHTML=''
+  d.prompts.forEach((p,j)=>{ const o=document.createElement('option'); o.value=i+':'+j; o.textContent=p.name; sel.appendChild(o) })
+  renderVars()
+}
+function renderVars(){
+  const v=document.getElementById('varArea'); const val=document.getElementById('pSel').value
+  if(!val){ v.innerHTML=''; return }
+  const [i,j]=val.split(':'); const p=T[i].prompts[j]; curTpl=p.tpl
+  const vars=[...new Set((p.tpl.match(/\{[^}]+\}/g)||[]).map(s=>s.slice(1,-1)))]
+  v.innerHTML=''
+  if(!vars.length){ v.innerHTML='<p class="note">该模板无变量，直接点「生成完整提示词」。</p>'; return }
+  vars.forEach(name=>{
+    const box=document.createElement('div'); box.className='varbox'
+    box.innerHTML='<label>'+name+'</label><input data-v="'+name+'" placeholder="填入'+name+'…">'
+    v.appendChild(box)
+  })
+}
+function genPrompt(){
+  if(!curTpl){ document.getElementById('pOut').value=' 请先选模板。'; return }
+  let s=curTpl
+  document.querySelectorAll('#varArea input[data-v]').forEach(inp=>{ s=s.replace(new RegExp('\\{'+inp.dataset.v+'\\}','g'), inp.value.trim()||'{'+inp.dataset.v+'}') })
+  document.getElementById('pOut').value=s
+}
+function copyPrompt(){
+  const t=document.getElementById('pOut').value
+  if(!t) return
+  navigator.clipboard.writeText(t).then(()=>{ const b=event.target; const o=b.textContent; b.textContent=' 已复制'; setTimeout(()=>b.textContent=o,1500) }).catch(()=>alert('复制失败，请手动选择'))
+}
+async function optimizePrompt(){
+  const t=document.getElementById('pOut').value.trim()
+  if(!t){ alert('请先生成提示词'); return }
+  const btn=event.target; btn.disabled=true; const o=btn.textContent; btn.textContent='优化中…'
+  try{
+    const r=await window.AI.complete({provider:'zhipu', messages:[
+      {role:'system',content:'你是提示词工程专家。请把用户给的提示词改写为更稳定、结构化的版本：明确角色、任务、约束、少样本示例、输出格式，并补充温度等参数建议。保留原意，不删关键需求。'},
+      {role:'user',content:t}
+    ]})
+    document.getElementById('pOut').value=r
+  }catch(e){ alert('优化失败：'+e.message) }
+  btn.disabled=false; btn.textContent=o
+}
+
+// ---------- 模块三：技能数据 ----------
+function fillDomains(){
+  const dl=document.getElementById('domainList')
+  const src = (window.SKILLS && window.SKILLS.domains) ? window.SKILLS.domains : T
+  if(window.SKILLS && window.SKILLS.total) document.getElementById('kSkill').textContent=window.SKILLS.total
+  if(window.SKILLS && window.SKILLS.domains) document.getElementById('kDomain').textContent=window.SKILLS.domains.length
+  if(!src || !src.length){ dl.innerHTML='<p class="note">技能数据未加载。</p>'; return }
+  dl.innerHTML=''
+  src.forEach(d=>{
+    const c=document.createElement('div'); c.className='domchip'
+    c.innerHTML='<span class="ic">'+(d.icon||'')+'</span>'+(d.domain||d.name||d)
+    dl.appendChild(c)
+  })
+}
+buildDomainGrid(); fillDomains();
+</script>
+</body>
+</html>

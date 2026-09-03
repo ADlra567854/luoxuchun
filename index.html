@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud" data-wall="none">
+<head>
+<meta property="og:description" content="ccowork · 白驹全局大脑：门户 + AI 对话工作台 + 白驹工作站 + 生图/生文/生视频/数据整理/编译模式，所有 AI 工具与问答收进一个大脑。">
+<meta name="keywords" content="ccowork,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta property="og:title" content="ccowork · 白驹全局大脑 · AI 创作纪元">
+<meta name="description" content="ccowork · 白驹全局大脑：门户 + AI 对话工作台 + 白驹工作站 + 生图/生文/生视频/数据整理/编译模式，所有 AI 工具与问答收进一个大脑。">
+<title>ccowork · 白驹全局大脑 · AI 创作纪元</title>
+<style>
+/* ============================================================
+   设计系统 · 双主题 Token
+   说明：基础 token（--bg/--card/--grad/--cyan...）由全站主题引擎
+   theme-cloud.css（ccowork.js 自动注入）统一提供，本文件仅定义
+   引擎未覆盖的补充变量，保证与全站 47+ 页面双主题同步。
+   对应 Ardot 设计稿：明亮版（蓝青紫渐变·毛玻璃·白卡）/
+   深色版（深空沉浸底·极光青紫·半透明玻璃卡）
+   ============================================================ */
+:root{
+  --green:#22b07d; --amber:#f0a93c;
+  --grad2:linear-gradient(120deg,#22b07d,#38b6ff);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+  --msg-user-bg:#e8f1ff; --msg-user-line:#cfe2ff; --msg-user-text:#1d3a66;
+  --chip-bg:rgba(255,255,255,.16); --chip-line:rgba(255,255,255,.38);
+  --glass-card:rgba(255,255,255,.85);
+  --code-bg:#0f1830; --code-text:#dceaff;
+}
+body[data-theme="deep"]{
+  --green:#2ed3a0; --amber:#f6b45c;
+  --grad2:linear-gradient(120deg,#2ed3a0,#4dd6ff);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#7c3aed,#4dd6ff 60%,#c026d3);
+  --msg-user-bg:#12203a; --msg-user-line:#1e3a5f; --msg-user-text:#cfe2ff;
+  --chip-bg:rgba(255,255,255,.07); --chip-line:rgba(255,255,255,.12);
+  --glass-card:rgba(255,255,255,.05);
+  --code-bg:#0a0f1e; --code-text:#dceaff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ---------- 总站导航（毛玻璃） ---------- */
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 24px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;flex-wrap:nowrap;margin-left:12px;overflow-x:auto;scrollbar-width:none}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:9px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+nav.top .cta{padding:10px 20px;border:none;border-radius:99px;background:var(--grad);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.30);transition:.2s;white-space:nowrap}
+nav.top .cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.42)}
+.burger{display:none}
+
+/* ---------- Hero 门区（渐变 · 徽章 · 光斑） ---------- */
+#gate{position:relative;overflow:hidden;background:var(--hero-grad);transition:background .35s ease}
+#gate::before,#gate::after{content:"";position:absolute;border-radius:50%;pointer-events:none;filter:blur(2px)}
+#gate::before{width:320px;height:320px;top:-60px;right:-40px;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%)}
+#gate::after{width:260px;height:260px;bottom:-80px;left:-60px;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%)}
+/* 设计稿极光光斑（深色版增强：青/紫/粉三光斑） */
+body[data-theme="deep"] #gate::before{background:radial-gradient(circle,rgba(34,225,255,.5),transparent 70%)}
+body[data-theme="deep"] #gate::after{background:radial-gradient(circle,rgba(139,92,246,.55),transparent 70%)}
+#gate .orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(1px)}
+#gate .orb.o1{width:260px;height:260px;bottom:-60px;right:12%;background:radial-gradient(circle,rgba(232,121,250,.40),transparent 70%)}
+#gate .orb.o2{width:180px;height:180px;top:8%;left:6%;background:radial-gradient(circle,rgba(94,234,212,.35),transparent 70%)}
+body[data-theme="cloud"] #gate .orb{opacity:.55}
+#gate .inner{position:relative;max-width:1080px;margin:0 auto;padding:56px 20px 44px;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:99px;
+  background:var(--chip-bg);border:1px solid var(--chip-line);color:#fff;font-size:13px;font-weight:700;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);letter-spacing:.5px}
+#gate h1{font-size:clamp(34px,5.2vw,60px);font-weight:900;letter-spacing:1px;color:#fff;line-height:1.25;margin-top:16px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+#gate h1 .g{background:linear-gradient(120deg,#ffffff,#d6e9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+#gate .sub{color:rgba(255,255,255,.95);font-size:15px;margin:16px auto 0;max-width:720px;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.gate-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:22px auto 2px;max-width:800px}
+.gate-chips .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:99px;
+  background:var(--chip-bg);border:1px solid var(--chip-line);color:#fff;font-size:13px;font-weight:700;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:.2s;text-shadow:0 1px 4px rgba(16,48,120,.30);cursor:pointer}
+.gate-chips .chip:hover{background:rgba(255,255,255,.30);transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,48,120,.25)}
+
+/* 多段声波（亮底白波） */
+#wavewrap{display:flex;align-items:center;justify-content:center;gap:14px;margin:16px 0 6px}
+#wave{width:min(440px,80vw);height:54px;border-radius:12px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.45)}
+#wave-label{font-size:12px;color:#fff;letter-spacing:1px;min-width:60px;text-align:left;text-shadow:0 1px 6px rgba(16,48,120,.4)}
+
+/* 对话卡片（白卡 · 投影 · 圆角20） */
+#chatbox{max-width:860px;margin:16px auto 0;background:var(--glass-card);border:1px solid var(--line);border-radius:20px;
+  box-shadow:0 18px 48px rgba(25,50,115,.22);overflow:hidden;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:background .35s ease,border .35s ease}
+.chat-head{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--line)}
+.chat-head .t{font-size:14px;font-weight:800;color:var(--text)}
+.chat-head .st{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--green)}
+.chat-head .st i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(34,176,125,.18);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.4}}
+#msgs{max-height:46vh;overflow-y:auto;padding:18px 18px 6px}
+.msg{margin:11px 0;padding:12px 16px;border-radius:14px;font-size:14.5px;line-height:1.8;max-width:90%;white-space:pre-wrap;word-wrap:break-word}
+.msg.user{margin-left:auto;background:var(--msg-user-bg);border:1px solid var(--msg-user-line);color:var(--msg-user-text)}
+.msg.bot{background:var(--card);border:1px solid var(--line);box-shadow:0 2px 10px rgba(31,45,77,.04)}
+.msg.sys{background:none;border:1px dashed var(--line);color:var(--muted);font-size:12.5px;max-width:100%}
+.msg.bot h1,.msg.bot h2,.msg.bot h3{font-size:16px;margin:9px 0 5px;color:var(--blue)}
+.msg.bot ul,.msg.bot ol{padding-left:20px;margin:5px 0}
+.msg.bot li{margin:3px 0}
+.msg.bot table{width:100%;border-collapse:collapse;font-size:12.5px;margin:7px 0}
+.msg.bot th,.msg.bot td{border:1px solid var(--line);padding:5px 9px;text-align:left}
+.msg.bot code{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12.5px;color:var(--blue)}
+.msg.bot pre{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:11px;overflow-x:auto}
+.msg.bot pre code{background:none;border:none;padding:0}
+.msg.bot a{color:var(--blue)}
+.typing{color:var(--muted);font-style:italic}
+#quick{display:flex;gap:8px;flex-wrap:wrap;padding:6px 16px 0}
+#quick button{background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:6px 13px;font-size:12px;cursor:pointer;transition:.18s}
+#quick button:hover{color:var(--blue);border-color:var(--blue)}
+#bar{display:flex;gap:9px;align-items:flex-end;padding:12px 16px 16px}
+#q{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:12px 15px;font-size:14.5px;resize:none;font-family:inherit;max-height:130px;color:var(--text);transition:border .2s}
+#q:focus{outline:none;border-color:var(--blue)}
+#mic{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:0 15px;font-size:17px;cursor:pointer;transition:.18s}
+#mic:hover{border-color:var(--blue)} #mic.on{background:rgba(34,176,125,.12);border-color:var(--green);animation:pulse 1s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(34,176,125,.12)}}
+#send{padding:11px 24px;border:none;border-radius:13px;background:var(--grad);color:#fff;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.25)}
+#brain{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:0 16px 14px;font-size:12.5px;color:var(--muted)}
+#brain select,#brain input{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:9px;padding:6px 10px;font-size:12.5px;font-family:inherit}
+#brain input[type=password]{width:200px}
+#brain label{display:flex;align-items:center;gap:5px;cursor:pointer}
+#brain .mm{color:var(--green)}
+
+/* 信任数据 */
+.trust{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.trust .t{display:flex;align-items:baseline;gap:8px}
+.trust .t b{font-size:26px;font-weight:800;color:#fff;text-shadow:0 2px 12px rgba(16,48,120,.3)}
+.trust .t span{font-size:13px;font-weight:600;color:rgba(220,235,255,.92)}
+
+/* ---------- 区段通用 ---------- */
+section.block{max-width:1180px;margin:34px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:99px}
+.sec-head .more{margin-left:auto;font-size:13px;color:var(--blue);font-weight:600}
+.sec-head .more:hover{text-decoration:underline}
+
+/* 模式切换（白驹工作区 8 按钮） */
+#modebar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin:6px auto 0;max-width:1080px;padding:0 20px}
+.modebtn{padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13.5px;font-weight:700;cursor:pointer;transition:.18s}
+.modebtn.cur{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(79,140,255,.25)}
+
+/* 白区 tabs（设计稿模式按钮） */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.tab{padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13.5px;font-weight:700;cursor:pointer;transition:.18s;display:flex;align-items:center;gap:6px}
+.tab:hover{border-color:var(--blue);color:var(--blue)}
+.tab.cur{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(79,140,255,.25)}
+.panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--card-shadow);transition:background .35s ease}
+.panel.cur{display:block}
+.panel .ph{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.panel .ph .ico{font-size:26px}
+.panel .ph h3{font-size:17px;font-weight:800}
+.panel .ph p{font-size:12.5px;color:var(--muted);margin-left:auto;max-width:50%}
+.field{margin:10px 0}
+.field label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:5px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px;font-family:inherit;color:var(--text);background:var(--panel);transition:border .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue)}
+.field textarea{min-height:90px;resize:vertical}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row .field{flex:1;min-width:160px}
+.genout{margin-top:12px;background:var(--code-bg);color:var(--code-text);border-radius:12px;padding:14px;font-size:13px;white-space:pre-wrap;line-height:1.7;max-height:340px;overflow:auto;font-family:"SF Mono",Consolas,monospace}
+.minibtn{margin-top:8px;padding:7px 14px;border:none;border-radius:9px;background:var(--grad2);color:#fff;font-size:12.5px;font-weight:700;cursor:pointer;transition:.18s}
+.minibtn:hover{filter:brightness(1.08)}
+.minibtn.ghost{background:rgba(120,160,220,.12);color:var(--blue)}
+.hint{font-size:11.5px;color:var(--dim);margin-top:6px}
+
+/* 编译模式 */
+#compile .edwrap{display:flex;gap:12px;flex-wrap:wrap}
+#compile textarea{flex:1;min-width:300px;min-height:280px;font-family:"SF Mono",Consolas,monospace;font-size:12.5px;background:var(--code-bg);color:var(--code-text);border:1px solid var(--line);border-radius:12px;padding:12px}
+#compile .run{width:100%;height:300px;border:1px solid var(--line);border-radius:12px;background:var(--card);margin-top:10px}
+#compile .presets{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+#compile .presets button{padding:6px 12px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:9px;font-size:12px;cursor:pointer}
+#compile .presets button:hover{color:var(--blue);border-color:var(--blue)}
+
+/* 工具整合网格 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.2s;box-shadow:var(--card-shadow)}
+.tcard{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease,box-shadow .2s ease,border-color .2s}
+.tcard.in{opacity:1;transform:none}
+.tcard .cv{background-color:rgba(120,160,220,.18);background-size:cover;background-position:center;position:relative}
+.tcard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h)}
+.tcard .cv{height:96px;background-size:cover;background-position:center;position:relative}
+.tcard .cv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.28))}
+.tcard .cv .badge{position:absolute;top:9px;left:10px;font-size:12px;color:#fff;background:rgba(0,0,0,.35);padding:3px 9px;border-radius:99px;backdrop-filter:blur(4px)}
+.tcard .cb{padding:13px 15px;flex:1;display:flex;flex-direction:column}
+.tcard h4{font-size:15px;font-weight:800;display:flex;align-items:center;gap:7px}
+.tcard p{font-size:12.5px;color:var(--muted);margin:6px 0 10px;flex:1}
+.tcard .acts{display:flex;gap:8px}
+.tcard .acts a,.tcard .acts button{flex:1;text-align:center;padding:8px 0;border-radius:9px;font-size:12.5px;font-weight:700;cursor:pointer;border:1px solid var(--line);transition:.18s;background:transparent;color:var(--text)}
+.tcard .acts .go{background:var(--grad);color:#fff;border-color:transparent}
+.tcard .acts .ask{background:rgba(120,160,220,.12);color:var(--blue);border-color:transparent}
+.tcard .acts .ask:hover{background:rgba(120,160,220,.22)}
+
+/* 分站层级说明 */
+.tier{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.tier .t{flex:1;min-width:200px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.tier .t b{font-size:13.5px;color:var(--blue)}
+.tier .t span{font-size:12px;color:var(--muted)}
+
+/* ---------- AI 作品精选（6 卡） ---------- */
+#works{scroll-margin-top:80px}
+.works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.wcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.22s;box-shadow:var(--card-shadow);display:flex;flex-direction:column}
+.wcard:hover{transform:translateY(-4px);box-shadow:var(--card-shadow-h);border-color:rgba(120,160,220,.35)}
+.wcard .cv{height:110px;position:relative;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+.wcard .cv .badge{position:absolute;top:10px;left:12px;font-size:11px;font-weight:600;color:#fff;background:rgba(0,0,0,.32);padding:3px 10px;border-radius:99px;backdrop-filter:blur(4px);letter-spacing:.5px}
+.wcard .cb{padding:16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.wcard h4{font-size:15.5px;font-weight:800}
+.wcard p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.wcard .tg{font-size:11.5px;font-weight:700;letter-spacing:.3px}
+.wcard .go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--blue);cursor:pointer}
+.wcard .go:hover{text-decoration:underline}
+.wcard .go .arr{transition:.18s}
+.wcard:hover .go .arr{transform:translateX(3px)}
+
+/* ---------- AI 快讯（3 玻璃卡） ---------- */
+#news .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.ncard{background:var(--glass-card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--card-shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.2s;display:flex;flex-direction:column;gap:8px;cursor:pointer}
+.ncard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(120,160,220,.35)}
+.ncard .dt{font-size:11.5px;font-weight:600;color:var(--dim);letter-spacing:.5px}
+.ncard h4{font-size:15.5px;font-weight:800}
+.ncard p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.ncard .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(34,176,125,.15);animation:blink 1.6s infinite;display:inline-block;margin-right:6px}
+
+/* ---------- 内容与实验（3 入口） ---------- */
+#content .entry-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.ecard{background:var(--glass-card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;gap:16px;align-items:center;box-shadow:var(--card-shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.2s;cursor:pointer}
+.ecard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(120,160,220,.35)}
+.ecard .ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;flex:none;box-shadow:0 6px 14px rgba(31,45,77,.16)}
+.ecard .txt{display:flex;flex-direction:column;gap:4px}
+.ecard h4{font-size:16.5px;font-weight:800}
+.ecard p{font-size:12.5px;color:var(--muted);line-height:1.6}
+.ecard .lk{font-size:12px;font-weight:700;color:var(--blue);margin-top:2px}
+
+/* ---------- 热榜（本地轻量统计） ---------- */
+#hot .hot-list{display:flex;flex-direction:column;gap:8px}
+.hot-item{display:flex;align-items:center;gap:12px;background:var(--glass-card);border:1px solid var(--line);border-radius:12px;padding:11px 16px;text-decoration:none;box-shadow:var(--card-shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.2s}
+.hot-item:hover{transform:translateX(4px);border-color:rgba(240,185,92,.4)}
+.hot-rank{font-family:var(--mono,monospace);font-size:14px;font-weight:800;min-width:22px;text-align:center;color:var(--gold,#f0b95c);background:linear-gradient(120deg,rgba(240,185,92,.14),rgba(139,92,246,.14));border-radius:8px;padding:2px 0}
+.hot-title{flex:1;font-size:13.5px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hot-count{font-family:var(--mono,monospace);font-size:11.5px;color:var(--dim);white-space:nowrap}
+.hot-empty{color:var(--dim);font-size:13px;padding:10px 2px}
+
+/* ---------- 页脚（品牌列 + 三列链接） ---------- */
+footer{margin-top:44px;background:rgba(13,22,46,.95);color:#a9b8d4;border-top:1px solid rgba(255,255,255,.06)}
+body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba(255,255,255,.06)}
+.foot-inner{max-width:1180px;margin:0 auto;padding:44px 20px 20px;display:flex;gap:80px;flex-wrap:wrap}
+.foot-brand{max-width:300px;display:flex;flex-direction:column;gap:14px}
+.foot-brand .logo-row{display:flex;align-items:center;gap:10px}
+.foot-brand .logo-row .logo{width:34px;height:34px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
+.foot-brand .logo-row b{font-size:17px;font-weight:800;color:#fff}
+.foot-brand p{font-size:12.5px;line-height:1.8;color:#8fa3bd}
+.foot-col{display:flex;flex-direction:column;gap:10px;min-width:110px}
+.foot-col b{font-size:13.5px;font-weight:800;color:#fff;margin-bottom:4px}
+.foot-col a{font-size:12.5px;color:#8fa3bd;transition:.15s}
+.foot-col a:hover{color:#5ea2ff}
+.foot-bar{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:12px;color:#7d8fae}
+
+/* 设置抽屉 */
+#setBtn{position:fixed;right:18px;bottom:18px;z-index:60;width:54px;height:54px;border-radius:16px;background:var(--grad);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 10px 26px rgba(79,140,255,.35)}
+#setPanel{position:fixed;right:-380px;top:0;bottom:0;width:360px;max-width:90vw;background:var(--card);border-left:1px solid var(--line);z-index:61;padding:22px;overflow-y:auto;transition:right .3s ease;box-shadow:-10px 0 40px rgba(31,45,77,.12)}
+#setPanel.open{right:0}
+#setPanel h3{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:var(--text)}
+#setPanel .close{margin-left:auto;cursor:pointer;color:var(--muted);font-size:20px}
+#setPanel .grp{margin:14px 0;padding-top:14px;border-top:1px solid var(--line)}
+#setPanel .grp:first-of-type{border-top:none;padding-top:0}
+#setPanel label{font-size:12.5px;color:var(--muted);font-weight:600;display:block;margin-bottom:6px}
+#setPanel select,#setPanel input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:13px;font-family:inherit;background:var(--panel);color:var(--text)}
+#setPanel .sw{display:flex;align-items:center;justify-content:space-between;font-size:13px;padding:8px 0;color:var(--text)}
+#setPanel .sw input{width:auto}
+#setPanel .note{font-size:11.5px;color:var(--dim);margin-top:5px;line-height:1.6}
+
+@media(max-width:900px){
+  .foot-inner{gap:40px}
+}
+@media(max-width:760px){
+  nav.top{height:56px;padding:0 14px}
+  nav.top .links{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;background:var(--card);padding:10px 16px;border-bottom:1px solid var(--line);box-shadow:var(--nav-shadow);flex-wrap:nowrap;overflow:visible}
+  nav.top .links.open{display:flex}
+  .burger{display:block;margin-left:auto;font-size:22px;background:none;border:none;cursor:pointer;color:var(--text)}
+  nav.top .nav-actions{margin-left:0}
+  nav.top .cta{display:none}
+  #gate .inner{padding:36px 14px 32px}
+  .trust{gap:20px}
+  .panel .ph p{display:none}
+  #brain input[type=password]{width:140px}
+  .foot-inner{flex-direction:column;gap:28px}
+  .foot-bar{flex-direction:column;text-align:center}
+}
+</style>
+<link rel="stylesheet" href="/responsive.css">
+<link rel="stylesheet" href="./compile-mode.css">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/">
+<meta name="twitter:title" content="ccowork · 白驹全局大脑 · AI 创作纪元">
+<meta name="twitter:description" content="ccowork · 白驹全局大脑：门户 + AI 对话工作台 + 白驹工作站 + 生图/生文/生视频/数据整理/编译模式，所有 AI 工具与问答收进一个大脑。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"白驹全局大脑 · AI 创作纪元","url":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link","description":"ccowork · 白驹全局大脑：门户 + AI 对话工作台 + 白驹工作站 + 生图/生文/生视频/数据整理/编译模式，所有 AI 工具与问答收进一个大脑。","inLanguage":"zh-CN","potentialAction":{"@type":"SearchAction","target":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="assets/pg/pg-index.png" alt="ccowork · 白驹全局大脑 · AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+<!-- ====== 总站导航（毛玻璃 · Logo + 8 链接 + 主题切换 + CTA） ====== -->
+<nav class="top">
+  <div class="brand">
+    <span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><span class="nm">白驹 · ccowork</span>
+  </div>
+  <button class="burger" onclick="document.querySelector('.top .links').classList.toggle('open')"><i class="cc-ic" data-ic="menu"></i></button>
+  <div class="links" id="navlinks">
+    <a href="#chatbox" class="cur"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>对话</a>
+    <a href="./website/workstation.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>工作站</a>
+    <a href="./website/map-guide.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图指引</a>
+    <a href="./website/biz-center.html"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>业务中心</a>
+    <a href="./website/tech-museum.html"><i class="cc-ic" data-ic="telescope"></i> 科技馆</a>
+    <a href="./website/ai-build-hall.html"><i class="cc-ic" data-ic="hard-hat"></i> AI 建造</a>
+    <a href="./website/gallery.html"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i>绘画</a>
+    <a href="./website/ai-academy.html"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 学院</a>
+    <a href="./website/skill-lab.html"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>实操营</a>
+    <a href="./blog/index.html"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>博客</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="切换亮暗主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+    <a class="cta" href="#chatbox"><i class="cc-ic" data-ic="message-circle"></i> 开始对话</a>
+  </div>
+</nav>
+
+<!-- ====== Hero 门区（徽章 · 双行标题 · chips · 对话卡 · 信任数据） ====== -->
+<section id="gate">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="inner">
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+    <h1>把散落的 <span class="g">AI 工具</span><br>装进一个大脑</h1>
+    <p class="sub">门户 · 对话工作台 · 白驹工作站 · 生图 / 生文 / 生视频 / 数据整理 / 编译模式 —— 所有 AI 工具与问答收进一个大脑，内置真实大模型，开箱即用。</p>
+    <div class="gate-chips">
+      <a class="chip" href="#baizone"><i class="cc-ic" data-ic="folder-open" aria-hidden="true"></i>白区工作台</a>
+      <a class="chip" href="./website/tech-museum.html"><i class="cc-ic" data-ic="telescope"></i> 科技馆</a>
+      <a class="chip" href="./website/ai-build-hall.html"><i class="cc-ic" data-ic="hard-hat"></i> AI 建造馆</a>
+      <a class="chip" href="./website/map-guide.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图指引</a>
+      <a class="chip" href="#compile"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>编译模式</a>
+      <a class="chip" href="./website/agent.html"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>全能智能体</a>
+      <a class="chip" href="./website/workstation.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>白驹工作站</a>
+      <a class="chip" href="./website/ecosystem.html"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>全生态知识库</a>
+      <a class="chip" href="./lab/index.html"><i class="cc-ic" data-ic="microscope" aria-hidden="true"></i>科学仿真</a>
+    </div>
+    <div id="wavewrap">
+      <canvas id="wave" width="440" height="54"></canvas>
+      <span id="wave-label">待机</span>
+    </div>
+
+    <div id="chatbox">
+      <div class="chat-head">
+        <span class="t">白驹 · 多模态对话工作台</span>
+        <span class="st"><i></i>在线 · DeepSeek</span>
+      </div>
+      <div id="msgs"></div>
+      <div id="quick"></div>
+      <div id="bar">
+        <button id="mic" title="语音输入"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i></button>
+        <textarea id="q" rows="1" placeholder="问白驹：祛 AI 味三刀是什么？｜给我三个赚钱路径｜带我去工科实训｜或直接说「做个学习工作台」…"></textarea>
+        <button id="send"><i class="cc-ic" data-ic="send"></i> 发送</button>
+      </div>
+      <div id="brain">
+        <span>大脑：</span>
+        <select id="mode">
+          <option value="cloud" selected>云端白驹 · 智谱免费优先（免 Key·0 成本）</option>
+          <option value="zhipu">智谱 GLM-4.7-Flash（免费·自填 Key）</option>
+          <option value="webllm">内置大模型 · 浏览器本地真运行</option>
+          <option value="ollama">本地 Ollama（需已安装）</option>
+          <option value="deepseek">DeepSeek API（多模态·效果最强）</option>
+          <option value="local">极简 · 书稿检索（兜底）</option>
+        </select>
+        <input id="apikey" type="password" placeholder="选 DeepSeek 时填 sk-...（仅存本地浏览器）">
+        <label><input type="checkbox" id="voice-on" checked> 语音播报</label>
+        <label class="mm"><input type="checkbox" id="mm-on"> 多模态（图）</label>
+        <input id="imgfile" type="file" accept="image/*" style="display:none">
+        <button id="imgbtn" class="minibtn ghost" style="margin:0" onclick="document.getElementById('imgfile').click()"><i class="cc-ic" data-ic="image" aria-hidden="true"></i>附图</button>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="t"><b>100+</b><span>AI 作品</span></div>
+      <div class="t"><b>10+</b><span>科学仿真</span></div>
+      <div class="t"><b>5</b><span>大创作模式</span></div>
+      <div class="t"><b>100%</b><span>本地优先</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 模式切换（8 模式 · 对应设计稿） ====== -->
+<div id="modebar">
+  <button class="modebtn cur" data-mode="work" onclick="switchMode('work',this)"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>对话</button>
+  <button class="modebtn" data-mode="img" onclick="switchMode('img',this)"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i>绘画</button>
+  <button class="modebtn" data-mode="voice" onclick="switchMode('voice',this)"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i>语音</button>
+  <button class="modebtn" data-mode="video" onclick="switchMode('video',this)"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>视频</button>
+  <button class="modebtn" data-mode="doc" onclick="switchMode('doc',this)"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>文档</button>
+  <button class="modebtn" data-mode="compile" onclick="switchMode('compile',this)"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>编译</button>
+  <button class="modebtn" data-mode="data" onclick="switchMode('data',this)"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>数据</button>
+  <button class="modebtn" data-mode="lab" onclick="switchMode('lab',this)"><i class="cc-ic" data-ic="flask-conical" aria-hidden="true"></i>实验室</button>
+</div>
+
+<!-- ====== 白区：可交互工作台（设计稿工作台面板） ====== -->
+<!-- ====== 工作台 · 场馆（技能弹药库驱动 · 真实数据） ====== -->
+<section class="block" id="halls">
+  <div class="sec-head">
+    <h2><span class="em">白驹工作台 · 场馆矩阵</span></h2>
+    <span class="tag">1008 技能弹药库驱动 · 真实数据</span>
+    <a class="more" href="./website/map-guide.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图指引 · 全国直查 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="grid">
+    <a class="wcard" href="./website/tech-museum.html">
+      <div class="cv" style="background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6)"><span class="badge">科技馆</span><i class="cc-ic" data-ic="telescope"></i></div>
+      <div class="cb"><h4>科技馆</h4><p>AI 前沿研究方向 · 里程碑大事记 · 中国科技崛起故事，全国真实科技馆地点一键导航。</p><span class="tg">真实数据 · 腾讯位置服务</span><span class="go">进入展馆 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+    <a class="wcard" href="./website/ai-build-hall.html">
+      <div class="cv" style="background:linear-gradient(120deg,#22b07d,#38b6ff 55%,#f0a93c)"><span class="badge">AI 智能建造馆</span><i class="cc-ic" data-ic="hard-hat"></i></div>
+      <div class="cb"><h4>AI 智能建造馆</h4><p>工业4.0 · 数字孪生 · 智能工厂 · AI 质检 · 预测性维护，中国 AI 产业园区现场导航。</p><span class="tg">智能制造 · 数字孪生</span><span class="go">进入展馆 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+    <a class="wcard" href="./website/map-guide.html">
+      <div class="cv" style="background:linear-gradient(120deg,#2f86ff,#38b6ff 50%,#22b07d)"><span class="badge">地图指引</span><i class="cc-ic" data-ic="map" aria-hidden="true"></i></div>
+      <div class="cb"><h4>地图指引</h4><p>42 处真实精选 + 全国 34 省级 / 300+ 市级 / 全县级直查：科技馆 · 图书馆 · AI 产业园 · 比赛场馆 · 红色教育基地，一键唤起腾讯地图导航。</p><span class="tg">县级覆盖 · 实时路线</span><span class="go">开始导航 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+    <a class="wcard" href="./website/ai-academy.html">
+      <div class="cv" style="background:linear-gradient(120deg,#8b5cf6,#e879fa 60%,#4f8cff)"><span class="badge">AI 学院</span><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i></div>
+      <div class="cb"><h4>AI 学院</h4><p>系统性 AI 教程（智能体 / 提示词 / RAG / 微调 / 多模态 / 职场）+ 24 个毕业设计 + 认证体系，技能弹药库驱动持续升级。</p><span class="tg">30+ 章 · 每日新增</span><span class="go">进入学院 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+  </div>
+</section>
+
+<section class="block" id="baizone">
+  <div class="sec-head">
+    <h2><span class="em">白驹工作区</span></h2>
+    <span class="tag">一键切换 · 多模态</span>
+    <a class="more" href="./website/workstation.html">全部工具 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <div class="tab cur" data-t="doc"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>工作文</div>
+    <div class="tab" data-t="img"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i>生图</div>
+    <div class="tab" data-t="text"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>生文</div>
+    <div class="tab" data-t="video"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>生视频</div>
+    <div class="tab" data-t="data"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>数据整理</div>
+    <div class="tab" data-t="skill"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工作站技能</div>
+    <div class="tab" data-t="life"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图·天气·日历</div>
+  </div>
+
+  <!-- 工作文 -->
+  <div class="panel cur" data-p="doc">
+    <div class="ph"><span class="ico"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></span><h3>工作文 · 文档模式</h3><p>本地自动保存，可一键交给白驹润色/总结/续写</p></div>
+    <div class="field"><label>标题</label><input id="docTitle" placeholder="例如：AI 漫剧分镜大纲 v3"></div>
+    <div class="field"><label>正文（Markdown 支持）</label><textarea id="docBody" placeholder="在这里写方案、剧本、笔记……内容只存在你浏览器本地"></textarea></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="minibtn" onclick="docSave()"><i class="cc-ic" data-ic="save" aria-hidden="true"></i>保存</button>
+      <button class="minibtn ghost" onclick="docClear()"><i class="cc-ic" data-ic="brush" aria-hidden="true"></i>清空</button>
+      <button class="minibtn ghost" onclick="docAsk('润色并补全这段内容')"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i>交给白驹润色</button>
+      <button class="minibtn ghost" onclick="docAsk('总结要点并给出下一步')"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>白驹总结</button>
+      <span id="docStat" class="hint"></span>
+    </div>
+  </div>
+
+  <!-- 生图 -->
+  <div class="panel" data-p="img">
+    <div class="ph"><span class="ico"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i></span><h3>生图 · 提示词生成器</h3><p>填好要素，一键生成可复制的 AI 绘画提示词</p></div>
+    <div class="row">
+      <div class="field"><label>主体</label><input id="imgSub" placeholder="例如：银发少女，持光剑"></div>
+      <div class="field"><label>风格</label><select id="imgStyle"><option>写实摄影</option><option>动漫二次元</option><option>水墨国风</option><option>赛博朋克</option><option>3D 渲染</option><option>油画质感</option></select></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>场景/光线</label><input id="imgScene" placeholder="例如：雨夜霓虹街道，侧逆光"></div>
+      <div class="field"><label>镜头/画幅</label><select id="imgShot"><option>特写</option><option>半身</option><option>全身</option><option>广角全景</option><option>电影感中景</option></select></div>
+    </div>
+    <div class="field"><label>负面提示词（排除项）</label><input id="imgNeg" placeholder="模糊、畸形、水印、多余手指"></div>
+    <button class="minibtn" onclick="genImg()"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>生成提示词</button>
+    <div class="genout" id="imgOut">填好上面，点「生成提示词」。</div>
+    <button class="minibtn ghost" onclick="copyOut('imgOut')"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制</button>
+    <button class="minibtn ghost" onclick="askWith('根据这段提示词，给我 3 个更专业的变体：'+document.getElementById('imgOut').innerText)"><i class="cc-mark" aria-hidden="true"></i>让白驹优化</button>
+  </div>
+
+  <!-- 生文 -->
+  <div class="panel" data-p="text">
+    <div class="ph"><span class="ico"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></span><h3>生文 · 内容模板生成</h3><p>选类型填要点，生成结构化草稿</p></div>
+    <div class="row">
+      <div class="field"><label>内容类型</label><select id="txtType"><option>小红书种草文案</option><option>公众号长文</option><option>短视频口播稿</option><option>产品说明书</option><option>邮件/周报</option><option>小说章节</option></select></div>
+      <div class="field"><label>主题/产品</label><input id="txtTopic" placeholder="例如：AI 漫剧制作课"></div>
+    </div>
+    <div class="field"><label>核心卖点/要点（逗号分隔）</label><input id="txtPoints" placeholder="例如：零基础、30分钟出片、可变现"></div>
+    <div class="field"><label>语气/受众</label><input id="txtTone" placeholder="例如：活泼、面向宝妈副业党"></div>
+    <button class="minibtn" onclick="genText()"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>生成草稿</button>
+    <div class="genout" id="txtOut">选好类型，点「生成草稿」。</div>
+    <button class="minibtn ghost" onclick="copyOut('txtOut')"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制</button>
+    <button class="minibtn ghost" onclick="askWith('把下面这段扩写成完整文章：'+document.getElementById('txtOut').innerText)"><i class="cc-mark" aria-hidden="true"></i>让白驹扩写</button>
+  </div>
+
+  <!-- 生视频 -->
+  <div class="panel" data-p="video">
+    <div class="ph"><span class="ico"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></span><h3>生视频 · 分镜脚本生成</h3><p>输入创意，生成可执行的镜头表</p></div>
+    <div class="field"><label>视频创意/一句话</label><input id="vidIdea" placeholder="例如：一只白驹在赛博城市奔跑，寻找丢失的星光"></div>
+    <div class="row">
+      <div class="field"><label>时长/集数</label><input id="vidLen" placeholder="例如：60秒 / 3集"></div>
+      <div class="field"><label>风格</label><select id="vidStyle"><option>AI 漫剧</option><option>实拍混剪</option><option>3D 动画</option><option>定格/卡通风</option></select></div>
+    </div>
+    <button class="minibtn" onclick="genVideo()"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>生成分镜</button>
+    <div class="genout" id="vidOut">描述创意，点「生成分镜」。</div>
+    <button class="minibtn ghost" onclick="copyOut('vidOut')"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制</button>
+    <button class="minibtn ghost" onclick="askWith('把这段分镜细化成带生图提示词的完整拍摄脚本：'+document.getElementById('vidOut').innerText)"><i class="cc-mark" aria-hidden="true"></i>白驹细化</button>
+  </div>
+
+  <!-- 数据整理 -->
+  <div class="panel" data-p="data">
+    <div class="ph"><span class="ico"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i></span><h3>数据整理 · 表格模板</h3><p>粘贴凌乱文本，生成结构化表格/清单</p></div>
+    <div class="field"><label>表头（逗号分隔）</label><input id="dtHead" placeholder="例如：项目,负责人,状态,截止"></div>
+    <div class="field"><label>原始数据（每行一条，逗号分隔）</label><textarea id="dtRaw" placeholder="AI漫剧,小张,进行中,8-20&#10;开源作品库,小李,待启动,8-25"></textarea></div>
+    <button class="minibtn" onclick="genData()"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>生成表格</button>
+    <button class="minibtn ghost" onclick="fillData()"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i>填示例</button>
+    <div class="genout" id="dtOut">填好表头与数据，点「生成表格」。</div>
+    <button class="minibtn ghost" onclick="copyOut('dtOut')"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制 Markdown</button>
+    <button class="minibtn ghost" onclick="askWith('分析下面这份数据并给出洞察与建议：\n'+document.getElementById('dtOut').innerText)"><i class="cc-mark" aria-hidden="true"></i>白驹分析</button>
+  </div>
+
+  <!-- 工作站技能 -->
+  <div class="panel" data-p="skill">
+    <div class="ph"><span class="ico"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i></span><h3>工作站技能 · 搭建向导</h3><p>三步生成你的专属 AI 技能/工作台说明</p></div>
+    <div class="row">
+      <div class="field"><label>技能名称</label><input id="skName" placeholder="例如：论文降重助手"></div>
+      <div class="field"><label>输入</label><input id="skIn" placeholder="例如：一篇 PDF 论文"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>输出</label><input id="skOut" placeholder="例如：降重后正文+查重报告"></div>
+      <div class="field"><label>使用工具</label><input id="skTools" placeholder="例如：Ollama+Python+白驹"></div>
+    </div>
+    <div class="field"><label>步骤要点</label><textarea id="skSteps" placeholder="1.解析PDF 2.分段送模型 3.同义改写 4.比对查重"></textarea></div>
+    <button class="minibtn" onclick="genSkill()"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>生成技能卡</button>
+    <button class="minibtn ghost" onclick="fillSkill()"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i>填示例</button>
+    <div class="genout" id="skOutBox">填好要点，点「生成技能卡」。</div>
+    <button class="minibtn ghost" onclick="copyOut('skOutBox')"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制</button>
+    <a class="minibtn ghost" href="./website/workstation.html" style="display:inline-block"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>去工作站落地</a>
+  </div>
+
+  <!-- 地图天气日历 -->
+  <div class="panel" data-p="life">
+    <div class="ph"><span class="ico"><i class="cc-ic" data-ic="map" aria-hidden="true"></i></span><h3>地图 · 天气 · 日历</h3><p>生活技能也装进白驹（真实地图内嵌 / 免费天气 / 双历节假日详情）</p></div>
+    <div class="row">
+      <div class="field" style="flex:2"><label><i class="cc-ic" data-ic="cloud-sun" aria-hidden="true"></i>天气（免费实时 · 无需 Key）</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="wxCity" placeholder="例如：北京" style="flex:1;min-width:120px"><button class="minibtn" onclick="getWeather()"><i class="cc-ic" data-ic="search"></i> 查询</button><button class="minibtn ghost" onclick="locateMe()"><i class="cc-ic" data-ic="map-pin" aria-hidden="true"></i>定位</button></div>
+        <div class="genout" id="wxOut" style="margin-top:8px;min-height:40px">输入城市（默认北京）或点「 定位」，实时天气直接显示，无需任何接口 Key。</div>
+      </div>
+      <div class="field" style="flex:2"><label><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>日历（公历 + 农历 · 点击看详情）</label>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+          <button class="minibtn ghost" onclick="calNav(-1)"><i class="cc-ic" data-ic="chevron-left"></i> </button>
+          <div id="calHead" style="font-size:13px;font-weight:700"></div>
+          <button class="minibtn ghost" onclick="calNav(1)"><i class="cc-ic" data-ic="chevron-right"></i> </button>
+        </div>
+        <div id="calGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;font-size:11px"></div>
+        <div id="calDetail" style="margin-top:8px;background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12px;min-height:34px;color:var(--text)"></div>
+        <input id="calEvent" placeholder="今天要做什么？" style="width:100%;margin-top:8px;border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-size:12px;background:var(--panel);color:var(--text)">
+        <button class="minibtn ghost" onclick="addEvent()"><i class="cc-ic" data-ic="plus"></i> 添加记事</button>
+        <div id="calList" class="hint"></div>
+      </div>
+    </div>
+    <div class="field"><label><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图（页内真实地图 · OpenStreetMap 免费 · 无需跳转）</label>
+      <div style="display:flex;gap:8px;margin-bottom:8px"><input id="mapQ" placeholder="例如：西湖 / 天安门 / 上海" style="background:var(--panel);color:var(--text)"><button class="minibtn" onclick="openMap()"><i class="cc-ic" data-ic="search"></i> 查找</button><button class="minibtn ghost" onclick="mapEmbed('')"><i class="cc-ic" data-ic="layout-grid"></i> 默认视图</button></div>
+      <div id="mapCap" style="font-size:12px;color:var(--muted);margin-bottom:6px"></div>
+      <iframe id="mapFrame" title="OpenStreetMap" loading="lazy" style="width:100%;height:280px;border:1px solid var(--line);border-radius:12px;background:#0b1220"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 编译模式 COO · 真·本地运行环境 ====== -->
+<section class="block" id="compile">
+  <div class="sec-head">
+    <h2><span class="em">编译模式</span> · COO 本地运行环境</h2>
+    <span class="tag">HTML / JS / Python / Markdown · 浏览器本地真跑</span>
+    <a class="more" href="./website/workstation.html">白驹工作站 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="coo">
+    <div class="coo-bar">
+      <div class="coo-lang">
+        <button data-lang="html" class="cur"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>HTML</button>
+        <button data-lang="js"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>JavaScript</button>
+        <button data-lang="python"><i class="cc-ic" data-ic="code"></i> Python</button>
+        <button data-lang="markdown"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>Markdown</button>
+      </div>
+      <div class="coo-acts">
+        <button class="run" id="cooRun"><i class="cc-ic" data-ic="play"></i> 运行</button>
+        <button class="sec" id="cooExample"><i class="cc-ic" data-ic="box" aria-hidden="true"></i>示例</button>
+        <button class="ghost" id="cooCopy"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制</button>
+        <button class="ghost" id="cooClear"><i class="cc-ic" data-ic="brush" aria-hidden="true"></i>清空</button>
+        <button class="ai" id="cooAI"><i class="cc-mark" aria-hidden="true"></i>AI 辅助</button>
+      </div>
+    </div>
+    <div class="coo-main">
+      <div class="coo-editor-wrap">
+        <label>代码编辑器 <span style="opacity:.7;font-weight:400">Ctrl/ + Enter 运行</span></label>
+        <textarea id="cooEditor" class="coo-editor" spellcheck="false" placeholder="在这里写代码，点「运行」即可在本地执行…"></textarea>
+      </div>
+      <div class="coo-out">
+        <div class="coo-out-head">
+          <span class="t cur" data-t="preview"><i class="cc-ic" data-ic="eye" aria-hidden="true"></i>预览</span>
+          <span class="t" data-t="console"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>控制台</span>
+        </div>
+        <div class="coo-preview-wrap" id="cooPreviewWrap">
+          <iframe id="cooPreview" class="coo-preview" title="运行预览" sandbox="allow-scripts allow-modals"></iframe>
+        </div>
+        <div class="coo-console" id="cooConsole"></div>
+      </div>
+    </div>
+    <div class="coo-status" id="cooStatus"><span class="dot"></span><span class="txt">就绪</span></div>
+    <iframe id="cooRunner" class="coo-runner" sandbox="allow-scripts" title="runner"></iframe>
+  </div>
+  <p class="hint">HTML / JS / Python 均在你的浏览器本地执行，代码不上传。JS 与 Python 的输出、报错会实时回传到「控制台」。Python 首次运行需联网加载运行时（Pyodide，约数十 MB）。</p>
+</section>
+
+<!-- ====== AI 作品精选（6 卡 · 对应设计稿） ====== -->
+<section class="block" id="works">
+  <div class="sec-head">
+    <h2><span class="em">AI 作品精选</span></h2>
+    <span class="tag">100+ 件真实可验证作品</span>
+    <a class="more" href="./website/ai-projects.html">全部作品 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="works-grid">
+    <a class="wcard" href="./website/ai-projects.html">
+      <div class="cv" style="background:linear-gradient(120deg,#4f8cff,#38b6ff)"><span class="badge">微信小程序</span><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>星云校园 v3.0</h4>
+        <p>微信小程序 AI 校园助手：浮动助手、消息中心、AI 中心、资源中心，基于微信云开发。</p>
+        <span class="tg" style="color:#4f8cff">微信小程序 · 云开发 · AI 助手</span>
+        <span class="go">查看作品 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="./website/ai-projects.html">
+      <div class="cv" style="background:linear-gradient(120deg,#8b5cf6,#4f8cff)"><span class="badge">开源 · 内测</span></div>
+      <div class="cb">
+        <h4>DeepSeek Harness</h4>
+        <p>开源插件化 AI Agent 平台，插件即插即用，开发者文档与插件市场规划中。</p>
+        <span class="tg" style="color:#8b5cf6">开源 · Agent 平台 · v0.1.0-rc.5</span>
+        <span class="go">查看作品 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="./lab/index.html">
+      <div class="cv" style="background:linear-gradient(120deg,#22b07d,#38b6ff)"><span class="badge">交互仿真</span><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>10 大科学仿真</h4>
+        <p>PID 控制、弹簧阻尼、抛体运动、RC 电路、蒙特卡洛、单摆、波动方程等交互仿真脚本。</p>
+        <span class="tg" style="color:#22b07d">Python · matplotlib · 交互</span>
+        <span class="go">进入实验室 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="./index.html#chatbox">
+      <div class="cv" style="background:linear-gradient(120deg,#8b5cf6,#f06bb4)"><span class="badge">创作中枢</span><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>白驹全局大脑</h4>
+        <p>一站式 AI 创作中枢：门户 + 对话工作台 + 工作站 + 生图生视频，所有 AI 入口收进一个大脑。</p>
+        <span class="tg" style="color:#8b5cf6">创作中枢 · 多模态 · 本地优先</span>
+        <span class="go">回到大脑 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="./website/videos.html">
+      <div class="cv" style="background:linear-gradient(120deg,#f55c4f,#f09a59)"><span class="badge">竖屏短剧</span><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>古装竖屏短剧</h4>
+        <p>10 集 AI 生成古装短剧，9:16 竖屏格式，每集 50 秒，角色与场景全流程 AI 制作。</p>
+        <span class="tg" style="color:#e85a4a">竖屏短剧 · 9:16 · AI 生成</span>
+        <span class="go">查看剧集 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="./website/ai-edu.html">
+      <div class="cv" style="background:linear-gradient(120deg,#f0a93c,#f07266)"><span class="badge">教育 · 交互</span><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>英语学习网站</h4>
+        <p>交互式英语练习平台：词汇、听力、AI 对话陪练，学习进度可视化追踪。</p>
+        <span class="tg" style="color:#e8963c">教育 · 交互 · AI 陪练</span>
+        <span class="go">开始学习 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ====== 今日 AI 快讯（3 玻璃卡） ====== -->
+<section class="block" id="news">
+  <div class="sec-head"><h2><span class="em">今日</span> · AI 快讯</h2><span class="tag">每日更新</span><a class="more" href="./website/news.html">全部新闻 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div>
+  <div class="news-grid">
+    <a class="ncard" href="./website/news.html">
+      <span class="dt"><span class="dot"></span>最新 · 平台</span>
+      <h4>AI 每日快讯已更新</h4>
+      <p id="newsTxt">加载中…</p>
+    </a>
+    <a class="ncard" href="./website/news.html">
+      <span class="dt">08-20 · 开源</span>
+      <h4>DeepSeek Harness 进入内测</h4>
+      <p>插件化 AI Agent 平台 v0.1.0-rc.5，插件规范与开发者文档同步就绪。</p>
+    </a>
+    <a class="ncard" href="./lab/index.html">
+      <span class="dt">08-19 · 实验室</span>
+      <h4>科学仿真实验室更新</h4>
+      <p>10 大仿真脚本一键出图，PID、波动方程等交互演示全部上线。</p>
+    </a>
+  </div>
+</section>
+
+<!-- ====== 热榜（本地轻量统计：逛过的页面排 Top） ====== -->
+<section class="block" id="hot">
+  <div class="sec-head"><h2><span class="em">热榜</span> · 大家都在读</h2><span class="tag">本地统计</span></div>
+  <div id="ccoworkHot" class="hot-box"><p class="hot-empty">数据积累中：多逛几页，热榜就会亮起来。</p></div>
+</section>
+
+<!-- ====== 内容与实验（3 入口） ====== -->
+<section class="block" id="content">
+  <div class="sec-head"><h2><span class="em">内容与实验</span></h2><span class="tag">博客 · 五卷全书 · 实验室</span><a class="more" href="./website/hub.html">全部内容 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div>
+  <div class="entry-grid">
+    <a class="ecard" href="./blog/AI写作完全指南.html">
+      <span class="ico" style="background:linear-gradient(120deg,#4f8cff,#38b6ff)"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></span>
+      <div class="txt">
+        <h4>博客 / Blog</h4>
+        <p>AI 创作手记、工具评测与开发日志</p>
+        <span class="lk">浏览博客 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+    <a class="ecard" href="./website/book/index.html">
+      <span class="ico" style="background:linear-gradient(120deg,#8b5cf6,#4f8cff)"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></span>
+      <div class="txt">
+        <h4>五卷全书</h4>
+        <p>系统化 AI 知识体系，五卷打包阅读</p>
+        <span class="lk">开始阅读 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+    <a class="ecard" href="./lab/index.html">
+      <span class="ico" style="background:linear-gradient(120deg,#22b07d,#38b6ff)"><i class="cc-ic" data-ic="microscope" aria-hidden="true"></i></span>
+      <div class="txt">
+        <h4>实验室 / Lab</h4>
+        <p>算法、仿真、数值计算与 AI 实验</p>
+        <span class="lk">进入实验室 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+    <a class="ecard" href="./website/content-roadmap.html">
+      <span class="ico" style="background:linear-gradient(120deg,#f0b95c,#8b5cf6)"><i class="cc-ic" data-ic="map" aria-hidden="true"></i></span>
+      <div class="txt">
+        <h4>内容路线图</h4>
+        <p>选题库公开排期：想看哪条先出？催更这里</p>
+        <span class="lk">查看选题 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ====== 工具整合（全工具网格） ====== -->
+<section class="block" id="tools">
+  <div class="sec-head">
+    <h2><span class="em">全工具</span> · 整合进白驹</h2>
+    <span class="tag">所有 AI 工具 / 助手 / 工作台 一处直达</span>
+  </div>
+  <div class="tier">
+    <div class="t"><b><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>总站（白驹核心）</b><br><span>大脑对话 · 白区工作台 · 编译模式 · 模型设置</span></div>
+    <div class="t"><b><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>创作分站</b><br><span>漫剧 · 绘画 · 视频 · 提示词 · 书稿库</span></div>
+    <div class="t"><b><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>实战分站</b><br><span>教育 · 就业 · 赚钱 · 作品大全 · 开发者基地</span></div>
+    <div class="t"><b><i class="cc-ic" data-ic="satellite" aria-hidden="true"></i>知识分站</b><br><span>编年史 · 前沿 · 模型横评 · 每日新闻 · FAQ</span></div>
+  </div>
+  <div class="grid" id="toolGrid"></div>
+</section>
+
+<!-- ====== 页脚（品牌列 + 三列链接） ====== -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="logo-row"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><b>白驹 · ccowork</b></div>
+      <p>把散落的 AI 工具装进一个大脑。门户、对话、创作、仿真，本地优先，开箱即用。</p>
+    </div>
+    <div class="foot-col">
+      <b>产品</b>
+      <a href="#chatbox">对话工作台</a>
+      <a href="./website/gallery.html">AI 绘画</a>
+      <a href="./website/voice.html">语音输入</a>
+      <a href="#compile">编译模式</a>
+    </div>
+    <div class="foot-col">
+      <b>内容</b>
+      <a href="./blog/index.html">博客</a>
+      <a href="./website/book/index.html">五卷全书</a>
+      <a href="./lab/index.html">实验室</a>
+      <a href="./website/ai-projects.html">作品集</a>
+    </div>
+    <div class="foot-col">
+      <b>关于</b>
+      <a href="./website/brand.html">关于我们</a>
+      <a href="./website/opensource.html">开源仓库</a>
+      <a href="./website/hub.html">更新日志</a>
+    </div>
+  </div>
+  <div class="foot-bar">
+    <span>© 2026 ccowork · 白驹全局大脑 · AI 创作纪元</span>
+    <span>本地运行 · 数据不出本机 · MIT License ｜ <span id="corpusStat"></span></span>
+  </div>
+</footer>
+
+<button id="setBtn" title="白驹模型设置" onclick="document.getElementById('setPanel').classList.toggle('open')"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></button>
+<div id="setPanel">
+  <h3><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>白驹 · 模型与设置 <span class="close" onclick="document.getElementById('setPanel').classList.toggle('open')">×</span></h3>
+  <div class="grp">
+    <label>默认大脑（模型）</label>
+    <select id="sMode"><option value="cloud" selected>云端白驹 · DeepSeek 服务端（免 Key·推荐）</option><option value="webllm">内置大模型 · 浏览器本地（Qwen2.5，免 Key）</option><option value="ollama">本地 Ollama</option><option value="deepseek">DeepSeek API（多模态）</option><option value="local">极简书稿检索</option></select>
+    <div class="note">所有问答、白区生成、编译辅助，统一走这里设置的模型。</div>
+  </div>
+  <div class="grp">
+    <label>DeepSeek API Key</label>
+    <input id="sKey" type="password" placeholder="sk-...（仅存本地浏览器）">
+  </div>
+  <div class="grp">
+    <div class="sw"><span><i class="cc-ic" data-ic="volume-2" aria-hidden="true"></i>语音播报</span><input type="checkbox" id="sVoice" checked></div>
+    <div class="sw"><span><i class="cc-ic" data-ic="image" aria-hidden="true"></i>多模态（图片输入，需 DeepSeek）</span><input type="checkbox" id="sMM"></div>
+    <div class="sw"><span><i class="cc-ic" data-ic="contrast"></i> 深空主题</span><input type="checkbox" id="sDeep"></div>
+  </div>
+  <div class="grp">
+    <label>壁纸</label>
+    <select id="sWall"><option value="epoch">纪元</option><option value="nebula">星云</option><option value="cloud-hero">云顶</option><option value="garden">花园</option><option value="train">列车</option><option value="island">岛屿</option><option value="cafe">咖啡馆</option><option value="none">无</option></select>
+  </div>
+  <div class="grp">
+    <button class="minibtn" onclick="saveSettings()" style="width:100%"><i class="cc-ic" data-ic="save" aria-hidden="true"></i>保存设置</button>
+    <p class="note">设置会被记住，下次打开自动恢复。模型与多模态统一由白驹调度。</p>
+  </div>
+</div>
+
+  <script src="./assets/marked.min.js"></script>
+  <script src="/assets/cal.js"></script>
+  <script src="/website/_corpus.js"></script>
+<script>
+/* ============================================================
+   白驹全局大脑 · 统一引擎（门户+对话+工作站+工具整合）
+   ============================================================ */
+const CORPUS_OBJ=window.BJ_CORPUS||{};
+const PAGES={
+  '总站':'./website/hub.html','主站':'./website/hub.html','助手':'./index.html','大脑':'./index.html','首页':'./index.html',
+  '实战全书':'./website/book/index.html','书库':'./website/book/index.html','书稿':'./website/book/index.html',
+  '编年史':'./website/chronicle.html','开发者基地':'./website/devbase.html','工作站':'./website/workstation.html',
+  '前沿':'./website/frontiers.html','成果':'./website/showcase.html','模型':'./website/models.html','路线图':'./website/roadmap.html',
+  '开源':'./website/opensource.html','工科':'./website/ai-jobs.html','漫剧':'./website/manju.html','绘画':'./website/gallery.html',
+  '教育':'./website/ai-edu.html','就业':'./website/ai-jobs.html','赚钱':'./website/ai-money.html','提示词':'./website/prompts-guide.html',
+  '作品':'./website/ai-projects.html','新闻':'./website/news.html','视频':'./website/videos.html','天气':'#life','日历':'#life','地图':'#life'
+};
+let CORPUS=[];
+const $=id=>document.getElementById(id);
+
+function loadCorpus(){
+  CORPUS=Object.keys(CORPUS_OBJ).map(name=>({name,text:CORPUS_OBJ[name]}));
+  const k=Math.round(CORPUS.reduce((s,c)=>s+c.text.length,0)/1000);
+  $('corpusStat').textContent='已驮载 '+CORPUS.length+' 部书稿 / 约 '+k+'k 字';
+}
+loadCorpus();
+
+/* 检索 */
+const SYNONYMS={
+  '工科':['工科','实训','仿真','数控','编程','计算机','G代码','代码'],'实训':['实训','工科','实战','编程','仿真','数控'],
+  '仿真':['仿真','模拟','实训','数控','代码'],'赚钱':['赚钱','变现','副业','接单','一人公司','路径'],
+  '提示词':['提示词','prompt','模板','公式'],'视频':['视频','剪辑','分镜','镜头','短片'],
+  '写作':['写作','文案','小说','博文','大纲'],'模型':['模型','部署','本地','Ollama','开源'],
+  '漫剧':['漫剧','短剧','分镜','剧本','角色'],'教育':['教育','教学','课程','学生'],'就业':['就业','求职','简历','面试'],
+  '绘画':['绘画','生图','画图','AI绘画','风格'],'数据':['数据','表格','整理','分析']
+};
+function expandKeys(q){
+  const base=q.match(/[\u4e00-\u9fa5]{1,}|[a-zA-Z0-9]{2,}/g)||[];
+  let keys=new Set();
+  base.forEach(w=>{if(w.length>=2)keys.add(w);});
+  base.forEach(w=>{for(let i=0;i<w.length-1;i++)keys.add(w.slice(i,i+2));});
+  for(const k in SYNONYMS)if(q.includes(k))SYNONYMS[k].forEach(s=>keys.add(s));
+  return [...keys].filter(k=>k.length>=2);
+}
+function retrieve(q){
+  const keys=expandKeys(q);
+  return CORPUS.filter(c=>c.text).map(c=>{
+    const scored=c.text.split(/\n{2,}/).map(p=>{
+      let s=0;keys.forEach(k=>{s+=(p.split(k).length-1)*(k.length>3?3:1);});
+      return {p,s};
+    }).filter(x=>x.s>1).sort((a,b)=>b.s-a.s).slice(0,5);
+    return scored.length?{name:c.name,hits:scored.map(x=>x.p)}:null;
+  }).filter(Boolean);
+}
+
+/* 消息 */
+function add(t,cls){const d=document.createElement('div');d.className='msg '+cls;
+  d.innerHTML=(cls==='bot')?marked.parse(t):t.replace(/</g,'&lt;');$('msgs').appendChild(d);$('msgs').scrollTop=1e9;return d;}
+function sys(t){add(t,'sys')}
+function quick(arr){$('quick').innerHTML='';arr.forEach(t=>{const b=document.createElement('button');
+  b.textContent=t;b.onclick=()=>{$('q').value=t;send();};$('quick').appendChild(b);});}
+
+/* 导航意图 */
+function navIntent(q){
+  if(!/(带我去|打开|跳转|导航|进入)/.test(q))return null;
+  for(const k in PAGES)if(q.includes(k))return {name:k,url:PAGES[k]};
+  return null;
+}
+
+/* 大脑调用 */
+async function ask(url,model,q,ctx,key,img){
+  const sysPrompt='你是"白驹"，AI创作纪元门户的全局助手。只根据以下书稿语料回答；语料没有就明说并指引到相关章节。回答精炼、可执行、可用表格。\n\n语料：\n'+ctx;
+  const headers={'Content-Type':'application/json'};
+  if(key)headers['Authorization']='Bearer '+key;
+  const content=[];
+  if(img)content.push({type:'image_url',image_url:{url:img}});
+  content.push({type:'text',text:q});
+  const body={model,messages:[{role:'system',content:sysPrompt},{role:'user',content}]};
+  const r=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  return (await r.json()).choices[0].message.content;
+}
+function localAnswer(q,ctx){
+  if(!ctx.length)return '行囊里没有直接命中「'+q+'」。\n\n试试上方**工具整合**里的分站，或换个关键词（提示词、赚钱、工科、视频、漫剧）。';
+  let out='**为你检索到 '+ctx.length+' 处相关内容：**\n\n';
+  ctx.slice(0,3).forEach(c=>{out+='### 出自《'+c.name+'》\n> '+c.hits[0].slice(0,300).replace(/\n/g,' ')+'…\n\n';});
+  out+='---\n切换到「本地 Ollama」或「DeepSeek API」大脑，我会基于这些内容生成连贯的完整回答。';
+  return out;
+}
+
+/* WebLLM 本地大模型 */
+let engine=null,engineLoading=false;
+async function ensureEngine(onProgress){
+  if(engine)return engine;
+  if(!navigator.gpu)throw new Error('当前浏览器不支持 WebGPU，请用最新版 Chrome/Edge，或切换其他大脑');
+  if(engineLoading)throw new Error('模型加载中，请稍候…');
+  engineLoading=true;
+  const webllm=await import('https://esm.run/@mlc-ai/web-llm');
+  engine=await webllm.CreateMLCEngine('Qwen2.5-1.5B-Instruct-q4f16_1-MLC',{initProgressCallback:p=>onProgress&&onProgress(p.text||'加载中…')});
+  engineLoading=false;return engine;
+}
+
+/* 语音 */
+let speaking=false;
+function speak(text){
+  if(!$('voice-on').checked)return;
+  try{speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text.replace(/[#*`|>\[\]()_]/g,'').slice(0,600));
+    u.lang='zh-CN';u.rate=1.05;
+    u.onstart=()=>{speaking=true;$('wave-label').textContent='播报中';};
+    u.onend=()=>{speaking=false;$('wave-label').textContent='待机';};
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+/* 多段声波 */
+const wc=$('wave').getContext('2d');let wt=0;
+(function drawWave(){
+  requestAnimationFrame(drawWave);wt+=0.04;
+  const w=$('wave').width,h=$('wave').height;wc.clearRect(0,0,w,h);
+  const layers=speaking?5:3;
+  for(let L=0;L<layers;L++){
+    const amp=(speaking?7:2.2)*(1-L*0.12), off=L*h/(layers+1), col=speaking?'rgba(255,255,255,'+(0.95-L*0.15)+')':'rgba(255,255,255,'+(0.6-L*0.1)+')';
+    wc.strokeStyle=col;wc.lineWidth=1.5;wc.lineCap='round';wc.beginPath();
+    for(let x=0;x<w;x++){
+      const y=off+Math.sin(x*0.08+wt*2+L)*amp*Math.sin(x/w*Math.PI)*(speaking?(0.6+0.4*Math.sin(wt*5+L)):1);
+      x===0?wc.moveTo(x,y):wc.lineTo(x,y);
+    }
+    wc.stroke();
+  }
+})();
+$('mic').onclick=()=>{
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){sys('当前浏览器不支持语音识别，请用 Chrome/Edge。');return;}
+  if(recog){recog.stop();return;}
+  recog=new SR();recog.lang='zh-CN';recog.interimResults=true;
+  $('mic').classList.add('on');$('wave-label').textContent='聆听中…';
+  recog.onresult=e=>{const t=[...e.results].map(r=>r[0].transcript).join('');$('q').value=t;
+    if(e.results[e.results.length-1].isFinal){stopRec();send();}};
+  recog.onend=stopRec;recog.onerror=stopRec;recog.start();
+  function stopRec(){$('mic').classList.remove('on');$('wave-label').textContent='待机';recog=null;}
+};
+let recog=null;
+
+/* 图片附图 */
+let attachedImg=null;
+$('imgfile').onchange=e=>{const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();r.onload=()=>{attachedImg=r.result;$('imgbtn').textContent=' 已附图';};r.readAsDataURL(f);};
+
+/* 发送主流程 */
+let imgToSend=null;
+async function send(){
+  const q=$('q').value.trim();if(!q&&!attachedImg)return;
+  add(q,'user');$('q').value='';
+  imgToSend=attachedImg;if(attachedImg){attachedImg=null;$('imgbtn').textContent=' 附图';}
+  const nav=navIntent(q);
+  if(nav){add('好，这就带你去 **'+nav.name+'**。\n\n[ 如未自动跳转，点这里]('+nav.url+')','bot');
+    if(!nav.url.startsWith('#'))setTimeout(()=>location.href=nav.url,900);else location.href=nav.url;return;}
+  const ctx=retrieve(q);
+  const ctxText=ctx.map(c=>'【'+c.name+'】\n'+c.hits.join('\n')).join('\n\n').slice(0,9000);
+  const mode=$('mode').value, mm=$('mm-on').checked;
+  const typing=add('思考中…','bot typing');
+  try{
+    let ans;
+    if(mode==='cloud'||mode==='zhipu'){
+      const msgs=[
+        {role:'system',content:'你是"白驹"，AI创作纪元门户的全局助手，精通 AI 创作、提示词、生图生视频、赚钱变现、本地部署、各类工具与案例。回答精炼、可执行、可用表格。\n若下方【书稿语料】已覆盖用户问题，优先结合语料作答并自然引用；语料未覆盖时，直接用你的通用 AI 知识给出有用答案——绝不说"语料没有"或"书中未提及"，也不要推脱。\n\n【书稿语料】：\n'+ctxText},
+        {role:'user',content:q}
+      ];
+      // 多模型自动回退（方舟优先·智谱免费兜底·DeepSeek 余额不足自动跳过）；部署版纯静态直连
+      try {
+        ans = await window.AI.complete({providers:['ark','zhipu','deepseek'], messages:msgs, maxTokens:2000});
+      } catch(e1) {
+        ans = localAnswer(q, ctx); // 全模型失败才用本地书稿兜底（不暴露原始错误码）
+      }
+    }else if(mode==='webllm'){
+      if(!engine){
+        typing.innerHTML=' 首次启动：大模型下载进浏览器中…<br><span style="font-size:11.5px;color:var(--muted)" id="dlprog">准备中…</span>';
+        await ensureEngine(t=>{const el=$('dlprog');if(el)el.textContent=t;});
+        typing.innerHTML=' 模型就绪，开始思考…';
+      }
+      const sp='你是"白驹"，AI创作纪元门户的全局助手。只根据以下书稿语料回答；语料没有就明说并指引到相关章节。回答精炼、可执行、可用表格。\n\n语料：\n'+ctxText;
+      const reply=await engine.chat.completions.create({messages:[{role:'system',content:sp},{role:'user',content:q}]});
+      ans=reply.choices[0].message.content;
+    }else if(mode==='deepseek'){
+      const key=$('apikey').value.trim();if(!key)throw new Error('请先填入 DeepSeek API Key');
+      ans=await ask('https://api.deepseek.com/v1/chat/completions','deepseek-chat',q,ctxText,key,mm?imgToSend:null);
+    }else if(mode==='ollama'){
+      ans=await ask('http://localhost:11434/v1/chat/completions','qwen3:8b',q,ctxText);
+    }else{ans=localAnswer(q,ctx);}
+    typing.classList.remove('typing');typing.innerHTML=marked.parse(ans);speak(ans);
+  }catch(e){
+    typing.classList.remove('typing');
+    typing.innerHTML=marked.parse('**AI 服务暂时繁忙，已为你检索站内书稿资料：**\n\n'+localAnswer(q,ctx));
+  }
+  $('msgs').scrollTop=1e9;
+}
+$('send').onclick=send;
+$('q').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+function askWith(t){$('q').value=t;$('msgs').scrollTop=0;send();}
+
+/* 开场 */
+sys(' 白驹已就位。默认：云端智谱免费模型（GLM-4.7-Flash · 0 成本），自动降级 DeepSeek。可在「 设置」切换本地大模型 / Ollama / 自填 Key。');
+add('你好，我是 **白驹**——这座门户的**全局大脑**。\n\n我能做四件事：\n1. **答**：全书稿随问随答（黄金流程、提示词、赚钱路径……）\n2. **带路**：说「带我去工科实训 / 编年史」，我直接驮你去\n3. **造**：用下方「白区」生图/生文/生视频/数据，或「编译模式」做个小工具\n4. **听**：点麦克风直接说话，我也能开口回答你','bot');
+quick(['祛 AI 味三刀是什么？','给我三个赚钱路径','怎么用 AI 做漫剧？','带我去编年史','Ollama 怎么装？','做个学习工作台']);
+
+/* ============================================================
+   白区：模块生成器
+   ============================================================ */
+/* 白区 tabs 切换 */
+(function(){
+  const tabs = document.getElementById('tabs');
+  if(!tabs) return;
+  tabs.addEventListener('click', function(e){
+    const t = e.target.closest('.tab');
+    if(!t) return;
+    const key = t.getAttribute('data-t');
+    document.querySelectorAll('#tabs .tab').forEach(function(x){ x.classList.toggle('cur', x===t); });
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.toggle('cur', p.getAttribute('data-p')===key); });
+    const target = document.querySelector('.panel[data-p="'+key+'"]');
+    if(target) target.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+})();
+function copyOut(id){const t=$(id).innerText;navigator.clipboard&&navigator.clipboard.writeText(t);const b=event.target;b.textContent=' 已复制';setTimeout(()=>b.textContent=' 复制',1400);}
+function genImg(){
+  const sub=$('imgSub').value||'银发少女',style=$('imgStyle').value,scene=$('imgScene').value||'电影感场景',shot=$('imgShot').value,neg=$('imgNeg').value||'模糊、畸形、水印';
+  const p=`${style}风格，${shot}，${sub}，${scene}。\n高细节，8k，电影级打光，最佳画质。\nNegative: ${neg}`;
+  $('imgOut').textContent=p;
+}
+function genText(){
+  const type=$('txtType').value,topic=$('txtTopic').value||'AI 工具',pts=($('txtPoints').value||'好用,免费').split(/[,，]/),tone=$('txtTone').value||'亲切';
+  let out=`【${type}】主题：${topic}\n语气：${tone}\n\n`;
+  pts.forEach((p,i)=>out+=`${i+1}. ${p.trim()}——（展开一句钩子）\n`);
+  out+='\n结尾：引导关注/行动。';
+  $('txtOut').textContent=out;
+}
+function genVideo(){
+  const idea=$('vidIdea').value||'白驹在赛博城市奔跑',len=$('vidLen').value||'60秒',style=$('vidStyle').value;
+  let out=`【${style}】创意：${idea}\n时长：${len}\n\n分镜：\n`;
+  for(let i=1;i<=5;i++)out+=`镜头${i}（${2+Math.floor(Math.random()*4)}s）：${['建立世界观','主角登场','冲突发生','高潮转折','留悬念结尾'][i-1]}。生图提示词：\n  ${idea}，${style}风格，镜头${i}\n`;
+  $('vidOut').textContent=out;
+}
+function genData(){
+  const head=($('dtHead').value||'项目,负责人,状态,截止').split(/[,，]/).map(s=>s.trim());
+  const rows=$('dtRaw').value.trim().split('\n').filter(Boolean);
+  let md='| '+head.join(' | ')+' |\n| '+'--- |'.repeat(head.length)+'\n';
+  rows.forEach(r=>{const c=r.split(/[,，]/).map(s=>s.trim());while(c.length<head.length)c.push('');md+='| '+c.join(' | ')+' |\n';});
+  $('dtOut').textContent=md;
+}
+function genSkill(){
+  const name=$('skName').value||'自定义技能',inP=$('skIn').value||'输入',outP=$('skOut').value||'输出',tools=$('skTools').value||'白驹',steps=$('skSteps').value||'1.开始';
+  let out=`# 技能卡：${name}\n\n- 输入：${inP}\n- 输出：${outP}\n- 工具：${tools}\n\n## 步骤\n`;
+  steps.split(/[;\n；]/).map(s=>s.trim()).filter(Boolean).forEach((s,i)=>out+=`${i+1}. ${s}\n`);
+  out+='\n> 落地见「白驹工作站」（IDE × GitHub × AI）。';
+  $('skOutBox').textContent=out;
+}
+
+function fillData(){$('dtHead').value='项目,负责人,状态,截止';$('dtRaw').value='AI漫剧,小张,进行中,8-20\n开源作品库,小李,待启动,8-25\n自学路线图,小王,已完成,8-10';genData();}
+function fillSkill(){$('skName').value='论文降重助手';$('skIn').value='一篇 PDF 论文';$('skOut').value='降重后正文+查重报告';$('skTools').value='Ollama+Python+白驹';$('skSteps').value='1.解析PDF 2.分段送模型 3.同义改写 4.比对查重';genSkill();}
+
+/* 文档模式（localStorage） */
+function docSave(){const t=$('docTitle').value,d=$('docBody').value;
+  try{localStorage.setItem('baiju-doc',JSON.stringify({t,d,ts:Date.now()}));$('docStat').textContent='已保存 · '+new Date().toLocaleString();}catch(e){$('docStat').textContent='保存失败';}}
+function docClear(){$('docTitle').value='';$('docBody').value='';try{localStorage.removeItem('baiju-doc');}catch(e){}$('docStat').textContent='已清空';}
+function docAsk(act){const d=$('docBody').value;if(!d){sys('先写点内容再交给白驹。');return;}askWith(act+'：\n'+d);}
+(function(){try{const s=JSON.parse(localStorage.getItem('baiju-doc')||'null');if(s){$('docTitle').value=s.t;$('docBody').value=s.d;$('docStat').textContent='已恢复草稿';}}catch(e){}})();
+
+/* 天气（Open-Meteo 免费接口，无需任何 Key） */
+const WX_CODE={0:'晴',1:'大致晴朗',2:'局部多云',3:'阴',45:'雾',48:'雾凇',51:'毛毛雨',53:'小雨',55:'中雨',61:'小雨',63:'中雨',65:'大雨',71:'小雪',73:'中雪',75:'大雪',80:'阵雨',81:'强阵雨',95:'雷阵雨',96:'雷暴伴冰雹'};
+async function queryWeather(city, lat, lon){
+  try{
+    let g, gj;
+    if(lat!=null&&lon!=null){ g={results:[{latitude:lat,longitude:lon,name:city||'我的位置',country:''}]}; gj=g; }
+    else{
+      g=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(city)+'&language=zh&count=1');
+      gj=await g.json();
+    }
+    if(!gj.results||!gj.results.length){$('wxOut').textContent='未找到城市：'+city;return;}
+    const {latitude,longitude,name,country}=gj.results[0];
+    const w=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto`);
+    const wj=await w.json();const cur=wj.current;
+    const t=wj.daily;
+    const code=WX_CODE[cur.weather_code]||'未知';
+    const dstr=wj.daily&&wj.daily.time?`${wj.daily.time[0].slice(5)} 最高${t.temperature_2m_max[0]}°C/最低${t.temperature_2m_min[0]}°C`:'';
+    $('wxOut').innerHTML=`<b>${name}${country?'('+country+')':''}</b>　${code}　${cur.temperature_2m}°C<br><span style="font-size:12px;opacity:.8">湿度${cur.relative_humidity_2m}% · 风速${cur.wind_speed_10m}m/s · ${dstr}</span>`;
+  }catch(e){$('wxOut').textContent='天气查询需联网（Open-Meteo 免费，无需 Key）。'+e.message;}
+}
+function getWeather(){
+  const c=$('wxCity').value.trim()||'北京';
+  if(!c){$('wxOut').textContent='请输入城市';return;}
+  $('wxOut').textContent='查询中…';
+  queryWeather(c);
+}
+function locateMe(){
+  if(!navigator.geolocation){$('wxOut').textContent='当前浏览器不支持定位，直接输入城市即可（免费无需 Key）。';return;}
+  $('wxOut').textContent='定位中…';
+  navigator.geolocation.getCurrentPosition(
+    p=>{queryWeather('我的位置',p.coords.latitude.toFixed(4),p.coords.longitude.toFixed(4));},
+    ()=>{$('wxOut').textContent='定位被拒绝，输入城市即可（免费无需 Key）。';},
+    {timeout:8000}
+  );
+}
+if(!document.getElementById('wxCity').value)document.getElementById('wxCity').value='北京';
+/* 日历：公历 + 农历双历 + 每日详情（节日/节气/宜忌） */
+const calEvents={};
+(function(){try{Object.assign(calEvents,JSON.parse(localStorage.getItem('baiju-cal')||'{}'));}catch(e){}});
+let calSel=null;
+function calKey(y,m,d){return y+'-'+(m+1)+'-'+d;}
+function renderCal(){
+  const d=new Date(),y=d.getFullYear(),m=d.getMonth();
+  if(!calSel)calSel={y,m,d:d.getDate()};
+  $('calHead').textContent=`${calSel.y}年${calSel.m+1}月`;
+  const first=new Date(calSel.y,calSel.m,1).getDay(),days=new Date(calSel.y,calSel.m+1,0).getDate();
+  let h='日一二三四五六'.split('').map(x=>`<div style="text-align:center;color:var(--muted);font-size:10px">${x}</div>`).join('');
+  let cells='';for(let i=0;i<first;i++)cells+='<div></div>';
+  for(let i=1;i<=days;i++){
+    const k=calKey(calSel.y,calSel.m,i);
+    const L=window.CAL_LUNAR&&window.CAL_LUNAR.solarToLunar(calSel.y,calSel.m+1,i);
+    const ev=calEvents[k];
+    const isToday=(i===d.getDate()&&calSel.y===y&&calSel.m===m);
+    const isSel=(i===calSel.d);
+    const fest=L&&L.festivals&&L.festivals.length?L.festivals[0]:'';
+    const lday=L?L.dayName:'';
+    const bg=isToday?'linear-gradient(135deg,#4f8cff,#22d3ee)':(isSel?'rgba(79,140,255,.25)':(ev?'rgba(34,176,125,.18)':'transparent'));
+    const col=isToday?'#fff':(ev?'#2ed3a0':'var(--text)');
+    cells+=`<div onclick="pickDay(${calSel.y},${calSel.m+1},${i})" style="padding:3px 2px;border-radius:6px;background:${bg};color:${col};text-align:center;cursor:pointer;line-height:1.15" title="${fest||(L&&L.lunarText)||''}${ev?'\n记事:'+ev:''}">
+      <div style="font-size:11px;font-weight:${isToday?700:400}">${i}</div>
+      <div style="font-size:10px;opacity:.8">${lday||''}</div>
+      ${fest?`<div style="font-size:10px;color:${isToday?'#fff':'#f0b95c'};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${fest}</div>`:''}
+    </div>`;
+  }
+  $('calGrid').innerHTML=h+cells;
+  showCalDetail(calSel.y,calSel.m+1,calSel.d);
+  $('calList').textContent=calEvents[calKey(y,m,d.getDate())]?('今天：'+calEvents[calKey(y,m,d.getDate())]):'今天暂无安排';
+}
+function calNav(delta){calSel={y:calSel.y, m:calSel.m+delta, d:1};if(calSel.m<0){calSel.y--;calSel.m=11;}if(calSel.m>11){calSel.y++;calSel.m=0;}renderCal();}
+function pickDay(y,m,d){calSel={y,m:m-1,d};renderCal();}
+function showCalDetail(y,m,d){
+  const box=$('calDetail');if(!box)return;
+  const L=window.CAL_LUNAR&&window.CAL_LUNAR.solarToLunar(y,m,d);
+  if(!L){box.innerHTML='';return;}
+  const k=calKey(y,m-1,d);
+  const ev=calEvents[k];
+  const dow='日一二三四五六'[new Date(y,m-1,d).getDay()];
+  let html=`<div style="display:flex;justify-content:space-between;align-items:center">
+      <b style="font-size:14px">${y}年${m}月${d}日 · 星期${dow}</b>
+      <span style="font-size:12px;color:#f0b95c">${L.gzYear}${L.animal}年</span></div>
+    <div style="font-size:16px;font-weight:800;margin:6px 0 2px;color:var(--text)">农历 ${L.lunarText} <span style="font-size:12px;color:var(--muted)">${L.zodiac}</span></div>`;
+  if(L.jieqi)html+=`<div style="font-size:12px;color:#ff9f5c"> ${L.jieqi}</div>`;
+  if(L.festivals.length)html+=`<div style="font-size:12px;color:#ff9f5c"> ${L.festivals.join(' · ')}</div>`;
+  html+=`<div style="font-size:12px;color:var(--muted);margin-top:4px">宜：${L.yiji.yi.join('、')}　忌：${L.yiji.ji.join('、')}（参考）</div>`;
+  if(ev)html+=`<div style="font-size:12px;color:#2ed3a0;margin-top:4px"> 记事：${ev}</div>`;
+  box.innerHTML=html;
+}
+function addEvent(){const v=$('calEvent').value.trim();if(!v)return;const d=new Date();const k=calKey(d.getFullYear(),d.getMonth(),d.getDate());calEvents[k]=v;localStorage.setItem('baiju-cal',JSON.stringify(calEvents));$('calEvent').value='';renderCal();}
+renderCal();
+/* 地图：页内真实地图（OpenStreetMap 免费 embed，无需 Key），不跳窗 */
+function mapEmbed(q,lat,lon){
+  const f=$('mapFrame');if(!f)return;
+  if(lat!=null&&lon!=null){
+    f.src=`https://www.openstreetmap.org/export/embed.html?bbox=${lon-0.02}%2C${lat-0.012}%2C${lon+0.02}%2C${lat+0.012}&layer=mapnik&marker=${lat}%2C${lon}`;
+  }else{
+    f.src=`https://www.openstreetmap.org/export/embed.html?bbox=118.9%2C29.9%2C121.5%2C31.2&layer=mapnik&marker=30.25%2C120.16`;
+  }
+  $('mapCap').textContent=q?(' '+q):' 默认视图（杭州）· 输入地点查询';
+}
+function openMap(){
+  const q=$('mapQ').value.trim();
+  if(!q){mapEmbed('');return;}
+  $('mapCap').textContent='查找 '+q+' …';
+  fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q='+encodeURIComponent(q))
+    .then(r=>r.json()).then(list=>{
+      if(list&&list.length){mapEmbed(q,parseFloat(list[0].lat),parseFloat(list[0].lon));}
+      else{mapEmbed('');$('mapCap').textContent='未找到：'+q+'（已回到默认视图）';}
+    }).catch(()=>{mapEmbed('');$('mapCap').textContent='联网失败，已回到默认视图';});
+}
+mapEmbed('');
+
+/* ============================================================
+   编译模式 COO
+   ============================================================ */
+function switchMode(m,btn){document.querySelectorAll('.modebtn').forEach(b=>b.classList.remove('cur'));btn.classList.add('cur');
+  const map={'work':'#baizone','doc':'#baizone','img':'#baizone','text':'#baizone','video':'#baizone','skill':'#baizone','life':'#baizone',
+    'compile':'#compile','data':'#baizone','voice':'#chatbox','lab':'#works'};
+  const target=document.querySelector(map[m]||'#baizone');
+  if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+  // 白区 tab 联动：找到对应 data-t 的 tab 并触发其点击
+  const tabMap={'doc':'doc','img':'img','text':'text','video':'video','data':'data','work':'doc','skill':'skill','life':'life'};
+  const tkey=tabMap[m];
+  if(tkey){const tab=document.querySelector('#tabs .tab[data-t="'+tkey+'"]');if(tab)tab.click();}
+}
+
+/* ============================================================
+   工具整合网格
+   ============================================================ */
+const TOOLS=[
+  ['','AI 对话工作台','chat.html','开箱即用对话 UI，多模型切换','cover-chatgpt.webp'],
+  ['','AI 语音助手','voice.html','语音识别/合成/克隆，说给白驹听','cover-videogen.webp'],
+  ['','全能智能体','agent.html','Agent 自动化工作流与智能巡航','cover-ai70.webp'],
+  ['','AI 漫剧指南','manju.html','从创意到分账，一个人做一条剧','cover-videogen.webp'],
+  ['','AI 绘画生图','gallery.html','即梦/ComfyUI/SD 实战与模板','cover-imagegen.webp'],
+  ['','漫剧书库','comic.html','漫剧分镜与故事创作','cover-videogen.webp'],
+  ['','提示词实战','prompts-guide.html','40 条精选可复制提示词+术语','cover-prompts.webp'],
+  ['','提示词百宝库','prompts100.html','100+ 提示词模板速查','cover-prompts.webp'],
+  ['','书稿库','book/index.html','五卷全书/实战全书/中国科技故事','cover-book.webp'],
+  ['','书稿阅读器','reader.html','沉浸式阅读全部书稿','cover-book.webp'],
+  ['','AI 赋能教育','ai-edu.html','课程/教学/学生全场景','cover-growth.webp'],
+  ['','AI 赋能就业','ai-jobs.html','简历/面试/工科实训','cover-engineering.webp'],
+  ['','AI 简历','resume.html','AI 简历与求职材料','cover-growth.webp'],
+  ['','AI 刷题测验','quiz.html','知识测验与刷题','cover-ai70.webp'],
+  ['','AI 赚钱攻略','ai-money.html','副业/接单/一人公司路径','cover-growth.webp'],
+  ['','开源作品大全','ai-projects.html','100 个真实项目·个人/团队分开','cover-global.webp'],
+  ['','作品内容库','works.html','内嵌全文，点开即读','cover-book.webp'],
+  ['','开发者基地','devbase.html','部署/API/本地运行','cover-design.webp'],
+  ['','白驹工作站','workstation.html','IDE × GitHub × AI','cover-data.webp'],
+  ['','本地 AI','local-ai.html','本地部署全家桶','cover-deepseek.webp'],
+  ['','模型横评','models.html','主流模型对比选型','cover-deepseek.webp'],
+  ['','AI 生态图谱','ecosystem.html','工具/模型生态地图','cover-global.webp'],
+  ['','AI 知识收纳站','portal.html','全方向门户入口','cover-research.webp'],
+  ['','行业实战手册','industry.html','各行业 AI 落地','cover-industry.webp'],
+  ['','专业指南','majors.html','AI + 专业选择','cover-engineering.webp'],
+  ['','上手起步','start.html','从零开始玩 AI','cover-future.webp'],
+  ['','AI 前沿','frontiers.html','最新趋势全景','cover-future.webp'],
+  ['','编年史','chronicle.html','AI 全景编年','cover-research.webp'],
+  ['','每日新闻','news.html','今日 AI 快讯','cover-data.webp'],
+  ['','FAQ 50问','faq.html','高频问题速查','cover-prompts.webp'],
+  ['','AI 安全','security.html','安全与合规指南','cover-design.webp'],
+];
+(function(){
+  const g=$('toolGrid');
+  TOOLS.forEach(([ico,name,page,desc,img])=>{
+    const card=document.createElement('div');card.className='tcard';
+    card.innerHTML=`<div class="cv" data-bg="./assets/img/${img}"><span class="badge">${ico}</span></div>
+      <div class="cb"><h4>${ico} ${name}</h4><p>${desc}</p>
+      <div class="acts"><a class="go" href="./website/${page}">进入</a>
+      <button class="ask" onclick="askWith('介绍一下${name}（${desc}），并给我上手步骤')">问白驹</button></div></div>`;
+    g.appendChild(card);
+  });
+  const cvs=document.querySelectorAll('.tcard .cv');
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          const cv=en.target;
+          if(cv.dataset.bg){cv.style.backgroundImage=`url('${cv.dataset.bg}')`;cv.removeAttribute('data-bg');}
+          const card=cv.closest('.tcard'); if(card)card.classList.add('in');
+          io.unobserve(cv);
+        }
+      });
+    },{rootMargin:'120px'});
+    cvs.forEach(cv=>io.observe(cv));
+  }else{
+    cvs.forEach(cv=>{ if(cv.dataset.bg)cv.style.backgroundImage=`url('${cv.dataset.bg}')`; cv.closest('.tcard').classList.add('in'); });
+  }
+})();
+
+/* 今日新闻（取 news.html 最新一条做预告） */
+(function(){
+  fetch('./website/news.html').then(r=>r.text()).then(h=>{
+    const m=h.match(/<title>([^<]*)<\/title>/);
+    const dateM=h.match(/2026-0?8-1[0-9]|08-1[0-9]/);
+    $('newsTxt').innerHTML='<b>最新：</b>'+(dateM?dateM[0]+' ':'')+'AI 每日新闻已更新 —— 点右侧查看完整资讯。';
+  }).catch(()=>{});
+})();
+
+/* ============================================================
+   设置（白驹模型统一调度）+ 主题切换
+   ============================================================ */
+const CONF_KEY='baiju-config-v2';
+function saveSettings(){
+  const deep=$('sDeep').checked;
+  document.body.setAttribute('data-theme',deep?'deep':'cloud');
+  document.body.setAttribute('data-wall',$('sWall').value);
+  try{localStorage.setItem('ccowork.theme',deep?'deep':'cloud');   /* A4 B1：同步真源键 */
+    if($('sWall').value)localStorage.setItem('ccowork.wall',$('sWall').value);
+    localStorage.setItem(CONF_KEY,JSON.stringify({
+    mode:$('sMode').value,key:$('sKey').value.trim(),voice:$('sVoice').checked,mm:$('sMM').checked,deep,wall:$('sWall').value
+  }));}catch(e){}
+  $('mode').value=$('sMode').value;$('apikey').value=$('sKey').value;$('voice-on').checked=$('sVoice').checked;$('mm-on').checked=$('sMM').checked;
+  syncThemeBtn();
+  sys(' 设置已保存：大脑='+$('sMode').value+(deep?'，深空主题':'，云顶主题'));
+}
+function loadSettings(){
+  try{const c=JSON.parse(localStorage.getItem(CONF_KEY)||'null');if(!c)return;
+    if(c.mode)$('sMode').value=c.mode,$('mode').value=c.mode;
+    if(c.key)$('sKey').value=c.key,$('apikey').value=c.key;
+    if(typeof c.voice==='boolean')$('sVoice').checked=c.voice,$('voice-on').checked=c.voice;
+    if(typeof c.mm==='boolean')$('sMM').checked=c.mm,$('mm-on').checked=c.mm;
+    /* A4 B1：主题唯一真源 = ccowork.theme；旧键 baiju-config-v2.deep 仅作首访初始化与反向同步 */
+    var themeStored='';try{themeStored=localStorage.getItem('ccowork.theme')||''}catch(e){}
+    var theme=themeStored||(typeof c.deep==='boolean'?(c.deep?'deep':'cloud'):'');
+    if(theme){document.body.setAttribute('data-theme',theme);$('sDeep').checked=(theme==='deep');
+      try{if(!themeStored)localStorage.setItem('ccowork.theme',theme)}catch(e){}}
+    var wallStored='';try{wallStored=localStorage.getItem('ccowork.wall')||''}catch(e){}
+    var wall=wallStored||(c.wall||'');
+    if(wall){$('sWall').value=wall;document.body.setAttribute('data-wall',wall);
+      try{if(!wallStored)localStorage.setItem('ccowork.wall',wall)}catch(e){}}
+    syncThemeBtn();
+  }catch(e){}
+}
+function syncThemeBtn(){
+  const tb=$('themeBtn');
+  if(tb)tb.textContent=(document.body.getAttribute('data-theme')==='deep')?'':'';
+}
+function toggleTheme(){
+  const deep=document.body.getAttribute('data-theme')==='deep';
+  const next=deep?'cloud':'deep';
+  document.body.setAttribute('data-theme',next);
+  $('sDeep').checked=!deep;
+  syncThemeBtn();
+  try{localStorage.setItem('ccowork.theme',next);   /* A4 B1：同步真源键 */
+    const c=JSON.parse(localStorage.getItem(CONF_KEY)||'{}');c.deep=!deep;localStorage.setItem(CONF_KEY,JSON.stringify(c));}catch(e){}
+}
+(function(){
+  const tb=$('themeBtn');
+  if(tb)tb.onclick=toggleTheme;
+})();
+loadSettings();
+['mode','apikey','voice-on','mm-on'].forEach(id=>$(id).addEventListener('change',()=>{
+  try{localStorage.setItem(CONF_KEY,JSON.stringify({mode:$('mode').value,key:$('apikey').value.trim(),voice:$('voice-on').checked,mm:$('mm-on').checked}));}catch(e){}
+}));
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+<script src="/responsive.js"></script>
+  <script src="./compile-mode.js"></script>
+  <script src="/ai-client.js"></script>
+</body>
+</html>

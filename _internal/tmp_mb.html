@@ -1,0 +1,395 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+        <title>wplayer embedded player</title>
+        <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+        <meta content="target-densitydpi=device-dpi,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui,viewport-fit=cover" name="viewport">
+        <meta name="spm_prefix" content="457.19">
+        <script src="//s1.hdslb.com/bfs/seed/log/report/log-reporter.js"></script>
+        <script type="text/javascript">
+            var msource;
+            try {
+                var u = new URL(location.href);
+                var sp = u.searchParams;
+                msource = sp.get('msource') || sp.get('from') || sp.get('source_from') || sp.get('from_module');
+            } catch (e) {
+                console.warn('get page source from query failed', e);
+            }
+            window.activity = { id: 6934, spmId: '457.19' };
+            window.reportMsgObj = {};
+            window.appBuvid = '';
+            window.reportConfig = {
+                sample: 1,
+                extMsgs: {
+                    appBuvid: function () {
+                        return window.appBuvid;
+                    },
+                },
+                scrollTracker: true,
+                msgObjects: 'reportMsgObj',
+                pvMsg: { msource: msource },
+                errorTracker: true,
+            };
+            // 模块的点击上报
+            document.addEventListener('click', function (e) {
+                if (!e.path && !e.composedPath) return;
+                var patharr = e.path ? e.path : e.composedPath();
+                if (patharr.length > 0) {
+                    for (var i = 0; i < patharr.length; i++) {
+                        var node = patharr[i];
+                        if (node && node.className && node.dataset.module) {
+                            var k = 'BiliActModuleClick?' + node.id + '?' + node.dataset.module;
+                            if (node.dataset.version) {
+                                k = k + '?' + node.dataset.version;
+                            }
+                            var value = 1;
+                            try {
+                                window.reportMsgObj &&
+                                    window.reportObserver &&
+                                    ((window.reportMsgObj[k] = value),
+                                    window.reportObserver.forceCommit && window.reportObserver.forceCommit());
+                            } catch (error) {
+                                console.error('[logger]', error);
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+        <script src="//s1.hdslb.com/bfs/seed/jinkela/short/player/whitelist.js"></script>
+        <script type="text/javascript">
+            window.VIDEO_CONFIG_TYPE_MAP = {
+                number: 'number',
+                boolean: 'boolean',
+                string: 'string',
+                object: 'object',
+            };
+
+            window.PAGE_CONFIG = {
+                crossDomain: VIDEO_CONFIG_TYPE_MAP.boolean,
+            };
+
+            window.PLAYER_CONFIG = {
+                aid: VIDEO_CONFIG_TYPE_MAP.number,
+                cid: VIDEO_CONFIG_TYPE_MAP.number,
+                episodeId: VIDEO_CONFIG_TYPE_MAP.number,
+                seasonId: VIDEO_CONFIG_TYPE_MAP.number,
+                subType: VIDEO_CONFIG_TYPE_MAP.number,
+                seasonType: VIDEO_CONFIG_TYPE_MAP.number,
+                p: VIDEO_CONFIG_TYPE_MAP.number,
+                quality: VIDEO_CONFIG_TYPE_MAP.number,
+                highQn: VIDEO_CONFIG_TYPE_MAP.boolean,
+                kind: VIDEO_CONFIG_TYPE_MAP.number,
+                muted: VIDEO_CONFIG_TYPE_MAP.boolean,
+                t: VIDEO_CONFIG_TYPE_MAP.number,
+                skipHead: VIDEO_CONFIG_TYPE_MAP.boolean,
+                skipTail: VIDEO_CONFIG_TYPE_MAP.boolean,
+                hideCoverInfo: VIDEO_CONFIG_TYPE_MAP.boolean,
+                hasSendbar: VIDEO_CONFIG_TYPE_MAP.boolean,
+                noControls: VIDEO_CONFIG_TYPE_MAP.boolean,
+                callAppMode: VIDEO_CONFIG_TYPE_MAP.boolean,
+                from: VIDEO_CONFIG_TYPE_MAP.number,
+                hasMuteButton: VIDEO_CONFIG_TYPE_MAP.boolean,
+                portraitFullScreen: VIDEO_CONFIG_TYPE_MAP.boolean,
+                showReturn: VIDEO_CONFIG_TYPE_MAP.boolean,
+                webFull: VIDEO_CONFIG_TYPE_MAP.boolean,
+                noFullScreenButton: VIDEO_CONFIG_TYPE_MAP.boolean,
+                noToast: VIDEO_CONFIG_TYPE_MAP.boolean,
+                danmakuClosed: VIDEO_CONFIG_TYPE_MAP.boolean,
+                danmakuBtn: VIDEO_CONFIG_TYPE_MAP.number,
+                noPlayState: VIDEO_CONFIG_TYPE_MAP.boolean,
+                noProgress: VIDEO_CONFIG_TYPE_MAP.boolean,
+                hasVolume: VIDEO_CONFIG_TYPE_MAP.boolean,
+                fromDid: VIDEO_CONFIG_TYPE_MAP.string,
+                replyDid: VIDEO_CONFIG_TYPE_MAP.string,
+                noRecommend: VIDEO_CONFIG_TYPE_MAP.boolean,
+                loop: VIDEO_CONFIG_TYPE_MAP.boolean,
+                fjw: VIDEO_CONFIG_TYPE_MAP.boolean,
+                offset: VIDEO_CONFIG_TYPE_MAP.boolean,
+                duration: VIDEO_CONFIG_TYPE_MAP.number,
+                isPugv: VIDEO_CONFIG_TYPE_MAP.boolean,
+                autoplay: VIDEO_CONFIG_TYPE_MAP.boolean,
+                autoplayMode: VIDEO_CONFIG_TYPE_MAP.string,
+                isClip: VIDEO_CONFIG_TYPE_MAP.boolean,
+                endTime: VIDEO_CONFIG_TYPE_MAP.number,
+                stats: VIDEO_CONFIG_TYPE_MAP.object,
+                test: VIDEO_CONFIG_TYPE_MAP.object,
+                developer: VIDEO_CONFIG_TYPE_MAP.boolean,
+                trackType: VIDEO_CONFIG_TYPE_MAP.string,
+                bvid: VIDEO_CONFIG_TYPE_MAP.string,
+                outer: VIDEO_CONFIG_TYPE_MAP.number,
+                useHls: VIDEO_CONFIG_TYPE_MAP.boolean,
+                safeHeight: VIDEO_CONFIG_TYPE_MAP.number,
+                auto: VIDEO_CONFIG_TYPE_MAP.boolean,
+                cooperate: VIDEO_CONFIG_TYPE_MAP.boolean,
+                noHistory: VIDEO_CONFIG_TYPE_MAP.boolean,
+                onlyPoster: VIDEO_CONFIG_TYPE_MAP.boolean,
+                hide: VIDEO_CONFIG_TYPE_MAP.boolean,
+                noPosterClip: VIDEO_CONFIG_TYPE_MAP.boolean
+            };
+        </script>
+        <script src="//s1.hdslb.com/bfs/static/player/main/html5/wplayer.js?v=11"></script>
+        <script crossorigin="anonymous" src="//s1.hdslb.com/bfs/static/player/view/player-view-sdk.js"></script>
+        <style>
+            html,
+            body,
+            #w-player {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+            #poster-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="w-player"></div>
+        <div id="poster-area"></div> 
+        
+
+        <script type="text/javascript">
+            function typeTransform(val, type) {
+                if (typeof val === 'undefined') {
+                    return null;
+                } else if (type === VIDEO_CONFIG_TYPE_MAP.number) {
+                    var numberVal = parseFloat(val);
+                    return numberVal !== NaN ? numberVal : null;
+                } else if (type === VIDEO_CONFIG_TYPE_MAP.boolean) {
+                    return val === 'true';
+                } else if (type === VIDEO_CONFIG_TYPE_MAP.object) {
+                    try {
+                        return JSON.parse(decodeURIComponent(val));
+                    } catch (e) {
+                        return null;
+                    }
+                } else {
+                    return decodeURIComponent(val);
+                }
+            }
+
+            var urlParam = {};
+            try {
+                var u = new URL(location.href);
+                for (var pair of u.searchParams.entries()) {
+                    urlParam[pair[0]] = pair[1];
+                }
+            } catch (err) {
+                var query = location.search.substr(1);
+                query = query.split('&');
+                for (let i = 0; i < query.length; i++) {
+                    let q = query[i].split('=');
+                    if (q.length === 2) {
+                        urlParam[q[0]] = q[1];
+                    }
+                }
+            }
+
+            var urlConfig = { playerConfig: {}, pageConfig: {} };
+
+            function convertConfig() {
+                for (var key in urlParam) {
+                    if (window.PAGE_CONFIG[key]) {
+                        var paramVal = typeTransform(urlParam[key], window.PAGE_CONFIG[key]);
+                        if (paramVal !== null) {
+                            urlConfig.pageConfig[key] = paramVal;
+                        }
+                    } else if (window.PLAYER_CONFIG[key]) {
+                        var paramVal = typeTransform(urlParam[key], window.PLAYER_CONFIG[key]);
+                        if (paramVal !== null) {
+                            urlConfig.playerConfig[key] = paramVal;
+                        }
+                    }
+                }
+            }
+            convertConfig();
+            var allow = true;
+            if (window.top != window.self && REFERRER_LIST) {
+                try {
+                    var h = window.document.referrer.match(/^http(s)?:\/\/(.*?)\//);
+                    if (
+                        h &&
+                        h[2] &&
+                        !new RegExp(REFERRER_LIST.join('|').replace(/\./g, '\\.').replace(/\*/g, '\.\*')).test(h[2])
+                    ) {
+                        allow = false;
+                    } else if (
+                        !window.document.referrer &&
+                        window.navigator.userAgent.indexOf('MicroMessenger') === -1 &&
+                        window.navigator.userAgent.indexOf('IqiyiApp') === -1
+                    ) {
+                        allow = false;
+                    }
+                } catch (e) {}
+            }
+
+            try {
+                if (urlConfig.playerConfig.highQn) {
+                    var i = window.document.referrer.match(/^http(s)?:\/\/(.*?)\//);
+                    if (i && i[2] && new RegExp('player\.bilibili\.com').test(i[2])) {
+                        urlConfig.playerConfig.highQn = false;
+                    }
+                }
+
+                if (urlConfig.pageConfig.crossDomain) {
+                    window.location.host.indexOf('.bilibili.com') !== -1
+                        ? (document.domain = 'bilibili.com')
+                        : window.location.host.indexOf('.bilibili.co') !== -1 && (document.domain = 'bilibili.co');
+                }
+            } catch (e) {}
+
+            if (urlConfig.playerConfig.useHls) {
+                if (window.navigator.userAgent.indexOf('Android') !== -1) {
+                    urlConfig.playerConfig.useHls = false;
+                }
+            }
+
+            if (allow) {
+                // 创建播放器的封装函数
+                function createPlayer(config) {
+                    // 合并配置
+                    const playerConfig = Object.assign(
+                        { wrap: document.querySelector('#w-player') },
+                        config
+                    );
+
+                    // 创建播放器实例
+                    const player = new WPlayer(playerConfig);
+                    window.player = player;
+
+                    // 处理 iframe 相关逻辑
+                    if (window.parent && window.parent !== window) {
+                        window.parent.player = player;
+                        const Html5IframeInitializedInjected = window.parent.Html5IframeInitialized || function () {};
+                        window.parent.Html5IframeInitialized = function () {
+                            let hasPlay = false;
+                            top.document.querySelectorAll('iframe').forEach(function (e) {
+                                try {
+                                    if (e.contentWindow.player) {
+                                        if (hasPlay) {
+                                            e.contentWindow.player.pause();
+                                        } else if (!e.contentWindow.player.isPaused()) {
+                                            hasPlay = true;
+                                        }
+
+                                        if (!e.contentWindow.initializedInjected) {
+                                            e.contentWindow.initializedInjected = true;
+                                            e.contentWindow.player.on(WPlayer.events.VIDEO_PLAY, function () {
+                                                top.document.querySelectorAll('iframe').forEach(function (g) {
+                                                    try {
+                                                        if (
+                                                            g !== e.contentWindow.frameElement &&
+                                                            g.contentWindow.player
+                                                        ) {
+                                                            if (!g.contentWindow.player.isPaused()) {
+                                                                g.contentWindow.player.pause();
+                                                            }
+                                                        }
+                                                    } catch (e) {}
+                                                });
+                                            });
+                                        }
+                                    }
+                                } catch (e) {
+                                    console.log(e);
+                                }
+                            });
+                            return Html5IframeInitializedInjected();
+                        };
+
+                        if (!window.parent.Html5IframeAllInitialized) {
+                            function createHtml5IframeAllInitialized() {
+                                const pathname = new URL(window.frameElement.src).pathname;
+                                let html5IframeInitializedNum = Array.prototype.filter.call(
+                                    top.document.querySelectorAll('iframe'),
+                                    (i) => i.src.includes(pathname),
+                                ).length;
+                                let curInitializedNum = 0;
+                                return function () {
+                                    curInitializedNum++;
+                                    if (curInitializedNum >= html5IframeInitializedNum) {
+                                        window.parent.Html5IframeInitialized();
+                                        html5IframeInitializedNum = null;
+                                        curInitializedNum = null;
+                                    }
+                                };
+                            }
+                            window.parent.Html5IframeAllInitialized = createHtml5IframeAllInitialized();
+                        }
+                        window.parent.Html5IframeAllInitialized();
+                    }
+
+                    return player;
+                }
+                const SP = urlConfig.playerConfig;
+                const posterArea = document.getElementById('poster-area');
+                // 使用封装后的函数创建播放器
+                if (SP.onlyPoster && !SP.autoplay && playerViewSdk && playerViewSdk.render){
+                    try {
+                        const hidePoster = (autoplay) => {
+                            setTimeout(() => {
+                                  playerViewSdk.clear();
+                                  posterArea.style.display = 'none';
+                              }, 250);
+                            createPlayer({
+                                ...SP,
+                                autoplay,
+                                hide: true
+                            });
+                           
+                        }
+                        const onPosterClick = () => {
+                            hidePoster(true);
+                        }
+                        const onPosterError = (e) => {
+                            console.log('e', e)
+                            hidePoster(SP.autoplay);
+                        }
+                        const getGroupKind = function () {
+                            if (SP.episodeId) return playerViewSdk.GROUP_KIND.Pgc;
+                            return playerViewSdk.GROUP_KIND.Ugc;
+                        };
+                        posterArea.style.display = 'block';
+                        const posterParams = {
+                            requestParams: {
+                                params: {
+                                    aid: SP.aid,
+                                    cid: SP.cid,
+                                    bvid: SP.bvid,
+                                    seasonId: SP.seasonId,
+                                    episodeId: SP.episodeId,
+                                    isGaiaAvoided: true,
+                                },
+                                kind: getGroupKind()
+                            },
+                            showTopInfo: false,
+                            showArchiveInfo: !SP.hideCoverInfo,
+                            platform: playerViewSdk.PLATFORM.PC,
+                            container: posterArea,
+                            onClick: onPosterClick,
+                            onError: onPosterError
+                        };
+                        playerViewSdk.render(posterParams);
+                   }catch(e){
+                        createPlayer(SP);
+                   }
+                   
+                } else {
+                    createPlayer(SP);
+                }
+                
+            }
+        </script>
+    
+
+<script src="/baiju-widget.js"></script>
+<script src="/ccowork.js"></script>
+</body></html>

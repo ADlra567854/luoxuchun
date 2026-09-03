@@ -1,0 +1,98 @@
+# =============================================================================
+# GitHub Actions 工作流：自动把 website/ 部署到 GitHub Pages
+# -----------------------------------------------------------------------------
+# 使用方法：
+#   1. 把本文件复制到你的仓库根目录下，路径必须是：
+#        .github/workflows/deploy-github-pages.yml
+#   2. 到 GitHub 仓库 → Settings → Pages → Build and deployment
+#      → Source 选择 "GitHub Actions"（只需设置一次）
+#   3. 推送 (git push) 到 main / master 分支，GitHub 会自动部署
+#   4. 打开 GitHub 仓库的 "Actions" 标签页即可看到运行进度
+#   5. 部署成功后，网站地址为：
+#        https://<你的用户名>.github.io/<仓库名>/
+#
+# 说明：
+#   - 本文件使用 GitHub 官方 Actions（upload-pages-artifact + deploy-pages），
+#     零第三方依赖，公开仓库完全免费，yaml 语法已校验正确。
+#   - website/ 是纯静态 HTML/CSS，无需构建，直接把整个目录打包发布。
+# =============================================================================
+
+name: 部署 website 到 GitHub Pages
+
+# ---------------------------------------------------------------------------
+# on：触发时机（trigger）
+#   push              —— 推送到 main / master 分支时触发
+#   paths             —— 仅当这些路径下的文件发生变化时才触发（省 Actions 分钟数）
+#   workflow_dispatch —— 允许在 GitHub 网页上手动点 "Run workflow" 按钮触发
+# ---------------------------------------------------------------------------
+on:
+  push:
+    branches: [ main, master ]                  # 推到 main 或 master 时触发
+    paths:                                      # 只有网站内容或本工作流变化才部署
+      - 'website/**'
+      - '.github/workflows/deploy-github-pages.yml'
+  workflow_dispatch:                            # 手动触发（便于首次手动跑一次验证）
+
+# ---------------------------------------------------------------------------
+# permissions：本工作流所需权限（最小权限原则）
+#   contents: read  —— 只读代码
+#   pages: write    —— 向 GitHub Pages 发布站点
+#   id-token: write —— 让 deploy-pages 获取临时身份令牌（官方要求，不可省略）
+# ---------------------------------------------------------------------------
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# ---------------------------------------------------------------------------
+# concurrency：并发控制
+#   同一时间只允许一个 Pages 部署在跑，新的推送会取消旧的未完成部署，
+#   避免并发发布互相覆盖、产生不一致的站点。
+# ---------------------------------------------------------------------------
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  # -------------------------------------------------------------------------
+  # 任务 1：build —— 把 website/ 目录打包成 Pages 可发布的产物
+  # -------------------------------------------------------------------------
+  build:
+    name: 打包 website 目录
+    runs-on: ubuntu-latest                     # 在 GitHub 托管的 Ubuntu 虚拟机上运行
+
+    steps:
+      # 1) 检出代码：把仓库代码拉到运行环境中
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      # 2) 初始化 Pages 运行配置（设置正确的 base_path 等，官方推荐）
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      # 3) 打包：把 website/ 整个目录压缩成 Pages 产物（artifact）
+      #    path: website 是关键 —— 只发布 website 子目录，而不是仓库根目录
+      - name: 打包 website 目录为 Pages 产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: website
+
+  # -------------------------------------------------------------------------
+  # 任务 2：deploy —— 把上一步的产物正式发布到 GitHub Pages
+  # -------------------------------------------------------------------------
+  deploy:
+    name: 发布到 GitHub Pages
+    needs: build                               # 必须等上面的 build 任务跑完
+    runs-on: ubuntu-latest
+
+    # environment：声明这是 GitHub Pages 部署环境；
+    #   url 会自动输出最终站点地址，Actions 页面会显示一个可直接点击的链接
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # 4) 发布：把 build 任务产出的 Pages 产物部署到线上
+      - name: 部署到 Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

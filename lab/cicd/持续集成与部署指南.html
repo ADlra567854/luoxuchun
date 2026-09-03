@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  22 分钟 实验室 持续集成与持续部署（CI/CD）指南 面向工科实训实验室：仿真代码、G 代码、静态网站，都可以做到「提交即自动测试、自动部署」…">
+<meta name="keywords" content="持续集成与部署指南,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  22 分钟 实验室 持续集成与持续部署（CI/CD）指南 面向工科实训实验室：仿真代码、G 代码、静态网站，都可以做到「提交即自动测试、自动部署」…"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>持续集成与部署指南 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/cicd/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97.html">
+<meta property="og:title" content="持续集成与部署指南 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/cicd/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="持续集成与部署指南 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  22 分钟 实验室 持续集成与持续部署（CI/CD）指南 面向工科实训实验室：仿真代码、G 代码、静态网站，都可以做到「提交即自动测试、自动部署」…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-lab-cicd-持续集成与部署指南.png" alt="持续集成与部署指南 · AI 创作纪元（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>22 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>持续集成与持续部署（CI/CD）指南</h1>
+<blockquote>
+<p>面向工科实训实验室：仿真代码、G 代码、静态网站，都可以做到「提交即自动测试、自动部署」。
+配套工作流文件：<code>github-actions-ci.yml</code>（复制到仓库 <code>.github/workflows/ci.yml</code> 即可用）。</p>
+</blockquote>
+<hr>
+<h2>一、什么是 CI/CD（先讲人话）</h2>
+<p><strong>CI/CD</strong> 是一套「让机器替你把重复劳动自动化」的工程方法。核心思想一句话：</p>
+<blockquote>
+<p>代码一提交（push），服务器就自动帮你「<strong>集成测试 + 打包发布</strong>」，人在旁边看着结果就行。</p>
+</blockquote>
+<p>它由三个词组成，很多人混为一谈，其实含义不同：</p>
+<table>
+<thead>
+<tr>
+<th>名词</th>
+<th>英文</th>
+<th>通俗解释</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>持续集成</strong></td>
+<td>Continuous Integration (CI)</td>
+<td>每个开发者提交的代码，都自动合并到主干，并<strong>自动跑一遍测试</strong>，第一时间发现「你改的代码把别人的搞坏了」</td>
+<td>提交 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 自动测试</td>
+</tr>
+<tr>
+<td><strong>持续交付</strong></td>
+<td>Continuous Delivery (CD)</td>
+<td>在 CI 通过的基础上，自动把代码<strong>打包成可发布的版本</strong>，但「发布」这一步<strong>由人手动点一下</strong></td>
+<td>提交 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 测试 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打包，人决定何时上线</td>
+</tr>
+<tr>
+<td><strong>持续部署</strong></td>
+<td>Continuous Deployment (CD)</td>
+<td>比持续交付更进一步：测试通过后<strong>连上线也全自动</strong>，不需要人点</td>
+<td>提交 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 测试 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 自动上线</td>
+</tr>
+</tbody></table>
+<p><strong>记忆口诀</strong>：</p>
+<ul>
+<li>CI 管「<strong>对不对</strong>」：自动测试，防止代码坏掉。</li>
+<li>持续交付管「<strong>能不能发</strong>」：自动打包，人手点发布。</li>
+<li>持续部署管「<strong>自动发</strong>」：连上线都全自动。</li>
+</ul>
+<blockquote>
+<p>为什么「持续交付」和「持续部署」英文都缩写为 CD？因为它们都包含「自动把可交付产物准备好」这一步，差别只在「最终上线要不要人点」——这也是面试高频考点。</p>
+</blockquote>
+<p><strong>一个流水线（Pipeline）的典型样子</strong>：</p>
+<pre><code>push 代码
+   │
+   
+[持续集成] 拉代码 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 装依赖 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 跑测试（pytest）
+   │                      │ 失败 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 通知你，阻止合并
+   │                      
+   │                   测试通过
+   
+[持续交付/部署] 构建 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打包 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 部署到服务器 / 静态托管
+</code></pre>
+<hr>
+<h2>二、为什么仿真/代码也要上 CI</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-持续集成与部署指南.png" alt="持续集成与部署指南 · AI 创作纪元（离线版） · 二、为什么仿真/代码也要上 CI" loading="lazy"></figure>
+
+<p>很多同学觉得「我就一个仿真脚本，自己本地跑跑不就行了，上 CI 干嘛？」——恰恰相反，<strong>越是要反复改的代码，越值得上 CI</strong>。原因：</p>
+<ol>
+<li><strong>防止「改坏了没发现」</strong>：仿真代码改个参数、改个公式，本地忘了跑测试就提交，CI 会立刻拦住你。</li>
+<li><strong>用「理论值」自动校验仿真对不对</strong>：本项目的 <code>test_simulation.py</code> 就是干这个的——它用物理公式的理论值（抛体射程、RC 时间常数、蒙特卡洛 π）去和仿真结果比对，误差超阈值就报错。这就是「<strong>仿真测试</strong>」的价值：<strong>让公式来当裁判</strong>。</li>
+<li><strong>环境一致性</strong>：别人电脑上「能跑」，你电脑上「跑不动」？CI 用一台干净、标准的环境（Python 3.12）重跑一遍，暴露「漏了依赖 / 写死了本机路径」这类问题。</li>
+<li><strong>自动化是工程素养</strong>：工科生未来进实验室、进企业，代码评审、回归测试、自动发布都是标配。现在就练会，简历上多一条硬通货。</li>
+<li><strong>免费且省心</strong>：GitHub Actions 对公开仓库免费，每次提交自动跑，不用自己买服务器。</li>
+</ol>
+<blockquote>
+<p>一句话：<strong>CI 让你的代码「每次提交都有个机器替你兜底」。</strong></p>
+</blockquote>
+<hr>
+<h2>三、GitHub Actions 入门</h2>
+<p><strong>GitHub Actions</strong> 是 GitHub 自带的免费 CI/CD 服务，用 YAML 文件描述「什么时候、干什么」。</p>
+<h3>3.1 workflow 文件放在哪</h3>
+<p>工作流文件必须放在仓库的 <code>.github/workflows/</code> 目录下，文件名任意，后缀 <code>.yml</code>，例如 <code>.github/workflows/ci.yml</code>。GitHub 会自动识别并执行。</p>
+<h3>3.2 整体结构（记住这四层）</h3>
+<pre><code class="language-yaml">name: 工作流名字                    # 第一层：名字（显示在 Actions 页）
+
+on:                                 # 第二层：何时触发（trigger）
+  push:
+    branches: [ main ]
+
+jobs:                               # 第三层：要干的任务们
+  任务A:                            # 第四层：每个任务里的具体步骤
+    runs-on: ubuntu-latest
+    steps:
+      - name: 步骤1
+        run: echo &quot;你好&quot;
+</code></pre>
+<p>一个 YAML 文件 = 多个 <strong>job</strong>，一个 job = 多个 <strong>step</strong>，按顺序执行。缩进（空格）必须严格对齐，否则语法报错。</p>
+<h3>3.3 <code>on</code> —— 触发时机（trigger）</h3>
+<p>决定「什么动作会让流水线跑起来」：</p>
+<table>
+<thead>
+<tr>
+<th>触发词</th>
+<th>含义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>push</code></td>
+<td>推代码到分支</td>
+<td><code>push: branches: [main]</code></td>
+</tr>
+<tr>
+<td><code>pull_request</code></td>
+<td>开/更新 PR</td>
+<td><code>pull_request: branches: [main]</code></td>
+</tr>
+<tr>
+<td><code>schedule</code></td>
+<td>定时任务</td>
+<td><code>cron: &#39;0 2 * * *&#39;</code>（每天 2 点）</td>
+</tr>
+<tr>
+<td><code>workflow_dispatch</code></td>
+<td>手动在网页点按钮触发</td>
+<td>便于自己手动跑一次</td>
+</tr>
+<tr>
+<td><code>paths</code></td>
+<td>只有某些路径变了才触发</td>
+<td><code>paths: [&#39;lab/**&#39;]</code> 省 CI 分钟数</td>
+</tr>
+</tbody></table>
+<h3>3.4 <code>jobs</code> / <code>steps</code> —— 干什么</h3>
+<ul>
+<li><strong>job</strong>：一组跑在同一台虚拟机上的任务，可并行或串行（用 <code>needs</code> 指定依赖）。</li>
+<li><strong>step</strong>：job 里的最小执行单元，两种写法：<ul>
+<li><code>run:</code> 直接执行 shell 命令；</li>
+<li><code>uses:</code> 调用别人封装好的「Action」（如 <code>actions/checkout</code> 拉代码、<code>actions/setup-python</code> 装 Python）。</li>
+</ul>
+</li>
+</ul>
+<h3>3.5 一个最小可运行的例子</h3>
+<pre><code class="language-yaml">name: 最小示例
+on: push
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 打印一句话
+        run: echo &quot;第一次 CI 成功！&quot;
+</code></pre>
+<p>把它存成 <code>.github/workflows/hello.yml</code> 提交，GitHub 就会自动跑，Actions 页能看到绿色的 <i class="cc-ic" data-ic="check-circle" aria-hidden="true"></i>。</p>
+<hr>
+<h2>四、把「仿真测试」接入 CI（每次 push 自动跑 pytest）</h2>
+<p>本项目已有测试文件 <code>lab/simulation/test_simulation.py</code>，它用 pytest 校验三件事：</p>
+<ul>
+<li>抛体运动射程 ≈ 理论值 <code>R = v0²·sin(2θ)/g</code></li>
+<li>RC 电路时间常数 <code>τ = RC</code></li>
+<li>蒙特卡洛估算的 π 接近真实值</li>
+</ul>
+<p><strong>目标</strong>：每次 <code>git push</code>，GitHub 自动在干净的 Python 3.12 环境里跑 <code>pytest</code>。</p>
+<p><strong>完整步骤</strong>（和本目录的 <code>github-actions-ci.yml</code> 一致）：</p>
+<ol>
+<li>在仓库根目录新建 <code>.github/workflows/ci.yml</code>，内容复制本目录的 <code>github-actions-ci.yml</code>。</li>
+<li>在 <code>lab/</code> 下放一个 <code>requirements.txt</code>（内容就是一行 <code>pytest</code>），供依赖缓存使用。</li>
+<li>提交并推送：</li>
+</ol>
+<pre><code class="language-bash">git add .github/workflows/ci.yml lab/requirements.txt
+git commit -m &quot;ci: 接入仿真测试（每次 push 自动跑 pytest）&quot;
+git push
+</code></pre>
+<ol start="4">
+<li>打开 GitHub 仓库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>Actions</strong> 标签页，就能看到流水线实时运行；绿色 <i class="cc-ic" data-ic="check-circle" aria-hidden="true"></i> 表示 4 条测试全部通过。</li>
+</ol>
+<p><strong>本地先验证（养成习惯，先本地跑通再上 CI）</strong>：</p>
+<pre><code class="language-bash">cd lab/simulation
+pip install pytest          # 若还没装
+pytest test_simulation.py -v # 应显示 4 passed
+</code></pre>
+<blockquote>
+<p>关键点：测试里用 <code>importlib</code> 通过 <code>__file__</code> 定位同目录的仿真脚本（<code>03_projectile.py</code> 等），所以<strong>无论从哪个目录运行 pytest，都能正确加载</strong>，CI 里无需额外配置路径。</p>
+</blockquote>
+<hr>
+<h2>五、自动部署静态网站</h2>
+<p>本项目的 <code>website/</code> 目录是纯静态 HTML/CSS（无需构建），可以零成本部署到 <strong>GitHub Pages</strong> 或 <strong>Vercel</strong>，实现「改一页 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> push <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 网站自动更新」。</p>
+<h3>方案 A：GitHub Pages（官方、免费、无需第三方账号）</h3>
+<p><strong>原理</strong>：用两个官方 Action 把 <code>website/</code> 目录打包成「Pages 产物」并发布。</p>
+<p><strong>前置</strong>：仓库 Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Pages <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>Build and deployment</strong> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Source 选 <strong>GitHub Actions</strong>（只设置一次）。</p>
+<pre><code class="language-yaml"># .github/workflows/deploy-pages.yml
+name: 部署网站到 GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - &#39;website/**&#39;          # 只有网站内容变化才部署
+
+# Pages 部署需要额外权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一个部署，避免并发冲突
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 打包 website 目录
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: website          # 关键：只发布 website/ 子目录
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: 部署到 Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+</code></pre>
+<p><strong>部署后</strong>：网站地址为 <code>https://&lt;你的用户名&gt;.github.io/&lt;仓库名&gt;/</code>。注意 <code>website/index.html</code> 里的相对链接（如 <code>../lab/...</code>）在 Pages 根路径下可能变化，如有需要可在 Pages 的 Settings 里配置 Custom domain。</p>
+<h3>方案 B：Vercel（更快、最省事、自带 CDN）</h3>
+<p><strong>方式一（推荐，零配置）</strong>：直接去 <a href="https://vercel.com">vercel.com</a> 用 GitHub 登录 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Import 仓库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>Root Directory 填 <code>website</code></strong> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Deploy。之后每次 push 到 main 都自动部署，还会为每个 PR 生成预览链接。</p>
+<p><strong>方式二（用 GitHub Actions 控制）</strong>：</p>
+<ol>
+<li>在 Vercel 项目 Settings 里拿到 <code>VERCEL_ORG_ID</code>、<code>VERCEL_PROJECT_ID</code>，并生成 <code>VERCEL_TOKEN</code>。</li>
+<li>把三者存进 GitHub 仓库的 Secrets。</li>
+<li>写工作流：</li>
+</ol>
+<pre><code class="language-yaml"># .github/workflows/deploy-vercel.yml
+name: 部署网站到 Vercel
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - &#39;website/**&#39;
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 部署到 Vercel（生产环境）
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: &#39;--prod&#39;
+          working-directory: website
+</code></pre>
+<blockquote>
+<p>选型建议：纯静态网站，<strong>GitHub Pages 最省事（全 GitHub 生态、免费）</strong>；需要自定义域名、全球 CDN、PR 预览链接，用 <strong>Vercel 体验更好</strong>。</p>
+</blockquote>
+<hr>
+<h2>六、常见坑</h2>
+<ol>
+<li><strong>YAML 缩进错误</strong>：YAML 靠空格缩进划分层级，<strong>不能用 Tab</strong>，统一用 2 或 4 个空格。<code>on</code>、<code>jobs</code> 顶格，<code>steps</code> 缩进 6 格等，层级错一个空格就报 <code>mapping values are not allowed here</code>。</li>
+<li><strong><code>on: push</code> 触发不了</strong>：确认工作流在默认分支上、且路径是 <code>.github/workflows/*.yml</code>；<code>paths</code> 写太窄也会导致「改的文件不在名单里，永远不触发」。</li>
+<li><strong><code>cache: &#39;pip&#39;</code> 报「找不到依赖文件」</strong>：<code>setup-python</code> 需要 <code>cache-dependency-path</code> 指向真实存在的文件（本项目指向 <code>lab/requirements.txt</code>）。文件不存在时只是不缓存并告警，不会让任务失败。</li>
+<li><strong>测试「本地能过、CI 上挂」</strong>：多半是<strong>路径写死</strong>或<strong>漏装依赖</strong>。CI 是干净环境，任何 <code>import</code> 没声明在依赖里就会挂。原则：<strong>测试里一律用 <code>__file__</code> 定位文件，别写绝对路径</strong>。</li>
+<li><strong><code>actions/checkout</code> 版本太老</strong>：GitHub 已要求 Node20+ 的 Action，旧版 <code>checkout@v2</code> 可能报 <code>deprecated</code>；用 <code>v4</code> / <code>v5</code> 等新版本。</li>
+<li><strong>Pages 部署 404</strong>：先确认 Settings <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Pages <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Source 选了 <strong>GitHub Actions</strong>；其次确认 <code>upload-pages-artifact</code> 的 <code>path</code> 指向正确（本项目是 <code>website</code>，不是仓库根）。</li>
+<li><strong>权限不足</strong>：Pages 部署需 <code>permissions: pages: write</code> 和 <code>id-token: write</code>，少了会报 403。</li>
+<li><strong>密钥（Secret）写进代码</strong>：Webhook 地址、Vercel Token 等一律放 GitHub Secrets，用 <code>${{ secrets.XXX }}</code> 引用，<strong>绝不硬编码到 yaml</strong>（否则会被扫出来泄露）。</li>
+<li><strong><code>curl</code> 通知在 Windows 环境不可用</strong>：本工作流用 <code>ubuntu-latest</code>，自带 curl；若换 <code>windows-latest</code> 需改用 PowerShell。</li>
+<li><strong>改工作流本身也要触发</strong>：<code>paths</code> 里记得包含 <code>.github/workflows/**</code>，否则改了工作流文件自己却不跑，容易误判。</li>
+</ol>
+<hr>
+<h2>七、可复制命令速查</h2>
+<pre><code class="language-bash"># 1. 本地先跑通测试（上 CI 前必做）
+cd lab/simulation
+pip install pytest
+pytest test_simulation.py -v            # 期望 4 passed
+
+# 2. 接入 CI：复制工作流文件到仓库
+#    把 lab/cicd/github-actions-ci.yml 复制为 .github/workflows/ci.yml
+cp lab/cicd/github-actions-ci.yml .github/workflows/ci.yml   # 或手动创建
+
+# 3. 提交并触发
+git add .github/workflows/ci.yml lab/requirements.txt
+git commit -m &quot;ci: 每次 push 自动跑仿真测试&quot;
+git push
+
+# 4. 看结果：GitHub 仓库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Actions 标签页
+</code></pre>
+<hr>
+<h2>附：本目录文件一览</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>持续集成与部署指南.md</code></td>
+<td>本指南（概念 + 入门 + 测试 + 部署 + 坑）</td>
+</tr>
+<tr>
+<td><code>github-actions-ci.yml</code></td>
+<td>仿真测试 CI 工作流模板，复制到 <code>.github/workflows/ci.yml</code> 即用</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>下一步建议：先把 CI（跑 pytest）跑通，再按第五节把 <code>website/</code> 部署到 GitHub Pages，形成「<strong>测试 + 部署</strong>」的完整流水线。</p>
+</blockquote>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body></html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="AI 赋能就业：WEF/普华永道/翰德真实报告数据、7 类高危岗位、9 类新职能、求职者与在职者 AI 提示词、学习转行路径。">
+<meta name="keywords" content="AI 赋能就业 · 数据×岗位×提示词,AI 创作纪元,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="AI 赋能就业：WEF/普华永道/翰德真实报告数据、7 类高危岗位、9 类新职能、求职者与在职者 AI 提示词、学习转行路径。">
+<title>AI 赋能就业 · 数据×岗位×提示词 | AI 创作纪元</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f0b95c;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:20px;font-size:13.5px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-cta{padding:8px 16px;border:1px solid rgba(56,225,255,.4);border-radius:99px;color:var(--cyan)!important;font-size:12.5px}
+@media(max-width:1000px){.nav-links{display:none}}
+.hero{min-height:86vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:130px 24px 60px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(6,8,15,.52),rgba(6,8,15,.9) 70%),url('/assets/img/ai-bg-humans.webp') center/cover no-repeat}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:99px;letter-spacing:2px;margin-bottom:26px}
+.hero h1{font-size:clamp(32px,5.6vw,72px);font-weight:900;line-height:1.2;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:800px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:24px auto 30px}
+.hero .btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.hero .btn{padding:12px 28px;border-radius:99px;font-size:14.5px;font-weight:600;text-decoration:none;transition:.3s}
+.hero .btn-p{background:var(--grad);color:#04101f}
+.hero .btn-g{border:1px solid var(--line);color:var(--text)}
+.hero .btn:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(79,140,255,.4)}
+section{max-width:1180px;margin:0 auto;padding:64px 24px}
+.sec-head{margin-bottom:34px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(24px,3.2vw,38px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:760px;margin-top:10px}
+.stats{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center;transition:.3s}
+.stat:hover{border-color:rgba(56,225,255,.5);transform:translateY(-4px)}
+.stat b{display:block;font-size:clamp(19px,2.4vw,28px);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
+.stat span{color:var(--muted);font-size:12.5px}
+.stat i{display:block;font-style:normal;color:var(--gold);font-size:11px;margin-top:6px}
+.grid{display:grid;gap:20px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+@media(max-width:520px){.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.3s}
+.card:hover{border-color:rgba(79,140,255,.5);transform:translateY(-4px)}
+.card h3{font-size:17px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:13.5px}
+.card b{color:var(--text)}
+.card .tag{display:inline-block;margin-top:10px;font-size:11.5px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:99px;padding:3px 12px}
+.card .risk{display:inline-block;margin-top:10px;font-size:11.5px;color:var(--pink);border:1px solid rgba(255,92,138,.35);border-radius:99px;padding:3px 12px}
+.prompt-title{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--gold);font-size:13px;font-weight:600}
+.prompt-title::before{content:""}
+.prompt-box{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  font-family:Consolas,monospace;font-size:12.8px;color:#b9c8ea;position:relative;margin-top:10px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.prompt-box .copy{position:absolute;top:10px;right:10px;background:#18223c;border:1px solid var(--line);color:var(--muted);
+  border-radius:8px;padding:3px 10px;font-size:11.5px;cursor:pointer;transition:.2s;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.prompt-box .copy:hover{color:var(--cyan);border-color:var(--cyan)}
+.prompt-box .copy.done{color:#04101f;background:var(--grad);border-color:transparent}
+.steps{counter-reset:step;display:grid;gap:14px}
+.step{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.step::before{counter-increment:step;content:counter(step);flex:0 0 38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#04101f;background:var(--grad)}
+.step h4{font-size:15.5px;margin-bottom:4px}
+.step p{color:var(--muted);font-size:13.5px}
+.src{font-size:11.5px;color:#5d6f94;margin-top:4px}
+footer{border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+</style>
+<link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-jobs.html">
+<meta property="og:title" content="AI 赋能就业 · 数据×岗位×提示词 | AI 创作纪元">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-jobs.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 赋能就业 · 数据×岗位×提示词 | AI 创作纪元">
+<meta name="twitter:description" content="AI 赋能就业：WEF/普华永道/翰德真实报告数据、7 类高危岗位、9 类新职能、求职者与在职者 AI 提示词、学习转行路径。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-ai-jobs.png" alt="AI 赋能就业 · 数据×岗位×提示词 | AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="./index.html">首页</a>
+    <a href="./ai-money.html">AI赚钱</a>
+    <a href="./manju.html">AI漫剧</a>
+    <a href="./ai-edu.html">AI教育</a>
+    <a href="./ai-jobs.html" class="active">AI就业</a>
+    <a href="./personality.html">性格测试</a>
+    <a href="./ai-projects.html">作品大全</a>
+    <a href="./works.html">作品库</a>
+    <a href="./portal.html">收纳站</a>
+  </div>
+  <a class="nav-cta" href="./chat.html"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>去对话</a>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="tag">AI 赋能就业</div>
+  <h1>岗位在变，<span>你也在变</span></h1>
+  <p class="sub">世界经济论坛预测到 2030 年净增 7800 万岗位；普华永道说 AI 技能薪资溢价已达 62%。会 AI 的人跳槽涨薪 20-50%，不会 AI 的重复岗正在被替代。下面全是报告里的真数据，和你能直接抄的求职提示词。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  <div class="btns">
+    <a class="btn btn-p" href="#data"><i class="cc-ic" data-ic="trending-up"></i> 看就业数据</a>
+    <a class="btn btn-g" href="#jobs"><i class="cc-ic" data-ic="git-compare"></i> 高危 vs 新职能</a>
+    <a class="btn btn-g" href="#prompts"><i class="cc-ic" data-ic="terminal"></i> 拿求职提示词</a>
+  </div>
+</section>
+
+<section id="data">
+  <div class="sec-head"><div class="kicker">就业数据</div><h2><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>报告里的真实数字</h2><p>来源：世界经济论坛《未来就业报告》、普华永道《2026 AI Jobs Barometer》、翰德《2026 人才趋势报告》、行业招聘报告。</p></div>
+  <div class="stats">
+    <div class="stat"><b>+7800 万</b><span>2030 年就业机会净增</span><i>WEF：新创 1.7 亿 vs 替代 9200 万</i></div>
+    <div class="stat"><b>62%</b><span>AI 技能平均薪资溢价</span><i>PwC：去年 57%，部分行业高达 118%</i></div>
+    <div class="stat"><b>8.6%</b><span>AI 岗位增速（约市场 8 倍）</span><i>PwC：AI 岗位增长是整体近 8 倍</i></div>
+    <div class="stat"><b>34.4%</b><span>岗位描述含"AI/大模型"关键词</span><i>2026 春招，去年同期 22.4%</i></div>
+    <div class="stat"><b>0.3</b><span>垂直大模型人才供需比</span><i>翰德：极度紧缺，1 个岗位 0.3 人竞争</i></div>
+    <div class="stat"><b>+20~50%</b><span>AI 类人才跳槽薪资涨幅</span><i>算法/多模态/AI基建/智能体研发</i></div>
+    <div class="stat"><b>6.4%</b><span>中国内地 AI 岗位占比增幅</span><i>PwC：全行业 AI 渗透加速</i></div>
+  </div>
+  <div class="warn" style="margin-top:20px;border-left:3px solid var(--gold);background:rgba(240,185,92,.07);padding:14px 18px;border-radius:10px;font-size:13.5px;color:var(--muted)">
+     <b style="color:var(--text)">K 型分化：</b>会 AI 的往上涨薪 20-50%，不会 AI 的重复岗招聘量掉 40-50%。普华永道还发现，AI 驱动的就业市场正在"两极化"——专业型岗位（人被 AI 解放后强调判断力）增速是"民主化岗位"的 2 倍，薪资增速快 42%。对个人只有一条路：把 AI 变成你的杠杆。
+  </div>
+</section>
+
+<section id="jobs">
+  <div class="sec-head"><div class="kicker">岗位地图</div><h2><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>7 类高危岗位 vs  9 类新职能</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-ai-jobs.png" alt="AI 赋能就业 · 数据×岗位×提示词 · " loading="lazy"></figure>
+<p>依据《2026 劳动力重构白皮书》的"岗位脆弱性指数"（JVI，0-100，≥78 为结构性退出预警）与人机共生新职能数据。</p></div>
+  <div class="grid g3">
+    <div class="card"><h3>① 标准化文书处理</h3><p>JVI=92。公文起草、合同比对、基础报表已被多模态大模型+RPA 覆盖 96.3%。</p><span class="risk">转型：文书<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>AI 审核/流程设计</span></div>
+    <div class="card"><h3>② 初级客服坐席</h3><p>JVI=89。语音识别+情感建模已支撑 7×24 应答，企业部署成本降至人工的 22%。</p><span class="risk">转型：客服<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>客户体验/机器人训练</span></div>
+    <div class="card"><h3>③ 基础影像判读</h3><p>JVI=87。放射初筛、工业质检标注中 AI 误检率已低于人类均值 1.8pct。</p><span class="risk">转型：判读<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>复杂病例/标注审核</span></div>
+    <div class="card"><h3>④ 通用数据录入</h3><p>JVI=85。OCR+语义校验准确率 99.94%，人工复核降至 0.7 次/千条。</p><span class="risk">转型：录入<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>数据治理/规则制定</span></div>
+    <div class="card"><h3>⑤ 初级财务核算</h3><p>JVI=83。业财一体化自动生成凭证、税额试算、合规初审，覆盖中小企业 85% 常规账务。</p><span class="risk">转型：核算<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>财务分析/税务筹划</span></div>
+    <div class="card"><h3>⑥ 传统电话销售</h3><p>JVI=81。生成式外呼系统动态生成话术与实时反制，转化率提升 2.3 倍。</p><span class="risk">转型：电销<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>AI 外呼策略/私域运营</span></div>
+    <div class="card"><h3>⑦ 纸质档案管理</h3><p>JVI=79。智能解析秒级映射知识图谱，电子归档合规通过率 100%。</p><span class="risk">转型：归档<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>知识管理/合规</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>AIGC 训练师</h3><p>垂直大模型的行为对齐与行业语料精训，需领域知识+提示工程+效果评估。招聘量同比 <b>+147%~392%</b>，平均薪酬溢价 <b>43%</b>。</p><span class="tag">新职能 · 高需求</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>提示工程师进阶（PE+）</h3><p>多智能体协同调度、动态提示链设计、对抗性提示鲁棒性测试。不满足于"会写提示词"，要会设计整套 AI 工作流。</p><span class="tag">新职能 · 高需求</span></div>
+  </div>
+  <div class="grid g3" style="margin-top:0">
+    <div class="card"><h3><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>伦理审计员</h3><p>算法偏见溯源、决策链路可解释性验证、内容价值观审查——已成金融/医疗/招聘类 AI 系统的强制准入角色。</p><span class="tag">新职能</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>人机流程架构师</h3><p>拆解业务全流程，识别"机器执行模块"与"人类介入节点"，设计弹性协同接口与异常接管机制。</p><span class="tag">新职能</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>情境策展师 / 跨模态协调员</h3><p>为教育、文旅、养老构建情境知识库；统筹文本/语音/视觉多源数据流，保障交互零延迟。</p><span class="tag">新职能</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>可信数据策源人</h3><p>建立企业级数据血缘图谱、敏感字段动态脱敏、合成数据质量认证。企业数据资产的"守门人"。</p><span class="tag">新职能</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>微操增强技术员</h3><p>精密制造、康复护理、农业植保中操作带触觉反馈的协作机器人，完成人类手部极限外的稳定作业。</p><span class="tag">新职能</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>人机信任建构师</h3><p>通过可视化决策溯源、可控性实验与用户适应性培训，降低人因抵触，提升 AI 协同采纳率。</p><span class="tag">新职能</span></div>
+  </div>
+</section>
+
+<section id="prompts">
+  <div class="sec-head"><div class="kicker">拿来就用</div><h2><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>求职者 / 在职者 AI 提示词</h2><p>复制进 chat.html 或 agent.html 直接开工。</p></div>
+  <div class="grid g2">
+    <div class="card"><h3><i class="cc-ic" data-ic="user" aria-hidden="true"></i> 求职者</h3>
+      <div class="prompt-title">简历按 JD 优化（过 ATS）</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是资深 HR + ATS 专家。这是岗位 JD【粘贴】和我的经历【粘贴】。请：①抽取 JD 的核心关键词 ②把我的经历按 JD 重写，每个成果用"动词+量化"③标注哪些经历要放前面 ④删掉无关内容。</div>
+      <div class="prompt-title">模拟面试</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>你是面试官，岗位是【岗位】，要求【要求】。请按"自我介绍<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>项目深挖<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>情景题<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>反问环节"顺序连续提问。我回答后你点评并追问，最后给面试总结和改进建议。</div>
+      <div class="prompt-title">JD 岗位分析</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>分析这份 JD【粘贴】：①真实职责 vs 表面文字 ②公司想招什么样的人 ③我该在面试中重点证明哪 3 个能力 ④这个岗位 3 年后的发展路径。帮我判断是否值得投。</div>
+      <div class="prompt-title">自我介绍</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>为【岗位】写一段 60 秒自我介绍：开场钩子、3 个与岗位匹配的经历亮点（量化）、结尾表达意愿。口吻自信不油腻。</div>
+    </div>
+    <div class="card"><h3><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>在职者提效 / 转型</h3>
+      <div class="prompt-title">让 AI 帮你晋升</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>我是【岗位】。给我一份"用 AI 提升职场竞争力"的 30 天计划：每周主题、每天 30 分钟练什么、能产出什么作品（作品集素材）、如何向上级汇报 AI 成果。</div>
+      <div class="prompt-title">转型定位</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>我从【旧岗位】转型，会【现有技能】。帮我找 5 个"旧技能+AI"的转型方向，每个给出：典型岗位、收入区间、需要补的 3 个技能、30 天入门路线。</div>
+      <div class="prompt-title">AI 述职 / 周报</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>根据我本周记录【粘贴】写一份"AI 提效述职"：用 AI 做了什么、节省多少时间、带来什么结果、下周自动化计划。突出个人不可替代性。</div>
+      <div class="prompt-title">给老板的方案</div>
+      <div class="prompt-box"><button class="copy" type="button"><i class="cc-ic" data-ic="copy"></i> 复制</button>为【部门/公司】写一份"AI 落地提案"：现状痛点、AI 能解决的 3 件事、需要的工具与预算、试点计划、ROI 预估、风险预案。用于向上汇报。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="kicker">学习路径</div><h2><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>从今天开始的 4 步</h2></div>
+  <div class="steps">
+    <div class="step"><div style="flex:1"><h4>第一步：先会用，再学原理</h4><p>每天 30 分钟，用 AI 重做一件你现在的重复工作（周报、表格、邮件、素材）。目标是"效率翻倍"。</p></div></div>
+    <div class="step"><div style="flex:1"><h4>第二步：把 AI 写进简历</h4><p>用本页提示词把经历改成"AI 赋能版本"，成果量化，让 HR 一眼看到你会 AI。</p></div></div>
+    <div class="step"><div style="flex:1"><h4>第三步：往新职能靠</h4><p>对照 9 类新职能选 1-2 个方向（提示工程/流程架构/数据治理/AIGC训练师），把"岗位+AI"变成你的标签。</p></div></div>
+    <div class="step"><div style="flex:1"><h4>第四步：做出作品集</h4><p>做一个 AI 工作台/自动化流程/副业产品，面试时直接演示。市场给会交付的人溢价。</p></div></div>
+  </div>
+  <p class="src">数据来源：世界经济论坛《未来就业报告》、普华永道《2026 全球人工智能就业晴雨表》、翰德《2026 人才趋势报告》、《2026 劳动力重构白皮书》公开内容，发布时间 2025-2026 年。</p>
+</section>
+
+<footer>
+  <div class="logo">AI 创作纪元</div>
+  <p style="margin-top:8px">AI 赋能就业 · 报告数据以官方发布为准，个人投资决策请自行判断<br>© 2026 AI 创作纪元</p>
+</footer>
+
+<script src="/module.js"></script>
+<script src="/responsive.js"></script>
+<script>
+(function(){
+'use strict'
+var bar=document.createElement('div');bar.style.cssText='position:fixed;top:0;left:0;height:3px;width:0;z-index:9990;background:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6)';document.body.appendChild(bar)
+function onScroll(){var h=document.documentElement;var st=h.scrollTop||document.body.scrollTop;var sh=h.scrollHeight-h.clientHeight||1;bar.style.width=(st/sh*100)+'%'}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll()
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.copy');if(!b)return
+  var box=b.closest('.prompt-box');var text=box?box.textContent.replace('复制','').trim():''
+  var done=function(){b.textContent='已复制 ';b.classList.add('done');setTimeout(function(){b.textContent='复制';b.classList.remove('done')},1500)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){fb()})}else fb()
+  function fb(){var ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}
+})
+})()
+</script>
+
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["教育","简历"], title: 'AI 就业 · 简历面试视频' });</script>
+<script src="/baiju-widget.js"></script>
+<script src="/ccowork.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

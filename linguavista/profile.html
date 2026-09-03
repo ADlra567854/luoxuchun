@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content=" 环球语堂 LinguaVista 首页 英语 日语 闪卡 AI对话 <i class="cc-ic" data-ic="moon"></i> 学 学 语言探索者 Lv.1 0 XP 0 连胜天数 0 学习卡片 1 当前等级 0 最长连胜 <i class="cc-ic" data-ic="star"></i> 等级进度 Lv.1 0 / 100 XP…">
+<meta name="keywords" content="个人中心 · 环球语堂,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content=" 环球语堂 LinguaVista 首页 英语 日语 闪卡 AI对话 <i class="cc-ic" data-ic="moon"></i> 学 学 语言探索者 Lv.1 0 XP 0 连胜天数 0 学习卡片 1 当前等级 0 最长连胜 <i class="cc-ic" data-ic="star"></i> 等级进度 Lv.1 0 / 100 XP…">
+  <meta name="theme-color" content="#030014">
+  <title>个人中心 · 环球语堂</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg">
+
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <style>
+    .profile-page {
+      padding: 24px 20px 100px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .profile-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 6px 20px rgba(91,140,255,0.35);
+      flex-shrink: 0;
+    }
+
+    .profile-info h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .profile-info .profile-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 480px) {
+      .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 16px 8px;
+      border-radius: 14px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+
+    .stat-item .stat-num {
+      font-size: 24px;
+      font-weight: 900;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      line-height: 1.2;
+    }
+
+    .stat-item .stat-label {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .section-card .card-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-card .card-header h3 {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .section-card .card-header .header-icon {
+      font-size: 18px;
+    }
+
+    .settings-list {
+      list-style: none;
+    }
+
+    .settings-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .settings-list li:last-child {
+      border-bottom: none;
+    }
+
+    .settings-list li:hover {
+      background: var(--nav-chip-bg);
+    }
+
+    .settings-list .setting-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .settings-list .setting-icon {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .settings-list .setting-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .settings-list .setting-desc {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .settings-list .setting-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .heatmap-wrap {
+      padding: 16px 18px;
+    }
+
+    .heatmap-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .heatmap-title h4 {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .heatmap-title .heatmap-year {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .danger-zone {
+      text-align: center;
+      padding: 24px 20px;
+    }
+
+    .danger-btn {
+      padding: 10px 24px;
+      border-radius: 12px;
+      background: transparent;
+      border: 1px solid rgba(255, 92, 138, 0.4);
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .danger-btn:hover {
+      background: rgba(255, 92, 138, 0.1);
+      border-color: var(--red);
+    }
+
+    .version-info {
+      text-align: center;
+      font-size: 12px;
+      color: var(--dim);
+      margin-top: 24px;
+    }
+
+    .xp-progress-wrap {
+      margin-top: 12px;
+    }
+
+    .xp-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+  </style>
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/linguavista/profile.html">
+<meta property="og:title" content="个人中心 · 环球语堂">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/linguavista/profile.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="个人中心 · 环球语堂">
+<meta name="twitter:description" content=" 环球语堂 LinguaVista 首页 英语 日语 闪卡 AI对话 <i class="cc-ic" data-ic="moon"></i> 学 学 语言探索者 Lv.1 0 XP 0 连胜天数 0 学习卡片 1 当前等级 0 最长连胜 <i class="cc-ic" data-ic="star"></i> 等级进度 Lv.1 0 / 100 XP…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">  <link rel="stylesheet" href="assets/css/cc-ic-compat.css">
+</head>
+<body data-theme="deep">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-linguavista-profile.png" alt="个人中心 · 环球语堂" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div>
+      <div>
+        <div class="nav-title">环球语堂</div>
+        <div class="nav-subtitle">LinguaVista</div>
+      </div>
+    </a>
+
+    <div class="nav-links hidden-mobile">
+      <a href="index.html">首页</a>
+      <a href="languages/en.html">英语</a>
+      <a href="languages/ja.html">日语</a>
+      <a href="flashcards.html">闪卡</a>
+      <a href="chat.html">AI对话</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" data-theme-toggle><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+      <div class="avatar-btn" style="cursor:default">学</div>
+    </div>
+  </nav>
+
+  <div class="profile-page">
+    <!-- 用户信息 -->
+    <div class="profile-header">
+      <div class="profile-avatar">学</div>
+      <div class="profile-info">
+        <h2>语言探索者</h2>
+        <div class="profile-meta">
+          <span class="badge badge-level">Lv.1</span>
+          <span style="font-size:12px;color:var(--muted)">0 XP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 数据统计 -->
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num" id="stat-streak">0</div>
+        <div class="stat-label">连胜天数</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-cards">0</div>
+        <div class="stat-label">学习卡片</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-level">1</div>
+        <div class="stat-label">当前等级</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-maxstreak">0</div>
+        <div class="stat-label">最长连胜</div>
+      </div>
+    </div>
+
+    <!-- 等级进度 -->
+    <div class="section-card">
+      <div class="card-header">
+        <span class="header-icon"><i class="cc-ic" data-ic="star" aria-hidden="true"></i></span>
+        <h3>等级进度</h3>
+      </div>
+      <div style="padding:16px 18px">
+        <div class="xp-info">
+          <span>Lv.1</span>
+          <span id="xp-text">0 / 100 XP</span>
+          <span>Lv.2</span>
+        </div>
+        <div class="progress progress-lg">
+          <div class="progress-bar" id="xp-progress" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 学习热力图 -->
+    <div class="section-card">
+      <div class="card-header">
+        <span class="header-icon"><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i></span>
+        <h3>学习日历</h3>
+      </div>
+      <div class="heatmap-wrap">
+        <div id="heatmap-container">
+          <div style="text-align:center;color:var(--muted);font-size:13px;padding:20px">
+            暂无学习记录，开始你的第一天学习吧！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 设置 -->
+    <div class="section-card">
+      <div class="card-header">
+        <span class="header-icon"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></span>
+        <h3>学习设置</h3>
+      </div>
+      <ul class="settings-list">
+        <li id="setting-theme">
+          <div class="setting-left">
+            <span class="setting-icon"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i></span>
+            <div>
+              <div class="setting-label">主题模式</div>
+              <div class="setting-desc">深空纪元 / 云顶天空</div>
+            </div>
+          </div>
+          <div class="setting-right">
+            <span id="theme-label">深空纪元</span>
+            <span style="color:var(--dim)"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+          </div>
+        </li>
+
+        <li id="setting-daily-goal">
+          <div class="setting-left">
+            <span class="setting-icon"><i class="cc-ic" data-ic="target"></i></span>
+            <div>
+              <div class="setting-label">每日目标</div>
+              <div class="setting-desc">每天学习 20 张卡片</div>
+            </div>
+          </div>
+          <div class="setting-right">
+            <select id="daily-goal-select" style="width:auto;padding:6px 10px;font-size:12px;border-radius:8px">
+              <option value="10">10 张</option>
+              <option value="20" selected>20 张</option>
+              <option value="30">30 张</option>
+              <option value="50">50 张</option>
+            </select>
+          </div>
+        </li>
+
+        <li id="setting-lang">
+          <div class="setting-left">
+            <span class="setting-icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></span>
+            <div>
+              <div class="setting-label">当前语种</div>
+              <div class="setting-desc">选择学习的语言</div>
+            </div>
+          </div>
+          <div class="setting-right">
+            <select id="lang-select" style="width:auto;padding:6px 10px;font-size:12px;border-radius:8px">
+              <option value="en"><i class="cc-ic" data-ic="globe"></i> 英语</option>
+              <option value="ja"><i class="cc-ic" data-ic="globe"></i> 日语</option>
+            </select>
+          </div>
+        </li>
+
+        <li id="setting-tts">
+          <div class="setting-left">
+            <span class="setting-icon"><i class="cc-ic" data-ic="volume-2" aria-hidden="true"></i></span>
+            <div>
+              <div class="setting-label">自动发音</div>
+              <div class="setting-desc">闪卡正面自动朗读</div>
+            </div>
+          </div>
+          <div class="setting-right">
+            <div class="toggle" id="tts-toggle"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 数据管理 -->
+    <div class="section-card">
+      <div class="card-header">
+        <span class="header-icon"><i class="cc-ic" data-ic="save" aria-hidden="true"></i></span>
+        <h3>数据管理</h3>
+      </div>
+      <ul class="settings-list">
+        <li id="btn-export">
+          <div class="setting-left">
+            <span class="setting-icon"><i class="cc-ic" data-ic="upload" aria-hidden="true"></i></span>
+            <div>
+              <div class="setting-label">导出数据</div>
+              <div class="setting-desc">导出学习数据备份</div>
+            </div>
+          </div>
+          <div class="setting-right">
+            <span style="color:var(--dim)"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+          </div>
+        </li>
+
+        <li id="btn-import">
+          <div class="setting-left">
+            <span class="setting-icon"><i class="cc-ic" data-ic="download" aria-hidden="true"></i></span>
+            <div>
+              <div class="setting-label">导入数据</div>
+              <div class="setting-desc">从备份文件恢复</div>
+            </div>
+          </div>
+          <div class="setting-right">
+            <span style="color:var(--dim)"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 危险操作 -->
+    <div class="section-card">
+      <div class="danger-zone">
+        <button class="danger-btn" id="btn-clear-data">
+          <i class="cc-ic" data-ic="trash-2"></i> 清除所有学习数据
+        </button>
+      </div>
+    </div>
+
+    <!-- 关于 -->
+    <div class="section-card">
+      <div class="card-header">
+        <span class="header-icon"></span>
+        <h3>关于</h3>
+      </div>
+      <ul class="settings-list">
+        <li>
+          <div class="setting-left">
+            <span class="setting-icon"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></span>
+            <div>
+              <div class="setting-label">开源协议</div>
+              <div class="setting-desc">数据来源说明</div>
+            </div>
+          </div>
+          <div class="setting-right">
+            <span style="color:var(--dim)"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+          </div>
+        </li>
+        <li>
+          <div class="setting-left">
+            <span class="setting-icon"><i class="cc-ic" data-ic="horse-mark"></i></span>
+            <div>
+              <div class="setting-label">返回白驹主站</div>
+              <div class="setting-desc">白驹实战中心</div>
+            </div>
+          </div>
+          <div class="setting-right">
+            <a href="../index.html" style="color:var(--blue);font-weight:600">前往 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="version-info">
+      环球语堂 LinguaVista v1.0.0 (MVP)<br>
+      白驹实战中心旗下产品
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <div class="tab-items">
+      <a href="index.html" class="tab-item"><div class="tab-icon"><i class="cc-ic" data-ic="house" aria-hidden="true"></i></div><div>首页</div></a>
+      <a href="languages/en.html" class="tab-item"><div class="tab-icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div><div>语种</div></a>
+      <a href="flashcards.html" class="tab-item center-btn"><div class="tab-icon"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div></a>
+      <a href="chat.html" class="tab-item"><div class="tab-icon"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><div>对话</div></a>
+      <a href="profile.html" class="tab-item active"><div class="tab-icon"><i class="cc-ic" data-ic="user" aria-hidden="true"></i></div><div>我的</div></a>
+    </div>
+  </nav>
+
+  <input type="file" id="import-file" accept=".json" style="display:none">
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/srs.js"></script>
+  <script src="assets/js/components.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 加载统计数据
+      loadStats();
+
+      // 渲染热力图
+      if (window.LVStorage && window.LVComponents) {
+        const heatmapData = LVStorage.stats.getHeatmapData();
+        const hasData = heatmapData.some(d => d.count > 0);
+        if (hasData) {
+          LVComponents.renderHeatmap(
+            document.getElementById('heatmap-container'),
+            heatmapData
+          );
+        }
+      }
+
+      // 主题切换
+      document.getElementById('setting-theme').addEventListener('click', () => {
+        if (window.LVTheme) {
+          const newTheme = LVTheme.toggleTheme();
+          updateThemeLabel(newTheme);
+        }
+      });
+
+      // 初始主题标签
+      if (window.LVTheme) {
+        updateThemeLabel(LVTheme.getTheme());
+      }
+
+      // 每日目标
+      const goalSelect = document.getElementById('daily-goal-select');
+      if (window.LVStorage) {
+        const settings = LVStorage.settings.getAll();
+        goalSelect.value = settings.dailyGoal;
+      }
+      goalSelect.addEventListener('change', (e) => {
+        if (window.LVStorage) {
+          LVStorage.settings.update({ dailyGoal: parseInt(e.target.value) });
+          if (window.LVComponents) {
+            LVComponents.toast.success('每日目标已更新');
+          }
+        }
+      });
+
+      // 语种切换
+      const langSelect = document.getElementById('lang-select');
+      if (window.LVStorage) {
+        langSelect.value = LVStorage.getCurrentLang();
+      }
+      langSelect.addEventListener('change', async (e) => {
+        const lang = e.target.value;
+        if (window.LVStorage) {
+          LVStorage.setCurrentLang(lang);
+          if (window.LVComponents) {
+            const names = { en: '英语', ja: '日语' };
+            LVComponents.toast.success(`已切换到${names[lang] || lang}`);
+          }
+        }
+      });
+
+      // TTS 开关
+      const ttsToggle = document.getElementById('tts-toggle');
+      ttsToggle.addEventListener('click', () => {
+        ttsToggle.classList.toggle('active');
+        if (window.LVStorage) {
+          LVStorage.settings.update({ ttsAutoPlay: ttsToggle.classList.contains('active') });
+        }
+      });
+
+      // 导出数据
+      document.getElementById('btn-export').addEventListener('click', async () => {
+        if (!window.LVStorage) return;
+        try {
+          const data = await LVStorage.db.exportAll();
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `linguavista-backup-${new Date().toISOString().split('T')[0]}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+          LVComponents.toast.success('数据导出成功');
+        } catch (e) {
+          LVComponents.toast.error('导出失败');
+        }
+      });
+
+      // 导入数据
+      document.getElementById('btn-import').addEventListener('click', () => {
+        document.getElementById('import-file').click();
+      });
+
+      document.getElementById('import-file').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file || !window.LVStorage) return;
+
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          const confirmed = await LVComponents.confirmDialog(
+            '导入数据将覆盖现有数据，确定继续吗？'
+          );
+          if (confirmed) {
+            await LVStorage.db.importAll(data);
+            LVComponents.toast.success('数据导入成功');
+            setTimeout(() => location.reload(), 1000);
+          }
+        } catch (err) {
+          LVComponents.toast.error('导入失败：文件格式错误');
+        }
+      });
+
+      // 清除数据
+      document.getElementById('btn-clear-data').addEventListener('click', async () => {
+        if (!window.LVComponents) return;
+        const confirmed = await LVComponents.confirmDialog(
+          '确定要清除所有学习数据吗？此操作不可撤销。'
+        );
+        if (confirmed && window.LVStorage) {
+          await LVStorage.db.clearAll();
+          LVComponents.toast.success('数据已清除');
+          setTimeout(() => location.reload(), 1000);
+        }
+      });
+    });
+
+    function loadStats() {
+      if (!window.LVStorage) return;
+
+      const overview = LVStorage.stats.getOverview();
+      const settings = LVStorage.settings.getAll();
+
+      document.getElementById('stat-streak').textContent = overview.streak;
+      document.getElementById('stat-cards').textContent = overview.totalCardsStudied;
+      document.getElementById('stat-level').textContent = overview.level;
+      document.getElementById('stat-maxstreak').textContent = overview.maxStreak || 0;
+
+      // XP 进度
+      const xpForCurrent = (overview.level - 1) * (overview.level - 1) * 100;
+      const xpForNext = overview.level * overview.level * 100;
+      const xpInLevel = overview.xp - xpForCurrent;
+      const xpNeeded = xpForNext - xpForCurrent;
+      const percent = Math.min((xpInLevel / xpNeeded) * 100, 100);
+
+      document.getElementById('xp-progress').style.width = percent + '%';
+      document.getElementById('xp-text').textContent = `${xpInLevel} / ${xpNeeded} XP`;
+
+      // 更新等级显示
+      document.querySelector('.badge-level').textContent = 'Lv.' + overview.level;
+    }
+
+    function updateThemeLabel(theme) {
+      const label = theme === 'deep' ? '深空纪元' : '云顶天空';
+      document.getElementById('theme-label').textContent = label;
+    }
+
+    // 监听主题变化
+    document.addEventListener('themechange', (e) => {
+      updateThemeLabel(e.detail.theme);
+    });
+  </script>
+</body>
+</html>

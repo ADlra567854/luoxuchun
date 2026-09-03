@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 白驹工作站 · IDE × GitHub × AI, viewport-fit=cover">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · 白驹工作站 · IDE × GitHub × AI</title>
+<link rel="stylesheet" href="../assets/vendor/codemirror.min.css">
+<link rel="stylesheet" href="../assets/vendor/dracula.min.css">
+<style>
+:root{--bg:#07090f;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--cyan:#38e1ff;--green:#4ade80;
+  --text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#38e1ff)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:#2a3a5e;border-radius:4px}
+/* 顶栏 */
+#topbar{display:flex;align-items:center;gap:14px;padding:10px 18px;border-bottom:1px solid var(--line);background:rgba(7,9,15,.95);flex-wrap:wrap}
+.logo{font-size:16px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+#gh-search{flex:1;min-width:200px;display:flex;gap:8px}
+#gh-q{flex:1;background:#0a0f1e;border:1px solid var(--line);border-radius:10px;padding:9px 14px;color:var(--text);font-size:13.5px}
+#gh-q:focus{outline:none;border-color:var(--cyan)}
+.btn{background:#0e1626;border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:9px 16px;font-size:13px;cursor:pointer;transition:.2s;white-space:nowrap}
+.btn:hover{color:var(--cyan);border-color:var(--cyan)}
+.btn.main{background:var(--grad);color:#0a0f1e;font-weight:800;border:none}
+.btn.run{background:rgba(74,222,128,.12);border-color:rgba(74,222,128,.4);color:var(--green);font-weight:700}
+#topbar a{color:var(--muted);text-decoration:none;font-size:13px}
+#topbar a:hover{color:var(--gold)}
+/* 三栏 */
+#main{flex:1;display:flex;overflow:hidden}
+/* 左：GitHub 仓库 */
+#left{width:250px;min-width:250px;border-right:1px solid var(--line);display:flex;flex-direction:column;background:#0a0f1a}
+#left h4{font-size:11.5px;color:var(--gold);letter-spacing:2px;padding:12px 14px 6px}
+#repos{overflow-y:auto;max-height:38%;border-bottom:1px solid var(--line);padding:0 8px 10px}
+.repo-item{padding:9px 10px;border-radius:10px;cursor:pointer;margin:4px 0;border:1px solid transparent}
+.repo-item:hover{background:var(--card);border-color:var(--line)}
+.repo-item .rn{font-size:13px;color:var(--cyan);font-weight:600;word-break:break-all}
+.repo-item .rd{font-size:11.5px;color:var(--muted);margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.repo-item .rs{font-size:11px;color:var(--gold);margin-top:3px}
+#files{flex:1;overflow-y:auto;padding:4px 8px 12px}
+.file-item{padding:6px 10px;border-radius:8px;font-size:12.5px;color:var(--muted);cursor:pointer;font-family:Consolas,monospace;word-break:break-all}
+.file-item:hover{background:var(--card);color:var(--green)}
+.file-item.dir{color:#7f96c9}
+#repo-actions{padding:8px 12px;border-top:1px solid var(--line)}
+#repo-actions a{display:block;font-size:12px;color:var(--cyan);padding:4px 0;text-decoration:none}
+/* 中：编辑器 + 输出 */
+#center{flex:1;display:flex;flex-direction:column;min-width:0}
+#editor-bar{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+#cur-file{font-family:Consolas,monospace;font-size:12.5px;color:var(--gold);flex:1;min-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#lang-sel{background:#0a0f1e;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px 10px;font-size:12.5px}
+#editor-wrap{flex:1;min-height:0}
+.CodeMirror{height:100%;font-size:14px}
+#out{height:200px;border-top:1px solid var(--line);display:flex;flex-direction:column;background:#05070c}
+#out-head{display:flex;justify-content:space-between;align-items:center;padding:6px 14px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--line)}
+#out-body{flex:1;overflow-y:auto;padding:10px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#b9c8ea;white-space:pre-wrap}
+#out-frame{flex:1;border:none;background:#fff;display:none}
+/* 右：AI 对话 */
+#right{width:320px;min-width:320px;border-left:1px solid var(--line);display:flex;flex-direction:column;background:#0a0f1a}
+#right h4{font-size:11.5px;color:var(--gold);letter-spacing:2px;padding:12px 14px 6px}
+#aimode{margin:0 14px;background:#0a0f1e;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px 10px;font-size:12px;width:calc(100% - 28px)}
+#aikey{margin:6px 14px;background:#0a0f1e;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 10px;font-size:12px;width:calc(100% - 28px)}
+#msgs{flex:1;overflow-y:auto;padding:10px 12px}
+.msg{margin:10px 0;padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.75;max-width:96%;white-space:pre-wrap;word-wrap:break-word}
+.msg.user{margin-left:auto;background:rgba(56,225,255,.1);border:1px solid rgba(56,225,255,.3)}
+.msg.bot{background:rgba(245,194,107,.06);border:1px solid rgba(245,194,107,.28)}
+.msg.sys{background:none;border:1px dashed var(--line);color:var(--muted);font-size:11.5px;max-width:100%}
+.msg.bot code{background:#0a0f1e;border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:12px;color:var(--cyan)}
+.msg.bot pre{background:#0a0f1e;border:1px solid var(--line);border-radius:10px;padding:10px;overflow-x:auto;position:relative;margin:8px 0}
+.msg.bot pre code{background:none;border:none;padding:0;display:block}
+.toeditor{display:inline-block;margin-top:4px;background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.4);color:var(--green);border-radius:8px;padding:3px 10px;font-size:11px;cursor:pointer}
+#ai-bar{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+#ai-q{flex:1;background:#0a0f1e;border:1px solid var(--line);border-radius:10px;padding:9px 12px;color:var(--text);font-size:13px;resize:none;font-family:inherit}
+#ai-q:focus{outline:none;border-color:var(--cyan)}
+#ai-send{padding:0 16px;border:none;border-radius:10px;background:var(--grad);color:#0a0f1e;font-weight:800;cursor:pointer}
+@media(max-width:1100px){#right{display:none}}
+.m-toggle{display:none}
+/* 移动端单栏：GitHub / AI 面板变覆盖式抽屉，编辑器始终占主屏 */
+@media(max-width:760px){
+  #left{display:none}
+  #main{flex-direction:column;overflow-x:hidden;position:relative}
+  #center{width:100%;max-width:100%;min-width:0}
+  #editor-wrap{min-height:280px;max-width:100%;overflow:hidden}
+  #editor-bar{flex-wrap:wrap}
+  #gh-search{min-width:0}
+  .CodeMirror{max-width:100%}
+  .CodeMirror-scroll,.CodeMirror-sizer,.CodeMirror-gutters{max-width:100%!important;min-width:0!important}
+  #out{height:150px}
+  #topbar{padding:8px 10px;flex-wrap:wrap}
+  #topbar .logo{display:none}
+  #topbar > a{display:none}              /* 移动端隐藏导航链接，仅保留核心操作 */
+  #gh-search{min-width:0;flex:1 1 100%;order:10}  /* 搜索栏独占一行，避免顶栏溢出 */
+  .m-toggle{display:inline-block;background:var(--card);border:1px solid var(--line);color:var(--cyan);
+    border-radius:9px;padding:7px 11px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit}
+  .m-toggle.on{background:var(--grad);color:#0a0f1e;border-color:transparent}
+  /* 抽屉层（覆盖编辑器，不挤压） */
+  #left,#right{display:none;position:fixed;top:0;bottom:0;width:min(320px,86vw);z-index:120;
+    background:#0a0f1a;box-shadow:0 0 40px rgba(0,0,0,.5);padding-top:8px}
+  #left{left:0;border-right:1px solid var(--line);border-left:none}
+  #right{right:0;border-left:1px solid var(--line);border-right:none}
+  #left.m-open,#right.m-open{display:flex}
+  .m-mask{position:fixed;inset:0;background:rgba(2,5,12,.55);z-index:119;display:none}
+  .m-mask.show{display:block}
+}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/workstation.html">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/workstation.html">
+<meta name="twitter:title" content="ccowork · 白驹工作站 · IDE × GitHub × AI">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-workstation.png" alt="ccowork · 白驹工作站 · IDE × GitHub × AI" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div id="topbar">
+  <div class="logo"><i class="cc-mark" aria-hidden="true"></i>白驹工作站</div>
+  <button class="m-toggle" id="m-repo" title="GitHub 仓库"><i class="cc-ic" data-ic="box" aria-hidden="true"></i>仓库</button>
+  <button class="m-toggle" id="m-ai" title="AI 对话"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI</button>
+  <div id="gh-search">
+    <input id="gh-q" placeholder="GitHub 免登录搜索：deepseek-harness / ollama / comfyui …">
+    <button class="btn main" id="gh-btn"><i class="cc-ic" data-ic="chevron-right"></i> 搜开源</button>
+  </div>
+  <button class="btn run" id="run-btn"><i class="cc-ic" data-ic="play"></i> 运行</button>
+  <a href="./index.html">主站</a>
+  <a href="../index.html">白驹总站</a>
+</div>
+
+<div id="main">
+  <!-- 左：GitHub -->
+  <div id="left">
+    <h4>GitHub 仓库（免登录）</h4>
+    <div id="repos"><div style="padding:10px;font-size:12px;color:var(--muted)">搜索任意开源项目，点开即看文件、即取代码、一键下载 ZIP。</div></div>
+    <h4>仓库文件</h4>
+    <div id="files"></div>
+    <div id="repo-actions"></div>
+  </div>
+
+  <!-- 中：IDE -->
+  <div id="center">
+    <div id="editor-bar">
+      <span id="cur-file">untitled.py —— 新建文件，或从左侧 GitHub 仓库打开</span>
+      <select id="lang-sel">
+        <option value="python">Python</option>
+        <option value="javascript">JavaScript</option>
+        <option value="html">HTML</option>
+        <option value="markdown">Markdown</option>
+      </select>
+      <button class="btn" id="new-btn"><i class="cc-ic" data-ic="plus"></i> 新建</button>
+      <button class="btn" id="dl-btn"><i class="cc-ic" data-ic="download"></i> 下载本文件</button>
+    </div>
+    <div id="editor-wrap"></div>
+    <div id="out">
+      <div id="out-head"><span>运行输出（Python 由浏览器内 Pyodide 执行 / JS 与 HTML 沙箱执行）</span>
+        <button class="btn" id="clear-out" style="padding:3px 10px;font-size:11px"><i class="cc-ic" data-ic="eraser"></i> 清空</button></div>
+      <div id="out-body"></div>
+      <iframe id="out-frame" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <!-- 右：AI -->
+  <div id="right">
+    <h4><i class="cc-mark" aria-hidden="true"></i>全景对话（生成代码可一键写入编辑器）</h4>
+    <select id="aimode">
+      <option value="webllm">内置大模型 · 浏览器本地真运行（默认，免登录免Key）</option>
+      <option value="ollama">本地 Ollama（更强，需已安装）</option>
+      <option value="deepseek">DeepSeek API（效果最强）</option>
+      <option value="local">极简 · 书稿检索（无模型兜底）</option>
+    </select>
+    <input id="aikey" type="password" placeholder="选 DeepSeek 时填 sk-...（仅存本地）">
+    <div id="engine-status" style="margin:6px 14px;font-size:11.5px;color:var(--muted)">内置模型：Qwen2.5-1.5B · 首次对话自动下载（约 1GB，之后永久缓存离线可用）</div>
+    <div id="msgs"></div>
+    <div id="ai-bar">
+      <textarea id="ai-q" rows="1" placeholder="例：写个爬 GitHub 热榜的 Python 脚本"></textarea>
+      <button id="ai-send"><i class="cc-ic" data-ic="chevron-right"></i> 发</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/vendor/codemirror.min.js"></script>
+<script src="../assets/vendor/mode-python.min.js"></script>
+<script src="../assets/vendor/mode-javascript.min.js"></script>
+<script src="../assets/vendor/mode-xml.min.js"></script>
+<script src="../assets/vendor/mode-markdown.min.js"></script>
+<script src="../assets/marked.min.js"></script>
+<script src="/ai-client.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+
+/* ================= IDE ================= */
+const editor=CodeMirror($('editor-wrap'),{
+  value:'# 欢迎来到白驹工作站\n# 左侧搜 GitHub 开源项目（免登录），右侧 AI 对话生成代码\n# 写好代码后点顶部「运行」\n\nprint("Hello, 白驹!")\nfor i in range(3):\n    print("第", i+1, "步：会写代码了")\n',
+  mode:'python',theme:'dracula',lineNumbers:true,indentUnit:4
+});
+const LANGS={python:'python',javascript:'javascript',html:'xml',markdown:'markdown'};
+$('lang-sel').onchange=e=>{editor.setOption('mode',LANGS[e.target.value]);
+  const ext={python:'py',javascript:'js',html:'html',markdown:'md'}[e.target.value];
+  $('cur-file').textContent='untitled.'+ext;};
+function detectLang(path){
+  const ext=(path.split('.').pop()||'').toLowerCase();
+  const m={py:'python',js:'javascript',html:'html',htm:'html',md:'markdown'};
+  if(m[ext]){$('lang-sel').value=m[ext];editor.setOption('mode',LANGS[m[ext]]);}
+}
+$('new-btn').onclick=()=>{editor.setValue('');$('cur-file').textContent='untitled.'+$('lang-sel').selectedOptions[0].textContent.split('.')[0];};
+$('dl-btn').onclick=()=>{
+  const blob=new Blob([editor.getValue()],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=($('cur-file').textContent.split(' ——')[0]||'code.txt');a.click();URL.revokeObjectURL(a.href);};
+
+/* ================= 运行（编译） ================= */
+let pyodide=null,pyLoading=false;
+function out(t,color){const d=$('out-body');d.innerHTML+='<span style="color:'+(color||'#b9c8ea')+'">'+String(t).replace(/</g,'&lt;')+'\n</span>';d.scrollTop=1e9;}
+async function runPython(code){
+  $('out-body').style.display='block';$('out-frame').style.display='none';
+  if(!pyodide){
+    if(pyLoading){out('Pyodide 正在加载中，稍候再点运行…','#f5c26b');return;}
+    pyLoading=true;out('首次运行 Python：正在加载 Pyodide（浏览器内 Python 运行时，约 10MB）…','#f5c26b');
+    try{
+      await new Promise((res,rej)=>{const s=document.createElement('script');
+        s.src='https://registry.npmmirror.com/pyodide/0.26.4/full/pyodide.js';s.onload=res;s.onerror=rej;document.head.appendChild(s);});
+      pyodide=await loadPyodide({indexURL:'https://registry.npmmirror.com/pyodide/0.26.4/full/'});
+      out('Python 环境就绪 ','#4ade80');
+    }catch(e){out('Pyodide 加载失败：'+e.message,'#ff6b6b');pyLoading=false;return;}
+    pyLoading=false;
+  }
+  pyodide.setStdout({batched:t=>out(t)});
+  pyodide.setStderr({batched:t=>out(t,'#ff6b6b')});
+  try{await pyodide.runPythonAsync(code);}catch(e){out(e.message,'#ff6b6b');}
+}
+function runJS(code){
+  $('out-body').style.display='block';$('out-frame').style.display='none';
+  const f=$('out-frame');
+  f.srcdoc='<script>const send=(t,d)=>parent.postMessage({__ide:1,type:t,data:d},"*");'
+    +'console.log=(...a)=>send("log",a.join(" "));console.error=(...a)=>send("err",a.join(" "));'
+    +'onerror=(m)=>send("err",m);try{'+code.replace(/<\/script>/g,'<\\/script>')
+    +'}catch(e){send("err",e.message)}<\/script>';
+}
+addEventListener('message',e=>{
+  if(!e.data||e.data.__ide!==1)return;
+  out(e.data.data,e.data.type==='err'?'#ff6b6b':'#b9c8ea');
+});
+function runHTML(code){
+  $('out-body').style.display='none';$('out-frame').style.display='block';
+  $('out-frame').srcdoc=code;
+}
+$('run-btn').onclick=()=>{
+  const lang=$('lang-sel').value,code=editor.getValue();
+  out(' 运行 ('+lang+') …','#38e1ff');
+  if(lang==='python')runPython(code);
+  else if(lang==='javascript')runJS(code);
+  else if(lang==='html')runHTML(code);
+  else{$('out-body').style.display='block';$('out-frame').style.display='none';
+    out('Markdown 预览：\n');const d=$('out-body');d.innerHTML='<div style="font-family:inherit">'+marked.parse(code)+'</div>';}
+};
+$('clear-out').onclick=()=>{$('out-body').innerHTML='';$('out-frame').srcdoc='';};
+
+/* ================= GitHub 免登录 ================= */
+async function gh(url){
+  const r=await fetch(url,{headers:{'Accept':'application/vnd.github+json'}});
+  if(!r.ok)throw new Error('GitHub API '+r.status+(r.status===403?'（免登录限流 60 次/小时，稍后再试）':''));
+  return r.json();
+}
+$('gh-btn').onclick=async()=>{
+  const q=$('gh-q').value.trim();if(!q)return;
+  $('repos').innerHTML='<div style="padding:10px;font-size:12px;color:var(--muted)">搜索中…</div>';
+  try{
+    const j=await gh('https://api.github.com/search/repositories?q='+encodeURIComponent(q)+'&sort=stars&per_page=8');
+    $('repos').innerHTML='';
+    j.items.forEach(r=>{
+      const d=document.createElement('div');d.className='repo-item';
+      d.innerHTML='<div class="rn">'+r.full_name+'</div><div class="rd">'+(r.description||'')+'</div>'
+        +'<div class="rs"> '+Math.round(r.stargazers_count/1000)+'k · '+(r.language||'')+'</div>';
+      d.onclick=()=>openRepo(r);$('repos').appendChild(d);});
+    if(!j.items.length)$('repos').innerHTML='<div style="padding:10px;font-size:12px;color:var(--muted)">没有找到相关仓库</div>';
+  }catch(e){$('repos').innerHTML='<div style="padding:10px;font-size:12px;color:#ff6b6b">'+e.message+'</div>';}
+};
+let curRepo=null;
+async function openRepo(r){
+  curRepo=r;
+  $('files').innerHTML='<div style="padding:10px;font-size:12px;color:var(--muted)">读取文件树…</div>';
+  $('repo-actions').innerHTML=
+    '<a href="'+r.html_url+'" target="_blank"> GitHub 页面</a>'
+    +'<a href="https://codeload.github.com/'+r.full_name+'/zip/refs/heads/'+r.default_branch+'"> 一键下载整个项目 ZIP</a>';
+  try{
+    const t=await gh('https://api.github.com/repos/'+r.full_name+'/git/trees/'+r.default_branch+'?recursive=1');
+    const files=t.tree.filter(x=>x.type==='blob'&&/\.(py|js|ts|html|md|json|txt|yml|yaml|toml|sh|css)$/i.test(x.path)).slice(0,80);
+    $('files').innerHTML='';
+    files.forEach(f=>{
+      const d=document.createElement('div');d.className='file-item';d.textContent=f.path;
+      d.onclick=()=>openFile(r,f.path);$('files').appendChild(d);});
+    if(!files.length)$('files').innerHTML='<div style="padding:10px;font-size:12px;color:var(--muted)">未列出文本文件，直接下载 ZIP 查看。</div>';
+  }catch(e){$('files').innerHTML='<div style="padding:10px;font-size:12px;color:#ff6b6b">'+e.message+'</div>';}
+}
+async function openFile(r,path){
+  $('cur-file').textContent=r.full_name+'/'+path;
+  detectLang(path);
+  try{
+    const res=await fetch('https://raw.githubusercontent.com/'+r.full_name+'/'+r.default_branch+'/'+path);
+    if(!res.ok)throw new Error('读取失败 '+res.status);
+    editor.setValue(await res.text());
+    out(' 已载入 '+path,'#4ade80');
+  }catch(e){out(e.message,'#ff6b6b');}
+}
+
+/* ================= AI 全景对话 ================= */
+const FILES=[['AI实战全书','book/AI实战全书.html'],['开源项目全景','../blog/AI实战全书.html'],['工科实战','../blog/AI时代工科学习-编程计算机数控仿真实战.html'],['开发者基地','./devbase.html']];
+let CORPUS=[];
+(async()=>{for(const [n,u] of FILES){try{const r=await fetch(encodeURI(u));if(r.ok){let t=await r.text();
+  if(u.endsWith('.html'))t=t.replace(/<style[\s\S]*?<\/style>/g,'').replace(/<script[\s\S]*?<\/script>/g,'').replace(/<[^>]+>/g,' ');
+  CORPUS.push({name:n,text:t});}}catch(e){}}
+  sys(' 工作站就绪。语料 '+CORPUS.length+' 部；GitHub 免登录通道已开；IDE 已装入示例 Python，点「 运行」试试。');})();
+function sys(t){add(t,'sys')}
+function add(t,cls){const d=document.createElement('div');d.className='msg '+cls;
+  d.innerHTML=(cls==='bot')?marked.parse(t):t.replace(/</g,'&lt;');
+  $('msgs').appendChild(d);$('msgs').scrollTop=1e9;
+  if(cls==='bot')d.querySelectorAll('pre code').forEach(c=>{
+    const b=document.createElement('button');b.className='toeditor';b.textContent=' 写入编辑器';
+    b.onclick=()=>{editor.setValue(c.innerText);out(' AI 代码已写入编辑器','#4ade80');};
+    c.parentElement.after(b);});
+  return d;}
+function retrieve(q){
+  const keys=[...new Set(q.match(/[\u4e00-\u9fa5]{2,}|[a-zA-Z0-9]{2,}/g)||[])];
+  return CORPUS.map(c=>{
+    const s=c.text.split(/\n{2,}/).map(p=>{let n=0;keys.forEach(k=>{n+=(p.split(k).length-1)*(k.length>3?3:1)});return{p,s:n};})
+      .filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,4);
+    return s.length?{name:c.name,hits:s.map(x=>x.p)}:null;
+  }).filter(Boolean);
+}
+/* ================= 内置大模型（WebLLM · 浏览器本地真运行） ================= */
+let engine=null,engineLoading=false;
+async function ensureEngine(onProgress){
+  if(engine)return engine;
+  if(!navigator.gpu)throw new Error('当前浏览器不支持 WebGPU，请用最新版 Chrome/Edge 打开（或切换 Ollama / DeepSeek 模式）');
+  if(engineLoading)throw new Error('模型正在加载中，请稍候…');
+  engineLoading=true;
+  const webllm=await import('https://esm.run/@mlc-ai/web-llm');
+  engine=await webllm.CreateMLCEngine('Qwen2.5-1.5B-Instruct-q4f16_1-MLC',{
+    initProgressCallback:p=>onProgress&&onProgress(p.text||'加载中…')
+  });
+  engineLoading=false;
+  $('engine-status').innerHTML=' 内置模型已就绪：Qwen2.5-1.5B 正在你的浏览器里本地运行（离线可用）';
+  return engine;
+}
+async function aiSend(){
+  const q=$('ai-q').value.trim();if(!q)return;
+  add(q,'user');$('ai-q').value='';
+  const ctx=retrieve(q).map(c=>'【'+c.name+'】\n'+c.hits.join('\n')).join('\n\n').slice(0,6000);
+  const mode=$('aimode').value;
+  const typing=add('思考中…','bot');
+  const curCode=editor.getValue().slice(0,3000);
+  const sysP='你是白驹工作站（一个网页 IDE）里的 AI 助手。用户当前编辑器语言：'+$('lang-sel').value+'，编辑器内容：\n'+curCode+'\n\n门户书稿语料：\n'+ctx+'\n\n要求：编程问题直接给可运行代码（用代码块包裹）；其他问题据语料精炼回答。';
+  try{
+    let ans;
+    if(mode==='webllm'){
+      if(!engine){
+        typing.innerHTML=' 首次启动：正在把大模型下载进你的浏览器…<br><span style="font-size:11.5px;color:var(--muted)" id="dlprog">准备中…</span>';
+        await ensureEngine(t=>{const el=$('dlprog');if(el)el.textContent=t;});
+        typing.innerHTML=' 模型加载完成，开始思考…';
+      }
+      const reply=await engine.chat.completions.create({messages:[{role:'system',content:sysP},{role:'user',content:q}]});
+      ans=reply.choices[0].message.content;
+    }
+    else if(mode==='deepseek'){
+      const key=($('aikey').value.trim())||CC.get('deepseek');
+      if(!key)throw new Error('请填 DeepSeek API Key（本地运行 node server.mjs 可免填，用服务端 Key）');
+      if($('aikey').value.trim())CC.set('deepseek',key);
+      ans=await askLLM('https://api.deepseek.com/v1/chat/completions','deepseek-chat',sysP,q,key);
+    }else if(mode==='ollama'){
+      ans=await askLLM('http://localhost:11434/v1/chat/completions','qwen3:8b',sysP,q);
+    }else{
+      const ctxArr=retrieve(q);
+      ans=ctxArr.length?'**检索到相关内容：**\n\n'+ctxArr.slice(0,2).map(c=>'### 《'+c.name+'》\n> '+c.hits[0].slice(0,240).replace(/\n/g,' ')+'…').join('\n\n')
+        +'\n\n---\n切到 Ollama / DeepSeek 大脑后，我可以直接生成可运行代码并写入编辑器。'
+        :'免配置模式下我只做书稿检索，未命中「'+q+'」。切换到 Ollama 或 DeepSeek 大脑，即可生成代码。';
+    }
+    typing.remove();add(ans,'bot');
+  }catch(e){typing.remove();add('**'+e.message+'**（已降级为检索模式）','bot');
+    const ctxArr=retrieve(q);if(ctxArr.length)add('《'+ctxArr[0].name+'》：'+ctxArr[0].hits[0].slice(0,200)+'…','bot');}
+  $('msgs').scrollTop=1e9;
+}
+async function askLLM(url,model,sysP,q,key){
+  const headers={'Content-Type':'application/json'};
+  if(key)headers['Authorization']='Bearer '+key;
+  const r=await fetch(url,{method:'POST',headers,
+    body:JSON.stringify({model,messages:[{role:'system',content:sysP},{role:'user',content:q}]})});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  return (await r.json()).choices[0].message.content;
+}
+$('ai-send').onclick=aiSend;
+$('ai-q').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();aiSend();}});
+$('gh-q').addEventListener('keydown',e=>{if(e.key==='Enter')$('gh-btn').click();});
+
+/* ================= 移动端抽屉（单栏布局） ================= */
+(function(){
+  if(innerWidth>760) return;
+  const mask=document.createElement('div');mask.className='m-mask';document.body.appendChild(mask);
+  const left=$('left'),right=$('right');
+  function closeDrawer(){left.classList.remove('m-open');right.classList.remove('m-open');
+    $('m-repo').classList.remove('on');$('m-ai').classList.remove('on');mask.classList.remove('show');}
+  $('m-repo').onclick=()=>{const on=left.classList.toggle('m-open');
+    right.classList.remove('m-open');$('m-ai').classList.remove('on');
+    $('m-repo').classList.toggle('on',on);mask.classList.toggle('show',on);};
+  $('m-ai').onclick=()=>{const on=right.classList.toggle('m-open');
+    left.classList.remove('m-open');$('m-repo').classList.remove('on');
+    $('m-ai').classList.toggle('on',on);mask.classList.toggle('show',on);};
+  mask.onclick=closeDrawer;
+  addEventListener('resize',()=>{if(innerWidth>760)closeDrawer();});
+})();
+add('你好，我是工作站里的**白驹**，这次是**真身上阵**：\n\n **内置真实大模型**——Qwen2.5 就在你的浏览器里运行（WebGPU 加速）。第一次对话会自动下载模型（约 1GB），之后永久缓存、离线可用、不登录、不要 Key。\n\n闭环三连：\n1. 左侧搜 GitHub 项目  点文件  代码直接进编辑器\n2. 让我写代码  点「 写入编辑器」 顶部「 运行」\n3. Python 在浏览器里真实执行（Pyodide），JS/HTML 沙箱执行\n\n**现在就试**：直接问我"写一个爬 GitHub 热榜的 Python 脚本"——我会现场写、你现场跑。','bot');
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["工作站","Cursor","部署基础"], title: '工作站 · 搭建视频' });</script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

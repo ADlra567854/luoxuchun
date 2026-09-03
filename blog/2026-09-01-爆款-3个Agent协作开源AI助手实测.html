@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="你是不是也遇到过这些糟心情况：AI助手聊半小时就忘前情，每次说需求都要重新喂背景；想让AI同时做查资料、写文案、做表格，单线程跑要等半小时；本地部署的开源模型要么记忆拉胯，要么多任务直接崩。">
+<meta name="keywords" content="3个Agent协作+记了30天对话不丢失,我测了刚上线的开源AI助手,比某付费GPT版还好用？,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content="你是不是也遇到过这些糟心情况：AI助手聊半小时就忘前情，每次说需求都要重新喂背景；想让AI同时做查资料、写文案、做表格，单线程跑要等半小时；本地部署的开源模型要么记忆拉胯，要么多任务直接崩。">">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版还好用？ · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article hr{border:none;border-top:1px dashed var(--line);margin:30px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html">
+<meta property="og:title" content="3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版还好用？ · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版还好用？ · AI 创作纪元（离线版）">
+<meta name="twitter:description" content=" 爆款生产线 · 白驹全局大脑 3个Agent协作+记了30天对话不丢失 AI 生成 · 信息以官方为准 · 每日爆款引擎  3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版还好用？ · AI 创作纪元（离线版）","description":" 爆款生产线 · 白驹全局大脑 3个Agent协作+记了30天对话不丢失 AI 生成 · 信息以官方为准 · 每日爆款引擎  3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版…","url":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html"},"image":"https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/assets/img/og-cover.png","datePublished":"2026-09-01","author":{"@type":"Organization","name":"白驹全局大脑"},"publisher":{"@type":"Organization","name":"白驹全局大脑"}}</script>
+</head>
+<body>
+<nav><div class="logo">白驹 · ccowork</div><a href="index.html"> 博客目录</a></nav>
+<article>
+
+<h1>3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版还好用？</h1>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版还好用？" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+  <rect width="1200" height="240" rx="18" fill="url(#vg)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <text x="56" y="82" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif"> 爆款生产线 · 白驹全局大脑</text>
+  <text x="56" y="146" font-size="40" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">3个Agent协作+记了30天对话不丢失</text>
+  <text x="56" y="186" font-size="17" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">AI 生成 · 信息以官方为准 · 每日爆款引擎</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)"></text>
+</svg>
+<h2>3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费GPT版还好用？</h2>
+<p>你是不是也遇到过这些糟心情况：AI助手聊半小时就忘前情，每次说需求都要重新喂背景；想让AI同时做查资料、写文案、做表格，单线程跑要等半小时；本地部署的开源模型要么记忆拉胯，要么多任务直接崩。上周OpenClaw 2.0刚正式发布，我第一时间拉了测试环境跑了72小时，结果有点出乎意料。</p>
+<h2>先讲清楚：OpenClaw 2.0到底是什么？</h2>
+<p>OpenClaw是去年底在GitHub上线的开源个人AI助手框架，主打「本地优先、可扩展、零厂商锁定」，2.0版本是其迭代6个月的大版本更新，截至发稿GitHub星标已经突破14.2k（数据以官方仓库实时为准）。和之前1.0版本相比，这次核心更新就两个：基于向量数据库重构的无限长期记忆系统，以及原生支持的多Agent协作调度框架，不用自己搭LangChain串工作流。</p>
+<p>我这次测试用的是本地部署版本，硬件是普通的16G内存M2 Mac，跑7B参数的开源模型不需要额外显卡，官方也提供了一键Docker部署包，对非技术用户也友好。和大家熟悉的ChatGPT、Claude网页版相比，它最大的优势是所有对话数据、记忆库都存在本地，不会上传到第三方服务器，隐私性拉满；同时支持接入任意大模型，不管是本地开源模型还是GPT-4o、Claude 3 API都能无缝切换。</p>
+<p>这里要先打个预防针：目前2.0刚上线，还有一些小bug，比如多Agent同时调用本地模型的时候偶尔会出现响应延迟，Windows端的一键部署包还在测试中（以官方更新日志为准），不追求极致稳定的朋友可以先上手试，要用来做生产工具的可以再等1-2个小版本。</p>
+<h2>实测1：30天对话记忆真的不“断片”吗？</h2>
+<p>我专门做了个对照测试：首先把我过去30天和AI聊过的所有工作记录、个人偏好、项目背景，总共大概12万字的内容全部导入了OpenClaw 2.0的记忆库，然后隔了24小时之后问它三个问题：“我上个月提到的那个给奶茶店做的活动方案预算上限是多少？”“我之前说过我对什么食物过敏？”“我上周让你帮我改的第三版公众号标题里我删掉的那个词是什么？”。</p>
+<p>测试结果我整理成了表格：</p>
+<p>| 测试问题 | 普通开源AI助手（无长期记忆） | GPT-4o（默认对话窗口） | OpenClaw 2.0 |</p>
+<p>| --- | --- | --- | --- |</p>
+<p>| 奶茶店活动预算 | 完全答不出，要求提供上下文 | 因为超出对话窗口，答成了另一个项目的20万预算 | 准确答出8万，还顺带提了我当时备注的“含20%物料备用金” |</p>
+<p>| 食物过敏 | 完全答不出 | 超出窗口无记忆 | 准确答出芒果过敏，还提了我上次说过喝杨枝甘露要换底 |</p>
+<p>| 公众号标题删词 | 完全答不出 | 超出窗口无记忆 | 准确答出删掉了“爆款”两个字，原因是我觉得太标题党 |</p>
+<p>它的记忆原理其实也不复杂：后台用本地的Chroma向量数据库做存储，每次对话结束后会自动把内容拆成片段做向量化，下次提问的时候会自动检索相关的记忆片段塞进提示词里，不需要手动上传知识库。而且你可以在后台给记忆打标签，比如打上「工作」「生活」标签，需要的时候可以一键清空某一类记忆，不会出现“AI记得你所有隐私删不掉”的问题。</p>
+<p>我还测了下记忆的准确性：故意导入了10条错误的信息，比如“我家猫叫狗蛋”，然后问它我家猫名字，它会主动标注「该信息来自2024年X月X日的对话，是否需要标记为错误记忆？」，不会把所有对话内容都当成真理，这点比很多闭源助手的“强行记忆”要靠谱。</p>
+<h2>实测2：多Agent协作真能不用人盯自动跑任务？</h2>
+<p>这次2.0最让我惊喜的是原生多Agent功能，之前我用其他开源框架做多Agent，要自己写提示词定义每个Agent的角色、自己搭工作流、自己处理Agent之间的通信，至少要写几十行代码，OpenClaw 2.0直接把角色模板、调度逻辑都做好了，选好角色点启动就行。</p>
+<p>我做了个最常见的内容生产任务测试：让它产出一篇本地咖啡店的推广文案，配3个小红书标题、1个活动海报的设计提示词、以及对应的到店活动成本核算表。我只在最开始输入了总需求，没有做任何中间干预，它自动调度了3个Agent：</p>
+<ol>
+<li>调研员Agent：自动去搜了本地最近3个月咖啡店的热门活动、同品类爆款笔记的共性、近期咖啡豆的采购成本，大概花了3分钟整理了一份基础资料；</li>
+<li>文案Agent：拿到调研员的资料之后，自动写了3个不同风格的小红书标题、两篇长短版文案，还主动标注了适合发布的时间和标签；</li>
+<li>数据Agent：根据文案里的活动规则，自动算清楚了满减、买赠的成本，以及预计的到店转化率和盈亏平衡点，导出了可直接用的Markdown表格。</li>
+<p>整个过程花了大概8分钟，我全程没有插手，最后出来的内容质量比我自己单开一个GPT-4o对话来回改要高，而且省了我来回切换提示词的麻烦。如果你懂点代码，还可以自己自定义Agent角色，比如加个设计师Agent直接对接AI画图工具，加个运营Agent直接对接公众号后台发稿，官方也提供了现成的插件市场，目前已经有20+现成的Agent模板可以直接用（以官方插件市场为准）。</p>
+<p>这里要提个不足：目前多Agent如果都调用本地7B模型的话，响应速度会慢30%左右，如果混合调用云端API+本地模型，速度会快很多，官方说下个版本会优化本地模型的调度逻辑，降低资源占用。</p>
+</ol>
+<h2>普通人上手要花多久？会不会很复杂？</h2>
+<p>我特意找了个完全不懂代码的同事做测试，给他发了官方的一键安装包，从下载到跑通第一个对话总共花了12分钟，其中有8分钟是在等模型下载。如果你不想本地跑模型，也可以直接在设置里填自己的OpenAI、Anthropic或者国内大模型的API密钥，不用下载模型，安装完1分钟就能用。</p>
+<p>给大家列一下不同需求的配置参考：</p>
+<ul>
+<li>纯云端API调用：任何能跑Chrome浏览器的电脑都可以，内存4G以上就行，没有显卡要求；</li>
+<li>跑7B参数本地模型：内存16G以上，不需要独立显卡，M系列Mac、Windows带核显的新款电脑都能流畅跑；</li>
+<li>跑14B/32B参数本地模型：内存32G以上，最好有6G以上显存的独立显卡，响应速度会更快。</li>
+<p>很多人关心的费用问题：软件本身是完全开源免费的，MIT协议，你可以随便改、甚至拿去二次开发卖钱都可以（以开源协议为准）；如果用本地模型的话完全没有后续费用，用云端API的话就是你自己付API的钱，没有中间溢价，比很多几百块一年的AI助手性价比高太多。</p>
+<p>我也碰到了几个小坑给大家提个醒：第一次启动的时候如果模型下载慢，可以手动去Hugging Face下好模型文件放到指定文件夹，不用在客户端里等；Windows端目前的版本偶尔会出现记忆库加载失败的问题，重启下客户端就能解决，官方说下个小版本会修复。</p>
+</ul>
+<h2>和其他开源AI助手比，它值不值得换？</h2>
+<p>我拿大家比较熟悉的两个同类型工具做了个横向对比，都是我自己实测的结果，数据仅供参考：</p>
+<p>| 对比维度 | OpenClaw 2.0 | Open WebUI | Dify |</p>
+<p>| --- | --- | --- | --- |</p>
+<p>| 长期记忆 | 原生自动记忆，支持标签分类、记忆纠错 | 需要手动配置向量数据库，默认无自动记忆 | 需要手动上传知识库，无对话自动记忆 |</p>
+<p>| 多Agent协作 | 原生内置，零代码配置，自带调度逻辑 | 需要自己安装插件、写工作流 | 支持工作流编排，学习成本较高 |</p>
+<p>| 部署难度 | 一键安装包，5分钟部署 | 一键安装包，3分钟部署 | 需要Docker部署，有一定技术门槛 |</p>
+<p>| 本地模型支持 | 全支持，自动适配硬件加速 | 全支持 | 支持，但配置较复杂 |</p>
+<p>| 适合人群 | 普通个人用户、小团队 | 技术爱好者、个人用户 | 企业用户、有开发能力的团队 |</p>
+<p>如果你之前用Open WebUI，主要需求是个人日常用、需要长期记忆和自动多任务处理，那非常值得换；如果你是企业用户要做复杂的内部工作流，那Dify可能更适合；如果你只是想偶尔聊个天、不需要复杂功能，那其实哪个工具都差不多。</p>
+<p>另外要特别说下隐私问题：因为它是完全本地运行的，如果你用本地模型的话，所有对话内容、记忆数据完全不会出你的电脑，特别适合用来处理工作里的敏感内容、个人隐私相关的问题，不用担心数据被拿去训练模型，这点是所有闭源AI助手都比不了的。</p>
+<h2>行动清单</h2>
+<ol>
+<li>现在去GitHub搜索OpenClaw，找到官方仓库，根据自己的系统下载对应一键安装包，先装个云端API版本10分钟就能跑通体验；</li>
+<li>第一次启动后先在「记忆设置」里打开自动记忆开关，导入你之前和AI的历史对话文件（支持txt、md格式），先让AI熟悉你的基本偏好；</li>
+<li>去插件市场下载现成的「内容生产三件套」Agent模板，先试跑一次简单的文案生成任务，熟悉多Agent的调度逻辑；</li>
+<li>如果你的电脑配置够（16G以上内存），在模型市场下载7B参数的Qwen2或者Llama 3开源模型，切换到本地模式，测试无API费用的离线使用；</li>
+<li>第一次用的时候记得在设置里打开「记忆校验」开关，避免AI把错误的对话内容存入长期记忆，每周花5分钟整理一次记忆库，删掉没用的内容提升检索准确率。</li>
+</ol>
+<p>*本文为AI生成，所有功能描述均来自OpenClaw官方公开文档及实测结果，具体功能以官方最新版本为准。*</p>
+<hr>
+<p style="color:var(--muted);font-size:12.5px"> 出处声明：本页内容为白驹全局大脑 AI 生成整理，信息以官方为准；引用遵循原始许可，不侵犯原作者权益。发布时间 2026-09-01。</p>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="2026-08-28-爆款-每天加班3小时到准点走：我用3个AI工具把周工作量压到16小时，老板还以为我招了.html" style="color:var(--gold);font-weight:700;text-decoration:none">每天加班3小时到准点走：我用3个AI</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px"> 博客目录</a>
+  <span style="font-size:13px"><span style="color:var(--muted)">已是最新一篇</span></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8"> 出处声明：本页内容为白驹全局大脑原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+</body></html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · AI 全景编年史 · 从图灵到 2026, viewport-fit=cover">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · AI 全景编年史 · 从图灵到 2026</title>
+<style>
+:root{
+  --bg:#07090f; --bg2:#0c1120; --card:#111a2e; --line:#20304f;
+  --gold:#f5c26b; --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --red:#ff6b6b;
+  --text:#edf2fc; --muted:#93a3c7; --grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6);
+  --grad2:linear-gradient(120deg,#4f8cff,#38e1ff);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85;overflow-x:hidden}
+::selection{background:var(--gold);color:#1a1206}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#2a3a5e;border-radius:6px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(7,9,15,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:22px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--gold)}
+.back{color:var(--cyan)!important}
+@media(max-width:900px){.nav-links{display:none}}
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:130px 24px 70px;
+  background:radial-gradient(1000px 520px at 50% -10%,rgba(245,194,107,.13),transparent 60%),
+             radial-gradient(800px 500px at 85% 80%,rgba(139,92,246,.12),transparent 60%),
+             radial-gradient(700px 500px at 10% 70%,rgba(79,140,255,.10),transparent 60%),var(--bg)}
+.hero .tag{font-size:13px;color:var(--gold);border:1px solid rgba(245,194,107,.4);padding:6px 20px;border-radius:99px;letter-spacing:3px;margin-bottom:30px}
+.hero h1{font-size:clamp(36px,6vw,78px);font-weight:900;line-height:1.25;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:820px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:28px auto 0}
+.scroll-hint{margin-top:60px;color:var(--muted);font-size:12px;letter-spacing:4px;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+section{max-width:1180px;margin:0 auto;padding:90px 24px 30px}
+.sec-head{margin-bottom:52px}
+.sec-head .vol{color:var(--gold);font-size:13px;letter-spacing:4px}
+.sec-head h2{font-size:clamp(30px,4vw,50px);font-weight:900;margin-top:10px}
+.sec-head p{color:var(--muted);max-width:760px;margin-top:14px}
+.era{margin:44px 0 8px;display:flex;align-items:center;gap:18px}
+.era b{font-size:22px;background:var(--grad2);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.era::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.tl{position:relative;padding-left:36px;margin-top:8px}
+.tl::before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--gold),var(--purple),var(--blue))}
+.tl-item{position:relative;margin-bottom:30px}
+.tl-item::before{content:"";position:absolute;left:-33px;top:10px;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(245,194,107,.14)}
+.tl-item .yr{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:1px}
+.tl-item h4{font-size:18px;margin:2px 0 6px}
+.tl-item p{color:var(--muted);font-size:14.5px}
+.tl-item .who{color:var(--cyan);font-size:13px}
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(430px,1fr))}
+@media(max-width:520px){.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(245,194,107,.45);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.card .role{font-size:12px;color:var(--gold);letter-spacing:2px}
+.card h3{font-size:20px;margin:6px 0 10px}
+.card p{color:var(--muted);font-size:14px}
+.card .quote{margin-top:14px;padding:12px 16px;border-left:3px solid var(--gold);background:rgba(245,194,107,.06);color:#d9c9a8;font-size:13.5px;border-radius:0 10px 10px 0}
+.card .tag2{display:inline-block;margin:12px 6px 0 0;font-size:12px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:99px;padding:2px 12px}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}
+th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#141f3a;color:var(--gold);font-size:13px;letter-spacing:1px;white-space:nowrap}
+tr:hover td{background:rgba(245,194,107,.05)}
+td{color:var(--muted)}
+td:first-child{font-weight:700;color:var(--text);white-space:nowrap}
+.os{color:var(--cyan)} .closed{color:var(--red)}
+.impact{border-left:4px solid var(--gold);background:var(--card);border-radius:0 18px 18px 0;padding:30px 32px;margin-bottom:26px}
+.impact h3{font-size:21px;margin-bottom:6px}
+.impact .num{color:var(--gold);font-size:13px;letter-spacing:2px}
+.impact p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.impact b{color:var(--text)}
+.impact .fact{margin-top:12px;font-size:13px;color:#c9b896;background:rgba(245,194,107,.07);border-radius:10px;padding:10px 14px}
+.callout{margin:60px 0 10px;text-align:center;padding:52px 30px;border:1px solid var(--line);border-radius:22px;
+  background:radial-gradient(500px 240px at 50% 0%,rgba(245,194,107,.10),transparent 70%),var(--bg2)}
+.callout h3{font-size:clamp(22px,3vw,32px);font-weight:900}
+.callout h3 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.callout p{color:var(--muted);max-width:680px;margin:14px auto 0;font-size:15px}
+footer{border-top:1px solid var(--line);margin-top:80px;padding:44px 24px;text-align:center;color:var(--muted);font-size:13px}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/chronicle.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/chronicle.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · AI 全景编年史 · 从图灵到 2026">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-chronicle.png" alt="ccowork · AI 全景编年史 · 从图灵到 2026" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="progress" id="progress"></div>
+<nav>
+  <div class="logo">AI 全景编年史</div>
+  <div class="nav-links">
+    <a class="back" href="./index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回主站</a>
+    <a href="#v0" style="color:var(--gold)">前线快报</a>
+    <a href="#v1">卷一 · 世界编年史</a>
+    <a href="#v2">卷二 · 中国之路</a>
+    <a href="#v3">卷三 · 人物列传</a>
+    <a href="#v4">卷四 · 2026 模型横评</a>
+    <a href="#v5">卷五 · 影响篇</a>
+    <a href="#v6">卷六 · 未来</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="tag">1950 — 2026 · 人与机器相互塑造的七十六年</div>
+  <h1>AI 全景<span>编年史</span></h1>
+  <p class="sub">这是一份基于公开资料联网归纳写成的超长卷：从达特茅斯的夏天到 DeepSeek 时刻，
+  从图灵之问到万亿参数；世界与中国的两条大河、十余位关键人物的命运、2026 年最新模型的正面对决，
+  以及 AI 在文学、经济、内容、气象等领域投下的真实涟漪。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+  <div class="scroll-hint">向下滚动 · 进入历史</div>
+</header>
+
+<!-- ============ 前线快报 ============ -->
+<section id="v0">
+  <div class="sec-head reveal">
+    <div class="vol">LIVE WIRE · 持续更新</div>
+    <h2>卷零 · 前线快报（2026 年 8 月）</h2>
+    <p>历史不是只发生在过去。这一周，牌桌上又落下了几张新牌。</p>
+  </div>
+  <div class="grid g2">
+    <div class="card reveal"><div class="role">2026.8.13 · 开源地震</div><h3>DeepSeek 开源 Harness：模型的"身体"来了</h3><p>DeepSeek 发布并开源首个智能体运行框架 <b style="color:var(--gold)">DeepSeek Harness（DSH）v0.1</b> 开发者预览版：不是新模型，而是让模型调用文件系统、终端、网页、代码工具的基础设施，核心设计原则只有六个字——"一切皆插件"。公式：<b style="color:var(--gold)">Model + Harness = Agent</b>。上线一个半小时 GitHub Star 破 2.4 万，刷新平台纪录，被视为补齐 Vibe Coding 入口的关键一子。</p><span class="tag2">一切皆插件</span><span class="tag2">省 Token</span><span class="tag2">Agent 可自改装</span></div>
+    <div class="card reveal"><div class="role">2026.8.3 · 开源超大杯</div><h3>阿里发布 Qwen3.8-Max</h3><p>通义千问家族迄今规模最大、能力最强的模型，旗舰首次开源，此前缺席的基准分全部补齐。Qwen 系列继续以"全尺寸矩阵 + 完全开源"压制开源生态位，长期霸榜 HuggingFace 下载榜。</p></div>
+    <div class="card reveal"><div class="role">2026.7-8 · 普惠时刻</div><h3>ChatGPT 推送 GPT-5.6 全家桶</h3><p>OpenAI 发布 GPT-5.6 系列（Sol / Terra / Luna 三档），8 月更新更激进：<b style="color:var(--gold)">免费用户首次获得无限文本对话与"Think"推理能力</b>——推理模型从付费墙后走向全民，数亿人的 AI 体验被一次性抬升。</p></div>
+    <div class="card reveal"><div class="role">2026.8.13 · 价格战</div><h3>Gemini 3.7 Flash 同日对垒</h3><p>Google 同日发布 Gemini 3.7 Flash，定位"最智能的工作马模型"，主打编码与 Agent 能力并限时半价。三巨头在同一周贴身肉搏——2026 年的模型竞争，已是"高性价比工作马"的白刃战。</p></div>
+  </div>
+</section>
+
+<!-- ============ 卷一 世界编年史 ============ -->
+<section id="v1">
+  <div class="sec-head reveal">
+    <div class="vol">VOLUME I</div>
+    <h2>卷一 · 世界 AI 编年史</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-chronicle.png" alt="ccowork · AI 全景编年史 · 从图灵到 2026 · 卷一 · 世界 AI 编年史" loading="lazy"></figure>
+
+    <p>人工智能的历史是一部"三起两落"的历史：每一次狂喜都迎来寒冬，每一次寒冬都埋下下一次爆发的种子。读懂这七十六年，才能理解 2026 年我们站在哪里。</p>
+  </div>
+
+  <div class="era reveal"><b>第一幕 · 诞生与第一次狂想（1950—1973）</b></div>
+  <div class="tl">
+    <div class="tl-item reveal"><div class="yr">1950</div><h4>图灵之问</h4><p><span class="who">艾伦·图灵</span> 发表《计算机器与智能》，开篇即问"机器能思考吗"，并提出模仿游戏（图灵测试）作为判定标准。这个问题此后纠缠了人类七十余年。</p></div>
+    <div class="tl-item reveal"><div class="yr">1956</div><h4>达特茅斯会议：学科诞生</h4><p><span class="who">约翰·麦卡锡、马文·明斯基、香农 等</span> 在达特茅斯学院召开夏季研讨会，"人工智能（Artificial Intelligence）"一词正式诞生。与会者乐观预言：二十年内机器将胜任人类的一切工作。</p></div>
+    <div class="tl-item reveal"><div class="yr">1957—1969</div><h4>感知机与早期繁荣</h4><p><span class="who">罗森布拉特</span> 发明感知机，神经网络第一次成为现实；《纽约时报》惊呼"海军期望电子计算机的雏形将能行走、说话、观看、书写、自我复制并意识到自身存在"。1958 年麦卡锡发明 LISP 语言，统治 AI 编程数十年。</p></div>
+  </div>
+
+  <div class="era reveal"><b>第二幕 · 两次寒冬（1974—1993）</b></div>
+  <div class="tl">
+    <div class="tl-item reveal"><div class="yr">1973</div><h4>莱特希尔报告：第一次寒冬</h4><p>英国发表莱特希尔报告，尖锐批评 AI"言过其实"，英美政府相继大幅削减经费。教训写进教科书：承诺超过交付，信任就会崩塌。</p></div>
+    <div class="tl-item reveal"><div class="yr">1980s</div><h4>专家系统复兴与再度破灭</h4><p>以 XCON 为代表的专家系统一度创造十亿美元级产业，日本"五代机"计划震惊西方；但规则系统的脆弱与维护成本，让 AI 在 1987 年后滑入第二次寒冬。</p></div>
+    <div class="tl-item reveal"><div class="yr">1986</div><h4>寒冬里的火种</h4><p><span class="who">辛顿、鲁梅尔哈特、威廉姆斯</span> 推广反向传播算法，让多层神经网络可训练。当时无人问津，二十年后它成为深度学习革命的引信。</p></div>
+  </div>
+
+  <div class="era reveal"><b>第三幕 · 深度学习革命（1997—2017）</b></div>
+  <div class="tl">
+    <div class="tl-item reveal"><div class="yr">1997</div><h4>深蓝击败卡斯帕罗夫</h4><p>IBM 深蓝在国际象棋上战胜世界冠军，AI 第一次在全民围观中"赢了人类"。同一年，LSTM 架构发表，为序列建模奠基。</p></div>
+    <div class="tl-item reveal"><div class="yr">2012</div><h4>AlexNet 时刻</h4><p><span class="who">辛顿 携学生 伊利亚·苏茨克维、克里热夫斯基</span> 用 GPU 训练的 AlexNet 在 ImageNet 竞赛中以碾压优势夺冠，深度学习时代正式开启。谷歌、百度随即展开对辛顿团队的竞价争夺——AI 人才战争的第一枪。</p></div>
+    <div class="tl-item reveal"><div class="yr">2016</div><h4>AlphaGo：信仰之跃</h4><p>DeepMind 的 AlphaGo 以 4:1 战胜李世石，第 37 手"天外飞仙"让所有职业棋手沉默。同年，<span class="who">黄仁勋</span> 将第一台 DGX-1 亲手交给 OpenAI——算力与新物种完成历史性交接。</p></div>
+    <div class="tl-item reveal"><div class="yr">2017</div><h4>Transformer 诞生</h4><p>谷歌八位作者发表《Attention Is All You Need》。这篇当时不起眼的论文，此后十年几乎所有大模型的共同祖先。八位作者后来全部离职创业，被称为"史上最贵的一页纸"。</p></div>
+  </div>
+
+  <div class="era reveal"><b>第四幕 · 大模型时代（2018—2026）</b></div>
+  <div class="tl">
+    <div class="tl-item reveal"><div class="yr">2022.11</div><h4>ChatGPT：iPhone 时刻</h4><p>OpenAI 发布 ChatGPT，五天破百万用户、两个月破一亿，成为史上增长最快的消费级应用。全世界第一次直观地摸到通用人工智能的轮廓。</p></div>
+    <div class="tl-item reveal"><div class="yr">2023—2024</div><h4>百模大战与多模态之年</h4><p>GPT-4 通过模拟律师考试进入前 10%；Claude、Gemini、Llama 相继登场；Sora 在 2024 年初以文生视频震惊世界；中国"百模大战"开打。2023 年 11 月 OpenAI 上演"五日宫斗"，奥特曼被罢免又复职，AI 安全的路线之争摆上桌面。</p></div>
+    <div class="tl-item reveal"><div class="yr">2024.12</div><h4>AI 天气预报：超越数值预报</h4><p>谷歌 DeepMind 的 GenCast 登上《Nature》，8 分钟给出 15 天全球预报，精度超越顶尖物理模型；它与华为盘古 Pangu-Weather（2023.7 上《Nature》）、GraphCast 一起，把气象预报从超算小时级压缩到秒级。AI 在这个"没有争议"的战场上，完成了从辅助到主力的范式更替。</p></div>
+    <div class="tl-item reveal"><div class="yr">2025.1</div><h4>DeepSeek 时刻</h4><p>中国公司 DeepSeek 以约 560 万美元成本训练出的开源模型 R1 比肩顶级闭源模型，1 月 27 日英伟达单日暴跌 17%、市值蒸发约 5900 亿美元——创人类股市史单日最大跌幅。全球 AI 产业逻辑被改写：算力军备竞赛之外，效率革命同样成立。</p></div>
+    <div class="tl-item reveal"><div class="yr">2025.2</div><h4>中国开源大模型下载量首超美国</h4><p>继 DeepSeek-R1 震动全球之后，阿里通义千问（Qwen）等中国开源矩阵集体爆发。据麻省理工学院等机构统计，2025 年中国开源 AI 模型的全球下载量占比首次超越美国、跃居全球第一——"开源平权"从口号变成了可量化的格局逆转。</p></div>
+    <div class="tl-item reveal"><div class="yr">2025</div><h4>多模态大爆发：视频、图像、语音齐飞</h4><p>AI 视频进入可生产级：可灵（Kling）、Sora 2、Runway Gen-4 相继迭代，国产"即梦"让普通创作者一键出片；AI 图像（即梦 / Midjourney）从"能看"走向"能用"；AI 语音合成与实时语音对话逼近以假乱真。多模态不再是演示，而成为内容生产的新基建。</p></div>
+    <div class="tl-item reveal"><div class="yr">2025</div><h4>AI 编程与"一人公司"跑通闭环</h4><p>Cursor、Claude Code、GitHub Copilot 等 AI 编程工具从"代码补全"进化为"结对工程师"，独立开发者一人即可完成从前需要数人团队的产品——"一人公司"借助 AI 杠杆跑通从创意到商业化的完整闭环。编程成为 Agent 能力最早、最彻底落地的主战场。</p></div>
+    <div class="tl-item reveal"><div class="yr">2025—2026</div><h4>智能体（Agent）时代</h4><p>模型从"会回答"进化到"会做事"：推理模型（o 系列 / R 系列）先想后答，Agent 开始独立完成编程、调研、订票等长链条任务。2026 年，旗舰模型之间的差距收窄到"选谁看场景"，竞争的焦点转向成本、Agent 能力与生态。</p></div>
+    <div class="tl-item reveal"><div class="yr">2026 · 趋势</div><h4>Agent 元年：从"陪聊"到"干活"</h4><p>智谱 GLM-5 登顶全球开源第一、OpenClaw 等智能体产品刷屏出圈，AI 的叙事重心从"生成内容"转向"完成任务"。模型能力趋同后，胜负手变为谁能调度最多工具、跑通最长的任务链。</p></div>
+    <div class="tl-item reveal"><div class="yr">2026 · 趋势</div><h4>推理成本悬崖式下降，Token 经济学兴起</h4><p>推理成本较 2025 年再降一个数量级，推理模型从付费墙后走向全民；中国开源模型持续霸榜 HuggingFace，成为全球开发者首选基座。参数竞赛退潮，"每单位智能的成本"成为新的竞争叙事。</p></div>
+  </div>
+</section>
+<!-- ============ 卷二 中国之路 ============ -->
+<section id="v2">
+  <div class="sec-head reveal">
+    <div class="vol">VOLUME II</div>
+    <h2>卷二 · 中国 AI 之路</h2>
+    <p>从"863 计划"埋下火种，到 DeepSeek 震动全球，中国 AI 用四十年走完了从跟跑到局部领跑的征途。这条路上既有国家工程的恢弘叙事，也有草根工程师的孤勇。</p>
+  </div>
+  <div class="tl">
+    <div class="tl-item reveal"><div class="yr">1980s</div><h4>火种：从 863 计划起步</h4><p>1986 年"863 计划"将智能计算机列入国家高技术研究发展计划；1990 年代，清华大学、中科院相继成立人工智能研究机构。彼时中国与世界差距悬殊，但人才梯队悄然成形。</p></div>
+    <div class="tl-item reveal"><div class="yr">1999</div><h4>科大讯飞：语音突围</h4><p>脱胎于中国科大的科大讯飞成立，以中文语音合成与识别为切口，后来成为中文语音市场的长期霸主，证明了"中文场景"本身就是一条护城河。</p></div>
+    <div class="tl-item reveal"><div class="yr">2011—2014</div><h4>巨头觉醒：百度先行</h4><p>2011 年硅谷"谷歌大脑"启动的次年，百度成立深度学习研究院（IDL），<span class="who">李彦宏</span> 亲自参与对辛顿团队的全球竞价，虽未得手，却请来吴恩达执掌百度大脑。阿里、腾讯随后跟进，中国互联网巨头全面转向 AI。</p></div>
+    <div class="tl-item reveal"><div class="yr">2014—2017</div><h4>视觉四小龙与国家战略</h4><p>商汤、旷视、依图、云从"AI 四小龙"借计算机视觉风口崛起，商汤由 <span class="who">汤晓鸥</span> 创立、一度成为全球估值最高的 AI 独角兽。2017 年国务院发布《新一代人工智能发展规划》，提出 2030 年成为世界主要 AI 创新中心——AI 上升为国家战略。</p></div>
+    <div class="tl-item reveal"><div class="yr">2023</div><h4>百模大战</h4><p>文心一言抢发，通义千问、讯飞星火、智谱 GLM、Kimi 等百余家大模型混战。喧嚣之中也伴随着质疑："套壳"与"重复造轮子"的争论贯穿全年。</p></div>
+    <div class="tl-item reveal"><div class="yr">2023.7</div><h4>盘古气象模型登上《Nature》正刊</h4><p>华为云盘古气象大模型论文登上《Nature》，成为首个精度超越传统数值预报的 AI 模型，速度提升一万倍以上，并上线欧洲中期天气预报中心官网。中国 AI 第一次在基础科学应用上拿到世界级勋章。</p></div>
+    <div class="tl-item reveal"><div class="yr">2025.1</div><h4>DeepSeek 时刻：换道超车</h4><p>量化基金出身的 <span class="who">梁文锋</span> 带领 DeepSeek，用极致的工程效率（MLA 架构、MoE 精细化）在算力受限条件下训练出 R1，成本仅为美国同行的零头，并完全开源。R1 登顶美区 App Store，硅谷惊呼"斯普特尼克时刻"。它证明：限制可以逼出创新，开源可以改写权力格局。</p></div>
+    <div class="tl-item reveal"><div class="yr">2026</div><h4>集群化与上市潮</h4><p>智谱、MiniMax 等大模型公司相继上市，单月亿级融资达 42 起；阿里千问、字节豆包、DeepSeek-V4 构成第一梯队；AI 应用从模型竞赛转入"Agent + 行业落地"的深水区。</p></div>
+  </div>
+</section>
+
+<!-- ============ 卷三 人物列传 ============ -->
+<section id="v3">
+  <div class="sec-head reveal">
+    <div class="vol">VOLUME III</div>
+    <h2>卷三 · 人物列传</h2>
+    <p>历史是技术写的，但标点是人点的。以下十位人物，用各自的选择塑造了 AI 的走向——有人点燃了火，有人试图把火关进笼子。</p>
+  </div>
+  <div class="grid g3">
+    <div class="card reveal"><div class="role">AI 之父 · 悲剧天才</div><h3>艾伦·图灵</h3><p>破解恩尼格玛密码的二战英雄，1950 年提出"机器能思考吗"。1954 年因时代偏见被迫害致死，半个世纪后才获英国王室赦免。今天每一句与 AI 的对话，都是对他问题的回答。</p><div class="quote">"我们只能看到很近的将来，但那里已有足够多的工作要做。"</div></div>
+    <div class="card reveal"><div class="role">深度学习教父</div><h3>杰弗里·辛顿</h3><p>在神经网络最不被看好的三十年里死磕反向传播，2012 年 AlexNet 一战封神，2018 年获图灵奖、2024 年获诺贝尔物理学奖。晚年却成为 AI 风险最响亮的警告者，从谷歌辞职只为"自由地谈论危险"。</p><div class="quote">"我毕生的工作，可能正在创造取代人类的东西。"</div></div>
+    <div class="card reveal"><div class="role">OpenAI 掌舵人</div><h3>山姆·奥特曼</h3><p>19 岁从斯坦福辍学创业，30 岁执掌 YC，2015 年联合创办 OpenAI。2023 年 11 月被董事会罢免、五天后在员工"集体逼宫"中复职——这场宫斗暴露了"加速派"与"安全派"的根本裂痕。他如今手握史上最大规模的算力豪赌。</p><span class="tag2">宫斗</span><span class="tag2">星际之门计划</span></div>
+    <div class="card reveal"><div class="role">技术灵魂 · 出走者</div><h3>伊利亚·苏茨克维</h3><p>AlexNet 作者之一、GPT 系列关键推动者，OpenAI 前首席科学家。他主导了 2023 年罢免奥特曼的董事会行动，又在事后公开表示后悔。2024 年离职创立 Safe Superintelligence（SSI），只做一件事：安全的超级智能。</p><span class="tag2">超级对齐</span><span class="tag2">SSI</span></div>
+    <div class="card reveal"><div class="role">算力之王</div><h3>黄仁勋</h3><p>1993 年创立英伟达，赌上公司命运做 CUDA，把游戏显卡变成 AI 时代的"新石油"。2016 年亲手把第一台 DGX-1 送给 OpenAI 时，没人想到这家公司日后会成为全球市值之王——也没人能预见 2025 年 1 月那个暴跌 17% 的夜晚。</p></div>
+    <div class="card reveal"><div class="role">DeepMind 创始人 · 诺奖得主</div><h3>戴米斯·哈萨比斯</h3><p>神童棋手、游戏设计师、神经科学博士。AlphaGo、AlphaFold 之父——后者预测了两亿多个蛋白质结构，为他赢得 2024 年诺贝尔化学奖。他证明了 AI 不只是聊天工具，更是科学发现的加速器。</p></div>
+    <div class="card reveal"><div class="role">开源旗手 · 深度学习三巨头</div><h3>杨立昆（Yann LeCun）</h3><p>卷积神经网络之父，Meta 首席 AI 科学家，2018 年图灵奖得主。他力主开源路线，Llama 系列成为全球开源生态的地基；同时是大模型路线最激烈的批评者，坚称"仅靠自回归模型到不了 AGI"。</p></div>
+    <div class="card reveal"><div class="role">中国 AI 布道者</div><h3>李彦宏</h3><p>2010 年代初便断言"互联网的下一幕是人工智能"，百度十年千亿投入 AI：IDL、Apollo 自动驾驶、文心大模型。押注最早、争议也最多，但他让中国巨头在 AI 牌桌上始终没有缺席。</p></div>
+    <div class="card reveal"><div class="role">DeepSeek 创始人 · 理想主义者</div><h3>梁文锋</h3><p>浙江大学出身，量化基金幻方量化创始人。用炒股赚来的钱囤下万张 GPU"研究好奇心"，2023 年创立 DeepSeek。他坚持开源、坚持底层创新、不融资不上市，用 560 万美元训练成本撬动了全球 AI 格局。</p><div class="quote">"中国 AI 不可能永远处在跟随的位置。"</div></div>
+    <div class="card reveal"><div class="role">计算机视觉先驱 · 巾帼</div><h3>李飞飞</h3><p>ImageNet 的缔造者——没有她标注的 1400 万张图片，就没有 2012 年深度学习的大爆炸。从洗碗工之女到斯坦福教授，再到空间智能创业，她始终在问同一个问题：如何构建"以人为本的 AI"。</p></div>
+    <div class="card reveal"><div class="role">视觉宗师 · 薪火相传</div><h3>汤晓鸥</h3><p>商汤科技创始人，让中国人脸识别算法首次超越人眼。2023 年 12 月因病逝世，年仅 55 岁。他创办的香港中文大学多媒体实验室被誉为"计算机视觉黄埔军校"，门下学生撑起了中国 AI 视觉的半壁江山。</p></div>
+    <div class="card reveal"><div class="role">安全派领袖</div><h3>达里奥·阿莫代伊</h3><p>因理念分歧于 2020 年带领核心团队离开 OpenAI，创立 Anthropic，Claude 成为"负责任 AI"路线的标杆。他与奥特曼的分道扬镳，是这个行业最深刻路线的分叉口：先跑再说，还是先想清楚再跑。</p></div>
+    <div class="card reveal"><div class="role">AI 教育的普罗米修斯</div><h3>吴恩达（Andrew Ng）</h3><p>谷歌大脑创始人之一、百度前首席科学家、Coursera 创始人。他主讲的机器学习课程让全球数百万人零基础入门 AI——论"把 AI 带给普通人"，无人比他做得更多。如今他倡导"数据为中心"的 AI 与全民 AI 素养教育。</p><div class="quote">"AI 是新的电力。而教育，是让每个人都用上电的电网。"</div></div>
+    <div class="card reveal"><div class="role">Vibe Coding 之父</div><h3>安德烈·卡帕西（Andrej Karpathy）</h3><p>特斯拉前 AI 总监、OpenAI 创始成员。他的公开课是无数工程师的启蒙读物。2025 年他提出"Vibe Coding（氛围编程）"——用自然语言描述意图、让 AI 写代码——这个词一年内风靡全球，直接催生了 DeepSeek Harness 这类框架的土壤，彻底改变了"谁能创造软件"。</p><span class="tag2">Vibe Coding</span><span class="tag2">nanoGPT</span></div>
+    <div class="card reveal"><div class="role">三巨头中最不安的一位</div><h3>约书亚·本吉奥（Yoshua Bengio）</h3><p>2018 年图灵奖得主，深度学习三巨头之一。近年全力转向 AI 安全，公开签署"AI 灭绝风险"联名信，创立 LawZero 研究"不会撒谎的 AI"。他的存在提醒整个行业：最懂这项技术的人，恰恰最敬畏它。</p></div>
+    <div class="card reveal"><div class="role">长文本之王 · 90 后掌门</div><h3>杨植麟</h3><p>月之暗面（Moonshot AI）创始人，Transformer-XL 与 XLNet 的核心作者。他创立的 Kimi 以"长文本"撕开百模大战的缺口，成为现象级应用——一个技术天才带着学术直觉做产品的样本。</p></div>
+    <div class="card reveal"><div class="role">AI 布道者 · 连续创业者</div><h3>李开复</h3><p>从苹果、微软、谷歌中国总裁，到创新工场，再到 2023 年创立零一万物（01.AI）。他 2017 年的《AI·未来》预言了就业重构，此后每年都在为"普通人如何不被 AI 抛下"奔走疾呼。</p></div>
+    <div class="card reveal"><div class="role">中国云计算先知</div><h3>王坚</h3><p>阿里云创始人，中国工程院院士。2009 年在全公司质疑声中坚持自研云计算，"骗子"骂名背了四年。没有他赌来的云底座，就没有后来中国大模型的训练土壤——包括 Qwen 的每一次迭代。</p></div>
+  </div>
+
+  <div class="sec-head reveal" style="margin-top:70px">
+    <div class="vol">EPILOGUE OF VOLUME III</div>
+    <h2 style="font-size:clamp(24px,3vw,36px)">附篇 · 这些人物如何改变了"你"的生活</h2>
+    <p>人物列传不是名人堂。他们每个人做的事，最终都变成了普通人生活里具体的变化：</p>
+  </div>
+  <div class="tblwrap reveal">
+    <table>
+      <tr><th>人物</th><th>他们做的事</th><th>落到你身上的影响</th></tr>
+      <tr><td>奥特曼 / OpenAI</td><td>把大模型装进聊天框，2026 年 GPT-5.6 推理能力免费开放</td><td>不花一分钱，就能拥有一个会"深度思考"的随身顾问——写方案、改简历、辅导孩子作业</td></tr>
+      <tr><td>卡帕西</td><td>提出 Vibe Coding：说人话，AI 写代码</td><td>"我不会编程"不再是借口。本站、本页，都是这一理念的产物——普通人第一次能亲手造软件</td></tr>
+      <tr><td>梁文锋 / DeepSeek</td><td>开源 R1 + Harness 框架，成本打到地板</td><td>大模型从"大公司奢侈品"变成"全民基础设施"：无数国产 App 免费满血接入，你用的每个 AI 功能都在因此变便宜</td></tr>
+      <tr><td>吴恩达</td><td>免费公开课遍布全球</td><td>任何人，无论学历背景，都能系统学会 AI——教育平权是 AI 时代最被低估的慈善</td></tr>
+      <tr><td>李飞飞</td><td>ImageNet 点燃视觉革命，倡导以人为本</td><td>你手机里的人脸解锁、相册自动分类、扫一扫识物，全部源自她铺下的数据基石</td></tr>
+      <tr><td>哈萨比斯</td><td>AlphaFold 破解蛋白质结构</td><td>新药研发周期从十年级缩短到年级——它终将以"更便宜的药、更快上市的疫苗"的形式救你的命</td></tr>
+      <tr><td>辛顿 & 本吉奥</td><td>晚年转向 AI 风险警告</td><td>你看到的每一条内容标注规范、每一次模型发布前的安全评估，背后都有他们推动的制度化力量</td></tr>
+      <tr><td>杨植麟 / Kimi</td><td>把长文本做成国民级产品</td><td>扔给 AI 一整本书、一份百页合同、一年财报——"读完再答"成为普通人触手可及的能力</td></tr>
+    </table>
+  </div>
+</section>
+<!-- ============ 卷四 2026 模型横评 ============ -->
+<section id="v4">
+  <div class="sec-head reveal">
+    <div class="vol">VOLUME IV</div>
+    <h2>卷四 · 2026 最新模型横评</h2>
+    <p>截至 2026 年 8 月的旗舰对决。头部模型之间的差距已收窄到"选谁取决于场景"——推理看 R 系列与 o 系列，编程看 Claude 与 Gemini，性价比与开源看 DeepSeek。</p>
+  </div>
+  <div class="tblwrap reveal">
+    <table>
+      <tr><th>模型</th><th>公司 / 国家</th><th>开放性</th><th>最强项</th><th>一句话点评</th></tr>
+      <tr><td>GPT-5.6（Sol/Terra/Luna）</td><td>OpenAI · 美国</td><td class="closed">闭源</td><td>综合均衡、生态最完整</td><td>7 月发布三档型号；8 月免费用户获无限对话 + Think 推理，普惠力度史无前例</td></tr>
+      <tr><td>Claude Opus 4.x</td><td>Anthropic · 美国</td><td class="closed">闭源</td><td>编程、长文写作、Agent 工具调用</td><td>开发者口碑之王，"写代码最像人类工程师"的模型</td></tr>
+      <tr><td>Gemini 3 / 3.7 Flash</td><td>Google · 美国</td><td class="closed">闭源</td><td>多模态、超长上下文、编码 Agent</td><td>8 月 13 日新发 3.7 Flash 主打"最智能的工作马"，限时半价抢市场</td></tr>
+      <tr><td>DeepSeek-V4 / R2 + Harness</td><td>DeepSeek · 中国</td><td class="os">开源</td><td>推理、极致性价比、Agent 框架</td><td>推理成本比 GPT-5 低约 90%；8 月 13 日开源 Harness 框架（一切皆插件），补齐"模型<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>Agent"最后一公里</td></tr>
+      <tr><td>Llama 4</td><td>Meta · 美国</td><td class="os">开源权重</td><td>开源生态、可定制性</td><td>开源社区的底座，微调与衍生模型数量第一</td></tr>
+      <tr><td>Qwen3.8-Max</td><td>阿里 · 中国</td><td class="os">开源</td><td>全尺寸矩阵、中文能力</td><td>8 月 3 日发布的千问史上最大旗舰，首次开源超大杯，基准分全面补齐，下载量长期霸榜</td></tr>
+      <tr><td>豆包 / Seed 系列</td><td>字节跳动 · 中国</td><td class="closed">闭源</td><td>C 端体验、语音、多模态</td><td>国内用户量最大的 AI 助手，产品化能力标杆</td></tr>
+      <tr><td>Kimi k 系列</td><td>月之暗面 · 中国</td><td class="closed">闭源</td><td>长文本、搜索推理</td><td>长文档处理的代名词，Agent 检索能力持续进化</td></tr>
+    </table>
+  </div>
+  <p class="src">注：模型版本与价格基于 2026 年公开报道归纳，AI 领域迭代极快，请以官方最新发布为准。</p>
+</section>
+
+<!-- ============ 卷五 影响篇 ============ -->
+<section id="v5">
+  <div class="sec-head reveal">
+    <div class="vol">VOLUME V</div>
+    <h2>卷五 · 影响篇：AI 如何重写现实世界</h2>
+    <p>不谈参数，只谈后果。以下每一个领域，AI 都已经留下了可量化的、不可逆的脚印。</p>
+  </div>
+
+  <div class="impact reveal"><div class="num">IMPACT 01 · 文学</div><h3>第一篇获奖的 AI 小说：潘多拉的墨盒</h3>
+    <p>2023 年 10 月，清华大学教授沈阳使用 AIGC 创作的科幻小说《机忆之地》获得江苏省科普科幻作品大赛奖项——文学史上 AI 深度参与创作的作品首次获奖。2024 年 1 月，日本作家九段理江凭《东京都同情塔》摘得芥川奖，并公开承认约 5% 内容由 AI 生成，文学界哗然。</p>
+    <p>冲击是双重的：一端是"AI 亵渎文学"的愤怒，另一端是网文行业的静默革命——AI 辅助日更万字成为流水线标配。争议的共识落点逐渐清晰：<b>机器可以生成文字，但"为什么写、为谁写"仍是人的特权。</b>本项目的《AI 创作纪元》正是这场争论的文学化回应。</p>
+    <div class="fact">关键事实：2023《机忆之地》首奖 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 2024 芥川奖《东京都同情塔》<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 2026 年主流网文平台普遍要求标注 AI 辅助比例。</div>
+  </div>
+
+  <div class="impact reveal"><div class="num">IMPACT 02 · 财富</div><h3>AI 赚钱：新淘金热与重排的牌桌</h3>
+    <p>AI 制造了 21 世纪最陡峭的财富曲线：英伟达三年内市值从数千亿冲上全球之巅；OpenAI 估值突破数千亿美元；2026 年 1 月中国 AI 领域亿级以上融资达 42 起，智谱、MiniMax 相继上市，阶跃星辰单笔融资超 50 亿元。</p>
+    <p>但同一枚硬币的另一面：2025 年 1 月 27 日，DeepSeek-R1 让英伟达单日蒸发约 5900 亿美元——<b>人类股市史上最大的单日市值蒸发</b>。AI 时代的财富逻辑第一次被"效率"而非"垄断算力"撼动。应用层同样疯狂：AI 代写、AI 视频、AI 数字人构成草根创富新赛道，"一人公司"借助 AI 杠杆成为真实存在的商业形态。</p>
+    <div class="fact">关键事实：DeepSeek 以约 560 万美元训练成本，挑落数万亿美元的"算力神坛"叙事。</div>
+  </div>
+
+  <div class="impact reveal"><div class="num">IMPACT 03 · 内容生态</div><h3>AI 博文与内容洪水：注意力的通胀</h3>
+    <p>AI 让"写一篇像模像样的文章"的边际成本趋近于零。结果是内容供给侧的大洪水：营销号批量产文、AI 稿件充斥信息流、平台被迫上线 AIGC 检测与标注系统。</p>
+    <p>内容行业由此完成一次价值重排：<b>信息整合型写作迅速贬值，第一手经验、独家观点、人格化表达大幅升值。</b>媒体机构一边用 AI 自动生成财报与赛事简讯，一边把更多资源压向调查报道与深度特稿。对普通创作者的启示直白而残酷：别和机器比产量，要和机器比"只有你能说的话"。</p>
+    <div class="fact">关键事实：主流平台（公众号、知乎、B站等）均已上线 AI 内容标注规范；"AI 味"成为读者最敏感的低质信号。</div>
+  </div>
+
+  <div class="impact reveal"><div class="num">IMPACT 04 · 气象</div><h3>AI 天气：从超算机房到秒级预报</h3>
+    <p>这是 AI 最没有争议、最纯粹的胜利。2023 年 7 月，<b>华为云盘古气象大模型登上《Nature》正刊</b>：首个精度超越传统数值预报的 AI 模型，速度提升一万倍以上——把超算数小时的全球预报压缩到秒级，并上线欧洲中期天气预报中心（ECMWF）官网。谷歌 DeepMind 的 GraphCast 同期在 90% 的检验指标上超越最权威的传统系统。</p>
+    <p>此后上海人工智能实验室"风乌"、复旦"伏羲"相继跟进，中国形成气象大模型集群。到 2026 年，AI 预报已深入台风路径预测与极端天气预警——它直接关系着灾害面前的生命。</p>
+    <div class="fact">关键事实：AI 预报不模拟物理方程，而是从数十年观测数据中"学会"大气的脾气——方法论上的范式革命。</div>
+  </div>
+
+  <div class="impact reveal"><div class="num">IMPACT 05 · 就业</div><h3>AI 与饭碗：创造性破坏进行时</h3>
+    <p>2026 年全球就业报告给出一组矛盾又真实的数字：AI 相关岗位新增约 1200 万，被重组或消失的岗位约 800 万。普华永道《2026 全球 AI 就业报告》的结论是：<b>AI 加速技能转型而非简单替代</b>——掌握 AI 工具的劳动者薪资溢价显著，岗位内容的重组快于岗位的消失。</p>
+    <p>消失最多的是：初级文案、基础翻译、模板化设计、简单客服与代码 CRUD；增长最快的是：AI 训练师、提示词工程师、Agent 流程设计师、AI 伦理审计，以及一切"AI + 垂直行业"的复合岗位。历史没有重复，但押韵——如同汽车消灭马车夫却创造了整个公路文明。</p>
+    <div class="fact">关键事实：2025 年市场薪酬整体下行时，AI 相关岗位降幅更小、高薪占比优势明显（腾讯研究院 × 劳动经济学会报告）。</div>
+  </div>
+
+  <div class="impact reveal"><div class="num">IMPACT 06 · 科学</div><h3>AI for Science：第四种科研范式</h3>
+    <p>AlphaFold 预测两亿多个蛋白质结构，把生物学五十年的难题压缩成几年；2024 年诺贝尔物理学奖与化学奖双双颁给 AI 相关研究，史无前例。AI 正在成为继实验、理论、计算之后的"第四科研范式"：从气象到材料、从药物到数学猜想证明。</p>
+    <div class="fact">关键事实：2024 年辛顿获诺贝尔物理学奖、哈萨比斯获诺贝尔化学奖——AI 第一次以"科学本身"而非"科学工具"的身份加冕。</div>
+  </div>
+</section>
+
+<!-- ============ 卷六 未来 ============ -->
+<section id="v6">
+  <div class="sec-head reveal">
+    <div class="vol">VOLUME VI</div>
+    <h2>卷六 · 未来简史</h2>
+    <p>如果过去七十六年教会我们什么，那就是：预测 AI 的人总是错的——错在低估了它。</p>
+  </div>
+  <div class="grid g3">
+    <div class="card reveal"><div class="role">趋势一</div><h3>Agent 成为新操作系统</h3><p>AI 从"对话框里的顾问"变成"替你干活的数字员工"。2026 年之后，竞争的不再是模型本身，而是谁能调度最多的工具、完成最长的任务链。</p></div>
+    <div class="card reveal"><div class="role">趋势二</div><h3>物理 AI 与世界模型</h3><p>智能从屏幕走向现实：自动驾驶、人形机器人、世界模型（如 Momenta 等公司押注的路线）让 AI 开始理解并操作物理世界。</p></div>
+    <div class="card reveal"><div class="role">趋势三</div><h3>能源与算力的终极博弈</h3><p>万亿参数模型背后是吉瓦级的电力需求。DeepSeek 式效率革命与"星际之门"式算力扩张将长期并存，能源成为 AI 竞赛的隐藏变量。</p></div>
+    <div class="card reveal"><div class="role">趋势四</div><h3>开源与闭源的拉锯</h3><p>DeepSeek 证明开源可以逼近甚至追平闭源，Llama 与 Qwen 构成开放生态。权力的天平在"集中"与"普惠"之间持续摇摆。</p></div>
+    <div class="card reveal"><div class="role">趋势五</div><h3>治理与安全的制度化</h3><p>从欧盟 AI 法案到各国备案制度，从 SSI 的"超级对齐"到内容标注规范——AI 治理正从口号变成法律、标准与职业。</p></div>
+    <div class="card reveal"><div class="role">趋势六</div><h3>人的重新定义</h3><p>当技能全面平权，"提出好问题的能力""真实的生命经验""承担责任的意愿"成为人类最后的、也是最初的护城河。</p></div>
+  </div>
+
+  <div class="callout reveal">
+    <h3>历史不会记住模型，<span>历史只记住用模型改变了什么的人</span></h3>
+    <p>1956 年达特茅斯的先驱们无法想象 ChatGPT，正如今天的我们无法想象 2076 年。
+    唯一确定的是：每一个时代最精彩的作品，都出自最先学会与新工具共舞的人。
+    回到主站，开始属于你的那一页。</p>
+    <p style="margin-top:22px"><a href="./index.html" style="color:var(--gold);text-decoration:none;border:1px solid rgba(245,194,107,.5);padding:12px 32px;border-radius:12px;display:inline-block"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回 AI 创作纪元主站</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">AI 全景编年史</div>
+  <p style="margin-top:10px">资料来源：公开新闻报道、学术期刊（Nature）、机构报告（普华永道 / 腾讯研究院 / 上海科技大学 CEISD）等，经归纳整理 · 2026</p>
+</footer>
+
+<script>
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

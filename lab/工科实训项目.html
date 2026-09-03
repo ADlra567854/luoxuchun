@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  9 分钟 实验室 工科实训项目（真动手清单） 从&amp;quot;看懂了&amp;quot;到&amp;quot;做出来&amp;quot;，这些项目都能在本目录或免费开源工具里完成。">
+<meta name="keywords" content="工科实训项目,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  9 分钟 实验室 工科实训项目（真动手清单） 从&quot;看懂了&quot;到&quot;做出来&quot;，这些项目都能在本目录或免费开源工具里完成。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工科实训项目 · AI 创作纪元（离线版）</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:12px;color:#e8dcbe;margin:20px 0;font-size:14.5px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:12px;margin:14px 0}
+</style><link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/%E5%B7%A5%E7%A7%91%E5%AE%9E%E8%AE%AD%E9%A1%B9%E7%9B%AE.html">
+<meta property="og:title" content="工科实训项目 · AI 创作纪元（离线版）">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/%E5%B7%A5%E7%A7%91%E5%AE%9E%E8%AE%AD%E9%A1%B9%E7%9B%AE.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="工科实训项目 · AI 创作纪元（离线版）">
+<meta name="twitter:description" content=" 白驹 · 全局大脑 · 科学实验室  2026-08-21  9 分钟 实验室 工科实训项目（真动手清单） 从&amp;quot;看懂了&amp;quot;到&amp;quot;做出来&amp;quot;，这些项目都能在本目录或免费开源工具里完成。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<nav><div class="logo">AI 创作纪元 · 离线版</div><a href="../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-lab-工科实训项目.png" alt="工科实训项目 · AI 创作纪元（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>9 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>工科实训项目（真动手清单）</h1>
+<blockquote>
+<p>从&quot;看懂了&quot;到&quot;做出来&quot;，这些项目都能在本目录或免费开源工具里完成。</p>
+</blockquote>
+<h2>1. 机械/控制类</h2>
+<ul>
+<li><strong>PID 温控仿真</strong>：用 <code>01_pid_controller.py</code> 改造，加噪声、调参，观察超调。</li>
+<li><strong>倒立摆/小车</strong>：用 Gazebo + ROS 仿真，再学 PID/LQR。</li>
+<li><strong>弹簧振子</strong>：改 <code>02</code> 参数，验证阻尼比对衰减的影响。</li>
+</ul>
+<h2>2. 电气/电子类</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-工科实训项目.png" alt="工科实训项目 · AI 创作纪元（离线版） · 2. 电气/电子类" loading="lazy"></figure>
+
+<ul>
+<li><strong>RC/RL 暂态</strong>：跑 <code>04_rc_circuit.py</code>，再用 ngspice 画同一条曲线对比。</li>
+<li><strong>放大电路</strong>：LTspice 搭共射放大电路，仿真增益与频率响应。</li>
+<li><strong>PCB 设计</strong>：KiCad 画一块最小系统板。</li>
+</ul>
+<h2>3. 数控/制造类</h2>
+<ul>
+<li><strong>G 代码仿真</strong>：把本目录 3 个 .nc 拖进 CNCjs/NC Viewer 看刀路。</li>
+<li><strong>生成一个零件</strong>：让 AI 生成一个&quot;六边形法兰&quot;的 G 代码，逐行复核、仿真。</li>
+<li><strong>3D 打印</strong>：学切片软件（Cura/PrusaSlicer），打一个机械零件。</li>
+</ul>
+<h2>4. 编程/数据类</h2>
+<ul>
+<li><strong>物理仿真库</strong>：把 5 个仿真脚本整合成一个带命令行参数的 <code>simlab.py</code>。</li>
+<li><strong>测试驱动</strong>：给每个仿真补 pytest 测试，覆盖边界条件。</li>
+<li><strong>可视化</strong>：用 matplotlib 给仿真画曲线、动画。</li>
+</ul>
+<h2>5. 综合实训（毕业级）</h2>
+<ul>
+<li><strong>数字孪生小系统</strong>：选一个简单系统（如水箱液位），建模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Python 仿真 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 用 PID 控制 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 写成带测试的完整项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 写成报告。</li>
+<li>全程让 AI 结对：DeepSeek 出方案、Cursor 写码、AI 查错，你负责理解与拍板。</li>
+</ul>
+<blockquote>
+<p>每完成一个，就写一篇&quot;实训报告&quot;（目的/原理/步骤/结果/反思），这才是真正的工科实训闭环。</p>
+</blockquote>
+</article>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body></html>

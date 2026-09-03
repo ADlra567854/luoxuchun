@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="工科实训实验室 返回主站 作品库  真能跑 · 真能下载 · 真能实践 编程 / 计算机 / 数控编程 / 工科实训 / 仿真模拟 / 仿真测试——每段代码都可直接运行，每个工具都是开源开箱即用。">
+<meta name="keywords" content="工科实训实验室,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta name="description" content="工科实训实验室 返回主站 作品库  真能跑 · 真能下载 · 真能实践 编程 / 计算机 / 数控编程 / 工科实训 / 仿真模拟 / 仿真测试——每段代码都可直接运行，每个工具都是开源开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工科实训实验室 · AI 创作纪元</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --green:#2fd17b;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.8}
+a{color:var(--cyan);text-decoration:none}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(6,8,15,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:17px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links a{color:var(--muted);margin-left:18px;font-size:14px}
+.nav-links a:hover{color:var(--cyan)}
+.hero{padding:70px 24px 40px;text-align:center;background:radial-gradient(900px 460px at 50% -10%,rgba(79,140,255,.14),transparent 60%),var(--bg)}
+.hero h1{font-size:clamp(28px,4.5vw,50px);font-weight:900}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:760px;margin:16px auto 0}
+.wrap{max-width:1080px;margin:0 auto;padding:20px 20px 80px}
+.sec{margin:34px 0}
+.sec h2{font-size:24px;margin-bottom:16px;color:var(--cyan)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;transition:.2s}
+.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.card b{display:block;font-size:15px;margin-bottom:6px}
+.card code{font-size:12px;color:var(--green);background:#0b1224;border:1px solid var(--line);padding:1px 6px;border-radius:5px;display:inline-block;margin-bottom:6px}
+.card p{font-size:13px;color:var(--muted)}
+.card .links{margin-top:8px;display:flex;gap:10px;flex-wrap:wrap}
+.card .links a{font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid var(--line);background:#0b1224;color:var(--cyan);transition:.15s}
+.card .links a:hover{border-color:var(--cyan);background:rgba(56,225,255,.08)}
+.guide{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.guide a{font-weight:700}
+</style>
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/index.html">
+<meta property="og:title" content="工科实训实验室 · AI 创作纪元">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/lab/index.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="工科实训实验室 · AI 创作纪元">
+<meta name="twitter:description" content="工科实训实验室 返回主站 作品库  真能跑 · 真能下载 · 真能实践 编程 / 计算机 / 数控编程 / 工科实训 / 仿真模拟 / 仿真测试——每段代码都可直接运行，每个工具都是开源开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<nav>
+  <div class="logo">工科实训实验室</div>
+  <div class="nav-links"><a href="../website/index.html">返回主站</a><a href="../website/works.html">作品库</a></div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>真能跑 · 真能下载 · <span>真能实践</span></h1>
+  <p>编程 / 计算机 / 数控编程 / 工科实训 / 仿真模拟 / 仿真测试——每段代码都可直接运行，每个工具都是开源开箱即用。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+</header>
+
+<main class="wrap">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-lab-index.png" alt="工科实训实验室 · AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+  <section class="sec">
+    <h2><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>可直接运行的仿真脚本</h2>
+    <p style="margin-bottom:12px"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>不想装 Python？直接打开 <a href="simlab.html" style="color:var(--green);font-weight:700">网页版一键仿真 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>（滑杆调参，实时出曲线图）</p>
+    <div class="grid">
+      <div class="card"><b>PID 控制器仿真</b><code>python 01_pid_controller.py</code><p>自动控制原理，P/PI/PID 对比，输出稳态误差/超调/稳定时间。</p><div class="links"><a href="simulation/01_pid_controller.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div></div>
+      <div class="card"><b>弹簧-质量-阻尼</b><code>python 02_spring_mass_damper.py</code><p>机械振动二阶系统，输出固有频率/阻尼比/周期。</p><div class="links"><a href="simulation/02_spring_mass_damper.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div></div>
+      <div class="card"><b>抛体运动</b><code>python 03_projectile.py</code><p>理论力学，含空气阻力，射程与理论值对照。</p><div class="links"><a href="simulation/03_projectile.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div></div>
+      <div class="card"><b>RC 电路暂态</b><code>python 04_rc_circuit.py</code><p>电路时间常数 τ=RC，63.2%/95%/99.3% 关键点验证。</p><div class="links"><a href="simulation/04_rc_circuit.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div></div>
+      <div class="card"><b>蒙特卡洛</b><code>python 05_monte_carlo.py</code><p>估算 π 与定积分，验证误差 ~1/√N 规律。</p><div class="links"><a href="simulation/05_monte_carlo.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div></div>
+      <div class="card"><b>仿真测试</b><code>pytest test_simulation.py -v</code><p>用理论值校验 10 个仿真脚本正确性（13 项断言）。</p><div class="links"><a href="simulation/test_simulation.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div></div>
+      <div class="card"><b>单摆</b><code>python 06_single_pendulum.py</code><p>非线性振动，大角度周期延长修正。</p><div class="links"><a href="simulation/06_single_pendulum.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div></div>
+      <div class="card"><b>直流电机</b><code>python 07_dc_motor.py</code><p>电气+机械耦合启动，堵转电流与稳态对照。</p><div class="links"><a href="simulation/07_dc_motor.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div></div>
+      <div class="card"><b>一维热传导</b><code>python 08_heat_equation.py</code><p>显式差分 PDE，稳定性条件 r ≤ 0.5。</p><div class="links"><a href="simulation/08_heat_equation.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div></div>
+      <div class="card"><b>捕食者-猎物</b><code>python 09_lotka_volterra.py</code><p>生态振荡模型，观察相位滞后关系。</p><div class="links"><a href="simulation/09_lotka_volterra.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div></div>
+      <div class="card"><b>一维波动</b><code>python 10_wave_equation.py</code><p>波动方程差分，CFL 条件与反射现象。</p><div class="links"><a href="simulation/10_wave_equation.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div></div>
+    </div>
+    <p style="margin-top:14px"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>每个脚本都看不懂代码？看 <a href="simulation/仿真脚本图文讲解.html">《仿真脚本图文讲解》<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>（10 篇全解：原理图 + 代码逐行 + 参数表 + 真实输出 + 避坑）</p>
+    <p style="margin-top:8px"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>想用工业级软件干真活？看 <a href="simulation/开源仿真工具-一键安装与第一个案例.html">《开源仿真工具进阶案例》<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>（FreeCAD/KiCad/Gazebo/LTspice/OpenFOAM 各 2-3 个能干活的案例）</p>
+  </section>
+
+  <section class="sec">
+    <h2><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>数控 G 代码（可下载）</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-index.png" alt="工科实训实验室 · AI 创作纪元 · " loading="lazy"></figure>
+
+    <div class="grid">
+      <a class="card" href="cnc/01_方形轮廓.nc"><b>方形轮廓</b><p>G0/G1 直线铣削示例。</p></a>
+      <a class="card" href="cnc/02_圆形轮廓.nc"><b>圆形轮廓</b><p>G2 圆弧插补示例。</p></a>
+      <a class="card" href="cnc/03_钻孔循环.nc"><b>钻孔循环</b><p>G81 钻孔循环示例。</p></a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>学习路线与开源工具</h2>
+    <div class="guide"><a href="programming/编程与计算机学习路线.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>编程与计算机学习路线</a> —— 从零到能用 AI 结对写代码</div>
+    <div class="guide"><a href="algorithms/算法与数据结构入门.html"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>算法与数据结构</a> —— 排序/查找/栈队列/图/动态规划（5 个可跑脚本）</div>
+    <div class="guide"><a href="ml/机器学习入门.html"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>机器学习入门</a> —— 线性回归/KNN/KMeans（纯 Python 可跑）</div>
+    <div class="guide"><a href="numerical/数值计算入门.html"><i class="cc-ic" data-ic="list" aria-hidden="true"></i>数值计算</a> —— 牛顿法/龙格库塔/数值积分/最小二乘/插值</div>
+    <div class="guide"><a href="modeling/数学建模入门.html"><i class="cc-ic" data-ic="ruler" aria-hidden="true"></i>数学建模</a> —— 建模六步 + 微分方程模型 + 国赛美赛</div>
+    <div class="guide"><a href="cnc/数控编程与开源工具.html"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>数控编程与开源工具</a> —— CNCjs / UGS / GRBL / LinuxCNC</div>
+    <div class="guide"><a href="simulation/仿真模拟与开源工具.html"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>仿真模拟与开源工具</a> —— ngspice / Octave / OpenModelica / Gazebo / KiCad</div>
+    <div class="guide"><a href="工科如何学.html"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>工科如何学</a> —— 数学是语言、物理是直觉、项目驱动</div>
+    <div class="guide"><a href="工科实训项目.html"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工科实训项目</a> —— 5 大类真动手清单</div>
+    <div class="guide"><a href="cicd/持续集成与部署指南.html"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>持续集成与部署（CI/CD）</a> —— GitHub Actions 自动跑 pytest + 自动部署网站</div>
+  </section>
+</main>
+<script src="/ccowork.js?v=19"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js"></script>
+</body>
+</html>

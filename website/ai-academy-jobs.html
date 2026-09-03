@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="AI 时代岗位地图：提示词工程师、Agent 开发、RAG 工程师、微调工程师、数据分析师、多模态工程师等岗位的技能栈、薪资与学习路径。">
+<meta name="keywords" content="岗位地图  · AI 学院,AI 学院,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="岗位地图 · AI 学院 · 白驹全局大脑">
+<meta name="description" content="AI 时代岗位地图：提示词工程师、Agent 开发、RAG 工程师、微调工程师、数据分析师、多模态工程师等岗位的技能栈、薪资与学习路径。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>岗位地图 · AI 学院 · 白驹全局大脑</title>
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<style>
+.hero{position:relative;overflow:hidden;background:var(--hero-grad);padding:56px 24px 44px}
+.hero::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:260px;height:260px;bottom:-80px;left:-60px;border-radius:50%;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%);pointer-events:none}
+.hero .inner{position:relative;max-width:1080px;margin:0 auto;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(30px,4.5vw,52px);font-weight:900;color:#fff;margin:14px 0 12px;letter-spacing:1px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+.hero .sub{color:rgba(255,255,255,.95);font-size:15px;max-width:760px;margin:0 auto;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.hero img.heroimg{width:min(520px,82%);border-radius:18px;margin:26px auto 0;box-shadow:0 14px 40px rgba(16,48,120,.35);display:block}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow)}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35)}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;flex-wrap:wrap;overflow-x:auto;scrollbar-width:none}
+nav.top .links a{padding:9px 13px;border-radius:9px;font-size:14px;color:var(--muted);font-weight:600;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+nav.top .theme-btn{width:38px;height:38px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer}
+section.block{max-width:1180px;margin:36px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:99px}
+table{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th{background:var(--grad);color:#fff;padding:10px 14px;text-align:left;font-weight:700}
+td{padding:9px 14px;border-top:1px solid var(--line);vertical-align:top}
+td a{color:var(--blue);font-weight:600}
+body[data-theme="deep"] td a{color:var(--cyan)}
+.job-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-top:18px}
+.job{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.job h4{font-size:15px;font-weight:800;margin-bottom:6px}
+.job p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.job .chs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.job .chs span{font-size:11px;color:var(--blue);background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:99px;padding:3px 10px;font-weight:600}
+body[data-theme="deep"] .job .chs span{color:var(--cyan)}
+.note{background:rgba(120,160,220,.08);border:1px solid rgba(120,160,220,.2);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--muted);margin-top:14px}
+</style>
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-academy-jobs.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/ai-academy-jobs.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="岗位地图 · AI 学院 · 白驹全局大脑">
+<meta name="twitter:description" content="AI 时代岗位地图：提示词工程师、Agent 开发、RAG 工程师、微调工程师、数据分析师、多模态工程师等岗位的技能栈、薪资与学习路径。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud">
+
+<nav class="top">
+  <div class="brand"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><span class="nm">白驹 · ccowork</span></div>
+  <div class="links">
+    <a href="./index.html"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>首页</a>
+    <a href="./hub.html"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>知识库</a>
+    <a href="./ai-academy.html" class="cur"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 学院</a>
+    <a href="./agent.html"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>智能体</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="切换亮暗主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="inner">
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · AI 学院 · 岗位地图</div>
+    <h1>AI 时代岗位全景</h1>
+    <p class="sub">从提示词工程师到微调部署工程师：技能栈、参考薪资、对应章节一图看清。找到你的目标岗位，反推学习路径。</p>
+    <img class="heroimg" src="ai-academy/assets/jobs.png" alt="AI 岗位地图">
+  </div>
+</section>
+
+<section class="block" id="jobs">
+  <div class="sec-head"><h2><span class="em">岗位速览</span></h2><span class="tag">技能 · 薪资 · 学习路径</span></div>
+  <table>
+    <thead><tr><th>岗位</th><th>核心技能</th><th>参考薪资</th><th>对应章节 / 认证</th></tr></thead>
+    <tbody>
+      <tr><td><b>提示词工程师</b></td><td>提示词工程 / 角色设定 / 评测迭代 / 场景设计</td><td>8-15K</td><td><a href="ai-academy/chapter-17.html">17-18</a> · <a href="ai-academy-cert.html">CERT 01</a></td></tr>
+      <tr><td><b>数据分析师</b></td><td>Python / SQL / AI 辅助分析 / 数据可视化</td><td>10-14K</td><td><a href="ai-academy/chapter-22.html">22</a> + <a href="ai-academy/chapter-23.html">23</a></td></tr>
+      <tr><td><b>Agent 开发工程师</b></td><td>LangChain / LangGraph / 多智能体 / 工具调用</td><td>18-20K</td><td><a href="ai-academy/chapter-04.html">04-16</a> · <a href="ai-academy-cert.html">CERT 02</a></td></tr>
+      <tr><td><b>RAG 应用工程师</b></td><td>Embedding / 向量库 / 检索优化 / 幻觉抑制</td><td>15-20K</td><td><a href="ai-academy/chapter-19.html">19</a> · <a href="ai-academy-cert.html">CERT 03</a></td></tr>
+      <tr><td><b>大模型微调/部署工程师</b></td><td>LoRA / 量化 / Ollama / 推理优化 / 成本控制</td><td>20-35K</td><td><a href="ai-academy/chapter-20.html">20</a> · <a href="ai-academy-cert.html">CERT 04</a></td></tr>
+      <tr><td><b>多模态 / AIGC 工程师</b></td><td>Stable Diffusion / 文生视频 / CV / 数字人</td><td>15-20K</td><td><a href="ai-academy/chapter-21.html">21</a></td></tr>
+      <tr><td><b>AI 产品经理</b></td><td>需求分析 / 场景设计 / 全站认知 / 协作</td><td>15-30K</td><td><a href="ai-academy/chapter-24.html">24</a> · 全站章节</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>薪资为一线城市参考区间（2026 市场行情），随经验与城市浮动；核心是「作品 + 能力」而不是数字。</div>
+</section>
+
+<section class="block" id="detail">
+  <div class="sec-head"><h2><span class="em">岗位详解</span></h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-ai-academy-jobs.png" alt="岗位地图 · AI 学院 · 白驹全局大脑 · " loading="lazy"></figure>
+<span class="tag">挑一个方向深耕</span></div>
+  <div class="job-grid">
+    <div class="job"><h4><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>提示词工程师</h4><p>最友好的入门岗。把业务需求翻译成高质量提示词，设计评估与迭代流程。</p><div class="chs"><span>会提问</span><span>懂业务</span><span>会评测</span></div></div>
+    <div class="job"><h4><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>Agent 开发工程师</h4><p>智能体应用的主力岗位，规划、工具调用、记忆、编排全都要会。</p><div class="chs"><span>LangChain</span><span>LangGraph</span><span>多智能体</span></div></div>
+    <div class="job"><h4><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>RAG 应用工程师</h4><p>企业知识库问答的核心岗位，向量检索 + 生成优化两手抓。</p><div class="chs"><span>Embedding</span><span>向量库</span><span>幻觉抑制</span></div></div>
+    <div class="job"><h4><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>微调/部署工程师</h4><p>偏工程化的专家岗，私有化部署 + 微调 + 量化 + 成本优化。</p><div class="chs"><span>LoRA</span><span>Ollama</span><span>量化</span></div></div>
+    <div class="job"><h4><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>数据分析师</h4><p>AI 辅助的数据分析，把 SQL/Excel/可视化玩到极致。</p><div class="chs"><span>Python</span><span>SQL</span><span>可视化</span></div></div>
+    <div class="job"><h4><i class="cc-ic" data-ic="image" aria-hidden="true"></i>多模态/AIGC 工程师</h4><p>图像、视频、音频生成的全栈创作，作品即简历。</p><div class="chs"><span>SD</span><span>文生视频</span><span>数字人</span></div></div>
+  </div>
+</section>
+
+<section class="block" id="strategy">
+  <div class="sec-head"><h2><span class="em">求职策略</span></h2><span class="tag">作品 · 简历 · 面试</span></div>
+  <table>
+    <thead><tr><th>环节</th><th>怎么做</th></tr></thead>
+    <tbody>
+      <tr><td><b>作品集</b></td><td>完成 2-3 个 <a href="ai-academy-projects.html">毕业设计项目</a>，每个配 README + 演示截图 + 一句话价值主张。</td></tr>
+      <tr><td><b>简历</b></td><td>用 <a href="ai-academy/chapter-23.html">AI 职场实战</a> 里的方法让 AI 帮你优化简历，量化成果（提升 XX%）。</td></tr>
+      <tr><td><b>面试</b></td><td>刷 <a href="ai-academy-interview.html">面试题库</a>，重点：ReAct 流程、RAG 原理、微调对比、多智能体协作。</td></tr>
+      <tr><td><b>学习路线</b></td><td>还没定方向？先走 <a href="ai-academy-roadmap.html">14 周路线图</a>，第 7 周后再选岗深耕。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="logo-row"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><b>白驹 · ccowork</b></div>
+      <p>AI 学院岗位地图：看清方向，再出发。</p>
+    </div>
+    <div class="foot-col">
+      <b>课程</b>
+      <a href="./ai-academy.html">AI 学院首页</a>
+      <a href="ai-academy-roadmap.html">学习路线图</a>
+      <a href="ai-academy-cert.html">认证体系</a>
+    </div>
+    <div class="foot-col">
+      <b>资源</b>
+      <a href="ai-academy-interview.html">面试题库</a>
+      <a href="ai-academy-projects.html">毕业设计项目库</a>
+    </div>
+  </div>
+  <div class="foot-bar">
+    <span>© 2026 ccowork · 白驹全局大脑 · AI 学院</span>
+    <span>Datawhale Hello-Agents 开源教程 · MIT License</span>
+  </div>
+</footer>
+
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

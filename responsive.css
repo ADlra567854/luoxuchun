@@ -1,0 +1,154 @@
+/* ============================================================
+   responsive.css · 多端适配框架 v1
+   手机 / 平板 / 折叠屏(双屏铰链) / 桌面
+   竖屏 ⇄ 横屏 · 安全区 · 设备预览切换器
+   设计原则：低特异性 + 可叠加，不破坏各页原有内联样式。
+   ============================================================ */
+
+/* ---------- 0. 安全区 & 全局基线 ---------- */
+:root{
+  --safe-t: env(safe-area-inset-top, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-l: env(safe-area-inset-left, 0px);
+}
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+img, video, canvas, svg, iframe, table, pre{ max-width:100%; }
+img, video{ height:auto; }
+*{ -webkit-tap-highlight-color:transparent; }
+
+/* 触屏设备：最小可点区域 44px，避免误触 */
+@media (pointer:coarse){
+  a, button, .btn, .nav-links a, [role="button"]{ min-height:44px; min-width:44px; }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; }
+}
+
+/* ---------- 1. 视口高度：svh/dvh 修正移动端地址栏跳动 ---------- */
+.hero{ min-height:100svh; min-height:100dvh; }
+
+/* ---------- 2. 折叠屏 / 双屏（铰链）适配 ----------
+   JS 检测到分段屏后给 <html> 加 .seg-h / .seg-v，
+   这里为铰链两侧留出 env() 安全留白。 */
+html.seg-h body{ padding-left:env(fold-left-width,0px); padding-right:env(fold-right-width,0px); }
+html.seg-v body{ padding-top:env(fold-top-height,0px); padding-bottom:env(fold-bottom-height,0px); }
+/* 分屏时主容器避开铰链 */
+@media (horizontal-viewport-segments:2){
+  main, .wrap, .container, #app, article, .content{
+    padding-left:max(env(safe-area-inset-left,0px), env(fold-left-width,0px));
+    padding-right:max(env(safe-area-inset-right,0px), env(fold-right-width,0px));
+  }
+}
+@media (vertical-viewport-segments:2){
+  main, .wrap, .container, #app, article, .content{
+    padding-top:max(env(safe-area-inset-top,0px), env(fold-top-height,0px));
+    padding-bottom:max(env(safe-area-inset-bottom,0px), env(fold-bottom-height,0px));
+  }
+}
+
+/* ---------- 3. 平板 / 折叠屏展开 宽度带（600–900） ---------- */
+@media (min-width:600px) and (max-width:900px){
+  section{ padding-left:30px; padding-right:30px; }
+  .g2{ grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  .stats{ gap:40px; }
+}
+
+/* ---------- 4. 横屏（手机横放）专属压缩 ---------- */
+@media (orientation:landscape) and (max-width:920px){
+  .hero{ padding-top:80px; padding-bottom:30px; min-height:auto; }
+  nav{ padding-top:9px; padding-bottom:9px; }
+  .stats{ margin-top:30px; gap:26px; }
+  section{ padding-top:52px; padding-bottom:52px; }
+  .sec-head{ margin-bottom:32px; }
+}
+
+/* ---------- 5. 通用栅格工具类（按需使用） ---------- */
+.md-row{ display:flex; flex-wrap:wrap; gap:16px; }
+.md-col{ display:flex; flex-direction:column; gap:16px; }
+.md-hide{ display:none !important; }
+@media (max-width:599px){ .md-hide-phone{ display:none !important; } }
+@media (min-width:600px){ .md-hide-wide{ display:none !important; } }
+
+/* ---------- 6. 移动端导航（汉堡菜单） ---------- */
+.md-burger{ display:none; }
+@media (max-width:900px){
+  .md-burger{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border-radius:11px; cursor:pointer; margin-left:auto;
+    border:1px solid var(--line,#1e2a44); background:rgba(255,255,255,.04);
+    color:var(--text,#e8eefc); font-size:20px; line-height:1;
+  }
+  .md-burger:hover, .md-burger:active{ border-color:var(--cyan,#38e1ff); color:var(--cyan,#38e1ff); }
+  .md-mobile-menu{
+    position:fixed; top:0; right:0; height:100dvh; width:min(82vw,340px);
+    background:rgba(8,12,22,.98); backdrop-filter:blur(18px);
+    border-left:1px solid var(--line,#1e2a44); z-index:9995;
+    transform:translateX(106%); transition:transform .32s cubic-bezier(.4,0,.2,1);
+    padding:84px 20px 28px; overflow:auto;
+  }
+  body.md-menu-open .md-mobile-menu{ transform:none; }
+  .md-mobile-menu a{
+    display:flex; align-items:center; gap:12px; padding:14px 14px; margin-bottom:4px;
+    color:var(--text,#e8eefc); text-decoration:none; border-radius:12px; font-size:16px;
+    border:1px solid transparent;
+  }
+  .md-mobile-menu a:hover, .md-mobile-menu a:active{
+    background:rgba(79,140,255,.12); border-color:rgba(79,140,255,.4); color:var(--cyan,#38e1ff);
+  }
+  .md-mobile-menu .md-mm-title{
+    color:var(--muted,#8fa0c4); font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    margin:18px 14px 6px;
+  }
+  .md-scrim{ position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9994;
+    opacity:0; pointer-events:none; transition:opacity .3s; }
+  body.md-menu-open .md-scrim{ opacity:1; pointer-events:auto; }
+  nav{ padding-left:18px; padding-right:18px; }
+}
+
+/* ---------- 7. 设备预览切换器（底部悬浮控件） ---------- */
+#mdPrev{
+  position:fixed; left:50%; bottom:18px; transform:translateX(-50%); z-index:9998;
+  display:flex; gap:6px; flex-wrap:wrap; max-width:94vw; justify-content:center;
+  padding:7px 9px; border-radius:99px;
+  background:rgba(8,12,22,.94); border:1px solid rgba(120,160,220,.3); backdrop-filter:blur(12px);
+  font-family:var(--sans,"PingFang SC","Microsoft YaHei",sans-serif);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+#mdPrev button{
+  border:1px solid rgba(120,160,220,.25); background:transparent; color:#9fb3d6;
+  font-size:12px; padding:7px 11px; border-radius:99px; cursor:pointer; transition:.2s; white-space:nowrap;
+}
+#mdPrev button:hover{ color:#fff; border-color:var(--cyan,#38e1ff); }
+#mdPrev button.active{ background:var(--grad,linear-gradient(120deg,#4f8cff,#38e1ff)); color:#04101f; border-color:transparent; font-weight:700; }
+#mdPrev .md-sep{ width:1px; align-self:stretch; background:rgba(120,160,220,.25); margin:4px 2px; }
+
+/* 预览遮罩 + 设备框 */
+#mdFrame{
+  position:fixed; inset:0; z-index:9999; display:none;
+  align-items:center; justify-content:center; padding:24px;
+  background:rgba(3,5,10,.82); backdrop-filter:blur(6px);
+}
+#mdFrame.show{ display:flex; }
+#mdFrame .md-device{
+  position:relative; background:#05070d; border:12px solid #0a0e18; border-radius:34px;
+  box-shadow:0 40px 120px rgba(0,0,0,.8); overflow:hidden;
+}
+#mdFrame .md-device::before{
+  content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:38%; height:22px; background:#0a0e18; border-radius:0 0 14px 14px; z-index:6;
+}
+#mdFrame .md-device.md-tablet::before{ width:18px; height:18px; border-radius:50%; top:11px; left:auto; right:14px; transform:none; background:#1a2030; }
+#mdFrame .md-device.md-desktop::before{ display:none; }
+#mdFrame .md-device.md-foldable{ border-radius:18px; }
+#mdFrame .md-device.md-foldable::before{ width:12px; height:64%; top:18%; left:50%; border-radius:8px; transform:translateX(-50%); }
+#mdFrame iframe{ width:100%; height:100%; border:0; background:#06080f; display:block; }
+#mdFrame .md-close{
+  position:absolute; top:12px; right:16px; z-index:12; width:38px; height:38px;
+  border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(8,12,22,.9);
+  color:#fff; cursor:pointer; font-size:18px;
+}
+#mdFrame .md-close:hover{ border-color:#ff5c8a; color:#ff5c8a; }
+#mdFrame .md-label{
+  position:absolute; top:14px; left:18px; z-index:12; color:#cfe0ff; font-size:12px;
+  background:rgba(8,12,22,.85); padding:5px 12px; border-radius:99px;
+  border:1px solid rgba(120,160,220,.3);
+}

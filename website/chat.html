@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta property="og:title" content="ccowork · AI 对话 · 开箱即用工作台, viewport-fit=cover">
+<meta property="og:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · AI 对话 · 开箱即用工作台</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+  --ok:#4ade80; --err:#ff5c8a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;overflow-x:hidden;min-height:100vh}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+
+/* ---------- 导航 ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:26px;font-size:14px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-links a.active{color:var(--cyan)}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* ---------- 聊天主体 ---------- */
+.chat-wrap{max-width:880px;margin:0 auto;padding:96px 20px 40px;display:flex;flex-direction:column;height:100vh}
+.chat-panel{flex:1;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);min-height:0}
+.chat-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#121a30,#0e1526)}
+.chat-head .title{font-size:16px;font-weight:700;display:flex;align-items:center;gap:10px}
+.chat-head .title .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px rgba(74,222,128,.8)}
+.chat-head .title .dot.off{background:var(--muted);box-shadow:none}
+.chat-head .model{font-size:12px;color:var(--muted);margin-top:2px}
+.chat-tools{display:flex;gap:10px}
+.icon-btn{background:#18223c;border:1px solid var(--line);color:var(--muted);border-radius:9px;padding:7px 12px;font-size:13px;cursor:pointer;transition:.2s;white-space:nowrap}
+.icon-btn:hover{color:var(--cyan);border-color:var(--cyan)}
+
+/* ---------- 消息区 ---------- */
+.msgs{flex:1;overflow-y:auto;padding:24px 20px;display:flex;flex-direction:column;gap:16px;min-height:0}
+.msg{display:flex;flex-direction:column;max-width:86%}
+.msg .bubble{padding:12px 16px;border-radius:16px;font-size:14.5px;white-space:pre-wrap;word-break:break-word}
+.msg .who{font-size:11px;color:var(--muted);margin:0 4px 5px;letter-spacing:1px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.user .bubble{background:var(--grad);color:#04101f;font-weight:500;border-bottom-right-radius:6px}
+.msg.user .who{color:var(--blue);text-align:right}
+.msg.assistant{align-self:flex-start;align-items:flex-start}
+.msg.assistant .bubble{background:#0a0f1e;border:1px solid var(--line);border-bottom-left-radius:6px}
+.msg.assistant .who{color:var(--cyan)}
+.msg.error .bubble{background:rgba(255,92,138,.08);border:1px solid rgba(255,92,138,.4);color:#ffc6d6}
+.msg.error .who{color:var(--err)}
+
+/* 加载中 */
+.typing{display:inline-flex;gap:5px;align-items:center;padding:6px 2px}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:blink 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
+
+.welcome{text-align:center;color:var(--muted);font-size:13px;padding:30px 10px;line-height:2}
+.welcome b{color:var(--cyan)}
+
+/* ---------- 输入区 ---------- */
+.input-bar{display:flex;gap:12px;align-items:flex-end;padding:16px;border-top:1px solid var(--line);background:#0c1222}
+.input-bar textarea{flex:1;background:#0a0f1e;border:1px solid var(--line);border-radius:12px;color:var(--text);
+  padding:13px 16px;font-size:14.5px;font-family:inherit;resize:none;outline:none;min-height:48px;max-height:180px;line-height:1.5;transition:.2s}
+.input-bar textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,140,255,.15)}
+.send-btn{padding:13px 26px;border-radius:12px;border:none;background:var(--grad);color:#04101f;font-size:14.5px;font-weight:700;
+  cursor:pointer;transition:.25s;white-space:nowrap}
+.send-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,140,255,.4)}
+.send-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.hint{color:var(--muted);font-size:12px;padding:0 16px 12px;background:#0c1222}
+.hint code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--cyan);font-size:11.5px}
+
+/* ---------- 媒体工具条（生图/生视频） ---------- */
+.media-bar{display:flex;gap:10px;align-items:center;padding:0 16px 14px;background:#0c1222;flex-wrap:wrap}
+.media-bar input{flex:1;min-width:180px;background:#0a0f1e;border:1px solid var(--line);border-radius:10px;color:var(--text);
+  padding:9px 13px;font-size:13px;font-family:inherit;outline:none;transition:.2s}
+.media-bar input:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(139,92,246,.14)}
+.media-btn{background:#18223c;border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:9px 15px;font-size:13px;cursor:pointer;transition:.25s;white-space:nowrap}
+.media-btn:hover{color:var(--purple);border-color:var(--purple);transform:translateY(-1px)}
+.media-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.media-status{font-size:12px;color:var(--muted)}
+.media-preview{max-width:100%;max-height:340px;border-radius:12px;border:1px solid var(--line);margin-top:8px;display:block}
+
+/* ---------- 流式输出 ---------- */
+.send-btn.stop{background:var(--err);color:#fff;box-shadow:0 8px 20px rgba(255,92,138,.35)}
+.send-btn.stop:hover{transform:none;box-shadow:0 8px 24px rgba(255,92,138,.5)}
+.cursor{display:inline-block;width:2px;height:1.05em;background:var(--cyan);margin-left:1px;vertical-align:-2px;animation:caret .9s step-end infinite}
+@keyframes caret{0%,100%{opacity:1}50%{opacity:0}}
+.field .checkbox-label{display:flex;align-items:center;gap:9px;color:var(--text);font-size:14px;cursor:pointer}
+.field input[type=checkbox]{width:16px;height:16px;padding:0;margin:0;background:transparent;border:none;accent-color:var(--blue);flex:none}
+
+/* ---------- 设置弹窗 ---------- */
+.overlay{position:fixed;inset:0;z-index:300;background:rgba(4,6,12,.72);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.show{display:flex}
+.modal{width:100%;max-width:520px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;max-height:90vh;overflow-y:auto;
+  box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.modal h2{font-size:20px;margin-bottom:6px}
+.modal .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px;letter-spacing:.5px}
+.field input,.field select{width:100%;background:#0a0f1e;border:1px solid var(--line);border-radius:10px;color:var(--text);
+  padding:11px 13px;font-size:14px;outline:none;transition:.2s;font-family:inherit}
+.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,140,255,.15)}
+.field .mono{font-family:Consolas,monospace;font-size:12.5px}
+.modal-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:26px}
+.btn{padding:11px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:.25s;border:1px solid transparent}
+.btn-primary{background:var(--grad);color:#04101f;border:none}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,140,255,.4)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+footer a:hover{text-decoration:underline}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/chat.html">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/chat.html">
+<meta name="twitter:title" content="ccowork · AI 对话 · 开箱即用工作台">
+<meta name="twitter:description" content="ccowork · AI 全能工作台：智能体对话、AI 漫剧、绘画生图、简历刷题、天气新闻、全生态知识库，模型内置开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-chat.png" alt="ccowork · AI 对话 · 开箱即用工作台" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+<nav>
+  <div class="logo">AI 创作纪元</div>
+  <div class="nav-links">
+    <a href="./index.html">首页</a>
+    <a href="./portal.html">知识收纳站</a>
+    <a href="./devbase.html">开发者基地</a>
+    <a href="./models.html">模型对比</a>
+    <a href="./chat.html" class="active">AI 对话</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<div class="chat-wrap">
+  <div class="chat-panel">
+    <div class="chat-head">
+      <div>
+        <div class="title"><span class="dot" id="statusDot"></span>AI 对话工作台</div>
+        <div class="model" id="modelLabel">未配置模型</div>
+      </div>
+      <div class="chat-tools">
+        <button class="icon-btn" id="clearBtn" title="清空对话"><i class="cc-ic" data-ic="trash-2" aria-hidden="true"></i>清空对话</button>
+        <button class="icon-btn" id="settingsBtn" title="设置"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>设置</button>
+      </div>
+    </div>
+
+    <div class="msgs" id="msgs">
+      <div class="welcome" id="welcome">
+        欢迎使用 <b>AI 对话工作台</b> <br>
+        点击右上角 <b><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>设置</b> 填入 API Key 即可开始对话。<br>
+        支持 <b>DeepSeek</b> 与 <b>小米 MiMo</b>，多轮上下文自动保留。
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <textarea id="input" placeholder="输入消息，Enter 发送，Shift+Enter 换行…" rows="1"></textarea>
+      <button class="send-btn" id="sendBtn"><i class="cc-ic" data-ic="send"></i> 发送</button>
+    </div>
+    <div class="hint">配置保存在本地浏览器 · 请求头同时带 <code>Authorization</code> 与 <code>api-key</code> · 流式输出 <code>stream:true</code> · 生成中可点「停止」</div>
+    <div class="media-bar">
+      <input type="text" id="mediaPrompt" placeholder=" AI 生图 /  生视频提示词（走豆包·方舟，如：赛博朋克风格的大学校园夜景）">
+      <button class="media-btn" id="imgBtn" type="button" title="AI 生成图像"><i class="cc-ic" data-ic="image" aria-hidden="true"></i>生图</button>
+      <button class="media-btn" id="videoBtn" type="button" title="AI 生成视频"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>生视频</button>
+      <span class="media-status" id="mediaStatus"></span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="logo" style="font-size:16px">AI 创作纪元</div>
+  <p style="margin-top:8px"><a href="./index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回首页</a> · DeepSeek × 全栈 AI 工具终极指南 · 2026</p>
+</footer>
+
+<!-- 设置弹窗 -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h2><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>接口设置</h2>
+    <p class="sub">选择预设或手动填写，点击「保存」后立即生效。</p>
+
+    <div class="field">
+      <label>预设</label>
+      <select id="presetSel">
+        <option value="custom">自定义</option>
+        <option value="deepseek">DeepSeek（已验证，内置密钥）</option>
+        <option value="arkB">豆包·火山方舟 Key B（已验证，内置密钥）</option>
+        <option value="arkA">豆包·火山方舟 Key A（待确认）</option>
+        <option value="mimo_paygo">小米 MiMo 按量（mimo-v2.5）</option>
+        <option value="mimo_token">小米 MiMo Token Plan（mimo-v2.5）</option>
+        <option value="ollama">本地 Ollama（开源模型）</option>
+      </select>
+      <div style="color:var(--muted);font-size:12px;margin-top:8px;line-height:1.6">本地模型需先装 Ollama 并 <code style="background:#0a0f1e;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--cyan);font-size:11.5px">ollama pull qwen2.5:7b</code></div>
+    </div>
+
+    <div class="field">
+      <label>接口地址（完整 chat/completions URL）</label>
+      <input type="url" id="baseUrl" class="mono" placeholder="https://api.deepseek.com/chat/completions">
+    </div>
+
+    <div class="field">
+      <label>API Key</label>
+      <input type="password" id="apiKey" placeholder="sk-…" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label>模型名</label>
+      <input type="text" id="model" placeholder="deepseek-chat">
+    </div>
+
+    <div class="field">
+      <label>输出方式</label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="streamToggle"> 启用流式输出（stream:true，逐字显示）
+      </label>
+    </div>
+
+    <div class="field">
+      <label>请求通道</label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="proxyToggle"> 通过本地代理（/api/proxy，避免跨域；需运行 node server.mjs）
+      </label>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cancelBtn"><i class="cc-ic" data-ic="x"></i> 取消</button>
+      <button class="btn btn-primary" id="saveBtn"><i class="cc-ic" data-ic="save"></i> 保存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var LS_KEY = 'chat_config_v1';
+  var MAX_TOKENS = 2048;
+
+  // 用户提供的密钥：豆包·方舟（Key B 已验证 / Key A 待确认）、DeepSeek（已验证）
+  var PRESETS = {
+    deepseek:    { baseUrl: 'https://api.deepseek.com/chat/completions',              model: 'deepseek-chat', apiKey: '' },
+    arkA:        { baseUrl: 'https://ark.cn-beijing.volces.com/api/v3/chat/completions', model: 'doubao-seed-2-1-pro-260628', apiKey: '' },
+    arkB:        { baseUrl: 'https://ark.cn-beijing.volces.com/api/v3/chat/completions', model: 'doubao-seed-2-1-pro-260628', apiKey: '' },
+    mimo_paygo:  { baseUrl: 'https://api.xiaomimimo.com/v1/chat/completions',          model: 'mimo-v2.5' },
+    mimo_token:  { baseUrl: 'https://token-plan-cn.xiaomimimo.com/v1/chat/completions', model: 'mimo-v2.5' },
+    ollama:      { baseUrl: 'http://localhost:11434/v1/chat/completions', model: 'qwen2.5:7b' }
+  };
+
+  // ---------- 状态 ----------
+  var config = loadConfig();
+  var messages = [];      // 多轮上下文：[{role, content}]
+  var loading = false;
+  var controller = null;  // AbortController：中止流式请求
+  var streamState = null; // 流式渲染中的气泡状态
+
+  // ---------- DOM ----------
+  var msgsEl = document.getElementById('msgs');
+  var inputEl = document.getElementById('input');
+  var sendBtn = document.getElementById('sendBtn');
+  var clearBtn = document.getElementById('clearBtn');
+  var settingsBtn = document.getElementById('settingsBtn');
+  var overlay = document.getElementById('overlay');
+  var presetSel = document.getElementById('presetSel');
+  var baseUrlEl = document.getElementById('baseUrl');
+  var apiKeyEl = document.getElementById('apiKey');
+  var modelEl = document.getElementById('model');
+  var streamToggle = document.getElementById('streamToggle');
+  var proxyToggle = document.getElementById('proxyToggle');
+
+  // 合并「模型设置中心」的自定义模型（ccowork.models  chat.html 下拉）
+  try{
+    var _raw = localStorage.getItem('ccowork.models');
+    if(_raw){
+      JSON.parse(_raw).forEach(function(m){
+        if(m && (m.type === 'chat' || m.type === 'vision') && m.baseUrl && m.model){
+          var k = 'custom:' + m.id;
+          PRESETS[k] = { baseUrl: m.baseUrl, model: m.model, apiKey: m.apiKey || '' };
+          var o = document.createElement('option');
+          o.value = k;
+          o.textContent = (m.type === 'vision' ? ' ' : ' ') + m.name + '（自定义）';
+          presetSel.appendChild(o);
+        }
+      });
+    }
+  }catch(e){}
+  var saveBtn = document.getElementById('saveBtn');
+  var cancelBtn = document.getElementById('cancelBtn');
+  var modelLabel = document.getElementById('modelLabel');
+  var statusDot = document.getElementById('statusDot');
+
+  function loadConfig(){
+    var def = { baseUrl:'https://api.deepseek.com/chat/completions', apiKey: '', model:'deepseek-chat', stream:true, useProxy:true };
+    try{
+      var raw = localStorage.getItem(LS_KEY);
+      if(raw){
+        var c = JSON.parse(raw);
+        if(typeof c.stream !== 'boolean') c.stream = true;
+        if(typeof c.useProxy !== 'boolean') c.useProxy = true;
+        return c;
+      }
+    }catch(e){}
+    return def;
+  }
+
+  function saveConfig(){
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(config)); }catch(e){}
+  }
+
+  // 本地自托管接口（Ollama 等）无需 API Key
+  function isLocalEndpoint(url){
+    return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\//i.test(url || '');
+  }
+
+  function refreshHeader(){
+    if(config.apiKey || isLocalEndpoint(config.baseUrl)){
+      modelLabel.textContent = config.model + ' · ' + config.baseUrl;
+      statusDot.className = 'dot';
+    }else{
+      modelLabel.textContent = '未配置 API Key（点击右上角  设置）';
+      statusDot.className = 'dot off';
+    }
+  }
+
+  // ---------- 设置弹窗 ----------
+  function openSettings(){
+    var matched = null;
+    Object.keys(PRESETS).forEach(function(k){
+      if(PRESETS[k].baseUrl === config.baseUrl && PRESETS[k].model === config.model) matched = k;
+    });
+    presetSel.value = matched || 'custom';
+    baseUrlEl.value = config.baseUrl;
+    apiKeyEl.value = config.apiKey;
+    modelEl.value = config.model;
+    streamToggle.checked = config.stream !== false;
+    proxyToggle.checked = config.useProxy !== false;
+    overlay.classList.add('show');
+  }
+  function closeSettings(){ overlay.classList.remove('show'); }
+
+  presetSel.addEventListener('change', function(){
+    var p = PRESETS[presetSel.value];
+    if(p){
+      baseUrlEl.value = p.baseUrl;
+      modelEl.value = p.model;
+      if(p.apiKey) apiKeyEl.value = p.apiKey;   // 内置密钥自动带入
+    }
+    if(presetSel.value === 'ollama'){ apiKeyEl.value = ''; }   // 本地模型无需 API Key
+  });
+
+  saveBtn.addEventListener('click', function(){
+    var baseUrl = baseUrlEl.value.trim();
+    var apiKey = apiKeyEl.value.trim();
+    var model = modelEl.value.trim();
+    if(!baseUrl){ alert('请填写接口地址'); return; }
+    if(!model){ alert('请填写模型名'); return; }
+    config.baseUrl = baseUrl;
+    config.apiKey = apiKey;
+    config.model = model;
+    config.stream = streamToggle.checked;
+    config.useProxy = proxyToggle.checked;
+    saveConfig();
+    refreshHeader();
+    closeSettings();
+    if(!apiKey && !isLocalEndpoint(baseUrl)){
+      addError('尚未填写 API Key，请在  设置 中填入后再发送消息。');
+    }
+  });
+
+  cancelBtn.addEventListener('click', closeSettings);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeSettings(); });
+  settingsBtn.addEventListener('click', openSettings);
+
+  // ---------- 渲染 ----------
+  function scrollBottom(){
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+  }
+
+  function addBubble(role, text, isError){
+    var wrap = document.createElement('div');
+    wrap.className = 'msg ' + (isError ? 'error' : role);
+    var who = document.createElement('div');
+    who.className = 'who';
+    who.textContent = isError ? ' 错误' : (role === 'user' ? '你' : '助手');
+    var bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.textContent = text;   // textContent 防注入，保留换行
+    wrap.appendChild(who);
+    wrap.appendChild(bubble);
+    msgsEl.appendChild(wrap);
+    scrollBottom();
+    return wrap;
+  }
+
+  function addTyping(){
+    var wrap = document.createElement('div');
+    wrap.className = 'msg assistant';
+    wrap.id = 'typing';
+    var bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+    wrap.appendChild(bubble);
+    msgsEl.appendChild(wrap);
+    scrollBottom();
+  }
+  function removeTyping(){
+    var t = document.getElementById('typing');
+    if(t) t.remove();
+  }
+
+  function addError(text){
+    addBubble('assistant', text, true);
+  }
+
+  function clearWelcome(){
+    var w = document.getElementById('welcome');
+    if(w) w.remove();
+  }
+
+  // ---------- 发送 ----------
+  function buildBody(stream){
+    return {
+      model: config.model,
+      messages: messages.slice(),
+      stream: stream,
+      max_tokens: MAX_TOKENS,
+      max_completion_tokens: MAX_TOKENS
+    };
+  }
+
+  function createStreamBubble(){
+    clearWelcome();
+    var wrap = document.createElement('div');
+    wrap.className = 'msg assistant';
+    var who = document.createElement('div');
+    who.className = 'who';
+    who.textContent = '助手 · 正在生成…';
+    var bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    var textNode = document.createTextNode('');
+    var cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    bubble.appendChild(textNode);
+    bubble.appendChild(cursor);
+    wrap.appendChild(who);
+    wrap.appendChild(bubble);
+    msgsEl.appendChild(wrap);
+    scrollBottom();
+    return { wrap: wrap, who: who, bubble: bubble, textNode: textNode, cursor: cursor, text: '' };
+  }
+
+  function discardStreamBubble(){
+    if(streamState){
+      if(streamState.wrap && streamState.wrap.parentNode) streamState.wrap.remove();
+      streamState = null;
+    }
+  }
+
+  function send(){
+    if(loading) return;
+    var text = inputEl.value.trim();
+    if(!text) return;
+    if(!config.apiKey && !isLocalEndpoint(config.baseUrl)){
+      addError('请先在  设置 中填写 API Key。');
+      openSettings();
+      return;
+    }
+
+    clearWelcome();
+    inputEl.value = '';
+    autoResize();
+
+    messages.push({ role:'user', content:text });
+    addBubble('user', text);
+
+    setLoading(true);
+
+    if(config.stream !== false){
+      streamState = createStreamBubble();   // 立即显示「正在生成…」
+    }else{
+      addTyping();
+    }
+
+    doSend(config.stream !== false, false);
+  }
+
+  // 代理地址策略：本地/局域网(含手机同 WiFi 访问电脑)走代理；远程/云端(https 域名)跳过代理直接直连
+  function proxyBase(){
+    if(location.protocol !== 'http:' && location.protocol !== 'https:') return '';
+    var h = location.hostname || '';
+    var local = (h === 'localhost' || h === '127.0.0.1' || h.indexOf('.local') !== -1
+      || /^192\.168\./.test(h) || /^10\./.test(h) || /^172\.(1[6-9]|2[0-9]|3[01])\./.test(h));
+    if(!local) return '';                       // 云端部署环境  直连（DeepSeek 跨域可用）
+    if(location.port === '8787') return location.origin;
+    return 'http://localhost:8787';
+  }
+
+  function doSend(useStream, isRetry){
+    controller = new AbortController();
+    var pb = proxyBase();
+    var wantProxy = config.useProxy && !isLocalEndpoint(config.baseUrl) && !!pb;
+    request(wantProxy, useStream, isRetry, false);
+  }
+
+  // 请求执行器：支持「代理失败  自动降级直连」；DeepSeek 支持跨域，直连可救回
+  function request(useProxy, useStream, isRetry, fellBack){
+    var pb = proxyBase();
+    var reqUrl = config.baseUrl;
+    var reqBody = JSON.stringify(buildBody(useStream));
+    var reqHeaders = { 'Content-Type': 'application/json' };
+    if(useProxy){
+      reqUrl = pb + '/api/proxy';
+      reqBody = JSON.stringify({ url: config.baseUrl, body: buildBody(useStream), auth: config.apiKey });
+    } else {
+      reqHeaders['Authorization'] = 'Bearer ' + config.apiKey;
+      reqHeaders['api-key'] = config.apiKey;
+    }
+
+    fetch(reqUrl, {
+      method: 'POST',
+      headers: reqHeaders,
+      body: reqBody,
+      signal: controller.signal
+    })
+    .then(function(res){
+      if(!res.ok){
+        return res.text().then(function(txt){
+          var e = new Error('HTTP ' + res.status + (txt ? ' · ' + txt.slice(0, 300) : ''));
+          e.status = res.status;
+          throw e;
+        });
+      }
+      var ct = (res.headers.get('content-type') || '').toLowerCase();
+      if(useStream && res.body && res.body.getReader && ct.indexOf('text/event-stream') !== -1){
+        return renderStream(res);
+      }
+      // 接口未返回 SSE（或关闭流式） 一次性 JSON 渲染
+      discardStreamBubble();
+      return res.json().then(renderOnce);
+    })
+    .then(function(){
+      finalizeOk();
+    })
+    .catch(function(err){
+      if(err && err.name === 'AbortError'){
+        finalizeAbort();
+        return;
+      }
+      // 代理失败且未降级过  自动直连重试
+      if(useProxy && !fellBack && !isLocalEndpoint(config.baseUrl)){
+        discardStreamBubble();
+        if(useStream) streamState = createStreamBubble();
+        else addTyping();
+        request(false, useStream, isRetry, true);
+        return;
+      }
+      // 流式失败且尚未重试  自动回退非流式一次
+      if(useStream && !isRetry && isStreamFallbackable(err)){
+        discardStreamBubble();
+        addTyping();
+        doSend(false, true);
+        return;
+      }
+      finalizeError(err);
+    });
+  }
+
+  // SSE 流式解析渲染：逐块解码、逐行解析、逐字增长
+  function renderStream(res){
+    var state = streamState;
+    var decoder = new TextDecoder('utf-8');
+    var reader = res.body.getReader();
+    var buffer = '';        // 已解码文本缓冲（处理半个 UTF-8 字节）
+    var dataLines = [];     // 当前事件的 data 行集合
+    var doneReceived = false;
+    var finalized = false;
+
+    return new Promise(function(resolve, reject){
+
+      function handleData(payload){
+        if(payload === '[DONE]'){
+          doneReceived = true;
+          return;
+        }
+        var data;
+        try{ data = JSON.parse(payload); }catch(e){ return; }
+        var delta = data && data.choices && data.choices[0] && data.choices[0].delta;
+        var content = delta && delta.content;
+        if(typeof content === 'string' && content){
+          state.text += content;
+          state.textNode.nodeValue = state.text;
+          scrollBottom();
+        }
+      }
+
+      function flushEvent(){
+        if(dataLines.length){
+          var payload = dataLines.join('\n');
+          dataLines = [];
+          handleData(payload);
+        }
+      }
+
+      function processLine(line){
+        if(line === ''){
+          flushEvent();          // 空行 = 事件结束
+          return;
+        }
+        if(line.slice(0, 5) === 'data:'){
+          var val = line.slice(5);
+          if(val.charAt(0) === ' ') val = val.slice(1);
+          dataLines.push(val);   // 支持多行 data 合并
+        }
+      }
+
+      function processBuffer(){
+        var idx;
+        while((idx = buffer.indexOf('\n')) !== -1){
+          var line = buffer.slice(0, idx);
+          buffer = buffer.slice(idx + 1);
+          if(line.charAt(line.length - 1) === '\r') line = line.slice(0, -1);
+          processLine(line);
+        }
+      }
+
+      function finish(){
+        if(finalized) return;
+        finalized = true;
+        buffer += decoder.decode();   // 冲刷残余 UTF-8 字节
+        processBuffer();
+        if(buffer){ processLine(buffer); buffer = ''; }
+        flushEvent();
+        if(state.cursor && state.cursor.parentNode) state.cursor.remove();
+        state.who.textContent = '助手';
+        if(state.text){
+          messages.push({ role:'assistant', content: state.text });
+        }else{
+          state.bubble.textContent = '（无内容返回）';
+          state.bubble.style.color = 'var(--muted)';
+        }
+        resolve();
+      }
+
+      function read(){
+        reader.read().then(function(result){
+          if(result.done){
+            finish();
+            return;
+          }
+          buffer += decoder.decode(result.value, { stream: true });
+          processBuffer();
+          if(doneReceived){
+            reader.cancel().catch(function(){});
+            finish();
+            return;
+          }
+          read();
+        }).catch(function(err){
+          reject(err);
+        });
+      }
+
+      read();
+    });
+  }
+
+  function renderOnce(data){
+    var content = data && data.choices && data.choices[0]
+      && data.choices[0].message && data.choices[0].message.content;
+    if(typeof content !== 'string' || !content){
+      throw new Error('响应中未找到 choices[0].message.content');
+    }
+    messages.push({ role:'assistant', content:content });
+    addBubble('assistant', content);
+  }
+
+  function isStreamFallbackable(err){
+    if(!err) return false;
+    if(err.name === 'AbortError') return false;
+    if(err instanceof TypeError) return false;   // CORS / 网络错误，回退无用
+    if(err.status === 400 || err.status === 404 || err.status === 422) return true;
+    return false;
+  }
+
+  function finalizeOk(){
+    streamState = null;
+    finishLoading();
+  }
+
+  function finalizeAbort(){
+    if(streamState){
+      if(streamState.cursor && streamState.cursor.parentNode) streamState.cursor.remove();
+      streamState.who.textContent = '助手 · 已停止';
+      if(streamState.text){
+        messages.push({ role:'assistant', content: streamState.text });
+      }else{
+        streamState.bubble.textContent = '（已停止生成）';
+        streamState.bubble.style.color = 'var(--muted)';
+      }
+      streamState = null;
+    }
+    finishLoading();
+  }
+
+  function finalizeError(err){
+    discardStreamBubble();
+    var msg = err && err.message ? err.message : String(err);
+    if(msg.indexOf('Failed to fetch') !== -1 || err instanceof TypeError){
+      msg = '网络请求失败：可能是 CORS 拦截。CORS 拦截请用本地代理（如本地 nginx / Cloudflare Worker / CORS-anywhere 转发请求），或改用支持浏览器直连的接口。';
+    }
+    addError(msg);
+    finishLoading();
+  }
+
+  function stopGeneration(){
+    if(controller) controller.abort();
+  }
+
+  function finishLoading(){
+    removeTyping();
+    setLoading(false);
+    controller = null;
+  }
+
+  function setLoading(v){
+    loading = v;
+    if(v){
+      sendBtn.textContent = ' 停止';
+      sendBtn.classList.add('stop');
+    }else{
+      sendBtn.textContent = '发送';
+      sendBtn.classList.remove('stop');
+    }
+  }
+
+  // ---------- 清空 ----------
+  clearBtn.addEventListener('click', function(){
+    if(loading){
+      if(controller) controller.abort();
+      discardStreamBubble();
+    }
+    messages = [];
+    msgsEl.innerHTML = '<div class="welcome" id="welcome">对话已清空，开始新的多轮对话吧</div>';
+    inputEl.focus();
+  });
+
+  // ---------- 输入 ----------
+  sendBtn.addEventListener('click', function(){
+    if(loading){ stopGeneration(); }
+    else { send(); }
+  });
+  inputEl.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && !e.shiftKey){
+      e.preventDefault();
+      send();
+    }
+  });
+  function autoResize(){
+    inputEl.style.height = 'auto';
+    inputEl.style.height = Math.min(inputEl.scrollHeight, 180) + 'px';
+  }
+  inputEl.addEventListener('input', autoResize);
+
+  // ---------- 初始化 ----------
+  refreshHeader();
+
+  // ---------- 生图 / 生视频（火山方舟） ----------
+  var mediaBusy = false;
+  function mediaPost(url, body, auth){
+    var pb = proxyBase();
+    var useProxy = config.useProxy && !!pb;
+    if(useProxy){
+      return fetch(pb + '/api/proxy', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ url:url, body:body, auth: auth || config.apiKey })
+      }).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); });
+    }
+    var h = {'Content-Type':'application/json'};
+    if(auth || config.apiKey){ h['Authorization']='Bearer '+(auth||config.apiKey); h['api-key']=auth||config.apiKey; }
+    return fetch(url, { method:'POST', headers:h, body: JSON.stringify(body) }).then(function(r){ return r.json(); });
+  }
+  function mediaGet(url, auth){
+    var pb = proxyBase();
+    if(config.useProxy && pb){
+      var h = {};
+      if(auth || config.apiKey) h['x-api-key'] = auth || config.apiKey;
+      return fetch(pb + '/api/proxy?url=' + encodeURIComponent(url), { method:'GET', headers:h }).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); });
+    }
+    var h = {};
+    if(auth || config.apiKey) h['Authorization'] = 'Bearer ' + (auth || config.apiKey);
+    return fetch(url, { method:'GET', headers:h }).then(function(r){ return r.json(); });
+  }
+  var ARK_MEDIA = 'https://ark.cn-beijing.volces.com/api/v3';
+  function pollArkTask(id, maxSec){
+    var deadline = Date.now() + (maxSec||180)*1000;
+    function tick(){
+      return mediaGet(ARK_MEDIA + '/contents/generations/tasks/' + id).then(function(d){
+        var st = String(d.status||d.state||'').toLowerCase();
+        if(st.indexOf('succeed')!==-1 || st === 'completed' || st === 'done') return d;
+        if(st.indexOf('fail')!==-1 || st.indexOf('error')!==-1 || st.indexOf('cancel')!==-1) throw new Error('生成失败：' + (d.error&&d.error.message||st));
+        if(Date.now() > deadline) throw new Error('生成超时，请稍后重试');
+        return new Promise(function(r){ setTimeout(function(){ r(tick()); }, 2500); });
+      });
+    }
+    return tick();
+  }
+  function extractImageUrl(d){
+    if(!d) return '';
+    var c = d.content;
+    if(c && c.image_urls && c.image_urls[0]) return c.image_urls[0];
+    if(c && c.image_url) return c.image_url;
+    if(d.data && d.data[0]){ if(d.data[0].url) return d.data[0].url; if(d.data[0].b64_json) return 'data:image/png;base64,'+d.data[0].b64_json; }
+    if(d.choices && d.choices[0]){
+      var ct = d.choices[0].message ? d.choices[0].message.content : d.choices[0].content;
+      if(Object.prototype.toString.call(ct) === '[object Array]'){
+        for(var i=0;i<ct.length;i++){ if(ct[i] && ct[i].type==='image_url' && ct[i].image_url && ct[i].image_url.url) return ct[i].image_url.url; }
+      }
+    }
+    return '';
+  }
+  function handleMedia(kind){
+    if(mediaBusy || loading) return;
+    var prompt = document.getElementById('mediaPrompt').value.trim();
+    var status = document.getElementById('mediaStatus');
+    if(!prompt){ status.textContent = ' 请先输入提示词'; setTimeout(function(){ status.textContent=''; },2500); return; }
+    mediaBusy = true;
+    document.getElementById('imgBtn').disabled = true;
+    document.getElementById('videoBtn').disabled = true;
+    status.textContent = kind === 'image' ? ' 生图中…' : ' 视频生成中（约 1~5 分钟）…';
+    var p = kind === 'image'
+      ? mediaPost(ARK_MEDIA + '/images/generations', { model:'doubao-seedream-5-0-260128', prompt:prompt, size:'2K', watermark:false, response_format:'url' })
+      : mediaPost(ARK_MEDIA + '/contents/generations/tasks', { model:'doubao-seedance-1-5-pro-251215', content:[{type:'text',text:prompt}] });
+    p.then(function(d){
+      if(kind === 'image'){
+        var img = extractImageUrl(d);
+        if(img) return img;
+        var id = d.id || (d.data && d.data.id);
+        if(id) return pollArkTask(id).then(extractImageUrl);
+        throw new Error('生图未返回结果');
+      }
+      var id = d.id || (d.data && d.data.id);
+      if(!id) throw new Error('视频任务创建失败');
+      return pollArkTask(id, 300).then(function(t){
+        var c = t.content || {};
+        return c.video_url || (c.videos && c.videos[0]) || (c.video_urls && c.video_urls[0]);
+      });
+    }).then(function(url){
+      if(!url) throw new Error('未取到媒体地址');
+      var tag = kind === 'image' ? '<img class="media-preview" src="'+url+'" alt="AI生成图像">' : '<video class="media-preview" src="'+url+'" controls playsinline></video>';
+      var wrap = document.createElement('div');
+      wrap.className = 'msg assistant';
+      var who = document.createElement('div'); who.className='who'; who.textContent = 'AI 生成 · '+(kind==='image'?'图像':'视频');
+      var bubble = document.createElement('div'); bubble.className='bubble'; bubble.innerHTML = '<b>提示词：</b>'+prompt+'<br>'+tag;
+      wrap.appendChild(who); wrap.appendChild(bubble);
+      msgsEl.appendChild(wrap); scrollBottom();
+      status.textContent = ' 生成完成';
+    }).catch(function(err){
+      addError('生成失败：' + (err && err.message || err));
+      status.textContent = ' 失败';
+    }).then(function(){
+      mediaBusy = false;
+      document.getElementById('imgBtn').disabled = false;
+      document.getElementById('videoBtn').disabled = false;
+      setTimeout(function(){ if(status.textContent.indexOf('')===0 || status.textContent.indexOf('')===0) status.textContent=''; }, 6000);
+    });
+  }
+  document.getElementById('imgBtn').addEventListener('click', function(){ handleMedia('image'); });
+  document.getElementById('videoBtn').addEventListener('click', function(){ handleMedia('video'); });
+})();
+</script>
+<script src="/ccowork.js?v=21"></script>
+<script src="/module.js"></script>
+  <script src="/responsive.js"></script>
+<script src="/baiju-widget.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

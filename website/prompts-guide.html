@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="提示词实战指南：40+ 条可复制提示词（写作/编程/绘画/办公/学习/漫剧）+ 万能公式 + 进阶技巧 + 提示词名词解释。">
+<meta name="keywords" content="AI 创作纪元,白驹全局大脑,ccowork,AI 创作纪元,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="提示词实战指南：40+ 条可复制提示词（写作/编程/绘画/办公/学习/漫剧）+ 万能公式 + 进阶技巧 + 提示词名词解释。">
+<title>提示词实战指南 · 40+ 可复制模板 + 术语解释 | AI 创作纪元</title>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f0b95c;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:20px;font-size:13.5px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-cta{padding:8px 16px;border:1px solid rgba(56,225,255,.4);border-radius:99px;color:var(--cyan)!important;font-size:12.5px}
+@media(max-width:1000px){.nav-links{display:none}}
+.hero{min-height:56vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:120px 24px 40px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(6,8,15,.5),rgba(6,8,15,.92) 72%),url('/assets/img/ai-bg-server.webp') center/cover no-repeat}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:99px;letter-spacing:2px;margin-bottom:24px}
+.hero h1{font-size:clamp(30px,5vw,60px);font-weight:900;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:740px;color:var(--muted);font-size:clamp(14.5px,1.5vw,17px);margin:18px auto 0}
+section{max-width:1180px;margin:0 auto;padding:50px 24px}
+.sec-head{margin-bottom:26px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(22px,3vw,34px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:780px;margin-top:10px}
+.formula{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;text-align:center}
+.formula .f{font-size:clamp(20px,3.2vw,34px);font-weight:800;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+.formula .f b{padding:6px 16px;border-radius:12px;background:var(--bg2);border:1px solid var(--line)}
+.formula .f b:nth-child(odd){color:var(--gold)}
+.formula .f b:nth-child(even){color:var(--cyan)}
+.formula .note{color:var(--muted);font-size:13px;margin-top:14px;line-height:1.9}
+.ptabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.ptab{padding:9px 18px;border-radius:99px;border:1px solid var(--line);background:var(--bg2);color:var(--muted);cursor:pointer;font-size:13px;transition:.2s}
+.ptab.active{background:var(--grad);color:#04101f;border-color:transparent;font-weight:700}
+.ptab:hover{color:var(--text);border-color:rgba(56,225,255,.4)}
+.pcards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;transition:.25s}
+.pcard:hover{border-color:rgba(79,140,255,.5)}
+.pcard h4{font-size:15.5px;margin-bottom:5px}
+.pcard .use{color:var(--muted);font-size:12px;margin-bottom:10px}
+.pcard .ptags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pcard .ptags span{font-size:10.5px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:99px;padding:2px 10px}
+.prompt-box{background:#0a0f1e;border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  font-family:Consolas,monospace;font-size:12.6px;color:#b9c8ea;position:relative;margin-top:10px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.prompt-box .copy{position:absolute;top:10px;right:10px;background:#18223c;border:1px solid var(--line);color:var(--muted);
+  border-radius:8px;padding:3px 10px;font-size:11.5px;cursor:pointer;transition:.2s;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.prompt-box .copy:hover{color:var(--cyan);border-color:var(--cyan)}
+.prompt-box .copy.done{color:#04101f;background:var(--grad);border-color:transparent}
+.tips{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.tip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.tip h4{font-size:14.5px;color:var(--gold);margin-bottom:5px}
+.tip p{color:var(--muted);font-size:13px}
+.gloss{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.gterm{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.gterm h4{font-size:14.5px;color:var(--cyan);margin-bottom:5px}
+.gterm .pro{color:var(--muted);font-size:12.5px}
+.gterm .pro b{color:var(--gold);font-weight:600}
+.gterm .plain{margin-top:8px;font-size:13px;color:var(--text);background:rgba(56,225,255,.05);border:1px dashed rgba(56,225,255,.25);border-radius:9px;padding:8px 11px}
+.gterm .plain::before{content:"人话：";color:var(--cyan);font-weight:700}
+footer{border-top:1px solid var(--line);padding:38px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+</style>
+<link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/prompts-guide.html">
+<meta property="og:title" content="提示词实战指南 · 40+ 可复制模板 + 术语解释 | AI 创作纪元">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://cd4b0031dbe041d1b32f15cbab005a04.app.workbuddy.link/website/prompts-guide.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="提示词实战指南 · 40+ 可复制模板 + 术语解释 | AI 创作纪元">
+<meta name="twitter:description" content="提示词实战指南：40+ 条可复制提示词（写作/编程/绘画/办公/学习/漫剧）+ 万能公式 + 进阶技巧 + 提示词名词解释。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-prompts-guide.png" alt="提示词实战指南 · 40+ 可复制模板 + 术语解释 | AI 创作纪元" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="../index.html" style="color:var(--gold)"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 白驹总站</a>
+    <a href="./index.html">首页</a>
+    <a href="./ai-money.html">AI赚钱</a>
+    <a href="./manju.html">AI漫剧</a>
+    <a href="./ai-projects.html">作品大全</a>
+    <a href="./prompts-guide.html" class="active">提示词</a>
+    <a href="./prompts100.html">百宝库</a>
+    <a href="./ai-edu.html">AI教育</a>
+    <a href="./ai-jobs.html">AI就业</a>
+    <a href="./personality.html">性格测试</a>
+  </div>
+  <a class="nav-cta" href="./chat.html"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>去对话</a>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="tag">提示词实战指南</div>
+  <h1>40+ 条<span>可复制提示词</span>，全场景覆盖</h1>
+  <p class="sub">写作 / 编程 / 绘画 / 办公 / 学习 / 漫剧六大类，每条都标注适用场景与标签，复制就能用。另有万能公式、5 个进阶技巧和提示词术语解释。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 · 全局大脑 · 本地优先</div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="kicker">万能公式</div><h2><i class="cc-ic" data-ic="key" aria-hidden="true"></i>一个公式，套遍所有提示词</h2></div>
+  <div class="formula">
+    <div class="f"><b>角色</b><b>+</b><b>任务</b><b>+</b><b>上下文</b><b>+</b><b>约束</b><b>+</b><b>输出格式</b></div>
+    <div class="note">例：<b style="color:var(--gold)">你是资深产品经理</b>（角色）· <b style="color:var(--cyan)">帮我写 PRD</b>（任务）· 产品是校园二手交易平台（上下文）· 用 Markdown，含用户故事（约束）· 分点列，每点不超 100 字（输出格式）。</div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="kicker">模板库</div><h2><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>40+ 条精选提示词</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-prompts-guide.png" alt="提示词实战指南 · 40+ 可复制模板 + 术语解释 · " loading="lazy"></figure>
+<p>点分类切换，点「复制」直接取走。</p></div>
+  <div class="ptabs" id="ptabs"></div>
+  <div class="pcards" id="pcards"></div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="kicker">进阶技巧</div><h2><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>5 个让提示词翻倍的技巧</h2></div>
+  <div class="tips">
+    <div class="tip"><h4>1. 给示例（Few-shot）</h4><p>不要只说"写得好一点"，给一个你满意的样例："参考这个风格：【示例】"。模型模仿能力超强。</p></div>
+    <div class="tip"><h4>2. 分步思考（Chain-of-Thought）</h4><p>复杂任务让 AI 分步走："先分析需求，再给方案，最后写代码"。逻辑更清晰、错误更少。</p></div>
+    <div class="tip"><h4>3. 限定边界</h4><p>明确写"不超过 500 字""只用 Python""面向零基础读者"，别让 AI 自由发挥跑偏。</p></div>
+    <div class="tip"><h4>4. 反面约束</h4><p>告诉 AI 不要做什么："不要用专业术语""不要编造数据""不要写废话"，能避开大量坑。</p></div>
+    <div class="tip"><h4>5. 迭代优化</h4><p>好的提示词是改出来的：先出初版<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>看效果<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>调措辞<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>再生成。一次写完美是不存在的。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="kicker">名词解释</div><h2><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>提示词名词表：专家级 + 人话</h2></div>
+  <div class="gloss" id="gloss"></div>
+</section>
+
+<!-- ====== 技能驱动模板库（1008 技能弹药库  10 大域 66 模板） ====== -->
+<section id="skilllib">
+  <div class="sec-head">
+    <div class="kicker">技能驱动 · 1008 技能弹药库</div>
+    <h2><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>技能驱动模板库 · 10 大能力域 66 个实战模板</h2>
+    <p>由已安装的 1008 个技能按 10 大能力域映射生成 —— 文档办公 / 设计前端 / 数据分析 / 金融投资 / 开发工程 / AI 与模型 / 多模态创作 / 腾讯生态 / 效率工具 / 安全合规，每个模板都标注了背后的技能支撑。</p>
+  </div>
+  <div class="ptabs" id="sktabs"></div>
+  <div class="pcards" id="skgrid"></div>
+</section>
+
+<footer>
+  <div class="logo">AI 创作纪元</div>
+  <p style="margin-top:8px">提示词实战指南 · 40+ 可复制模板 · 全部可在本站 chat / agent 使用<br>© 2026 AI 创作纪元</p>
+</footer>
+
+<script src="/module.js"></script>
+<script src="/responsive.js"></script>
+<script src="/data/prompt-templates.js"></script>
+<script>
+/* 技能驱动模板库渲染 · 智能版：识别 {占位符}  输入框  生成完整提示词 */
+(function(){
+  var D = window.PROMPT_TEMPLATES;
+  if (!D || !D.length) return;
+  var tabs = document.getElementById('sktabs'), grid = document.getElementById('skgrid');
+  var cur = 0;
+  function extractVars(tpl){
+    var vars = [], re = /\{([^}]+)\}/g, m;
+    while ((m = re.exec(tpl))) { if (vars.indexOf(m[1]) === -1) vars.push(m[1]); }
+    return vars;
+  }
+  function render(){
+    grid.innerHTML = '';
+    var dom = D[cur];
+    dom.prompts.forEach(function(p, pi){
+      var vars = extractVars(p.tpl);
+      var inputs = vars.map(function(v, vi){
+        var ph = v.indexOf('/') !== -1 ? v.split('/')[0] : v;
+        return '<input data-var="' + v + '" placeholder="' + ph + '" class="sk-in" style="flex:1;min-width:120px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#0a0f1e;color:#b9c8ea;font-size:12.5px;outline:none" onfocus="this.style.borderColor=\'rgba(56,225,255,.5)\'" onblur="this.style.borderColor=\'\'">';
+      }).join('');
+      grid.innerHTML +=
+        '<div class="pcard" data-idx="' + pi + '">' +
+          '<h4>' + dom.icon + ' ' + p.name + '</h4>' +
+          '<div class="use">技能支撑：' + dom.skills.split(' / ').slice(0,3).join(' · ') + '</div>' +
+          (vars.length
+            ? '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">' + inputs + '</div>' +
+              '<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">' +
+                '<button class="sk-gen" style="padding:8px 16px;border-radius:10px;border:none;background:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);color:#fff;font-size:12.5px;font-weight:800;cursor:pointer"> 生成完整提示词</button>' +
+                '<button class="sk-copy" style="padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:#0a0f1e;color:#b9c8ea;font-size:12.5px;font-weight:700;cursor:pointer"> 复制结果</button>' +
+              '</div>'
+            : '') +
+          '<div class="prompt-box" style="' + (vars.length ? 'display:none' : '') + '">' + esc(p.tpl) + '</div>' +
+          '<div class="sk-result" style="display:none;background:#0a0f1e;border:1px solid rgba(56,225,255,.25);border-radius:10px;padding:12px 14px;margin-top:8px;font-family:Consolas,monospace;font-size:12.4px;color:#b9c8ea;white-space:pre-wrap;word-break:break-word"></div>' +
+        '</div>';
+    });
+    // 生成按钮
+    grid.querySelectorAll('.sk-gen').forEach(function(btn){
+      btn.onclick = function(){
+        var card = btn.closest('.pcard');
+        var tpl = dom.prompts[+card.dataset.idx].tpl;
+        var missing = [];
+        card.querySelectorAll('.sk-in').forEach(function(inp){
+          var v = inp.getAttribute('data-var'), val = inp.value.trim();
+          tpl = tpl.split('{' + v + '}').join(val || v);
+          if (!val) missing.push(v);
+        });
+        var res = card.querySelector('.sk-result');
+        res.textContent = tpl;
+        res.style.display = 'block';
+        card.querySelector('.prompt-box').style.display = 'none';
+        btn.textContent = missing.length ? ' 已填 ' + (card.querySelectorAll('.sk-in').length - missing.length) + '/' + card.querySelectorAll('.sk-in').length + '（未填项用原文）' : ' 已生成';
+        setTimeout(function(){ btn.textContent = ' 生成完整提示词'; }, 1500);
+      };
+    });
+    // 复制按钮
+    grid.querySelectorAll('.sk-copy').forEach(function(btn){
+      btn.onclick = function(){
+        var card = btn.closest('.pcard');
+        var res = card.querySelector('.sk-result');
+        var text = res.style.display === 'block' ? res.textContent : card.querySelector('.prompt-box').textContent;
+        var done = function(){ btn.textContent = ' 已复制'; setTimeout(function(){ btn.textContent = ' 复制结果'; }, 1500); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+        } else { fallbackCopy(text); done(); }
+      };
+    });
+  }
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  D.forEach(function(d, i){
+    var b = document.createElement('button');
+    b.className = 'ptab' + (i === cur ? ' active' : '');
+    b.textContent = d.icon + ' ' + d.domain + '（' + d.prompts.length + '）';
+    b.onclick = function(){
+      cur = i;
+      tabs.querySelectorAll('.ptab').forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      render();
+      document.getElementById('skilllib').scrollIntoView({ behavior:'smooth' });
+    };
+    tabs.appendChild(b);
+  });
+  render();
+})();
+</script>
+<script>
+(function(){
+'use strict'
+var DATA={
+'写作':[
+ {t:'小红书爆款文案',use:'种草文 / 产品推荐 / 生活分享',tags:['小红书','种草'],p:'你是一位小红书爆款文案专家。根据产品【填入】写一篇种草文案：①标题含 emoji 和数字，用"！"结尾 ②正文分 3 段，每段 emoji 开头 ③语气像朋友聊天，用"姐妹们""绝绝子" ④结尾带 5 个话题标签 ⑤总字数 300-500。'},
+ {t:'公众号深度长文',use:'行业分析 / 观点输出 / 干货分享',tags:['公众号','长文'],p:'你是资深公众号作者。围绕【主题】写一篇 2000 字深度文：①开头用故事或数据切入，3 秒抓住读者 ②中间 3 个小标题，每个有具体案例 ③数据要真实可查，不确定标注"待核实" ④结尾升华并给行动建议 ⑤像懂行的朋友在聊天。'},
+ {t:'短视频脚本（60秒）',use:'抖音/快手知识类、产品类',tags:['短视频','脚本'],p:'你是短视频编导。为【产品/主题】写 60 秒脚本：①前 3 秒强钩子（提问/冲突/悬念/反转）②中间 3 段，每段含画面+台词+字幕建议 ③结尾行动号召（关注/点赞/购买）④标注每段时长，适合竖屏 9:16。'},
+ {t:'简历优化',use:'求职 / 跳槽 / 过 ATS',tags:['简历','HR','STAR'],p:'你是资深 HR，10 年招聘经验。优化我的简历：①用 STAR 法则重写工作经历 ②量化成果（提升 X%、节省 X 小时、管理 X 人）③突出与目标职位的匹配度 ④每条经历 2 行以内。目标职位：【】。经历：【】。'},
+ {t:'商务邮件',use:'对外沟通 / 汇报 / 催办',tags:['邮件','商务'],p:'你是商务邮件助手。帮我把【意思】写成正式邮件：①主题一句说清 ②正文简洁礼貌，先结果后过程 ③结尾明确行动项和期限 ④收件人身份：【领导/客户/同事】。'},
+ {t:'周报月报',use:'定期汇报 / 向上管理',tags:['周报','汇报'],p:'帮我写一份【周报/月报】：①完成工作（量化：完成 X 个任务、提升 X%、产出 X 篇）②问题与解决方案 ③下期计划（目标+时间点）④需要的支持（向上管理）。工作内容：【】。'},
+ {t:'爆款标题',use:'文章/视频取名',tags:['标题','引流'],p:'为【内容】写 10 个标题：5 个好奇型、5 个利益型，字数 ≤ 20，不虚假夸大，带数字或冲突更好。'},
+ {t:'演讲稿 / 口播',use:'上台演讲 / 视频口播',tags:['演讲','口播'],p:'你是口播教练。为【主题】写 1 分钟口播稿：①前 3 秒钩子 ②正文 3 点，口语化可直接念 ③结尾号召行动。'}
+],
+'编程':[
+ {t:'代码解释',use:'接手旧代码 / 学习源码',tags:['解释','Debug'],p:'请解释这段代码【粘贴】：①整体功能 ②关键逻辑/算法 ③潜在 bug 与优化空间 ④给出优化后的代码。用中文分点回答。'},
+ {t:'单元测试生成',use:'提高代码质量',tags:['测试','pytest'],p:'为以下函数【粘贴】生成完整单元测试：①覆盖正常情况 ②覆盖边界（空值/极值）③覆盖异常（非法输入）④使用【pytest/Jest】⑤每个用例写清测试目的。'},
+ {t:'SQL 优化',use:'慢查询 / 报表优化',tags:['SQL','性能'],p:'优化这段 SQL【粘贴】：①分析执行计划找瓶颈 ②给索引建议 ③用 JOIN 替代子查询等重写 ④解释优化原理与预期提升。'},
+ {t:'正则表达式',use:'数据清洗 / 文本提取',tags:['正则'],p:'我要【提取/匹配/替换】这样的文本【示例】：请给出正则表达式、逐个解释每部分含义，并给出 3 个测试用例验证。'},
+ {t:'报错排查',use:'调试 / 定位问题',tags:['报错','调试'],p:'这是我的报错【粘贴】和代码上下文【粘贴】：①定位根因 ②解释成因 ③给 3 种修复方案并说明适用场景 ④用中文回答。'},
+ {t:'API 设计',use:'后端接口设计',tags:['API','设计'],p:'你是后端架构师。为【实体】设计 REST API：①资源与端点列表 ②每个端点的请求/响应示例（JSON）③鉴权与错误码约定 ④分页/排序规范。'}
+],
+'绘画':[
+ {t:'赛博朋克风',use:'Midjourney / 即梦',tags:['赛博朋克','16:9'],p:'A cyberpunk cityscape at night, neon lights reflecting on wet streets, flying cars, holographic advertisements, rain, cinematic lighting, ultra detailed, 8k --ar 16:9'},
+ {t:'中国风水墨',use:'国风插画 / 封面',tags:['中国风','水墨','3:4'],p:'Traditional Chinese ink painting, misty mountains, a lone fisherman on a small boat, minimalist style, white space, brush strokes visible, serene atmosphere --ar 3:4'},
+ {t:'皮克斯 3D 风',use:'卡通角色 / 产品',tags:['皮克斯','3D','1:1'],p:'Pixar style 3D render, cute character design, soft lighting, vibrant colors, detailed textures, subsurface scattering, octane render, 8k --ar 1:1'},
+ {t:'吉卜力动画风',use:'治愈系插画',tags:['吉卜力','动画'],p:'Studio Ghibli style, hand-drawn animation, soft pastel colors, whimsical landscape, magical atmosphere, detailed background, anime aesthetic --ar 16:9'},
+ {t:'写实人像',use:'人像 / 头像',tags:['写实','人像'],p:'Professional portrait photography, 85mm lens, shallow depth of field, natural lighting, detailed skin texture, sharp focus on eyes, warm tones --ar 2:3'},
+ {t:'像素艺术',use:'游戏素材 / 复古',tags:['像素','复古'],p:'Pixel art, 16-bit style, retro gaming aesthetic, vibrant colors, detailed sprites, isometric view, nostalgic atmosphere --ar 1:1'},
+ {t:'漫剧分镜 · 角色一致性',use:'AI 漫剧制作',tags:['漫剧','一致性'],p:'角色锚点：{发色}、{瞳色}、{服装}、{配饰}。第 n 格，景别【特写】，场景【】，动作【】，表情【】，光影【】。画风：国漫厚涂，16:9 高清。负面词：畸形手、五官崩坏、多余肢体。'},
+ {t:'产品白底图',use:'电商详情页',tags:['电商','白底'],p:'Minimalist product photography, product on pure white background, soft studio lighting, sharp focus, commercial e-commerce style, ultra detailed, 8k'}
+],
+'办公':[
+ {t:'会议纪要',use:'开会 / 记录',tags:['纪要','待办'],p:'你是会议记录员。把这段会议语音【粘贴】整理成纪要：①结论 ②决策 ③待办（负责人+截止时间，表格）④遗留问题。'},
+ {t:'数据分析报告',use:'运营/财务汇报',tags:['数据分析','报告'],p:'根据数据【粘贴】写分析报告：①核心发现 3-5 个（一句话一个）②每个发现配具体数字对比 ③趋势分析（同比/环比）④3 条可执行建议。'},
+ {t:'竞品分析',use:'产品调研',tags:['竞品','策略'],p:'对比【竞品 A/B/C】：①定位对比（用户/价值/定价）②功能对比（表格+优劣）③各自优劣势（≥3 维）④差异化机会点 ⑤3 条策略建议。'},
+ {t:'PPT 大纲',use:'汇报 / 讲课',tags:['PPT','大纲'],p:'你是演示设计师。为【主题】做 12 页 PPT 大纲：每页标题 + 3 个要点 + 配图建议。先给大纲确认，再逐页扩展。'},
+ {t:'项目管理计划',use:'立项 / 排期',tags:['项目','排期'],p:'你是项目经理。为【项目】写实施计划：目标、里程碑（带日期）、任务分解 WBS、责任人、风险清单（概率+应对）、验收标准。'},
+ {t:'报价方案',use:'销售 / 接单',tags:['报价','方案'],p:'你是售前方案专家。为【客户】写一页报价说明：痛点呼应、方案构成、价格梯度（基础/标准/加急）、ROI 估算、限时权益。'}
+],
+'学习':[
+ {t:'概念通俗讲解',use:'学新知识 / 给学生讲',tags:['概念','通俗'],p:'用大白话解释【概念】：①一句话定义（小学生也懂）②一个生活类比 ③2 个实际例子 ④常见误区 ⑤一句话总结。目标读者：【初学者/专业人士】。'},
+ {t:'30 天学习计划',use:'学技能 / 转行',tags:['计划','30天'],p:'为我制定学【技能】的 30 天计划：①每天主题（入门到实战）②免费资源优先并标注 ③每天动手练习 ④每周末量化目标。我的基础：【】。'},
+ {t:'论文解读',use:'读论文 / 写综述',tags:['论文','解读'],p:'你是论文导读。解读这篇论文【粘贴】：①研究问题 ②方法核心 ③结果与结论 ④局限 ⑤它的创新点一句话。用我能听懂的话讲。'},
+ {t:'错题精讲',use:'学生刷题',tags:['错题','家教'],p:'你是耐心家教。把这道错题讲透：①错在哪 ②正确思路 ③同类题 1 道练手 ④一句记忆口诀。题目：【】。'},
+ {t:'英语润色',use:'写作 / 论文',tags:['英语','润色'],p:'你是英语母语编辑。把我的作文改地道：保留原意、修语法、升词汇、批注每处修改原因。原文：【】。'},
+ {t:'行业调研',use:'求职 / 投资 / 选方向',tags:['调研','报告'],p:'你是行业研究员。调研【行业】：①市场规模与增速（带来源）②产业链结构 ③头部玩家格局 ④政策环境 ⑤普通人/从业者的机会点。表格输出。'}
+],
+'漫剧':[
+ {t:'爆款选题',use:'漫剧第一步',tags:['选题','定位'],p:'你是网文爆款分析师。账号面向【人群】，垂直做【品类】。给我 20 个能爆的选题：冲突前置、一句话钩子、适合 3-5 分钟漫画解说。直接列清单。'},
+ {t:'人设卡',use:'锁定角色形象',tags:['人设','一致性'],p:'你是角色设定师。为主角设计人设卡（JSON）：姓名/年龄/身份/外貌（可直接用于 AI 生图，具体到发色瞳色服装配饰）/性格/口头禅/黑化动机。再给世界观一页。'},
+ {t:'分镜脚本',use:'把剧情切镜头',tags:['分镜','表格'],p:'你是分镜导演。把这段剧情【粘贴】拆成 8-12 格分镜：每格输出景别、动作、表情、台词、背景、时长，表格输出，每格可直接当生图提示词。'},
+ {t:'生图一致性模板',use:'保证角色不变形',tags:['生图','锚点'],p:'角色锚点每张都带：{发色}、{瞳色}、{服装}、{配饰}。第 n 格，景别【】，场景【】，动作【】，表情【】，光影【】。画风：国漫厚涂，16:9。负面词：畸形手、五官崩坏、多余肢体。'},
+ {t:'配音稿',use:'AI 配音前准备',tags:['配音','情绪'],p:'你是配音导演。给这段分镜写配音稿：每句带情绪标注（括在括号里），断句自然适合 AI 配音，总时长 ≤30 秒，结尾给配乐建议。分镜：【】。'},
+ {t:'发布物料',use:'发布与变现',tags:['发布','变现'],p:'你是自媒体运营。为这条漫剧写发布物料：①标题 3 个（≤20 字带冲突）②封面文案 ③前 3 秒钩子字幕 ④评论区置顶引导 ⑤转发文案，再给 3 种变现路径建议。'}
+]}
+var GLOSS=[
+ {t:'Prompt（提示词）',pro:'你发给 AI 的指令文本，质量直接决定输出质量，是 AI 时代的"沟通语言"。</b>',plain:'你怎么跟 AI 说话，它就怎么回你。'},
+ {t:'Few-shot（少样本示例）',pro:'在提示词里给出 1-3 个输入输出示例，让模型模仿格式与风格，比空泛描述更精准。</b>',plain:'给 AI 打个样，它照着学。'},
+ {t:'Chain-of-Thought（思维链）',pro:'要求模型先展示推理过程再给结论（"先分析…再…最后…"），显著提升复杂任务的正确率。</b>',plain:'让 AI 把草稿纸亮出来，别直接报答案。'},
+ {t:'Temperature（温度）',pro:'控制输出的随机性，0-1 之间：低温度=稳定保守，高温度=发散有创意。</b>',plain:'调 AI 的"疯度"，写文案开高，写代码调低。'},
+ {t:'Token（词元）',pro:'模型处理文本的最小单位，中文约 1 个字 ≈ 1-2 token，上下文窗口大小以 token 计。</b>',plain:'AI 一次能"记住"的字的数量。'},
+ {t:'上下文窗口（Context Window）',pro:'模型单次能容纳的输入+输出总量，超出的早期内容会被"遗忘"。</b>',plain:'AI 的短期记忆容量，越大越能聊长文。'},
+ {t:'RAG（检索增强生成）',pro:'先检索知识库相关片段，再让模型基于片段回答，解决"幻觉"与知识陈旧问题。</b>',plain:'先翻资料再回答，答案有出处。'},
+ {t:'Negative Prompt（负向提示词）',pro:'告诉模型"不要生成什么"的指令，绘画类常用，如"畸形手、模糊、水印"。</b>',plain:'告诉 AI 别犯什么错。'},
+ {t:'多模态（Multimodal）',pro:'模型能同时处理文本+图像+语音+视频，如 GPT-4V、豆包视觉版。</b>',plain:'AI 能看、能听、能说、能写。'},
+ {t:'微调（Fine-tuning）',pro:'在预训练大模型基础上用领域数据继续训练，让模型更懂你的业务。</b>',plain:'给 AI 补课，教它你的行业黑话。'}
+]
+var tabs=document.getElementById('ptabs'), cards=document.getElementById('pcards')
+var CATS=Object.keys(DATA)
+var state=CATS[0]
+CATS.forEach(function(c,i){
+  var b=document.createElement('button'); b.className='ptab'+(i===0?' active':''); b.textContent=c+'（'+DATA[c].length+'）'
+  b.addEventListener('click',function(){ state=c; tabs.querySelectorAll('.ptab').forEach(function(x){x.classList.toggle('active',x===b)}); render() })
+  tabs.appendChild(b)
+})
+function render(){
+  var list=DATA[state]
+  cards.innerHTML=list.map(function(x){
+    return '<div class="pcard"><h4>'+x.t+'</h4><div class="use">适用：'+x.use+'</div>'+
+      '<div class="prompt-box"><button class="copy" type="button">复制</button>'+x.p+'</div>'+
+      '<div class="ptags">'+x.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div></div>'
+  }).join('')
+}
+render()
+document.getElementById('gloss').innerHTML=GLOSS.map(function(x){return '<div class="gterm"><h4>'+x.t+'</h4><div class="pro"><b>专家定义：</b>'+x.pro+'</div><div class="plain">'+x.plain+'</div></div>'}).join('')
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.copy');if(!b)return
+  var box=b.closest('.prompt-box');var text=box?box.textContent.replace('复制','').trim():''
+  var done=function(){b.textContent='已复制 ';b.classList.add('done');setTimeout(function(){b.textContent='复制';b.classList.remove('done')},1500)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){fb()})}else fb()
+  function fb(){var ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}
+})
+})()
+</script>
+<script src="/baiju-widget.js"></script>
+<script src="/ccowork.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</body>
+</html>

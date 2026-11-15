@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta name="description" content="仿真 = 在电脑里“做实验”。工科里，先仿真后实物，能省大量成本与危险。本目录已有 5 个可直接跑的 Python 仿真 + 1 个测试。 跑法：python 03_projectile.py；">
+<meta property="og:description" content="仿真 = 在电脑里“做实验”。工科里，先仿真后实物，能省大量成本与危险。本目录已有 5 个可直接跑的 Python 仿真 + 1 个测试。 跑法：python 03_projectile.py；">
+<meta name="keywords" content="仿真模拟与开源工具,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仿真模拟与开源工具 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"仿真模拟与开源工具","description":"仿真 = 在电脑里“做实验”。工科里，先仿真后实物，能省大量成本与危险。本目录已有 5 个可直接跑的 Python 仿真 + 1 个测试。 跑法：python 03_projectile.py；","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/lab/simulation/%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%8B%9F%E4%B8%8E%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7.html">
+<meta property="og:title" content="仿真模拟与开源工具 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/lab/simulation/%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%8B%9F%E4%B8%8E%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="仿真模拟与开源工具 · 白驹 ccowork">
+<meta name="twitter:description" content=" 白驹 ccowork · 科学实验室  2026-08-21  10 分钟 实验室 仿真模拟与开源工具指南 仿真 = 在电脑里&amp;quot;做实验&amp;quot;。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav><div class="logo">白驹 ccowork · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-lab-simulation-仿真模拟与开源工具.png" alt="仿真模拟与开源工具 · 白驹 ccowork（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>10 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>仿真模拟与开源工具指南</h1>
+<blockquote>
+<p>仿真 = 在电脑里&quot;做实验&quot;。工科里，先仿真后实物，能省大量成本与危险。本目录已有 5 个可直接跑的 Python 仿真 + 1 个测试。</p>
+</blockquote>
+<h2>一、本目录的仿真脚本</h2>
+<table>
+<thead>
+<tr>
+<th>脚本</th>
+<th>对应课程/知识点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>01_pid_controller.py</code></td>
+<td>自动控制原理 · PID</td>
+</tr>
+<tr>
+<td><code>02_spring_mass_damper.py</code></td>
+<td>机械振动 · 二阶系统</td>
+</tr>
+<tr>
+<td><code>03_projectile.py</code></td>
+<td>理论力学 · 抛体</td>
+</tr>
+<tr>
+<td><code>04_rc_circuit.py</code></td>
+<td>电路 · 一阶暂态</td>
+</tr>
+<tr>
+<td><code>05_monte_carlo.py</code></td>
+<td>概率统计 · 蒙特卡洛</td>
+</tr>
+<tr>
+<td><code>06_single_pendulum.py</code></td>
+<td>理论力学 · 单摆（非线性）</td>
+</tr>
+<tr>
+<td><code>07_dc_motor.py</code></td>
+<td>电机/机电 · 电气+机械耦合</td>
+</tr>
+<tr>
+<td><code>08_heat_equation.py</code></td>
+<td>传热 · 一维热传导（PDE 差分）</td>
+</tr>
+<tr>
+<td><code>09_lotka_volterra.py</code></td>
+<td>数学生态 · 捕食者-猎物</td>
+</tr>
+<tr>
+<td><code>10_wave_equation.py</code></td>
+<td>偏微分 · 一维波动方程</td>
+</tr>
+<tr>
+<td><code>test_simulation.py</code></td>
+<td>仿真测试（用理论值验证正确性）</td>
+</tr>
+</tbody></table>
+<p>跑法：<code>python 03_projectile.py</code>；测试：<code>pytest test_simulation.py -v</code>。</p>
+<blockquote>
+<p><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i><strong>看不懂代码？</strong> 每个脚本都有逐行图文讲解 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong><a href="%E4%BB%BF%E7%9C%9F%E8%84%9A%E6%9C%AC%E5%9B%BE%E6%96%87%E8%AE%B2%E8%A7%A3.html">《仿真脚本图文讲解》</a></strong>：原理公式 + ASCII 示意图 + 代码逐段精讲 + 参数表 + 真实运行结果 + 避坑点（含欧拉法漂移、显式格式稳定性等实战经验）。</p>
+</blockquote>
+<h2>二、为什么要写&quot;仿真测试&quot;</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-仿真模拟与开源工具.png" alt="仿真模拟与开源工具 · 白驹 ccowork（离线版） · 二、为什么要写&quot;仿真测试&quot;" loading="lazy"></figure>
+<p>仿真不是画个图就完事，必须用<strong>已知理论值</strong>去校验（例如抛体射程公式、RC 时间常数、π 值），否则仿真是错的都不知道。这就是&quot;仿真测试&quot;的意义——<code>test_simulation.py</code> 里每个断言都在核对物理公式。</p>
+<h2>三、开源仿真工具（免费，按领域选）</h2>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>工具</th>
+<th>下载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电路仿真</td>
+<td><strong>ngspice</strong></td>
+<td>ngspice.sourceforge.net</td>
+</tr>
+<tr>
+<td>电路仿真（免费闭源）</td>
+<td>LTspice</td>
+<td>analog.com</td>
+</tr>
+<tr>
+<td>数值计算（MATLAB 替代）</td>
+<td><strong>GNU Octave</strong></td>
+<td>octave.org</td>
+</tr>
+<tr>
+<td>数值计算</td>
+<td>Scilab</td>
+<td>scilab.org</td>
+</tr>
+<tr>
+<td>多物理/系统建模</td>
+<td><strong>OpenModelica</strong></td>
+<td>openmodelica.org</td>
+</tr>
+<tr>
+<td>机器人仿真</td>
+<td><strong>Gazebo</strong>（+ ROS）</td>
+<td>gazebosim.org</td>
+</tr>
+<tr>
+<td>电子设计 EDA</td>
+<td><strong>KiCad</strong></td>
+<td>kicad.org</td>
+</tr>
+<tr>
+<td>机器人/机械臂仿真</td>
+<td>CoppeliaSim</td>
+<td>coppeliarobotics.com</td>
+</tr>
+</tbody></table>
+<h2>四、用 AI 辅助仿真</h2>
+<p>提示词示例：</p>
+<pre><code>请用纯 Python（不用 numpy）写一个单摆运动仿真：l=1m，初始角 30°，
+用欧拉法积分，打印前 2 秒每 0.1 秒的角度，并与小角度近似周期 2π√(l/g) 对比验证。
+</code></pre>
+<blockquote>
+<p>核心心法：仿真四步——建模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 离散化（欧拉/龙格库塔）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 数值积分 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 用理论值做测试验证。</p>
+</blockquote>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261115b"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

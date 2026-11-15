@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CodeReviewer 代码评审助手 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="AI 学院实战项目：目标、拆解、实现步骤与验收标准。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/projects/code-reviewer.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-projects-code-reviewer.png" alt="CodeReviewer 代码评审助手 · AI 学院 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1><i class="cc-ic" data-ic="search" aria-hidden="true"></i>CodeReviewer 代码评审助手</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 毕业设计 10 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：专家</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 8 小时</span><span class="blog-tag">开发工具</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>10 号毕业设计：CodeReviewer 代码评审助手</h2>
+<p>日常开发中人工代码评审成本高、标准不统一、易漏过潜在缺陷与坏味道，本项目基于大语言模型搭建自动化代码评审助手，完成后可掌握LLM工具调用、静态分析集成、IDE/代码平台插件开发的全流程落地能力。</p>
+<h2>项目简介</h2>
+<p>《CodeReviewer 代码评审助手》是一款面向个人开发者与中小团队的轻量化AI代码审查工具，定位为本地优先、可扩展的评审辅助组件，支持对接本地代码文件、Git提交记录与GitHub/GitLab PR流程，结合静态代码分析规则与大语言模型的语义理解能力，自动识别语法错误、逻辑缺陷、安全漏洞、性能问题与不规范编码，输出可直接落地的重构建议与修复代码片段，无需重度接入企业级DevOps流程即可在本地快速运行，核心目标是降低代码评审的重复劳动成本，帮助开发者在提交代码前提前发现80%以上的常见问题。项目采用MIT开源协议，所有依赖均为开源组件，支持全本地部署避免代码泄露风险。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-code-reviewer.png" alt="CodeReviewer 代码评审助手 · AI 学院 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>多源代码接入：支持读取本地单个代码文件、Git diff提交片段、GitHub/GitLab PR变更内容，自动过滤非代码文件与自动生成的代码片段</li>
+<li>多维度缺陷检测：覆盖语法错误、空指针/数组越界等逻辑风险、SQL注入/硬编码密钥等安全漏洞、循环嵌套过深/重复代码等性能与可维护性问题</li>
+<li>规则+LLM双引擎评审：先通过静态分析工具做规则化快速扫描，再将问题上下文与代码片段传给大模型做语义层面的深度评审，减少大模型幻觉</li>
+<li>结构化评审报告：输出按严重等级（阻断/严重/警告/建议）分类的问题列表，每个问题附带位置定位、问题原因、风险说明、可直接复制的修复代码片段</li>
+<li>自定义规则配置：支持用户通过YAML文件配置团队专属编码规范、忽略文件列表、敏感词检测规则，适配不同技术栈的评审标准</li>
+<li>Git工作流集成：支持配置pre-commit钩子，在代码提交前自动触发评审，阻断高风险代码提交，也可生成Markdown格式的评审评论自动同步到PR页面</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>代码解析层</td><td>GitPython、tree-sitter、PyYAML</td><td>读取Git提交diff、解析多语言代码AST结构、加载用户自定义配置规则</td></tr>
+<tr><td>静态扫描层</td><td>Pylint（Python）、ESLint（JS/TS）、Bandit（安全扫描）</td><td>基于成熟规则库做第一轮确定性问题扫描，输出结构化的规则类问题</td></tr>
+<tr><td>AI评审层</td><td>LangChain、OpenAI API / Qwen-7B本地大模型、LangChain Expression Language</td><td>拼接评审Prompt、管理大模型调用上下文、解析大模型返回的结构化评审结果</td></tr>
+<tr><td>输出层</td><td>Rich、Markdown、PyGitHub</td><td>终端彩色可视化输出评审结果、生成Markdown格式报告、自动同步评论到GitHub PR</td></tr>
+<tr><td>交互层</td><td>Typer</td><td>实现命令行交互接口，支持多参数配置评审范围、严格等级、输出格式</td></tr>
+</tbody>
+</table>
+<p>架构说明：项目采用分层解耦设计，所有层之间通过标准化的代码片段数据结构传递信息，静态扫描层输出的问题会作为上下文传入AI评审层，避免大模型重复检测已知规则问题，同时降低幻觉概率；AI层支持切换云端API或本地开源大模型，满足代码不出内网的安全需求；输出层与交互层完全独立，后续可快速扩展VS Code插件、Web界面等交互入口，无需修改核心评审逻辑。</p>
+<h2>核心代码骨架</h2>
+<pre><code># core/reviewer.py 核心评审调度模块
+import os
+from langchain.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import JsonOutputParser
+from core.static_scanner import StaticScanner
+from core.code_loader import CodeLoader
+from utils.prompt_templates import REVIEW_PROMPT
+class CodeReviewer:
+    def __init__(self, llm, config_path="./config.yaml"):
+        self.llm = llm  # 传入初始化好的大模型实例，支持云端/本地模型切换
+        self.code_loader = CodeLoader(config_path)  # 代码加载器，负责读取不同来源的代码
+        self.static_scanner = StaticScanner(config_path)  # 静态扫描器，执行规则类检测
+        self.output_parser = JsonOutputParser()  # 结构化解析LLM返回的JSON结果
+        # 构建评审Prompt链，注入静态扫描结果作为上下文
+        self.prompt = ChatPromptTemplate.from_template(REVIEW_PROMPT)
+        self.chain = self.prompt | self.llm | self.output_parser
+    def review(self, target_path: str, review_type: str = "file"):
+        """核心评审入口，支持file/diff/pr三种评审类型"""
+        # 1. 加载目标代码片段与元信息（文件路径、语言、变更行范围）
+        code_segments = self.code_loader.load(target_path, review_type)
+        all_issues = []
+        for seg in code_segments:
+            # 2. 先执行静态扫描，拿到规则类问题
+            static_issues = self.static_scanner.scan(seg)
+            # 3. 拼接上下文调用大模型做深度评审
+            ai_result = self.chain.invoke({
+                "language": seg.language,
+                "code": seg.content,
+                "static_issues": [i.dict() for i in static_issues],
+                "format_instructions": self.output_parser.get_format_instructions()
+            })
+            # 4. 合并去重问题，添加位置元信息
+            all_issues.extend(self._merge_issues(static_issues, ai_result, seg))
+        # 5. 按严重等级排序后返回
+        return sorted(all_issues, key=lambda x: {"阻断":0, "严重":1, "警告":2, "建议":3}[x.severity])</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：安装Python 3.10+与Git，执行<code>pip install virtualenv && virtualenv venv</code>创建虚拟环境，Windows执行<code>venv\Scripts\activate</code>、Mac/Linux执行<code>source venv/bin/activate</code>激活环境。</li>
+<li>安装依赖：执行<code>pip install gitpython tree-sitter pylint eslint bandit langchain langchain-openai rich typer pyyaml pygithub</code>安装所有依赖库，若使用本地大模型额外执行<code>pip install vllm</code>。</li>
+<li>配置文件：在项目根目录创建<code>config.yaml</code>，配置大模型密钥（若用Qwen本地模型则配置本地模型路径）、需要忽略的文件/目录、团队自定义编码规则，默认配置可直接从项目示例模板复制。</li>
+<li>初始化静态扫描规则：执行<code>python -m eslint --init</code>初始化JS/TS扫描规则，执行<code>bandit -i</code>更新安全漏洞规则库，确保静态扫描组件可正常运行。</li>
+<li>本地文件评审测试：执行<code>python main.py review --path ./test_demo/bad_code.py --type file</code>，查看终端输出的结构化评审结果，验证缺陷检测与建议生成是否正常。</li>
+<li>Git提交钩子配置：执行<code>python main.py install-hook</code>在当前Git仓库安装pre-commit钩子，后续执行<code>git commit</code>时会自动评审本次提交的diff内容，若存在阻断级问题会阻止提交。</li>
+<li>PR评审测试：在config.yaml中配置GitHub Token与仓库地址，执行<code>python main.py review --pr 123 --type pr</code>，即可自动拉取PR#123的变更内容评审，并将结果作为评论发布到PR页面。</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>IDE插件扩展：基于现有核心评审逻辑，开发VS Code插件，实现编码过程中实时评审，在问题代码行直接显示波浪线提示与修复建议，点击即可一键应用修复代码。</li>
+<li>评审知识库增强：收集团队历史评审记录与线上故障代码案例，构建向量知识库，在评审时通过RAG召回相似历史问题，给出更贴合团队实际场景的评审建议，减少通用化的无效建议。</li>
+<li>多轮评审修复闭环：增加自动修复模块，针对评审出的问题自动生成修复后的完整代码，支持用户确认后直接写入文件，同时执行单元测试验证修复正确性，形成“检测-修复-验证”的完整闭环。</li>
+<li>多语言支持增强：补充Go、Rust、Java等语言的静态扫描规则集成，针对不同语言的最佳实践优化专属Prompt，提升多语言场景下的评审准确率，支持微服务多语言仓库的统一评审。</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握了LLM应用的分层设计思路，理解了“规则引擎+大模型”双模式如何平衡准确率与灵活性，有效降低大模型幻觉问题，避免纯LLM方案的不确定性。</li>
+<li>掌握了代码类工具的核心开发逻辑，包括Git操作、AST解析、静态分析工具集成、多源数据接入的通用方法，可迁移到其他开发类AI工具的开发中。</li>
+<li>掌握了LangChain链式调用、结构化输出、Prompt工程的实战技巧，学会如何通过工程化手段让大模型输出符合预期的结构化结果，而非零散的自然语言。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>改造现有代码，新增对Go语言的静态扫描支持：集成golangci-lint工具，在静态扫描层增加Go语言的扫描逻辑，调整Prompt让大模型能识别Go语言的特有问题（如goroutine泄漏、err未处理等），用示例Go坏代码测试评审效果。</li>
+<li>新增评审报告导出功能：在输出层扩展Excel导出能力，将所有评审结果按严重等级、文件路径、问题类型分类导出为Excel表格，支持统计每次评审的问题数量、类型分布，方便团队做代码质量趋势分析。</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 AI 学院「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

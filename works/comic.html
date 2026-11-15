@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 漫剧 · 作品域 · 白驹 ccowork</title>
+<meta name="description" content="用 AI 生成的分镜、角色与成片流程记录。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/works/comic.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c; --pink:#ff5c8a;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#ff5c8a,#8b5cf6 45%,#38e1ff);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(139,92,246,.3);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:10px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:20px;font-size:14px;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+.wrap{position:relative;z-index:5;max-width:1020px;margin:0 auto;padding:104px 24px 70px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,46px);letter-spacing:3px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:720px;margin-top:10px;font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(10px);margin-top:22px}
+.card h3{font-family:var(--serif);font-size:16px;color:var(--ice);margin-bottom:14px;letter-spacing:1px}
+.cfg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.cfg label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.cfg select{width:100%;background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 12px;font-size:14px;outline:none;cursor:pointer;font-family:inherit}
+.cfg select:focus{border-color:var(--pink)}
+.genbtn{display:inline-block;margin-top:18px;padding:13px 34px;border:none;border-radius:14px;background:var(--grad);color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:.25s;text-decoration:none}
+.genbtn:disabled{opacity:.6;cursor:wait}
+.mini-btn{background:var(--bg2);border:1px solid var(--line);color:var(--dim);border-radius:10px;padding:5px 12px;font-size:12px;cursor:pointer;transition:.2s;font-family:inherit}
+.mini-btn:hover{color:var(--cyan);border-color:var(--cyan)}
+.comic-out{margin-top:6px;font-size:14px;line-height:1.75;color:var(--text);overflow-wrap:break-word}
+.comic-out table{border-collapse:collapse;margin:10px 0;width:100%;font-size:12px}
+.comic-out th,.comic-out td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+.comic-out th{background:var(--bg2);color:var(--ice)}
+.comic-out pre{background:#05070f;border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto;font-size:12px}
+.comic-out h3,.comic-out h4{margin:14px 0 6px}
+.comic-out blockquote{border-left:3px solid var(--gold);margin:8px 0;padding:4px 12px;color:var(--muted);background:var(--bg2)}
+body[data-theme="cloud"] .comic-out th{background:#e8f4fd!important;color:#0f172a!important}
+body[data-theme="cloud"] .comic-out th,body[data-theme="cloud"] .comic-out td{border-color:rgba(90,140,190,.2)!important}
+body[data-theme="cloud"] .comic-out pre{background:#f1f7fc!important;color:#1e293b!important}
+body[data-theme="cloud"] .comic-out blockquote{background:#f0f7fd!important;color:#475569!important}
+.genbtn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(139,92,246,.4)}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.fstep{background:var(--bg2,#0a0f1e);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.fstep .fn{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:2px}
+.fstep b{display:block;font-size:14px;margin:6px 0 4px}
+.fstep p{font-size:12px;color:var(--muted);line-height:1.5}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.tool{background:var(--bg2,#0a0f1e);border:1px solid var(--line);border-radius:14px;padding:15px 17px;transition:.25s}
+.tool:hover{border-color:rgba(255,92,138,.4);transform:translateY(-2px)}
+.tool b{display:block;font-size:14px;margin-bottom:5px}
+.tool .tag{display:inline-block;font-size:10px;color:#03121a;background:var(--grad);border-radius:6px;padding:1px 7px;margin-right:6px}
+.tool p{font-size:12px;color:var(--muted);line-height:1.6}
+.list{margin:0;padding-left:20px;color:var(--muted);font-size:13px;line-height:2}
+.list b{color:var(--text)}
+.tpl{background:var(--bg2,#0a0f1e);border:1px solid var(--line);border-radius:14px;padding:15px 17px;font-family:var(--mono);font-size:12px;color:#c6d2ea;white-space:pre-wrap;line-height:1.8;margin-top:10px}
+.warn{background:rgba(255,92,138,.08);border:1px solid rgba(255,92,138,.35);border-radius:14px;padding:13px 16px;font-size:13px;color:#ffc6d6;line-height:1.8;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;color:var(--dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+</head>
+<body data-ccnav="works" data-cctitle="作品">
+<div class="pg-wrap">
+<article class="merged-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-comic.png" alt="ccowork · AI 漫剧 · ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<canvas id="stars"></canvas>
+
+<div class="wrap">
+  <div class="hero">
+    <h1><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>AI <span>漫剧工坊</span></h1>
+    <p>简单配置 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 一键生成漫剧剧本与分镜提示词（交给全能智能体）；内置 2026 漫剧工具资源与新手三件套。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>配置你的漫剧</h3>
+    <div class="cfg">
+      <div><label>题材</label><select id="cTheme">
+        <option>古装爽文</option><option>都市逆袭</option><option>校园甜宠</option>
+        <option>科幻末世</option><option>仙侠玄幻</option><option>悬疑推理</option><option>民间志怪</option>
+      </select></div>
+      <div><label>集数</label><select id="cEp"><option>1</option><option selected>3</option><option>5</option></select></div>
+      <div><label>每集格数（分镜数）</label><select id="cPanels"><option>4</option><option selected>6</option><option>8</option></select></div>
+      <div><label>画风</label><select id="cStyle">
+        <option>国漫</option><option>二次元</option><option>水墨</option><option>写实电影感</option><option>赛博朋克</option>
+      </select></div>
+    </div>
+    <a class="genbtn" id="genBtn" href="#" target="_blank" rel="noopener"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>一键生成漫剧剧本 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="card" id="comicResult" style="display:none">
+    <h3 style="display:flex;justify-content:space-between;align-items:center"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>生成结果
+      <span style="display:flex;gap:8px">
+        <button class="mini-btn" id="copyBtn" type="button"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制</button>
+        <button class="mini-btn" id="dlBtn" type="button"><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载 .md</button>
+      </span>
+    </h3>
+    <div class="comic-out" id="comicOut"></div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>制作全流程（5 环节）</h3>
+    <div class="flow">
+      <div class="fstep"><span class="fn">01</span><b>剧本 & 分镜</b><p>豆包 / DeepSeek / 扣子：输出「镜头+画面+台词+情绪」漫剧脚本</p></div>
+      <div class="fstep"><span class="fn">02</span><b>AI 生图</b><p>即梦（锁脸 90%+）/ ComfyUI：角色立绘、场景、分镜原画</p></div>
+      <div class="fstep"><span class="fn">03</span><b>画面动态化</b><p>可灵 / 即梦 Seedance：图生视频、首尾帧、人物微动</p></div>
+      <div class="fstep"><span class="fn">04</span><b>配音 & 音效</b><p>豆包配音 / 剪映 AI 配音 / Suno 原创 BGM</p></div>
+      <div class="fstep"><span class="fn">05</span><b>剪辑成片</b><p>剪映（首选，免费）：字幕、转场、9:16 竖屏导出</p></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>2026 漫剧工具实测（按流派）</h3>
+    <div class="tools">
+      <div class="tool"><span class="tag">新手零门槛</span><b>剪映 AI 漫剧</b><p>输入文案自动分镜/人设/配音/字幕，永久免费，零基础 10 分钟出片</p></div>
+      <div class="tool"><span class="tag">二次元首选</span><b>即梦 AI</b><p>字节出品，角色一致性行业顶尖（95%），参考图锁脸，免费额度充足</p></div>
+      <div class="tool"><span class="tag">画质天花板</span><b>可灵 AI</b><p>快手 Kling，4K/60fps 电影质感，动作流畅度最强，适合仙侠武侠</p></div>
+      <div class="tool"><span class="tag">一条龙</span><b>有戏 AI</b><p>剧本<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>角色<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>分镜<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>视频<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>成片全流程，支持 5 万字剧本自动拆集</p></div>
+      <div class="tool"><span class="tag">工业量产</span><b>Catimind / 纳米漫剧</b><p>工作室级：角色资产沉淀、百集并行、单分钟成本最低 16.2 元</p></div>
+      <div class="tool"><span class="tag">IP 改编</span><b>阅文漫剧助手</b><p>百万字小说 5 分钟理解，分镜直出可用率 80%+</p></div>
+    </div>
+    <div class="warn"><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>新手三件套：<b>豆包（脚本分镜）+ 即梦（漫画画面）+ 剪映（配音剪辑）</b>，手机就能做完一集。先跑通 1 分钟短片，再谈量产。</div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>漫剧分镜模板（复制即用）</h3>
+    <div class="tpl" id="tpl">写一部 60 秒 AI 漫剧分镜脚本：
+题材：古装爽文　画风：国漫
+要求：每镜写明【景别】【画面】【台词】【角色情绪】，竖屏 9:16。
+第 1 镜（全景）：月夜宫殿，女主被赐死……</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var TPL = {
+    '古装爽文':'古装权谋，女主重生复仇，快节奏反转',
+    '都市逆袭':'平凡打工人意外获得超能力，一路打脸逆袭',
+    '校园甜宠':'学霸与校霸的欢喜冤家，轻松甜蜜日常',
+    '科幻末世':'末日废土，AI 觉醒与人类幸存者的抉择',
+    '仙侠玄幻':'废柴少年觉醒血脉，逆天改命飞升',
+    '悬疑推理':'连环案件，主角用 AI 推理逐层破局',
+    '民间志怪':'山村怪谈，阴阳先生斗妖救世'
+  };
+  var genBtn = document.getElementById('genBtn');
+  function buildPrompt(){
+    var theme = document.getElementById('cTheme').value;
+    var ep = document.getElementById('cEp').value;
+    var panels = document.getElementById('cPanels').value;
+    var style = document.getElementById('cStyle').value;
+    var idea = TPL[theme] || '';
+    return '你是专业 AI 漫剧编剧。请为一部「' + theme + '」AI 漫剧生成完整创作包（共 ' + ep + ' 集、每集 ' + panels + ' 个分镜、画风：' + style + '）。\n' +
+      '故事梗概方向：' + idea + '。\n' +
+      '【必须完整输出，不要简化】输出格式：\n' +
+      '一、一句话卖点\n' +
+      '二、主角人设（姓名/性格/外表，供 AI 生图锁定角色）\n' +
+      '三、每集分镜表：用 Markdown 表格，列=镜号|景别|画面描述（可直接作为生图提示词）|台词|角色情绪，' + ep + ' 集 × ' + panels + ' 镜全部写全\n' +
+      '四、结尾致命钩子（预告/下季铺垫）\n' +
+      '五、创作提示（角色一致性固定前缀、风格统一三件套、动态分镜转视频关键词）';
+  }
+  // 剧本生成改走统一客户端 AI.complete（详见下方 genBtn 处理）
+  var comicOut = document.getElementById('comicOut');
+  var lastText = '';
+  function showResult(text){
+    lastText = text;
+    document.getElementById('comicResult').style.display = 'block';
+    if(window.marked && window.marked.parse){ comicOut.innerHTML = window.marked.parse(text); }
+    else { comicOut.textContent = text; }
+    wireComicGen();
+    comicOut.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+  // ---------- 漫剧分镜一键生图 / 图生视频（豆包 Seedream / Seedance） ----------
+  function genPanel(prompt){
+    var box = document.createElement('div');
+    box.className = 'comic-img';
+    box.innerHTML = '<b> 分镜生图中…</b><br><small>' + prompt.slice(0, 50) + '…</small>';
+    comicOut.insertBefore(box, comicOut.firstChild);
+    window.MediaGen.genImage(prompt + '，分镜漫画，竖屏 9:16', { size:'1K' }).then(function(u){
+      box.innerHTML = '<img src="'+u+'" alt="分镜图" style="width:200px;border-radius:10px;border:1px solid var(--line);vertical-align:middle">'
+        + ' <a class="mini-btn" href="'+u+'" target="_blank" rel="noopener" style="text-decoration:none"> 原图</a>'
+        + ' <button class="mini-btn" data-vid type="button" style="font-size:11px"> 图生视频</button>'
+        + ' <span class="vidprog" style="display:block;margin-top:6px;color:var(--muted);font-size:11px"></span>'
+        + ' <div class="vidbox" style="margin-top:6px"></div>';
+      box.querySelector('[data-vid]').addEventListener('click', function(){
+        var prog = box.querySelector('.vidprog');
+        var vb = box.querySelector('.vidbox');
+        prog.textContent = ' 视频生成中…';
+        window.MediaGen.genVideo(prompt + '，让画面动起来，电影感，轻微运镜', { imageUrl:u, ratio:'9:16', duration:5, model:'doubao-seedance-1-0-pro-250528' }, function(s){ prog.textContent = s; })
+          .then(function(vurl){
+            prog.textContent = ' 视频生成完成';
+            vb.innerHTML = '<video src="'+vurl+'" controls style="width:220px;border-radius:10px;border:1px solid var(--line)"></video> <a class="mini-btn" href="'+vurl+'" target="_blank" rel="noopener"> 下载</a>';
+          })
+          .catch(function(err){ prog.textContent = ' 视频失败：' + (err && err.message || err); });
+      });
+    }).catch(function(err){
+      box.innerHTML = ' 生图失败：' + (err && err.message || err) + '<br><small>云端直连方舟可能被拦截，本地 8787 可用</small>';
+    });
+  }
+  function wireComicGen(){
+    var tables = comicOut.querySelectorAll('table');
+    tables.forEach(function(t){
+      var rows = t.querySelectorAll('tr');
+      if(!rows.length) return;
+      var imgCol = -1;
+      rows[0].querySelectorAll('th,td').forEach(function(c, i){
+        if(/画面|提示词|生图|描述/.test(c.textContent)) imgCol = i;
+      });
+      if(imgCol < 0) return;
+      for(var i=1;i<rows.length;i++){
+        var cells = rows[i].querySelectorAll('td');
+        var cell = cells[imgCol];
+        if(!cell) continue;
+        var txt = (cell.textContent || '').replace(/fixed above requirement/g, '').trim();
+        if(!txt) continue;
+        var btn = document.createElement('button');
+        btn.textContent = ' 生图';
+        btn.type = 'button';
+        btn.className = 'mini-btn';
+        btn.style.cssText = 'display:inline-block;margin:6px 2px 2px;font-size:11px';
+        btn.addEventListener('click', function(p){ return function(){ genPanel(p); }; }(txt));
+        cell.appendChild(btn);
+      }
+    });
+  }
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    navigator.clipboard.writeText(lastText).then(function(){ this.textContent=' 已复制'; var b=this; setTimeout(function(){ b.textContent=' 复制'; }, 1500); }.bind(this));
+  });
+  document.getElementById('dlBtn').addEventListener('click', function(){
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([lastText], { type:'text/markdown;charset=utf-8' }));
+    a.download = '漫剧剧本-' + document.getElementById('cTheme').value + '.md';
+    a.click();
+  });
+  genBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    if(genBtn.disabled) return;
+    var prompt = buildPrompt();
+    genBtn.textContent = ' 生成中…（约 15-40 秒）';
+    genBtn.disabled = true;
+    AI.complete({ messages:[{ role:'user', content: prompt }], maxTokens:4000 })
+      .then(function(text){
+        if(!text){ throw new Error('接口未返回内容'); }
+        showResult(text);
+      })
+      .catch(function(err){
+        var msg = (err && err.message) || err || '未知错误';
+        var tip = (String(msg).indexOf('Failed to fetch') !== -1)
+          ? '这通常是模型后端没接通：请在右上角「 设置」里选好模型并填入 API Key（或启用本地 WebLLM），再点生成。'
+          : ('错误信息：' + msg);
+        showResult(' 生成失败。' + tip + '\n\n也可点击下方按钮，带提示词去「 全能智能体」重试。');
+        genBtn.href='/agent.html?ask=' + encodeURIComponent(prompt);
+        genBtn.target = '_blank';
+        genBtn.textContent = ' 带提示词去全能智能体';
+      })
+      .then(function(){
+        genBtn.textContent = ' 一键生成漫剧剧本 ';
+        genBtn.disabled = false;
+      });
+  });
+  // 粒子
+  var cv=document.getElementById('stars'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;} rs(); addEventListener('resize',rs);
+  var C=['255,92,138','139,92,246','56,225,255','240,185,92'];
+  var n=Math.min(95,Math.floor(W*H/18000));
+  for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,c:C[Math.random()*4|0]});
+  (function dr(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba('+p.c+',.5)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<11000){ctx.strokeStyle='rgba('+p.c+','+(0.11*(1-d2/11000))+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}
+    }
+    requestAnimationFrame(dr);
+  })();
+})();
+</script>
+
+
+
+  
+<!-- ====== 漫画提示词库 ====== -->
+<section class="block" id="comicPrompts">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>漫画提示词库</h2><span class="tag">直接抄 · 填括号即可</span></div>
+  <div class="cfg" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+    <div class="card" style="margin-top:14px">
+      <h3>① 角色一致性</h3>
+      <p style="font-size:13px;color:var(--muted)">每帧都带这段固定描述，角色不跑偏：</p>
+      <pre style="background:#05070f;border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto;font-size:12px">[角色名]：银发/蓝眼/红色斗篷/右眼下方泪痣
+画幅：半身/全身 · 姿态：[站立/持剑/回眸]
+负面词：模糊、畸形、水印、多余手指</pre>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>② 分镜提示词（生视频）</h3>
+      <pre style="background:#05070f;border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto;font-size:12px">镜头[3]：[中景] 主角在[废弃车站]醒来，
+[冷蓝色调]，[慢推镜头]，8秒，电影感
+机位：低角度/俯拍/跟拍</pre>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>③ 风格预设（一键换风）</h3>
+      <p style="font-size:13px;color:var(--muted)">在提示词尾部追加即可：</p>
+      <p style="font-size:13px;line-height:2">二次元 <code>anime style, cel shading</code><br>水墨国风 <code>ink wash, 留白, 宣纸质感</code><br>赛博朋克 <code>cyberpunk, neon rain, 高饱和</code><br>电影写实 <code>cinematic, 8k, film grain</code></p>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:14px"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>完整模板（5 镜头骨架 + 台词/剧本口播）见 <a href="/learn/books/个人实战全书.html" style="color:var(--cyan)">《个人实战全书 · 漫画提示词库》<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></p>
+</section>
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>漫剧 / 生视频 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+
+
+<script>renderVideoSection('#vkHere', { categories: ["AI漫剧","AI视频","ComfyUI"], title: '漫剧创作 · 视频教程' });</script>
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<script src="/assets/marked.min.js"></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

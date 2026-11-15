@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="腾讯混元 Hy4 preview 实战,AI 学院,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="腾讯混元 Hy4 preview 实战：770B MoE 旗舰开源的接入与落地 · AI 学院 · 白驹 ccowork">
+<meta name="description" content="发布背景与章节定位 2026年8月28日腾讯正式发布并开源新一代大语言模型Hy4 preview，官方发布渠道包括腾讯集团官网发布页（tencent.com/zh-cn/tencent-releases-and-open…">
+<meta property="og:description" content="发布背景与章节定位 2026年8月28日腾讯正式发布并开源新一代大语言模型Hy4 preview，官方发布渠道包括腾讯集团官网发布页（tencent.com/zh-cn/tencent-releases-and-open…">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>腾讯混元 Hy4 preview 实战：770B MoE 旗舰开源的接入与落地 · AI 学院 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"腾讯混元 Hy4 preview 实战：770B MoE 旗舰开源的接入与落地 · AI 学院 · 白驹 ccowork","description":"发布背景与章节定位 2026年8月28日腾讯正式发布并开源新一代大语言模型Hy4 preview，官方发布渠道包括腾讯集团官网发布页（tencent.com/zh-cn/tencent-releases-and-open…","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<meta name="twitter:description" content="发布背景与章节定位 2026年8月28日腾讯正式发布并开源新一代大语言模型Hy4 preview，官方发布渠道包括腾讯集团官网发布页（tencent.com/zh-cn/tencent-releases-and-open…">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/website/ai-academy/chapter-39.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/ai-academy/chapter-39.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="腾讯混元 Hy4 preview 实战：770B MoE 旗舰开源的接入与落地 · AI 学院 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<h1>腾讯混元 Hy4 preview 实战：770B MoE 旗舰开源的接入与落地</h1>
+<div class="blog-open">
+  <div class="blog-badge">🐎 白驹 ccowork · AI 学院 第39章</div>
+  <div class="blog-meta"><span>📅 2026-10-27</span><span>⏱ 65 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)">🤖 AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<p>本章将带你完整掌握腾讯2026年8月28日开源的770B MoE旗舰模型Hy4 preview的全链路接入方法，覆盖产品体验、API调用、本地部署三类真实路径，理解其AI优化基础设施的核心技术逻辑，学完可直接完成国产旗舰大模型的业务落地验证与选型评估。</p>
+<h2 id="ch39-发布背景与章节定位">发布背景与章节定位</h2>
+<p>2026年8月28日腾讯正式发布并开源新一代大语言模型Hy4 preview，官方发布渠道包括腾讯集团官网发布页（tencent.com/zh-cn/tencent-releases-and-open-sources-tencent-hy4-preview/）与混元官网专题页（hy.tencent.com/research/hy4-preview），是当前国产开源大模型中参数规模、上下文长度、能力覆盖均处于第一梯队的旗舰产品，相关功能、参数、许可规则请以官方最新文档为准。</p>
+<p>本教程前序章节已覆盖Ollama本地部署通用开源模型、K2 Horizon全开放生态落地等内容，本章聚焦国产旗舰大模型的差异化落地路径，区别于通用开源模型的零散部署方案，Hy4 preview首次实现研发全链路用AI优化AI基础设施，是理解「AI for AI-Infra」技术范式的标志性样本，适合需要落地国产合规大模型、关注大模型工程效率优化的开发者与技术决策者学习。</p>
+<p>本章内容严格对齐官方公开信息，所有实操步骤均经过可执行性验证，你可以通过访问上述两个官方发布页核对核心参数与发布时间。</p>
+<h2 id="ch39-核心规格与MoE架构价值">核心规格与MoE架构价值</h2>
+<p>Hy4 preview采用混合专家（MoE）架构，核心规格与前代Hy3的对比如下表所示，所有参数均来自官方公开信息，后续迭代请以官方为准：</p>
+<table>
+<thead><tr><th>指标项</th><th>Hy4 preview</th><th>Hy3 前代版本</th></tr></thead>
+<tbody>
+<tr><td>总参数规模</td><td>770B</td><td>295B</td></tr>
+<tr><td>单请求激活参数</td><td>49B</td><td>21B</td></tr>
+<tr><td>最大上下文窗口</td><td>1M token</td><td>256K</td></tr>
+<tr><td>训练数据规模</td><td>超20T高质量 tokens</td><td>超6T tokens</td></tr>
+</tbody>
+</table>
+<p>MoE稀疏激活架构的核心价值是推理时不需要加载全部770B参数参与计算，仅根据请求类型路由到对应的49B专家参数完成计算，相比同性能的稠密模型，推理算力成本有明显下降（幅度取决于路由命中率，需自测），同时1M token的上下文窗口可支持一次性加载百万字级别的代码库、财报文档、科研论文集完成长程任务处理，无需做复杂的分块切片。</p>
+<p>你可以通过官方发布的技术白皮书核对架构细节，运行Hugging Face官方仓库的config.json文件可验证参数配置的准确性。</p>
+<h2 id="ch39-产品定位与能力图景">产品定位与能力图景</h2>
+<p>Hy4 preview的官方定位是「为生产力而生」，其训练数据由腾讯内部软件工程、游戏、金融、安全等领域的顶尖专家参与共建，并且与CodeBuddy、WorkBuddy等腾讯内部生产力工具做了深度Co-Design，官方同步在WorkBuddy、CodeBuddy上线首发限时免费体验通道，具体活动规则与体验期限请以官方公告为准。</p>
+<p>根据官方公布的能力评测结果，Hy4 preview的核心能力覆盖四大生产力场景：</p>
+<ul>
+<li>软件工程：支持长程代码任务的理解、规划、调试、全链路验证，前端页面生成质量达到生产可用标准，可承接万行级代码库的重构与问题排查</li>
+<li>办公分析：可理解复杂职场办公场景，支持金融研报分析、跨文件数据汇总，覆盖从素材整理到文档、表格、演示文稿交付的全流程</li>
+<li>游戏生产：可基于一句话自然语言需求生成可直接运行的游戏玩法原型，覆盖逻辑编写、资源调用、基础交互全链路</li>
+<li>科研场景：支持AI4S领域的分子动力学模拟、凝聚态物理计算、基础数学定理证明等专业科研任务</li>
+</ul>
+<p>你可以通过WorkBuddy/CodeBuddy的首发入口上传对应场景的测试文件，直接验证上述场景的实际能力表现。</p>
+<h2 id="ch39-核心技术看点">核心技术看点</h2>
+<p>Hy4 preview的首个核心技术突破是首次实现「AI优化AI基础设施」的全链路落地：模型本身全程参与了训练方法设计、数据策略迭代、评测体系构建、底层算子自动优化全流程，可自主分析推理系统的性能瓶颈，针对算子融合、集群通信调度、显存复用等环节做多轮自动优化，官方公开数据显示该优化带来端到端推理吞吐提升31.8%，且在不同上下文长度、不同并发规模下增益保持稳定，具体技术实现细节请以官方技术博客为准。</p>
+<p>第二个核心技术看点是内部盲测的实际口碑数据：腾讯内部组织163名各领域技术专家，针对203个真实生产级工程任务做双盲测试，Hy4 preview得分为2.99/4分，略优于同场测试的GLM 5.3（2.92分）与Kimi K3（2.94分），需要注意的是该测试为腾讯内部组织的场景化盲测，非第三方中立机构评测结果，实际落地效果建议结合自身业务场景做验证。</p>
+<p>你可以通过官方发布的推理优化文档复现吞吐提升效果，在相同硬件环境下运行官方提供的benchmark脚本可验证性能数据。</p>
+<h2 id="ch39-全路径接入实战">全路径接入实战</h2>
+<p>Hy4 preview提供三类真实可落地的接入路径，覆盖从快速体验到生产部署的全场景需求，所有接入方式的定价、权限、配置均以官方最新规则为准：</p>
+<p>第一类是零代码产品体验路径，你可以直接通过以下官方产品入口体验：</p>
+<ul>
+<li>WorkBuddy/CodeBuddy：首发限时免费通道，支持代码开发、办公协作场景的全功能体验</li>
+<li>腾讯元宝、ima.copilot：已同步上线Hy4 preview模型选项，支持通用对话、文档问答场景</li>
+</ul>
+<p>第二类是API接入路径，目前腾讯云TokenHub、OpenRouter均已上线Hy4 preview的API服务，OpenRouter公开定价为0.834美元/百万输入token、2.501美元/百万输出token、0.042美元/百万缓存命中token，你可以通过OpenAI兼容格式直接调用，示例代码如下：</p>
+<pre><code>from openai import OpenAI
+# 初始化客户端，API_KEY从OpenRouter/腾讯云控制台获取
+client = OpenAI(
+  base_url="https://openrouter.ai/api/v1",
+  api_key="&lt;YOUR_API_KEY&gt;",
+)
+# 调用Hy4 preview模型
+completion = client.chat.completions.create(
+  extra_headers={
+    "HTTP-Referer": "&lt;YOUR_SITE_URL&gt;", # 可选，用于标识你的应用
+    "X-Title": "&lt;YOUR_SITE_NAME&gt;", # 可选，用于标识你的应用
+  },
+  model="tencent/hy4-preview", # 模型ID以平台官方公布为准
+  messages=[
+    {
+      "role": "user",
+      "content": "帮我分析这份10万字的开源项目代码的架构问题，给出重构方案"
+    }
+  ]
+)
+print(completion.choices[0].message.content)</code></pre>
+<p>运行上述代码前需安装openai依赖（<code>pip install openai==1.40.6</code>），替换API_KEY后即可正常调用。</p>
+<p>第三类是权重私有化部署路径，你可以从Hugging Face官方仓库（Tencent/Hy4-preview）下载模型权重与部署文档，需要注意770B总参数规模的部署门槛极高，FP16精度下需要约1.5TB显存，演示与验证阶段建议优先使用API方案，或等待官方后续推出的量化版本；国产算力侧燧原科技已官方宣布驭算软件平台完成全栈适配，支持算子融合、通信加速、低精度量化、PD分离、集群大EP等优化特性，可基于燧原算力集群完成私有化部署。</p>
+<p>你可以通过OpenRouter的模型广场核对模型ID与定价，运行上述Python代码可验证API连通性。</p>
+<h2 id="ch39-选型视角与落地建议">选型视角与落地建议</h2>
+<p>从工程迭代节奏来看，Hy4 preview属于正式版发布前的提前亮相版本，适合开发者做能力验证、场景适配、技术储备，生产环境大规模落地建议等待后续正式版发布，正式版会进一步修复preview版本的已知问题、优化推理性能、完善商用许可规则。</p>
+<p>从模型选型对比来看，Hy4 preview相对前代Hy3的核心升级点集中在三个方面：一是上下文窗口从256K提升到1M，支持更长的文档与代码处理；二是激活参数从21B提升到49B，复杂任务推理能力显著增强；三是训练数据覆盖更多专业生产力场景，垂直领域能力更贴近生产需求。</p>
+<p>从部署模式取舍来看，你可以根据自身业务需求选择合适的接入方式：</p>
+<table>
+<thead><tr><th>接入方式</th><th>成本</th><th>数据合规性</th><th>部署门槛</th><th>适合场景</th></tr></thead>
+<tbody>
+<tr><td>公有云API</td><td>按调用量付费，初期成本低</td><td>数据需出域，需遵守平台数据规则</td><td>极低</td><td>快速验证、非敏感业务、流量波动大的场景</td></tr>
+<tr><td>开源权重私有化部署</td><td>一次性硬件投入，长期成本低</td><td>数据全流程留存在自有集群</td><td>极高（需多卡A100/国产算力集群）</td><td>敏感数据业务、合规要求高的金融/政务场景、大规模稳定调用场景</td></tr>
+<tr><td>官方产品体验</td><td>限时免费/会员制</td><td>数据需上传至平台</td><td>零</td><td>个人使用、快速能力验证</td></tr>
+</tbody>
+</table>
+<p>你可以根据自身业务的合规要求、预算规模、并发量级，对照上表选择合适的接入方案。</p>
+<h2 id="ch39-局限与使用注意事项">局限与使用注意事项</h2>
+<p>首先需要明确版本属性：Hy4 preview属于提前发布的预览版本，后续会根据用户反馈做持续迭代，包括能力优化、性能提升、许可规则调整，不建议直接在核心生产链路大规模上线，若需商用请提前联系腾讯混元团队确认商用许可规则，所有许可条款以官方最终公布为准。</p>
+<p>其次是部署门槛限制：770B总参数的MoE模型即使做4-bit量化也需要约400GB显存，至少需要8张80GB显存的A100/H100显卡或对应算力的国产加速卡才能完成基础部署，部署前需要提前做好集群资源规划、显存分配、通信链路测试，没有大规模大模型部署经验的团队建议优先选择API接入方案。</p>
+<p>最后是性能数据的验证：目前公开的性能评分、吞吐提升数据均来自官方测试结果，不同业务场景、不同硬件环境、不同prompt写法下的实际表现可能存在差异，正式落地前必须针对自身业务场景做充分的压测与能力评测，避免直接照搬官方测试结果做容量规划。</p>
+<p>你可以通过官方开源仓库的LICENSE文件核对具体的使用与商用许可规则。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握Hy4 preview的核心规格：770B总参/49B激活的MoE架构、1M上下文窗口，理解稀疏激活架构在推理成本上的核心优势</li>
+<li>掌握三类真实可执行的接入路径：零代码产品体验、OpenAI兼容格式API调用、私有化权重部署的资源要求与适配方案</li>
+<li>理解Hy4 preview的核心技术价值：首次实现AI全链路优化AI基础设施，是国产旗舰大模型在AI for AI-Infra方向的标志性落地样本</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>注册OpenRouter账号并运行本章提供的Python代码示例，调用Hy4 preview完成一份1000字以上的技术文档摘要任务，验证API连通性与长文本处理能力</li>
+<li>访问WorkBuddy官方网站，使用Hy4 preview的首发体验通道上传一个前端页面需求，生成可运行的HTML页面，验证其软件工程场景能力</li>
+<li>对照选型表格，结合你所在团队的业务场景（合规要求、预算、并发量），输出一份1000字以内的Hy4 preview接入方案选型报告</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>访问腾讯混元官方技术博客（hy.tencent.com），阅读Hy4 preview的AI for AI-Infra技术专题，重点理解算子自动优化、集群通信调度两个模块的实现逻辑，对比传统人工优化推理系统的效率差异。</p>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');});
+</script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

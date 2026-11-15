@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="如果说大模型是“会说话的大脑”，那 Agent（智能体）就是“长出手脚的大脑”。它能自己规划、自己调用工具、自己看结果再调整。这一篇，我们从原理、组成、框架到亲手搭一个，全程走一遍。">
+<meta name="keywords" content="Agent 智能体实战,从概念到亲手搭建,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta name="description" content="如果说大模型是“会说话的大脑”，那 Agent（智能体）就是“长出手脚的大脑”。它能自己规划、自己调用工具、自己看结果再调整。这一篇，我们从原理、组成、框架到亲手搭一个，全程走一遍。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent 智能体实战：从概念到亲手搭建 · 白驹 ccowork</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/Agent%E6%99%BA%E8%83%BD%E4%BD%93%E5%AE%9E%E6%88%98.html">
+<meta property="og:title" content="Agent 智能体实战：从概念到亲手搭建 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/Agent%E6%99%BA%E8%83%BD%E4%BD%93%E5%AE%9E%E6%88%98.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent 智能体实战：从概念到亲手搭建 · 白驹 ccowork">
+<meta name="twitter:description" content="如果说大模型是“会说话的大脑”，那 Agent（智能体）就是“长出手脚的大脑”。它能自己规划、自己调用工具、自己看结果再调整。这一篇，我们从原理、组成、框架到亲手搭一个，全程走一遍。"会说话的大脑"，那 Agent（智能体）就是"长出手脚的大脑"。它能自己规划、自己调用工具、自己看结果再调整。这一篇，我们从原理、组成、框架到亲手搭一个，全程走一遍。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Agent 智能体实战：从概念到亲手搭建","description":"如果说大模型是“会说话的大脑”，那 Agent（智能体）就是“长出手脚的大脑”。它能自己规划、自己调用工具、自己看结果再调整。这一篇，我们从原理、组成、框架到亲手搭一个，全程走一遍。","url":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/Agent%E6%99%BA%E8%83%BD%E4%BD%93%E5%AE%9E%E6%88%98.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/Agent%E6%99%BA%E8%83%BD%E4%BD%93%E5%AE%9E%E6%88%98.html"},"image":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/assets/img/og-cover.png","datePublished":"2026-08-30","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"dateModified":"2026-10-27","inLanguage":"zh-CN"}</script>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="works"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/sec/assistant.jpg" alt="Agent 智能体实战：从概念到亲手搭建" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy" decoding="async"></div>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent 智能体实战：从概念到亲手搭建" style="width:100%;height:auto;border-radius:18px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">Agent 智能体实战：从概念到亲手搭建</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)"></text>
+</svg>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>22 分钟</span><span class="blog-tag">AI 创作</span></div>
+
+  <div class="blog-divider"></div>
+</div>
+<h1>Agent 智能体实战：从概念到亲手搭建</h1>
+<figure><img src="/blog/assets/cover-w-agent.png" alt="封面" style="width:100%;border-radius:14px"></figure>
+<blockquote>
+<p>如果说大模型是"会说话的大脑"，那 Agent（智能体）就是"长出手脚的大脑"。它能自己规划、自己调用工具、自己看结果再调整。这一篇，我们从原理、组成、框架到亲手搭一个，全程走一遍。</p>
+</blockquote>
+<hr>
+<h2>一、什么是 AI Agent：从大脑到能动手的助手</h2>
+<p>大语言模型（LLM）本身是一个"对话机器"——你问，它答。但它被困在对话框里：不能上网、不能发邮件、不能跑代码、不能操作文件。Agent 就是为打破这堵墙而生的。</p>
+<p>Anthropic 2024 年 12 月发布的经典文章 <b>《Building effective agents》</b>（作者 Erik Schluntz &amp; Barry Zhang，2024-12-19，https://www.anthropic.com/research/building-effective-agents）给出了迄今最清晰的定义：</p>
+<blockquote>
+<p>"Agent 是这样一种系统：LLM 动态地主导自己的流程和工具使用，自主决定如何完成任务。"</p>
+</blockquote>
+<p>它和"工作流（Workflow）"的关键区别在于——<b>谁决定下一步做什么</b>。在工作流里，路径是人写死的；在 Agent 里，路径是模型自己规划的。</p>
+<p>一个完整的 Agent 通常跑在一个"感知-规划-行动-观察"的循环里：</p>
+<ul>
+<li><b>感知（Perceive）</b>：接收用户指令、读取当前环境状态、拿到工具返回的结果；</li>
+<li><b>规划（Plan）</b>：把目标拆成子任务，决定"下一步做什么"；</li>
+<li><b>行动（Act）</b>：调用工具（搜索、写代码、查数据库、操作浏览器…）；</li>
+<li><b>观察（Observe）</b>：看工具返回了什么，判断是否达成目标；没达成，就再规划、再行动，直到完成或失败。</li>
+</ul>
+<p><em>图：Agent 感知-规划-行动-观察 闭环</em></p>
+<svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="background:#0a1024;border-radius:14px;width:100%">
+  <defs>
+    <marker id="arrA" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#93a3c7"/></marker>
+  </defs>
+  <text x="400" y="28" text-anchor="middle" fill="#f5c26b" font-size="18" font-weight="700" font-family="sans-serif">Agent 闭环：感知 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 规划 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 行动 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 观察</text>
+  <circle cx="400" cy="170" r="120" fill="none" stroke="#4f8cff" stroke-width="2" stroke-dasharray="6 4"/>
+  <g font-family="sans-serif" font-size="14" font-weight="600" text-anchor="middle">
+    <rect x="330" y="60" width="140" height="48" rx="24" fill="#1a2752" stroke="#38e1ff" stroke-width="2"/><text x="400" y="90" fill="#38e1ff">① 感知 Perceive</text>
+    <rect x="540" y="146" width="140" height="48" rx="24" fill="#1a2752" stroke="#f5c26b" stroke-width="2"/><text x="610" y="176" fill="#f5c26b">② 规划 Plan</text>
+    <rect x="330" y="232" width="140" height="48" rx="24" fill="#1a2752" stroke="#8b5cf6" stroke-width="2"/><text x="400" y="262" fill="#8b5cf6">③ 行动 Act</text>
+    <rect x="120" y="146" width="140" height="48" rx="24" fill="#1a2752" stroke="#4f8cff" stroke-width="2"/><text x="190" y="176" fill="#4f8cff">④ 观察 Observe</text>
+    <text x="400" y="180" fill="#edf2fc" font-size="13" font-weight="700">LLM 大脑</text>
+  </g>
+  <path d="M470 84 L540 160" stroke="#f5c26b" stroke-width="1.5" fill="none" marker-end="url(#arrA)"/>
+  <path d="M540 196 L470 256" stroke="#8b5cf6" stroke-width="1.5" fill="none" marker-end="url(#arrA)"/>
+  <path d="M330 256 L260 196" stroke="#4f8cff" stroke-width="1.5" fill="none" marker-end="url(#arrA)"/>
+  <path d="M260 160 L330 84" stroke="#38e1ff" stroke-width="1.5" fill="none" marker-end="url(#arrA)"/>
+  <text x="400" y="305" text-anchor="middle" fill="#93a3c7" font-size="12" font-family="sans-serif">循环往复，直到目标完成或达到最大步数</text>
+</svg>
+<p style="text-align:center;color:#93a3c7;font-size:13px">图 1：Agent 的核心循环——四步闭环，由 LLM 驱动</p>
+<hr>
+<h2>二、Agent 的四大组成：规划 / 记忆 / 工具 / 执行</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-Agent智能体实战.png" alt="Agent 智能体实战：从概念到亲手搭建 · 白驹 ccowork（离线版） · 二、Agent 的四大组成：规划 / 记忆 / 工具 / 执" loading="lazy"></figure>
+
+<p>剥开任何一个 Agent 系统，你都会看到这四个模块：</p>
+<table>
+<thead><tr><th>模块</th><th>作用</th><th>典型实现</th></tr></thead>
+<tbody>
+<tr><td><b>规划（Planning）</b></td><td>把目标拆成可执行步骤，决定下一步</td><td>CoT、ReAct、Plan-and-Solve、Tree of Thoughts</td></tr>
+<tr><td><b>记忆（Memory）</b></td><td>跨轮次保留上下文与经验</td><td>短期：上下文窗口；长期：向量库 + RAG</td></tr>
+<tr><td><b>工具（Tools）</b></td><td>突破"只能说话"的限制</td><td>搜索 API、代码执行、浏览器、文件操作、数据库</td></tr>
+<tr><td><b>执行（Action）</b></td><td>把决策落到真实世界</td><td>API 调用、Shell 命令、GUI 操作、机器人控制</td></tr>
+</tbody>
+</table>
+<p>其中"规划"是 Agent 区别于普通工作流的核心。2022 年 Yao 等人在论文 <b>《ReAct: Synergizing Reasoning and Acting in Language Models》</b>（arXiv:2210.03629）提出的 ReAct 范式（Reason + Act）成为事实标准：模型先"想一想"（Thought），再决定"做一步"（Action），拿到结果（Observation）后再"想一想"——交替进行，直到完成。</p>
+<blockquote>
+<p>"Agent 的智能不只来自模型，更来自它'能用对工具、能在对的时间用'的决策能力。" —— Anthropic, <i>Building effective agents</i>, 2024</p>
+</blockquote>
+<hr>
+<h2>三、主流框架与产品全景</h2>
+<p>到 2025–2026 年，Agent 框架已经分成了清晰的四类：</p>
+<table>
+<thead><tr><th>类型</th><th>代表</th><th>特点</th></tr></thead>
+<tbody>
+<tr><td><b>底层 LLM 厂商 SDK</b></td><td>OpenAI Assistants / Anthropic Claude Agent SDK / Google ADK</td><td>官方维护、与模型能力深度绑定、稳定性高</td></tr>
+<tr><td><b>通用编排框架</b></td><td>LangChain / LangGraph / LlamaIndex</td><td>灵活、可拼装、社区大、上手快</td></tr>
+<tr><td><b>多智能体协作</b></td><td>Microsoft AutoGen / CrewAI / AG2</td><td>多角色分工，适合复杂任务</td></tr>
+<tr><td><b>自主 Agent 项目</b></td><td>AutoGPT / BabyAGI / Devin / Manus</td><td>目标驱动、长程执行、研究/工程并重</td></tr>
+</tbody>
+</table>
+<h3>3.1 怎么选框架？一个三步判断法</h3>
+<p>面对 LangChain、AutoGen、CrewAI、LangGraph 几十个框架，新手最大的困惑是"我该用哪个"。这里给一个三步判断法：</p>
+<p><b>看任务复杂度。</b>单一工具调用 + 简单对话 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> OpenAI Assistants 或 Claude Agent SDK 就够；多步规划 + 工具链 + 状态管理 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> LangGraph（基于 LangChain 的有状态图）最合适；多角色协作（产品经理 + 工程师 + 测试员）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> AutoGen 或 CrewAI。</p>
+<p><b>看团队技术栈。</b>Python 系 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> LangChain / AutoGen 是主力；TypeScript/JS 系 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Vercel AI SDK + LangChain.js；纯大模型厂商生态 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> OpenAI / Claude / Gemini 各自的 SDK 最稳。</p>
+<p><b>看长期可维护性。</b>框架更新快、抽象容易过时。Anthropic 的建议是：<b>"先直接用 LLM API 写几十行代码，再考虑是否需要框架"</b>。很多生产环境的 Agent，最后只用了 200 行自己写的代码 + 1-2 个工具，反而比套框架更稳、更易调。</p>
+<p>Anthropic 在《Building effective agents》里给了一个反潮流但极其实用的建议：<strong>"先找最简单的方案，只在必要时才引入智能体系统。"</strong> 很多任务用一个精心写好的 prompt + 检索就够了，硬上 Agent 反而更慢、更贵、更难调。</p>
+<p><em>图：主流 Agent 框架定位</em></p>
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" style="background:#0a1024;border-radius:14px;width:100%">
+  <text x="400" y="28" text-anchor="middle" fill="#f5c26b" font-size="17" font-weight="700" font-family="sans-serif">Agent 框架定位：抽象层级 × 自主程度</text>
+  <line x1="80" y1="240" x2="720" y2="240" stroke="#4f8cff" stroke-width="1.5"/>
+  <line x1="80" y1="80" x2="80" y2="240" stroke="#4f8cff" stroke-width="1.5"/>
+  <text x="400" y="268" text-anchor="middle" fill="#93a3c7" font-size="12" font-family="sans-serif">抽象层级（低 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 高）</text>
+  <text x="60" y="170" text-anchor="middle" fill="#93a3c7" font-size="12" font-family="sans-serif" transform="rotate(-90,60,170)">自主程度（人控 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 自主）</text>
+  <g font-family="sans-serif" font-size="12" fill="#c6d2ea" text-anchor="middle">
+    <circle cx="170" cy="210" r="9" fill="#38e1ff"/><text x="170" y="230">OpenAI Assistants</text>
+    <circle cx="240" cy="195" r="9" fill="#38e1ff"/><text x="240" y="215">Claude Agent SDK</text>
+    <circle cx="320" cy="175" r="10" fill="#f5c26b"/><text x="320" y="195">LangGraph</text>
+    <circle cx="400" cy="160" r="10" fill="#f5c26b"/><text x="400" y="180">AutoGen</text>
+    <circle cx="490" cy="140" r="10" fill="#8b5cf6"/><text x="490" y="160">CrewAI</text>
+    <circle cx="590" cy="115" r="10" fill="#8b5cf6"/><text x="590" y="135">AutoGPT</text>
+    <circle cx="680" cy="95" r="12" fill="#ff6b6b"/><text x="680" y="115">Devin / Manus</text>
+  </g>
+  <text x="400" y="292" text-anchor="middle" fill="#f5c26b" font-size="11" font-family="sans-serif">越往右上角，越"全自动"，但也越难控制、越贵、越容易翻车</text>
+</svg>
+<p style="text-align:center;color:#93a3c7;font-size:13px">图 2：不同 Agent 框架在"抽象层级"和"自主程度"两个维度上的定位</p>
+<hr>
+<h2>四、亲手搭一个 Agent：ReAct 范式实战</h2>
+<p>理论说再多不如跑一遍。下面我们用最朴素的 30 行 Python + 一个开源 LLM，搭一个能"上网搜索 + 写报告"的最小 Agent。</p>
+<pre><code># 极简 ReAct Agent 伪代码
+import requests, json
+
+def llm(prompt):
+    # 调任意一个 LLM API（OpenAI / DeepSeek / Ollama 均可）
+    return call_your_llm(prompt)
+
+def search(query):
+    # 真实场景用 SerpAPI / Tavily / Bing Search
+    return f"[模拟搜索结果] 关于 {query} 的最新信息..."
+
+def react_agent(question, max_steps=5):
+    history = ""
+    for i in range(max_steps):
+        prompt = f"""你是一个 ReAct Agent，请按以下格式回答：
+
+问题：{question}
+历史：{history or '无'}
+
+请选择：
+- Thought: 你的思考
+- Action: search[你的搜索词]  或  Finish[最终答案]
+"""
+        out = llm(prompt)
+        if "Finish[" in out:
+            return out.split("Finish[")[1].split("]")[0]
+        # 解析 Action
+        action = out.split("Action:")[1].split("\n")[0].strip()
+        if action.startswith("search["):
+            q = action[7:-1]
+            obs = search(q)
+            history += f"\n第{i+1}步：{action} -> {obs}\n"
+    return "未能在限定步数内完成"
+
+# 使用
+print(react_agent("2025 年大模型领域最重要的三件事是什么？"))
+</code></pre>
+<p>这段代码就是 ReAct 的全部秘密：</p>
+<ul>
+<li>让 LLM 决定"现在该搜什么"；</li>
+<li>把搜索结果塞回 prompt；</li>
+<li>再让 LLM 决定"够不够、要不要再搜"；</li>
+<li>直到它主动输出 Finish。</li>
+</ul>
+<h3>4.1 一个真实跑出来的例子</h3>
+<p>让我们把上面那段 30 行代码真正"跑"一遍（用模拟搜索结果代替真实 API），看看 ReAct Agent 怎么"一步步把事儿办了"。问题是：<i>"2025 年大模型领域最重要的三件事是什么？"</i></p>
+<p><b>第 1 轮</b>：思考（Thought）："我需要先知道 2025 年大模型的最新动态。"<br>
+<b>第 1 轮</b>：行动（Action）：search[2025 大模型 重要进展]<br>
+<b>第 1 轮</b>：观察（Observation）：拿到一段搜索摘要（模拟）——"OpenAI 推出新的推理增强档、DeepSeek 开放权重模型引发关注、MCP 成为工具接入的通用协议……"<br>
+<b>第 2 轮</b>：思考："我需要看更权威的信息源。"<br>
+<b>第 2 轮</b>：行动：search[DeepSeek-R1 论文 2025]<br>
+<b>第 2 轮</b>：观察：拿到 DeepSeek-R1 论文摘要。<br>
+<b>第 3 轮</b>：思考："信息够了，可以总结。"<br>
+<b>第 3 轮</b>：行动：Finish[1. OpenAI o 系列把推理能力推到新高度；2. DeepSeek-R1 用纯 RL 训出开源推理王；3. MCP 协议让 Agent 工具调用标准化。]</p>
+<p>整个过程不到 10 秒，Agent 自主跑了 3 轮，调用 2 次搜索，输出了结构化答案。这就是一个<b>最小可用 Agent</b>的全部能力——把"猜下一个 token"变成了"完成一个真实任务"。</p>
+<p>把它接上浏览器（Playwright）、数据库、邮件 API，它就变成了一个真正能替你干活的 Agent。LangGraph、AutoGen 这类框架，本质上是把上述循环做了工程化封装、加上状态管理、错误恢复、多智能体协作。</p>
+<p><em>图：ReAct 推理-行动循环</em></p>
+<svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" style="background:#0a1024;border-radius:14px;width:100%">
+  <defs>
+    <marker id="arrR" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#93a3c7"/></marker>
+  </defs>
+  <text x="400" y="24" text-anchor="middle" fill="#f5c26b" font-size="16" font-weight="700" font-family="sans-serif">ReAct：Thought  Action  Observation</text>
+  <g font-family="sans-serif" font-size="13" font-weight="600" text-anchor="middle">
+    <rect x="40" y="80" width="130" height="50" rx="10" fill="#1a2752" stroke="#38e1ff" stroke-width="2"/><text x="105" y="110" fill="#38e1ff">Thought 思考</text>
+    <rect x="220" y="80" width="130" height="50" rx="10" fill="#1a2752" stroke="#f5c26b" stroke-width="2"/><text x="285" y="110" fill="#f5c26b">Action 行动</text>
+    <rect x="400" y="80" width="150" height="50" rx="10" fill="#1a2752" stroke="#8b5cf6" stroke-width="2"/><text x="475" y="110" fill="#8b5cf6">Observation 观察</text>
+    <rect x="600" y="80" width="160" height="50" rx="10" fill="#111a2e" stroke="#f5c26b" stroke-width="2" stroke-dasharray="5 3"/><text x="680" y="110" fill="#f5c26b">Finish 结束</text>
+    <path d="M170 105 L220 105" stroke="#93a3c7" stroke-width="1.8" fill="none" marker-end="url(#arrR)"/>
+    <path d="M350 105 L400 105" stroke="#93a3c7" stroke-width="1.8" fill="none" marker-end="url(#arrR)"/>
+    <path d="M550 105 L600 105" stroke="#93a3c7" stroke-width="1.8" fill="none" marker-end="url(#arrR)"/>
+    <path d="M475 80 Q475 40 285 40 Q105 40 105 80" stroke="#38e1ff" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#arrR)"/>
+  </g>
+  <text x="400" y="190" text-anchor="middle" fill="#93a3c7" font-size="12" font-family="sans-serif">若 Observation 不够，回到 Thought 再来一轮；直到产出 Finish</text>
+</svg>
+<p style="text-align:center;color:#93a3c7;font-size:13px">图 3：ReAct 的核心循环——思考、行动、观察，三步交替</p>
+<hr>
+<h2>五、落地场景与避坑</h2>
+<p>Agent 不是"哪里都能用"。根据 Anthropic 的建议和业界实践，<b>最适合 Agent 的场景</b>是：</p>
+<ul>
+<li><b>开放性问题</b>：你无法预判需要多少步才能完成（比如"调研 X 领域最新进展"）；</li>
+<li><b>工具丰富</b>：有可调用的 API、数据库、文档系统；</li>
+<li><b>容错空间</b>：错了能补救（人审核、撤销操作、回滚事务）。</li>
+</ul>
+<p><b>不适合 Agent 的场景</b>：</p>
+<ul>
+<li>流程固定、步骤可枚举（用普通工作流/脚本更稳）；</li>
+<li>高风险、不可逆（医疗诊断、金融交易、关键基础设施——人必须 in the loop）；</li>
+<li>提示词 + 一次 LLM 调用就能解决的事（别为了"用 Agent"而用 Agent）。</li>
+</ul>
+<h3>常见翻车与对策</h3>
+<table>
+<thead><tr><th>问题</th><th>原因</th><th>对策</th></tr></thead>
+<tbody>
+<tr><td>Agent 陷入死循环</td><td>没有终止条件</td><td>设置最大步数、检测重复模式、强制 Finish</td></tr>
+<tr><td>调用工具失败</td><td>API 错误、参数错</td><td>加 try/except、给模型"重试"能力、提供回退工具</td></tr>
+<tr><td>幻觉执行结果</td><td>模型编造工具返回值</td><td>真实调用、记录原始输出、人审关键节点</td></tr>
+<tr><td>成本失控</td><td>多步循环 × 上下文膨胀</td><td>压缩历史、限制步数、用小模型做规划/大模型做总结</td></tr>
+</tbody>
+</table>
+<h3>5.1 三个最容易出价值的落地场景</h3>
+<p>结合国内外的实践，Agent 最容易出价值的三个场景是：<b>①企业内部知识问答</b>（接 RAG 查公司文档、写周报、汇总会议纪要、回答员工问的"年假怎么请"）；<b>②客服与销售</b>（多轮对话 + 查订单 + 处理退款，Anthropic 在《Building effective agents》里专门点名 Coinbase 用 Claude 做客服 Agent 的案例）；<b>③研发辅助</b>（自动写单元测试、改 Bug、Code Review、生成接口文档）。</p>
+<p>这三个场景的共同点是：<b>工具丰富 + 步骤多变 + 容错空间大</b>，完美匹配 Agent 的能力边界。反过来说，<b>流程死板、高风险、强合规</b>的场景（医疗诊断、金融交易、关键基础设施）就先别上 Agent——人必须 in the loop。</p>
+<blockquote>
+<p>"2025 年之后，AI 的护城河不是'用没用 Agent'，而是'能不能把 Agent 用对场景、配上对的工具和护栏'。"</p>
+</blockquote>
+<hr>
+<h2>六、Agent 时代的开发者能力模型</h2>
+<p>2024-2026 年，Agent 让"开发者"这个词的含义彻底变了。过去的核心竞争力是"写代码"，未来的核心竞争力是<b>"让一队 Agent 替你把代码写完"</b>。具体来说，三种新能力变得不可或缺：</p>
+<h3>1. 任务拆解（Task Decomposition）</h3>
+<p>能不能把"做一个电商网站"拆成"设计数据模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 写 API <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 搭前端 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 接支付 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 做 SEO"——拆得越细、边界越清晰，Agent 越能并行干。拆得差的，给 Agent 它也只会糊一团。Y Combinator 在 2025 年的创业建议里专门强调："能用 Agent 的人 vs 不能用的人，差距在拆任务，不在写 prompt。"</p>
+<h3>2. 工具工程（Tool Engineering）</h3>
+<p>Agent 强不强，很大程度上取决于你的工具有多干净。给 Agent 一个写得好、有清晰 schema、带错误信息的 API，它能自己用得很溜；给一个"啥都返回"的脏 API，它立马翻车。Anthropic 在《Building effective agents》里专门有一节讲"工具的设计"——把工具当作"给另一个程序员的接口"来写，文档、边界、错误码一个不能少。</p>
+<h3>3. 评估与护栏（Evaluation &amp; Guardrails）</h3>
+<p>Agent 会出错、会跑偏、会"幻觉"。你必须有能力给它装"安全网"：执行前的输入校验、执行中的步骤监控、执行后的人审或自动评分。LangSmith、LangFuse、Arize Phoenix 这类评估平台在 2024-2025 年爆发式增长，核心就是因为大家都意识到：<b>没有评估体系的 Agent 项目，上了生产就是定时炸弹</b>。</p>
+<p>这三种能力叠加，构成了 2026 年最值钱的 AI 工程师画像：<b>不是"会写代码的人"，而是"会设计 Agent 工作流 + 搭工具 + 装护栏的人"</b>。这类岗位的招聘需求在持续上升；具体薪资倍数与岗位增速请以招聘平台的公开报告为准，本文不给无法核对的数字。</p>
+<h3>4. 写在最后：从"用 Agent"到"被 Agent 改变"</h3>
+<p>2026 年，Agent 不再是一个"加分项"，而是一个"入场券"。不会用 Agent 的开发者，就像 2010 年不会用 Git 的开发者——不是被淘汰，而是被边缘化。这不是危言耸听：据 Stack Overflow 2025 年开发者调查（33,662 名受访者，官方页面可查）：51% 的专业开发者每天使用 AI 工具，84% 的受访者正在使用或计划使用 AI 工具；该调查并未发布「60% 开发者已嵌入 Agent」这一口径，原句已按官方数据更正（<a href="https://survey.stackoverflow.co/2025/ai" target="_blank" rel="noopener">调查页</a>）。</p>
+<p>好消息是：<b>上手 Agent 的门槛比学一门新编程语言低得多</b>。你只需要会写 Python、能调 API、有一份清晰的 prompt，就能在一周内搭出第一个能用的 Agent。剩下的，就是把它接到你的真实工作里，去"用"它——用出来的经验，比读十篇论文都管用。我们见过太多"论文读了一堆、Agent 一个没跑"的开发者，最后都被"边用边学"的同事甩开。</p>
+<p>记住三句话：<b>先简单后复杂、先窄后宽、人必须在回路</b>。做到这三点，2026 年的你不会输给任何一个 Agent——相反，你会有一个 7×24 小时不睡觉的 AI 同事。</p>
+<hr>
+<h2>资料来源</h2>
+<ol>
+<li>Yao S. et al. (2022). <b>ReAct: Synergizing Reasoning and Acting in Language Models</b>. arXiv:2210.03629. https://arxiv.org/abs/2210.03629</li>
+<li>Schluntz E. &amp; Zhang B. / Anthropic (2024-12-19). <b>Building effective agents</b>. https://www.anthropic.com/research/building-effective-agents</li>
+<li>Wu Q. et al. / Microsoft (2023). <b>AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation</b>. arXiv:2308.08155. https://arxiv.org/abs/2308.08155</li>
+<li>Significant Gravitas. <b>AutoGPT</b> (2023). https://github.com/Significant-Gravitas/AutoGPT</li>
+<li>Nakajima Y. <b>BabyAGI</b> (2023). https://github.com/yoheinakajima/babyagi</li>
+<li>OpenAI. <b>Assistants API 官方文档</b>. https://platform.openai.com/docs/assistants</li>
+<li>LangChain. <b>LangGraph 官方文档</b>. https://langchain-ai.github.io/langgraph/</li>
+<li>Wikipedia: <i>Intelligent agent</i>. https://en.wikipedia.org/wiki/Intelligent_agent</li>
+</ol>
+
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><span style="color:var(--muted)">已是第一篇</span></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>博客目录</a>
+  <span style="font-size:13px"><a href="AI写作完全指南.html" style="color:var(--gold);font-weight:700;text-decoration:none">AI写作完全指南</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:13px;line-height:1.8"><i class="cc-ic" data-ic="pin" aria-hidden="true"></i>出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

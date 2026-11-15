@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="description" content="AI 开源作品大全：100 个真实 GitHub 作品（个人/团队分开，作者真实注明）+ 全平台 AI 教程（教学/部署/计划类现成链接）。">
+<meta property="og:description" content="AI 开源作品大全：100 个真实 GitHub 作品（个人/团队分开，作者真实注明）+ 全平台 AI 教程（教学/部署/计划类现成链接）。">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI 开源作品大全 · 100 个真实作品 + 全平台教程 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"AI 开源作品大全 · 100 个真实作品 + 全平台教程 | 白驹 ccowork","description":"AI 开源作品大全：100 个真实 GitHub 作品（个人/团队分开，作者真实注明）+ 全平台 AI 教程（教学/部署/计划类现成链接）。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f0b95c;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:20px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-cta{padding:8px 16px;border:1px solid rgba(56,225,255,.4);border-radius:999px;color:var(--cyan)!important;font-size:13px}
+@media(max-width:1000px){.nav-links{display:none}}
+.hero{min-height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:120px 24px 40px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(6,8,15,.5),rgba(6,8,15,.92) 72%),url('/assets/img/ai-bg-neural.webp') center/cover no-repeat}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:999px;letter-spacing:2px;margin-bottom:24px}
+.hero h1{font-size:clamp(30px,5vw,60px);font-weight:900;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:760px;color:var(--muted);font-size:clamp(14.5px,1.5vw,17px);margin:18px auto 0}
+section{max-width:1180px;margin:0 auto;padding:56px 24px}
+.sec-head{margin-bottom:28px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(24px,3.2vw,38px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:780px;margin-top:10px}
+/* 教程 */
+.tut3{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.tut{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.tut h3{font-size:17px;margin-bottom:10px}
+.tut a{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;border-radius:10px;text-decoration:none;color:var(--muted);font-size:13px;transition:.2s;border:1px solid transparent}
+.tut a:hover{background:rgba(79,140,255,.1);border-color:rgba(79,140,255,.35);color:var(--cyan)}
+.tut a .ic{flex:0 0 26px;height:26px;border-radius:10px;background:rgba(56,225,255,.12);display:flex;align-items:center;justify-content:center;font-size:13px}
+.tut a b{color:var(--text);font-weight:600}
+.tut .badge{font-size:11px;color:var(--pink);border:1px solid rgba(255,92,138,.3);border-radius:999px;padding:1px 8px;margin-left:6px;white-space:nowrap}
+/* 作品 */
+.ctrl{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.wtabs{display:flex;gap:8px;flex-wrap:wrap}
+.wtab{padding:9px 20px;border-radius:999px;border:1px solid var(--line);background:var(--bg2);color:var(--muted);cursor:pointer;font-size:13px;transition:.2s}
+.wtab.active{background:var(--grad);color:#04101f;border-color:transparent;font-weight:700}
+.wtab:hover{color:var(--text);border-color:rgba(56,225,255,.4)}
+.search{flex:1;min-width:200px;background:var(--bg2);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:10px 18px;font-size:14px;outline:none}
+.search:focus{border-color:var(--cyan)}
+.pgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr))}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px;transition:.25s}
+.pcard:hover{border-color:rgba(56,225,255,.5);transform:translateY(-3px)}
+.pcard .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pcard .org{font-size:11px;padding:2px 9px;border-radius:999px;font-weight:600}
+.pcard .org.team{color:var(--cyan);border:1px solid rgba(56,225,255,.35);background:rgba(56,225,255,.07)}
+.pcard .org.person{color:var(--gold);border:1px solid rgba(240,185,92,.35);background:rgba(240,185,92,.07)}
+.pcard .heat{font-size:11px;color:var(--pink)}
+.pcard h4{font-size:16px}
+.pcard h4 a{color:var(--text);text-decoration:none}
+.pcard h4 a:hover{color:var(--cyan)}
+.pcard .who{font-size:12px;color:var(--muted)}
+.pcard .who b{color:var(--gold);font-weight:600}
+.pcard p{font-size:13px;color:var(--muted);line-height:1.6;flex:1}
+.pcard .link{font-size:13px;color:var(--cyan);text-decoration:none;border:1px solid rgba(56,225,255,.3);border-radius:999px;padding:5px 13px;display:inline-block;width:fit-content;transition:.2s}
+.pcard .link:hover{background:var(--grad);color:#04101f;border-color:transparent}
+.pcard .tag{font-size:11px;color:#5d6f94;border:1px solid var(--line);border-radius:999px;padding:1px 9px}
+.empty{text-align:center;color:var(--muted);padding:40px 0}
+.note2{font-size:12px;color:#5d6f94;margin-top:16px;line-height:1.7}
+footer{border-top:1px solid var(--line);padding:38px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+</style>
+<link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/ai-projects.html">
+<meta property="og:title" content="AI 开源作品大全 · 100 个真实作品 + 全平台教程 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/ai-projects.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 开源作品大全 · 100 个真实作品 + 全平台教程 · 白驹 ccowork">
+<meta name="twitter:description" content="AI 开源作品大全：100 个真实 GitHub 作品（个人/团队分开，作者真实注明）+ 全平台 AI 教程（教学/部署/计划类现成链接）。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-skeleton="cards"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-ai-projects.png" alt="AI 开源作品大全 · 100 个真实作品 + 全平台教程 | 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="./index.html">首页</a>
+    <a href="./ai-money.html">AI赚钱</a>
+    <a href="./manju.html">AI漫剧</a>
+    <a href="./ai-edu.html">AI教育</a>
+    <a href="./ai-jobs.html">AI就业</a>
+    <a href="./personality.html">性格测试</a>
+    <a href="./ai-projects.html" class="active">作品大全</a>
+    <a href="./portal.html">收纳站</a>
+  </div>
+  <a class="nav-cta" href="./chat.html"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>去对话</a>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<section class="hero">
+  <div class="tag">AI 全生态 · 开源作品大全</div>
+  <h1>100 个<span>真实开源作品</span>，作者都注明</h1>
+  <p class="sub">作品数据抓取自 GitHub Topics 官方排行榜（按热度排序），每个链接、每位作者都真实可查。个人作品与团队作品分开陈列，另有全平台教程直达链接。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+</section>
+<section id="tutorials">
+  <div class="sec-head"><div class="kicker">全平台教程 · 现成链接</div><h2><i class="cc-ic" data-ic="video" aria-hidden="true"></i>教学 / 部署 / 计划，点开就能学</h2><p>不用自己搜——每个都是可直接点击的现成教程链接（B 站视频 / 头条实操文）。</p></div>
+  <div class="tut3">
+    <div class="tut">
+      <h3><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>教学类 · AI 漫剧与创作</h3>
+      <a href="https://bilibili.com/video/BV1W226BTED9/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="play" aria-hidden="true"></i></span><span><b>即梦+豆包+剪映 30 集全教程</b><span class="badge">B站</span><br>2 小时从 0 到 1 做 AI 短片，小白适用</span></a>
+      <a href="https://bilibili.com/video/BV1vV87zaEAJ/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="play" aria-hidden="true"></i></span><span><b>AI 歌曲视频制作教程</b><span class="badge">B站</span><br>豆包写咒语+即梦生图生视频+剪映合成</span></a>
+      <a href="https://bilibili.com/video/BV1a5mDYpEvW/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="play" aria-hidden="true"></i></span><span><b>人物一致性儿童绘本教程</b><span class="badge">B站</span><br>一张参考图保证每个镜头角色不跑偏</span></a>
+      <a href="https://bilibili.com/video/BV1esV8zRETW/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="play" aria-hidden="true"></i></span><span><b>多角色对口型超详细教程</b><span class="badge">B站</span><br>让 AI 角色"活"起来的保姆级操作</span></a>
+      <a href="https://m.toutiao.com/article/7644538369799750144/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></span><span><b>慢剧完整教程（含变现规则+7天打卡表）</b><span class="badge">头条</span><br>990 学的课免费分享，含每天 90 分钟执行模板</span></a>
+      <a href="https://www.toutiao.com/a7669590707891585559/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></span><span><b>即梦漫剧 7 步实操教程</b><span class="badge">头条</span><br>立绘锁定形象<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>批量分镜<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>图生视频<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>剪映合成</span></a>
+    </div>
+    <div class="tut">
+      <h3><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>部署类 · 怎么装、怎么跑</h3>
+      <a href="https://m.toutiao.com/article/7631476196571709994/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></span><span><b>豆包+即梦+剪映，半小时做一集 AI 漫剧</b><span class="badge">头条</span><br>三个免费工具跑通全流程，含角色三视图技巧</span></a>
+      <a href="https://m.toutiao.com/article/7643332850946736640/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></span><span><b>OpenClaw「养龙虾」部署+变现</b><span class="badge">头条</span><br>AI 助手代部署 99-499 元/单，附一周赚 10 万路径</span></a>
+      <a href="https://github.com/ollama/ollama" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="keyboard" aria-hidden="true"></i></span><span><b>Ollama 本地跑大模型</b><span class="badge">GitHub</span><br>一条命令部署本地大模型，官方仓库手把手</span></a>
+      <a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="keyboard" aria-hidden="true"></i></span><span><b>Open WebUI 一键部署 AI 界面</b><span class="badge">GitHub</span><br>本地部署一个类 ChatGPT 的网页界面</span></a>
+    </div>
+    <div class="tut">
+      <h3><i class="cc-ic" data-ic="map" aria-hidden="true"></i>计划类 · 怎么规划、怎么变现</h3>
+      <a href="https://www.toutiao.com/article/7669210959294792244/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></span><span><b>3 个月副业赚 8 万：3 条真实路径</b><span class="badge">头条</span><br>成都行政李明完整复盘，含踩坑与月收入拆解</span></a>
+      <a href="https://m.toutiao.com/article/7644538369799750144/" target="_blank" rel="noopener"><span class="ic"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></span><span><b>慢剧变现 7 天打卡表</b><span class="badge">头条</span><br>从开通权限到首单提现，每天做什么写死</span></a>
+      <a href="./ai-money.html" target="_blank"><span class="ic"><i class="cc-ic" data-ic="banknote" aria-hidden="true"></i></span><span><b>AI 赚钱全攻略（本站）</b><span class="badge">站内</span><br>6 大方向 + 16 个工作台 + 万能公式</span></a>
+      <a href="./personality.html" target="_blank"><span class="ic"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></span><span><b>AI 性格测试（本站）</b><span class="badge">站内</span><br>10 题测出你的 AI 人格，推荐变现方向</span></a>
+    </div>
+  </div>
+</section>
+<section id="projects">
+  <div class="sec-head"><div class="kicker">开源作品大全</div><h2><i class="cc-ic" data-ic="box" aria-hidden="true"></i>100 个真实开源作品 · 个人 / 团队分开</h2><p>数据实时抓取自 GitHub Topics 官方热度榜（AI 全生态相关主题），每条链接与作者均为真实信息。</p></div>
+  <div class="ctrl">
+    <div class="wtabs" id="wtabs">
+      <button class="wtab active" data-f="all" type="button"><i class="cc-ic" data-ic="chevron-right"></i> 全部（100）</button>
+      <button class="wtab" data-f="team" type="button"><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i>团队作品</button>
+      <button class="wtab" data-f="person" type="button"><i class="cc-ic" data-ic="user" aria-hidden="true"></i>个人作品</button>
+    </div>
+    <input class="search" id="wsearch" placeholder=" 搜索作品名 / 作者 / 关键词…">
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+  <p class="note2">说明：作品来自 GitHub Topics 官方页面（topic: ai / llm / agent / chatgpt / machine-learning / deep-learning / artificial-intelligence / autonomous-agents / stablediffusion / rag / llmops / mcp，按 <i class="cc-ic" data-ic="star" aria-hidden="true"></i> 排序），抓取时间 2026-08-17。 表示热度等级（基于官方星数排名）。「团队」指组织/公司账户，「个人」指独立开发者账户。如链接失效请以 GitHub 官方为准。</p>
+</section>
+<footer>
+  <div class="logo">白驹 ccowork</div>
+  <p style="margin-top:8px">100 个真实开源作品 · 作者真实注明 · 与本站 AI 全生态主题一致<br>© 2026 白驹 ccowork</p>
+</footer>
+<script src="/module.js?v=20261115b"></script>
+<script src="/responsive.js?v=20261028e"></script>
+<script>
+(function(){
+'use strict'
+var data=[], state={f:'all', kw:''}
+var grid=document.getElementById('pgrid'), tabs=document.getElementById('wtabs'), search=document.getElementById('wsearch')
+function tagOf(name,desc){
+  var s=(name+' '+desc).toLowerCase()
+  if(/agent|workflow|autogen|crew|dify|n8n|flowise|automation|autogpt/.test(s)) return 'Agent/工作流'
+  if(/diffusion|comfy|stable-diffusion|image|vision|segment|yolo|paint|draw/.test(s)) return '绘画视觉'
+  if(/tts|voice|speech|whisper|chat|audio|music/.test(s)) return '语音对话'
+  if(/llm|model|transformers|qwen|deepseek|llama|gpt/.test(s)) return '大模型'
+  if(/train|fine-tun|dataset|rl|reinforc/.test(s)) return '训练微调'
+  if(/rag|vector|retriev|chroma|qdrant|milvus|embedding/.test(s)) return 'RAG/向量'
+  if(/learn|course|guide|tutorial|beginners|roadmap|lessons|教程/.test(s)) return '学习教程'
+  return '生态工具'
+}
+function heatHtml(h){ var s=''; for(var i=0;i<h;i++) s+=''; return s }
+function render(){
+  var kw=state.kw.toLowerCase()
+  var list=data.filter(function(x){
+    if(state.f!=='all' && x.org!==state.f) return false
+    if(kw && (x.name.toLowerCase().indexOf(kw)<0 && x.owner.toLowerCase().indexOf(kw)<0 && (x.author||'').toLowerCase().indexOf(kw)<0 && x.desc.toLowerCase().indexOf(kw)<0)) return false
+    return true
+  })
+  if(!list.length){ grid.innerHTML='<div class="empty">没有匹配的作品，换个关键词试试～</div>'; return }
+  grid.innerHTML=list.map(function(x){
+    var orgTxt = x.org==='team' ? ' 团队' : ' 个人'
+    return '<div class="pcard"><div class="top"><span class="org '+x.org+'">'+orgTxt+'</span><span class="tag">'+tagOf(x.name,x.desc)+'</span><span class="heat">'+heatHtml(x.heat||1)+'</span></div>'+
+      '<h4><a href="'+x.url+'" target="_blank" rel="noopener">'+x.owner+'/'+x.name+'</a></h4>'+
+      '<div class="who">作者：<b>'+esc(x.author||x.owner)+'</b> · 仓库：'+esc(x.owner)+'</div>'+
+      '<p>'+esc(x.desc)+'</p>'+
+      '<a class="link" href="'+x.url+'" target="_blank" rel="noopener"> 去 GitHub 查看 </a></div>'
+  }).join('')
+  // 更新 tab 计数
+  tabs.querySelectorAll('.wtab').forEach(function(b){
+    var f=b.getAttribute('data-f')
+    var n = f==='all' ? data.length : data.filter(function(x){return x.org===f}).length
+    b.textContent = (f==='all'?'全部（'+n+'）':(f==='team'?' 团队（'+n+'）':' 个人（'+n+'）'))
+  })
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]}) }
+tabs.addEventListener('click',function(e){ var b=e.target.closest('.wtab'); if(!b) return; state.f=b.getAttribute('data-f'); tabs.querySelectorAll('.wtab').forEach(function(x){x.classList.toggle('active',x===b)}); render() })
+search.addEventListener('input',function(){ state.kw=this.value; render() })
+fetch('/data/ai-projects.json').then(function(r){return r.json()}).then(function(j){
+  data=j; render()
+}).catch(function(){ grid.innerHTML='<div class="empty">作品数据加载失败，请刷新或本地运行 server 后访问。</div>' })
+})()
+</script>
+<script src="/ccowork.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

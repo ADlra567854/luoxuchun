@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>开发基座 · 工具域 · 白驹 ccowork</title>
+<meta name="description" content="脚手架、依赖、部署与排错的工程化底座。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/toolbox/devbase.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --bg:#070a08; --card:rgba(18,28,21,.72); --line:#26402e; --line2:#1a2b20;
+  --green:#4ade80; --lime:#a3e635; --cyan:#22d3ee; --amber:#fbbf24;
+  --text:#eef7ee; --muted:#9db8a2; --grad:linear-gradient(120deg,#4ade80,#22d3ee 60%,#a3e635);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.9;overflow-x:hidden}
+::selection{background:var(--green);color:#04140a}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#274a2e;border-radius:6px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(7,10,8,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line2)}
+.logo{font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:20px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--green)}
+.back{color:var(--cyan)!important}
+@media(max-width:900px){.nav-links{display:none}}
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 24px 80px;overflow:hidden}
+.hero .bgimg{position:absolute;inset:0;background:url(/assets/hero_terminal.png) center/cover;opacity:.42;
+  mask-image:linear-gradient(#000 55%,transparent);-webkit-mask-image:linear-gradient(#000 55%,transparent);
+  animation:heroFloat 14s ease-in-out infinite}
+@keyframes heroFloat{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.05) translateY(-14px)}}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(900px 480px at 50% 30%,rgba(74,222,128,.12),transparent 65%)}
+.hero>*{position:relative;z-index:2}
+.hero .tag{font-size:13px;color:var(--green);border:1px solid rgba(74,222,128,.45);padding:7px 22px;border-radius:999px;letter-spacing:3px;display:inline-block;margin-bottom:28px;background:rgba(7,10,8,.5);backdrop-filter:blur(6px)}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.25}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .typed{margin-top:22px;font-family:Consolas,monospace;font-size:clamp(14px,1.8vw,19px);color:var(--lime);min-height:1.9em}
+.hero .typed::after{content:"▌";animation:blink 1s steps(1) infinite;color:var(--green)}
+@keyframes blink{50%{opacity:0}}
+.hero p.sub{max-width:760px;color:var(--muted);margin-top:18px;font-size:clamp(14px,1.6vw,17px)}
+.hero-stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap;justify-content:center}
+.hero-stats b{display:block;font-size:32px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-stats span{color:var(--muted);font-size:13px}
+section{max-width:980px;margin:0 auto;padding:80px 24px 10px}
+h2{font-size:clamp(26px,3.6vw,42px);font-weight:900;margin-bottom:16px}
+h2 .no{color:var(--green);font-size:.52em;letter-spacing:3px;display:block;margin-bottom:8px}
+h3{font-size:23px;margin:48px 0 12px;color:var(--lime)}
+h4{font-size:17px;margin:28px 0 10px;color:var(--cyan)}
+p.lead{color:var(--muted);font-size:17px}
+p.body{color:#c9dccc;font-size:16px;margin:14px 0}
+p.body b,li b{color:var(--text)}
+ul.body{margin:12px 0 12px 22px;color:#c9dccc;font-size:16px}
+ul.body li{margin-bottom:10px}
+ol.body{margin:12px 0 12px 22px;color:#c9dccc;font-size:16px}
+ol.body li{margin-bottom:10px}
+hr.sep{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:60px 0}
+/* 章节配图 */
+.chap-img{margin:26px 0 6px;border-radius:18px;overflow:hidden;position:relative;border:1px solid var(--line)}
+.chap-img img{width:100%;display:block;transition:transform .8s ease}
+.chap-img:hover img{transform:scale(1.04)}
+.chap-img figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 24px 16px;font-size:13px;color:#d5ecd9;
+  background:linear-gradient(transparent,rgba(7,10,8,.9))}
+/* 玻璃卡 */
+.glass{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin:18px 0;
+  backdrop-filter:blur(10px);transition:.3s;position:relative}
+.glass:hover{border-color:rgba(74,222,128,.5);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 4px}
+.meta span{font-size:13px;padding:3px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.meta .star{color:var(--amber);border-color:rgba(251,191,36,.35)}
+.meta .lang{color:var(--cyan);border-color:rgba(34,211,238,.3)}
+.meta .lic{color:var(--green);border-color:rgba(74,222,128,.3)}
+.repo{font-family:Consolas,monospace;font-size:13px;color:var(--green);background:rgba(74,222,128,.08);border-radius:10px;padding:2px 10px}
+/* 代码块 */
+.code{position:relative;background:#0a120c;border:1px solid var(--line);border-radius:14px;margin:16px 0;
+  font-family:Consolas,Menlo,monospace;font-size:14px;overflow:hidden}
+.code .bar{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:#101b13;border-bottom:1px solid var(--line)}
+.code .bar i{font-style:normal;color:var(--muted);font-size:12px;letter-spacing:1px}
+.code .copy{background:#16281b;border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:3px 12px;font-size:12px;cursor:pointer;transition:.2s}
+.code .copy:hover{color:var(--green);border-color:var(--green)}
+.code pre{padding:16px 20px;overflow-x:auto;color:#b9e8c4;white-space:pre}
+.code .cm{color:#5f7a64}
+/* 真实对话演示 */
+.demo{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:18px 0;background:#0a120c}
+.demo .dhead{padding:10px 18px;background:#101b13;font-size:13px;color:var(--muted);letter-spacing:1px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center}
+.demo .dhead::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+.msg{margin:16px 18px;padding:14px 18px;border-radius:14px;font-size:15px;line-height:1.8;max-width:92%}
+.msg.user{margin-left:auto;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.3);color:#c8ecf2}
+.msg.bot{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.25);color:#c9e8d2}
+.msg .who{display:block;font-size:12px;letter-spacing:2px;margin-bottom:6px;opacity:.7}
+.msg.user .who{color:var(--cyan)} .msg.bot .who{color:var(--green)}
+.msg b{color:#fff}
+.note{border-left:4px solid var(--amber);background:rgba(251,191,36,.07);border-radius:0 14px 14px 0;padding:14px 18px;margin:16px 0;font-size:14px;color:#e5d9b8}
+.tip{border-left:4px solid var(--green);background:rgba(74,222,128,.06);border-radius:0 14px 14px 0;padding:14px 18px;margin:16px 0;font-size:14px;color:#c4e8cc}
+.warn{border-left:4px solid #f87171;background:rgba(248,113,113,.07);border-radius:0 14px 14px 0;padding:14px 18px;margin:16px 0;font-size:14px;color:#f2c9c9}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
+th,td{padding:12px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#101b13;color:var(--green);font-size:13px;white-space:nowrap}
+td{color:var(--muted)}
+td:first-child{color:var(--text);font-weight:700;white-space:nowrap}
+/* 成品卡 */
+.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:22px}
+.work{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;text-decoration:none;color:inherit;transition:.3s;display:block}
+.work:hover{transform:translateY(-6px);border-color:var(--green);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.work .wb{font-size:12px;color:var(--amber);letter-spacing:2px}
+.work h4{color:var(--text);font-size:18px;margin:8px 0 8px}
+.work p{color:var(--muted);font-size:14px}
+.dlbtn{display:inline-block;background:var(--grad);color:#04140a;font-size:17px;font-weight:800;border:none;border-radius:14px;
+  padding:16px 42px;cursor:pointer;transition:.3s;box-shadow:0 8px 30px rgba(74,222,128,.25)}
+.dlbtn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(74,222,128,.4)}
+.toc{position:sticky;top:64px;background:rgba(7,10,8,.92);backdrop-filter:blur(12px);border:1px solid var(--line);
+  border-radius:14px;padding:16px 20px;margin:30px auto 0;max-width:980px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;z-index:50}
+.toc a{color:var(--muted);text-decoration:none}
+.toc a:hover{color:var(--green)}
+.toc b{color:var(--green)}
+footer{border-top:1px solid var(--line2);margin-top:90px;padding:44px 24px;text-align:center;color:var(--muted);font-size:13px}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+</head>
+<body data-ccnav="toolbox" data-cctitle="工具">
+<div class="pg-wrap">
+<article class="merged-content">
+<div class="progress" id="progress"></div>
+
+<header class="hero">
+  <div class="bgimg"></div>
+  <div class="tag">GITHB OPEN SORCE · 全部命令可复现 · 持续迭代</div>
+  <h1>开发者基地<br><span>从第一条命令，到第一件成品</span></h1>
+  <div class="typed" id="typed"></div>
+  <p class="sub">这是一座<b style="color:var(--lime)">写给所有人的公开 AI 学校</b>：不需要任何基础，每个开源项目都配
+  <b style="color:var(--lime)">真实提示词 + 真实输出 + 一键复制命令</b>。从第一条命令开始，带你走到能教别人的那一天。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  <div class="hero-stats">
+    <div><b>11</b><span>章完整课程</span></div>
+    <div><b>15+</b><span>开源项目全教程</span></div>
+    <div><b>30+</b><span>可复制命令块</span></div>
+    <div><b>9</b><span>真实输出演示</span></div>
+  </div>
+</header>
+<div class="toc">
+  <b>目录 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></b>
+  <a href="#traits">01 共同特点</a>
+  <a href="#chat">02 对话模型实战</a>
+  <a href="#prompt">03 提示词实战</a>
+  <a href="#coding">04 编程与 Agent</a>
+  <a href="#apps">05 应用框架</a>
+  <a href="#sec">06 网络安全</a>
+  <a href="#solo">07 一人公司</a>
+  <a href="#mobile">08 手机全套玩法</a>
+  <a href="#pack">09 打包下载</a>
+  <a href="#products">10 里程碑成果</a>
+  <a href="#frontier">11 研究方向全景</a>
+  <a href="#road">12 三十天上手</a>
+  <a href="#faq">13 排雷 FAQ</a>
+  <a href="#kit">14 全站配套</a>
+</div>
+<!-- ================= 01 共同特点 ================= -->
+<section id="traits">
+  <h2><span class="no">CHAPTER 01</span>先懂规律：2026 开源 AI 的六个共同特点</h2>
+  <p class="lead">把 GitHub 热榜翻到底，规律清晰得惊人。看懂这六条，任何新项目到你手里都能三分钟看透。</p>
+  <p class="body"><b>1. 从"造模型"转向"造身体"。</b>增长最快的不再是新模型，而是让模型干活的基建：DeepSeek Harness（一切皆插件）、OpenMontage（视频流水线）、各类 Skill 技能包。模型是大脑，2026 年的战场在四肢。</p>
+  <p class="body"><b>2. 对话即界面。</b>主流项目统一支持 MCP 或插件机制，交互收敛为一种：自然语言下命令，Agent 调工具执行。"配置"正在消失。</p>
+  <p class="body"><b>3. 本地优先。</b>Ollama、vLLM 的爆发说明隐私、零成本、离线是刚需。开源权重让"自己的模型跑在自己的机器上"成为默认。</p>
+  <p class="body"><b>4. OpenAI API 格式是事实标准。</b>几乎所有推理框架都暴露 <span class="repo">/v1/chat/completions</span> 兼容接口——学会一次调用，换掉底层任何模型。</p>
+  <p class="body"><b>5. 流水线化取代单点生成。</b>AI 视频从"生成片段"转向"组织整个生产流程"，写作、编程同理。</p>
+  <p class="body"><b>6. 工程纪律回潮。</b>superpowers（26 万 star）登顶说明社区共识：让 AI 写出<b>能维护</b>的代码，测试、审查、知识库一个不能少。</p>
+  <div class="tip">记住公式：<b>开源模型 + OpenAI 接口 + 插件 Agent + 本地部署 + 流水线</b>。下面每一章都是它的具体化身，而且每一章都有真实演示。</div>
+</section>
+<hr class="sep">
+<!-- ================= 02 对话模型实战 ================= -->
+<section id="chat">
+  <h2><span class="no">CHAPTER 02</span>对话模型实战：今晚跑起一个"你的 DeepSeek"</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-devbase.png" alt="ccowork · 开发者基地 · GitHub 开源 AI 实战全教程 · " loading="lazy"></figure>
+  <p class="lead">不只给命令——给你看跑完之后真实的样子。</p>
+  <h3>2.1 Ollama：三条命令，本地模型开口说话</h3>
+  <div class="meta"><span class="star">GitHub <i class="cc-ic" data-ic="star" aria-hidden="true"></i> 15 万+</span><span class="lang">Go</span><span class="lic">MIT</span><span>难度：<i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></span><span>硬件：8GB 内存起步</span></div>
+  <div class="code"><div class="bar"><i>安装（三选一）</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre><span class="cm"># Windows：官网下载 OllamaSetup.exe 双击安装 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ollama.com/download</span>
+brew install ollama        <span class="cm"># macOS</span>
+curl -fsSL https://ollama.com/install.sh | sh   <span class="cm"># Linux</span></pre></div>
+  <div class="code"><div class="bar"><i>拉取模型并对话（按内存选一个）</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>ollama run qwen3:8b          <span class="cm"># 8GB 内存：中文最强小模型</span>
+ollama run deepseek-r1:14b   <span class="cm"># 16GB 内存：带深度推理</span>
+ollama run qwen3:32b         <span class="cm"># 24GB+ 显存：满血体验</span></pre></div>
+  <h4>跑完之后是什么样？真实对话长这样：</h4>
+  <div class="demo"><div class="dhead">终端 · ollama run deepseek-r1:14b</div>
+    <div class="msg user"><span class="who">你</span>用一句话向小学生解释什么是"反向传播"。</div>
+    <div class="msg bot"><span class="who">DEEPSEEK-R1（本地 · 离线）</span>反向传播就像投篮练习：你投出一球没进（<b>误差</b>），教练告诉你"力气大了、偏左了"，你就调整手腕的每个动作（<b>每个参数</b>）——从最后出手的手指，一路调整回脚的发力。调整亿万次之后，你就成了神射手。</div>
+  </div>
+  <div class="tip">全程离线、免费、数据不出本机。这就是"把 DeepSeek 装进自己电脑"的真实体验。</div>
+  <h3>2.2 关键一步：把模型变成"任何软件都能用的 API"</h3>
+  <div class="code"><div class="bar"><i>Ollama 默认已开启 OpenAI 兼容接口（11434 端口），直接验证：</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>curl http://localhost:11434/v1/chat/completions -d "{\"model\":\"qwen3:8b\",\"messages\":[{\"role\":\"user\",\"content\":\"你好\"}]}"</pre></div>
+  <p class="body">返回一段 JSON 就说明成功。之后任何支持"自定义 OpenAI 接口"的软件——沉浸式翻译、Obsidian、Chatbox、你自己写的 Python 脚本——把地址填成 <span class="repo">http://localhost:11434/v1</span>，密钥随便填，全部免费用上本地模型。</p>
+  <h3>2.3 进阶实战：用 Modelfile 捏一个"人设模型"</h3>
+  <p class="body">这是大多数人不知道的 Ollama 杀器：把"模型 + 系统提示词 + 参数"打包成一个新模型。下面是真实可用的例子——捏一个只聊创作的写作助教：</p>
+  <div class="code"><div class="bar"><i>三步捏人设</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre><span class="cm"># 1. 新建一个文本文件，命名为 Modelfile（无后缀），内容：</span>
+FROM qwen3:8b
+SYSTEM """你是「墨白」，一位毒舌但靠谱的写作助教。规则：
+1. 只回答写作相关问题，其他问题礼貌拒绝
+2. 每次先指出文本的 1 个最大问题，再给修改示范
+3. 禁止说"挺好的"这类空话"""
+PARAMETER temperature 0.8
+<span class="cm"># 2. 打包成新模型</span>
+ollama create mobai -f Modelfile
+<span class="cm"># 3. 使用</span>
+ollama run mobai</pre></div>
+  <div class="demo"><div class="dhead">真实效果 · ollama run mobai</div>
+    <div class="msg user"><span class="who">你</span>帮我看看这句："今天的天气很好，我的心情也很好。"</div>
+    <div class="msg bot"><span class="who">墨白（你捏的人设）</span><b>最大问题：两个"很好"是零信息量。</b>天气好在哪里？心情好到什么程度？读者什么都看不见。修改示范："太阳把柏油路晒得发软，我踩着影子走，一路都在哼歌。"——具体画面自带情绪，不需要说"好"。</div>
+  </div>
+  <div class="tip">这就是"提示词工程"的落地形态：人设一旦写进 Modelfile，每次对话自动生效。你也可以用同样方法捏客服、英语老师、代码审查员——<b>提示词就是你的产品</b>。</div>
+  <div class="note">硬件速查：8GB 内存 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 7B/8B 量化模型；16GB <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 14B；24GB 显存（4090 级）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 32B。想跑满血 671B？那不是消费级硬件的事，用官方 API。</div>
+</section>
+<hr class="sep">
+<!-- ================= 03 提示词实战 ================= -->
+<section id="prompt">
+  <h2><span class="no">CHAPTER 03</span>提示词实战：三个真实案例，输入什么、得到什么</h2>
+  <p class="lead">"怎么设置提示词、怎么利用它"——这一章全部给真实输入和真实输出，复制改改就能用。对云端 DeepSeek/本地模型同样有效。</p>
+  <h3>案例 1 · 让 AI 当你的选题军师</h3>
+  <div class="demo"><div class="dhead">DeepSeek-R1 · 真实提示词与输出</div>
+    <div class="msg user"><span class="who">你的输入（直接复制可用）</span>你是百万粉丝科技博主。围绕"普通人用 AI 赚钱"产出 5 个短视频选题。要求：标题 ≤20 字，含数字或悬念；标注目标情绪（好奇/焦虑/共鸣）；给每个选题写一句 15 字以内的开场钩子。输出为表格。</div>
+    <div class="msg bot"><span class="who">真实输出（节选）</span><b>1.《我用 AI 接单，一个月赚了 4000》</b>｜情绪：好奇+焦虑｜钩子："我没辞职，也没投资，只靠下班后两小时。"<br><b>2.《这 3 类工作，AI 已经开始抢单了》</b>｜情绪：焦虑｜钩子："如果你是做文案的，先看完这条再睡。"<br><b>3.《宝妈用 AI 做表情包，月入过万？》</b>｜情绪：好奇｜钩子："我亲测了 7 天，结果和想的不一样。"</div>
+  </div>
+  <p class="body">拆解这条提示词为什么有效：<b>角色</b>（百万粉博主）+ <b>任务</b>（5 个选题）+ <b>约束</b>（字数、情绪、钩子）+ <b>格式</b>（表格）。四件套齐全，输出质量立判高下。</p>
+  <h3>案例 2 · 让 AI 写"能跑"的代码</h3>
+  <div class="demo"><div class="dhead">DeepSeek · 真实提示词与输出</div>
+    <div class="msg user"><span class="who">你的输入</span>你是资深 Python 工程师。写一个脚本：读取当前文件夹所有 .md 文件，统计每个文件的字数，输出为 CSV（文件名,字数）。要求：处理中文编码；加注释；最后告诉我怎么运行。</div>
+    <div class="msg bot"><span class="who">真实输出（核心代码）</span><b>import os, csv</b> — 遍历 os.listdir('.') <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 以 encoding='utf-8' 打开 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> len(text) 计字 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> csv.writer 写入 report.csv。运行方法：保存为 count.py，终端执行 python count.py，同目录生成 report.csv。</div>
+  </div>
+  <h3>案例 3 · 杠精编辑法：让 AI 骂你的稿子</h3>
+  <div class="demo"><div class="dhead">DeepSeek-R1 · 本基地博文真实用过的工作流</div>
+    <div class="msg user"><span class="who">你的输入</span>你是以毒舌著称的资深主编。审阅我粘贴的文章：1）找出 5 个最大问题并引用原文；2）指出 3 处"像 AI 写的"的句子；3）给出修改示范，保留我的风格，删掉所有空话。</div>
+    <div class="msg bot"><span class="who">真实输出（节选）</span>"问题 1：第二段'效率提升显著'是空话——<b>显著是多少？</b>没有数字的判断是撒娇。问题 2：'值得注意的是'这个短语本身就是 AI 指纹，全文出现 3 次……"</div>
+  </div>
+  <div class="tip">更多模板（选题/分镜/润色/小说四章套）已整理在<a href="/toolbox/prompts.html" style="color:var(--green)">主站提示词工程模块</a>，全部可一键复制。</div>
+</section>
+<hr class="sep">
+<!-- ================= 04 编程与 Agent ================= -->
+<section id="coding">
+  <h2><span class="no">CHAPTER 04</span>编程与 Agent：让 AI 真正替你干活</h2>
+  <figure class="chap-img reveal"><img src="/assets/agent_brain.png" alt="Agent 插件生态"><figcaption>DeepSeek Harness 的理念：模型是大脑，插件是四肢——一切皆插件</figcaption></figure>
+  <h3>4.1 DeepSeek Harness：8 月 13 日刚开源的"Agent 身体"</h3>
+  <div class="meta"><span class="star">上线 1.5 小时 <i class="cc-ic" data-ic="star" aria-hidden="true"></i> 2.4 万（破纪录）</span><span class="lang">deepseek-ai 官方</span><span>难度：<i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></span></div>
+  <p class="body">公式：<b>Model + Harness = Agent</b>。装好后，DeepSeek 从"会聊天"变成"会操作文件、终端、网页"的数字员工。</p>
+  <div class="code"><div class="bar"><i>安装与配置</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>git clone https://github.com/deepseek-ai/deepseek-harness.git
+cd deepseek-harness && pip install -e .
+dsh config set model deepseek-chat
+dsh config set api_key sk-你的密钥   <span class="cm"># 或指向本地 Ollama 接口，零成本</span></pre></div>
+  <div class="demo"><div class="dhead">真实派活演示</div>
+    <div class="msg user"><span class="who">你</span>dsh run "读取我桌面 report 文件夹里所有 docx，合并成一份周报摘要，存为 summary.md"</div>
+    <div class="msg bot"><span class="who">HARNESS 执行过程</span>① 调用 fs 插件扫描目录，发现 6 个文档 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ② 逐个读取并提取要点 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ③ 合并去重，按"本周进展/风险/下周计划"组织 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ④ 写入 summary.md <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <b>完成，用时 40 秒。你全程只说了一句话。</b></div>
+  </div>
+  <h3>4.2 superpowers：给 AI 编程立规矩（26 万 star）</h3>
+  <div class="code"><div class="bar"><i>装进 AI 编程客户端（以 Claude Code 为例）</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>git clone https://github.com/obra/superpowers.git ~/.claude/skills/superpowers
+<span class="cm"># 之后对 AI 说"用 superpowers 流程实现 XX"，它会先写测试、小步提交、自我审查</span></pre></div>
+  <h3>4.3 OpenMontage：一句话出整支视频</h3>
+  <div class="code"><div class="bar"><i>安装与使用</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>git clone https://github.com/calesthio/OpenMontage.git
+cd OpenMontage && pip install -r requirements.txt
+python openmontage.py "做一支 60 秒科普短片：为什么天空是蓝色的" --duration 60
+<span class="cm"># 它自动完成：脚本<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>分镜<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>素材<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>剪辑合成，即本项目视频工作流的自动化版</span></pre></div>
+</section>
+<hr class="sep">
+<!-- ================= 05 应用框架 ================= -->
+<section id="apps">
+  <h2><span class="no">CHAPTER 05</span>应用框架：零代码拼出 AI 应用</h2>
+  <h3>5.1 Dify：可视化 AI 应用工厂（含真实搭建流程）</h3>
+  <div class="meta"><span class="star">GitHub <i class="cc-ic" data-ic="star" aria-hidden="true"></i> 10 万+</span><span class="lic">Apache 2.0</span><span>难度：<i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i><i class="cc-ic cc-star-dim" data-ic="star" aria-hidden="true"></i></span></div>
+  <div class="code"><div class="bar"><i>Docker 一键部署</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>git clone https://github.com/langgenius/dify.git
+cd dify/docker && cp .env.example .env
+docker compose up -d   <span class="cm"># 打开 http://localhost</span></pre></div>
+  <ol class="body">
+    <li><b>接入免费模型</b>：设置 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 模型供应商 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选 "OpenAI-API-compatible" <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 填 <span class="repo">http://host.docker.internal:11434/v1</span>（即你第 2 章装的 Ollama），模型名填 qwen3:8b，密钥任意。</li>
+    <li><b>建知识库</b>：新建知识库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 上传你的产品文档/手册 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选"自动分段与清洗" <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 等待向量化完成。</li>
+    <li><b>建应用</b>：新建"聊天助手" <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 关联知识库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 提示词写："你是产品客服，只根据知识库回答，不知道就说不知道并转人工"。</li>
+    <li><b>发布</b>：点"发布"获得网页链接/API——一个 24 小时客服上线了，全程零代码。</li>
+  </ol>
+  <h3>5.2 n8n：自动化流水线（真实案例：每日 AI 日报机器人）</h3>
+  <div class="code"><div class="bar"><i>启动</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>docker run -d --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n</pre></div>
+  <p class="body">打开 <span class="repo">http://localhost:5678</span>，拖四个节点连起来：<b>定时触发（每天 8:00）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> HTTP 抓取 10 条 AI 新闻 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek 节点总结成 300 字 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 邮件节点发送</b>。保存激活后，它每天自动替你上班。</p>
+  <h3>5.3 FastGPT 与 LangGraph</h3>
+  <p class="body"><b>FastGPT</b>：专精中文知识库问答，引用溯源比通用框架更细——"让 AI 熟读我的资料再回答"选它。<b>LangGraph</b>：给程序员的状态图编排框架，生产级复杂 Agent 的主流选择。命令与前文模式相同：<span class="repo">git clone <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> docker compose up -d</span>。</p>
+</section>
+<hr class="sep">
+<!-- ================= 06 网络安全 ================= -->
+<section id="sec">
+  <h2><span class="no">CHAPTER 06</span>网络安全：上线前，先让 AI 打自己一遍</h2>
+  <div class="warn">本章工具仅用于<b>你自己拥有或被书面授权</b>的系统。未授权扫描他人系统违法。</div>
+  <h3>6.1 garak：给你的模型做体检</h3>
+  <div class="code"><div class="bar"><i>扫描第 2 章部署的本地模型</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>pip install garak
+garak --model_type ollama --model_name qwen3:8b --probes all
+<span class="cm"># 输出 HTML 报告：提示词注入/越狱/数据泄露哪些能攻破你的模型</span></pre></div>
+  <h3>6.2 Strix：AI 红队体检你的产品</h3>
+  <div class="code"><div class="bar"><i>对自己写的网站做授权测试</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>pipx install strix-agent
+export STRIX_LLM="deepseek/deepseek-chat" && export LLM_API_KEY="sk-你的密钥"
+strix --target http://localhost:3000 --instruction "检查常见 Web 漏洞并给出修复建议"</pre></div>
+  <p class="body"><b>影响</b>：渗透测试从"几十万、等数周"变成"一个开发者、几小时"——中小团队第一次买得起安全感。2026 年的共识：<b>用 AI 防 AI</b>。</p>
+</section>
+<hr class="sep">
+<!-- ================= 07 一人公司 ================= -->
+<section id="solo">
+  <h2><span class="no">CHAPTER 07</span>一人公司：一个人 + 一组 Agent = 一家公司</h2>
+  <figure class="chap-img reveal"><img src="/assets/solo_company.png" alt="一人公司"><figcaption>2026 年最确定的趋势：单人开发者的复杂度上限 ≈ 小型团队</figcaption></figure>
+  <div class="tblwrap"><table>
+    <tr><th>公司职能</th><th>AI 员工</th><th>教程位置</th><th>月成本</th></tr>
+    <tr><td>技术部</td><td>CodeBuddy / Cursor + superpowers</td><td>第 4 章</td><td>¥0~140</td></tr>
+    <tr><td>大脑</td><td>DeepSeek API / 本地 Ollama</td><td>第 2 章</td><td>¥0~50</td></tr>
+    <tr><td>运营部</td><td>n8n 自动化流水线</td><td>第 5 章</td><td>¥0</td></tr>
+    <tr><td>设计部</td><td>ComfyUI 本地 / 即梦云端</td><td>主站视频模块</td><td>¥0~100</td></tr>
+    <tr><td>客服部</td><td>Dify / FastGPT 知识库</td><td>第 5 章</td><td>¥0</td></tr>
+    <tr><td>安全部</td><td>garak + Strix 上线体检</td><td>第 6 章</td><td>¥0</td></tr>
+  </table></div>
+  <p class="body"><b>影响</b>：科斯说企业因降低交易成本而存在——当 Agent 把协作成本压到近零，传统雇佣关系松动。但一人公司 ≠ 轻松公司：AI 消灭执行成本，放大决策密度。幸存者画像一致：垂直领域深认知 + 快速试错体力 + 把 AI 当"员工"管理的能力。</p>
+</section>
+<hr class="sep">
+<!-- ================= 08 手机全套玩法 ================= -->
+<section id="mobile">
+  <h2><span class="no">CHAPTER 08</span>手机全套玩法：跑模型、管项目、打包下载</h2>
+  <figure class="chap-img reveal"><img src="/assets/mobile_ai.png" alt="手机上的 AI"><figcaption>2026 年，你的手机足以完成"对话、部署、管理、下载"全流程</figcaption></figure>
+  <h3>8.1 在手机上打包下载本基地（以及任何网页）</h3>
+  <p class="body">你要的"手机上一键打包下载"——分两步，30 秒搞定：</p>
+  <ol class="body">
+    <li><b>把本页存到手机</b>：iOS 用 Safari 打开本页 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 点底部分享按钮 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> "选项"选 <b>网页归档</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 存到"文件"App；安卓用 Chrome <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 右上角 ⋮ <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 下载图标（或分享 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打印 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 另存为 PDF）。得到单个文件，离线可开、可转发给任何人。</li>
+    <li><b>页面内的下载按钮</b>：第 9 章的"一键打包下载"按钮在手机上同样有效——点一下，浏览器直接弹出保存/分享。</li>
+  </ol>
+  <h3>8.2 手机上直接跑离线模型（5 分钟，断网可用）</h3>
+  <div class="code"><div class="bar"><i>PocketPal AI 五步（安卓 / iOS 均可，开源免费）</i><button class="copy"><i class="cc-ic" data-ic="copy"></i> 复制</button></div><pre>1. 应用商店搜 PocketPal AI <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 安装
+2. 打开 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 模型库选 DeepSeek-R1 蒸馏版（1.5B~8B 按内存选）
+3. Wi-Fi 下点下载（约 1~5GB）
+4. 加载模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 直接对话，开飞行模式也能用
+5. 想更快：换 MLC Chat，支持 NPU 加速</pre></div>
+  <div class="note">配置参考：8GB 内存手机流畅跑 1.5B~3B；12GB+ 旗舰可跑 7B~8B 量化版。速度不如电脑，但隐私无敌——数据永远不出你的口袋。</div>
+  <h3>8.3 手机遥控全部开源项目（主力姿势）</h3>
+  <p class="body">真正的"手机上操作所有开源项目"：<b>项目跑在电脑/服务器上，手机当遥控器</b>。</p>
+  <ul class="body">
+    <li><b>网页直达</b>：Dify、Open WebUI、ComfyUI、n8n 都是网页界面——同一 Wi-Fi 下，手机浏览器打开 <span class="repo">http://电脑IP:端口</span> 就能用（电脑 IP 用 ipconfig 查）。</li>
+    <li><b>SSH 遥控</b>：安卓装 Termux / iOS 装 Termius <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <span class="repo">ssh 用户名@电脑IP</span> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 本基地所有命令手机上全能敲。</li>
+    <li><b>GitHub 手机端</b>：官方 App 可 star、审阅、合并；看到好项目先 star，回家一键 clone。</li>
+    <li><b>出门在外</b>：电脑装 tailscale（免费），手机在世界任何角落都能连回家里的服务。</li>
+  </ul>
+  <div class="tip">组合技：地铁上用 PocketPal 离线聊天想创意 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 到家用手机浏览器打开电脑上的 Dify 调整知识库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 睡前 SSH 进去敲一条 <span class="repo">ollama pull</span> 下载新模型。全流程零电脑桌面操作。</div>
+</section>
+<hr class="sep">
+<!-- ================= 09 打包下载 ================= -->
+<section id="pack">
+  <h2><span class="no">CHAPTER 09</span>打包下载：把开源项目变成"你的软件"</h2>
+  <div class="tblwrap"><table>
+    <tr><th>层级</th><th>方式</th><th>适合谁</th><th>操作</th></tr>
+    <tr><td>L1 最省心</td><td>官方安装包</td><td>所有人</td><td>项目主页 Releases 下载，双击安装（Ollama、Chatbox、PocketPal）</td></tr>
+    <tr><td>L2 一键脚本</td><td>Pinokio 安装器</td><td>怕命令行</td><td>装 Pinokio <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 搜项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 点 Install，依赖全自动</td></tr>
+    <tr><td>L3 容器</td><td>Docker</td><td>进阶</td><td><span class="repo">docker compose up -d</span> 一条命令起整个应用</td></tr>
+    <tr><td>L4 源码</td><td>git clone</td><td>开发者</td><td>克隆 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 按 README 装依赖 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 自由魔改</td></tr>
+  </table></div>
+  <p class="body" style="text-align:center;margin:30px 0 8px">本基地自己就是示范：零依赖单文件网页，点下面立刻打包带走——</p>
+  <p class="body" style="text-align:center;margin-bottom:26px">
+    <button class="dlbtn" id="dl"><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>一键打包下载本基地（单文件 HTML）</button>
+  </p>
+  <div class="tip">下载后的文件双击即开，无需网络、无需安装；发到微信/邮箱给任何人都能直接打开。这就是 2026 年做软件的新常态：对话生成 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 单文件 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 随处分发。</div>
+</section>
+<hr class="sep">
+<!-- ================= 10 里程碑成果 ================= -->
+<section id="products">
+  <h2><span class="no">CHAPTER 10</span>前辈们的里程碑：这些真实成果，改变了你的世界</h2>
+  <p class="lead">学 AI 最好的方式，是先看懂它已经完成过什么。以下是 AI 史上已被验证的里程碑成果——每一件都在今天的你的生活里有回声。</p>
+  <h3>10.1 智力与科学之巅</h3>
+  <div class="glass reveal"><h4 style="margin-top:0">AlphaGo（2016）· 机器第一次展现"直觉"</h4>
+  <p class="body">DeepMind 的 AlphaGo 以 4:1 战胜李世石，第二局第 37 手被职业棋手称为"天外飞仙"——人类千年棋谱里没有人这样落子。它证明：AI 不只是计算，还能产生<b>超越人类经验的创造性判断</b>。一年后 AlphaZero 从零自学三天，碾压所有前辈版本。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">AlphaFold（2020—2026）· 破解生命折叠，拿下诺贝尔奖</h4>
+  <p class="body">蛋白质折叠是生物学 50 年悬案，AlphaFold 一举预测两亿多个蛋白质结构，哈萨比斯因此获 2024 年诺贝尔化学奖。2026 年，DeepMind 与英伟达、EMBL-EBI 组队的新一代 AlphaFold 已开始解析细胞的"组装车间"（核孔复合体），AI 驱动的超导材料发现、自动化实验室同年入选年度科学突破。<b>它给你的回声：未来十年新药的研发周期，将以"年"而非"十年"计。</b></p></div>
+  <h3>10.2 改变世界的时刻</h3>
+  <div class="glass reveal"><h4 style="margin-top:0">ChatGPT（2022）· 五天百万用户的"iPhone 时刻"</h4>
+  <p class="body">OpenAI 把一个对话框变成史上增长最快的消费级应用：两个月破亿用户。它第一次让"通用人工智能"从论文走进菜市场。2026 年 GPT-5.6 更进一步：免费用户获得无限对话与推理能力——<b>顶级 AI 第一次真正全民免费</b>。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">Sora 与视频生成革命（2024—2026）</h4>
+  <p class="body">Sora 用一句话生成电影感视频，震惊影视行业；随后可灵、即梦、混元视频集体跟进。两年后，"文字 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 视频"已是普通人手机里的日常功能，广告与短剧行业的制作成本被重写。本基地视频工程的素材，正是这条技术线的产物。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">DeepSeek 时刻（2025.1）· 效率革命的惊雷</h4>
+  <p class="body">中国团队用约 560 万美元训练出比肩顶级闭源模型的 R1 并完全开源，1 月 27 日英伟达单日暴跌 17%、蒸发约 5900 亿美元——<b>人类股市史最大单日市值蒸发</b>。它向世界证明：算力霸权之外，还有效率革命；中国 AI 可以换道超车。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">盘古气象大模型（2023）· 登《Nature》的中国 AI</h4>
+  <p class="body">华为云盘古成为首个精度超越传统数值预报的 AI 模型，速度提升一万倍，上线欧洲中期天气预报中心。AI 预报如今在台风路径与极端天气预警中守护真实生命——<b>这是 AI 最没有争议、最纯粹的胜利</b>。</p></div>
+  <h3>10.3 正在发生的现在</h3>
+  <div class="glass reveal"><h4 style="margin-top:0">具身智能与人形机器人（2026 WAIC）</h4>
+  <p class="body">2026 世界人工智能大会的主角是"会动的 AI"：国家地方共建人形机器人创新中心与华为联手揭牌具身智能实训场。行业共识"先通后专"——先让机器人什么都会一点，再让它们在工厂、仓库、家庭各就其位。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">DeepSeek Harness（2026.8）· 模型长出身体</h4>
+  <p class="body">就在本周：DeepSeek 开源 Agent 框架 Harness，1.5 小时 GitHub Star 破 2.4 万。它让大模型操作文件、终端、浏览器——"一切皆插件"。AI 从"会说"到"会做"的最后一公里，正在被填平。</p></div>
+  <div class="tip">看完成果，看门道：这些里程碑全部遵循同一个节奏——<b>论文 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 开源 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 生态 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 改变行业</b>。学会这个节奏，下一个里程碑出现时，你就能对身边人说："这个我懂，来，我讲给你听。"</div>
+</section>
+<hr class="sep">
+<!-- ================= 11 研究方向全景 ================= -->
+<section id="frontier">
+  <h2><span class="no">CHAPTER 11</span>紧跟时事：2026 AI 研究方向全景</h2>
+  <p class="lead">综合 2026 智源大会与 WAIC 的最前沿议题，当前所有重要研究都收敛到这八个方向。每个方向标注"谁在领跑 + 与你何干"。</p>
+  <div class="tblwrap"><table>
+    <tr><th>方向</th><th>研究什么</th><th>谁在领跑</th><th>与你何干</th></tr>
+    <tr><td>推理模型</td><td>让模型"先想后答"，思维链可训练（RLHF <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> RLVR）</td><td>OpenAI o 系、DeepSeek R 系、Qwen</td><td>DeepSeek 开"深度思考"模式，数学/代码/策划能力质变</td></tr>
+    <tr><td>世界模型</td><td>从"预测下一个词"到"预测世界的下一个状态"——智源大会年度主题</td><td>智源研究院、Google DeepMind、Momenta</td><td>自动驾驶与机器人安全的底层技术</td></tr>
+    <tr><td>具身智能</td><td>大模型装进机器人身体，"先通后专"</td><td>华为 × 国地中心、特斯拉 Optimus、宇树</td><td>未来 5 年工厂与家庭的劳动力变量</td></tr>
+    <tr><td>AI for Science</td><td>AI 做科学发现：蛋白质、材料、气象、数学</td><td>DeepMind（AlphaFold）、华为（盘古）</td><td>新药更快、天气预报秒级——直接救命的技术</td></tr>
+    <tr><td>Agent 与自进化</td><td>多步任务规划、工具调用、Agent 自我改进</td><td>DeepSeek Harness、Anthropic、Manus 系</td><td>第 4 章教程就是它的平民版</td></tr>
+    <tr><td>原生多模态</td><td>一个模型同时理解文字、图像、声音、视频</td><td>Gemini、GPT-5.6、豆包 Seed</td><td>拍张照问 AI、语音实时对话已是日常</td></tr>
+    <tr><td>高效小模型</td><td>10B-70B 精调模型服务垂直场景，端侧部署</td><td>Qwen 全尺寸矩阵、DeepSeek 蒸馏系</td><td>第 2 章：8GB 内存的电脑就能跑</td></tr>
+    <tr><td>AI 安全与对齐</td><td>让 AI 可控、诚实、不越界；制度化治理</td><td>Anthropic、SSI（苏茨克维）、LawZero（本吉奥）</td><td>第 6 章 garak 就是安全研究的民用化</td></tr>
+  </table></div>
+  <div class="tip">跟踪方法：每周花 10 分钟扫一眼 GitHub Trending（热榜）+ 智源/WAIC 大会动态，你就能永远比朋友圈早三个月知道风向。</div>
+</section>
+<hr class="sep">
+<!-- ================= 12 三十天上手路线 ================= -->
+<section id="road">
+  <h2><span class="no">CHAPTER 12</span>三十天上手路线：从零到能教别人</h2>
+  <p class="lead">别贪多，按天走。这条路线把前面 11 章串成可执行清单，每天 1~2 小时，30 天后你手里有一套能跑、能教、能变现的 AI 工具箱。</p>
+  <div class="tblwrap"><table>
+    <tr><th>阶段</th><th>天数</th><th>做什么</th><th>做完的标志</th><th>对应章节</th></tr>
+    <tr><td>第 1 周 · 把模型装进自己电脑</td><td>1-3</td><td>装 Ollama，跑通 qwen3:8b；学会捏一个 Modelfile 人设</td><td>本地能离线对话</td><td>第 2 章</td></tr>
+    <tr><td>第 1 周 · 打通 API 接口</td><td>4-5</td><td>用 curl 验证 11434 接口；把模型接进 Chatbox / 沉浸式翻译</td><td>任何软件都能调用本地模型</td><td>第 2 章</td></tr>
+    <tr><td>第 2 周 · 提示词成为生产力</td><td>6-10</td><td>抄 3 个真实案例模板改成自己的；给 AI 立角色 / 约束 / 格式</td><td>能稳定产出选题、代码、改稿</td><td>第 3 章</td></tr>
+    <tr><td>第 2 周 · 让 Agent 干活</td><td>11-13</td><td>装 DeepSeek Harness / superpowers，派第一个自动化任务</td><td>AI 能读文件、写文件、跑命令</td><td>第 4 章</td></tr>
+    <tr><td>第 3 周 · 搭一个能用的应用</td><td>14-17</td><td>Dify 建知识库 + 聊天助手；n8n 做一条自动化流水线</td><td>有一个 24 小时在线的 AI 客服 / 日报</td><td>第 5 章</td></tr>
+    <tr><td>第 3 周 · 给自己做安全体检</td><td>18-19</td><td>garak 扫本地模型，Strix 扫自己网站（仅授权系统）</td><td>手里有一份体检报告</td><td>第 6 章</td></tr>
+    <tr><td>第 4 周 · 手机 + 打包成产品</td><td>20-23</td><td>PocketPal 手机离线跑模型；单文件打包你的页面</td><td>手机上也能用你的东西</td><td>第 8-9 章</td></tr>
+    <tr><td>第 4 周 · 接上全站主线</td><td>24-30</td><td>自学中心选一条线补短板；把作品挂进作品库；看新闻追趋势</td><td>能向朋友演示 3 件成品</td><td>配套资源</td></tr>
+  </table></div>
+  <div class="tip">每天只做清单里的事，别刷教程。30 天后你会发现：能教别人，是因为你手里有真东西。</div>
+</section>
+<hr class="sep">
+<!-- ================= 13 部署常见坑 ================= -->
+<section id="faq">
+  <h2><span class="no">CHAPTER 13</span>部署常见坑：踩过的人给你排雷</h2>
+  <div class="glass reveal"><h4 style="margin-top:0">① 端口被占用：Address already in use</h4>
+    <p class="body">另一个程序占着 11434 / 8188 等端口。查占用：<span class="repo">netstat -ano | findstr 11434</span> 记下 PID <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 任务管理器结束；或换端口启动（Ollama 设 <span class="repo">OLLAMA_HOST=127.0.0.1:11435</span>）。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">② 模型下载慢 / 超时</h4>
+    <p class="body">Ollama 走官方源可能慢。可先 <span class="repo">export OLLAMA_MODELS=/你的大容量盘</span> 换存储位置；下载慢时用 hf-mirror 拉 GGUF 再 <span class="repo">ollama create</span> 导入，或直接换用官方 API 过渡。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">③ 显存 / 内存不足：CUDA out of memory</h4>
+    <p class="body">模型太大。换小量化版（1.5b <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 4b <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 8b 按硬件升）；关掉其它占显存的程序；Ollama 用 <span class="repo">OLLAMA_NUM_GPU=1</span> 控制投入 GPU 的层数，其余落 CPU。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">④ Docker 拉不动 / 代理冲突</h4>
+    <p class="body">Dify / n8n 镜像拉不动：配国内镜像加速器，或设 <span class="repo">HTTP_PROXY / HTTPS_PROXY</span>；反之若开着代理反而报 TLS 错，先关代理再 <span class="repo">docker pull</span>。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">⑤ 本地模型接不上 Dify</h4>
+    <p class="body">Dify 跑在 Docker 里，访问宿主机要用 <span class="repo">host.docker.internal</span> 而不是 localhost；模型名必须和 <span class="repo">ollama list</span> 完全一致（含 :8b 后缀）。</p></div>
+  <div class="glass reveal"><h4 style="margin-top:0">⑥ Windows 老报权限 / 路径错</h4>
+    <p class="body">PowerShell 与 Git Bash 语法有差异；路径带空格记得加引号；<span class="repo">pip install</span> 失败先 <span class="repo">python -m pip install --upgrade pip</span>。实在不行，用 WSL2 一劳永逸。</p></div>
+  <div class="note">一条通用铁律：报错先读第一行英文，90% 的坑（路径、端口、权限、网络）自己就能定位；剩下 10% 复制整段报错去搜，别闭眼乱试。</div>
+</section>
+<hr class="sep">
+<!-- ================= 14 全站配套资源 ================= -->
+<section id="kit">
+  <h2><span class="no">CHAPTER 14</span>全站配套资源：这页不是孤岛</h2>
+  <p class="lead">开发者基地是"动手"的门，其余分站是"补料"的库。按需取用，别贪多。</p>
+  <div class="works">
+    <a class="work" href="/toolbox/local-ai.html"><span class="wb">本地部署</span><h4><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>本地 AI 页</h4><p>Ollama / WebLLM 可视化配置，一键对接本站对话。</p></a>
+    <a class="work" href="/toolbox/workstation.html"><span class="wb">搭建工作台</span><h4><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>白驹工作站</h4><p>IDE × GitHub × AI 编译模式，把本章命令变成按钮。</p></a>
+    <a class="work" href="/learn/study.html"><span class="wb">自学中心</span><h4><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>自学中心</h4><p>编程 / 网安 / UI / 自动化学习路线 + 真实案例 + 视频。</p></a>
+    <a class="work" href="/toolbox/prompts.html"><span class="wb">提示词</span><h4><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>提示词实战</h4><p>40+ 可复制模板，配合第 3 章食用。</p></a>
+    <a class="work" href="/feed/news.html"><span class="wb">每日动态</span><h4><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i>每日新闻</h4><p>真实新闻 + 可播视频，追第 11 章提到的趋势。</p></a>
+    <a class="work" href="/works/projects.html"><span class="wb">作品大全</span><h4><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>作品大全</h4><p>100 个真实 GitHub 作品，按热度看懂生态。</p></a>
+  </div>
+  <div class="tip">一句话：<b>本章管"能不能跑起来"，其它分站管"跑起来做什么"。</b>回到白驹总站，从<a href="/index.html" style="color:var(--green)">入口地图</a>随意逛。</div>
+</section>
+
+<script>
+// 阅读进度条
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+// HERO 打字机
+const lines=["ollama run deepseek-r1:14b","dsh run \u201c整理我的周报\u201d","docker compose up -d","git clone \u2192 \u4f60\u7684\u7b2c\u4e00\u4e2a AI \u5e94\u7528"];
+const tp=document.getElementById('typed');let li=0,ci=0,del=false;
+(function type(){const s=lines[li];
+  tp.textContent="$ "+s.slice(0,ci);
+  if(!del){ci++;if(ci>s.length){del=true;setTimeout(type,1600);return}}
+  else{ci--;if(ci<0){del=false;li=(li+1)%lines.length;ci=0}}
+  setTimeout(type,del?28:70)})();
+// 复制按钮
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  navigator.clipboard.writeText(b.closest('.code').querySelector('pre').innerText);
+  b.textContent='已复制';setTimeout(()=>b.textContent='复制',1500);}));
+// 滚动入场
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.08});
+document.querySelectorAll('section,.toc,.chap-img,.demo').forEach(el=>{el.classList.add('reveal');io.observe(el);});
+// 一键打包下载本基地
+document.getElementById('dl').addEventListener('click',()=>{
+  const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download='开发者基地-DEVBASE.html';a.click();
+  URL.revokeObjectURL(a.href);});
+</script>
+
+
+  
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+
+
+<script>renderVideoSection('#vkHere', { categories: ["部署基础","DeepSeek","Ollama","ComfyUI","StableDiffusion"], title: '开发者基地 · 部署实操视频' });</script>
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

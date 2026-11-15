@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="description" content="科技馆：AI 前沿研究方向、里程碑大事记、中国科技故事，以及全国真实科技馆地点与一键导航。">
+<meta property="og:description" content="科技馆：AI 前沿研究方向、里程碑大事记、中国科技故事，以及全国真实科技馆地点与一键导航。">
+<meta name="keywords" content="科技馆,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="科技馆 · AI 科技全景展馆 · 白驹 ccowork">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-industrial.css?v=20261028e">
+<title>科技馆 · AI 科技全景展馆 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"科技馆 · 白驹 ccowork · AI 科技全景展馆","description":"科技馆：AI 前沿研究方向、里程碑大事记、中国科技故事，以及全国真实科技馆地点与一键导航。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --nav-bg:rgba(255,255,255,.82); --nav-line:rgba(227,235,245,.95);
+  --nav-shadow:0 2px 16px rgba(31,45,77,.07);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+}
+body[data-theme="deep"]{
+  --nav-bg:rgba(8,5,28,.70); --nav-line:rgba(255,255,255,.08);
+  --nav-shadow:0 2px 16px rgba(0,0,0,.35);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#8b5cf6,#38e1ff 55%,#e879fa);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+/* 导航 */
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+nav.top .cta{padding:10px 20px;border:none;border-radius:999px;background:var(--grad);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.30);transition:.2s;white-space:nowrap}
+nav.top .cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.42)}
+.burger{display:none}
+/* Hero */
+#gate{position:relative;overflow:hidden;background:var(--hero-grad);transition:background .35s ease}
+#gate::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+body[data-theme="deep"] #gate::before{background:radial-gradient(circle,rgba(34,225,255,.5),transparent 70%)}
+#gate .inner{position:relative;max-width:1080px;margin:0 auto;padding:56px 20px 44px;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+#gate h1{font-size:clamp(32px,4.8vw,54px);font-weight:900;letter-spacing:1px;color:#fff;line-height:1.25;margin-top:14px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+#gate .sub{color:rgba(255,255,255,.95);font-size:15px;margin:14px auto 0;max-width:760px;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.gate-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px auto 0;max-width:800px}
+.gate-chips .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px);transition:.2s;cursor:pointer}
+.gate-chips .chip:hover{background:rgba(255,255,255,.30);transform:translateY(-2px)}
+/* 内容 */
+.wrap{max-width:1120px;margin:0 auto;padding:36px 20px 60px}
+h2.sec{font-size:24px;font-weight:900;margin:38px 0 6px;display:flex;align-items:center;gap:10px}
+h2.sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--grad),transparent)}
+p.sec-sub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.dir{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--card-shadow);transition:.22s}
+.dir:hover{box-shadow:var(--card-shadow-h);transform:translateY(-3px)}
+.dir .ic{width:44px;height:44px;border-radius:14px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;margin-bottom:12px}
+.dir b{font-size:17px}
+.dir p{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.7}
+.dir .tr{margin-top:10px;font-size:12px;font-weight:700;color:var(--blue);background:var(--chip-bg);border:1px solid var(--chip-line);display:inline-block;padding:4px 10px;border-radius:999px}
+/* 时间轴 */
+.tl{position:relative;padding-left:26px;margin-left:6px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--blue),var(--purple,#8b5cf6));opacity:.35;border-radius:6px}
+.tl-item{position:relative;padding:0 0 20px}
+.tl-item::before{content:"";position:absolute;left:-26px;top:6px;width:14px;height:14px;border-radius:999px;background:var(--card);border:3px solid var(--blue);box-shadow:0 0 0 4px rgba(79,140,255,.12)}
+.tl-item b{font-size:15px}
+.tl-item .yr{display:inline-block;font-size:11px;font-weight:900;color:#fff;background:var(--grad);padding:2px 10px;border-radius:999px;margin-right:8px}
+.tl-item p{font-size:13px;color:var(--muted);margin-top:5px}
+/* 故事卡 */
+.story{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--card-shadow);margin-bottom:16px}
+.story .num{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--blue)}
+.story b{font-size:17px;display:block;margin:4px 0 2px}
+.story .sub2{font-size:13px;color:var(--muted);margin-bottom:10px}
+.story p{font-size:14px;color:var(--text);opacity:.88;line-height:1.8}
+/* 现场馆 */
+.venue-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:8px}
+.vc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:block;transition:.2s;box-shadow:var(--card-shadow)}
+.vc:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:var(--blue)}
+.vc b{font-size:15px;display:block}
+.vc span{font-size:12px;color:var(--muted)}
+.vc em{display:block;margin-top:8px;font-style:normal;font-size:12px;font-weight:800;color:var(--blue)}
+@media(max-width:760px){
+  nav.top{flex-wrap:wrap;height:auto;padding:10px 16px;gap:10px}
+  nav.top .links{order:3;width:100%;margin-left:0}
+  .burger{display:block;background:none;border:none;font-size:20px;color:var(--text);cursor:pointer}
+  nav.top .links{display:none}
+  nav.top .links.open{display:flex}
+}
+</style>
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/tech-museum.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/tech-museum.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="科技馆 · AI 科技全景展馆 · 白驹 ccowork">
+<meta name="twitter:description" content="科技馆：AI 前沿研究方向、里程碑大事记、中国科技故事，以及全国真实科技馆地点与一键导航。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/cover-tech-museum.png" alt="科技馆" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<!-- 总站导航 -->
+<nav class="top">
+  <a class="brand" href="/index.html"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><span class="nm">白驹 ccowork</span></a>
+  <button class="burger" onclick="document.querySelector('.top .links').classList.toggle('open')"><i class="cc-ic" data-ic="menu"></i></button>
+  <div class="links">
+    <a href="/index.html"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>对话</a>
+    <a href="/toolbox/workstation.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>工作站</a>
+    <a href="/works/museum.html" class="cur"><i class="cc-ic" data-ic="telescope"></i> 科技馆</a>
+    <a href="/toolbox/ai-build-hall.html"><i class="cc-ic" data-ic="hard-hat"></i> AI 建造</a>
+    <a href="/about/map-guide.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图指引</a>
+    <a href="/toolbox/index.html"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工具域</a>
+    <a href="/learn/tutorials/index.html"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 学院</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="切换亮暗主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+    <a class="cta" href="/about/map-guide.html"><i class="cc-ic" data-ic="map-pin" aria-hidden="true"></i>找科技馆</a>
+  </div>
+</nav>
+<!-- Hero -->
+<section id="gate">
+  <div class="inner">
+    <div class="badge"><i class="cc-ic" data-ic="telescope"></i> 科技馆 · 白驹科技全景展馆</div>
+    <h1>AI 前沿 · 里程碑 · 中国科技故事<br><span style="background:linear-gradient(120deg,#fff,#d6e9ff);-webkit-background-clip:text;background-clip:text;color:transparent">一馆看尽</span></h1>
+    <p class="sub">展馆一：AI 前沿研究方向（真实数据）｜展馆二：里程碑大事记｜展馆三：中国科技崛起故事｜展馆四：全国真实科技馆现场，点「找科技馆」一键导航。</p>
+    <div class="gate-chips">
+      <a class="chip" href="#dirs"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>前沿方向</a>
+      <a class="chip" href="#milestones"><i class="cc-ic" data-ic="landmark" aria-hidden="true"></i>里程碑</a>
+      <a class="chip" href="#stories"> 中国科技</a>
+      <a class="chip" href="#venues"><i class="cc-ic" data-ic="map-pin" aria-hidden="true"></i>现场科技馆</a>
+    </div>
+  </div>
+</section>
+<div class="wrap">
+  <h2 class="sec" id="dirs"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>展馆一 · AI 前沿研究方向</h2>
+  <p class="sec-sub">来自主站《AI 前沿科技》数据 · <span id="dirDate"></span></p>
+  <div class="grid" id="dirGrid"></div>
+  <h2 class="sec" id="milestones"><i class="cc-ic" data-ic="landmark" aria-hidden="true"></i>展馆二 · 里程碑大事记</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-tech-museum.png" alt="科技馆 · 白驹 ccowork · AI 科技全景展馆 · " loading="lazy"></figure>
+  <p class="sec-sub">AI 发展历程中的关键节点</p>
+  <div class="card"><div class="tl" id="tl"></div></div>
+  <h2 class="sec" id="stories"> 展馆三 · 中国科技崛起故事</h2>
+  <p class="sec-sub">从两弹一星到 AI 大国 —— 真实的中国科技叙事</p>
+  <div id="storyBox"></div>
+  <h2 class="sec" id="venues"><i class="cc-ic" data-ic="map-pin" aria-hidden="true"></i>展馆四 · 全国真实科技馆现场</h2>
+  <p class="sec-sub">数据来自腾讯位置服务实时查询，点击直达地图指引页导航</p>
+  <div class="venue-cta" id="venueBox"></div>
+</div>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script src="/data/frontiers.js"></script>
+<script src="/data/china-tech.js"></script>
+<script src="/data/ai-venues.js"></script>
+<script>
+(function(){
+  var F = window.FRONTIERS, C = window.CHINA_TECH, V = window.AI_VENUES;
+  // 展馆一：前沿方向
+  if (F && F.researchDirections) {
+    document.getElementById('dirDate').textContent = F.lastUpdated || '';
+    document.getElementById('dirGrid').innerHTML = F.researchDirections.slice(0, 8).map(function(d){
+      return '<div class="dir"><div class="ic">' + (d.icon || '') + '</div><b>' + d.name + '</b><p>' + d.description + '</p>' +
+        (d.trend ? '<span class="tr"> ' + d.trend + '</span>' : '') + '</div>';
+    }).join('');
+  }
+  // 展馆二：里程碑
+  if (F && F.milestones) {
+    document.getElementById('tl').innerHTML = F.milestones.slice(0, 10).map(function(m){
+      return '<div class="tl-item"><span class="yr">' + (m.year || m.date || '') + '</span><b>' + m.name + '</b><p>' + (m.description || m.meaning || '') + '</p></div>';
+    }).join('');
+  }
+  // 展馆三：中国科技故事
+  if (C && C.stories) {
+    document.getElementById('storyBox').innerHTML = C.stories.map(function(s){
+      var first = s.sections && s.sections[0];
+      return '<div class="story"><span class="num">' + s.number + '</span><b>' + s.title + '</b>' +
+        '<div class="sub2">' + s.subtitle + '</div>' +
+        (first ? '<p>' + String(first.content).replace(/<[^>]+>/g, '').slice(0, 180) + '…</p>' : '') +
+        '</div>';
+    }).join('');
+  }
+  // 展馆四：现场科技馆
+  if (V) {
+    var sci = V.categories.find(function(c){ return c.id === 'science'; });
+    if (sci) {
+      document.getElementById('venueBox').innerHTML = sci.venues.map(function(v){
+        return '<a class="vc" href="/website/map-guide.html#science"><b>' + v.name + '</b><span>' + v.city + ' · ' + v.address + '</span><em>点击导航 </em></a>';
+      }).join('');
+    }
+  }
+})();
+</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.getElementById('themeBtn') && document.getElementById('themeBtn').addEventListener('click', ccoworkTheme);
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

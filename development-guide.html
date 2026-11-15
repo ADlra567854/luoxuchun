@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="description" content="基于 能力清单弹药库的全站开发指导手册 + 网站未来发展方向三阶段分析，含 P0/P1/P2 行动清单与自我迭代闭环。">
+<meta property="og:description" content="基于 能力清单弹药库的全站开发指导手册 + 网站未来发展方向三阶段分析，含 P0/P1/P2 行动清单与自我迭代闭环。">
+<meta property="og:title" content="全站开发指导 · 未来发展方向 · 白驹 ccowork">
+<meta name="keywords" content="开发指导,发展方向,技能盘点,技能驱动,自我迭代,白驹 ccowork">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-industrial.css?v=20261028e">
+<title>全站开发指导 · 未来发展方向 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"全站开发指导 · 未来发展方向 · 白驹 ccowork","description":"基于 能力清单弹药库的全站开发指导手册 + 网站未来发展方向三阶段分析，含 P0/P1/P2 行动清单与自我迭代闭环。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --nav-bg:rgba(255,255,255,.82); --nav-line:rgba(227,235,245,.95);
+  --nav-shadow:0 2px 16px rgba(31,45,77,.07);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+}
+body[data-theme="deep"]{
+  --nav-bg:rgba(8,5,28,.70); --nav-line:rgba(255,255,255,.08);
+  --nav-shadow:0 2px 16px rgba(0,0,0,.35);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#8b5cf6,#38e1ff 55%,#e879fa);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+.burger{display:none}
+.wrap{max-width:1000px;margin:0 auto;padding:40px 24px 70px}
+.art-head{margin-bottom:34px}
+.art-head .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--grad);color:#fff;font-size:12px;font-weight:800}
+.art-head h1{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.3;margin:16px 0 8px}
+.art-head .meta{color:var(--muted);font-size:13px}
+.art-head .divider{height:1px;margin-top:22px;background:linear-gradient(90deg,var(--grad),transparent)}
+h2{font-size:22px;font-weight:900;margin:44px 0 6px;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--grad),transparent)}
+h3{font-size:17px;font-weight:800;margin:22px 0 8px}
+p{color:var(--text);opacity:.92;font-size:15px;margin:10px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--card-shadow);margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow)}
+th,td{padding:11px 14px;text-align:left;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--grad);color:#fff;font-weight:800}
+tr:last-child td{border-bottom:none}
+td b{color:var(--blue)}
+.pill{display:inline-block;font-size:11px;font-weight:900;padding:3px 10px;border-radius:999px;margin-right:6px}
+.pill.p0{background:#ff5c5c;color:#fff}
+.pill.p1{background:#f0a93c;color:#fff}
+.pill.p2{background:#22b07d;color:#fff}
+.tag3{display:inline-block;font-size:11px;font-weight:800;color:var(--blue);background:var(--chip-bg);border:1px solid var(--chip-line);padding:2px 10px;border-radius:999px;margin:2px 4px 2px 0}
+ul{margin:8px 0 8px 22px}
+ul li{font-size:14px;margin:6px 0}
+.focus{background:linear-gradient(120deg,rgba(79,140,255,.08),rgba(139,92,246,.08));border:1px solid rgba(79,140,255,.3)}
+</style>
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/development-guide.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/development-guide.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="全站开发指导 · 未来发展方向 · 白驹 ccowork">
+<meta name="twitter:description" content="基于 能力清单弹药库的全站开发指导手册 + 网站未来发展方向三阶段分析，含 P0/P1/P2 行动清单与自我迭代闭环。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-development-guide.png" alt="全站开发指导 · 未来发展方向 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<nav class="top">
+  <a class="brand" href="/index.html"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><span class="nm">白驹 ccowork</span></a>
+  <button class="burger" onclick="document.querySelector('.top .links').classList.toggle('open')"><i class="cc-ic" data-ic="menu"></i></button>
+  <div class="links">
+    <a href="/index.html"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>对话</a>
+    <a href="/toolbox/workstation.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>工作站</a>
+    <a href="/about/map-guide.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图指引</a>
+    <a href="/learn/tutorials/index.html"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 学院</a>
+    <a href="/about/plan.html"><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i>改进方案</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="切换亮暗主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="art-head">
+    <span class="badge"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>全站开发指导 · 未来发展方向</span>
+    <h1>能力清单 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 全站开发指导<br>与网站未来发展方向分析</h1>
+    <div class="meta">小驭 · 2026-08-30 · 技能盘点 × 自我迭代方法论（计划<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>执行<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>验证<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>改进）</div>
+    <div class="divider"></div>
+  </div>
+  <h2>一、技能盘点：能力清单 = 全站开发能力地图</h2>
+  <p>本机已整理的能力条目，按 10 大能力域分布，对应全站各板块的开发弹药：</p>
+  <table>
+    <tr><th>能力域</th><th>技能数</th><th>对应站点板块</th><th>开发指导</th></tr>
+    <tr><td><i class="cc-ic" data-ic="palette" aria-hidden="true"></i>设计与前端</td><td>199</td><td>全站 UI / 新页面 / 视觉升级</td><td>双主题设计语言已有，新页面直接套用；用 frontend-design 出高质量组件；ardot 对接设计稿</td></tr>
+    <tr><td><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>数据分析</td><td>119</td><td>lab 实验室 / 数据看板 / 站内统计</td><td>把 lab 仿真结果可视化；站内访问统计做驾驶舱；SQL 技能优化内容检索</td></tr>
+    <tr><td><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>文档办公</td><td>101</td><td>书稿 / 博客 / 教程导出</td><td>AI 学院教程一键导出 docx/pptx/pdf；五卷全书批量排版；周报月报自动化</td></tr>
+    <tr><td><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI 与模型</td><td>88</td><td>对话工作台 / 智能体 / 学院 AI 章节</td><td>RAG 接入书稿语料（现已有检索）；多 Agent 工作流演示；提示词模板库已落地 66 个</td></tr>
+    <tr><td><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>开发工程</td><td>86</td><td>编译模式 / 白区 / lab 工具</td><td>把 lab 仿真脚本做成在线可运行；编译模式扩模板；API 与部署链路已通</td></tr>
+    <tr><td><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>腾讯生态</td><td>10</td><td>地图指引 / 未来小程序 / 支付</td><td>腾讯地图连接器已接入（42 POI + 县级直查）；小程序复活项目待启动</td></tr>
+    <tr><td><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i>金融投资</td><td>8</td><td>财经内容 / 未来金融板块</td><td>AI 学院可加金融 AI 章节；内容引用真实财报数据</td></tr>
+    <tr><td><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>多模态创作</td><td>11</td><td>画廊 / 视频 / 作品集</td><td>生图生视频流水线已有；可批量给内容配图（本轮已用智谱免费生图补 31 张封面）</td></tr>
+    <tr><td><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>效率工具</td><td>6</td><td>全站运营</td><td>内容日历、选题库、自动化任务管理（11 个自动化已在跑）</td></tr>
+    <tr><td><i class="cc-ic" data-ic="shield" aria-hidden="true"></i>安全合规</td><td>13</td><td>全站</td><td>隐私声明、内容出处审查（review-content 已跑 167 页）</td></tr>
+  </table>
+  <h2>二、本轮已完成（P0 全部落地）</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-development-guide.png" alt="全站开发指导 · 未来发展方向 · 白驹 ccowork · 二、本轮已完成（P0 全部落地）" loading="lazy"></figure>
+  <div class="card focus">
+    <ul>
+      <li><b><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>补图 31 张</b>：智谱 CogView-3-Flash 免费生图，26 篇博客 + 4 新页面 + 博客首页封面全部注入（0 成本）</li>
+      <li><b><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>提示词智能模板库</b>：10 大技能域 66 模板，支持填变量（{主题} 等）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 一键生成完整提示词 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 复制</li>
+      <li><b><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>业务中心锁定</b>： 筹备中横幅，暂不开放接单（先完善网站）</li>
+      <li><b><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>地图指引 v3</b>：42 真实 POI + 全国县级直查 + 红色教育基地 + 定位我的位置</li>
+      <li><b><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>免费模型底座</b>：智谱 GLM-4.7-Flash 全站默认 0 成本 + 生图也免费</li>
+      <li><b><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>AI 业务中心蓝图</b>：10 条业务线 × 4 套餐（锁定状态）</li>
+    </ul>
+  </div>
+  <h2>三、网站未来发展方向 · 三阶段路线</h2>
+  <h3>阶段一 · 品质打磨期（当前，1-2 个月）</h3>
+  <div class="card">
+    <p><b>核心目标：把主站做成「内容 + 能力 + 视觉」三达标</b>，暂不赚钱（老罗当前判断正确）。</p>
+    <table>
+      <tr><th>项</th><th>动作</th><th>技能</th><th>优先级</th></tr>
+      <tr><td>内容补图</td><td>AI 学院 43 章 / 新闻 / 工具库逐页配图</td><td>image-gen + 智谱免费生图</td><td><span class="pill p0">P0</span> 本轮已启动</td></tr>
+      <tr><td>技能实操营</td><td>AI 学院每域配 1 个真操（RAG Demo / 数据看板 Demo / 提示词调优 Demo）</td><td>rag / data-viz / prompt</td><td><span class="pill p1">P1</span></td></tr>
+      <tr><td>博客技能化翻新</td><td>27 篇博客打技能标签 + 文末挂模板 + 封面统一</td><td>blogwatcher / 内容技能</td><td><span class="pill p1">P1</span></td></tr>
+      <tr><td>搜索与 SEO</td><td>sitemap 补全 + 长尾聚合页（"AI 变现""提示词模板"）</td><td>SEO / content-research</td><td><span class="pill p1">P1</span></td></tr>
+      <tr><td>数据驾驶舱</td><td>站内统计 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 内容热度 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 驱动选题</td><td>data-viz / dashboard</td><td><span class="pill p2">P2</span></td></tr>
+    </table>
+  </div>
+  <h3>阶段二 · 能力工作台期（3-6 个月）</h3>
+  <div class="card">
+    <p><b>核心目标：白驹成为可用的「AI 能力工作台」，访客来这儿不只是看，而是「用」。</b></p>
+    <ul>
+      <li><b>lab 仿真在线化</b>：10 个 Python 仿真脚本 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 网页一键运行（WebLLM / Pyodide）</li>
+      <li><b>编译模式商品化</b>：小工具模板库开放（付费订阅/免费引流分层）</li>
+      <li><b>AI 应用市场雏形</b>：RAG 问答 / 数据看板 / 提示词工具做成可复制应用</li>
+      <li><b>行业分站试点</b>：按技能域扩 2 个分站（金融 AI / 设计 AI），内容深度翻倍</li>
+      <li><b>私域打通</b>：微信客服 + 内容推送 + 留资（腾讯生态技能）</li>
+    </ul>
+  </div>
+  <h3>阶段三 · 业务变现期（6 个月后）</h3>
+  <div class="card">
+    <p><b>核心目标：解锁业务中心（现在锁定），技能弹药库正式变现。</b></p>
+    <ul>
+      <li><b>解锁 AI 业务中心</b>：10 条业务线 + 4 套餐正式开放（文档/数据/AI 应用/建站）</li>
+      <li><b>工具订阅</b>：lab + 编译模式工具包月费制</li>
+      <li><b>知识付费</b>：AI 学院课程 + 认证体系上线</li>
+      <li><b>企业服务</b>：本地企业 AI 落地（RAG/智能客服/看板），地图指引本地获客</li>
+      <li><b>成本结构</b>：智谱免费模型 + 免费生图 + 复用部署链接 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 边际成本趋零</li>
+    </ul>
+  </div>
+  <h2>四、自我迭代闭环（今天已执行）</h2>
+  <div class="card">
+    <table>
+      <tr><th>环节</th><th>动作</th><th>结果</th></tr>
+      <tr><td>1. 盘点现状</td><td>扫描图片缺口 / 页面结构 / 技能分布</td><td>发现 26 篇博客无图、4 新页面无图</td></tr>
+      <tr><td>2. 制定计划</td><td>补图 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 智能模板 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 锁定业务 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 开发指导</td><td>四件事排定优先级</td></tr>
+      <tr><td>3. 执行</td><td>智谱免费生图 31 张 / 模板变量化 / 锁定横幅 / 本文档</td><td>全部落地</td></tr>
+      <tr><td>4. 验证</td><td>Playwright 零 JS 错误 + 截图</td><td>待跑（下一步）</td></tr>
+      <tr><td>5. 迭代</td><td>老罗实测反馈 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 下一轮 P1 清单</td><td>P1：技能实操营 / 博客翻新 / SEO</td></tr>
+    </table>
+  </div>
+  <h2>五、给老罗的结论</h2>
+  <div class="card focus">
+    <p><b>现在不赚钱是对的</b>：网站目前最大短板是「内容有料但不够完整（缺图）、能力有但没充分露出」。先把阶段一做完——补图（已启动）、实操营、博客翻新、SEO——把主站打磨成「打开就想留下」的精品，再谈变现。</p>
+    <p style="margin-top:8px"><b>下一步我建议</b>：① 把 AI 学院 43 章也补上图（同款免费生图流水线）② 做 1 个「技能实操营」真 Demo（RAG 问答站，直接挂到学院）③ 博客 27 篇打技能标签翻新。你说开搞就开搞。</p>
+  </div>
+</div>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.getElementById('themeBtn') && document.getElementById('themeBtn').addEventListener('click', ccoworkTheme);
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

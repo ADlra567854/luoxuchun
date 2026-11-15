@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="description" content="一枚图形标「隙」：开放圆环收敛散落的 AI 工具，右上斜光是白驹过隙的那道光，中心圆点是全局大脑的枢纽。图形零文字，品牌名由相邻实时文本提供。">
+<meta property="og:description" content="一枚图形标「隙」：开放圆环收敛散落的 AI 工具，右上斜光是白驹过隙的那道光，中心圆点是全局大脑的枢纽。图形零文字，品牌名由相邻实时文本提供。">
+<meta name="keywords" content="白驹 · 品牌标识 · 隙｜正式标已定稿,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品牌标识 · 隙 · 正式标已定稿 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"白驹 · 品牌标识 · 隙｜正式标已定稿","description":"一枚图形标「隙」：开放圆环收敛散落的 AI 工具，右上斜光是白驹过隙的那道光，中心圆点是全局大脑的枢纽。图形零文字，品牌名由相邻实时文本提供。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#05070e; --bg2:#0a0f1d; --card:rgba(17,25,44,.66); --line:rgba(120,160,220,.16);
+  --blue:#5b8cff; --cyan:#38e1ff; --ice:#5eead4; --gold:#f0b95c; --purple:#8b5cf6;
+  --text:#eaf1fc; --muted:#93a3c7; --dim:#5e6e8c;
+  --grad:linear-gradient(120deg,#5eead4,#38b6ff 45%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(56,225,255,.3);color:#fff}
+/* 背景光晕 */
+.bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-glow i{position:absolute;border-radius:50%;filter:blur(130px);opacity:.32}
+.bg-glow i:nth-child(1){width:620px;height:620px;background:#38e1ff;top:-220px;left:-160px}
+.bg-glow i:nth-child(2){width:560px;height:560px;background:#8b5cf6;bottom:-200px;right:-140px}
+.bg-glow i:nth-child(3){width:420px;height:420px;background:#5b8cff;top:38%;left:52%;opacity:.18}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 22px 90px}
+/* 顶部返回 */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0 8px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:16px;letter-spacing:.3px}
+.brand .dot{width:30px;height:30px;border-radius:10px;background:var(--grad);display:grid;place-items:center;font-size:15px}
+.back{font-size:14px;color:var(--muted);border:1px solid var(--line);padding:7px 14px;border-radius:10px;transition:.2s}
+.back:hover{color:var(--cyan);border-color:rgba(56,225,255,.45);background:rgba(56,225,255,.07)}
+/* Hero */
+.hero{text-align:center;padding:56px 0 46px}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--cyan);
+  border:1px solid rgba(56,225,255,.32);background:rgba(56,225,255,.08);
+  padding:6px 15px;border-radius:999px;letter-spacing:.5px}
+.badge b{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.hero h1{font-size:clamp(30px,5.2vw,50px);font-weight:900;line-height:1.25;margin:22px 0 14px;letter-spacing:-.5px}
+.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:16px;max-width:640px;margin:0 auto}
+/* 概念卡片 */
+.concepts{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;
+  backdrop-filter:blur(14px);transition:.28s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-5px);border-color:rgba(56,225,255,.36);box-shadow:0 18px 46px rgba(0,0,0,.45)}
+.card .rec{position:absolute;top:0;right:0;background:var(--grad);color:#06121f;
+  font-size:12px;font-weight:800;padding:5px 13px;border-bottom-left-radius:13px;letter-spacing:.5px}
+.thumb{width:100%;aspect-ratio:1/1;border-radius:18px;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 40%,rgba(56,225,255,.13),rgba(139,92,246,.09) 60%,transparent);
+  border:1px solid rgba(120,160,220,.12);margin-bottom:18px;overflow:hidden}
+.thumb img{width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 8px 22px rgba(56,225,255,.24))}
+.card h3{font-size:19px;font-weight:800;margin-bottom:7px;display:flex;align-items:center;gap:9px}
+.card h3 .tag{font-size:11px;font-weight:700;color:var(--cyan);border:1px solid rgba(56,225,255,.3);
+  padding:2px 8px;border-radius:6px;letter-spacing:.4px}
+.card .desc{color:var(--muted);font-size:14px;line-height:1.72;min-height:74px}
+.card ul{list-style:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.card li{font-size:13px;color:var(--dim);padding:3.5px 0 3.5px 17px;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;
+  background:linear-gradient(135deg,var(--cyan),var(--purple))}
+/* 区块标题 */
+.sec{margin-top:76px}
+.sec>h2{font-size:25px;font-weight:850;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.sec>h2::before{content:"";width:5px;height:23px;border-radius:6px;background:var(--grad)}
+.sec .sub{color:var(--muted);font-size:14px;margin-bottom:26px}
+/* 尺寸演示 */
+.sizes{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end;
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 34px;backdrop-filter:blur(14px)}
+.sz{text-align:center}
+.sz .box{border-radius:50%;background:rgba(255,255,255,.05);display:grid;place-items:center;margin:0 auto 10px;
+  border:1px solid var(--line)}
+.sz img{object-fit:contain}
+.sz span{font-size:12px;color:var(--dim);letter-spacing:.4px}
+/* 色板 */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:14px}
+.sw{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.sw .c{height:82px}
+.sw .m{padding:11px 13px}
+.sw .m b{display:block;font-size:13px;font-weight:700}
+.sw .m span{font-size:12px;color:var(--dim);font-family:ui-monospace,Menlo,Consolas,monospace}
+/* 应用场景 */
+.scene{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;backdrop-filter:blur(14px)}
+.navdemo{display:flex;align-items:center;gap:18px;padding:13px 20px;border-radius:14px;
+  background:rgba(8,5,28,.62);border:1px solid var(--line);margin-bottom:16px}
+.navdemo .lg{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px}
+.navdemo .lg img{width:27px;height:27px;object-fit:contain}
+.navdemo .ln{display:flex;gap:16px;font-size:13px;color:var(--muted);margin-left:auto}
+.navdemo .ln a:hover{color:var(--cyan)}
+.scenenote{font-size:13px;color:var(--dim)}
+/* 下一步 */
+.next{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:20px}
+.nx{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.nx b{display:block;font-size:14px;margin-bottom:6px}
+.nx span{font-size:13px;color:var(--dim);line-height:1.7}
+.foot{text-align:center;margin-top:70px;padding-top:26px;border-top:1px solid var(--line);
+  color:var(--dim);font-size:13px}
+.foot b{color:var(--cyan)}
+@media(max-width:640px){
+  .hero{padding:38px 0 30px}
+  .sec{margin-top:52px}
+  .sizes{padding:22px}
+  .navdemo .ln{display:none}
+}
+</style>
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/brand-identity.html">
+<meta property="og:title" content="品牌标识 · 隙 · 正式标已定稿 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/brand-identity.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="品牌标识 · 隙 · 正式标已定稿 · 白驹 ccowork">
+<meta name="twitter:description" content=" 白驹 ccowork  返回主站 BRAND IDENTITY · 定稿 品牌标识 · 隙 白驹 ccowork 一枚图形标「隙」：开放圆环收敛散落的 AI 工具，右上斜光是白驹过隙的那道光，中心圆点是全局大脑的枢纽。图形零文字，品牌名由相邻实时文本提供。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<div class="bg-glow"><i></i><i></i><i></i></div>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span> 白驹 ccowork</div>
+    <a class="back" href="/"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>← 回总站</a>
+  </div>
+  <section class="hero">
+    <span class="badge"><b></b> BRAND IDENTITY · 定稿</span>
+    <h1>品牌标识 · 隙<br><span class="g">白驹 ccowork</span></h1>
+    <p>一枚图形标「隙」：开放圆环收敛散落的 AI 工具，右上斜光是白驹过隙的那道光，中心圆点是全局大脑的枢纽。图形零文字，品牌名由相邻实时文本提供。<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 蓝 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 紫渐变。你挑一个，我把它落地成 SVG 矢量、favicon、社交分享图，并铺到全站。</p>
+  </section>
+  <section class="concepts">
+    <div class="card">
+      <span class="rec">主推</span>
+      <div class="thumb"><img src="../assets/brand/mark.svg" alt="正式标「隙」彩色主标"></div>
+      <h3>正式标 <span class="tag">隙 · 彩色版</span></h3>
+      <p class="desc">马的轮廓本身就是一张神经网络——关键部位（耳、额、鼻、下颌、颈）是发光节点，节点之间用细线连成脑回路。图形即理念：<b style="color:var(--cyan)">这匹马就是一个大脑</b>。</p>
+      <ul>
+        <li>科技感最强，与「AI 全局大脑」定位同构</li>
+        <li>线稿结构，小尺寸下仍清晰可辨</li>
+        <li>适合深色底，发光节点很抓眼</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="../assets/brand/mark-mono.svg" alt="单色版 currentColor"></div>
+      <h3>单色版 <span class="tag">currentColor</span></h3>
+      <p class="desc">极简几何化的奔马，鬃毛与尾巴化作流线型速度轨迹，暗示<b style="color:var(--cyan)">白驹过隙的"快"</b>与数据流动。单一连续形态，动感最强。</p>
+      <ul>
+        <li>动态、有记忆点，品牌名意象最直白</li>
+        <li>粗描边造型，缩到 32px 也认得出</li>
+        <li>偏"创作/速度"，适合主打内容生产力</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="../assets/brand/mark-small.svg" alt="小尺寸简化版"></div>
+      <h3>小尺寸版 <span class="tag">加粗笔画</span></h3>
+      <p class="desc">圆角方块徽章承载品牌渐变，内部白马头的鬃毛溶解为数据流曲线与神经节点，<b style="color:var(--cyan)">既是 APP 图标，也是品牌图腾</b>。最"成品"的一版。</p>
+      <ul>
+        <li>直接可用作 APP 图标 / 头像，无需二次加工</li>
+        <li>渐变底盘，在各平台辨识度最高</li>
+        <li>与现有站点深色 UI 无缝衔接</li>
+      </ul>
+    </div>
+  </section>
+  <section class="sec">
+    <h2>尺寸适配</h2>
+    <p class="sub">以正式标「隙」为例，看它在 16px（浏览器标签）到 160px（登录页）下的表现。</p>
+    <div class="sizes">
+      <div class="sz"><div class="box" style="width:34px;height:34px"><img src="../assets/brand/mark-small.svg" style="width:16px;height:16px"></div><span>16px</span></div>
+      <div class="sz"><div class="box" style="width:50px;height:50px"><img src="../assets/brand/mark-small.svg" style="width:24px;height:24px"></div><span>24px</span></div>
+      <div class="sz"><div class="box" style="width:66px;height:66px"><img src="../assets/brand/mark.svg" style="width:32px;height:32px"></div><span>32px</span></div>
+      <div class="sz"><div class="box" style="width:94px;height:94px"><img src="../assets/brand/mark.svg" style="width:48px;height:48px"></div><span>48px</span></div>
+      <div class="sz"><div class="box" style="width:126px;height:126px"><img src="../assets/brand/mark.svg" style="width:64px;height:64px"></div><span>64px</span></div>
+      <div class="sz"><div class="box" style="width:196px;height:196px"><img src="../assets/brand/mark.svg" style="width:112px;height:112px"></div><span>112px</span></div>
+    </div>
+  </section>
+  <section class="sec">
+    <h2>品牌色板</h2>
+    <p class="sub">沿用全站既有 token，亮/暗双主题通吃。</p>
+    <div class="swatches">
+      <div class="sw"><div class="c" style="background:#38e1ff"></div><div class="m"><b>极光青</b><span>#38E1FF</span></div></div>
+      <div class="sw"><div class="c" style="background:#38b6ff"></div><div class="m"><b>晴空蓝</b><span>#38B6FF</span></div></div>
+      <div class="sw"><div class="c" style="background:#5b8cff"></div><div class="m"><b>主蓝</b><span>#5B8CFF</span></div></div>
+      <div class="sw"><div class="c" style="background:#8b5cf6"></div><div class="m"><b>深空紫</b><span>#8B5CF6</span></div></div>
+      <div class="sw"><div class="c" style="background:#5eead4"></div><div class="m"><b>冰蓝绿</b><span>#5EEAD4</span></div></div>
+      <div class="sw"><div class="c" style="background:linear-gradient(120deg,#5eead4,#38b6ff 45%,#5b8cff 75%,#8b5cf6)"></div><div class="m"><b>主渐变</b><span>120° 四段</span></div></div>
+      <div class="sw"><div class="c" style="background:#05070e;border-bottom:1px solid rgba(120,160,220,.16)"></div><div class="m"><b>深空底</b><span>#05070E</span></div></div>
+      <div class="sw"><div class="c" style="background:#f0b95c"></div><div class="m"><b>点缀金</b><span>#F0B95C</span></div></div>
+    </div>
+  </section>
+  <section class="sec">
+    <h2>落地场景</h2>
+    <p class="sub">选定后标识会出现在这些位置（示意）。</p>
+    <div class="scene">
+      <div class="navdemo">
+        <div class="lg"><img src="../assets/brand/mark.svg" alt=""> 白驹 ccowork</div>
+        <nav class="ln"><a href="#">AI 学院</a><a href="#">实操营</a><a href="#">工具库</a><a href="#">书稿</a><a href="#">业务中心</a></nav>
+      </div>
+      <p class="scenenote"> 顶部导航 Logo 位（28px）· 浏览器标签 favicon（32px）· 社交分享卡片 og-image（1200×630）· PWA 桌面图标（192/512px）· 页脚品牌区 · 加载动画</p>
+    </div>
+    <div class="next">
+      <div class="nx"><b>① 你拍板</b><span>告诉我选 A / B / C，或"再调调"。</span></div>
+      <div class="nx"><b>② 我矢量化</b><span>重绘为可缩放 SVG，导出多尺寸 PNG。</span></div>
+      <div class="nx"><b>③ 补齐资产</b><span>favicon.ico、apple-touch-icon、og-image、manifest.json。</span></div>
+      <div class="nx"><b>④ 全站铺开</b><span>导航 / 页脚 / 404 页 / 关于页统一换成新标识。</span></div>
+    </div>
+  </section>
+  <div class="foot">
+    白驹 ccowork　品牌标识 · 隙 v1　<b>一枚标识，全站统一</b>
+  </div>
+</div>
+<link rel="stylesheet" href="/assets/baiju-core.css?v=20261115b">
+<script src="/assets/baiju-core.js" defer></script>
+<script src="/ccowork.js?v=20261115b"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

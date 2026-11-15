@@ -1,0 +1,101 @@
+/* ============================================================
+   site-industrial.css — 工业美学层（全站注入 · 追加于 site-redesign.css 之后）
+   设计语言：工程图纸 × 精密仪表 × 表格式排版
+   目标：内容复杂，但看起来清晰、精密、可信。
+   全部基于双主题 var() token，亮/暗自动适配。
+   ============================================================ */
+
+/* ---------- 0. 全局：统一字距与密度，更"清" ---------- */
+body{letter-spacing:.01em}
+article, .block, section.block{max-width:1180px}
+
+/* ---------- 1. 蓝图网格背景（hero / gate 区） ----------
+   注意：网格必须叠加在 --hero-grad 渐变之上（作为第三层），
+   不能用 background-image 直接替换，否则会顶掉渐变底导致白字不可读。 */
+#gate,.hero{
+  background-image:
+    linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px),
+    var(--hero-grad,linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6));
+  background-size:34px 34px,34px 34px,100% 100%;
+}
+body[data-theme="deep"] #gate,body[data-theme="deep"] .hero{
+  background-image:
+    linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px),
+    var(--hero-grad,linear-gradient(120deg,#8b5cf6,#38e1ff 55%,#e879fa));
+  background-size:34px 34px,34px 34px,100% 100%;
+}
+
+/* ---------- 2. 面板：顶部精密刻度线（工业仪表感） ---------- */
+.card,.pcard,.part,.stage,.cert,.job,.dsh-card,.ecard,details,.step{
+  border-top:2px solid rgba(79,140,255,.38);
+  box-shadow:0 1px 0 rgba(31,45,77,.04),0 6px 16px rgba(31,45,77,.05);
+}
+body[data-theme="deep"] .card,body[data-theme="deep"] .pcard,body[data-theme="deep"] .part,
+body[data-theme="deep"] .stage,body[data-theme="deep"] .cert,body[data-theme="deep"] .job,
+body[data-theme="deep"] .dsh-card,body[data-theme="deep"] .ecard,body[data-theme="deep"] details,
+body[data-theme="deep"] .step{border-top-color:rgba(56,225,255,.40)}
+
+/* 圆角统一为工程圆角（略方，精密感） */
+.card,.pcard,.part,.stage,.cert,.job,.dsh-card,.ecard,details,.step,.dsh-row .dsh-card{border-radius:10px}
+
+/* ---------- 3. 章节 SEC 序号（表格式索引 · 全站统一） ---------- */
+body{counter-reset:sec}
+section.block{counter-increment:sec}
+.sec-head h2::before{
+  content:"SEC." counter(sec) " · ";
+  font-family:ui-monospace,Consolas,Menlo,monospace;
+  font-size:.58em;font-weight:500;letter-spacing:.14em;
+  color:var(--blue,#4f8cff);opacity:.85;vertical-align:2px;
+}
+body[data-theme="deep"] .sec-head h2::before{color:var(--cyan,#38e1ff)}
+
+/* ---------- 4. 元数据：等宽字体 + 字距（仪表读数感） ---------- */
+.blog-meta,.blog-badge,.pno,.lvl,.tag,.ptag,.meta,.pill,.badge{
+  font-family:ui-monospace,Consolas,Menlo,monospace;
+  letter-spacing:.06em;
+}
+
+/* ---------- 5. 表格：工程表头 + 行悬停 + 底刻度 ---------- */
+table{border-collapse:separate;border-spacing:0}
+th{
+  font-family:ui-monospace,Consolas,Menlo,monospace;
+  letter-spacing:.1em;font-weight:500;text-transform:none;
+}
+tbody tr:hover{background:rgba(79,140,255,.05)}
+body[data-theme="deep"] tbody tr:hover{background:rgba(56,225,255,.05)}
+
+/* ---------- 6. 按钮/交互件：工程方形圆角 + 精密描边 ---------- */
+/* A4 B7：工业层仅作用于 .cta，不再覆盖 .theme-btn 的胶囊圆角（组件层规范） */
+.cta,nav .cta,button.cta{border-radius:10px}
+.chip,.gate-chips .chip{border-radius:10px}
+
+/* ---------- 7. 代码块：左侧工程刻度线 + 等宽 ---------- */
+pre{border:1px solid var(--line);border-left:3px solid var(--blue,#4f8cff)}
+body[data-theme="deep"] pre{border-left-color:var(--cyan,#38e1ff)}
+pre code,code,tt{font-family:ui-monospace,Consolas,Menlo,monospace}
+
+/* ---------- 8. 分隔线：工程虚线（清晰分界） ---------- */
+hr,.blog-divider{border:none;border-top:1px dashed var(--line,#cbd5e1);margin:28px 0}
+
+/* ---------- 9. 导航：底部工程细线 + 品牌等宽后缀 ---------- */
+nav.top,nav{border-bottom:1px solid var(--line)}
+nav .brand .nm::after{
+  content:" · INDUSTRIAL";
+  font-family:ui-monospace,Consolas,Menlo,monospace;
+  font-size:.55em;letter-spacing:.18em;opacity:.6;
+  -webkit-background-clip:initial;background-clip:initial;color:var(--muted);
+}
+
+/* ---------- 10. 列表/段落：呼吸感，保持清晰 ---------- */
+article p,article li{line-height:1.85}
+article ul,article ol{margin:10px 0 16px}
+
+/* ---------- 11. 移动端：网格收敛 ---------- */
+@media(max-width:700px){
+  .parts,.proj-grid,.stage-grid,.cert-grid,.job-grid,.dsh-row{grid-template-columns:1fr}
+}
+
+/* ---------- 返回链接箭头图标（对齐文字基线） ---------- */
+.cc-back{display:inline-block;width:.85em;height:.85em;vertical-align:-0.08em;margin-right:.15em}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NetworkHealthReport · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="AI 学院实战项目：目标、拆解、实现步骤与验收标准。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/projects/network-health.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-projects-network-health.png" alt="NetworkHealthReport · AI 学院 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1><i class="cc-ic" data-ic="satellite" aria-hidden="true"></i>NetworkHealthReport</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 毕业设计 06 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">运维</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>06 号毕业设计：NetworkHealthReport</h2>
+<p>在企业运维场景中，网络故障排查高度依赖人工经验，故障定位慢、报告生成滞后易导致业务损失。本项目实现自动化网络健康监测与诊断报告生成，完成后可掌握运维数据采集、异常规则匹配、大模型报告生成的全链路落地能力。</p>
+<h2>项目简介</h2>
+<p>《NetworkHealthReport》是面向中小企业内网、云服务器集群的轻量级网络健康监测工具，定位为开源可自托管的运维辅助系统，替代传统人工ping测试、手动整理故障记录的低效模式。项目以固定时间周期采集网络链路质量、设备连通性、端口状态、带宽利用率等核心指标，通过内置规则库自动识别常见故障（如丢包率过高、端口不通、带宽拥塞），结合大模型生成结构化、可落地的诊断报告，支持邮件、企业微信推送，帮助运维人员从重复的排查工作中解放，将平均故障定位时间从小时级压缩到分钟级。项目代码量控制在1500行以内，适合运维开发方向学习者作为毕业设计落地，所有依赖均为开源免费组件，无商业授权成本。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-network-health.png" alt="NetworkHealthReport · AI 学院 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>多维度指标定时采集：支持ICMP丢包/延迟检测、TCP端口连通性探测、网卡带宽利用率统计、DNS解析时延测量，采集周期可自定义配置，默认5分钟一次</li>
+<li>内置故障规则引擎：预置20+常见网络故障匹配规则（如连续3次探测丢包率>30%判定为链路不稳定、带宽利用率连续10分钟>90%判定为拥塞），支持用户自定义规则阈值</li>
+<li>自动根因定位：对检测到的异常自动关联同链路其他指标做交叉验证，比如端口不通时同步检测ICMP连通性、网关可达性，区分是设备宕机、ACL拦截还是端口未监听</li>
+<li>结构化诊断报告生成：对接通义千问/本地Llama3大模型，将异常指标、根因判断结果、修复建议整理为Markdown格式报告，包含异常时间线、影响范围、处理优先级</li>
+<li>多渠道告警推送：支持将报告自动推送到指定邮箱、企业微信机器人、钉钉群，异常等级为严重时触发即时推送，普通异常按日汇总推送</li>
+<li>历史数据可视化：自动存储30天内的监测指标与历史报告，提供简单的Web面板查看指标趋势、故障统计，支持导出PDF格式归档报告</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>指标采集层</td><td>pythonping、psutil、dnspython、scapy</td><td>实现ICMP探测、端口扫描、网卡流量统计、DNS解析时延测量，无侵入式采集无需在被监测设备安装Agent</td></tr>
+<tr><td>规则引擎层</td><td>PyYAML、pandas</td><td>加载YAML格式的故障规则，对采集到的时序指标做滑动窗口计算，匹配异常事件</td></tr>
+<tr><td>报告生成层</td><td>LangChain、Qwen（通义千问）API、Jinja2</td><td>组装异常上下文调用大模型生成诊断内容，通过Jinja2模板渲染标准化Markdown报告</td></tr>
+<tr><td>数据存储层</td><td>SQLite、Matplotlib</td><td>用轻量SQLite存储时序指标、异常记录、历史报告，Matplotlib生成指标趋势图嵌入报告</td></tr>
+<tr><td>推送与展示层</td><td>FastAPI、smtplib、requests</td><td>提供轻量Web查询面板，实现邮件、企业微信机器人的报告推送</td></tr>
+</tbody>
+</table>
+<p>架构说明：系统采用分层解耦设计，采集层独立运行不阻塞其他模块，采集到的原始指标先写入本地SQLite，规则引擎每轮从数据库拉取最新时间窗口的指标做异常匹配，匹配到的异常事件存入异常队列，当达到报告触发条件（严重异常即时触发、普通异常每日定时触发）时，报告生成模块拉取对应时间段的所有异常、关联指标、历史同类故障记录，拼接为Prompt调用大模型生成诊断内容，渲染为完整报告后存入数据库并触发推送，整个流程无需人工介入，单台2核4G服务器即可支持对200个以内网络节点的监测。</p>
+<h2>核心代码骨架</h2>
+<pre><code># 文件名: collector.py  指标采集模块职责：按配置完成各类网络指标探测，返回标准化采集结果
+import pythonping
+import psutil
+import dnspython as dns
+import time
+def collect_metrics(targets: list, dns_server: str = "114.114.114.114") -&gt; dict:
+    """
+    采集所有目标节点的网络指标
+    :param targets: 待监测目标列表，格式如[{"ip":"192.168.1.1","name":"核心网关","ports":[22,80]}]
+    """
+    metrics = {"timestamp": int(time.time()), "node_metrics": []}
+    # 1. 采集本机网卡带宽利用率
+    net_before = psutil.net_io_counters()
+    time.sleep(1)
+    net_after = psutil.net_io_counters()
+    metrics["local_bandwidth_usage"] = {
+        "sent_kbps": (net_after.bytes_sent - net_before.bytes_sent)/1024,
+        "recv_kbps": (net_after.bytes_recv - net_before.bytes_recv)/1024
+    }
+    # 2. 逐个探测目标节点的ICMP与端口状态
+    for target in targets:
+        node_res = {"ip": target["ip"], "name": target["name"]}
+        # ICMP探测：发送4个包统计丢包率与平均延迟
+        ping_res = pythonping.ping(target["ip"], count=4, timeout=2)
+        node_res["packet_loss"] = ping_res.packet_loss
+        node_res["avg_latency_ms"] = ping_res.rtt_avg_ms
+        # TCP端口连通性探测（简化实现，生产环境可加socket超时判断）
+        node_res["port_status"] = {port: check_tcp_port(target["ip"], port) for port in target["ports"]}
+        metrics["node_metrics"].append(node_res)
+    # 3. 采集DNS解析时延
+    res = dns.resolver.Resolver()
+    res.nameservers = [dns_server]
+    start = time.time()
+    res.resolve("www.baidu.com")
+    metrics["dns_latency_ms"] = round((time.time() - start)*1000, 2)
+    return metrics
+# 文件名: report_generator.py  报告生成模块职责：组装异常上下文，调用大模型生成诊断报告
+from langchain.llms import Tongyi
+from langchain.prompts import PromptTemplate
+import jinja2
+import os
+def generate_diagnosis_report(abnormal_events: list, metrics_trend: dict) -&gt; str:
+    """
+    基于异常事件与指标趋势生成Markdown报告
+    """
+    # 初始化通义千问大模型，需提前配置环境变量DASHSCOPE_API_KEY
+    llm = Tongyi(model_name="qwen-plus", temperature=0.1)
+    # 定义诊断Prompt，约束输出格式与内容边界
+    prompt = PromptTemplate(
+        input_variables=["abnormal_events", "metrics_trend"],
+        template="""你是资深网络运维工程师，请基于以下异常事件和指标数据生成网络健康诊断报告：
+异常事件列表：{abnormal_events}
+近1小时指标趋势：{metrics_trend}
+报告需包含：1.整体健康评分（0-100）2.异常详情与影响范围 3.根因判断 4.优先级排序的修复建议，不要输出无关内容，使用Markdown格式。
+"""
+    )
+    # 调用大模型生成诊断内容
+    chain = prompt | llm
+    diagnosis_content = chain.invoke({"abnormal_events": str(abnormal_events), "metrics_trend": str(metrics_trend)})
+    # 用Jinja2渲染完整报告模板，嵌入指标趋势图
+    template_loader = jinja2.FileSystemLoader(searchpath="./templates")
+    template_env = jinja2.Environment(loader=template_loader)
+    template = template_env.get_template("report_template.md")
+    final_report = template.render(
+        generate_time=time.strftime("%Y-%m-%d %H:%M:%S"),
+        diagnosis_content=diagnosis_content,
+        trend_img_path="./tmp/trend_{}.png".format(int(time.time()))
+    )
+    return final_report</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：本地安装Python 3.10+版本，执行<code>python3 -m venv venv</code>创建虚拟环境，Linux/Mac执行<code>source venv/bin/activate</code>、Windows执行<code>venv\Scripts\activate</code>激活虚拟环境。</li>
+<li>安装依赖：执行<code>pip install pythonping psutil dnspython scapy pyyaml pandas langchain dashscope fastapi uvicorn jinja2 matplotlib requests</code>，所有依赖均为PyPI官方最新稳定版。</li>
+<li>申请API密钥：登录阿里云百炼平台开通通义千问API服务，获取DASHSCOPE_API_KEY，在本地环境变量中执行<code>export DASHSCOPE_API_KEY="你的密钥"</code>（Windows用<code>set DASHSCOPE_API_KEY=你的密钥</code>）。</li>
+<li>修改配置文件：复制项目根目录下的<code>config.example.yaml</code>为<code>config.yaml</code>，添加需要监测的目标节点IP、名称、端口，配置推送渠道的邮箱SMTP信息或企业微信机器人Webhook地址，调整采集周期与异常阈值。</li>
+<li>初始化数据库：执行<code>python init_db.py</code>，自动创建SQLite数据库文件与指标表、异常表、报告表，无需额外安装数据库服务。</li>
+<li>启动服务：执行<code>nohup python main.py &</code>启动后台采集与规则引擎，执行<code>uvicorn web_panel:app --host 0.0.0.0 --port 8000</code>启动Web面板，访问http://本机IP:8000 即可查看监测面板与历史报告。</li>
+<li>功能验证：手动断开一个监测节点的网络，等待1个采集周期后检查是否生成异常报告并推送到配置的渠道，验证流程是否正常。</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>分布式采集能力扩展：当前版本为单机采集，可改造为Agent-Server架构，在多个网络区域部署轻量采集Agent，通过gRPC将指标上报到中心Server，实现跨VPC、多分支网络的统一监测。</li>
+<li>故障根因模型优化：当前基于规则匹配根因，可积累100+历史故障样本后训练轻量分类模型（如XGBoost），结合网络拓扑关系做更精准的根因定位，减少规则覆盖不全的问题。</li>
+<li>自愈能力集成：针对可自动修复的常见故障（如网卡流量拥塞时自动限流非核心业务、DNS解析异常时自动切换备用DNS），在报告生成后触发对应Ansible脚本执行修复操作，形成监测-诊断-修复的闭环。</li>
+<li>多租户支持：面向中小团队提供SaaS化服务，增加用户权限管理、独立监测配置、隔离的报告存储，支持团队成员协同查看与处理故障。</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>项目收获</h3>
+<ol>
+<li>掌握了运维场景下无侵入式网络指标采集的实现方式，熟悉pythonping、psutil等运维常用库的使用，理解了时序指标滑动窗口异常检测的核心逻辑。</li>
+<li>掌握了大模型在垂直运维场景的落地方法，学会通过Prompt工程约束大模型输出专业、结构化的领域内容，结合模板引擎生成标准化业务文档。</li>
+<li>理解了轻量级运维工具的分层架构设计思路，学会用SQLite、FastAPI快速搭建低资源占用的可用工具，平衡功能丰富度与部署复杂度。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>在现有代码基础上新增Traceroute路由追踪功能：当检测到目标节点丢包率超过阈值时，自动执行traceroute获取链路每一跳的延迟，将结果加入异常上下文供大模型生成更精准的根因判断。</li>
+<li>替换大模型调用逻辑：将当前对接通义千问云端API的实现改为对接本地部署的 7–8B 级开源模型（通过 Ollama 拉取，具体型号以模型库当前版本为准），实现完全内网环境下的报告生成，无需依赖公网API服务。</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 AI 学院「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 大学各专业 × AI 地图 · 大学学业规划, viewport-fit=cover · 白驹 ccowork">
+<meta name="description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta property="og:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · 大学各专业 × AI 地图 · 大学学业规划 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"ccowork · 大学各专业 × AI 地图 · 大学学业规划","description":"个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a;
+  --green:#4ade80; --gold:#ffd166;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+/* ---------- 导航 ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:24px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;white-space:nowrap}
+.nav-links a:hover{color:var(--cyan)}
+@media(max-width:1080px){.nav-links{display:none}}
+/* ---------- Hero ---------- */
+.hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:140px 24px 70px;position:relative;
+  background:radial-gradient(900px 500px at 20% 10%,rgba(79,140,255,.16),transparent 60%),
+             radial-gradient(800px 500px at 85% 30%,rgba(139,92,246,.14),transparent 60%),
+             radial-gradient(700px 600px at 50% 100%,rgba(56,225,255,.10),transparent 60%),var(--bg)}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:999px;letter-spacing:2px;margin-bottom:28px}
+.hero h1{font-size:clamp(36px,6vw,76px);font-weight:900;line-height:1.2;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:800px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:26px auto 20px}
+.hero p.guide{max-width:860px;color:var(--muted);font-size:14px;margin:0 auto}
+/* ---------- 类别导航（地图索引） ---------- */
+.catnav{position:sticky;top:64px;z-index:50;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  padding:14px 20px;background:rgba(6,8,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.catnav a{padding:8px 16px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;font-size:13px;transition:.25s}
+.catnav a:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+/* ---------- 布局 ---------- */
+section{max-width:1180px;margin:0 auto;padding:80px 24px}
+.sec-head{margin-bottom:40px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(26px,3.4vw,40px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:720px;margin-top:12px}
+/* ---------- 大类区块 ---------- */
+.cat{border-top:1px solid var(--line);padding:70px 24px;max-width:1180px;margin:0 auto}
+.cat-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:14px}
+.cat-head .num{font-size:14px;color:var(--cyan);letter-spacing:2px}
+.cat-head h2{font-size:clamp(24px,3vw,36px);font-weight:800}
+.cat-head .en{color:var(--muted);font-size:13px;letter-spacing:2px;text-transform:uppercase}
+.cat-tip{display:flex;gap:14px;background:linear-gradient(120deg,rgba(79,140,255,.08),rgba(56,225,255,.08));
+  border:1px solid rgba(56,225,255,.25);border-radius:14px;padding:16px 20px;margin-bottom:30px;font-size:14px}
+.cat-tip .t{flex:0 0 auto;color:var(--cyan);font-weight:700}
+.cat-tip p{color:var(--muted)}
+/* ---------- 专业卡片 ---------- */
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.major{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;transition:.3s;position:relative;overflow:hidden}
+.major::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 10% 0%,rgba(79,140,255,.10),transparent 60%);opacity:0;transition:.3s}
+.major:hover{transform:translateY(-6px);border-color:rgba(79,140,255,.5);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.major:hover::before{opacity:1}
+.major .m-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.major .m-icon{font-size:28px}
+.major h3{font-size:19px}
+.major .one{color:var(--muted);font-size:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.m-row{margin-bottom:11px;font-size:14px}
+.m-row b{display:inline-block;color:var(--cyan);font-size:12px;letter-spacing:1px;margin-right:8px;flex:0 0 auto}
+.m-row:last-child{margin-bottom:0}
+.m-row span{color:var(--muted)}
+.m-row .ai{color:#9fd8ff}
+/* ---------- 通用建议 ---------- */
+.advice{background:linear-gradient(160deg,#0b1020,#101728);border:1px solid var(--line);border-radius:26px;padding:40px;max-width:1180px;margin:0 auto}
+.advice h2{font-size:clamp(24px,3vw,34px);font-weight:800;margin-bottom:24px}
+.advice .row{display:flex;gap:18px;margin-bottom:18px;align-items:flex-start}
+.advice .row .no{flex:0 0 40px;height:40px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#04101f;background:var(--grad)}
+.advice .row h4{margin-bottom:4px}
+.advice .row p{color:var(--muted);font-size:14px}
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:46px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+footer .fbtns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px;max-width:860px;margin-left:auto;margin-right:auto}
+footer .fb{display:inline-block;padding:11px 22px;border:1px solid var(--line);border-radius:14px;color:var(--muted);
+  text-decoration:none;font-size:14px;transition:.25s;background:var(--card)}
+footer .fb:hover{color:var(--cyan);border-color:var(--cyan);transform:translateY(-2px)}
+footer .fb-main{background:var(--grad);color:#04101f;font-weight:800;border:none}
+footer .fb-main:hover{color:#04101f;box-shadow:0 8px 26px rgba(79,140,255,.4)}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/majors.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/majors.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 大学各专业 × AI 地图 · 大学学业规划 · 白驹 ccowork">
+<meta name="twitter:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-skeleton="cards"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-majors.png" alt="ccowork · 大学各专业 × AI 地图 · 大学学业规划" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="progress" id="progress"></div>
+<nav>
+  <div class="logo">大学学业规划</div>
+  <div class="nav-links">
+    <a href="./index.html">白驹 ccowork</a>
+    <a href="./roadmap.html" style="color:var(--purple)">学习路线</a>
+    <a href="./models.html">模型对比</a>
+    <a href="./frontiers.html" style="color:var(--gold)">AI 前沿全景</a>
+    <a href="./book/">全书书稿</a>
+    <a href="./majors.html" style="color:var(--cyan)">各专业 AI 地图</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="tag">大学各专业  AI 地图 · 大学学业规划 <i class="cc-ic" data-ic="x" aria-hidden="true"></i></div>
+  <h1>选对专业，<br><span>用 AI 把路走宽</span></h1>
+  <p class="sub">AI 时代，没有任何一个专业能绕开 AI——区别只在于：你是被它替代，还是拿它当杠杆。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  <p class="guide">本页覆盖大学六个大类、30+ 代表专业，为每个专业讲清三件事：<b style="color:var(--cyan)">它是干什么的</b>、<b style="color:var(--cyan)">AI 在其中的典型应用</b>、<b style="color:var(--cyan)">最该学的课/工具与就业方向</b>。先看大类怎么用 AI 学，再点进你关心的专业。</p>
+</header>
+<!-- ================= 地图索引 ================= -->
+<div class="catnav" id="catnav">
+  <a href="#cat-eng"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工科</a>
+  <a href="#cat-sci"><i class="cc-ic" data-ic="microscope" aria-hidden="true"></i>理科</a>
+  <a href="#cat-med"><i class="cc-ic" data-ic="stethoscope" aria-hidden="true"></i>医学</a>
+  <a href="#cat-biz"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>经管</a>
+  <a href="#cat-hum"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>人文社科</a>
+  <a href="#cat-art"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i>艺术设计</a>
+  <a href="#advice" style="border-color:rgba(255,209,102,.5);color:var(--gold)"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>通用建议</a>
+</div>
+<!-- ================= 工科 ================= -->
+<div class="cat" id="cat-eng">
+  <div class="cat-head">
+    <span class="num">01</span>
+    <h2>工科</h2>
+    <span class="en">Engineering</span>
+  </div>
+  <div class="cat-tip"><span class="t"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>怎么用 AI 学</span>
+    <p>工科的核心是「建模 + 算 + 做」。用 AI 当<strong style="color:var(--cyan)">即时答疑导师与仿真助手</strong>：啃不懂的公式让 AI 讲人话、做数值仿真与数据分析时让 AI 写脚本，再用真实实验/项目去验证 AI 给的结论——AI 算得快，但工程必须落地。</p>
+  </div>
+  <div class="grid g3">
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i></span><h3>计算机科学与技术</h3></div>
+      <p class="one">研究「怎么让机器会计算、会思考」，是软件与智能的底座。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">写代码、补全、Debug、AI 结对编程、算法/论文辅助</span></div>
+      <div class="m-row"><b>该学</b><span>数据结构与算法 + Python；主力工具 GitHub Copilot / Cursor</span></div>
+      <div class="m-row"><b>就业</b><span>软件工程师、算法工程师、AI 工程师、架构师</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="puzzle" aria-hidden="true"></i></span><h3>软件工程</h3></div>
+      <p class="one">把「写代码」变成「做产品」，研究如何高质量、成规模地交付软件。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">需求分析、自动生成测试用例、代码评审、CI/CD 智能化</span></div>
+      <div class="m-row"><b>该学</b><span>软件工程方法 + 一门后端语言（Java/Go）；Git / 云平台</span></div>
+      <div class="m-row"><b>就业</b><span>后端/全栈工程师、测试开发、DevOps、技术管理</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="satellite" aria-hidden="true"></i></span><h3>电子信息工程</h3></div>
+      <p class="one">研究「信号怎么来、怎么传、怎么处理」，覆盖芯片、通信、雷达、嵌入式。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">信号去噪、频谱分析、芯片 EDA 辅助设计、智能硬件调试</span></div>
+      <div class="m-row"><b>该学</b><span>信号与系统 + C 语言；MATLAB / 单片机 / FPGA</span></div>
+      <div class="m-row"><b>就业</b><span>芯片设计、通信工程师、嵌入式、硬件工程师</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></span><h3>电气 / 自动化</h3></div>
+      <p class="one">研究「电从哪来、怎么控制」，让机器和系统自己跑起来。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">电力负荷预测、智能电网调度、机器人控制、工业视觉检测</span></div>
+      <div class="m-row"><b>该学</b><span>自动控制原理 + 电路；PLC / Python + 仿真工具</span></div>
+      <div class="m-row"><b>就业</b><span>电网、新能源、自动化工程师、机器人/智能制造</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i></span><h3>机械工程</h3></div>
+      <p class="one">研究「怎么设计、制造出能动的东西」，是制造业的母学科。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">生成式结构设计、有限元仿真加速、预测性维护、智能质检</span></div>
+      <div class="m-row"><b>该学</b><span>机械设计 + 材料力学；SolidWorks / ANSYS + Python</span></div>
+      <div class="m-row"><b>就业</b><span>汽车/装备制造、结构设计、仿真工程师、智能制造</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"></span><h3>土木工程</h3></div>
+      <p class="one">研究「怎么把楼、桥、路安全地建起来、用起来」。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">BIM 智能建模、结构优化、施工进度预测、无人机巡检</span></div>
+      <div class="m-row"><b>该学</b><span>结构力学 + 混凝土/钢结构；AutoCAD / BIM（Revit）</span></div>
+      <div class="m-row"><b>就业</b><span>设计院、施工管理、工程咨询、智慧建造</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="flask-conical" aria-hidden="true"></i></span><h3>化工 / 材料</h3></div>
+      <p class="one">研究「物质怎么变、材料怎么造」，从炼油到电池到芯片材料。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">新材料逆向设计、反应条件优化、分子筛选、工艺预测</span></div>
+      <div class="m-row"><b>该学</b><span>物理化学 + 化工原理/材料科学基础；Python + 分子模拟</span></div>
+      <div class="m-row"><b>就业</b><span>化工/材料企业、新能源、半导体材料、研发工程师</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i></span><h3>航空航天</h3></div>
+      <p class="one">研究「怎么让飞行器飞得更高、更远、更稳」。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">气动外形优化、飞行控制、轨道规划、遥感图像解译</span></div>
+      <div class="m-row"><b>该学</b><span>空气动力学 + 飞行动力学；MATLAB / 计算流体力学</span></div>
+      <div class="m-row"><b>就业</b><span>航空航天院所、无人机、卫星、控制/仿真工程师</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></span><h3>能源 / 新能源</h3></div>
+      <p class="one">研究「怎么更高效地生产、存储、输送能量」，从传统能源到风光锂氢。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">发电预测、电池健康管理、储能调度、电网优化</span></div>
+      <div class="m-row"><b>该学</b><span>能源动力基础 + 电工电子；Python 数据分析 + 仿真</span></div>
+      <div class="m-row"><b>就业</b><span>新能源企业、电力系统、储能/电池、能源管理</span></div>
+    </div>
+  </div>
+</div>
+<!-- ================= 理科 ================= -->
+<div class="cat" id="cat-sci">
+  <div class="cat-head">
+    <span class="num">02</span>
+    <h2>理科</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-majors.png" alt="ccowork · 大学各专业 × AI 地图 · 大学学业规划 · 理科" loading="lazy"></figure>
+    <span class="en">Science</span>
+  </div>
+  <div class="cat-tip"><span class="t"><i class="cc-ic" data-ic="microscope" aria-hidden="true"></i>怎么用 AI 学</span>
+    <p>理科拼的是「底层规律 + 抽象思维」。把 AI 当<strong style="color:var(--cyan)">数学/符号推理助手</strong>：用它推演证明思路、做符号计算、可视化复杂函数与数据；但要警惕 AI 一本正经地算错——<strong style="color:var(--cyan)">每一行推导都要自己亲手验算一遍</strong>，理解大于结论。</p>
+  </div>
+  <div class="grid g3">
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="ruler" aria-hidden="true"></i></span><h3>数学</h3></div>
+      <p class="one">研究数量、结构、变化与空间，是所有硬科技的通用语言。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">定理证明辅助、符号计算、优化建模、数据背后的数学建模</span></div>
+      <div class="m-row"><b>该学</b><span>数学分析 + 线性代数；Python（NumPy/符号计算）+ LaTeX</span></div>
+      <div class="m-row"><b>就业</b><span>量化、数据科学、算法、精算、科研/教育</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="atom" aria-hidden="true"></i></span><h3>物理学</h3></div>
+      <p class="one">研究物质与能量的基本规律，从量子到宇宙。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">物理仿真加速、实验数据分析、偏微分方程求解、AI4Science</span></div>
+      <div class="m-row"><b>该学</b><span>理论力学/电动力学 + 数学物理方法；Python 数值计算</span></div>
+      <div class="m-row"><b>就业</b><span>半导体、光电、科研、量化、中学/高校教师</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="dna" aria-hidden="true"></i></span><h3>化学</h3></div>
+      <p class="one">研究物质的组成、结构与反应，是材料、医药、能源的源头。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">分子结构预测、反应路径设计、谱图解析、高通量筛选</span></div>
+      <div class="m-row"><b>该学</b><span>有机化学 + 物理化学；Python + 分子模拟/谱图软件</span></div>
+      <div class="m-row"><b>就业</b><span>医药、材料、化工研发、检测、科研/教育</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"></span><h3>生物学</h3></div>
+      <p class="one">研究生命现象与规律，从基因到生态系统。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">基因组学分析、蛋白质结构预测（AlphaFold）、序列比对、生信挖掘</span></div>
+      <div class="m-row"><b>该学</b><span>生物化学 + 分子生物学；Python / R（生信）</span></div>
+      <div class="m-row"><b>就业</b><span>生物医药、生信分析、检测机构、科研/教育</span></div>
+    </div>
+  </div>
+</div>
+<!-- ================= 医学 ================= -->
+<div class="cat" id="cat-med">
+  <div class="cat-head">
+    <span class="num">03</span>
+    <h2>医学</h2>
+    <span class="en">Medicine</span>
+  </div>
+  <div class="cat-tip"><span class="t"><i class="cc-ic" data-ic="stethoscope" aria-hidden="true"></i>怎么用 AI 学</span>
+    <p>医学是「知识量大 + 记忆强度高 + 终身更新」的学科。把 AI 当<strong style="color:var(--cyan)">24 小时带教与记忆引擎</strong>：用它生成病例题、做诊断思路推演、把海量知识点整理成复习卡片；但<strong style="color:var(--cyan)">临床决策永远以教材、指南与带教老师为准</strong>，AI 只做辅助不替代判断。</p>
+  </div>
+  <div class="grid g3">
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="syringe" aria-hidden="true"></i></span><h3>临床医学</h3></div>
+      <p class="one">直接面对病人，诊断、治疗、预防疾病。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">影像辅助读片、病历摘要、鉴别诊断提示、文献速读</span></div>
+      <div class="m-row"><b>该学</b><span>系统解剖学 + 病理生理学；医学影像 / 病历系统</span></div>
+      <div class="m-row"><b>就业</b><span>医院各科室、公共卫生、药企医学部、医学教育</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="pill" aria-hidden="true"></i></span><h3>药学</h3></div>
+      <p class="one">研究药物的发现、制造、作用与安全。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">药物靶点发现、分子筛选、ADMET 预测、临床试验设计</span></div>
+      <div class="m-row"><b>该学</b><span>药理学 + 药物化学；分子模拟 + 数据分析</span></div>
+      <div class="m-row"><b>就业</b><span>药企研发、医院药剂科、CRO、药品监管</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"></span><h3>生物医学工程</h3></div>
+      <p class="one">用工程技术解决医学问题：医疗设备、影像、假肢、信号处理。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">医学影像 AI、心电/脑电信号分析、可穿戴健康监测、手术机器人</span></div>
+      <div class="m-row"><b>该学</b><span>人体生理学 + 信号与系统；Python + 医学图像处理</span></div>
+      <div class="m-row"><b>就业</b><span>医疗器械、影像算法、医院设备科、健康科技公司</span></div>
+    </div>
+  </div>
+</div>
+<!-- ================= 经管 ================= -->
+<div class="cat" id="cat-biz">
+  <div class="cat-head">
+    <span class="num">04</span>
+    <h2>经管</h2>
+    <span class="en">Business & Economics</span>
+  </div>
+  <div class="cat-tip"><span class="t"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>怎么用 AI 学</span>
+    <p>经管拼的是「判断力 + 数据敏感度 + 表达」。把 AI 当<strong style="color:var(--cyan)">商业分析师与写作合伙人</strong>：让它拉数据、做图表、写报告初稿、模拟案例讨论；但<strong style="color:var(--cyan)">结论与判断必须你自己下</strong>——AI 给的是参考与素材，不是替你决策。</p>
+  </div>
+  <div class="grid g3">
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i></span><h3>金融</h3></div>
+      <p class="one">研究资金怎么配置、风险怎么定价、市场怎么运转。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">量化策略、风险建模、研报生成、舆情/行情预测辅助</span></div>
+      <div class="m-row"><b>该学</b><span>公司金融 + 计量经济学；Python（Pandas）+ Excel/金融终端</span></div>
+      <div class="m-row"><b>就业</b><span>投行、券商、基金、银行、量化、风控</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="receipt" aria-hidden="true"></i></span><h3>会计学</h3></div>
+      <p class="one">用一套规则记录、报告企业的经济活动，是商业的语言。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">自动记账、发票识别、报表生成、审计异常检测</span></div>
+      <div class="m-row"><b>该学</b><span>财务会计 + 管理会计；财务软件 + Excel/Power BI</span></div>
+      <div class="m-row"><b>就业</b><span>会计师事务所、企业财务、审计、税务、财务分析</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i></span><h3>工商管理</h3></div>
+      <p class="one">研究怎么组织人、财、物把事情做成，是通用管理能力。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">商业计划、市场调研、运营分析、组织决策支持</span></div>
+      <div class="m-row"><b>该学</b><span>管理学原理 + 市场营销；数据分析 + 项目管理工具</span></div>
+      <div class="m-row"><b>就业</b><span>咨询、市场、运营、HR、创业/综合管理</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></span><h3>经济学</h3></div>
+      <p class="one">研究资源怎么配置、人的选择怎么影响整体，是「社会如何运转」的学问。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">计量建模、政策模拟、宏观数据预测、文献综述</span></div>
+      <div class="m-row"><b>该学</b><span>微观/宏观经济学 + 计量经济学；Stata / Python / R</span></div>
+      <div class="m-row"><b>就业</b><span>政策研究、金融、咨询、数据经济分析、科研</span></div>
+    </div>
+  </div>
+</div>
+<!-- ================= 人文社科 ================= -->
+<div class="cat" id="cat-hum">
+  <div class="cat-head">
+    <span class="num">05</span>
+    <h2>人文社科</h2>
+    <span class="en">Humanities & Social Science</span>
+  </div>
+  <div class="cat-tip"><span class="t"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>怎么用 AI 学</span>
+    <p>人文社科拼的是「批判性思维 + 共情 + 表达」。把 AI 当<strong style="color:var(--cyan)">阅读外挂与思辨陪练</strong>：让它速读海量文献、提炼观点、从对立立场跟你辩论；但<strong style="color:var(--cyan)">思想、立场与文风必须是你自己的</strong>——AI 能帮你收集砖瓦，盖成什么房子由你决定。</p>
+  </div>
+  <div class="grid g3">
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="scale" aria-hidden="true"></i></span><h3>法学</h3></div>
+      <p class="one">研究规则、权利与正义，用条文和逻辑定纷止争。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">类案检索、合同审查、法律文书起草、法规速查</span></div>
+      <div class="m-row"><b>该学</b><span>法理学 + 民法/刑法；法律数据库 + 检索工具</span></div>
+      <div class="m-row"><b>就业</b><span>律师、法务、公务员、司法、企业合规</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></span><h3>新闻传播</h3></div>
+      <p class="one">研究信息怎么采集、生产、传播，以及它对公众的影响。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">选题挖掘、自动摘要、多平台改写、数据新闻、事实核查</span></div>
+      <div class="m-row"><b>该学</b><span>新闻采访与写作 + 传播学；剪辑/排版 + 数据分析</span></div>
+      <div class="m-row"><b>就业</b><span>媒体、自媒体、公关、品牌、内容运营</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="message-square" aria-hidden="true"></i></span><h3>外语</h3></div>
+      <p class="one">精通一门语言，跨越文化与信息的边界。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">即时翻译润色、口语陪练、跨文化语境校对、语料分析</span></div>
+      <div class="m-row"><b>该学</b><span>听说读写核心课 + 对象国文化；CAT 翻译工具 + AI 翻译</span></div>
+      <div class="m-row"><b>就业</b><span>翻译、涉外商务、国际传播、教育、跨境电商</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></span><h3>心理学</h3></div>
+      <p class="one">研究人的心理过程与行为规律，连接科学与人性。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">量表分析、情绪识别研究、实验数据处理、心理测评辅助</span></div>
+      <div class="m-row"><b>该学</b><span>实验心理学 + 心理统计；SPSS / R + 测量工具</span></div>
+      <div class="m-row"><b>就业</b><span>心理咨询、人力资源、用户研究、教育、临床方向</span></div>
+    </div>
+  </div>
+</div>
+<!-- ================= 艺术设计 ================= -->
+<div class="cat" id="cat-art">
+  <div class="cat-head">
+    <span class="num">06</span>
+    <h2>艺术设计</h2>
+    <span class="en">Art & Design</span>
+  </div>
+  <div class="cat-tip"><span class="t"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i>怎么用 AI 学</span>
+    <p>艺术设计拼的是「审美 + 创造力 + 手艺」。把 AI 当<strong style="color:var(--cyan)">创意放大器与打样神器</strong>：用它快速出灵感草稿、生成素材、迭代风格；但<strong style="color:var(--cyan)">审美判断、个人风格与最终成品的打磨必须靠你自己的眼和手</strong>——AI 给你一万个方案，选哪个才是你的本事。</p>
+  </div>
+  <div class="grid g3">
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="paintbrush" aria-hidden="true"></i></span><h3>设计（视觉/产品/UI）</h3></div>
+      <p class="one">研究怎么把「好看」和「好用」结合，解决问题、传达信息。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">灵感草图、海报/素材生成、UI 原型、配色排版建议</span></div>
+      <div class="m-row"><b>该学</b><span>设计构成/版式 + 一个主力设计工具；Figma + Midjourney/SD</span></div>
+      <div class="m-row"><b>就业</b><span>UI/UX 设计师、平面/品牌设计、产品设计、数字创意</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></span><h3>动画</h3></div>
+      <p class="one">用连续画面讲故事，融合绘画、叙事与技术。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">分镜生成、中间帧补间、角色/场景素材、文生视频</span></div>
+      <div class="m-row"><b>该学</b><span>动画运动规律 + 分镜叙事；AE/Blender + AI 视频工具</span></div>
+      <div class="m-row"><b>就业</b><span>影视动画、游戏、广告、短视频、虚拟制作</span></div>
+    </div>
+    <div class="major"><div class="m-top"><span class="m-icon"><i class="cc-ic" data-ic="landmark" aria-hidden="true"></i></span><h3>建筑学</h3></div>
+      <p class="one">研究空间、功能与美，把需求变成可居住的建筑。</p>
+      <div class="m-row"><b>AI 应用</b><span class="ai">概念方案生成、渲染加速、能耗/日照分析、BIM 协同</span></div>
+      <div class="m-row"><b>该学</b><span>建筑设计 + 建筑构造；SketchUp/Rhino + 渲染 + CAD</span></div>
+      <div class="m-row"><b>就业</b><span>设计院、地产、城市设计、室内/景观设计</span></div>
+    </div>
+  </div>
+</div>
+<!-- ================= 跨专业通用建议 ================= -->
+<section id="advice" style="padding-top:40px">
+  <div class="advice">
+    <div class="sec-head" style="margin-bottom:26px">
+      <div class="kicker">通用建议</div>
+      <h2>跨专业通用建议：任何专业都逃不掉这两条</h2>
+      <p>不管你在哪个专业，AI 时代的底层能力是相通的。掌握下面两点，你就比别人多一层「杠杆」。</p>
+    </div>
+    <div class="row">
+      <div class="no">1</div>
+      <div>
+        <h4>会一点编程</h4>
+        <p>不必成为程序员，但要用 Python 会写几十行脚本：处理数据、做表格、发请求、自动化重复操作。编程是「把你的想法交给机器执行」的通用语言，理工科靠它做仿真、文科靠它做文本/数据分析、商科靠它做量化与报表。</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="no">2</div>
+      <div>
+        <h4>会用 AI 工具</h4>
+        <p>把 AI 当「私人助理 + 外脑」：会写提示词、会迭代追问、会辨别 AI 的输出质量、知道什么时候该信、什么时候必须自己动手验证。会用 AI 提效，是这代大学生的共同起跑线——<strong style="color:var(--cyan)">用得好的人，一个人就是一支队伍</strong>。</p>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:14px;margin-top:20px;border-top:1px solid var(--line);padding-top:20px">
+       一句话总结：<b style="color:var(--cyan)">专业是你的护城河，编程 + AI 是你的两把铲子</b>——护城河要深，铲子要快。</p>
+  </div>
+</section>
+<footer>
+  <div class="logo">大学学业规划</div>
+  <div class="fbtns">
+    <a class="fb fb-main" href="/"><i class="cc-ic" data-ic="house" aria-hidden="true"></i>← 回总站</a>
+    <a class="fb" href="./roadmap.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>学习路线</a>
+    <a class="fb" href="./models.html"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>模型对比</a>
+    <a class="fb" href="./frontiers.html"><i class="cc-ic" data-ic="telescope"></i> AI 前沿全景</a>
+    <a class="fb" href="./book/"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>全书书稿</a>
+  </div>
+  <p style="margin-top:16px">大学各专业 × AI 地图 · 大学学业规划 · 由 AI 协同创作 · 2026</p>
+</footer>
+<script>
+// 阅读进度条
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+// 卡片入场动画
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.12});
+document.querySelectorAll('.major,.cat-tip,.advice').forEach(el=>{
+  el.style.opacity=0;el.style.transform='translateY(26px)';
+  el.style.transition='opacity .6s ease,transform .6s ease';io.observe(el);});
+</script>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["教育","AI绘画"], title: '专业 × AI · 学习视频' });</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

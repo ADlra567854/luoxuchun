@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 学院 · 面试题库 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="大模型与 Agent 岗位的高频面试题与答题框架。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/interview.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+.hero{position:relative;overflow:hidden;background:var(--hero-grad);padding:56px 24px 44px}
+.hero::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:260px;height:260px;bottom:-80px;left:-60px;border-radius:50%;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%);pointer-events:none}
+.hero .inner{position:relative;max-width:1080px;margin:0 auto;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(30px,4.5vw,52px);font-weight:900;color:#fff;margin:14px 0 12px;letter-spacing:1px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+.hero .sub{color:rgba(255,255,255,.95);font-size:15px;max-width:760px;margin:0 auto;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow)}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35)}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;flex-wrap:wrap;overflow-x:auto;scrollbar-width:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer}
+section.block{max-width:900px;margin:36px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:22px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:999px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:.2s}
+details:hover{border-color:rgba(56,225,255,.35)}
+summary{padding:14px 18px;cursor:pointer;font-weight:700;font-size:14px;display:flex;gap:10px;align-items:center}
+summary::before{content:"";flex:none}
+details[open] summary{background:rgba(120,160,220,.08)}
+details .ans{padding:4px 18px 16px 46px;font-size:14px;color:var(--muted);line-height:1.85}
+details .ans b{color:var(--text)}
+details .ans code{background:rgba(120,160,220,.12);padding:1px 6px;border-radius:6px;font-size:13px}
+.note{background:rgba(120,160,220,.08);border:1px solid rgba(120,160,220,.2);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--muted);margin-top:16px}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-interview.png" alt="面试题库 · AI 学院 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<section class="hero">
+  <div class="inner">
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 · 面试题库</div>
+    <h1>高频面试题 + 参考答案</h1>
+    <p class="sub">覆盖 Agent 概念、ReAct、RAG、MCP、多智能体、提示词、微调部署、大模型基础。点击题目展开参考答案，先自己答再对答案效果最好。</p>
+  </div>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">智能体基础</span></h2><span class="tag">Agent 概念</span></div>
+  <details><summary>什么是智能体（Agent）？与传统程序有什么区别？</summary><div class="ans">智能体是能够<b>感知环境 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 自主决策 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 采取行动</b>以达成目标的实体。区别：传统程序按预设逻辑执行，是确定性的；LLM 智能体以大模型为「大脑」，能理解自然语言指令、规划任务、调用工具、根据反馈动态调整，具备<b>自主性、工具使用、记忆与反思</b>能力。核心转变是「从写代码控制流程，到用提示词引导模型自主完成」。<br><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>对应章节：<code>chapter-01</code>、<code>chapter-04</code></div></details>
+  <details><summary>LLM 智能体的基本工作循环是什么？</summary><div class="ans">典型循环：<b>观察（Observation）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 思考（Thought）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 行动（Action）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 再观察</b>。智能体把任务交给 LLM，模型输出推理与要执行的工具调用，系统执行工具返回结果，再喂回模型，循环直到任务完成或达到终止条件。这与 ReAct 范式的「推理 + 行动交替」一致。</div></details>
+  <details><summary>什么是工具调用（Tool Calling / Function Calling）？为什么重要？</summary><div class="ans">工具调用让模型输出结构化调用指令（函数名 + 参数），由系统执行真实 API/函数，把结果返回给模型继续推理。它把 LLM 的「只会说」变成「能做」：查天气、执行代码、读写数据库、发邮件等。重要性：这是智能体与现实世界交互的<b>执行器</b>，也是 MCP 协议的底层能力。</div></details>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">ReAct 范式</span></h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-ai-academy-interview.png" alt="面试题库 · AI 学院 · 白驹 ccowork · " loading="lazy"></figure>
+<span class="tag">推理 + 行动</span></div>
+  <details><summary>解释 ReAct 范式，为什么有效？</summary><div class="ans">ReAct = <b>Reasoning + Acting</b>。模型交替输出「思考（Thought）」和「行动（Action）」，行动结果作为「观察（Observation）」反馈回来。有效性：① 思考让模型把复杂任务<b>拆解并推理</b>，减少幻觉；② 行动让模型<b>获取外部信息</b>（搜索、查库），弥补知识时效；③ 交替循环形成可追踪的推理轨迹，便于调试。是 Chain-of-Thought 与工具使用的结合。</div></details>
+  <details><summary>Plan-and-Solve 和 ReAct 有什么区别？</summary><div class="ans">Plan-and-Solve 先<b>一次性规划</b>整个任务步骤，再逐步执行（计划前置）；ReAct 是<b>边想边做</b>，每一步先思考再行动。前者适合任务结构清晰、可预先拆解的场景（更省 token）；后者适合需要动态调整、信息逐步获取的场景（更灵活）。实践中常混合：先规划，执行中按需 ReAct 修正。</div></details>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">RAG</span></h2><span class="tag">检索增强生成</span></div>
+  <details><summary>什么是 RAG？解决什么问题？</summary><div class="ans">RAG（Retrieval-Augmented Generation）= <b>检索 + 生成</b>：先从知识库检索相关文档，再把文档拼进提示词让模型基于它们回答。解决两大原生缺陷：①<b>幻觉</b>——模型知识有限且可能编造；②<b>知识时效</b>——训练数据有截止日期。企业私有文档（内部资料、产品手册）尤其依赖 RAG，因为模型没学过这些内容。</div></details>
+  <details><summary>RAG 的三环节是什么？</summary><div class="ans">①<b>索引（Index）</b>：文档切分（chunking）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 向量化（Embedding）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 存入向量数据库；②<b>检索（Retrieve）</b>：把用户问题向量化，用相似度（余弦/点积）召回 Top-K 相关片段，可配合重排（Rerank）；③<b>生成（Generate）</b>：把检索结果 + 用户问题组装成提示词，交给 LLM 生成带依据的回答。</div></details>
+  <details><summary>如何抑制 RAG 的幻觉？</summary><div class="ans">多层手段：①<b>检索质量</b>：优化切分策略、混合检索（关键词 + 向量）、重排模型提准率；②<b>提示约束</b>：要求模型「只依据给定材料回答，找不到就说不知道」；③<b>引用溯源</b>：输出带来源片段，便于人工核验；④<b>评估</b>：用忠实度（faithfulness）、答案相关度（answer relevance）指标持续迭代。</div></details>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">MCP 与通信协议</span></h2><span class="tag">协议层</span></div>
+  <details><summary>什么是 MCP？解决什么问题？</summary><div class="ans">MCP（Model Context Protocol）是「AI 应用的 USB-C 接口」：一套<b>标准化协议</b>，让 LLM 应用统一连接外部工具、数据源、服务。以前每个工具都要单独对接（私有格式、安全各做各的），MCP 定义了 Server/Client 结构、工具发现与调用规范、资源与提示词交换，一次接入到处复用，解决<b>工具碎片化与集成成本</b>。</div></details>
+  <details><summary>A2A 协议和 MCP 的分工？</summary><div class="ans">MCP 解决「<b>智能体  工具/数据</b>」的连接；A2A（Agent-to-Agent）解决「<b>智能体  智能体</b>」的协作——跨系统智能体如何发现彼此、通信、编排任务。两者互补：A2A 负责智能体之间的互操作，MCP 负责智能体与底层能力的互操作，共同构成智能体生态的通信底座。</div></details>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">多智能体协作</span></h2><span class="tag">编排</span></div>
+  <details><summary>多智能体协作有哪些典型模式？</summary><div class="ans">①<b>流水线（Pipeline）</b>：任务按角色串行传递（如策划 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 调研 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 写稿 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 校对）；②<b>层级（Hierarchy）</b>：主控智能体派发子任务给专家智能体（如主管 + 程序员/测试）；③<b>辩论（Debate）</b>：多智能体各自给方案再交叉评审，提升决策质量；④<b>市场（Marketplace）</b>：任务竞价分配。模式选择取决于任务复杂度与角色耦合度。</div></details>
+  <details><summary>多智能体相比单智能体的优劣？</summary><div class="ans">优：任务并行、角色专精、可隔离复杂逻辑、天然支持人类介入环节。劣：token 成本更高、通信与状态同步复杂、错误可能级联放大、编排调试难。经验：<b>能用单智能体就别上多智能体</b>，复杂度不是越花哨越好。</div></details>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">提示词工程</span></h2><span class="tag">Prompt</span></div>
+  <details><summary>提示词的组成要素有哪些？</summary><div class="ans">四要素：①<b>指令（Instruction）</b>——让模型做什么；②<b>上下文（Context）</b>——背景信息与约束；③<b>输入数据（Input Data）</b>——待处理内容；④<b>输出格式（Output Format）</b>——期望的结构（JSON/表格/长度）。核心原则：<b>明确、具体、给示例、定义边界</b>。</div></details>
+  <details><summary>什么是思维链（Chain-of-Thought）？</summary><div class="ans">CoT 引导模型<b>先展示推理过程再给结论</b>（「一步步思考」或提供推理示例），显著提升复杂推理任务的准确率，尤其数学、逻辑题。进阶形态：Self-Consistency（多次采样投票）、ToT（树状搜索多条推理路径）、ReAct（推理 + 工具）。</div></details>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">微调与部署</span></h2><span class="tag">模型定制</span></div>
+  <details><summary>LoRA 是什么？为什么流行？</summary><div class="ans">LoRA（Low-Rank Adaptation）是<b>参数高效微调</b>：冻结原模型权重，只训练注入的低秩矩阵（约千分之一参数量）。优点：显存占用小、训练快、可随时切换多个微调版本、几乎不牺牲效果。特别适合在消费级 GPU 上微调大模型，也是社区 LoRA 模型（绘画/风格）的基础。</div></details>
+  <details><summary>微调 vs RAG vs 提示词，怎么选？</summary><div class="ans">三者的本质：<b>提示词</b>是「现场指导」（零成本、即改即用）；<b>RAG</b> 是「带资料上场」（解决私有/时效知识）；<b>微调</b> 是「改变说话方式与专有能力」（格式、风格、领域语言）。经验法则：先提示词，知识问题加 RAG，长期固定的行为/风格问题才微调——微调成本最高，最后考虑。</div></details>
+  <details><summary>私有化部署大模型的常见路径？</summary><div class="ans">①<b>Ollama</b>：一键本地跑 Qwen/Llama 等开源模型，适合个人与验证；②<b>vLLM / TensorRT-LLM</b>：生产级推理引擎，吞吐高，支持量化；③<b>Docker + GPU 集群</b>：企业私有化，配负载均衡与监控；④关键点：模型量化（GGUF/INT8/INT4）压显存、KV Cache 优化、并发与成本控制。详见 <code>chapter-20</code>。</div></details>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">大模型基础</span></h2><span class="tag">Transformer</span></div>
+  <details><summary>Transformer 的核心机制是什么？</summary><div class="ans">核心是<b>自注意力（Self-Attention）</b>：每个 token 通过 Query/Key/Value 计算与其他 token 的相关度（注意力权重），加权聚合信息。多头注意力让模型并行关注不同子空间。加上位置编码（Positional Encoding）保留语序、前馈网络与层归一化。它的突破是<b>并行计算 + 长距离依赖建模</b>，取代了 RNN 的串行短板。</div></details>
+  <details><summary>什么是 Token？上下文窗口？</summary><div class="ans">Token 是模型处理文本的最小单元（中文常 1 字≈1-2 token）。上下文窗口是模型一次能「看到」的最大 token 数（如 32K/128K）。窗口越大可读入更多资料，但成本与延迟随之上升，因此<b>上下文工程</b>（压缩、摘要、按需注入）成为实用技能。详见 <code>chapter-09</code>。</div></details>
+</section>
+<section class="block">
+  <div class="sec-head"><h2><span class="em">综合实战</span></h2><span class="tag">场景题</span></div>
+  <details><summary>设计一个企业智能客服，讲清架构。</summary><div class="ans">推荐架构：<b>入口（渠道接入）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 意图路由 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 分支处理</b>。①FAQ 类走 <b>RAG</b>（文档知识库检索回答）；②工单/操作类走 <b>工具调用</b>（查订单、改状态）；③复杂问题<b>升级人工</b>（Human-in-the-loop）。存储层：向量库（文档）+ 业务库（订单）。质量层：回答引用溯源 + 兜底话术 + 会话日志回流优化。要点：先解决「80% 常见问题」，再逐步扩展。</div></details>
+  <details><summary>如何评估一个智能体的好坏？</summary><div class="ans">分层评估：①<b>任务成功率</b>（能否完成目标）；②<b>中间过程质量</b>（规划合理性、工具调用正确率、失败重试）；③<b>输出质量</b>（相关性、忠实度、格式合规）；④<b>效率</b>（token 消耗、步数、延迟）；⑤<b>鲁棒性</b>（边界输入、恶意输入）。方法：构建评测集（golden set）+ 自动化指标 + 人工抽检，持续回归。详见 <code>chapter-12</code>。</div></details>
+</section>
+<section class="block">
+  <div class="note"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i><b>刷题建议</b>：先自己口头答一遍（2 分钟内），再展开答案对照。把答不出的题标红，回对应章节补课。结合 <a href="/learn/academy/jobs.html" style="color:var(--blue);font-weight:600">岗位地图</a> 选 2-3 个方向重点准备。</div>
+</section>
+
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

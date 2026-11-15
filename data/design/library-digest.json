@@ -1,0 +1,75 @@
+{
+  "schema": "baiju/library-digest/v1",
+  "date": "2026-11-16",
+  "generatedAt": "2026-11-15T16:09:22.004Z",
+  "policy": "只收来源官方、许可明确（无 NC、无 ND）且官方提供免费入口的教材；本站不托管、不转载第三方全文，许可与署名一律以来源官网为准。",
+  "stats": {
+    "public": 21,
+    "verified": 21,
+    "pending": 0,
+    "restricted": 8,
+    "hostedFullText": 0,
+    "hostedInstaller": 0,
+    "groups": 4
+  },
+  "groups": [
+    {
+      "id": "books",
+      "title": "开源书籍",
+      "count": 3,
+      "verified": 3,
+      "pending": 0
+    },
+    {
+      "id": "docs",
+      "title": "AI 学习资料",
+      "count": 9,
+      "verified": 9,
+      "pending": 0
+    },
+    {
+      "id": "programming",
+      "title": "编程资料",
+      "count": 9,
+      "verified": 9,
+      "pending": 0
+    },
+    {
+      "id": "prompts",
+      "title": "提示词",
+      "count": 64,
+      "verified": 0,
+      "pending": 0
+    }
+  ],
+  "prompts": {
+    "count": 64,
+    "groups": 10,
+    "bytes": 14330,
+    "source": "/toolbox/prompts.html",
+    "publisher": "白驹 ccowork · ccowork（本站自有）",
+    "license": "本站原创 · 可用于学习与教学，保留署名即可",
+    "brand": "🐎 白驹 ccowork"
+  },
+  "contract": {
+    "requiredFields": [
+      "id",
+      "kind",
+      "title",
+      "publisher",
+      "canonical",
+      "license",
+      "collectedAt",
+      "verifiedAt",
+      "conclusion",
+      "status",
+      "hosting",
+      "brand"
+    ],
+    "status": "verified=本次核验可达 | pending=本次未核实，页面一律显示待核实且不给可点链接 | broken=失效",
+    "hosting": "metadata-only=仅元数据+官方外链，本站零全文",
+    "verifiedVia": "canonical=直连官方页面核验 | api.github.com=网页域不可达时回退同一官方源的 API 端点核验，canonical 不变、如实留痕",
+    "probe": "probeNote / consecutiveFailures / lastVerifiedAt / verifiedCanonical：仅当网络层失败、该条目此前确实核验过且 canonical 未变时，沿用上次结论并留痕；连续 3 天失败或收到明确 4xx/5xx 一律强制 pending，不给可点链接。",
+    "note": "每日更新 = 逐条核验可达性 + 刷新核验时间 + 重生成页面，不自动改写第三方内容；网络层失败既不能误标失效，也不能掩盖真实失效，回退与沿用都必须留痕。"
+  }
+}

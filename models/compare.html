@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="选 2–4 个 AI 型号并排比较模态、规模、开源度、许可、发布时点与定位，差异项自动高亮。">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>型号对比 · 最多 4 个并排 · 白驹 ccowork</title>
+<meta name="description" content="选 2–4 个 AI 型号并排比较模态、规模、开源度、许可、发布时点与定位，差异项自动高亮。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/cover.css">
+<meta name="twitter:description" content="选 2–4 个 AI 型号并排比较模态、规模、开源度、许可、发布时点与定位，差异项自动高亮。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/compare.html">
+<meta property="og:title" content="型号对比 · 最多 4 个并排 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/compare.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="型号对比 · 最多 4 个并排 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="models" data-cctitle="型号对比">
+
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/leaderboards.jpg" alt="" loading="eager" decoding="async"></div>
+
+  <div class="pg-hero">
+    <div data-cccrumb="型号对比"></div>
+    <h1>型号对比 · <em>最多 4 个并排</em></h1>
+    <p class="lede">
+      短名单收窄到两三个之后，剩下的问题都是硬条件：能不能商用、要多大的卡、延迟扛不扛得住。
+      选定型号后，<b>取值不同的行会自动高亮</b>，一眼看出差异在哪。
+    </p>
+  </div>
+
+  <div class="pg-toolbar">
+    <select id="s0" aria-label="型号 1"></select>
+    <select id="s1" aria-label="型号 2"></select>
+    <select id="s2" aria-label="型号 3"></select>
+    <select id="s3" aria-label="型号 4"></select>
+    <span class="rc">已选 <b id="rc">0</b> 个</span>
+  </div>
+
+  <div id="out"></div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="circle-help" aria-hidden="true"></i>对比时先看哪三行</h2></div>
+    <div class="pg-grid">
+      <div class="pg-card"><div class="ch"><span class="ic"><i class="cc-ic" data-ic="lock" aria-hidden="true"></i></span>
+        <div><h3>先看许可</h3></div></div>
+        <p class="desc">许可不同，后面都白比。开源允许商用与开放权重受限是两条完全不同的路，法务过不了就直接出局。</p></div>
+      <div class="pg-card"><div class="ch"><span class="ic"><i class="cc-ic" data-ic="cpu" aria-hidden="true"></i></span>
+        <div><h3>再看规模</h3></div></div>
+        <p class="desc">规模差一个档，硬件预算差好几倍。端侧到中型是数量级变化，中型到超大往往意味着只能走 API。</p></div>
+      <div class="pg-card"><div class="ch"><span class="ic"><i class="cc-ic" data-ic="clock" aria-hidden="true"></i></span>
+        <div><h3>最后看时点</h3></div></div>
+        <p class="desc">两个都在役的型号，发布时间差半年以上，新一代通常在性价比上已经全面占优，除非老版本有稳定性优势。</p></div>
+    </div>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/models/hub.js"></script>
+<script>
+(function () {
+  var MH = window.MH, esc = MH.esc, ic = MH.ic;
+  var out = MH.$('#out'), rc = MH.$('#rc');
+  var SEL = [MH.$('#s0'), MH.$('#s1'), MH.$('#s2'), MH.$('#s3')];
+  var ROWS = [], IDX = {};
+
+  var FIELDS = [
+    ['厂商', 1], ['国别', 2], ['模态', 3], ['规模', 4],
+    ['开源度', 5], ['许可', 6], ['发布时点', 8], ['定位', 9]
+  ];
+
+  function val(r, i) {
+    if (i === 2) return MH.cn(r[2]);
+    return r[i];
+  }
+
+  function render() {
+    var picked = SEL.map(function (s) { return s.value; }).filter(Boolean);
+    rc.textContent = picked.length;
+    if (picked.length < 2) {
+      out.innerHTML = MH.empty('再选一个型号', '至少选两个才能比较');
+      return;
+    }
+    var cols = picked.map(function (n) { return IDX[n]; });
+
+    var head = '<tr><th>属性</th>' + cols.map(function (r) {
+      return '<th>' + esc(r[0]) + '</th>';
+    }).join('') + '</tr>';
+
+    var body = FIELDS.map(function (f) {
+      var i = f[1];
+      var vals = cols.map(function (r) { return String(val(r, i)); });
+      var diff = vals.some(function (v) { return v !== vals[0]; });
+      var style = diff ? ' style="background:rgba(240,169,60,.10)"' : '';
+      return '<tr' + style + '><td>' + esc(f[0]) + '</td>' + vals.map(function (v) {
+        return '<td>' + esc(v) + '</td>';
+      }).join('') + '</tr>';
+    }).join('');
+
+    out.innerHTML = '<div class="pg-tblwrap"><div class="pg-tblscroll">' +
+      '<table class="pg-tbl"><thead>' + head + '</thead><tbody>' + body + '</tbody></table>' +
+      '</div></div>' +
+      '<p class="pg-note" style="margin-top:14px">' + ic('lightbulb') +
+      '<span>背景高亮的行表示这些型号在该属性上不一致。全部同色的行说明条件相同，可以跳过。</span></p>';
+
+    MH.setParam('m', picked.join(','));
+  }
+
+  MH.getJSON('/data/models.json', function (d) {
+    ROWS = d.rows;
+    ROWS.forEach(function (r) { IDX[r[0]] = r; });
+    var names = ROWS.map(function (r) { return r[0]; }).sort(function (a, b) { return a.localeCompare(b, 'zh'); });
+
+    SEL.forEach(function (s, k) {
+      var o0 = document.createElement('option');
+      o0.value = ''; o0.textContent = k < 2 ? '— 选择型号 —' : '— 可选 —';
+      s.appendChild(o0);
+      names.forEach(function (n) {
+        var o = document.createElement('option');
+        o.value = n; o.textContent = n;
+        s.appendChild(o);
+      });
+    });
+
+    /* 从 URL 恢复；没有就用两个默认值，避免空白页 */
+    var pre = (MH.param('m') || '').split(',').filter(Boolean);
+    if (pre.length >= 2) {
+      pre.slice(0, 4).forEach(function (n, k) { if (IDX[n]) SEL[k].value = n; });
+    } else {
+      if (IDX['DeepSeek-V4.1']) SEL[0].value = 'DeepSeek-V4.1';
+      if (IDX['GPT-5.1']) SEL[1].value = 'GPT-5.1';
+      if (IDX['Qwen3-Max']) SEL[2].value = 'Qwen3-Max';
+    }
+    render();
+  }, function () {
+    out.innerHTML = MH.empty('模型数据加载失败', '请刷新重试');
+  });
+
+  SEL.forEach(function (s) { s.addEventListener('change', render); });
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

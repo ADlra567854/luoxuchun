@@ -1,0 +1,307 @@
+/* ============================================================
+ * ccowork 双体系主题引擎 · 深空纪元 / 云顶天空
+ * 由 ccowork.js 自动注入所有页面
+ * 体系：data-theme="deep"|"cloud"（深浅两套完整体系）
+ * 壁纸：data-wall="none|cloud-hero|garden|train|island|cafe|epoch|nebula|city"
+ * 字体：data-font="none|round|hei|song|hand|mono"
+ * ============================================================ */
+
+/* ---------- 平滑过渡（切换不闪变） ---------- */
+body{transition:color .5s ease,background-color .5s ease}
+body *{transition:background-color .35s ease,color .35s ease,border-color .35s ease,box-shadow .35s ease}
+body.theme-fading::after{content:"";position:fixed;inset:0;z-index:99999;pointer-events:none;
+  background:var(--bg);opacity:0;animation:ccwThemeFade .5s ease forwards}
+@keyframes ccwThemeFade{0%{opacity:.25}100%{opacity:0}}
+
+/* ---------- 深空纪元体系（deep） ---------- */
+body[data-theme="deep"]{
+  --bg:#030014; --bg2:#0a0f1e; --card:#101728; --panel:rgba(13,19,32,.62); --line:rgba(120,160,220,.16);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c; --purple:#8b5cf6;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85; --err:#ff5c8a;
+  --grad:linear-gradient(120deg,#38e1ff,#5b8cff 45%,#8b5cf6);
+  /* 组件 token（导航/浮层/齿轮 · 深空） */
+  --nav-bg:rgba(8,5,28,.70); --nav-line:rgba(255,255,255,.08); --nav-shadow:0 2px 16px rgba(0,0,0,.35);
+  --glass-strong:rgba(8,12,22,.95); --gear-bg:rgba(8,12,22,.9); --float-shadow:0 24px 70px rgba(0,0,0,.6);
+  --nav-chip-bg:rgba(120,160,220,.10);
+  background-image:linear-gradient(180deg,rgba(3,0,20,.92),rgba(3,0,20,.96)),var(--wall-img,none);
+  background-size:cover;background-position:center;background-attachment:fixed;
+  color:#e9f0fb;
+}
+body[data-theme="deep"] ::selection{background:rgba(94,234,212,.28);color:#fff}
+body[data-theme="deep"] ::-webkit-scrollbar-track{background:#05070d}
+body[data-theme="deep"] ::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:10px}
+
+/* ---------- 壁纸库 ---------- */
+body[data-wall="cloud-hero"]{--wall-img:url('../assets/img/cloud-hero.webp')}
+body[data-wall="garden"]{--wall-img:url('../assets/img/cloud-garden.webp')}
+body[data-wall="train"]{--wall-img:url('../assets/img/cloud-train.webp')}
+body[data-wall="island"]{--wall-img:url('../assets/img/cloud-island.webp')}
+body[data-wall="cafe"]{--wall-img:url('../assets/img/cloud-cafe.webp')}
+body[data-wall="epoch"]{--wall-img:url('../assets/img/hero-epoch.webp')}
+body[data-wall="nebula"]{--wall-img:url('../assets/img/space-nebula.webp')}
+body[data-wall="city"]{--wall-img:url('../assets/img/space-city.webp')}
+
+/* ---------- 字体体系 ---------- */
+body[data-font="round"]{--sans:"Yuanti SC","YouYuan","幼圆","PingFang SC","Microsoft YaHei",sans-serif}
+body[data-font="hei"]{--sans:"Source Han Sans SC","Microsoft YaHei","PingFang SC",sans-serif}
+body[data-font="song"]{--sans:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif}
+body[data-font="hand"]{--sans:"STKaiti","KaiTi","楷体","PingFang SC",sans-serif}
+body[data-font="mono"]{--sans:"Cascadia Code","JetBrains Mono",Consolas,Menlo,monospace}
+
+/* ============================================================
+ * 云顶天空体系（浅色）· 原有白化适配全部保留
+ * ============================================================ */
+body[data-theme="cloud"]{
+  --bg:#F4F7FC; --panel:rgba(255,255,255,.72); --line:rgba(90,140,190,.3);
+  --ice:#0e7490; --cyan:#0891b2; --blue:#2563eb; --gold:#b45309; --purple:#7c3aed;
+  --text:#1e293b; --muted:#475569; --dim:#56657e;   /* --dim 加深，提升浅色背景对比度 */
+  --bg2:#ffffff; --card:#ffffff; --err:#e11d48;
+  --grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+  /* 组件 token（导航/浮层/齿轮 · 云顶） */
+  --nav-bg:rgba(255,255,255,.82); --nav-line:rgba(227,235,245,.95); --nav-shadow:0 2px 16px rgba(31,45,77,.07);
+  --glass-strong:rgba(255,255,255,.96); --gear-bg:rgba(255,255,255,.85); --float-shadow:0 24px 70px rgba(37,99,235,.18);
+  --nav-chip-bg:rgba(120,160,220,.12);
+  background-image:linear-gradient(180deg,rgba(244,247,252,.92),rgba(248,252,255,.96)),var(--wall-img,none);
+  background-size:cover;background-position:center;background-attachment:fixed;
+  color:#1e293b;
+}
+/* 选区 / 滚动条 */
+body[data-theme="cloud"] ::selection{background:rgba(56,189,248,.28);color:#0f172a}
+body[data-theme="cloud"] ::-webkit-scrollbar-track{background:#dceefa}
+body[data-theme="cloud"] ::-webkit-scrollbar-thumb{background:#9cc6e4;border-radius:10px}
+
+/* 导航 / 头部 → 白色玻璃 */
+body[data-theme="cloud"] nav,
+body[data-theme="cloud"] header,
+body[data-theme="cloud"] .topbar{background:rgba(255,255,255,.78)!important;border-bottom-color:rgba(90,140,190,.25)!important}
+body[data-theme="cloud"] nav .logo,
+body[data-theme="cloud"] header .bt,
+body[data-theme="cloud"] .topbar .logo{color:#1e293b!important}
+body[data-theme="cloud"] nav .logo i,
+body[data-theme="cloud"] header .bt i,
+body[data-theme="cloud"] .topbar .logo i{
+  background:linear-gradient(120deg,#0891b2,#2563eb,#7c3aed);
+  -webkit-background-clip:text;background-clip:text;color:transparent!important}
+body[data-theme="cloud"] nav .nav-links a,
+body[data-theme="cloud"] header .tabs .tab{color:#475569}
+body[data-theme="cloud"] nav .nav-links a:hover{color:#0891b2}
+
+/* 输入控件 → 白底 */
+body[data-theme="cloud"] input,
+body[data-theme="cloud"] textarea,
+body[data-theme="cloud"] select{
+  background:#fff!important;border-color:rgba(90,140,190,.35)!important;color:#1e293b!important}
+body[data-theme="cloud"] input::placeholder,
+body[data-theme="cloud"] textarea::placeholder{color:#94a3b8!important}
+body[data-theme="cloud"] select option{background:#fff;color:#1e293b}
+
+/* 卡片 / 面板 / 消息 → 白色玻璃 */
+body[data-theme="cloud"] .card,
+body[data-theme="cloud"] .panel,
+body[data-theme="cloud"] .mcard,
+body[data-theme="cloud"] .ncard,
+body[data-theme="cloud"] .bcard,
+body[data-theme="cloud"] .modal-card,
+body[data-theme="cloud"] .detail,
+body[data-theme="cloud"] .row,
+body[data-theme="cloud"] .agent-msg,
+body[data-theme="cloud"] .msg,
+body[data-theme="cloud"] .bubble,
+body[data-theme="cloud"] .card2,
+body[data-theme="cloud"] .tool-card,
+body[data-theme="cloud"] .pcard{
+  background:rgba(255,255,255,.78)!important;border-color:rgba(90,140,190,.25)!important;
+  box-shadow:0 10px 30px rgba(37,99,235,.08)!important;color:#1e293b!important}
+
+/* 文本颜色兜底 */
+body[data-theme="cloud"] h1,body[data-theme="cloud"] h2,body[data-theme="cloud"] h3,
+body[data-theme="cloud"] h4,body[data-theme="cloud"] p,body[data-theme="cloud"] li,
+body[data-theme="cloud"] td,body[data-theme="cloud"] th,body[data-theme="cloud"] strong{color:#1e293b}
+body[data-theme="cloud"] .hint,body[data-theme="cloud"] .dim,body[data-theme="cloud"] small{color:#64748b}
+body[data-theme="cloud"] .muted{color:#475569}
+
+/* 渐变文字（原来深色页面用冰青渐变）→ 蓝紫云霞渐变 */
+body[data-theme="cloud"] .hero h1 span,
+body[data-theme="cloud"] h1 span,
+body[data-theme="cloud"] h2 span,
+body[data-theme="cloud"] .brand .bt i{
+  background:linear-gradient(120deg,#0ea5e9,#6366f1 55%,#d946ef);
+  -webkit-background-clip:text;background-clip:text;color:transparent!important}
+
+/* 表格 */
+body[data-theme="cloud"] table{background:#fff!important;color:#1e293b}
+body[data-theme="cloud"] th{background:#e8f4fd!important;color:#0f172a!important;border-color:rgba(90,140,190,.2)!important}
+body[data-theme="cloud"] td{color:#334155;border-color:rgba(90,140,190,.2)!important}
+
+/* 代码 */
+body[data-theme="cloud"] code{background:rgba(37,99,235,.08)!important;color:#1d4ed8!important}
+body[data-theme="cloud"] pre{background:#f1f7fc!important;border-color:rgba(90,140,190,.25)!important;color:#1e293b!important}
+
+/* 按钮 */
+body[data-theme="cloud"] .btn-ghost,
+body[data-theme="cloud"] .ghost-btn{color:#1e293b!important;border-color:rgba(90,140,190,.4)!important;background:rgba(255,255,255,.6)!important}
+body[data-theme="cloud"] .btn-ghost:hover,
+body[data-theme="cloud"] .ghost-btn:hover{border-color:#b45309!important;color:#b45309!important}
+
+/* 页脚 */
+body[data-theme="cloud"] footer{background:rgba(255,255,255,.55)!important;border-top-color:rgba(90,140,190,.2)!important;color:#64748b!important}
+body[data-theme="cloud"] footer a{color:#0891b2!important}
+
+/* 粒子浅色化：反相 + 色相偏移，让深色粒子变浅蓝紫 */
+body[data-theme="cloud"] canvas#stars,
+body[data-theme="cloud"] canvas.stars,
+body[data-theme="cloud"] #stars canvas{
+  opacity:.6;filter:invert(82%) hue-rotate(165deg) saturate(.75)}
+body[data-theme="cloud"] #stars{opacity:.6;filter:invert(82%) hue-rotate(165deg) saturate(.75)}
+
+/* 弹窗遮罩 */
+body[data-theme="cloud"] .modal{background:rgba(148,190,224,.45)!important}
+body[data-theme="cloud"] .overlay{background:rgba(148,190,224,.45)!important}
+
+/* 链接 */
+body[data-theme="cloud"] a{color:#0e7490}
+body[data-theme="cloud"] a:hover{color:#2563eb}
+
+/* 分割线 */
+body[data-theme="cloud"] hr{border-color:rgba(90,140,190,.25)!important}
+
+/* iframe 工作台 */
+body[data-theme="cloud"] .frame-wrap iframe{background:#eaf6fd;border-color:rgba(90,140,190,.3)}
+
+/* ---- 智能体 / 对话页专用 ---- */
+body[data-theme="cloud"] .chat-panel,
+body[data-theme="cloud"] .agent-panel,
+body[data-theme="cloud"] .work-area{background:rgba(255,255,255,.82)!important;border-color:rgba(90,140,190,.25)!important;
+  box-shadow:0 24px 70px rgba(37,99,235,.1)!important}
+body[data-theme="cloud"] .icon-btn,
+body[data-theme="cloud"] .tool-btn{background:#f0f7fd!important;border-color:rgba(90,140,190,.3)!important;color:#334155!important}
+body[data-theme="cloud"] .icon-btn:hover,
+body[data-theme="cloud"] .tool-btn:hover{color:#0891b2!important;border-color:#0891b2!important}
+body[data-theme="cloud"] .net-status{background:#fff!important;color:#475569!important;border-color:rgba(90,140,190,.3)!important}
+body[data-theme="cloud"] .net-status.ok{color:#0e7490!important;border-color:rgba(14,116,144,.4)!important}
+body[data-theme="cloud"] .net-status.warn{color:#b45309!important;border-color:rgba(180,83,9,.4)!important}
+body[data-theme="cloud"] .msg.ai .bubble{background:#fff!important;border-color:rgba(90,140,190,.25)!important;color:#1e293b!important}
+body[data-theme="cloud"] .msg.ai .who{color:#0891b2!important}
+body[data-theme="cloud"] .msg.user .bubble{background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6)!important;color:#fff!important}
+body[data-theme="cloud"] .msg.user .who{color:#0e7490!important}
+body[data-theme="cloud"] .msg .bubble pre{background:#f1f7fc!important;border-color:rgba(90,140,190,.25)!important;color:#1e293b!important}
+body[data-theme="cloud"] .msg .bubble blockquote{background:#f0f7fd!important;color:#475569!important;border-left-color:#b45309!important}
+body[data-theme="cloud"] .msg .bubble th{background:#e8f4fd!important;color:#0f172a!important}
+body[data-theme="cloud"] .msg .bubble th,.msg .bubble td{border-color:rgba(90,140,190,.2)!important}
+body[data-theme="cloud"] .typing span{background:#0891b2!important}
+body[data-theme="cloud"] .welcome{color:#475569!important}
+body[data-theme="cloud"] .agent-head .title{color:#1e293b!important}
+
+/* ============================================================
+ * ccowork 全局声波组件（GitHub 式声纹条）
+ * 用法：<div class="ccw-wave" data-bars="32"></div>
+ *      .ccw-wave.live 激活跳动；canvas.ccw-wave-canvas 真实频谱
+ * ============================================================ */
+.ccw-wave{display:flex;align-items:flex-end;gap:2px;height:34px;justify-content:center;opacity:.85}
+.ccw-wave i{display:block;flex:1;max-width:5px;border-radius:6px;
+  background:linear-gradient(180deg,#4f8cff,#38b6ff,#8b5cf6);
+  height:8%;animation:ccwBar 1.6s ease-in-out infinite}
+.ccw-wave.live i{animation-duration:.5s}
+@keyframes ccwBar{0%,100%{height:10%}50%{height:92%}}
+.ccw-wave canvas{width:100%;height:100%;display:block}
+
+/* 每页底部今日鼓励语 */
+.ccw-footer-quote{max-width:680px;margin:20px auto 6px;text-align:center;color:var(--dim);font-size:13px;line-height:1.9;padding:0 20px}
+.ccw-footer-quote em{font-style:italic;color:var(--muted)}
+.ccw-footer-quote span{display:block;font-size:11px;letter-spacing:2px;margin-top:4px;opacity:.7;color:var(--dim)}
+body[data-theme="cloud"] .ccw-footer-quote em{color:#475569}
+
+/* 声波胶囊：说话时发光 */
+.ccw-mic{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(37,99,235,.35);
+  background:rgba(255,255,255,.8);border-radius:999px;padding:7px 16px;font-size:13px;color:#1e293b;cursor:pointer;transition:.2s;font-family:inherit}
+.ccw-mic:hover{border-color:#0891b2;box-shadow:0 6px 20px rgba(37,99,235,.15)}
+.ccw-mic.rec{border-color:#e11d48;color:#e11d48;animation:ccwMicPulse 1.1s infinite}
+@keyframes ccwMicPulse{0%,100%{box-shadow:0 0 0 0 rgba(225,29,72,.35)}50%{box-shadow:0 0 0 9px rgba(225,29,72,0)}}
+
+/* ============================================================
+ * 全站卡片统一化层：把分散的 .card/.mcard/.pcard 等对齐到同一
+ * 视觉语言（圆角 16px / 1px 描边 / 轻投影），hover 反馈保留各页特色。
+ * 书稿内容块（book/pages 的 .card）保持原样，不纳入强制统一。
+ * ============================================================ */
+body .card:not(.book-card),
+body .mcard,
+body .pcard,
+body .ncard,
+body .bcard,
+body .tcard,
+body .tool-card,
+body .work-card,
+body .post-card,
+body .kcard,
+body .vcard,
+body .preset{
+  border-radius:18px!important;
+  border-width:1px!important;
+  border-style:solid!important;
+  border-color:var(--line)!important;
+  box-shadow:0 8px 24px rgba(31,45,77,.05)!important;
+}
+body .mcard:hover,
+body .pcard:hover,
+body .tcard:hover,
+body .tool-card:hover,
+body .work-card:hover{
+  border-color:rgba(56,225,255,.35)!important;
+}
+/* 深色主题下统一层投影更收敛 */
+body[data-theme="deep"] .card:not(.book-card),
+body[data-theme="deep"] .mcard,
+body[data-theme="deep"] .pcard,
+body[data-theme="deep"] .ncard,
+body[data-theme="deep"] .bcard,
+body[data-theme="deep"] .tcard,
+body[data-theme="deep"] .tool-card{
+  box-shadow:0 10px 30px rgba(0,0,0,.35)!important;
+}
+
+/* ============================================================
+ * 可读性护栏：悬浮面板内的超小文字统一提升到可读下限
+ * （避免 8~9.5px 的正文/标签在桌面与移动端都难以辨认）
+ * ============================================================ */
+#ccowork-news .ni{font-size:12px!important;line-height:1.55}
+#ccowork-news .nup{font-size:11px!important}
+#ccowork-news .ni .ntag{font-size:10px!important;padding:1px 6px}
+#ccowork-news .ni em{font-size:10px!important}
+#ccowork-kb .kt{font-size:12px!important}
+#ccowork-kb .kix{font-size:12px!important;line-height:1.6}
+#ccowork-kb .kip{font-size:11px!important;line-height:1.55}
+#ccowork-kb .kit{font-size:11px!important}
+#ccowork-sess .ni{font-size:12px!important;line-height:1.55}
+#ccowork-sess .nup{font-size:11px!important}
+#ccowork-sess .ni .ntag{font-size:10px!important;padding:1px 6px}
+#ccowork-sess .ni em{font-size:10px!important}
+.ccw-footer-quote span{font-size:11px}
+
+/* ============================================================
+ * 阅读模式（data-read="on"）：专注阅读排版，全站生效
+ * 由 module.js 的开关 / 浮动按钮控制
+ * ============================================================ */
+body[data-read="on"]{font-size:17px;line-height:1.95}
+body[data-read="on"] .article,
+body[data-read="on"] article,
+body[data-read="on"] .content,
+body[data-read="on"] main,
+body[data-read="on"] .post,
+body[data-read="on"] .chapter,
+body[data-read="on"] .reader{max-width:760px!important;margin-left:auto!important;margin-right:auto!important}
+body[data-read="on"] p,
+body[data-read="on"] li{line-height:1.95}
+body[data-read="on"] h1,
+body[data-read="on"] h2,
+body[data-read="on"] h3{line-height:1.4}
+/* 阅读模式下抑制壁纸干扰：叠一层柔化遮罩（z-index:-1 位于正文之下、壁纸之上） */
+body[data-read="on"]::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--bg);opacity:.86}
+body[data-read="on"] #modReadBtn{display:none}
+@media(max-width:640px){
+  body[data-read="on"]{font-size:16px}
+  body[data-read="on"] .article,
+  body[data-read="on"] article,
+  body[data-read="on"] .content,
+  body[data-read="on"] main,
+  body[data-read="on"] .reader{max-width:100%!important}
+}

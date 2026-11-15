@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>本地部署 · 工具域 · 白驹 ccowork</title>
+<meta name="description" content="在本机跑起整套站点与服务的步骤与环境要求。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/toolbox/local-deploy.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{--bg:#05070d;--card:rgba(15,22,38,.72);--line:rgba(120,160,220,.16);--blue:#5b8cff;--cyan:#38e1ff;--ice:#5eead4;--gold:#f0b95c;--text:#eaf1fc;--muted:#8fa3bd;--grad:linear-gradient(120deg,#5eead4,#38b6ff 55%,#5b8cff)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.8;overflow-x:hidden}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:6px}
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(5,7,13,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav a.back{color:var(--muted);text-decoration:none;font-size:14px}
+nav a.back:hover{color:var(--cyan)}
+.hero{position:relative;z-index:5;text-align:center;padding:64px 24px 32px}
+.hero .tag{display:inline-block;font-size:13px;color:var(--ice);border:1px solid rgba(94,234,212,.35);background:rgba(94,234,212,.06);padding:6px 18px;border-radius:999px;letter-spacing:2px;margin-bottom:22px}
+.hero h1{font-size:clamp(28px,4.5vw,48px);font-weight:900;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:14px;font-size:15px;max-width:640px;margin-left:auto;margin-right:auto}
+.wrap{position:relative;z-index:5;max-width:1100px;margin:0 auto;padding:20px 24px 80px}
+.group{margin:40px 0 8px;display:flex;align-items:center;gap:16px}
+.group b{font-size:20px;white-space:nowrap;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.group::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
+.card{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);backdrop-filter:blur(10px);transition:transform .3s ease,border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(56,225,255,.4);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.card .body{padding:18px}
+.card h3{font-size:16px;color:var(--ice);margin-bottom:6px}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.card .num{position:absolute;top:12px;right:14px;font-size:28px;font-weight:900;color:rgba(56,225,255,.12)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+th{background:rgba(23,35,61,.8);color:var(--ice)}
+blockquote{border-left:3px solid var(--blue);padding:10px 16px;margin:14px 0;background:rgba(18,27,51,.6);border-radius:0 10px 10px 0;color:var(--muted)}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+</head>
+<body data-ccnav="toolbox" data-cctitle="工具">
+<div class="pg-wrap">
+<article class="merged-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-local-deploy.png" alt="ccowork · 本地部署手册 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="hero">
+  <span class="tag">本地AI部署</span>
+  <h1>本地部署<span>手册</span></h1>
+  <p>Ollama、Stable Diffusion等本地AI工具的完整部署指南</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+</div>
+<div class="wrap">
+<div class="group"><b>本地AI部署完全指南</b></div>
+<div class="grid">
+<div class="card"><span class="num">01</span><div class="body"><h3>为什么要本地部署？</h3><p><strong>隐私安全</strong>：数据不出本地，完全私密。<br><strong>离线可用</strong>：无网络也能使用。<br><strong>零成本</strong>：一次部署，永久免费（除电费）。<br><strong>定制化</strong>：可微调、可扩展、完全掌控。</p></div></div>
+<div class="card"><span class="num">02</span><div class="body"><h3>Ollama：最简单的方式</h3><p><strong>安装</strong>：curl -fsSL https://ollama.ai/install.sh | sh<br><strong>运行模型</strong>：ollama run qwen2.5:1.5b<br><strong>常用模型</strong>：qwen2.5（中文好）、llama3.1（英文好）、deepseek-r1（推理强）<br><strong>API调用</strong>：默认端口11434，兼容OpenAI格式。</p></div></div>
+<div class="card"><span class="num">03</span><div class="body"><h3>LM Studio：图形界面</h3><p><strong>特点</strong>：无需命令行，图形界面操作。<br><strong>功能</strong>：模型下载管理、聊天界面、API服务器、性能监控。<br><strong>适合</strong>：完全不懂命令行的小白用户。<br><strong>下载</strong>：lmstudio.ai</p></div></div>
+<div class="card"><span class="num">04</span><div class="body"><h3>Stable Diffusion WebUI</h3><p><strong>功能</strong>：本地AI绘画，文生图、图生图、 inpainting、模型训练。<br><strong>安装</strong>：git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui<br><strong>要求</strong>：NVIDIA显卡（6GB+显存推荐）<br><strong>模型站</strong>：civitai.com、liblib.art</p></div></div>
+<div class="card"><span class="num">05</span><div class="body"><h3>ComfyUI：节点式工作流</h3><p><strong>特点</strong>：可视化节点编辑，灵活度高，可复现。<br><strong>优势</strong>：适合复杂工作流，可分享配置。<br><strong>社区</strong>：大量开源工作流可直接使用。<br><strong>适合</strong>：有一定基础的进阶用户。</p></div></div>
+<div class="card"><span class="num">06</span><div class="body"><h3>硬件要求参考</h3><p><strong>最低配置</strong>：8GB内存 + 核显 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 可运行1.5B模型<br><strong>推荐配置</strong>：16GB内存 + RTX 3060 12GB <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 流畅运行7B模型<br><strong>高端配置</strong>：32GB内存 + RTX 4090 24GB <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 可运行13B+模型<br><strong>Mac用户</strong>：M1/M2/M3芯片，统一内存架构适合AI推理。</p></div></div>
+<div class="card"><span class="num">07</span><div class="body"><h3>常见问题</h3><p><strong>Q：本地模型效果比云端差？</strong><br>A：小模型（1.5B-7B）确实不如云端大模型，但隐私和成本优势明显。<br><strong>Q：需要什么显卡？</strong><br>A：NVIDIA显卡最佳，AMD次之，Intel核显也能跑小模型。<br><strong>Q：模型文件多大？</strong><br>A：1.5B约1GB，7B约4GB，13B约8GB，70B约40GB。</p></div></div>
+<div class="card"><span class="num">08</span><div class="body"><h3>推荐学习路径</h3><p><strong>第一步</strong>：安装Ollama，运行qwen2.5:1.5b体验<br><strong>第二步</strong>：尝试不同模型，找到适合自己的<br><strong>第三步</strong>：学习API调用，集成到自己的应用<br><strong>第四步</strong>：尝试Stable Diffusion本地绘画<br><strong>第五步</strong>：探索模型微调（可选进阶）</p></div></div>
+</div>
+<blockquote><p><strong>核心建议</strong>：本地部署是AI进阶的必经之路。从Ollama开始，逐步探索，你会发现一个完全不受限的AI世界。</p></blockquote>
+</div>
+
+
+
+  
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+
+
+<script>renderVideoSection('#vkHere', { categories: ["部署基础","DeepSeek","Ollama","ComfyUI","StableDiffusion"], title: '本地部署 · 实操视频' });</script>
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

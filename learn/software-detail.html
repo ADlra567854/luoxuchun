@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>软件教学 · 分步实操 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="按步骤拆解的软件实操教程，含环境准备与常见坑位。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/software-detail.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --green:#2bbd7e; --orange:#f5933b;
+  --text:#e8eefc; --muted:#8fa0c4;
+  --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+[data-theme="cloud"]{ --bg:#F4F7FC; --bg2:#eaf0fa; --card:#ffffff; --line:rgba(30,42,68,.12); --text:#1E293B; --muted:#5a6b8c; --green:#10966a; --orange:#d97706; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s}
+::selection{background:var(--blue);color:#fff}
+a{color:inherit;text-decoration:none}
+img{display:block}
+/* 导航 */
+nav.top{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:13px 26px;background:rgba(6,8,15,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:.3s}
+[data-theme="cloud"] nav.top{background:rgba(255,255,255,.85)}
+nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;flex:none}
+nav .brand .logo{width:26px;height:26px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:15px}
+nav .links{display:flex;gap:14px;font-size:14px;align-items:center;flex-wrap:wrap}
+nav .links a{color:var(--muted);transition:.25s}
+nav .links a:hover,nav .links a.cur{color:var(--cyan)}
+.theme-btn{cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;transition:.2s}
+.theme-btn:hover{border-color:var(--cyan)}
+/* Hero */
+.hero{position:relative;padding:44px 22px 26px;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,15,.55),rgba(6,8,15,.95)),radial-gradient(820px 400px at 18% -12%,rgba(79,140,255,.32),transparent 62%)}
+[data-theme="cloud"] .hero .bg::after{background:linear-gradient(180deg,rgba(244,247,252,.5),rgba(244,247,252,.95)),radial-gradient(820px 400px at 18% -12%,rgba(79,140,255,.22),transparent 62%)}
+.hero>*{position:relative;z-index:2}
+.hero .wrap{max-width:1120px;margin:0 auto;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.logo-box{width:92px;height:92px;flex:none;border-radius:18px;overflow:hidden;position:relative;
+  background:linear-gradient(135deg,var(--blue),var(--purple));display:grid;place-items:center;box-shadow:0 10px 30px rgba(56,225,255,.22)}
+.logo-box .mono{font-size:40px;font-weight:900;color:#fff}
+.logo-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14px;background:#fff}
+.hinfo{flex:1;min-width:250px}
+.cat{font-size:13px;color:var(--cyan);border:1px solid var(--line);border-radius:999px;padding:2px 11px;display:inline-block}
+.hinfo h1{font-size:clamp(25px,4vw,40px);font-weight:900;margin:9px 0 6px;line-height:1.2}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.badge{font-size:12px;font-weight:800;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.badge.open{color:var(--green);background:rgba(43,189,126,.14);border:1px solid rgba(43,189,126,.4)}
+.badge.free{color:var(--blue);background:rgba(79,140,255,.14);border:1px solid rgba(79,140,255,.4)}
+.badge.limit{color:var(--orange);background:rgba(245,147,59,.14);border:1px solid rgba(245,147,59,.42)}
+.lic{font-size:13px;color:var(--muted);margin-top:2px}
+.lic a{color:var(--green)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{border-radius:10px;padding:10px 18px;font-size:14px;font-weight:800;transition:.2s;display:inline-flex;align-items:center;gap:7px}
+.btn.pri{background:var(--grad);color:#fff}
+.btn.ghost{border:1px solid var(--line);color:var(--text)}
+.btn:hover{transform:translateY(-2px);opacity:.95}
+/* 页内目录条 */
+.tocbar{position:sticky;top:56px;z-index:60;background:rgba(6,8,15,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+[data-theme="cloud"] .tocbar{background:rgba(255,255,255,.86)}
+.tocbar .in{max-width:1120px;margin:0 auto;display:flex;gap:8px;padding:9px 22px;overflow-x:auto;scrollbar-width:none}
+.tocbar .in::-webkit-scrollbar{display:none}
+.tocbar a{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;border:1px solid transparent;border-radius:999px;padding:4px 13px;transition:.2s}
+.tocbar a:hover{color:var(--cyan);border-color:var(--line)}
+/* 主体布局 */
+.wrap{max-width:1120px;margin:0 auto;padding:30px 22px 10px;display:grid;grid-template-columns:1fr 300px;gap:26px;align-items:start}
+main{min-width:0}
+section.sec{margin-bottom:34px;scroll-margin-top:112px}
+.sec-head{font-size:clamp(19px,2.4vw,26px);font-weight:900;margin-bottom:14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.sec-head .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .n{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-weight:700}
+.desc{font-size:15px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;line-height:1.85}
+/* 上手操作时间线 */
+.steps{display:grid;gap:12px}
+.stepitem{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;transition:.22s}
+.stepitem:hover{border-color:rgba(56,225,255,.45);transform:translateX(3px)}
+.stepitem .k{flex:none;width:30px;height:30px;border-radius:10px;background:var(--grad);color:#fff;font-weight:900;font-size:14px;display:grid;place-items:center}
+.stepitem .v{font-size:14px;color:var(--text);line-height:1.7;opacity:.92}
+/* 快速三步 */
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
+.qcard .qt{font-size:12px;font-weight:800;color:var(--cyan);margin-bottom:6px}
+.qcard p{font-size:13px;color:var(--muted);line-height:1.62}
+/* 先导片 */
+.clipbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.clipbox video{width:100%;border-radius:10px;display:block;background:#000;aspect-ratio:16/9;object-fit:cover}
+.clipnote{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+/* 贴士 */
+.tips{background:linear-gradient(135deg,rgba(43,189,126,.1),rgba(79,140,255,.06));border:1px solid rgba(43,189,126,.35);border-radius:14px;padding:16px 20px;font-size:14px;line-height:1.8}
+.tips b{color:var(--green)}
+/* 视频文档 */
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:11px}
+.vbtn{text-align:center;border:1px solid var(--line);border-radius:10px;padding:13px 10px;font-size:14px;font-weight:700;color:var(--cyan);transition:.2s;display:flex;align-items:center;justify-content:center;gap:7px}
+.vbtn:hover{background:rgba(56,225,255,.1);border-color:var(--cyan);transform:translateY(-2px)}
+.vbtn.doc{color:var(--green)}
+.vbtn.doc:hover{background:rgba(43,189,126,.1);border-color:rgba(43,189,126,.6)}
+/* 同类推荐 */
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px}
+.rel a{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;transition:.2s}
+.rel a:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.rel .rl{width:36px;height:36px;border-radius:10px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--blue),var(--purple));display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px;flex:none}
+.rel .rl img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:5px;background:#fff}
+.rel .rinfo{min-width:0}
+.rel .rinfo b{font-size:14px;font-weight:700;display:block}
+.rel .rinfo span{font-size:11px;color:var(--muted)}
+/* 侧栏 */
+aside{position:sticky;top:112px;display:grid;gap:14px}
+.icard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px}
+.icard h4{font-size:12px;font-weight:900;color:var(--muted);letter-spacing:.5px;margin-bottom:11px;text-transform:uppercase}
+.irow{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.irow:last-child{border-bottom:none}
+.irow .k{color:var(--muted);flex:none}
+.irow .v{text-align:right;font-weight:700;word-break:break-word}
+.irow .v a{color:var(--green)}
+.irow .v.tags{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.irow .v.tags em{font-style:normal;font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-weight:600}
+.cta{display:flex;flex-direction:column;gap:9px}
+.cta .btn{width:100%;justify-content:center}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:32px 20px;border-top:1px solid var(--line)}
+footer a{color:var(--cyan)}
+.loading{padding:70px;text-align:center;color:var(--muted)}
+/* 响应式 */
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0;padding:24px 18px 10px}
+  aside{position:static;order:-1;margin-bottom:24px;grid-template-columns:1fr 1fr;display:grid}
+  .quick{grid-template-columns:1fr}
+  .tocbar{top:54px}
+  section.sec{scroll-margin-top:106px}
+}
+@media(max-width:640px){
+  nav.top{padding:10px 13px;flex-wrap:nowrap;gap:10px}
+  nav .brand{font-size:15px}
+  nav .brand .bname{display:none}
+  nav .links{gap:9px;font-size:13px;flex-wrap:nowrap}
+  .theme-btn{padding:5px 10px;font-size:12px;white-space:nowrap}
+  .hero{padding:32px 15px 20px}
+  .logo-box{width:70px;height:70px;border-radius:18px}
+  .logo-box .mono{font-size:30px}
+  .wrap{padding:20px 15px 8px}
+  aside{grid-template-columns:1fr}
+  .stepitem{padding:13px 14px;gap:11px}
+  .stepitem:hover{transform:none}
+  .vids{grid-template-columns:1fr}
+  .rel{grid-template-columns:1fr}
+  .acts .btn{flex:1 1 100%;justify-content:center}
+  .sec-head{font-size:20px}
+}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<h1 class="merged-title">软件教学 · 分步实操</h1>
+<div id="app"><div class="loading">加载中…</div></div>
+
+<script>
+(function(){
+  var saved = localStorage.getItem('ccowork.theme');
+  var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'cloud' : 'deep');
+  apply(theme);
+  function apply(t){ document.body.setAttribute('data-theme',t); var b=document.getElementById('themeBtn'); if(b) b.textContent = t==='cloud'?'☀️ 浅色':'🌙 深色'; }
+  document.getElementById('themeBtn').addEventListener('click',function(){ var n=document.body.getAttribute('data-theme')==='cloud'?'deep':'cloud'; apply(n); localStorage.setItem('ccowork.theme',n); });
+})();
+var CAT_PHOTO = {
+  'CAD三维设计':'eng7.jpg','工程制图':'eng12.jpg','三维建模':'eng7.jpg',
+  '仿真CAE':'eng5.jpg','电子EDA':'eng1.jpg','数学计算':'eng10.jpg',
+  '编程开发':'eng5.jpg','工程文档':'eng10.jpg'
+};
+/* AI 生成的领域先导片（5s，本地 MP4） */
+var CLIPS = { freecad:'freecad.mp4', blender:'blender.mp4', kicad:'kicad.mp4' };
+function badgeClass(f){ if(f==='开源')return'open'; if(f==='免费')return'free'; return'limit'; }
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function getParam(n){ return new URLSearchParams(location.search).get(n); }
+fetch('/data/software.json').then(function(r){return r.json();}).then(function(d){
+  var id = getParam('id');
+  var s = (d.software||[]).filter(function(x){return x.id===id;})[0];
+  if(!s){ document.getElementById('app').innerHTML='<div class="loading">未找到该软件。<br><br><a href="/learn/software.html" style="color:var(--cyan)">← 返回软件学院</a></div>'; return; }
+  render(s, d.software||[]);
+}).catch(function(e){ document.getElementById('app').innerHTML='<div class="loading">数据加载失败：'+e+'</div>'; });
+function render(s, all){
+  var first = s.name.charAt(0);
+  var photo = CAT_PHOTO[s.category] || 'eng1.jpg';
+  var logo = s.logo ? '<img src="'+s.logo+'" alt="'+esc(s.name)+'" onerror="this.remove()">' : '';
+  var vids = (s.videos||[]).map(function(v){
+    return '<a class="vbtn" href="'+v.url+'" target="_blank" rel="noopener">▶ '+v.platform+' 教程</a>';
+  }).join('');
+  var docBtn = s.docs ? '<a class="vbtn doc" href="'+s.docs+'" target="_blank" rel="noopener">📖 官方文档</a>' : '';
+  var stepList = (s.steps && s.steps.length) ? s.steps : [s.teach&&s.teach.download, s.teach&&s.teach.deploy, s.teach&&s.teach.use].filter(Boolean);
+  var stepsHtml = stepList.map(function(t,i){
+    return '<div class="stepitem"><span class="k">'+(i+1)+'</span><span class="v">'+esc(t)+'</span></div>';
+  }).join('');
+  var quick = [
+    ['📥 下载', s.teach&&s.teach.download],
+    ['⚙️ 部署', s.teach&&s.teach.deploy],
+    ['🚀 使用', s.teach&&s.teach.use]
+  ].filter(function(x){return x[1];}).map(function(x){
+    return '<div class="qcard"><div class="qt">'+x[0]+'</div><p>'+esc(x[1])+'</p></div>';
+  }).join('');
+  var tips = s.tips ? '<section class="sec" id="tips"><div class="sec-head">上手<span class="em">贴士</span><span class="n">避坑</span></div><div class="tips">'+esc(s.tips)+'</div></section>' : '';
+  var relArr = all.filter(function(x){return x.category===s.category && x.id!==s.id;}).slice(0,4);
+  var rel = relArr.map(function(x){
+    var l = x.logo ? '<span class="rl">'+x.name.charAt(0)+'<img src="'+x.logo+'" alt="" onerror="this.remove()"></span>' : '<span class="rl">'+x.name.charAt(0)+'</span>';
+    return '<a href="/learn/software-detail.html?id='+x.id+'">'+l+'<span class="rinfo"><b>'+esc(x.name)+'</b><span>'+x.category+' · '+x.free+'</span></span></a>';
+  }).join('');
+  var osTags = (s.os||[]).map(function(o){return '<em>'+o+'</em>';}).join('');
+  var clip = CLIPS[s.id];
+  var clipSec = clip ? '<section class="sec" id="clip"><div class="sec-head">上手<span class="em">先导片</span><span class="n">AI 生成 · 5s</span></div>'+
+    '<div class="clipbox"><video src="/assets/software/videos/'+clip+'" poster="/assets/software/photos/'+photo+'" controls muted loop playsinline preload="none"></video>'+
+    '<p class="clipnote">🎬 这是 AI 生成的领域氛围短片，帮你快速感受「这款软件是做什么的」；真实操作步骤请看下方「上手操作」与「视频与文档」。</p></div></section>' : '';
+  var html =
+  '<header class="hero"><div class="bg" style="background-image:url(\'/assets/software/photos/'+photo+'\')"></div>'+
+    '<div class="wrap">'+
+      '<div class="logo-box"><span class="mono">'+first+'</span>'+logo+'</div>'+
+      '<div class="hinfo">'+
+        '<span class="cat">'+s.category+'</span>'+
+        '<h1>'+esc(s.name)+'</h1>'+
+        '<div class="badges"><span class="badge '+badgeClass(s.free)+'">'+s.free+'</span>'+(s.opensource&&s.repo?'<span class="badge open">开源</span>':'')+'</div>'+
+        '<div class="lic">⚖️ '+(s.license||'')+(s.repo?' · <a href="'+s.repo+'" target="_blank" rel="noopener">查看源码</a>':'')+'</div>'+
+        '<div class="acts">'+
+          (s.url?'<a class="btn pri" href="'+s.url+'" target="_blank" rel="noopener">🌐 官网下载</a>':'')+
+          (s.docs?'<a class="btn ghost" href="'+s.docs+'" target="_blank" rel="noopener">📖 官方文档</a>':'')+
+          '<a class="btn ghost" href="/learn/software.html">← 回到软件学院</a>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+  '</header>'+
+  '<div class="tocbar"><div class="in">'+
+    (clip?'<a href="#clip">先导片</a>':'')+
+    '<a href="#about">关于</a>'+
+    '<a href="#how">上手操作</a>'+
+    (s.tips?'<a href="#tips">上手贴士</a>':'')+
+    '<a href="#vid">视频与文档</a>'+
+    (relArr.length?'<a href="#rel">同类推荐</a>':'')+
+  '</div></div>'+
+  '<div class="wrap"><main>'+
+    clipSec+
+    '<section class="sec" id="about"><div class="sec-head">关于<span class="em">这款</span></div><div class="desc">'+esc(s.desc)+'</div></section>'+
+    (quick?'<section class="sec"><div class="sec-head">快速<span class="em">三步</span><span class="n">概览</span></div><div class="quick">'+quick+'</div></section>':'')+
+    '<section class="sec" id="how"><div class="sec-head">上手<span class="em">操作</span><span class="n">'+stepList.length+' 步</span></div><div class="steps">'+stepsHtml+'</div></section>'+
+    tips+
+    '<section class="sec" id="vid"><div class="sec-head">视频<span class="em">与文档</span></div><div class="vids">'+vids+docBtn+'</div></section>'+
+    (relArr.length?'<section class="sec" id="rel"><div class="sec-head">同类<span class="em">推荐</span></div><div class="rel">'+rel+'</div></section>':'')+
+  '</main><aside>'+
+    '<div class="icard"><h4>快速信息</h4>'+
+      '<div class="irow"><span class="k">分类</span><span class="v">'+s.category+'</span></div>'+
+      '<div class="irow"><span class="k">授权</span><span class="v">'+s.free+'</span></div>'+
+      '<div class="irow"><span class="k">协议</span><span class="v">'+(s.license||'—')+'</span></div>'+
+      '<div class="irow"><span class="k">平台</span><span class="v tags">'+osTags+'</span></div>'+
+      (s.docs?'<div class="irow"><span class="k">文档</span><span class="v"><a href="'+s.docs+'" target="_blank" rel="noopener">打开 →</a></span></div>':'')+
+      (s.repo?'<div class="irow"><span class="k">源码</span><span class="v"><a href="'+s.repo+'" target="_blank" rel="noopener">GitHub →</a></span></div>':'')+
+    '</div>'+
+    '<div class="icard cta"><h4>开始使用</h4>'+
+      (s.url?'<a class="btn pri" href="'+s.url+'" target="_blank" rel="noopener">🌐 官网下载</a>':'')+
+      (s.docs?'<a class="btn ghost" href="'+s.docs+'" target="_blank" rel="noopener">📖 官方文档</a>':'')+
+    '</div>'+
+  '</aside></div>';
+  document.getElementById('app').innerHTML = html;
+  document.title = s.name + ' · 白驹软件学院';
+}
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

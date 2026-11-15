@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="全部开源仓库 vLLM 62,400 星 Python Apache-2.0 推理运行 把显卡吞吐压到极限的服务端推理引擎 62,400 GitHub 星数 Python 主语言 Apache-2.0 许可 推理运行 分…">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>vLLM · 开源项目 · 白驹 ccowork</title>
+<meta name="description" content="全部开源仓库 vLLM 62,400 星 Python Apache-2.0 推理运行 把显卡吞吐压到极限的服务端推理引擎 62,400 GitHub 星数 Python 主语言 Apache-2.0 许可 推理运行 分…">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/page-ext.css">
+<link rel="stylesheet" href="/repo-page.css">
+<meta name="twitter:description" content="全部开源仓库 vLLM 62,400 星 Python Apache-2.0 推理运行 把显卡吞吐压到极限的服务端推理引擎 62,400 GitHub 星数 Python 主语言 Apache-2.0 许可 推理运行 分…">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/toolbox/p/vllm.html">
+<meta property="og:title" content="vLLM · 开源项目 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/toolbox/p/vllm.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="vLLM · 开源项目 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="toolbox" data-cctitle="vLLM">
+<main class="pg-wrap">
+
+  <div class="pg-hero">
+    <div data-cccrumb="开源仓库"></div>
+    <a class="rp-back" href="/toolbox/repos.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>全部开源仓库</a>
+    <h1>vLLM</h1>
+    <div class="rp-meta"><span class="rp-pill star"><i class="cc-ic" data-ic="star" aria-hidden="true"></i>62,400 星</span><span class="rp-pill"><i class="cc-ic" data-ic="code" aria-hidden="true"></i>Python</span><span class="rp-pill"><i class="cc-ic" data-ic="scale" aria-hidden="true"></i>Apache-2.0</span><span class="rp-pill"><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>推理运行</span></div>
+    <p class="lede">把显卡吞吐压到极限的服务端推理引擎</p>
+  </div>
+
+  <div class="rp-cover"><img src="/assets/covers/repos/vllm-project__vllm.png" alt="vLLM 项目封面" loading="eager" width="1200" height="600"></div>
+
+  <div class="rp-stats">
+    <div class="st"><b>62,400</b><span>GitHub 星数</span></div>
+    <div class="st"><b>Python</b><span>主语言</span></div>
+    <div class="st"><b>Apache-2.0</b><span>许可</span></div>
+    <div class="st"><b>推理运行</b><span>分类</span></div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="target" aria-hidden="true"></i>它解决的是哪一步</h2><span class="sub">先把定位说清楚，再决定要不要装</span></div>
+    <div class="rp-lead">PagedAttention 是它提出来的，核心思路是把 KV Cache 像操作系统管内存那样分页，避免显存碎片。结果是同样的卡能扛更多并发。连续批处理、张量并行、OpenAI 兼容服务一个不缺。学习曲线真实存在，但并发一过五，省下来的卡钱就回本了。</div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="terminal" aria-hidden="true"></i>上手三步</h2><span class="sub">按顺序走，卡住基本都在第一步</span></div>
+    <div class="rp-steps">
+      <div class="rp-step"><div class="no">1</div><div class="tx"><b>备好 CUDA 环境</b><p>它和显卡驱动、CUDA 版本绑得很紧。先确认 nvidia-smi 正常，再按官方文档装对应版本，别用系统自带的旧 torch。</p></div></div>
+      <div class="rp-step"><div class="no">2</div><div class="tx"><b>起服务</b><p>pip install vllm 之后 vllm serve &lt;模型路径&gt;。多卡加 --tensor-parallel-size，显存不够先调 --gpu-memory-utilization 到 0.9。</p></div></div>
+      <div class="rp-step"><div class="no">3</div><div class="tx"><b>压测再上线</b><p>用 vllm bench 或自己的压测脚本量并发下的首字延迟和吞吐，这两个数才决定你要几张卡。</p></div></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="shield" aria-hidden="true"></i>适合与不适合</h2><span class="sub">不适合的部分比适合更值得看</span></div>
+    <div class="rp-fit">
+      <div class="rp-col yes"><h3><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>适合你，如果</h3><ul>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>多并发的 API 服务，要把显卡跑满</li>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>团队共用一套推理服务，需要稳定的 OpenAI 兼容接口</li>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>多卡部署大模型，需要张量并行</li>
+      </ul></div>
+      <div class="rp-col no"><h3><i class="cc-ic" data-ic="circle-x" aria-hidden="true"></i>换别的，如果</h3><ul>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>只想本地点开就聊——太重了，用 Ollama</li>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>没有 NVIDIA 显卡的机器</li>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>只需要跑一两个小模型做实验</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>推理运行里的其他选择</h2><span class="sub">同类不必只看一个</span></div>
+    <div class="rp-sib">
+      <a class="rp-sib-card" href="/toolbox/p/ollama.html"><img src="/assets/covers/repos/ollama__ollama.png" alt="" loading="lazy"><span class="tx"><b>Ollama</b><span>185,100 星 · Go</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/ggml-org__llama.cpp.png" alt="" loading="lazy"><span class="tx"><b>llama.cpp</b><span>132,600 星 · C++</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/exo-explore__exo.png" alt="" loading="lazy"><span class="tx"><b>exo</b><span>48,100 星 · Python</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <div class="rp-src">
+    <a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener"><i class="cc-ic" data-ic="github" aria-hidden="true"></i>去 GitHub 看源码</a>
+    <a class="alt" href="/toolbox/repos.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>回到开源仓库列表</a>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

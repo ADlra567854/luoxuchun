@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="AI 学院,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="DataAnalysisAgent · AI 学院毕业设计 · 白驹 ccowork">
+<meta name="description" content="本项目解决传统数据分析流程中“写代码耗时长、探索逻辑依赖经验、可视化复用性差”的痛点，实现从原始数据上传到分析报告输出的全流程自动化。完成本项目你将掌握Agent工具调用、数据处理链路设计、大模型与可视化库联动的工程能力。">
+<meta property="og:description" content="本项目解决传统数据分析流程中“写代码耗时长、探索逻辑依赖经验、可视化复用性差”的痛点，实现从原始数据上传到分析报告输出的全流程自动化。完成本项目你将掌握Agent工具调用、数据处理链路设计、大模型与可视化库联动的工程能力。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>DataAnalysisAgent · AI 学院 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"DataAnalysisAgent · AI 学院 · 白驹 ccowork","description":"本项目解决传统数据分析流程中“写代码耗时长、探索逻辑依赖经验、可视化复用性差”的痛点，实现从原始数据上传到分析报告输出的全流程自动化。完成本项目你将掌握Agent工具调用、数据处理链路设计、大模型与可视化库联动的工程能力。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/website/ai-academy/projects/data-analysis.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/ai-academy/projects/data-analysis.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DataAnalysisAgent · AI 学院 · 白驹 ccowork">
+<meta name="twitter:description" content=" DataAnalysisAgent  白驹 ccowork · AI 学院 毕业设计 08 号  2026-10-27  难度：进阶  约 6 小时 数据分析 08 号毕业设计：DataAnalysis…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-theme="cloud"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav><div class="logo">白驹 ccowork · 离线版</div><a href="../../ai-academy-projects.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 项目库</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../../assets/pg/pg-website-ai-academy-projects-data-analysis.png" alt="DataAnalysisAgent · AI 学院 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>DataAnalysisAgent</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 毕业设计 08 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">数据分析</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>08 号毕业设计：DataAnalysisAgent</h2>
+<p>本项目解决传统数据分析流程中“写代码耗时长、探索逻辑依赖经验、可视化复用性差”的痛点，实现从原始数据上传到分析报告输出的全流程自动化。完成本项目你将掌握Agent工具调用、数据处理链路设计、大模型与可视化库联动的工程能力。</p>
+<h2>项目简介</h2>
+<p>DataAnalysisAgent是面向结构化数据的智能分析助手，定位为“零代码/低代码数据分析伙伴”，支持CSV、Excel格式的业务数据上传，自动完成数据质量探查、异常值处理、多维度统计分析、可视化图表生成，并输出可直接复用的分析结论与Python代码。项目基于大模型函数调用能力实现工具链路编排，无需用户手动编写Pandas、Matplotlib代码，即可完成从原始脏数据到结构化分析报告的全流程，适用于业务运营分析、学生数据集作业、中小企业数据报表等场景，核心设计目标是降低数据分析的技术门槛，同时保留分析过程的可解释性与代码可复现性。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="../../../assets/body/bb-data-analysis.png" alt="DataAnalysisAgent · AI 学院 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>自动数据探查：上传数据集后自动识别字段类型、缺失率、重复值、数值字段分布统计，生成数据质量报告，标记高风险字段（如缺失率>30%的列、取值唯一的ID列）。</li>
+<li>智能数据清洗：基于字段语义自动执行缺失值填充（数值字段用中位数/分位数、分类字段用众数）、异常值截断（3σ原则/四分位距）、重复行删除、日期格式标准化，支持用户手动调整清洗规则。</li>
+<li>自然语言驱动分析：支持用户用中文输入分析需求（如“统计各地区销售额的月度趋势”“找出用户流失率最高的3个渠道”），Agent自动拆解任务、调用分析工具并返回结果。</li>
+<li>自适应可视化生成：根据分析场景自动匹配图表类型（趋势用折线图、对比用柱状图、占比用饼图、相关性用热力图），基于Matplotlib/Seaborn生成可导出的高清图片，自动添加坐标轴标签、标题、图例。</li>
+<li>分析代码与报告导出：所有分析步骤自动生成带注释的Python代码，支持一键导出Jupyter Notebook格式文件；同时生成Markdown格式的分析报告，包含数据概览、清洗说明、核心结论、图表附件。</li>
+<li>多轮对话上下文记忆：支持多轮追问（如“刚才的销售额趋势去掉华东地区再算一遍”“把柱状图换成堆叠柱状图”），无需重复上传数据集。</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>大模型底座</td><td>Qwen2-7B-Instruct（本地部署）/ GPT-3.5-turbo（API调用）</td><td>负责意图识别、任务拆解、工具调用参数生成、分析结论撰写</td></tr>
+<tr><td>Agent编排框架</td><td>LangChain 0.2.x</td><td>实现工具注册、记忆管理、调用链路编排、错误重试机制</td></tr>
+<tr><td>数据处理引擎</td><td>Pandas 2.2.x、NumPy 1.26.x</td><td>执行数据读取、清洗、统计计算、聚合分析等核心数据操作</td></tr>
+<tr><td>可视化模块</td><td>Matplotlib 3.8.x、Seaborn 0.13.x、Plotly 5.22.x</td><td>生成静态/交互式可视化图表，支持图片导出</td></tr>
+<tr><td>交互界面</td><td>Streamlit 1.36.x</td><td>搭建Web操作界面，支持文件上传、对话交互、图表展示、报告下载</td></tr>
+<tr><td>存储模块</td><td>本地临时文件目录 + SQLite</td><td>缓存上传的数据集、对话历史、生成的代码与报告文件</td></tr>
+</tbody>
+</table>
+<p>架构说明：整体采用“感知-决策-执行-反馈”的四层Agent架构，用户交互层接收上传的数据集与自然语言需求后，由大模型决策层识别用户意图，匹配对应的工具（数据探查/清洗/分析/可视化/导出工具），将参数传递给执行层的Python工具链完成具体操作，执行结果返回大模型整理为自然语言结论后，再通过交互层呈现给用户；整个过程的中间结果、对话上下文存入记忆模块，支持多轮交互的状态留存。</p>
+<h2>核心代码骨架</h2>
+<pre><code># 核心模块1：工具定义与Agent初始化
+import pandas as pd
+import matplotlib.pyplot as plt
+from langchain.agents import AgentExecutor, create_tool_calling_agent
+from langchain_core.tools import tool
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.chat_models import ChatTongyi
+# 全局数据集缓存（实际生产可替换为Redis/临时文件存储）
+DATASET_CACHE = {}
+@tool
+def data_profiling(dataset_id: str) -&gt; dict:
+    """读取上传的数据集，返回数据质量探查结果，包含字段类型、缺失率、重复值数量、数值字段统计量
+    Args:
+        dataset_id: 上传数据集的唯一标识，由前端上传时生成
+    """
+    df = DATASET_CACHE[dataset_id]
+    profile = {
+        "row_count": len(df),
+        "col_count": len(df.columns),
+        "missing_rate": df.isna().mean().to_dict(),
+        "duplicate_count": df.duplicated().sum(),
+        "numeric_stats": df.describe().to_dict()
+    }
+    return profile
+@tool
+def auto_clean(dataset_id: str, fill_strategy: str = "auto") -&gt; str:
+    """执行自动数据清洗，返回清洗操作说明
+    Args:
+        dataset_id: 数据集唯一标识
+        fill_strategy: 缺失值填充策略，可选auto/median/mode/drop
+    """
+    df = DATASET_CACHE[dataset_id]
+    ops = []
+    # 去重
+    before = len(df)
+    df = df.drop_duplicates()
+    ops.append(f"删除重复行{before - len(df)}条")
+    # 缺失值处理
+    for col in df.columns:
+        if pd.api.types.is_numeric_dtype(df[col]):
+            df[col] = df[col].fillna(df[col].median())
+            ops.append(f"数值列{col}使用中位数填充缺失值")
+        else:
+            df[col] = df[col].fillna(df[col].mode()[0] if not df[col].mode().empty else "未知")
+            ops.append(f"分类列{col}使用众数填充缺失值")
+    DATASET_CACHE[dataset_id] = df
+    return "；".join(ops)
+# 初始化Agent
+llm = ChatTongyi(model="qwen2-7b-instruct", temperature=0)
+tools = [data_profiling, auto_clean]
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "你是专业的数据分析助手，基于用户提供的数据集调用工具完成分析，所有结论要基于数据计算结果，禁止编造数据。"),
+    ("placeholder", "{chat_history}"),
+    ("human", "{input}"),
+    ("placeholder", "{agent_scratchpad}")
+])
+agent = create_tool_calling_agent(llm, tools, prompt)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)</code></pre>
+<pre><code># 核心模块2：Streamlit交互入口
+import streamlit as st
+import uuid
+st.set_page_config(page_title="DataAnalysisAgent", layout="wide")
+st.title(" DataAnalysisAgent 智能数据分析助手")
+# 初始化会话状态
+if "dataset_id" not in st.session_state:
+    st.session_state.dataset_id = str(uuid.uuid4())
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+# 侧边栏文件上传
+with st.sidebar:
+    uploaded_file = st.file_uploader("上传数据集（支持CSV/Excel）", type=["csv", "xlsx", "xls"])
+    if uploaded_file:
+        if uploaded_file.name.endswith(".csv"):
+            df = pd.read_csv(uploaded_file)
+        else:
+            df = pd.read_excel(uploaded_file)
+        DATASET_CACHE[st.session_state.dataset_id] = df
+        st.success(f"数据集加载成功，共{len(df)}行{len(df.columns)}列")
+        st.dataframe(df.head(5), use_container_width=True)
+# 对话交互区
+for msg in st.session_state.chat_history:
+    with st.chat_message(msg["role"]):
+        st.write(msg["content"])
+if user_input := st.chat_input("输入你的分析需求，例如：统计各品类销售额并画柱状图"):
+    st.session_state.chat_history.append({"role": "user", "content": user_input})
+    with st.chat_message("user"):
+        st.write(user_input)
+    # 调用Agent执行
+    with st.chat_message("assistant"):
+        with st.spinner("正在分析中..."):
+            response = agent_executor.invoke({
+                "input": f"当前数据集id为{st.session_state.dataset_id}，{user_input}",
+                "chat_history": st.session_state.chat_history
+            })
+            st.write(response["output"])
+            st.session_state.chat_history.append({"role": "assistant", "content": response["output"]})</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：确保本地安装Python 3.10+，创建并激活虚拟环境，执行<code>pip install pandas numpy matplotlib seaborn streamlit langchain langchain-community dashscope</code>安装所有依赖库。</li>
+<li>大模型配置：若使用通义千问API，在系统环境变量中添加<code>DASHSCOPE_API_KEY=你的API密钥</code>（密钥可从阿里云百炼平台免费申请）；若使用本地Qwen2-7B模型，额外安装<code>pip install ollama</code>，执行<code>ollama pull qwen2:7b-instruct</code>后将代码中ChatTongyi替换为ChatOllama即可。</li>
+<li>项目初始化：创建项目目录，新建<code>app.py</code>文件，将上述核心代码复制到文件中，补充可视化工具、代码导出工具的函数定义（可参考Pandas与Matplotlib官方文档实现）。</li>
+<li>启动服务：在项目目录下执行命令<code>streamlit run app.py --server.port 8501</code>，等待服务启动后浏览器会自动打开操作界面（地址默认http://localhost:8501）。</li>
+<li>功能测试：在侧边栏上传测试数据集（可使用Kaggle公开的电商销售数据集、泰坦尼克号数据集），等待数据加载完成后，在对话框输入“先做数据探查，再自动清洗数据”验证基础流程。</li>
+<li>分析验证：输入具体分析需求（如“统计不同舱位乘客的幸存率，画柱状图并给出结论”），检查返回的统计结果、图表是否符合预期，尝试多轮追问调整分析逻辑。</li>
+<li>导出结果：完成分析后点击结果区的“导出代码”“导出报告”按钮，检查生成的Python代码是否可直接运行、Markdown报告是否包含完整分析逻辑。</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>支持更多数据源：新增MySQL、PostgreSQL数据库连接工具，支持直连业务数据库读取数据，增加对Parquet、JSON等格式文件的解析能力，适配日志数据、埋点数据等非结构化半结构化数据的分析。</li>
+<li>引入AutoML能力：在分析模块中集成Scikit-learn工具，支持用户提出预测类需求（如“基于历史数据预测下季度销售额”“找出影响用户流失的核心特征”），自动完成特征工程、模型训练、效果评估，输出模型结论与特征重要性图表。</li>
+<li>增加分析洞察能力：对接大模型的推理能力，基于统计结果自动挖掘业务异常点（如“华南地区3月销售额同比下降40%，主要原因是XX品类缺货”），结合行业常识给出可落地的业务建议，而非仅输出统计数字。</li>
+<li>多用户权限管理：增加用户登录模块，基于SQLite存储不同用户的数据集、分析历史，支持团队共享分析报告与数据集，增加操作日志审计功能，适配企业内部多用户使用场景。</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握了基于LangChain的工具调用型Agent开发流程，理解大模型“意图识别-参数生成-工具执行-结果整合”的全链路逻辑，能够独立设计垂直场景的Agent工具集。</li>
+<li>熟练掌握Pandas数据清洗、统计分析的核心API，以及Matplotlib/Seaborn的可视化封装方法，能够将通用数据处理逻辑抽象为可被大模型调用的标准化工具。</li>
+<li>掌握Streamlit快速搭建数据类Web应用的方法，理解会话状态管理、文件上传、交互组件的使用方式，能够独立开发可直接交付的AI工具Demo。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>在现有代码框架基础上，新增一个<code>visualize_plot</code>工具函数，支持大模型传入图表类型、x轴字段、y轴字段、标题参数，自动生成对应的Seaborn图表并在Streamlit界面展示，测试自然语言生成图表的效果。</li>
+<li>新增代码导出功能：将Agent每次调用工具的参数、执行逻辑自动拼接为带注释的Python代码，在界面增加“下载Jupyter Notebook”按钮，点击后可导出包含所有分析步骤、可直接运行的ipynb文件。</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 AI 学院「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

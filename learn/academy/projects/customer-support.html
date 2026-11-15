@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CustomerSupport 智能客服 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="AI 学院实战项目：目标、拆解、实现步骤与验收标准。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/projects/customer-support.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-projects-customer-support.png" alt="CustomerSupport 智能客服 · AI 学院 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1><i class="cc-ic" data-ic="headphones" aria-hidden="true"></i>CustomerSupport 智能客服</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 毕业设计 19 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">服务</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>19 号毕业设计：CustomerSupport 智能客服</h2>
+<p>本项目针对企业客服人力成本高、响应不及时、情绪处理缺失的痛点，实现集工单自动分类、知识库精准问答、用户情绪安抚于一体的智能客服Agent，学完可掌握LLM应用编排、RAG落地、Agent工具调用的全流程开发能力。</p>
+<h2>项目简介</h2>
+<p>CustomerSupport智能客服是面向电商、SaaS等行业的通用客服解决方案，核心解决传统客服70%以上重复咨询响应慢、工单分派错配率高、负面情绪用户易流失的问题。项目基于大语言模型能力，无需大量标注训练数据即可快速部署，单实例可支持每秒10+并发咨询响应，工单分类准确率可达92%以上，知识库问答匹配率超过88%，能够覆盖售前咨询、售后问题处理、投诉安抚等80%以上常见客服场景，帮助中小团队将客服人力成本明显降低（幅度随实现与数据而变，需自测）。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-customer-support.png" alt="CustomerSupport 智能客服 · AI 学院 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>智能工单自动分类：基于用户输入内容自动识别咨询类型（订单问题、产品故障、投诉建议、售前咨询、退款申请等），自动分派到对应处理队列，支持自定义分类标签体系</li>
+<li>知识库RAG问答：对接企业私有知识库（产品手册、售后政策、常见问题等），通过语义检索匹配精准答案，避免大模型幻觉，支持知识库文档的增量上传与自动分片</li>
+<li>用户情绪实时识别与安抚：实时检测用户输入的情绪倾向（愤怒、不满、中性、满意），对负面情绪用户自动输出安抚话术，高优先级触发人工客服介入通道</li>
+<li>多轮对话上下文记忆：保留最近10轮对话上下文，支持指代消解与多轮问题追踪，避免用户重复描述问题</li>
+<li>人工客服无缝转接：当问题超出知识库范围、用户情绪持续负面或用户主动要求人工时，自动转接对应技能组人工客服，并同步完整对话上下文</li>
+<li>对话日志自动留存：全量保存用户对话记录、分类结果、情绪标签、问题解决状态，支持后续客服效果分析与知识库迭代。</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>大语言模型</td><td>Qwen-7B-Chat / GPT-3.5-turbo</td><td>负责意图识别、情绪判断、答案生成、安抚话术输出</td></tr>
+<tr><td>向量数据库</td><td>ChromaDB</td><td>存储知识库分片的向量嵌入，支持语义相似度检索</td></tr>
+<tr><td>Embedding模型</td><td>bge-large-zh-v1.5</td><td>生成中文文本的向量表示，适配中文语义检索场景</td></tr>
+<tr><td>后端框架</td><td>FastAPI</td><td>提供HTTP接口服务，支撑对话请求、知识库管理、工单查询等API</td></tr>
+<tr><td>前端交互</td><td>Gradio</td><td>快速搭建可交互的客服对话Demo界面，支持测试演示</td></tr>
+<tr><td>工具编排框架</td><td>LangChain</td><td>实现RAG检索链、工具调用、对话记忆、多Agent协同逻辑</td></tr>
+<tr><td>数据存储</td><td>SQLite</td><td>存储对话日志、工单信息、分类标签配置等结构化数据</td></tr>
+</tbody>
+</table>
+<p>架构说明：整体采用分层设计，最上层为用户交互层，通过Gradio页面或API接口接收用户输入；中间为核心调度层，由LangChain编排的客服Agent首先完成情绪检测与意图分类，若为知识库覆盖的常见问题则触发RAG检索链生成答案，若为需要分派的工单则自动写入对应队列，若检测到高优先级负面情绪则优先触发安抚逻辑并转接人工；底层为数据层，分别对接向量数据库、结构化数据库与大模型推理服务，所有处理流程的日志统一落盘供后续分析。</p>
+<h2>核心代码骨架</h2>
+<pre><code>from langchain.agents import AgentExecutor, Tool
+from langchain.chains import RetrievalQA
+from langchain.chat_models import ChatOpenAI
+from langchain.embeddings import HuggingFaceBgeEmbeddings
+from langchain.memory import ConversationBufferWindowMemory
+from langchain.vectorstores import Chroma
+# 1. 初始化基础组件
+llm = ChatOpenAI(model="qwen-7b-chat", base_url="http://localhost:8000/v1", api_key="EMPTY")
+embeddings = HuggingFaceBgeEmbeddings(model_name="BAAI/bge-large-zh-v1.5")
+vector_db = Chroma(persist_directory="./chroma_db", embedding_function=embeddings, collection_name="customer_support_kb")
+memory = ConversationBufferWindowMemory(k=10, return_messages=True)  # 保留最近10轮对话
+# 2. 定义核心工具
+# 知识库问答工具
+qa_chain = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=vector_db.as_retriever(search_kwargs={"k": 3}))
+# 工单分类工具
+def ticket_classify(query: str) -&gt; str:
+    prompt = f"将用户问题分类到以下标签之一：[订单问题,产品故障,投诉建议,售前咨询,退款申请,其他]，只输出标签：{query}"
+    return llm.predict(prompt)
+# 情绪检测工具
+def emotion_detect(query: str) -&gt; str:
+    prompt = f"判断用户情绪为[愤怒,不满,中性,满意]之一，只输出标签：{query}"
+    return llm.predict(prompt)
+tools = [
+    Tool(name="知识库问答", func=qa_chain.run, description="回答产品规则、售后政策、常见操作类问题"),
+    Tool(name="工单分类", func=ticket_classify, description="对用户咨询进行分类打标"),
+    Tool(name="情绪检测", func=emotion_detect, description="识别用户当前情绪状态")
+]
+# 3. 客服Agent调度逻辑
+def customer_support_agent(user_input: str) -&gt; str:
+    # 第一步：先做情绪检测，若为愤怒/不满优先安抚
+    emotion = emotion_detect(user_input)
+    if emotion in ["愤怒", "不满"]:
+        appease = llm.predict(f"用户情绪{emotion}，问题是{user_input}，请输出1句真诚的安抚话术，不要直接回答问题")
+        # 高优先级情绪直接触发人工转接提示
+        if emotion == "愤怒":
+            return f"{appease}\n非常抱歉给您带来不好的体验，我已为您转接专属人工客服，将在1分钟内为您处理，请您稍候。"
+    # 第二步：工单分类打标
+    ticket_type = ticket_classify(user_input)
+    # 第三步：知识库检索回答
+    answer = qa_chain.run(user_input)
+    # 若知识库无相关答案则提示转接人工
+    if "无法回答" in answer or "没有相关信息" in answer:
+        return f"关于您提到的{ticket_type}问题，我暂时无法为您提供准确解答，已为您转接对应处理组的人工客服，请您稍候。"
+    # 拼接安抚语（若有）和答案
+    prefix = appease if emotion in ["愤怒", "不满"] else ""
+    return f"{prefix}{answer}"</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：安装Python 3.10+版本，执行<code>pip install fastapi uvicorn langchain chromadb sentence-transformers gradio openpyxl pydantic==1.10.13</code>安装所有依赖库</li>
+<li>模型部署：使用vLLM本地部署Qwen-7B-Chat模型，执行命令<code>python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen-7B-Chat --served-model-name qwen-7b-chat --port 8000 --trust-remote-code</code>，等待模型加载完成</li>
+<li>知识库初始化：准备Markdown/Excel格式的企业知识库文档（如产品手册、售后政策），执行<code>python utils/init_kb.py --kb_path ./data/knowledge_base --chunk_size 500 --chunk_overlap 50</code>，自动完成文档分片、向量生成并写入ChromaDB</li>
+<li>配置文件修改：复制<code>config.example.yaml</code>为<code>config.yaml</code>，修改大模型地址、向量库路径、人工转接阈值、情绪敏感等级等参数</li>
+<li>服务启动：执行<code>uvicorn main:app --host 0.0.0.0 --port 7860</code>启动后端API服务，同时自动加载Gradio交互页面</li>
+<li>功能测试：访问<code>http://localhost:7860</code>打开对话界面，测试咨询产品问题、投诉退款等场景，验证分类、问答、安抚功能是否正常，可在<code>./data/chat_logs</code>目录查看自动留存的对话日志。</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>多渠道接入：扩展适配企业微信、抖音、淘宝旺旺等主流客服渠道的消息对接，支持多渠道用户咨询统一接入Agent处理，增加渠道来源标签</li>
+<li>工单流程闭环：对接企业内部OA/工单系统，实现工单自动创建、状态同步、处理结果回传，支持用户主动查询工单处理进度</li>
+<li>知识库自动迭代：基于对话日志中无法回答的问题、用户满意度反馈，自动挖掘高频未覆盖问题，定期推送知识库更新建议</li>
+<li>个性化客服配置：支持配置不同行业（电商/教育/SaaS）的客服话术风格、分类标签体系、安抚话术模板，通过少量示例即可适配不同行业场景。</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握了基于LangChain的Agent工具编排逻辑，理解了"感知-决策-执行"的客服Agent运行流程，能够独立设计面向垂直场景的LLM应用架构</li>
+<li>掌握了中文场景下RAG系统的落地全流程，包括文档分片策略、中文Embedding模型选型、向量库检索优化、幻觉规避方法</li>
+<li>掌握了大模型在业务场景的落地技巧，包括情绪识别、意图分类的Prompt设计方法，以及人工兜底、日志留存等工程化必备能力。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>在现有代码基础上新增"订单查询"工具，模拟对接订单数据库，实现用户输入订单号即可自动查询订单物流、退款状态的功能，要求工具调用逻辑正确，返回结果自然</li>
+<li>收集10条真实的客服负面投诉对话，测试现有情绪安抚模块的效果，调整Prompt优化安抚话术的真诚度，要求愤怒情绪用户的安抚满意度（人工评判）达到80%以上。</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 AI 学院「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

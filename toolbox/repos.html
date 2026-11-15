@@ -1,0 +1,2470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>开源仓库库 · 148 个能跑的项目 · 白驹 ccowork</title>
+<meta name="description" content="AI 开源仓库库：148 个可自部署项目，按推理、RAG、Agent、图像、语音等 15 类分组，标注星数、语言、许可证、上手难度与国内可直连性。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/page-ext.css">
+<link rel="stylesheet" href="/cover.css">
+</head>
+<body data-ccnav="toolbox" data-cctitle="开源仓库">
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/repos.jpg" alt="" loading="eager" decoding="async"></div>
+  <div class="pg-hero">
+    <div data-cccrumb="开源仓库"></div>
+    <h1>开源仓库库 · <em>148 个能自己跑起来的项目</em></h1>
+    <p class="lede">收录标准只有一条：<b>克隆下来能跑，不是只能看</b>。纯论文复现、只有 demo 视频、三个月没提交的项目一律不收。每条都标了语言、许可证、上手难度与国内可直连性——后两项决定它今天能不能用上。</p>
+    <div class="pg-stats">
+      <div class="st"><b>148</b><span>个仓库</span></div>
+      <div class="st"><b>15</b><span>个分类</span></div>
+      <div class="st"><b>7.27M</b><span>星数合计</span></div>
+      <div class="st"><b>2026-11-15</b><span>数据快照</span></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="filter" aria-hidden="true"></i>按分类筛</h2>
+      <span class="sub">点分类只看这一类；再点「全部」回到全量</span></div>
+    <div class="pg-chips" id="catChips">
+      <button class="pg-chip on" type="button" data-cat="all">全部 <b>148</b></button><button class="pg-chip" type="button" data-cat="code">编程 Agent <b>18</b></button><button class="pg-chip" type="button" data-cat="agent">Agent 框架 <b>17</b></button><button class="pg-chip" type="button" data-cat="img">图像生成 <b>13</b></button><button class="pg-chip" type="button" data-cat="ui">客户端 / 前端 <b>12</b></button><button class="pg-chip" type="button" data-cat="model">模型权重 <b>11</b></button><button class="pg-chip" type="button" data-cat="agentp">Agent 应用平台 <b>10</b></button><button class="pg-chip" type="button" data-cat="aud">语音 / 音乐 <b>9</b></button><button class="pg-chip" type="button" data-cat="rag">RAG / 知识库 <b>9</b></button><button class="pg-chip" type="button" data-cat="ops">网关 / 运维 <b>9</b></button><button class="pg-chip" type="button" data-cat="run">推理运行 <b>8</b></button><button class="pg-chip" type="button" data-cat="doc">文档 / OCR <b>8</b></button><button class="pg-chip" type="button" data-cat="data">数据 / 抓取 <b>8</b></button><button class="pg-chip" type="button" data-cat="vid">视频生成 <b>7</b></button><button class="pg-chip" type="button" data-cat="train">训练 / 微调 <b>5</b></button><button class="pg-chip" type="button" data-cat="vec">向量 / 检索 <b>4</b></button>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="star" aria-hidden="true"></i>仓库清单</h2>
+      <span class="cnt" id="rc">共 148 条</span></div>
+
+    <div class="pg-toolbar">
+      <label class="q"><i class="cc-ic" data-ic="search" aria-hidden="true"></i>
+        <input type="search" id="q" placeholder="搜仓库名、用途、语言…（如 RAG / 语音 / 中文）" autocomplete="off">
+      </label>
+      <select id="sort" aria-label="排序方式">
+        <option value="star">按星数排</option>
+        <option value="easy">按上手难度排（易 → 难）</option>
+        <option value="name">按名称排</option>
+      </select>
+    </div>
+
+    <div class="pg-grid dense" id="list" style="grid-template-columns:repeat(auto-fill,minmax(272px,1fr))">
+      <a class="rpx has-cvr" href="https://github.com/morluto/rea" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="460503" data-h="2"
+         data-t="rea morluto/rea 让 Agent 做逆向：从 App 行为一路追到原生二进制，一周涨约 4.7 万星。要摸清闭源程序怎么跑、或批量分析二进制时选它，纯静态分析不够用的场景最明显。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/morluto__rea.png" alt="rea · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>rea</h3><span class="repo">morluto/rea</span></div>
+          <span class="star">★ 460.5k</span>
+        </div>
+        <p class="desc">让 Agent 做逆向：从 App 行为一路追到原生二进制，一周涨约 4.7 万星。要摸清闭源程序怎么跑、或批量分析二进制时选它，纯静态分析不够用的场景最明显。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/ollama.html"
+         data-cat="run" data-s="185100" data-h="1"
+         data-t="Ollama ollama/ollama 本地跑开源模型的事实标准。一条 ollama run 即可，底层是 llama.cpp，默认开 OpenAI 兼容接口 11434。适合开发与原型，不适合 5 并发以上的服务。 推理运行">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/ollama__ollama.png" alt="Ollama · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Ollama</h3><span class="repo">ollama/ollama</span></div>
+          <span class="star">★ 185.1k</span>
+        </div>
+        <p class="desc">本地跑开源模型的事实标准。一条 ollama run 即可，底层是 llama.cpp，默认开 OpenAI 兼容接口 11434。适合开发与原型，不适合 5 并发以上的服务。</p>
+        <div class="mx">
+          <span class="lang" data-l="Go">Go</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="180236" data-h="1"
+         data-t="Ponytail DietrichGebert/ponytail 给编码 Agent 套一层「最懒的资深工程师」人格约束：先质疑需求值不值得做，再劝它少写代码、复用现成的。要压住 Agent 的过度设计和无谓重构时装它；纯技能文件，无运行时依赖。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/DietrichGebert__ponytail.png" alt="Ponytail · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Ponytail</h3><span class="repo">DietrichGebert/ponytail</span></div>
+          <span class="star">★ 180.2k</span>
+        </div>
+        <p class="desc">给编码 Agent 套一层「最懒的资深工程师」人格约束：先质疑需求值不值得做，再劝它少写代码、复用现成的。要压住 Agent 的过度设计和无谓重构时装它；纯技能文件，无运行时依赖。</p>
+        <div class="mx">
+          <span class="lang" data-l="JavaScript">JavaScript</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="178000" data-h="2"
+         data-t="AutoGPT Significant-Gravitas/AutoGPT 把「自主 Agent」概念带火的项目，现已转向可视化构建平台。历史意义大于当前实用价值，学习循环设计可以看。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Significant-Gravitas__AutoGPT.png" alt="AutoGPT · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>AutoGPT</h3><span class="repo">Significant-Gravitas/AutoGPT</span></div>
+          <span class="star">★ 178.0k</span>
+        </div>
+        <p class="desc">把「自主 Agent」概念带火的项目，现已转向可视化构建平台。历史意义大于当前实用价值，学习循环设计可以看。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT(附加条款)</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/stable-diffusion-webui.html"
+         data-cat="img" data-s="165200" data-h="2"
+         data-t="Stable Diffusion WebUI AUTOMATIC1111/stable-diffusion-webui 图像生成的经典 Web 界面，插件生态庞大。仍是学习基础操作（采样器、CFG、ControlNet）最直观的入口。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/AUTOMATIC1111__stable-diffusion-webui.png" alt="Stable Diffusion WebUI · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Stable Diffusion WebUI</h3><span class="repo">AUTOMATIC1111/stable-diffusion-webui</span></div>
+          <span class="star">★ 165.2k</span>
+        </div>
+        <p class="desc">图像生成的经典 Web 界面，插件生态庞大。仍是学习基础操作（采样器、CFG、ControlNet）最直观的入口。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/huggingface/transformers" target="_blank" rel="noopener noreferrer"
+         data-cat="train" data-s="152000" data-h="3"
+         data-t="Transformers huggingface/transformers 模型定义与加载的公共底座，几乎所有新模型都在这里首发支持。不必用它训练，但读它的源码是理解模型结构的最短路径。 训练 / 微调">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/huggingface__transformers.png" alt="Transformers · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Transformers</h3><span class="repo">huggingface/transformers</span></div>
+          <span class="star">★ 152.0k</span>
+        </div>
+        <p class="desc">模型定义与加载的公共底座，几乎所有新模型都在这里首发支持。不必用它训练，但读它的源码是理解模型结构的最短路径。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="148000" data-h="2"
+         data-t="n8n n8n-io/n8n 自动化工作流的老牌选手，现在把 AI 节点也接全了。适合把 AI 挂进已有的业务流程，而不是从零搭 Agent。许可非标准开源，商用需确认。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/n8n-io__n8n.png" alt="n8n · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>n8n</h3><span class="repo">n8n-io/n8n</span></div>
+          <span class="star">★ 148.0k</span>
+        </div>
+        <p class="desc">自动化工作流的老牌选手，现在把 AI 节点也接全了。适合把 AI 挂进已有的业务流程，而不是从零搭 Agent。许可非标准开源，商用需确认。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Sustainable Use(非 OSI)</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="144997" data-h="1"
+         data-t="Graphify Graphify-Labs/graphify 把整个仓库连同文档、SQL schema、配置和 PDF 解析成可查询知识图谱，本地 AST 解析、每条边可解释，不依赖向量库。要读懂陌生大项目时选它。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Graphify-Labs__graphify.png" alt="Graphify · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Graphify</h3><span class="repo">Graphify-Labs/graphify</span></div>
+          <span class="star">★ 145.0k</span>
+        </div>
+        <p class="desc">把整个仓库连同文档、SQL schema、配置和 PDF 解析成可查询知识图谱，本地 AST 解析、每条边可解释，不依赖向量库。要读懂陌生大项目时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener noreferrer"
+         data-cat="run" data-s="132600" data-h="2"
+         data-t="llama.cpp ggml-org/llama.cpp 纯 C/C++ 推理实现，把 CPU、Metal、CUDA、Vulkan 全吃下来。GGUF 格式的定义者。Ollama、LM Studio 等一大批工具的内核都是它。 推理运行">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/ggml-org__llama.cpp.png" alt="llama.cpp · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>llama.cpp</h3><span class="repo">ggml-org/llama.cpp</span></div>
+          <span class="star">★ 132.6k</span>
+        </div>
+        <p class="desc">纯 C/C++ 推理实现，把 CPU、Metal、CUDA、Vulkan 全吃下来。GGUF 格式的定义者。Ollama、LM Studio 等一大批工具的内核都是它。</p>
+        <div class="mx">
+          <span class="lang" data-l="C++">C++</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/stablyai/orca" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="125245" data-h="1"
+         data-t="Orca stablyai/orca 把一队编码 Agent 收进一个桌面端：Claude Code、Grok Bot 各挂自己的订阅跑，桌面/移动/远程共用会话。要同时开几个 Agent 干活又不想自己写调度时选它。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/stablyai__orca.png" alt="Orca · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Orca</h3><span class="repo">stablyai/orca</span></div>
+          <span class="star">★ 125.2k</span>
+        </div>
+        <p class="desc">把一队编码 Agent 收进一个桌面端：Claude Code、Grok Bot 各挂自己的订阅跑，桌面/移动/远程共用会话。要同时开几个 Agent 干活又不想自己写调度时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="119755" data-h="2"
+         data-t="TradingAgents TauricResearch/TradingAgents 把分析师、研究员、交易员、风控拆成多个 LLM 角色互相辩论，最后给出买卖结论。做多智能体协作研究、或想看清一个决策怎么被吵出来时选它，别直接接实盘。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/TauricResearch__TradingAgents.png" alt="TradingAgents · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>TradingAgents</h3><span class="repo">TauricResearch/TradingAgents</span></div>
+          <span class="star">★ 119.8k</span>
+        </div>
+        <p class="desc">把分析师、研究员、交易员、风控拆成多个 LLM 角色互相辩论，最后给出买卖结论。做多智能体协作研究、或想看清一个决策怎么被吵出来时选它，别直接接实盘。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/dify.html"
+         data-cat="agentp" data-s="118000" data-h="2"
+         data-t="Dify langgenius/dify 开源版 Coze：可视化编排 Agent、知识库、工作流，还能当后端 API 用。国内团队出品，中文文档齐全，自建首选。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/langgenius__dify.png" alt="Dify · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Dify</h3><span class="repo">langgenius/dify</span></div>
+          <span class="star">★ 118.0k</span>
+        </div>
+        <p class="desc">开源版 Coze：可视化编排 Agent、知识库、工作流，还能当后端 API 用。国内团队出品，中文文档齐全，自建首选。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0(附加条款)</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener noreferrer"
+         data-cat="rag" data-s="117189" data-h="2"
+         data-t="Claude Mem thedotmack/claude-mem 给每个 Agent 补跨会话记忆：抓取会话中的操作与工具调用，压缩后存本地 SQLite 与 Chroma，新会话按需检索注入。长任务反复断上下文时选它。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/thedotmack__claude-mem.png" alt="Claude Mem · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Claude Mem</h3><span class="repo">thedotmack/claude-mem</span></div>
+          <span class="star">★ 117.2k</span>
+        </div>
+        <p class="desc">给每个 Agent 补跨会话记忆：抓取会话中的操作与工具调用，压缩后存本地 SQLite 与 Chroma，新会话按需检索注入。长任务反复断上下文时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="116812" data-h="1"
+         data-t="Caveman JuliusBrussee/caveman 用「原始人说话」风格砍掉编码 Agent 六成 token 的技能加代理：回答变短，日志与测试输出被压缩。预算紧、又不想牺牲正确性时挂上它；纯提示层，不动模型。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/JuliusBrussee__caveman.png" alt="Caveman · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Caveman</h3><span class="repo">JuliusBrussee/caveman</span></div>
+          <span class="star">★ 116.8k</span>
+        </div>
+        <p class="desc">用「原始人说话」风格砍掉编码 Agent 六成 token 的技能加代理：回答变短，日志与测试输出被压缩。预算紧、又不想牺牲正确性时挂上它；纯提示层，不动模型。</p>
+        <div class="mx">
+          <span class="lang" data-l="Go">Go</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/open-webui.html"
+         data-cat="ui" data-s="112000" data-h="2"
+         data-t="Open WebUI open-webui/open-webui 自建 ChatGPT 的首选前端。多用户、权限、RAG、工具调用、模型切换都内置，接 Ollama 或任何 OpenAI 兼容端点。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/open-webui__open-webui.png" alt="Open WebUI · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Open WebUI</h3><span class="repo">open-webui/open-webui</span></div>
+          <span class="star">★ 112.0k</span>
+        </div>
+        <p class="desc">自建 ChatGPT 的首选前端。多用户、权限、RAG、工具调用、模型切换都内置，接 Ollama 或任何 OpenAI 兼容端点。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>自定义(BSD-3 变体)</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="112000" data-h="2"
+         data-t="LangChain langchain-ai/langchain 生态最大也最重。优点是任何模型、任何向量库都有现成适配；缺点是抽象层多，出问题栈很深。适合快速验证。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/langchain-ai__langchain.png" alt="LangChain · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>LangChain</h3><span class="repo">langchain-ai/langchain</span></div>
+          <span class="star">★ 112.0k</span>
+        </div>
+        <p class="desc">生态最大也最重。优点是任何模型、任何向量库都有现成适配；缺点是抽象层多，出问题栈很深。适合快速验证。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener noreferrer"
+         data-cat="data" data-s="110501" data-h="2"
+         data-t="Agent Reach Panniantong/Agent-Reach 给 Agent 装上互联网读取能力，内置 Twitter、Reddit、YouTube、B 站、小红书的抓取与反爬处理。要做多平台内容采集又不想自己维护登录态时选它。 数据 / 抓取">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Panniantong__Agent-Reach.png" alt="Agent Reach · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Agent Reach</h3><span class="repo">Panniantong/Agent-Reach</span></div>
+          <span class="star">★ 110.5k</span>
+        </div>
+        <p class="desc">给 Agent 装上互联网读取能力，内置 Twitter、Reddit、YouTube、B 站、小红书的抓取与反爬处理。要做多平台内容采集又不想自己维护登录态时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="110374" data-h="1"
+         data-t="Impeccable pbakaus/impeccable 给编程 Agent 的设计词汇表：24 条命令加 62 条确定性检测规则，专门揪 AI 生成界面那套腔调（到处 Inter 字体、紫蓝渐变、卡片套卡片）。要让 Agent 产出的前端不像模板时选它。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/pbakaus__impeccable.png" alt="Impeccable · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Impeccable</h3><span class="repo">pbakaus/impeccable</span></div>
+          <span class="star">★ 110.4k</span>
+        </div>
+        <p class="desc">给编程 Agent 的设计词汇表：24 条命令加 62 条确定性检测规则，专门揪 AI 生成界面那套腔调（到处 Inter 字体、紫蓝渐变、卡片套卡片）。要让 Agent 产出的前端不像模板时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Rust">Rust</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/gemini-cli.html"
+         data-cat="code" data-s="108400" data-h="1"
+         data-t="Gemini CLI google-gemini/gemini-cli Google 官方终端 Agent，免费额度大方。国内直连受限，需要自备网络环境。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/google-gemini__gemini-cli.png" alt="Gemini CLI · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Gemini CLI</h3><span class="repo">google-gemini/gemini-cli</span></div>
+          <span class="star">★ 108.4k</span>
+        </div>
+        <p class="desc">Google 官方终端 Agent，免费额度大方。国内直连受限，需要自备网络环境。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/deepseek-ai/DeepSeek-V3" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="104000" data-h="3"
+         data-t="DeepSeek-V3 deepseek-ai/DeepSeek-V3 MoE 架构的开放权重旗舰，671B 总参 / 37B 激活。本地部署需多卡，实际多数人用它的 API。仓库里是推理代码。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/deepseek-ai__DeepSeek-V3.png" alt="DeepSeek-V3 · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>DeepSeek-V3</h3><span class="repo">deepseek-ai/DeepSeek-V3</span></div>
+          <span class="star">★ 104.0k</span>
+        </div>
+        <p class="desc">MoE 架构的开放权重旗舰，671B 总参 / 37B 激活。本地部署需多卡，实际多数人用它的 API。仓库里是推理代码。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>自定义(模型许可)</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/D4Vinci/Scrapling" target="_blank" rel="noopener noreferrer"
+         data-cat="data" data-s="103081" data-h="2"
+         data-t="Scrapling D4Vinci/Scrapling 爬虫框架，一个库里同时给 HTTP 请求、隐身浏览器、强解析与并发爬取，能过 Cloudflare 与 JS 渲染页；自带 MCP 服务与 Agent 技能，给智能体取数时用它。 数据 / 抓取">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/D4Vinci__Scrapling.png" alt="Scrapling · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Scrapling</h3><span class="repo">D4Vinci/Scrapling</span></div>
+          <span class="star">★ 103.1k</span>
+        </div>
+        <p class="desc">爬虫框架，一个库里同时给 HTTP 请求、隐身浏览器、强解析与并发爬取，能过 Cloudflare 与 JS 渲染页；自带 MCP 服务与 Agent 技能，给智能体取数时用它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>BSD-3-Clause</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/comfyui.html"
+         data-cat="img" data-s="96200" data-h="2"
+         data-t="ComfyUI comfyanonymous/ComfyUI 节点式工作流，把生成过程拆成可复用的图。视频、多图参考、局部重绘这些复杂流程只能在这里表达，已是事实标准。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/comfyanonymous__ComfyUI.png" alt="ComfyUI · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>ComfyUI</h3><span class="repo">comfyanonymous/ComfyUI</span></div>
+          <span class="star">★ 96.2k</span>
+        </div>
+        <p class="desc">节点式工作流，把生成过程拆成可复用的图。视频、多图参考、局部重绘这些复杂流程只能在这里表达，已是事实标准。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>GPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener noreferrer"
+         data-cat="aud" data-s="92400" data-h="2"
+         data-t="VoiceStudio debpalash/VoiceStudio 全本地的 ElevenLabs 替代品：克隆、配音、听写、转录、有声书一个桌面应用全包，默认引擎覆盖 646 种语言，同时开 OpenAI 兼容的语音接口。不想把音频传云端时选它。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/debpalash__VoiceStudio.png" alt="VoiceStudio · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>VoiceStudio</h3><span class="repo">debpalash/VoiceStudio</span></div>
+          <span class="star">★ 92.4k</span>
+        </div>
+        <p class="desc">全本地的 ElevenLabs 替代品：克隆、配音、听写、转录、有声书一个桌面应用全包，默认引擎覆盖 646 种语言，同时开 OpenAI 兼容的语音接口。不想把音频传云端时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="92000" data-h="3"
+         data-t="DeepSeek-R1 deepseek-ai/DeepSeek-R1 用强化学习做长链推理的代表作，开源了推理范式的可复现路径。蒸馏小模型对个人更实用。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/deepseek-ai__DeepSeek-R1.png" alt="DeepSeek-R1 · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>DeepSeek-R1</h3><span class="repo">deepseek-ai/DeepSeek-R1</span></div>
+          <span class="star">★ 92.0k</span>
+        </div>
+        <p class="desc">用强化学习做长链推理的代表作，开源了推理范式的可复现路径。蒸馏小模型对个人更实用。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT(代码)</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/ChatGPTNextWeb/NextChat" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="88900" data-h="1"
+         data-t="NextChat ChatGPTNextWeb/NextChat 轻量到极致的跨平台客户端，接 100+ 模型，Web / 桌面 / 手机都有。想要「打开就说」而不是「先配置」时用它。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/ChatGPTNextWeb__NextChat.png" alt="NextChat · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>NextChat</h3><span class="repo">ChatGPTNextWeb/NextChat</span></div>
+          <span class="star">★ 88.9k</span>
+        </div>
+        <p class="desc">轻量到极致的跨平台客户端，接 100+ 模型，Web / 桌面 / 手机都有。想要「打开就说」而不是「先配置」时用它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/whisper.html"
+         data-cat="aud" data-s="88500" data-h="1"
+         data-t="Whisper openai/whisper 语音识别的事实标准，多语言、带时间戳、抗噪。原版推理慢，实际用 faster-whisper 或 whisper.cpp 跑。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/openai__whisper.png" alt="Whisper · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Whisper</h3><span class="repo">openai/whisper</span></div>
+          <span class="star">★ 88.5k</span>
+        </div>
+        <p class="desc">语音识别的事实标准，多语言、带时间戳、抗噪。原版推理慢，实际用 faster-whisper 或 whisper.cpp 跑。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/opencv/opencv" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="84200" data-h="2"
+         data-t="OpenCV opencv/opencv 计算机视觉的传统底座。AI 生成之外，裁切、拼接、色彩校正这些脏活仍然靠它。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/opencv__opencv.png" alt="OpenCV · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>OpenCV</h3><span class="repo">opencv/opencv</span></div>
+          <span class="star">★ 84.2k</span>
+        </div>
+        <p class="desc">计算机视觉的传统底座。AI 生成之外，裁切、拼接、色彩校正这些脏活仍然靠它。</p>
+        <div class="mx">
+          <span class="lang" data-l="C++">C++</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/nomic-ai/gpt4all" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="77400" data-h="1"
+         data-t="GPT4All nomic-ai/gpt4all 面向普通电脑的本地模型桌面端，CPU 也能跑。老牌项目，模型库偏保守但稳定。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/nomic-ai__gpt4all.png" alt="GPT4All · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>GPT4All</h3><span class="repo">nomic-ai/gpt4all</span></div>
+          <span class="star">★ 77.4k</span>
+        </div>
+        <p class="desc">面向普通电脑的本地模型桌面端，CPU 也能跑。老牌项目，模型库偏保守但稳定。</p>
+        <div class="mx">
+          <span class="lang" data-l="C++">C++</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener noreferrer"
+         data-cat="vid" data-s="75499" data-h="2"
+         data-t="Hyperframes heygen-com/hyperframes 用 HTML 和 CSS 写画面，交给无头浏览器逐帧渲成视频，专为 Agent 批量出片设计。要可编程、能进版本管理的视频产线时选它；它不做文生视频，画面仍得自己写。 视频生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/heygen-com__hyperframes.png" alt="Hyperframes · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Hyperframes</h3><span class="repo">heygen-com/hyperframes</span></div>
+          <span class="star">★ 75.5k</span>
+        </div>
+        <p class="desc">用 HTML 和 CSS 写画面，交给无头浏览器逐帧渲成视频，专为 Agent 批量出片设计。要可编程、能进版本管理的视频产线时选它；它不做文生视频，画面仍得自己写。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Ebony-Vinyl/dsh-our-free-model" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="74919" data-h="2"
+         data-t="dsh-our-free-model Ebony-Vinyl/dsh-our-free-model 在 DSH 里装个插件，免登录免注册免 API Key 就能调用 DeepSeek V4.1 Flash、Kimi K3 等前沿模型。零成本试 DSH 生态时选它。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Ebony-Vinyl__dsh-our-free-model.png" alt="dsh-our-free-model · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>dsh-our-free-model</h3><span class="repo">Ebony-Vinyl/dsh-our-free-model</span></div>
+          <span class="star">★ 74.9k</span>
+        </div>
+        <p class="desc">在 DSH 里装个插件，免登录免注册免 API Key 就能调用 DeepSeek V4.1 Flash、Kimi K3 等前沿模型。零成本试 DSH 生态时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="JavaScript">JavaScript</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/microsoft/markitdown" target="_blank" rel="noopener noreferrer"
+         data-cat="doc" data-s="72800" data-h="1"
+         data-t="MarkItDown microsoft/markitdown 微软的「万物转 Markdown」小工具，Word、Excel、PPT、图片、音频一个入口。轻，够用，适合做预处理管线。 文档 / OCR">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/microsoft__markitdown.png" alt="MarkItDown · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>MarkItDown</h3><span class="repo">microsoft/markitdown</span></div>
+          <span class="star">★ 72.8k</span>
+        </div>
+        <p class="desc">微软的「万物转 Markdown」小工具，Word、Excel、PPT、图片、音频一个入口。轻，够用，适合做预处理管线。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/cloudflare/security-audit-skill" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="72790" data-h="2"
+         data-t="Security Audit Skill cloudflare/security-audit-skill Cloudflare 把内部漏洞狩猎系统拆成六阶段安全审计技能：侦察、建模、审计、验证、报告、修复建议。接手陌生仓库、上线前想自查一遍时先跑它。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/cloudflare__security-audit-skill.png" alt="Security Audit Skill · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Security Audit Skill</h3><span class="repo">cloudflare/security-audit-skill</span></div>
+          <span class="star">★ 72.8k</span>
+        </div>
+        <p class="desc">Cloudflare 把内部漏洞狩猎系统拆成六阶段安全审计技能：侦察、建模、审计、验证、报告、修复建议。接手陌生仓库、上线前想自查一遍时先跑它。</p>
+        <div class="mx">
+          <span class="lang" data-l="JavaScript">JavaScript</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/browser-use/browser-use" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="72400" data-h="2"
+         data-t="Browser Use browser-use/browser-use 让模型直接操作浏览器：点按钮、填表单、抓页面。做网页自动化最热的一条路，稳定性取决于页面复杂度。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/browser-use__browser-use.png" alt="Browser Use · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Browser Use</h3><span class="repo">browser-use/browser-use</span></div>
+          <span class="star">★ 72.4k</span>
+        </div>
+        <p class="desc">让模型直接操作浏览器：点按钮、填表单、抓页面。做网页自动化最热的一条路，稳定性取决于页面复杂度。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/lobehub/lobe-chat" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="68400" data-h="1"
+         data-t="LobeChat lobehub/lobe-chat 界面与交互做得最好的开源对话客户端，插件市场、知识库、多模型聚合齐全。一条 Docker 起，也支持一键部署。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/lobehub__lobe-chat.png" alt="LobeChat · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>LobeChat</h3><span class="repo">lobehub/lobe-chat</span></div>
+          <span class="star">★ 68.4k</span>
+        </div>
+        <p class="desc">界面与交互做得最好的开源对话客户端，插件市场、知识库、多模型聚合齐全。一条 Docker 起，也支持一键部署。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Mintplex-Labs/anything-llm" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="67700" data-h="1"
+         data-t="AnythingLLM Mintplex-Labs/anything-llm 文档问答一体化：把资料丢进工作区就能聊，自带向量库、Agent、多用户。个人知识库最省心的开箱方案。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Mintplex-Labs__anything-llm.png" alt="AnythingLLM · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>AnythingLLM</h3><span class="repo">Mintplex-Labs/anything-llm</span></div>
+          <span class="star">★ 67.7k</span>
+        </div>
+        <p class="desc">文档问答一体化：把资料丢进工作区就能聊，自带向量库、Agent、多用户。个人知识库最省心的开箱方案。</p>
+        <div class="mx">
+          <span class="lang" data-l="JavaScript">JavaScript</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/tesseract-ocr/tesseract" target="_blank" rel="noopener noreferrer"
+         data-cat="doc" data-s="64200" data-h="1"
+         data-t="Tesseract tesseract-ocr/tesseract 老牌 OCR 引擎，离线、免费、多语言。中文精度不如 PaddleOCR，但依赖少、嵌入简单。 文档 / OCR">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/tesseract-ocr__tesseract.png" alt="Tesseract · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Tesseract</h3><span class="repo">tesseract-ocr/tesseract</span></div>
+          <span class="star">★ 64.2k</span>
+        </div>
+        <p class="desc">老牌 OCR 引擎，离线、免费、多语言。中文精度不如 PaddleOCR，但依赖少、嵌入简单。</p>
+        <div class="mx">
+          <span class="lang" data-l="C++">C++</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/ragflow.html"
+         data-cat="rag" data-s="62800" data-h="3"
+         data-t="RAGFlow infiniflow/ragflow 国内团队做的深度文档理解 RAG，复杂 PDF 的表格与版式解析明显强于通用方案，带可视化切片校对。中文资料场景优先试它。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/infiniflow__ragflow.png" alt="RAGFlow · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>RAGFlow</h3><span class="repo">infiniflow/ragflow</span></div>
+          <span class="star">★ 62.8k</span>
+        </div>
+        <p class="desc">国内团队做的深度文档理解 RAG，复杂 PDF 的表格与版式解析明显强于通用方案，带可视化切片校对。中文资料场景优先试它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/vllm.html"
+         data-cat="run" data-s="62400" data-h="3"
+         data-t="vLLM vllm-project/vllm PagedAttention 提出者，生产级高并发推理的默认选择。张量并行、连续批处理、OpenAI 兼容服务一个不缺。学习曲线真实存在，但 5 并发以上就能回本。 推理运行">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/vllm-project__vllm.png" alt="vLLM · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>vLLM</h3><span class="repo">vllm-project/vllm</span></div>
+          <span class="star">★ 62.4k</span>
+        </div>
+        <p class="desc">PagedAttention 提出者，生产级高并发推理的默认选择。张量并行、连续批处理、OpenAI 兼容服务一个不缺。学习曲线真实存在，但 5 并发以上就能回本。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/All-Hands-AI/OpenHands" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="62400" data-h="2"
+         data-t="OpenHands All-Hands-AI/OpenHands 前身 OpenDevin，给 Agent 一个沙箱环境自己写代码、跑命令、查网页。研究性质强，工程上可复用的是它的沙箱设计。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/All-Hands-AI__OpenHands.png" alt="OpenHands · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>OpenHands</h3><span class="repo">All-Hands-AI/OpenHands</span></div>
+          <span class="star">★ 62.4k</span>
+        </div>
+        <p class="desc">前身 OpenDevin，给 Agent 一个沙箱环境自己写代码、跑命令、查网页。研究性质强，工程上可复用的是它的沙箱设计。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Stirling-Tools/Stirling-PDF" target="_blank" rel="noopener noreferrer"
+         data-cat="doc" data-s="62400" data-h="1"
+         data-t="Stirling PDF Stirling-Tools/Stirling-PDF 自建的 PDF 工具箱：合并、拆分、OCR、压缩、签名。替代各种在线 PDF 网站，数据不出内网。 文档 / OCR">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Stirling-Tools__Stirling-PDF.png" alt="Stirling PDF · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Stirling PDF</h3><span class="repo">Stirling-Tools/Stirling-PDF</span></div>
+          <span class="star">★ 62.4k</span>
+        </div>
+        <p class="desc">自建的 PDF 工具箱：合并、拆分、OCR、压缩、签名。替代各种在线 PDF 网站，数据不出内网。</p>
+        <div class="mx">
+          <span class="lang" data-l="Java">Java</span>
+          <span>MIT(部分)</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/openinterpreter/open-interpreter" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="61200" data-h="2"
+         data-t="Open Interpreter openinterpreter/open-interpreter 让模型在你本机执行代码，用自然语言操作文件与数据。功能强但权限大，务必在隔离环境跑。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/openinterpreter__open-interpreter.png" alt="Open Interpreter · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Open Interpreter</h3><span class="repo">openinterpreter/open-interpreter</span></div>
+          <span class="star">★ 61.2k</span>
+        </div>
+        <p class="desc">让模型在你本机执行代码，用自然语言操作文件与数据。功能强但权限大，务必在隔离环境跑。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/geekan/MetaGPT" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="58200" data-h="3"
+         data-t="MetaGPT geekan/MetaGPT 把软件公司的岗位流程编码成 SOP，一句需求产出 PRD、设计、代码。国内团队出品，中文场景效果好。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/geekan__MetaGPT.png" alt="MetaGPT · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>MetaGPT</h3><span class="repo">geekan/MetaGPT</span></div>
+          <span class="star">★ 58.2k</span>
+        </div>
+        <p class="desc">把软件公司的岗位流程编码成 SOP，一句需求产出 PRD、设计、代码。国内团队出品，中文场景效果好。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/HKUDS/DeepTutor" target="_blank" rel="noopener noreferrer"
+         data-cat="rag" data-s="57593" data-h="2"
+         data-t="DeepTutor HKUDS/DeepTutor 港大 HKUDS 的自托管学习系统：多智能体加 RAG，把你的文档建成知识库、生成学习书、按时间跟踪掌握度。想要一个长期记住进度的私人助教时选它。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/HKUDS__DeepTutor.png" alt="DeepTutor · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>DeepTutor</h3><span class="repo">HKUDS/DeepTutor</span></div>
+          <span class="star">★ 57.6k</span>
+        </div>
+        <p class="desc">港大 HKUDS 的自托管学习系统：多智能体加 RAG，把你的文档建成知识库、生成学习书、按时间跟踪掌握度。想要一个长期记住进度的私人助教时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="56492" data-h="1"
+         data-t="Chrome DevTools MCP ChromeDevTools/chrome-devtools-mcp Chrome 团队把 DevTools 做成 MCP 服务，编码 Agent 能读控制台、网络与性能面板，改完前端 bug 直接在真浏览器里验证。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/ChromeDevTools__chrome-devtools-mcp.png" alt="Chrome DevTools MCP · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Chrome DevTools MCP</h3><span class="repo">ChromeDevTools/chrome-devtools-mcp</span></div>
+          <span class="star">★ 56.5k</span>
+        </div>
+        <p class="desc">Chrome 团队把 DevTools 做成 MCP 服务，编码 Agent 能读控制台、网络与性能面板，改完前端 bug 直接在真浏览器里验证。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/pingdotgg/t3code" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="54024" data-h="2"
+         data-t="T3 Code pingdotgg/t3code 本机多个编码 Agent 的统一控制面板，桌面、网页、手机都能远程接管 Claude Code、Codex、Cursor 等。手上同时跑几个 Agent、又不想守在一台机器前时用。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/pingdotgg__t3code.png" alt="T3 Code · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>T3 Code</h3><span class="repo">pingdotgg/t3code</span></div>
+          <span class="star">★ 54.0k</span>
+        </div>
+        <p class="desc">本机多个编码 Agent 的统一控制面板，桌面、网页、手机都能远程接管 Claude Code、Codex、Cursor 等。手上同时跑几个 Agent、又不想守在一台机器前时用。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="/toolbox/p/llama-factory.html"
+         data-cat="train" data-s="52400" data-h="2"
+         data-t="LLaMA-Factory hiyouga/LLaMA-Factory 中文社区最火的微调框架，零代码界面就能跑 SFT / LoRA / DPO，支持上百个模型。个人玩家的正确起点。 训练 / 微调">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/hiyouga__LLaMA-Factory.png" alt="LLaMA-Factory · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>LLaMA-Factory</h3><span class="repo">hiyouga/LLaMA-Factory</span></div>
+          <span class="star">★ 52.4k</span>
+        </div>
+        <p class="desc">中文社区最火的微调框架，零代码界面就能跑 SFT / LoRA / DPO，支持上百个模型。个人玩家的正确起点。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span><span class="rp-b">已拆解</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/PaddlePaddle/PaddleOCR" target="_blank" rel="noopener noreferrer"
+         data-cat="doc" data-s="52400" data-h="2"
+         data-t="PaddleOCR PaddlePaddle/PaddleOCR 中文 OCR 的事实标准，版面分析、表格识别、方向矫正齐全。中文文档数字化几乎绕不开它。 文档 / OCR">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/PaddlePaddle__PaddleOCR.png" alt="PaddleOCR · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>PaddleOCR</h3><span class="repo">PaddlePaddle/PaddleOCR</span></div>
+          <span class="star">★ 52.4k</span>
+        </div>
+        <p class="desc">中文 OCR 的事实标准，版面分析、表格识别、方向矫正齐全。中文文档数字化几乎绕不开它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/microsoft/autogen" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="52200" data-h="3"
+         data-t="AutoGen microsoft/autogen 微软的多智能体对话框架，把任务拆给多个角色互相评审。0.4 之后重写为事件驱动，旧教程大多已失效，注意版本。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/microsoft__autogen.png" alt="AutoGen · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>AutoGen</h3><span class="repo">microsoft/autogen</span></div>
+          <span class="star">★ 52.2k</span>
+        </div>
+        <p class="desc">微软的多智能体对话框架，把任务拆给多个角色互相评审。0.4 之后重写为事件驱动，旧教程大多已失效，注意版本。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Nutlope/hallmark" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="51729" data-h="1"
+         data-t="Hallmark Nutlope/hallmark Together AI 出的反 AI 味设计技能：50 套主题里挑材质，再用 sloplint.mjs 在 8 种页面宽度下渲染挑刺。想让 Claude Code、Cursor 一次就出像样版式时选它。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Nutlope__hallmark.png" alt="Hallmark · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Hallmark</h3><span class="repo">Nutlope/hallmark</span></div>
+          <span class="star">★ 51.7k</span>
+        </div>
+        <p class="desc">Together AI 出的反 AI 味设计技能：50 套主题里挑材质，再用 sloplint.mjs 在 8 种页面宽度下渲染挑刺。想让 Claude Code、Cursor 一次就出像样版式时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/cline/cline" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="51200" data-h="1"
+         data-t="Cline cline/cline VS Code 里的自主编码 Agent，能读仓库、改多文件、跑终端并读回结果。支持接任意兼容 API，国内可用。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/cline__cline.png" alt="Cline · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Cline</h3><span class="repo">cline/cline</span></div>
+          <span class="star">★ 51.2k</span>
+        </div>
+        <p class="desc">VS Code 里的自主编码 Agent，能读仓库、改多文件、跑终端并读回结果。支持接任意兼容 API，国内可用。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/facebookresearch/segment-anything" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="51200" data-h="3"
+         data-t="Segment Anything facebookresearch/segment-anything 点一下就把物体抠出来的分割模型，图像编辑工作流的基础能力。SAM 2 已支持视频。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/facebookresearch__segment-anything.png" alt="Segment Anything · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Segment Anything</h3><span class="repo">facebookresearch/segment-anything</span></div>
+          <span class="star">★ 51.2k</span>
+        </div>
+        <p class="desc">点一下就把物体抠出来的分割模型，图像编辑工作流的基础能力。SAM 2 已支持视频。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/unclecode/crawl4ai" target="_blank" rel="noopener noreferrer"
+         data-cat="data" data-s="48200" data-h="2"
+         data-t="Crawl4AI unclecode/crawl4ai 专为 LLM 设计的爬虫，输出结构化 Markdown 与抽取指令，异步性能好。批量采集时比通用爬虫省心。 数据 / 抓取">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/unclecode__crawl4ai.png" alt="Crawl4AI · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Crawl4AI</h3><span class="repo">unclecode/crawl4ai</span></div>
+          <span class="star">★ 48.2k</span>
+        </div>
+        <p class="desc">专为 LLM 设计的爬虫，输出结构化 Markdown 与抽取指令，异步性能好。批量采集时比通用爬虫省心。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/exo-explore/exo" target="_blank" rel="noopener noreferrer"
+         data-cat="run" data-s="48100" data-h="2"
+         data-t="exo exo-explore/exo 把多台 Mac / Linux 设备拼成一个推理集群，内存与算力池化。跑单机装不下的模型时有用，网络带宽是瓶颈。 推理运行">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/exo-explore__exo.png" alt="exo · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>exo</h3><span class="repo">exo-explore/exo</span></div>
+          <span class="star">★ 48.1k</span>
+        </div>
+        <p class="desc">把多台 Mac / Linux 设备拼成一个推理集群，内存与算力池化。跑单机装不下的模型时有用，网络带宽是瓶颈。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>GPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/unslothai/unsloth" target="_blank" rel="noopener noreferrer"
+         data-cat="train" data-s="44800" data-h="2"
+         data-t="Unsloth unslothai/unsloth 把 LoRA 训练显存砍掉一半、速度快两倍，单张 24G 卡可微调 8B。原理是手写 Triton 内核，不是玄学。 训练 / 微调">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/unslothai__unsloth.png" alt="Unsloth · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Unsloth</h3><span class="repo">unslothai/unsloth</span></div>
+          <span class="star">★ 44.8k</span>
+        </div>
+        <p class="desc">把 LoRA 训练显存砍掉一半、速度快两倍，单张 24G 卡可微调 8B。原理是手写 Triton 内核，不是玄学。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/ggml-org/whisper.cpp" target="_blank" rel="noopener noreferrer"
+         data-cat="aud" data-s="43800" data-h="2"
+         data-t="whisper.cpp ggml-org/whisper.cpp Whisper 的 C/C++ 移植，CPU、手机、树莓派都能跑。做离线字幕工具时的首选内核。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/ggml-org__whisper.cpp.png" alt="whisper.cpp · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>whisper.cpp</h3><span class="repo">ggml-org/whisper.cpp</span></div>
+          <span class="star">★ 43.8k</span>
+        </div>
+        <p class="desc">Whisper 的 C/C++ 移植，CPU、手机、树莓派都能跑。做离线字幕工具时的首选内核。</p>
+        <div class="mx">
+          <span class="lang" data-l="C++">C++</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener noreferrer"
+         data-cat="rag" data-s="42800" data-h="2"
+         data-t="LlamaIndex run-llama/llama_index 以检索为中心，切分、索引、查询引擎做得比 LangChain 细。纯做文档问答时它的路径更短。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/run-llama__llama_index.png" alt="LlamaIndex · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>LlamaIndex</h3><span class="repo">run-llama/llama_index</span></div>
+          <span class="star">★ 42.8k</span>
+        </div>
+        <p class="desc">以检索为中心，切分、索引、查询引擎做得比 LangChain 细。纯做文档问答时它的路径更短。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener noreferrer"
+         data-cat="data" data-s="42800" data-h="2"
+         data-t="Firecrawl firecrawl/firecrawl 把整站爬成干净 Markdown，自带 JS 渲染与反爬处理。做知识库采集最省事的工具，自建可绕开额度。 数据 / 抓取">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/firecrawl__firecrawl.png" alt="Firecrawl · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Firecrawl</h3><span class="repo">firecrawl/firecrawl</span></div>
+          <span class="star">★ 42.8k</span>
+        </div>
+        <p class="desc">把整站爬成干净 Markdown，自带 JS 渲染与反爬处理。做知识库采集最省事的工具，自建可绕开额度。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/opendatalab/MinerU" target="_blank" rel="noopener noreferrer"
+         data-cat="doc" data-s="42600" data-h="2"
+         data-t="MinerU opendatalab/MinerU 把 PDF（含公式、表格、多栏）转成 Markdown，专为喂给大模型设计。做论文库 RAG 的第一道工序。国内团队出品。 文档 / OCR">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/opendatalab__MinerU.png" alt="MinerU · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>MinerU</h3><span class="repo">opendatalab/MinerU</span></div>
+          <span class="star">★ 42.6k</span>
+        </div>
+        <p class="desc">把 PDF（含公式、表格、多栏）转成 Markdown，专为喂给大模型设计。做论文库 RAG 的第一道工序。国内团队出品。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/ultralytics/ultralytics" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="42600" data-h="2"
+         data-t="Ultralytics YOLO ultralytics/ultralytics 目标检测与分割的工业标准，v8/v11 一条命令训练。许可证 AGPL，商业闭源产品要买授权。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/ultralytics__ultralytics.png" alt="Ultralytics YOLO · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Ultralytics YOLO</h3><span class="repo">ultralytics/ultralytics</span></div>
+          <span class="star">★ 42.6k</span>
+        </div>
+        <p class="desc">目标检测与分割的工业标准，v8/v11 一条命令训练。许可证 AGPL，商业闭源产品要买授权。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/THU-MAIC/OpenMAIC" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="42320" data-h="2"
+         data-t="OpenMAIC THU-MAIC/OpenMAIC 清华开源的多智能体课堂：老师、助教、同学都是 Agent，围绕一个题目互相讨论。做教育类多 Agent 演示可直接起一套。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/THU-MAIC__OpenMAIC.png" alt="OpenMAIC · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>OpenMAIC</h3><span class="repo">THU-MAIC/OpenMAIC</span></div>
+          <span class="star">★ 42.3k</span>
+        </div>
+        <p class="desc">清华开源的多智能体课堂：老师、助教、同学都是 Agent，围绕一个题目互相讨论。做教育类多 Agent 演示可直接起一套。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener noreferrer"
+         data-cat="run" data-s="42100" data-h="2"
+         data-t="LocalAI mudler/LocalAI 把本地推理包装成 OpenAI 兼容 API 的一体化服务，文本、图像、语音、TTS 一个端口全给。容器优先，适合已有 Docker 的项目。 推理运行">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/mudler__LocalAI.png" alt="LocalAI · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>LocalAI</h3><span class="repo">mudler/LocalAI</span></div>
+          <span class="star">★ 42.1k</span>
+        </div>
+        <p class="desc">把本地推理包装成 OpenAI 兼容 API 的一体化服务，文本、图像、语音、TTS 一个端口全给。容器优先，适合已有 Docker 的项目。</p>
+        <div class="mx">
+          <span class="lang" data-l="Go">Go</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/lightpanda-io/browser" target="_blank" rel="noopener noreferrer"
+         data-cat="data" data-s="41694" data-h="2"
+         data-t="Lightpanda lightpanda-io/browser 用 Zig 从零写的无头浏览器，不走 Chromium，带 CDP 与 MCP 接口，可直出 Markdown。内存约 Chrome 的 1/16，适合低资源批量抓页面。 数据 / 抓取">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/lightpanda-io__browser.png" alt="Lightpanda · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Lightpanda</h3><span class="repo">lightpanda-io/browser</span></div>
+          <span class="star">★ 41.7k</span>
+        </div>
+        <p class="desc">用 Zig 从零写的无头浏览器，不走 Chromium，带 CDP 与 MCP 接口，可直出 Markdown。内存约 Chrome 的 1/16，适合低资源批量抓页面。</p>
+        <div class="mx">
+          <span class="lang" data-l="Zig">Zig</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/mem0ai/mem0" target="_blank" rel="noopener noreferrer"
+         data-cat="rag" data-s="41200" data-h="2"
+         data-t="Mem0 mem0ai/mem0 给 Agent 加长期记忆的中间层，自动抽取、去重、更新用户偏好。自建有隐私要求时它是最快落地的方案。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/mem0ai__mem0.png" alt="Mem0 · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Mem0</h3><span class="repo">mem0ai/mem0</span></div>
+          <span class="star">★ 41.2k</span>
+        </div>
+        <p class="desc">给 Agent 加长期记忆的中间层，自动抽取、去重、更新用户偏好。自建有隐私要求时它是最快落地的方案。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/FlowiseAI/Flowise" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="41200" data-h="1"
+         data-t="Flowise FlowiseAI/Flowise 拖拽式搭 LLM 流程，n8n 风格。验证想法最快，复杂逻辑会变成一大团线，后期维护成本高。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/FlowiseAI__Flowise.png" alt="Flowise · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Flowise</h3><span class="repo">FlowiseAI/Flowise</span></div>
+          <span class="star">★ 41.2k</span>
+        </div>
+        <p class="desc">拖拽式搭 LLM 流程，n8n 风格。验证想法最快，复杂逻辑会变成一大团线，后期维护成本高。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/THUDM/ChatGLM3" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="41200" data-h="2"
+         data-t="ChatGLM THUDM/ChatGLM3 中文开源模型的里程碑，6B 版本能在消费级显卡上跑。现在看能力偏弱，但它是国内开源生态的起点，值得知道。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/THUDM__ChatGLM3.png" alt="ChatGLM · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>ChatGLM</h3><span class="repo">THUDM/ChatGLM3</span></div>
+          <span class="star">★ 41.2k</span>
+        </div>
+        <p class="desc">中文开源模型的里程碑，6B 版本能在消费级显卡上跑。现在看能力偏弱，但它是国内开源生态的起点，值得知道。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/crewAIInc/crewAI" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="38600" data-h="2"
+         data-t="CrewAI crewAIInc/crewAI 用角色、目标、工具定义一支「团队」，比 AutoGen 更贴近业务语言。上手快，复杂控制流要自己补。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/crewAIInc__crewAI.png" alt="CrewAI · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>CrewAI</h3><span class="repo">crewAIInc/crewAI</span></div>
+          <span class="star">★ 38.6k</span>
+        </div>
+        <p class="desc">用角色、目标、工具定义一支「团队」，比 AutoGen 更贴近业务语言。上手快，复杂控制流要自己补。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Aider-AI/aider" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="38600" data-h="2"
+         data-t="Aider Aider-AI/aider 终端里的结对编程，把改动直接落成 git 提交，diff 可读。老派但可靠，不需要 IDE 插件。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Aider-AI__aider.png" alt="Aider · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Aider</h3><span class="repo">Aider-AI/aider</span></div>
+          <span class="star">★ 38.6k</span>
+        </div>
+        <p class="desc">终端里的结对编程，把改动直接落成 git 提交，diff 可读。老派但可靠，不需要 IDE 插件。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/janhq/jan" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="38200" data-h="1"
+         data-t="Jan janhq/jan 离线优先的桌面客户端，把本地模型服务跑在后台，界面干净。断网可用是它相对网页版的核心差别。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/janhq__jan.png" alt="Jan · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Jan</h3><span class="repo">janhq/jan</span></div>
+          <span class="star">★ 38.2k</span>
+        </div>
+        <p class="desc">离线优先的桌面客户端，把本地模型服务跑在后台，界面干净。断网可用是它相对网页版的核心差别。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/2noise/ChatTTS" target="_blank" rel="noopener noreferrer"
+         data-cat="aud" data-s="36200" data-h="2"
+         data-t="ChatTTS 2noise/ChatTTS 中文对话场景的 TTS，韵律与停顿自然，适合做播客与有声内容。开源版对语气控制有限。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/2noise__ChatTTS.png" alt="ChatTTS · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>ChatTTS</h3><span class="repo">2noise/ChatTTS</span></div>
+          <span class="star">★ 36.2k</span>
+        </div>
+        <p class="desc">中文对话场景的 TTS，韵律与停顿自然，适合做播客与有声内容。开源版对语气控制有限。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/h4ckf0r0day/obscura" target="_blank" rel="noopener noreferrer"
+         data-cat="data" data-s="35488" data-h="2"
+         data-t="Obscura h4ckf0r0day/obscura 给 Agent 用的无头浏览器，Rust 实现，专为网页抓取与自动化设计，比 Puppeteer 系轻。批量抓站或跑浏览器任务时选它。 数据 / 抓取">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/h4ckf0r0day__obscura.png" alt="Obscura · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Obscura</h3><span class="repo">h4ckf0r0day/obscura</span></div>
+          <span class="star">★ 35.5k</span>
+        </div>
+        <p class="desc">给 Agent 用的无头浏览器，Rust 实现，专为网页抓取与自动化设计，比 Puppeteer 系轻。批量抓站或跑浏览器任务时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Rust">Rust</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/milvus-io/milvus" target="_blank" rel="noopener noreferrer"
+         data-cat="vec" data-s="34600" data-h="3"
+         data-t="Milvus milvus-io/milvus 为十亿级向量设计的分布式库，国内团队主导、文档中文友好。规模没到千万级时它的复杂度是负担。 向量 / 检索">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/milvus-io__milvus.png" alt="Milvus · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Milvus</h3><span class="repo">milvus-io/milvus</span></div>
+          <span class="star">★ 34.6k</span>
+        </div>
+        <p class="desc">为十亿级向量设计的分布式库，国内团队主导、文档中文友好。规模没到千万级时它的复杂度是负担。</p>
+        <div class="mx">
+          <span class="lang" data-l="Go">Go</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/mksglu/context-mode" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="33212" data-h="2"
+         data-t="context-mode mksglu/context-mode 给编码 Agent 压上下文的 MCP 服务：工具输出进沙箱只回摘要、会话记忆落 SQLite，官方称体积可降 98%。长会话开始丢目标时上它；要自己配 hook。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/mksglu__context-mode.png" alt="context-mode · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>context-mode</h3><span class="repo">mksglu/context-mode</span></div>
+          <span class="star">★ 33.2k</span>
+        </div>
+        <p class="desc">给编码 Agent 压上下文的 MCP 服务：工具输出进沙箱只回摘要、会话记忆落 SQLite，官方称体积可降 98%。长会话开始丢目标时上它；要自己配 hook。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>自定义</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/xinntao/Real-ESRGAN" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="32400" data-h="2"
+         data-t="Real-ESRGAN xinntao/Real-ESRGAN 图像超分与修复，老照片、模糊素材救急。CPU 也能跑，速度慢。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/xinntao__Real-ESRGAN.png" alt="Real-ESRGAN · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Real-ESRGAN</h3><span class="repo">xinntao/Real-ESRGAN</span></div>
+          <span class="star">★ 32.4k</span>
+        </div>
+        <p class="desc">图像超分与修复，老照片、模糊素材救急。CPU 也能跑，速度慢。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>BSD-3-Clause</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/lllyasviel/ControlNet" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="30200" data-h="3"
+         data-t="ControlNet lllyasviel/ControlNet 用线稿、深度、姿态约束生成结果。把「抽卡」变成「可控生产」的关键一步，理解它是用好生图模型的分水岭。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/lllyasviel__ControlNet.png" alt="ControlNet · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>ControlNet</h3><span class="repo">lllyasviel/ControlNet</span></div>
+          <span class="star">★ 30.2k</span>
+        </div>
+        <p class="desc">用线稿、深度、姿态约束生成结果。把「抽卡」变成「可控生产」的关键一步，理解它是用好生图模型的分水岭。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/continuedev/continue" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="29600" data-h="1"
+         data-t="Continue continuedev/continue VS Code / JetBrains 双端，把本地模型接进编辑器做补全与对话。企业内网自建 Copilot 的常见底座。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/continuedev__continue.png" alt="Continue · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Continue</h3><span class="repo">continuedev/continue</span></div>
+          <span class="star">★ 29.6k</span>
+        </div>
+        <p class="desc">VS Code / JetBrains 双端，把本地模型接进编辑器做补全与对话。企业内网自建 Copilot 的常见底座。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/huggingface/diffusers" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="28800" data-h="3"
+         data-t="Diffusers huggingface/diffusers 扩散模型的官方库，新模型基本都先在这里支持。写代码集成生图能力时从它开始，不要自己拼 pipeline。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/huggingface__diffusers.png" alt="Diffusers · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Diffusers</h3><span class="repo">huggingface/diffusers</span></div>
+          <span class="star">★ 28.8k</span>
+        </div>
+        <p class="desc">扩散模型的官方库，新模型基本都先在这里支持。写代码集成生图能力时从它开始，不要自己拼 pipeline。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/QwenLM/qwen-code" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="28635" data-h="1"
+         data-t="Qwen Code QwenLM/qwen-code 阿里官方的终端编程 Agent，用法与配置对齐 Claude Code，模型可换 Qwen 也能接第三方。已经在用 Claude Code、但想换成国产模型省额度时直接替过去。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/QwenLM__qwen-code.png" alt="Qwen Code · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Qwen Code</h3><span class="repo">QwenLM/qwen-code</span></div>
+          <span class="star">★ 28.6k</span>
+        </div>
+        <p class="desc">阿里官方的终端编程 Agent，用法与配置对齐 Claude Code，模型可换 Qwen 也能接第三方。已经在用 Claude Code、但想换成国产模型省额度时直接替过去。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/baidu/Unlimited-OCR" target="_blank" rel="noopener noreferrer"
+         data-cat="doc" data-s="28500" data-h="2"
+         data-t="Unlimited OCR 2 baidu/Unlimited-OCR 百度文心 10 月 27 日开源的 3B 长文档解析模型，SR-SWA 让每步解码开销不随页数上涨，一次能啃几百页并能合并跨页表格。要自建长文档 RAG 的解析层时选它。 文档 / OCR">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/baidu__Unlimited-OCR.png" alt="Unlimited OCR 2 · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Unlimited OCR 2</h3><span class="repo">baidu/Unlimited-OCR</span></div>
+          <span class="star">★ 28.5k</span>
+        </div>
+        <p class="desc">百度文心 10 月 27 日开源的 3B 长文档解析模型，SR-SWA 让每步解码开销不随页数上涨，一次能啃几百页并能合并跨页表格。要自建长文档 RAG 的解析层时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/VikParuchuri/marker" target="_blank" rel="noopener noreferrer"
+         data-cat="doc" data-s="28400" data-h="2"
+         data-t="Marker VikParuchuri/marker PDF 转 Markdown 质量高，速度快，支持批量。许可证对商用有限制，商业项目注意。 文档 / OCR">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/VikParuchuri__marker.png" alt="Marker · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Marker</h3><span class="repo">VikParuchuri/marker</span></div>
+          <span class="star">★ 28.4k</span>
+        </div>
+        <p class="desc">PDF 转 Markdown 质量高，速度快，支持批量。许可证对商用有限制，商业项目注意。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>GPL-3.0(商用需授权)</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/meta/astryx" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="28337" data-h="1"
+         data-t="astryx meta/astryx Meta 八年的设计系统开源版：150+ 个 React 19 无障碍组件、七套主题走 CSS 变量，自带 CLI 与 codemod。想让 Agent 照同一套规范出页面时选它。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/meta__astryx.png" alt="astryx · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>astryx</h3><span class="repo">meta/astryx</span></div>
+          <span class="star">★ 28.3k</span>
+        </div>
+        <p class="desc">Meta 八年的设计系统开源版：150+ 个 React 19 无障碍组件、七套主题走 CSS 变量，自带 CLI 与 codemod。想让 Agent 照同一套规范出页面时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/microsoft/semantic-kernel" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="26800" data-h="3"
+         data-t="Semantic Kernel microsoft/semantic-kernel 面向 .NET / Java 企业的 Agent 框架，与企业既有系统集成是它的主场。做 C# 项目时不用换语言。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/microsoft__semantic-kernel.png" alt="Semantic Kernel · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Semantic Kernel</h3><span class="repo">microsoft/semantic-kernel</span></div>
+          <span class="star">★ 26.8k</span>
+        </div>
+        <p class="desc">面向 .NET / Java 企业的 Agent 框架，与企业既有系统集成是它的主场。做 C# 项目时不用换语言。</p>
+        <div class="mx">
+          <span class="lang" data-l="C#">C#</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/openai/clip" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="26800" data-h="3"
+         data-t="CLIP openai/clip 图文对齐的经典模型，做零样本分类、以图搜图的底座。新项目可用 SigLIP 等后继，但概念仍从这里学。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/openai__clip.png" alt="CLIP · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>CLIP</h3><span class="repo">openai/clip</span></div>
+          <span class="star">★ 26.8k</span>
+        </div>
+        <p class="desc">图文对齐的经典模型，做零样本分类、以图搜图的底座。新项目可用 SigLIP 等后继，但概念仍从这里学。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/HKUDS/LightRAG" target="_blank" rel="noopener noreferrer"
+         data-cat="rag" data-s="26400" data-h="2"
+         data-t="LightRAG HKUDS/LightRAG 用图结构做检索，把实体关系也索引进去，回答多跳问题比纯向量强。代价是构图阶段要花 token。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/HKUDS__LightRAG.png" alt="LightRAG · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>LightRAG</h3><span class="repo">HKUDS/LightRAG</span></div>
+          <span class="star">★ 26.4k</span>
+        </div>
+        <p class="desc">用图结构做检索，把实体关系也索引进去，回答多跳问题比纯向量强。代价是构图阶段要花 token。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/BerriAI/litellm" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="26400" data-h="1"
+         data-t="LiteLLM BerriAI/litellm 把 100+ 家模型 API 统一成 OpenAI 格式，带重试、预算、密钥管理。自建服务的模型网关标准件。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/BerriAI__litellm.png" alt="LiteLLM · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>LiteLLM</h3><span class="repo">BerriAI/litellm</span></div>
+          <span class="star">★ 26.4k</span>
+        </div>
+        <p class="desc">把 100+ 家模型 API 统一成 OpenAI 格式，带重试、预算、密钥管理。自建服务的模型网关标准件。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/invoke-ai/InvokeAI" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="26100" data-h="2"
+         data-t="InvokeAI invoke-ai/InvokeAI 统一画布式的图像工作台，图层、区域重绘、控制层比 A1111 现代。适合做设计稿迭代而不是抽卡。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/invoke-ai__InvokeAI.png" alt="InvokeAI · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>InvokeAI</h3><span class="repo">invoke-ai/InvokeAI</span></div>
+          <span class="star">★ 26.1k</span>
+        </div>
+        <p class="desc">统一画布式的图像工作台，图层、区域重绘、控制层比 A1111 现代。适合做设计稿迭代而不是抽卡。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/SYSTRAN/faster-whisper" target="_blank" rel="noopener noreferrer"
+         data-cat="aud" data-s="26100" data-h="2"
+         data-t="faster-whisper SYSTRAN/faster-whisper 基于 CTranslate2 重写 Whisper，同精度下快 4 倍、内存减半。批量转写长音频的正确起点。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/SYSTRAN__faster-whisper.png" alt="faster-whisper · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>faster-whisper</h3><span class="repo">SYSTRAN/faster-whisper</span></div>
+          <span class="star">★ 26.1k</span>
+        </div>
+        <p class="desc">基于 CTranslate2 重写 Whisper，同精度下快 4 倍、内存减半。批量转写长音频的正确起点。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/qdrant/qdrant" target="_blank" rel="noopener noreferrer"
+         data-cat="vec" data-s="25800" data-h="2"
+         data-t="Qdrant qdrant/qdrant Rust 写的向量库，带 payload 过滤，单机性能好、运维轻。中小规模 RAG 默认选它。 向量 / 检索">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/qdrant__qdrant.png" alt="Qdrant · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Qdrant</h3><span class="repo">qdrant/qdrant</span></div>
+          <span class="star">★ 25.8k</span>
+        </div>
+        <p class="desc">Rust 写的向量库，带 payload 过滤，单机性能好、运维轻。中小规模 RAG 默认选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Rust">Rust</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/labring/FastGPT" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="25400" data-h="2"
+         data-t="FastGPT labring/FastGPT 以知识库为核心的对话平台，流程编排 + 数据集管理做得比通用平台细。中文文档与社区活跃。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/labring__FastGPT.png" alt="FastGPT · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>FastGPT</h3><span class="repo">labring/FastGPT</span></div>
+          <span class="star">★ 25.4k</span>
+        </div>
+        <p class="desc">以知识库为核心的对话平台，流程编排 + 数据集管理做得比通用平台细。中文文档与社区活跃。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>自定义</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/m-bain/whisperX" target="_blank" rel="noopener noreferrer"
+         data-cat="aud" data-s="25100" data-h="2"
+         data-t="WhisperX m-bain/whisperX 在 Whisper 之上加词级时间戳与说话人分离。做会议纪要、播客逐字稿必须用它，纯 Whisper 分不清谁在说。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/m-bain__whisperX.png" alt="WhisperX · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>WhisperX</h3><span class="repo">m-bain/whisperX</span></div>
+          <span class="star">★ 25.1k</span>
+        </div>
+        <p class="desc">在 Whisper 之上加词级时间戳与说话人分离。做会议纪要、播客逐字稿必须用它，纯 Whisper 分不清谁在说。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>BSD-2-Clause</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="25011" data-h="2"
+         data-t="SkillSpector NVIDIA/SkillSpector 英伟达开源的 Agent 技能安全扫描器，覆盖提示注入与数据外泄等 64 种漏洞模式。要给第三方 skill 过安全门禁，或上架前自查时选它。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/NVIDIA__SkillSpector.png" alt="SkillSpector · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>SkillSpector</h3><span class="repo">NVIDIA/SkillSpector</span></div>
+          <span class="star">★ 25.0k</span>
+        </div>
+        <p class="desc">英伟达开源的 Agent 技能安全扫描器，覆盖提示注入与数据外泄等 64 种漏洞模式。要给第三方 skill 过安全门禁，或上架前自查时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/earthtojake/text-to-cad" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="24898" data-h="3"
+         data-t="text-to-cad earthtojake/text-to-cad 把文字需求走成 CAD 建模流程的 Agent：本地产出 STEP、GLB、STL、3MF，附可制造性检查与工程图。要快速做出能打样的零件模型时选它；不是通用文生 3D。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/earthtojake__text-to-cad.png" alt="text-to-cad · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>text-to-cad</h3><span class="repo">earthtojake/text-to-cad</span></div>
+          <span class="star">★ 24.9k</span>
+        </div>
+        <p class="desc">把文字需求走成 CAD 建模流程的 Agent：本地产出 STEP、GLB、STL、3MF，附可制造性检查与工程图。要快速做出能打样的零件模型时选它；不是通用文生 3D。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/QwenLM/Qwen3" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="24800" data-h="2"
+         data-t="Qwen QwenLM/Qwen3 阿里千问系列，尺寸从 0.6B 到旗舰全覆盖，中英文与代码都强。开源协议宽松，本地部署的首选家族。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/QwenLM__Qwen3.png" alt="Qwen · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Qwen</h3><span class="repo">QwenLM/Qwen3</span></div>
+          <span class="star">★ 24.8k</span>
+        </div>
+        <p class="desc">阿里千问系列，尺寸从 0.6B 到旗舰全覆盖，中英文与代码都强。开源协议宽松，本地部署的首选家族。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/songquanpeng/one-api" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="24800" data-h="1"
+         data-t="One API songquanpeng/one-api 国内团队做的 API 分发与额度管理系统，一个入口管多家 Key、给团队发子 Key。国内部署最常见的选择。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/songquanpeng__one-api.png" alt="One API · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>One API</h3><span class="repo">songquanpeng/one-api</span></div>
+          <span class="star">★ 24.8k</span>
+        </div>
+        <p class="desc">国内团队做的 API 分发与额度管理系统，一个入口管多家 Key、给团队发子 Key。国内部署最常见的选择。</p>
+        <div class="mx">
+          <span class="lang" data-l="Go">Go</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Hannibal046/Awesome-LLM" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="24800" data-h="1"
+         data-t="Awesome-LLM Hannibal046/Awesome-LLM 开放权重模型的总索引，按尺寸与能力分类，更新勤。找「现在有什么开源模型」比翻新闻快。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Hannibal046__Awesome-LLM.png" alt="Awesome-LLM · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Awesome-LLM</h3><span class="repo">Hannibal046/Awesome-LLM</span></div>
+          <span class="star">★ 24.8k</span>
+        </div>
+        <p class="desc">开放权重模型的总索引，按尺寸与能力分类，更新勤。找「现在有什么开源模型」比翻新闻快。</p>
+        <div class="mx">
+          <span class="lang" data-l="Markdown">Markdown</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/sgl-project/sglang" target="_blank" rel="noopener noreferrer"
+         data-cat="run" data-s="24300" data-h="3"
+         data-t="SGLang sgl-project/sglang RadixAttention 做前缀缓存复用，多轮对话、RAG、长 system prompt 场景下比 vLLM 更快；结构化输出用压缩有限状态机，JSON 合规率更高。 推理运行">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/sgl-project__sglang.png" alt="SGLang · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>SGLang</h3><span class="repo">sgl-project/sglang</span></div>
+          <span class="star">★ 24.3k</span>
+        </div>
+        <p class="desc">RadixAttention 做前缀缓存复用，多轮对话、RAG、长 system prompt 场景下比 vLLM 更快；结构化输出用压缩有限状态机，JSON 合规率更高。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/vercel-labs/agent-desktop" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="23903" data-h="2"
+         data-t="Agent Desktop vercel-labs/agent-desktop 让任意 Agent 获得桌面操作能力的 Rust 命令行工具：读系统无障碍树按稳定引用操控控件，不走截图视觉定位，更省 token 也更抗界面改版。做桌面自动化先看它。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/vercel-labs__agent-desktop.png" alt="Agent Desktop · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Agent Desktop</h3><span class="repo">vercel-labs/agent-desktop</span></div>
+          <span class="star">★ 23.9k</span>
+        </div>
+        <p class="desc">让任意 Agent 获得桌面操作能力的 Rust 命令行工具：读系统无障碍树按稳定引用操控控件，不走截图视觉定位，更省 token 也更抗界面改版。做桌面自动化先看它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Rust">Rust</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Mozilla-Ocho/llamafile" target="_blank" rel="noopener noreferrer"
+         data-cat="run" data-s="23200" data-h="1"
+         data-t="llamafile Mozilla-Ocho/llamafile 把模型和运行时打成一个可执行文件，双击就出网页界面。跨平台分发模型最省事的方式，代价是文件大。 推理运行">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Mozilla-Ocho__llamafile.png" alt="llamafile · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>llamafile</h3><span class="repo">Mozilla-Ocho/llamafile</span></div>
+          <span class="star">★ 23.2k</span>
+        </div>
+        <p class="desc">把模型和运行时打成一个可执行文件，双击就出网页界面。跨平台分发模型最省事的方式，代价是文件大。</p>
+        <div class="mx">
+          <span class="lang" data-l="C++">C++</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/deepseek-ai/dsh-superagent-prototype" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="23182" data-h="3"
+         data-t="DSH Super-agent deepseek-ai/dsh-superagent-prototype DeepSeek Harness 放出的常驻智能体原型：Router 分派、Worker 并行、事件直通加看门狗。想研究多会话调度而不是拼提示词时看它。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/deepseek-ai__dsh-superagent-prototype.png" alt="DSH Super-agent · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>DSH Super-agent</h3><span class="repo">deepseek-ai/dsh-superagent-prototype</span></div>
+          <span class="star">★ 23.2k</span>
+        </div>
+        <p class="desc">DeepSeek Harness 放出的常驻智能体原型：Router 分派、Worker 并行、事件直通加看门狗。想研究多会话调度而不是拼提示词时看它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/ccch1mneyyy/dsh-Go" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="23131" data-h="2"
+         data-t="dsh-Go ccch1mneyyy/dsh-Go DeepSeek Harness 安卓客户端：内置 Ubuntu 与 Node，免 root 免 Termux 可本机跑 Agent，也能 SSH 遥控。想脱机用 DSH 时选它。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/ccch1mneyyy__dsh-Go.png" alt="dsh-Go · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>dsh-Go</h3><span class="repo">ccch1mneyyy/dsh-Go</span></div>
+          <span class="star">★ 23.1k</span>
+        </div>
+        <p class="desc">DeepSeek Harness 安卓客户端：内置 Ubuntu 与 Node，免 root 免 Termux 可本机跑 Agent，也能 SSH 遥控。想脱机用 DSH 时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Dart">Dart</span>
+          <span>AGPL-3.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/chroma-core/chroma" target="_blank" rel="noopener noreferrer"
+         data-cat="vec" data-s="22400" data-h="1"
+         data-t="Chroma chroma-core/chroma 嵌入式向量库，pip 装完就能用，不用起服务。原型阶段最快，生产规模上来要换。 向量 / 检索">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/chroma-core__chroma.png" alt="Chroma · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Chroma</h3><span class="repo">chroma-core/chroma</span></div>
+          <span class="star">★ 22.4k</span>
+        </div>
+        <p class="desc">嵌入式向量库，pip 装完就能用，不用起服务。原型阶段最快，生产规模上来要换。</p>
+        <div class="mx">
+          <span class="lang" data-l="Rust">Rust</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/RooCodeInc/Roo-Code" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="22400" data-h="1"
+         data-t="Roo Code RooCodeInc/Roo-Code Cline 的分支演化版，模式（架构 / 编码 / 调试）切换与自定义角色更灵活。团队里对提示词有讲究时更好用。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/RooCodeInc__Roo-Code.png" alt="Roo Code · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Roo Code</h3><span class="repo">RooCodeInc/Roo-Code</span></div>
+          <span class="star">★ 22.4k</span>
+        </div>
+        <p class="desc">Cline 的分支演化版，模式（架构 / 编码 / 调试）切换与自定义角色更灵活。团队里对提示词有讲究时更好用。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/fishaudio/fish-speech" target="_blank" rel="noopener noreferrer"
+         data-cat="aud" data-s="21800" data-h="3"
+         data-t="Fish Speech fishaudio/fish-speech 多语言零样本语音克隆，中文效果自然。注意许可证对商用有限制条款，落地前先读。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/fishaudio__fish-speech.png" alt="Fish Speech · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Fish Speech</h3><span class="repo">fishaudio/fish-speech</span></div>
+          <span class="star">★ 21.8k</span>
+        </div>
+        <p class="desc">多语言零样本语音克隆，中文效果自然。注意许可证对商用有限制条款，落地前先读。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0(部分限制)</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/QwenLM/Qwen3-VL" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="20100" data-h="2"
+         data-t="Qwen3-VL QwenLM/Qwen3-VL 多模态主力系列：看图、读表、认界面截图、理解视频，含 30B-A3B 与 235B 两档。要做文档解析、UI 自动操作或视频理解时先在它上面试。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/QwenLM__Qwen3-VL.png" alt="Qwen3-VL · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Qwen3-VL</h3><span class="repo">QwenLM/Qwen3-VL</span></div>
+          <span class="star">★ 20.1k</span>
+        </div>
+        <p class="desc">多模态主力系列：看图、读表、认界面截图、理解视频，含 30B-A3B 与 235B 两档。要做文档解析、UI 自动操作或视频理解时先在它上面试。</p>
+        <div class="mx">
+          <span class="lang" data-l="Jupyter Notebook">Jupyter Notebook</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/vanna-ai/vanna" target="_blank" rel="noopener noreferrer"
+         data-cat="rag" data-s="19200" data-h="2"
+         data-t="Vanna vanna-ai/vanna 自然语言转 SQL，靠向量召回历史问题-SQL 对来提升准确率，越用越准。做数据问答的实用方案。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/vanna-ai__vanna.png" alt="Vanna · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Vanna</h3><span class="repo">vanna-ai/vanna</span></div>
+          <span class="star">★ 19.2k</span>
+        </div>
+        <p class="desc">自然语言转 SQL，靠向量召回历史问题-SQL 对来提升准确率，越用越准。做数据问答的实用方案。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/milind-soni/OpenMausBot" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="18760" data-h="2"
+         data-t="OpenMausBot milind-soni/OpenMausBot 开源自托管 AI 机器人客户端：每个机器人配独立虚拟机执行电脑操作，支持 Claude、Codex、Grok 等多模型与数百第三方应用。想本地托管多个 Agent 时选它。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/milind-soni__OpenMausBot.png" alt="OpenMausBot · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>OpenMausBot</h3><span class="repo">milind-soni/OpenMausBot</span></div>
+          <span class="star">★ 18.8k</span>
+        </div>
+        <p class="desc">开源自托管 AI 机器人客户端：每个机器人配独立虚拟机执行电脑操作，支持 Claude、Codex、Grok 等多模型与数百第三方应用。想本地托管多个 Agent 时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/datalab-to/surya" target="_blank" rel="noopener noreferrer"
+         data-cat="doc" data-s="18400" data-h="2"
+         data-t="Surya datalab-to/surya 多语言 OCR + 版面检测 + 阅读顺序，90+ 语言含中文。做多语种文档流水线时省事。 文档 / OCR">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/datalab-to__surya.png" alt="Surya · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Surya</h3><span class="repo">datalab-to/surya</span></div>
+          <span class="star">★ 18.4k</span>
+        </div>
+        <p class="desc">多语言 OCR + 版面检测 + 阅读顺序，90+ 语言含中文。做多语种文档流水线时省事。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>GPL-3.0(商用有限制)</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="18200" data-h="3"
+         data-t="LangGraph langchain-ai/langgraph 把 Agent 写成状态图，支持循环、分支、人工介入与断点续跑。做长流程 Agent 比裸 ReAct 稳得多。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/langchain-ai__langgraph.png" alt="LangGraph · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>LangGraph</h3><span class="repo">langchain-ai/langgraph</span></div>
+          <span class="star">★ 18.2k</span>
+        </div>
+        <p class="desc">把 Agent 写成状态图，支持循环、分支、人工介入与断点续跑。做长流程 Agent 比裸 ReAct 稳得多。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/xerj-org/xerj" target="_blank" rel="noopener noreferrer"
+         data-cat="rag" data-s="17591" data-h="2"
+         data-t="xerj xerj-org/xerj Rust 单文件二进制，把代码库、文档、日志、CSV 和 PDF 一起索引，给出 BM25、向量与混合检索，自带 MCP 服务。要给 Agent 接私有检索层时选它。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/xerj-org__xerj.png" alt="xerj · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>xerj</h3><span class="repo">xerj-org/xerj</span></div>
+          <span class="star">★ 17.6k</span>
+        </div>
+        <p class="desc">Rust 单文件二进制，把代码库、文档、日志、CSV 和 PDF 一起索引，给出 BM25、向量与混合检索，自带 MCP 服务。要给 Agent 接私有检索层时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Rust">Rust</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/punkpeye/awesome-mcp-servers" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="16400" data-h="1"
+         data-t="Awesome-MCP-Servers punkpeye/awesome-mcp-servers MCP 工具服务器的总目录，从文件系统到数据库到浏览器全有。给 Agent 接工具前先来这里翻。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/punkpeye__awesome-mcp-servers.png" alt="Awesome-MCP-Servers · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Awesome-MCP-Servers</h3><span class="repo">punkpeye/awesome-mcp-servers</span></div>
+          <span class="star">★ 16.4k</span>
+        </div>
+        <p class="desc">MCP 工具服务器的总目录，从文件系统到数据库到浏览器全有。给 Agent 接工具前先来这里翻。</p>
+        <div class="mx">
+          <span class="lang" data-l="Markdown">Markdown</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/arc53/DocsGPT" target="_blank" rel="noopener noreferrer"
+         data-cat="rag" data-s="16200" data-h="2"
+         data-t="DocsGPT arc53/DocsGPT 给文档站加一个问答入口的开源方案，带爬取、索引、对话组件。做产品文档助手可直接改。 RAG / 知识库">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/arc53__DocsGPT.png" alt="DocsGPT · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>DocsGPT</h3><span class="repo">arc53/DocsGPT</span></div>
+          <span class="star">★ 16.2k</span>
+        </div>
+        <p class="desc">给文档站加一个问答入口的开源方案，带爬取、索引、对话组件。做产品文档助手可直接改。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/google/elephant-goldfish-model" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="15445" data-h="2"
+         data-t="Elephant-Goldfish Model google/elephant-goldfish-model Google 的规格评审工作流：Elephant 拿着项目上下文写设计文档，Goldfish 在全新零记忆上下文里只读草稿和源码挑漏洞。动手写码前想先过一遍架构时用它。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/google__elephant-goldfish-model.png" alt="Elephant-Goldfish Model · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Elephant-Goldfish Model</h3><span class="repo">google/elephant-goldfish-model</span></div>
+          <span class="star">★ 15.4k</span>
+        </div>
+        <p class="desc">Google 的规格评审工作流：Elephant 拿着项目上下文写设计文档，Goldfish 在全新零记忆上下文里只读草稿和源码挑漏洞。动手写码前想先过一遍架构时用它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Wan-Video/Wan2.1" target="_blank" rel="noopener noreferrer"
+         data-cat="vid" data-s="14600" data-h="3"
+         data-t="Wan2.1 / Wan2.2 Wan-Video/Wan2.1 阿里万相开源视频模型，消费级显卡可跑 1.3B 版本，是「本地生成视频」目前最现实的路。国内下载快。 视频生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Wan-Video__Wan2.1.png" alt="Wan2.1 / Wan2.2 · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Wan2.1 / Wan2.2</h3><span class="repo">Wan-Video/Wan2.1</span></div>
+          <span class="star">★ 14.6k</span>
+        </div>
+        <p class="desc">阿里万相开源视频模型，消费级显卡可跑 1.3B 版本，是「本地生成视频」目前最现实的路。国内下载快。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/weaviate/weaviate" target="_blank" rel="noopener noreferrer"
+         data-cat="vec" data-s="14200" data-h="2"
+         data-t="Weaviate weaviate/weaviate 内置混合检索（向量 + BM25）与模块化向量化，省掉自己拼两路召回。多租户支持成熟。 向量 / 检索">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/weaviate__weaviate.png" alt="Weaviate · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Weaviate</h3><span class="repo">weaviate/weaviate</span></div>
+          <span class="star">★ 14.2k</span>
+        </div>
+        <p class="desc">内置混合检索（向量 + BM25）与模块化向量化，省掉自己拼两路召回。多租户支持成熟。</p>
+        <div class="mx">
+          <span class="lang" data-l="Go">Go</span>
+          <span>BSD-3-Clause</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/langfuse/langfuse" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="14200" data-h="2"
+         data-t="Langfuse langfuse/langfuse LLM 应用的追踪与评测平台，能看到每次 Agent 调用的完整链路。调 Agent 不接追踪基本等于盲调。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/langfuse__langfuse.png" alt="Langfuse · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Langfuse</h3><span class="repo">langfuse/langfuse</span></div>
+          <span class="star">★ 14.2k</span>
+        </div>
+        <p class="desc">LLM 应用的追踪与评测平台，能看到每次 Agent 调用的完整链路。调 Agent 不接追踪基本等于盲调。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT(部分商业)</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/NVIDIA/TensorRT-LLM" target="_blank" rel="noopener noreferrer"
+         data-cat="run" data-s="13800" data-h="3"
+         data-t="TensorRT-LLM NVIDIA/TensorRT-LLM NVIDIA 官方极致优化，吞吐最高但要编译引擎、绑死显卡型号。只建议有专职工程团队时上。 推理运行">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/NVIDIA__TensorRT-LLM.png" alt="TensorRT-LLM · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>TensorRT-LLM</h3><span class="repo">NVIDIA/TensorRT-LLM</span></div>
+          <span class="star">★ 13.8k</span>
+        </div>
+        <p class="desc">NVIDIA 官方极致优化，吞吐最高但要编译引擎、绑死显卡型号。只建议有专职工程团队时上。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/OpenTalker/SadTalker" target="_blank" rel="noopener noreferrer"
+         data-cat="vid" data-s="13400" data-h="2"
+         data-t="SadTalker OpenTalker/SadTalker 一张照片 + 一段音频生成说话视频，数字人口播的入门方案。口型同步一般，胜在轻。 视频生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/OpenTalker__SadTalker.png" alt="SadTalker · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>SadTalker</h3><span class="repo">OpenTalker/SadTalker</span></div>
+          <span class="star">★ 13.4k</span>
+        </div>
+        <p class="desc">一张照片 + 一段音频生成说话视频，数字人口播的入门方案。口型同步一般，胜在轻。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/FunAudioLLM/CosyVoice" target="_blank" rel="noopener noreferrer"
+         data-cat="aud" data-s="12400" data-h="3"
+         data-t="CosyVoice FunAudioLLM/CosyVoice 阿里开源的中文语音合成，音色克隆只需几秒样本，情感与方言支持好。中文 TTS 目前最实用的开源选项。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/FunAudioLLM__CosyVoice.png" alt="CosyVoice · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>CosyVoice</h3><span class="repo">FunAudioLLM/CosyVoice</span></div>
+          <span class="star">★ 12.4k</span>
+        </div>
+        <p class="desc">阿里开源的中文语音合成，音色克隆只需几秒样本，情感与方言支持好。中文 TTS 目前最实用的开源选项。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/openai/openai-agents-python" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="12400" data-h="2"
+         data-t="OpenAI Agents SDK openai/openai-agents-python 官方轻量 Agent SDK，交接（handoff）、护栏、追踪三个概念讲得很干净。绑定 OpenAI 生态，国内需换兼容端点。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/openai__openai-agents-python.png" alt="OpenAI Agents SDK · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>OpenAI Agents SDK</h3><span class="repo">openai/openai-agents-python</span></div>
+          <span class="star">★ 12.4k</span>
+        </div>
+        <p class="desc">官方轻量 Agent SDK，交接（handoff）、护栏、追踪三个概念讲得很干净。绑定 OpenAI 生态，国内需换兼容端点。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/xszyou/Fay" target="_blank" rel="noopener noreferrer"
+         data-cat="vid" data-s="12400" data-h="2"
+         data-t="Fay xszyou/Fay 数字人助理框架，把 ASR、LLM、TTS、形象驱动串成一条链。国内团队维护，中文场景配套齐全。 视频生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/xszyou__Fay.png" alt="Fay · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Fay</h3><span class="repo">xszyou/Fay</span></div>
+          <span class="star">★ 12.4k</span>
+        </div>
+        <p class="desc">数字人助理框架，把 ASR、LLM、TTS、形象驱动串成一条链。国内团队维护，中文场景配套齐全。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT(部分限制)</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/dottxt-ai/outlines" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="12400" data-h="2"
+         data-t="Outlines dottxt-ai/outlines 结构化输出约束：按 JSON Schema 或正则限制生成，确保永远返回可解析的结果。上生产前必做的一层。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/dottxt-ai__outlines.png" alt="Outlines · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Outlines</h3><span class="repo">dottxt-ai/outlines</span></div>
+          <span class="star">★ 12.4k</span>
+        </div>
+        <p class="desc">结构化输出约束：按 JSON Schema 或正则限制生成，确保永远返回可解析的结果。上生产前必做的一层。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Tencent/HunyuanVideo" target="_blank" rel="noopener noreferrer"
+         data-cat="vid" data-s="11200" data-h="3"
+         data-t="HunyuanVideo Tencent/HunyuanVideo 腾讯混元视频生成开放权重，画质在开源里属第一梯队，显存要求高（建议 60G+ 或量化多卡）。 视频生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Tencent__HunyuanVideo.png" alt="HunyuanVideo · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>HunyuanVideo</h3><span class="repo">Tencent/HunyuanVideo</span></div>
+          <span class="star">★ 11.2k</span>
+        </div>
+        <p class="desc">腾讯混元视频生成开放权重，画质在开源里属第一梯队，显存要求高（建议 60G+ 或量化多卡）。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>自定义</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="11200" data-h="2"
+         data-t="Qwen2.5-VL QwenLM/Qwen2.5-VL 视觉语言模型，能读图表、定位界面元素、解析长视频。做文档理解与 GUI Agent 的常用底座。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/QwenLM__Qwen2.5-VL.png" alt="Qwen2.5-VL · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Qwen2.5-VL</h3><span class="repo">QwenLM/Qwen2.5-VL</span></div>
+          <span class="star">★ 11.2k</span>
+        </div>
+        <p class="desc">视觉语言模型，能读图表、定位界面元素、解析长视频。做文档理解与 GUI Agent 的常用底座。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/guoyww/AnimateDiff" target="_blank" rel="noopener noreferrer"
+         data-cat="vid" data-s="11200" data-h="3"
+         data-t="AnimateDiff guoyww/AnimateDiff 给静态生图模型加运动模块，出短循环动画。质量不如原生视频模型，但动作可控性好。 视频生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/guoyww__AnimateDiff.png" alt="AnimateDiff · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>AnimateDiff</h3><span class="repo">guoyww/AnimateDiff</span></div>
+          <span class="star">★ 11.2k</span>
+        </div>
+        <p class="desc">给静态生图模型加运动模块，出短循环动画。质量不如原生视频模型，但动作可控性好。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/mistralai/mistral-inference" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="10800" data-h="2"
+         data-t="Mixtral / Mistral mistralai/mistral-inference Mistral 官方推理库，MoE 路线的早期代表。欧洲阵营，英文强、中文弱于国产模型。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/mistralai__mistral-inference.png" alt="Mixtral / Mistral · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Mixtral / Mistral</h3><span class="repo">mistralai/mistral-inference</span></div>
+          <span class="star">★ 10.8k</span>
+        </div>
+        <p class="desc">Mistral 官方推理库，MoE 路线的早期代表。欧洲阵营，英文强、中文弱于国产模型。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/jxnl/instructor" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="10800" data-h="1"
+         data-t="Instructor jxnl/instructor 用 Pydantic 模型定义输出结构，自动重试与纠错。比手写解析与正则省一半代码。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/jxnl__instructor.png" alt="Instructor · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Instructor</h3><span class="repo">jxnl/instructor</span></div>
+          <span class="star">★ 10.8k</span>
+        </div>
+        <p class="desc">用 Pydantic 模型定义输出结构，自动重试与纠错。比手写解析与正则省一半代码。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/kohya-ss/sd-scripts" target="_blank" rel="noopener noreferrer"
+         data-cat="train" data-s="10600" data-h="3"
+         data-t="kohya sd-scripts kohya-ss/sd-scripts LoRA / DreamBooth 训练脚本的事实标准，画风与角色一致性靠它。参数多但每项都有意义。 训练 / 微调">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/kohya-ss__sd-scripts.png" alt="kohya sd-scripts · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>kohya sd-scripts</h3><span class="repo">kohya-ss/sd-scripts</span></div>
+          <span class="star">★ 10.6k</span>
+        </div>
+        <p class="desc">LoRA / DreamBooth 训练脚本的事实标准，画风与角色一致性靠它。参数多但每项都有意义。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/axolotl-ai-cloud/axolotl" target="_blank" rel="noopener noreferrer"
+         data-cat="train" data-s="10200" data-h="3"
+         data-t="Axolotl axolotl-ai-cloud/axolotl YAML 驱动的微调配置，多机多卡与各种并行策略齐全。团队协作时配置可版本化的优势明显。 训练 / 微调">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/axolotl-ai-cloud__axolotl.png" alt="Axolotl · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Axolotl</h3><span class="repo">axolotl-ai-cloud/axolotl</span></div>
+          <span class="star">★ 10.2k</span>
+        </div>
+        <p class="desc">YAML 驱动的微调配置，多机多卡与各种并行策略齐全。团队协作时配置可版本化的优势明显。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Albert-Weasker/niubigeo" target="_blank" rel="noopener noreferrer"
+         data-cat="data" data-s="10151" data-h="1"
+         data-t="NiubiGEO Albert-Weasker/niubigeo 自托管 GEO 工具：检测你的域名在各家 AI 回答里被提及的方式与频次，生成品牌可见性与竞品对比报告。想在 AI 搜索时代摸清自家曝光时用它。 数据 / 抓取">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Albert-Weasker__niubigeo.png" alt="NiubiGEO · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>NiubiGEO</h3><span class="repo">Albert-Weasker/niubigeo</span></div>
+          <span class="star">★ 10.2k</span>
+        </div>
+        <p class="desc">自托管 GEO 工具：检测你的域名在各家 AI 回答里被提及的方式与频次，生成品牌可见性与竞品对比报告。想在 AI 搜索时代摸清自家曝光时用它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/jina-ai/reader" target="_blank" rel="noopener noreferrer"
+         data-cat="data" data-s="9600" data-h="1"
+         data-t="Jina Reader jina-ai/reader 在 URL 前加个前缀就把网页变成 Markdown，零代码。免费额度够小项目，国内访问需网络条件。 数据 / 抓取">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/jina-ai__reader.png" alt="Jina Reader · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Jina Reader</h3><span class="repo">jina-ai/reader</span></div>
+          <span class="star">★ 9.6k</span>
+        </div>
+        <p class="desc">在 URL 前加个前缀就把网页变成 Markdown，零代码。免费额度够小项目，国内访问需网络条件。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/TencentARC/PhotoMaker" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="9400" data-h="3"
+         data-t="PhotoMaker TencentARC/PhotoMaker 给几张人脸照片就固定人物身份生图，做角色一致性比 LoRA 快。腾讯 ARC 出品。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/TencentARC__PhotoMaker.png" alt="PhotoMaker · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>PhotoMaker</h3><span class="repo">TencentARC/PhotoMaker</span></div>
+          <span class="star">★ 9.4k</span>
+        </div>
+        <p class="desc">给几张人脸照片就固定人物身份生图，做角色一致性比 LoRA 快。腾讯 ARC 出品。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/rhasspy/piper" target="_blank" rel="noopener noreferrer"
+         data-cat="aud" data-s="9200" data-h="1"
+         data-t="Piper rhasspy/piper 极轻量 TTS，树莓派实时合成。音质不如扩散类模型，但延迟低，适合做硬件与离线播报。 语音 / 音乐">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/rhasspy__piper.png" alt="Piper · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Piper</h3><span class="repo">rhasspy/piper</span></div>
+          <span class="star">★ 9.2k</span>
+        </div>
+        <p class="desc">极轻量 TTS，树莓派实时合成。音质不如扩散类模型，但延迟低，适合做硬件与离线播报。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Orkas-AI/Orkas" target="_blank" rel="noopener noreferrer"
+         data-cat="agentp" data-s="9146" data-h="1"
+         data-t="Orkas Orkas-AI/Orkas 桌面上的本地 AI 小队：指挥官把目标拆成待办分给专职角色，文件不出本机。想整件事交给 AI 又不想上云时选它。 Agent 应用平台">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Orkas-AI__Orkas.png" alt="Orkas · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Orkas</h3><span class="repo">Orkas-AI/Orkas</span></div>
+          <span class="star">★ 9.1k</span>
+        </div>
+        <p class="desc">桌面上的本地 AI 小队：指挥官把目标拆成待办分给专职角色，文件不出本机。想整件事交给 AI 又不想上云时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="JavaScript">JavaScript</span>
+          <span>MIT</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/zai-org/GLM-4.5" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="8600" data-h="3"
+         data-t="GLM-4.5 / GLM-4 zai-org/GLM-4.5 智谱的开放权重，中文写作与 Agent 能力好，有 9B 级轻量版本可单卡跑。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/zai-org__GLM-4.5.png" alt="GLM-4.5 / GLM-4 · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>GLM-4.5 / GLM-4</h3><span class="repo">zai-org/GLM-4.5</span></div>
+          <span class="star">★ 8.6k</span>
+        </div>
+        <p class="desc">智谱的开放权重，中文写作与 Agent 能力好，有 9B 级轻量版本可单卡跑。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/storytold/craft-anything" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="8133" data-h="2"
+         data-t="Craft Anything storytold/craft-anything 读源码反推软件怎么跑起来，再把理解变成可复刻的实现，Rust 写的代码分析工具。接手陌生代码库、想先摸清结构再动手时值得一试。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/storytold__craft-anything.png" alt="Craft Anything · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Craft Anything</h3><span class="repo">storytold/craft-anything</span></div>
+          <span class="star">★ 8.1k</span>
+        </div>
+        <p class="desc">读源码反推软件怎么跑起来，再把理解变成可复刻的实现，Rust 写的代码分析工具。接手陌生代码库、想先摸清结构再动手时值得一试。</p>
+        <div class="mx">
+          <span class="lang" data-l="Rust">Rust</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/genmoai/mochi" target="_blank" rel="noopener noreferrer"
+         data-cat="vid" data-s="8100" data-h="3"
+         data-t="Mochi 1 genmoai/mochi Genmo 开源的视频模型，运动幅度大。权重托管在外部，国内拉取需要额外处理网络。 视频生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/genmoai__mochi.png" alt="Mochi 1 · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Mochi 1</h3><span class="repo">genmoai/mochi</span></div>
+          <span class="star">★ 8.1k</span>
+        </div>
+        <p class="desc">Genmo 开源的视频模型，运动幅度大。权重托管在外部，国内拉取需要额外处理网络。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Portkey-AI/gateway" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="7800" data-h="2"
+         data-t="Portkey AI Gateway Portkey-AI/gateway 边缘部署的极快网关，主打路由、缓存、回退。延迟敏感场景比 Python 网关有优势。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Portkey-AI__gateway.png" alt="Portkey AI Gateway · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Portkey AI Gateway</h3><span class="repo">Portkey-AI/gateway</span></div>
+          <span class="star">★ 7.8k</span>
+        </div>
+        <p class="desc">边缘部署的极快网关，主打路由、缓存、回退。延迟敏感场景比 Python 网关有优势。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/meta-llama/llama-models" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="7700" data-h="2"
+         data-t="llama-models meta-llama/llama-models Llama 系列的官方参考实现与权重说明。许可有商用门槛与命名要求，国内下载需处理网络。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/meta-llama__llama-models.png" alt="llama-models · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>llama-models</h3><span class="repo">meta-llama/llama-models</span></div>
+          <span class="star">★ 7.7k</span>
+        </div>
+        <p class="desc">Llama 系列的官方参考实现与权重说明。许可有商用门槛与命名要求，国内下载需处理网络。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Llama 社区许可</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/MoonshotAI/Kimi-K2" target="_blank" rel="noopener noreferrer"
+         data-cat="model" data-s="7200" data-h="3"
+         data-t="Kimi-K2 MoonshotAI/Kimi-K2 月之暗面的万亿参数 MoE 开放权重，长上下文与 Agent 任务见长。体量决定了它基本只能云端或集群跑。 模型权重">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/MoonshotAI__Kimi-K2.png" alt="Kimi-K2 · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Kimi-K2</h3><span class="repo">MoonshotAI/Kimi-K2</span></div>
+          <span class="star">★ 7.2k</span>
+        </div>
+        <p class="desc">月之暗面的万亿参数 MoE 开放权重，长上下文与 Agent 任务见长。体量决定了它基本只能云端或集群跑。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>修改版 MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="7081" data-h="2"
+         data-t="ThinkRail JetBrains/thinkrail JetBrains 孵化中的 Agentic IDE，把第三方 pi 编程 Agent 包进自己界面，每个工作区独立 git worktree，PR 合完自动归档。想并行跑多个编码 Agent 又不打乱当前分支时选它。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/JetBrains__thinkrail.png" alt="ThinkRail · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>ThinkRail</h3><span class="repo">JetBrains/thinkrail</span></div>
+          <span class="star">★ 7.1k</span>
+        </div>
+        <p class="desc">JetBrains 孵化中的 Agentic IDE，把第三方 pi 编程 Agent 包进自己界面，每个工作区独立 git worktree，PR 合完自动归档。想并行跑多个编码 Agent 又不打乱当前分支时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/tencent-ailab/IP-Adapter" target="_blank" rel="noopener noreferrer"
+         data-cat="img" data-s="6400" data-h="3"
+         data-t="IP-Adapter tencent-ailab/IP-Adapter 用一张参考图控制生成风格或构图，ComfyUI 里最常用的控制手段之一。 图像生成">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/tencent-ailab__IP-Adapter.png" alt="IP-Adapter · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>IP-Adapter</h3><span class="repo">tencent-ailab/IP-Adapter</span></div>
+          <span class="star">★ 6.4k</span>
+        </div>
+        <p class="desc">用一张参考图控制生成风格或构图，ComfyUI 里最常用的控制手段之一。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Calcium-Ion/new-api" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="6200" data-h="2"
+         data-t="New API Calcium-Ion/new-api One API 的增强分支，加入按次计费、模型映射、更细的渠道策略。多人共用额度时更顺手。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Calcium-Ion__new-api.png" alt="New API · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>New API</h3><span class="repo">Calcium-Ion/new-api</span></div>
+          <span class="star">★ 6.2k</span>
+        </div>
+        <p class="desc">One API 的增强分支，加入按次计费、模型映射、更细的渠道策略。多人共用额度时更顺手。</p>
+        <div class="mx">
+          <span class="lang" data-l="Go">Go</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/heydamir/unslop" target="_blank" rel="noopener noreferrer"
+         data-cat="ui" data-s="5322" data-h="1"
+         data-t="unslop heydamir/unslop 专治「AI 味界面」的 Claude 技能：拆掉紫蓝渐变、光晕和滥用 emoji，支持主流前端框架与原生 HTML。AI 写的前端上线前先跑一遍。 客户端 / 前端">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/heydamir__unslop.png" alt="unslop · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>unslop</h3><span class="repo">heydamir/unslop</span></div>
+          <span class="star">★ 5.3k</span>
+        </div>
+        <p class="desc">专治「AI 味界面」的 Claude 技能：拆掉紫蓝渐变、光晕和滥用 emoji，支持主流前端框架与原生 HTML。AI 写的前端上线前先跑一遍。</p>
+        <div class="mx">
+          <span class="lang" data-l="JavaScript">JavaScript</span>
+          <span>CC-BY-4.0</span>
+          <span class="lv1">一条命令</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/Helicone/helicone" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="4600" data-h="2"
+         data-t="Helicone Helicone/helicone 模型调用可观测：请求日志、成本归因、缓存命中。上线后不知道钱花在哪时先接它。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/Helicone__helicone.png" alt="Helicone · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Helicone</h3><span class="repo">Helicone/helicone</span></div>
+          <span class="star">★ 4.6k</span>
+        </div>
+        <p class="desc">模型调用可观测：请求日志、成本归因、缓存命中。上线后不知道钱花在哪时先接它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/l0ng-ai/openidea" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="4370" data-h="2"
+         data-t="OpenIDEA l0ng-ai/openidea 用 Rust 重写的 IntelliJ 风格 IDE，保留原键位与 Search Everywhere，覆盖 60 多种语言，自带调试器。嫌 JetBrains 吃内存时试。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/l0ng-ai__openidea.png" alt="OpenIDEA · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>OpenIDEA</h3><span class="repo">l0ng-ai/openidea</span></div>
+          <span class="star">★ 4.4k</span>
+        </div>
+        <p class="desc">用 Rust 重写的 IntelliJ 风格 IDE，保留原键位与 Search Everywhere，覆盖 60 多种语言，自带调试器。嫌 JetBrains 吃内存时试。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-n">需网络条件</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/qybaihe/bla" target="_blank" rel="noopener noreferrer"
+         data-cat="code" data-s="4330" data-h="2"
+         data-t="BLA qybaihe/bla 给产物穿反逆向护甲：塞假凭据、顶爆分析器配额，让 REA 这类逆向 Agent 的 Token 消耗涨 300–2800 倍。要护 Electron 或前端 bundle 时选它。 编程 Agent">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/qybaihe__bla.png" alt="BLA · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>BLA</h3><span class="repo">qybaihe/bla</span></div>
+          <span class="star">★ 4.3k</span>
+        </div>
+        <p class="desc">给产物穿反逆向护甲：塞假凭据、顶爆分析器配额，让 REA 这类逆向 Agent 的 Token 消耗涨 300–2800 倍。要护 Electron 或前端 bundle 时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>MIT</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/QwenLM/Qwen-MM-Plugins" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="3147" data-h="2"
+         data-t="Qwen-MM-Plugins QwenLM/Qwen-MM-Plugins 给任意 Agent 框架补多模态入口：把图像与视频塞进只认文本的 harness，框架本身不用改。手上 Agent 只会读文字、又想让它看图时选它。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/QwenLM__Qwen-MM-Plugins.png" alt="Qwen-MM-Plugins · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Qwen-MM-Plugins</h3><span class="repo">QwenLM/Qwen-MM-Plugins</span></div>
+          <span class="star">★ 3.1k</span>
+        </div>
+        <p class="desc">给任意 Agent 框架补多模态入口：把图像与视频塞进只认文本的 harness，框架本身不用改。手上 Agent 只会读文字、又想让它看图时选它。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>Apache-2.0</span>
+          <span class="lv2">要配环境</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/QwenLM/FlashQLA" target="_blank" rel="noopener noreferrer"
+         data-cat="ops" data-s="732" data-h="3"
+         data-t="FlashQLA QwenLM/FlashQLA 基于 TileLang 的线性注意力内核库，专攻长上下文那层的算力开销。做推理加速、且愿意自己编内核的团队才用得上。 网关 / 运维">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/QwenLM__FlashQLA.png" alt="FlashQLA · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>FlashQLA</h3><span class="repo">QwenLM/FlashQLA</span></div>
+          <span class="star">★ 732</span>
+        </div>
+        <p class="desc">基于 TileLang 的线性注意力内核库，专攻长上下文那层的算力开销。做推理加速、且愿意自己编内核的团队才用得上。</p>
+        <div class="mx">
+          <span class="lang" data-l="Python">Python</span>
+          <span>MIT</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+      <a class="rpx has-cvr" href="https://github.com/QwenLM/Qwen-Live-Harness" target="_blank" rel="noopener noreferrer"
+         data-cat="agent" data-s="221" data-h="3"
+         data-t="Qwen-Live-Harness QwenLM/Qwen-Live-Harness 基于 Qwen Omni 实时接口的开源 Agent 框架，能看能听能动手，自带记忆。要做语音实时交互的 Agent 时拿它当骨架。 Agent 框架">
+        <div class="cvr"><img loading="lazy" decoding="async" src="/assets/covers/repos/QwenLM__Qwen-Live-Harness.png" alt="Qwen-Live-Harness · GitHub 项目卡"></div>
+        <div class="rh">
+          <div><h3>Qwen-Live-Harness</h3><span class="repo">QwenLM/Qwen-Live-Harness</span></div>
+          <span class="star">★ 221</span>
+        </div>
+        <p class="desc">基于 Qwen Omni 实时接口的开源 Agent 框架，能看能听能动手，自带记忆。要做语音实时交互的 Agent 时拿它当骨架。</p>
+        <div class="mx">
+          <span class="lang" data-l="TypeScript">TypeScript</span>
+          <span>Apache-2.0</span>
+          <span class="lv3">要工程团队</span>
+          <span class="cn-y">国内可直连</span>
+        </div>
+      </a>
+    </div>
+    <div class="pg-empty" id="empty" hidden>
+      <i class="cc-ic" data-ic="ban" aria-hidden="true"></i>
+      <div><b>没有匹配的仓库</b><span>换个关键词，或点「全部」清空筛选。收录范围只到「能跑起来」的项目。</span></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="info" aria-hidden="true"></i>怎么看这张表</h2></div>
+    <div class="pg-note">
+      <i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>
+      <div>
+        <b>星数是热度，不是质量。</b>榜单第一名往往是运行时（Ollama、llama.cpp）而不是模型本身，因为运行时服务所有模型。
+        选型顺序应该是：先看<a href="/learn/deploy.html">硬件能不能跑</a>，再看任务是否匹配，最后才用星数判断生态是否健康。
+        <br><br>
+        <b>许可证要看清楚。</b>标 AGPL 的（ComfyUI、Firecrawl、MinerU）用在自己服务器上没问题，但改动后对外提供网络服务需要开源；
+        标「自定义」的（RAGFlow、Dify、n8n）商用前必须读原文，里面常有用户数或营收限制。
+      </div>
+    </div>
+  </div>
+</main>
+<script src="/toolbox/filter.js"></script>
+
+<footer class="ccfoot">
+  <div class="in">
+    <div class="col"><h4>白驹 ccowork</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:260px">把散落的 AI 工具与知识装进一个大脑。</p></div>
+    <div class="col"><h4>模型</h4>
+      <a href="/models/atlas.html">模型图谱</a><a href="/models/library.html">模型库</a>
+      <a href="/models/leaderboards.html">榜单矩阵</a><a href="/models/vendors.html">厂商阵列</a></div>
+    <div class="col"><h4>工具</h4>
+      <a href="/toolbox/repos.html">开源仓库</a><a href="/toolbox/platforms.html">平台阵列</a>
+      <a href="/learn/deploy.html">部署百科</a><a href="/toolbox/library.html">工具库</a></div>
+    <div class="col"><h4>关于</h4>
+      <a href="/about/">关于本站</a><a href="/works/museum.html">AI 博物馆</a></div>
+  </div>
+  <div class="bd"><span>数据快照 · 2026-11-15</span><span>条目可验证 · 链接直达原始仓库</span></div>
+</footer>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115b">
+<script src="/assets/baiju-gate.js?v=20261115b"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115b"></script>
+</body>
+</html>

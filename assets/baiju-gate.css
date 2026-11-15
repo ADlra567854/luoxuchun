@@ -1,0 +1,206 @@
+/* 白驹 · 朋友门锁 · 样式层
+ * 与 A 线锁定视觉 token 完全一致：亮 #F4F7FC / #FFFFFF / #1E293B，
+ * 暗 #030014 / #101728 / #E9F0FB；渐变 #4F8CFF→#38B6FF→#8B5CF6（亮）
+ * / #38E1FF→#5B8CFF→#8B5CF6（暗）；卡片圆角 16、按钮 12、胶囊 pill。
+ * 只做「可见性」，不做鉴权：纯静态站没有服务端，这是君子锁。
+ * ★ 本文件不得另起设计语言；后续主副站 / 子域沿用同一套。
+ */
+:root {
+  --gate-card: #FFFFFF;
+  --gate-bg: #F4F7FC;
+  --gate-text: #1E293B;
+  --gate-muted: #475569;
+  --gate-line: rgba(227, 235, 245, .95);
+  --gate-grad: linear-gradient(120deg, #4F8CFF, #38B6FF 50%, #8B5CF6);
+  --gate-shade: rgba(15, 23, 42, .10);
+  --gate-chip: rgba(79, 140, 255, .10);
+}
+html[data-theme="deep"] {
+  --gate-card: #101728;
+  --gate-bg: #030014;
+  --gate-text: #E9F0FB;
+  --gate-muted: #8FA3BD;
+  --gate-line: rgba(143, 163, 189, .22);
+  --gate-grad: linear-gradient(120deg, #38E1FF, #5B8CFF 45%, #8B5CF6);
+  --gate-shade: rgba(0, 0, 0, .45);
+  --gate-chip: rgba(56, 225, 255, .12);
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="cloud"]) {
+    --gate-card: #101728;
+    --gate-bg: #030014;
+    --gate-text: #E9F0FB;
+    --gate-muted: #8FA3BD;
+    --gate-line: rgba(143, 163, 189, .22);
+    --gate-grad: linear-gradient(120deg, #38E1FF, #5B8CFF 45%, #8B5CF6);
+    --gate-shade: rgba(0, 0, 0, .45);
+    --gate-chip: rgba(56, 225, 255, .12);
+  }
+}
+
+/* ---------- 锁定态：把所有「朋友层」入口收起来 ---------- */
+/* 只隐藏交互式 / 需自备密钥的功能入口；作品、教程、博客、书稿、
+   数据实验室、场馆体系等公开内容一律不动。 */
+/* ★ 不要加 .bja-page-assist：那是 <body> 上的类名，隐藏它会整页白屏 */
+html[data-gate="locked"] .bja-fab,
+html[data-gate="locked"] .bja-panel,
+html[data-gate="locked"] .bja-root,
+html[data-gate="locked"] button.cta-tip,
+html[data-gate="locked"] .ob-open,
+html[data-gate="locked"] #compile,
+html[data-gate="locked"] .modebtn[data-mode="compile"],
+html[data-gate="locked"] .gate-hide,
+html[data-gate="locked"] a[href*="agent.html"][data-gate-entry],
+html[data-gate="locked"] a[href*="chat.html"][data-gate-entry] {
+  display: none !important;
+}
+/* 站内 header.ccnav .cta.cta-tip 带 !important 且特异性更高，
+   这里用同结构 + html 属性前缀把它压住，保证首帧不闪。
+   运行时还会再打一层内联 important（见 baiju-gate.js enforceHide）。 */
+html[data-gate="locked"] header.ccnav .ccnav-act .cta.cta-tip,
+html[data-gate="locked"] nav.top .cta.cta-tip,
+html[data-gate="locked"] .cta.cta-tip,
+html[data-gate="locked"] .ob-open {
+  display: none !important;
+}
+
+/* ---------- 对话页：整页遮成一张门锁卡 ---------- */
+/* body 上挂 bj-gated-page 时只留遮罩，原 DOM 保留（页面内脚本取元素不报错） */
+html[data-gate="locked"] body.bj-gated-page > *:not(.bj-gate-overlay) {
+  display: none !important;
+}
+html[data-gate="locked"] body.bj-gated-page { min-height: 100vh; }
+
+.bj-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  background: var(--gate-bg);
+  overflow: auto;
+}
+.bj-gate-box {
+  width: 100%;
+  max-width: 420px;
+  background: var(--gate-card);
+  border: 1px solid var(--gate-line);
+  border-radius: 16px;
+  box-shadow: 0 18px 48px var(--gate-shade);
+  padding: 28px 26px;
+  text-align: center;
+}
+.bj-gate-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--gate-chip);
+  border: 1px solid var(--gate-line);
+  color: var(--gate-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .3px;
+}
+.bj-gate-lock {
+  width: 60px;
+  height: 60px;
+  margin: 22px auto 14px;
+  border-radius: 16px;
+  background: var(--gate-grad);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 8px 22px rgba(79, 140, 255, .28);
+}
+.bj-gate-box h1 {
+  margin: 0 0 10px;
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--gate-text);
+  letter-spacing: .5px;
+}
+.bj-gate-box p {
+  margin: 0 0 18px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--gate-muted);
+}
+.bj-gate-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--gate-line);
+  background: var(--gate-bg);
+  color: var(--gate-text);
+  font-size: 15px;
+  letter-spacing: 1px;
+  outline: none;
+}
+.bj-gate-input:focus { border-color: #4F8CFF; box-shadow: 0 0 0 3px var(--gate-chip); }
+.bj-gate-btn {
+  width: 100%;
+  margin-top: 12px;
+  min-height: 46px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--gate-grad);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.bj-gate-btn:active { transform: translateY(1px); }
+.bj-gate-tip {
+  margin-top: 12px !important;
+  font-size: 12px !important;
+  line-height: 1.7 !important;
+}
+.bj-gate-err { color: #E11D48; font-size: 12px; margin-top: 10px; min-height: 18px; }
+.bj-gate-foot {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gate-line);
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--gate-muted);
+}
+
+/* ---------- 已解锁后的「重新上锁」悬浮小按钮 ---------- */
+.bj-gate-relock {
+  position: fixed;
+  right: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 2147483001;
+  padding: 8px 12px;
+  min-height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--gate-line);
+  background: var(--gate-card);
+  color: var(--gate-muted);
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px var(--gate-shade);
+  opacity: .78;
+}
+.bj-gate-relock:hover { opacity: 1; color: var(--gate-text); }
+
+@media (max-width: 720px) {
+  .bj-gate-box { padding: 24px 20px; }
+  .bj-gate-overlay { align-items: flex-start; padding-top: max(32px, env(safe-area-inset-top)); }
+}
+@media (max-width: 480px) {
+  .bj-gate-box h1 { font-size: 19px; }
+  .bj-gate-lock { width: 54px; height: 54px; margin: 18px auto 12px; }
+  .bj-gate-relock { right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bj-gate-btn:active { transform: none; }
+}

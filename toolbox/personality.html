@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>人格测试 · 工具域 · 白驹 ccowork</title>
+<meta name="description" content="用一组问题定位适合你的 AI 协作方式。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/toolbox/personality.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f0b95c;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:20px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-cta{padding:8px 16px;border:1px solid rgba(56,225,255,.4);border-radius:999px;color:var(--cyan)!important;font-size:13px}
+@media(max-width:1000px){.nav-links{display:none}}
+.hero{min-height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:120px 24px 40px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(6,8,15,.5),rgba(6,8,15,.92) 70%),url('/assets/img/ai-bg-server.webp') center/cover no-repeat}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:999px;letter-spacing:2px;margin-bottom:24px}
+.hero h1{font-size:clamp(30px,5vw,60px);font-weight:900;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:680px;color:var(--muted);font-size:clamp(14.5px,1.5vw,17px);margin:20px auto 0}
+main{max-width:760px;margin:0 auto;padding:44px 20px 80px}
+#box{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:32px 28px;min-height:380px;position:relative}
+.bar{height:6px;border-radius:999px;background:#0a0f1e;overflow:hidden;margin-bottom:26px}
+.bar i{display:block;height:100%;width:10%;background:var(--grad);transition:width .35s}
+.qno{color:var(--cyan);font-size:13px;letter-spacing:2px}
+.qtext{font-size:clamp(19px,3vw,24px);font-weight:800;margin:10px 0 24px;line-height:1.5}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:15px 18px;margin-bottom:12px;
+  border-radius:14px;border:1px solid var(--line);background:var(--bg2);color:var(--text);
+  font-size:15px;cursor:pointer;transition:.22s;font-family:inherit}
+.opt:hover{border-color:var(--cyan);color:var(--cyan);transform:translateX(4px)}
+.opt .k{flex:0 0 30px;height:30px;border-radius:10px;background:#18223c;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--muted)}
+.opt:hover .k{background:var(--grad);color:#04101f}
+.result{text-align:center}
+.result .emoji{font-size:56px;margin-bottom:10px;animation:pop .5s ease}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.result h3{font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.result .sub{color:var(--muted);margin:8px 0 18px}
+.result .score{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:6px 0 20px}
+.result .score span{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 13px}
+.result .rec{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:left;margin-bottom:18px}
+.result .rec b{color:var(--cyan)}
+.result .rec ul{margin:10px 0 0 18px;color:var(--muted);font-size:14px}
+.result .links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{padding:12px 26px;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:.25s;cursor:pointer;border:none;font-family:inherit}
+.btn-p{background:var(--grad);color:#04101f}
+.btn-g{border:1px solid var(--line);color:var(--text);background:transparent}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,140,255,.35)}
+.note{text-align:center;color:#5d6f94;font-size:12px;margin-top:16px}
+footer{border-top:1px solid var(--line);padding:36px 24px;text-align:center;color:var(--muted);font-size:13px}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="toolbox" data-cctitle="工具">
+<div class="pg-wrap">
+<article class="merged-content">
+<section class="hero">
+  <div class="tag">AI 使用偏好测试</div>
+  <h1>你的 <span>AI 人格</span> 是什么？</h1>
+  <p class="sub">10 道题，测出你在 AI 世界里更像谁——灵感创作者、效能管家、求知学者，还是商业操盘手？测完直接推荐最适合你的赚钱方向。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+</section>
+<main>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-personality.png" alt="AI 性格测试 · 找到你的 AI 人格 | 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+  <div id="box"><div class="bar"><i id="prog"></i></div><div id="stage"></div></div>
+  <p class="note">结果仅保存在本机浏览器，可随时重测。</p>
+</main>
+
+
+
+<script>
+(function(){
+'use strict'
+var QS = [
+  {q:'你用 AI 最想解决什么？', o:['做出作品（漫剧/绘画/视频）','更快干完活（周报/表格/邮件）','学懂新东西（课程/答疑/研究）','多赚钱（副业/接单/卖货）']},
+  {q:'拿到一个 AI 工具，你先干什么？', o:['试着创作点什么','找它能不能自动做我的活','查资料、学透用法','琢磨怎么用它变现']},
+  {q:'什么事让你最有成就感？', o:['作品被人夸','省下了大把时间','搞懂一个难题','收到第一笔钱']},
+  {q:'你的时间大头花在哪？', o:['表达创意、打磨细节','处理事务、安排琐事','吸收信息、深度思考','对接需求、谈合作']},
+  {q:'朋友怎么形容你？', o:['有想法、点子多','靠谱、执行力强','爱钻研、坐得住','会来事、懂商业']},
+  {q:'如果只学一样 AI 技能，你选？', o:['提示词做图/视频','自动化工作流','深度问答/文献研究','商业落地与运营']},
+  {q:'你希望 AI 是你的……', o:['灵感搭子','万能助理','私人家教','生意搭档']},
+  {q:'刷到 AI 爆款内容，你第一反应？', o:['想模仿一个','想拿去提效','想搞清楚原理','想看能不能变现']},
+  {q:'工作学习里你最烦什么？', o:['灵感枯竭','重复琐碎','概念听不懂','忙活不赚钱']},
+  {q:'给你 10 万预算投入 AI，你选？', o:['买工具做作品','买软件省人力','报课深度学习','投资做小生意']}
+]
+var KEYS=['A','B','C','D'], DIMS=['creative','efficient','learn','business']
+var NAME={creative:'灵感创作者',efficient:'效能管家',learn:'求知学者',business:'商业操盘手'}
+var EMOJI={creative:'',efficient:'',learn:'',business:''}
+var SCORE={creative:0,efficient:0,learn:0,business:0}
+var cur=0
+var stage=document.getElementById('stage'), prog=document.getElementById('prog')
+function renderQ(i){
+  prog.style.width=((i+1)/QS.length*100)+'%'
+  var q=QS[i]
+  var html='<div class="qno">第 '+(i+1)+' / '+QS.length+' 题</div><div class="qtext">'+q.q+'</div>'
+  q.o.forEach(function(t,j){ html+='<button class="opt" data-j="'+j+'" type="button"><span class="k">'+KEYS[j]+'</span>'+t+'</button>' })
+  stage.innerHTML=html
+  stage.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click',function(){ SCORE[DIMS[+b.getAttribute('data-j')]]++; cur++; if(cur<QS.length) renderQ(cur); else renderR() })
+  })
+}
+function renderR(){
+  prog.style.width='100%'
+  var sorted=DIMS.slice().sort(function(a,b){return SCORE[b]-SCORE[a]})
+  var top=sorted[0]
+  var desc={
+    creative:{d:'你的天赋是“创造”。别人在等灵感，你在用提示词量产灵感。', rec:' AI 漫剧 + 作品创作', links:[['去 AI 漫剧指南','manju.html'],['逛作品内容库','works.html']], tips:['练熟 1-2 款生图/生视频模型，做垂直品类','把人设卡+一致性模板沉淀成你的流水线','先在平台发 10 条练数据，再考虑变现']},
+    efficient:{d:'你的天赋是“提效”。别人加班，你用 AI 下班。', rec:' 岗位工作台 + 办公自动化', links:[['去 AI 赚钱攻略','ai-money.html'],['去 AI 就业指南','ai-jobs.html']], tips:['把周报/表格/邮件做成你的专属提示词库','学自动化工作流，让 AI 替你盯重复活','用提效结果做述职，向“岗位+AI”转型']},
+    learn:{d:'你的天赋是“钻研”。别人在学用法，你在研究原理。', rec:' AI 赋能教育 + 深度研究', links:[['去 AI 教育专题','ai-edu.html'],['去 AI 就业指南','ai-jobs.html']], tips:['用 AI 做“苏格拉底式”对练，边问边学','把学到的整理成课程/笔记，二次变现','往提示工程、AIGC 训练师等新职能发展']},
+    business:{d:'你的天赋是“经营”。别人在玩工具，你在算账。', rec:' 变现闭环 + 工作台顾问', links:[['去 AI 赚钱攻略','ai-money.html'],['去 AI 漫剧指南','manju.html']], tips:['先跑通一个小闭环：接单交付复购','用 AI 降低交付成本，单子越接越值钱','把经验打包成课程/代运营，做高客单']}
+  }[top]
+  var s=desc
+  var html='<div class="result"><div class="emoji">'+EMOJI[top]+'</div><h3>'+NAME[top]+'</h3>'+
+    '<p class="sub">'+s.d+'</p>'+
+    '<div class="score">'+DIMS.map(function(k){return '<span>'+(k===top?'':'')+NAME[k]+' '+SCORE[k]+'</span>'}).join('')+'</div>'+
+    '<div class="rec"><b> 推荐路线：</b>'+s.rec+'<ul>'+s.tips.map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul></div>'+
+    '<div class="links">'+s.links.map(function(l){return '<a class="btn btn-p" href="'+l[1]+'">'+l[0]+'</a>'}).join('')+'<button class="btn btn-g" id="again" type="button">重新测试</button></div></div>'
+  stage.innerHTML=html
+  document.getElementById('again').addEventListener('click',function(){ SCORE={creative:0,efficient:0,learn:0,business:0};cur=0;renderQ(0) })
+  try{localStorage.setItem('ai.personality',JSON.stringify({top:top,score:SCORE,ts:Date.now()}))}catch(e){}
+}
+renderQ(0)
+})()
+</script>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

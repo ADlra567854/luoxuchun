@@ -1,0 +1,2930 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="deep">
+<head>
+<meta name="keywords" content="全部入口 · 白驹,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>全部入口 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"全部入口 · 白驹","description":"按人群找到该读的内容：老师、学生、开发者、技术人员、工具台、普通人。294 页全部有归属。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<meta name="description" content="按人群找到该读的内容：老师、学生、开发者、技术人员、工具台、普通人。294 页全部有归属。">
+<meta property="og:description" content="按人群找到该读的内容：老师、学生、开发者、技术人员、工具台、普通人。294 页全部有归属。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/role-entry.html">
+<!-- 站点图标体系：CSS mask + assets/icons/*.svg（317 个）。
+     不引这份就没人为 --cc-ic 变量生成 mask，图标会是空白方块。
+     路径修正：site-redesign.css 里用的是相对路径 assets/icons/x.svg，
+     本页在 /website/ 下会解析成 /website/assets/… → 404，
+     所以本页另写六条根绝对路径规则覆盖（见 .rm-rolecard-ic[data-ic=…]）。 -->
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<style>
+/* ---------- 自带设计 token：不依赖站点是否定义（上次踩过 --line 不存在） ---------- */
+:root{
+  --rm-bg:#030014; --rm-card:#101728; --rm-card2:#161f33;
+  --rm-text:#e9f0fb; --rm-muted:#8fa3bd;
+  --rm-line:#1e2d47; --rm-line2:#2a3b5c;
+  --rm-grad:linear-gradient(120deg,#4f8cff,#38b6ff 52%,#8b5cf6);
+  --rm-cy:#38e1ff; --rm-vi:#8b5cf6; --rm-gr:#10b981; --rm-am:#f59e0b;
+}
+[data-theme="cloud"]{
+  --rm-bg:#f7f9fc; --rm-card:#fff; --rm-card2:#eef3fa;
+  --rm-text:#0f172a; --rm-muted:#5b6b83;
+  --rm-line:#dfe7f1; --rm-line2:#cbd8e8;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:78px}
+body{margin:0;background:var(--rm-bg);color:var(--rm-text);
+  font:15px/1.7 "PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  overflow-x:hidden}
+/* ★ 兜底：长标题/长英文不允许撑破容器 —— 这是横向溢出的最后一道防线 */
+.rm-wrap *{overflow-wrap:anywhere;word-break:break-word;min-width:0}
+.rm-wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+/* ---------- 顶栏 ---------- */
+.rm-nav{position:sticky;top:0;z-index:60;background:rgba(3,0,20,.9);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--rm-line)}
+[data-theme="cloud"] .rm-nav{background:rgba(255,255,255,.92)}
+.rm-navin{display:flex;align-items:center;gap:16px;height:58px}
+.rm-logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:17px;text-decoration:none;color:inherit}
+.rm-logo::before{content:"🐎";font-size:19px}
+.rm-nav a.rm-home{margin-left:auto;font-size:13px;font-weight:800;text-decoration:none;
+  color:var(--rm-muted);padding:6px 12px;border:1px solid var(--rm-line);border-radius:999px}
+.rm-nav a.rm-home:hover{color:var(--rm-cy);border-color:var(--rm-cy)}
+/* ---------- 首屏 ---------- */
+.rm-hero{padding:52px 0 30px}
+.rm-badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;
+  padding:5px 13px;border-radius:999px;background:rgba(56,225,255,.12);
+  border:1px solid rgba(56,225,255,.34);color:var(--rm-cy)}
+.rm-h1{margin:16px 0 10px;font-size:clamp(28px,4.4vw,44px);font-weight:900;line-height:1.25;letter-spacing:-.5px}
+.rm-sub{margin:0;font-size:16px;color:var(--rm-muted);max-width:62ch;line-height:1.85}
+.rm-stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px}
+.rm-stat b{display:block;font-size:24px;font-weight:900;background:var(--rm-grad);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.rm-stat i{font-style:normal;font-size:12px;color:var(--rm-muted)}
+/* ---------- 角色选择 ---------- */
+.rm-roles{display:grid;grid-template-columns:1fr;gap:11px;margin-top:30px}
+@media (min-width:520px){.rm-roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:860px){.rm-roles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1200px){.rm-roles{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.rm-rolecard{position:relative;text-align:left;cursor:pointer;
+  padding:16px 15px;border:1px solid var(--rm-line);border-radius:18px;
+  background:var(--rm-card);color:inherit;font:inherit;transition:.18s;
+  /* 显式 grid：图标独占一行，文字块整体可换行，不会被站点 flex 规则带偏 */
+  display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-content:start}
+.rm-rolecard:hover{border-color:var(--rm-line2);transform:translateY(-2px)}
+.rm-rolecard b{display:block;font-size:16px;font-weight:900;margin-top:9px}
+.rm-rolecard i{display:block;font-style:normal;font-size:12px;color:var(--rm-muted);margin-top:4px;line-height:1.6}
+.rm-rolecard em{display:block;font-style:normal;font-size:11px;color:var(--rm-cy);margin-top:8px;font-weight:700}
+.rm-rolecard[aria-pressed="true"]{
+  border-color:transparent;background:var(--rm-grad);color:#fff;
+  box-shadow:0 10px 28px rgba(79,140,255,.28)}
+/* ★ 选中态可读性：渐变最亮处 #38b6ff 压白字只有约 2.3:1（WCAG AA 正文要 4.5:1），
+   实测截图里标题看着发虚就是这个原因。叠一层深蓝把底压暗，再给白字加投影兜底。 */
+.rm-rolecard[aria-pressed="true"]::before{content:"";position:absolute;inset:0;border-radius:14px;
+  background:rgba(9,26,58,.34);pointer-events:none}
+.rm-rolecard[aria-pressed="true"]>*{position:relative;z-index:1}
+.rm-rolecard[aria-pressed="true"] b{text-shadow:0 1px 3px rgba(6,20,48,.55)}
+.rm-rolecard[aria-pressed="true"] i{color:rgba(255,255,255,.94);text-shadow:0 1px 3px rgba(6,20,48,.5)}
+.rm-rolecard[aria-pressed="true"] i,.rm-rolecard[aria-pressed="true"] em{color:rgba(255,255,255,.86)}
+.rm-rolecard-ic{width:1.5em;height:1.5em;display:block;flex:none;color:var(--rm-cy);opacity:.92;
+  /* ★ 整张卡是 <button>，图标若成为点击目标会拦截整卡点击（Playwright 报
+     subtree intercepts pointer events，真实用户也会出现「点了没反应」）。
+     pointer-events:none 让点击穿透到卡片本身。 */
+  pointer-events:none}
+/* ★★ 隔离 site-redesign.css 的元素级污染。
+   站点把「按钮内的 i」一律当图标，设了固定 width:1.05em/1.2em。
+   我的角色卡里 <i> 是副标题文字，被套上图标宽度 → 文字挤成竖条（一行一个字）。
+   这就是 10-06/10-07 反复出现的「元素级样式冲突」，这里必须显式复位。 */
+.rm-rolecard i:not(.cc-ic){width:auto;height:auto;display:block;flex:none;
+  margin:0;font-style:normal;color:var(--rm-muted);line-height:1.6;
+  vertical-align:baseline;opacity:1;background:none}
+.rm-rolecard b,.rm-rolecard em{width:auto;height:auto;display:block;flex:none;
+  vertical-align:baseline;background:none}
+.rm-rolecard em{font-style:normal;color:var(--rm-cy)}
+/* 同时复位我页面里所有可能被站点图标规则命中的元素 */
+.rm-wrap :where(i,em,strong,small,label):not(.cc-ic){
+  width:auto;height:auto;vertical-align:baseline;background:none}
+/* ★ site-redesign.css 里的图标规则用的是【相对路径】
+     --cc-ic:url("assets/icons/xxx.svg")
+     本页在 /website/ 下，浏览器会解析成 /website/assets/icons/xxx.svg → 404 → 图标空白。
+     与 10-07 那次「130 个坏图标」是同一类路径问题。
+     修法：本页把六个角色图标显式指向根绝对路径（发布后图标在 /assets）。 */
+.rm-rolecard-ic[data-ic="graduation-cap"]{--cc-ic:url("/assets/icons/graduation-cap.svg")}
+.rm-rolecard-ic[data-ic="book-open"]{--cc-ic:url("/assets/icons/book-open.svg")}
+.rm-rolecard-ic[data-ic="code"]{--cc-ic:url("/assets/icons/code.svg")}
+.rm-rolecard-ic[data-ic="cpu"]{--cc-ic:url("/assets/icons/cpu.svg")}
+.rm-rolecard-ic[data-ic="layout-grid"]{--cc-ic:url("/assets/icons/layout-grid.svg")}
+.rm-rolecard-ic[data-ic="user"]{--cc-ic:url("/assets/icons/user.svg")}
+.rm-rolecard[aria-pressed="true"] .rm-rolecard-ic{color:#fff;opacity:1}
+/* ---------- 面板 ---------- */
+.rm-panel{padding:8px 0 70px}
+.rm-ask{margin:0 0 12px;font-size:19px;font-weight:800}
+.rm-promises{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.rm-promises span{font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;
+  background:rgba(79,140,255,.1);border:1px solid rgba(79,140,255,.28);color:var(--rm-text)}
+.rm-first{display:flex;align-items:center;gap:10px;flex-wrap:wrap;text-decoration:none;
+  padding:14px 20px;border-radius:14px;background:var(--rm-grad);color:#fff;font-weight:900;font-size:16px}
+.rm-first i{font-style:normal;font-weight:500;font-size:13px;opacity:.9}
+.rm-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:26px;margin-top:26px}
+/* ★ Grid 的 1fr 默认 min-width:auto —— 子元素有超长内容（如 40 字标题）时，
+   轨道会被内容顶开，容器撑破视口。必须写 minmax(0,1fr) 而不是 1fr。
+   实测：手机 390px 下 .rm-main 被顶到 557px，文档横向溢出 189px。 */
+.rm-main,.rm-side{min-width:0}
+.rm-h3{margin:0 0 12px;font-size:15px;font-weight:900;padding-left:11px;
+  border-left:4px solid var(--rm-cy)}
+.rm-h3 em{font-style:normal;font-size:12px;color:var(--rm-muted);font-weight:600;margin-left:8px}
+.rm-group{margin-bottom:22px}
+.rm-group h4{margin:0 0 9px;font-size:14px;font-weight:900;display:flex;
+  align-items:baseline;gap:8px;flex-wrap:wrap}
+.rm-group h4 .rm-gnum{font-size:11px;font-weight:900;padding:1px 8px;border-radius:999px;
+  background:rgba(139,92,246,.16);color:var(--rm-vi)}
+.rm-group h4 em{font-style:normal;font-size:12px;color:var(--rm-muted);font-weight:500}
+.rm-list{list-style:none;margin:0;padding:0;display:grid;
+  /* ★ 不能写 minmax(min(232px,100%),1fr) —— Grid 轨道里 min() 的 100%
+     参照的是轨道自身而非容器，实测在 390px 视口下解析成 557px，把容器撑破。
+     正解：minmax(0,1fr) 允许轨道收缩，列数交给 auto-fill 的最小值控制。 */
+  grid-template-columns:repeat(auto-fill,minmax(min(232px,100%),1fr));gap:6px}
+/* 上一条仍不稳（见实测），改为显式列数控制：窄屏 1 列，够宽再逐级放开 */
+.rm-list{grid-template-columns:1fr}
+@media (min-width:560px){.rm-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:900px){.rm-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1300px){.rm-list{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.rm-item{display:flex;align-items:baseline;gap:8px;justify-content:space-between;
+  padding:8px 12px;border:1px solid var(--rm-line);border-radius:10px;background:var(--rm-card)}
+.rm-item a{font-size:14px;font-weight:700;text-decoration:none;color:inherit;flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rm-item a:hover{color:var(--rm-cy)}
+.rm-metrics{font-size:11px;color:var(--rm-muted);flex:none}
+.rm-main{margin:0}
+.rm-side{margin:0}
+.rm-side > section, .rm-side > div{margin-bottom:24px}
+.rm-skip,.rm-out{list-style:none;margin:0;padding:0;font-size:13px;line-height:1.75}
+.rm-skip li,.rm-out li{padding:9px 12px;border-radius:10px;margin-bottom:6px;
+  background:var(--rm-card);border:1px solid var(--rm-line)}
+.rm-skip b{display:block;color:var(--rm-am);font-size:12px;margin-bottom:3px}
+.rm-out li{border-left:3px solid var(--rm-gr)}
+.rm-term{font-size:12px;color:var(--rm-muted);line-height:1.8;padding:11px 13px;
+  border:1px dashed var(--rm-line2);border-radius:10px;margin:0}
+/* ---------- 系统页 ---------- */
+.rm-sys{margin-top:8px;padding-top:24px;border-top:1px solid var(--rm-line)}
+.rm-syslist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:6px}
+@media (min-width:640px){.rm-syslist{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1000px){.rm-syslist{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* ---------- 电视投屏：观看距离 2.4~3.7m，字号与对比度须显著提高 ----------
+   依据（responsive-4device-spec.json，来自 Apple HIG / MDN / Amazon 10-foot UI）：
+   正文最小 28px、推荐 32~36px；菜单 32~44px；标题 48px+；
+   对比度正文 ≥7:1（不是 WCAG 的 4.5:1）；安全区四边各留 5%（老电视过扫描会裁边）。
+   ★ 关键：不能只靠 min-width:1600px —— 投屏电视常是低 DPI，
+     需要同时用 min-resolution 判定，否则大屏显示器会被误判为电视。 */
+@media (min-width:1600px){
+  .rm-list{grid-template-columns:repeat(auto-fill,minmax(0,1fr))}
+  .rm-item{padding:14px 18px;min-height:64px}
+  .rm-item a{font-size:22px}
+  .rm-metrics{font-size:16px}
+  .rm-group h4{font-size:21px}
+  .rm-group h4 em{font-size:17px}
+  .rm-h3{font-size:26px}
+  .rm-ask{font-size:30px}
+  .rm-promises span{font-size:19px;padding:10px 20px}
+  .rm-first{font-size:26px;padding:20px 28px}
+  .rm-first i{font-size:18px}
+  .rm-skip li,.rm-out li{font-size:19px;padding:13px 16px}
+  .rm-term{font-size:18px}
+}
+/* 纯电视投屏：强制放大 + 安全区（低 DPI 是电视的典型特征） */
+@media (min-width:1600px) and (max-resolution:96dpi){
+  .rm-wrap{max-width:min(1400px,90vw)}
+  .rm-navin{height:76px}
+  .rm-item a{font-size:26px}
+  .rm-item{min-height:76px;padding:16px 22px}
+  .rm-metrics{font-size:18px}
+  .rm-list{gap:10px}
+  /* 安全区：四边各 5%，overscan 会裁掉边缘内容 */
+  .rm-hero,.rm-panel{padding-left:5vw;padding-right:5vw}
+  .rm-navin{padding-left:5vw;padding-right:5vw}
+  .rm-rolecard b{font-size:24px}
+  .rm-rolecard i{font-size:17px}
+  .rm-rolecard em{font-size:15px}
+}
+/* 电视上禁止极细描边与纯白：运动模糊+压缩伪影会让发丝线消失，
+   纯白在暗环境产生光晕（Apple/Amazon 均有此提示） */
+@media (min-width:1600px) and (max-resolution:96dpi){
+  .rm-item,.rm-rolecard,.rm-first{border-width:2px}
+  .rm-item{background:#141d31}
+  /* ★ 上一轮漏了这几类，实测仍是 15~21px（远低于 28px 硬规范）。
+     验收脚本量的是「所有可见文字元素的最小字号」，只放大 .rm-item a 不够。 */
+  .rm-rolecard i{font-size:19px;line-height:1.6}
+  .rm-rolecard em{font-size:17px}
+  .rm-group h4 .rm-gnum{font-size:17px;padding:3px 12px}
+  .rm-group h4 em{font-size:19px;line-height:1.7}
+  .rm-promises span{font-size:21px;padding:12px 24px}
+  .rm-skip b{font-size:21px}
+  .rm-badge{font-size:18px;padding:8px 18px}
+  .rm-nav .rm-logo{font-size:26px}
+  .rm-nav a.rm-home{font-size:19px;padding:9px 18px}
+  /* ★★ 兜底：电视端任何可见文字一律不得小于 28px（10-foot UI 硬规范）。
+     前三轮我逐条补规则，仍漏下 .rm-stat i / .rm-h3 em / .rm-gnum / .rm-skip li…
+     ★ 关键教训：:where() 的权重是 0，会被任何类选择器覆盖，
+       所以兜底规则必须用**类选择器**（权重 0,1,0）并放在媒体查询的**最后**，
+       否则兜底规则反而是最先被覆盖的那条。用 :is() 提高权重也不行，它同样是 0。
+       这里直接对页面内所有文字元素统一声明，不写通配符以外的复杂逻辑。 */
+  .rm-wrap i, .rm-wrap em, .rm-wrap span, .rm-wrap b, .rm-wrap a,
+  .rm-wrap p, .rm-wrap h1, .rm-wrap h2, .rm-wrap h3, .rm-wrap h4,
+  .rm-wrap li, .rm-wrap strong, .rm-wrap small, .rm-wrap label,
+  .rm-wrap .rm-rolecard, .rm-wrap .rm-item{
+    font-size:28px;
+  }
+  /* 层级标题按 10-foot UI 规范放大：正文 28 / 小标题 34 / 大标题 56 */
+  .rm-wrap .rm-stat b{font-size:44px}
+  .rm-wrap .rm-item a{font-size:30px}
+  .rm-wrap .rm-group h4{font-size:34px}
+  .rm-wrap .rm-group h4 em{font-size:26px}
+  .rm-wrap .rm-h3{font-size:34px}
+  .rm-wrap .rm-h3 em{font-size:28px}
+  .rm-wrap .rm-ask{font-size:38px}
+  .rm-wrap .rm-h1{font-size:56px}
+  .rm-wrap .rm-rolecard b{font-size:30px}
+  .rm-wrap .rm-list{gap:12px}
+  .rm-wrap .rm-group{margin-bottom:30px}
+  .rm-wrap .rm-gnum{font-size:28px}
+}
+@media (max-width:860px){
+  .rm-cols{grid-template-columns:1fr}
+  .rm-hero{padding:34px 0 20px}
+  .rm-list{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:description" content="按人群找到该读的内容：老师、学生、开发者、技术人员、工具台、普通人。294 页全部有归属。">
+<meta property="og:title" content="全部入口 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/website/role-entry.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="全部入口 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-skeleton="cards"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav class="rm-nav">
+  <div class="rm-wrap rm-navin">
+    <a class="rm-logo" href="/index.html">白驹</a>
+    <a class="rm-home" href="/">总站</a>
+  </div>
+</nav>
+<div class="rm-wrap">
+  <header class="rm-hero">
+    <span class="rm-badge">全部入口 · 按人群</span>
+    <h1 class="rm-h1">你是谁，就从这里开始</h1>
+    <p class="rm-sub">
+      站里 294 个页面都有归属。选一个身份，下面只显示你该读的、可以跳过的，
+      以及读完能带走什么。<b>不需要从第一页读到最后一页。</b>
+    </p>
+    <div class="rm-stats">
+      <div class="rm-stat"><b>6</b><i>类身份</i></div>
+      <div class="rm-stat"><b>294</b><i>个页面已归位</i></div>
+      <div class="rm-stat"><b>18</b><i>条内容线</i></div>
+      <div class="rm-stat"><b>487</b><i>次归属（一页可属多人）</i></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+      <a href="/" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;background:linear-gradient(120deg,#4f8cff,#38b6ff 55%,#8b5cf6);color:#fff;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 6px 18px rgba(79,140,255,.28)">直接去总站<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a href="/feed/" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;background:transparent;color:inherit;font-weight:700;font-size:14px;text-decoration:none;border:1px solid rgba(148,163,184,.45)">看近 7 天前沿<i class="cc-ic" data-ic="flame" aria-hidden="true"></i></a>
+    </div>
+    <div class="rm-roles" role="group" aria-label="选择身份">
+        <button class="rm-rolecard" data-role="teacher" aria-pressed="false">
+          <i class="cc-ic rm-rolecard-ic" data-ic="graduation-cap" aria-hidden="true"></i>
+          <b>老师</b>
+          <i>语文 / 数学 / 英语教师，教研与班主任</i>
+          <em>55 页 · 首站「AI 进校园」</em>
+        </button>
+        <button class="rm-rolecard" data-role="student" aria-pressed="false">
+          <i class="cc-ic rm-rolecard-ic" data-ic="book-open" aria-hidden="true"></i>
+          <b>学生</b>
+          <i>中学 / 大学 / 考研 / 想转行</i>
+          <em>132 页 · 首站「从零基础到职业实战」</em>
+        </button>
+        <button class="rm-rolecard" data-role="developer" aria-pressed="false">
+          <i class="cc-ic rm-rolecard-ic" data-ic="code" aria-hidden="true"></i>
+          <b>开发者</b>
+          <i>想用 AI 提效 / 想做 Agent 产品</i>
+          <em>78 页 · 首站「初识智能体」</em>
+        </button>
+        <button class="rm-rolecard" data-role="engineer" aria-pressed="false">
+          <i class="cc-ic rm-rolecard-ic" data-ic="cpu" aria-hidden="true"></i>
+          <b>技术人员</b>
+          <i>算法 / 部署 / 运维，要落地到硬件与服务</i>
+          <em>92 页 · 首站「大模型微调与私有化部署」</em>
+        </button>
+        <button class="rm-rolecard" data-role="toolbox" aria-pressed="false">
+          <i class="cc-ic rm-rolecard-ic" data-ic="layout-grid" aria-hidden="true"></i>
+          <b>工具台</b>
+          <i>干活的地方：对话、写作、图像、仿真、翻译、部署</i>
+          <em>35 页 · 首站「工作台」</em>
+        </button>
+        <button class="rm-rolecard" data-role="everyone" aria-pressed="false">
+          <i class="cc-ic rm-rolecard-ic" data-ic="user" aria-hidden="true"></i>
+          <b>普通人</b>
+          <i>想用起来，不想先学原理</i>
+          <em>95 页 · 首站「按场景抄提示词」</em>
+        </button>
+    </div>
+  </header>
+  
+      <section class="rm-panel" id="panel-teacher" hidden>
+        <div class="rm-hero">
+          <p class="rm-ask">我明天上课能不能直接用上</p>
+          <div class="rm-promises">
+            <span>写得出明天就能用的课堂提示词（备课 / 提问 / 总结三套）</span><span>会用 AI 批改并给出可追溯的修改理由，而不是直接给答案</span><span>出一套分层卷子，并知道哪一步必须自己把关</span>
+          </div>
+          <a class="rm-first" href="/ai-edu.html">
+            从这里开始 · AI 进校园
+            <i>先知道边界在哪，再谈怎么用</i>
+          </a>
+        </div>
+        <div class="rm-cols">
+          <div class="rm-main">
+            <h3 class="rm-h3">该读什么 <em>55 页</em></h3>
+            
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">4</span>
+              <em>先看清 AI 在学校能用到哪一步</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/ai-edu.html">AI 进校园，不是将来，是现在</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-jobs.html">岗位在变，你也在变</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/majors.html">选对专业，用 AI 把路走宽</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/study.html">不会？那就自学。这里全是真有人做到过的路。</a>
+              <span class="rm-metrics">299 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 章节正文
+              <span class="rm-gnum">4</span>
+              <em>提示词地基 → 职场实战 → 行业应用 → 建立概念</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-17.html">提示词工程入门：从提问到指挥</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-23.html">AI 职场应用实战</a>
+              <span class="rm-metrics">3.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-24.html">AI 行业应用与职业发展</a>
+              <span class="rm-metrics">3.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-01.html">初识智能体</a>
+              <span class="rm-metrics">13.1k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">2</span>
+              <em>工具真库 + 真实来源调研（要能溯源才敢用）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/ai-tools.html">AI 工具真库</a>
+              <span class="rm-metrics">3.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/academy-research.html">AI 学院深度补强 · 调研资料库</a>
+              <span class="rm-metrics">27.1k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 可运行项目
+              <span class="rm-gnum">2</span>
+              <em>看别人怎么做家教助手、研读助手、备课系统</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/tutor-agent.html">TutorAgent 家教辅导</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/research-agent.html">ResearchAgent 论文研读助手</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">5</span>
+              <em>教育与职场类长文</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html">2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年9月AI学习避坑指南：别再被3年前的旧教程坑了.html">2026年9月AI学习避坑指南：别再被3年前的旧教程坑了</a>
+              <span class="rm-metrics">2.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到落地路线.html">2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI教育应用实战.html">AI教育应用实战</a>
+              <span class="rm-metrics">975 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI时代工科学习-编程计算机数控仿真实战.html">AI 时代工科学习全景 · 编程 / 计算机 / 数控 / 仿真（实战篇）</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>中国科技故事
+              <span class="rm-gnum">19</span>
+              <em>中国科技故事全集（19 章）：讲给孩子听的科技史，可直接做课堂素材</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/01-DeepSeek的逆袭.html">中国科技故事 · 01 · DeepSeek 的逆袭</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/02-两弹一星.html">中国科技故事 · 02 · 两弹一星：从「一穷二白」到「镇国重器」</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/03-中国高铁.html">中国科技故事 · 03 · 中国高铁：从「引进」到「领跑」</a>
+              <span class="rm-metrics">893 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/04-北斗导航.html">中国科技故事 · 04 · 北斗导航：我们为什么要造自己的「北斗」</a>
+              <span class="rm-metrics">872 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/05-中国航天.html">中国科技故事 · 05 · 中国航天：从东方红一号到空间站</a>
+              <span class="rm-metrics">952 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/06-嫦娥探月.html">中国科技故事 · 06 · 嫦娥探月与天问探火：中国人的星辰大海</a>
+              <span class="rm-metrics">777 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/07-超级计算机.html">中国科技故事 · 07 · 超级计算机：神威·太湖之光背后的故事</a>
+              <span class="rm-metrics">735 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/08-量子科技.html">中国科技故事 · 08 · 量子科技：墨子号与九章</a>
+              <span class="rm-metrics">866 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/09-华为.html">中国科技故事 · 09 · 华为：一家公司的长征</a>
+              <span class="rm-metrics">787 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/10-5G通信.html">中国科技故事 · 10 · 5G：中国如何站上通信之巅</a>
+              <span class="rm-metrics">751 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/11-移动支付.html">中国科技故事 · 11 · 移动支付与数字生活：一部手机走天下</a>
+              <span class="rm-metrics">879 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/12-大疆.html">中国科技故事 · 12 · 大疆：从车库到全球无人机之王</a>
+              <span class="rm-metrics">907 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/13-比亚迪.html">中国科技故事 · 13 · 比亚迪与新能源车：换道超车</a>
+              <span class="rm-metrics">889 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/14-国产大模型群像.html">中国科技故事 · 14 · 国产大模型群像：文心、通义、豆包、Kimi的突围</a>
+              <span class="rm-metrics">831 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/15-光刻机与芯片.html">中国科技故事 · 15 · 光刻机与芯片：卡脖子与突围战</a>
+              <span class="rm-metrics">836 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/16-钱学森.html">中国科技故事 · 16 · 钱学森：五年归国路，十年两弹成</a>
+              <span class="rm-metrics">906 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/17-袁隆平.html">中国科技故事 · 17 · 袁隆平：一粒种子改变世界</a>
+              <span class="rm-metrics">950 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/18-科技创业者群像.html">中国科技故事 · 18 · 任正非、王传福、梁文锋：科技创业者群像</a>
+              <span class="rm-metrics">977 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/README-目录.html">中国科技故事 · 系列总目录</a>
+              <span class="rm-metrics">539 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>五卷全书
+              <span class="rm-gnum">1</span>
+              <em>工具百科：查工具时用得上</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/AI工具大全-百科全书.html">AI 工具大全 · 百科全书</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">2</span>
+              <em>体制内与医疗场景的 AI 用法（与教师同类：公共服务）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/公务员AI应用指南.html">公务员AI应用指南</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI医疗应用指南.html">AI医疗应用指南</a>
+              <span class="rm-metrics">999 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 附属页
+              <span class="rm-gnum">3</span>
+              <em>发展史 / 大事记 / 国家教育馆</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/ai-academy-history.html">AI 发展史</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-newsroom.html">AI 大事记馆</a>
+              <span class="rm-metrics">291 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-national.html">国家 AI 教育馆</a>
+              <span class="rm-metrics">426 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>书稿 · 章节
+              <span class="rm-gnum">11</span>
+              <em>AI 七十年 / ChatGPT 起点 / 政策与未来 / 教育变革 / 医疗 / 伦理 / 就业（做历史与素养课直接用）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/pages/07-书稿-第1章-AI七十年.html">第 1 章 · AI 七十年：一条能看懂的时间线</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/08-书稿-第3章-ChatGPT点燃全民AI时代.html">第 3 章 · ChatGPT 如何点燃全民 AI 时代</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/15-中国AI政策与国外重视.html">中国 AI 政策 与 国外对 AI 的重视（2026）</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/16-GitHub最新开源项目盘点与一键上手.html">GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/20-AI学习总纲-从零到会用.html">AI 学习总纲：从零到会用（统一路线图）</a>
+              <span class="rm-metrics">765 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/22-书稿-第6章-AI编程革命.html">第 6 章 · AI编程革命：从Copilot到自主Agent</a>
+              <span class="rm-metrics">651 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/23-书稿-第7章-AI办公自动化.html">第 7 章 · AI办公自动化：从Excel到全流程</a>
+              <span class="rm-metrics">665 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/24-书稿-第8章-AI教育变革.html">第 8 章 · AI教育变革：从标准化到个性化</a>
+              <span class="rm-metrics">713 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/25-书稿-第9章-AI医疗应用.html">第 9 章 · AI医疗应用：从辅助诊断到新药研发</a>
+              <span class="rm-metrics">822 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/26-书稿-第11章-AI伦理与安全.html">第 11 章 · AI伦理与安全：技术狂奔时代的护栏</a>
+              <span class="rm-metrics">801 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/27-书稿-第12章-AI与就业.html">第 12 章 · AI与就业：谁会被取代，谁会更值钱</a>
+              <span class="rm-metrics">825 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">2</span>
+              <em>发展史 / 大事记 / 国家教育馆 / 案例库 / 工业4.0（做课件与讲座的素材）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/cases.html">AI实战案例库</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-build-hall.html">工业4.0 · 数字孪生 · 智能工厂AI 如何建造未来</a>
+              <span class="rm-metrics">243 字</span>
+            </li></ul>
+          </div>
+          </div>
+          <aside class="rm-side">
+            <h3 class="rm-h3">可以跳过</h3>
+            <ul class="rm-skip">
+          <li><b>实验室 · 理工算法</b>算法与数值实验：老师用不上，且内容偏 CS 课程</li>
+          <li><b>书稿 · 章节</b>AI编程/深度学习革命/办公自动化/医疗/国家安全：与教学无直接关系</li></ul>
+            <h3 class="rm-h3">读完能带走</h3>
+            <ul class="rm-out"><li>一套明天能用的课堂提示词</li><li>一份 AI 批改流程与边界说明</li><li>AI 课堂案例（含效果数据与出处）</li></ul>
+            <p class="rm-term">术语策略：零门槛，所有名词配大白话。所有专业名词自动配大白话解释</p>
+          </aside>
+        </div>
+      </section>
+      <section class="rm-panel" id="panel-student" hidden>
+        <div class="rm-hero">
+          <p class="rm-ask">我能不能学会，靠什么能找到工作</p>
+          <div class="rm-promises">
+            <span>按依赖关系排出学习顺序，不浪费半年在无关内容上</span><span>手里有 24 个可运行的毕业设计项目，不是只有笔记</span><span>知道 AI 岗位要什么能力，也知道自己缺哪一块</span>
+          </div>
+          <a class="rm-first" href="/roadmap.html">
+            从这里开始 · 从零基础到职业实战
+            <i>先看路径，再决定从哪一章进</i>
+          </a>
+        </div>
+        <div class="rm-cols">
+          <div class="rm-main">
+            <h3 class="rm-h3">该读什么 <em>132 页</em></h3>
+            
+          <div class="rm-group">
+            <h4>AI 学院 · 章节正文
+              <span class="rm-gnum">7</span>
+              <em>概念 → 提示词 → 进阶 → RAG → ML 基础 → 职场 → 行业</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-01.html">初识智能体</a>
+              <span class="rm-metrics">13.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-17.html">提示词工程入门：从提问到指挥</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-18.html">提示词工程进阶：结构化与迭代</a>
+              <span class="rm-metrics">3.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-19.html">RAG 检索增强生成实战</a>
+              <span class="rm-metrics">3.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-22.html">机器学习与深度学习基础</a>
+              <span class="rm-metrics">3.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-23.html">AI 职场应用实战</a>
+              <span class="rm-metrics">3.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-24.html">AI 行业应用与职业发展</a>
+              <span class="rm-metrics">3.4k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 附属页
+              <span class="rm-gnum">9</span>
+              <em>路径 / 从业路线 / 项目 / 岗位 / 面试 / 测验 / 认证 / 概念 / 资源</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/ai-academy-roadmap.html">从零基础到职业实战</a>
+              <span class="rm-metrics">873 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-journey.html">从 AI 小白到从业者</a>
+              <span class="rm-metrics">715 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-projects.html">24 个可复现毕业设计</a>
+              <span class="rm-metrics">918 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-jobs.html">AI 时代岗位全景</a>
+              <span class="rm-metrics">644 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-interview.html">高频面试题 + 参考答案</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-quiz.html">章节测验 · 认证考试</a>
+              <span class="rm-metrics">282 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-cert.html">四大能力认证</a>
+              <span class="rm-metrics">1.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-glossary.html">AI 概念库</a>
+              <span class="rm-metrics">228 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy-resources.html">权威资源馆</a>
+              <span class="rm-metrics">456 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 可运行项目
+              <span class="rm-gnum">12</span>
+              <em>24 个毕业设计，按难度自选</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/data-analysis.html">DataAnalysisAgent</a>
+              <span class="rm-metrics">2.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/network-health.html">NetworkHealthReport</a>
+              <span class="rm-metrics">2.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/news-digest.html">NewsDigest 新闻摘要官</a>
+              <span class="rm-metrics">2.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/mind-echo.html">MindEcho 心声回响</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/database-agent.html">Database Agent</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/data-cleaner.html">DataCleaner 数据清洗工</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/tutor-agent.html">TutorAgent 家教辅导</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/code-reviewer.html">CodeReviewer 代码评审助手</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/marketing-writer.html">MarketingWriter 营销文案机</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/health-coach.html">HealthCoach 健身教练</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/column-writer.html">ColumnWriter 专栏写手</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/meeting-minutes.html">MeetingMinutes 会议纪要官</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">5</span>
+              <em>提示词库 / 场景模板 / 题库 / 简历 / 专业选择</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/prompts100.html">提示词百宝库</a>
+              <span class="rm-metrics">4.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/prompts-guide.html">40+ 条可复制提示词，全场景覆盖</a>
+              <span class="rm-metrics">560 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/quiz.html">刷题 · 题库</a>
+              <span class="rm-metrics">197 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/resume.html">简历 生成器</a>
+              <span class="rm-metrics">162 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/majors.html">选对专业，用 AI 把路走宽</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>实验室 · 理工算法
+              <span class="rm-gnum">6</span>
+              <em>理工算法与编程实战</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/lab/algorithms/算法与数据结构入门.html">算法与数据结构入门</a>
+              <span class="rm-metrics">332 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/cnc/数控编程与开源工具.html">数控（CNC）编程与开源工具指南</a>
+              <span class="rm-metrics">446 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/ml/机器学习入门.html">机器学习入门（从零到能跑）</a>
+              <span class="rm-metrics">371 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/modeling/数学建模入门.html">数学建模入门</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/numerical/数值计算入门.html">数值计算入门</a>
+              <span class="rm-metrics">1.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/programming/编程与计算机学习路线.html">编程与计算机学习路线（AI 时代版）</a>
+              <span class="rm-metrics">485 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">48</span>
+              <em>全部博客 48 篇：工具选择、学习方法、避坑、大事记</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/2026-08-28-爆款-每天加班3小时到准点走：我用3个AI工具把周工作量压到16小时，老板还以为我招了.html">每天加班3小时到准点走：我用3个AI工具把周工作量压到16小时，老板还以为我招了</a>
+              <span class="rm-metrics">2.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-08-30-爆款-17个AI工具按场景怎么选：别再乱花钱了，真正每天用的是这6个.html">17个AI工具按场景怎么选：别再乱花钱了，真正每天用的是这6个</a>
+              <span class="rm-metrics">2.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-08-30-爆款-5个免费AI工具救了我大学4年：从期末3天突击80+到本科发2篇普刊，绩点从2..html">5个免费AI工具救了我大学4年：从期末3天突击80+到本科发2篇普刊，绩点从2.</a>
+              <span class="rm-metrics">2.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-08-31-本周AI大事记-2026年8月第5周.html">本周 AI 大事记 · 2026年8月第5周</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-01-爆款-3个Agent协作开源AI助手实测.html">3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费G</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-03-爆款-100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型.html">100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型</a>
+              <span class="rm-metrics">2.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-03-爆款-3个新能力反超GPT-4o？OpenAI Astra突袭上线：普通用户零成本上手.html">3个新能力反超GPT-4o？OpenAI Astra突袭上线：普通用户零成本上手</a>
+              <span class="rm-metrics">2.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-07-本周AI大事记-2026年9月第1周.html">本周 AI 大事记 · 2026年9月第1周</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-08-爆款-2B参数打平12B模型！端侧Agent零成本商用，你的手机、嵌入式设备下周就能跑.html">2B参数打平12B模型！端侧Agent零成本商用，你的手机/嵌入式设备下周就能跑</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-AI-创业生存指南：告别“套壳”，死磕垂直代理.html">2026 AI 创业生存指南：告别“套壳”，死磕垂直代理</a>
+              <span class="rm-metrics">2.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html">2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-年-AI-视频创作实战：从提示词到导演的完整工作流.html">2026 年 AI 视频创作实战：从提示词到导演的完整工作流</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026.08.25-AI智能体现状：别再做Demo了，这3个可落地方案我跑了3个月ROI超300百分之.html">2026.08.25 AI智能体现状：别再做Demo了，这3个可落地方案我跑了3</a>
+              <span class="rm-metrics">2.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026.9.1-大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI.html">2026.9.1 大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI</a>
+              <span class="rm-metrics">2.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026.9.9-实测：现在用AI做视频，已经不用拼提示词了.html">2026.9.9 实测：现在用AI做视频，已经不用拼提示词了</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流.html">2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少.html">2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年8月AI工具横评：3类高频场景实测，避开90百分之的功能宣传陷阱.html">2026年8月AI工具横评：3类高频场景实测，避开90%的功能宣传陷阱</a>
+              <span class="rm-metrics">2.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年8月AI工具横评：别追概念，这4款工具真能帮你每天省2小时.html">2026年8月AI工具横评：别追概念，这4款工具真能帮你每天省2小时</a>
+              <span class="rm-metrics">2.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年8月实测：别迷信“全AI办公”，这4个落地场景才是真的省时间.html">2026年8月实测：别迷信“全AI办公”，这4个落地场景才是真的省时间</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开.html">2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年9月AI变现观察：别追概念，这3个低门槛赛道普通人当月就能见现金流.html">2026年9月AI变现观察：别追概念，这3个低门槛赛道普通人当月就能见现金流</a>
+              <span class="rm-metrics">2.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年9月AI学习避坑指南：别再被3年前的旧教程坑了.html">2026年9月AI学习避坑指南：别再被3年前的旧教程坑了</a>
+              <span class="rm-metrics">2.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心.html">2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心</a>
+              <span class="rm-metrics">2.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到落地路线.html">2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年中AI视频创作落地观察：别卷参数了，这3个实操方向才是普通人的变现路径.html">2026年中AI视频创作落地观察：别卷参数了，这3个实操方向才是普通人的变现路径</a>
+              <span class="rm-metrics">2.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年中AI视频创作落地观察：别追参数了，这3个方法能把变现效率拉满.html">2026年中AI视频创作落地观察：别追参数了，这3个方法能把变现效率拉满</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/Agent智能体实战.html">Agent 智能体实战：从概念到亲手搭建</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI写作完全指南.html">AI写作完全指南：从入门到精通</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI创业实战指南.html">AI创业实战指南</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI医疗应用指南.html">AI医疗应用指南</a>
+              <span class="rm-metrics">999 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI变现实操手册.html">AI变现实操手册</a>
+              <span class="rm-metrics">1.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI实战全书.html">AI 实战全书：一个人就是一支创作军团</a>
+              <span class="rm-metrics">5.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI教育应用实战.html">AI教育应用实战</a>
+              <span class="rm-metrics">975 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI时代工科学习-编程计算机数控仿真实战.html">AI 时代工科学习全景 · 编程 / 计算机 / 数控 / 仿真（实战篇）</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI未来趋势-数字物理量子新质材料.html">AI 未来趋势：数字智能 × 物理智能 × 量子算力 × 新质材料</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI绘画从入门到精通.html">AI绘画从入门到精通</a>
+              <span class="rm-metrics">767 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI编程进阶实战.html">AI编程进阶实战</a>
+              <span class="rm-metrics">967 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI视频制作实战.html">AI 视频制作实战：一个人做出一条视频</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/index.html">47 篇深度长文</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/中国AI发展史.html">从跟跑到并跑：中国 AI 发展史（附 DeepSeek 时刻复盘）</a>
+              <span class="rm-metrics">3.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/公务员AI应用指南.html">公务员AI应用指南</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/制造业AI应用实战.html">制造业AI应用实战</a>
+              <span class="rm-metrics">1.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/大模型原理与Transformer.html">大模型原理与Transformer：一次看懂 AI 的大脑</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/开源AI进阶-网络安全一人公司与手机操作.html">开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/提示词工程实战.html">提示词工程实战：把 AI 用出十倍效果</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/最新开源对话式AI项目全景与一键使用指南.html">最新开源对话式 AI 项目全景 · 一键使用指南</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/深度长文.html">我用 DeepSeek 重构了整个创作流程：一篇万字长文的完整实操记录</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>五卷全书
+              <span class="rm-gnum">3</span>
+              <em>五卷全书里的实战册</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/AI工具大全-百科全书.html">AI 工具大全 · 百科全书</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/AI绘画实战-从文字到画面.html">AI 实战 · AI 绘画：从文字到画面（完整教程）</a>
+              <span class="rm-metrics">1.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/AI视频制作实战-一个人做出一条视频.html">AI 实战 · 一个人做出一条视频（完整教程）</a>
+              <span class="rm-metrics">1.0k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>书稿 · 章节
+              <span class="rm-gnum">5</span>
+              <em>总蓝图 / 小白入门 / 工具全景 / 变现路线 / 学习总纲</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/pages/00-AI个人IP超级内容矩阵总蓝图.html">AI 个人 IP 超级内容矩阵 · 总蓝图</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/01-DeepSeek-V4-Pro-小白入门.html">DeepSeek V4-Pro 小白入门（2026-08 最新）</a>
+              <span class="rm-metrics">1.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/02-AI工具全景图-国内国外.html">AI 工具全景图（国内 + 国外，2026 版）</a>
+              <span class="rm-metrics">1.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/03-AI变现路线图-小白版.html">AI 变现路线图（小白版）</a>
+              <span class="rm-metrics">1.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/20-AI学习总纲-从零到会用.html">AI 学习总纲：从零到会用（统一路线图）</a>
+              <span class="rm-metrics">765 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">7</span>
+              <em>学院主页 / 生态 / 开源作品 / 行业手册 / 案例库 / 项目线（选方向用）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/ai-academy.html">从零开始构建智能体</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ecosystem.html">全生态知识库</a>
+              <span class="rm-metrics">217 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-projects.html">100 个真实开源作品，作者都注明</a>
+              <span class="rm-metrics">724 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/industry.html">行业实战手册</a>
+              <span class="rm-metrics">815 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/opensource.html">开源 AI 项目 · 内嵌整合</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/cases.html">AI实战案例库</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-war-room.html">8 个真实项目 · 4 条产品线</a>
+              <span class="rm-metrics">284 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>中国科技故事
+              <span class="rm-gnum">19</span>
+              <em>中国科技故事全集（19 章）：通识 + 面试与写作素材</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/01-DeepSeek的逆袭.html">中国科技故事 · 01 · DeepSeek 的逆袭</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/02-两弹一星.html">中国科技故事 · 02 · 两弹一星：从「一穷二白」到「镇国重器」</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/03-中国高铁.html">中国科技故事 · 03 · 中国高铁：从「引进」到「领跑」</a>
+              <span class="rm-metrics">893 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/04-北斗导航.html">中国科技故事 · 04 · 北斗导航：我们为什么要造自己的「北斗」</a>
+              <span class="rm-metrics">872 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/05-中国航天.html">中国科技故事 · 05 · 中国航天：从东方红一号到空间站</a>
+              <span class="rm-metrics">952 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/06-嫦娥探月.html">中国科技故事 · 06 · 嫦娥探月与天问探火：中国人的星辰大海</a>
+              <span class="rm-metrics">777 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/07-超级计算机.html">中国科技故事 · 07 · 超级计算机：神威·太湖之光背后的故事</a>
+              <span class="rm-metrics">735 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/08-量子科技.html">中国科技故事 · 08 · 量子科技：墨子号与九章</a>
+              <span class="rm-metrics">866 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/09-华为.html">中国科技故事 · 09 · 华为：一家公司的长征</a>
+              <span class="rm-metrics">787 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/10-5G通信.html">中国科技故事 · 10 · 5G：中国如何站上通信之巅</a>
+              <span class="rm-metrics">751 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/11-移动支付.html">中国科技故事 · 11 · 移动支付与数字生活：一部手机走天下</a>
+              <span class="rm-metrics">879 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/12-大疆.html">中国科技故事 · 12 · 大疆：从车库到全球无人机之王</a>
+              <span class="rm-metrics">907 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/13-比亚迪.html">中国科技故事 · 13 · 比亚迪与新能源车：换道超车</a>
+              <span class="rm-metrics">889 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/14-国产大模型群像.html">中国科技故事 · 14 · 国产大模型群像：文心、通义、豆包、Kimi的突围</a>
+              <span class="rm-metrics">831 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/15-光刻机与芯片.html">中国科技故事 · 15 · 光刻机与芯片：卡脖子与突围战</a>
+              <span class="rm-metrics">836 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/16-钱学森.html">中国科技故事 · 16 · 钱学森：五年归国路，十年两弹成</a>
+              <span class="rm-metrics">906 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/17-袁隆平.html">中国科技故事 · 17 · 袁隆平：一粒种子改变世界</a>
+              <span class="rm-metrics">950 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/18-科技创业者群像.html">中国科技故事 · 18 · 任正非、王传福、梁文锋：科技创业者群像</a>
+              <span class="rm-metrics">977 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/README-目录.html">中国科技故事 · 系列总目录</a>
+              <span class="rm-metrics">539 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>书稿 · 章节
+              <span class="rm-gnum">11</span>
+              <em>总目录 / DeepSeek 史 / AI 七十年 / 图像视频简史 / 影响面 / 小说短剧 / 行行出状元 / 创业 / 未来社会</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/pages/05-书稿总目录-AI工具简史与实战全书.html">书稿总目录（旗舰产品）</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/06-书稿-第10章-DeepSeek发展史.html">第 10 章 · DeepSeek 发展史：从量化基金到国产大模型旗帜</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/07-书稿-第1章-AI七十年.html">第 1 章 · AI 七十年：一条能看懂的时间线</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/08-书稿-第3章-ChatGPT点燃全民AI时代.html">第 3 章 · ChatGPT 如何点燃全民 AI 时代</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/09-书稿-第4章-图像生成简史.html">第 4 章 · 图像生成简史：从「不像」到「以假乱真」</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/10-书稿-第5章-视频生成简史.html">第 5 章 · 视频生成简史：从几秒到完整叙事</a>
+              <span class="rm-metrics">1.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/12-AI影响面-从短视频到天气再到每一个人.html">AI 影响面：从短视频、赚钱、博文到天气，再到每一个人</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/14-AI小说与短剧的影响.html">AI 写小说、短剧带来的影响（2026 最新数据）</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/19-行行出状元-各行各业如何看AI如何学AI.html">行行出状元：各行各业如何看 AI、如何学 AI</a>
+              <span class="rm-metrics">2.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/28-书稿-第13章-AI创业指南.html">第 13 章 · AI创业指南：从想法到产品</a>
+              <span class="rm-metrics">772 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/29-书稿-第14章-AI与未来社会.html">第 14 章 · AI与未来社会：2035年的世界</a>
+              <span class="rm-metrics">755 字</span>
+            </li></ul>
+          </div>
+          </div>
+          <aside class="rm-side">
+            <h3 class="rm-h3">可以跳过</h3>
+            <ul class="rm-skip">
+          <li><b>中国科技故事</b>中国科技故事是叙事读物，不解决就业问题，可课后读</li></ul>
+            <h3 class="rm-h3">读完能带走</h3>
+            <ul class="rm-out"><li>一份能照着走的学习顺序表</li><li>一个能写进简历的已运行项目</li><li>一次模拟面试与错题复盘</li></ul>
+            <p class="rm-term">术语策略：可点开查看解释。术语可点开查看解释</p>
+          </aside>
+        </div>
+      </section>
+      <section class="rm-panel" id="panel-developer" hidden>
+        <div class="rm-hero">
+          <p class="rm-ask">这套东西能不能直接用在工程里</p>
+          <div class="rm-promises">
+            <span>能搭出带工具调用与记忆的 Agent，而不是只会调 API</span><span>知道 RAG 什么时候会失败、该怎么评估</span><span>理解多智能体不是越多越好，以及协议（MCP）该怎么接</span>
+          </div>
+          <a class="rm-first" href="/website/ai-academy/chapter-01.html">
+            从这里开始 · 初识智能体
+            <i>从原理开始，后面每章都依赖它</i>
+          </a>
+        </div>
+        <div class="rm-cols">
+          <div class="rm-main">
+            <h3 class="rm-h3">该读什么 <em>78 页</em></h3>
+            
+          <div class="rm-group">
+            <h4>AI 学院 · 章节正文
+              <span class="rm-gnum">17</span>
+              <em>基础→原理→范式→框架→记忆→检索→上下文→协议→评估→工具链</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-01.html">初识智能体</a>
+              <span class="rm-metrics">13.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-02.html">智能体发展史</a>
+              <span class="rm-metrics">13.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-03.html">3.1 语言模型与 Transformer 架构</a>
+              <span class="rm-metrics">16.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-04.html">智能体经典范式构建</a>
+              <span class="rm-metrics">15.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-05.html">基于低代码平台的智能体搭建</a>
+              <span class="rm-metrics">21.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-06.html">框架开发实践</a>
+              <span class="rm-metrics">19.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-07.html">构建你的智能体框架</a>
+              <span class="rm-metrics">14.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-08.html">记忆与检索</a>
+              <span class="rm-metrics">14.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-09.html">上下文工程</a>
+              <span class="rm-metrics">15.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-10.html">智能体通信协议</a>
+              <span class="rm-metrics">12.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-12.html">智能体性能评估</a>
+              <span class="rm-metrics">15.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-17.html">提示词工程入门：从提问到指挥</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-18.html">提示词工程进阶：结构化与迭代</a>
+              <span class="rm-metrics">3.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-19.html">RAG 检索增强生成实战</a>
+              <span class="rm-metrics">3.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-25.html">多智能体系统架构与编排</a>
+              <span class="rm-metrics">3.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-27.html">MCP 智能体应用开发：连接万物的标准协议</a>
+              <span class="rm-metrics">2.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-28.html">DeepSeek Harness：插件化智能体运行时实战</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 可运行项目
+              <span class="rm-gnum">8</span>
+              <em>可运行项目</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/code-reviewer.html">CodeReviewer 代码评审助手</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/data-analysis.html">DataAnalysisAgent</a>
+              <span class="rm-metrics">2.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/data-cleaner.html">DataCleaner 数据清洗工</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/database-agent.html">Database Agent</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/email-assistant.html">EmailSmartAssistant</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/legal-assistant.html">LegalAssistant 法律咨询助手</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/research-agent.html">ResearchAgent 论文研读助手</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/tutor-agent.html">TutorAgent 家教辅导</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>实验室 · 自动部署
+              <span class="rm-gnum">2</span>
+              <em>CI/CD 与工程实践</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/lab/cicd/持续集成与部署指南.html">持续集成与持续部署（CI/CD）指南</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/cicd/自动部署指南.html">自动部署指南：从「本地文件夹」到「手机上能访问的网址」</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">7</span>
+              <em>概念库 / 调研库 / 生态 / 开源 / 工具 / 开发者基地 / 部署</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/academy-research.html">AI 学院深度补强 · 调研资料库</a>
+              <span class="rm-metrics">27.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-ecosystem.html">全球 AI 生态，一张地图看完</a>
+              <span class="rm-metrics">618 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/opensource.html">开源 AI 项目 · 内嵌整合</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-tools.html">AI 工具真库</a>
+              <span class="rm-metrics">3.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/devbase.html">开发者基地从第一条命令，到第一件成品</a>
+              <span class="rm-metrics">5.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/local-ai.html">内嵌另一个你本地 AI 部署</a>
+              <span class="rm-metrics">797 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/local-deploy.html">本地部署手册</a>
+              <span class="rm-metrics">557 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">9</span>
+              <em>工程与开源实战长文</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/2026-09-01-爆款-3个Agent协作开源AI助手实测.html">3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费G</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-03-爆款-100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型.html">100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型</a>
+              <span class="rm-metrics">2.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-08-爆款-2B参数打平12B模型！端侧Agent零成本商用，你的手机、嵌入式设备下周就能跑.html">2B参数打平12B模型！端侧Agent零成本商用，你的手机/嵌入式设备下周就能跑</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html">2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026.08.25-AI智能体现状：别再做Demo了，这3个可落地方案我跑了3个月ROI超300百分之.html">2026.08.25 AI智能体现状：别再做Demo了，这3个可落地方案我跑了3</a>
+              <span class="rm-metrics">2.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/Agent智能体实战.html">Agent 智能体实战：从概念到亲手搭建</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/开源AI进阶-网络安全一人公司与手机操作.html">开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/提示词工程实战.html">提示词工程实战：把 AI 用出十倍效果</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/最新开源对话式AI项目全景与一键使用指南.html">最新开源对话式 AI 项目全景 · 一键使用指南</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>书稿 · 章节
+              <span class="rm-gnum">5</span>
+              <em>AI编程工具 / 开源项目 / 逐个上手 / 深度学习革命 / AI编程革命</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/pages/04-AI编程工具-IDE编译审阅浏览.html">AI 编程工具：IDE / 编译 / 审阅 / 浏览（小白版）</a>
+              <span class="rm-metrics">1.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/16-GitHub最新开源项目盘点与一键上手.html">GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/17-开源项目逐个上手手册.html">开源项目逐个上手手册（安装 · 一键使用 · 打包下载 · 手机端）</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/21-书稿-第2章-深度学习革命.html">第 2 章 · 深度学习革命：从感知机到Transformer</a>
+              <span class="rm-metrics">847 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/22-书稿-第6章-AI编程革命.html">第 6 章 · AI编程革命：从Copilot到自主Agent</a>
+              <span class="rm-metrics">651 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>五卷全书
+              <span class="rm-gnum">1</span>
+              <em>技术史脉络：判断技术演进的依据</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/从古至今科技史与AI发展历程.html">从古至今：科技史与 AI 发展历程（超级时间轴）</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">2</span>
+              <em>编程进阶 + 多模态内容生产</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/AI编程进阶实战.html">AI编程进阶实战</a>
+              <span class="rm-metrics">967 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI绘画从入门到精通.html">AI绘画从入门到精通</a>
+              <span class="rm-metrics">767 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">3</span>
+              <em>编年史 / 前沿 / 生态 / 大事记（判断技术走向）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/chronicle.html">AI 全景编年史</a>
+              <span class="rm-metrics">7.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/frontiers.html">站在巨人的肩膀上看见 AI 的下一程</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ecosystem.html">全生态知识库</a>
+              <span class="rm-metrics">217 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 章节正文
+              <span class="rm-gnum">8</span>
+              <em>实战项目章（旅行助手 / 深度研究 / 赛博小镇 / 毕业设计 / AI编程 / NOOA / Orchard / VLA）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-13.html">智能旅行助手</a>
+              <span class="rm-metrics">12.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-14.html">自动化深度研究智能体</a>
+              <span class="rm-metrics">9.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-15.html">构建赛博小镇</a>
+              <span class="rm-metrics">13.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-16.html">毕业设计：构建属于你的多智能体应用</a>
+              <span class="rm-metrics">5.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-26.html">AI 编程助手与代码智能体</a>
+              <span class="rm-metrics">3.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-34.html">NVIDIA NOOA 对象导向智能体框架：让 Agent 成为 Python </a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-36.html">微软 Orchard 框架：Agent 训练基础设施与数据蒸馏实战</a>
+              <span class="rm-metrics">3.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-41.html">自动驾驶 VLA 实战：Qwen-Drive-1.0-4B 统一 3D 感知·问</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 可运行项目
+              <span class="rm-gnum">9</span>
+              <em>客服 / 理财 / 健康 / 看图 / 物联网 / 播客 / 股票 / 行程 / 简历（工程型项目全收）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/customer-support.html">CustomerSupport 智能客服</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/finance-bot.html">FinanceBot 理财顾问</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/health-record.html">HealthRecord 健康助手</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/image-captioner.html">ImageCaptioner 看图说话</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/iot-monitor.html">IoTMonitor 物联网监控</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/podcast-script.html">PodcastScript 播客脚本工</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/stock-insight.html">StockInsight 股票分析</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/travel-planner.html">TravelPlanner 行程规划师</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/resume-coach.html">ResumeCoach 简历优化教练</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>书稿 · 章节
+              <span class="rm-gnum">7</span>
+              <em>总目录 / 图像视频简史 / 开源工具 / 编程工具 / 逐个上手 / AI编程革命</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/pages/05-书稿总目录-AI工具简史与实战全书.html">书稿总目录（旗舰产品）</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/09-书稿-第4章-图像生成简史.html">第 4 章 · 图像生成简史：从「不像」到「以假乱真」</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/10-书稿-第5章-视频生成简史.html">第 5 章 · 视频生成简史：从几秒到完整叙事</a>
+              <span class="rm-metrics">1.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/13-开源AI工具-开箱即用指南.html">开源 AI 工具 · 开箱即用指南（2026 最火）</a>
+              <span class="rm-metrics">1.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/16-GitHub最新开源项目盘点与一键上手.html">GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/17-开源项目逐个上手手册.html">开源项目逐个上手手册（安装 · 一键使用 · 打包下载 · 手机端）</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/22-书稿-第6章-AI编程革命.html">第 6 章 · AI编程革命：从Copilot到自主Agent</a>
+              <span class="rm-metrics">651 字</span>
+            </li></ul>
+          </div>
+          </div>
+          <aside class="rm-side">
+            <h3 class="rm-h3">可以跳过</h3>
+            <ul class="rm-skip">
+          <li><b>主站功能页</b>变现与人格测试：与工程实现无关</li></ul>
+            <h3 class="rm-h3">读完能带走</h3>
+            <ul class="rm-out"><li>一个能跑的 Agent（含工具调用与记忆）</li><li>一套 RAG 评估基线</li><li>一份技术选型对照（含实测数据与出处）</li></ul>
+            <p class="rm-term">术语策略：不简化，直接给文档与源码。不做术语简化，直接给文档与源码</p>
+          </aside>
+        </div>
+      </section>
+      <section class="rm-panel" id="panel-engineer" hidden>
+        <div class="rm-hero">
+          <p class="rm-ask">跑起来要多少资源，成本和精度怎么权衡</p>
+          <div class="rm-promises">
+            <span>会做微调与量化，知道显存与精度的取舍</span><span>会按场景选推理框架（vLLM / llama.cpp / Ollama / TensorRT-LLM）</span><span>能把模型接到真实业务里，并评估它</span>
+          </div>
+          <a class="rm-first" href="/website/ai-academy/chapter-20.html">
+            从这里开始 · 大模型微调与私有化部署
+            <i>技术人员最直接的问题就是怎么跑起来</i>
+          </a>
+        </div>
+        <div class="rm-cols">
+          <div class="rm-main">
+            <h3 class="rm-h3">该读什么 <em>92 页</em></h3>
+            
+          <div class="rm-group">
+            <h4>AI 学院 · 章节正文
+              <span class="rm-gnum">18</span>
+              <em>原理 → RL → 评估 → 微调部署 → 多模态 → 开源模型 → 端侧</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-01.html">初识智能体</a>
+              <span class="rm-metrics">13.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-03.html">3.1 语言模型与 Transformer 架构</a>
+              <span class="rm-metrics">16.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-11.html">Agentic-RL</a>
+              <span class="rm-metrics">16.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-12.html">智能体性能评估</a>
+              <span class="rm-metrics">15.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-20.html">大模型微调与私有化部署</a>
+              <span class="rm-metrics">3.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-21.html">多模态 AIGC：文生图与文生视频</a>
+              <span class="rm-metrics">4.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-29.html">多模态大模型理解实战：从视觉编码器到图文问答</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-30.html">开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-31.html">开源视频生成实战：MiniMax-H3 全模态模型本地部署</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-32.html">端侧大模型推理实战：Google LiteRT-LM 让 AI 跑在手机上</a>
+              <span class="rm-metrics">2.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-33.html">端侧百万上下文实战：星火 X2.5 开源模型部署与 Agent 落地</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-35.html">开源多模态权重实战：DeepSeek-V4-Flash-Vision-Exp 本</a>
+              <span class="rm-metrics">2.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-37.html">NVIDIA Nemotron 3.5 Lightning：面向长时 Agent</a>
+              <span class="rm-metrics">2.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-38.html">全开放模型家族实战：K2 Horizon 从手表级到企业级的一族六模型</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-39.html">腾讯混元 Hy4 preview 实战：770B MoE 旗舰开源的接入与落地</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-40.html">开源底座主权化实战：从 MiniMax M3 到沙特 HUMAIN M3 的阿拉</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-42.html">端侧 Agent 全栈开源实战：MiniCPM5-2B 权重·数据·RL 框架·</a>
+              <span class="rm-metrics">3.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-43.html">System One 模型实战：TypeSafe Jev 让 AI 变成「函数调</a>
+              <span class="rm-metrics">3.7k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>实验室 · 仿真
+              <span class="rm-gnum">3</span>
+              <em>物理仿真与数值实验</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/lab/simulation/仿真模拟与开源工具.html">仿真模拟与开源工具指南</a>
+              <span class="rm-metrics">512 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/simulation/仿真脚本图文讲解.html">仿真脚本图文讲解（10 篇全解）</a>
+              <span class="rm-metrics">4.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/simulation/开源仿真工具-一键安装与第一个案例.html">开源仿真工具 · 一键安装 + 第一个案例</a>
+              <span class="rm-metrics">2.6k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>实验室 · 理工算法
+              <span class="rm-gnum">4</span>
+              <em>算法 / 机器学习 / 建模 / 数值</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/lab/algorithms/算法与数据结构入门.html">算法与数据结构入门</a>
+              <span class="rm-metrics">332 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/ml/机器学习入门.html">机器学习入门（从零到能跑）</a>
+              <span class="rm-metrics">371 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/modeling/数学建模入门.html">数学建模入门</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/numerical/数值计算入门.html">数值计算入门</a>
+              <span class="rm-metrics">1.5k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">7</span>
+              <em>部署手册 / 本地部署 / 模型设置 / 软件学院 / 模型对比</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/local-deploy.html">本地部署手册</a>
+              <span class="rm-metrics">557 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/local-ai.html">内嵌另一个你本地 AI 部署</a>
+              <span class="rm-metrics">797 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/settings.html">模型 设置中心</a>
+              <span class="rm-metrics">271 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/software-detail.html">&#39;+esc(s.name)+&#39;</a>
+              <span class="rm-metrics">43 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/models.html">2026 全球大模型对比 · 白驹 ccowork</a>
+              <span class="rm-metrics">2.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/tech-museum.html">AI 前沿 · 里程碑 · 中国科技故事一馆看尽</a>
+              <span class="rm-metrics">239 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/china-tech.html">中国科技故事</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">16</span>
+              <em>技术趋势与开源追踪</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少.html">2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开.html">2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开</a>
+              <span class="rm-metrics">3.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/Agent智能体实战.html">Agent 智能体实战：从概念到亲手搭建</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-01-爆款-3个Agent协作开源AI助手实测.html">3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费G</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/大模型原理与Transformer.html">大模型原理与Transformer：一次看懂 AI 的大脑</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心.html">2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心</a>
+              <span class="rm-metrics">2.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026.9.1-大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI.html">2026.9.1 大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI</a>
+              <span class="rm-metrics">2.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-03-爆款-100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型.html">100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型</a>
+              <span class="rm-metrics">2.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流.html">2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-08-31-本周AI大事记-2026年8月第5周.html">本周 AI 大事记 · 2026年8月第5周</a>
+              <span class="rm-metrics">2.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-08-爆款-2B参数打平12B模型！端侧Agent零成本商用，你的手机、嵌入式设备下周就能跑.html">2B参数打平12B模型！端侧Agent零成本商用，你的手机/嵌入式设备下周就能跑</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI未来趋势-数字物理量子新质材料.html">AI 未来趋势：数字智能 × 物理智能 × 量子算力 × 新质材料</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-09-07-本周AI大事记-2026年9月第1周.html">本周 AI 大事记 · 2026年9月第1周</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html">2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/开源AI进阶-网络安全一人公司与手机操作.html">开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/最新开源对话式AI项目全景与一键使用指南.html">最新开源对话式 AI 项目全景 · 一键使用指南</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">3</span>
+              <em>每日简报 / 深度整理 / 新闻（比博客更新更快）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/daily.html">每日简报</a>
+              <span class="rm-metrics">1.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/deep-dive.html">国产大模型的资本狂飙：一天之内两笔百亿级消息</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/news.html">AI·大学生·就业 新闻视频</a>
+              <span class="rm-metrics">173 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>中国科技故事
+              <span class="rm-gnum">19</span>
+              <em>中国科技故事全集（19 章）：算力、芯片与自主化叙事的完整背景</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/01-DeepSeek的逆袭.html">中国科技故事 · 01 · DeepSeek 的逆袭</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/02-两弹一星.html">中国科技故事 · 02 · 两弹一星：从「一穷二白」到「镇国重器」</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/03-中国高铁.html">中国科技故事 · 03 · 中国高铁：从「引进」到「领跑」</a>
+              <span class="rm-metrics">893 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/04-北斗导航.html">中国科技故事 · 04 · 北斗导航：我们为什么要造自己的「北斗」</a>
+              <span class="rm-metrics">872 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/05-中国航天.html">中国科技故事 · 05 · 中国航天：从东方红一号到空间站</a>
+              <span class="rm-metrics">952 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/06-嫦娥探月.html">中国科技故事 · 06 · 嫦娥探月与天问探火：中国人的星辰大海</a>
+              <span class="rm-metrics">777 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/07-超级计算机.html">中国科技故事 · 07 · 超级计算机：神威·太湖之光背后的故事</a>
+              <span class="rm-metrics">735 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/08-量子科技.html">中国科技故事 · 08 · 量子科技：墨子号与九章</a>
+              <span class="rm-metrics">866 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/09-华为.html">中国科技故事 · 09 · 华为：一家公司的长征</a>
+              <span class="rm-metrics">787 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/10-5G通信.html">中国科技故事 · 10 · 5G：中国如何站上通信之巅</a>
+              <span class="rm-metrics">751 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/11-移动支付.html">中国科技故事 · 11 · 移动支付与数字生活：一部手机走天下</a>
+              <span class="rm-metrics">879 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/12-大疆.html">中国科技故事 · 12 · 大疆：从车库到全球无人机之王</a>
+              <span class="rm-metrics">907 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/13-比亚迪.html">中国科技故事 · 13 · 比亚迪与新能源车：换道超车</a>
+              <span class="rm-metrics">889 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/14-国产大模型群像.html">中国科技故事 · 14 · 国产大模型群像：文心、通义、豆包、Kimi的突围</a>
+              <span class="rm-metrics">831 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/15-光刻机与芯片.html">中国科技故事 · 15 · 光刻机与芯片：卡脖子与突围战</a>
+              <span class="rm-metrics">836 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/16-钱学森.html">中国科技故事 · 16 · 钱学森：五年归国路，十年两弹成</a>
+              <span class="rm-metrics">906 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/17-袁隆平.html">中国科技故事 · 17 · 袁隆平：一粒种子改变世界</a>
+              <span class="rm-metrics">950 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/18-科技创业者群像.html">中国科技故事 · 18 · 任正非、王传福、梁文锋：科技创业者群像</a>
+              <span class="rm-metrics">977 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/README-目录.html">中国科技故事 · 系列总目录</a>
+              <span class="rm-metrics">539 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>实验室 · 主入口
+              <span class="rm-gnum">5</span>
+              <em>实验室主入口 / 实训项目 / 工科怎么学</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/lab/index.html">真能跑 · 真能下载 · 真能实践</a>
+              <span class="rm-metrics">667 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/README.html">工科实训实验室（Lab）</a>
+              <span class="rm-metrics">372 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/simlab.html">网页里 一键运行 仿真</a>
+              <span class="rm-metrics">368 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/工科如何学.html">工科如何学</a>
+              <span class="rm-metrics">1.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/工科实训项目.html">工科实训项目（真动手清单）</a>
+              <span class="rm-metrics">395 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">1</span>
+              <em>医疗 AI 的落地约束（技术人也要懂行业边界）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/AI医疗应用指南.html">AI医疗应用指南</a>
+              <span class="rm-metrics">999 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">5</span>
+              <em>编年史 / 前沿 / 学院 / 行业 / 智能工厂（技术演进与产业落地）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/chronicle.html">AI 全景编年史</a>
+              <span class="rm-metrics">7.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/frontiers.html">站在巨人的肩膀上看见 AI 的下一程</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-academy.html">从零开始构建智能体</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/industry.html">行业实战手册</a>
+              <span class="rm-metrics">815 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-build-hall.html">工业4.0 · 数字孪生 · 智能工厂AI 如何建造未来</a>
+              <span class="rm-metrics">243 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>书稿 · 章节
+              <span class="rm-gnum">11</span>
+              <em>技术史各章 / 开源项目 / 深度学习革命 / 伦理与安全 / 国家安全</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/pages/06-书稿-第10章-DeepSeek发展史.html">第 10 章 · DeepSeek 发展史：从量化基金到国产大模型旗帜</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/07-书稿-第1章-AI七十年.html">第 1 章 · AI 七十年：一条能看懂的时间线</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/08-书稿-第3章-ChatGPT点燃全民AI时代.html">第 3 章 · ChatGPT 如何点燃全民 AI 时代</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/09-书稿-第4章-图像生成简史.html">第 4 章 · 图像生成简史：从「不像」到「以假乱真」</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/10-书稿-第5章-视频生成简史.html">第 5 章 · 视频生成简史：从几秒到完整叙事</a>
+              <span class="rm-metrics">1.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/16-GitHub最新开源项目盘点与一键上手.html">GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/17-开源项目逐个上手手册.html">开源项目逐个上手手册（安装 · 一键使用 · 打包下载 · 手机端）</a>
+              <span class="rm-metrics">1.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/21-书稿-第2章-深度学习革命.html">第 2 章 · 深度学习革命：从感知机到Transformer</a>
+              <span class="rm-metrics">847 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/25-书稿-第9章-AI医疗应用.html">第 9 章 · AI医疗应用：从辅助诊断到新药研发</a>
+              <span class="rm-metrics">822 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/26-书稿-第11章-AI伦理与安全.html">第 11 章 · AI伦理与安全：技术狂奔时代的护栏</a>
+              <span class="rm-metrics">801 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/30-书稿-第15章-AI与国家安全.html">第 15 章 · AI与国家安全：新边疆的博弈</a>
+              <span class="rm-metrics">668 字</span>
+            </li></ul>
+          </div>
+          </div>
+          <aside class="rm-side">
+            <h3 class="rm-h3">可以跳过</h3>
+            <ul class="rm-skip">
+          <li><b>主站功能页</b>变现 / 人格 / 漫剧 / 绘画 / 商业：与技术落地无关</li></ul>
+            <h3 class="rm-h3">读完能带走</h3>
+            <ul class="rm-out"><li>一套微调 + 量化的可复现配置</li><li>推理框架选型对照表</li><li>模型评估基线与监控指标</li></ul>
+            <p class="rm-term">术语策略：可点开查看解释。术语可点开查看解释</p>
+          </aside>
+        </div>
+      </section>
+      <section class="rm-panel" id="panel-toolbox" hidden>
+        <div class="rm-hero">
+          <p class="rm-ask">我现在就要用，不想先学</p>
+          <div class="rm-promises">
+            <span>打开就能用，不用先读三章理论</span><span>所有工具集中一处，不用一个个找</span><span>每个工具都标了真实官网与实测短板</span>
+          </div>
+          <a class="rm-first" href="/workstation.html">
+            从这里开始 · 工作台
+            <i>所有能直接用的东西都在这</i>
+          </a>
+        </div>
+        <div class="rm-cols">
+          <div class="rm-main">
+            <h3 class="rm-h3">该读什么 <em>35 页</em></h3>
+            
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">26</span>
+              <em>全部工具与工作台入口（打开就能用）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/agent.html">ccowork · 全能智能体 · 白驹 ccowork</a>
+              <span class="rm-metrics">292 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-tools.html">AI 工具真库</a>
+              <span class="rm-metrics">3.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/assistant.html">白驹 ccowork · 已并入总站</a>
+              <span class="rm-metrics">32 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/chat.html">ccowork · AI 对话 · 自备密钥工作台</a>
+              <span class="rm-metrics">266 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/comic.html">AI 漫剧工坊</a>
+              <span class="rm-metrics">763 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/daily.html">每日简报</a>
+              <span class="rm-metrics">1.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/deep-dive.html">国产大模型的资本狂飙：一天之内两笔百亿级消息</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ecosystem.html">全生态知识库</a>
+              <span class="rm-metrics">217 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/gallery.html">AI 绘画工作台</a>
+              <span class="rm-metrics">216 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/">总站导航台</a>
+              <span class="rm-metrics">896 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/news.html">AI·大学生·就业 新闻视频</a>
+              <span class="rm-metrics">173 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/personality.html">你的 AI 人格 是什么？</a>
+              <span class="rm-metrics">145 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/portal.html">把今天的 AI 全部收纳进来</a>
+              <span class="rm-metrics">194 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/quiz.html">刷题 · 题库</a>
+              <span class="rm-metrics">197 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/reader.html">ccowork · 《AI 实战全书》在线阅读</a>
+              <span class="rm-metrics">45 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/resume.html">简历 生成器</a>
+              <span class="rm-metrics">162 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/security.html">AI安全指南</a>
+              <span class="rm-metrics">649 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/settings.html">模型 设置中心</a>
+              <span class="rm-metrics">271 字</span>
+            </li>
+            <li class="rm-item">
+              
+              <span class="rm-metrics">345 字</span>
+            </li>
+            <li class="rm-item">
+              
+              <span class="rm-metrics">456 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/software-detail.html">&#39;+esc(s.name)+&#39;</a>
+              <span class="rm-metrics">43 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/start.html">ccowork · 白驹</a>
+              <span class="rm-metrics">32 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/traffic-guide.html">交警手势 vs 红绿灯：车主实操落地</a>
+              <span class="rm-metrics">4.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/voice.html">语音 工作台</a>
+              <span class="rm-metrics">188 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/weather.html">天气 · 日历</a>
+              <span class="rm-metrics">113 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/workstation.html">ccowork · 白驹工作站 · IDE × GitHub × AI</a>
+              <span class="rm-metrics">193 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>环球语堂
+              <span class="rm-gnum">4</span>
+              <em>语言学习工具台</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/linguavista/chat.html">AI 对话 · 环球语堂</a>
+              <span class="rm-metrics">120 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/linguavista/flashcards.html">闪卡学习 · 环球语堂</a>
+              <span class="rm-metrics">82 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/linguavista/index.html">一个账号 畅学十国语言</a>
+              <span class="rm-metrics">584 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/linguavista/profile.html">个人中心 · 环球语堂</a>
+              <span class="rm-metrics">214 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>实验室 · 主入口
+              <span class="rm-gnum">1</span>
+              <em>网页仿真：不用装软件就能跑</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/lab/simlab.html">网页里 一键运行 仿真</a>
+              <span class="rm-metrics">368 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">2</span>
+              <em>免费工科软件学院 / 品牌页（软件清单与规范）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/software-detail.html">&#39;+esc(s.name)+&#39;</a>
+              <span class="rm-metrics">43 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/brand-guidelines.html">白驹品牌规范</a>
+              <span class="rm-metrics">522 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>语言课程
+              <span class="rm-gnum">2</span>
+              <em>语言课程页（英语 / 日语）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/linguavista/languages/en.html">英语</a>
+              <span class="rm-metrics">357 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/linguavista/languages/ja.html">日语</a>
+              <span class="rm-metrics">285 字</span>
+            </li></ul>
+          </div>
+          </div>
+          <aside class="rm-side">
+            <h3 class="rm-h3">可以跳过</h3>
+            <ul class="rm-skip">
+          <li><b>AI 学院 · 章节正文</b>章节是学习材料，来工具台的人要先动手</li>
+          <li><b>书稿 · 章节</b>书稿需要连续阅读，不属于工具台</li></ul>
+            <h3 class="rm-h3">读完能带走</h3>
+            <ul class="rm-out"><li>一个马上能用的工具</li><li>一份属于你的提示词与素材库</li><li>不用学理论也能完成一件事</li></ul>
+            <p class="rm-term">术语策略：零门槛，所有名词配大白话。界面本身就是说明，不需要读概念</p>
+          </aside>
+        </div>
+      </section>
+      <section class="rm-panel" id="panel-everyone" hidden>
+        <div class="rm-hero">
+          <p class="rm-ask">这东西我能不能用得上，怎么开始</p>
+          <div class="rm-promises">
+            <span>今天就能用上：一个能立刻帮你的具体场景</span><span>知道 AI 会在哪里出错，不被它带沟里</span><span>有一份自己的提示词库，越用越顺手</span>
+          </div>
+          <a class="rm-first" href="/prompts-guide.html">
+            从这里开始 · 按场景抄提示词
+            <i>不用理解原理，今晚就能用</i>
+          </a>
+        </div>
+        <div class="rm-cols">
+          <div class="rm-main">
+            <h3 class="rm-h3">该读什么 <em>95 页</em></h3>
+            
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">7</span>
+              <em>场景提示词 / 提示词库 / 变现 / 岗位 / 人格 / 工具 / 工作流</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/prompts-guide.html">40+ 条可复制提示词，全场景覆盖</a>
+              <span class="rm-metrics">560 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/prompts100.html">提示词百宝库</a>
+              <span class="rm-metrics">4.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-money.html">用 AI 赚钱，从提示词开始</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-jobs.html">岗位在变，你也在变</a>
+              <span class="rm-metrics">1.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/personality.html">你的 AI 人格 是什么？</a>
+              <span class="rm-metrics">145 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-tools.html">AI 工具真库</a>
+              <span class="rm-metrics">3.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/weather.html">天气 · 日历</a>
+              <span class="rm-metrics">113 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 章节正文
+              <span class="rm-gnum">2</span>
+              <em>提示词入门 + 职场实战：这两章就是为这里准备的</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-17.html">提示词工程入门：从提问到指挥</a>
+              <span class="rm-metrics">3.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/chapter-23.html">AI 职场应用实战</a>
+              <span class="rm-metrics">3.7k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">3</span>
+              <em>法规红线 / 安全常识 / 常见问题（避坑比学技术优先）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/traffic-guide.html">交警手势 vs 红绿灯：车主实操落地</a>
+              <span class="rm-metrics">4.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/security.html">AI安全指南</a>
+              <span class="rm-metrics">649 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/faq.html">AI常见问题50问</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">4</span>
+              <em>好用的技巧与真实案例</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/2026-09-01-爆款-3个Agent协作开源AI助手实测.html">3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费G</a>
+              <span class="rm-metrics">3.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年9月AI学习避坑指南：别再被3年前的旧教程坑了.html">2026年9月AI学习避坑指南：别再被3年前的旧教程坑了</a>
+              <span class="rm-metrics">2.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到落地路线.html">2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/2026.9.9-实测：现在用AI做视频，已经不用拼提示词了.html">2026.9.9 实测：现在用AI做视频，已经不用拼提示词了</a>
+              <span class="rm-metrics">2.8k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>五卷全书
+              <span class="rm-gnum">2</span>
+              <em>总目录（知道有什么）+ 工具百科</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/README-全书总目录.html">《AI 时代》全书总目录</a>
+              <span class="rm-metrics">769 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/AI工具大全-百科全书.html">AI 工具大全 · 百科全书</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>中国科技故事
+              <span class="rm-gnum">19</span>
+              <em>中国科技故事全集（19 章）：零门槛叙事读物，科技通识</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/01-DeepSeek的逆袭.html">中国科技故事 · 01 · DeepSeek 的逆袭</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/02-两弹一星.html">中国科技故事 · 02 · 两弹一星：从「一穷二白」到「镇国重器」</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/03-中国高铁.html">中国科技故事 · 03 · 中国高铁：从「引进」到「领跑」</a>
+              <span class="rm-metrics">893 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/04-北斗导航.html">中国科技故事 · 04 · 北斗导航：我们为什么要造自己的「北斗」</a>
+              <span class="rm-metrics">872 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/05-中国航天.html">中国科技故事 · 05 · 中国航天：从东方红一号到空间站</a>
+              <span class="rm-metrics">952 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/06-嫦娥探月.html">中国科技故事 · 06 · 嫦娥探月与天问探火：中国人的星辰大海</a>
+              <span class="rm-metrics">777 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/07-超级计算机.html">中国科技故事 · 07 · 超级计算机：神威·太湖之光背后的故事</a>
+              <span class="rm-metrics">735 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/08-量子科技.html">中国科技故事 · 08 · 量子科技：墨子号与九章</a>
+              <span class="rm-metrics">866 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/09-华为.html">中国科技故事 · 09 · 华为：一家公司的长征</a>
+              <span class="rm-metrics">787 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/10-5G通信.html">中国科技故事 · 10 · 5G：中国如何站上通信之巅</a>
+              <span class="rm-metrics">751 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/11-移动支付.html">中国科技故事 · 11 · 移动支付与数字生活：一部手机走天下</a>
+              <span class="rm-metrics">879 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/12-大疆.html">中国科技故事 · 12 · 大疆：从车库到全球无人机之王</a>
+              <span class="rm-metrics">907 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/13-比亚迪.html">中国科技故事 · 13 · 比亚迪与新能源车：换道超车</a>
+              <span class="rm-metrics">889 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/14-国产大模型群像.html">中国科技故事 · 14 · 国产大模型群像：文心、通义、豆包、Kimi的突围</a>
+              <span class="rm-metrics">831 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/15-光刻机与芯片.html">中国科技故事 · 15 · 光刻机与芯片：卡脖子与突围战</a>
+              <span class="rm-metrics">836 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/16-钱学森.html">中国科技故事 · 16 · 钱学森：五年归国路，十年两弹成</a>
+              <span class="rm-metrics">906 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/17-袁隆平.html">中国科技故事 · 17 · 袁隆平：一粒种子改变世界</a>
+              <span class="rm-metrics">950 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/18-科技创业者群像.html">中国科技故事 · 18 · 任正非、王传福、梁文锋：科技创业者群像</a>
+              <span class="rm-metrics">977 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/中国科技故事/README-目录.html">中国科技故事 · 系列总目录</a>
+              <span class="rm-metrics">539 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>五卷全书
+              <span class="rm-gnum">5</span>
+              <em>总序 / 个人IP / AI 思想者 / 学习路线 / 工具速查（叙事与思想，零门槛）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/总序.html">总序：写给每一个想在这个时代留下名字的人</a>
+              <span class="rm-metrics">774 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/第五卷-如何用AI打造个人主流IP.html">第五卷 · 如何用 AI 打造你的个人主流 IP</a>
+              <span class="rm-metrics">1.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/第六卷-AI思想者与未来图景.html">第六卷 · AI 思想者：大师视野与未来图景</a>
+              <span class="rm-metrics">5.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/附录-学习路线图.html">附录 · AI 学习路线图</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/五卷全书/附录-工具速查表.html">附录 · AI 工具速查表</a>
+              <span class="rm-metrics">1.0k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>五卷全书
+              <span class="rm-gnum">4</span>
+              <em>提示词模板库 / 具身智能 / 对齐之路（AI 安全）/ AI 实战全书</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/五卷全书/附录-提示词模板库.html">附录 · 提示词模板库（开箱即用）</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/具身智能.html">具身智能：当 AI 拥有了身体</a>
+              <span class="rm-metrics">5.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/对齐之路.html">《对齐之路：AI 安全与人类的抉择》</a>
+              <span class="rm-metrics">5.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/AI实战全书.html">AI 实战全书</a>
+              <span class="rm-metrics">11.3k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>环球语堂
+              <span class="rm-gnum">4</span>
+              <em>外语学习：顺手把语言学掉</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/linguavista/index.html">一个账号 畅学十国语言</a>
+              <span class="rm-metrics">584 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/linguavista/flashcards.html">闪卡学习 · 环球语堂</a>
+              <span class="rm-metrics">82 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/linguavista/chat.html">AI 对话 · 环球语堂</a>
+              <span class="rm-metrics">120 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/linguavista/profile.html">个人中心 · 环球语堂</a>
+              <span class="rm-metrics">214 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>实验室 · 主入口
+              <span class="rm-gnum">5</span>
+              <em>实验室主入口 / 网页仿真 / 实训清单</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/lab/index.html">真能跑 · 真能下载 · 真能实践</a>
+              <span class="rm-metrics">667 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/simlab.html">网页里 一键运行 仿真</a>
+              <span class="rm-metrics">368 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/README.html">工科实训实验室（Lab）</a>
+              <span class="rm-metrics">372 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/工科如何学.html">工科如何学</a>
+              <span class="rm-metrics">1.5k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab/工科实训项目.html">工科实训项目（真动手清单）</a>
+              <span class="rm-metrics">395 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>博客
+              <span class="rm-gnum">3</span>
+              <em>创业 / 变现 / 写作（普通人也能用的三篇）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/blog/AI创业实战指南.html">AI创业实战指南</a>
+              <span class="rm-metrics">1.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI变现实操手册.html">AI变现实操手册</a>
+              <span class="rm-metrics">1.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/blog/AI写作完全指南.html">AI写作完全指南：从入门到精通</a>
+              <span class="rm-metrics">1.3k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>AI 学院 · 可运行项目
+              <span class="rm-gnum">5</span>
+              <em>播客 / 行程 / 简历 / 理财 / 健康（生活里真用得上的五个）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/podcast-script.html">PodcastScript 播客脚本工</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/travel-planner.html">TravelPlanner 行程规划师</a>
+              <span class="rm-metrics">2.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/resume-coach.html">ResumeCoach 简历优化教练</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/finance-bot.html">FinanceBot 理财顾问</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/website/ai-academy/projects/health-record.html">HealthRecord 健康助手</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>书 · 单本入口
+              <span class="rm-gnum">3</span>
+              <em>单本书入口（AI 实战全书 / 个人实战全书 / 书库）</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/AI实战全书.html">AI 实战全书</a>
+              <span class="rm-metrics">6.6k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/index.html">一本书，装下 AI 工具的时代</a>
+              <span class="rm-metrics">1.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/个人实战全书.html">一本能上手干活的书</a>
+              <span class="rm-metrics">940 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>主站功能页
+              <span class="rm-gnum">21</span>
+              <em>短剧机会 / 场馆地图 / 零基础路线 / 首页 / 实验室 / 品牌 / 技能变生意 / 智能工厂 / 成果墙 / 作品 / 软件学院 / 视频 / 绘画 / 漫剧 / 人格 / 提示词库 / 题库 / 简历 / 天气</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/manju.html">400 亿市场的机会，普通人怎么接住</a>
+              <span class="rm-metrics">2.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/map-guide.html">科技馆 · 图书馆 · AI 产业园比赛场馆 · 红色教育基地 —— 一键导航</a>
+              <span class="rm-metrics">472 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/roadmap.html">零基础，也能照着走完的 AI 之路</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/index.html">一个人，就是一支创作军团</a>
+              <span class="rm-metrics">3.4k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/lab.html">从代码到实物，把 AI 与硬件焊在一起</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/brand-guidelines.html">白驹品牌规范</a>
+              <span class="rm-metrics">522 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/biz-center.html">技能变生意 · 能力条目就是 10 条业务线</a>
+              <span class="rm-metrics">762 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/ai-build-hall.html">工业4.0 · 数字孪生 · 智能工厂AI 如何建造未来</a>
+              <span class="rm-metrics">243 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/showcase.html">前辈们做出的 AI 成果</a>
+              <span class="rm-metrics">875 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/works.html">一页看尽全部作品</a>
+              <span class="rm-metrics">138 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/software-detail.html">&#39;+esc(s.name)+&#39;</a>
+              <span class="rm-metrics">43 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/videos.html">一看就懂，学会用</a>
+              <span class="rm-metrics">419 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/gallery.html">AI 绘画工作台</a>
+              <span class="rm-metrics">216 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/comic.html">AI 漫剧工坊</a>
+              <span class="rm-metrics">763 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/personality.html">你的 AI 人格 是什么？</a>
+              <span class="rm-metrics">145 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/prompts100.html">提示词百宝库</a>
+              <span class="rm-metrics">4.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/prompts-guide.html">40+ 条可复制提示词，全场景覆盖</a>
+              <span class="rm-metrics">560 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/quiz.html">刷题 · 题库</a>
+              <span class="rm-metrics">197 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/resume.html">简历 生成器</a>
+              <span class="rm-metrics">162 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/weather.html">天气 · 日历</a>
+              <span class="rm-metrics">113 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/covers.html">页面封面墙 &amp;amp; 开源作品</a>
+              <span class="rm-metrics">266 字</span>
+            </li></ul>
+          </div>
+          <div class="rm-group">
+            <h4>书稿 · 章节
+              <span class="rm-gnum">8</span>
+              <em>提示词完全指南 / AI 影响面 / 开源工具 / 学习总纲 / 行行出状元 / 未来社会 / 国家安全 / 文化创意</em>
+            </h4>
+            <ul class="rm-list">
+            <li class="rm-item">
+              <a href="/book/pages/11-提示词完全指南-2026最新版.html">提示词完全指南（2026 最新版）</a>
+              <span class="rm-metrics">1.7k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/12-AI影响面-从短视频到天气再到每一个人.html">AI 影响面：从短视频、赚钱、博文到天气，再到每一个人</a>
+              <span class="rm-metrics">2.1k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/13-开源AI工具-开箱即用指南.html">开源 AI 工具 · 开箱即用指南（2026 最火）</a>
+              <span class="rm-metrics">1.2k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/18-AI研究方向详解-知识网.html">AI 研究方向详解（知识网 · 给所有人看）</a>
+              <span class="rm-metrics">2.0k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/19-行行出状元-各行各业如何看AI如何学AI.html">行行出状元：各行各业如何看 AI、如何学 AI</a>
+              <span class="rm-metrics">2.9k 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/29-书稿-第14章-AI与未来社会.html">第 14 章 · AI与未来社会：2035年的世界</a>
+              <span class="rm-metrics">755 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/30-书稿-第15章-AI与国家安全.html">第 15 章 · AI与国家安全：新边疆的博弈</a>
+              <span class="rm-metrics">668 字</span>
+            </li>
+            <li class="rm-item">
+              <a href="/book/pages/31-书稿-第16章-AI与文化创意.html">第 16 章 · AI与文化创意：从工具到伙伴</a>
+              <span class="rm-metrics">637 字</span>
+            </li></ul>
+          </div>
+          </div>
+          <aside class="rm-side">
+            <h3 class="rm-h3">可以跳过</h3>
+            <ul class="rm-skip">
+          <li><b>AI 学院 · 章节正文</b>Transformer 原理 / 框架开发 / RL：零门槛路线不需要这些</li>
+          <li><b>实验室 · 理工算法</b>实验室理工内容：与日常使用无关</li>
+          <li><b>书稿 · 章节</b>书稿偏体系化理论：零门槛用户先看提示词与避坑</li></ul>
+            <h3 class="rm-h3">读完能带走</h3>
+            <ul class="rm-out"><li>一份自己的提示词库</li><li>一套避坑清单（法规 / 安全 / 幻觉）</li><li>一个每周省时间的工作流</li></ul>
+            <p class="rm-term">术语策略：零门槛，所有名词配大白话。所有专业名词自动配大白话解释</p>
+          </aside>
+        </div>
+      </section>
+  <div class="rm-sys">
+    <h3 class="rm-h3">工具与规范页 <em>不属于任何人群</em></h3>
+    <ul class="rm-syslist"><li class="rm-item"><a href="/brand.html">品牌页</a><span class="rm-metrics">白驹标识与视觉规范</span></li><li class="rm-item"><a href="/software.html">免费工科软件学院</a><span class="rm-metrics">各类工程软件的下载与安装指引</span></li><li class="rm-item"><a href="/privacy.html">隐私政策</a></li><li class="rm-item"><a href="/faq.html">常见问题 50 问</a></li><li class="rm-item"><a href="/covers.html">页面封面墙</a></li><li class="rm-item"><a href="/improvement-plan.html">全站升级路线图</a></li></ul>
+  </div>
+</div>
+<script>
+(function () {
+  'use strict'
+  var KEY = 'baiju.role'
+  var cards = [].slice.call(document.querySelectorAll('.rm-rolecard'))
+  var panels = [].slice.call(document.querySelectorAll('.rm-panel'))
+  function show(id) {
+    cards.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.role === id)) })
+    panels.forEach(function (p) { p.hidden = p.id !== 'panel-' + id })
+    try { localStorage.setItem(KEY, id) } catch (e) {}
+    var top = document.querySelector('.rm-roles').getBoundingClientRect().top + window.scrollY - 74
+    if (window.scrollY > top) window.scrollTo({ top: top, behavior: 'smooth' })
+  }
+  cards.forEach(function (c) {
+    c.addEventListener('click', function () { show(c.dataset.role) })
+  })
+  /* 默认：优先记住上次选择，其次按「你是不是要干活」选工具台，否则普通人 */
+  var saved = null
+  try { saved = localStorage.getItem(KEY) } catch (e) {}
+  var valid = cards.some(function (c) { return c.dataset.role === saved })
+  show(valid ? saved : 'everyone')
+  /* 支持 ?as=teacher 直达（角色入口链接会带这个参数） */
+  var q = new URLSearchParams(location.search).get('as')
+  if (q && cards.some(function (c) { return c.dataset.role === q })) show(q)
+})();
+</script>
+<link rel="stylesheet" href="/assets/baiju-core.css?v=20261115b">
+<script src="/assets/baiju-core.js" defer></script>
+<script src="/ccowork.js?v=20261115b"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

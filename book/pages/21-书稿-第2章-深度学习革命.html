@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 第 2 章 · 深度学习革命：从感知机到Transformer · AI 工具简史与实战全书 · 白驹 ccowork">
+<meta name="description" content="第 2 章 · 深度学习革命：从感知机到Transformer 深度学习不是一夜之间冒出来的。">
+<meta property="og:description" content="第 2 章 · 深度学习革命：从感知机到Transformer 深度学习不是一夜之间冒出来的。">
+<meta charset="utf-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · 第 2 章 · 深度学习革命：从感知机到Transformer · AI 工具简史与实战全书 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ccowork · 第 2 章 · 深度学习革命：从感知机到Transformer · AI 工具简史与实战全书","description":"第 2 章 · 深度学习革命：从感知机到Transformer 深度学习不是一夜之间冒出来的。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{--bg:#0b1020;--card:#141e38;--line:#233052;--txt:#e8edf7;--sub:#9fb0cc;--accent:#4f8cff;--accent2:#22d3ee;--gold:#ffd166}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.8;font-size:16px}
+a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:9;background:rgba(11,16,32,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{font-weight:700}.brand b{color:var(--accent)}
+nav .links{display:flex;flex-wrap:wrap;gap:14px;font-size:14px}nav .links a{color:var(--sub)}
+main{padding:34px 0 60px}
+article h1{font-size:30px;margin:10px 0 20px;line-height:1.35}
+article h2{font-size:23px;margin:30px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+article h3{font-size:19px;margin:22px 0 8px;color:var(--accent2)}
+article p{margin:12px 0;color:#d4dcec}
+article ul,article ol{padding-left:24px;margin:12px 0}article li{margin:7px 0}
+article strong{color:#fff}
+article code{background:#0a1226;border:1px solid var(--line);padding:2px 6px;border-radius:6px;font-size:14px;color:#c8d6f0}
+article pre{background:#0a1226;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:14px 0}
+article pre code{background:none;border:none;padding:0}
+article blockquote{border-left:3px solid var(--accent);padding:8px 16px;margin:14px 0;background:#121b33;border-radius:0 10px 10px 0;color:var(--sub)}
+article table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+article th,article td{border:1px solid var(--line);padding:9px 11px;text-align:left}article th{background:#17233d}
+article hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.back{display:inline-block;margin-bottom:14px;font-size:14px;color:var(--sub)}
+.hero{padding:56px 0 36px;text-align:center}
+.hero .tag{display:inline-block;font-size:13px;color:var(--gold);border:1px solid #5a4a1e;background:#1b1a10;padding:5px 12px;border-radius:999px;margin-bottom:18px}
+h1.big{font-size:40px;line-height:1.3;margin-bottom:14px}
+h1.big span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--sub);max-width:680px;margin:0 auto 22px}
+.stats{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 20px;min-width:120px}
+.stat b{display:block;font-size:24px;color:var(--accent2)}.stat span{color:var(--sub);font-size:13px}
+.sec{padding:26px 0}h2.sec-title{font-size:24px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.card h3{font-size:16px;color:var(--accent2);margin-bottom:6px}
+.card p{color:var(--sub);font-size:14px}
+.file{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin:8px 0;background:var(--card)}
+.file a{font-weight:600}.file span{color:var(--sub);font-size:13px;white-space:nowrap}
+footer{padding:30px 0;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--line)}
+</style>
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/book/pages/21-%E4%B9%A6%E7%A8%BF-%E7%AC%AC2%E7%AB%A0-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A9%E5%91%BD.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/book/pages/21-%E4%B9%A6%E7%A8%BF-%E7%AC%AC2%E7%AB%A0-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A9%E5%91%BD.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 第 2 章 · 深度学习革命：从感知机到Transformer · AI 工具简史与实战全书 · 白驹 ccowork">
+<meta name="twitter:description" content="第 2 章 · 深度学习革命：从感知机到Transformer 深度学习不是一夜之间冒出来的。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-skeleton="article"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<header><div class="wrap"><nav>
+  <div class="brand">AI 工具<b>简史</b> · 实战全书</div>
+  <div class="links"><a href="../index.html">首页</a>全书目录</a></div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav></div></header>
+<main><div class="wrap">
+  <a class="back" href="/">← 回总站</a>
+  <article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../../assets/pg/pg-website-book-pages-21-书稿-第2章-深度学习革命.png" alt="ccowork · 第 2 章 · 深度学习革命：从感知机到Transformer · AI 工具简史与实战全书" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1>第 2 章 · 深度学习革命：从感知机到Transformer</h1>
+<blockquote><p>深度学习不是一夜之间冒出来的。它经历了三次浪潮、两次寒冬，最终在2012年彻底爆发。理解这段历史，才能理解今天的大模型为什么强。</p></blockquote>
+<h2>第一次浪潮：感知机（1958）</h2>
+<p>1958年，康奈尔大学的Frank Rosenblatt发明了<strong>感知机（Perceptron）</strong>——第一个人工神经网络。它只有一层，能做简单的线性分类。</p>
+<p>媒体疯狂了。《纽约时报》报道说：「海军今天展示了一种电子计算机的雏形，它将能走路、说话、看见、写字、自我复制并意识到自己的存在。」</p>
+<p>但1969年，Marvin Minsky和Seymour Papert出版了《感知机》一书，证明了单层感知机连最简单的XOR问题都解决不了。第一次AI寒冬来临。</p>
+<h2>第二次浪潮：反向传播（1986）</h2>
+<figure class="cc-body-img"><img src="../../../assets/body/bb-21-书稿-第2章-深度学习革命.png" alt="ccowork · 第 2 章 · 深度学习革命：从感知机到Transforme · 第二次浪潮：反向传播（1986）" loading="lazy"></figure>
+<p>1986年，Geoffrey Hinton等人重新发现了<strong>反向传播算法</strong>，让多层神经网络变得可训练。这一次，神经网络可以学习非线性模式了。</p>
+<p>但问题也很明显：训练慢、容易过拟合、需要大量标注数据。到了1990年代末，支持向量机（SVM）等更稳定的方法占据了主流，神经网络再次被冷落。第二次AI寒冬。</p>
+<h2>第三次浪潮：深度学习爆发（2012）</h2>
+<p>2012年，Alex Krizhevsky、Ilya Sutskever和Geoffrey Hinton用<strong>AlexNet</strong>在ImageNet竞赛中以巨大优势夺冠。错误率从26%骤降到15%，震惊了全世界。</p>
+<p>三个关键因素同时到位：</p>
+<ul>
+<li><strong>大数据</strong>：ImageNet提供了1400万张标注图片</li>
+<li><strong>GPU算力</strong>：NVIDIA的CUDA让神经网络训练加速了100倍</li>
+<li><strong>算法改进</strong>：ReLU激活函数、Dropout正则化等技术</li>
+</ul>
+<p>深度学习时代正式开启。</p>
+<h2>Transformer：一统天下（2017）</h2>
+<p>2017年，Google的论文《Attention Is All You Need》提出了<strong>Transformer</strong>架构。它抛弃了传统的循环神经网络（RNN），完全基于注意力机制。</p>
+<p>Transformer的优势：</p>
+<ul>
+<li><strong>并行计算</strong>：不像RNN必须逐个处理，Transformer可以并行处理所有位置</li>
+<li><strong>长距离依赖</strong>：注意力机制可以直接关联序列中任意两个位置</li>
+<li><strong>可扩展性</strong>：堆叠更多层、更多参数，性能持续提升</li>
+</ul>
+<p>BERT（2018）、GPT（2018）、T5（2019）……所有现代大模型都是Transformer的后代。</p>
+<h2>Scaling Laws：大力出奇迹</h2>
+<p>2020年，OpenAI发表论文《Scaling Laws for Neural Language Models》，揭示了一个惊人的规律：</p>
+<p><strong>模型性能与参数量、数据量、计算量呈幂律关系。</strong></p>
+<p>这意味着：只要你不断堆参数、堆数据、堆算力，模型就会持续变强。这个「暴力美学」的指导思想，直接催生了GPT-3（1750亿参数）、GPT-4（估计万亿参数）、以及今天的万亿级大模型。</p>
+<h2>「寒冬」到底冷在哪：不是没钱，是有个更省事的替代品</h2>
+<p>「AI 寒冬」这词听着像比喻，但在 1970 年代的英国，它是字面意义上的。1973 年，英国政府委托数学家詹姆斯·莱特希尔做了一份评估报告，结论是 AI 在可预见的未来达不到「通用」的目标，随后英国政府大幅削减了 AI 研究经费。美国这边，资助机构也因为进展远低于预期而收紧了钱袋子。</p>
+<p>第二次寒冬发生在 1990 年代，原因不同于第一次：不是没钱，是「另一个方法更好用」。支持向量机在理论上更漂亮——有严格的数学保证、不容易过拟合、小样本上表现稳定。相比之下，神经网络像一门玄学：调不调得出来靠运气，也讲不清为什么有效。那几年往顶级会议投论文，标题里带「神经网络」几乎等于主动被拒。</p>
+<p>这段历史值得多说一句：技术被冷落，往往不是因为它没用，而是因为同时存在一个更便宜、更可解释的替代方案。AI 今天的热度，某种意义上是「可解释性让位给了效果」的结果——大模型也讲不清为什么有效，但它有效，而且好用。这既是它的力量，也是它最让人不安的地方。</p>
+
+<h2>AlexNet 那年，真正变了的是什么</h2>
+<p>2012 年 ImageNet 竞赛的结果常被简化成「错误率从 26% 降到 15%」。数字对，但它掩盖了更关键的一点：那一年第二名用的还是传统方法，成绩 26.2%，AlexNet 是 15.3%。这不是「进步了一点」，这是跨了一个档位——领先第二名十个百分点，意味着两个方法的上限完全不在同一个层面。</p>
+<p>更值得琢磨的是三个条件为什么恰好在那一年凑齐。ImageNet 是李飞飞团队从 2007 年开始做、2009 年发布的，到 2012 年已经攒下上千万张标注图。GPU 从游戏卡变成计算设备的转折点是 CUDA 在 2007 年发布，五年后生态刚好成熟。至于 ReLU、Dropout 这些技巧，是 Hinton 团队在实践中一个个试出来的。</p>
+<p>三样缺一都不成。这也纠正了一个常见误判：很多人以为「算法突破」是天才灵光一闪。实际上这一次是数据、算力、工程技巧同时到位。而算法本身——卷积网络——在 1980 年代就被 Yann LeCun 用在手写数字识别上了，1998 年的 LeNet-5 已经能读银行支票。它等了十四年，等的是另外两样东西。</p>
+
+<h2>Scaling Laws 说的是什么，不是说什么</h2>
+<p>「大力出奇迹」这个总结流传极广，但它容易被误读成「只要堆就一定能行」。</p>
+<p>原论文（2020 年，OpenAI）说的是：在一定范围内，模型的损失随参数量、数据量、计算量的增加，按幂律下降。幂律的意思是「收益递减，但递减得很慢」——不是线性，也不是撞墙。这在当时是个相当乐观的发现，因为它意味着继续砸钱还有回报。</p>
+<p>但它没说三件事。第一，幂律是在特定范围内测出来的，超出范围会不会变，不知道。第二，损失下降不等于能力按同样速度提升——有些能力是突然冒出来的，有些则卡住不动。第三，它不谈数据够不够：2024 年前后，业内开始公开讨论高质量文本数据快被用完了，这直接把路线推向合成数据和更大的多模态输入。</p>
+<p>所以更准确的理解是：Scaling Laws 解释了过去五年为什么所有人都在堆，但它不构成「堆就永远有效」的保证。要判断，还得看具体能力到底有没有跟着涨。</p>
+
+<h2>本章要点</h2>
+<ul>
+<li>深度学习经历了三次浪潮，两次寒冬，最终靠大数据+GPU+算法突破爆发</li>
+<li>Transformer架构是现代大模型的基石</li>
+<li>Scaling Laws证明「大力出奇迹」是有效的，这解释了大模型的军备竞赛</li>
+<li>理解历史，才能预判未来</li>
+</ul>
+  
+<!-- ====== 出处声明 ====== -->
+<div class="blog-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>出处声明</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本文由本站 AI 创作整理，内容基于公开知识/官方资料提炼，<b>信息请以官方发布为准</b>；
+    涉及的历史事件、产品与数据均可在公开渠道查证，本站不编造来源。引用外部内容遵循其原始许可，标注出处即可。
+  </p>
+</div>
+</article>
+</div></main>
+<footer>AI 工具简史与实战全书 · 个人 IP 内容矩阵 · 持续更新中</footer>
+<script src="/ccowork.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/search.js"></script>
+<script src="/stats.js"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

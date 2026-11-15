@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="我用 DeepSeek 重构了整个创作流程：长文实操记录，含提示词设计、创作工作流与真实输出对比（AI 生成已标注）。白驹 ccowork。">
+<meta name="keywords" content="DeepSeek,创作流程,长文,AI 写作,提示词,工作流,白驹 ccowork">
+<meta name="description" content="我用 DeepSeek 重构了整个创作流程：长文实操记录，含提示词设计、创作工作流与真实输出对比（AI 生成已标注）。白驹 ccowork。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我用 DeepSeek 重构了整个创作流程：一篇长文的完整实操记录 · 白驹 ccowork</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/%E6%B7%B1%E5%BA%A6%E9%95%BF%E6%96%87.html">
+<meta property="og:title" content="我用 DeepSeek 重构了整个创作流程：一篇长文的完整实操记录 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/%E6%B7%B1%E5%BA%A6%E9%95%BF%E6%96%87.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="我用 DeepSeek 重构了整个创作流程：一篇长文的完整实操记录 · 白驹 ccowork">
+<meta name="twitter:description" content="我用 DeepSeek 重构了整个创作流程：长文实操记录，含提示词设计、创作工作流与真实输出对比（AI 生成已标注）。白驹 ccowork。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"我用 DeepSeek 重构了整个创作流程：一篇长文的完整实操记录","description":"我用 DeepSeek 重构了整个创作流程：长文实操记录，含提示词设计、创作工作流与真实输出对比（AI 生成已标注）。白驹 ccowork。","url":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/%E6%B7%B1%E5%BA%A6%E9%95%BF%E6%96%87.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/%E6%B7%B1%E5%BA%A6%E9%95%BF%E6%96%87.html"},"image":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/assets/img/og-cover.png","datePublished":"2026-08-30","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"dateModified":"2026-10-27","inLanguage":"zh-CN"}</script>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="works"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/cover-深度长文.png" alt="我用 DeepSeek 重构了整个创作流程：一篇长文的完整实操记录" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="深度长文" style="width:100%;height:auto;border-radius:18px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">深度长文</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)"></text>
+</svg>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>15 分钟</span><span class="blog-tag">AI 创作</span></div>
+
+  <div class="blog-divider"></div>
+</div>
+<h1>我用 DeepSeek 重构了整个创作流程：一篇长文的完整实操记录</h1>
+<blockquote>
+<p>摘要：下面这套流程，是我用 DeepSeek 加若干 AI 工具，跑过长文、小说、短片脚本与站点文案之后沉淀下来的。这篇文章不是&quot;AI 多厉害&quot;的夸夸文，而是一份完整的、可复制的操作手册——包括每一步的提示词、踩过的坑，以及我对&quot;AI 时代创作者如何自处&quot;的全部思考。</p>
+</blockquote>
+<hr>
+<h2>零、先说结论</h2>
+<ol>
+<li><strong>AI 不会让创作者失业，但&quot;只会单一技能的创作者&quot;会。</strong> 写作、绘画、剪辑作为&quot;手艺&quot;正在贬值，作为&quot;能力组合中的环节&quot;正在升值。</li>
+<li><strong>DeepSeek 的正确用法不是&quot;让它写&quot;，而是&quot;让它想&quot;。</strong> R1 的思维链是这台机器最值钱的器官——它推演的每一步你都能看见、能干预、能学习。</li>
+<li><strong>产能的提升不是线性的，是结构性的。</strong> 产能的变化不是线性的，是结构性的——省下来的不是打字时间，是「卡住」的时间。</li>
+<li><strong>最稀缺的东西变了。</strong> 当&quot;做出来&quot;变得廉价，&quot;想清楚做什么&quot;就成了唯一的护城河。</li>
+</ol>
+<p>下面是全过程。</p>
+<hr>
+<h2>一、DeepSeek：为什么是这台发动机</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-深度长文.png" alt="我用 DeepSeek 重构了整个创作流程：一篇长文的完整实操记录 · AI · 一、DeepSeek：为什么是这台发动机" loading="lazy"></figure>
+
+<p>市面上的大模型我几乎都重度用过：GPT、Claude、Kimi、豆包、Gemini。最终把 DeepSeek 定为创作中枢，原因有四个：</p>
+<h3>1.1 R1 的思维链是免费的&quot;大师课&quot;</h3>
+<p>让 Claude 或 GPT 写一篇文章，它们给你结果。让 DeepSeek-R1 写，它先给你<strong>推理过程</strong>——你会看到它如何权衡选题角度、如何推演结构、如何自我否定。这等于每次都附赠一次&quot;资深编辑的思路解剖&quot;。</p>
+<p>我的用法：重要的创作决策，永远先开&quot;深度思考&quot;，而且<strong>认真读它的思考过程</strong>。有一次我让它策划视频选题，它在思维链里推演了三个方向后自我否决了两个，否决的理由比我自己的直觉清晰得多。</p>
+<h3>1.2 成本几乎可以忽略</h3>
+<p>按现行官方定价，一部长篇的 API 消耗通常落在几十元量级（取决于模型档位与迭代次数）。这意味着你可以相对放心地迭代——好作品不是&quot;生成&quot;出来的，是&quot;迭代&quot;出来的。</p>
+<h3>1.3 开源带来的生态自由度</h3>
+<p>官方 API 兼容 OpenAI SDK 格式，意味着它可以无缝接入几乎所有支持自定义接口的工具：沉浸式翻译、Obsidian 插件、各种编辑器。本地部署的蒸馏版（Ollama 一键搞定）还能处理你不想上云的私密素材。</p>
+<h3>1.4 长文本与结构化输出稳定</h3>
+<p>写小说最怕&quot;写着写着忘了前面的设定&quot;。DeepSeek 对结构化输入（世界观文档、人物卡、前情摘要）的服从度很高，配合我下面要讲的&quot;上下文管理法&quot;，十万字级别的工程不会崩。</p>
+<hr>
+<h2>二、选题与研究：让 AI 先做&quot;资料综述&quot;</h2>
+<p>好内容的一半是选题。我的选题流水线：</p>
+<p><strong>第一步：热点扫描。</strong> 用秘塔 AI 搜索或 DeepSeek 联网模式，问：&quot;过去 7 天，[你的领域]讨论度最高的 10 个话题是什么？各自的核心争议点是什么？&quot;</p>
+<p><strong>第二步：缺口分析。</strong> 这是 R1 最出彩的环节。提示词：</p>
+<pre><code>你是资深内容策划。以下是当前关于【话题】的 10 篇热门内容的观点摘要：[粘贴]。
+请回答：
+1. 这些内容的共识是什么？
+2. 哪些重要角度被集体忽略了？
+3. 如果我要写一篇&quot;反共识但站得住脚&quot;的文章，最强的切入角度是什么？给出 3 个，并按&quot;争议性 × 可信度&quot;打分。
+</code></pre>
+<p><strong>第三步：一句话钩子。</strong> 选题必须能压缩成一句话钩子，压缩不了就说明没想透。本文的钩子是：&quot;我不是来夸 AI 的，我是来交操作手册的。&quot;</p>
+<blockquote>
+<p>坑点提醒：AI 给的&quot;热点&quot;有滞后性。真正的一手热点永远在评论区和社群的争吵里。AI 负责广度，你负责潜入一线。</p>
+</blockquote>
+<hr>
+<h2>三、写作：人机接力的&quot;四段论&quot;</h2>
+<p>我以本文和小说《白驹 ccowork》为例，完整拆解我的写作流程。</p>
+<h3>第一段：R1 立骨——三级大纲法</h3>
+<p>不要直接让 AI&quot;写一篇文章&quot;。先让它写大纲，而且是三级大纲：一级是章节，二级是每节的论点，三级是每节的论据/案例/数据。提示词骨架：</p>
+<pre><code>角色：你是获得过非虚构写作奖的资深作者。
+任务：为主题《XX》撰写三级大纲。
+要求：
+- 一级结构遵循&quot;钩子<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>方法<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>案例<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>升华&quot;
+- 每个二级论点下标注：论据类型（数据/案例/类比）、情绪目标（认同/惊讶/焦虑/释然）
+- 全文设计 3 个&quot;记忆点句子&quot;的位置
+- 最后自我批判：列出这份大纲最薄弱的 2 个环节
+</code></pre>
+<p>大纲出来后，<strong>人必须改</strong>。AI 的大纲永远&quot;正确而平庸&quot;，你要亲手把至少 30% 的论点换成只有你能给的东西——你的经历、你的反直觉判断、你圈子里才知道的事。</p>
+<h3>第二段：生肉扩写——分节喂料</h3>
+<p>把大纲拆成独立的节，逐节喂给主力档模型（写作任务用主力档比用推理档更快，文风也更稳）。每节单独给上下文，关键技巧是<strong>&quot;前情摘要&quot;</strong>：</p>
+<pre><code>我们正在合写一篇题为《XX》的长文。
+【全文大纲】：……
+【已完成部分摘要】：第一节论证了……，结尾落在&quot;……&quot;
+【本节任务】：撰写第二节，1500 字，论点：……
+【风格要求】：口语化、有锋利的判断、每段必须有信息增量，禁用&quot;值得注意的是&quot;&quot;综上所述&quot;等套话。
+</code></pre>
+<p>写小说同理，只是把&quot;论点&quot;换成&quot;情节点&quot;，并额外附上人物卡和世界观文档。</p>
+<h3>第三段：人注魂——不可替代的 20%</h3>
+<p>这是整个流程里最不能省的一步。我会逐段读 AI 的初稿，做三类手术：</p>
+<ul>
+<li><strong>换案例</strong>：把 AI 编的通用案例换成我的真实经历。AI 写&quot;某博主用 AI 提升了效率&quot;，我改成&quot;我小说的第三章重写了七遍，成本几毛钱&quot;。前者是信息，后者是信任。</li>
+<li><strong>加毛边</strong>：删掉过于光滑的句子，加入口语、犹疑、甚至恰到好处的自嘲。完美无瑕的文本是 AI 最大的指纹。</li>
+<li><strong>埋私货</strong>：那些只有老读者才懂的梗、行业内的暗语、对某个具体争议的真实表态。这是账号的人格。</li>
+</ul>
+<h3>第四段：R1 终审——&quot;杠精编辑&quot;工作法</h3>
+<p>终稿发回给 R1，扮演最苛刻的编辑：</p>
+<pre><code>你是一位以毒舌著称的资深主编。请审阅以下文章：
+1. 找出 5 个最大的问题（逻辑漏洞 &gt; 证据薄弱 &gt; 表达含糊 &gt; 节奏拖沓），每个问题引用原文
+2. 指出 3 处&quot;像 AI 写的&quot;的句子，说明原因
+3. 给出修改后的版本，保留我的风格，删掉所有空话
+</code></pre>
+<p>这一轮通常能让文章质量再上一个台阶。本文经历了两轮杠精编辑，删掉了约 15% 的&quot;正确的废话&quot;。</p>
+<hr>
+<h2>四、视频：从脚本到成片的 AI 流水线</h2>
+<p>视频是这次实验里投入产出比最惊人的部分。完整流程（详细分镜见项目内 <code>video/剪辑脚本.md</code>）：</p>
+<p><strong>编剧</strong>：DeepSeek-R1 出分镜脚本，表格输出：镜号 / 景别 / 画面描述 / 旁白 / 时长。关键约束：&quot;每个镜头的画面描述必须可以直接作为 AI 视频生成提示词&quot;。</p>
+<p><strong>出画面</strong>：先生成关键帧<strong>图片</strong>（即梦/Midjourney/混元图像），再用<strong>图生视频</strong>（可灵/即梦/混元视频）让它动起来。这是我踩坑后最重要的经验——纯文生视频的不可控性极高，人物会变脸、场景会漂移；图生视频把&quot;开盲盒&quot;变成了&quot;看图纸施工&quot;。</p>
+<p><strong>出声音</strong>：旁白用 AI 配音（剪映自带或魔音工坊），BGM 用 Suno 按情绪生成，转场加 whoosh 音效。声音是廉价素材里提升质感最快的变量，投入 10 分钟，成片质感翻倍。</p>
+<p><strong>剪辑</strong>：剪映专业版。AI 智能字幕、智能踩点、电影感调色预设。口播类内容直接用&quot;智能剪口播&quot;自动去气口和废话，一条 10 分钟的口播粗剪只要 2 分钟。</p>
+<p><strong>分发</strong>：同一条视频，让 DeepSeek 改写成 5 个平台的标题和简介——抖音要悬念钩子，B站要信息密度，小红书要种草语气，公众号要深度预告。一鱼五吃，产能×5。</p>
+<hr>
+<h2>五、网站：一句话生成，一小时上线</h2>
+<p>本项目的网站（<code>website/index.html</code>）由 AI 编程工具生成。流程短得近乎无厘头：用自然语言描述需求（&quot;深色科技感、七大模块、提示词模板可复制、滚动动画&quot;）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> AI 生成完整代码 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 浏览器打开即成品 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 要部署就接 CloudBase/EdgeOne Pages，从本地文件到公网可访问只需几分钟。</p>
+<p>2026 年的真相是：<strong>&quot;我不会写代码&quot;已经不再是阻止你拥有网站的任何理由。</strong> 阻止你的只有&quot;我不知道要做什么网站&quot;——而这恰恰回到了第一节说的：想清楚做什么，是唯一的护城河。</p>
+<hr>
+<h2>六、钱和时间：一笔诚实的账</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>传统方式</th>
+<th>AI 协作方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中篇小说（约 2 万字成稿）</td>
+<td>3~6 个月</td>
+<td>2 周（每天 1-2 小时）</td>
+</tr>
+<tr>
+<td>万字深度长文</td>
+<td>3~5 天</td>
+<td>6 小时（含两轮终审）</td>
+</tr>
+<tr>
+<td>3 分钟短片</td>
+<td>团队 1 周，预算数千</td>
+<td>单人 1 天，成本 &lt; 50 元</td>
+</tr>
+<tr>
+<td>完整网站</td>
+<td>外包 1~2 周，数千元</td>
+<td>1 小时</td>
+</tr>
+</tbody></table>
+<p>全部 AI 成本：API + 工具订阅，月度 &lt; 300 元。</p>
+<p>但请注意另一笔账：<strong>我花的时间没有减少，而是转移了</strong>——从&quot;打字、找素材、拉时间线&quot;转移到了&quot;定方向、做取舍、改稿子&quot;。AI 消灭的是体力环节，放大的是决策环节。你的判断力被调用的频率，比过去高了十倍。这其实更累，但累在刀刃上。</p>
+<hr>
+<h2>七、风险与边界：泼几盆冷水</h2>
+<ol>
+<li><strong>同质化是最大的敌人。</strong> 所有人都能&quot;一键生成&quot;时，&quot;AI 味&quot;本身就成了最低端的标签。你的真实经历、你的偏见、你的狠话，才是定价权。</li>
+<li><strong>事实核查不能外包。</strong> 大模型会一本正经地编造数据和引文。本文中每个具体数字我都人工核验过来源。深度内容的信誉，毁一次就归零。</li>
+<li><strong>版权与标注的灰色地带。</strong> 各平台对 AI 生成内容的政策仍在演变。我的做法是主动标注&quot;AI 辅助创作&quot;——透明不是示弱，是建立信任。</li>
+<li><strong>不要失去&quot;疼&quot;的能力。</strong> 我写小说时，AI 可以推演出十二种情节走向，但选择&quot;会让读者心口发紧的那一种&quot;，靠的是我自己失去过、遗憾过。工具越强大，越需要你诚实面对自己的经验。否则你拥有的只是一座没有灵魂的印刷厂。</li>
+</ol>
+<hr>
+<h2>八、如果你只有一句话的预算</h2>
+<p><strong>把 AI 当成一个能力极强、但没有人生阅历的合伙人：战略你定，战术它打；灵魂你出，血肉它长；它负责&quot;快&quot;，你负责&quot;对&quot;。</strong></p>
+<p>我们这一代人，恰好站在两个纪元的接缝上。身后是&quot;十年磨一剑&quot;的手艺时代，面前是&quot;一个人就是一支军团&quot;的算力时代。怎么用这把新武器，答案不在任何模型里。</p>
+<p>在你接下来要做的那件事里。</p>
+<hr>
+<p><em>（本文正文约 6000 字，由&quot;人类定纲 + DeepSeek 扩写 + 人类重写 30% + R1 终审&quot;流程完成，全程耗时约 6 小时。文中小说、视频、网站均为本项目真实产物，见同级目录。）</em></p>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="最新开源对话式AI项目全景与一键使用指南.html" style="color:var(--gold);font-weight:700;text-decoration:none">最新开源对话式AI项目全景与一键使用</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>博客目录</a>
+  <span style="font-size:13px"><a href="2026年8月实测：别迷信“全AI办公”，这4个落地场景才是真的省时间.html" style="color:var(--gold);font-weight:700;text-decoration:none">2026年8月实测：别迷信“全AI办</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:13px;line-height:1.8"><i class="cc-ic" data-ic="pin" aria-hidden="true"></i>出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261115b"></script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

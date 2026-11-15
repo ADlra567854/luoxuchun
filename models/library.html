@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="228 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注发布时点与能力定位。">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>模型库 · 228 个具名型号 · 白驹 ccowork</title>
+<meta name="description" content="228 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注发布时点与能力定位。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/cover.css">
+<meta name="twitter:description" content="228 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注发布时点与能力定位。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/library.html">
+<meta property="og:title" content="模型库 · 228 个具名型号 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/library.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="模型库 · 228 个具名型号 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="models" data-cctitle="模型库">
+
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/models.jpg" alt="" loading="eager" decoding="async"></div>
+
+  <div class="pg-hero">
+    <div data-cccrumb="模型库"></div>
+    <h1>模型库 · <em>228 个具名型号</em></h1>
+    <p class="lede">
+      图谱回答「有哪些类别」，这一页回答「<b>具体用哪个</b>」。
+      每条给出可核对的型号名、厂商、模态、规模档、开源度、许可与发布时点——这六项决定了它能不能进你的项目。
+    </p>
+    <div class="pg-stats">
+      <div class="st"><b data-cnt="228">0</b><span>型号</span></div>
+      <div class="st"><b data-cnt="112">0</b><span>国产</span></div>
+      <div class="st"><b data-cnt="108">0</b><span>可下载权重</span></div>
+      <div class="st"><b data-cnt="43">0</b><span>厂商</span></div>
+    </div>
+  </div>
+
+  <div class="pg-note">
+    <i class="cc-ic" data-ic="info" aria-hidden="true"></i>
+    <div>
+      <b>「开源度」分三档，不要混用：</b>开源 = 权重可下载且许可允许商用；
+      开放权重 = 权重可下载但商用条款受限（如 Llama 社区许可、Gemma 条款）；
+      闭源 = 仅 API 或仅私有部署授权。<b>能不能私有化</b>只看这一列。
+    </div>
+  </div>
+
+  <div class="pg-toolbar">
+    <label class="q">
+      <i class="cc-ic" data-ic="search" aria-hidden="true"></i>
+      <input id="q" type="search" placeholder="搜型号、厂商或定位…" autocomplete="off">
+    </label>
+    <select id="f-mod" aria-label="模态"><option value="">全部模态</option></select>
+    <select id="f-size" aria-label="规模"><option value="">全部规模</option></select>
+    <select id="f-open" aria-label="开源度"><option value="">全部开源度</option></select>
+    <select id="f-c" aria-label="国别"><option value="">全部国别</option></select>
+    <span class="rc">命中 <b id="rc">0</b> 条</span>
+  </div>
+
+  <div class="pg-tblwrap">
+    <div class="pg-tblscroll">
+      <table class="pg-tbl" id="tbl">
+        <thead>
+          <tr>
+            <th class="sortable" data-k="0">型号<span class="ar">↕</span></th>
+            <th class="sortable" data-k="1">厂商<span class="ar">↕</span></th>
+            <th class="sortable" data-k="2">国别<span class="ar">↕</span></th>
+            <th class="sortable" data-k="3">模态<span class="ar">↕</span></th>
+            <th class="sortable" data-k="4">规模<span class="ar">↕</span></th>
+            <th class="sortable" data-k="5">开源度<span class="ar">↕</span></th>
+            <th class="sortable" data-k="6">许可<span class="ar">↕</span></th>
+            <th class="sortable" data-k="8">时点<span class="ar">↕</span></th>
+            <th>定位</th>
+          </tr>
+        </thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="fallback" hidden></div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="circle-help" aria-hidden="true"></i>这六列怎么影响选型</h2></div>
+    <div class="pg-grid">
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="lock" aria-hidden="true"></i></span><div><h3>开源度 决定部署形态</h3></div></div>
+        <p class="desc">只有「开源 + 许可允许商用」才能私有化到自己的服务器；「开放权重」商用前要读条款（多数有月活或营收门槛）。金融、医疗、政务项目通常只看前两档里的第一档。</p>
+      </div>
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="cpu" aria-hidden="true"></i></span><div><h3>规模 决定硬件门槛</h3></div></div>
+        <p class="desc">端侧（≤4B 量化）可上手机与车机；小型 4–10B 单卡可跑；中型 10–100B 需多卡或量化；大型 100–500B 需 MoE 或 8 卡以上；超大 &gt;500B 基本只能走 API。</p>
+      </div>
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="clock" aria-hidden="true"></i></span><div><h3>时点 决定它还活着没有</h3></div></div>
+        <p class="desc">超过 12 个月没有更新的型号，多半已被同厂新版本替代。榜单上看到老型号排名高，往往是因为它作为基线长期在测，不代表现在还是最好选择。</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/models/hub.js"></script>
+<script>
+(function () {
+  var MH = window.MH, esc = MH.esc;
+  var tb = MH.$('#tb'), qIn = MH.$('#q'), rc = MH.$('#rc');
+  var F = { mod: MH.$('#f-mod'), size: MH.$('#f-size'), open: MH.$('#f-open'), c: MH.$('#f-c') };
+  var ROWS = [], CATNAME = {};
+  var sortK = 0, sortDir = 1;
+
+  /* 类别 id → 中文名（从图谱数据里借，避免重复维护一份） */
+  function loadCatNames(cb) {
+    MH.getJSON('/data/model-taxonomy.json', function (d) {
+      d.groups.forEach(function (g) {
+        g.it.forEach(function (c) { CATNAME[c.i] = g.n + ' / ' + c.n; });
+      });
+      cb();
+    }, cb);
+  }
+
+  function opts(sel, list, label) {
+    list.forEach(function (v) {
+      var o = document.createElement('option');
+      o.value = v; o.textContent = label ? label(v) : v;
+      sel.appendChild(o);
+    });
+  }
+
+  function uq(list) {
+    var s = {}, out = [];
+    list.forEach(function (v) { if (!s[v]) { s[v] = 1; out.push(v); } });
+    return out;
+  }
+
+  function render() {
+    var q = (qIn.value || '').trim().toLowerCase();
+    var rows = ROWS.filter(function (r) {
+      if (F.mod.value && r[3] !== F.mod.value) return false;
+      if (F.size.value && r[4] !== F.size.value) return false;
+      if (F.open.value && r[5] !== F.open.value) return false;
+      if (F.c.value && r[2] !== F.c.value) return false;
+      if (q) {
+        var hay = (r[0] + ' ' + r[1] + ' ' + r[9] + ' ' + (CATNAME[r[7]] || '')).toLowerCase();
+        if (hay.indexOf(q) < 0) return false;
+      }
+      return true;
+    });
+    rows.sort(function (a, b) {
+      var x = a[sortK], y = b[sortK];
+      return String(x).localeCompare(String(y), 'zh') * sortDir;
+    });
+    rc.textContent = rows.length;
+    tb.innerHTML = rows.length ? rows.map(function (r) {
+      var openCls = r[5] === '开源' ? 'live' : (r[5] === '开放权重' ? 'slow' : 'dead');
+      return '<tr>' +
+        '<td>' + esc(r[0]) + '</td>' +
+        '<td>' + esc(r[1]) + '</td>' +
+        '<td>' + esc(MH.cn(r[2])) + '</td>' +
+        '<td>' + esc(r[3]) + '</td>' +
+        '<td>' + esc(r[4]) + '</td>' +
+        '<td><span class="dot ' + openCls + '"></span>' + esc(r[5]) + '</td>' +
+        '<td><code style="font-size:11px">' + esc(r[6]) + '</code></td>' +
+        '<td class="num">' + esc(r[8]) + '</td>' +
+        '<td>' + esc(r[9]) + '</td>' +
+        '</tr>';
+    }).join('') : '<tr><td colspan="9" style="text-align:center;padding:40px;color:var(--muted)">没有符合条件的型号，试着放宽一个筛选条件</td></tr>';
+  }
+
+  MH.getJSON('/data/models.json', function (d) {
+    ROWS = d.rows;
+    opts(F.mod, uq(ROWS.map(function (r) { return r[3]; })));
+    opts(F.size, ['端侧', '小型', '中型', '大型', '超大']);
+    opts(F.open, ['开源', '开放权重', '闭源']);
+    opts(F.c, uq(ROWS.map(function (r) { return r[2]; })), MH.cn);
+
+    loadCatNames(function () {
+      render();
+      MH.fillCounts();
+    });
+  }, function () {
+    MH.$('#fallback').hidden = false;
+    MH.$('#fallback').innerHTML = MH.empty('模型库数据加载失败', '请刷新重试');
+  });
+
+  var t = null;
+  qIn.addEventListener('input', function () { clearTimeout(t); t = setTimeout(render, 130); });
+  Object.keys(F).forEach(function (k) { F[k].addEventListener('change', render); });
+
+  MH.$$('#tbl thead th.sortable').forEach(function (th) {
+    th.addEventListener('click', function () {
+      var k = parseInt(th.getAttribute('data-k'), 10);
+      if (sortK === k) sortDir = -sortDir; else { sortK = k; sortDir = 1; }
+      MH.$$('#tbl thead th').forEach(function (h) { h.classList.remove('asc', 'desc'); });
+      th.classList.add(sortDir > 0 ? 'asc' : 'desc');
+      render();
+    });
+  });
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

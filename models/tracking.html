@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="按月追踪模型失效、榜单停滞与新增类目：哪些型号已超期、哪些榜不再更新、哪些方向今年才出现。">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月度追踪 · 失效与新增 · 白驹 ccowork</title>
+<meta name="description" content="按月追踪模型失效、榜单停滞与新增类目：哪些型号已超期、哪些榜不再更新、哪些方向今年才出现。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/cover.css">
+<meta name="twitter:description" content="按月追踪模型失效、榜单停滞与新增类目：哪些型号已超期、哪些榜不再更新、哪些方向今年才出现。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/tracking.html">
+<meta property="og:title" content="月度追踪 · 失效与新增 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/tracking.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="月度追踪 · 失效与新增 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="models" data-cctitle="月度追踪">
+
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/feed.jpg" alt="" loading="eager" decoding="async"></div>
+
+  <div class="pg-hero">
+    <div data-cccrumb="月度追踪"></div>
+    <h1>月度追踪 · <em>哪些已经不新鲜了</em></h1>
+    <p class="lede">
+      模型资料的真正成本不是收集，是<b>维护</b>。这一页按「最后更新时间」把数据分层：
+      超过 12 个月的型号标为超期，停滞的榜单单独列出，当年才出现的方向集中记录。
+    </p>
+    <div class="pg-stats">
+      <div class="st"><b id="s-over">0</b><span>超期型号</span></div>
+      <div class="st"><b id="s-lb">0</b><span>停滞榜单</span></div>
+      <div class="st"><b data-cnt="9">0</b><span>当年新增方向</span></div>
+      <div class="st"><b>2026-10</b><span>本次核对</span></div>
+    </div>
+  </div>
+
+  <div class="pg-note">
+    <i class="cc-ic" data-ic="info" aria-hidden="true"></i>
+    <div>
+      <b>「超期」不等于「不能用」。</b>标注的是资料新鲜度，不是可用性——
+      像 Whisper、LayoutLM 这类老模型依然在大量生产环境里跑，只是它们不再是当下的最优解。
+      判断能不能用要看许可与性能，判断要不要重选看这一页。
+    </div>
+  </div>
+
+  <div class="pg-sec" id="over">
+    <div class="sh"><h2><i class="cc-ic" data-ic="hourglass" aria-hidden="true"></i>超期型号</h2>
+      <span class="sub">最后更新早于 2025-10，即距今超过 12 个月</span>
+      <span class="cnt" id="c-over">—</span></div>
+    <div class="pg-tblwrap"><div class="pg-tblscroll">
+      <table class="pg-tbl"><thead><tr>
+        <th>型号</th><th>厂商</th><th>类别</th><th>最后更新</th><th>距今</th><th>建议</th>
+      </tr></thead><tbody id="tb-over"></tbody></table>
+    </div></div>
+  </div>
+
+  <div class="pg-sec" id="lb">
+    <div class="sh"><h2><i class="cc-ic" data-ic="trophy" aria-hidden="true"></i>停滞榜单</h2>
+      <span class="sub">更新变慢、收录不全或已停更，引用前先看状态</span>
+      <span class="cnt" id="c-lb">—</span></div>
+    <div class="pg-tblwrap"><div class="pg-tblscroll">
+      <table class="pg-tbl"><thead><tr>
+        <th>榜单</th><th>主办</th><th>状态</th><th>更新情况</th><th>影响</th>
+      </tr></thead><tbody id="tb-lb"></tbody></table>
+    </div></div>
+  </div>
+
+  <div class="pg-sec" id="new">
+    <div class="sh"><h2><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i>当年新增方向</h2>
+      <span class="sub">2024–2026 出现、传统分类体系里没有的类目</span>
+      <span class="cnt">9 条</span></div>
+    <div class="pg-grid wide" id="g-new"></div>
+  </div>
+
+  <div class="pg-sec" id="howto">
+    <div class="sh"><h2><i class="cc-ic" data-ic="refresh-cw" aria-hidden="true"></i>这一页怎么更新</h2></div>
+    <div class="pg-cols">
+      <div class="pg-card"><div class="ch"><span class="ic"><i class="cc-ic" data-ic="file-json" aria-hidden="true"></i></span>
+        <div><h3>数据只有三个文件</h3></div></div>
+        <p class="desc">四个页面的内容全部来自 <code>/data/</code> 下的 JSON：类目、型号、榜单、厂商。页面不含任何写死的内容，改 JSON 即全站生效，不需要动 HTML。</p></div>
+      <div class="pg-card"><div class="ch"><span class="ic"><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i></span>
+        <div><h3>每月做三件事</h3></div></div>
+        <p class="desc">① 给新发布的型号补一行；② 把被替代的型号时点留在原处（不删，用于追溯）；③ 检查榜单是否还在更新。三件事做完，这一页自动刷新。</p></div>
+    </div>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/models/hub.js"></script>
+<script>
+(function () {
+  var MH = window.MH, esc = MH.esc, ic = MH.ic;
+  var NOW = [2026, 10];
+  var CUTOFF = '2025-10';
+
+  function monthsAgo(s) {
+    var m = /^(\d{4})-(\d{2})$/.exec(s);
+    if (!m) return null;
+    return (NOW[0] - parseInt(m[1], 10)) * 12 + (NOW[1] - parseInt(m[2], 10));
+  }
+
+  /* ---------- 新增方向（人工维护：这些都是分类体系里原本没有的位置）---------- */
+  var NEW = [
+    ['推理时计算', 'test-time compute', '让模型在推理阶段延长思考而非只扩大参数量，2024 年底成为独立路线。', 'o4 / Gemini 3 Deep Think'],
+    ['混合推理路由', 'hybrid reasoning', '同一个模型内按任务难度自动分配快思考与慢思考的预算。', 'GPT-5.1 / DeepSeek-V4.1'],
+    ['实时交互世界模型', 'interactive world model', '边生成边响应操作，帧率优先，可当可玩环境使用。', 'Genie 3 / Marble'],
+    ['持久三维世界', 'persistent 3D world', '生成后几何保持一致，可反复回访同一场景。', 'World Labs Marble'],
+    ['Agent 原生模型', 'agent-native', '以工具调用与长任务执行为训练目标，而非以对话为目标。', 'Claude Sonnet 4.5 / GPT-5.1 Codex'],
+    ['决策模型', 'decisions modality', '不生成文字，只返回结构化判定，出现在模型平台的输出模态枚举中。', 'OpenRouter decisions'],
+    ['神经接口模型', 'neuro-interface', '对脑电信号做跨被试表征与语言解码，2025 年后进入临床试点。', 'NeuroLM / Brain2Qwerty'],
+    ['统一全模态', 'any-to-any', '任意模态进出同一模型，理解与生成不再分家。', 'Qwen3-Omni / Gemini 3'],
+    ['合成数据自博弈', 'self-play synthetic data', '用模型自身对局或自我批评生成训练数据，绕开人类数据瓶颈。', 'RL self-play 系列']
+  ];
+
+  MH.$('#g-new').innerHTML = NEW.map(function (x) {
+    return '<div class="pg-card"><div class="ch"><span class="ic">' + ic('sparkles') + '</span>' +
+      '<div><h3>' + esc(x[0]) + '</h3><div class="tag">' + esc(x[1]) + '</div></div></div>' +
+      '<p class="desc">' + esc(x[2]) + '</p>' +
+      '<div class="foot"><span class="lbl">代表</span><code>' + esc(x[3]) + '</code></div></div>';
+  }).join('');
+
+  /* ---------- 超期型号 ---------- */
+  MH.getJSON('/data/models.json', function (d) {
+    var over = d.rows.filter(function (r) {
+      var m = monthsAgo(r[8]);
+      return m !== null && m >= 12;
+    }).sort(function (a, b) { return a[8] < b[8] ? -1 : 1; });
+
+    MH.$('#s-over').textContent = over.length;
+    MH.$('#c-over').textContent = over.length + ' 个';
+    MH.$('#tb-over').innerHTML = over.map(function (r) {
+      var m = monthsAgo(r[8]);
+      var advice = m >= 30 ? '基本可视为历史型号' : (m >= 18 ? '已有同厂替代' : '关注是否停更');
+      return '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td>' +
+        '<td>' + esc(r[3]) + ' · ' + esc(r[4]) + '</td>' +
+        '<td class="num">' + esc(r[8]) + '</td>' +
+        '<td class="num">' + m + ' 个月</td><td>' + esc(advice) + '</td></tr>';
+    }).join('') || '<tr><td colspan="6" style="text-align:center;padding:30px">暂无超期型号</td></tr>';
+    MH.fillCounts();
+  }, function () {
+    MH.$('#tb-over').innerHTML = '<tr><td colspan="6" style="text-align:center;padding:30px">数据加载失败</td></tr>';
+  });
+
+  /* ---------- 停滞榜单 ---------- */
+  MH.getJSON('/data/leaderboards.json', function (d) {
+    var bad = d.rows.filter(function (r) { return r.s !== 'live'; });
+    MH.$('#s-lb').textContent = bad.length;
+    MH.$('#c-lb').textContent = bad.length + ' 个';
+    var STXT = { slow: '更新变慢', partial: '收录不全', dead: '已停更' };
+    var EFF = {
+      slow: '新模型可能缺席，榜首偏旧',
+      partial: '只覆盖部分模型，不能当全量排名',
+      dead: '不可用于当前选型，仅作历史对照'
+    };
+    MH.$('#tb-lb').innerHTML = bad.map(function (r) {
+      return '<tr><td>' + esc(r.n) + '</td><td>' + esc(r.org) + '</td>' +
+        '<td><span class="dot ' + r.s + '"></span>' + esc(STXT[r.s] || r.s) + '</td>' +
+        '<td>' + esc(r.f) + '</td><td>' + esc(EFF[r.s] || '') + '</td></tr>';
+    }).join('');
+  }, function () {
+    MH.$('#tb-lb').innerHTML = '<tr><td colspan="5" style="text-align:center;padding:30px">数据加载失败</td></tr>';
+  });
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta name="description" content="数控编程 = 用 G 代码指挥机床运动。AI 时代，你可以用 AI 生成/校对 G 代码，再用开源软件验证、仿真、上机。 G 代码是数控机床的标准语言，几个核心指令：">
+<meta property="og:description" content="数控编程 = 用 G 代码指挥机床运动。AI 时代，你可以用 AI 生成/校对 G 代码，再用开源软件验证、仿真、上机。 G 代码是数控机床的标准语言，几个核心指令：">
+<meta name="keywords" content="数控编程与开源工具,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数控编程与开源工具 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"数控编程与开源工具","description":"数控编程 = 用 G 代码指挥机床运动。AI 时代，你可以用 AI 生成/校对 G 代码，再用开源软件验证、仿真、上机。 G 代码是数控机床的标准语言，几个核心指令：","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/lab/cnc/%E6%95%B0%E6%8E%A7%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7.html">
+<meta property="og:title" content="数控编程与开源工具 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/lab/cnc/%E6%95%B0%E6%8E%A7%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="数控编程与开源工具 · 白驹 ccowork">
+<meta name="twitter:description" content=" 白驹 ccowork · 科学实验室  2026-08-21  10 分钟 实验室 数控（CNC）编程与开源工具指南 数控编程 = 用 G 代码指挥机床运动。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav><div class="logo">白驹 ccowork · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-lab-cnc-数控编程与开源工具.png" alt="数控编程与开源工具 · 白驹 ccowork（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>10 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>数控（CNC）编程与开源工具指南</h1>
+<blockquote>
+<p>数控编程 = 用 G 代码指挥机床运动。AI 时代，你可以用 AI 生成/校对 G 代码，再用开源软件验证、仿真、上机。</p>
+</blockquote>
+<h2>一、G 代码入门（30 秒看懂）</h2>
+<p>G 代码是数控机床的标准语言，几个核心指令：</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>G0</code></td>
+<td>快速定位（不切削）</td>
+</tr>
+<tr>
+<td><code>G1</code></td>
+<td>直线切削（需给 F 进给速度）</td>
+</tr>
+<tr>
+<td><code>G2/G3</code></td>
+<td>顺/逆时针圆弧</td>
+</tr>
+<tr>
+<td><code>G21/G20</code></td>
+<td>单位 mm / 英寸</td>
+</tr>
+<tr>
+<td><code>G90/G91</code></td>
+<td>绝对 / 增量坐标</td>
+</tr>
+<tr>
+<td><code>G81</code></td>
+<td>钻孔循环</td>
+</tr>
+<tr>
+<td><code>M30</code></td>
+<td>程序结束</td>
+</tr>
+</tbody></table>
+<p>本目录已有 3 个可直接用的示例：<code>01_方形轮廓.nc</code>、<code>02_圆形轮廓.nc</code>、<code>03_钻孔循环.nc</code>。</p>
+<h2>二、用 AI 生成/校对 G 代码</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-数控编程与开源工具.png" alt="数控编程与开源工具 · 白驹 ccowork（离线版） · 二、用 AI 生成/校对 G 代码" loading="lazy"></figure>
+<p>提示词示例：</p>
+<pre><code>你是数控工艺工程师。请为一块 100×100mm 铝板生成铣削一个直径 40mm 圆孔的 G 代码：
+- 用 G21 公制、G90 绝对坐标
+- 下刀深度 2mm，进给 F200，主轴 S1000
+- 每行加注释
+并检查：有没有抬刀遗漏、圆弧 I/J 参数是否正确。
+</code></pre>
+<h2>三、开源工具（全部免费，开箱即用）</h2>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>用途</th>
+<th>下载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CNCjs</strong></td>
+<td>浏览器端 CNC 控制/仿真/发送 G 代码</td>
+<td><a href="https://cnc.js.org%EF%BC%88github.com/cncjs/cncjs%EF%BC%89">https://cnc.js.org（github.com/cncjs/cncjs）</a></td>
+</tr>
+<tr>
+<td><strong>Universal Gcode Sender</strong></td>
+<td>最流行的 G 代码发送器，带可视化</td>
+<td>github.com/winder/Universal-G-Code-Sender</td>
+</tr>
+<tr>
+<td><strong>GRBL</strong></td>
+<td>运行在 Arduino 上的开源 CNC 固件</td>
+<td>github.com/gnea/grbl</td>
+</tr>
+<tr>
+<td><strong>LinuxCNC</strong></td>
+<td>完整的开源数控系统（真机/仿真）</td>
+<td>linuxcnc.org</td>
+</tr>
+<tr>
+<td><strong>gSender</strong></td>
+<td>现代桌面 G 代码发送器</td>
+<td>github.com/Sienci-Labs/gsender</td>
+</tr>
+</tbody></table>
+<h2>四、实践步骤（动手）</h2>
+<ol>
+<li>装 Python，用 pip 装一个 G 代码查看/仿真工具，或直接用 CNCjs。</li>
+<li>把 <code>01_方形轮廓.nc</code> 拖进 CNCjs/UGS，观察刀路。</li>
+<li>用上面提示词让 AI 生成一个新零件 G 代码，人工逐行核对再仿真。</li>
+<li>无真机时，用「G 代码仿真器」（如 NC Viewer：ncviewer.com）在线验证刀路。</li>
+</ol>
+<blockquote>
+<p>安全第一：上真机前必须空跑（抬刀）验证，AI 生成的 G 代码一定要人工复核。</p>
+</blockquote>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261115b"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

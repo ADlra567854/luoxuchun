@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>StockInsight 股票分析 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="AI 学院实战项目：目标、拆解、实现步骤与验收标准。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/projects/stock-insight.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-projects-stock-insight.png" alt="StockInsight 股票分析 · AI 学院 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i>StockInsight 股票分析</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 毕业设计 01 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">金融数据</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>01 号毕业设计：StockInsight 股票分析</h2>
+<p>个人投资者在股票分析中常面临数据获取分散、K线解读门槛高、研报信息过载的痛点，本项目通过构建端到端智能分析工具，帮你掌握金融数据爬取、可视化分析与大模型Agent开发的全流程能力，可直接复用为个人投研辅助工具。</p>
+<h2>项目简介</h2>
+<p>StockInsight 股票分析是面向个人投资者的轻量级智能投研辅助工具，聚焦A股/港股/美股的公开市场数据整合，解决传统行情软件信息杂、分析维度单一、缺乏自然语言交互能力的问题。项目以Python为核心开发语言，整合免费公开数据源与开源大模型能力，无需付费API即可完成从数据拉取、可视化分析到智能洞察生成的全链路操作，最终交付可本地运行的Web交互应用，所有代码开源可修改，适合作为金融科技方向的入门级毕业设计项目。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-stock-insight.png" alt="StockInsight 股票分析 · AI 学院 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>多市场股票基础数据查询：支持A股、港股、美股的实时行情、历史交易数据、上市公司基本信息、财务指标一键查询，自动适配不同市场的代码规则</li>
+<li>交互式K线分析：内置日/周/月线切换，自动叠加MA5/MA10/MA20/MA60均线、MACD、KDJ、BOLL等常用技术指标，支持鼠标悬停查看单日量价详情</li>
+<li>智能投资洞察生成：对接开源大模型，自动结合量价走势、技术指标信号、近期行业新闻生成结构化分析报告，包含多空信号提示与风险预警</li>
+<li>自选股持仓追踪：支持本地自选股列表管理，自动计算持仓盈亏、当日涨跌幅排名，支持设置涨跌幅阈值提醒</li>
+<li>市场热点板块轮动分析：每日自动抓取板块涨跌幅数据，生成近7日板块热度变化曲线，标注资金流入流出排名靠前的赛道</li>
+<li>历史行情回测小工具：支持简单的均线策略、MACD策略回测，自动计算策略收益率、最大回撤、胜率等核心回测指标</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>数据采集层</td><td>akshare、requests</td><td>拉取股票行情、财务数据、板块资金、新闻资讯等公开金融数据，无需付费API密钥</td></tr>
+<tr><td>数据处理层</td><td>pandas、numpy</td><td>完成行情数据清洗、指标计算、时间序列对齐、回测逻辑实现</td></tr>
+<tr><td>可视化层</td><td>pyecharts、streamlit</td><td>生成交互式K线图、指标图、热力图，搭建低代码Web交互界面，无需前端开发经验</td></tr>
+<tr><td>智能分析层</td><td>Qwen-7B-Chat（本地部署）/ 通义千问API、langchain</td><td>构建股票分析Agent，将结构化数据转化为自然语言洞察，支持自然语言提问查询</td></tr>
+<tr><td>本地存储层</td><td>sqlite3</td><td>存储自选股列表、用户持仓配置、历史查询缓存，降低重复数据拉取频率</td></tr>
+</tbody>
+</table>
+<p>架构说明：项目采用分层解耦设计，数据层统一封装akshare的多源数据接口，向上提供标准化的DataFrame格式输出；业务逻辑层分离指标计算、回测、洞察生成三个独立模块，各模块通过标准数据结构交互；展示层基于Streamlit实现单页应用，所有组件通过Python代码声明式生成，支持本地一键启动，也可部署到Streamlit Community Cloud实现公网访问；智能分析层采用可插拔设计，既支持本地部署开源大模型保证数据隐私，也可切换为云端API降低本地硬件要求。</p>
+<h2>核心代码骨架</h2>
+<pre><code># 1. 数据获取与指标计算模块：stock_data.py
+import akshare as ak
+import pandas as pd
+def get_stock_hist_data(symbol: str, period: str = "daily", start_date: str = "20230101") -&gt; pd.DataFrame:
+    """获取股票历史行情数据并计算技术指标
+    :param symbol: 股票代码，A股如600519，美股如AAPL，港股如00700
+    :param period: 周期，支持daily/weekly/monthly
+    :param start_date: 起始日期，格式YYYYMMDD
+    """
+    # 拉取原始行情数据
+    if symbol.isdigit() and len(symbol) == 6: # A股适配
+        df = ak.stock_zh_a_hist(symbol=symbol, period=period, start_date=start_date, adjust="qfq")
+    # 计算均线指标
+    df["MA5"] = df["收盘"].rolling(5).mean()
+    df["MA10"] = df["收盘"].rolling(10).mean()
+    df["MA20"] = df["收盘"].rolling(20).mean()
+    # 计算MACD指标
+    ema12 = df["收盘"].ewm(span=12, adjust=False).mean()
+    ema26 = df["收盘"].ewm(span=26, adjust=False).mean()
+    df["DIF"] = ema12 - ema26
+    df["DEA"] = df["DIF"].ewm(span=9, adjust=False).mean()
+    df["MACD"] = (df["DIF"] - df["DEA"]) * 2
+    return df.dropna()
+# 2. 智能洞察生成模块：agent.py
+from langchain.llms import Ollama
+from langchain.prompts import PromptTemplate
+def generate_insight(df: pd.DataFrame, stock_name: str) -&gt; str:
+    """基于最近30个交易日数据生成投资洞察"""
+    recent_data = df.tail(30)[["日期","收盘","涨跌幅","MA5","MA20","MACD"]].to_string(index=False)
+    # 提示词模板，约束输出结构
+    prompt = PromptTemplate.from_template("""
+    你是专业股票分析师，基于以下{stock_name}近30个交易日的行情数据生成结构化分析：
+    1. 近期走势总结（不超过100字）
+    2. 技术指标信号（明确多/空/震荡判断）
+    3. 风险提示（至少1条）
+    行情数据：
+    {data}
+    """)
+    # 调用本地部署的Qwen大模型，需提前启动ollama服务
+    llm = Ollama(model="qwen:7b-chat", temperature=0.1)
+    return llm(prompt.format(stock_name=stock_name, data=recent_data))</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：安装Python 3.9~3.11版本（3.12以上版本部分依赖存在兼容问题），执行<code>pip install akshare==1.12.85 pandas numpy pyecharts streamlit langchain ollama</code>安装所有依赖库</li>
+<li>大模型环境配置（可选本地部署）：访问ollama官网下载对应系统安装包，执行<code>ollama run qwen:7b-chat</code>拉取并启动开源大模型服务；若本地硬件不足，可申请通义千问/豆包API密钥替换本地模型调用逻辑</li>
+<li>项目初始化：创建项目目录，新建<code>app.py</code>、<code>stock_data.py</code>、<code>agent.py</code>三个核心文件，将上述核心代码骨架复制到对应文件中</li>
+<li>编写Web入口：在<code>app.py</code>中导入Streamlit组件，添加股票代码输入框、周期选择下拉框、K线展示区域、洞察生成按钮，调用pyecharts的Kline组件渲染交互式K线图</li>
+<li>本地启动测试：在项目目录下执行<code>streamlit run app.py</code>，浏览器会自动打开http://localhost:8501 访问应用，输入股票代码（如600519贵州茅台）测试数据拉取与K线展示功能</li>
+<li>功能验证：点击「生成投资洞察」按钮，检查大模型返回的分析报告是否符合数据事实，测试自选股添加、板块热度查询功能是否正常</li>
+<li>（可选）公网部署：将代码上传到GitHub，关联Streamlit Community Cloud，无需服务器即可实现公网访问，可分享给他人使用</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>接入更多数据源：新增北向资金、龙虎榜、融资融券、机构持仓等维度数据，丰富分析维度；对接东方财富、同花顺的公告接口，自动抓取上市公司重大公告做事件驱动分析</li>
+<li>升级Agent能力：接入LangChain的工具调用能力，支持自然语言提问（如“贵州茅台近一年最大回撤是多少”“宁德时代最近有没有大股东减持”），自动调用对应数据接口返回结果</li>
+<li>优化回测框架：支持自定义参数调优、多策略对比、仓位管理逻辑，新增回测报告的可视化展示，加入交易手续费、滑点等真实交易参数提升回测准确性</li>
+<li>新增消息推送功能：对接Server酱、企业微信机器人接口，实现自选股涨跌幅阈值提醒、每日盘前早报、持仓个股公告提醒等主动推送功能</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>项目收获</h3>
+<ol>
+<li>掌握金融公开数据的获取与清洗方法，熟悉akshare等开源金融数据库的使用，能够独立完成股票行情、财务、资金类数据的结构化处理</li>
+<li>掌握Streamlit低代码Web应用开发流程，能够结合pyecharts实现金融数据的交互式可视化，无需前端基础即可交付可用的数据分析工具</li>
+<li>掌握大模型在垂直场景的落地方法，理解提示词工程、RAG、Agent工具调用的基本逻辑，能够将结构化数据与大模型能力结合生成领域专属洞察</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>在现有代码基础上新增KDJ指标计算逻辑，将KDJ指标叠加到K线副图中，补充KDJ金叉/死叉的信号识别逻辑，在洞察报告中增加KDJ指标的信号判断</li>
+<li>实现简单的均线策略回测功能：当MA5上穿MA20时买入、MA5下穿MA20时卖出，输入任意股票代码后自动计算该策略近1年的收益率、最大回撤，并与持有不动的收益率做对比展示</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 AI 学院「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

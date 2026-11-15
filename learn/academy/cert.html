@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 学院 · 能力认证 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="学习成果认证路径、考核维度与证书说明。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/cert.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+.hero{position:relative;overflow:hidden;background:var(--hero-grad);padding:56px 24px 44px}
+.hero::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:260px;height:260px;bottom:-80px;left:-60px;border-radius:50%;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%);pointer-events:none}
+.hero .inner{position:relative;max-width:1080px;margin:0 auto;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(30px,4.5vw,52px);font-weight:900;color:#fff;margin:14px 0 12px;letter-spacing:1px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+.hero .sub{color:rgba(255,255,255,.95);font-size:15px;max-width:760px;margin:0 auto;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.hero img.heroimg{width:min(480px,80%);border-radius:18px;margin:26px auto 0;box-shadow:0 14px 40px rgba(16,48,120,.35);display:block}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow)}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35)}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;flex-wrap:wrap;overflow-x:auto;scrollbar-width:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer}
+section.block{max-width:1180px;margin:36px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:999px}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.cert{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;transition:.2s;box-shadow:var(--card-shadow);position:relative;overflow:hidden}
+.cert:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(56,225,255,.35)}
+.cert::before{content:"";position:absolute;inset:0;background:radial-gradient(300px 150px at 10% 0%,rgba(79,140,255,.10),transparent 60%);opacity:0;transition:.3s}
+.cert:hover::before{opacity:1}
+.cert .lvl{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:2px;margin-bottom:8px}
+body[data-theme="deep"] .cert .lvl{color:var(--cyan)}
+.cert h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.cert p{font-size:13px;color:var(--muted);line-height:1.7}
+.cert .chs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.cert .chs a,.cert .chs span{font-size:11px;color:var(--blue);background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none}
+body[data-theme="deep"] .cert .chs a,body[data-theme="deep"] .cert .chs span{color:var(--cyan)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.step b{display:block;margin-bottom:6px;font-size:14px}
+.step p{font-size:13px;color:var(--muted);line-height:1.6}
+.note{background:rgba(120,160,220,.08);border:1px solid rgba(120,160,220,.2);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--muted);margin-top:14px}
+/* 我的认证 */
+.mine-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.mine{border-radius:18px;padding:20px;border:1px solid var(--line);background:var(--card);box-shadow:var(--card-shadow);transition:.2s}
+.mine:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h)}
+.mine .lvl{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--blue);margin-bottom:8px}
+body[data-theme="deep"] .mine .lvl{color:var(--cyan)}
+.mine h3{font-size:16px;font-weight:800;margin-bottom:6px}
+.mine p{font-size:13px;color:var(--muted);line-height:1.6}
+.mine .badge-got{display:inline-block;margin-top:10px;padding:5px 14px;border-radius:999px;background:rgba(74,222,128,.14);border:1px solid rgba(74,222,128,.4);color:#16a34a;font-size:12px;font-weight:800}
+body[data-theme="deep"] .mine .badge-got{color:#4ade80}
+.mine .badge-wait{display:inline-block;margin-top:10px;padding:5px 14px;border-radius:999px;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.2);color:var(--muted);font-size:12px;font-weight:700}
+.mine .btn{display:inline-block;margin-top:12px;margin-right:8px;padding:9px 18px;border-radius:10px;background:var(--grad);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:.2s}
+.mine .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(79,140,255,.35)}
+.mine .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--blue);font-weight:600}
+body[data-theme="deep"] .mine .btn.ghost{color:var(--cyan)}
+/* C12 · 推荐下一步认证 */
+.nextcert{margin-top:18px;display:flex;gap:16px;align-items:flex-start;border-radius:18px;padding:20px 22px;border:1px solid rgba(139,92,246,.35);background:linear-gradient(120deg,rgba(79,140,255,.08),rgba(139,92,246,.10));box-shadow:var(--card-shadow);position:relative;overflow:hidden}
+.nextcert::after{content:"NEXT";position:absolute;right:-4px;top:-14px;font-size:56px;font-weight:900;letter-spacing:2px;color:rgba(139,92,246,.08);pointer-events:none}
+.nextcert .nc-ic{width:46px;height:46px;border-radius:14px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;flex:none;box-shadow:0 6px 14px rgba(139,92,246,.3)}
+.nextcert .nc-main{flex:1;min-width:0}
+.nextcert .nc-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.nextcert .nc-top b{font-size:12px;letter-spacing:2px;color:#8b5cf6}
+body[data-theme="deep"] .nextcert .nc-top b{color:var(--cyan)}
+.nextcert .nc-badge{font-size:11px;font-weight:700;color:var(--muted);background:rgba(120,160,220,.12);border:1px solid rgba(120,160,220,.2);border-radius:999px;padding:2px 10px}
+.nextcert h4{font-size:17px;font-weight:900;margin:2px 0 6px}
+.nextcert .nc-why{font-size:13px;color:var(--muted);line-height:1.7;margin:0}
+.nextcert .nc-why b{color:var(--blue)}
+body[data-theme="deep"] .nextcert .nc-why b{color:var(--cyan)}
+.nextcert .nc-acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.nextcert .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;background:var(--grad);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:.2s;margin:0}
+.nextcert .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(79,140,255,.35)}
+.nextcert .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--blue);font-weight:600}
+body[data-theme="deep"] .nextcert .btn.ghost{color:var(--cyan)}
+.nextcert .btn.done{background:transparent;border:1px solid rgba(74,222,128,.45);color:#16a34a;font-weight:700;cursor:default}
+body[data-theme="deep"] .nextcert .btn.done{color:#4ade80}
+@media(max-width:600px){.nextcert{flex-direction:column}}
+/* 打印证书弹层 */
+#certModal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(6,10,20,.55);backdrop-filter:blur(6px);padding:20px}
+#certModal.open{display:flex}
+.cert-print{width:min(760px,100%);background:#fff;color:#1e293b;border-radius:18px;padding:34px 40px;box-shadow:0 24px 60px rgba(6,10,20,.4);position:relative;overflow:hidden}
+.cert-print::before{content:"";position:absolute;inset:14px;border:2px solid #dbe4f3;border-radius:14px;pointer-events:none}
+.cert-print .cp-brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:15px;color:#334155}
+.cert-print .cp-brand .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
+.cert-print h2{text-align:center;font-size:30px;font-weight:900;letter-spacing:10px;margin:26px 0 6px;background:linear-gradient(120deg,#4f8cff,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cert-print .cp-sub{text-align:center;color:#64748b;font-size:13px;letter-spacing:2px;margin-bottom:26px}
+.cert-print .cp-name{text-align:center;font-size:15px;color:#334155}
+.cert-print .cp-cert{text-align:center;font-size:24px;font-weight:900;color:#0f172a;margin:8px 0 20px}
+.cert-print .cp-line{max-width:520px;margin:0 auto;text-align:center;color:#64748b;font-size:14px;line-height:1.9}
+.cert-print .cp-meta{display:flex;justify-content:center;gap:40px;margin:26px 0 10px;font-size:13px;color:#475569;flex-wrap:wrap}
+.cert-print .cp-meta b{color:#1e293b}
+.cert-print .cp-seal{position:absolute;right:44px;bottom:44px;width:86px;height:86px;border-radius:50%;border:3px solid rgba(139,92,246,.45);display:flex;align-items:center;justify-content:center;color:#8b5cf6;font-size:11px;font-weight:800;letter-spacing:1px;transform:rotate(-8deg);background:rgba(139,92,246,.05)}
+.cert-print .cp-foot{text-align:center;color:#94a3b8;font-size:11px;margin-top:20px}
+.cp-actions{display:flex;justify-content:center;gap:12px;margin-top:20px;position:relative;z-index:2}
+.cp-actions .btn{display:inline-block;padding:10px 22px;border-radius:10px;background:linear-gradient(120deg,#4f8cff,#8b5cf6);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;text-decoration:none}
+.cp-actions .btn.ghost{background:#fff;border:1px solid #cbd5e1;color:#475569}
+.cp-name-input{display:block;margin:0 auto 14px;max-width:340px;text-align:center;padding:10px 14px;border-radius:10px;border:1px solid #cbd5e1;font-size:14px;color:#1e293b;background:#fff}
+/* 备份与恢复 */
+.backup-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--card-shadow)}
+.bk-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.bk-icon{width:46px;height:46px;border-radius:14px;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:21px;color:#fff;flex:none;box-shadow:0 4px 12px rgba(79,140,255,.25)}
+.bk-txt b{font-size:15px;color:var(--text,#1e293b);display:block;margin-bottom:4px}
+.bk-txt p{font-size:13px;color:var(--muted,#64748b);line-height:1.7;margin:0}
+.bk-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.bk-actions .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:10px;background:var(--grad);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:.2s}
+.bk-actions .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(79,140,255,.35)}
+.bk-actions .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--blue);font-weight:600}
+body[data-theme="deep"] .bk-actions .btn.ghost{color:var(--cyan)}
+.bk-status{display:none;font-size:13px;line-height:1.6;border-radius:14px;padding:11px 15px;margin-bottom:10px}
+.bk-status.ok{display:block;background:rgba(74,222,128,.10);border:1px solid rgba(74,222,128,.35);color:#16a34a}
+body[data-theme="deep"] .bk-status.ok{color:#4ade80}
+.bk-status.err{display:block;background:rgba(248,113,113,.10);border:1px solid rgba(248,113,113,.35);color:#dc2626}
+body[data-theme="deep"] .bk-status.err{color:#f87171}
+.bk-meta{font-size:12px;color:var(--muted,#64748b);line-height:1.7}
+.bk-meta b{color:var(--blue,#3b82f6)}
+/* 真伪自查 */
+.verify-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--card-shadow)}
+.vf-row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 4px}
+.vf-row input{flex:1;min-width:280px;padding:12px 16px;border-radius:10px;border:1px solid var(--line);background:var(--panel,#fff);color:var(--text);font-size:14px;outline:none;transition:.2s}
+.vf-row input:focus{border-color:#4f8cff;box-shadow:0 0 0 3px rgba(79,140,255,.15)}
+.vf-row .btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:10px;background:var(--grad);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer}
+.vf-status{display:none;font-size:14px;line-height:1.75;border-radius:14px;padding:13px 16px;margin-top:12px}
+.vf-status.show{display:block}
+.vf-status.ok{background:rgba(74,222,128,.10);border:1px solid rgba(74,222,128,.35);color:#16a34a}
+body[data-theme="deep"] .vf-status.ok{color:#4ade80}
+.vf-status.warn{background:rgba(251,191,36,.10);border:1px solid rgba(251,191,36,.4);color:#b45309}
+body[data-theme="deep"] .vf-status.warn{color:#fbbf24}
+.vf-status.err{background:rgba(248,113,113,.10);border:1px solid rgba(248,113,113,.35);color:#dc2626}
+body[data-theme="deep"] .vf-status.err{color:#f87171}
+.vf-status b{color:inherit}
+.vf-meta{font-size:12px;color:var(--muted,#64748b);margin-top:8px;line-height:1.7}
+@media print{
+  body *{visibility:hidden}
+  #certModal.open,#certModal.open *{visibility:visible}
+  #certModal{position:absolute;inset:0;background:#fff;padding:0;display:block!important}
+  .cert-print{box-shadow:none;border-radius:0;width:100%}
+  .cp-actions{display:none}
+  .cert-print::before{inset:10px}
+  @page{margin:14mm}
+}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<section class="hero">
+  <div class="inner">
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 · 认证体系</div>
+    <h1>四大能力认证</h1>
+    <p class="sub">学完对应章节 + 完成作品 = 能力凭证。认证不是考试，而是你对「动手做过」的证明，可写进简历与作品集。</p>
+    <img class="heroimg" src="/website/ai-academy/assets/cert.png" alt="AI 认证体系">
+  </div>
+</section>
+<section class="block" id="certs">
+  <div class="sec-head"><h2><span class="em">四大认证</span></h2><span class="tag">提示词 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 智能体 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> RAG <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 微调部署</span></div>
+  <div class="cert-grid">
+    <div class="cert">
+      <div class="lvl">CERT 01 · 入门</div>
+      <h3><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>Prompt 工程师认证</h3>
+      <p>掌握提示词组成要素、撰写技巧、少样本与思维链，能稳定产出高质量提示词并评估迭代。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-17.html">17 提示词入门</a><a href="/website/ai-academy/chapter-18.html">18 提示词进阶</a></div>
+    </div>
+    <div class="cert">
+      <div class="lvl">CERT 02 · 核心</div>
+      <h3><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>智能体工程师认证</h3>
+      <p>理解智能体范式与框架，能独立构建、评估并优化单/多智能体应用，从用轮子到造轮子。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-01.html">01-16 智能体全课</a></div>
+    </div>
+    <div class="cert">
+      <div class="lvl">CERT 03 · 进阶</div>
+      <h3><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>RAG 应用工程师认证</h3>
+      <p>掌握向量化、向量数据库与检索增强生成，能搭建企业级知识库问答系统并抑制幻觉。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-19.html">19 RAG 实战</a><a href="/website/ai-academy/chapter-08.html">08 记忆检索</a></div>
+    </div>
+    <div class="cert">
+      <div class="lvl">CERT 04 · 专家</div>
+      <h3><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>微调与部署工程师认证</h3>
+      <p>掌握私有化部署、LoRA 微调与量化优化，能落地专属大模型服务并控制成本。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-20.html">20 微调与部署</a></div>
+    </div>
+  </div>
+</section>
+<section class="block" id="mine">
+  <div class="sec-head"><h2><span class="em">我的认证</span></h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-ai-academy-cert.png" alt="认证体系 · AI 学院 · 白驹 ccowork · " loading="lazy"></figure>
+<span class="tag">本机浏览器记录 · 参加考试即发证</span></div>
+  <div class="mine-grid" id="mineGrid"></div>
+  <div class="nextcert" id="nextCertBox" style="display:none"></div>
+  <div class="note"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i><b>怎么拿证</b>：去 <a href="/learn/academy/quiz.html" style="color:var(--blue);font-weight:700">章节测验</a> 参加对应认证考试（10 题，≥80% 通过），证书自动记录在本机；已获证书可输入姓名打印成实体 PDF 放进简历。学习记录保存在本机浏览器，换设备/换浏览器前记得 <a href="#backup" style="color:var(--blue);font-weight:700">导出备份</a>，到新设备一键恢复。</div>
+</section>
+<section class="block" id="backup">
+  <div class="sec-head"><h2><span class="em">备份与恢复</span></h2><span class="tag">换设备/清缓存前先备份 · 数据是你的</span></div>
+  <div class="backup-card">
+    <div class="bk-head">
+      <div class="bk-icon"><i class="cc-ic" data-ic="database" aria-hidden="true"></i></div>
+      <div class="bk-txt">
+        <b>学习数据本地保存，可随身带走</b>
+        <p>证书、章节打卡、实验记录、测验成绩都存在这台浏览器的 localStorage 里。换电脑、换浏览器或清理缓存前，先「导出备份」存成一份 JSON 文件；到新设备点「导入备份」即可恢复，学习进度不丢。</p>
+      </div>
+    </div>
+    <div class="bk-actions">
+      <button class="btn" id="bkExport" type="button"><i class="cc-ic" data-ic="download" aria-hidden="true"></i>导出备份（JSON）</button>
+      <button class="btn ghost" id="bkImportBtn" type="button"><i class="cc-ic" data-ic="upload" aria-hidden="true"></i>导入备份</button>
+      <input type="file" id="bkFile" accept=".json,application/json" style="display:none">
+    </div>
+    <div class="bk-status" id="bkStatus" role="status" aria-live="polite"></div>
+    <div class="bk-meta" id="bkMeta"></div>
+    <div class="note" style="margin-top:10px"><i class="cc-ic" data-ic="shield" aria-hidden="true"></i><b>隐私说明</b>：备份只含学习记录（证书/进度/测验成绩/姓名），<b>不含 AI 助教对话内容</b>——对话可能涉及你的个人提问，留在本机不随备份带走。备份文件仅保存在你手里，不上传任何服务器。</div>
+  </div>
+</section>
+<section class="block" id="verify">
+  <div class="sec-head"><h2><span class="em">证书真伪自查</span></h2><span class="tag">粘贴证书编号 · 离线指纹校验</span></div>
+  <div class="verify-card">
+    <div class="bk-head">
+      <div class="bk-icon"><i class="cc-ic" data-ic="search" aria-hidden="true"></i></div>
+      <div class="bk-txt">
+        <b>我的证书编号是真是假？粘进来查</b>
+        <p>每一张证书的编号尾部都带 4 位<b>校验指纹</b>（由「证书类型 + 日期」计算）。粘入完整编号，本页会当场核验指纹是否被涂改，并与本机证书档案比对。打印出来分享给他人时，对方也能用这一页验证编号没有被手改。</p>
+      </div>
+    </div>
+    <div class="vf-row">
+      <input id="vfInput" type="text" placeholder="例：CCOWORK-CERT02-20260906-X7KQ" autocomplete="off" spellcheck="false">
+      <button class="btn" id="vfBtn" type="button"><i class="cc-ic" data-ic="search" aria-hidden="true"></i>校验</button>
+    </div>
+    <div class="vf-status" id="vfStatus" role="status" aria-live="polite"></div>
+    <div class="vf-meta"><i class="cc-ic" data-ic="info" aria-hidden="true"></i>说明：离线指纹可发现「编号被涂改 / 复制错误」；指纹算法公开于本页脚本，因此它属于防随手涂改的轻校验，<b>不等于权威防伪</b>。跨设备/权威查验（云端签名、公开查验接口）在路线图中，待后端方向确定后上线。</div>
+  </div>
+</section>
+<!-- 打印证书弹层 -->
+<div id="certModal" role="dialog" aria-modal="true" aria-labelledby="cpTitle">
+  <div class="cert-print" id="certPrint">
+    <div class="cp-brand"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span>白驹 ccowork · AI 学院</div>
+    <h2 id="cpTitle">能力认证证书</h2>
+    <div class="cp-sub">AI ACADEMY · COMPETENCY CERTIFICATE</div>
+    <input class="cp-name-input" id="cpName" maxlength="20" placeholder="请输入你的姓名（用于证书打印）" value="">
+    <div class="cp-name" id="cpNameShow"></div>
+    <div class="cp-cert" id="cpCert"></div>
+    <div class="cp-line">兹证明持证人已通过 <b id="cpExamName"></b> 认证考试，掌握对应章节核心知识与动手能力。该凭证由作品、章节记录与测验成绩共同构成，可写进简历与作品集。</div>
+    <div class="cp-meta">
+      <span>证书编号 <b id="cpNo"></b></span>
+      <span>获证日期 <b id="cpDate"></b></span>
+      <span>考试成绩 <b id="cpScore"></b></span>
+    </div>
+    <div class="cp-foot"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院认证体系（本机数字凭证，可用于打印归档）</div>
+    <div class="cp-seal">白驹认证<br>AI ACADEMY</div>
+    <div class="cp-actions">
+      <button class="btn" id="cpPrint" type="button"><i class="cc-ic" data-ic="printer" aria-hidden="true"></i>打印 / 另存 PDF</button>
+      <button class="btn ghost" id="cpClose" type="button"><i class="cc-ic" data-ic="x"></i> 关闭</button>
+    </div>
+  </div>
+</div>
+<section class="block" id="flow">
+  <div class="sec-head"><h2><span class="em">认证流程</span></h2><span class="tag">四步拿证</span></div>
+  <div class="steps">
+    <div class="step"><b>① 学完章节</b><p>按认证要求学完对应章节，完成每章「小结与练习」。</p></div>
+    <div class="step"><b>② 完成作品</b><p>做出一个能展示的项目（可参考毕业设计项目库），公开代码或演示。</p></div>
+    <div class="step"><b>③ 自测清单</b><p>对照章节练习逐项自测，能独立讲清原理与实现。</p></div>
+    <div class="step"><b>④ 亮出凭证</b><p>把作品链接 + 章节学习记录整理成文档，放进简历与作品集。</p></div>
+  </div>
+  <div class="note"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i><b>认证含金量</b>：凭证 = 作品 + 章节记录 + 自测清单，全部来自你的真实产出。建议按 <a href="/learn/roadmap.html" style="color:var(--blue);font-weight:600">学习路线图</a> 顺序考，从 CERT 01 一路到 CERT 04。</div>
+  <div class="sec-head" style="margin-top:26px"><h2><span class="em">多级认证</span> · L1 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> L3</h2><span class="tag">同一方向可多次认证，逐级进阶</span></div>
+  <div class="steps">
+    <div class="step"><b>L1 · 掌握</b><p>学完章节 + 通过自测清单，能复述原理、照做练习。</p></div>
+    <div class="step"><b>L2 · 应用</b><p>完成 1 个对应作品并公开，能独立解决新场景问题。</p></div>
+    <div class="step"><b>L3 · 进阶</b><p>作品被社区采用/获好评，或完成一个进阶课题并输出复盘。</p></div>
+  </div>
+  <div class="note"><i class="cc-ic" data-ic="refresh-cw" aria-hidden="true"></i><b>续认证（多次认证机制）</b>：AI 技术半年一变，建议每 6 个月做一次「续认证」——重跑最新章节 + 更新你的作品，让凭证始终跟上行业版本。每次续认证都会生成新的认证日期，简历上永远是最新状态。</div>
+</section>
+<section class="block" id="faq">
+  <div class="sec-head"><h2><span class="em">常见问题</span></h2><span class="tag">FAQ</span></div>
+  <div class="cert-grid">
+    <div class="cert"><div class="lvl">Q</div><h3>一定要按顺序认证吗？</h3><p>不必。但建议先拿 CERT 01（提示词）打底，它是所有认证的共同基础。</p></div>
+    <div class="cert"><div class="lvl">Q</div><h3>认证有证书文件吗？</h3><p>本学院认证以「作品 + 记录」为凭证，可自制成一页 PDF 放进简历。重点是你真的会做。</p></div>
+    <div class="cert"><div class="lvl">Q</div><h3>零基础能拿到 CERT 04 吗？</h3><p>可以。按 14 周路线走完即覆盖全部认证，重点是坚持做项目而不是赶进度。</p></div>
+    <div class="cert"><div class="lvl">Q</div><h3>证书怎么证明是真的？</h3><p>每张证书编号尾部带 4 位校验指纹。把编号发给对方，对方打开<a href="#verify" style="color:var(--blue);font-weight:600">本页「证书真伪自查」</a>粘贴即可核验编号是否被涂改，并可与你的档案比对。离线指纹防随手涂改，权威防伪查验在路线图规划中。</p></div>
+  </div>
+</section>
+
+
+
+<script>
+/* ===== 我的认证：读取本机测验/证书记录并渲染 ===== */
+(function(){
+'use strict';
+var LS = {
+  get: function(k, d){ try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
+  set: function(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+/* ===== 证书编号指纹（C9 · 真伪自查 v1）=====
+ * 编号格式：CCOWORK-CERT02-20260906-85-X7KQ
+ *   CERT02 = 认证 id（大写）；20260906 = 获证日期；85 = 成绩；X7KQ = 4 位校验指纹
+ * 指纹算法：FNV-1a 32bit(certId|date|score) → base36 大写取 4 位（公开、确定性）。
+ * 定位：防「涂改编号/日期/分数后复制」的轻校验；算法公开 ≠ 权威防伪（权威需云端签名）。
+ */
+window.__certFP = (function(){
+  function fnv1a(str){
+    var h = 2166136261;
+    for(var i=0;i<str.length;i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  function fp4(str){
+    var v = fnv1a(str);
+    return v.toString(36).toUpperCase().slice(-4).padStart(4, '0');
+  }
+  function normDate(d){ return String(d||'').replace(/-/g,''); }
+  function makeNo(certId, date, score){
+    var code = String(certId||'').toUpperCase();   // cert02 -> CERT02
+    var d = normDate(date);
+    var s = String(score == null ? '' : score);
+    return 'CCOWORK-' + code + '-' + d + (s !== '' ? '-' + s : '') + '-' + fp4(code + '|' + d + '|' + s);
+  }
+  // 解析：新格式（带指纹）与旧格式（CCOWORK-CERT02-20260906，无分数无指纹）都识别
+  function parse(txt){
+    var t = String(txt||'').trim().toUpperCase();
+    var m = /^CCOWORK-(CERT\d{2})-(\d{8})-(\d{1,3})-([0-9A-Z]{4})$/.exec(t);
+    if(m) return { kind:'new', certId:m[1], date:m[2], score:m[3], fp:m[4] };
+    var m2 = /^CCOWORK-(CERT\d{2})-(\d{8})$/.exec(t);
+    if(m2) return { kind:'legacy', certId:m2[1], date:m2[2], score:null, fp:null };
+    return null;
+  }
+  function check(txt){
+    var p = parse(txt);
+    if(!p) return { ok:false, why:'unrecognized' };
+    if(p.kind === 'legacy') return { ok:null, why:'legacy', p:p };
+    var expect = fp4(p.certId + '|' + p.date + '|' + p.score);
+    return { ok: expect === p.fp, why: expect === p.fp ? 'valid' : 'tampered', p:p };
+  }
+  return { makeNo: makeNo, parse: parse, check: check, fp4: fp4 };
+})();
+/* fmtDate8 挂到全局，供自查脚本使用（原定义在 IIFE 内不可见） */
+window.fmtDate8 = function (d8) { return d8 ? d8.slice(0,4) + '-' + d8.slice(4,6) + '-' + d8.slice(6,8) : ''; };
+var CERT_LIST = [
+  { id:'cert01', name:' Prompt 工程师认证', short:'CERT 01', exam:true,  note:'章节 17-18' },
+  { id:'cert02', name:' 智能体工程师认证', short:'CERT 02', exam:true,  note:'章节 01-16' },
+  { id:'cert03', name:' RAG 应用工程师认证', short:'CERT 03', exam:true,  note:'章节 19 + 08' },
+  { id:'cert04', name:' 微调与部署工程师认证', short:'CERT 04', exam:true,  note:'章节 20 + 11/12' }
+];
+var certs = LS.get('ccowork.certs', {});
+var learnerName = LS.get('ccowork.learnerName', '');
+function renderMine(){
+  certs = LS.get('ccowork.certs', {});          // 每次渲染重新读取 localStorage（导入备份后也能立即反映）
+  learnerName = LS.get('ccowork.learnerName', '');
+  var grid = document.getElementById('mineGrid');
+  var html = CERT_LIST.map(function(c){
+    var got = certs[c.id];
+    if(got){
+      return '<div class="mine">'
+        + '<div class="lvl">' + c.short + ' · 已获证</div>'
+        + '<h3>' + c.name + '</h3>'
+        + '<p>获证日期 ' + got.date + ' · 考试成绩 ' + got.score + '%</p>'
+        + '<span class="badge-got"> 认证有效</span>'
+        + '<div><button class="btn" data-print="' + c.id + '" type="button"> 打印证书</button>'
+        + (c.exam ? '<a class="btn ghost" href="/learn/academy/quiz.html?cert=' + c.id + '"> 重考刷新</a>' : '')
+        + '</div></div>';
+    }
+    return '<div class="mine">'
+      + '<div class="lvl">' + c.short + ' · 未获证</div>'
+      + '<h3>' + c.name + '</h3>'
+      + '<p>' + c.note + ' · 认证考试 10 题，≥80% 通过即发证</p>'
+      + '<span class="badge-wait"> 待考取</span>'
+      + (c.exam
+          ? '<div><a class="btn" href="/learn/academy/quiz.html?cert=' + c.id + '">参加考试 </a></div>'
+          : '<div><a class="btn ghost" href="/learn/academy/quiz.html">先完成章节练习再考</a></div>')
+      + '</div>';
+  }).join('');
+  grid.innerHTML = html;
+  grid.querySelectorAll('[data-print]').forEach(function(b){
+    b.addEventListener('click', function(){ openPrint(b.dataset.print); });
+  });
+  renderNext();          // C12：推荐下一步认证（0 张隐藏 / 4 张成就态 / 1-3 张数据推荐）
+}
+/* ===== C12：推荐下一步认证（转化层：已拿证用户看到明确的下一站）
+ * 数据真源：本机学习记录——章节打卡（ccowork.progress）+ 域练习最佳分（ccowork.quiz.scores）。
+ * 诚实原则：推荐理由只展示真实数字；无任何学习信号时按学院主路径顺序推荐并明示「按推荐路径」。
+ * 三态：0 张 → 隐藏（下方待考取卡已足够，不打扰）；4 张 → 成就态引导做作品；1-3 张 → 推荐。
+ */
+var CERT_META = {
+  cert01: { prereq: ['17','18'], min: 2, domains: ['prompt'] },
+  cert02: { prereq: ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16'], min: 5, domains: ['agent','llm','arch','basic'] },
+  cert03: { prereq: ['08','19','09','10'], min: 3, domains: ['rag','llm'] },
+  cert04: { prereq: ['20','11','12'], min: 4, domains: ['eng'] }
+};
+var CH_SHORT = { '01':'01 初识智能体','04':'04 经典范式','08':'08 记忆检索','09':'09 上下文工程','10':'10 通信协议','11':'11 Agentic-RL','12':'12 性能评估','17':'17 提示词入门','18':'18 提示词进阶','19':'19 RAG 实战','20':'20 微调部署' };
+function padCh(n){ return String(n).length === 1 ? '0' + n : '' + n; }
+function chDone(id){ try { return !!(window.CCOWorkProgress && window.CCOWorkProgress.isChapterCompleted('chapter-' + padCh(id))); } catch(e){ return false; } }
+function renderNext(){
+  var box = document.getElementById('nextCertBox');
+  if (!box) return;
+  certs = LS.get('ccowork.certs', {});
+  var have = CERT_LIST.filter(function(c){ return certs[c.id]; }).length;
+  if (have === 0){ box.style.display = 'none'; box.innerHTML = ''; return; }   // 不打扰
+  if (have >= CERT_LIST.length){                                               // 成就态
+    box.style.display = '';
+    box.innerHTML = '<div class="nc-ic">🏆</div><div class="nc-main">'
+      + '<div class="nc-top"><b>全栈达成</b><span class="nc-badge">已获 ' + have + '/' + CERT_LIST.length + '</span></div>'
+      + '<h4>四大认证已集齐 · 把能力变成作品</h4>'
+      + '<p class="nc-why">去毕业设计项目库挑一个真实项目落地，或让 AI 助教帮你诊断下一步进阶方向。</p>'
+      + '<div class="nc-acts"><a class="btn" href="/learn/academy/projects.html">去毕业项目库</a>'
+      + '<a class="btn ghost" href="/learn/academy.html">继续学新章节</a></div></div>';
+    return;
+  }
+  var quizScores = LS.get('ccowork.quiz.scores', {});
+  var cands = CERT_LIST.filter(function(c){ return !certs[c.id]; }).map(function(c){
+    var m = CERT_META[c.id] || { prereq: [], min: 0, domains: [] };
+    var done = m.prereq.filter(chDone).length;
+    var bs = m.domains.map(function(d){ var s = quizScores[d]; return s && typeof s.best === 'number' ? s.best : null; }).filter(function(v){ return v !== null; });
+    var avg = bs.length ? Math.round(bs.reduce(function(a,b){ return a+b; },0)/bs.length) : null;
+    var ratio = m.prereq.length ? done/m.prereq.length : 0;
+    return { c:c, m:m, done:done, avg:avg, ready: done >= m.min, score: ratio*100 + (avg||0)*0.5 + (done>0?10:0) };
+  });
+  cands.sort(function(a,b){
+    if (a.ready !== b.ready) return a.ready ? -1 : 1;   // 已达标优先
+    return b.score - a.score;                            // 信号分（稳定排序保路径顺序）
+  });
+  var top = cands[0];
+  if (!top){ box.style.display = 'none'; return; }
+  var why = [];
+  if (top.done > 0) why.push('前置章节已完成 <b>' + top.done + '/' + top.m.prereq.length + '</b>');
+  if (top.avg !== null) why.push('相关域练习最佳均值 <b>' + top.avg + '%</b>');
+  if (why.length === 0) why.push('按学院推荐路径，这是你下一张该拿的证');
+  var nextCh = null;
+  if (top.m.prereq.length){
+    for (var i=0;i<top.m.prereq.length;i++){ if (!chDone(top.m.prereq[i])){ nextCh = padCh(top.m.prereq[i]); break; } }
+    if (!nextCh) nextCh = padCh(top.m.prereq[top.m.prereq.length-1]);
+  }
+  var reviewHref = nextCh ? '/learn/tutorials/chapter-' + nextCh + '.html' : 'ai-academy-roadmap.html';
+  var reviewTxt = nextCh ? '先复习 ' + (CH_SHORT[nextCh] || ('章节 ' + nextCh)) : '看学习路线';
+  box.style.display = '';
+  box.innerHTML = '<div class="nc-ic">🎯</div><div class="nc-main">'
+    + '<div class="nc-top"><b>推荐下一站</b><span class="nc-badge">已获 ' + have + '/' + CERT_LIST.length + '</span></div>'
+    + '<h4>' + top.c.short + ' · ' + top.c.name + '</h4>'
+    + '<p class="nc-why">推荐理由：' + why.join(' · ') + '</p>'
+    + '<div class="nc-acts"><a class="btn" href="/learn/academy/quiz.html?cert=' + top.c.id + '">参加考试 →</a>'
+    + (top.ready ? '<span class="btn done">前置章节已达标</span>' : '<a class="btn ghost" href="' + reviewHref + '">' + reviewTxt + '</a>')
+    + '</div></div>';
+}
+function openPrint(certId){
+  var c = CERT_LIST.filter(function(x){ return x.id === certId; })[0];
+  var got = certs[certId]; if(!c || !got) return;
+  var d = got.date.replace(/-/g, '');
+  document.getElementById('cpCert').textContent = c.name.replace(/^[^ ]+ /, '');
+  document.getElementById('cpExamName').textContent = c.name;
+  // 证书编号含指纹（C9）：CCOWORK-CERT02-20260906-85-X7KQ
+  document.getElementById('cpNo').textContent = window.__certFP.makeNo(certId, got.date, got.score);
+  document.getElementById('cpDate').textContent = got.date;
+  document.getElementById('cpScore').textContent = got.score + '%';
+  document.getElementById('cpName').value = learnerName;
+  document.getElementById('cpNameShow').textContent = learnerName ? '持证人：' + learnerName : '持证人：____________';
+  document.getElementById('certModal').classList.add('open');
+}
+document.getElementById('cpClose').addEventListener('click', function(){
+  document.getElementById('certModal').classList.remove('open');
+});
+document.getElementById('cpPrint').addEventListener('click', function(){
+  var n = document.getElementById('cpName').value.trim();
+  learnerName = n;
+  LS.set('ccowork.learnerName', n);
+  document.getElementById('cpNameShow').textContent = n ? '持证人：' + n : '持证人：____________';
+  setTimeout(function(){ window.print(); }, 60);
+});
+document.getElementById('cpName').addEventListener('input', function(){
+  var n = this.value.trim();
+  document.getElementById('cpNameShow').textContent = n ? '持证人：' + n : '持证人：____________';
+});
+document.getElementById('certModal').addEventListener('click', function(e){
+  if(e.target === this) this.classList.remove('open');
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') document.getElementById('certModal').classList.remove('open');
+});
+renderMine();
+window.__renderMine = renderMine;   // 供备份模块导入后刷新
+})();
+</script>
+<script>
+/* ===== 备份与恢复：导出/导入学习数据（JSON，跨设备迁移） ===== */
+(function(){
+'use strict';
+var BK_VERSION = 1;
+var BK_KEYS = ['ccowork.certs', 'ccowork.progress', 'ccowork.quiz.scores', 'ccowork.quiz.history', 'ccowork.learnerName'];
+var $status = document.getElementById('bkStatus');
+function showStatus(msg, ok){
+  $status.textContent = msg;
+  $status.className = 'bk-status ' + (ok ? 'ok' : 'err');
+}
+function collect(){
+  var out = { v: BK_VERSION, exportedAt: new Date().toISOString(), exportedBy: 'ai-academy-cert', data: {} };
+  BK_KEYS.forEach(function(k){
+    try {
+      var raw = localStorage.getItem(k);
+      if (raw === null || raw === undefined) { out.data[k] = null; return; }
+      try { out.data[k] = JSON.parse(raw); }          // 对象/数组
+      catch(e){ out.data[k] = raw; }                  // 裸字符串（如 learnerName）
+    } catch(e){ out.data[k] = null; }
+  });
+  // 助教仅导出统计，不导出对话历史（隐私：对话内容留在本机）
+  try {
+    var t = JSON.parse(localStorage.getItem('ccowork.tutor') || 'null');
+    if (t && typeof t === 'object') out.data['ccowork.tutor.meta'] = { asked: t.asked || 0, lastAskAt: t.lastAskAt || null };
+  } catch(e){}
+  return out;
+}
+function summarize(d){
+  var certs = (d['ccowork.certs'] || {});
+  var prog = (d['ccowork.progress'] || {});
+  var ch = prog.chapters ? Object.keys(prog.chapters).filter(function(k){ return prog.chapters[k] && prog.chapters[k].completedAt; }).length : 0;
+  var labs = prog.labs ? Object.keys(prog.labs).length : 0;
+  var scores = (d['ccowork.quiz.scores'] || {});
+  return { certs: Object.keys(certs).length, chapters: ch, labs: labs, exams: Object.keys(scores).length };
+}
+function renderMeta(s){
+  var el = document.getElementById('bkMeta');
+  el.innerHTML = '当前学习数据：<b>' + s.certs + '</b> 张证书 · <b>' + s.chapters + '</b> 个章节打卡 · <b>' + s.labs + '</b> 个实验记录 · <b>' + s.exams + '</b> 个测验成绩';
+}
+function mergeInto(data){
+  var count = 0;
+  BK_KEYS.forEach(function(k){
+    if (data[k] === null || data[k] === undefined) return;
+    try {
+      var cur = localStorage.getItem(k);
+      var existing = cur ? JSON.parse(cur) : null;
+      if (existing && typeof existing === 'object' && !Array.isArray(existing) && data[k] && typeof data[k] === 'object' && !Array.isArray(data[k])) {
+        // 对象深度合并（证书/进度/成绩按 key 覆盖），不丢本地已有的
+        var merged = {};
+        Object.keys(existing).forEach(function(kk){ merged[kk] = existing[kk]; });
+        Object.keys(data[k]).forEach(function(kk){ merged[kk] = data[k][kk]; });
+        localStorage.setItem(k, JSON.stringify(merged));
+      } else if (typeof data[k] === 'string') {
+        // 裸字符串（如 learnerName）：按原始格式恢复，避免二次 JSON 包裹
+        localStorage.setItem(k, data[k]);
+      } else {
+        localStorage.setItem(k, JSON.stringify(data[k]));
+      }
+      count++;
+    } catch(e){}
+  });
+  // 助教：仅合并提问统计（对话历史不备份/不导入，隐私保留在本机）
+  if (data['ccowork.tutor.meta'] && typeof data['ccowork.tutor.meta'] === 'object') {
+    try {
+      var t = JSON.parse(localStorage.getItem('ccowork.tutor') || 'null');
+      if (!t || typeof t !== 'object') t = { asked: 0, history: [] };
+      t.asked = Math.max(t.asked || 0, data['ccowork.tutor.meta'].asked || 0);
+      if (!t.lastAskAt && data['ccowork.tutor.meta'].lastAskAt) t.lastAskAt = data['ccowork.tutor.meta'].lastAskAt;
+      localStorage.setItem('ccowork.tutor', JSON.stringify(t));
+    } catch(e){}
+  }
+  return count;
+}
+document.getElementById('bkExport').addEventListener('click', function(){
+  var data = collect();
+  var s = summarize(data.data);
+  try {
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    var d = new Date();
+    var dateStr = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    a.href = url;
+    a.download = 'ccowork-learning-backup-' + dateStr + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+    showStatus(' 已导出 ' + s.certs + ' 张证书、' + s.chapters + ' 个章节打卡、' + s.labs + ' 个实验、' + s.exams + ' 个测验成绩  ccowork-learning-backup-' + dateStr + '.json（请妥善保存这份文件）', true);
+  } catch(e){
+    showStatus(' 导出失败：' + (e && e.message ? e.message : '未知错误'), false);
+  }
+});
+document.getElementById('bkImportBtn').addEventListener('click', function(){
+  document.getElementById('bkFile').click();
+});
+document.getElementById('bkFile').addEventListener('change', function(){
+  var f = this.files && this.files[0];
+  this.value = '';
+  if (!f) return;
+  if (f.size > 2 * 1024 * 1024) { showStatus(' 文件超过 2MB，无法导入', false); return; }
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    var parsed;
+    try { parsed = JSON.parse(ev.target.result); }
+    catch(e){ showStatus(' 不是有效的 JSON 文件', false); return; }
+    if (!parsed || typeof parsed !== 'object' || !parsed.data || typeof parsed.data !== 'object') {
+      showStatus(' 文件格式不对：缺少学习数据（data）字段。请使用本页「导出备份」生成的文件。', false);
+      return;
+    }
+    if (!parsed.v || parsed.v !== BK_VERSION) {
+      showStatus(' 备份版本不兼容（v' + (parsed.v || '?') + '，当前支持 v' + BK_VERSION + '）。已按兼容方式尝试导入。', false);
+    }
+    var s = summarize(parsed.data);
+    var n = mergeInto(parsed.data);
+    if (window.__renderMine) window.__renderMine();
+    showStatus(' 导入成功：恢复 ' + s.certs + ' 张证书、' + s.chapters + ' 个章节打卡、' + s.labs + ' 个实验、' + s.exams + ' 个测验成绩（' + n + ' 项数据已合并，不影响本机已有记录）', true);
+  };
+  reader.onerror = function(){ showStatus(' 读取文件失败，请重试', false); };
+  reader.readAsText(f, 'utf-8');
+});
+renderMeta(summarize(collect().data));
+})();
+</script>
+<script>
+/* ===== 证书真伪自查（C9）===== */
+(function(){
+'use strict';
+var $in = document.getElementById('vfInput');
+var $btn = document.getElementById('vfBtn');
+var $st = document.getElementById('vfStatus');
+var CERT_NAME = { CERT01:'Prompt 工程师认证', CERT02:'智能体工程师认证', CERT03:'RAG 应用工程师认证', CERT04:'微调与部署工程师认证' };
+function show(cls, html){
+  $st.className = 'vf-status show ' + cls;
+  $st.innerHTML = html;
+}
+function nameOf(code){ return CERT_NAME[code] || code; }
+function check(){
+  var txt = $in ? $in.value : '';
+  if(!txt.trim()){ show('warn', '请输入证书编号。编号在你的证书上，形如 <b>CCOWORK-CERT02-20260906-85-X7KQ</b>。'); return; }
+  var r = window.__certFP.check(txt);
+  if(!r || r.why === 'unrecognized'){ show('err', '⚠️ 无法识别该编号。请完整复制（含 <b>CCOWORK-</b> 前缀与全部连字符），检查是否有空格或缺字。'); return; }
+  if(r.why === 'legacy'){
+    var p = r.p;
+    show('warn', 'ℹ️ 这是<b>旧版编号</b>（' + p.certId + ' · ' + fmtDate8(p.date) + '），不含校验指纹，无法离线验真。<br>提示：重新打印一次证书即可获得带指纹的新编号。');
+    return;
+  }
+  if(!r.ok){
+    var pp = r.p;
+    show('err', '🚨 <b>指纹校验失败</b>：该编号与校验算法不符，可能被涂改或复制有误。<br>解析结果：' + pp.certId + ' · ' + fmtDate8(pp.date) + ' · 成绩 ' + pp.score + '%（指纹段 ' + pp.fp + ' 与应得值不一致）。');
+    return;
+  }
+  // 指纹有效 → 与本机档案比对
+  var p2 = r.p;
+  var certIdL = p2.certId.toLowerCase();
+  var local = null;
+  try { var all = JSON.parse(localStorage.getItem('ccowork.certs') || '{}'); local = all[certIdL] || null; } catch(e){}
+  var dateMatch = local && local.date && local.date.replace(/-/g,'') === p2.date;
+  var scoreMatch = local && String(local.score) === p2.score;
+  if(local && dateMatch && scoreMatch){
+    show('ok', '✅ <b>校验通过</b>：编号指纹有效，且与本机证书档案完全一致。<br>'
+      + '<b>' + nameOf(p2.certId) + '</b> · 获证日期 ' + fmtDate8(p2.date) + ' · 成绩 ' + p2.score + '%。<br>'
+      + '<span style="opacity:.75">证书有效，可放心用于打印归档 / 简历展示。</span>');
+  } else if(local && dateMatch && !scoreMatch){
+    show('warn', '⚠️ <b>编号有效</b>，但与本机档案成绩不一致：档案为 ' + local.score + '%，编号为 ' + p2.score + '%。<br>如果你重考过，这是旧成绩编号——以最新打印为准。');
+  } else {
+    show('warn', '✅ <b>编号指纹有效</b>（未被涂改），但本机没有这份证书档案（' + nameOf(p2.certId) + ' · ' + fmtDate8(p2.date) + '）。<br>'
+      + '<span style="opacity:.75">它可能签发于其他设备——可先「导入备份」再查；若你从未考取过该认证，请警惕他人冒用你的姓名与编号。</span>');
+  }
+}
+if($btn) $btn.addEventListener('click', check);
+if($in) $in.addEventListener('keydown', function(ev){ if(ev.key === 'Enter'){ ev.preventDefault(); check(); } });
+})();
+</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

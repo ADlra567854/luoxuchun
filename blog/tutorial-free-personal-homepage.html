@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用免费工具搭一个个人主页：一晚上上线 · 白驹 ccowork</title>
+<meta name="description" content="普通人搭个人主页的完整路线：定五块内容、写一个最小 index.html、本地预览、用 Netlify Drop 或 Cloudflare Pages 免费上线、可选绑定域名、手机端自检。含免费额度与三个常见坑。">
+<meta name="keywords" content="用免费工具搭一个个人主页：一晚上上线,普通人教程,ccowork,白驹 ccowork,AI 工具">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/tutorial-free-personal-homepage.html">
+<meta property="og:title" content="用免费工具搭一个个人主页：一晚上上线 · 白驹 ccowork">
+<meta property="og:description" content="普通人搭个人主页的完整路线：定五块内容、写一个最小 index.html、本地预览、用 Netlify Drop 或 Cloudflare Pages 免费上线、可选绑定域名、手机端自检。含免费额度与三个常见坑。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/tutorial-free-personal-homepage.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="用免费工具搭一个个人主页：一晚上上线 · 白驹 ccowork">
+<meta name="twitter:description" content="普通人搭个人主页的完整路线：定五块内容、写一个最小 index.html、本地预览、用 Netlify Drop 或 Cloudflare Pages 免费上线、可选绑定域名、手机端自检。含免费额度与三个常见坑。">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"用免费工具搭一个个人主页：一晚上上线","description":"普通人搭个人主页的完整路线：定五块内容、写一个最小 index.html、本地预览、用 Netlify Drop 或 Cloudflare Pages 免费上线、可选绑定域名、手机端自检。含免费额度与三个常见坑。","url":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/tutorial-free-personal-homepage.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/tutorial-free-personal-homepage.html"},"datePublished":"2026-10-27","dateModified":"2026-10-27","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"inLanguage":"zh-CN"}</script>
+<style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="works" data-theme="cloud"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/sec/blog.jpg" alt="用免费工具搭一个个人主页：一晚上上线" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy" decoding="async"></div>
+<article>
+<div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>5 分钟</span><span class="blog-tag">教程 · 建站</span></div>
+<div class="blog-divider"></div>
+<h1>用免费工具搭一个个人主页：一晚上上线</h1>
+<p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">搭主页不需要服务器和前端功底：拖一个文件夹上去就有网址。这篇给三条路线——不写代码的、写一点代码的、想长期维护的，都能 0 元上线。</p>
+<h2>一 · 为什么你需要一个自己的主页</h2>
+<p>简历是一张纸，作品散在网盘、微信收藏和几个平台后台，别人想了解你，得问你要链接、等你发文件。一个自己的主页，作用就一个：<strong>把「我是谁、我做过什么、怎么联系我」放在一个网址里，随时发出去</strong>。</p>
+<p>很多人以为搭主页要会前端、要买服务器。其实 2026 年了，静态页面托管有免费额度，拖一个文件夹上去就能拿到网址，连代码都可以只写最简单的 HTML。这篇给三条路线：完全不写代码的、写一点点代码的、想长期维护的。三条都能做到 0 元上线。</p>
+
+<h2>二 · 你需要准备什么</h2>
+<table><thead><tr><th style="white-space:nowrap">用途</th><th>工具 / 网址</th><th style="white-space:nowrap">成本</th></tr></thead><tbody>
+<tr><td style="white-space:nowrap">最省事的托管</td><td><a href="https://app.netlify.com/drop" target="_blank" rel="noopener">Netlify Drop</a>：把文件夹拖进网页就上线</td><td>免费额度</td></tr>
+<tr><td style="white-space:nowrap">长期可维护的托管</td><td><a href="https://pages.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Pages</a>：支持直接上传，也可接 Git</td><td>免费额度（<a href="https://developers.cloudflare.com/pages/platform/limits/" target="_blank" rel="noopener">免费版限制</a>：单站点最多 20,000 个文件、单文件最大 25 MiB、每月 500 次构建）</td></tr>
+<tr><td style="white-space:nowrap">完全不写代码</td><td><a href="https://www.notion.so/" target="_blank" rel="noopener">Notion</a>：把页面「发布到网络」就得到网址</td><td>免费</td></tr>
+<tr><td style="white-space:nowrap">备选托管</td><td><a href="https://surge.sh/" target="_blank" rel="noopener">Surge</a>、<a href="https://tiiny.host/" target="_blank" rel="noopener">Tiiny Host</a>、<a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></td><td>免费额度</td></tr>
+<tr><td style="white-space:nowrap">编辑器</td><td><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a>，或者系统自带的记事本</td><td>免费</td></tr>
+<tr><td style="white-space:nowrap">自己的域名（可选）</td><td><a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">阿里云万网</a>等注册商</td><td>按年付费，价格以注册商页面为准</td></tr>
+</tbody></table>
+<p>先用免费二级域名（比如 <code>xxx.pages.dev</code>、<code>xxx.netlify.app</code>）把主页发出去，能用之后再考虑买域名。域名不是必需品，免费域名一样可以发给别人。</p>
+
+<h2>三 · 一步一步做</h2>
+
+<h3>第 1 步 · 先定内容，只写五块（30 分钟）</h3>
+<p>主页最容易犯的错是什么都往上堆。第一版只放五块，超出的都删：</p>
+<ol>
+<li><strong>一句话介绍</strong>：你是谁 + 你能解决什么问题。例：「做电商运营五年，擅长把库存周转压下来。」</li>
+<li><strong>三件作品</strong>：每件一行标题、一行结果、一个链接。没链接就写清楚做了什么。</li>
+<li><strong>经历</strong>：时间倒序，三到五条，每条一行。</li>
+<li><strong>联系方式</strong>：邮箱 + 一个社交账号，别的不用放。</li>
+<li><strong>简历 PDF</strong>：放在同一目录，主页上给一个下载链接。</li>
+</ol>
+<p>先在备忘录里把这五块写成纯文字，不要一上来就调样式。<strong>内容空的主页，设计得再好看也没人看</strong>。</p>
+
+<h3>第 2 步 · 写一个最简单的 index.html（40 分钟）</h3>
+<p>在电脑上新建一个文件夹，命名 <code>me</code>，里面新建一个文本文件，改名成 <code>index.html</code>（注意扩展名是 .html，不是 .html.txt）。用 VS Code 或记事本打开，把下面这段粘进去，把中文内容换成你自己的：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;张三 · 电商运营&lt;/title&gt;
+&lt;style&gt;
+body{max-width:720px;margin:0 auto;padding:40px 20px;font-family:-apple-system,"Microsoft YaHei",sans-serif;line-height:1.8;color:#222}
+h1{font-size:28px;margin-bottom:4px}
+.tag{color:#666;margin-bottom:28px}
+h2{font-size:18px;margin-top:32px;border-bottom:1px solid #eee;padding-bottom:6px}
+a{color:#0b6bcb}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;张三&lt;/h1&gt;
+&lt;p class="tag"&gt;电商运营 · 擅长库存周转与活动策划&lt;/p&gt;
+
+&lt;h2&gt;作品&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;库存表改造：把月度盘点改成日更，差异当天发现&lt;/li&gt;
+&lt;li&gt;活动复盘模板：一次活动一页纸，团队沿用至今&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;经历&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2023–至今　某电商公司　运营主管&lt;/li&gt;
+&lt;li&gt;2020–2023　某品牌方　运营专员&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;联系&lt;/h2&gt;
+&lt;p&gt;邮箱：you@example.com&lt;/p&gt;
+&lt;p&gt;&lt;a href="resume.pdf"&gt;下载简历 PDF&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>把简历 PDF 复制到同一个文件夹，命名 <code>resume.pdf</code>。这样 <code>me</code> 文件夹里只有两个文件：<code>index.html</code> 和 <code>resume.pdf</code>。</p>
+
+<h3>第 3 步 · 本地先看一遍（5 分钟）</h3>
+<p>双击 <code>index.html</code>，浏览器会打开它。检查三件事：手机上是否也能正常看（把窗口拉窄模拟手机）、链接能不能点开、有没有错别字。<strong>这一步不要跳过</strong>，上传后再改要重新传一次。</p>
+
+<h3>第 4 步 · 上线（选一条路线，10–20 分钟）</h3>
+<p><strong>路线 A：Netlify Drop（最快，不用注册也能试）</strong></p>
+<ol>
+<li>浏览器打开 <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">app.netlify.com/drop</a>。</li>
+<li>把整个 <code>me</code> 文件夹拖进页面中央的上传区域。</li>
+<li>等进度条走完，页面会给出一个随机网址，形如 <code>随机名.netlify.app</code>，打开确认内容正确。</li>
+<li>想保留和修改这个站点，注册一个免费账号，站点会挂到你的账号下。</li>
+</ol>
+<p><strong>路线 B：Cloudflare Pages（适合长期维护）</strong></p>
+<ol>
+<li>打开 <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener">pages.cloudflare.com</a>，点进入控制台，用邮箱注册登录。</li>
+<li>在左侧选「Workers 和 Pages」→「创建」→「Pages」→「上传资产」。</li>
+<li>项目名填 <code>你的名字</code>（会变成网址前缀），把 <code>me</code> 文件夹或打包好的 zip 上传。</li>
+<li>点「部署站点」，完成后得到 <code>你的名字.pages.dev</code>。</li>
+</ol>
+<p><strong>路线 C：完全不写代码</strong></p>
+<ol>
+<li>打开 <a href="https://www.notion.so/" target="_blank" rel="noopener">Notion</a>，新建一个页面，按第 1 步的五块内容排版。</li>
+<li>点右上角「分享」→「发布」→「发布到网络」，复制生成的网址。</li>
+<li>把这个网址当作你的主页发出去。缺点是样式受 Notion 限制，优点是十分钟能完成。</li>
+</ol>
+
+<h3>第 5 步 · 绑定自己的域名（可选，20 分钟）</h3>
+<p>只在免费域名不够用的时候做。流程是：在域名注册商（如<a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">阿里云万网</a>）买一个域名 → 在托管平台的项目设置里选「自定义域」→ 按提示到域名后台添加一条 CNAME 记录，指向平台给的地址 → 等解析生效（通常几分钟到几小时）。具体价格和解析步骤以注册商页面为准，<strong>买之前先确认免费域名能不能满足需求</strong>。</p>
+
+<h3>第 6 步 · 手机端自检（10 分钟）</h3>
+<p>用手机浏览器打开你的网址，检查：字会不会太小、需不需要横向滚动、简历 PDF 能不能下载、所有链接是否可点。再让一个朋友打开看看，问一句「你能看懂我是干什么的吗」——这比任何设计评审都有用。</p>
+<p>上线不是终点。以后每次改内容，重新把文件夹拖上去一次就行：Netlify Drop 会覆盖旧版本，Cloudflare Pages 会生成一次新部署，网址不变。另外记得把 <code>index.html</code> 和 <code>resume.pdf</code> 备份到网盘，换电脑或误删之后不用重做。</p>
+
+<h2>四 · 耗时与成本</h2>
+<table><thead><tr><th style="white-space:nowrap">环节</th><th style="white-space:nowrap">耗时</th><th>花费</th></tr></thead><tbody>
+<tr><td style="white-space:nowrap">定内容</td><td>30 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">写 index.html</td><td>40 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">本地预览检查</td><td>5 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">上线</td><td>10–20 分钟</td><td>0 元（免费二级域名）</td></tr>
+<tr><td style="white-space:nowrap">绑定域名（可选）</td><td>20 分钟</td><td>域名按年付费</td></tr>
+<tr><td style="white-space:nowrap">手机端自检</td><td>10 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">合计</td><td>约 2 小时</td><td>0 元起</td></tr>
+</tbody></table>
+
+<h2>五 · 三个常见坑</h2>
+
+<h3>坑一 · 文件名大小写和「index」写错</h3>
+<p>托管平台默认找的是 <code>index.html</code>，写成 <code>Index.html</code>、<code>index.htm</code> 或 <code>主页.html</code> 都会打开 404。上传前确认文件名完全一致。Windows 不区分大小写，上传到服务器后就区分了，这是最常见的翻车原因。</p>
+
+<h3>坑二 · 图片没压缩，手机打开很慢</h3>
+<p>一张手机原图三五 MB，放几张主页就要等十几秒。上传前用 <a href="https://squoosh.app/" target="_blank" rel="noopener">Squoosh</a> 或 <a href="https://www.iloveimg.com/zh-cn" target="_blank" rel="noopener">iLoveIMG</a> 压到几百 KB，宽度控制在 1600 像素以内。Cloudflare Pages 免费版单文件上限 25 MiB，但用户不会等你加载。</p>
+
+<h3>坑三 · 忽略免费额度限制</h3>
+<p>免费托管有明确限制，对个人主页通常够用，但要知道边界。以 Cloudflare Pages 为例，免费版单站点最多 20,000 个文件、单文件最大 25 MiB、每月 500 次构建（<a href="https://developers.cloudflare.com/pages/platform/limits/" target="_blank" rel="noopener">官方限制页</a>）；GitHub Pages 的站点上限 1 GB、带宽软限制每月 100 GB、每小时最多 10 次构建（<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits" target="_blank" rel="noopener">GitHub Pages 限制</a>）。别把主页当成网盘传大文件。</p>
+
+<h2>六 · 自检清单</h2>
+<ul>
+<li>五块内容齐全：一句话介绍、三件作品、经历、联系方式、简历 PDF</li>
+<li>文件夹里入口文件名是 <code>index.html</code>，大小写正确</li>
+<li>本地双击能打开，手机窗口拉窄后不横向滚动</li>
+<li>图片已压缩，单张不超过几百 KB</li>
+<li>简历 PDF 链接可以下载</li>
+<li>网址在手机浏览器打开正常</li>
+<li>没有暴露身份证号、家庭住址、私人手机号</li>
+<li>主页内容与简历一致，时间线不矛盾</li>
+<li>把网址记下来，写进简历和社交账号简介</li>
+</ul>
+
+<h2>七 · 延伸阅读</h2>
+<ul>
+<li><a href="tutorial-ai-resume.html">用 AI 做一份能投的简历</a>：主页和简历要互相呼应。</li>
+<li><a href="tutorial-ai-photo-id.html">AI 修图与证件照</a>：主页上的一寸照、头像可以这样处理。</li>
+<li><a href="https://pages.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Pages</a>、<a href="https://app.netlify.com/drop" target="_blank" rel="noopener">Netlify Drop</a>：本文两个主力托管入口，2026-10-27 实测可打开。</li>
+</ul>
+
+<hr>
+<p style="font-size:13px;color:var(--muted)">本页为原创教程，工具信息核验于 2026-10-27。</p>
+
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/responsive.js?v=20261028e"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261115b"></script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 变现 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="用 AI 变现的现实路径、成本与风险。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/ai-money.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f0b95c;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:22px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-cta{padding:8px 18px;border:1px solid rgba(56,225,255,.4);border-radius:999px;color:var(--cyan)!important;font-size:13px}
+@media(max-width:900px){.nav-links{display:none}}
+.hero{min-height:72vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:130px 24px 56px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(6,8,15,.55),rgba(6,8,15,.9) 72%),url('/assets/img/ai-bg-datacenter.webp') center/cover no-repeat}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:999px;letter-spacing:2px;margin-bottom:26px}
+.hero h1{font-size:clamp(32px,5.5vw,70px);font-weight:900;line-height:1.2;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:760px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:24px auto 0}
+section{max-width:1180px;margin:0 auto;padding:70px 24px}
+.sec-head{margin-bottom:40px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(26px,3.4vw,40px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:760px;margin-top:12px}
+.grid{display:grid;gap:22px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+@media(max-width:520px){.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;transition:.3s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-4px);border-color:rgba(79,140,255,.5);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.card .icon{font-size:30px;margin-bottom:12px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px}
+.card .pill{display:inline-block;margin-top:12px;font-size:12px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:999px;padding:3px 12px}
+/* 步骤 */
+.steps{counter-reset:step;display:grid;gap:16px}
+.step{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;align-items:flex-start}
+.step::before{counter-increment:step;content:counter(step);flex:0 0 42px;height:42px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#04101f;background:var(--grad)}
+.step h4{font-size:17px;margin-bottom:4px}
+.step p{color:var(--muted);font-size:14px}
+.step .pv{margin-top:10px}
+/* 提示词块 */
+.prompt-box{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:14px 16px;
+  font-family:Consolas,monospace;font-size:13px;color:#b9c8ea;position:relative;margin-top:10px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.prompt-box .copy{position:absolute;top:10px;right:10px;background:#18223c;border:1px solid var(--line);color:var(--muted);
+  border-radius:10px;padding:3px 10px;font-size:12px;cursor:pointer;transition:.2s;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.prompt-box .copy:hover{color:var(--cyan);border-color:var(--cyan)}
+.prompt-box .copy.done{color:#04101f;background:var(--grad);border-color:transparent}
+.prompt-title{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--gold);font-size:13px;font-weight:600}
+.prompt-title:first-of-type{margin-top:0}
+.prompt-title::before{content:""}
+/* 工作台 */
+.wb-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.wb-tab{padding:10px 22px;border-radius:999px;border:1px solid var(--line);background:var(--bg2);color:var(--muted);
+  cursor:pointer;font-size:14px;transition:.2s}
+.wb-tab:hover{color:var(--text);border-color:rgba(56,225,255,.4)}
+.wb-tab.active{background:var(--grad);color:#04101f;border-color:transparent;font-weight:700}
+.wb-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+@media(max-width:420px){.wb-grid{grid-template-columns:1fr}}
+.wb{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;transition:.3s}
+.wb:hover{border-color:rgba(79,140,255,.5)}
+.wb .whead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.wb h3{font-size:17px}
+.wb .deploy{font-size:12px;color:var(--gold);border:1px dashed rgba(240,185,92,.4);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.wb .wdesc{color:var(--muted);font-size:13px;margin:6px 0 4px}
+.wb .more{display:none}
+.wb.open .more{display:block}
+.wb .toggle{margin-top:12px;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:999px;
+  padding:5px 14px;font-size:12px;cursor:pointer;transition:.2s}
+.wb .toggle:hover{color:var(--cyan);border-color:var(--cyan)}
+footer{border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-money.png" alt="AI 赚钱全攻略 · 漫剧 × 办公 × 岗位工作台 | 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<section class="hero">
+  <div class="tag">白驹 ccowork · 赚钱实战手册</div>
+  <h1>用 AI 赚钱，<span>从提示词开始</span></h1>
+  <p class="sub">漫剧怎么做？办公怎么提效？老师/学生/个人/各岗位的工作台怎么搭？本页给出可直接复制的提示词实例，照抄就能用。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+</section>
+<section id="topics">
+  <div class="sec-head"><div class="kicker">专题入口</div><h2><i class="cc-ic" data-ic="map" aria-hidden="true"></i>AI 全生态专题</h2><p>四大专题页：市场数据 + 全流程 + 提示词，全部写全。</p></div>
+  <div class="grid g4" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+    <div class="card" style="cursor:pointer" onclick="location.href='/works/manju.html'"><div class="icon"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></div><h3>AI 漫剧指南</h3><p>400 亿市场数据、爆款案例、8 步全流程与每步提示词。</p><span class="pill">去漫剧 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    <div class="card" style="cursor:pointer" onclick="location.href='/learn/ai-edu.html'"><div class="icon"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i></div><h3>AI 赋能教育</h3><p>教育部部署会、各省政策、正确率 62%<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>94% 的实证案例、师生提示词。</p><span class="pill">去教育 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    <div class="card" style="cursor:pointer" onclick="location.href='/learn/ai-jobs.html'"><div class="icon"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i></div><h3>AI 赋能就业</h3><p>WEF/普华永道报告、7 类高危岗位、9 类新职能、求职提示词。</p><span class="pill">去就业 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    <div class="card" style="cursor:pointer" onclick="location.href='/toolbox/personality.html'"><div class="icon"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div><h3>AI 性格测试</h3><p>10 题测出你的 AI 人格，推荐最适合的赚钱方向与工作台。</p><span class="pill">去测试 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    <div class="card" style="cursor:pointer" onclick="location.href='/works/projects.html'"><div class="icon"><i class="cc-ic" data-ic="box" aria-hidden="true"></i></div><h3>100 开源作品大全</h3><p>100 个真实 GitHub 作品，个人/团队分开、作者真实注明，全是成品链接。</p><span class="pill">去作品大全 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    <div class="card" style="cursor:pointer" onclick="location.href='/toolbox/prompts.html'"><div class="icon"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i></div><h3>提示词实战指南</h3><p>40+ 条可复制提示词 + 万能公式 + 5 技巧 + 术语解释，全场景覆盖。</p><span class="pill">去提示词 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+  </div>
+</section>
+<section id="ways">
+  <div class="sec-head">
+    <div class="kicker">方向篇</div>
+    <h2><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>AI 赚钱的 6 条主路</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-ai-money.png" alt="AI 赚钱全攻略 · 漫剧 × 办公 × 岗位工作台 · " loading="lazy"></figure>
+    <p>先选赛道，再往下看对应流程和提示词。</p>
+  </div>
+  <div class="grid g3" id="waysGrid"></div>
+</section>
+<section id="data">
+  <div class="sec-head"><div class="kicker">数据快报</div><h2><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>AI 赚钱，先用数据说话</h2><p>真实数字来自 2025-2026 年行业报告与公开报道，详情见各专题页。</p></div>
+  <div class="grid g3" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+    <div class="card"><h3><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>AI 岗位</h3><p><b>34.4%</b> 的岗位描述带"AI/大模型"关键词；AI 技能薪资溢价平均 <b>62%</b>；垂直大模型人才供需比仅 <b>0.3</b>。</p><span class="pill">来源：PwC / 翰德</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>AI 漫剧</h3><p>2026 上半年市场 <b>220 亿</b>，全年预计破 400 亿（+138%）；破亿率仅 <b>0.73%</b>，头部利润率超 <b>90%</b>。</p><span class="pill">来源：行业报告</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>AI 教育</h3><p>教育部把「人工智能+教育」列入重点方向。至于「某校用 AI 组卷后正确率提升多少」，网上流传的数字没有一个能追到原始通报 —— 这类「某校 + 精确百分比」的组合，基本可以判定是凑出来的，本文不给。</p><span class="pill">口径：政策原文可查，个案数字无源</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="user" aria-hidden="true"></i> AI 副业</h3><p>公开报道里确有行政、独立开发者靠 AI 接单的个案，但金额在转述过程中不断被放大，同一件事在不同文章里能差出一个数量级。本文只讲他们的做法与踩过的坑，不复述金额。</p><span class="pill">口径：做法可学，金额不可信</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>AI 出海</h3><p>海外 AI 短剧市场 2026 预计 <b>6.5 亿美元</b>（翻 5.5 倍，预测值；2026 年实际数据待 DataEye 年度报告核实）；出海 CPM 是国内 3-5 倍。</p><span class="pill">来源：DataEye</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI 数字人</h3><p>数字人直播的产出高度依赖选品与投放，公开案例里的 GMV 无法交叉验证；AI 代部署这类服务的成交价，看闲鱼当前挂单即可，不必引用二手转述。</p><span class="pill">来源：公开案例</span></div>
+  </div>
+</section>
+<section id="cases">
+  <div class="sec-head"><div class="kicker">真实案例</div><h2><i class="cc-ic" data-ic="flame" aria-hidden="true"></i>2026 年真人的 AI 赚钱样本</h2><p>全部有公开报道/复盘，可自行搜索验证。想赚快钱先避开他们踩过的坑。</p></div>
+  <div class="grid g3">
+    <div class="card"><h3><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>成都行政 · 从代写接单起步</h3><p>一位成都行政做 AI 代写商业文案与短视频脚本、剪辑。先踩 3 坑：AI 卖图赚 35 元、AI 写小说被限流、AI 配音 3 单 150 元——<b>核心是"用 AI 解决别人解决不了的问题"</b>。</p><span class="pill">代写 + 短视频</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="smartphone" aria-hidden="true"></i>"小猫补光灯" · 零代码做一个 App</h3><p>一位没有编程背景的开发者用 AI 编程做了一个补光类 App，定价 1 元，一度冲上付费榜前列。这类故事里真正值得记的不是收入，是它说明「做一个能上架的 App」的门槛确实降了。平台上非程序员开发者的占比，各家披露口径不一，这里不给数字。</p><span class="pill">AI 编程"手搓经济"</span></div>
+    <div class="card"><h3> "养龙虾" · 教人部署自动化工具</h3><p>有人带着学生教企业部署 OpenClaw 这类自动化工具，靠「代部署」按单收费，再往上是「代运营」按月收费。这条路的关键不是技术深度，是愿意做交付与售后。</p><span class="pill">AI 自动化代部署</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="users" aria-hidden="true"></i>AI 内容 · 靠笔记接广告</h3><p>上班族用 AI 写工具类笔记，靠接广告与带货变现。这条路的天花板取决于是不是真的长期试过这些工具 ——读者能分辨「复述参数」和「自己踩过坑」。<b>收入与更新频率、粉丝质量强相关，本文不给数字。</b></p><span class="pill">自媒体矩阵</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="shopping-bag" aria-hidden="true"></i>AI 电商 · 用数据选细分品类</h3><p>用 AI 分析评论与搜索词，从大类里挑出竞争较小的细分品类，再优化详情页与投放文案。<b>能否起量取决于供应链与价格，不是文案 —— 公开案例里的「首月利润」无法交叉验证，此处不引用。</b></p><span class="pill">AI 选品</span></div>
+    <div class="card"><h3><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i>AI 本地服务 · 按店收月费</h3><p>给本地餐饮店做 AI 点餐与智能客服，按店收月费。这是所有路径里最像「生意」的一条：要谈单、要上门、要长期维护。<b>能签几家取决于本地资源，本文不给「月入」数字。</b></p><span class="pill">AI+本地商家</span></div>
+  </div>
+</section>
+<section id="manju">
+  <div class="sec-head">
+    <div class="kicker">漫剧篇 · 全流程</div>
+    <h2><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>AI 漫剧赚钱：8 步从 0 到发片</h2>
+    <p>选题 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 脚本 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 人设 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 分镜 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 生图 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 配音 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 剪辑 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 变现。每步附一条可直接复制的提示词。</p>
+  </div>
+  <div class="steps" id="manjuSteps"></div>
+</section>
+<section id="office">
+  <div class="sec-head">
+    <div class="kicker">办公篇</div>
+    <h2><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>AI 办公提效：10 个高频场景</h2>
+    <p>周报、PPT、纪要、表格、方案、邮件……每个场景一条提示词，秒出初稿。</p>
+  </div>
+  <div class="g2" id="officeGrid" style="display:grid;gap:18px"></div>
+</section>
+<section id="workbenches">
+  <div class="sec-head">
+    <div class="kicker">工作台篇</div>
+    <h2><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>岗位工作台大全</h2>
+    <p>按「人群」或「岗位大类」选一个工作台，把提示词存进你的 AI 对话里，就是你的专属工作台。部署方式见下方章节。</p>
+  </div>
+  <div class="wb-tabs" id="wbTabs"></div>
+  <div class="wb-grid" id="wbGrid"></div>
+</section>
+<section id="deploy">
+  <div class="sec-head">
+    <div class="kicker">部署篇</div>
+    <h2><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>如何部署一个自己的 AI 工作台</h2>
+    <p>不用会写代码，5 种方式从简到繁。</p>
+  </div>
+  <div class="steps" id="deploySteps"></div>
+</section>
+<section id="formula">
+  <div class="sec-head">
+    <div class="kicker">公式篇</div>
+    <h2><i class="cc-ic" data-ic="flask-conical" aria-hidden="true"></i>提示词万能公式（R·B·T·C·F·E）</h2>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <h3>六要素拆解</h3>
+    <p style="margin-top:8px"><b style="color:var(--cyan)">R</b> 角色（Role）· <b style="color:var(--cyan)">B</b> 背景（Background）· <b style="color:var(--cyan)">T</b> 任务（Task）· <b style="color:var(--cyan)">C</b> 条件（Condition）· <b style="color:var(--cyan)">F</b> 格式（Format）· <b style="color:var(--cyan)">E</b> 示例（Example）</p>
+    <div class="prompt-title">模板（直接填空）</div>
+    <div class="prompt-box">你是【角色】，正在服务【背景/用户身份】。
+任务是【要做什么】。
+要求：【3-5 条硬性条件】。
+输出格式：【清单/表格/JSON/分幕/台词】。
+参考示例：【给 1-2 个样例】。
+如果信息不足，先问我，不要瞎编。</div>
+    <div class="prompt-title">套用实例（一次问清）</div>
+    <div class="prompt-box">你是 10 年经验的运营总监，服务一位刚做小红书的宝妈。
+任务：把我这条笔记标题优化成 5 个高点击版本。
+要求：30 字以内、有数字或冲突、不夸大、适合图文笔记。
+输出格式：5 个标题 + 每个 1 句理由。
+参考示例：「产后 3 个月减掉 20 斤，只靠这 4 个动作」。</div>
+  </div>
+</section>
+
+
+
+<script>
+(function(){
+'use strict'
+/* 六大方向 */
+var WAYS = [
+  {icon:'', t:'AI 漫剧 / 短剧', d:'一人团队做漫画动画，平台分成 + 广告 + 定制接单，单条爆款可月入数千。', p:'流程见下方「漫剧篇」'},
+  {icon:'', t:'AI 办公代做', d:'帮企业/老师做 PPT、方案、周报、海报，单份 50–500 元，可接长期。', p:'提示词见「办公篇」'},
+  {icon:'', t:'岗位工作台顾问', d:'给同行搭专属 AI 工作台并教使用，一次 300–2000 元。', p:'工作台见「工作台篇」'},
+  {icon:'', t:'提示词 / 课程售卖', d:'把验证过的提示词做成包、做成课、做成模板站，一次生产多次卖。', p:'公式见「公式篇」'},
+  {icon:'', t:'AI 自媒体矩阵', d:'AI 批量产图文/视频做矩阵号，接广告、带货、引流私域。', p:'文案提示词见「办公篇」'},
+  {icon:'', t:'数字人 / 客服代运营', d:'用 AI 做直播、客服、答疑，按小时/按单收费。', p:'部署方式见「部署篇」'}
+]
+document.getElementById('waysGrid').innerHTML = WAYS.map(function(w){
+  return '<div class="card"><div class="icon">'+w.icon+'</div><h3>'+w.t+'</h3><p>'+w.d+'</p><span class="pill">'+w.p+'</span></div>'
+}).join('')
+/* 漫剧 8 步 */
+var MANJU = [
+  {t:'选题定位', d:'先定人设和受众，再要爆款选题。', p:'你是网文爆款分析师，账号面向【25-35 岁职场女性】。请用 AI 漫剧的短视频形式给我 20 个能爆的选题，要求：冲突前置、一句话钩子、适合 3-5 分钟漫画解说。直接列清单，不要解释。'},
+  {t:'大纲脚本', d:'把故事改成 5 分钟竖屏漫剧。', p:'你是漫画编剧。把故事《【你的故事】》改成 5 分钟竖屏漫剧，输出：①标题 3 个备选 ②一句话卖点 ③分幕脚本，每幕 80-120 字并带画面提示 ④结尾留钩子。风格：反转 + 情绪流。'},
+  {t:'人设卡', d:'固定主角设定，后续生图不跑偏。', p:'你是角色设定师。为主角设计人设卡，输出 JSON：姓名/年龄/身份/外貌描述(可直接用于 AI 生图，具体到发色、瞳色、服装、配饰)/性格/口头禅/黑化动机/与其他角色的关系。'},
+  {t:'分镜', d:'把剧情切成 8-12 格分镜。', p:'你是分镜导演。把这段剧情拆成 8-12 格分镜：每格输出 景别(特写/中景/全景)、人物动作、表情、台词、背景、时长。用表格输出。剧情：【粘贴脚本】。'},
+  {t:'AI 生图（一致性）', d:'角色不变形、画风统一的关键。', p:'你是 AI 绘画提示词专家。把角色【{角色描述}】固化成生图模板：固定特征锚点(发色/瞳色/服装/配饰)，用 { } 标出可变项(场景/表情/姿势)，并给出日漫、国漫、厚涂 3 种画风可直接粘贴的完整提示词。'},
+  {t:'配音稿', d:'给 AI 配音写带情绪标注的稿子。', p:'你是配音导演。给这段分镜写配音稿：每句带情绪标注(括在括号里)，断句自然适合 AI 配音，总时长控制在 30 秒内。分镜：【粘贴】。'},
+  {t:'剪辑成片', d:'写运镜转场说明，剪映/即梦照做。', p:'你是剪辑师。为这部漫剧写剪辑说明：按分镜号给出运镜(推/拉/摇/移/缩放)、转场(叠化/擦除/放大跳切)、配乐情绪、音效点。表格输出。'},
+  {t:'发布与变现', d:'写发布物料 + 变现路径。', p:'你是自媒体运营。为这条漫剧写发布物料：①标题 3 个 ②封面文案 ③前 3 秒钩子字幕 ④评论区置顶引导 ⑤转发文案。并给 3 种变现路径建议(分成/接单/卖课)，各配一句广告话术。'}
+]
+document.getElementById('manjuSteps').innerHTML = MANJU.map(function(s,i){
+  return '<div class="step"><div style="flex:1"><h4>'+s.t+'</h4><p>'+s.d+'</p>'+
+    '<div class="prompt-title">提示词实例</div><div class="prompt-box"><button class="copy" type="button">复制</button>'+s.p+'</div></div></div>'
+}).join('')
+/* 办公场景 */
+var OFFICE = [
+  {t:'周报 / 月报', p:'你是职场写作助手。根据我给的原始记录，写一份周报：①本周成果(量化) ②进展 ③风险与卡点 ④下周计划。语气干练，200 字内。记录：【粘贴】'},
+  {t:'PPT 大纲', p:'你是演示设计师。为【主题】做 12 页 PPT 大纲：每页给出标题 + 3 个要点 + 配图建议。先给我大纲确认，再逐页扩展。'},
+  {t:'会议纪要', p:'你是会议记录员。把这段会议语音转成纪要：①结论 ②决策 ③待办(含负责人与截止时间) ④遗留问题。用表格输出待办。内容：【粘贴】'},
+  {t:'Excel 公式 / 分析', p:'你是数据分析师。我的表格列有【A/B/C/D】，想达成【目标】。请：①给出能实现目标的 Excel 公式并解释 ②指出数据异常 ③给 3 条业务建议。'},
+  {t:'方案报告', p:'你是方案策划。为【客户/场景】写一份完整方案：背景、目标、实施步骤(带时间表)、预算、风险与预案、预期效果。1000 字，结构清晰。'},
+  {t:'邮件', p:'你是商务邮件助手。帮我把【想表达的意思】写成正式邮件：主题 + 正文(简洁礼貌) + 结尾行动项。收件人身份：【领导/客户/同事】。'},
+  {t:'海报 / 社媒文案', p:'你是文案。为【产品/活动】写 5 条朋友圈/小红书文案：每条 30-50 字，带 emoji 和话题标签，突出【卖点】。'},
+  {t:'简历优化', p:'你是资深 HR。根据我的经历，把简历改到能过 ATS：量化成果(用动词+数字)、删掉废话、每个岗位单独优化关键词。我的经历：【粘贴】'},
+  {t:'公文 / 通知', p:'你是机关文书助手。把【要求】写成正式通知：标题、主送、正文、落款。用正式公文体，300 字内。'},
+  {t:'演讲稿 / 口播', p:'你是口播教练。为【主题】写 1 分钟口播稿：开头 3 秒钩子、正文 3 点、结尾号召。口语化，可直接念。'}
+]
+document.getElementById('officeGrid').innerHTML = OFFICE.map(function(o){
+  return '<div class="card"><h3>'+o.t+'</h3><div class="prompt-title">提示词</div><div class="prompt-box"><button class="copy" type="button">复制</button>'+o.p+'</div></div>'
+}).join('')
+/* 工作台 */
+var WBS = [
+  {g:'人群', k:'teacher', name:' 老师工作台', desc:'备课、出题、评语、课件、家长沟通', deploy:'对话即用 · PWA', prompts:[
+    {t:'一键备课教案', p:'你是资深学科教师。为《【课题】》写一份 45 分钟教案：教学目标、重难点、导入、讲授(含提问)、随堂练习、作业、板书设计。'},
+    {t:'自动出题 + 答案', p:'你是命题专家。围绕《【知识点】》出 15 题：5 选择 + 5 填空 + 5 解答，按难度递增，并附答案和解析。'},
+    {t:'作业评语', p:'你是班主任。为【学生情况】写 3 句鼓励式评语：先肯定、再指不足、最后给方法。语气温和不空话。'},
+    {t:'家长沟通话术', p:'你是家校沟通顾问。家长反馈【问题】时，帮我起草回复：共情 + 情况说明 + 家校配合建议 + 邀请面谈。'}
+  ]},
+  {g:'人群', k:'student', name:' 学生工作台', desc:'论文、笔记、错题、英语、简历', deploy:'对话即用 · PWA', prompts:[
+    {t:'论文大纲', p:'你是论文导师。为《【题目】》设计大纲：引言、文献综述、研究方法、结果、讨论、结论，每章给 3 个要点和引用建议。'},
+    {t:'错题讲解', p:'你是耐心家教。把这道错题讲透：①错在哪 ②正确思路 ③同类题 1 道练手。题目：【粘贴】'},
+    {t:'英语润色', p:'你是英语母语编辑。把我的作文改到地道：保留原意、修正语法、升级词汇、批注修改原因。原文：【粘贴】'},
+    {t:'简历一页纸', p:'你是校招 HR。把这份经历压缩成 1 页简历：突出项目成果、量化指标、技能关键词，删掉无关内容。'}
+  ]},
+  {g:'人群', k:'personal', name:' 个人副业工作台', desc:'小红书、闲鱼、接单、复盘', deploy:'对话即用 · PWA', prompts:[
+    {t:'小红书爆款笔记', p:'你是小红书运营。为【主题】写一篇爆款笔记：标题(含关键词)、正文(钩子开头+干货+结尾引导)、3 组话题标签。'},
+    {t:'闲鱼文案 + 定价', p:'你是二手电商专家。为商品【描述】写闲鱼文案：标题 30 字、卖点、低价理由、砍价话术、建议定价(参考同类)。'},
+    {t:'接单报价话术', p:'你是自由职业顾问。客户找我做【需求】，帮我起草报价：服务内容、价格档位(基础/标准/加急)、周期、定金条款。'},
+    {t:'每周复盘', p:'你是复盘教练。根据我的本周记录【粘贴】，输出：做对了什么、数据变化、下周 3 个关键动作、1 个风险预警。'}
+  ]},
+  {g:'人群', k:'manager', name:' 管理者工作台', desc:'目标拆解、绩效面谈、决策', deploy:'对话即用 · PWA', prompts:[
+    {t:'目标拆解 OKR', p:'你是组织管理顾问。把年度目标【目标】拆成季度 OKR：O 不超过 3 个，每个 O 配 2-3 个可量化的 KR，并给每周落地动作。'},
+    {t:'绩效面谈脚本', p:'你是 HRBP。我要和下属做季度面谈，对方【表现】，给我一份面谈脚本：开场、表扬、差距分析、改进计划、结尾。'},
+    {t:'团队周会纪要', p:'你是高效会议主持。根据【会议记录】，输出：结论、决策、各人待办(含时间)、下次会议议题。'},
+    {t:'决策分析', p:'你是战略顾问。我面临【决策问题】，请用利弊表帮我分析：方案、成本、收益、风险、时机，并给出推荐和理由。'}
+  ]},
+  {g:'岗位', k:'ops', name:' 运营工作台', desc:'选题、活动、数据、复盘', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'选题库批量生成', p:'你是增长运营。围绕【领域】给我 30 个选题：10 干货、10 热点借势、10 争议话题，每个配一句钩子。'},
+    {t:'活动方案', p:'你是活动策划。为【目标/节点】写活动方案：主题、玩法、用户路径、奖品梯度、推广渠道、成本预估、风险预案。'},
+    {t:'数据解读', p:'你是数据运营。这份报表【粘贴】的关键指标请解读：哪些涨跌、原因假设、下步实验建议。'},
+    {t:'复盘报告', p:'你是复盘专家。这次活动【情况】写一份复盘：结果 vs 目标、做对了什么、哪里翻车、5 条可复用经验。'}
+  ]},
+  {g:'岗位', k:'sales', name:' 销售工作台', desc:'开场白、异议处理、跟单', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'客户开场白', p:'你是销售教练。针对【客户行业/痛点】写 3 个开场白：陌生电话版、微信版、转介绍版，各 2 句内。'},
+    {t:'异议处理', p:'客户说「【异议，如太贵了】」，给我 3 种回应：价值重塑、拆分对比、让步话术，各带 1 个反问。'},
+    {t:'跟单跟进', p:'客户在【阶段】没回我，帮我写一条跟进消息：提醒价值、给台阶、设时限，60 字内。'},
+    {t:'报价方案', p:'你是售前方案。给【客户】做一页报价说明：痛点呼应、方案构成、价格梯度、ROI 估算、限时权益。'}
+  ]},
+  {g:'岗位', k:'hr', name:' HR 工作台', desc:'JD、筛选、面试、offer', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'JD 撰写', p:'你是招聘专家。为【岗位】写 JD：职责 5 条、任职要求分级(必须/加分)、福利亮点、投递引导语。'},
+    {t:'简历快速筛选', p:'给这批简历【粘贴】做初筛：按【硬性条件】打分(1-5)，标出 5 个推荐人并各写 1 句理由。'},
+    {t:'面试题库', p:'你是结构化面试官。为【岗位】出 10 题：3 行为面试 + 3 情景题 + 2 专业题 + 2 动机题，每题附考察点和追问。'},
+    {t:'offer 与婉拒话术', p:'帮我起草：①offer 邮件(含薪资福利说明) ②候选人问薪资的回应话术 ③婉拒不合适者的邮件。'}
+  ]},
+  {g:'岗位', k:'fin', name:' 财务工作台', desc:'报销、函数、预算、分析', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'报销 / 差旅说明', p:'你是财务助理。把【报销事项】写成规范说明：用途、金额、票据清单、合规提示。'},
+    {t:'Excel 函数', p:'我想在 Excel 里实现【需求】，给我公式 + 每一步操作路径，并提醒常见报错。'},
+    {t:'预算表', p:'你是预算分析师。按【部门/项目】做下季度预算表：科目、预估、上期对比、依据说明，表格输出。'},
+    {t:'经营分析报告', p:'根据财务数据【粘贴】写分析报告：收入结构、成本趋势、毛利变化、现金流风险、3 条建议。'}
+  ]},
+  {g:'岗位', k:'cs', name:' 客服工作台', desc:'回复、投诉、工单、FAQ', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'标准回复话术', p:'你是金牌客服。客户问【问题】，按 SOP 写回复：先共情、再给方案、补一句关怀，60 字内。'},
+    {t:'投诉升级处理', p:'客户愤怒投诉【情况】，帮我写安抚+解决话术：道歉(不揽责)、承认感受、明确处理时间、给补偿梯度。'},
+    {t:'工单摘要', p:'把这段对话【粘贴】压缩成工单：问题类型、客户诉求、已做处理、待办、紧急度。'},
+    {t:'FAQ 知识库', p:'把产品资料【粘贴】整理成客服 FAQ：按问题场景分组，每个问题给标准答案 + 快捷回复模板。'}
+  ]},
+  {g:'岗位', k:'dev', name:' 程序员工作台', desc:'审查、排错、注释、方案', deploy:'本地部署 · 对话即用', prompts:[
+    {t:'代码审查', p:'你是资深代码评审。审查这段代码【粘贴】：指出 bug、安全隐患、性能问题、可读性问题，按严重程度排序，并给出修复示例。'},
+    {t:'报错排查', p:'这是我的报错【粘贴】和上下文【粘贴】，请：定位根因、解释成因、给出 3 种修复方案并说明适用场景。'},
+    {t:'补注释 / 文档', p:'给这段代码【粘贴】补上：文件头说明、每个函数的作用与参数、复杂逻辑的逐行注释。保持中文注释。'},
+    {t:'CRUD / 接口生成', p:'你是全栈工程师。为【实体】生成一整套：建表 SQL、后端接口(增删改查+分页+校验)、前端调用示例。技术栈：【React/Node 等】。'}
+  ]},
+  {g:'岗位', k:'design', name:' 设计师工作台', desc:'需求转提示词、配色、文案', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'需求转生图提示词', p:'你是设计转译器。把这段甲方需求【粘贴】转成 3 个不同风格的 AI 生图提示词(极简/拟物/科技感)，每个附负面提示词。'},
+    {t:'配色方案', p:'为【用途，如科技品牌海报】给 3 套配色：主色+辅色+强调色+背景色(十六进制)，说明情绪和使用场景。'},
+    {t:'图配文案', p:'为这张图【描述】写 5 条配文：正式版、活泼版、小红书版、海报短句版、英文版。'},
+    {t:'作品集描述', p:'把作品【描述】写成作品集文案：项目背景、我的角色、设计过程、成果数据。突出可量化结果。'}
+  ]},
+  {g:'岗位', k:'media', name:' 新媒体工作台', desc:'选题、标题、脚本、拆解', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'爆款标题', p:'你是标题党但讲分寸。为【内容】写 10 个标题：5 个好奇型、5 个利益型，字数 ≤ 20，不虚假夸大。'},
+    {t:'短视频脚本', p:'你是短视频编导。为【主题】写 30 秒脚本：前 3 秒钩子、内容节奏(每 5 秒一个爆点)、结尾引导。含字幕建议。'},
+    {t:'对标拆解', p:'拆解这条爆款【链接/文字描述】：选题角度、开头钩子、结构套路、情绪点、可复用的模板。'},
+    {t:'矩阵发布', p:'把这篇内容【粘贴】改写适配 5 个平台：公众号、小红书、抖音、B 站、知乎，各给出标题、正文改法、话题标签。'}
+  ]},
+  {g:'岗位', k:'admin', name:' 行政工作台', desc:'通知、会议、制度、采购', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'通知公告', p:'你是行政文书。写一份关于【事项】的通知：标题、正文(时间地点对象流程)、落款。语气正式简洁。'},
+    {t:'会议安排', p:'帮我安排【会议】：生成议程、时间建议、参会人分工、会前提醒话术、会后纪要模板。'},
+    {t:'制度文案', p:'为公司写《【制度名】》初稿：目的、适用范围、条款(行为+奖惩)、生效说明。参考同业写法。'},
+    {t:'采购比价', p:'我要采购【物品】，列出询价要点：规格清单、比价维度、合同条款风险、砍价话术。'}
+  ]},
+  {g:'岗位', k:'law', name:' 法务工作台', desc:'审合同、风险、函件', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'合同条款审查', p:'你是合同律师。审查这份合同【粘贴】：按风险等级列出问题条款、解释后果、给出修改建议。只做风险提示，不构成正式法律意见。'},
+    {t:'风险清单', p:'针对【业务场景】列出法律风险清单：风险点、依据、发生概率、应对措施、责任归属。'},
+    {t:'函件起草', p:'起草一封【催告/告知/声明】函：事实经过、法律依据、诉求、期限、后果提示。'},
+    {t:'合规问答', p:'我是【岗位/行业】，遇到【合规问题】，请用大白话解释合规要求、违规后果、建议做法。'}
+  ]},
+  {g:'岗位', k:'ecom', name:' 电商工作台', desc:'详情页、标题、直播、客服', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'商品详情页', p:'你是电商文案。为商品【信息】写详情页：5 大卖点(场景化)、痛点对应、规格表、下单促动文案。'},
+    {t:'标题优化', p:'为商品【信息】写 10 个标题：含关键词、数字、人群词、使用场景，适配【平台】搜索逻辑。'},
+    {t:'直播脚本', p:'你是直播运营。为【产品】写 30 分钟直播脚本：开场福利、产品讲解(3 轮)、促单话术、逼单节点、下播预告。'},
+    {t:'差评回复', p:'买家差评说【内容】，写 3 条回复模板：官方版、补救版、幽默版，并给改进产品/服务的建议。'}
+  ]},
+  {g:'岗位', k:'pm', name:' 产品工作台', desc:'PRD、调研、需求、竞品', deploy:'对话即用 · 云端部署', prompts:[
+    {t:'PRD 初稿', p:'你是产品经理。为【功能】写 PRD 初稿：背景与目标、用户故事、功能列表(带优先级)、交互说明、数据埋点、验收标准。'},
+    {t:'用户调研提纲', p:'为【产品】设计调研提纲：目标、用户画像筛选、10 个问题(按动机/行为/痛点分层)、结论整理模板。'},
+    {t:'需求清单', p:'把这段需求反馈【粘贴】整理成需求池：编号、需求描述、用户价值、优先级(P0/P1/P2)、评估工时。'},
+    {t:'竞品分析', p:'对比【竞品 A/B/C】：功能矩阵、差异化定位、优缺点、可抄的细节、我们的破局点。表格输出。'}
+  ]}
+]
+var wbTabs = document.getElementById('wbTabs')
+var wbGrid = document.getElementById('wbGrid')
+var groups = [{k:'人群',t:' 按人群'},{k:'岗位',t:' 按岗位大类'}]
+groups.forEach(function(g){
+  var b=document.createElement('div'); b.className='wb-tab'+(g.k==='人群'?' active':''); b.textContent=g.t
+  b.addEventListener('click', function(){ renderWb(g.k); wbTabs.querySelectorAll('.wb-tab').forEach(function(x){x.classList.toggle('active',x===b)}) })
+  wbTabs.appendChild(b)
+})
+function renderWb(g){
+  var list = WBS.filter(function(w){return w.g===g})
+  wbGrid.innerHTML = list.map(function(w,wi){
+    var vis = w.prompts.slice(0,2), more = w.prompts.slice(2)
+    var html = '<div class="wb" data-i="'+wi+'"><div class="whead"><h3>'+w.name+'</h3><span class="deploy"> '+w.deploy+'</span></div>'+
+      '<p class="wdesc">'+w.desc+'</p>'
+    vis.forEach(function(pm){ html += promptBlock(pm.t, pm.p) })
+    if(more.length){
+      html += '<div class="more">'
+      more.forEach(function(pm){ html += promptBlock(pm.t, pm.p) })
+      html += '</div><button class="toggle" type="button">展开更多提示词 </button>'
+    }
+    return html + '</div>'
+  }).join('')
+  wbGrid.querySelectorAll('.wb').forEach(function(card){
+    var t = card.querySelector('.toggle')
+    if(t) t.addEventListener('click', function(){ card.classList.toggle('open'); t.textContent = card.classList.contains('open') ? '收起 ' : '展开更多提示词 ' })
+  })
+}
+function promptBlock(title, p){
+  return '<div class="prompt-title">'+title+'</div><div class="prompt-box"><button class="copy" type="button">复制</button>'+p+'</div>'
+}
+renderWb('人群')
+/* 部署步骤 */
+var DEPLOY = [
+  {t:'网页版即用（0 门槛）', d:'打开任意 AI 对话页（本平台的 chat / agent），把上面的提示词粘贴进去，就是你的"工作台"。适合老师、学生、个人副业。'},
+  {t:'装成桌面 PWA（离线可用）', d:'浏览器打开站点  地址栏「安装应用」 生成桌面图标。像 App 一样打开，无需部署任何服务器。'},
+  {t:'本地部署（数据全在本地）', d:'下载项目整包  安装 Node.js  在根目录运行 node server.mjs  浏览器打开本地地址。适合程序员、对数据敏感的企业。'},
+  {t:'云端部署（一台手机管全站）', d:'用 CloudStudio / WorkBuddy 选目录一键上传，自动起静态服务并给公网链接。手机、电脑、折叠屏随时访问，适合做收费服务。'},
+  {t:'定制专属工作台（变现）', d:'选定一类人群  挑 5-10 条提示词  做成一个专用页面/入口  收费教别人用或打包出售。本页所有提示词都是你的"库存"。'}
+]
+document.getElementById('deploySteps').innerHTML = DEPLOY.map(function(s){
+  return '<div class="step"><div style="flex:1"><h4>'+s.t+'</h4><p>'+s.d+'</p></div></div>'
+}).join('')
+/* 复制按钮 */
+document.addEventListener('click', function(e){
+  var b = e.target.closest('.copy')
+  if(!b) return
+  var box = b.closest('.prompt-box')
+  var text = box ? box.textContent.replace('复制','').trim() : ''
+  var done = function(){
+    b.textContent = '已复制 '; b.classList.add('done')
+    setTimeout(function(){ b.textContent = '复制'; b.classList.remove('done') }, 1500)
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done, function(){ fallback() })
+  } else fallback()
+  function fallback(){
+    var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0'
+    document.body.appendChild(ta); ta.select()
+    try{ document.execCommand('copy'); done() }catch(err){}
+    document.body.removeChild(ta)
+  }
+})
+})()
+</script>
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+
+
+<script>renderVideoSection('#vkHere', { categories: ["生态收纳","AI绘画","AI漫剧"], title: 'AI 赚钱 · 变现实操视频' });</script>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

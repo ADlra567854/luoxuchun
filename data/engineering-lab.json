@@ -1,0 +1,259 @@
+{
+  "title": "工科实训实验室",
+  "description": "真能跑、真能下载、真能实践的工科实训平台",
+  "lastUpdated": "2026-08-16",
+  "sections": [
+    {
+      "id": "simulation-scripts",
+      "name": "可直接运行的仿真脚本",
+      "description": "不想装 Python？直接打开网页版一键仿真",
+      "items": [
+        {
+          "id": "pid-controller",
+          "name": "PID 控制器仿真",
+          "command": "python 01_pid_controller.py",
+          "description": "自动控制原理，P/PI/PID 对比。",
+          "category": "控制理论"
+        },
+        {
+          "id": "spring-mass-damper",
+          "name": "弹簧-质量-阻尼",
+          "command": "python 02_spring_mass_damper.py",
+          "description": "机械振动二阶系统。",
+          "category": "机械振动"
+        },
+        {
+          "id": "projectile",
+          "name": "抛体运动",
+          "command": "python 03_projectile.py",
+          "description": "理论力学，含空气阻力。",
+          "category": "理论力学"
+        },
+        {
+          "id": "rc-circuit",
+          "name": "RC 电路暂态",
+          "command": "python 04_rc_circuit.py",
+          "description": "电路时间常数 τ=RC。",
+          "category": "电路分析"
+        },
+        {
+          "id": "monte-carlo",
+          "name": "蒙特卡洛",
+          "command": "python 05_monte_carlo.py",
+          "description": "估算 π 与定积分。",
+          "category": "数值计算"
+        },
+        {
+          "id": "simulation-test",
+          "name": "仿真测试",
+          "command": "pytest test_simulation.py -v",
+          "description": "用理论值校验仿真正确性。",
+          "category": "测试验证"
+        },
+        {
+          "id": "single-pendulum",
+          "name": "单摆",
+          "command": "python 06_single_pendulum.py",
+          "description": "非线性振动，大角度周期。",
+          "category": "非线性振动"
+        },
+        {
+          "id": "dc-motor",
+          "name": "直流电机",
+          "command": "python 07_dc_motor.py",
+          "description": "电气+机械耦合启动。",
+          "category": "电机控制"
+        },
+        {
+          "id": "heat-equation",
+          "name": "一维热传导",
+          "command": "python 08_heat_equation.py",
+          "description": "显式差分 PDE。",
+          "category": "偏微分方程"
+        },
+        {
+          "id": "lotka-volterra",
+          "name": "捕食者-猎物",
+          "command": "python 09_lotka_volterra.py",
+          "description": "生态振荡模型。",
+          "category": "生态模型"
+        },
+        {
+          "id": "wave-equation",
+          "name": "一维波动",
+          "command": "python 10_wave_equation.py",
+          "description": "波动方程差分。",
+          "category": "波动方程"
+        }
+      ]
+    },
+    {
+      "id": "cnc-code",
+      "name": "数控 G 代码",
+      "description": "可下载的数控编程示例",
+      "items": [
+        {
+          "id": "square-contour",
+          "name": "方形轮廓",
+          "command": "G0/G1 直线铣削示例",
+          "description": "G0/G1 直线铣削示例。",
+          "category": "基础铣削"
+        },
+        {
+          "id": "circle-contour",
+          "name": "圆形轮廓",
+          "command": "G2 圆弧插补示例",
+          "description": "G2 圆弧插补示例。",
+          "category": "圆弧插补"
+        },
+        {
+          "id": "drilling-cycle",
+          "name": "钻孔循环",
+          "command": "G81 钻孔循环示例",
+          "description": "G81 钻孔循环示例。",
+          "category": "钻孔加工"
+        }
+      ]
+    },
+    {
+      "id": "learning-paths",
+      "name": "学习路线与开源工具",
+      "description": "系统学习工科知识的路线图",
+      "items": [
+        {
+          "id": "programming-path",
+          "name": "编程与计算机学习路线",
+          "description": "从零到能用 AI 结对写代码",
+          "category": "编程基础"
+        },
+        {
+          "id": "algorithms",
+          "name": "算法与数据结构",
+          "description": "排序/查找/栈队列/图/动态规划（5 个可跑脚本）",
+          "category": "算法基础"
+        },
+        {
+          "id": "machine-learning",
+          "name": "机器学习入门",
+          "description": "线性回归/KNN/KMeans（纯 Python 可跑）",
+          "category": "机器学习"
+        },
+        {
+          "id": "numerical-computing",
+          "name": "数值计算",
+          "description": "牛顿法/龙格库塔/数值积分/最小二乘/插值",
+          "category": "数值计算"
+        },
+        {
+          "id": "mathematical-modeling",
+          "name": "数学建模",
+          "description": "建模六步 + 微分方程模型 + 国赛美赛",
+          "category": "数学建模"
+        },
+        {
+          "id": "cnc-programming",
+          "name": "数控编程与开源工具",
+          "description": "CNCjs / UGS / GRBL / LinuxCNC",
+          "category": "数控技术"
+        },
+        {
+          "id": "simulation-tools",
+          "name": "仿真模拟与开源工具",
+          "description": "ngspice / Octave / OpenModelica / Gazebo / KiCad",
+          "category": "仿真工具"
+        },
+        {
+          "id": "engineering-learning",
+          "name": "工科如何学",
+          "description": "数学是语言、物理是直觉、项目驱动",
+          "category": "学习方法"
+        },
+        {
+          "id": "engineering-projects",
+          "name": "工科实训项目",
+          "description": "5 大类真动手清单",
+          "category": "实训项目"
+        },
+        {
+          "id": "cicd-guide",
+          "name": "持续集成与部署（CI/CD）",
+          "description": "GitHub Actions 自动跑 pytest + 自动部署网站",
+          "category": "工程实践"
+        },
+        {
+          "id": "python-basics",
+          "name": "Python 基础全示例",
+          "description": "可运行",
+          "category": "编程基础"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    "控制理论",
+    "机械振动",
+    "理论力学",
+    "电路分析",
+    "数值计算",
+    "测试验证",
+    "非线性振动",
+    "电机控制",
+    "偏微分方程",
+    "生态模型",
+    "波动方程",
+    "基础铣削",
+    "圆弧插补",
+    "钻孔加工",
+    "编程基础",
+    "算法基础",
+    "机器学习",
+    "数学建模",
+    "数控技术",
+    "仿真工具",
+    "学习方法",
+    "实训项目",
+    "工程实践"
+  ],
+  "tools": [
+    {
+      "name": "FreeCAD",
+      "description": "开源CAD软件，用于3D建模和机械设计",
+      "category": "CAD/CAM"
+    },
+    {
+      "name": "KiCad",
+      "description": "开源电子设计自动化软件，用于PCB设计",
+      "category": "电子设计"
+    },
+    {
+      "name": "Gazebo",
+      "description": "机器人仿真平台，用于机器人开发和测试",
+      "category": "机器人仿真"
+    },
+    {
+      "name": "LTspice",
+      "description": "电路仿真软件，用于模拟电路设计",
+      "category": "电路仿真"
+    },
+    {
+      "name": "OpenFOAM",
+      "description": "开源计算流体力学软件包",
+      "category": "流体仿真"
+    },
+    {
+      "name": "Octave",
+      "description": "开源数值计算软件，兼容MATLAB",
+      "category": "数值计算"
+    },
+    {
+      "name": "OpenModelica",
+      "description": "开源建模和仿真环境",
+      "category": "系统建模"
+    },
+    {
+      "name": "CNCjs",
+      "description": "开源CNC控制软件",
+      "category": "数控控制"
+    }
+  ]
+}

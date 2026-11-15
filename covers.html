@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>页面封面墙 & 开源作品 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"白驹 · 页面封面墙 & 开源作品 · 白驹 ccowork","description":"白驹 ccowork的 15 张主题封面墙，以及 122 个真实可验证的 GitHub 开源 AI 项目画廊（团队 / 个人可筛选、可搜索）。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<meta name="keywords" content="白驹 ccowork,封面墙,开源作品,GitHub,AI 项目,ccowork">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/covers.html">
+<meta property="og:title" content="页面封面墙 & 开源作品 · 白驹 ccowork">
+<meta name="description" content="白驹 ccowork的 15 张主题封面墙，以及 122 个真实可验证的 GitHub 开源 AI 项目画廊（团队 / 个人可筛选、可搜索）。">
+<meta property="og:description" content="白驹 ccowork的 15 张主题封面墙，以及 122 个真实可验证的 GitHub 开源 AI 项目画廊（团队 / 个人可筛选、可搜索）。">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f5c26b;
+  --text:#e8eefc; --muted:#8fa0c4;
+  --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+a{color:inherit}
+nav.top{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;background:rgba(6,8,15,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
+nav .brand .logo{width:26px;height:26px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:15px}
+nav .links{display:flex;gap:16px;font-size:14px;flex-wrap:wrap}
+nav .links a{color:var(--muted);text-decoration:none;transition:.25s}
+nav .links a:hover,nav .links a.cur{color:var(--cyan)}
+.hero{padding:58px 24px 26px;text-align:center;
+  background:radial-gradient(900px 460px at 50% -10%,rgba(79,140,255,.16),transparent 62%),var(--bg)}
+.hero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:6px 16px;margin-bottom:18px}
+.hero h1{font-size:clamp(28px,4.6vw,52px);font-weight:900;letter-spacing:1px;line-height:1.2}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:760px;margin:16px auto 0;color:var(--muted);font-size:15px}
+.stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:26px 0 6px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 22px;min-width:120px}
+.stat b{display:block;font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:13px;color:var(--muted)}
+.sec{max-width:1180px;margin:0 auto;padding:48px 22px}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.sec-head h2{font-size:clamp(22px,3vw,32px);font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{color:var(--muted);font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 14px}
+.sec-head .more{margin-left:auto;color:var(--cyan);text-decoration:none;font-size:14px;font-weight:700}
+/* 封面墙 */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.ccard{position:relative;display:block;text-decoration:none;border-radius:18px;overflow:hidden;
+  border:1px solid var(--line);background:var(--card);transition:.28s;box-shadow:0 8px 24px rgba(4,8,20,.4)}
+.ccard:hover{transform:translateY(-4px);border-color:rgba(56,225,255,.5);box-shadow:0 14px 36px rgba(56,225,255,.18)}
+.ccard img{width:100%;height:120px;object-fit:cover;display:block;background:#0b1224}
+.ccard .cap{display:flex;align-items:center;justify-content:space-between;padding:11px 14px}
+.ccard .cap b{font-size:14px;font-weight:700}
+.ccard .cap i{font-size:11px;color:var(--cyan);font-style:normal}
+/* 开源画廊 */
+.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;padding:9px 14px}
+.search input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:14px}
+.search input::placeholder{color:var(--muted)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--muted);
+  padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;transition:.18s}
+.tab:hover{border-color:rgba(120,160,220,.45);color:var(--text)}
+.tab.cur{background:var(--grad);color:#fff;border-color:transparent}
+.osgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.os-card{display:flex;text-decoration:none;border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);background:var(--card);transition:.25s}
+.os-card:hover{transform:translateY(-3px);border-color:rgba(79,140,255,.45);box-shadow:0 10px 28px rgba(15,23,42,.5)}
+.os-cv{width:74px;flex:none;position:relative;background:linear-gradient(135deg,var(--blue),var(--purple));display:grid;place-items:center}
+.os-cv .let{font-size:30px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.os-cv .ob{position:absolute;top:7px;left:7px;font-size:10px;font-weight:800;color:#03121a;
+  background:rgba(255,255,255,.85);border-radius:6px;padding:1px 7px}
+.os-cb{padding:12px 14px;flex:1;min-width:0}
+.os-cb h4{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.os-cb .own{font-size:12px;color:var(--muted);margin:1px 0 6px}
+.os-cb .de{font-size:13px;color:#cdd8f2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.os-cb .ft{display:flex;align-items:center;justify-content:space-between;margin-top:9px}
+.os-cb .heat{color:var(--gold);font-size:12px;letter-spacing:1px}
+.os-cb .go{font-size:12px;color:var(--cyan);font-weight:700;white-space:nowrap}
+.empty,.loading{color:var(--muted);font-size:14px;padding:20px 4px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.cta{padding:12px 26px;border-radius:999px;font-weight:700;text-decoration:none;font-size:14px}
+.cta.primary{background:var(--grad);color:#04101f}
+.cta.ghost{border:1px solid var(--line);color:var(--text)}
+footer{border-top:1px solid var(--line);padding:30px 22px 50px;text-align:center;color:var(--muted);font-size:13px;background:var(--bg2)}
+footer a{color:var(--cyan);text-decoration:none}
+</style>
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:description" content="白驹 ccowork的 15 张主题封面墙，以及 122 个真实可验证的 GitHub 开源 AI 项目画廊（团队 / 个人可筛选、可搜索）。">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/works/covers.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="页面封面墙 &amp; 开源作品 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-skeleton="cards"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav class="top">
+  <div class="brand"><span class="logo">🐎</span><span>白驹 ccowork</span></div>
+  <div class="links">
+    <a href="/index.html">首页</a>
+    <a href="/works/covers.html" class="cur">封面墙</a>
+    <a href="/works/projects.html">开源大全</a>
+    <a href="/works/collection.html">作品内容库</a>
+    <a href="/learn/tutorials/index.html">AI 学院</a>
+    <a href="/blog/index.html">博客</a>
+  </div>
+</nav>
+<header class="hero">
+  <span class="badge"><i class="cc-mark"></i>白驹 ccowork · 本地优先 · MIT 开源</span>
+  <h1>页面<span>封面墙</span> &amp; 开源作品</h1>
+  <p>一眼看尽白驹 ccowork的全部主题封面，以及 122 个真实可验证的 GitHub 开源 AI 项目——团队 / 个人可筛选，名称 / 描述可搜索，点开即跳转原仓库。</p>
+  <div class="stats">
+    <div class="stat"><b>15</b><span>主题封面</span></div>
+    <div class="stat"><b>122</b><span>开源 AI 项目</span></div>
+    <div class="stat"><b>250+</b><span>站内页面</span></div>
+    <div class="stat"><b>2</b><span>双主题（亮/暗）</span></div>
+  </div>
+</header>
+<!-- 封面墙 -->
+<section class="sec" id="wallSec">
+  <div class="sec-head">
+    <h2><span class="em">页面封面墙</span></h2>
+    <span class="tag">15 张主题封面 · 点开直达</span>
+  </div>
+  <div class="wall" id="coverWall"></div>
+</section>
+<!-- 开源作品画廊 -->
+<section class="sec" id="osSec">
+  <div class="sec-head">
+    <h2><span class="em">开源作品画廊</span></h2>
+    <span class="tag" id="osTag">122 个真实 GitHub 项目</span>
+    <a class="more" href="/works/projects.html">完整大全 →</a>
+  </div>
+  <div class="bar">
+    <label class="search"><i class="cc-ic" data-ic="search"></i>
+      <input id="osSearch" type="search" placeholder="搜索项目名 / 作者 / 简介…" autocomplete="off">
+    </label>
+    <div class="tabs" id="osTabs">
+      <button class="tab cur" data-f="all">全部</button>
+      <button class="tab" data-f="team">团队</button>
+      <button class="tab" data-f="person">个人</button>
+    </div>
+  </div>
+  <div class="osgrid" id="osGrid"><p class="loading">正在装载开源作品库…</p></div>
+</section>
+<!-- 站内作品内容库 CTA -->
+<section class="sec" id="libSec" style="padding-top:0">
+  <div class="sec-head"><h2><span class="em">站内作品内容库</span></h2></div>
+  <p style="color:var(--muted);max-width:760px">书稿、小说、博文等用 AI 写成的内容，已「内嵌」进页面——点开标题即可展开正文，开箱即用。前往作品内容库查看全部。</p>
+  <div class="cta-row">
+    <a class="cta primary" href="/works/collection.html">进入作品内容库 →</a>
+    <a class="cta ghost" href="/works/projects.html">看 122 个开源作品大全</a>
+  </div>
+</section>
+<footer>
+  <p>🐎 白驹 ccowork · ccowork / 白驹 ccowork · MIT License</p>
+  <p style="margin-top:6px;opacity:.7">本地优先 · 登录可选云同步 · 双主题引擎 · 250+ 页面</p>
+</footer>
+<script>
+/* ============ 封面墙（15 张，硬编码，无依赖） ============ */
+const COVERS = [
+  {img:'cover-global.webp',     t:'AI 生态图谱',   u:'/website/ecosystem.html'},
+  {img:'cover-book.webp',       t:'五卷全书',       u:'/book/index.html'},
+  {img:'cover-chatgpt.webp',    t:'AI 对话工作台',  u:'/agent.html'},
+  {img:'cover-data.webp',       t:'每日 AI 快讯',   u:'/website/news.html'},
+  {img:'cover-deepseek.webp',   t:'本地 AI 部署',   u:'/website/local-ai.html'},
+  {img:'cover-design.webp',     t:'开发者基地',     u:'/website/devbase.html'},
+  {img:'cover-engineering.webp',t:'AI 赋能就业',    u:'/website/ai-jobs.html'},
+  {img:'cover-future.webp',     t:'AI 前沿',        u:'/website/frontiers.html'},
+  {img:'cover-growth.webp',     t:'AI 赋能教育',    u:'/website/ai-edu.html'},
+  {img:'cover-imagegen.webp',   t:'AI 绘画生图',    u:'/website/gallery.html'},
+  {img:'cover-industry.webp',   t:'行业实战手册',   u:'/website/industry.html'},
+  {img:'cover-prompts.webp',    t:'提示词实战',     u:'/website/prompts-guide.html'},
+  {img:'cover-research.webp',   t:'AI 编年史',      u:'/website/chronicle.html'},
+  {img:'cover-videogen.webp',   t:'AI 漫剧指南',    u:'/website/manju.html'},
+  {img:'cover-ai70.webp',       t:'AI 刷题测验',    u:'/website/quiz.html'},
+];
+(function(){
+  var wall = document.getElementById('coverWall');
+  COVERS.forEach(function(c){
+    var a = document.createElement('a');
+    a.className = 'ccard';
+    a.href = c.u;
+    a.innerHTML =
+      '<img src="/assets/img/'+c.img+'" alt="'+c.t+'" loading="lazy" '+
+      'onerror="this.style.visibility=\'hidden\'">'+
+      '<div class="cap"><b>'+c.t+'</b><i>查看 →</i></div>';
+    wall.appendChild(a);
+  });
+})();
+/* ============ 开源作品画廊（数据驱动，fetch ai-projects.json） ============ */
+var OS = { data:[], filter:'all', q:'' };
+function orgLabel(o){ return o==='team' ? '团队' : (o==='person'||o==='个人') ? '个人' : o; }
+function heatStars(h){ h=Math.max(1,Math.min(5,h||1)); return '★★★★★'.slice(0,h)+'☆☆☆☆☆'.slice(0,5-h); }
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function osRender(){
+  var list = OS.data.filter(function(p){
+    if(OS.filter==='team'   && p.org!=='team') return false;
+    if(OS.filter==='person' && p.org==='team') return false;   // 个人 = person + 个人
+    if(OS.q){
+      var s = (p.name+' '+p.owner+' '+p.author+' '+p.desc).toLowerCase();
+      if(s.indexOf(OS.q.toLowerCase())<0) return false;
+    }
+    return true;
+  });
+  list.sort(function(a,b){ return (b.heat||0)-(a.heat||0); });
+  var grid = document.getElementById('osGrid');
+  if(!list.length){ grid.innerHTML = '<p class="empty">没有匹配的项目，换个关键词试试。</p>'; return; }
+  grid.innerHTML = list.map(function(p){
+    var letter = (p.name||'?').trim().charAt(0).toUpperCase();
+    return '<a class="os-card" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+
+      '<div class="os-cv"><span class="ob">'+orgLabel(p.org)+'</span><span class="let">'+esc(letter)+'</span></div>'+
+      '<div class="os-cb"><h4>'+esc(p.name)+'</h4>'+
+      '<div class="own">@'+(p.owner||p.author||'unknown')+'</div>'+
+      '<div class="de">'+esc(p.desc)+'</div>'+
+      '<div class="ft"><span class="heat">'+heatStars(p.heat)+'</span>'+
+      '<span class="go">GitHub →</span></div></div></a>';
+  }).join('');
+}
+function osCounts(d){
+  var t=0,pi=0; d.forEach(function(p){ if(p.org==='team') t++; else pi++; });
+  return {team:t, person:pi, all:d.length};
+}
+function osTabs(d){
+  var c = osCounts(d);
+  document.getElementById('osTag').textContent = c.all+' 个真实 GitHub 项目 · 团队 '+c.team+' / 个人 '+c.person;
+  // 重写字数标签
+  var tabs = document.querySelectorAll('#osTabs .tab');
+  tabs.forEach(function(b){
+    var f=b.dataset.f;
+    var base = {all:'全部',team:'团队',person:'个人'}[f];
+    b.textContent = base+' '+({all:c.all,team:c.team,person:c.person}[f]);
+  });
+}
+document.getElementById('osTabs').addEventListener('click', function(e){
+  var b=e.target.closest('.tab'); if(!b) return;
+  document.querySelectorAll('#osTabs .tab').forEach(function(x){x.classList.remove('cur')});
+  b.classList.add('cur'); OS.filter=b.dataset.f; osRender();
+});
+document.getElementById('osSearch').addEventListener('input', function(e){
+  OS.q=e.target.value.trim(); osRender();
+});
+fetch('/data/ai-projects.json')
+  .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+  .then(function(d){ OS.data=d; osTabs(d); osRender(); })
+  .catch(function(e){ document.getElementById('osGrid').innerHTML =
+    '<p class="empty">无法加载作品库（'+(e.message||e)+'）。请通过 http(s) 访问（本地 node server.mjs 或已部署站点）。</p>'; });
+</script>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script src="/responsive.js?v=20261028e"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

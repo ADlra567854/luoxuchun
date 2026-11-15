@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 学院 · 章节测验 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="43 章对应的随堂测验、错题回顾与知识点定位。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/quiz.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+.hero{position:relative;overflow:hidden;background:var(--hero-grad);padding:56px 24px 44px}
+.hero::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:260px;height:260px;bottom:-80px;left:-60px;border-radius:50%;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%);pointer-events:none}
+.hero .inner{position:relative;max-width:1080px;margin:0 auto;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(30px,4.5vw,52px);font-weight:900;color:#fff;margin:14px 0 12px;letter-spacing:1px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+.hero .sub{color:rgba(255,255,255,.95);font-size:15px;max-width:760px;margin:0 auto;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow)}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35)}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;flex-wrap:wrap;overflow-x:auto;scrollbar-width:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer}
+section.block{max-width:1180px;margin:36px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;transition:.2s;box-shadow:var(--card-shadow);position:relative;overflow:hidden}
+.card:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(56,225,255,.35)}
+.card .lvl{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:2px;margin-bottom:8px}
+body[data-theme="deep"] .card .lvl{color:var(--cyan)}
+.card h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.card p{font-size:13px;color:var(--muted);line-height:1.7}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.card .meta span{font-size:11px;color:var(--blue);background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600}
+body[data-theme="deep"] .card .meta span{color:var(--cyan)}
+.card .best{font-size:12px;margin-top:10px;color:var(--muted)}
+.card .best b{color:var(--blue);font-weight:800}
+body[data-theme="deep"] .card .best b{color:var(--cyan)}
+/* C13 · 练习卡「去章节」补课深链 */
+.card .dch{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
+.card .dch .dch-lb{font-size:11px;color:var(--muted);font-weight:700;margin-right:2px}
+.card .dch a{font-size:12px;font-weight:700;color:var(--blue);background:rgba(79,140,255,.10);border:1px solid rgba(79,140,255,.22);border-radius:999px;padding:3px 11px;text-decoration:none;transition:.2s}
+body[data-theme="deep"] .card .dch a{color:var(--cyan)}
+.card .dch a:hover{background:rgba(79,140,255,.20);transform:translateY(-1px)}
+.btn{display:inline-block;margin-top:14px;padding:10px 20px;border-radius:14px;background:var(--grad);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(79,140,255,.35)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--blue);font-weight:600}
+body[data-theme="deep"] .btn.ghost{color:var(--cyan)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.note{background:rgba(120,160,220,.08);border:1px solid rgba(120,160,220,.2);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--muted);margin-top:14px}
+/* 答题区 */
+.quiz-box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--card-shadow);max-width:860px;margin:0 auto}
+.q-meta{display:flex;justify-content:space-between;font-family:var(--mono,monospace);font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;gap:6px}
+.q-meta b{color:var(--blue)}
+body[data-theme="deep"] .q-meta b{color:var(--cyan)}
+.quiz-box h3{font-size:17px;line-height:1.75;margin-bottom:16px}
+.opt{display:block;width:100%;text-align:left;background:var(--bg2,var(--panel));border:1px solid var(--line);color:var(--text);border-radius:14px;padding:12px 16px;font-size:14px;margin-bottom:10px;cursor:pointer;transition:.2s;font-family:inherit}
+.opt:hover{border-color:var(--blue)}
+.opt.pick{border-color:var(--blue);background:rgba(79,140,255,.10)}
+.opt.right{border-color:var(--ok,#4ade80);background:rgba(74,222,128,.10);color:var(--ok,#16a34a)}
+.opt.wrong{border-color:var(--err,#ff5c8a);background:rgba(255,92,138,.10);color:var(--err,#e11d48)}
+.opt:disabled{cursor:default}
+.explain{margin-top:12px;background:rgba(79,140,255,.06);border:1px dashed rgba(79,140,255,.35);border-radius:14px;padding:12px 16px;font-size:14px;color:var(--muted);display:none;line-height:1.75}
+.explain.show{display:block}
+.actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.result{text-align:center;padding:30px 12px}
+.result .rnum{font-size:56px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.result .rsub{color:var(--muted);margin-top:6px;font-size:14px}
+.result .rpass{display:inline-block;margin-top:14px;padding:8px 18px;border-radius:999px;background:rgba(74,222,128,.14);border:1px solid rgba(74,222,128,.4);color:var(--ok,#16a34a);font-weight:800;font-size:13px}
+.result .rfail{display:inline-block;margin-top:14px;padding:8px 18px;border-radius:999px;background:rgba(255,92,138,.12);border:1px solid rgba(255,92,138,.4);color:var(--err,#e11d48);font-weight:800;font-size:13px}
+.mode-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.mode-tab{padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:14px;font-weight:600;cursor:pointer;transition:.2s}
+.mode-tab:hover{border-color:var(--blue);color:var(--blue)}
+.mode-tab.on{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(79,140,255,.3)}
+.panel{display:none}
+.panel.on{display:block;animation:rise .35s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.bar{height:8px;border-radius:999px;background:rgba(120,160,220,.15);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;border-radius:999px;background:var(--grad);transition:width .5s ease}
+.progline{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
+.empty{color:var(--muted);font-size:14px;padding:10px 2px}
+.dim{color:var(--muted)}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-quiz.png" alt="章节测验 · 认证考试 · AI 学院 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<section class="hero">
+  <div class="inner">
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 · 测验与认证</div>
+    <h1>章节测验 · 认证考试</h1>
+    <p class="sub">按知识域练习自测，或参加认证考试——通过即发放数字证书，全部记录保存在本机浏览器。</p>
+  </div>
+</section>
+<section class="block">
+  <div class="mode-tabs" id="modeTabs">
+    <button class="mode-tab on" data-mode="practice" type="button"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>练习模式</button>
+    <button class="mode-tab" data-mode="exam" type="button"><i class="cc-ic" data-ic="award" aria-hidden="true"></i>认证考试</button>
+    <button class="mode-tab" data-mode="record" type="button"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>我的记录</button>
+  </div>
+  <!-- ========== 练习模式 ========== -->
+  <div class="panel on" id="panel-practice">
+    <div class="sec-head"><h2><span class="em">按知识域练习</span></h2><span class="tag">答完即时判分 · 附解析</span></div>
+    <div class="grid" id="domainGrid"></div>
+    <div class="note" id="practiceNote"></div>
+    <div class="quiz-box" id="practiceBox" style="display:none"></div>
+  </div>
+  <!-- ========== 认证考试 ========== -->
+  <div class="panel" id="panel-exam">
+    <div class="sec-head"><h2><span class="em">认证考试</span></h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-ai-academy-quiz.png" alt="章节测验 · 认证考试 · AI 学院 · 白驹 ccowork · " loading="lazy"></figure>
+<span class="tag">≥80% 通过 · 通过即发证</span></div>
+    <div class="grid" id="examGrid"></div>
+    <div class="note" id="examNote"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i><b>考试规则</b>：每科 10 题，全部作答后统一判分；多选需全选正确才得分；得分 ≥80% 即通过，数字证书自动发放到「我的认证」与「我的记录」。考试记录保存在本机浏览器（localStorage），换设备不共享。</div>
+    <div class="quiz-box" id="examBox" style="display:none"></div>
+  </div>
+  <!-- ========== 我的记录 ========== -->
+  <div class="panel" id="panel-record">
+    <div class="sec-head"><h2><span class="em">我的学习记录</span></h2><span class="tag">本机浏览器保存</span></div>
+    <div id="recordBox"></div>
+  </div>
+</section>
+
+
+
+
+<script>
+/* ================= 数据与状态 ================= */
+(function(){
+'use strict';
+var AIQ = window.AI_QUIZ || { domains: [], questions: [] };
+var LS = {
+  get: function(k, d){ try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
+  set: function(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+var scores = LS.get('ccowork.quiz.scores', {});      // {domainId: {best, times, last}}
+var certs  = LS.get('ccowork.certs', {});            // {certId: {name, date, score}}
+var history = LS.get('ccowork.quiz.history', []);    // [{mode, label, date, score, total, pass}]
+/* 认证考试定义（题目域构成，诚实映射 10 域题库） */
+/* C2：每科添加前置章节要求（软门槛，引导学习路径） */
+var EXAMS = [
+  { id:'cert02', name:' 智能体工程师', short:'CERT 02', pass:80, desc:'智能体范式、大模型、架构与基础综合考试。对应章节 01-16。',
+    parts: { agent:4, llm:3, arch:2, basic:1 }, quiz:null, taken:false,
+    prereq: { minChapters: 5, chapters: ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16'], label:'建议先学完 5 章基础再考试' } },
+  { id:'cert03', name:' RAG 应用工程师', short:'CERT 03', pass:80, desc:'检索增强生成与大模型综合考试。对应章节 19 + 08。',
+    parts: { rag:5, llm:5 }, quiz:null, taken:false,
+    prereq: { minChapters: 3, chapters: ['08','19','09','10'], label:'建议先学完 3 章 RAG 相关内容再考试' } },
+  { id:'cert01', name:' Prompt 工程师', short:'CERT 01', pass:80, desc:'提示词工程认证考试。对应章节 17-18。',
+    parts: { prompt:10 }, quiz:null, taken:false,
+    prereq: { minChapters: 3, chapters: ['17','18'], label:'建议先学完 3 章提示词内容再考试' } },
+  { id:'cert04', name:' 微调与部署工程师', short:'CERT 04', pass:80, desc:'工程部署与推理优化认证考试。对应章节 20 + 11/12。',
+    parts: { eng:10 }, quiz:null, taken:false,
+    prereq: { minChapters: 4, chapters: ['20','11','12'], label:'建议先学完 4 章工程相关内容再考试' } }
+];
+var DOMAINS = {};
+AIQ.domains.forEach(function(d){ DOMAINS[d.id] = d; });
+/* 按域归集题目 */
+var BY_DOM = {};
+AIQ.questions.forEach(function(q){
+  if(q.type === 'short') return;                 // 简答为开放题，不参与自动判分
+  (BY_DOM[q.domain] = BY_DOM[q.domain] || []).push(q);
+});
+/* ================= 工具 ================= */
+function shuffle(a){ a = a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function pad(n){ return n<10 ? '0'+n : ''+n; }
+function today(){ var d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function qTypeName(t){ return { single:'单选', multi:'多选', judge:'判断' }[t] || t; }
+function isCorrect(q, pick){
+  if(q.type === 'multi'){
+    var p = pick.slice().sort().join(',');
+    var a = (Array.isArray(q.answer)?q.answer:[]).slice().sort().join(',');
+    return p === a && pick.length > 0;
+  }
+  if(q.type === 'judge') return pick === (q.answer === '正确' ? 'T' : 'F');
+  return pick === q.answer;
+}
+function saveScore(domainId, right, total){
+  var s = scores[domainId] || { best:0, times:0, last:null };
+  var pct = Math.round(right/total*100);
+  s.times++; s.last = pct; if(pct > s.best) s.best = pct;
+  scores[domainId] = s; LS.set('ccowork.quiz.scores', scores);
+}
+function pushHistory(mode, label, right, total, pass){
+  history.unshift({ mode:mode, label:label, date:today(), score:Math.round(right/total*100), total:total, pass:!!pass });
+  if(history.length > 50) history = history.slice(0, 50);
+  LS.set('ccowork.quiz.history', history);
+}
+/* ================= 渲染：练习模式 ================= */
+/* ===== C13：知识域 → 章节学习地图（练习卡直达对应章节）
+ * 练完想深挖 / 答错想补课，一个链接跳到对应章节。映射按章节标题诚实对应，宁缺毋滥。
+ */
+var DOM_CH = {
+  basic:  [22],
+  arch:   [3, 22],
+  llm:    [3, 20],
+  agent:  [1, 4, 27],
+  rag:    [8, 19],
+  prompt: [17, 18],
+  multi:  [21, 29],
+  eng:    [20, 32],
+  eval:   [12],
+  apply:  [23, 24]
+};
+var CH_LB = { 1:'01 初识智能体',3:'03 LLM 基础',4:'04 经典范式',8:'08 记忆检索',12:'12 性能评估',17:'17 提示词入门',18:'18 提示词进阶',19:'19 RAG 实战',20:'20 微调部署',21:'21 多模态 AIGC',22:'22 ML·DL 基础',23:'23 AI 职场',24:'24 行业职业',27:'27 MCP 开发',29:'29 多模态理解',32:'32 端侧推理' };
+function dchHtml(did){
+  var chs = DOM_CH[did];
+  if (!chs || !chs.length) return '';
+  var chips = chs.map(function(n){
+    return '<a href="/learn/tutorials/chapter-' + pad(n) + '.html">' + (CH_LB[n] || ('章节 ' + pad(n))) + '</a>';
+  }).join('');
+  return '<div class="dch"><span class="dch-lb">📖 去章节</span>' + chips + '</div>';
+}
+function renderDomains(){
+  var g = document.getElementById('domainGrid');
+  var html = '';
+  Object.keys(DOMAINS).forEach(function(did){
+    var d = DOMAINS[did];
+    var qs = BY_DOM[did] || [];
+    var s = scores[did];
+    var pct = s ? s.best : null;
+    if(qs.length === 0){
+      html += '<div class="card" style="opacity:.62">'
+        + '<div class="lvl">DOMAIN · ' + did.toUpperCase() + '</div>'
+        + '<h3>' + esc(d.name) + '</h3>'
+        + '<p>' + esc(d.desc) + '</p>'
+        + '<div class="meta"><span>题库扩充中</span></div>'
+        + '<button class="btn ghost" type="button" disabled style="cursor:not-allowed"> 建设中</button>'
+        + '</div>';
+      return;
+    }
+    html += '<div class="card">'
+      + '<div class="lvl">DOMAIN · ' + did.toUpperCase() + '</div>'
+      + '<h3>' + esc(d.name) + '</h3>'
+      + '<p>' + esc(d.desc) + '</p>'
+      + '<div class="meta"><span>' + qs.length + ' 题可练习</span><span>练习 10 题随机抽</span></div>'
+      + (pct !== null ? '<div class="best">最佳正确率 <b>' + pct + '%</b> · 练习 ' + s.times + ' 次</div>' : '<div class="best">尚未练习</div>')
+      + dchHtml(did)
+      + '<button class="btn" data-start="' + did + '" type="button">开始练习 </button>'
+      + '</div>';
+  });
+  g.innerHTML = html;
+  var note = document.getElementById('practiceNote');
+  note.innerHTML = ' <b>练习模式</b>：每次从所选知识域随机抽 10 题，答完即时判分并展示解析；正确率 ≥60% 记为合格。练习记录只用于自我追踪，不计入认证。想深挖或答错想补课？每张域卡都带「📖 去章节」直达对应教程。';
+}
+function renderExamGrid(){
+  var g = document.getElementById('examGrid');
+  var html = '';
+  // C2：获取学习进度 API（若可用）
+  var Prog = window.CCOWorkProgress || null;
+  EXAMS.forEach(function(ex){
+    var got = certs[ex.id];
+    var btnHtml;
+    // C2：计算前置章节完成情况
+    var prereqDone = 0;
+    var prereqTotal = ex.prereq ? ex.prereq.chapters.length : 0;
+    var meetsPrereq = true;
+    if (Prog && ex.prereq && ex.prereq.chapters) {
+      ex.prereq.chapters.forEach(function(ch) {
+        if (Prog.isChapterCompleted('chapter-' + ch)) prereqDone++;
+      });
+      meetsPrereq = prereqDone >= ex.prereq.minChapters;
+    }
+    if(ex.pending){
+      btnHtml = '<button class="btn ghost" type="button" disabled>题库扩充中</button>';
+    } else if(got){
+      btnHtml = '<button class="btn ghost" data-cert="' + ex.id + '" type="button" onclick="location.href=\'ai-academy-cert.html\'"> 已获证 · 查看</button>';
+    } else if (!meetsPrereq && Prog) {
+      // C2：未达前置门槛时，显示温和提醒（软门槛，仍可考）
+      btnHtml = '<button class="btn" data-exam="' + ex.id + '" type="button">直接挑战 </button>'
+        + '<div class="best" style="color:var(--amber,#d97706)"> 建议先学 ' + ex.prereq.minChapters + ' 章再考（已学 ' + prereqDone + ' 章）</div>';
+    } else {
+      btnHtml = '<button class="btn" data-exam="' + ex.id + '" type="button">参加考试 </button>';
+    }
+    // C2：前置进度条（有进度数据时显示）
+    var prereqBar = '';
+    if (Prog && ex.prereq && ex.prereq.chapters && !got && !ex.pending) {
+      var pct = Math.round(prereqDone / prereqTotal * 100);
+      prereqBar = '<div class="bar" style="margin-top:10px"><i style="width:' + pct + '%"></i></div>'
+        + '<div class="progline"><span>前置学习进度</span><span>' + prereqDone + ' / ' + prereqTotal + ' 章</span></div>';
+    }
+    html += '<div class="card">'
+      + '<div class="lvl">' + ex.short + ' · 通过线 ' + ex.pass + '%</div>'
+      + '<h3>' + ex.name + '</h3>'
+      + '<p>' + esc(ex.desc) + '</p>'
+      + '<div class="meta">' + (ex.parts ? '<span>10 题 · 全卷判分</span>' : '<span>待题库扩充</span>') + '</div>'
+      + (got ? '<div class="best">获证日期 <b>' + got.date + '</b> · 分数 <b>' + got.score + '%</b></div>' : '')
+      + prereqBar
+      + btnHtml
+      + '</div>';
+  });
+  g.innerHTML = html;
+  g.querySelectorAll('[data-exam]').forEach(function(b){
+    b.addEventListener('click', function(){ startExam(b.dataset.exam); });
+  });
+}
+function renderRecord(){
+  var box = document.getElementById('recordBox');
+  var html = '<div class="quiz-box">';
+  /* 已获证书 */
+  html += '<h3 style="margin-bottom:10px"> 已获认证</h3>';
+  var got = EXAMS.filter(function(e){ return certs[e.id]; });
+  if(got.length === 0){
+    html += '<div class="empty">暂无认证。参加「认证考试」并达到 ' + EXAMS[1].pass + '% 通过线即可获得。</div>';
+  } else {
+    html += got.map(function(e){
+      var c = certs[e.id];
+      return '<div class="card" style="margin-bottom:10px"><div class="lvl">' + e.short + ' · 已获证</div><h3>' + e.name + '</h3><div class="best">获证日期 <b>' + c.date + '</b> · 分数 <b>' + c.score + '%</b></div><button class="btn ghost" type="button" onclick="location.href=\'ai-academy-cert.html\'">查看/打印证书 </button></div>';
+    }).join('');
+  }
+  /* 最近记录 */
+  html += '<h3 style="margin:22px 0 10px"> 最近测验记录</h3>';
+  if(history.length === 0){
+    html += '<div class="empty">暂无测验记录，先去「练习模式」热热身吧。</div>';
+  } else {
+    html += '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px">'
+      + '<thead><tr><th style="text-align:left;padding:8px 10px;color:var(--muted)">日期</th><th style="text-align:left;padding:8px 10px;color:var(--muted)">模式</th><th style="text-align:left;padding:8px 10px;color:var(--muted)">内容</th><th style="text-align:left;padding:8px 10px;color:var(--muted)">得分</th><th style="text-align:left;padding:8px 10px;color:var(--muted)">结果</th></tr></thead><tbody>';
+    history.forEach(function(h){
+      html += '<tr><td style="padding:8px 10px;border-top:1px solid var(--line)">' + h.date + '</td>'
+        + '<td style="padding:8px 10px;border-top:1px solid var(--line)">' + (h.mode === 'exam' ? '考试' : '练习') + '</td>'
+        + '<td style="padding:8px 10px;border-top:1px solid var(--line)">' + esc(h.label) + '</td>'
+        + '<td style="padding:8px 10px;border-top:1px solid var(--line)"><b style="color:var(--blue)">' + h.score + '%</b></td>'
+        + '<td style="padding:8px 10px;border-top:1px solid var(--line)">' + (h.pass ? '<span style="color:var(--ok,#16a34a);font-weight:700">通过</span>' : '<span style="color:var(--err,#e11d48);font-weight:700">未过</span>') + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+  }
+  html += '</div>';
+  box.innerHTML = html;
+}
+/* ================= 答题引擎 ================= */
+var CUR = null; // {mode, label, list, idx, right, answers, passLine, certId}
+function buildExam(ex){
+  var qs = [];
+  Object.keys(ex.parts).forEach(function(did){
+    var pool = BY_DOM[did] || [];
+    var need = ex.parts[did];
+    var picked = shuffle(pool).slice(0, need);
+    qs = qs.concat(picked);
+  });
+  return shuffle(qs).slice(0, 10);
+}
+function startExam(certId){
+  var ex = EXAMS.filter(function(e){ return e.id === certId; })[0];
+  if(!ex || ex.pending || certs[certId]) return;
+  CUR = { mode:'exam', label:ex.name, certId:ex.id, passLine:ex.pass, list:buildExam(ex), idx:0, right:0, answers:{}, finished:false };
+  document.getElementById('examNote').style.display = 'none';
+  document.getElementById('examGrid').style.display = 'none';
+  document.getElementById('examBox').style.display = 'block';
+  renderQ();
+}
+function startPractice(domainId){
+  var pool = shuffle(BY_DOM[domainId] || []).slice(0, 10);
+  var d = DOMAINS[domainId];
+  CUR = { mode:'practice', label:d.name, certId:null, passLine:60, list:pool, idx:0, right:0, answers:{}, finished:false };
+  document.getElementById('practiceNote').style.display = 'none';
+  document.getElementById('domainGrid').style.display = 'none';
+  document.getElementById('practiceBox').style.display = 'block';
+  renderQ();
+}
+function renderQ(){
+  if(CUR.idx >= CUR.list.length){ return finish(); }
+  var q = CUR.list[CUR.idx];
+  var box = CUR.mode === 'exam' ? document.getElementById('examBox') : document.getElementById('practiceBox');
+  var multi = q.type === 'multi';
+  var pick = CUR.answers[q.id] || (multi ? [] : null);
+  var optsHtml = '';
+  if(q.type === 'judge'){
+    [['T','正确'],['F','错误']].forEach(function(o){
+      optsHtml += '<button class="opt' + (pick === o[0] ? ' pick' : '') + '" data-v="' + o[0] + '" type="button">' + (o[0] === 'T' ? ' ' : ' ') + o[1] + '</button>';
+    });
+  } else {
+    q.options.forEach(function(o, i){
+      var letter = String.fromCharCode(65+i);
+      var mark = multi ? (pick.indexOf(letter) >= 0 ? ' ' : ' ') : (pick === letter ? ' ' : ' ');
+      optsHtml += '<button class="opt' + (multi ? (pick.indexOf(letter) >= 0 ? ' pick' : '') : (pick === letter ? ' pick' : '')) + '" data-v="' + letter + '" type="button">' + letter + '. ' + esc(o) + mark + '</button>';
+    });
+  }
+  box.innerHTML = '<div class="q-meta">'
+    + '<span>' + (CUR.mode === 'exam' ? ' 认证考试 · ' : ' 练习 · ') + '<b>' + esc(CUR.label) + '</b></span>'
+    + '<span>' + (CUR.idx + 1) + ' / ' + CUR.list.length + ' · ' + qTypeName(q.type) + ' · ' + q.level + '</span></div>'
+    + '<h3>' + esc(q.q) + '</h3>'
+    + optsHtml
+    + '<div class="explain" id="exp">' + esc(q.explain || '') + '</div>'
+    + '<div class="actions"><button class="btn" id="prevBtn" type="button" style="' + (CUR.idx === 0 ? 'visibility:hidden' : '') + '"> 上一题</button>'
+    + (CUR.idx === CUR.list.length - 1
+        ? '<button class="btn" id="submitBtn" type="button">交卷判分 </button>'
+        : '<button class="btn" id="nextBtn" type="button">下一题 </button>')
+    + (multi ? '<span class="dim" style="font-size:13px">多选：需全部选对才得分</span>' : '')
+    + '</div>';
+  box.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click', function(){
+      if(CUR.finished) return;
+      var v = b.dataset.v;
+      if(multi){
+        var arr = CUR.answers[q.id] || [];
+        var i = arr.indexOf(v);
+        if(i >= 0) arr.splice(i, 1); else arr.push(v);
+        CUR.answers[q.id] = arr;
+        box.querySelectorAll('.opt').forEach(function(x){
+          var vv = x.dataset.v;
+          x.classList.toggle('pick', arr.indexOf(vv) >= 0);
+          x.innerHTML = x.innerHTML.replace(/ []$/, '') + (arr.indexOf(vv) >= 0 ? ' ' : ' ');
+        });
+      } else {
+        CUR.answers[q.id] = v;
+        box.querySelectorAll('.opt').forEach(function(x){
+          x.classList.toggle('pick', x.dataset.v === v);
+          x.innerHTML = x.innerHTML.replace(/ []$/, '') + (x.dataset.v === v ? ' ' : ' ');
+        });
+      }
+    });
+  });
+  var go = function(delta){
+    if(multi && !(CUR.answers[q.id] || []).length && delta > 0){ return; }
+    if(!multi && !CUR.answers[q.id] && delta > 0){ return; }
+    if(delta < 0 && CUR.idx === 0) return;
+    CUR.idx += delta;
+    renderQ();
+  };
+  var nb = document.getElementById('nextBtn'), pb = document.getElementById('prevBtn'), sb = document.getElementById('submitBtn');
+  if(nb) nb.addEventListener('click', function(){ go(1); });
+  if(pb) pb.addEventListener('click', function(){ go(-1); });
+  if(sb) sb.addEventListener('click', function(){ finish(); });
+}
+function finish(){
+  var list = CUR.list, right = 0;
+  list.forEach(function(q){ if(isCorrect(q, CUR.answers[q.id])) right++; });
+  var total = list.length, pct = Math.round(right/total*100);
+  var box = CUR.mode === 'exam' ? document.getElementById('examBox') : document.getElementById('practiceBox');
+  var passed = pct >= CUR.passLine;
+  CUR.finished = true;
+  if(CUR.mode === 'exam'){
+    var ex = EXAMS.filter(function(e){ return e.id === CUR.certId; })[0];
+    if(passed){
+      certs[CUR.certId] = { name: ex.name, date: today(), score: pct };
+      LS.set('ccowork.certs', certs);
+    }
+  } else {
+    saveScore(CUR.list[0].domain, right, total);
+  }
+  pushHistory(CUR.mode, CUR.label, right, total, passed);
+  var medal = passed ? ' 恭喜通过！' : (CUR.mode === 'exam' ? '差一点，再练练！' : '继续加油！');
+  box.innerHTML = '<div class="result">'
+    + '<div class="rnum">' + pct + '%</div>'
+    + '<div class="rsub">' + right + ' / ' + total + ' · ' + medal + '</div>'
+    + '<div>' + (passed ? '<span class="rpass">' + (CUR.mode === 'exam' ? ' 已发放证书' : ' 合格（≥' + CUR.passLine + '%）') + '</span>'
+                : '<span class="rfail">未达通过线 ' + CUR.passLine + '%</span>') + '</div>'
+    + '<div class="actions" style="justify-content:center">'
+    + (CUR.mode === 'exam' && passed
+        ? '<a class="btn" href="/learn/academy/cert.html"> 查看我的证书 </a>'
+        : '')
+    + '<button class="btn ghost" id="againBtn" type="button"> 再来一次</button>'
+    + '<a class="btn ghost" href="/learn/academy.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回学院</a>'
+    + '</div></div>';
+  document.getElementById('againBtn').addEventListener('click', function(){
+    if(CUR.mode === 'exam'){
+      document.getElementById('examBox').style.display = 'none';
+      document.getElementById('examGrid').style.display = '';
+      document.getElementById('examNote').style.display = '';
+      renderExamGrid(); CUR = null;
+    } else {
+      var d = CUR.list[0].domain;
+      document.getElementById('practiceBox').style.display = 'none';
+      document.getElementById('domainGrid').style.display = '';
+      document.getElementById('practiceNote').style.display = '';
+      renderDomains(); CUR = null;
+      startPractice(d);
+    }
+  });
+}
+/* ================= 模式切换 ================= */
+document.getElementById('modeTabs').addEventListener('click', function(e){
+  var b = e.target.closest('.mode-tab'); if(!b) return;
+  document.querySelectorAll('.mode-tab').forEach(function(x){ x.classList.remove('on'); });
+  b.classList.add('on');
+  ['practice','exam','record'].forEach(function(m){
+    document.getElementById('panel-' + m).classList.toggle('on', m === b.dataset.mode);
+  });
+  if(b.dataset.mode === 'record') renderRecord();
+});
+document.getElementById('domainGrid').addEventListener('click', function(e){
+  var b = e.target.closest('[data-start]'); if(!b) return;
+  startPractice(b.dataset.start);
+});
+/* ================= 初始化 ================= */
+renderDomains();
+renderExamGrid();
+var certParam = new URLSearchParams(location.search).get('cert');
+if(certParam){
+  document.querySelector('[data-mode="exam"]').click();
+  var ex = EXAMS.filter(function(e){ return e.id === certParam; })[0];
+  if(ex && !ex.pending && !certs[ex.id]) setTimeout(function(){ startExam(certParam); }, 120);
+}
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+})();
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<script src="/data/ai-quiz.js"></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

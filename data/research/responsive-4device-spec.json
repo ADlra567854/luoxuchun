@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "title": "四端适配规范调研",
+    "collectedAt": "2026-10-07",
+    "method": "全部来自公开规范与可点开的技术文章，每条附 URL。禁止凭印象填写。",
+    "keyInsight": "电视投屏不是「把手机页面放大」。观看距离 2~4 米 vs 手机 35 厘米，字号必须放大 1.8~2.5 倍、信息密度必须大幅降低、对比度必须超过 WCAG 最低要求，且必须支持方向键（D-pad）导航。"
+  },
+
+  "breakpoints": {
+    "note": "无官方 CSS 标准，但框架已收敛出一套事实标准。业界共识：3~5 个断点足够，十几个断点的系统维护成本大于精度收益。",
+    "tiers": [
+      { "name": "phone",      "range": "320–639px",   "base": true,  "desc": "手机竖屏，基础样式不写 media query（移动优先）" },
+      { "name": "tablet",     "range": "640–1023px",  "desc": "平板竖屏 / 手机横屏 / 小笔记本" },
+      { "name": "desktop",    "range": "1024–1599px", "desc": "笔记本 / 台式机 / iPad 横屏" },
+      { "name": "wide",       "range": "1600px+",     "desc": "大屏显示器 / 电视投屏（须再叠加 TV 规则）" }
+    ],
+    "frameworkDefaults": {
+      "tailwind": ["sm 640", "md 768", "lg 1024", "xl 1280", "2xl 1536"],
+      "bootstrap5": ["sm 576", "md 768", "lg 992", "xl 1200", "xxl 1400"],
+      "materialUI": ["sm 600", "md 900", "lg 1200", "xl 1536"]
+    },
+    "advice": "断点应设在「内容开始难看的宽度」，不是设备名。2026 主流做法：优先用内容断点，媒体查询用于页面级布局，容器查询（container query）用于组件级自适应。",
+    "sources": [
+      "https://webhelpagency.com/?p=9916/",
+      "https://screenres.app/css-breakpoints",
+      "https://marketingagency.sg/responsive-web-design-guide/"
+    ]
+  },
+
+  "tv10foot": {
+    "name": "电视端（10-foot UI）",
+    "why": "电视观看距离 2.4~3.7 米（8~12 英尺），手机是 25~35 厘米。距离差约 10 倍，字号差必须靠距离补偿。TV 浏览器实测规范建议：把电视当作「超低 DPI 的大屏幕」——同样 1920px 宽度，电视的实际 DPI 远低于显示器。",
+    "fontSize": {
+      "note": "下表是 CSS px（CSS 像素），在电视上等效感知更大",
+      "bodyMin": 28,
+      "bodyRecommended": "32–36",
+      "menuMin": 32,
+      "menuRecommended": "32–44",
+      "titleMin": 48,
+      "titleRecommended": "48–80",
+      "captionMin": 55,
+      "smallestAbsolute": 18,
+      "smallestAbsoluteNote": "18px 只允许用于非必需的眉标/角标，绝对不要用于正文",
+      "appleTV": "正文字号最小 29pt，标题 48pt 以上（Apple HIG）",
+      "moz4k": "UHD 4K 下正文最小 42px；1080p 下 20px；720p 下 14px（MDN，按分辨率分级）",
+      "harmonyTV": "正文 28–36fp，标题 36fp（HarmonyOS TV 规范）"
+    },
+    "contrast": {
+      "wcagMinimum": "4.5:1 正文 / 3:1 大字",
+      "tvRecommended": "正文 ≥7:1，小 UI 元素 ≥10:1",
+      "why": "电视自带图像增强会把暗部细节压掉、动态背光会压中间调、运动补偿会削边缘锐度——刚过 WCAG 线在电视上依然糊。",
+      "avoidPureWhite": "#FFFFFF 在暗环境会产生光晕，业内建议用 #F1F1F1 或深灰",
+      "avoidOversaturated": "电视 gamma 高于显示器，暖色尤其刺眼；纯白与高饱和红都应避免"
+    },
+    "layout": {
+      "safeArea": {
+        "note": "overscan（过扫描）：老电视可能裁掉边缘 5%，须留安全区",
+        "mdnRule": "四边各留 5% 边距",
+        "vidmovinRule1080p": "左右 90px / 上下 60px",
+        "appleTVRule": "四边各 60pt"
+      },
+      "density": "宁可少放内容。5~7 张卡一行，优于 20+ 缩略图密集网格。信息量应接近手机而非桌面显示器。",
+      "lineLength": "研究给出：行宽 ≤10 个词，段落 ≤90 词并切成小段",
+      "singleRow": "优先横向分页而非纵向滚动（遥控器滚到屏幕底部才能触发滚动，体验差）"
+    },
+    "interaction": {
+      "dpadRequired": true,
+      "rules": [
+        "遥控器只有上下左右四个方向，所有元素必须在横/纵轴上",
+        "禁止斜向或自由布局，否则焦点会「丢失」",
+        "焦点态是唯一的定位手段：缩放 1.1x + 阴影 + 激活边框，三者叠加",
+        "焦点移动必须有即时视觉反馈（65 寸屏上延迟会被放大，60fps 动画）",
+        "D-pad 导航优于点按：许多电视没有可靠的指点设备"
+      ],
+      "noHover": "电视无悬停态，所有 hover 效果必须降级为 focus 效果"
+    },
+    "sources": [
+      "https://developer.mozilla.org.cach3.com/en-US/Apps/Design/Firefox_OS_TV_UX/App_layout_guide",
+      "https://www.alicia.design/post/solving-small-text-and-contrast-issues-for-large-screen-readability",
+      "https://vidmovin.com/?p=5096",
+      "https://blog.csdn.net/x8y9z0/article/details/148923636",
+      "https://harmonyosdev.csdn.net/6a72e87d10ee7a33f2966428.html",
+      "https://lukevangenechten.nl/wp-content/uploads/2023/05/design.pdf"
+    ]
+  },
+
+  "typography": {
+    "readingLine": "正文最佳行长 45~75 字符（WCAG 与多份 2026 指南一致）",
+    "fluid": "用 clamp(min, preferred, max) 做流体字号；避免每个断点硬切字号",
+    "units": "间距与字号用 rem（无障碍跟随用户设置）；媒体查询断点用 px（避免用户缩放导致 rem 断点漂移）"
+  },
+
+  "assets": {
+    "criticalWarning": "高分辨率投影/电视的 DPR 可能高达 2.0~3.0，但 viewport 按逻辑像素缩放 → 字体边缘发虚、图标锯齿。修法：保留 initial-scale=1，禁用 user-scalable=no，CSS 里显式声明 @media (min-resolution: 192dpi) 块重置字体与边框。",
+    "iconHairline": "极细描边与发丝边框在电视上会消失（运动模糊+压缩伪影），最小用 medium/semibold 字重",
+    "containerQuery": "2023 年起 Chrome/Safari/Firefox 全部支持，2026 年可放心用于生产"
+  }
+}

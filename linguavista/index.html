@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="环球语堂 - 多语种AI全站式学习平台，一个账号畅学10+种语言，科学记忆 + AI对话双引擎驱动">
+<meta name="keywords" content="环球语堂 · 多语种AI学习平台,白驹 ccowork,ccowork,AI 工具,智能体">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="环球语堂 - 多语种AI全站式学习平台，一个账号畅学10+种语言，科学记忆 + AI对话双引擎驱动">
+  <meta name="theme-color" content="#030014">
+  <title>环球语堂 · 多语种AI学习平台 · 白驹 ccowork</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <style>
+    /* 首页专属样式补充 */
+    .hero-section {
+      padding: 70px 0 60px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .lang-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .streak-display {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .streak-display .flame {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
+    .streak-display .streak-num {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
+      background: var(--grad-warm);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .streak-display .streak-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .quick-entries {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .quick-entries {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .quick-entry {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 8px;
+      border-radius: 14px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-line);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .quick-entry:hover {
+      background: var(--nav-chip-bg);
+      border-color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .quick-entry .qe-icon {
+      font-size: 28px;
+    }
+
+    .quick-entry .qe-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .xp-bar-wrap {
+      margin-top: 16px;
+    }
+
+    .xp-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .learning-path-preview {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .learning-path-preview::-webkit-scrollbar {
+      display: none;
+    }
+
+    .path-step {
+      flex-shrink: 0;
+      width: 60px;
+      text-align: center;
+    }
+
+    .path-step .step-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      background: var(--chip-bg);
+      border: 2px solid var(--chip-line);
+      color: var(--muted);
+    }
+
+    .path-step.completed .step-circle {
+      background: var(--grad-success);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .path-step.current .step-circle {
+      background: var(--grad);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(91, 140, 255, 0.2);
+    }
+
+    .path-step .step-label {
+      font-size: 11px;
+      color: var(--dim);
+      white-space: nowrap;
+    }
+
+    .baiju-banner {
+      margin-top: 40px;
+      padding: 24px;
+      border-radius: 18px;
+      background: var(--grad-hero);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      color: #fff;
+    }
+
+    .baiju-banner::before,
+    .baiju-banner::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .baiju-banner::before {
+      width: 200px;
+      height: 200px;
+      top: -60px;
+      right: -40px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+    }
+
+    .baiju-banner::after {
+      width: 160px;
+      height: 160px;
+      bottom: -50px;
+      left: -30px;
+      background: radial-gradient(circle, rgba(180, 230, 255, 0.3), transparent 70%);
+    }
+
+    .baiju-banner > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .baiju-banner h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .baiju-banner p {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 16px;
+    }
+
+    .baiju-banner .btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+      backdrop-filter: blur(8px);
+    }
+
+    .baiju-banner .btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/linguavista/index.html">
+<meta property="og:title" content="环球语堂 · 多语种AI学习平台 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/linguavista/index.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="环球语堂 · 多语种AI学习平台 · 白驹 ccowork">
+<meta name="twitter:description" content="环球语堂 - 多语种AI全站式学习平台，一个账号畅学10+种语言，科学记忆 + AI对话双引擎驱动">
+<meta name="twitter:image" content="/assets/img/og-cover.png">  <link rel="stylesheet" href="assets/css/cc-ic-compat.css">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-theme="deep"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+
+  <!-- 顶部导航栏 -->
+  <nav class="navbar">
+    <a href="#/" class="nav-brand">
+      <div class="nav-logo"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div>
+      <div>
+        <div class="nav-title">环球语堂</div>
+        <div class="nav-subtitle">LinguaVista</div>
+      </div>
+    </a>
+
+    <div class="nav-links hidden-mobile">
+      <a href="#/" data-nav="home" class="active">首页</a>
+      <a href="#/languages" data-nav="languages">语种中心</a>
+      <a href="#/flashcards" data-nav="flashcards">闪卡学习</a>
+      <a href="#/chat" data-nav="chat">AI 对话</a>
+    </div>
+
+    <div class="nav-actions">
+      <!-- 语种选择器 -->
+      <div class="lang-selector" data-lang-selector>
+        <span class="lang-flag"><i class="cc-ic" data-ic="globe"></i></span>
+        <span class="lang-code" data-current-lang>EN</span>
+        <span class="chevron"></span>
+      </div>
+
+      <!-- 主题切换 -->
+      <button class="theme-toggle" data-theme-toggle aria-label="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+
+      <!-- 个人中心入口 -->
+      <a href="#/profile" class="avatar-btn" title="个人中心"><i class="cc-ic" data-ic="graduation-cap"></i> 学</a>
+    </div>
+  </nav>
+
+  <!-- 主内容区 -->
+  <main id="main-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-linguavista-index.png" alt="环球语堂 · 多语种AI学习平台" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+    <!-- Hero 区 -->
+    <section class="hero-section">
+      <div class="hero-orb o1"></div>
+      <div class="hero-orb o2"></div>
+
+      <div class="hero-inner animate-fade-up">
+        <div class="hero-badge">
+          <span><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i></span>
+          <span>多语种 AI 学习平台</span>
+        </div>
+
+        <h1 class="hero-title">
+          一个账号<br>
+          <span class="grad">畅学十国语言</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          科学记忆 + AI 对话双引擎驱动。英语、日语、韩语、法语、西班牙语...
+          不用切换 App，打开浏览器就能学。PWA 离线支持，随时随地进步。
+        </p>
+
+        <div class="hero-actions">
+          <a href="#/flashcards" class="btn btn-primary btn-lg">
+            <i class="cc-ic" data-ic="rocket"></i> 开始学习
+          </a>
+          <a href="#/languages" class="btn btn-secondary btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.15)">
+            <i class="cc-ic" data-ic="globe"></i> 选择语种
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">支持语种</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">SRS</div>
+            <div class="stat-label">科学记忆算法</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">AI</div>
+            <div class="stat-label">场景化对话练习</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">PWA</div>
+            <div class="stat-label">离线也能学</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 学习概览 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2><span class="grad">今日学习</span></h2>
+          <p class="section-desc">每天进步一点点，时间会给你答案</p>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- 左侧：连胜 + 等级 -->
+          <div class="progress-panel">
+            <div class="today-progress">
+              <div class="ring-wrap" id="today-progress-ring">
+                <!-- 环形进度由 JS 渲染 -->
+              </div>
+              <div class="progress-info">
+                <h4>今日目标</h4>
+                <div class="progress-desc">
+                  已学习 <strong id="today-count" style="color:var(--text)">0 / 20</strong> 张卡片
+                </div>
+                <div class="mt-2">
+                  <a href="#/flashcards" class="btn btn-primary btn-sm"><i class="cc-ic" data-ic="arrow-right"></i> 继续学习 </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-stats">
+              <div class="quick-stat">
+                <div class="qs-value" id="streak-count">0</div>
+                <div class="qs-label">连胜天数</div>
+              </div>
+              <div class="quick-stat">
+                <div class="qs-value" id="user-level">Lv.1</div>
+                <div class="qs-label">当前等级</div>
+              </div>
+              <div class="quick-stat">
+                <div class="qs-value">0</div>
+                <div class="qs-label">待复习</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧：快速入口 -->
+          <div class="progress-panel">
+            <div class="panel-header">
+              <div class="panel-title"><span class="icon"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i></span> 快速开始</div>
+            </div>
+
+            <div class="quick-entries">
+              <a href="#/flashcards" class="quick-entry">
+                <div class="qe-icon"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div>
+                <div class="qe-label">闪卡学习</div>
+              </a>
+              <a href="#/chat" class="quick-entry">
+                <div class="qe-icon"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div>
+                <div class="qe-label">AI 对话</div>
+              </a>
+              <a href="#/languages" class="quick-entry">
+                <div class="qe-icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div>
+                <div class="qe-label">语种中心</div>
+              </a>
+              <a href="#/profile" class="quick-entry">
+                <div class="qe-icon"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i></div>
+                <div class="qe-label">学习数据</div>
+              </a>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="panel-header" style="margin-bottom:16px">
+              <div class="panel-title" style="font-size:15px"><span class="icon"><i class="cc-ic" data-ic="target"></i></span> 学习路径</div>
+            </div>
+
+            <div class="learning-path-preview">
+              <div class="path-step completed">
+                <div class="step-circle"><i class="cc-ic" data-ic="check" aria-hidden="true"></i></div>
+                <div class="step-label">入门</div>
+              </div>
+              <div class="path-step completed">
+                <div class="step-circle"><i class="cc-ic" data-ic="check" aria-hidden="true"></i></div>
+                <div class="step-label">基础</div>
+              </div>
+              <div class="path-step current">
+                <div class="step-circle">A1</div>
+                <div class="step-label">初级</div>
+              </div>
+              <div class="path-step">
+                <div class="step-circle">A2</div>
+                <div class="step-label">进阶</div>
+              </div>
+              <div class="path-step">
+                <div class="step-circle">B1</div>
+                <div class="step-label">中级</div>
+              </div>
+              <div class="path-step">
+                <div class="step-circle">B2</div>
+                <div class="step-label">中高级</div>
+              </div>
+              <div class="path-step">
+                <div class="step-circle">C1</div>
+                <div class="step-label">高级</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 学习模块 -->
+    <section class="section" style="background:var(--bg2)">
+      <div class="container">
+        <div class="section-header">
+          <h2><span class="grad">四大学习模块</span></h2>
+          <p class="section-desc">全方位提升你的语言能力</p>
+        </div>
+
+        <div class="grid grid-auto-lg">
+          <div class="module-card" onclick="location.hash='#/flashcards'">
+            <div class="module-icon"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div>
+            <h3>词汇闪卡</h3>
+            <p>基于 SM-2 间隔重复算法，智能安排复习时间，让单词记得更牢更久。</p>
+            <div class="module-meta">
+              <span class="badge badge-status mastered">科学记忆</span>
+              <span>SRS 算法</span>
+            </div>
+          </div>
+
+          <div class="module-card" onclick="location.hash='#/chat'">
+            <div class="module-icon"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div>
+            <h3>AI 对话练习</h3>
+            <p>场景化角色扮演，餐厅、机场、面试... 不敢开口？先和 AI 练熟再说。</p>
+            <div class="module-meta">
+              <span class="badge badge-status learning">AI 驱动</span>
+              <span>8+ 场景</span>
+            </div>
+          </div>
+
+          <div class="module-card" style="opacity:0.7">
+            <div class="module-icon" style="filter:grayscale(0.5)"><i class="cc-ic" data-ic="headphones" aria-hidden="true"></i></div>
+            <h3>听力训练 <span class="badge" style="font-size:10px;padding:2px 8px">即将推出</span></h3>
+            <p>分级听力材料，单句精听 + 听写练习，循序渐进提升听力水平。</p>
+            <div class="module-meta">
+              <span class="badge" style="background:var(--chip-bg);color:var(--muted)">开发中</span>
+            </div>
+          </div>
+
+          <div class="module-card" style="opacity:0.7">
+            <div class="module-icon" style="filter:grayscale(0.5)"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></div>
+            <h3>语法学习 <span class="badge" style="font-size:10px;padding:2px 8px">即将推出</span></h3>
+            <p>CEFR 分级语法点，讲解 + 例句 + 练习，系统掌握语法体系。</p>
+            <div class="module-meta">
+              <span class="badge" style="background:var(--chip-bg);color:var(--muted)">开发中</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 语种选择区 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2><span class="grad">选择你的语言</span></h2>
+          <p class="section-desc">多语种一站畅学，随时切换</p>
+          <a href="#/languages" class="section-more">查看全部 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="lang-showcase">
+          <div class="lang-card" style="--lang-color:var(--lang-en)" onclick="LVApp.switchLanguage('en');location.hash='#/flashcards'">
+            <div class="lang-flag"><i class="cc-ic" data-ic="globe"></i></div>
+            <div class="lang-name">英语</div>
+            <div class="lang-native">English</div>
+            <div class="lang-progress">
+              <span class="lang-level">500+ 词汇</span>
+            </div>
+          </div>
+
+          <div class="lang-card" style="--lang-color:var(--lang-ja)" onclick="LVApp.switchLanguage('ja');location.hash='#/flashcards'">
+            <div class="lang-flag"><i class="cc-ic" data-ic="globe"></i></div>
+            <div class="lang-name">日语</div>
+            <div class="lang-native">日本語</div>
+            <div class="lang-progress">
+              <span class="lang-level">300+ 词汇</span>
+            </div>
+          </div>
+
+          <div class="lang-card coming-soon" style="--lang-color:var(--lang-ko)">
+            <span class="cs-badge">即将推出</span>
+            <div class="lang-flag"><i class="cc-ic" data-ic="globe"></i></div>
+            <div class="lang-name">韩语</div>
+            <div class="lang-native">한국어</div>
+            <div class="lang-progress">
+              <span class="lang-level">敬请期待</span>
+            </div>
+          </div>
+
+          <div class="lang-card coming-soon" style="--lang-color:var(--lang-fr)">
+            <span class="cs-badge">即将推出</span>
+            <div class="lang-flag"><i class="cc-ic" data-ic="globe"></i></div>
+            <div class="lang-name">法语</div>
+            <div class="lang-native">Français</div>
+            <div class="lang-progress">
+              <span class="lang-level">敬请期待</span>
+            </div>
+          </div>
+
+          <div class="lang-card coming-soon" style="--lang-color:var(--lang-es)">
+            <span class="cs-badge">即将推出</span>
+            <div class="lang-flag"><i class="cc-ic" data-ic="globe"></i></div>
+            <div class="lang-name">西班牙语</div>
+            <div class="lang-native">Español</div>
+            <div class="lang-progress">
+              <span class="lang-level">敬请期待</span>
+            </div>
+          </div>
+
+          <div class="lang-card coming-soon" style="--lang-color:var(--lang-de)">
+            <span class="cs-badge">即将推出</span>
+            <div class="lang-flag"><i class="cc-ic" data-ic="globe"></i></div>
+            <div class="lang-name">德语</div>
+            <div class="lang-native">Deutsch</div>
+            <div class="lang-progress">
+              <span class="lang-level">敬请期待</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 白驹生态入口 -->
+    <section class="section">
+      <div class="container">
+        <div class="baiju-banner">
+          <h3><i class="cc-ic" data-ic="horse-mark"></i> 白驹实战中心</h3>
+          <p>环球语堂是白驹实战中心的重点项目。AI 能力、设计语言、用户体系与白驹主站共享。</p>
+          <a href="/" class="btn"><i class="cc-ic" data-ic="arrow-right"></i>← 回总站</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="brand-row">
+              <div class="brand-logo"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div>
+              <div class="brand-name">环球语堂</div>
+            </div>
+            <p class="brand-desc">
+              基于 AI 的多语言全站式学习平台，一个账号畅学 10+ 种语言。
+              科学记忆 + AI 对话双引擎驱动，让学习更高效。
+            </p>
+            <p style="font-size:12px;color:var(--dim)">
+              LinguaVista · v1.0.0 MVP
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h4>学习</h4>
+            <ul>
+              <li><a href="#/flashcards">闪卡学习</a></li>
+              <li><a href="#/chat">AI 对话</a></li>
+              <li><a href="#/languages">语种中心</a></li>
+              <li><a href="#/profile">学习数据</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>关于</h4>
+            <ul>
+              <li><a href="#/profile">个人中心</a></li>
+              <li><a href="../index.html">白驹主站</a></li>
+              <li><a href="../docs/prd-linguavista.md">产品文档</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>支持</h4>
+            <ul>
+              <li><a href="#/profile">数据导出</a></li>
+              <li><a href="#/profile">清除数据</a></li>
+              <li><a href="#/profile">关于版本</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="copyright">© 2026 环球语堂 · 白驹实战中心旗下产品</div>
+          <a href="/" class="baiju-link"><i class="cc-ic" data-ic="horse-mark"></i>← 回总站</a>
+        </div>
+      </div>
+    <div style="max-width:1180px;margin:0 auto;padding:10px 20px 16px;font-size:12px;line-height:1.7;color:#9fb0cd;border-top:1px dashed rgba(255,255,255,.14);letter-spacing:.2px;text-align:center">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。</div>
+  </footer>
+
+  </main>
+
+  <!-- 底部 Tab Bar（移动端） -->
+  <nav class="tab-bar">
+    <div class="tab-items">
+      <a href="#/" class="tab-item active" data-nav="home">
+        <div class="tab-icon"><i class="cc-ic" data-ic="house" aria-hidden="true"></i></div>
+        <div>首页</div>
+      </a>
+      <a href="#/languages" class="tab-item" data-nav="languages">
+        <div class="tab-icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div>
+        <div>语种</div>
+      </a>
+      <a href="#/flashcards" class="tab-item center-btn">
+        <div class="tab-icon"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div>
+      </a>
+      <a href="#/chat" class="tab-item" data-nav="chat">
+        <div class="tab-icon"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div>
+        <div>对话</div>
+      </a>
+      <a href="#/profile" class="tab-item" data-nav="profile">
+        <div class="tab-icon"><i class="cc-ic" data-ic="user" aria-hidden="true"></i></div>
+        <div>我的</div>
+      </a>
+    </div>
+  </nav>
+
+  <!-- JS -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/srs.js"></script>
+  <script src="assets/js/ai-chat.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+
+  <!-- PWA 注册 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch((err) => {
+          console.log('ServiceWorker 注册失败:', err);
+        });
+      });
+    }
+  </script>
+<link rel="stylesheet" href="/assets/baiju-core.css?v=20261115b">
+<script src="/assets/baiju-core.js" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

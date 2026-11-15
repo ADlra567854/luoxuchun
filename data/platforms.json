@@ -1,0 +1,415 @@
+{
+  "meta": {
+    "title": "AI 平台阵列",
+    "snapshot": "2026-11-09",
+    "note": "价格以各平台官网当日为准，此处为快照，仅用于横向感知量级，不做采购依据。¥/百万 tokens 为人民币。"
+  },
+  "cats": {
+    "api": {
+      "n": "云 API 平台",
+      "d": "按 token 付费。选型看三件事：单价、可用性、以及模型版本是否跟得上。"
+    },
+    "local": {
+      "n": "本地运行",
+      "d": "装在自己机器上。零 token 成本，代价是硬件与时间。"
+    },
+    "gpu": {
+      "n": "GPU 算力",
+      "d": "按小时租卡。自建推理不想买卡时的过渡方案，注意出网带宽与存储费。"
+    },
+    "app": {
+      "n": "Agent 平台",
+      "d": "不写代码搭 Agent。差别在知识库质量、发布渠道与私有化能力。"
+    },
+    "gen": {
+      "n": "图像视频平台",
+      "d": "生成类模型的服务化。开源能本地跑，闭源在画质与可控性上仍领先一档。"
+    },
+    "gate": {
+      "n": "网关 / 中间层",
+      "d": "多模型统一入口、成本管控、可观测。团队规模一到三人以上就必须有。"
+    }
+  },
+  "items": [
+    {
+      "n": "DeepSeek",
+      "v": "深度求索",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "V4-Flash ¥1 / ¥2；V4-Pro ¥3 / ¥6（输入/输出，缓存命中 ¥0.02）；工具调用自 2026-11-13 起单独计费：搜索与网页抓取 5 元/千次、OCR 1.5 元/千页、ASR 0.39 元/小时、TTS 1.5 元/万字符（语音两项限时五折）（源：DeepSeek 公告 2026-11-13）",
+      "url": "https://platform.deepseek.com",
+      "d": "价格是它最强的参数。OpenAI 兼容，改 base_url 就能接。推理与代码能力对得起价格，长文档与多模态要靠别家补。"
+    },
+    {
+      "n": "阿里云百炼",
+      "v": "阿里云",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "qwen3.6-flash ¥0.8 / ¥2；qwen3.7-plus ¥2 / ¥8；max ¥12 / ¥36；已上架 kimi-k3.1-pro ¥13 / ¥68，但 Token Plan 套餐池不含 Kimi；双 11 全模型通享低至 4.5 折，新人实名 7000 万免费 Token（90 天）；Token Plan 个人版 2026-11-09 起调额：Lite ¥39 得 2 万 Credits、Essential ¥79 得 4.5 万、Standard ¥139 得 8 万（月费不变），Pro ¥312（原 ¥499）得 20 万（源：阿里云公告 2026-11-09）",
+      "url": "https://bailian.console.aliyun.com",
+      "d": "千问全家桶最全，从 0.6B 到旗舰都有，还内置工具调用与文档解析。新用户每个模型有免费额度，企业采购流程最顺。"
+    },
+    {
+      "n": "硅基流动",
+      "v": "SiliconFlow",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "DeepSeek-V3 ¥1 / ¥2；Qwen3 ¥0.4–1.2 / ¥3.2–7.2",
+      "url": "https://cloud.siliconflow.cn",
+      "d": "一个 Key 接多家模型，国内直连快，注册送额度大方。适合做多模型对比与 A/B，缺点是高峰期限流。"
+    },
+    {
+      "n": "火山方舟",
+      "v": "字节跳动",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "豆包 2.0 Pro 约 ¥1.5 / ¥4；Lite 约 ¥0.11 / ¥0.11；Coding/Agent Plan 抵扣系数限时折扣：deepseek-v4.1-flash 在原 5 折上再享 7 折（系数 0.875）至 2026-12-30、deepseek-v4.1-flash-economy 折扣 5 折同期；Auto 模式与 kimi-k3.1-pro 折扣均已于 11-09 23:59 到期（源：火山方舟官方文档 2026-11-10）",
+      "url": "https://www.volcengine.com/product/ark",
+      "d": "豆包系列延迟低、价格狠，视频与图像生成也在同一平台。有 CLI 可直接在终端接 Agent。"
+    },
+    {
+      "n": "智谱 BigModel",
+      "v": "智谱 AI",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "GLM-5 约 ¥6 / ¥24；GLM-4-Flash 免费",
+      "url": "https://open.bigmodel.cn",
+      "d": "GLM-4-Flash 长期免费是它最大的钩子，中文写作与办公场景扎实。旗舰档价格偏高。"
+    },
+    {
+      "n": "月之暗面 Kimi",
+      "v": "Moonshot AI",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "K3.1 Pro ¥13 / ¥68（缓存命中 ¥1.3）；K2 系列 2026-10-31 起停止向新注册用户开放、12 月底全线下线（源：Kimi 开放平台 2026-10-29）",
+      "url": "https://platform.moonshot.cn",
+      "d": "长上下文起家，K2 系列在 Agent 与工具调用上表现好。适合喂长文档与做多轮工具链。"
+    },
+    {
+      "n": "MiniMax",
+      "v": "MiniMax",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "M3 约 ¥2.1 / ¥8.4（缓存 ¥0.21）",
+      "url": "https://platform.minimaxi.com",
+      "d": "百万上下文 + 语音合成/克隆一体。做有声内容时语音这条线比模型本身更有吸引力。"
+    },
+    {
+      "n": "百度千帆",
+      "v": "百度智能云",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "Token Plan 积分制五档，双 11 首购 5 折：Mini ¥4.9 / Lite ¥19.9 / Standard ¥49.9 / Pro ¥99.9 / Max ¥299.9，对应月额度 1,400 / 11,500 / 23,760 / 49,500 / 184,800 积分，Standard 为本轮上新档；老客首续 6 折；DeepSeek-V4.1-Flash、V4-Pro-0813、GLM-5.3 每日 22:00–08:00 享 2 折至 2026-11-30（源：千帆 Token Plan 官方页 2026-11-10）",
+      "url": "https://qianfan.cloud.baidu.com",
+      "d": "文心系列 + 第三方模型托管，企业侧合规材料齐全。个人开发者体验不如前几家轻快。"
+    },
+    {
+      "n": "腾讯混元",
+      "v": "腾讯云",
+      "c": "api",
+      "cn": "y",
+      "o": "商业",
+      "price": "Hunyuan Lite 约 ¥0.14 / ¥0.14；新用户 100 万 tokens / 12 个月",
+      "url": "https://cloud.tencent.com/product/hunyuan",
+      "d": "与腾讯生态（企业微信、文档、会议）打通是它独有的路。纯模型能力中规中矩。"
+    },
+    {
+      "n": "OpenRouter",
+      "v": "OpenRouter",
+      "c": "api",
+      "cn": "n",
+      "o": "商业",
+      "price": "按模型透传，部分模型免费；MiniMax M2.5 输入 $0.27 / 输出 $0.95、Particle-1 输出 $0.50（每百万 token，2026-11-02 核对 Models API）",
+      "url": "https://openrouter.ai",
+      "d": "一个 Key 打通几乎所有国外模型，还能同一请求自动回退。国内直连不稳定，需自备网络。"
+    },
+    {
+      "n": "Together AI",
+      "v": "Together",
+      "c": "api",
+      "cn": "n",
+      "o": "商业",
+      "price": "注册送 $25 额度",
+      "url": "https://www.together.ai",
+      "d": "开源模型托管为主，200+ 模型，自带微调服务。想跑开源大模型又不想自己运维时的选项。"
+    },
+    {
+      "n": "Groq",
+      "v": "Groq",
+      "c": "api",
+      "cn": "n",
+      "o": "商业",
+      "price": "有免费档（限速）",
+      "url": "https://groq.com",
+      "d": "LPU 硬件把推理速度推到极致，做实时语音与低延迟交互时体感差别明显。模型选择较少。"
+    },
+    {
+      "n": "Ollama",
+      "v": "Ollama",
+      "c": "local",
+      "cn": "y",
+      "o": "开源",
+      "price": "免费",
+      "url": "https://ollama.com",
+      "d": "一条命令跑本地模型，默认 OpenAI 兼容接口。开发与原型的最优解，多用户服务要换 vLLM。"
+    },
+    {
+      "n": "LM Studio",
+      "v": "LM Studio",
+      "c": "local",
+      "cn": "y",
+      "o": "免费商用有限制",
+      "price": "个人免费",
+      "url": "https://lmstudio.ai",
+      "d": "图形化本地模型客户端，内置模型搜索与性能测试。非技术用户的首选，企业使用需看许可。"
+    },
+    {
+      "n": "vLLM",
+      "v": "vLLM Project",
+      "c": "local",
+      "cn": "y",
+      "o": "开源",
+      "price": "免费",
+      "url": "https://github.com/vllm-project/vllm",
+      "d": "自建推理服务的生产标准。5 并发以上就该换它，之前用 Ollama 更快出结果。"
+    },
+    {
+      "n": "SGLang",
+      "v": "LMSYS / Berkeley",
+      "c": "local",
+      "cn": "y",
+      "o": "开源",
+      "price": "免费",
+      "url": "https://github.com/sgl-project/sglang",
+      "d": "前缀复用与结构化输出的强项，RAG 与 Agent 长 system prompt 场景比 vLLM 划算。"
+    },
+    {
+      "n": "AutoDL",
+      "v": "AutoDL",
+      "c": "gpu",
+      "cn": "y",
+      "o": "商业",
+      "price": "按小时计费，学生优惠多",
+      "url": "https://www.autodl.com",
+      "d": "国内租卡最普遍的选择，镜像预装环境省掉配驱动。做微调与短期推理实验性价比高。"
+    },
+    {
+      "n": "RunPod",
+      "v": "RunPod",
+      "c": "gpu",
+      "cn": "n",
+      "o": "商业",
+      "price": "RTX 4090 约 $0.34/小时起，首充 $10 送 $5–500",
+      "url": "https://www.runpod.io",
+      "d": "按秒计费，模板里直接有 ComfyUI / vLLM / Ollama。国外节点，出网与支付需要条件。"
+    },
+    {
+      "n": "Vast.ai",
+      "v": "Vast.ai",
+      "c": "gpu",
+      "cn": "n",
+      "o": "商业",
+      "price": "市场竞价，价格浮动",
+      "url": "https://vast.ai",
+      "d": "个人算力的撮合市场，同型号通常比大厂便宜，稳定性参差。适合能容忍中断的批量任务。"
+    },
+    {
+      "n": "阿里云 PAI",
+      "v": "阿里云",
+      "c": "gpu",
+      "cn": "y",
+      "o": "商业",
+      "price": "按实例计费",
+      "url": "https://www.aliyun.com/product/bigdata/learn",
+      "d": "企业级训练与推理平台，与 OSS、百炼打通。流程重，个人开发者用不上这些治理能力。"
+    },
+    {
+      "n": "Dify",
+      "v": "LangGenius",
+      "c": "app",
+      "cn": "y",
+      "o": "开源 + 云",
+      "price": "自建免费；云版有免费额度",
+      "url": "https://dify.ai",
+      "d": "可视化 Agent / 工作流 / 知识库，能直接发布成 API 与网页。私有化能力强，国内团队自建首选。"
+    },
+    {
+      "n": "扣子 Coze",
+      "v": "字节跳动",
+      "c": "app",
+      "cn": "y",
+      "o": "商业",
+      "price": "有免费额度",
+      "url": "https://www.coze.cn",
+      "d": "零代码搭 Bot 并一键发布到飞书、微信、网页。上手最快，深度定制受平台限制。"
+    },
+    {
+      "n": "FastGPT",
+      "v": "labring",
+      "c": "app",
+      "cn": "y",
+      "o": "开源 + 云",
+      "price": "自建免费",
+      "url": "https://fastgpt.in",
+      "d": "知识库质量做得细，支持复杂分段与多维检索。中文文档问答场景比通用平台更合适。"
+    },
+    {
+      "n": "n8n",
+      "v": "n8n",
+      "c": "app",
+      "cn": "y",
+      "o": "开源(非 OSI)",
+      "price": "自建免费；云版按执行数",
+      "url": "https://n8n.io",
+      "d": "把 AI 节点挂进已有业务流程，400+ 集成。适合「让 AI 参与现有工作」而不是「从零造 Agent」。"
+    },
+    {
+      "n": "LiblibAI 哩布",
+      "v": "LiblibAI",
+      "c": "gen",
+      "cn": "y",
+      "o": "商业",
+      "price": "有免费额度，会员制",
+      "url": "https://www.liblib.art",
+      "d": "国内最大的模型与工作流社区，能直接在线跑 ComfyUI 工作流。找 LoRA 与提示词比翻 GitHub 快。"
+    },
+    {
+      "n": "即梦",
+      "v": "字节跳动",
+      "c": "gen",
+      "cn": "y",
+      "o": "商业",
+      "price": "有免费额度",
+      "url": "https://jimeng.jianying.com",
+      "d": "图像与视频一站式，中文提示词理解好，出图快。商用授权需按平台条款确认。"
+    },
+    {
+      "n": "可灵",
+      "v": "快手",
+      "c": "gen",
+      "cn": "y",
+      "o": "商业",
+      "price": "会员制",
+      "url": "https://klingai.com",
+      "d": "国内视频生成第一梯队，运动幅度与物理一致性较好。做短视频素材比本地开源模型省时。"
+    },
+    {
+      "n": "Replicate",
+      "v": "Replicate",
+      "c": "gen",
+      "cn": "n",
+      "o": "商业",
+      "price": "按秒/次计费",
+      "url": "https://replicate.com",
+      "d": "把开源模型跑成 API，一行 curl 出结果。想试新模型又不想配环境时最快。"
+    },
+    {
+      "n": "fal.ai",
+      "v": "fal",
+      "c": "gen",
+      "cn": "n",
+      "o": "商业",
+      "price": "按次计费",
+      "url": "https://fal.ai",
+      "d": "生成类模型推理速度极快，常作为新模型的第一个托管方。适合做实时生成的产品。"
+    },
+    {
+      "n": "LiteLLM",
+      "v": "BerriAI",
+      "c": "gate",
+      "cn": "y",
+      "o": "开源",
+      "price": "免费",
+      "url": "https://github.com/BerriAI/litellm",
+      "d": "100+ 模型统一成 OpenAI 格式，带预算与密钥管理。自建服务的第一块中间件。"
+    },
+    {
+      "n": "One API / New API",
+      "v": "开源社区",
+      "c": "gate",
+      "cn": "y",
+      "o": "开源",
+      "price": "免费",
+      "url": "https://github.com/songquanpeng/one-api",
+      "d": "国内最常见的 API 分发系统，一个入口管多家 Key 与团队额度。部署简单、生态成熟。"
+    },
+    {
+      "n": "Langfuse",
+      "v": "Langfuse",
+      "c": "gate",
+      "cn": "y",
+      "o": "开源 + 云",
+      "price": "自建免费",
+      "url": "https://langfuse.com",
+      "d": "LLM 调用链追踪与评测。调 Agent 不接追踪等于盲调，上线前就该接。"
+    },
+    {
+      "n": "Helicone",
+      "v": "Helicone",
+      "c": "gate",
+      "cn": "y",
+      "o": "开源 + 云",
+      "price": "自建免费",
+      "url": "https://helicone.ai",
+      "d": "一行改 base_url 就能记录所有请求与成本。想知道钱花在哪的时候先接它。"
+    },
+    {
+      "n": "国家超算互联网",
+      "v": "国家超算互联网",
+      "c": "api",
+      "cn": "y",
+      "o": "商用",
+      "price": "新客 DeepSeek-V4.1-Flash-1017 / GLM-5.3-Flash 5000 万 tokens ¥0.10（原价 ¥20.50）；TokenPlan 订阅用户 10-21 至 10-30 每晚 21:00–09:00 可免费调 Auto 模型（源：超算互联网活动页 2026-10-29）",
+      "url": "https://www.scnet.cn/home/subject/maas/index.html",
+      "d": "国家队算力平台，把 MaaS 调用和 TokenPlan 套餐打包卖，常有整点秒杀和夜间免费档。适合做压测与低成本批处理；稳定性一般，别把它当主线通道。"
+    },
+    {
+      "n": "OpenAI",
+      "v": "OpenAI",
+      "c": "api",
+      "cn": "n",
+      "o": "商业",
+      "price": "ChatGPT Pro 每月返等额 API 额度（$100 / $200 / $500 档）；Business 按席位池化（Standard $20、Premium $100），每工作区封顶 $500/月，年付上限 $6000（源：OpenAI 帮助中心 2026-10-28）；自 2026 年 12 月起 ChatGPT Plus / Pro / Business 额度与 Codex 合并、按 token 统一计量，Instant chat 不占额度（源：OpenAI 公告 2026-10-31）",
+      "url": "https://platform.openai.com",
+      "d": "前沿闭源模型的第一手渠道，GPT-6 系列与计算机使用能力都在这里首发。订阅满 7 天后可领与订阅等额的 API 额度，是它现在最实在的省钱点；单价仍是全场最贵的档。"
+    },
+    {
+      "n": "Anthropic",
+      "v": "Anthropic",
+      "c": "api",
+      "cn": "n",
+      "o": "商业",
+      "price": "Max $100/月、Ultra $200/月；Ultra 已完成验证账户取消 5 小时窗口，周额度仍为 Pro 的 10 倍（源：Anthropic 公告 2026-10-30）",
+      "url": "https://www.anthropic.com/pricing",
+      "d": "Opus / Sonnet 的原厂。长上下文、代码与工具调用稳，做对照实验时常被当成上限基准；国内需自备网络与支付。"
+    },
+    {
+      "n": "xAI",
+      "v": "Grok",
+      "c": "api",
+      "cn": "n",
+      "o": "商业",
+      "price": "Grok Premium $30/月，新用户首月半价 $15；2026-11-01 起支持支付宝与中国银联，账单地区可选中国大陆及港澳台（源：xAI 订阅页实测 2026-11-01）；Grok Bot 周额度实测缩水，每 1% 周额度可用 token 从约 730 万降至约 390 万（Cursor Pro+ 用户测算），马斯克称其成本相对收入「高得扛不住」（源：腾讯研究院 AI 速递 2026-11-04）",
+      "url": "https://grok.com",
+      "d": "马斯克旗下 xAI 的对话产品，与 X Premium 共用一套订阅与支付体系，一次付费两边解锁。支付门槛已拆到支付宝可直接扣款，但访问仍需自备网络环境。"
+    },
+    {
+      "n": "谷歌 Gemini API",
+      "v": "Gemini",
+      "c": "api",
+      "cn": "n",
+      "o": "商业",
+      "price": "Gemini Omni 1.2 Flash 视频生成 720p $0.07/秒，较 1.1 版降约 30%，单条 3–15 秒；文本模型按 token 另计（源：谷歌发布说明 2026-11-05）",
+      "url": "https://ai.google.dev",
+      "d": "谷歌全系模型的官方 API 入口。视频生成 Omni 1.2 Flash 支持 3–15 秒、草稿先行再放大 4K，多轮对话式编辑适合批量短视频生产。国内访问需自备网络。"
+    }
+  ]
+}

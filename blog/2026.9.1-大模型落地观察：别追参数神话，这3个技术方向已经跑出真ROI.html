@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="端侧小模型、多模态 RAG、Agent 工作流——这三个方向的价值不在参数，在于它们各自解决了什么实际问题。逐个说清能力边界与成本结构。">
+<meta name="keywords" content="2026.9.1 大模型落地观察,别追参数神话,这3个技术方向已经跑出真ROI,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta name="description" content="端侧小模型、多模态 RAG、Agent 工作流——这三个方向的价值不在参数，在于它们各自解决了什么实际问题。逐个说清能力边界与成本结构。">">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大模型落地观察：三个真在产生价值的技术方向 · 白驹 ccowork</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+.blog-honest{display:inline-block;margin-top:12px;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;color:#07090f;background:linear-gradient(120deg,#38e1ff,#8b5cf6)}
+.blog-attribution{margin-top:34px;padding:16px 18px;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:14px;background:rgba(245,194,107,.06)}
+.blog-attribution h3{color:var(--gold);font-size:15px;margin:0 0 8px}
+.blog-attribution p{color:var(--muted);font-size:14px;margin:0}
+</style><link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/2026.9.1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%90%BD%E5%9C%B0%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E5%8F%82%E6%95%B0%E7%A5%9E%E8%AF%9D%EF%BC%8C%E8%BF%993%E4%B8%AA%E6%8A%80%E6%9C%AF%E6%96%B9%E5%90%91%E5%B7%B2%E7%BB%8F%E8%B7%91%E5%87%BA%E7%9C%9FROI.html">
+<meta property="og:title" content="大模型落地观察：三个真在产生价值的技术方向 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/2026.9.1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%90%BD%E5%9C%B0%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E5%8F%82%E6%95%B0%E7%A5%9E%E8%AF%9D%EF%BC%8C%E8%BF%993%E4%B8%AA%E6%8A%80%E6%9C%AF%E6%96%B9%E5%90%91%E5%B7%B2%E7%BB%8F%E8%B7%91%E5%87%BA%E7%9C%9FROI.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="大模型落地观察：三个真在产生价值的技术方向 · 白驹 ccowork">
+<meta name="twitter:description" content="端侧小模型、多模态 RAG、Agent 工作流——这三个方向的价值不在参数，在于它们各自解决了什么实际问题。逐个说清能力边界与成本结构。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"大模型落地观察：三个真在产生价值的技术方向","description":"端侧小模型、多模态 RAG、Agent 工作流——这三个方向的价值不在参数，在于它们各自解决了什么实际问题。逐个说清能力边界与成本结构。","url":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/2026.9.1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%90%BD%E5%9C%B0%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E5%8F%82%E6%95%B0%E7%A5%9E%E8%AF%9D%EF%BC%8C%E8%BF%993%E4%B8%AA%E6%8A%80%E6%9C%AF%E6%96%B9%E5%90%91%E5%B7%B2%E7%BB%8F%E8%B7%91%E5%87%BA%E7%9C%9FROI.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/2026.9.1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%90%BD%E5%9C%B0%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E5%8F%82%E6%95%B0%E7%A5%9E%E8%AF%9D%EF%BC%8C%E8%BF%993%E4%B8%AA%E6%8A%80%E6%9C%AF%E6%96%B9%E5%90%91%E5%B7%B2%E7%BB%8F%E8%B7%91%E5%87%BA%E7%9C%9FROI.html"},"image":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/assets/img/og-cover.png","datePublished":"2026-09-01","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"dateModified":"2026-10-27","inLanguage":"zh-CN"}</script>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="works"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/sec/models.jpg" alt="大模型落地观察：三个真在产生价值的技术方向" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy" decoding="async"></div>
+<article>
+<h1>大模型落地观察：三个真在产生价值的技术方向</h1>
+<p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">「已跑出真 ROI」的百分比没有可追溯来源，这里不引用。给的是三个方向各自解决了什么问题、成本结构长什么样、什么场景不适合用。划不划算，按自己的调用量与人力成本代入算。</p><p>参数规模早就不是判断标准了。一个 7B 的模型在特定任务上稳定超过通用旗舰，这种事现在很常见——因为<strong>窄任务的容错空间大，通用任务没有</strong>。下面三个方向的共同点是：都不追求通用，只解决一段明确的流程。</p><h2>方向一 · 端侧小模型推理</h2><p>端侧的价值不在"便宜"，在<strong>数据不出设备</strong>和<strong>零延迟</strong>这两件事上。凡是涉及个人隐私（健康、财务、聊天记录）或要求即时响应（离线翻译、本地问答）的场景，云端方案再便宜也不合适。</p><p>代价要说清楚：</p><ul><li>参数规模受内存和功耗约束，通常 8B 以下，复杂推理明显不如云端旗舰</li><li>量化之后精度有损，同一句话换个说法结果可能不同</li><li>升级意味着重新分发模型文件，不像云端那样静默生效</li></ul><p>所以判断标准是：<strong>这个任务错一次的代价，能不能接受</strong>。离线翻译错一个词能接受，合同条款解读错一句不能。</p><h2>方向二 · 多模态 RAG</h2><p>RAG 的老问题一直是"搜不准、答不对"。引入多模态之后，真正改善的不是"能搜图了"，而是<strong>检索时能用图里的信息定位文字</strong>——比如一张产品图，图上有型号标签，检索可以直接命中这个标签。</p><p>但这一层有一个绕不过去的成本：<strong>视觉 token 比文本 token 贵得多</strong>。同一张发票，按文本抽取只要几百 token，按图像输入可能是数千 token。所以多模态 RAG 只适合"文本里确实拿不到的信息"，不适合拿来替代 OCR。</p><ul><li>适合：图纸、表格截图、带标注的产品图、手写批注</li><li>不适合：本来就有电子文本的 PDF（直接抽文本便宜一个数量级）</li><li>必须做：给每个回答带原文位置，否则用户无法验证，等于没做</li></ul><h2>方向三 · Agent 工作流</h2><p>"全自动打工"现在做不到，别信。能落地的是<strong>半自动</strong>：把一段流程拆成若干步，机器做可判定的步，人做需要拿主意的步，中间留人工确认点。</p><p>成本结构上，Agent 最大的坑是<strong>上下文反复回传</strong>：每一轮都要把历史带上，所以缓存命中率比模型单价更决定账单。DeepSeek 的缓存命中输入低至 0.006 美元每百万 tokens，同样的多轮循环，账单能比不用缓存差一个数量级。</p><ul><li>能自动：格式整理、字段抽取、状态更新、按规则路由</li><li>不能自动：优先级判断、例外审批、对外承诺、涉及金额或法律的决策</li><li>必须留：人工确认点，以及出错时的回滚路径</li></ul><h2>三条给从业者的判断线</h2><ul><li><strong>先算人的成本，再算 token 成本</strong>。token 便宜到今天这个程度，决定方案能不能上的从来是人力的重构成本，不是模型账单。</li><li><strong>能写死规则的地方不要交给模型</strong>。规则正确率 100%，模型永远不是，而且规则的行为可预测、可审计。</li><li><strong>给每个结论留出处</strong>。不管是检索到的原文还是调用的接口返回值，用户能点开验证的方案，才可能被长期用下去。</li></ul>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

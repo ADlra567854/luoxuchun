@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>源码与实验 · 带注释有结论的自有代码 · 白驹 ccowork</title>
+<meta name="description" content="白驹 ccowork 自有源码与数据实验室：27 个带结构化结论的 Python 脚本、6 个前端引擎、10 张仿真配图，可预览、复制、下载。本站不提供生成式 AI 服务。">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem('ccowork.theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+:root{
+  --bg:#F4F7FC; --card:#FFFFFF; --text:#1E293B; --muted:#475569;
+  --line:rgba(148,163,184,.28); --soft:rgba(79,140,255,.09);
+  --grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+  --shadow:0 10px 30px rgba(30,58,110,.09); --code:#0F172A; --codeText:#E2E8F0;
+}
+html[data-theme="deep"],body[data-theme="deep"]{
+  --bg:#030014; --card:#101728; --text:#E9F0FB; --muted:#8FA3BD;
+  --line:rgba(143,163,189,.22); --soft:rgba(91,140,255,.13);
+  --grad:linear-gradient(120deg,#38e1ff,#5b8cff 45%,#8b5cf6);
+  --shadow:0 10px 34px rgba(0,0,0,.42); --code:#080B18; --codeText:#DCE7FA;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:color-mix(in srgb,var(--card) 82%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px;min-height:60px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.3px}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:16px;box-shadow:0 4px 14px rgba(79,140,255,.35)}
+.navlinks{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.navlinks a{padding:7px 14px;border-radius:999px;color:var(--muted);font-size:13.5px;font-weight:600;border:1px solid transparent}
+.navlinks a:hover{color:var(--text);background:var(--soft)}
+.navlinks a.on{background:var(--grad);color:#fff}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:700;color:#2B62C9;background:rgba(79,140,255,.11);border:1px solid rgba(79,140,255,.28)}
+html[data-theme="deep"] .pill,body[data-theme="deep"] .pill{color:#7CC8FF;background:rgba(56,225,255,.10);border-color:rgba(56,225,255,.28)}
+.hero{padding:44px 0 26px}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.25;margin:14px 0 12px;font-weight:900;letter-spacing:-.6px}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:760px;color:var(--muted);font-size:16px;margin:0}
+.rule{height:3px;width:120px;border-radius:99px;background:var(--grad);margin:22px 0 0}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:12px 0 30px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 14px;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:25px;line-height:1.2;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12.5px;color:var(--muted)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 18px}
+.search{flex:1 1 260px;min-width:200px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:14px;outline:none}
+.search:focus{border-color:#4F8CFF;box-shadow:0 0 0 3px var(--soft)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.chip{padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;min-height:38px}
+.chip.on{background:var(--grad);color:#fff;border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(30,58,110,.16)}
+.card .top{display:flex;gap:11px;align-items:flex-start}
+.ico{flex:0 0 38px;height:38px;border-radius:11px;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:800;font-size:12px;letter-spacing:.4px}
+.card h3{margin:0;font-size:16.5px;font-weight:800;line-height:1.4}
+.card .path{font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted);word-break:break-all;margin:5px 0 0}
+.meta{display:flex;gap:8px;flex-wrap:wrap;font-size:11.5px;color:var(--muted)}
+.meta i{font-style:normal;padding:3px 9px;border-radius:999px;background:var(--soft);border:1px solid var(--line)}
+.concl{border-left:3px solid #4F8CFF;background:var(--soft);border-radius:0 10px 10px 0;padding:11px 13px;font-size:13.5px;line-height:1.7;flex:1}
+.concl b{display:block;font-size:11px;letter-spacing:1px;color:#2B62C9;margin-bottom:4px}
+html[data-theme="deep"] .concl b,body[data-theme="deep"] .concl b{color:#7CC8FF}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.btn{min-height:38px;padding:8px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:#4F8CFF}
+.btn.pri{background:var(--grad);color:#fff;border-color:transparent}
+.empty{grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);background:var(--card);border:1px dashed var(--line);border-radius:16px}
+.block{margin-top:38px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.block h2{margin:0 0 6px;font-size:20px;font-weight:900}
+.block p{color:var(--muted);margin:0 0 14px;font-size:14px}
+.codebar{background:linear-gradient(90deg,rgba(79,140,255,.16),rgba(139,92,246,.16));border:1px solid var(--line);border-radius:12px 12px 0 0;padding:8px 14px;font-size:12px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+pre.cmd{margin:0;background:var(--code);color:var(--codeText);border-radius:0 0 12px 12px;padding:14px 16px;overflow:auto;font:13px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace}
+.figs{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:14px}
+.figs a{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.figs img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
+.figs span{display:block;padding:7px 10px;font:11px/1.5 ui-monospace,monospace;color:var(--muted);word-break:break-all}
+.contract{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:14px}
+.contract div{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:var(--soft);font-size:12.5px}
+.contract b{display:block;font-size:11px;letter-spacing:1px;color:#2B62C9;margin-bottom:3px}
+html[data-theme="deep"] .contract b,body[data-theme="deep"] .contract b{color:#7CC8FF}
+.friend p{margin:0;flex:1 1 260px;color:var(--muted);font-size:13.5px}
+.friend strong{color:var(--text)}
+footer{margin-top:46px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+.cite{display:inline-flex;gap:6px;align-items:center;padding:5px 12px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:12px;font-weight:700}
+.drawer{position:fixed;inset:0;z-index:80;display:none;background:rgba(3,0,20,.55);backdrop-filter:blur(3px)}
+.drawer.on{display:block}
+.sheet{position:absolute;right:0;top:0;bottom:0;width:min(760px,100%);background:var(--card);display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(0,0,0,.3)}
+.sheet header{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.sheet header b{flex:1 1 140px;font:13px/1.5 ui-monospace,monospace;word-break:break-all}
+.sheet pre{flex:1;overflow:auto;margin:0;padding:16px;background:var(--code);color:var(--codeText);font:12.5px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:4}
+.k{color:#7DD3FC}.s{color:#FDBA74}.c{color:#94A3B8;font-style:italic}.n{color:#C4B5FD}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:13px;font-weight:700;z-index:99;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:1}
+@media(max-width:720px){.stats{grid-template-columns:repeat(3,1fr)}.hero{padding:30px 0 20px}.navlinks{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px}.navlinks a{white-space:nowrap}}
+@media(max-width:480px){.wrap{padding:0 14px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.sheet{width:100%}.btn{flex:1 1 auto;justify-content:center}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <div class="logo"><span class="mark">🐎</span><span>白驹 ccowork</span></div>
+  <nav class="navlinks">
+    <a href="/index.html">首页</a><a href="/works/index.html">作品</a><a href="/lab/index.html">实验室</a>
+    <a class="on" href="/lab/code.html">源码与实验</a>
+</nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="pill">🐎 白驹 ccowork · 源码与实验</span>
+    <h1>源码与实验<br><em>带注释，有结论，可复跑</em></h1>
+    <p>这里只放本站自有的真实源码：数据实验室脚本逐条带结构化结论，前端引擎逐条说明职责。代码可预览、复制、下载，文件全部来自本机发布物，不引用第三方全文，也不托管任何安装包。</p>
+    <div class="rule"></div>
+  </section>
+
+  <section class="stats" id="stats"></section>
+
+  <div class="toolbar"><input class="search" id="q" type="search" placeholder="搜脚本名、路径、结论关键词…" aria-label="搜索源码"></div>
+  <div class="chips" id="chips"></div>
+  <section class="grid" id="grid"><div class="empty">正在读取单一真源清单…</div></section>
+
+  <section class="block">
+    <h2>一键重出图</h2>
+    <p>浏览器不跑 Python。下面两条命令在站点根目录执行，会重出 <code>lab/simulation/figs/</code> 下的配图，并用解析解反校验仿真结果。</p>
+    <div class="codebar"><span>⚙ 实操代码块 · 白驹科学实验室</span><button class="btn" data-copy="cd lab/simulation&#10;python plot_all.py&#10;python -m pytest test_simulation.py -q">复制命令</button></div>
+    <pre class="cmd">cd lab/simulation
+python plot_all.py
+python -m pytest test_simulation.py -q</pre>
+    <a class="btn" href="/lab/simulation/README.md" style="margin-top:14px">📄 打开仿真文档 README</a>
+    <div class="figs" id="figs"></div>
+  </section>
+
+  <section class="block">
+    <h2>来源与核验契约</h2>
+    <p>每条源码都带下面这些字段，由 <code>scripts/build-code-manifest.mjs</code> 每天重生成；第三方全文与安装包一律不托管。</p>
+    <div class="contract">
+      <div><b>出处</b>白驹 ccowork · ccowork（本站自有）</div>
+      <div><b>源头</b>站内真实路径，清单里逐条可点</div>
+      <div><b>许可</b>本站原创 · 保留署名即可</div>
+      <div><b>采集 / 核验</b><span id="cDate">—</span>，每日巡检</div>
+      <div><b>结论</b>从脚本末尾结构化注释抽取</div>
+      <div><b>失效标记</b>expired / expiredReason，日更会报</div>
+      <div><b>canonical</b>留空：域名未定，不编造绝对 URL</div>
+      <div><b>托管</b>全量自有，第三方文件 0</div>
+    </div>
+  </section>
+<footer>
+    <span class="cite" id="cite">核验至 — · 出处 — 条</span>
+    <p style="margin:10px 0 0">🐎 白驹 ccowork · ccowork ｜ 本站为个人技术展示站，不提供生成式 AI 服务；对话能力需用户自备模型 API 密钥，密钥仅存本机浏览器。</p>
+  </footer>
+</main>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="代码预览">
+  <div class="sheet">
+    <header>
+      <b id="dTitle">—</b>
+      <button class="btn" id="dCopy">复制代码</button>
+      <a class="btn pri" id="dDown" href="#" download>下载源文件</a>
+      <button class="btn" id="dClose">关闭</button>
+    </header>
+    <pre id="dCode"></pre>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var MAN='/data/design/code-manifest.json', state={items:[],groups:[],figures:[],g:'all',q:''}, cache={};
+  var $=function(s){return document.querySelector(s)};
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function fmt(n){return n<1024?n+' B':(n/1024).toFixed(1)+' KB'}
+  function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('on')},1600)}
+  function copy(txt,label){
+    function fallback(){var a=document.createElement('textarea');a.value=txt;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast((label||'内容')+'已复制')}catch(e){toast('复制失败，请手动选中')}a.remove()}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast((label||'内容')+'已复制')},fallback)}else fallback()
+  }
+  function hl(src,lang){
+    var out=[];
+    src.split('\n').forEach(function(line){
+      if(/^\s*[#\/\/]/.test(line)){out.push('<span class="c">'+esc(line)+'</span>');return}
+      var e=esc(line);
+      e=e.replace(/(&quot;|&#39;|"|')((?:\\.|[^&])*?)\1/g,'<span class="s">$1$2$1</span>');
+      e=e.replace(/\b(def|class|return|if|else|elif|for|while|in|import|from|as|with|try|except|finally|lambda|None|True|False|and|or|not|print|function|var|const|let|new|async|await|export|import|typeof|this|null|true|false)\b/g,'<span class="k">$1</span>');
+      e=e.replace(/\b(\d+\.?\d*)\b/g,'<span class="n">$1</span>');
+      out.push(e)
+    });
+    return out.join('\n')
+  }
+  function renderStats(d){
+    var s=d.stats||{},a=[
+      [s.total,'个自有源码'],[s.python,'个 Python 脚本'],[s.frontend,'个前端引擎'],
+      [s.withConclusion,'条结构化结论'],[s.figures,'张仿真配图']];
+    $('#stats').innerHTML=a.map(function(x){return '<div class="stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('');
+    $('#cite').textContent='核验至 '+d.date+' · 出处 '+s.total+' 条 · 结论覆盖 '+(s.conclusionCoverage||'—');
+    $('#cDate').textContent=d.date;
+    $('#figs').innerHTML=(d.figures&&d.figures.length?state.figures:[]).map(function(p){
+      return '<a href="/'+p+'" target="_blank" rel="noopener"><img loading="lazy" src="/'+p+'" alt="'+esc(p.split('/').pop())+'"><span>'+esc(p.split('/').pop())+'</span></a>'
+    }).join('')||'<p>暂无配图，运行 plot_all.py 后自动出现。</p>'
+  }
+  function renderChips(){
+    var a=[{id:'all',title:'全部',count:state.items.length}].concat(state.groups);
+    $('#chips').innerHTML=a.map(function(g){
+      return '<button class="chip'+(state.g===g.id?' on':'')+'" data-g="'+g.id+'">'+esc(g.title)+' · '+g.count+'</button>'
+    }).join('');
+    Array.prototype.forEach.call(document.querySelectorAll('.chip'),function(b){b.addEventListener('click',function(){state.g=b.getAttribute('data-g');renderChips();renderGrid()})})
+  }
+  function renderGrid(){
+    var q=state.q.toLowerCase();
+    var list=state.items.filter(function(x){
+      if(state.g!=='all'&&x.group!==state.g)return false;
+      if(!q)return true;
+      return (x.title+' '+x.rel+' '+x.conclusion+' '+x.group).toLowerCase().indexOf(q)>=0
+    });
+    if(!list.length){$('#grid').innerHTML='<div class="empty">没有匹配的源码，换个关键词试试。</div>';return}
+    $('#grid').innerHTML=list.map(function(x){
+      var tag=x.lang==='python'?'PY':x.lang==='css'?'CSS':'JS';
+      return '<article class="card">'+
+        '<div class="top"><div class="ico">'+tag+'</div><div><h3>'+esc(x.title)+'</h3><div class="path">'+esc(x.path)+'</div></div></div>'+
+        '<div class="meta"><i>'+esc(x.group)+'</i><i>'+fmt(x.size)+'</i><i>'+x.lines+' 行</i><i>核验 '+esc(x.verifiedAt)+'</i></div>'+
+        '<div class="concl"><b>结论</b>'+esc(x.conclusion||'待补')+'</div>'+
+        '<div class="acts"><button class="btn pri" data-view="'+esc(x.path)+'" data-title="'+esc(x.title)+'">预览代码</button>'+
+        '<a class="btn" href="'+esc(x.path)+'" download>下载</a>'+
+        '<button class="btn" data-copy="'+esc(x.path)+'">复制路径</button></div>'+
+      '</article>'
+    }).join('');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-view]'),function(b){
+      b.addEventListener('click',function(){openCode(b.getAttribute('data-view'),b.getAttribute('data-title'))})
+    })
+  }
+  function openCode(p,title){
+    $('#dTitle').textContent=p;$('#dDown').setAttribute('href',p);
+    $('#dDown').setAttribute('download',p.split('/').pop());
+    $('#dCode').innerHTML='读取中…';$('#drawer').classList.add('on');
+    document.body.style.overflow='hidden';
+    function put(txt){cache[p]=txt;$('#dCode').innerHTML=hl(txt,p.split('.').pop());$('#dCode').scrollTop=0}
+    if(cache[p]){put(cache[p]);return}
+    fetch(p,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text()}).then(put).catch(function(e){$('#dCode').textContent='无法读取：'+e.message+'（请通过本地预览或站点访问，不要用 file:// 直接打开）'})
+  }
+  function closeCode(){$('#drawer').classList.remove('on');document.body.style.overflow=''}
+  $('#dClose').addEventListener('click',closeCode);
+  $('#drawer').addEventListener('click',function(e){if(e.target===this)closeCode()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCode()});
+  $('#dCopy').addEventListener('click',function(){var p=$('#dTitle').textContent;copy(cache[p]||'','代码')});
+  $('#q').addEventListener('input',function(e){state.q=e.target.value.trim();renderGrid()});
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-copy]');if(!b)return;
+    var v=b.getAttribute('data-copy');
+    if(v.indexOf('\n')>=0)copy(v.replace(/&#10;/g,'\n'),'命令');else copy(v,'路径')
+  });
+  fetch(MAN,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(function(d){
+    state.items=d.items||[];state.groups=d.groups||[];state.figures=d.figures||[];
+    renderStats(d);renderChips();renderGrid()
+  }).catch(function(e){$('#grid').innerHTML='<div class="empty">清单读取失败：'+esc(e.message)+'。请通过站点访问（本地预览 8080 或线上域名），不要用 file:// 打开。</div>'})
+})();
+</script>
+<script src="/ccowork.js?v=20261115b"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

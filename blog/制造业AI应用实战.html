@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="制造业的 AI 项目失败，八成不是算法不行，是数据前提没满足。这篇按六个典型场景拆：需要什么数据、技术路径是什么、怎么验收、常见死法。不承诺效果数字。">
+<meta name="keywords" content="制造业AI应用实战,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta name="description" content="制造业的 AI 项目失败，八成不是算法不行，是数据前提没满足。这篇按六个典型场景拆：需要什么数据、技术路径是什么、怎么验收、常见死法。不承诺效果数字。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>制造业上 AI：六个场景的数据前提与验收方式 · 白驹 ccowork</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html">
+<meta property="og:title" content="制造业上 AI：六个场景的数据前提与验收方式 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="制造业上 AI：六个场景的数据前提与验收方式 · 白驹 ccowork">
+<meta name="twitter:description" content="制造业的 AI 项目失败，八成不是算法不行，是数据前提没满足。这篇按六个典型场景拆：需要什么数据、技术路径是什么、怎么验收、常见死法。不承诺效果数字。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"制造业上 AI：六个场景的数据前提与验收方式","description":"制造业的 AI 项目失败，八成不是算法不行，是数据前提没满足。这篇按六个典型场景拆：需要什么数据、技术路径是什么、怎么验收、常见死法。不承诺效果数字。","url":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html"},"image":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/assets/img/og-cover.png","datePublished":"2026-08-30","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"dateModified":"2026-10-27","inLanguage":"zh-CN"}</script>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="works"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/cover-制造业AI应用实战.png" alt="制造业AI应用实战" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<article>
+<div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>8 分钟</span><span class="blog-tag">AI 创作</span></div>
+<div class="blog-divider"></div>
+<h1>制造业上 AI：六个场景的数据前提与验收方式</h1>
+<p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">「准确率从人工 85% 到 99.5%」「非计划停机减少 50–70%」这类效果数字没有出处，不同工厂差异极大，这里一律不列为预期。给的是数据前提、技术路径与验收方式——效果是这些条件的函数，条件不满足，数字就是空话。</p><p>制造业做 AI，最常见的失败不是算法选错，是<strong>数据前提不成立</strong>。</p><p>一个检测项目，样本量不够、缺陷定义不统一、标注标准靠老师傅口口相传——这时候上什么模型都没用。所以下面每个场景，我按<strong>数据前提 → 技术路径 → 怎么验收 → 常见死法</strong>来写。</p><h2>一 · 视觉质检</h2><h3>数据前提</h3><ul><li>缺陷<strong>定义明确</strong>：什么算划痕、多长算缺陷，要有文字标准，不能只有口头标准</li><li>缺陷样本<strong>够多且够偏</strong>：好的样本遍地都是，坏的可能只有几十张</li><li>成像<strong>稳定</strong>：光照、角度、焦距固定，否则模型学的是光照差异不是缺陷</li></ul><h3>技术路径</h3><p>先从<strong>异常检测</strong>入手（只用良品训练，找「不像良品」的），而不是直接做缺陷分类。原因是缺陷样本太少，分类模型训不出来，而异常检测只需要良品。</p><p>等积累到每一类缺陷都有足够样本，再升级成分类或分割，这样能给出「是哪种缺陷」而不只是「有缺陷」。</p><h3>怎么验收</h3><p>三个指标缺一不可：</p><table><thead><tr><th style="white-space:nowrap">指标</th><th>为什么重要</th></tr></thead><tbody><tr><td style="white-space:nowrap">漏检率</td><td>漏掉一个不良品的代价，通常远高于误判一个良品</td></tr><tr><td style="white-space:nowrap">过杀率</td><td>误判太多，产线会绕过系统，项目就废了</td></tr><tr><td style="white-space:nowrap">一致性</td><td>同一张图重复送检，结果必须稳定</td></tr></tbody></table><p>第三个最容易被忽视。工业系统要的是<strong>可复现</strong>，不是「大部分时候对」。</p><h3>常见死法</h3><p>用实验室灯光拍训练集，产线上换了灯。这个错误极其常见，而且上线前测不出来。<strong>训练数据必须来自真实产线工位</strong>。</p><h2>二 · 设备预测性维护</h2><h3>数据前提</h3><ul><li>有<strong>传感器历史数据</strong>，且采样率足够（振动类信号低于某频率就没信息了）</li><li>有<strong>故障记录</strong>：什么时候坏的、坏在哪、换的什么件</li><li>故障样本<strong>覆盖多种失效模式</strong>（只见过一种，就只能预测这一种）</li></ul><h3>技术路径</h3><p>先做<strong>阈值 + 趋势告警</strong>，别一上来做剩余寿命预测。大部分工厂连「异常时能报出来」都还没做到，直接上寿命预测是跳级。</p><p>路径通常是：单变量阈值 → 多变量异常检测 → 故障分类 → 剩余寿命估计。每上一级，都需要更完整的历史数据。</p><h3>怎么验收</h3><p>不看准确率，看<strong>提前量与误报密度</strong>：平均能提前多久报警（够不够安排停机），每台设备每月误报几次（超过检修班能处理的量，就没人看了）。</p><h3>常见死法</h3><p>传感器装了但数据没入库，或者入库了但时间戳对不齐。<strong>时间对齐是这类项目最大的隐形工作量</strong>，排期时一定要单独留时间。</p><h2>三 · 排产与调度</h2><h3>数据前提</h3><ul><li>工艺路线、设备能力、换型时间<strong>是记录在系统里的</strong>，不是老师傅脑子里的</li><li>订单与库存数据准确（这一条经常不成立）</li><li>有历史排产结果可以对照</li></ul><h3>技术路径</h3><p>排产本质是<strong>约束优化</strong>，不是机器学习。先明确目标函数（交期优先？换型最少？设备利用率最高？）——这个目标通常需要在管理层拍板，而不是算法决定。</p><p>现实做法：用规则 + 求解器做基线，AI 用来处理「规则说不清」的部分（比如经验性的缓冲时间）。</p><h3>怎么验收</h3><p>对比历史同期：<strong>交期达成率、平均在制品、换型次数</strong>。而且要允许计划员<strong>手动干预</strong>——不能干预的系统一定会被绕过。</p><h3>常见死法</h3><p>目标是拍脑袋定的，或者有多个互相冲突的目标没有人拍板。<strong>排产项目失败，一半死在目标不清晰上。</strong></p><h2>四 · 供应链与需求预测</h2><h3>数据前提</h3><ul><li>至少两年的历史出货数据（季节性才看得出来）</li><li>促销、断货、大客户变动等<strong>事件有记录</strong>（否则模型会把断货当成需求下降）</li><li>SKU 层级清晰，没有中途改过编码</li></ul><h3>技术路径</h3><p>分两层：<strong>先做基线预测</strong>（移动平均、指数平滑这类，往往已经够用），再看残差里有没有可学的结构。很多项目直接上复杂模型，结果不如简单基线——因为数据里的噪声大于信号。</p><h3>怎么验收</h3><p>用<strong>回溯测试</strong>：只用某时间点之前的数据预测之后，滚动多轮。别用随机划分——时序数据随机划分会泄漏未来信息，分数虚高。</p><h3>常见死法</h3><p>把「缺货导致的销量为 0」当成「需求为 0」。这一条会让预测系统性偏低，而且很难从指标上看出来。</p><h2>五 · 工艺参数优化</h2><h3>数据前提</h3><ul><li>参数与结果的对应记录完整（调了什么、出来什么）</li><li>有<strong>主动试验</strong>的数据，而不只有产线自然波动的数据</li><li>关键质量指标可测且测量误差小</li></ul><h3>技术路径</h3><p>先做<strong>敏感性分析</strong>（哪个参数影响最大），再做寻优。不要直接上强化学习或自动调参——产线不允许模型在线乱试。</p><p>实务上更常见的是「推荐参数 + 人工确认 + 小批试产」，模型只负责缩小搜索范围。</p><h3>怎么验收</h3><p>在<strong>小批试产</strong>中对比：同一目标下，推荐参数与现行参数的差距。并且要看<strong>稳健性</strong>——参数在容差范围内波动时，质量是否还稳。</p><h3>常见死法</h3><p>数据是相关不是因果。模型发现「冷却时间长 → 质量好」，于是建议延长冷却，实际是另一条线本来就走得慢。<strong>优化建议必须经过工艺工程师的因果判断</strong>。</p><h2>六 · 数字孪生</h2><p>这个概念容易被讲得很玄。务实地说，它有三个层次，绝大多数工厂需要的只是第一个：</p><table><thead><tr><th style="white-space:nowrap">层次</th><th>做什么</th><th>投入</th></tr></thead><tbody><tr><td style="white-space:nowrap">可视化</td><td>把产线状态实时画出来，能看能查</td><td>低，见效快</td></tr><tr><td style="white-space:nowrap">可仿真</td><td>能回答「如果这样改，产出会怎样」</td><td>中，需要准确的工艺模型</td></tr><tr><td style="white-space:nowrap">可优化</td><td>自动给出最优参数或排程</td><td>高，需要仿真 + 优化 + 验证闭环</td></tr></tbody></table><p>直接从第三层起步的项目，几乎都会卡在「仿真不准」上——因为工艺模型需要长期数据积累，买不来。</p><h2>实施路径：三段走，别跳</h2><table><thead><tr><th style="white-space:nowrap">阶段</th><th>目标</th><th>过关标志</th></tr></thead><tbody><tr><td style="white-space:nowrap">一 · 数据可用</td><td>把源头数据接进来、对齐时间戳、定义清楚指标</td><td>能导出干净的历史数据，且业务方认可口径</td></tr><tr><td style="white-space:nowrap">二 · 单点试点</td><td>选一个边界清楚、可量化、有人愿意用的场景</td><td>在真实产线上跑够一段时间，指标站得住</td></tr><tr><td style="white-space:nowrap">三 · 规模推广</td><td>把试点沉淀成模板：数据接入、验收、运维</td><td>第二个场景的落地时间明显短于第一个</td></tr></tbody></table><p>第一阶段的过关标志特别值得强调：<strong>业务方认可口径</strong>。如果财务、生产、质量三个部门对「良率」的定义都不一样，后面所有指标都会吵架。</p><h2>算投入产出时，别只算算法</h2><p>一个工业 AI 项目的成本，大致分四块，通常只有第一块被算进去：</p><ul><li>算法与开发</li><li><strong>数据采集与标注</strong>（常常比开发贵）</li><li><strong>系统集成与产线改造</strong>（常常是最大一块）</li><li><strong>运维与模型迭代</strong>（持续发生）</li></ul><p>第四块最容易被漏。产线会变、物料会换、设备会老化，模型需要持续维护。<strong>没有运维预算的 AI 项目，通常一年后就开始失效</strong>。</p><h2>八条注意事项（浓缩版）</h2><ul><li>缺陷与指标的定义，先写下来再谈模型</li><li>训练数据必须来自真实工位，不要用实验室数据凑</li><li>先做异常检测，再做分类，别跳级</li><li>时间戳对齐是隐形工作量，排期要留</li><li>目标函数要有人拍板，且允许人工干预</li><li>时序数据必须回溯测试，不能随机划分</li><li>优化建议要过一遍工艺工程师的因果判断</li><li>运维预算从第一天就要有</li></ul>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261115b"></script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="国内外 18 个 AI 模型榜单按人类偏好、综合能力、Agent 工程、合规与成本四类归位，标注评测方式、更新频率与失效状态。">
+<meta name="keywords" content="榜单矩阵 · 18 个榜单,分四类看 · 白驹 ccowork,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>榜单矩阵 · 18 个榜单，分四类看 · 白驹 ccowork</title>
+<meta name="description" content="国内外 18 个 AI 模型榜单按人类偏好、综合能力、Agent 工程、合规与成本四类归位，标注评测方式、更新频率与失效状态。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/cover.css">
+<meta name="twitter:description" content="国内外 18 个 AI 模型榜单按人类偏好、综合能力、Agent 工程、合规与成本四类归位，标注评测方式、更新频率与失效状态。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/leaderboards.html">
+<meta property="og:title" content="榜单矩阵 · 18 个榜单，分四类看 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/leaderboards.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="榜单矩阵 · 18 个榜单，分四类看 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="models" data-cctitle="榜单矩阵">
+
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/leaderboards.jpg" alt="" loading="eager" decoding="async"></div>
+
+  <div class="pg-hero">
+    <div data-cccrumb="榜单矩阵"></div>
+    <h1>榜单矩阵 · <em>18 个榜，没有总榜</em></h1>
+    <p class="lede">
+      同一时期同一个模型，在中文榜和英文榜上的名次可以相差十位以上。
+      原因不复杂：<b>参赛模型集合不同、题目分布不同、评测方式不同</b>。
+      所以这里不做总分合成，只把榜单按「它到底测什么」分成四类，各自独立看待。
+    </p>
+    <div class="pg-stats">
+      <div class="st"><b data-cnt="18">0</b><span>榜单</span></div>
+      <div class="st"><b data-cnt="4">0</b><span>用途分类</span></div>
+      <div class="st"><b data-cnt="11">0</b><span>正常更新</span></div>
+      <div class="st"><b data-cnt="2">0</b><span>已停更</span></div>
+    </div>
+  </div>
+
+  <div class="pg-note warn">
+    <i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>
+    <div>
+      <b>为什么不能做「模型总榜」：</b>同一模型跨榜名次落差是常态——
+      有的中文榜主榜以国产模型为参赛主体、国际模型不参与排名；有的综合榜只收录二十余个模型。
+      把这类榜单的分数量纲强行加权，得到的排名只是加权方式的产物，不是模型的能力。
+      <b>正确用法是按场景选榜</b>：做客服看人类偏好，做开发看 Agent 工程，做招标看合规评测。
+    </div>
+  </div>
+
+  <div id="board"></div>
+
+  <div class="pg-sec" id="read">
+    <div class="sh"><h2><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>怎么读一个榜</h2>
+      <span class="sub">四条判据，按顺序看</span></div>
+    <div class="pg-grid wide">
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="users" aria-hidden="true"></i></span>
+          <div><h3>一、谁在投票</h3><div class="tag">人类盲测 / 自动判分 / 专家评审</div></div></div>
+        <p class="desc">人类盲测反映真实使用偏好，但容易被"回答长、格式漂亮"带偏；自动判分可复现，但会被测试集污染；专家评审最贴近专业场景，但样本量小、更新慢。三者不能互相替代。</p>
+      </div>
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="calendar-clock" aria-hidden="true"></i></span>
+          <div><h3>二、最后一次更新是什么时候</h3><div class="tag">超过半年就要打折</div></div></div>
+        <p class="desc">榜单停止更新后，新发布的模型不会出现在上面，于是老模型长期占据头部。看到榜首还是半年前的型号，第一反应应该是"这个榜没跟上"，而不是"这半年没有进步"。</p>
+      </div>
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="list-filter" aria-hidden="true"></i></span>
+          <div><h3>三、收录了哪些模型</h3><div class="tag">参赛集合决定名次含义</div></div></div>
+        <p class="desc">只收录开源模型的榜，第一名是"开源第一"；只收录国产模型的榜，第一名是"国产第一"。这两种第一放到全量比较里，位置完全不同。</p>
+      </div>
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="shield-check" aria-hidden="true"></i></span>
+          <div><h3>四、题目公开了没有</h3><div class="tag">公开即可能被针对性训练</div></div></div>
+        <p class="desc">测试集公开的榜单，厂商可以拿它做训练目标，分数会系统性偏高。持续换题（如 LiveBench）或用私有集（如 Scale SEAL）的榜单，抗污染更强，代价是复现难度更高。</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/models/hub.js"></script>
+<script>
+(function () {
+  var MH = window.MH, esc = MH.esc, ic = MH.ic;
+  var board = MH.$('#board');
+  var STXT = { live: '正常更新', slow: '更新变慢', partial: '收录不全', dead: '已停更' };
+  var CATIC = { pref: 'users', general: 'bar-chart-3', agent: 'bot', compliance: 'shield-check' };
+
+  function card(r) {
+    var st = r.s;
+    return '<div class="pg-card">' +
+      '<div class="ch"><span class="ic">' + ic(r.c === 'CN' ? 'landmark' : 'globe') + '</span>' +
+      '<div><h3>' + esc(r.n) + '</h3><div class="tag">' + esc(r.org) + ' · ' + esc(MH.cn(r.c)) + '</div></div></div>' +
+      '<p class="desc">' + esc(r.note) + '</p>' +
+      '<div class="reps">' +
+        '<div class="rp"><span class="rl">方式</span><span class="pg-chip s">' + esc(r.m) + '</span>' +
+          '<span class="pg-chip s">' + r.d + ' 个子榜</span><span class="pg-chip s">' + esc(r.f) + '</span></div>' +
+        '<div class="rp"><span class="rl">中文</span><span class="pg-chip s">' + esc(r.cn) + '</span></div>' +
+      '</div>' +
+      '<div class="foot">' +
+        '<span class="dot ' + st + '"></span><span class="lbl">' + esc(STXT[st] || st) + '</span>' +
+        '<a href="' + esc(r.u) + '" target="_blank" rel="noopener noreferrer nofollow" ' +
+        'style="margin-left:auto;font-weight:700;color:var(--blue,#4f8cff);display:inline-flex;align-items:center;gap:3px">' +
+        '前往' + ic('external-link') + '</a>' +
+      '</div></div>';
+  }
+
+  MH.getJSON('/data/leaderboards.json', function (d) {
+    var byName = {};
+    d.rows.forEach(function (r) { byName[r.n] = r; });
+    var html = '';
+
+    d.cats.forEach(function (c) {
+      var items = c.items.map(function (n) { return byName[n]; }).filter(Boolean);
+      if (!items.length) return;
+      html += '<section class="pg-sec" id="c-' + c.k + '">' +
+        '<div class="sh"><h2>' + ic(CATIC[c.k] || 'list') + esc(c.n) + '</h2>' +
+        '<span class="sub">' + esc(c.d) + '</span>' +
+        '<span class="cnt">' + items.length + ' 个</span></div>' +
+        '<div class="pg-grid wide">' + items.map(card).join('') + '</div></section>';
+    });
+
+    /* 失效榜单独列，避免被误用 */
+    var dead = d.rows.filter(function (r) { return r.s === 'dead'; });
+    if (dead.length) {
+      html += '<section class="pg-sec" id="dead">' +
+        '<div class="sh"><h2>' + ic('ban') + '不要再用这几个</h2>' +
+        '<span class="sub">官方已停更或数据停滞，仅可作历史对照</span>' +
+        '<span class="cnt">' + dead.length + ' 个</span></div>' +
+        '<div class="pg-tblwrap"><div class="pg-tblscroll"><table class="pg-tbl"><thead><tr>' +
+        '<th>榜单</th><th>主办</th><th>当前状态</th><th>停用原因</th></tr></thead><tbody>' +
+        dead.map(function (r) {
+          return '<tr><td>' + esc(r.n) + '</td><td>' + esc(r.org) + '</td>' +
+            '<td><span class="dot dead"></span>' + esc(r.f) + '</td><td>' + esc(r.note) + '</td></tr>';
+        }).join('') + '</tbody></table></div></div></section>';
+    }
+    board.innerHTML = html;
+    MH.fillCounts();
+  }, function () {
+    board.innerHTML = MH.empty('榜单数据加载失败', '请刷新重试');
+  });
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

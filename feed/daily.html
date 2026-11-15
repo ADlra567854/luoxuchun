@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>每日速览 · 前沿流 · 白驹 ccowork</title>
+<meta name="description" content="按日归档的 AI 动态速览与要点摘录。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/feed/daily.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --bg:#f7f9fc; --card:#ffffff; --card2:#f2f6fb;
+  --text:#0f172a; --muted:#5b6b83;
+  --line:#dfe7f1; --line2:#cbd8e8;
+  --grad:linear-gradient(120deg,#4f8cff,#38b6ff 52%,#8b5cf6);
+}
+[data-theme="deep"]{
+  --bg:#030014; --card:#101728; --card2:#161f33;
+  --text:#e9f0fb; --muted:#8fa3bd;
+  --line:#1e2d47; --line2:#2a3b5c;
+}
+.b-wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.b-hero{padding:46px 0 20px;border-bottom:1px solid var(--line)}
+.b-hero .b-k{font-size:13px;font-weight:800;color:#0e7490;letter-spacing:.08em}
+.b-hero h1{font-size:33px;font-weight:900;margin:8px 0 10px;letter-spacing:-.02em}
+.b-hero .b-meta{font-size:13px;color:var(--muted);line-height:1.9}
+.b-hero .b-meta b{color:var(--text)}
+.b-srcbar{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 0}
+.b-srcdot{font-size:12px;font-weight:700;padding:4px 11px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.b-srcdot.on{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4);color:#0f8a5f}
+.b-srcdot.off{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3);color:#b91c1c;text-decoration:line-through}
+.b-sec{margin:0;max-width:none;padding:30px 0;border-bottom:1px solid var(--line)}
+.b-sec>h2{font-size:22px;font-weight:900;margin:0 0 4px;display:flex;align-items:baseline;gap:11px}
+.b-sec>h2 em{font-style:normal;font-size:12px;font-weight:700;color:var(--muted)}
+.b-sec>.note{font-size:13px;color:var(--muted);margin:0 0 18px}
+.b-lead{display:grid;gap:12px}
+.b-li{margin:0;max-width:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .16s,transform .16s}
+.b-deep .b-big{font-size:15px;line-height:1.95;color:var(--text)}
+.b-top{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:7px}
+.b-rk{font-size:11px;font-weight:900;color:#fff;background:var(--grad);border-radius:6px;padding:2px 8px}
+.b-src{font-size:12px;font-weight:800;color:#0e7490;background:rgba(56,225,255,.12);border:1px solid rgba(56,225,255,.3);padding:2px 9px;border-radius:999px}
+.b-dt{font-size:12px;color:var(--muted);margin-left:auto}
+.b-tags{display:flex;gap:6px;flex-wrap:wrap}
+.b-srcdot.b-on{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4);color:#0f8a5f}
+.b-srcdot.b-off{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3);color:#b91c1c;text-decoration:line-through}
+.b-li:hover{border-color:#4f8cff;transform:translateY(-2px)}
+.b-li.d- {display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:7px}
+.b-li.d- {font-size:11px;font-weight:900;color:#fff;background:var(--grad);border-radius:6px;padding:2px 8px}
+.b-li.d- {font-size:12px;font-weight:800;color:#0e7490;background:rgba(56,225,255,.12);border:1px solid rgba(56,225,255,.3);padding:2px 9px;border-radius:999px}
+.b-li.d- {font-size:12px;color:var(--muted);margin-left:auto}
+.b-li h3{margin:0 0 8px;font-size:17px;font-weight:900;line-height:1.5}
+.b-li h3 a{color:inherit;text-decoration:none}
+.b-li h3 a:hover{color:#4f8cff}
+.b-li p{margin:0 0 9px;font-size:14px;line-height:1.8;color:var(--muted)}
+.b-tags{display:flex;gap:6px;flex-wrap:wrap}
+.b-tg{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.24);color:var(--muted)}
+.b-quote{margin-top:10px;padding:10px 13px;font-size:13px;line-height:1.75;border-left:3px solid #4f8cff;background:rgba(79,140,255,.06);border-radius:0 10px 10px 0}
+.b-quote b{display:block;font-size:11px;letter-spacing:.05em;opacity:.66;margin-bottom:3px}
+.b-deep{margin:0;max-width:none;border:1px solid rgba(79,140,255,.34);border-radius:18px;padding:22px 24px;background:linear-gradient(120deg,rgba(79,140,255,.07),rgba(139,92,246,.07))}
+.b-deep h3{margin:8px 0 12px;font-size:21px;font-weight:900;line-height:1.45}
+.b-deep h3 a{color:inherit;text-decoration:none}
+.b-deep.d- {font-size:15px;line-height:1.95;color:var(--text)}
+.b-grid6{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:11px}
+.b-tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+.b-tc{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--card2)}
+.b-tc b{display:block;font-size:15px;font-weight:900;margin-bottom:4px}
+.b-tc span{display:block;font-size:12px;color:var(--muted);line-height:1.6}
+.b-tc a{font-size:11px;color:#0e7490;text-decoration:none}
+.b-disc{border:2px dashed var(--line2);border-radius:18px;padding:26px 24px;text-align:center;background:var(--card)}
+.b-disc h3{margin:0 0 8px;font-size:19px;font-weight:900}
+.b-disc p{margin:0 auto 16px;max-width:640px;font-size:14px;line-height:1.85;color:var(--muted)}
+.b-disc .b-placeholder{display:inline-block;font-size:13px;font-weight:800;padding:9px 20px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.b-daynav{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 18px}
+.b-daychip{font-size:13px;font-weight:800;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);color:var(--muted);text-decoration:none}
+.b-daychip:hover{border-color:#4f8cff;color:#4f8cff}
+.b-daychip b{color:var(--text);margin-left:3px}
+.b-day{padding:16px 0 2px;border-top:1px dashed var(--line)}
+.b-day:first-of-type{border-top:0;padding-top:0}
+.b-day-h{font-size:18px;font-weight:900;margin:0 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;scroll-margin-top:20px}
+.b-day-h time{font-size:13px;font-weight:700;color:#0e7490;letter-spacing:.02em}
+.b-day-cn{font-size:15px;font-weight:900}
+.b-day-h em{font-style:normal;font-size:12px;font-weight:700;color:var(--muted);margin-left:auto}
+.b-foot{padding:26px 0 40px;font-size:13px;color:var(--muted);line-height:1.9}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="models" data-cctitle="前沿流">
+<div class="pg-wrap">
+<article class="merged-content">
+<div class="b-wrap">
+
+<section class="b-hero">
+  <div class="b-k">DAILY BRIEF</div>
+  <h1>每日简报</h1>
+  <p class="b-meta">
+    采集时间 <b>2026/10/28 12:19:44</b>　·　覆盖最近 <b>7</b> 个自然日（<b>2026-10-22</b> ~ <b>2026-10-28</b>）　·　共 <b>293</b> 条<br>
+    方法：直接抓取各站公开 RSS/Atom，不做任何 AI 生成或改写<br>
+    <b>这一页没有一句是 AI 写的。</b>标题与摘要均来自各站原文，只做去重、排序与打标签；每条都能点回原文。
+  </p>
+  <div class="b-srcbar">
+    <span class="b-srcdot on" title="https://www.qbitai.com/feed">量子位 10</span><span class="b-srcdot on" title="https://www.infoq.cn/feed">InfoQ 中国 20</span><span class="b-srcdot on" title="https://openai.com/blog/rss.xml">OpenAI 官方博客 1331</span><span class="b-srcdot on" title="https://blog.google/technology/ai/rss/">Google AI 博客 20</span><span class="b-srcdot on" title="https://www.ithome.com/rss/">IT之家 60</span><span class="b-srcdot off" title="https://www.jiqizhixin.com/rss｜不可用原因：返回 200 但内容是 HTML，不是 feed">机器之心</span><span class="b-srcdot off" title="https://36kr.com/feed｜不可用原因：返回 200 但内容是 HTML，不是 feed">36 氪</span><span class="b-srcdot off" title="https://huggingface.co/blog/feed.xml｜不可用原因：国内直连 000，不可达">Hugging Face</span><span class="b-srcdot off" title="https://www.anthropic.com/news/rss.xml｜不可用原因：HTTP 404，官方未提供该路径">Anthropic News</span>
+  </div>
+</section>
+
+<section class="b-sec b-days" id="days">
+  <h2>逐日简报 <em>最近 7 个自然日 · 每天都有条目</em></h2>
+  <p class="note">按发布日期（Asia/Shanghai 自然日）分组，最近的日期在前，点日期可跳到当天。标题、摘要、链接全部来自各站原文，未做任何改写。窗口内较早的条目在后续抓取中不再出现在 RSS 里，脚本按原链接保留，不补写。</p>
+  <div class="b-daynav">
+    <a class="b-daychip" href="#day-2026-10-28">10 月 28 日<b>65</b></a><a class="b-daychip" href="#day-2026-10-27">10 月 27 日<b>115</b></a><a class="b-daychip" href="#day-2026-10-26">10 月 26 日<b>83</b></a><a class="b-daychip" href="#day-2026-10-25">10 月 25 日<b>3</b></a><a class="b-daychip" href="#day-2026-10-24">10 月 24 日<b>9</b></a><a class="b-daychip" href="#day-2026-10-23">10 月 23 日<b>12</b></a><a class="b-daychip" href="#day-2026-10-22">10 月 22 日<b>6</b></a>
+  </div>
+  
+  <section class="b-day" id="day-2026-10-28" data-date="2026-10-28">
+    <h3 class="b-day-h"><time datetime="2026-10-28">2026-10-28</time><span class="b-day-cn">10 月 28 日 · 周三</span><em>65 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">20:13</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">智能指数得分创新高！蚂蚁百灵开源Ling-3.1-flash-1019：让Personal Agent走向真实业务</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">20:05</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/7yOK6Ri9Dt4VfITmA7Vb?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">轻量化异构双臂 × VLA/世界模型：家庭服务具身机器人的落地实践</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">18:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/28VVsANi9FBYRKfUz8vA?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">GPT-6.1 Terra 发布：比旗舰快 3 倍，价格仅1/10！事实错误率暴降近 70%</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">17:07</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/Qwr9oqOSAdmi1YibHVWr?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">在AI时代如何提升软件工程能力</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">12:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/877.htm" target="_blank" rel="noopener">总靠 AI 干活，你的专业能力可能正在悄悄退化</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，人工智能已经在不少专业领域承担起助手的角色，医生、科研人员、软件开发人员都会在工作中使用它。糟糕的是，这会导致研究者所说的技能退化现象：人们把工作交给 AI 处理，自身专业能力随之下滑。IT之家注意到，理论…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">12:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/876.htm" target="_blank" rel="noopener">“编程面试已死”：Anthropic 称 AI 时代编程题已无法筛选程序员</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，Anthropic 招聘经理、Claude 相关产品工程负责人 Felix Rieseberg 本月表示，他已在其团队的招聘流程中取消传统编程题面试。他在社交平台发文称：“编程面试已经死了，至少对我的团队而…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">12:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/860.htm" target="_blank" rel="noopener">豆包工作功能上新：支持将“录制电脑操作”保存为技能</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，今天（28 日）上午，豆包通过公众号宣布，豆包工作操作电脑能力整体升级，屏幕点击精度、速度提升，更准、更快。继此前支持跨应用操作、将浏览器操作录成技能后，此次更新则支持将录制电脑操作保存为技能。根据介绍，用…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:59</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/859.htm" target="_blank" rel="noopener">索尼推出手机主摄图像传感器 LYTIA 720，提升暗光及 HDR 视频拍摄表现</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，索尼半导体解决方案今日宣布将推出面向智能手机主摄像头的 LYTIA 720 图像传感器。该产品图像尺寸为 1/1.56&quot;，有效像素约为 50MP，采用堆栈式结构，预计 11 月上旬量产出货。LYT…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:52</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/843.htm" target="_blank" rel="noopener">多款主流固态硬盘 SSD 单周跌幅超过 10%，渠道报价明显松动</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，“CFM 闪存市场”昨日（10 月 27 日）发布博文，报道称本周（10 月 26 日至 11 月 1 日）国内渠道市场固态硬盘 SSD 报价出现大面积、较大幅度下调，多款主流容量产品单周跌幅超过 10%。…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:46</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/829.htm" target="_blank" rel="noopener">索尼公布紧凑型裸眼 3D 显示器 ELF-MN1，6&quot; 1080×2160 470nits</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，Sony（索尼）日本当地时间今日公布了隶属旗下 XYN 空间内容解决方案硬件产品线的紧凑型裸眼 3D 显示器 ELF-MN1。该产品采用 6 英寸的微光学透镜 LCD 面板，分辨率 1080×2160，亮度…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:28</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/819.htm" target="_blank" rel="noopener">美国总统特朗普称将在相关文件中“正式禁用”AI 人工智能一词，改称为“SI 超级智能”</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，据新华社今日报道，美国总统特朗普 27 日在社交媒体“真实社交”发文，表示将很快在“所有相关文件”及其他场合“正式禁止”使用“人工智能（AI）”一词，理由是这一表述“不准确”。不过，帖文中没有具体说明禁令将…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:27</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/818.htm" target="_blank" rel="noopener">OpenAI 宣布三项重大科学突破，科研界却不满其成果发布方式</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，OpenAI 于当地时间周一宣布，公司在数学、计算机科学与物理学领域取得了引人瞩目的突破，同时称自身正在调整成果发布的沟通方式。不过，尽管看起来做出了路线修正，接受 The Verge 采访的科研人员对这家…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:24</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/817.htm" target="_blank" rel="noopener">酷冷至尊龙影二代 Pro 处理器 AIO 液冷散热器上市：360 规格，999 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，CoolerMaster（酷码 / 酷冷至尊）今日启动了处理器 AIO 液冷新品龙影二代 Pro 的销售，这一型号配备 360 规格冷排，冷头顶盖装饰以 ARGB 背光 + 3D MESH 金属网孔。龙影二…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:24</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/816.htm" target="_blank" rel="noopener">波音下调 2026 全年交付目标，股价创 18 个月最大跌幅</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，美国飞机制造商波音公司昨日（10 月 27 日）宣布下调 2026 全年飞机交付目标，称需要更多时间才能提升产能。受此影响，波音股价当日一度下跌约 10%，创 2025 年 4 月以来最大跌幅，并触及 18…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:19</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/815.htm" target="_blank" rel="noopener">消息称百度近期披露世界模型研发进展，有望率先用于自动驾驶</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，《科创板日报》独家获悉，百度计划近日披露世界模型的研发进展与成果。据了解，世界模型是当前 AI 领域的热门方向之一，其核心在于对物理环境进行建模与预测。若该模型用于自动驾驶，可提升复杂场景下的预测与决策能力…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/808.htm" target="_blank" rel="noopener">科赋发布 CRAS V RGB PRIME DDR5 内存模组，可选 6000CL26、8000CL38</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，艾思科 (Essencore) 旗下消费级内存与存储品牌科赋 (KLEVV) 今日发布了新款电竞／超频内存模组 CRAS V RGB PRIME DDR5。该产品在 CRAS V RGB 的基础上导入黑金配…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:13</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/803.htm" target="_blank" rel="noopener">暴雪被指违背承诺，《魔兽世界》种族主题房屋装饰上架真钱商城</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，科技媒体 Windows Central 昨日（10 月 27 日）发布博文，报道称《魔兽世界》游戏上架 2 款主题房屋装饰，被玩家认为违背此前“不会用真钱出售与玩家种族或职业核心幻想相关的房屋物品”的承诺…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:11</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/798.htm" target="_blank" rel="noopener">SK 海力士 CEO 郭鲁正：DRAM 及 HBM 内存直至 2029 年产能已近乎售罄</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，据财联社报道，SK 海力士 CEO 郭鲁正周三在财报会上透露：“已经敲定的 LTA 订单，叠加当前和客户正在磋商的需求，未来三年直至 2029 年，我们的 DRAM 以及 HBM 产能实际上已经近乎售罄。磋…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:07</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/784.htm" target="_blank" rel="noopener">季度利润创下纪录，SK 海力士推出 750 亿美元股东回报计划</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，据路透社报道，今天（28 日）上午，SK 海力士公布约 750 亿美元（IT之家注：现汇率约合 5,010.78 亿元人民币）的股东回报计划。受 AI 基础设施建设需求推动，存储芯片价格持续上涨，公司第三季…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:04</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/779.htm" target="_blank" rel="noopener">AI 推高元器件成本，消息称惠普、华硕、宏碁将部分 PC 产能迁回中国</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，据《日经亚洲》报道，惠普、华硕、宏碁等主流个人电脑厂商正应对零部件成本暴涨的压力，将部分产能从泰国、越南迁回中国，同时和新一代代工厂展开合作。多名消息人士透露，受人工智能需求拉动，内存与存储芯片供应严重紧缺…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">11:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/778.htm" target="_blank" rel="noopener">索尼网络通信公司通报数据库被攻破，影响约 258 万用户</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，索尼集团旗下索尼网络通信公司（Sony Network Communications）昨日（10 月 27 日）通报，其运营的日本互联网服务 So-net 会员数据库遭第三方未经授权访问，2,585,481…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:59</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/776.htm" target="_blank" rel="noopener">海韵携 XTIA 推出 Xproto-Z ROSSO 朱红限定电源 + 机箱套装：全球限量 100 件，2399 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，海韵 (Seasonic) 今日宣布携手客制化机箱品牌 XTIA 推出 Xproto-Z ROSSO 朱红限定。这一套装包含海韵 ROSSO 电源和 XTIA Xproto-Z 机箱，均采用亮光红配色，全球…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:50</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/775.htm" target="_blank" rel="noopener">三星首款耳夹式耳机：Galaxy Buds On 发布，满电续航 9.5 小时</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，三星昨日（10 月 27 日）发布公告，宣布推出其首款耳夹式无线耳机 Galaxy Buds On，目前已在韩国上市，仅提供黑色，售价 299,000 韩元（IT之家注：现汇率约合 1,508 元人民币）。…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:44</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/774.htm" target="_blank" rel="noopener">亚马逊：在 AI 时代考核一名工程师，应看业务价值而非 AI 使用量</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，当地时间 27 日，亚马逊更新了面向 AI 时代的软件工程师工作准则，强调考核应看工程师创造了多少业务价值，而不是用了多少 AI。亚马逊副总裁兼杰出工程师特克 · 特科维茨指出，相比云计算等以往的技术变革，…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/773.htm" target="_blank" rel="noopener">小米智能屏显开关 2 上架：自带彩屏、单零火兼容设计，众筹价 159 元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，今日小米上架了小米智能屏显开关 2，众筹价 159 元起，将于 11 月 4 日 10 点开启众筹。该产品主打“一屏焕彩四键控，单火零火皆可用”，搭载 Xiaomi HyperOS Connect，旨在通过…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/772.htm" target="_blank" rel="noopener">“全球第二图像编辑 AI 模型”：微软 MAI-Image-2.7-Preview 登场，力压谷歌、Meta、xAI</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，微软昨日（10 月 27 日）发布公告，宣布推出 MAI-Image-2.7-Preview 模型。微软人工智能首席执行官穆斯塔法 · 苏莱曼（Mustafa Suleyman）自豪地宣布：“MAI-Ima…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/770.htm" target="_blank" rel="noopener">Pulsar 第三代 ZywOo 联名鼠标预售上市：升级 42K DPI 传感器，1099 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，Pulsar（派世）现已启动 ZywOo The Chosen Gen.3 电竞鼠标的销售。这一型号作为 Pulsar 与《反恐精英》职业选手 Mathieu &quot;ZywOo&quot; Herba…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:28</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/769.htm" target="_blank" rel="noopener">小米米家智能腰部按摩仪 2 上架：支持腰臀同按，众筹价 379 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，今日小米上架了米家智能腰部按摩仪 2，新品主打“腰臀同按、舒适即享”，并在按摩头数量、按摩面积、电池容量等方面进行了升级。新品众筹价为 379 元（建议零售价 499 元），将于 11 月 4 日 10 点…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:25</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/768.htm" target="_blank" rel="noopener">预售价 38.98 万元起，问界新 M8 定档 11 月 13 日上市</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，问界汽车官微今天（28 日）上午宣布，问界新 M8 将于 11 月 13 日上市。该车预售价 38.98 万元起，即刻预订，还可享受 5000 元订金抵 10000 元购车尾款权益以及优先交付权益。官方公布…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:23</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/767.htm" target="_blank" rel="noopener">铺路触控屏 MacBook Pro：苹果 macOS 27.2 Beta 版暗藏诸多触控改动</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，消息源 @itspdfu 昨日（10 月 27 日）在 X 平台发布推文，通过挖掘 macOS 27.2 Beta 4 更新，在代码中发现了更多服务触控 MacBook Pro 的线索和证据。IT之家此前报…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:21</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/766.htm" target="_blank" rel="noopener">酷态科 x 三体联名新品 10 月 30 日发布，印有水滴图案</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，酷态科今日发布预热消息，将于 10 月 30 日公布一款三体联名新品。从官方预热可以看到，这款产品印有三体标志和水滴图案，机身呈现银灰色圆润设计。综合IT之家此前报道，酷态科曾和三体宇宙联名推出了多款移动电…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/763.htm" target="_blank" rel="noopener">10 月 29 日上市，小鹏 MONA L05 将首次开放准现车抢定</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，小鹏汽车今天（28 日）上午宣布，MONA L05 将首次开放准现车抢定，支付即锁单，最快上市当晚配车。根据介绍，直接订购用户需支付 10000 元定金，意向金用户可享 1000 元意向金抵扣 3000 元…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:12</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/761.htm" target="_blank" rel="noopener">小米米家床头灯 3 开启众筹：升级全光谱自然光，众筹价 269 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，小米米家床头灯 3 已于今日上午 10 点开启众筹，众筹价 269 元，预计 2026 年 11 月 05 日起发货。IT之家注意到，新品主打“柔光淡彩、安心好眠”的卧室照明场景。产品在延续床头灯品类氛围光…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:12</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/760.htm" target="_blank" rel="noopener">部分微软 Edge 浏览器用户反馈侧边栏 Copilot“失联”，官方称迁移需几天</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，科技媒体 NeoWin 昨日（10 月 27 日）发布博文，报道称多名 Microsoft Edge 浏览器用户反馈，近期无法正常打开侧边栏的 Copilot 。IT之家援引博文介绍，用户在尝试点击 Cop…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:09</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/757.htm" target="_blank" rel="noopener">谷歌更新 Android Bench 榜单：自家 Gemini 4 Argon 编程能力大幅落后于 Claude 与 GPT</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，谷歌更新了用于评估 AI 模型安卓编程辅助能力的 Android Bench 榜单，Gemini 4 Argon 的成绩大幅落后于最新版 Claude 与 GPT 系列模型。Android Bench 于今…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:05</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/756.htm" target="_blank" rel="noopener">国内首例：偏瘫患者弹响《小星星》，脑机接口实现手指精细动作重建、填补空白</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，综合武汉发布、海宁发布消息，2026 年 10 月 12 日，华中科技大学同济医学院附属协和医院重磅发布科研转化新成果。该院神经外科姜晓兵教授团队联合山东蓓明医疗科技有限公司，成功研发国内首个“基于高通道矩…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">10:01</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/755.htm" target="_blank" rel="noopener">OpenAI 公示 GPT-6.1 Terra 安全测试：整体风险下降，破坏性行为上升</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，科技媒体 bleepingcomputer 昨日（10 月 27 日）发布博文，报道称基于 OpenAI 最新公示的安全评估显示，新模型 GPT-6.1 Terra 在整体安全表现上优于部分早期模型，但在特…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:59</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/754.htm" target="_blank" rel="noopener">消息称 OpenAI 计划正式导入谷歌 TPU：已在招募领导模型适配优化的工程师</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，外媒 The Information 当地时间昨日报道称，OpenAI 计划正式导入谷歌 Google Cloud 的 TPU AI ASIC 芯片。招聘启事显示，OpenAI 正在寻找领导该企业模型在 T…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:57</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/753.htm" target="_blank" rel="noopener">曝 PS5 版《GTA 6》下载大小达 210GB</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，长期追踪 PlayStation Store 游戏数据的账号 PlayStation Game Size 今天（28 日）凌晨透露，PS5 版《GTA 6》的下载大小达到 210GB。据外媒 GamesRa…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:49</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/752.htm" target="_blank" rel="noopener">菲尔兹奖得主博尔彻兹取消计分家庭作业：AI 作弊泛滥，仅线下考试可行</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，加州大学伯克利分校（UC Berkeley）一名教授宣布，不再给学生布置计分家庭作业，原因是人工智能（AI）的滥用让这类作业失去了意义。据《纽约邮报》（New York Post）10 月 26 日报道，知…</p>
+        <div class="b-tags"><span class="b-tg">教育应用</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:47</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/751.htm" target="_blank" rel="noopener">火狐 Firefox 浏览器 159 稳定版发布：修复 167 个漏洞，侧边栏增“已保存密码”默认按钮</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，Mozilla 昨日（10 月 27 日）发布公告，宣布推送火狐 Firefox 浏览器 159.0 稳定版，覆盖 Windows、macOS、Linux 和移动端；官方同时更新了长期支持版本 Firefo…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:43</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/749.htm" target="_blank" rel="noopener">英伟达发布 621.12 Game Ready 热修复驱动，解决视频播放冻结 / 黑屏问题</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，NVIDIA（英伟达）当地时间 27 日发布适用于 GeForce 显卡和 RTX Spark 设备的 621.12 Game Ready 热修复驱动程序，解决了多项问题：在某些 GeForce RTX 5…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:38</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/748.htm" target="_blank" rel="noopener">马斯克坚定看好内存需求，称机器人所需内存将超过其他任何领域</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，特斯拉 CEO 埃隆 · 马斯克于 10 月 27 日在社交平台 X 上表示，机器人对内存的需求将超过地球上其他所有一切，驳斥了市场关于人形机器人对内存需求不大的观点。Counterpoint 分析报告称，…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:35</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/747.htm" target="_blank" rel="noopener">消息称 Solidigm 计划在美斥资 450 亿美元建设 NAND 晶圆厂</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，彭博社当地时间昨日报道称，SK 海力士完全控股的 NAND 与 SSD 企业 Solidigm（思得）正就在美新建晶圆厂事宜与美国商务部洽谈。Solidigm 计划为此投资 450 亿美元（IT之家注：现汇…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:30</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/746.htm" target="_blank" rel="noopener">微软 Surface Duo 2 变“苹果 iPhone Duo”：铺路原生运行 iOS 26，双屏触控已可用</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，科技媒体 Windows Latest 昨日（10 月 27 日）发布博文，分享了来自开发者 @none24smu 的更多图片，展示了微软 Surface Duo 2 手机成功运行 iOS 26 系统。iO…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:29</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/745.htm" target="_blank" rel="noopener">支持大部分地区：苹果 AirPods Pro 3 京东国补后 1163 元近期好价</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">苹果 AirPods Pro 第三代支持升级版主动降噪 + 心率传感功能，国行定价 1899 元。今日活动价 1499 元；PLUS 会员领取 120 元优惠券：点此领取；PLUS 会员立减 10.04 元；国补立减 203.9 元；到手价…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:25</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/744.htm" target="_blank" rel="noopener">Oracle 打造多样化 AI 算力组合，引入 SambaNova SN50 RDU</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，SambaNova 当地时间 10 月 27 日宣布与 Oracle（甲骨文）达成合作，前者的 AI 推理芯片 SN50 RDU 将加入 OCI 云服务。IT之家注意到，Oracle 正建立一个多样化的 A…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:21</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/743.htm" target="_blank" rel="noopener">特斯拉计划用 Optimus 人形机器人给 Robotaxi 插拔充电枪，终极目标是无线充电</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，特斯拉的 Robotaxi 无人驾驶出租车已经能够自行驶入超级充电站，但目前仍需要工作人员手动插上充电枪。未来，这项工作可能交由特斯拉的人形机器人 Optimus 完成。在近期接受 Munro Live 采…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:19</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/742.htm" target="_blank" rel="noopener">曝“飞行相机鼻祖”零零无限估值达 10 亿美元，跻身独角兽行列</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，据雷峰网今日爆料，“飞行相机鼻祖”零零无限最新一轮融资估值已达 10 亿美元（IT之家注：现汇率约合 66.81 亿元人民币），跻身独角兽行列。据接近零零无限的人士估算，公司今年四季度收入预计约达六七个亿。…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:18</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/740.htm" target="_blank" rel="noopener">京东红包今日 10 点再加码：猜大小赢至高 10 元红包</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">今日 10 点京东红包再加码，猜大小赢红包，至高可膨胀至 10 元：点此抽取。猜大小红包玩法：小伙伴们可以选择骰子点数大、小（1、2、3 点为小，4、5、6 点为大），获胜 1 局即可获得领取额外奖励的机会（每人至多 5 次机会），可随机获…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:16</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/739.htm" target="_blank" rel="noopener">华为 FreeClip 2 耳夹耳机潮玩拼色版开售，1299 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，华为 FreeClip 2 耳夹耳机全新潮玩拼色版本官宣今天（10 月 28 日）上午 10:08 开售，售价 1299 元。耳机可选红 / 黄、蓝 / 黄、红 / 蓝拼色三个版本。据IT之家了解，华为 F…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/738.htm" target="_blank" rel="noopener">弃用 AI 改称 SI：特斯拉车主手册更新 FSD 计算机名称</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，特斯拉的 FSD 计算机将启用新名称。特斯拉官方车主手册已在多个位置将“FSD Computer”替换为“SI Computer”，涉及 Model 3、Model Y 和 Cybertruck 的相关手册…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">09:08</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/737.htm" target="_blank" rel="noopener">“比苹果 Spotlight 更好用”：外媒初探微软 Win11 无 Bing 搜索体验</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，科技媒体 Windows Latest 今天（10 月 28 日）发布博文，报道称微软正在向更多 Windows 11 用户，推送“无必应搜索”体验。用户可打开设置应用，在“设置 &amp;gt; 隐私和安…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:58</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/736.htm" target="_blank" rel="noopener">柳叶刀倒计时报告：气候变化对人类健康的危害正加速攀升</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，一份于周三发布的全球重要评估报告显示，气候变化对人类健康造成的负面影响不仅日益加剧，而且其恶化速度也比十年前更快。据IT之家了解，这份报告是国际科学家合作项目《柳叶刀倒计时》（Lancet Countdow…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:55</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/735.htm" target="_blank" rel="noopener">通用汽车做自动驾驶不放弃雷达，高管称坚持纯视觉是无视物理规律</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，通用汽车计划最迟在 2028 年推出高速公路自动驾驶功能，但并不打算效仿特斯拉放弃雷达等传感器、转而采用纯视觉方案的做法。当地时间 27 日，通用汽车首席产品官斯特林 · 安德森接受 The Verge 采…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:55</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/734.htm" target="_blank" rel="noopener">OpenAI 开放 ChatGPT 新插件：苹果用户授权后可充当 AI 管家，管理 iCloud 邮件、日程等</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，OpenAI 昨日（10 月 27 日）发布博文，宣布面向所有 ChatGPT 套餐用户，开放 iCloud Mail 与 iCloud Calendar 两项插件。IT之家附上相关视频如下：在适用群体方面…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:47</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/733.htm" target="_blank" rel="noopener">国产脑机接口公司脑虎科技完成 7 亿元 B 轮融资，国投聚力、深创投、勤智资本领投</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，今天（28 日）上午，国产脑机接口公司 NeuroXess 脑虎科技宣布完成 7 亿元人民币 B 轮融资。本轮融资由国投聚力、深创投、勤智资本联合领投，中芯聚源、黄浦投资、基石资本、IDG 资本、曦晨资本、…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:36</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/731.htm" target="_blank" rel="noopener">苹果 MacBook Neo 2 笔记本曝光：2027 年上半年见，内存升级至 12GB</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，彭博社昨日（10 月 27 日）报道称苹果正在筹备第二代 MacBook Neo，预计将在 2027 年上半年发布。初代 MacBook Neo 于 2026 年 3 月上市，凭借较低价格和便携定位迅速成为…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:30</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/730.htm" target="_blank" rel="noopener">苹果 M6 iMac 细节：电源适配器网口升级 2.5Gb，标准版选配需加价 200 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，苹果昨日（10 月 27 日）推出搭载 M6 芯片的新款 24 英寸 iMac，起售价为 12,499 元。其中一个值得关注的变化，就是将 2.5Gb 以太网端口作为可选配置提供。新款 iMac 的以太网端…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:30</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/729.htm" target="_blank" rel="noopener">另类鼠标“Super Mouse”问世：正面装有触屏，还能打字、设置快捷操作</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，据外媒 The Verge 今天（28 日）报道，Arctic Fox 推出了一款名为 Super Mouse 的多功能鼠标，其独特之处是在手掌下方加入了一块小型触控屏。其造型方正，虽未必符合人体工学，却可…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:20</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/728.htm" target="_blank" rel="noopener">甲骨文扩大与英伟达的芯片供应合作，同时引入谷歌 TPU 和 Cerebras 芯片</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，甲骨文（Oracle）当地时间周二表示，将扩大与英伟达（Nvidia）的云端 AI 芯片合作，同时进一步推进供应多元化，引入英伟达竞争对手的产品，包括谷歌母公司 Alphabet 旗下的谷歌以及 Cereb…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:15</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/727.htm" target="_blank" rel="noopener">Pocketpair：我们很乐意探讨让《幻兽帕鲁》登陆任天堂 Switch 2</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，当地时间 27 日，据外媒 VGC 报道，《幻兽帕鲁》开发商 Pocketpair CEO 沟部拓郎表示，非常希望未来能将游戏移植到任天堂 Switch 2。2024 年 6 月，在《幻兽帕鲁》正式版推出前…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">08:09</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/726.htm" target="_blank" rel="noopener">英伟达投资印度初创公司 Simplismart，助力企业用更少 GPU 运行 AI 模型</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 28 日消息，随着人工智能热潮持续挤占计算资源，英伟达（Nvidia）参与了印度初创公司 Simplismart 的 1,400 万美元（IT之家注：现汇率约合 9,357.3 万元人民币）融资。本轮投资瞄准的是一类能够…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">02:39</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/rYaRAYC7xR5D28AaNdN7?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">亿万工程师，同饮五粮春——五粮春携手GTLC为构建者举杯</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">01:17</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/ChONW7EYk5Vuj0VF7AkZ?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Azure Container Apps Express在新的通用沙箱层上正式发布</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-10-27" data-date="2026-10-27">
+    <h3 class="b-day-h"><time datetime="2026-10-27">2026-10-27</time><span class="b-day-cn">10 月 27 日 · 周二</span><em>115 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">23:22</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/3o7gwgKJt2SbH8AhdpkU?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">TypeSafe AI发布Jev：一种只返回类型化概率而非文本的决策模型</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">23:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/retell-ai" target="_blank" rel="noopener">Retell uses OpenAI models to help power 100M monthly calls</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">GPT-6 Astra tops Retell’s voice agent benchmark, while Codex helps it reach a $1.6M annual revenue run rate per employee…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">开发工具</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">21:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/gXKvW3g4KXhTTiIaJFkl?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Docker Cloud Sandboxes在笔记本和云端之间提供一致的沙箱抽象</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">19:27</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/tcY6W55WowheH1SklVJK?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Grafana将Cypress测试结果转化为持久化的可观测性数据</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:28</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/596.htm" target="_blank" rel="noopener">广西柳州一男子开启汽车智驾后拍摄“玩手机、吃东西”视频炫耀，被警方依法处置</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据柳州交警通报，广西柳州交管支队近期查获一名车主在社交平台频繁发布“开启智驾后在车里吃东西、自拍”视频，甚至宣称“一家人在车内睡觉”。▲ 图源柳州交警（下同）对此，广西柳州交管支队展开调查，找到了涉事车辆车…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:24</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/591.htm" target="_blank" rel="noopener">景嘉微 2026 年前三季度归母净亏损 1.85 亿元，同比由盈转亏</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，景嘉微今日发布 2026 年前三季度（2026 年 1 月～2026 年 9 月）报告：营业总收入：5.53 亿元，同比增长 11.71%归母净利润：-1.85 亿元，同比下降 154.49%扣非净利润：-…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:23</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/594.htm" target="_blank" rel="noopener">比亚迪：智驾等创新业务稳步推进，将踏实做好经营</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，比亚迪今日在深交所互动易平台回应投资者疑问时表示，公司在新能源汽车、储能领域的发展，根植于长期持续的技术研发与产业链积累。IT之家注意到，比亚迪表示其智驾等创新业务也将稳步推进，相关业务尚处在发展阶段，挑战…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:18</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/593.htm" target="_blank" rel="noopener">影石创新 2026 前三季度营收 94.36 亿元同比增长 42.73%，归母净利润 4783.56 万元同比大降 93.96%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，影石创新今日发布 2026 年三季度（2026 年 1 月～2026 年 9 月）报告：三季度营业收入 39.19 亿元，同比增长 33.30%，年初至报告期末为 94.36 亿元，同比增长 42.73%；…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:13</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/592.htm" target="_blank" rel="noopener">魏牌二代蓝山车型全球首秀：方盒子造型，五座 / 六座双版本，2.0T 插混</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，长城魏牌二代蓝山今日迎来全球首秀。二代蓝山基于长城归元 S 平台打造，已在工信部完成申报，按计划于年内上市。新车一改初代蓝山的流线型家用风格，转向方盒子硬派造型，搭载由 2.0T 发动机组成的 Hi-4 插…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:09</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/590.htm" target="_blank" rel="noopener">三星前副社长因泄露商业机密获刑 3 年，当庭收押</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，韩国首尔高等法院驳回了三星电子前副社长、前知识产权中心负责人安承浩的上诉，维持其因泄露三星商业机密而被判处的 3 年有期徒刑，并当庭将其收押。该案件涉及安承浩在代表美国音频设备制造商 Tekiya 对三星电…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:08</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/589.htm" target="_blank" rel="noopener">为避免在韩国市场引发争议，苹果悄悄移除当地官网 iPad mini（A20 Pro）海报中的手部</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，有网友发现，苹果在韩国官网展示的 iPad mini（A 20 Pro）宣传海报中去掉了手部，仅保留设备本体。IT之家注意到，访问苹果中国 iPad mini（A20 Pro）产品详情页时，可以看到第二页展…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:03</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/584.htm" target="_blank" rel="noopener">因后端 PHP 程序存在安全隐患，卡普空《街头霸王 5》PS4 与 Steam 版线上功能全面暂停</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，卡普空今天发布紧急通知，将暂时停止销售 PS4 版和 Steam 版《街头霸王 5》游戏。IT之家了解到，卡普空此次停售是为了消除游戏后端 PHP 程序的安全隐患，目前游戏的在线功能暂时无法使用。修复工作完…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:01</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/579.htm" target="_blank" rel="noopener">国内商业航天最大直径，深蓝航天星云二号 5 米一子级贮箱全部交付</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据深蓝航天，近期，该公司研制的星云二号 5 米直径一子级关键结构件：液氧贮箱、煤油贮箱，在深蓝航天长青基地相继完成制造下线。继二子级贮箱下线后，星云二号火箭的又一关键制造节点顺利落地，标志着星云二号箭体主体…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:57</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/570.htm" target="_blank" rel="noopener">百度网盘 11.11 年内探底：SVIP 超级会员 13 元 / 月、157 元 / 年</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">百度网盘超级会员年卡官方售价 298 元，今日券后直降至 196 元年内好价，限时加赠 3 个月。到手共 15 个月，折合 13.1 元 / 月、157 元 / 年：京东百度网盘 SVIP 超级会员 15 月卡券后 196 元领 10 元券…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:54</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/560.htm" target="_blank" rel="noopener">铭瑄将“深度参与”英特尔 GPU D 系列项目研发制造，规划三形态产品</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，铭瑄 (MAXSUN) 在其 2026 英特尔 LOEM 峰会新闻稿中提到，该企业将“深度参与”英特尔 GPU D 系列（代号 Crescent Island，简称 CRI）项目研发制造。▲ &quot;C…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:51</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/551.htm" target="_blank" rel="noopener">格斗游戏《碧蓝幻想 Versus：崛起》免费版 11 月 1 日终止运营，玩家可限时体验正式版全部 38 个角色</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，开发商 Cygames 宣布旗下格斗游戏《碧蓝幻想 Versus：崛起》免费版将于 11 月 1 日 23:00 终止运营。作为散伙饭，玩家可以在 11 月 1 日 23:00 前在免费版游戏中体验正式版的…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:50</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/550.htm" target="_blank" rel="noopener">《刺客信条：黑旗 记忆重置》游戏最后一次大型更新今日上线：新增新游戏 + 模式、噩梦难度等</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，育碧今天宣布，《刺客信条：黑旗 记忆重置》游戏今天将上线最后一次大型内容更新，上线时间预计为 UTC 14:00（北京时间 22:00），全平台同步推送。据介绍，本次更新最重要的内容是新增“新游戏 +”二周…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/548.htm" target="_blank" rel="noopener">我国首个智慧货运枢纽领域国家标准 2027 年 4 月 1 日起实施，降低社会物流成本</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据市场监管总局，近日，国家标准委批准发布《智慧货运枢纽基本要求》（GB/T 48172—2026）国家标准，该标准是我国首个智慧货运枢纽领域国家标准，将自 2027 年 4 月 1 日起实施。该标准主要内容…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/547.htm" target="_blank" rel="noopener">消息称主要中系 CSP 与三星电子、SK 海力士洽谈服务器内存长期供应合同</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，韩国《每日经济新闻》当地时间今日报道称，包括阿里巴巴、腾讯、字节跳动在内的中国主要云服务供应商 (CSP) 已在同三星电子、SK 海力士洽谈服务器内存长期供应协议 (LTA)。主要中系 CSP 与两大韩国 …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/546.htm" target="_blank" rel="noopener">欧盟委员会接受 TEMU 整改计划，此前因违反 DSA 被罚 2 亿欧元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，欧盟委员会当地时间周一宣布，已接受拼多多旗下国际电商平台 TEMU 提交的整改计划，要求其进一步评估平台上非法商品的传播风险，并完善内容审核和商品推荐机制。TEMU 此前因未能充分评估平台上非法商品的系统性…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:35</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/545.htm" target="_blank" rel="noopener">WPS 赚钱京东花：WPS 京东 PLUS 联合会员 268 元，单个会员 1 年仅需 59 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">WPS 超级会员 3 年日常 288 元，今日买超会 3 年送联合会员 1 年，券后实付 268 元赠 30 元电影券包。下单前加入店铺会员，付款后可兑换 30 元京东 E 卡，折合仅需 238 元。折合仅需 238 元，单会员单年折合仅需…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:34</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/544.htm" target="_blank" rel="noopener">3299 → 799 元享 25000Pa 超强吸力 +180° 超薄躺平：石头 A30 Max 智能洗地机新品 3 期免息</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">石头 A30 Max 智能洗地机官方定价 4299 元，今日按下方步骤下单，仅需 799 元即可入手：88VIP 需先领 1500-180 元消费券，然后膨胀至 1800-220 元（非 88VIP 前往领券中心可领取不定额消费券，也可膨胀…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:34</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/543.htm" target="_blank" rel="noopener">2999 元购 31.5 英寸 4K 180Hz QD-OLED：泰坦军团“G3280V”显示器开启首销</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，泰坦军团旗下“G3280V”31.5 英寸显示器将于今晚 6 点开启首销，该机主打 4K 180Hz，定价为 4799 元，今晚 6 点至 8 点限时活动价 2999 元（名额有限）。京东泰坦军团 G328…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:33</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/542.htm" target="_blank" rel="noopener">2027 款零跑 B10/B01 车型 OTA 更新：支持华为 HiCar4.0 手机互联、腾讯云游戏等</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，2027 款零跑 B10/B01 车型推送 OTA 更新，带来 8 项功能新增 +10 项体验深度优化，覆盖手机互联、离线提醒、腾讯云游戏等。B01 版本号为 4.2762.020，B10 为 4.2700…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/532.htm" target="_blank" rel="noopener">金山办公 2026 年第三季度经调整归母净利润 5.39 亿元，同比增长 8.44%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，金山办公今日发布 2026 年第三季度（2026 年 7 月～2026 年 9 月）报告：营业总收入：17.66 亿元，同比增长 16.11%归母净利润：1.19 亿元，同比下降 72.3%扣非净利润：1.…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:31</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/541.htm" target="_blank" rel="noopener">阿维塔 07L Max 版 10 月 29 日上市，丰富选择空间</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据易车报道，阿维塔 07L Max 版将于 10 月 29 日上市。官方暂未公布该车更多信息，但可以确定为纯电驱动。对比之下，目前在售的阿维塔 07L 三款车型均为纯电车型，续航分别为 650km 和 72…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:31</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/540.htm" target="_blank" rel="noopener">南非女作家借 AI 约 20 个月出版 371 本书引争议，自称年收入超百万美元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，南非女作家珂拉尔 · 哈特（笔名 Coral Hart）借助 AI 在约 20 个月内出版了 371 本书，累计销量超过 100 万册。据她本人估算，仅 2026 年以来的收入就已超过 100 万美元（IT…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:29</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/539.htm" target="_blank" rel="noopener">1499 元购 27 英寸 2K 240Hz QD-OLED：泰坦军团“G2783S”显示器开启首销</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，泰坦军团旗下“G2783S”26.5 英寸（27 英寸）显示器将于今晚 6 点发售，该机主打 2K 240Hz QD-OLED，晚 6 点-8 点首发价 1499 元（名额有限）。京东泰坦军团 G2783S…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:27</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/537.htm" target="_blank" rel="noopener">夸克网盘 11.11 继续发车： SVIP 低至 8 元 / 月，支持每月 100 次离线下载</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">夸克 SVIP 年卡官方定价 300 元，日常大促价 158 元 / 年、25 元 / 月。今日 11.11 大促双年卡 + 月卡仅需 218.42 元（共 25 个月），加赠 keep 会员双月卡。折合 8.7 元 / 月（算上 keep…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:26</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/536.htm" target="_blank" rel="noopener">英飞凌将在欧洲建设全球首个 12 英寸氮化镓功率半导体大规模量产晶圆厂</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，Infineon（英飞凌）当地时间今日宣布，将在欧洲建设全球首个用于生产氮化镓 (GaN) 功率半导体的 300mm（12 英寸）大规模量产晶圆厂。300mm（12 英寸）的单片晶圆芯片产出是 200mm（…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:26</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/535.htm" target="_blank" rel="noopener">上海“星枢计划”目标 2032 年完成千星部署，百万级 TOPS 算力上天</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，2026 卫星互联网产业生态大会于今日（10 月 27 日）在上海召开。据界面新闻报道，上海正式启动筹建卫星互联网产业基金。该基金由市区两级投资平台联合社会资本共同发起，将发挥国有资本杠杆作用，赋能技术创新…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:26</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/534.htm" target="_blank" rel="noopener">品丘联合魅族 PANDAER 推出 Power Duo 磁吸移动电源：可当苹果 iPhone Duo 支架，众筹价 1499 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，初创公司品丘宣布联合魅族 PANDAER 推出一款 Power Duo 磁吸移动电源，官方称零售价 1999 元，众筹价为 1499 元。该产品折叠尺寸为 9 x 8.2 x 1.04cm，内置两组磁体，采…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:26</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/533.htm" target="_blank" rel="noopener">剪剪剪剪剪：剪映 SVIP 超级会员 79 → 15 元 / 月 1.9 折年内探底，支持电脑端</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">剪映 SVIP 超级会员官方定价 758 元 / 年，连续包年 599 元 / 年，单月 79 元。今日官方仅需 180 元即可入手年卡，折合仅需 15 元 / 月好价：京东剪映 SVIP 会员年卡支持电脑端券后 180 元领 319 元券…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:17</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/531.htm" target="_blank" rel="noopener">微星推出 MAG 341CQP QD-OLED X24 显示器：延续 RGB 条纹子像素，刷新率降级</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，微星 (MSI) 现已在官网上线 MAG 341CQP QD-OLED X24 显示器。这一型号基于 RGB 条纹子像素排列的 QD-OLED Penta Tandem 面板，覆盖 Dark Armor 薄…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/530.htm" target="_blank" rel="noopener">消息称某厂新机影像实验室出现双潜望长焦方案，预计华为旗下</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据博主 @数码闲聊站 今日爆料，某厂新机影像实验室出现了双潜望长焦方案，一颗 50Mp RYYB 小底，一颗 200Mp 1/1.3″ RYYB 超大底，焦段配置上新。结合该博主此前的爆料习惯，预计该机为华…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/529.htm" target="_blank" rel="noopener">华硕推出 TUF Gaming Radeon RX 9070 XT《鬼武者：剑之道》特别版显卡：蓝金外观，附赠游戏兑换码</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，华硕今日宣布推出 TUF Gaming Radeon RX 9070 XT《鬼武者：剑之道》特别版显卡。该卡由华硕与 AMD、卡普空三方联合打造，是配合《鬼武者：剑之道》推出的限量联名产品。这款显卡本体在硬…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">17:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/TrI8l3CYeAJER9tgR5Jt?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Kubernetes 1.37发布：稳定版Metrics API和Beta版Rootless Kubelet</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:09</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/527.htm" target="_blank" rel="noopener">TCOMAS 钛钽推出静音版 A080/A090 一体式水冷散热器：六年质保，398 元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，TCOMAS（钛钽）现已在京东上架静音版 A080/A090 系列一体式水冷散热器，售价 398 元起，提供六年质保，支持个人送保。A080 静音版：398 元A090 静音版：528 元京东 TCOMAS…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:02</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/526.htm" target="_blank" rel="noopener">《寂静岭》初代重制版游戏新爆料：2027 年见？</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据外媒 MP1st 报道，由 Bloober Team 开发的《寂静岭》初代重制版计划 2027 年发售，参与项目的两名女演员包括 Gabrielle Fritz 和 Jade Matthew。据报道，《寂…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/525.htm" target="_blank" rel="noopener">超频三推出 MR100 V1 工作站机箱：支持 SSI-EEB / E-ATX 主板</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，超频三 (CPS, Pccooler) 现已推出 MR100 V1 工作站机箱。这一型号拥有 7 条扩展槽，支持 SSI-EEB / E-ATX 及以下尺寸的主板。该型号三维 461.4 × 220 × 4…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:56</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/522.htm" target="_blank" rel="noopener">低过 10 元 / 月：迅雷超级会员 11.11 直降，12T 网盘 + 每天 1000 次云添加</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">迅雷超级会员年卡日常售价 360 元，连续包年为 264 元（22 元 / 月）。11.11 大促期间，30 个月券后直降至 298 元，单月约合 9.93 元官方好价：京东迅雷超级会员 30 个月补贴后 9.93 元 / 月 298 元直…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:55</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/520.htm" target="_blank" rel="noopener">河南以旧换新补贴新增 10 类产品：覆盖扫洗地机 / 智能门锁 / 洗碗机，最高 1500 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，河南省商务厅、省发展改革委、省财政厅 10 月 27 日联合发布公告，优化实施 2026 年消费品以旧换新地方自主品类补贴活动，在保留原有自主补贴品类的基础上进一步突出智能化产品。IT之家获悉，本次优化调整…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:46</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/518.htm" target="_blank" rel="noopener">小米米家直流变频冷暖两季扇新增灰色 / 黑色版本：冬夏可用，799 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，小米宣布为旗下米家直流变频冷暖两季扇新增黑色和灰色版本（点此访问），两款配色定价均为 799 元。IT之家从商品页面获悉，该产品采用专利 PTC 旋转结构，闭合时吹暖风，打开时吹凉风。冬夏两季可用，换季无需…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:45</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/517.htm" target="_blank" rel="noopener">米哈游推出《崩坏 3》爱莉希雅 · 霁月婵娟高保真蓝牙耳机，礼盒 499 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，米哈游新上架了一款《崩坏 3》爱莉希雅 · 霁月婵娟高保真蓝牙耳机礼盒，官方标价 499 元，10 月 31 日 20:00 开售。在此之前，米哈游还推出了一款同样基于水月雨轻巧豆 Dots 设计的《崩坏：…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:43</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/516.htm" target="_blank" rel="noopener">ATK 宝可梦联名耿鬼款外设开启线上预售，键鼠垫套装到手价 829 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，外设制造商 ATK 今日启动了其宝可梦联名外设耿鬼款的线上预售。此次的联名键鼠均拥有专属装饰，其中键盘为键帽、金属铭牌、背板“三位一体”主题设计。IT之家了解到，耿鬼款联名 RS8 Air 磁轴键盘到手价 …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:42</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/514.htm" target="_blank" rel="noopener">国内首个面向 DPU 数据处理器的国家标准发布，中国移动 / 联通 / 电信、中兴通讯等起草</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，中国移动云公司今日发文，国家标准《智能计算集群 数据处理单元应用技术规范》已正式发布并实施。标准由中国信息通信研究院牵头，多家头部科技企业共同参与编制，明确了数据处理单元（DPU）应用于智能计算集群的技术要…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:42</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/513.htm" target="_blank" rel="noopener">罗技推出 MX Master 4 开发者特别版鼠标，130 欧元限量发售</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，罗技现已在海外市场推出 MX Master 4 开发者特别版鼠标，定价 130 欧元（IT之家注：现汇率约合 971.4 元人民币），限量发售，功能与普通版 MX Master 4 没有区别。据介绍，这款鼠…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/512.htm" target="_blank" rel="noopener">2027 款东风奕派 007 将于 10 月 30 日上市：换装半隐藏式门把手，激光雷达</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，东风奕派今日宣布 2027 款奕派 007 将于 10 月 30 日武汉国际车展上正式上市。从官图来看，新车造型基本延续在售车型，车顶配备了激光雷达，预计具备高阶智能驾驶辅助能力。IT之家注意到，作为小改款…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:36</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/509.htm" target="_blank" rel="noopener">创维推出鸿蒙智选热泵洗烘一体机系列：13kg 洗涤 + 9kg 烘干容量、内置毫米波雷达，5399 元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，在今天的 2026 创维秋季全场景新品发布会中，创维推出了鸿蒙智选热泵洗烘一体机，产品包含标准款与 Pro 款，前者定价 5399 元，后者定价为 6499 元，将于下月上市。系列产品采用双纯平设计，操作区…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:34</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/503.htm" target="_blank" rel="noopener">保时捷暂不考虑借用奥迪美国首座工厂：转移生产至美国并不划算，关税收益难抵额外成本</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，保时捷目前没有计划借助奥迪拟在美国建设的新工厂生产旗下车型。保时捷方面表示，虽然将部分生产转移至美国有助于降低进口关税成本，但新建或调整生产线需要投入大量资金，还涉及零部件进口、人工成本及生产周期等因素，综…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/495.htm" target="_blank" rel="noopener">低过连续包年：QQ 音乐豪华绿钻 138 元 / 年官方 11.11 发车</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">QQ 音乐豪华绿钻会员年卡官方售价为 240 元，日常连续包年大促价 158 元（第二年自动续费价 180 元）。今日双年卡 276 元，仅需 138 元 / 年，折合 11.5 元 / 月：天猫 QQ 音乐 豪华绿钻双年卡折合 138 元…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:27</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/493.htm" target="_blank" rel="noopener">CISA 确认 PHP2Shell 漏洞已被用于攻击，要求美国联邦机构 10 月 29 日前修复</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，美国网络安全和基础设施安全局（CISA）已将两项“PHP2Shell”严重安全漏洞列入已遭实际利用漏洞目录（KEV），确认相关漏洞已被攻击者用于实际攻击。CISA 要求美国联邦民事行政部门机构在当地时间 1…</p>
+        <div class="b-tags"><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:26</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/492.htm" target="_blank" rel="noopener">微信输入法新增 AI 录音笔功能，录音实时转写还能生成网页</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，微信输入法近日更新 4.0.0 版本，除了适配 iPhone Duo 以外，本次更新还新增了“AI 录音笔”功能。IT之家了解到，该功能在手机上可通过键盘工具栏或直接在 App 内打开；电脑端可以通过快捷键…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:25</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/491.htm" target="_blank" rel="noopener">创维自然光壁纸电视 QX 系列发布：至高 10000 尼特峰值亮度、23040 个独立控色分区，41499 元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，在今天的 2026 创维秋季全场景新品发布会中，创维自然光壁纸电视 QX 系列正式发布，系列产品提供 85 英寸与 100 英寸两款尺寸版本，85 英寸首发价为 41499 元，国补价为 39999 元；1…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:24</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/489.htm" target="_blank" rel="noopener">理想汽车：2026 款理想 i6 底盘延续 25 款配置，重点优化转向和刹车</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，10 月 26 日，在最新一期《理想汽车答网友问》中，理想汽车解答了关于 2026 款理想 i6 底盘、提车等用户比较关心的问题。新车将于 10 月 28 日正式上市，10 月 29 日开启全国交付。据介绍…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:20</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/488.htm" target="_blank" rel="noopener">日本外汇交易平台 GMO 遭网络攻击：黑客索要 100 万美元赎金，约 2.67 万台服务器或受影响</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，日本 GMO 互联网集团旗下外汇交易相关服务器上周遭网络攻击，攻击者索要 100 万美元赎金，并威胁称，若未在指定期限内付款，将进一步攻击客户设备、公开相关数据。日媒报道称，攻击者设定的付款期限为日本时间 …</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/487.htm" target="_blank" rel="noopener">创维 AI 净烟机发布：配备动态微粒捕集技术、可去除 PM2.5 改善空气质量</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，在今天的 2026 创维秋季全场景新品发布会中，创维 AI 净烟机正式发布，该产品号称不仅能够净化厨房油烟，还集成了多项技术以净化气味、改善空气质量。系列净烟机正面配备的显示屏可直观呈现 PM2.5 等数值…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:13</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/486.htm" target="_blank" rel="noopener">雷神猎刃 S 超竞版双十一 8329 元起：搭载 R7-8840HX + RTX5060</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">双十一大促已经开启，笔记本产品也迎来新一轮优惠活动。其中，雷神猎刃系列新品，猎刃 S 超竞版也正式开启了大促，其中猎刃 S 超竞版 R7-8840HX 版本售价 8229 元起。性能方面，雷神猎刃 S 超竞版搭载 AMD 锐龙 7 8840…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:11</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/485.htm" target="_blank" rel="noopener">厚度不到 1mm、手机压电风扇有望商用，南芯科技发布驱动芯片 SC3606</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，南芯科技今日发布压电风扇驱动芯片 SC3606，为压电风扇在空间受限、功耗敏感场景中的规模化落地提供驱动支撑。SC3606 支持 2.1V-5.5V 宽输入电压，最大输出 46Vpp，集成全域扫频与实时频率…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/483.htm" target="_blank" rel="noopener">NECPC 发布 3 款 2026 秋冬季 LAVIE 笔电，搭载英特尔最新处理器</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，NECPC 日本当地时间今日发布了 3 款笔记本电脑新品，其中新款 LAVIE X14、LAVIE S13 基于第 3 代英特尔酷睿 Ultra 处理器 &quot;Panther Lake&quot;、新…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:08</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/482.htm" target="_blank" rel="noopener">苹果 iOS 27.2 系统为 AI 生成图片加入 SynthID 隐藏水印</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据科技媒体 macrumors 昨天报道，苹果已在 iOS 27.2 系统中加入 SynthID 功能。现在使用图乐园生成的图像，或使用 Apple 智能编辑的部分图片都会带有隐藏式水印。IT之家从原报道了…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:06</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/481.htm" target="_blank" rel="noopener">小鹏 MONA L05 新产线首批 5000 台下线，10 月 29 日上市</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，小鹏汽车宣布小鹏 MONA L05 新产线首批 5,000 台下线，独立产线，全力保供。小鹏 MONA L05 面向 65 个国家和地区销售，中国上市发布会将于 10 月 29 日 19:00 在广州举行。…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:06</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/479.htm" target="_blank" rel="noopener">美国人才平台 BambooHR：约 18% 受访者计划在《GTA6》游戏发售当天请假</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，备受期待的《侠盗猎车手 6》（Grand Theft Auto VI，简称 GTA 6）将于 11 月 19 日正式发售，玩家的热情似乎已经反映在职场请假数据上。美国人才平台 BambooHR 对 1530…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/478.htm" target="_blank" rel="noopener">李在镕首次视察三星 RX 机器人事业部，关注 CES 2027 参展技术的研发进展</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据韩国《Money Today》今日报道，李在镕近日访问了位于韩国首尔瑞草区牛眠洞的三星电子首尔研发园区，实地视察机器人体验（RX）业务部门。据介绍，三星电子正筹备参加 2027 年 1 月在美国拉斯维加斯…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:56</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/477.htm" target="_blank" rel="noopener">Rokid Color 双目全彩智能眼镜发布：仅重 55g，神奇“魔戒”手势操控</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日现场消息，Rokid 今日发布了一款仅重 55g 的双目全彩智能眼镜 —— Rokid Color。Rokid Color 采用时尚轻巧造型，可外出佩戴，重量仅 55g，能够显示 AR 全彩内容。IT之家在发布会…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:52</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/476.htm" target="_blank" rel="noopener">蔚来旗下 firefly 萤火虫 App 鸿蒙版 App 公测版开启尝鲜，提供远程车控、在线购车等功能</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，蔚来旗下 firefly 萤火虫鸿蒙版 App 现已在华为应用市场开启测试尝鲜，版本号为 2.9.0 (2009009)，测试时间为 10 月 27 日至 11 月 26 日，提供远程车控、在线购车、车载后…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:51</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/475.htm" target="_blank" rel="noopener">Rokid Glasses 2 智能眼镜发布：双芯架构、行业首发视频超夜算法，3699 元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日现场消息，Rokid Glasses 2 智能眼镜今日正式发布，售价 3699 元起，国补到手价 3199 元起。Rokid Glasses 2 采用全新方圆框设计，可选两款配色；镜腿相比上一代进行了升级，采用柔…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:45</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/472.htm" target="_blank" rel="noopener">三星因限制 Galaxy S21、S22 游戏性能被罚 201.14 亿韩元，已提起上诉</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，三星电子一直强调 Galaxy 智能手机和其他设备拥有出色的游戏性能，并称之为“终极移动游戏体验”，但却隐瞒了在运行高画质游戏时将峰值性能限制到 30% 以下的事实。韩国公平交易委员会（以下简称“公平委”）…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:44</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/469.htm" target="_blank" rel="noopener">抖音近一个月处置色情低俗内容 39.3 万条，11.5 万个账号被梯度处置</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，抖音今日发布关于深入治理「色情低俗」内容的公告，近一个月，平台处置色情低俗内容 39.3 万条，11.5 万个账号被采取清除违规增长粉丝、取消营利权限、禁止发布视频、禁言、封禁等梯度处置措施。公告称，为营造…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:42</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/464.htm" target="_blank" rel="noopener">高盛：AI 重塑市场定价，半导体板块影响力超过油价</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据《商业内幕》今天报道，韩国股市近期大幅震荡，全球 AI 交易正影响投资者情绪。高盛表示，AI 已经成为金融市场的一股强大力量，半导体股票对各类资产价格走势的影响力已超过油价。高盛研究显示，过去三周内，半导…</p>
+        <div class="b-tags"><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:42</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/461.htm" target="_blank" rel="noopener">iPhone 18 Pro / Max 政府补贴 10% 限地区，低至 8729 元起 12 期免息</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">【各地补贴金额需以实际下单为准】京东 11.11 现已开启，iPhone 18 Pro/ Max 直降 300 元，可享 12 期免息。今日下单时选择以旧换新，部分地区可参加国补：以江苏为例：非数码类估值≥ 20 元即可享国补 10%，单笔…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:41</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/459.htm" target="_blank" rel="noopener">曾为高端 Xperia 机型差异化功能之一：索尼 Music Pro 手机端音乐录制应用正式关停</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，综合IT之家读者投稿，索尼旗下 Music Pro 应用于今天正式关闭，该 App 主要面向索尼高端机型，为手机端提供降噪、混响移除和录音棚调音等音乐录制功能。至于关闭原因，索尼没有解释具体背景，只是称“由…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:30</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/444.htm" target="_blank" rel="noopener">2027 款吉利缤越超能版上市：Flyme Auto 2 智能座舱，限时先享价 5.98 万元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，2027 款吉利缤越超能版正式上市，共推出 3 款车型，售价 6.68—7.88 万元，限时先享价 5.98—7.18 万元，新车在智能座舱领域带来全面升级。1.5D+5MT 超能 MT 版，指导价 6.6…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:26</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/443.htm" target="_blank" rel="noopener">《我的世界》任天堂 Switch 2 版本明日发售，eShop 港服定价 235 港币</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，微软 Mojang Studios 旗下《我的世界（Minecraft）》将于 10 月 28 日（明天）登陆任天堂 Switch 2 平台，以港服为例，本作定价为 235 港币（IT之家注：现汇率约合 2…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:25</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/442.htm" target="_blank" rel="noopener">小米 REDMI 首款耳夹耳机 Clip Neo 官宣与哭喊中心联名，将推限定礼盒套装</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，今天（27 日）上午，@REDMI红米手机 官微宣布：REDMI Clip Neo 与服装品牌 CryingCenter 哭喊中心联合推出限定礼盒套装，预约同步启动。该套装内含零度黑耳机、专属贴纸、潮流耳机…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:23</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/441.htm" target="_blank" rel="noopener">投资 30 亿美元：英伟达与 Meta 扩大 Muse 智能助手合作</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，英伟达今天宣布与 Meta 扩大 Muse 智能助手方向的合作，满足市场对 AI 智能体日益增长的需求。IT之家从官方新闻稿获悉，英伟达和 Meta 还在考虑开展其他技术合作，包括采用英伟达 OpenShe…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:21</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/439.htm" target="_blank" rel="noopener">保时捷前九个月营业利润率回升至 6.9%，911 需求旺盛对冲中国市场下滑</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，保时捷（Porsche AG）销量再度大幅下滑，但盈利能力仍保持稳定：911 跑车及其高价衍生车型的旺盛需求，缓冲了中国市场遇冷、工厂产能利用率走低带来的冲击。保时捷汽车业务前九个月营业利润率达到 6.9%…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:21</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/438.htm" target="_blank" rel="noopener">小米推出米家台式净饮机 3：提供 2100W 功率可实现“3 秒即热”、搭 RISC-V 芯片，1499 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，小米现已在有品上架米家台式净饮机 3（点此访问），该产品提供 2100W 功率，可实现“3 秒即热”，定价为 1499 元，目前处于支付订金状态。该产品配备 6L 容量原废分离大水箱，其中包含 4.2L 原…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:16</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/436.htm" target="_blank" rel="noopener">鸿蒙智行智界 R7 焕新款开启首批交付，23.98 万元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，鸿蒙智行智界 R7 焕新款今日开启首批交付，该车于 9 月 28 日上市，包含四款车型，售价区间 23.98-31.98 万元。外观方面，新车长宽高分别为 4982/1981/1634（1650）mm，轴距…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/434.htm" target="_blank" rel="noopener">小米米家智能变压电饭煲 3L 预售：搭载三段变压全沸腾技术，1499 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，小米现已在京东上架米家智能变压电饭煲 3L，该产品采用“三段变压”设计，定价为 1499 元，部分地区国补后低至 1274.15 元，产品将于 10 月 30 日首销。该电饭煲采用深灰色外观，顶部配备触控彩…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:07</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/432.htm" target="_blank" rel="noopener">便利来华韩国游客，Galaxy 系列手机将支持三星钱包直接扫微信支付码</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据三星电子官方新闻稿，三星电子 26 日在深圳腾讯总部与腾讯、韩国友利银行签署合作协议，三方将共同拓展“三星钱包 Money”的海外支付服务，并深化合作。IT之家注：“三星钱包 Money”是三星电子与友利…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:05</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/431.htm" target="_blank" rel="noopener">34 英寸带鱼屏显示器 LG 34U620B 发售：144Hz KVM 双控，1799 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，34 英寸的 LG 34U620B 带鱼屏显示器今日开售，京东尊享价 1799 元。京东 LG 34U620B 34 英寸带鱼屏显示器高刷 144Hz KVM 双控 PBP / PIP 21:9 家用办公 …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:01</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/430.htm" target="_blank" rel="noopener">Switch 2 游戏钥匙卡争议再起：任天堂被曝禁止发行商改发实体卡带</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，加拿大零售商 Video Games Plus 近日发文，解释任天堂 Switch 2 平台的钥匙卡游戏为何不太可能再发行实体卡版本，主要原因在于“任天堂不允许这么做”。该零售商透露，发行商为一款游戏推出钥…</p>
+        <div class="b-tags"><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:01</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/429.htm" target="_blank" rel="noopener">一加 Ace 7 系列搭载自研「电竞三芯」：支持 185Hz 刷新率、520Hz 多指触控采样率</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，一加 Ace 7 系列今日官宣搭载自研「电竞三芯」，灵犀触控芯片 T3、电竞网络芯片 G3、超级显示芯片 P4。据介绍，灵犀触控芯片 T3 支持 520Hz 多指触控采样率、游戏官方联调分区触控；电竞网络芯…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">15:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/oracle-apps-in-chatgpt" target="_blank" rel="noopener">OpenAI expands partnership with Oracle to bring its apps to ChatGPT</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">OpenAI and Oracle are expanding their partnership to bring business applications and AI agents into ChatGPT and power ne…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:57</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/428.htm" target="_blank" rel="noopener">AOC 推出 31.5&quot; UHD 180Hz OLED 显示器 U32G5D，配备六边形底座</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，AOC 本月 21 日推出了 U32G5D 显示器。这一型号采用 31.5&quot; QD-OLED Penta Tandem 面板，覆盖 AR 防反射涂层，拥有 UHD 分辨率、180Hz 刷新率。U3…</p>
+        <div class="b-tags"><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:54</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/427.htm" target="_blank" rel="noopener">消息称苹果 iPhone Duo 自带反向无线充电模块：尚未激活，可为 Apple Watch / AirPods 补电</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，博主 @Kang 发文，透露苹果 iPhone Duo 手机集成了 Apple Watch 手表反冲无线充模块，该模块预计也可以为 AirPods 充电，不过相应功能目前并未激活。IT之家注意到，该博主还在…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:47</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/424.htm" target="_blank" rel="noopener">微星 MAG B850 TOMAHAWK MAX WIFI II 战斧导弹主板发售：14 相 80A 供电 + WiFi 7，1849 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，微星 MAG B850 TOMAHAWK MAX WIFI II 战斧导弹主板已正式开售，京东定价为 1849 元。该主板基于 AMD B850 芯片组、采用 AM5 接口，支持锐龙 9850X3D、970…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:47</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/423.htm" target="_blank" rel="noopener">智元发布具身 Agent 框架 Genie Master：机器人能边工作边进化</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，今日智元正式发布具身 Agent 框架 Genie Master，让机器人在上岗的过程中边解锁新技能。据悉，搭载该框架的精灵 G2，在真实便利店上岗期间，不依赖人工示范与调试，自己定位失败原因、调整策略、沉…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:47</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/422.htm" target="_blank" rel="noopener">1599 元：AOC 推出 34 英寸 21:9 超宽曲面商用显示器 CU34P10H，200Hz Fast VA 面板</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，AOC 现已推出 34 英寸 21:9 超宽曲面商用显示器 CU34P10H。新品采用 Fast VA 面板，分辨率为 WQHD，支持 200Hz 高刷，售价 1599 元。据IT之家了解，这款显示器采用 …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:43</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/420.htm" target="_blank" rel="noopener">苹果详解 iPhone Duo 手写笔支持：仅支持 Apple Pencil（USB-C），需使用线缆连接配对</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，苹果今天推送了 iOS 27.2 正式版，为旗下首款折叠屏手机 iPhone Duo 带来了 Apple Pencil 手写笔支持，目前苹果已发布文档，对相应文档进行介绍。苹果表示，iPhone Duo 仅…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:42</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/419.htm" target="_blank" rel="noopener">游戏《宝可梦大集结》宣布全球停运，中国大陆关服时间为 2027 年 1 月 28 日 11:00</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，《宝可梦大集结》(Pokémon UNITE) 官方今日宣布，这款宝可梦系列轻松竞技游戏将在全球范围内停止运营。其中，中国大陆市场关服时间为北京时间 2027 年 1 月 28 日 11:00，全球其它区域…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:41</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/418.htm" target="_blank" rel="noopener">卡普空 2027 财年半年报归母净利润 430.83 亿日元，同比增长 56.6%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，卡普空今日发布 2027 财年（2026 年 4 月～2027 年 3 月）半年报（2026 年 4 月～2026 年 9 月）业绩快报报告：营业总收入：1208.87 亿日元（IT之家注：现汇率约合 51…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/417.htm" target="_blank" rel="noopener">Anthropic“史上最大 IPO”在即，或为澳大利亚最大银行带来数十亿澳元意外之财</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据彭博社今天（27 日）午间报道，随着 Anthropic 估值飙升，澳大利亚联邦银行有望借其首次公开募股（IPO），套现一年多前购入的股份。联邦银行是澳大利亚最大的银行，2025 年 3 月曾参与 Ant…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:34</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/415.htm" target="_blank" rel="noopener">消息称苹果 iPhone 18e 手机将配备 6.12 英寸 60Hz LTPS OLED 面板，匹配 48Mp 单摄</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，博主 @数码闲聊站 发文，透露苹果 iPhone 18e 将配备一块 6.12 英寸 60Hz LTPS OLED，搭载 2nm A20 芯片，匹配 48Mp 单摄，前摄可能会升级 24Mp。IT之家注意到…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:33</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/414.htm" target="_blank" rel="noopener">国家广电总局：有线广播电视服务应实现开机看全屏直播功能，设置频道回看入口，不得播放开机广告</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，国家广播电视总局今日发布公告，《有线广播电视运营服务管理规定》（下称《规定》）已经 2026 年 10 月 23 日国家广播电视总局局务会议审议通过，现予公布，自 2026 年 11 月 27 日起施行。《…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/413.htm" target="_blank" rel="noopener">佳能 2026 财年第三财季归母净利润 2464.09 亿日元，同比增长 12.2%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，佳能今日发布 2026 财年（2026 年 1 月～2026 年 12 月）第三财季（2026 年 7 月～2026 年 9 月）业绩报告：营业收入：3.43 万亿日元（IT之家注：现汇率约合 1,455.…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:28</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/412.htm" target="_blank" rel="noopener">“大器鼎成”：比亚迪官宣仰望超豪华行政旗舰轿车“鼎曜”</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，今天（27 日）下午，比亚迪仰望汽车官微发文宣布，超豪华行政旗舰轿车正式定名为“鼎曜”。新车宣传的 slogan 为“大器鼎成”。官方放出的预告图展现了车侧轮廓，对开门、车顶激光雷达和家族化的前灯组依稀可见…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:28</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/411.htm" target="_blank" rel="noopener">我国天文学家发现三颗“本不该存在”的行星</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据新华网报道，近日，云南大学物理与天文学院钱声帮教授团队在国际学术期刊美国《国家科学院学报》发表论文，报告了一项挑战传统认知的观测结果：三颗围绕恒星运行的系外行星，在宿主恒星进入晚年剧烈膨胀之后仍然幸存。据…</p>
+        <div class="b-tags"><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:23</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/410.htm" target="_blank" rel="noopener">Acoustune 推出 AS2200 便携耳放：基于 AK4493SEQ，支持 3.5mm 与 4.4mm 输出</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，日本音频设备品牌 Acoustune 当地时间 23 日发布了便携式 USB 耳机放大器 AS2200。这一型号基于旭化成的 AK4493SEQ 音频 DAC 芯片，提供 3.5mm 单端与 4.4mm 平…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:22</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/409.htm" target="_blank" rel="noopener">曝台积电先进封装拟涨价最高 20%，因 AI 需求急剧攀升、产能持续吃紧</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据台媒《工商时报》今日援引供应链消息人士报道，台积电正考虑将其先进封装工艺价格上调 10% 至 20%，原因是 AI 需求急剧攀升，导致半导体供应链产能持续吃紧。报道指出，台积电正准备对 CoWoS（Chi…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/406.htm" target="_blank" rel="noopener">酷冷至尊 MasterFan A120 全铝风扇新增黑金版限定配色，219 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，CoolerMaster（酷码 / 酷冷至尊）现已开始销售 MasterFan A120 全铝散热风扇的黑金版限定配色。这一款式到手价 219 元。MasterFan A120 黑金版尺寸依旧是 12030…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:11</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/400.htm" target="_blank" rel="noopener">看了不烧心，红果短剧宣布治理剧集核心设定、人物关系、关键桥段及剧情推进手法高度相似的“换皮”内容</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，红果短剧官方今日发布关于持续加强低质和同质化内容治理的公告，为维护健康、多元、可持续的创作环境，平台将进一步加大对低质和同质化内容的治理力度，重点治理过度情绪渲染和对微短剧剧情结构、核心设定、关键桥段、人物…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:01</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/392.htm" target="_blank" rel="noopener">华为将韬定律思想引入基站设计，发布新一代移动通信网产品及解决方案</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日现场消息，华为今日在上海练秋湖研发中心举行 Decoding China 2026 活动，发布新一代移动通信网产品及解决方案。华为公司副总裁、无线网络业务管理委员会主任方向介绍，通信方式的每次升级，都会推动社会发…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">13:57</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/390.htm" target="_blank" rel="noopener">英特尔多款 &quot;Raptor Lake Next&quot; 处理器现身海关舱单记录</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，Intel（英特尔）目前正在准备桌面端和移动端的 &quot;Raptor Lake Next&quot; 处理器作为既有平台的小幅更新。第三方海关舱单记录平台纽佰德 (NBD) 已经记录到了多条相关记录。…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">13:44</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/384.htm" target="_blank" rel="noopener">华强北商家称近期内存价格回调但仍居高位，市场“有价无市”、10 月销量普遍下滑 20% 至 30%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，据央视财经今日报道，近段时间，A 股存储板块持续出现调整，多家龙头公司股价较年内高点回撤明显，部分公司回撤幅度超过 40%。记者走访广东深圳华强北多家内存柜台发现，目前 16G DDR5 内存条报价普遍在 …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">13:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/373.htm" target="_blank" rel="noopener">Counterpoint：苹果 iPhone 18 Pro 系列上市三周全球销量同比增长 3.1%，主要由中国市场拉动</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 27 日消息，市场研究机构 Counterpoint Research 的《智能手机周度销量追踪报告》显示，苹果 iPhone 18 Pro 系列 9 月上市三周，全球销量较去年同期的 iPhone 17 Pro 系列增…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">11:23</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505580.html" target="_blank" rel="noopener">钛动科技发布行业首个Pro-Agent, Navos Pro定义结果导向的AI for Work &amp;#124; TGC 2026科技增长大会</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">10 月 23 日，以 “ AI is Profitable ” 为主题的 2026 TGC 科技增长大会于广州召开。</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">08:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/check-point-daybreak" target="_blank" rel="noopener">How Check Point accelerates vulnerability research with Daybreak</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">With OpenAI Daybreak, Check Point speeds up the research behind new security protections, enabling its analysts to turn …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">06:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/greptile-code-review-codex-astra" target="_blank" rel="noopener">Greptile takes bug detection beyond code review with GPT-6 Astra</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">How Greptile uses GPT-6 Astra to test user workflows, Daybreak to strengthen security, and Codex to reduce rework.</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">02:30</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/2svt5BbWUOHbADdo0UZo?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">中科慧灵完成数亿元A++轮融资：制鞋机器人订单超 4 亿元，具身智能开始拼量产交付</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">02:08</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/b32Mw2zaPrxyJ6ChePD5?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">让 AI 从需求一路干到上线，软件开发组织要变了？</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">01:17</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/hilBQCk7QcvclfrgZbSf?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Backstage 1.55 新增脚手架任务恢复功能，并移除已废弃的目录 API</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">00:06</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505551.html" target="_blank" rel="noopener">刚刚，Anthropic公开335页招股书：史上最大IPO，史上最亏AI公司</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">地球最富兄妹俩堂堂来袭！7名联创仍紧握50.1%总投票权</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">Google AI 博客</span><span class="b-dt">00:00</span></div>
+        <h3 style="font-size:15px"><a href="https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/" target="_blank" rel="noopener">Our newest AI Quest: Mapping the human brain</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">Learn AI literacy via Google’s latest AI Quests lesson on neuroscience, “Polar Peaks.”</p>
+        
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-10-26" data-date="2026-10-26">
+    <h3 class="b-day-h"><time datetime="2026-10-26">2026-10-26</time><span class="b-day-cn">10 月 26 日 · 周一</span><em>83 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">23:18</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/hhxL1M65UU3Iwr4ovALT?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">中层技术经理要么重新学技术，要么考虑退休：前 Stripe 工程高管警告，未来三年工程管理将彻底变样</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">23:05</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/O7lcxqKD2avRPbNoMmtg?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">30 个 Agent 背后：花椒如何建设可持续演进的企业 AI 能力？</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">23:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/GG9rXsevpPV9SK3uPxpq?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">AWS 重构 EventBridge 自定义事件总线，面向企业级事件驱动架构</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">22:57</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/NrUkJExfuuFOICsjVYbb?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">模型好选，搜索难做：一个投研Agent的两年开发历程</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">22:30</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/building-scientific-understanding-with-academic-communities" target="_blank" rel="noopener">Working with academic communities to build scientific understanding</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">OpenAI shares model results on the Kakeya conjecture, Exponential Time Hypothesis, and quantum chromodynamics—and how re…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">21:45</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/gpt-6-1-sol-coderabbit-code-security" target="_blank" rel="noopener">GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">CodeRabbit uses GPT-6.1 Sol to investigate security risks across complex codebases. Its security agent helps developers …</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">21:21</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/qJB2DapLThovtxzyOtKW?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Terraform Google Cloud 8.0 发布：告别“永久 Diff”，代价是破坏性升级</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">20:25</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/143.htm" target="_blank" rel="noopener">办公人用过就回不去了：罗技 MX Master 3S Lite 鼠标 699 → 305 元破冰新低</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">【手小慎拍，此款适合大多数男性手掌握持。】罗技 Logitech MX Master 3s &amp;nbsp;Lite（国行称为菁英版）在去年 10 月上市，官方定价 699 元。今日京东超级补贴直降至 359 元，PLUS 低至 305…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">19:53</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/0C1Wgt7N9NzM6KjHSFeA?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">从 Agent 工程化到任务交付，解读 AI 走向生产的关键挑战｜QCon 上海 2026 圆满收官</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">19:07</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/6XMtxZevN1488WVGXdR1?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Android Bench 2 新增对长周期任务、智能评估和连续评分的支持</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">18:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/chatgpt-expanding-world-of-work" target="_blank" rel="noopener">ChatGPT’s expanding world of work</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">Explore OpenAI Signals data on 165 work activities across nearly 100 countries, revealing how people use ChatGPT for wor…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:48</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/049.htm" target="_blank" rel="noopener">东风日产 NX7 内饰官图首发：大面积软包覆盖、256 色撞色氛围灯</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，东风日产 NX7 内饰官图今日首发，新车预计将于近期上市。据悉，该车拥有全舱可触面积 90% 软包，中控台、门板、扶手等全部圆角处理；256 色撞色氛围灯，采用「见光不见灯」的隐藏光源设计；AI 零压云毯座…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:46</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505539.html" target="_blank" rel="noopener">AI时代，一个人能有多大能量？天禧AI × 观猹大会现场实测个人AI跨端协同新体验</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">10月23日至25日，以“见证超能发生”为主题的“天禧AI × 观猹大会”在杭州茶叶博览会会议会展中心启幕。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:39</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/045.htm" target="_blank" rel="noopener">上海：重点攻关卫星手机直连、天基算力及空天地一体和通感算智融合等技术</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，上海市经济和信息化委员会等六部门今日印发《上海市卫星互联网产业创新发展行动方案（2027-2030 年）》。IT之家注意到，该方案提出突破网络架构与协同融合技术，重点攻关面向应用任务驱动的网络系统架构设计与…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505529.html" target="_blank" rel="noopener">OpenAI开始断网训练最强模型：“安全起见”</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">模型开始利用GPU缓存聊天？</p>
+        <div class="b-tags"><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/038.htm" target="_blank" rel="noopener">首部三体宇宙授权 AI 互动影游《三体：审判前夜》上架 Steam，玩家将深入 ETO 总部</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，首部三体宇宙授权 AI 互动影游《三体：审判前夜》上架 Steam 商店，由 Timeline 开发，发售日期待定，首支预告已公开。本作取材于国民级科幻小说《三体》，故事发生在“古筝行动”前夕，玩家将登上神…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:35</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505521.html" target="_blank" rel="noopener">A社联创演讲：AI奇点已来</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">所谓奇点，或许是AI跃过人类的那个点。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:31</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505478.html" target="_blank" rel="noopener">NeoLab第一个商业模式：转售GPU</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">从冲刺AGI到转售GPU。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:28</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/022.htm" target="_blank" rel="noopener">终破五千大关：苹果 Mac mini M6 国补后京东 4929 元，与 M4 版同价</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">苹果 8 月 25 日发布全新 Mac mini 便携式主机，搭载全新 M6 芯片与此前已经推出的 M5 Pro 芯片，6999 元起售。今日叠加国补后（M6 版国补限地区），京东自营仅需 4929 元起（教育优惠版 4844 元），较上市…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">商业融资</span><span class="b-tg">教育应用</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:27</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/017.htm" target="_blank" rel="noopener">商务部：2026 年以来家电以旧换新累计超 10099 万台</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，商务部流通发展司负责人谈 2026 年 1-9 月我国批发和零售业发展情况。据国家统计局数据，1-9 月，我国批发和零售业增加值 11.1 万亿元，同比增长 4.4%，增速较上半年提高 0.7 个百分点，占…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:27</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/016.htm" target="_blank" rel="noopener">腾达首款 AI 路由器泰山 BE3600 Ultra 开启预售，到手价 179 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，腾达首款 AI 路由器泰山 BE3600 Ultra 现已在京东开启预售，新品内置 AI 引擎，号称“越用越稳定”，到手价 179 元。IT之家从商品页获悉，这款路由器内置六根天线，集成 AI 智能选路算法…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/015.htm" target="_blank" rel="noopener">大疆针对北京地区消费级无人机推出专属托管服务：最长可免费存储一年，后续每台每年 199 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据 DJI 大疆服务公众号，大疆针对北京地区个人名下的消费级无人机推出了专属托管服务。申请通道于 10 月 26 日 14:00 至 11 月 14 日 20:00 开放，用户须在 11 月 14 日 24…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:12</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/013.htm" target="_blank" rel="noopener">字节跳动旗下即梦 AI 短剧工作室上线，提供自研剧本、图片、分镜模型</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，10 月 26 日，字节跳动旗下即梦 AI 宣布，即梦短剧工作室正式上线，提供自研剧本模型 DreamScript、图片模型 Anycook、分镜模型 DreamShot。自研剧本模型 DreamScrip…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:06</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/012.htm" target="_blank" rel="noopener">红龙 Light 75 Pro 客制化机械键盘发售：8KHz 回报率、支持三模连接，369 元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，红龙旗下 Light 75 Pro 客制化机械键盘现已在京东发售，该产品提供 8KHz 回报率，支持三模连接，樱焰版本定价为 369 元，墨焰版本定价为 399 元。京东红龙 Light 75 Pro 客制…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:06</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/011.htm" target="_blank" rel="noopener">九号公司 2026 年第三季度归母净利润 3.43 亿元，同比下降 37.18%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，九号公司今日发布 2026 年第三季度（2026 年 7 月～2026 年 9 月）报告：营业总收入：75.85 亿元，同比增长 14.1%归母净利润：3.43 亿元，同比下降 37.18%扣非净利润：2.…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:02</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505454.html" target="_blank" rel="noopener">中国近50%的新云生意，竟被这家公司包揽！</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:02</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/008.htm" target="_blank" rel="noopener">中兴通讯 2026 年第三季度归母净利润 40.6 亿元，同比下降 23.71%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，中兴通讯今日发布 2026 年第三季度（2026 年 1 月～2026 年 9 月）报告：营业总收入：1168.38 亿元，同比增长 16.23%毛利润：294.18 亿元，同比下降 4.2%毛利率：25.…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">17:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/y7YQmP1p42Uj69H1C6uf?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">CircleCI 正式发布 Machine Runner Orchestrator</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:59</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/007.htm" target="_blank" rel="noopener">2026 款吉利银河星舰 7 优行版上市，10.58 万元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据汽车之家报道，2026 款吉利银河星舰 7 优行版现已上市，定价 10.58 万元。新车采用基于 1.5L 发动机的插电式混合动力系统，CLTC 纯电续航 130km，带有可开启的全景天窗。IT之家从原报…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:55</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/001.htm" target="_blank" rel="noopener">游戏《莎木 3：增强版》跳票至明年初发售，登陆 PS5/XBOX Series / Switch 2 平台</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，发行商 ININ_Games 宣布旗下《莎木 3：增强版》发售时间从原定的 2026 年推迟至 2027 年初，官方表示此次延期旨在为开发团队争取更多打磨时间，具体发售日期及后续详情将在之后公开。公开信息显…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:48</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/981.htm" target="_blank" rel="noopener">蓝思科技回应苹果 iPhone Duo 加单 30% 传闻：不评价具体比例，产线正加班赶工</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据财闻今日报道，近日，苹果（AAPL.US）首款折叠屏手机 iPhone Duo 开售之后，出现供不应求的情况。有市场消息称，旺盛的市场需求倒逼苹果要求上游供应商加速赶工，甚至向供应链提出订单规模上调 30…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:47</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/976.htm" target="_blank" rel="noopener">HMD 新款欧版 Pulse Pro 手机曝光，升级联发科 G99 处理器</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，消息源 smashx_60 现已曝光了新款欧版 HMD Pulse Pro 手机规格信息，该机主要将紫光展锐 T606 处理器升级为联发科 G99 以提升性能，其他规格不变。具体来看，该机正面配备一块 6.…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">16:38</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505443.html" target="_blank" rel="noopener">从“言传身教”到“触类旁通”：AI既需要“名师指引”，也需要“自我修行”</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">人工智能正在从人机“言传身教”走向自学“触类旁通”。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:35</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/954.htm" target="_blank" rel="noopener">奥迪中国四环标和字母标正式分家：一汽强化四环，上汽聚焦 AUDI</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，奥迪中国今日宣布，奥迪分别与合作伙伴签署了战略协议，旨在强化奥迪四环品牌与 AUDI (奥迪字母标) 品牌之间的差异化定位及各自的战略侧重，并进一步明确“双品牌、双合作伙伴”渠道架构。这一战略里程碑，体现了…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/953.htm" target="_blank" rel="noopener">创维“F24B23F”23.8 英寸显示器发售：1080P 144Hz，449 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，创维现已在京东上架“F24B23F”23.8 英寸显示器，该机主打 1080P 144Hz，定价为 449 元。该机配备一块 1920x1080 分辨率 144Hz IPS 面板，对比度 1500:1，亮度…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/952.htm" target="_blank" rel="noopener">汇丰推出第二款港元稳定币 RedCoin，聚焦零售支付及交易</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，汇丰前天在 PayMe by HSBC 应用程序上线稳定币“汇丰 RedCoin”（RCHKD）。这是香港金融管理局批出首批两张稳定币发行人牌照后，对应落地的第二款港元稳定币产品。此前，渣打牵头成立的合资企…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:27</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/951.htm" target="_blank" rel="noopener">智元发布重载具身机器人精灵 G2 Max，双臂额定负载 40kg</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，智元今日发布安规级重载具身机器人精灵 G2 Max，面向拆码垛、物料转运及产线供料等工业场景。该产品单臂负载 20kg、双臂额定负载 40kg，双臂峰值负载可达 50kg，手臂重复定位精度≤±0.5mm。据…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:22</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/949.htm" target="_blank" rel="noopener">松下员工违规上传同事及家属信息至 GenAI 服务，影响 33.4 万人</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，松下卓越运营 (PEX) 日本当地时间本月 23 日发布公告，就其与子公司松下数字共同开展的人力资源信息系统项目出现的信息违规上传事件进行通告并向受影响者致歉。根据公告，负责人力资源信息系统项目的一名员工违…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:16</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/947.htm" target="_blank" rel="noopener">我国首次承担 ISO 研究基金项目，信息安全标准与数字贸易成果发布</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据央视新闻报道，记者今天从国家标准委了解到，国际标准化组织（ISO）正式发布《ISO / IEC 27001 标准对数字贸易的影响》研究报告。该报告为 ISO 研究基金项目成果，阐明了国际标准赋能数字贸易的…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/946.htm" target="_blank" rel="noopener">惠普星 Book Air 14 发售：薯条标、酷睿 5 320+16G+512G 售 5298 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，惠普旗下星 Book Air 14 轻薄本电脑现已在京东发售，该机采用英特尔酷睿 5 320 处理器，配备 16GB RAM 和 512GB SSD，京东首发价 5298 元，叠加国补后约为 4504.15…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:08</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/945.htm" target="_blank" rel="noopener">英伟达为开发者更新路径追踪工具：性能提升 20%，支持 Windows on Arm</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，英伟达面向开发者的 RTX Path Tracing 路径追踪开发工具已更新至 1.9.0 版本，性能最高提升 20%，并支持 WoA（Windows on Arm）平台。可用于 RTX Spark 笔记本…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:08</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/944.htm" target="_blank" rel="noopener">倍思飓风 3 号 160W 屏显充电头首销：3C 设计、支持 PD AVS / MiPPS 协议，带主动散热，399 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，倍思飓风 3 号 160W 全协议氮化镓屏显充电头现已在京东发售，该机采用 3C 设计，支持 PD AVS 协议，配备主动散热能力，定价为 399 元。京东倍思飓风 3 号 160W 充电头 399 元直达…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">16:07</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/942.htm" target="_blank" rel="noopener">荣耀MagicOS 11 一碰传新增支持分享高德地图驾车路线、百度网盘文件等</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据荣耀产品维护与升级 @荣耀小芳哥 今日透露，MagicOS 11 一碰传功能本月又打通了几个常用场景，现在支持一碰传分享的应用更多了：高德地图：一碰传分享驾车路线两步路户外助手：一碰传分享归轨迹 / 线路…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">16:04</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505436.html" target="_blank" rel="noopener">长安汽车赵非：汽车将成为端侧物理AI规模最大的应用载体 &amp;#124; 2026世界智能网联汽车大会</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">10月21日，2026世界智能网联汽车大会在北京召开</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:57</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/941.htm" target="_blank" rel="noopener">迈从 R9 轻量化零压电竞头戴耳机 10 月 29 日发售：235g 重量、150 小时续航，首发价 249.2 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，迈从宣布旗下 R9 轻量化零压电竞头戴耳机将于 10 月 29 日发售，该耳机主打“迈从全自研苍穹方案”“THX 空间音效”，定价为 299 元，首发价 249.2 元。该耳机提供白紫、黑金、黑色、粉色和白…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:54</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/939.htm" target="_blank" rel="noopener">VGN 联名腾讯天美工作室 V98Pro V4 TiMi 限定款机械键盘发售：带有小云仔发声键帽按钮，首发价 419 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，VGN 联合腾讯天美工作室推出的 V98Pro V4 TiMi 限定款机械键盘现已在京东发售，该键盘采用云朵轴，使用天蓝色外观，首发价 419 元。京东 VGN V98Pro V4 TiMi 限定款机械键盘…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:52</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/938.htm" target="_blank" rel="noopener">Seedance 核心研发负责人周畅被曝离职？接近字节人士否认</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据澎湃新闻消息，近日有传闻称，字节 Seed AI 研发核心负责人之一周畅已经提出离职。消息人士称，周畅将会开启创业，或为具身智能相关，并已获各知名基金、大厂战投、头部大模型独角兽积极接触。接近字节人士今日…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:46</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/937.htm" target="_blank" rel="noopener">研究：人类更喜好拟人形象 AI 智能体，但也存在“性别”偏见</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，爱尔兰利默里克大学研究人员在本月初发布的一篇研究论文中指出，在一项涉及 189 位知识工作者的实验中，人类更喜好拟人形象 AI 智能体，但也存在“性别”偏见。参测者在一个虚拟办公室中同 3 个基于相同底层模…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:42</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/935.htm" target="_blank" rel="noopener">大众中国在合肥获得 L3 级自动驾驶道路测试牌照</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，大众汽车集团（中国）已在合肥正式获得 L3 级自动驾驶道路测试牌照，并已在合肥启动 L3 级技术的真实道路测试与数据采集。本次获牌是集团推进高阶自动驾驶落地的关键节点，标志着集团向 2027 年实现 L3 …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:39</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/933.htm" target="_blank" rel="noopener">理想汽车 CEO 李想预告 i6 今日直播拆车，称造车不能造“速成车”</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，理想汽车 CEO 李想刚刚发文，谈及了造车这一话题。他认为，造车不是造黑盒子，更不能造“速成车”。李想介绍称，即将发布的 2026 款理想 i6 用的连山电池，从材料、电芯到电池包都是理想设计的，和整车数据…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:38</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/932.htm" target="_blank" rel="noopener">49 元：小米门窗传感器 3 开售，升级隧道磁阻传感器</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，小米门窗传感器 3 现已在京东开售，新品主打 3 年长续航，相比旧款升级隧道磁阻传感器，但少了光照传感器，定价 49 元。据介绍，这款产品需搭配蓝牙 Mesh 网关使用。主打“一次安装、3 年省心长续航”，…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/931.htm" target="_blank" rel="noopener">狼蛛 SC180 磁吸充电三模游戏鼠标 10 月 29 日开售，补贴价 119 元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，狼蛛 SC180 磁吸充电三模游戏鼠标今日正式开启预约，10 月 29 日 20:00 全平台开售，补贴价 119 元起。据官方介绍，磁吸触点充电，一放即充，自动吸附归位，告别频繁插线充电的麻烦；炫彩 RG…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:33</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/930.htm" target="_blank" rel="noopener">消息称苹果首款触控 MacBook Pro 笔记本有望支持 5G 蜂窝网络功能</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，外媒 9to5Mac 援引消息源 Filipe Esposito，相应消息源称苹果正在测试搭载 M5 Pro 芯片和 C1 调制解调器的 MacBook Pro 配置。同时考虑到本周苹果发布的首款触控屏 M…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/928.htm" target="_blank" rel="noopener">粒径低至 88 微米超细腻：苏泊尔纯钛小方糖破壁机 1499 元上市，体积缩小约 70%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">苏泊尔 1.75L 小体积破壁机 SP928RT 定价 1499 元，发热盘 100% 采用 TA1 纯钛板材，配 8 叶旋风刀 + 刀头可拆洗，较传统破壁机体积缩小≈70%。告别圆杯低效涡流，方杯四角扰流更细腻，粒径低至 88 微米。今日…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/927.htm" target="_blank" rel="noopener">超星学习通被曝服务故障、流量高峰期排队，回应称已完成修复</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据IT之家小伙伴反馈，超星学习通今日（10 月 26 日）午后发生服务故障，出现 500 报错，以及“目前是流量高峰期，系统进入排队模式”提示。据钱江视频报道，不少用户反映学习通无法登录、页面卡顿、作业提交…</p>
+        <div class="b-tags"><span class="b-tg">教育应用</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:29</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/926.htm" target="_blank" rel="noopener">商家售卖抢单外挂被判赔 300 万元，号称 5 毫秒滑一单</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据央视新闻今日报道，某科技公司生产销售了一款被称为“点滑器”的外挂硬件，可以为外卖骑手自动刷新、抢单，号称 5 毫秒滑一单，销售额超 700 万元。不少骑手表示，此类外挂盛行时，那些路线好、金额高的优质订单…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:26</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/925.htm" target="_blank" rel="noopener">新一代小米 SU7 Ultra 伪装车路测视频曝光，超大尾翼设计巨吸睛</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，博主 @毒特Dot 发布了新一代小米 SU7 Ultra 伪装车的路测视频，视频画面显示，该车整体延续了前代外观设计，但拥有全新的超大尾翼设计。博主感叹，新 Ultra 的空力看着太暴力。博主还分享了新一代…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:22</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/924.htm" target="_blank" rel="noopener">世嘉《索尼克 × 夏特世代重启》游戏销量突破 300 万份，距发售 2 年</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，世嘉今天宣布《索尼克 × 夏特世代重启》全球累计销量已突破 300 万份，距游戏发售 2 年。本次统计范围涵盖实体版本、数字版和所有登陆平台的合计销量。作为参考，《索尼克 × 夏特世代重启》发售于 2024…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:19</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/923.htm" target="_blank" rel="noopener">首页壁纸被替换为游戏海报：微软 XBOX 游戏机强推《使命召唤：现代战争 4》广告引发玩家不满</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，微软此前在 XBOX 平台推出大型第一方游戏时偶尔会在主界面投放宣传广告，然而随着《使命召唤：现代战争 4（Call of Duty：Modern Warfare 4）》于 10 月 23 日发售，微软本次…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:18</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/922.htm" target="_blank" rel="noopener">我国风光累计装机容量突破 20 亿千瓦</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，国家能源局今日宣布，今年 1-9 月，风电和太阳能发电新增装机容量约 1.7 亿千瓦，截至 2026 年 9 月底，风电和太阳能发电累计装机容量达到 20.1 亿千瓦。IT之家从国家能源局发布的数据获悉，太…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:13</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/921.htm" target="_blank" rel="noopener">保时捷正打造 15 辆独一无二的定制车型，最高售价达 1500 万美元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，保时捷计划把盈亏平衡点压低至年销量 20 万辆以内，这显然不能靠大量推出入门版 Macan 来冲量。这家德国车企选择向更高端的方向发力：高度定制车型、独一台的专属定制车、报价六位数起的原厂复原翻新项目，不用…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:12</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/920.htm" target="_blank" rel="noopener">小米商城推出“黑钻通行证”：每天 10 点先到先得，购买赠手机挂绳盲盒 / 大额尊享券包等权益</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，小米卢伟冰发文，宣布为小米商城带来“黑钻通行证”，用户可以在 App 搜索框中直接搜索跳转，相应权益每天 10 点先到先得，其中非黑钻会员定价为 9.9 元，黑钻会员定价为 0.01 元。根据小米介绍，用户…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:07</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/918.htm" target="_blank" rel="noopener">国家能源局：截至 9 月底全国累计发电装机容量 41.3 亿千瓦，同比增长 11.2%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，10 月 26 日，国家能源局发布 1-9 月份全国电力统计数据。截至 9 月底，全国累计发电装机容量 41.3 亿千瓦，同比增长 11.2%。其中，太阳能发电装机容量 13.1 亿千瓦，同比增长 16.5…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:04</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/916.htm" target="_blank" rel="noopener">小米“米家洗鞋机 3KG”11 月 2 日开启众筹：可洗运动鞋 / 帆布鞋、支持除菌，799 元起</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，小米宣布将推出一款“米家洗鞋机 3KG”，该产品将于 11 月 2 日 10 点在有品开启众筹，建议零售价 1299 元，众筹价 799 元起。该产品整体采用米家白色家族式外观，整机占地 0.18m2，阳台…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:03</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/915.htm" target="_blank" rel="noopener">蜂巢能源首批 100kWh 混合固液超充电池包量产下线，称混合固液将长期存在并成主流路线</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，蜂巢能源官方今日宣布，首批 100kWh 龙鳞甲混合固液超充电池包在常州正式下线。蜂巢能源判断，混合固液在纯电、特别是三元领域不是简单过渡方案，而将成为长期存在的主流路线。IT之家注：混合固液电池是指同时由…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:03</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/914.htm" target="_blank" rel="noopener">微星推出 PRO SN 系列非模组 PC 电源，PPLP 银牌转换效率认证</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，微星 (MSI) 现已推出 PRO SN 系列 PC 电源。其采用标准 ATX 外形规格，配套非模组压纹线材，获得 PPLP 银牌转换效率认证，包含 650W / 750W / 850W 三档额定功率的产品…</p>
+        <div class="b-tags"><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">15:01</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/913.htm" target="_blank" rel="noopener">光荣特库摩 2027 财年年报预计归母净利润 370 亿日元，同比预降 13.61%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，光荣特库摩今日发布 2027 财年（2026 年 4 月 1 日～2027 年 3 月 31 日）年报业绩预告报告：营业总收入：910 亿日元（IT之家注：现汇率约合 38.71 亿元人民币），同比预增 2…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">15:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/fanatics-streamline-fan-experience" target="_blank" rel="noopener">How Fanatics and OpenAI streamline the fan experience</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">Fanatics uses OpenAI to help fans complete their game-day outfits with Shop the Look. Testing across roughly 30,000 MLB …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">15:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/openai-cut-incident-investigation" target="_blank" rel="noopener">How Ultrafast cut incident investigation from hours to minutes at OpenAI</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">See how OpenAI engineers use Codex Ultrafast to investigate incidents in minutes. Explore faster security analysis, code…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:59</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/911.htm" target="_blank" rel="noopener">极摩客推出 NucBox M3S 迷你主机：酷睿 3 304 处理器、12GB 内存</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，极摩客现已在海外市场推出 NucBox M3S 迷你主机，新品采用英特尔 Wildcat Lake 平台，支持 USB4、三屏 4K 输出，提供 12GB 板载内存，定价 389.99 美元。据介绍，这款迷…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:58</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/910.htm" target="_blank" rel="noopener">努比亚冰淇淋散热器全新配色「可可黑」发售，99 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，努比亚旗下冰淇淋散热器全新“可可黑”配色现已在京东发售，定价为 99 元。IT之家注意到，这款散热器配备定制 36*36mm 高密度 TEC，包含 96 对 PN 结，可实现秒速制冷，相比普通散热器性能提升…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:54</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/908.htm" target="_blank" rel="noopener">消息称某厂 2027H1 影像旗舰评估阔屏，预计华为旗下</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据博主 @数码闲聊站 今日爆料，某厂 2027H1 影像旗舰在评估阔屏，据我摸到的工程机信息，标准版继续用 6.6 英寸中屏，Pro / Pro Max 换阔屏，尺寸还是 6.39 英寸左右，定义全能阔屏影…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:51</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/906.htm" target="_blank" rel="noopener">消息称更多用户反馈苹果 iPhone Duo 内屏出现“开裂”问题</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据外媒 smartprix 报道，苹果 iPhone Duo 开售至今，更多用户陆续反馈手机内屏出现“开裂”问题，多起案例呈现出相似的故障特征：屏幕沿铰链区域出现裂纹，部分设备还伴随着半边屏幕出现明亮横线或…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">14:50</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505429.html" target="_blank" rel="noopener">趋境科技完成 B 轮融资，半年实现超十倍速增长，加速高品质 AI Token 规模化交付</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">高品质 AI Token 成为行业新风向</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:50</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/905.htm" target="_blank" rel="noopener">华为余承东预热 2026 央视鸿蒙星光盛典：致敬每一位生态建设者，也感谢所有用户一路相伴</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，央视频今日宣布，2026《鸿蒙星光盛典》将于 12 月 5 日在深圳湾体育中心“春茧”体育场举办，共同见证鸿蒙应用体验进入成熟好用阶段。IT之家注意到，华为常务董事、产品投资评审委员会主任、终端 BG 董事…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:46</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/903.htm" target="_blank" rel="noopener">中科宇航力箭二号遥二运载火箭转运至发射区，近期择机发射</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据央视新闻报道，今天（26 日），我国自主研制的力箭二号遥二运载火箭在东风商业航天创新试验区转运至专属发射工位，进入发射前的关键准备阶段，近期择机发射。力箭二号由中科宇航研制，最大运载能力达 12 吨，既能…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:45</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/902.htm" target="_blank" rel="noopener">Gartner 预测：全球 IT 支出将在 2027 年突破 7 万亿美元，同比 +15%</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，机构 Gartner（高德纳）当地时间本月 21 日发布预测：2027 年全球 IT 支出将在今年的基础上进一步增长 15% 至 7.352 万亿美元（IT之家注：现汇率约合 49.09 万亿元人民币），首…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:44</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/901.htm" target="_blank" rel="noopener">吉利为欧洲市场研发专属车型，预计明年亮相</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据汽车媒体 AutoCar 今天报道，吉利正在为欧洲市场开发专属车型。该公司透露，公司已在此前的市场探索中吸取经验，更加了解欧洲消费者需求。据报道，吉利接下来将推出一款代号为 Project KO11 的旗…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:41</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/900.htm" target="_blank" rel="noopener">特斯拉中国推出汽车家充桩延保服务限时优惠，明年 1 月 20 日前购买延保服务最低 199 元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，特斯拉中国今天宣布推出家充桩延保服务限时优惠，2026 年 10 月 21 日-2027 年 1 月 20 日购买延保服务，最低仅需 199 元，即可为车辆充电设备再延长 2 年保障。延保自设备原厂质保结束…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/899.htm" target="_blank" rel="noopener">Epic 喜加一：狼人杀推理游戏《MAFIA HOTEL》免费领</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，由独立开发商 ALMNHALI 开发并发行的狼人杀推理游戏《MAFIA HOTEL》即日起在 Epic Games Store 开放限时免费领取“喜加一”活动，本作在 Epic 国区定价为 6 元，玩家可以…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:30</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/898.htm" target="_blank" rel="noopener">消息称美团计划通过债券发行募资 10 亿美元</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据彭博社报道，知情人士透露，中国外卖巨头美团计划通过离岸人民币债券募资约合 10 亿美元（IT之家注：现汇率约合 66.77 亿元人民币），发行方案为美团离岸人民币 Reg S 双档高级无抵押债券，美团也由…</p>
+        <div class="b-tags"><span class="b-tg">政策监管</span><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">14:24</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/017/896.htm" target="_blank" rel="noopener">AI 交易热情降温，两只挂钩 SK 海力士的美股杠杆 ETF 将退市清算</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">IT之家 10 月 26 日消息，据彭博社报道，两只挂钩 SK 海力士（SK Hynix）的杠杆 ETF，在美国上市仅仅数月后就要清盘，背后原因是市场对 AI 交易行情的投资热情降温。Tradr ETF 发行的这两只多头和空头产品，分别跟踪…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">08:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/introducing-gpt-6-1-terra" target="_blank" rel="noopener">Introducing GPT-6.1 Terra</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">Bringing fast and capable computer use to everyone</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-10-25" data-date="2026-10-25">
+    <h3 class="b-day-h"><time datetime="2026-10-25">2026-10-25</time><span class="b-day-cn">10 月 25 日 · 周日</span><em>3 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">22:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/4647jBOxmf3Ut0i1aVbx?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Cloudflare 的 OHTTP 网关拒绝解密通过 Cloudflare 传入的请求</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">18:30</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/9TSuUDxrUSGS26XTA2yB?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">四分之一PR是“AI垃圾”！Linux基金会发布新报告：AI写代码快了52%，开源维护者却更累了</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">17:06</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/BHWP4JJDeExZZWsifFlg?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">Java 近期新闻：Grails 8、Open Liberty、GlassFish、Infinispan、LangChain4j、Spock</a></h3>
+        
+        
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-10-24" data-date="2026-10-24">
+    <h3 class="b-day-h"><time datetime="2026-10-24">2026-10-24</time><span class="b-day-cn">10 月 24 日 · 周六</span><em>9 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">21:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/jNX6EAzqP34xRjqUMU1N?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">React 19.3 新增 browser() API，使“仅客户端渲染”成为一等公民</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">18:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/lkefSu7SjjIHL1Fmk0Pv?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">何时应使用 Liquid Clustering？湖仓布局策略基准测试</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">03:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/mhdJwMMzYFedMFHKfHWs?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">智源众智 FlagOS 2.2 让前沿模型与多元算力协同演进</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">01:54</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/UmD4aAerZEts8sZ5t791?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">刘铁岩、诺奖、图灵奖得主等嘉宾共话AI的下一个十年：Transformer一统天下之后，AI的下一张王牌是什么？</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">01:53</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/AkDgwN6h72cqUOJ35Zok?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">AI Agent 正在改写 CPU 的价值：当 Token 变成行动，算力竞争不再只是拼 GPU</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">01:48</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/Q6mgHWCSqV6KeZzee3NT?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">PostgreSQL 19 发不出来？AI“找茬”太快，人类修Bug的速度跟不上了</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">01:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/Lo9TLlRdvy4II38yaex0?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">“让Token不空转”，讯飞如何把Agent推进企业核心流程</a></h3>
+        
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt">01:35</span></div>
+        <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/sI3z2UMCrB5PPVDWTsLo?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">奥特曼最新 45 分钟访谈：一年不写代码、压力大到不想起床，还嫌 ChatGPT 太谄媚</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">01:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/scaling-storage-one-billion-users-part-two" target="_blank" rel="noopener">Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">Learn how OpenAI scaled Habitat with reliable multi-tenancy, global caching, and Azure Cosmos DB to deliver 12× faster r…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-10-23" data-date="2026-10-23">
+    <h3 class="b-day-h"><time datetime="2026-10-23">2026-10-23</time><span class="b-day-cn">10 月 23 日 · 周五</span><em>12 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">18:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/securing-our-frontier-model-training-environment" target="_blank" rel="noopener">Securing our frontier model training environment</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">OpenAI explains how we strengthened containment for frontier model training and evaluation, including offline environmen…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:21</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505083.html" target="_blank" rel="noopener">科大讯飞首发星辰TaaS平台，让Token真正成为千行百业的生产力</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">10月22日，2026科大讯飞全球1024开发者节在北京国家会议中心开幕</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:07</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/505032.html" target="_blank" rel="noopener">企业AI需要两个世界模型</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">特赞想让企业Agent真正懂业务</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:03</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/504931.html" target="_blank" rel="noopener">一张5090跑起34B实时世界模型，国产玩家拿下英伟达大奖！</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">房间秒变草原，抬手就能下雪</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">16:50</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/504930.html" target="_blank" rel="noopener">国产5B生图模型海外突然爆火，4天超百万下载</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">16:45</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/504915.html" target="_blank" rel="noopener">南京物理AI上大分！三位图灵奖得主发声，50个应用场景亮相</a></h3>
+        
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">16:45</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/504913.html" target="_blank" rel="noopener">iRTE2026：声网CEO赵斌提出五级对话能力框架，实时互动迈入对话 AGI 时代</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">10月23日，iRTE2026实时智能大会在北京举行。</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">16:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/504905.html" target="_blank" rel="noopener">高德发布首个基于开放世界行为的全身基座模型λ0，推动机器人从“局部学习”迈向“全身动作对齐”</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">阿里巴巴集团旗下高德正式发布首个基于开放世界行为的全身基座模型λ0</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">15:35</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/504901.html" target="_blank" rel="noopener">百度世界2026前瞻：10+重磅分论坛，全面解码AI时代的智能组织进化路径</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">10月21日，百度官方公众号发文披露了百度世界2026分论坛的更多议程信息。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">08:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/anima" target="_blank" rel="noopener">Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">Anima expands what care teams can do with OpenAI models, giving them more capacity to respond to patients.</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">08:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/openai-nask-ai-safety-security-partnership" target="_blank" rel="noopener">OpenAI and Poland’s NASK partner to advance AI safety and security</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">OpenAI and Poland’s NASK are partnering on AI safety, security, and technical research to strengthen safeguards and supp…</p>
+        <div class="b-tags"><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">03:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/decisions-api" target="_blank" rel="noopener">Build more responsive apps with the Decisions API</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">Fast, focused, low-cost decisions for any application.</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-10-22" data-date="2026-10-22">
+    <h3 class="b-day-h"><time datetime="2026-10-22">2026-10-22</time><span class="b-day-cn">10 月 22 日 · 周四</span><em>6 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:07</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/504879.html" target="_blank" rel="noopener">又一国产决策模型发布！准确率超过微软和Jev等决策模型</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">10月22日，蚂蚁数科正式发布决策模型 LingDT-Decision-1.0。</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">15:14</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/10/504841.html" target="_blank" rel="noopener">特斯拉利润腰斩，一夜跌没“通用汽车”！马斯克：FSD在中国也会遥遥领先</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">FSD一年增长70万付费用户</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">14:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/forward-deployed-engineering-means" target="_blank" rel="noopener">What FDE means at OpenAI</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">What forward deployed engineering means at OpenAI</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">08:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/uber-chatgpt-work-rollout" target="_blank" rel="noopener">Uber brings ChatGPT Work to all employees with OpenAI</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">Uber is rolling out ChatGPT Work to more than 30,000 employees, helping teams research, analyze data, create presentatio…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">05:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/broad-access-through-consistent-standards" target="_blank" rel="noopener">Broad access through consistent standards</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">How OpenAI works with distribution partners to uphold consistent safeguards, support responsible access, and clarify exp…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">01:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/att-legal" target="_blank" rel="noopener">How AT&amp;T is rethinking in-house legal work with OpenAI</a></h3>
+        <p style="margin:0 0 6px;font-size:13px">AT&amp;T is working with OpenAI to make legal knowledge easier to access. Learn how its LegalEdge team is rethinking int…</p>
+        
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="b-sec">
+  <h2>今日三读 <em>要闻</em></h2>
+  <p class="note">按源发布时间排序。摘要为原文摘录，未改写。</p>
+  <div class="b-lead">
+    
+    <div class="b-li">
+      <div class="b-top"><span class="b-rk">1</span><span class="b-src">InfoQ 中国</span><span class="b-dt"></span></div>
+      <h3><a href="https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">智能指数得分创新高！蚂蚁百灵开源Ling-3.1-flash-1019：让Personal Agent走向真实业务</a></h3>
+      
+      <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-rk">2</span><span class="b-src">InfoQ 中国</span><span class="b-dt"></span></div>
+      <h3><a href="https://www.infoq.cn/article/7yOK6Ri9Dt4VfITmA7Vb?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">轻量化异构双臂 × VLA/世界模型：家庭服务具身机器人的落地实践</a></h3>
+      
+      
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-rk">3</span><span class="b-src">InfoQ 中国</span><span class="b-dt"></span></div>
+      <h3><a href="https://www.infoq.cn/article/28VVsANi9FBYRKfUz8vA?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">GPT-6.1 Terra 发布：比旗舰快 3 倍，价格仅1/10！事实错误率暴降近 70%</a></h3>
+      
+      <div class="b-tags"><span class="b-tg">模型发布</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="b-sec">
+  <h2>今日主推 <em>深读一篇</em></h2>
+  <p class="note">今日最值得完整读一篇的。点标题直达原文，本站不做转述。</p>
+  <div class="b-deep">
+    <div class="b-top" style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
+      <span class="b-src" style="font-size:12px;font-weight:800;color:#0e7490">InfoQ 中国</span>
+      <span style="font-size:12px;color:var(--muted)"></span>
+    </div>
+    <h3><a href="https://www.infoq.cn/article/Qwr9oqOSAdmi1YibHVWr?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">在AI时代如何提升软件工程能力</a></h3>
+    <p class="b-big">该源未提供摘要，请点标题读原文。</p>
+    <div class="b-tags"><span class="b-tg">模型能力</span></div>
+  </div>
+</section>
+
+<section class="b-sec">
+  <h2>深度整理 <em>不是资讯聚合，是把一件事讲透</em></h2>
+  <p class="b-note">
+    每日简报是「今天发生了什么」，深度整理是「这件事意味着什么」。
+    事实与分析严格分层：每条事实带可点开出处，分析段落明确标注为编辑判断，未落地的爆料单列「待确认」。
+  </p>
+  <div class="b-dcard">
+    <div class="b-dtop">
+      <span class="b-dtag">第 001 期</span>
+      <span class="b-dno">2026-10-06</span>
+    </div>
+    <h3><a href="/feed/deep-dive.html">国产大模型的资本狂飙：一天之内两笔百亿级消息</a></h3>
+    <p>同一天里，中国两家头部大模型公司各自传出百亿级以上的资本动作：DeepSeek 新一轮融资规模从最初目标 500 亿元一路上调至「至少 800 亿、最终或逼近 1000 亿元」，为 2027 年初的 IPO 铺路；月之暗面完成上市前最后…</p>
+    <div class="b-tags">
+      <a class="b-tg" href="https://news.qq.com/rain/a/20261006A074JI00" target="_blank" rel="noopener">华尔街见闻 / 腾讯新闻</a><a class="b-tg" href="https://www.163.com/dy/article/L8IP5IU90519QIKK.html" target="_blank" rel="noopener">网易转金融界</a><a class="b-tg" href="https://news.qq.com/rain/a/20261006A06UJW00" target="_blank" rel="noopener">智通财经 / 腾讯新闻</a><a class="b-tg" href="https://www.cnenergynews.cn/article/4SOtcr9taTe" target="_blank" rel="noopener">中国能源网</a><a class="b-tg" href="https://www.inewsweek.cn/finance/2026-09-10/32025.shtml" target="_blank" rel="noopener">中国新闻周刊</a>
+    </div>
+    <div class="b-dfoot">
+      <span class="b-dwarn">以上均为彭博社援引知情人士的报道，非官方公告。涉事企业的公开回应状态见「待确认」一节。</span>
+    </div>
+    <a class="b-go" href="/feed/deep-dive.html">读全文 · 事实/判断/待确认 三层分开<i class="b-arrow" aria-hidden="true">→</i></a>
+  </div>
+</section>
+
+
+<section class="b-sec">
+  <h2>今日主题 <em>模型发布 · 6 条</em></h2>
+  <p class="note">按今日出现频次最高的标签聚合，帮你从信息流里挑出一条主线。</p>
+  <div class="b-grid6">
+    
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">智能指数得分创新高！蚂蚁百灵开源Ling-3.1-flash-1019：让Personal Agent走向真实业务</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">InfoQ 中国</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.infoq.cn/article/28VVsANi9FBYRKfUz8vA?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">GPT-6.1 Terra 发布：比旗舰快 3 倍，价格仅1/10！事实错误率暴降近 70%</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/843.htm" target="_blank" rel="noopener">多款主流固态硬盘 SSD 单周跌幅超过 10%，渠道报价明显松动</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/818.htm" target="_blank" rel="noopener">OpenAI 宣布三项重大科学突破，科研界却不满其成果发布方式</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/808.htm" target="_blank" rel="noopener">科赋发布 CRAS V RGB PRIME DDR5 内存模组，可选 6000CL26、8000CL38</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.ithome.com/1/018/803.htm" target="_blank" rel="noopener">暴雪被指违背承诺，《魔兽世界》种族主题房屋装饰上架真钱商城</a></h3>
+    </div>
+  </div>
+</section>
+
+<section class="b-sec">
+  <h2>今日知识点 <em>9 个术语</em></h2>
+  <p class="note">
+    从今日标题里抽取的真实术语，每个都给出<strong>它出现的原文链接</strong>。
+    本站<strong>不提供术语解释</strong>——解释容易变成编造，去原文读更准。
+  </p>
+  <div class="b-tgrid">
+    
+    <div class="b-tc">
+      <b>开源</b>
+      <span>出自《智能指数得分创新高！蚂蚁百灵开源Ling-3.1-fla…》</span>
+      <a href="https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">InfoQ 中国 →</a>
+    </div>
+    <div class="b-tc">
+      <b>Agent</b>
+      <span>出自《智能指数得分创新高！蚂蚁百灵开源Ling-3.1-fla…》</span>
+      <a href="https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">InfoQ 中国 →</a>
+    </div>
+    <div class="b-tc">
+      <b>模型</b>
+      <span>出自《轻量化异构双臂 × VLA/世界模型：家庭服务具身机器人…》</span>
+      <a href="https://www.infoq.cn/article/7yOK6Ri9Dt4VfITmA7Vb?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">InfoQ 中国 →</a>
+    </div>
+    <div class="b-tc">
+      <b>算力</b>
+      <span>出自《Oracle 打造多样化 AI 算力组合，引入 Samb…》</span>
+      <a href="https://www.ithome.com/1/018/744.htm" target="_blank" rel="noopener">IT之家 →</a>
+    </div>
+    <div class="b-tc">
+      <b>部署</b>
+      <span>出自《上海“星枢计划”目标 2032 年完成千星部署，百万级 …》</span>
+      <a href="https://www.ithome.com/1/018/535.htm" target="_blank" rel="noopener">IT之家 →</a>
+    </div>
+    <div class="b-tc">
+      <b>智能体</b>
+      <span>出自《研究：人类更喜好拟人形象 AI 智能体，但也存在“性别”…》</span>
+      <a href="https://www.ithome.com/1/017/937.htm" target="_blank" rel="noopener">IT之家 →</a>
+    </div>
+    <div class="b-tc">
+      <b>推理</b>
+      <span>出自《Epic 喜加一：狼人杀推理游戏《MAFIA HOTEL…》</span>
+      <a href="https://www.ithome.com/1/017/899.htm" target="_blank" rel="noopener">IT之家 →</a>
+    </div>
+    <div class="b-tc">
+      <b>Transformer</b>
+      <span>出自《刘铁岩、诺奖、图灵奖得主等嘉宾共话AI的下一个十年：Tr…》</span>
+      <a href="https://www.infoq.cn/article/UmD4aAerZEts8sZ5t791?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">InfoQ 中国 →</a>
+    </div>
+    <div class="b-tc">
+      <b>rag</b>
+      <span>出自《Rapidly scaling online stora…》</span>
+      <a href="https://openai.com/index/scaling-storage-one-billion-users-part-two" target="_blank" rel="noopener">OpenAI 官方博客 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="b-sec">
+  <h2>讨论 <em>已接入 · 登录后可发言</em></h2>
+  <p class="note">对上面某条有补充、有异议，或者想贴自己的实践 —— 直接在下面说。别人回复你，右上角铃铛会有提醒。</p>
+  <div id="comments" data-bj-comments></div>
+</section>
+
+<div class="b-foot">
+  标签分布：模型发布 77　·　商业融资 33　·　开发工具 30　·　模型能力 20　·　政策监管 18　·　研究论文 8　·　教育应用 3<br>
+  可用源 5 个　·　本次登记但不可用 4 个（已在上方划掉并注明原因）<br>
+  数据文件：<code>data/daily-brief.json</code>　·　采集脚本：<code>scripts/daily/collect.mjs</code>　·　每日可重复执行，结果覆盖写入
+</div>
+
+</div>
+
+<!-- 全站内核（身份区/导航/主题/评论）：每次重建都必须带上，否则裸页会失去内核 -->
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

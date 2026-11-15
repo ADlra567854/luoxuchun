@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · AI 知识收纳站 · 全方向门户, viewport-fit=cover · 白驹 ccowork">
+<meta name="description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta property="og:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · AI 知识收纳站（分站） · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"ccowork · AI 知识收纳站（分站）","description":"个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+  :root{--bg:#06080f;--card:#101728;--line:#1e2a44;--txt:#e8eefc;--muted:#8fa0c4;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--pink:#ff5c8a;--green:#34d399;--grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.6}
+  a{color:var(--cyan);text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:50;background:rgba(6,8,15,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  /* 2026-11-10：.top 原本写 padding:14px 0，会覆盖 .wrap 的 padding:0 20px，
+     导致手机上分站头部的文字左右 0px 贴边。横向留白显式写回 20px。 */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;flex-wrap:wrap}
+  .logo{font-size:19px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .top a.back{font-size:13px;color:var(--muted)}
+  .hero{padding:52px 0 26px;text-align:center}
+  .hero .kicker{color:var(--cyan);font-size:12px;letter-spacing:3px}
+  .hero h1{font-size:38px;margin:10px 0 12px;font-weight:900}
+  .hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);max-width:720px;margin:0 auto}
+  .search{max-width:640px;margin:22px auto 0}
+  .search input{width:100%;padding:14px 18px;border-radius:14px;border:1px solid var(--line);background:#0b1020;color:var(--txt);font-size:15px;outline:none}
+  .search input:focus{border-color:var(--blue)}
+  .counts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:18px 0 6px;color:var(--muted);font-size:13px}
+  .counts b{color:var(--cyan)}
+  /* 2026-11-10：全局 *{padding:0} + section 只给了上下 margin，
+     这些区块直接挂在 body 下、没进 .wrap，390px 实测正文左右 0px 贴边。
+     补上横向留白（与 .wrap 的 20px 对齐）。 */
+  section{margin:30px 20px}
+  .cat-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .cat-head h2{font-size:21px}
+  .cat-head .n{color:var(--cyan);font-family:ui-monospace,monospace;font-size:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:13px}
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;transition:.2s}
+  .tool:hover{border-color:var(--blue);transform:translateY(-2px)}
+  .tool h3{font-size:16px;margin-bottom:5px;color:var(--txt)}
+  .tool p{color:var(--muted);font-size:13px;min-height:38px;margin-bottom:10px}
+  .tool .links{display:flex;gap:8px;flex-wrap:wrap}
+  .tool a.btn{font-size:13px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);color:var(--txt)}
+  .tool a.dl{background:linear-gradient(120deg,#4f8cff,#38e1ff);color:#04101f;font-weight:700;border:none}
+  .tool a.gh{border-color:var(--line)}
+  .tool a.gh:hover{border-color:var(--cyan)}
+  .empty{display:none;text-align:center;color:var(--muted);padding:30px}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:34px 0;border-top:1px solid var(--line);margin-top:20px}
+  .note{background:#0d1428;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--muted);margin:20px 0}
+  .tool{position:relative}
+  .tool .fav{position:absolute;top:10px;right:12px;font-size:17px;line-height:1;cursor:pointer;filter:grayscale(1);opacity:.45;transition:.2s;z-index:3}
+  .tool .fav.on{filter:none;opacity:1;color:var(--gold)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 2px}
+  .chip{border:1px solid var(--line);background:#0b1020;color:var(--muted);border-radius:999px;padding:6px 13px;font-size:13px;cursor:pointer;transition:.2s;font-family:inherit}
+  .chip:hover{border-color:var(--blue);color:var(--cyan)}
+  .chip.on{background:var(--grad);color:#04101f;font-weight:700;border-color:transparent}
+  .chip .c{opacity:.7;font-size:11px;margin-left:5px}
+  .bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0;font-size:13px;color:var(--muted)}
+  .bar .lab{color:var(--cyan);font-weight:600}
+  .tagchip{border:1px solid var(--line);background:#0b1020;border-radius:999px;padding:4px 12px;cursor:pointer;transition:.2s;font-size:12px;color:var(--muted)}
+  .tagchip:hover{border-color:var(--cyan);color:var(--cyan)}
+  .tagchip.clear{border-color:rgba(255,92,138,.4);color:var(--pink)}
+  .bar-empty{opacity:.5;font-size:13px}
+  .drawer-mask{position:fixed;inset:0;background:rgba(2,4,10,.62);backdrop-filter:blur(3px);z-index:200;opacity:0;pointer-events:none;transition:.25s}
+  .drawer-mask.show{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,92vw);background:#0b1020;border-left:1px solid var(--line);z-index:201;transform:translateX(100%);transition:.28s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:24px}
+  .drawer.show{transform:none}
+  .drawer .x{position:absolute;top:14px;right:16px;font-size:20px;color:var(--muted);cursor:pointer;background:none;border:none;line-height:1}
+  .drawer .cat{font-size:12px;color:var(--cyan);letter-spacing:1px;margin-bottom:4px}
+  .drawer h3{font-size:21px;margin:0 0 8px;font-weight:800}
+  .drawer .desc{color:var(--muted);font-size:14px;line-height:1.7;margin:0 0 18px}
+  .drawer .acts{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}
+  .drawer .acts a,.drawer .acts button{display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:10px;border:1px solid var(--line);color:var(--txt);font-size:14px;cursor:pointer;background:#0e1426;transition:.2s;text-decoration:none;font-family:inherit}
+  .drawer .acts a:hover,.drawer .acts button:hover{border-color:var(--blue);color:var(--cyan)}
+  .drawer .acts .primary{background:var(--grad);color:#04101f;font-weight:700;border:none;justify-content:center}
+  .drawer .rel h4{font-size:13px;color:var(--muted);margin:0 0 10px;font-weight:600}
+  .drawer .rel .tagchip{margin:0 6px 6px 0;display:inline-block}
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:#0e1426;border:1px solid var(--line);color:var(--cyan);padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:300}
+  .toast.show{opacity:1;transform:translateX(-50%)}
+  /* 详情抽屉美化 */
+  .drawer{overflow-x:hidden}
+  .dhero{height:118px;border-radius:18px;margin:-24px -24px 20px;background-size:cover;background-position:center;position:relative;overflow:hidden;border:1px solid var(--line)}
+  .dhero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,15,.18),rgba(6,8,15,.92))}
+  .dhero .emoji{position:absolute;left:16px;bottom:10px;font-size:40px;z-index:2;filter:drop-shadow(0 4px 12px rgba(0,0,0,.6))}
+  .dhero .bc{position:absolute;right:14px;bottom:12px;z-index:2;font-size:11px;color:#cfe0ff;background:rgba(8,12,22,.7);padding:3px 10px;border-radius:999px;border:1px solid rgba(120,160,220,.3)}
+  .drawer .acts .primary{background:var(--grad);color:#04101f;font-weight:700;border:none;justify-content:center;box-shadow:0 6px 18px rgba(79,140,255,.25)}
+  .drawer .acts .primary:hover{box-shadow:0 10px 26px rgba(79,140,255,.4)}
+  .drawer .rel h4{color:var(--cyan);letter-spacing:1px}
+  .drawer .rel .tagchip:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/portal.html">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/portal.html">
+<meta name="twitter:title" content="ccowork · AI 知识收纳站（分站） · 白驹 ccowork">
+<meta name="twitter:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-portal.png" alt="ccowork · AI 知识收纳站（分站）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<header><div class="wrap top">
+  <div class="logo">AI 知识收纳站</div>
+  <a class="back" href="../index.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 回白驹总站</a>
+</div></header>
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">ALL-IN-ONE PORTAL</div>
+    <h1>把今天的 <span>AI</span> 全部收纳进来</h1>
+    <p>按方向分类的 AI 工具 / 模型 / 框架 / 资源门户，每条都可直接下载安装包、打开官网或进入 GitHub。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+    <div class="search"><input id="q" type="text" placeholder="搜索：DeepSeek / 视频 / 本地 / 安全 / 手机…"></div>
+    <div class="counts"><span>收录 <b id="total">0</b> 项</span><span>覆盖 <b>12</b> 个方向</span></div>
+  </div>
+  <div class="note">说明：这里收录的是「当前主流 + 开源」为主。点击卡片看详情（官网 / GitHub / 复制链接 / 收藏），蓝色按钮直达官方下载页。</div>
+  <div class="chips" id="chips"></div>
+  <div class="bar" id="favBar"></div>
+  <div class="bar" id="recBar"></div>
+  <div class="bar" id="sorts"><span class="lab">排序</span><button class="tagchip on" data-s="default" type="button"><i class="cc-ic" data-ic="rotate-ccw"></i> 默认</button><button class="tagchip" data-s="fav" type="button"><i class="cc-ic" data-ic="star"></i> 收藏优先</button><button class="tagchip" data-s="recent" type="button"><i class="cc-ic" data-ic="clock"></i> 最近访问</button></div>
+  <div id="cats"></div>
+  <div class="empty" id="empty">没有匹配的结果，换个关键词试试。</div>
+</div>
+<div class="drawer-mask" id="mask"></div>
+<aside class="drawer" id="drawer" data-nb3d-side>
+  <div class="dhero" id="dHero"></div>
+  <button class="x" id="dx" type="button"><i class="cc-ic" data-ic="x" aria-hidden="true"></i></button>
+  <div class="cat" id="dCat"></div>
+  <h3 id="dName"></h3>
+  <div class="desc" id="dDesc2"></div>
+  <div class="acts" id="dActs"></div>
+  <div class="rel"><h4>同方向其他工具</h4><div id="dRel"></div></div>
+</aside>
+<div class="toast" id="toast"></div>
+<footer>AI 知识收纳站 · 持续收纳中 · 数据以各官方页面为准</footer>
+<script>
+const DATA = [
+  // 类别, 名称, 说明, 官网/下载, github(可空)
+  ["对话 · 大模型","DeepSeek","国产开源旗舰，V4-Pro 与 V4-Flash","https://www.deepseek.com",""],
+  ["对话 · 大模型","ChatGPT","OpenAI 对话助手（GPT-5.6 系列）","https://chatgpt.com",""],
+  ["对话 · 大模型","Claude","Anthropic 助手，长文与代码强","https://claude.ai",""],
+  ["对话 · 大模型","Gemini","Google 多模态助手","https://gemini.google.com",""],
+  ["对话 · 大模型","豆包","字节跳动助手，中文好用","https://www.doubao.com",""],
+  ["对话 · 大模型","通义千问","阿里助手","https://tongyi.aliyun.com",""],
+  ["对话 · 大模型","文心一言","百度助手","https://yiyan.baidu.com",""],
+  ["对话 · 大模型","智谱清言","智谱 AI 助手","https://chatglm.cn",""],
+  ["对话 · 大模型","Kimi","月之暗面，长文本强","https://kimi.moonshot.cn",""],
+  ["对话 · 大模型","腾讯混元","腾讯多模态助手","https://hunyuan.tencent.com",""],
+  ["本地运行 · 可下载安装包","Ollama","本地跑开源大模型，一条命令开箱即用","https://ollama.com/download","https://github.com/ollama/ollama"],
+  ["本地运行 · 可下载安装包","LM Studio","图形界面本地跑模型，可下载安装包","https://lmstudio.ai",""],
+  ["本地运行 · 可下载安装包","GPT4All","桌面本地对话，隐私优先","https://gpt4all.io","https://github.com/nomic-ai/gpt4all"],
+  ["本地运行 · 可下载安装包","LocalAI","自托管 OpenAI 兼容 API","https://localai.io","https://github.com/mudler/LocalAI"],
+  ["本地运行 · 可下载安装包","llama.cpp","轻量本地推理引擎（GGUF）","https://github.com/ggml-org/llama.cpp/releases","https://github.com/ggml-org/llama.cpp"],
+  ["图像生成","ComfyUI","节点式 AI 绘画引擎，最灵活","https://github.com/comfyanonymous/ComfyUI/releases","https://github.com/comfyanonymous/ComfyUI"],
+  ["图像生成","Stable Diffusion","开源图像生成模型","https://stability.ai","https://github.com/Stability-AI"],
+  ["图像生成","Flux","开源高质量图像模型","https://blackforestlabs.ai","https://github.com/black-forest-labs/flux"],
+  ["图像生成","Midjourney","美术质感天花板（网页）","https://midjourney.com",""],
+  ["图像生成","即梦","字节 AI 绘画/视频","https://jimeng.jianying.com",""],
+  ["图像生成","可灵","快手 AI 图像/视频","https://klingai.com",""],
+  ["视频生成","可灵 Kling","快手视频生成，中文生态好","https://klingai.com",""],
+  ["视频生成","剪映 / CapCut","剪辑 + AI 一站式，可下载安装包","https://www.capcut.cn",""],
+  ["视频生成","Sora","OpenAI 视频生成","https://openai.com/sora",""],
+  ["视频生成","Runway","视频生成与编辑","https://runwayml.com",""],
+  ["视频生成","Veo","Google 视频生成","https://deepmind.google/models/veo/",""],
+  ["编程 · IDE","VS Code","免费代码编辑器","https://code.visualstudio.com/Download",""],
+  ["编程 · IDE","Cursor","AI-first 编辑器，可下载安装包","https://cursor.com/downloads",""],
+  ["编程 · IDE","Windsurf","AI 编辑器，性价比高","https://windsurf.com/download",""],
+  ["编程 · IDE","Cline","VS Code 开源 AI 编程插件","https://github.com/cline/cline","https://github.com/cline/cline"],
+  ["编程 · IDE","GitHub Copilot","GitHub AI 编程助手","https://github.com/features/copilot",""],
+  ["编程 · IDE","Claude Code","终端 AI 编程 Agent（npm 安装）","https://docs.anthropic.com/claude-code",""],
+  ["Agent · 自动化","Goose","开源 AI 程序员","https://github.com/aaif-goose/goose","https://github.com/aaif-goose/goose"],
+  ["Agent · 自动化","OpenHands","AI 驱动开发平台","https://github.com/All-Hands-AI/OpenHands","https://github.com/All-Hands-AI/OpenHands"],
+  ["Agent · 自动化","deer-flow","字节长时域 SuperAgent","https://github.com/bytedance/deer-flow","https://github.com/bytedance/deer-flow"],
+  ["Agent · 自动化","trae-agent","字节软件工程 Agent CLI","https://github.com/bytedance/trae-agent","https://github.com/bytedance/trae-agent"],
+  ["Agent · 自动化","AutoGPT","老牌自主 Agent","https://github.com/Significant-Gravitas/AutoGPT","https://github.com/Significant-Gravitas/AutoGPT"],
+  ["Agent · 自动化","LangChain","应用开发框架","https://www.langchain.com","https://github.com/langchain-ai/langchain"],
+  ["网络安全","Shannon","全自动白盒 AI 渗透测试","https://github.com/KeygraphHQ/shannon","https://github.com/KeygraphHQ/shannon"],
+  ["网络安全","REDCELL","AI 红队平台","https://github.com/martian56/redcell","https://github.com/martian56/redcell"],
+  ["网络安全","SecSuite","开源情报 + Web/API 安全套件","https://github.com/53cur3dL34rn/security-suite","https://github.com/53cur3dL34rn/security-suite"],
+  ["网络安全","CyberSentinel AI","33 款渗透工具 + AI 引擎","https://github.com",""],
+  ["手机端 · 本地 AI","LocalMind","Android 100% 离线跑模型","https://github.com/tk85457/LocalMind","https://github.com/tk85457/LocalMind"],
+  ["手机端 · 本地 AI","TinyAI","Android 设备端推理","https://github.com/YashBhadange2006/TinyAI","https://github.com/YashBhadange2006/TinyAI"],
+  ["手机端 · 本地 AI","LLM-Hub","手机本地 AI 助手","https://github.com/rahman2008-svg/LLM-Hub","https://github.com/rahman2008-svg/LLM-Hub"],
+  ["手机端 · 本地 AI","PocketLLM","Termux + Ollama 离线聊天","https://github.com/PocketLLM/pocketllm-lite","https://github.com/PocketLLM/pocketllm-lite"],
+  ["框架 · 库","PyTorch","主流深度学习框架","https://pytorch.org","https://github.com/pytorch/pytorch"],
+  ["框架 · 库","Transformers","Hugging Face 模型库","https://huggingface.co","https://github.com/huggingface/transformers"],
+  ["框架 · 库","LlamaIndex","RAG / 数据框架","https://www.llamaindex.ai","https://github.com/run-llama/llama_index"],
+  ["框架 · 库","FastAPI","Python Web API 框架","https://fastapi.tiangolo.com","https://github.com/fastapi/fastapi"],
+  ["模型库 · 数据集","Hugging Face","全球最大模型/数据集社区","https://huggingface.co",""],
+  ["模型库 · 数据集","ModelScope 魔搭","国内模型社区","https://modelscope.cn",""],
+  ["模型库 · 数据集","GitHub","代码与开源项目","https://github.com",""],
+  ["搜索 · 办公","Perplexity","AI 搜索（带来源）","https://www.perplexity.ai",""],
+  ["搜索 · 办公","秘塔 AI 搜索","中文 AI 搜索","https://metaso.cn",""],
+  ["搜索 · 办公","Notion AI","笔记 + AI","https://www.notion.so",""],
+  ["搜索 · 办公","WPS AI","办公套件 AI","https://www.wps.cn",""],
+  ["音乐 · 音频","Suno","AI 生成歌曲","https://suno.com",""],
+  ["音乐 · 音频","Udio","AI 生成音乐","https://www.udio.com",""],
+  ["音乐 · 音频","ElevenLabs","AI 语音合成/配音","https://elevenlabs.io",""],
+  ["音乐 · 音频","Fish Audio","开源语音合成","https://fish.audio",""],
+  ["音乐 · 音频","GPT-SoVITS","开源声音克隆","","https://github.com/RVC-Boss/GPT-SoVITS"],
+  ["数字人","HeyGen","AI 数字人视频","https://www.heygen.com",""],
+  ["数字人","D-ID","AI 数字人","https://www.d-id.com",""],
+  ["数字人","硅基智能","国内数字人","https://www.duix.com",""],
+  ["数字人","商汤如影","数字人视频生成","https://www.senseavatar.com",""],
+  ["语音 · 识别","Whisper","OpenAI 开源语音识别","","https://github.com/openai/whisper"],
+  ["语音 · 识别","FunASR","阿里开源语音识别","","https://github.com/modelscope/FunASR"],
+  ["语音 · 识别","CosyVoice","阿里开源语音合成","","https://github.com/FunAudioLLM/CosyVoice"],
+  ["语音 · 识别","讯飞听见","语音转写/会议记录","https://www.iflyrec.com",""],
+  ["教育 · 学习","Khanmigo","可汗学院 AI 导师","https://www.khanacademy.org/khanmigo",""],
+  ["教育 · 学习","Duolingo","AI 语言学习","https://www.duolingo.com",""],
+  ["教育 · 学习","作业帮","国内 AI 学习","https://www.zuoyebang.com",""],
+  ["办公 · 效率","飞书","协作 + AI","https://www.feishu.cn",""],
+  ["办公 · 效率","钉钉","协作 + AI","https://www.dingtalk.com",""],
+  ["办公 · 效率","Gamma","AI 生成 PPT","https://gamma.app",""],
+  ["办公 · 效率","腾讯会议","会议 + AI 纪要","https://meeting.tencent.com",""],
+  ["翻译","DeepL","高质量翻译","https://www.deepl.com",""],
+  ["翻译","沉浸式翻译","浏览器翻译插件","https://immersivetranslate.com",""],
+  ["翻译","有道翻译","中文翻译","https://fanyi.youdao.com",""],
+  ["编程 · 国产","通义灵码","阿里 AI 编程插件","https://lingma.aliyun.com",""],
+  ["编程 · 国产","CodeGeeX","开源 AI 编程","https://codegeex.cn",""],
+  ["编程 · 国产","文心快码","百度 AI 编程","https://comate.baidu.com",""],
+  ["Agent · 工作流","Dify","开源 LLM 应用开发平台","https://dify.ai","https://github.com/langgenius/dify"],
+  ["Agent · 工作流","Coze 扣子","字节 Agent 平台","https://www.coze.cn",""],
+  ["Agent · 工作流","n8n","自动化工作流","https://n8n.io","https://github.com/n8n-io/n8n"],
+  ["Agent · 工作流","Flowise","可视化 AI 工作流","https://flowiseai.com","https://github.com/FlowiseAI/Flowise"],
+  ["Agent · 工作流","CrewAI","多 Agent 协作框架","https://www.crewai.com","https://github.com/crewAIInc/crewAI"],
+  ["Agent · 工作流","AutoGen","微软多 Agent 框架","","https://github.com/microsoft/autogen"],
+  ["Agent · 工作流","LangGraph","有状态 Agent 图","","https://github.com/langchain-ai/langgraph"],
+  ["开源 LLM","Llama","Meta 开源大模型","https://www.llama.com","https://github.com/meta-llama/llama-models"],
+  ["开源 LLM","Mistral","欧洲开源模型","https://mistral.ai",""],
+  ["开源 LLM","Qwen","阿里开源模型","","https://github.com/QwenLM/Qwen"],
+  ["开源 LLM","Kimi K3","月之暗面开源模型","","https://github.com/MoonshotAI"],
+  ["开源 LLM","书生 InternLM","上海 AI 实验室","","https://github.com/InternLM/InternLM"],
+  ["开源 LLM","Baichuan","百川智能","","https://github.com/baichuan-inc"],
+  ["向量库 · RAG","Chroma","嵌入式向量库","https://www.trychroma.com","https://github.com/chroma-core/chroma"],
+  ["向量库 · RAG","Milvus","分布式向量库","https://milvus.io","https://github.com/milvus-io/milvus"],
+  ["向量库 · RAG","FAISS","向量相似度检索","","https://github.com/facebookresearch/faiss"],
+  ["向量库 · RAG","Pinecone","托管向量库","https://www.pinecone.io",""],
+  ["微调 · 评测","LLaMA-Factory","一站式微调","","https://github.com/hiyouga/LLaMA-Factory"],
+  ["微调 · 评测","Unsloth","高效微调","https://unsloth.ai","https://github.com/unslothai/unsloth"],
+  ["微调 · 评测","OpenCompass","大模型评测","","https://github.com/open-compass/opencompass"],
+  ["部署 · 推理","vLLM","高吞吐推理引擎","","https://github.com/vllm-project/vllm"],
+  ["部署 · 推理","SGLang","高效推理框架","","https://github.com/sgl-project/sglang"],
+  ["部署 · 推理","Ollama","本地推理（安装包）","https://ollama.com/download","https://github.com/ollama/ollama"],
+  ["3D 生成","Tripo","AI 3D 模型生成","https://www.tripo3d.ai",""],
+  ["3D 生成","Meshy","AI 3D 建模","https://www.meshy.ai",""],
+  ["机器人 · 具身","宇树 Unitree","四足/人形机器人","https://www.unitree.com",""],
+  ["机器人 · 具身","智元 AgiBot","具身智能机器人","https://www.agibot.com",""],
+  ["机器人 · 具身","Figure","人形机器人","https://www.figure.ai",""],
+  ["芯片 · 算力","NVIDIA","GPU 与 CUDA","https://www.nvidia.com",""],
+  ["芯片 · 算力","华为昇腾","国产 AI 芯片","https://www.hiascend.com",""],
+  ["芯片 · 算力","寒武纪","国产 AI 芯片","https://www.cambricon.com",""],
+  ["社区 · 资讯","机器之心","AI 中文媒体","https://www.jiqizhixin.com",""],
+  ["社区 · 资讯","量子位","AI 中文媒体","https://www.qbitai.com",""],
+  ["社区 · 资讯","Hacker News","技术社区","https://news.ycombinator.com",""],
+  ["社区 · 资讯","Product Hunt","新产品发布","https://www.producthunt.com",""],
+  ["社区 · 资讯","PromptBase","提示词交易市场","https://promptbase.com",""],
+  ["编程学习","CS50","哈佛计算机导论（免费）","https://cs50.harvard.edu/x",""],
+  ["编程学习","freeCodeCamp","免费交互式编程课","https://www.freecodecamp.org",""],
+  ["编程学习","LeetCode","刷题 / 求职","https://leetcode.cn",""],
+  ["编程学习","洛谷","国内算法入门 OJ","https://www.luogu.com.cn",""],
+  ["编程学习","菜鸟教程","中文编程入门","https://www.runoob.com",""],
+  ["编程学习","The Odin Project","全栈 Web 免费课","https://www.theodinproject.com",""],
+  ["计算机基础 · 自学","Teach Yourself CS","计算机科学自学路线","https://teachyourselfcs.com",""],
+  ["计算机基础 · 自学","CS 自学指南","中文 CS 自学导航","https://csdiy.wiki",""],
+  ["计算机基础 · 自学","中国大学 MOOC","国内名校课程","https://www.icourse163.org",""],
+  ["计算机基础 · 自学","Coursera","全球名校课程","https://www.coursera.org",""],
+  ["数控 · CNC","LinuxCNC","开源数控控制系统","https://linuxcnc.org","https://github.com/LinuxCNC/linuxcnc"],
+  ["数控 · CNC","GRBL","开源 G 代码解释器","","https://github.com/grbl/grbl"],
+  ["数控 · CNC","grblHAL","GRBL 硬件抽象层","","https://github.com/grblHAL"],
+  ["数控 · CNC","FreeCAD","开源 CAD/CAM（可生成 G 代码）","https://www.freecad.org","https://github.com/FreeCAD/FreeCAD"],
+  ["CAD · 3D 设计","FreeCAD","开源参数化 CAD","https://www.freecad.org","https://github.com/FreeCAD/FreeCAD"],
+  ["CAD · 3D 设计","OpenSCAD","代码式 CAD 建模","https://openscad.org",""],
+  ["CAD · 3D 设计","Blender","开源 3D 建模 / 动画","https://www.blender.org",""],
+  ["CAD · 3D 设计","Cura","3D 打印切片（安装包）","https://ultimaker.com/software/ultimaker-cura",""],
+  ["CAD · 3D 设计","PrusaSlicer","3D 打印切片","https://www.prusa3d.com/page/prusaslicer_424/",""],
+  ["电子 · EDA","KiCad","开源 PCB 设计","https://www.kicad.org",""],
+  ["电子 · EDA","LTspice","电路仿真（免费）","https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html",""],
+  ["电子 · EDA","Falstad","在线电路仿真","https://www.falstad.com/circuit/",""],
+  ["电子 · EDA","Proteus","电路 + 单片机仿真","https://www.labcenter.com",""],
+  ["单片机 · 嵌入式","Arduino","开源硬件 / IDE","https://www.arduino.cc",""],
+  ["单片机 · 嵌入式","ESP32","乐鑫 Wi-Fi / 蓝牙芯片","https://www.espressif.com",""],
+  ["单片机 · 嵌入式","PlatformIO","嵌入式开发平台","https://platformio.org",""],
+  ["单片机 · 嵌入式","STM32","意法半导体 MCU","https://www.st.com",""],
+  ["仿真 · 模拟","OpenFOAM","开源流体力学仿真","https://www.openfoam.org","https://github.com/OpenFOAM/OpenFOAM-dev"],
+  ["仿真 · 模拟","MuJoCo","物理引擎（机器人 / 强化学习）","https://mujoco.org","https://github.com/google-deepmind/mujoco"],
+  ["仿真 · 模拟","Gazebo","机器人仿真","https://gazebosim.org",""],
+  ["仿真 · 模拟","Webots","机器人仿真（开源）","https://cyberbotics.com",""],
+  ["仿真 · 模拟","CalculiX","开源有限元 FEM","https://www.calculix.de",""],
+  ["仿真 · 模拟","Tinkercad","在线 Arduino 仿真","https://www.tinkercad.com",""],
+  ["科学计算","GNU Octave","开源 MATLAB 替代","https://octave.org",""],
+  ["科学计算","Scilab","开源数值计算","https://www.scilab.org",""],
+  ["科学计算","Jupyter","交互式笔记本","https://jupyter.org",""],
+  ["AI 医疗","OpenHealth","开源健康管理 AI","","https://github.com/OpenHealthForAll/open-health"],
+  ["AI 医疗","丁香园","医疗健康社区","https://www.dxy.cn",""],
+  ["AI 医疗","微医","互联网医疗平台","https://www.guahao.com",""],
+  ["AI 医疗","好大夫在线","在线问诊","https://www.haodf.com",""],
+  ["AI 法律","北大法宝","法律检索数据库","https://www.pkulaw.com",""],
+  ["AI 法律","法大大","电子合同 / 签章","https://www.fadada.com",""],
+  ["AI 法律","法天使","合同范本 / 审核","https://www.fatianshi.cn",""],
+  ["自动驾驶","Apollo","百度开源自动驾驶","https://apollo.auto","https://github.com/ApolloAuto/apollo"],
+  ["自动驾驶","Autoware","开源自动驾驶平台","https://autoware.org","https://github.com/autowarefoundation/autoware"],
+  ["自动驾驶","小鹏","智能驾驶","https://www.xiaopeng.com",""],
+  ["自动驾驶","华为 ADS","智能驾驶方案","https://www.huawei.com",""],
+  ["AI 硬件 · 智能眼镜","Meta Ray-Ban","AI 智能眼镜","https://www.meta.com/smart-glasses/",""],
+  ["AI 硬件 · 智能眼镜","Rokid","AR 眼镜","https://www.rokid.com",""],
+  ["AI 硬件 · 智能眼镜","雷鸟创新","AR 眼镜","https://www.thunderx.cn",""],
+  ["AI 硬件 · 智能眼镜","Rabbit R1","AI 硬件助手","https://www.rabbit.tech",""],
+  ["多模态开源模型","Qwen-VL","阿里多模态开源模型","","https://github.com/QwenLM/Qwen2.5-VL"],
+  ["多模态开源模型","LLaVA","开源视觉语言模型","","https://github.com/haotian-liu/LLaVA"],
+  ["多模态开源模型","InternVL","书生多模态模型","","https://github.com/OpenGVLab/InternVL"],
+  ["多模态开源模型","CogVLM","智谱多模态模型","","https://github.com/THUDM/CogVLM"],
+  ["开源数据集","Hugging Face Datasets","全球数据集社区","https://huggingface.co/datasets",""],
+  ["开源数据集","ModelScope","国内模型 / 数据集","https://modelscope.cn",""],
+  ["开源数据集","Common Crawl","网页级语料","https://commoncrawl.org",""],
+  ["开源数据集","LAION","大规模图文数据集","https://laion.ai",""],
+  ["开源数据集","ImageNet","图像分类基准","https://www.image-net.org",""],
+  ["AI 教程站","fast.ai","实战深度学习课程","https://www.fast.ai",""],
+  ["AI 教程站","动手学深度学习","D2L 中文经典","https://zh.d2l.ai",""],
+  ["AI 教程站","DeepLearning.AI","吴恩达课程","https://www.deeplearning.ai",""],
+  ["AI 教程站","Hugging Face Learn","模型实战课程","https://huggingface.co/learn",""],
+  ["工业互联网","卡奥斯 COSMOPlat","海尔工业互联网平台","https://www.cosmoplat.com",""],
+  ["工业互联网","树根互联","工业互联网平台","https://www.rootcloud.com",""],
+  ["工业互联网","徐工","工程机械 + 工业互联网","https://www.xcmg.com",""],
+  ["PLC 控制","OpenPLC","开源 PLC 控制器","https://openplcproject.com","https://github.com/thiagoralves/OpenPLC_v3"],
+  ["PLC 控制","CODESYS","工业自动化编程","https://www.codesys.com",""],
+  ["PLC 控制","西门子","工业自动化 / PLC","https://www.siemens.com",""],
+  ["PLC 控制","三菱电机","工业自动化 / PLC","https://www.mitsubishielectric.com",""],
+  ["机器人 · ROS","ROS 2","机器人操作系统","https://docs.ros.org","https://github.com/ros2"],
+  ["机器人 · ROS","MoveIt","机械臂运动规划","https://moveit.ai","https://github.com/moveit/moveit2"],
+  ["机器人 · ROS","Nav2","移动机器人导航","","https://github.com/ros-navigation/navigation2"],
+  ["AI 客服","网易七鱼","智能客服 SaaS","https://qiyukf.com",""],
+  ["AI 客服","智齿科技","智能客服","https://www.sobot.com",""],
+  ["AI 客服","小i机器人","智能对话 / 客服","https://www.xiaoi.com",""],
+  ["AI 招聘","Moka","招聘管理系统","https://www.mokahr.com",""],
+  ["AI 招聘","北森","一体化 HR SaaS","https://www.beisen.com",""],
+  ["AI 设计 · UI","Figma","协作设计 + AI","https://www.figma.com",""],
+  ["AI 设计 · UI","MasterGo","国产协作设计","https://mastergo.com",""],
+  ["AI 设计 · UI","即时设计","国产设计工具","https://js.design",""],
+  ["AI 设计 · UI","Canva","在线设计 + AI","https://www.canva.com",""],
+  ["RPA · 自动化","UiPath","企业级 RPA","https://www.uipath.com",""],
+  ["RPA · 自动化","影刀 RPA","国内 RPA 工具","https://www.yingdao.com",""],
+  ["RPA · 自动化","来也科技","智能自动化","https://www.laiye.com",""],
+  ["RPA · 自动化","八爪鱼","数据采集自动化","https://www.bazhuayu.com",""],
+  ["云原生 · 部署","Kubernetes","容器编排","https://kubernetes.io","https://github.com/kubernetes/kubernetes"],
+  ["云原生 · 部署","K3s","轻量 Kubernetes","https://k3s.io",""],
+  ["云原生 · 部署","Ray","分布式 AI 计算","https://www.ray.io","https://github.com/ray-project/ray"],
+  ["云原生 · 部署","KubeFlow","机器学习平台","https://www.kubeflow.org","https://github.com/kubeflow/kubeflow"],
+  ["边缘 AI","ONNX Runtime","跨平台推理","https://onnxruntime.ai","https://github.com/microsoft/onnxruntime"],
+  ["边缘 AI","OpenVINO","Intel 推理优化","https://openvino.ai",""],
+  ["边缘 AI","TensorFlow Lite","端侧推理","https://www.tensorflow.org/lite",""],
+  ["边缘 AI","NCNN","腾讯端侧推理","","https://github.com/Tencent/ncnn"],
+  ["AI 安防","海康威视","视频安防 + AI","https://www.hikvision.com",""],
+  ["AI 安防","大华股份","视频安防 + AI","https://www.dahuatech.com",""],
+  ["AI 安防","商汤科技","计算机视觉","https://www.sensetime.com",""],
+  ["AI 安防","旷视科技","计算机视觉","https://www.megvii.com",""],
+  ["AI 农业","极飞科技","农业无人机","https://www.xa.com",""],
+  ["AI 农业","大疆农业","农业无人机","https://ag.dji.com",""],
+  ["AI 金融","同花顺","金融信息服务","https://www.10jqka.com.cn",""],
+  ["AI 金融","恒生电子","金融 IT","https://www.hundsun.com",""],
+  ["AI 金融","度小满","金融科技","https://www.duxiaoman.com",""],
+  ["教育硬件","科大讯飞","AI 学习机","https://www.iflytek.com",""],
+  ["教育硬件","网易有道","学习硬件","https://www.youdao.com",""],
+  ["开源 Agent 框架","Semantic Kernel","微软 Agent SDK","","https://github.com/microsoft/semantic-kernel"],
+  ["开源 Agent 框架","Haystack","RAG / Agent 框架","https://haystack.deepset.ai","https://github.com/deepset-ai/haystack"],
+  ["开源 Agent 框架","MetaGPT","多智能体框架","","https://github.com/FoundationAgents/MetaGPT"],
+  ["开源 Agent 框架","AgentGPT","浏览器自主 Agent","","https://github.com/reworkd/AgentGPT"],
+  ["RAG · 评测","RAGAS","RAG 评测框架","","https://github.com/explodinggradients/ragas"],
+  ["向量库 · RAG","Qdrant","向量数据库","https://qdrant.tech","https://github.com/qdrant/qdrant"],
+  ["向量库 · RAG","Weaviate","向量数据库","https://weaviate.io","https://github.com/weaviate/weaviate"],
+  ["向量库 · RAG","pgvector","Postgres 向量扩展","","https://github.com/pgvector/pgvector"],
+  ["开源客服 · 对话","Rasa","开源对话式 AI","https://rasa.com","https://github.com/RasaHQ/rasa"],
+  ["开源客服 · 对话","Botpress","可视化聊天机器人","https://botpress.com","https://github.com/botpress/botpress"],
+  ["开源客服 · 对话","Chatwoot","开源客服平台","https://www.chatwoot.com","https://github.com/chatwoot/chatwoot"],
+  ["AI 代码审查","CodeRabbit","AI 代码评审","https://www.coderabbit.ai","https://github.com/coderabbitai"],
+  ["AI 代码审查","SonarQube","代码质量 + AI","https://www.sonarsource.com",""],
+  ["开源语音合成","ChatTTS","对话式语音合成","","https://github.com/2noise/ChatTTS"],
+  ["开源语音合成","Kokoro","轻量语音合成","","https://github.com/hexgrad/kokoro"],
+  ["开源语音合成","Piper","本地离线语音","","https://github.com/rhasspy/piper"],
+  ["开源视频生成","Wan","阿里开源视频模型","","https://github.com/Wan-Video/Wan2.2"],
+  ["开源视频生成","HunyuanVideo","腾讯开源视频模型","","https://github.com/Tencent/HunyuanVideo"],
+  ["开源视频生成","CogVideoX","智谱开源视频模型","","https://github.com/THUDM/CogVideo"],
+  ["开源视频生成","LTX-Video","轻量开源视频模型","","https://github.com/Lightricks/LTX-Video"],
+  ["MCP · Agent 协议","Model Context Protocol","Agent 连接工具协议","https://modelcontextprotocol.io","https://github.com/modelcontextprotocol"],
+  ["MCP · Agent 协议","MCP Servers","官方 MCP 服务集","","https://github.com/modelcontextprotocol/servers"],
+  ["云 GPU 平台","Google Colab","免费在线 Notebook","https://colab.research.google.com",""],
+  ["云 GPU 平台","AutoDL","国内租卡平台","https://www.autodl.com",""],
+  ["云 GPU 平台","RunPod","按需 GPU","https://www.runpod.io",""],
+  ["云 GPU 平台","Lambda","GPU 云 / 工作站","https://lambdalabs.com",""],
+  ["开源 OCR","PaddleOCR","百度开源 OCR","","https://github.com/PaddlePaddle/PaddleOCR"],
+  ["开源 OCR","Tesseract","老牌开源 OCR","","https://github.com/tesseract-ocr/tesseract"],
+  ["开源 OCR","EasyOCR","多语言 OCR","","https://github.com/JaidedAI/EasyOCR"],
+  ["开源数字人","SadTalker","照片说话","","https://github.com/OpenTalker/SadTalker"],
+  ["开源数字人","LivePortrait","快手实时驱动","","https://github.com/KwaiVGI/LivePortrait"],
+  ["开源数字人","EchoMimic","蚂蚁音频驱动数字人","","https://github.com/antgroup/echomimic"],
+  ["视频剪辑 · 处理","Shotcut","开源视频剪辑","https://shotcut.org",""],
+  ["视频剪辑 · 处理","ffmpeg","命令行音视频处理","https://ffmpeg.org",""],
+  ["视频剪辑 · 处理","DaVinci Resolve","专业剪辑 / 调色","https://www.blackmagicdesign.com",""],
+  ["3D 视觉","Open3D","3D 点云处理","https://www.open3d.org","https://github.com/isl-org/Open3D"],
+  ["3D 视觉","PyTorch3D","3D 深度学习","","https://github.com/facebookresearch/pytorch3d"],
+  ["强化学习","Gymnasium","RL 环境标准","https://gymnasium.farama.org","https://github.com/Farama-Foundation/Gymnasium"],
+  ["强化学习","Stable-Baselines3","RL 算法实现","","https://github.com/DLR-RM/stable-baselines3"],
+  ["强化学习","RLlib","分布式 RL","https://docs.ray.io/en/latest/rllib/index.html",""],
+  ["微调 · 压缩","PEFT","参数高效微调","","https://github.com/huggingface/peft"],
+  ["微调 · 压缩","bitsandbytes","量化 / 低比特","","https://github.com/bitsandbytes-foundation/bitsandbytes"],
+  ["微调 · 压缩","AutoGPTQ","GPTQ 量化","","https://github.com/AutoGPTQ/AutoGPTQ"],
+  ["AI 安全 · 护栏","NeMo Guardrails","NVIDIA 护栏","","https://github.com/NVIDIA/NeMo-Guardrails"],
+  ["AI 安全 · 护栏","Guardrails AI","输出校验护栏","","https://github.com/guardrails-ai/guardrails"],
+  ["知识图谱 · 图神经","Neo4j","图数据库","https://neo4j.com",""],
+  ["知识图谱 · 图神经","PyTorch Geometric","图神经网络","","https://github.com/pyg-team/pytorch_geometric"],
+  ["知识图谱 · 图神经","DGL","图深度学习库","https://www.dgl.ai",""],
+  ["时间序列","Prophet","Meta 时序预测","","https://github.com/facebook/prophet"],
+  ["时间序列","Darts","时序预测库","","https://github.com/unit8co/darts"],
+  ["搜索 · 检索","Elasticsearch","全文检索引擎","https://www.elastic.co",""],
+  ["搜索 · 检索","OpenSearch","开源搜索","https://opensearch.org",""],
+  ["搜索 · 检索","Meilisearch","轻量搜索","https://www.meilisearch.com",""],
+  ["数据标注","Label Studio","开源数据标注","https://labelstud.io","https://github.com/HumanSignal/label-studio"],
+  ["数据标注","CVAT","视频 / 图像标注","https://www.cvat.ai","https://github.com/cvat-ai/cvat"],
+  ["模型托管 · 推理","Replicate","一键跑开源模型","https://replicate.com",""],
+  ["模型托管 · 推理","Together AI","开源模型托管","https://www.together.ai",""],
+  ["模型托管 · 推理","Groq","超快推理","https://groq.com",""],
+  ["模型托管 · 推理","Fireworks AI","推理托管","https://fireworks.ai",""],
+  ["AI 浏览器","Arc","AI 浏览器","https://arc.net",""],
+  ["AI 浏览器","夸克","AI 搜索 / 浏览器","https://www.quark.cn",""],
+  ["开源 LLM 应用","AnythingLLM","私有部署 LLM 应用","https://anythingllm.com","https://github.com/Mintplex-Labs/anything-llm"],
+  ["开源 LLM 应用","PrivateGPT","本地私有问答","","https://github.com/zylon-ai/private-gpt"],
+  ["提示词 · 评测","Promptfoo","提示词评测","https://www.promptfoo.dev","https://github.com/promptfoo/promptfoo"],
+  ["提示词 · 评测","LangSmith","LLM 应用可观测","https://smith.langchain.com",""],
+  ["提示词 · 评测","Helicone","LLM 网关 / 观测","https://www.helicone.ai",""]
+];
+(function(){
+  'use strict';
+  var FAV_KEY='portal_fav', REC_KEY='portal_recent';
+  function load(k,def){ try{ return JSON.parse(localStorage.getItem(k))||def; }catch(e){ return def; } }
+  function save(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  var fav = new Set(load(FAV_KEY,[]));
+  var recent = load(REC_KEY,[]);
+  var cats=[], catCount={};
+  DATA.forEach(function(d){ var c=d[0]; if(!catCount[c]){ catCount[c]=0; cats.push(c); } catCount[c]++; });
+  var byName={}; DATA.forEach(function(d){ byName[d[1]]=d; });
+  var state={ cat:'全部', kw:'', sort:'default' };
+  var chipsEl=document.getElementById('chips');
+  var favBar=document.getElementById('favBar');
+  var recBar=document.getElementById('recBar');
+  var sortsEl=document.getElementById('sorts');
+  var root=document.getElementById('cats');
+  var empty=document.getElementById('empty');
+  var totalEl=document.getElementById('total');
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(function(){t.classList.remove('show');},1600); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function renderChips(){
+    var arr=['全部'].concat(cats);
+    chipsEl.innerHTML=arr.map(function(c){ var n=c==='全部'?DATA.length:catCount[c]; return '<button class="chip'+(state.cat===c?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'<span class="c">'+n+'</span></button>'; }).join('');
+    chipsEl.querySelectorAll('.chip').forEach(function(b){ b.addEventListener('click',function(){ state.cat=b.dataset.c; renderChips(); renderList(); }); });
+  }
+  function renderFav(){
+    if(!fav.size){ favBar.innerHTML='<span class="bar-empty"> 点卡片右上角星标，收藏常用工具</span>'; return; }
+    var chips=[...fav].map(function(n){ return '<span class="tagchip" data-jump="'+esc(n)+'">'+esc(n)+'</span>'; }).join('');
+    favBar.innerHTML='<span class="lab"> 我的收藏</span>'+chips+'<span class="tagchip clear" id="favClear">清空</span>';
+    favBar.querySelectorAll('.tagchip[data-jump]').forEach(function(t){ t.addEventListener('click',function(){ openDrawer(t.dataset.jump); }); });
+    var cl=document.getElementById('favClear'); if(cl) cl.addEventListener('click',function(){ fav.clear(); save(FAV_KEY,[]); renderFav(); renderList(); toast('已清空收藏'); });
+  }
+  function renderRec(){
+    if(!recent.length){ recBar.innerHTML='<span class="bar-empty"> 最近访问会显示在这里</span>'; return; }
+    var chips=recent.slice(0,8).map(function(n){ return '<span class="tagchip" data-jump="'+esc(n)+'">'+esc(n)+'</span>'; }).join('');
+    recBar.innerHTML='<span class="lab"> 最近访问</span>'+chips;
+    recBar.querySelectorAll('.tagchip[data-jump]').forEach(function(t){ t.addEventListener('click',function(){ openDrawer(t.dataset.jump); }); });
+  }
+  function pushRecent(n){ recent=recent.filter(function(x){return x!==n;}); recent.unshift(n); recent=recent.slice(0,10); save(REC_KEY,recent); renderRec(); }
+  function filtered(){
+    var kw=state.kw.toLowerCase();
+    var list=DATA.filter(function(d){
+      if(state.cat!=='全部' && d[0]!==state.cat) return false;
+      if(kw && (d[1]+d[2]+d[0]).toLowerCase().indexOf(kw)===-1) return false;
+      return true;
+    });
+    if(state.sort==='fav'){ list=list.slice().sort(function(a,b){ return (fav.has(b[1])?1:0)-(fav.has(a[1])?1:0); }); }
+    else if(state.sort==='recent'){ list=list.slice().sort(function(a,b){ return recent.indexOf(b[1])-recent.indexOf(a[1]); }); }
+    return list;
+  }
+  function renderList(){
+    var list=filtered();
+    totalEl.textContent=DATA.length;
+    if(!list.length){ root.innerHTML=''; empty.style.display='block'; return; }
+    empty.style.display='none';
+    var order=state.cat==='全部'?cats:[state.cat];
+    var html='';
+    order.forEach(function(c){
+      var items=list.filter(function(d){return d[0]===c;});
+      if(!items.length) return;
+      html+='<section data-cat="'+esc(c)+'"><div class="cat-head"><span class="n">'+esc(c)+'</span><h2>'+esc(c)+' <span style="font-size:13px;color:var(--muted)">('+items.length+')</span></h2></div><div class="grid">'
+        + items.map(function(d){
+            var on=fav.has(d[1])?' on':'';
+            return '<div class="tool" data-name="'+esc(d[1])+'">'
+              + '<span class="fav'+on+'" data-fav="'+esc(d[1])+'" title="收藏"></span>'
+              + '<h3>'+esc(d[1])+'</h3><p>'+esc(d[2])+'</p>'
+              + '<div class="links">'
+              + (d[3]?'<a class="btn dl" href="'+esc(d[3])+'" target="_blank" rel="noopener">官网 / 下载</a>':'')
+              + (d[4]?'<a class="btn gh" href="'+esc(d[4])+'" target="_blank" rel="noopener">GitHub</a>':'')
+              + '<button class="btn" data-more="'+esc(d[1])+'" type="button">详情 ›</button>'
+              + '</div></div>';
+          }).join('')+'</div></section>';
+    });
+    root.innerHTML=html;
+    root.querySelectorAll('.tool').forEach(function(t){
+      var more=t.querySelector('[data-more]');
+      if(more) more.addEventListener('click',function(e){ e.stopPropagation(); openDrawer(t.dataset.name); });
+      var fv=t.querySelector('[data-fav]');
+      fv.addEventListener('click',function(e){ e.stopPropagation(); toggleFav(fv.dataset.fav, fv); });
+    });
+  }
+  function toggleFav(name, el){
+    if(fav.has(name)){ fav.delete(name); if(el) el.classList.remove('on'); toast('已取消收藏'); }
+    else { fav.add(name); if(el) el.classList.add('on'); toast(' 已收藏 '+name); }
+    save(FAV_KEY,[...fav]); renderFav();
+  }
+  var mask=document.getElementById('mask'), drawer=document.getElementById('drawer');
+  function closeDrawer(){ mask.classList.remove('show'); drawer.classList.remove('show'); }
+  var EMOJI=[[/(对话|大模型|LLM|Agent|MCP|提示词|模型库|向量)/,''],[/(图像|视频|3D|设计|数字人|音乐|音频|语音|绘画|OCR|剪辑)/,''],[/(教育|学习|教程|办公|翻译|搜索|招聘|客服|知识|文档)/,''],[/(本地|部署|云|GPU|推理|托管|算力|芯片|RPA|工业|PLC|嵌入式|单片机|电子|仿真|科学计算|边缘|数控|CAD|EDA)/,''],[/(医疗|法律|金融|农业|安防|自动驾驶|机器人|具身|ROS|硬件|眼镜|标注)/,''],[/(网络|安全|护栏|数据集|开源|社区|资讯|浏览器|框架)/,'']];
+  var BGS=[[/对话|大模型|LLM|Agent|MCP|RAG|向量|模型/,'/assets/img/ai-bg-neural.webp'],[/图像|视频|3D|设计|数字人|音乐|音频|语音|绘画|OCR|剪辑/,'/assets/img/ai-bg-neural.webp'],[/教育|学习|教程|办公|翻译|搜索|招聘|客服|知识/,'/assets/img/ai-bg-server.webp'],[/本地|部署|云|GPU|推理|托管|算力|芯片|RPA|工业|嵌入式|电子|仿真|科学计算|数控|CAD|EDA|边缘|PLC/,'/assets/img/ai-bg-server.webp'],[/医疗|法律|金融|农业|安防|自动驾驶|机器人|具身|ROS|硬件|眼镜/,'/assets/img/ai-bg-humans.webp'],[/安全|护栏|数据集|开源|社区|资讯|浏览器/,'/assets/img/ai-bg-datacenter.webp']];
+  function catMeta(cat){
+    var em='', bg='/assets/img/ai-bg-datacenter.webp', i;
+    for(i=0;i<EMOJI.length;i++) if(EMOJI[i][0].test(cat)){ em=EMOJI[i][1]; break; }
+    for(i=0;i<BGS.length;i++) if(BGS[i][0].test(cat)){ bg=BGS[i][1]; break; }
+    return {em:em, bg:bg};
+  }
+  function openDrawer(name){
+    var d=byName[name]; if(!d) return;
+    var cm=catMeta(d[0]);
+    var hero=document.getElementById('dHero');
+    if(hero){
+      hero.style.backgroundImage="linear-gradient(180deg,rgba(6,8,15,.05),rgba(6,8,15,.28)), url('"+cm.bg+"')";
+      hero.innerHTML='<span class="emoji">'+cm.em+'</span><span class="bc">'+esc(d[0])+'</span>';
+    }
+    document.getElementById('dCat').textContent=d[0];
+    document.getElementById('dName').textContent=d[1];
+    document.getElementById('dDesc2').textContent=d[2];
+    var acts='';
+    if(d[3]) acts+='<a class="primary" href="'+esc(d[3])+'" target="_blank" rel="noopener" data-rec> 打开官网 / 下载</a>';
+    if(d[4]) acts+='<a href="'+esc(d[4])+'" target="_blank" rel="noopener" data-rec> GitHub 仓库</a>';
+    acts+='<button type="button" data-copy="'+(d[3]||d[4]||'')+'"> 复制链接</button>';
+    acts+='<button type="button" data-fav2="'+esc(d[1])+'">'+(fav.has(d[1])?' 取消收藏':' 收藏')+'</button>';
+    document.getElementById('dActs').innerHTML=acts;
+    var rel=DATA.filter(function(x){return x[0]===d[0] && x[1]!==d[1];}).slice(0,10);
+    document.getElementById('dRel').innerHTML=rel.map(function(x){ return '<span class="tagchip" data-jump="'+esc(x[1])+'">'+esc(x[1])+'</span>'; }).join('');
+    document.getElementById('dRel').querySelectorAll('.tagchip').forEach(function(t){ t.addEventListener('click',function(){ openDrawer(t.dataset.jump); }); });
+    document.getElementById('dActs').querySelectorAll('[data-rec]').forEach(function(a){ a.addEventListener('click',function(){ pushRecent(d[1]); }); });
+    var cp=document.getElementById('dActs').querySelector('[data-copy]');
+    if(cp) cp.addEventListener('click',function(){ copyText(cp.dataset.copy); });
+    var f2=document.getElementById('dActs').querySelector('[data-fav2]');
+    if(f2) f2.addEventListener('click',function(){ toggleFav(d[1]); f2.textContent=fav.has(d[1])?' 取消收藏':' 收藏'; });
+    mask.classList.add('show'); drawer.classList.add('show');
+  }
+  function copyText(txt){
+    if(!txt){ toast('该工具无链接'); return; }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(function(){ toast(' 已复制链接'); },function(){ fallbackCopy(txt); }); }
+    else fallbackCopy(txt);
+  }
+  function fallbackCopy(txt){ var ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); toast(' 已复制链接'); }catch(e){ toast('复制失败'); } document.body.removeChild(ta); }
+  document.getElementById('dx').addEventListener('click',closeDrawer);
+  mask.addEventListener('click',closeDrawer);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDrawer(); });
+  sortsEl.querySelectorAll('.tagchip').forEach(function(b){ b.addEventListener('click',function(){ sortsEl.querySelectorAll('.tagchip').forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); state.sort=b.dataset.s; renderList(); }); });
+  var q=document.getElementById('q');
+  q.addEventListener('input',function(){ state.kw=q.value; renderList(); });
+  renderChips(); renderFav(); renderRec(); renderList();
+})();
+</script>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["生态收纳","部署基础","知识库"], title: 'AI 生态 · 收纳与应用视频' });</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

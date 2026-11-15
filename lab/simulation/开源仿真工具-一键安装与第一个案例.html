@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta name="description" content="五个最常用的开源仿真工具，逐个给你「一键安装命令 + 第一个案例步骤」。装好、跑通第一个案例，就算入门。全部免费、开源、能真动手。">
+<meta property="og:description" content="五个最常用的开源仿真工具，逐个给你「一键安装命令 + 第一个案例步骤」。装好、跑通第一个案例，就算入门。全部免费、开源、能真动手。">
+<meta name="keywords" content="开源仿真工具-一键安装与第一个案例,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>开源仿真工具-一键安装与第一个案例 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"开源仿真工具-一键安装与第一个案例","description":"五个最常用的开源仿真工具，逐个给你「一键安装命令 + 第一个案例步骤」。装好、跑通第一个案例，就算入门。全部免费、开源、能真动手。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/lab/simulation/%E5%BC%80%E6%BA%90%E4%BB%BF%E7%9C%9F%E5%B7%A5%E5%85%B7-%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B.html">
+<meta property="og:title" content="开源仿真工具-一键安装与第一个案例 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/lab/simulation/%E5%BC%80%E6%BA%90%E4%BB%BF%E7%9C%9F%E5%B7%A5%E5%85%B7-%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="开源仿真工具-一键安装与第一个案例 · 白驹 ccowork">
+<meta name="twitter:description" content=" 白驹 ccowork · 科学实验室  2026-08-21  22 分钟 实验室 开源仿真工具 · 一键安装 + 第一个案例 五个最常用的开源仿真工具，逐个给你「 一键安装命令 + 第一个案例步骤 」。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav><div class="logo">白驹 ccowork · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-lab-simulation-开源仿真工具-一键安装与第一个案例.png" alt="开源仿真工具-一键安装与第一个案例 · 白驹 ccowork（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>22 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>开源仿真工具 · 一键安装 + 第一个案例</h1>
+<blockquote>
+<p>五个最常用的开源仿真工具，逐个给你「<strong>一键安装命令</strong> + <strong>第一个案例步骤</strong>」。装好、跑通第一个案例，就算入门。全部免费、开源、能真动手。</p>
+</blockquote>
+<hr>
+<h2>0. 先搞清每个工具是干嘛的</h2>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>领域</th>
+<th>一句话</th>
+<th>第一个案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>FreeCAD</strong></td>
+<td>机械 CAD / 有限元</td>
+<td>开源版 SolidWorks</td>
+<td>画方块并拉伸成 3D</td>
+</tr>
+<tr>
+<td><strong>KiCad</strong></td>
+<td>电路设计</td>
+<td>开源版 Altium</td>
+<td>画一个 LED 电路</td>
+</tr>
+<tr>
+<td><strong>Gazebo</strong></td>
+<td>机器人/物理仿真</td>
+<td>开源版 V-REP</td>
+<td>加载世界 + 放一个盒子</td>
+</tr>
+<tr>
+<td><strong>LTspice</strong></td>
+<td>电路仿真</td>
+<td>免费版 SPICE</td>
+<td>RC 电路瞬态仿真</td>
+</tr>
+<tr>
+<td><strong>OpenFOAM</strong></td>
+<td>计算流体力学(CFD)</td>
+<td>开源版 Fluent</td>
+<td>顶盖驱动方腔流</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>1. FreeCAD —— 机械建模与有限元</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-开源仿真工具-一键安装与第一个案例.png" alt="开源仿真工具-一键安装与第一个案例 · 白驹 ccowork（离线版） · 1. FreeCAD —— 机械建模与有限元" loading="lazy"></figure>
+<p><strong>一键安装</strong>：</p>
+<pre><code class="language-bash"># Windows（PowerShell）
+winget install FreeCAD.FreeCAD
+# macOS
+brew install --cask freecad
+# Ubuntu/Debian
+sudo apt install freecad
+</code></pre>
+<p><strong>第一个案例：画一个方块并拉伸（3 分钟）</strong></p>
+<ol>
+<li>打开 FreeCAD，新建文档（<code>Ctrl+N</code>）。</li>
+<li>切到 <strong>Part</strong> 工作台（顶部下拉选 Part）。</li>
+<li>点工具栏「创建盒子」图标 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 视图区出现一个 10×10×10 的方块。</li>
+<li>在左侧「数据」面板里改 Length/Width/Height，方块实时变化。</li>
+<li>切到 <strong>Part Design</strong> 工作台，可以画 2D 草图再「拉伸/挖孔」，这才是真正的参数化建模。</li>
+</ol>
+<p><strong>进阶</strong>：FreeCAD 内置 <strong>FEM（有限元）</strong> 工作台，可以对零件做应力分析——这就是「机械仿真」。</p>
+<p><strong>AI 辅助</strong>：让 DeepSeek 帮你写 FreeCAD 的 Python 脚本（FreeCAD 有 Python 控制台），一条指令自动建模。</p>
+<hr>
+<h2>2. KiCad —— 电路原理图与 PCB</h2>
+<p><strong>一键安装</strong>：</p>
+<pre><code class="language-bash"># Windows
+winget install KiCad.KiCad
+# macOS
+brew install --cask kicad
+# Ubuntu/Debian
+sudo apt install kicad
+</code></pre>
+<p><strong>第一个案例：画一个 LED 发光电路（5 分钟）</strong></p>
+<ol>
+<li>打开 KiCad，新建工程。</li>
+<li>打开 <strong>原理图编辑器</strong>（Eeschema）。</li>
+<li>放置元件：快捷键 <code>P</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 搜 <code>LED</code>、<code>R</code>（电阻）、<code>Battery</code>，各放一个。</li>
+<li>连线：快捷键 <code>W</code>，把电池正极 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 电阻 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> LED <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 回到负极。</li>
+<li>给元件赋值（电阻 330Ω 等）。</li>
+<li>（可选）生成网表 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打开 <strong>PCB 编辑器</strong> 自动布线，就能打样了。</li>
+</ol>
+<p><strong>关键</strong>：KiCad 内置 <strong>ngspice 仿真引擎</strong>，原理图可以直接跑仿真看波形，不用真焊。</p>
+<hr>
+<h2>3. Gazebo —— 机器人物理仿真</h2>
+<p><strong>一键安装</strong>：</p>
+<pre><code class="language-bash"># Ubuntu（最省事，官方主战场）
+sudo apt install gazebo
+# macOS
+brew install gazebo
+# Windows：用 WSL2（Ubuntu）里装，或 Docker
+</code></pre>
+<blockquote>
+<p>注意：Gazebo 有新旧版本（Classic 与 Harmonic/Garden）。新手直接用系统包管理器装的默认版即可；玩 ROS 的选配套版本。</p>
+</blockquote>
+<p><strong>第一个案例：加载一个世界 + 放一个盒子（5 分钟）</strong></p>
+<ol>
+<li>终端输入 <code>gazebo</code> 启动，看到默认空世界。</li>
+<li>左侧「Insert」面板 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 找到 <strong>Box</strong>（盒子）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 点一下，再在世界里点一下放置。</li>
+<li>盒子会受重力落下、和地面碰撞——这就是物理仿真引擎在工作。</li>
+<li>菜单里给盒子加个力，看它翻滚。</li>
+</ol>
+<p><strong>进阶</strong>：Gazebo + ROS 是机器人仿真的黄金组合，机械臂、无人机、小车都能在里面积攒里程，再上真机。</p>
+<hr>
+<h2>4. LTspice —— 电路仿真</h2>
+<p><strong>一键安装</strong>：</p>
+<pre><code class="language-bash"># Windows：官网下载安装包（Analog Devices 免费提供）
+# 或 winget（如可用）
+winget install AnalogDevices.LTspice
+# macOS：官网下载 .dmg
+# Linux：LTspice 无官方 Linux 版，用 Wine 运行，或改用 KiCad 内置 ngspice
+</code></pre>
+<p><strong>第一个案例：RC 电路瞬态仿真（5 分钟）</strong></p>
+<ol>
+<li>打开 LTspice，新建原理图（<code>File <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> New Schematic</code>）。</li>
+<li>放置元件：<code>R</code>（电阻）、<code>C</code>（电容）、<code>V</code>（电压源），连成一个 RC 回路。</li>
+<li>电压源设为「PULSE」或「SINE」。</li>
+<li>点「Run」<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选择 <strong>Transient</strong>（瞬态）分析 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 设置仿真时间。</li>
+<li>点电容节点，看电压随时间上升的经典 RC 充电曲线。</li>
+</ol>
+<p><strong>对比</strong>：上一篇我们写过 Python 画 RC 充电曲线，LTspice 是专业电路仿真器，能跑更复杂的电路（运放、开关电源、数字逻辑）。</p>
+<hr>
+<h2>5. OpenFOAM —— 计算流体力学（CFD）</h2>
+<p><strong>一键安装</strong>：</p>
+<pre><code class="language-bash"># Ubuntu/Debian（官方推荐）
+sudo apt install openfoam
+# Docker（跨平台，Windows/macOS 最省事）
+docker pull openfoam/openfoam
+# 使用官方源（openfoam.org 或 openfoam.com，选其一）
+</code></pre>
+<blockquote>
+<p>Windows/macOS 用户：<strong>强烈建议用 Docker</strong> 跑 OpenFOAM，避免在原生系统上折腾编译。</p>
+</blockquote>
+<p><strong>第一个案例：顶盖驱动方腔流（lid-driven cavity，经典入门）</strong></p>
+<p>这是 CFD 界的「Hello World」——一个方腔，顶部盖子以固定速度滑动，看里面流体的漩涡。</p>
+<pre><code class="language-bash"># Docker 方式
+docker run -it --rm -v $(pwd):/case openfoam/openfoam bash
+cd /case
+cp -r $FOAM_TUTORIALS/incompressible/icoFoam/cavity/cavity .
+cd cavity
+blockMesh          # 1. 生成网格
+icoFoam            # 2. 求解（瞬态不可压缩）
+paraFoam           # 3. 可视化（或导出用 ParaView 看）
+</code></pre>
+<p>跑完 <code>icoFoam</code> 后，用 <strong>ParaView</strong> 打开 <code>cavity.foam</code>，你就能看到方腔里那个经典的「主漩涡 + 两个角涡」——这就是流体力学教科书上的图，你亲手算出来了。</p>
+<hr>
+<h2>6. 这五个工具怎么串起来（一个完整工科流程）</h2>
+<pre><code>FreeCAD 画机械结构 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> KiCad 画电路 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> LTspice 仿电路
+   <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> OpenFOAM 算流体/散热 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Gazebo 仿真整机运动
+</code></pre>
+<p>一个机电产品的完整仿真链路，全都可以用<strong>免费开源工具</strong>走通，AI 在每个环节帮你写脚本、调参数、解释结果。</p>
+<hr>
+<h2>7. AI 时代的正确姿势</h2>
+<ol>
+<li><strong>让 AI 当副驾驶</strong>：把报错、公式、参数丢给 DeepSeek，它会解释并给出下一步。</li>
+<li><strong>先仿真，后真机</strong>：这五个工具都是「安全网」，先在电脑里跑通，再动真格。</li>
+<li><strong>第一案例务必亲手跑</strong>：看一百遍教程，不如亲手把「方腔流」算出来一次。</li>
+</ol>
+<hr>
+<h2>8. 进阶案例：从「第一个」走到「能干活」</h2>
+<p>上一篇你跑通了每个工具的「第一个案例」。这一篇给每个工具 <strong>2-3 个能直接上手的真实工程案例</strong>——做完它们，你就不是&quot;装过软件&quot;，而是&quot;真能用它干活&quot;了。所有案例都免费、开源、可复现。</p>
+<hr>
+<h3>8.1 FreeCAD —— 从画方块到「参数化建模 + 有限元分析」</h3>
+<p><strong>案例 A：参数化螺栓（改一个数，整颗螺丝自动变）</strong></p>
+<ol>
+<li>新建文档，切到 <strong>Part Design</strong> 工作台。</li>
+<li><code>创建草图</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选 XY 平面 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 画一个圆（半径 = 螺栓杆半径 <code>r</code>），<code>闭合</code>。</li>
+<li><code>拉伸</code> 草图成圆柱（高度 = 杆长 <code>L</code>）。</li>
+<li>在顶端再画一个更大圆，<code>拉伸</code> 出螺栓头。</li>
+<li><strong>关键</strong>：给尺寸加「约束公式」——点尺寸 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 右键「公式」<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 输入 <code>r = 5mm</code>，头径设为 <code>2*r</code>。以后改 <code>r</code> 整颗螺丝跟着变。</li>
+<li>用 <code>环形阵列</code> 在头部切 6 个槽，六角头就出来了。</li>
+</ol>
+<blockquote>
+<p>这叫<strong>参数化建模</strong>，是机械设计的核心——一个变量驱动整模型。</p>
+</blockquote>
+<p><strong>案例 B：给零件做有限元（FEM）应力分析</strong></p>
+<ol>
+<li>切到 <strong>FEM</strong> 工作台 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <code>求解器</code> 选 <code>CalculiX</code>。</li>
+<li><code>材料</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选 Steel（钢），赋给零件。</li>
+<li><code>固定约束</code>：选螺栓底面 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 固定。</li>
+<li><code>力</code>：选螺栓头顶面 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 加载荷（如 1000 N 向下）。</li>
+<li><code>网格</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 生成（默认即可）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <code>求解</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <code>结果</code>。</li>
+<li>看<strong>应力云图</strong>（红=危险区）和<strong>位移图</strong>。如果某处红得发紫，说明该加粗/换材料。</li>
+</ol>
+<blockquote>
+<p>这就是&quot;先仿真后开模&quot;——打样前就知道会不会断，省几万块。</p>
+</blockquote>
+<p><strong>案例 C：用 Python 脚本批量建模（AI 副驾驶模式）</strong></p>
+<p>FreeCAD 有完整 Python API，把需求丢给 DeepSeek：</p>
+<pre><code class="language-python">import FreeCAD, Part
+doc = FreeCAD.newDocument()
+for i in range(5):                       # 批量生成 5 种直径的轴
+    d = 10 + i*2
+    cyl = Part.makeCylinder(d/2, 50)     # 半径 d/2，长 50
+    doc.addObject(&quot;Part::Feature&quot;, f&quot;shaft_{d}&quot;).Shape = cyl
+doc.recompute()
+</code></pre>
+<p>让 AI 改循环条件，就能一键生成一套零件库。</p>
+<hr>
+<h3>8.2 KiCad —— 从画 LED 到「仿真运放 + 打样 PCB」</h3>
+<p><strong>案例 A：用内置 ngspice 仿真一个运放放大电路</strong></p>
+<ol>
+<li>在原理图放运放（搜 <code>OPAMP</code>，如 <code>LM358</code>）、电阻两个、电源。</li>
+<li>接成<strong>反向放大</strong>：输入经 R1 到负端，负端经 R2 回输出，增益 = −R2/R1。</li>
+<li>放一个 <code>仿真指令</code> 元件，值填：<pre><code>.tran 0 10m 0 1u
+</code></pre>
+</li>
+<li>给输入加正弦源（<code>SINE(0 1 1k)</code> = 幅值1V 频率1kHz）。</li>
+<li>菜单 <code>仿真 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 运行仿真</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 看输出波形被放大了 |R2/R1| 倍。</li>
+</ol>
+<blockquote>
+<p>不用焊一颗电阻，先在电脑里验证&quot;放大 10 倍对不对&quot;。</p>
+</blockquote>
+<p><strong>案例 B：从原理图到能打样的 PCB</strong></p>
+<ol>
+<li>原理图 <code>工具 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 给网络标号</code> 给所有连线命名（如 <code>VCC</code>、<code>GND</code>）。</li>
+<li><code>工具 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 生成网表</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 打开 <strong>PCB 编辑器</strong> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <code>工具 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 读取网表</code>。</li>
+<li><code>自动布线</code> 或手动拉线（快捷键 <code>X</code>）。</li>
+<li>铺铜（<code>GND</code> 覆铜散热防干扰）：<code>放置 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 铺铜</code>。</li>
+<li><code>文件 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 导出 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Gerber</code> 和 <code>钻孔文件</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 发给嘉立创/JLCPCB，几天后收到实物。</li>
+</ol>
+<p><strong>案例 C：差分对 + 四层板（高速信号基础）</strong></p>
+<ul>
+<li>在 PCB 编辑器用 <code>差分对布线</code>（两条线等长等距），做 USB/以太网等长信号。</li>
+<li><code>板层设置</code> 加到 4 层（信号-地-电源-信号），高速板标配。</li>
+</ul>
+<hr>
+<h3>8.3 Gazebo —— 从放盒子到「加载机械臂 + ROS2 控制」</h3>
+<p><strong>案例 A：加载你自己的 URDF 机械臂</strong></p>
+<ol>
+<li>写好机器人描述文件 <code>my_arm.urdf</code>（连杆 <code>&lt;link&gt;</code> + 关节 <code>&lt;joint&gt;</code>）。</li>
+<li>转 SDF：<code>gz sdf -p my_arm.urdf &gt; my_arm.sdf</code>。</li>
+<li>写个世界文件 <code>&lt;world&gt;</code> 里 <code>&lt;include&gt;</code> 你的模型，或：<pre><code class="language-bash">gz sim my_arm.sdf        # 新版 Gazebo (Harmonic)
+</code></pre>
+</li>
+<li>机械臂出现在世界里，可以拖、可以加力。</li>
+</ol>
+<p><strong>案例 B：用 ROS2 让小车沿黑线走</strong></p>
+<ol>
+<li>装 ROS2 + <code>ros_gz</code> 桥接包。</li>
+<li>在 Gazebo 里放一辆差速小车（官方 <code>ros_gz</code> 有现成模型）。</li>
+<li>写个 ROS2 节点订阅摄像头话题、发布 <code>/cmd_vel</code> 速度指令：<pre><code class="language-python">import rclpy
+from geometry_msgs.msg import Twist
+# 读到黑线偏左 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 左轮加速；偏右 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 右轮加速
+</code></pre>
+</li>
+<li><code>ros2 run my_pkg line_follower</code> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 小车在仿真里巡线跑起来。</li>
+</ol>
+<blockquote>
+<p>这是&quot;先在仿真里把算法跑通，再上真车&quot;的标准流程，能省无数撞车。</p>
+</blockquote>
+<p><strong>案例 C：给模型挂传感器（相机 / LiDAR）采数据</strong></p>
+<ul>
+<li>在 SDF 里给机器人加 <code>&lt;sensor type=&quot;camera&quot;&gt;</code> 或 <code>&lt;sensor type=&quot;lidar&quot;&gt;</code>。</li>
+<li>用 <code>ros_gz_bridge</code> 把点云/图像桥接到 ROS2，直接喂给你的 AI 感知模型训练。</li>
+</ul>
+<hr>
+<h3>8.4 LTspice —— 从 RC 到「运放/开关电源/失真分析」</h3>
+<p><strong>案例 A：运放 AC 分析（看带宽和相移）</strong></p>
+<ol>
+<li>搭一个同相放大电路，增益 = 1 + R2/R1。</li>
+<li>放 <code>.ac</code> 指令：<pre><code>.ac dec 100 10 1Meg
+</code></pre>
+（十倍频扫描 10Hz~1MHz，每十倍频 100 点）</li>
+<li>运行 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 看<strong>幅频曲线</strong>：增益平的一段是通带，跌破 −3dB 的频率就是<strong>带宽</strong>。</li>
+</ol>
+<p><strong>案例 B：Buck 开关电源瞬态仿真（真·能干活）</strong></p>
+<ol>
+<li>放一个电压源（12V）、一个开关（用 <code>NMOS</code> + 方波驱动）、电感（<code>&lt;100µH</code>）、二极管、输出电容、负载电阻。</li>
+<li>给 MOS 栅极加 <code>PULSE(0 12 0 1n 1n 5u 10u)</code>（100kHz、占空比 50%）。</li>
+<li><code>.tran 0 5m</code> 运行 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 看输出从 12V 被&quot;斩&quot;成约 6V（占空比 50% 的降压），纹波由 L、C 决定。</li>
+<li>调占空比改输出电压——这就是 DC-DC 电源的核心原理。</li>
+</ol>
+<p><strong>案例 C：FFT 看失真（音频/信号必备）</strong></p>
+<ol>
+<li>给放大电路输入大幅正弦。</li>
+<li>运行 <code>.tran</code> 后，在波形窗 <code>Ctrl+A</code> 选一段 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 右键 <code>FFT</code>。</li>
+<li>看基波之外的谐波分量：谐波越低 = 失真越小（THD 指标）。</li>
+</ol>
+<hr>
+<h3>8.5 OpenFOAM —— 从方腔流到「管流压降/卡门涡街/传热」</h3>
+<p><strong>案例 A：圆管层流压降（对比泊肃叶公式）</strong></p>
+<pre><code class="language-bash">docker run -it --rm -v $(pwd):/case openfoam/openfoam bash
+cd /case
+cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/pitzDaily .   # 改造成圆管
+# 把几何换成圆柱通道，设 inlet 速度、wall 无滑移
+blockMesh &amp;&amp; simpleFoam        # 稳态求解
+# 取进出口面平均压力，算 Δp，对比 Δp = 8·μ·L·Q/(π·R⁴)
+</code></pre>
+<p><strong>案例 B：圆柱绕流卡门涡街（最经典的流体现象）</strong></p>
+<pre><code class="language-bash">cp -r $FOAM_TUTORIALS/incompressible/pimpleFoam/cylinder .
+cd cylinder
+blockMesh &amp;&amp; pimpleFoam        # 瞬态求解
+paraFoam                       # 看涡从圆柱后方交替脱落 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 卡门涡街
+</code></pre>
+<blockquote>
+<p>桥颤、飞机抖振、风力机噪声，根子都在这个涡街里。你能亲手算出来，简历直接多一项。</p>
+</blockquote>
+<p><strong>案例 C：共轭传热（芯片散热仿真）</strong></p>
+<ul>
+<li>用 <code>chtMultiRegionFoam</code>：固体域（芯片/散热片）+ 流体域（空气/水）耦合换热。</li>
+<li>设固体发热功率、流体流速，看热点温度和流场。</li>
+</ul>
+<hr>
+<h3>9. 从「能跑第一个」到「能干活」：三条心法</h3>
+<ol>
+<li><strong>第一个案例 = 验证环境装对了</strong>；进阶案例 = <strong>解决你自己的问题</strong>。别停在&quot;跑通官方例子&quot;，把参数改成你的真实需求（如把圆柱换成你的零件）。</li>
+<li><strong>每个工具都接 AI</strong>：FreeCAD 写 Python、KiCad 写 SPICE 网表、OpenFOAM 写 <code>controlDict</code>——把报错/公式/参数丢给 DeepSeek，它解释+给下一步。</li>
+<li><strong>仿真四步通用</strong>：建模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 离散化 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 数值积分 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>用理论值校验</strong>（类比本目录 <code>test_simulation.py</code>）。不校验的仿真 = 没仿真。</li>
+</ol>
+<blockquote>
+<p>至此，五个工业级开源仿真工具，你已从&quot;装好能打开&quot;走到&quot;能接真实工程任务&quot;。配合 <code>lab/simulation/</code> 里 10 个 Python 仿真脚本（见《仿真脚本图文讲解》），原理和工具就打通了。</p>
+</blockquote>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261115b"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

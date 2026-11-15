@@ -1,0 +1,93 @@
+# =============================================================================
+# GitHub Actions 工作流：提交代码后自动跑仿真测试（CI）
+# -----------------------------------------------------------------------------
+# 使用方法：
+#   1. 把本文件复制到你的仓库根目录下，路径必须是：.github/workflows/ci.yml
+#   2. 推送 (git push) 到 main / master 分支，GitHub 会自动运行本工作流
+#   3. 打开 GitHub 仓库的 "Actions" 标签页即可看到运行结果
+#
+# 说明：本文件即是一份可直接复制的模板，yaml 语法已校验正确。
+# =============================================================================
+
+name: CI · 仿真测试
+
+# ---------------------------------------------------------------------------
+# on：触发时机（trigger）
+#   push         —— 推送到指定分支时触发
+#   pull_request —— 发起/更新 Pull Request 时触发
+#   paths        —— 仅当这些路径下的文件发生变化时才触发，节省 CI 分钟数
+# ---------------------------------------------------------------------------
+on:
+  push:
+    branches: [ main, master ]          # 推到 main 或 master 时触发
+    paths:                              # 只有仿真/工作流文件变化才跑
+      - 'lab/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main, master ]          # 开 PR 合入 main/master 时触发
+
+# 最小权限原则：本工作流只读代码即可
+permissions:
+  contents: read
+
+jobs:
+  # -------------------------------------------------------------------------
+  # 任务 1：跑仿真测试（核心）
+  # -------------------------------------------------------------------------
+  test-simulation:
+    name: 仿真测试 · Python 3.12
+    runs-on: ubuntu-latest              # 在 GitHub 托管的 Ubuntu 虚拟机上运行
+
+    steps:
+      # 1) 检出代码：把仓库代码拉到运行环境中
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      # 2) 安装 Python 3.12，并开启 pip 依赖缓存（加速后续构建）
+      - name: 设置 Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'                                   # 缓存 pip 下载内容
+          cache-dependency-path: lab/requirements.txt    # 按该文件内容做缓存哈希
+
+      # 3) 安装依赖（本项目仅需 pytest）
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      # 4) 运行仿真测试：自动执行 lab/simulation/test_simulation.py
+      - name: 运行仿真测试
+        run: pytest lab/simulation/test_simulation.py -v
+
+      # 5) 失败时在 Actions 日志中输出醒目错误（供快速定位）
+      - name: 失败标记
+        if: failure()
+        run: |
+          echo "::error::❌ 仿真测试失败，请检查最近一次提交：git log -1"
+
+  # -------------------------------------------------------------------------
+  # 任务 2：失败通知（独立任务，测试失败时才运行）
+  #   可接入企业微信 / 钉钉 / 飞书 群机器人 Webhook。
+  #   在 GitHub 仓库 Settings → Secrets and variables → Actions 里
+  #   新增一个名为 NOTIFY_WEBHOOK_URL 的密钥，填入机器人 Webhook 地址。
+  #   若未配置，任务会打印提示并正常结束（不报错）。
+  # -------------------------------------------------------------------------
+  notify:
+    name: 失败通知（Webhook）
+    needs: test-simulation            # 等上面的测试任务跑完
+    if: failure()                     # 仅当测试失败才执行
+    runs-on: ubuntu-latest
+    steps:
+      - name: 发送失败通知
+        env:
+          WEBHOOK_URL: ${{ secrets.NOTIFY_WEBHOOK_URL }}
+        run: |
+          if [ -n "$WEBHOOK_URL" ]; then
+            curl -s -X POST "$WEBHOOK_URL" \
+              -H "Content-Type: application/json" \
+              -d "{\"msgtype\":\"text\",\"text\":{\"content\":\"❌ 仿真测试失败：$GITHUB_REPOSITORY @ $GITHUB_SHA\"}}"
+          else
+            echo "⚠️ 未配置 NOTIFY_WEBHOOK_URL，跳过 Webhook 通知。"
+          fi

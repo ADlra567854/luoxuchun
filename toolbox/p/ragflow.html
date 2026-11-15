@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="全部开源仓库 RAGFlow 62,800 星 Python Apache-2.0 RAG / 知识库 先把文档读懂，再谈检索——中文资料优先试它 62,800 GitHub 星数 Python 主语言 Apache-2…">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAGFlow · 开源项目 · 白驹 ccowork</title>
+<meta name="description" content="全部开源仓库 RAGFlow 62,800 星 Python Apache-2.0 RAG / 知识库 先把文档读懂，再谈检索——中文资料优先试它 62,800 GitHub 星数 Python 主语言 Apache-2…">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/page-ext.css">
+<link rel="stylesheet" href="/repo-page.css">
+<meta name="twitter:description" content="全部开源仓库 RAGFlow 62,800 星 Python Apache-2.0 RAG / 知识库 先把文档读懂，再谈检索——中文资料优先试它 62,800 GitHub 星数 Python 主语言 Apache-2…">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/toolbox/p/ragflow.html">
+<meta property="og:title" content="RAGFlow · 开源项目 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/toolbox/p/ragflow.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RAGFlow · 开源项目 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="toolbox" data-cctitle="RAGFlow">
+<main class="pg-wrap">
+
+  <div class="pg-hero">
+    <div data-cccrumb="开源仓库"></div>
+    <a class="rp-back" href="/toolbox/repos.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>全部开源仓库</a>
+    <h1>RAGFlow</h1>
+    <div class="rp-meta"><span class="rp-pill star"><i class="cc-ic" data-ic="star" aria-hidden="true"></i>62,800 星</span><span class="rp-pill"><i class="cc-ic" data-ic="code" aria-hidden="true"></i>Python</span><span class="rp-pill"><i class="cc-ic" data-ic="scale" aria-hidden="true"></i>Apache-2.0</span><span class="rp-pill"><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>RAG / 知识库</span></div>
+    <p class="lede">先把文档读懂，再谈检索——中文资料优先试它</p>
+  </div>
+
+  <div class="rp-cover"><img src="/assets/covers/repos/infiniflow__ragflow.png" alt="RAGFlow 项目封面" loading="eager" width="1200" height="600"></div>
+
+  <div class="rp-stats">
+    <div class="st"><b>62,800</b><span>GitHub 星数</span></div>
+    <div class="st"><b>Python</b><span>主语言</span></div>
+    <div class="st"><b>Apache-2.0</b><span>许可</span></div>
+    <div class="st"><b>RAG / 知识库</b><span>分类</span></div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="target" aria-hidden="true"></i>它解决的是哪一步</h2><span class="sub">先把定位说清楚，再决定要不要装</span></div>
+    <div class="rp-lead">大部分 RAG 方案死在第一步：PDF 里的表格、双栏、页眉页脚没解析对，后面检索再花哨也没用。RAGFlow 的重心就在文档理解，还带可视化的切片校对，你能看见它把文档切成了什么、引用来自哪一段。国内团队做的，中文场景的实测表现明显好于通用方案。</div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="terminal" aria-hidden="true"></i>上手三步</h2><span class="sub">按顺序走，卡住基本都在第一步</span></div>
+    <div class="rp-steps">
+      <div class="rp-step"><div class="no">1</div><div class="tx"><b>起服务</b><p>按官方仓库给 docker compose 起，注意它对内存有要求（建议 16GB 起），不够会在解析大 PDF 时被 OOM 杀掉。</p></div></div>
+      <div class="rp-step"><div class="no">2</div><div class="tx"><b>先传一份最难的文档</b><p>拿你手上版式最复杂的那份 PDF 试，别用干净的纯文本。能把它解析对，其他的都简单。</p></div></div>
+      <div class="rp-step"><div class="no">3</div><div class="tx"><b>看切片再看答案</b><p>重点不是答案写得好不好，而是引用块是否指向真实段落。指错了就是切片没切对，回去调解析模板。</p></div></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="shield" aria-hidden="true"></i>适合与不适合</h2><span class="sub">不适合的部分比适合更值得看</span></div>
+    <div class="rp-fit">
+      <div class="rp-col yes"><h3><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>适合你，如果</h3><ul>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>合同、手册、财报这类版式复杂的文档问答</li>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>中文资料为主的知识库</li>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>需要引用溯源，答案要能点回原文</li>
+      </ul></div>
+      <div class="rp-col no"><h3><i class="cc-ic" data-ic="circle-x" aria-hidden="true"></i>换别的，如果</h3><ul>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>只是做关键词或向量检索——用向量库就够</li>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>文档都是干净的结构化数据，不需要解析</li>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>机器内存紧张的环境</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>RAG / 知识库里的其他选择</h2><span class="sub">同类不必只看一个</span></div>
+    <div class="rp-sib">
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/HKUDS__DeepTutor.png" alt="" loading="lazy"><span class="tx"><b>DeepTutor</b><span>49,133 星 · Python</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/run-llama__llama_index.png" alt="" loading="lazy"><span class="tx"><b>LlamaIndex</b><span>42,800 星 · Python</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/mem0ai__mem0.png" alt="" loading="lazy"><span class="tx"><b>Mem0</b><span>41,200 星 · Python</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <div class="rp-src">
+    <a href="https://github.com/infiniflow/ragflow" target="_blank" rel="noopener"><i class="cc-ic" data-ic="github" aria-hidden="true"></i>去 GitHub 看源码</a>
+    <a class="alt" href="/toolbox/repos.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>回到开源仓库列表</a>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="端侧大模型推理实战,AI 学院,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="端侧大模型推理实战：Google LiteRT-LM 让 AI 跑在手机上 · AI 学院 · 白驹 ccowork">
+<meta name="description" content="为什么需要端侧大模型推理 端侧大模型推理的核心价值是将大模型的计算流程完全运行在用户本地设备（手机、平板、嵌入式板卡、浏览器）上，无需将任何用户输入上传到云端服务器，首先解决的是隐私合规痛点：所有对话记录、个人文档输入、…">
+<meta property="og:description" content="为什么需要端侧大模型推理 端侧大模型推理的核心价值是将大模型的计算流程完全运行在用户本地设备（手机、平板、嵌入式板卡、浏览器）上，无需将任何用户输入上传到云端服务器，首先解决的是隐私合规痛点：所有对话记录、个人文档输入、…">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>端侧大模型推理实战：Google LiteRT-LM 让 AI 跑在手机上 · AI 学院 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"端侧大模型推理实战：Google LiteRT-LM 让 AI 跑在手机上 · AI 学院 · 白驹 ccowork","description":"为什么需要端侧大模型推理 端侧大模型推理的核心价值是将大模型的计算流程完全运行在用户本地设备（手机、平板、嵌入式板卡、浏览器）上，无需将任何用户输入上传到云端服务器，首先解决的是隐私合规痛点：所有对话记录、个人文档输入、…","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/website/ai-academy/chapter-32.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/ai-academy/chapter-32.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="端侧大模型推理实战：Google LiteRT-LM 让 AI 跑在手机上 · AI 学院 · 白驹 ccowork">
+<meta name="twitter:description" content="为什么需要端侧大模型推理 端侧大模型推理的核心价值是将大模型的计算流程完全运行在用户本地设备（手机、平板、嵌入式板卡、浏览器）上，无需将任何用户输入上传到云端服务器，首先解决的是隐私合规痛点：所有对话记录、个人文档输入、…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<h1>端侧大模型推理实战：Google LiteRT-LM 让 AI 跑在手机上</h1>
+<div class="blog-open">
+  <div class="blog-badge"> 白驹 ccowork · AI 学院 第32章</div>
+  <div class="blog-meta"><span> 2026-10-27</span><span> 60 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)"> AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<p>本章将带你掌握 Google 官方生产级端侧大模型推理框架 LiteRT-LM 的核心原理与落地方法，学完后你可以独立完成手机、嵌入式设备上的离线大模型部署，搭建零API成本、数据完全不出设备的本地AI助手，覆盖Android/iOS/Linux/Web全平台场景。</p>
+<h2 id="ch32-为什么需要端侧大模型推理">为什么需要端侧大模型推理</h2>
+<p>端侧大模型推理的核心价值是将大模型的计算流程完全运行在用户本地设备（手机、平板、嵌入式板卡、浏览器）上，无需将任何用户输入上传到云端服务器，首先解决的是隐私合规痛点：所有对话记录、个人文档输入、设备状态数据完全留在本地，天然满足《个人信息保护法》《GDPR》对敏感数据不出域的要求。其次是体验优势：无网络传输延迟，弱网、断网场景下完全可用，也不会产生云端API调用成本，适合智能输入法、离线翻译、车载助手等对可靠性要求极高的场景。</p>
+<p>和本教程第20章介绍的Ollama服务端私有化部署相比，两者是互补而非替代关系：Ollama面向x86/ARM服务器、桌面PC场景，适合运行7B/70B等中大型参数模型，为局域网内多设备提供推理服务；LiteRT-LM面向单设备端侧场景，针对1B-8B参数小模型做了极致的内存、功耗优化，直接调用设备NPU/GPU硬件加速，不需要额外部署服务进程。</p>
+<p>两者的核心差异可以参考下表：</p>
+<table>
+<thead><tr><th>维度</th><th>LiteRT-LM 端侧推理</th><th>Ollama 服务端私有化</th></tr></thead>
+<tbody>
+<tr><td>部署目标</td><td>手机、嵌入式、浏览器单设备</td><td>PC、服务器、局域网节点</td></tr>
+<tr><td>典型模型规模</td><td>1B-8B 量化版</td><td>7B-70B 全精度/量化版</td></tr>
+<tr><td>网络依赖</td><td>完全离线可用</td><td>局域网/本地环回可用</td></tr>
+<tr><td>硬件加速</td><td>原生调用设备NPU/GPU</td><td>优先调用CUDA/ROCm/桌面GPU</td></tr>
+<tr><td>适用场景</td><td>个人本地助手、离线功能</td><td>团队共享服务、本地开发测试</td></tr>
+</tbody>
+</table>
+<p>验证方式：可分别在手机和本地PC上运行同参数级Gemma模型，对比断网下的可用性与内存占用。</p>
+<h2 id="ch32-什么是-LiteRT-LM">什么是 LiteRT-LM</h2>
+<p>LiteRT-LM是Google在2025年推出的生产级端侧大语言模型推理编排层，其底层运行时LiteRT是原TensorFlow Lite的官方演进版本，专门针对生成式AI场景做了全链路优化，负责在端侧设备上高效完成大模型的加载、分词、推理、解码全流水线调度。项目采用Apache-2.0开源协议，官方GitHub仓库为<code>google-ai-edge/LiteRT-LM</code>，截至2026年8月最新稳定版本为v0.16.1（版本号请以GitHub Releases页为准），官方文档地址为<code>ai.google.dev/edge/litert</code>。</p>
+<p>和早期的实验性端侧推理框架不同，LiteRT-LM是Google官方面向生产环境的方案，已经在Google Assistant、Gboard智能输入法、Pixel设备端侧AI功能中大规模落地，不是玩具级Demo项目。框架本身不绑定特定模型格式，同时支持.tflite、.task两种官方优化格式，也兼容部分GGUF格式模型的转换导入，开发者不需要深入理解底层算子实现，就可以快速集成端侧大模型能力。</p>
+<p>验证方式：执行<code>git clone https://github.com/google-ai-edge/LiteRT-LM.git</code>拉取官方仓库，查看RELEASE.md文件确认版本信息。</p>
+<h2 id="ch32-核心架构与硬件加速能力">核心架构与硬件加速能力</h2>
+<p>LiteRT-LM的核心架构分为三层：最底层是LiteRT跨平台运行时引擎，负责对接不同设备的硬件加速接口；中间层是模型转换与优化流水线，支持将主流开源大模型权重转换为端侧优化格式，内置KV-Cache量化、算子融合、 speculative decoding 等生成式推理优化，可将端侧推理速度提升2-4倍；最上层是各平台的API封装层，提供Java/Kotlin、Swift、C++、JavaScript多语言接口，覆盖Android/iOS/Linux/嵌入式/Web全平台执行环境。</p>
+<p>硬件加速是LiteRT-LM的核心优势：框架原生支持设备专用NPU的无缝调用，在搭载Google Tensor、高通骁龙8 Gen3及以上、联发科天玑9300及以上芯片的Android设备上，可自动调度NPU执行推理，不需要开发者编写硬件适配代码；同时支持GPU Delegate，可调用设备GPU完成并行计算；针对Linux ARM64嵌入式设备，提供实验性YNNPACK Delegate，优化CPU推理性能。根据社区公开测试数据，同参数同量化等级下，LiteRT-LM的NPU推理速度相比llama.cpp有30%以上的领先（实际性能请以具体设备实测为准）。</p>
+<p>Linux平台下可通过以下命令验证硬件加速支持：</p>
+<pre><code># 下载LiteRT-LM CLI工具（Linux arm64版本，版本以官方Release为准）
+wget https://github.com/google-ai-edge/LiteRT-LM/releases/download/v0.16.1/litert-lm-cli-linux-arm64
+chmod +x litert-lm-cli-linux-arm64
+# 查看当前设备支持的硬件加速后端
+./litert-lm-cli-linux-arm64 list-backends</code></pre>
+<h2 id="ch32-支持模型与跨平台实战路径">支持模型与跨平台实战路径</h2>
+<p>LiteRT-LM官方优先支持Google自家开源的Gemma全系列模型，包括Gemma 3、端侧专用Gemma 3n、Gemma 4全尺寸权重，官方提供预转换好的INT4/INT8量化版本，开发者不需要自行转换就可以直接部署；同时也兼容 Llama 3.2、Qwen 2.5 等较早一批开放权重模型——这类 2024 年的型号如今主要由存量项目使用，新一代（如 Llama 4、Qwen3.8）已接替为当前选型；完整支持列表与最新状态请以官方 Model Garden 页面为准（官方仓库 google-ai-edge/LiteRT-LM 实测可访问）。</p>
+<p>官方提供了四条开箱即用的跨平台集成路径，覆盖主流端侧场景：</p>
+<ul>
+<li>Android端：提供Java/Kotlin原生API，可直接在Android Studio中通过Gradle依赖集成，官方自带<code>agent-skill</code>示例工程，可快速实现端侧Agent能力</li>
+<li>iOS/macOS端：提供官方Swift包，支持CocoaPods与Swift Package Manager（SPM）两种集成方式，最低支持iOS 16系统</li>
+<li>Linux命令行：提供独立CLI工具，内置OpenAI兼容接口的本地Server，启动后其他程序可直接用OpenAI SDK调用本地模型</li>
+<li>Web端：基于2026年7月Google发布的LiteRT.js（信息以官方博客为准），可在浏览器内完成大模型推理，不需要服务端支持</li>
+</ul>
+<p>Linux端启动OpenAI兼容本地服务的命令如下：</p>
+<pre><code># 下载预转换的Gemma 3n 2B INT4模型（路径以官方Model Garden为准）
+wget https://www.kaggle.com/api/v1/models/google/gemma-3n/litert/int4/2b-it/1/download -O gemma3n-2b-int4.task
+# 启动本地服务，端口8080，兼容OpenAI接口
+./litert-lm-cli-linux-arm64 serve --model gemma3n-2b-int4.task --port 8080
+# 验证：用curl调用本地接口
+curl http://localhost:8080/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"gemma3n-2b","messages":[{"role":"user","content":"你好"}]}'</code></pre>
+<h2 id="ch32-模型转换与端侧Agent实践">模型转换与端侧Agent实践</h2>
+<p>如果官方预转换模型不满足需求，开发者可以通过LiteRT-LM提供的转换工具完成自定义模型部署，完整链路为：原始开源权重（Hugging Face格式）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 权重量化（INT4/INT8，支持AWQ、GPTQ等量化算法）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> LiteRT格式转换（算子融合、KV-Cache优化）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 部署到目标设备。转换过程的具体命令与参数请以官方转换文档为准，官方已提供Gemma、Llama、Qwen系列模型的一键转换脚本，不需要手动编写算子适配代码。</p>
+<p>端侧Agent是LiteRT-LM的特色能力，官方Android示例中的<code>agent-skill</code>模块可以让本地运行的大模型直接调度设备原生能力，完成多步复杂任务：比如用户输入“帮我把昨天拍的风景照发给微信好友张三”，本地模型会自动拆解为“查找相册中昨天的风景照片<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>打开微信<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>搜索好友张三<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>发送选中照片”的步骤，全程不需要联网，所有数据都在设备本地处理。</p>
+<p>Android端集成LiteRT-LM依赖的Gradle配置如下：</p>
+<pre><code>// Android build.gradle 模块级配置
+dependencies {
+    // 引入LiteRT-LM Android依赖，版本以官方Maven仓库为准
+    implementation "com.google.ai.edge.litert:litert-lm:0.16.1"
+    // 引入Agent Skill能力包
+    implementation "com.google.ai.edge.litert:litert-lm-agent:0.16.1"
+}</code></pre>
+<h2 id="ch32-选型对比与注意事项">选型对比与注意事项</h2>
+<p>端侧推理和云端推理没有绝对优劣，需要根据场景选择：端侧模型受设备内存、功耗、发热约束，参数规模通常在8B以下，推理质量不如云端 GPT-6 系列、Gemini 3.1 Pro 等旗舰模型，但胜在隐私安全、零成本、离线可用，适合隐私敏感问答、离线翻译、本地智能助手、智能输入法联想等场景；云端模型适合需要复杂推理、多模态大参数量、对生成质量要求极高的场景。</p>
+<p>和同类端侧推理方案相比，LiteRT-LM的定位差异非常清晰，开发者可根据需求选择：</p>
+<table>
+<thead><tr><th>方案</th><th>定位</th><th>核心优势</th><th>适用场景</th></tr></thead>
+<tbody>
+<tr><td>LiteRT-LM</td><td>Google官方生产级端侧推理编排层</td><td>原生NPU加速、全平台支持、生产级稳定</td><td>消费级App端侧AI功能落地</td></tr>
+<tr><td>Ollama</td><td>桌面/服务端本地推理工具</td><td>模型生态全、部署简单</td><td>本地开发、PC端个人助手</td></tr>
+<tr><td>llama.cpp</td><td>社区级轻量推理引擎</td><td>极致轻量化、GGUF生态完善</td><td>嵌入式设备DIY、二次开发</td></tr>
+<tr><td>MediaPipe LLM</td><td>Google面向快速集成的GenAI API</td><td>封装度高、代码量少</td><td>简单Demo、快速原型验证</td></tr>
+</tbody>
+</table>
+<p>使用LiteRT-LM时也需要注意几个局限：一是官方支持的模型列表仍在扩充中，部分小众开源模型需要自行转换适配；二是Android设备NPU硬件碎片化严重，中低端设备可能无法启用NPU加速，推理速度较慢；三是模型首次加载需要占用3-10秒时间，运行时内存占用根据模型大小在1GB-6GB之间，需要对低端设备做兼容性适配。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>端侧大模型推理具备隐私优先、零延迟离线可用、无API成本三大核心优势，和Ollama服务端私有化部署是互补关系，分别面向单设备端场景和局域网服务场景。</li>
+<li>LiteRT-LM是Google官方推出的生产级端侧推理框架，基于演进后的LiteRT运行时，原生支持NPU/GPU硬件加速，覆盖Android/iOS/Linux/Web全平台，可快速部署Gemma等开源小模型。</li>
+<li>LiteRT-LM内置端侧Agent能力，支持本地模型调度设备原生能力，天然满足数据不出域的合规要求，适合消费级App的离线AI功能落地。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>在Linux ARM64设备（或树莓派5、Android Termux环境）下载LiteRT-LM CLI工具，启动Gemma 3n 2B INT4模型的OpenAI兼容服务，用curl命令完成一次本地对话调用。</li>
+<li>在Android Studio中导入官方<code>agent-skill</code>示例工程，在测试机上安装运行，测试“打开相册选中第一张照片”的本地Agent指令。</li>
+<li>对比同模型在LiteRT-LM NPU加速和CPU模式下的生成速度，记录每秒钟生成的token数量。</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>可阅读Google官方AI Edge博客中LiteRT.js的发布公告，尝试在浏览器中部署LiteRT-LM Web Demo，实现不需要后端的纯网页端离线AI对话功能（具体接口以官方最新文档为准）。</p>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.textContent=next==='deep'?'':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.textContent=t==='deep'?'':'';});
+</script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

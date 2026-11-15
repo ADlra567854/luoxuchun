@@ -1,0 +1,503 @@
+/* ==========================================================================
+   site-nav.css · 统一导航层（2026-10-29 重建）
+   --------------------------------------------------------------------------
+   为什么要重写：
+     旧站 327 页里只有 22 页有主导航，这 22 页各写各的，共 14 种方案，
+     首页一条导航塞 14 个链接；另有 305 页只有面包屑、没有导航。
+     层级上还并存「主站/副站」「主导航/二级导航/栏目导航」三套说法。
+   这一层的规则只有三条：
+     ① 全站只有一个主导航，固定 5 项（域），不再随栏目增加而膨胀；
+     ② 进到某个域里才出现「分区条」，只放当前域的页，不放别域；
+     ③ 第三层不再有导航，用页内筛选/锚点解决。
+   结构由 site-nav.js 生成，样式全部走 design-norms.css 的 token。
+   ========================================================================== */
+
+/* ---------- 骨架 ---------- */
+header.ccnav{
+  position: sticky; top: 0; z-index: 900;
+  background: var(--nav-bg, rgba(255,255,255,.82));
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--nav-line, rgba(227,235,245,.95));
+  box-shadow: var(--sh-sm);
+  transition: background .35s ease, border-color .35s ease;
+}
+header.ccnav .ccnav-in{
+  max-width: 1240px; margin: 0 auto;
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding: 0 var(--sp-4);
+  height: 60px;
+}
+
+/* ---------- 品牌 ---------- */
+header.ccnav .ccnav-brand{
+  display: flex; align-items: center; gap: 9px;
+  font-size: 16px; font-weight: 700; letter-spacing: .3px;
+  white-space: nowrap; flex: 0 0 auto; color: var(--text);
+}
+/* 标识由内联 SVG 自带渐变底与圆角，这里只负责占位与缩放。
+   刻意不加 box-shadow —— 标识在深色底上带投影会发脏，规范里明确禁止。 */
+header.ccnav .ccnav-brand .lg{
+  width: 32px; height: 32px; flex: none;
+  display: grid; place-items: center;
+}
+header.ccnav .ccnav-brand .lg svg,
+.ccdrawer .dh .lg svg{ width: 100%; height: 100%; display: block; }
+.ccdrawer .dh .lg{ width: 26px; height: 26px; flex: none; }
+header.ccnav .ccnav-brand .tx{
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------- 主导航：恰好 5 项，等距，不换行 ---------- */
+/* 老页面残留的通用 nav{position:fixed;top:0;left:0;right:0;
+   justify-content:space-between;background:…} 本意是给旧 nav.top 用的，
+   却会命中统一导航的 <nav class="ccnav-main">，把五域拉散到整行、
+   盖住品牌区，并在导航与正文之间留下空白断层。
+   这里用更高优先级把这几个属性显式锁回 header 内的静态布局。 */
+header.ccnav .ccnav-main{
+  display: flex; align-items: center; gap: 2px;
+  margin-left: var(--sp-4); min-width: 0;
+  position: static; top: auto; left: auto; right: auto;
+  justify-content: flex-start; padding-top: 0; background: transparent;
+}
+header.ccnav .ccnav-main > a{
+  display: inline-flex; align-items: center; gap: 6px;
+  height: var(--ctl-sm); padding: 0 13px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-md); font-weight: 700;
+  color: var(--muted); white-space: nowrap;
+  transition: background .18s ease, color .18s ease;
+}
+header.ccnav .ccnav-main > a .cc-ic{ font-size: 15px; opacity: .8; }
+header.ccnav .ccnav-main > a:hover{
+  background: rgba(120,160,220,.13); color: var(--blue, #4f8cff);
+}
+header.ccnav .ccnav-main > a:hover .cc-ic{ opacity: 1; }
+/* 当前域：渐变胶囊，全站唯一的高亮样式 */
+header.ccnav .ccnav-main > a[aria-current="page"]{
+  background: var(--grad); color: #fff;
+  box-shadow: 0 4px 12px rgba(79,140,255,.30);
+}
+header.ccnav .ccnav-main > a[aria-current="page"] .cc-ic{ opacity: 1; }
+
+/* ---------- 右侧动作 ---------- */
+header.ccnav .ccnav-act{
+  display: flex; align-items: center; gap: 10px;
+  margin-left: auto; flex: 0 0 auto;
+}
+header.ccnav .ccnav-act .ib{
+  width: var(--ctl-sm); height: var(--ctl-sm);
+  display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: var(--r-sm);
+  background: var(--panel, transparent); color: var(--text);
+  font-size: 15px; cursor: pointer; box-sizing: border-box;
+  transition: border-color .18s ease, color .18s ease;
+}
+header.ccnav .ccnav-act .ib:hover{ border-color: var(--blue,#4f8cff); color: var(--blue,#4f8cff); }
+header.ccnav .ccnav-act .cta{
+  display: inline-flex; align-items: center; gap: 6px;
+  height: var(--ctl-md); padding: 0 16px;
+  border-radius: var(--r-sm); background: var(--grad);
+  color: #fff; font-weight: 800; font-size: var(--fs-md);
+  white-space: nowrap; box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(79,140,255,.28);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+header.ccnav .ccnav-act .cta:hover{ transform: translateY(-1px); box-shadow: 0 7px 18px rgba(79,140,255,.4); }
+
+/* 汉堡：桌面隐藏 */
+header.ccnav .ccnav-burger{
+  display: none; width: var(--ctl-sm); height: var(--ctl-sm);
+  place-items: center; border: 1px solid var(--line);
+  border-radius: var(--r-sm); background: transparent;
+  color: var(--text); font-size: 17px; cursor: pointer; box-sizing: border-box;
+}
+
+/* ---------- 分区条：只装当前域的页 ---------- */
+header.ccnav .ccnav-sub{
+  border-top: 1px solid var(--nav-line, rgba(227,235,245,.6));
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  /* 老页面（尤其 /agent.html 的内联 <style>）留有裸规则
+     nav{position:fixed;top:0;left:0;right:0;z-index:100;...}，本意是给旧顶栏用，
+     却会命中统一导航的 <nav class="ccnav-sub">。命中后分区条会脱离文档流、
+     横跨整个视口顶部，盖住 .nav-actions 里的「设置」等按钮（点击落空）。
+     这里显式锁回静态布局，优先级高于任何页内裸 nav 规则。 */
+  position: static !important;
+  top: auto !important; left: auto !important; right: auto !important;
+  z-index: auto !important;
+  display: block !important;
+  padding: 0 !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+}
+header.ccnav .ccnav-sub-in{
+  max-width: 1240px; margin: 0 auto;
+  display: flex; align-items: center; gap: var(--sp-1);
+  padding: 0 var(--sp-4); height: 46px;
+  overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+header.ccnav .ccnav-sub-in::-webkit-scrollbar{ display: none; }
+header.ccnav .ccnav-sub-in .lb{
+  font-size: var(--fs-xs); font-weight: 800; color: var(--dim, var(--muted));
+  letter-spacing: .8px; text-transform: uppercase;
+  margin-right: var(--sp-2); flex: none; opacity: .8;
+}
+header.ccnav .ccnav-sub-in a{
+  display: inline-flex; align-items: center; gap: 5px;
+  height: var(--ctl-xs); padding: 0 11px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm); font-weight: 600;
+  color: var(--muted); white-space: nowrap; flex: none;
+  box-sizing: border-box;
+  transition: background .18s ease, color .18s ease;
+}
+header.ccnav .ccnav-sub-in a .cc-ic{ font-size: 13px; opacity: .75; }
+header.ccnav .ccnav-sub-in a:hover{ background: rgba(120,160,220,.13); color: var(--blue,#4f8cff); }
+header.ccnav .ccnav-sub-in a[aria-current="page"]{
+  background: rgba(79,140,255,.14);
+  color: var(--blue, #4f8cff);
+  font-weight: 800;
+}
+header.ccnav .ccnav-sub-in a[aria-current="page"] .cc-ic{ opacity: 1; }
+/* 深色主题下的分区条底 */
+body[data-theme="deep"] header.ccnav .ccnav-sub{ background: rgba(8,5,28,.5); }
+body[data-theme="cloud"] header.ccnav .ccnav-sub{ background: rgba(248,251,255,.82); }
+
+/* ---------- 移动端 ---------- */
+@media (max-width: 900px){
+  header.ccnav .ccnav-in{ gap: var(--sp-2); padding: 0 12px; height: 54px; }
+  header.ccnav .ccnav-brand{ font-size: 15px; }
+  header.ccnav .ccnav-brand .lg{ width: 29px; height: 29px; font-size: 15px; }
+  header.ccnav .ccnav-main,
+  header.ccnav .ccnav-act .cta,
+  header.ccnav .ccnav-act .sr{ display: none; }
+  header.ccnav .ccnav-burger{ display: grid; }
+  header.ccnav .ccnav-sub-in{ height: 42px; padding: 0 12px; }
+}
+
+/* ---------- 抽屉（移动端唯一的二级入口，替代旧的汉堡+横滚两套并存）---------- */
+.ccdrawer{
+  position: fixed; inset: 0; z-index: 1500;
+  background: var(--bg); color: var(--text);
+  display: flex; flex-direction: column;
+  transform: translateX(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
+  overflow-y: auto; visibility: hidden;
+}
+.ccdrawer.on{ transform: translateX(0); visibility: visible; }
+.ccdrawer .dh{
+  position: sticky; top: 0; display: flex; align-items: center; gap: 10px;
+  padding: 0 16px; height: 54px; flex: none;
+  border-bottom: 1px solid var(--nav-line);
+  background: var(--nav-bg); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.ccdrawer .dh .t{ font-weight: 700; font-size: 15px; }
+.ccdrawer .dh .x{
+  margin-left: auto; width: var(--ctl-sm); height: var(--ctl-sm);
+  display: grid; place-items: center; border: 1px solid var(--line);
+  border-radius: var(--r-sm); background: transparent; color: var(--text);
+  font-size: 17px; cursor: pointer; box-sizing: border-box;
+}
+.ccdrawer .db{ padding: 12px 12px 40px; }
+/* 按需要找 · 分类标签带（资讯/教程/创作/本地部署/副业赚钱） */
+.cctags{ display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  padding: 10px 4px 14px; margin-bottom: 6px; border-bottom: 1px solid rgba(120,160,220,.18); }
+.cctag-lb{ font-size: 11px; font-weight: 800; color: var(--dim, var(--muted)); letter-spacing: .5px; margin-right: 4px; }
+.cctag{ font-size: 12px; font-weight: 700; padding: 5px 11px; border-radius: 999px;
+  text-decoration: none; color: var(--blue, #4f8cff);
+  background: rgba(79,140,255,.09); border: 1px solid rgba(79,140,255,.26); white-space: nowrap; }
+.cctag:hover{ background: rgba(79,140,255,.2); }
+body[data-theme="deep"] .cctags{ border-bottom-color: rgba(120,150,200,.2); }
+body[data-theme="deep"] .cctag{ color: #9dc0ff; background: rgba(79,140,255,.14); border-color: rgba(120,150,200,.3); }
+.ccdrawer .grp{ margin-bottom: 18px; }
+.ccdrawer .grp > .gl{
+  font-size: var(--fs-xs); font-weight: 800; color: var(--dim, var(--muted));
+  letter-spacing: .8px; padding: 0 8px 8px;
+}
+.ccdrawer .grp a.dl{
+  display: flex; align-items: center; gap: 11px;
+  padding: 12px 12px; border-radius: var(--r-md);
+  font-size: 15px; font-weight: 700; color: var(--text);
+}
+.ccdrawer .grp a.dl + a.dl{ margin-top: 2px; }
+.ccdrawer .grp a.dl .cc-ic{
+  width: 34px; height: 34px; flex: none;
+  display: grid; place-items: center; font-size: 16px;
+  border-radius: var(--r-sm);
+  background: rgba(120,160,220,.13); color: var(--blue,#4f8cff);
+}
+.ccdrawer .grp a.dl small{
+  display: block; font-size: var(--fs-xs); font-weight: 500;
+  color: var(--muted); margin-top: 1px; line-height: 1.4;
+}
+.ccdrawer .grp a.dl[aria-current="page"]{
+  background: var(--grad); color: #fff;
+}
+.ccdrawer .grp a.dl[aria-current="page"] .cc-ic{ background: rgba(255,255,255,.22); color: #fff; }
+.ccdrawer .grp a.dl[aria-current="page"] small{ color: rgba(255,255,255,.86); }
+body.ccnav-lock{ overflow: hidden; }
+
+/* ---------- 页内锚点条（第三层不用导航，用这个）---------- */
+.ccjump{
+  display: flex; gap: var(--sp-1); flex-wrap: wrap;
+  padding: var(--sp-3) 0; margin-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--line);
+}
+.ccjump a{
+  display: inline-flex; align-items: center; gap: 5px;
+  height: var(--ctl-xs); padding: 0 11px;
+  border-radius: var(--r-pill); border: 1px solid var(--line);
+  font-size: var(--fs-xs); font-weight: 700; color: var(--muted);
+  box-sizing: border-box;
+}
+.ccjump a:hover{ border-color: var(--blue,#4f8cff); color: var(--blue,#4f8cff); }
+
+/* ---------- 面包屑（唯一保留的层级标识，替代旧的 nav 面包屑）---------- */
+.cccrumb{
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  font-size: var(--fs-xs); color: var(--muted);
+  padding: var(--sp-3) 0 0;
+}
+.cccrumb a{ color: var(--muted); }
+.cccrumb a:hover{ color: var(--blue,#4f8cff); }
+.cccrumb .sep{ opacity: .45; }
+.cccrumb .cur{ color: var(--text); font-weight: 700; }
+/* buildCrumb() 自动补的面包屑是 body 直接子元素，没有页面容器兜底，
+   必须自己带居中宽度与左右 gutter，否则手机端又回到 0px 贴边。 */
+.cccrumb.cccrumb-auto{
+  max-width: 1080px;
+  margin-left: auto; margin-right: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+@media (max-width: 480px) {
+  .cccrumb.cccrumb-auto{
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* ---------- 与旧注入层共存 ----------
+   旧 module.js 会建一条 #modTocBar（吸顶目录条），它按旧导航高 62px 定位，
+   在双层导航下正好压住第二层。新架构第三层用页内锚点，不需要这条。
+   只在新导航存在时隐藏，只有旧导航的页面保持原样。 */
+html.ccnav-on #modTocBar{ display: none !important; }
+
+/* 旧 module.js 的「阅读模式」浮标按旧导航高度定位，同样上移到新导航下方 */
+html.ccnav-on #modReaderFab{ top: 116px !important; }
+
+/* ---------- 动作区拥挤时分档收敛 ----------
+   导航右侧不只有我们自己的三个控件：旧注入层（assets/baiju-core.js）还会往
+   .nav-actions 里追加「选身份 / 登录 / 通知」三个。1440 下六个控件排得开，
+   1024 下 flex 会把它们压到贴在一起，所以按宽度分三档让步：
+     1180 收主导航的内边距 → 1060 把「开始对话」收成图标 → 900 进汉堡 */
+header.ccnav .ccnav-act{ flex: 0 0 auto; }
+header.ccnav .ccnav-act > *{ flex: none; }
+header.ccnav .ccnav-main{
+  flex: 1 1 auto; min-width: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+header.ccnav .ccnav-main::-webkit-scrollbar{ display: none; }
+
+@media (max-width: 1180px){
+  header.ccnav .ccnav-main{ margin-left: var(--sp-2); gap: 0; }
+  header.ccnav .ccnav-main > a{ padding: 0 10px; }
+  header.ccnav .ccnav-act{ gap: 8px; }
+}
+
+@media (max-width: 1060px){
+  /* 「开始对话」只留图标；文字裹在 .tx 里，收起来不会连带图标消失 */
+  header.ccnav .ccnav-act .cta{ padding: 0 11px; }
+  header.ccnav .ccnav-act .cta .tx{ display: none; }
+}
+
+/* ==========================================================================
+   2026-11-10 · 移动端两行导航收口
+   --------------------------------------------------------------------------
+   实测（390px / 360px 两档，真浏览器量出来的）：
+     · .ccnav-in     内容 403px，可视 390 → 溢出 13px（360 下 43px）
+                     品牌 150 + 主题 34 + 身份 101 + 通知 41 + 汉堡 34 塞不下，
+                     汉堡按钮被顶出屏幕右沿，等于摸不到菜单入口。
+     · .ccnav-sub-in 内容 422px，可视 390 → 溢出 32px（360 下 62px）
+                     最后一格「路线」被硬切成半截。分区条本来就是横向滚动的，
+                     但「隐藏滚动条 + 硬切」等于没有任何提示。
+   查过这块的通行做法（各家前端实践口径一致）：横向导航条保留原生滚动，
+   靠 ① 边缘渐隐 ② scroll-snap 吸附 ③ scroll-padding 防贴边
+      ④ safe-area 内边距避开刘海/圆角
+   来提示「右边还有」，而不是靠隐藏滚动条硬扛。下面按这四条落。
+   ========================================================================== */
+
+/* ---------- 顶行：让品牌可压缩，绝不挤掉汉堡 ---------- */
+header.ccnav .ccnav-in{ overflow-x: clip; }
+header.ccnav .ccnav-brand{ min-width: 0; flex: 0 1 auto; }
+header.ccnav .ccnav-brand .tx{
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+header.ccnav .ccnav-act{ min-width: 0; }
+
+@media (max-width: 900px){
+  /* 动作区间距从 8 收到 6：三个控件 34+101+41 + 间距本来就顶满 */
+  header.ccnav .ccnav-act{ gap: 6px; }
+  /* 通知铃在手机上信息密度最低，抽屉里也有入口 —— 先让它让位 */
+  header.ccnav .ccnav-act .bj-bell{ display: none; }
+}
+@media (max-width: 420px){
+  /* 再窄就把品牌名收成省略号（logo 保留），换取汉堡始终可见 */
+  header.ccnav .ccnav-brand .tx{ max-width: 76px; }
+}
+@media (max-width: 340px){
+  /* 极窄屏（老机型/分屏）最后一步：身份芯片也收进抽屉 */
+  header.ccnav .ccnav-act .bj-idbox{ display: none; }
+}
+
+/* ---------- 分区条：右缘渐隐 + 吸附，滚到底渐隐自动消失 ---------- */
+header.ccnav .ccnav-sub-in{
+  /* 这里刻意「不做」scroll-snap。
+     试过 scroll-snap-type: x proximity + scroll-snap-align: start，
+     结果页面加载时浏览器会先执行一次初始吸附：为了让第一个 <a> 对齐到
+     scroll-padding 的位置，容器被自动滚了 26px，把最前面的域标签「学习」
+     直接推出屏幕（左沿 -14px）。吸附本身只是锦上添花，
+     换来一个「一进页面就少一个字」的硬伤不划算，故撤掉。
+     提示「右边还有」这件事由两端渐隐负责，见下面的 edge-l / edge-r。 */
+  scroll-padding-inline: 12px;
+  overscroll-behavior-x: contain;
+}
+@media (max-width: 900px){
+  /* 避开刘海与圆角屏：非异形屏 env() 取 0，等价于原来的 12px。
+     只在移动端生效 —— 桌面端要保持与 1240 容器的 16px 对齐。 */
+  header.ccnav .ccnav-sub-in{
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+}
+header.ccnav .ccnav-sub-in > a{
+  /* 键盘 Tab 聚焦时不要让焦点贴死在容器边缘 */
+  scroll-margin-inline: 16px;
+}
+/* 两端渐隐：只在「那一侧还有内容」时出现，滚到头就消失。
+   site-nav.js 会实时维护 edge-l / edge-r 两个类。
+   三种组合分别写死，因为 mask-image 后写的会整条覆盖前面的，不能叠加。 */
+header.ccnav .ccnav-sub-in.edge-r:not(.edge-l){
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 30px), transparent 100%);
+  mask-image: linear-gradient(to right, #000 calc(100% - 30px), transparent 100%);
+}
+header.ccnav .ccnav-sub-in.edge-l:not(.edge-r){
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30px);
+  mask-image: linear-gradient(to right, transparent 0, #000 30px);
+}
+header.ccnav .ccnav-sub-in.edge-l.edge-r{
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30px, #000 calc(100% - 30px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 30px, #000 calc(100% - 30px), transparent 100%);
+}
+@media (prefers-reduced-motion: reduce){
+  header.ccnav .ccnav-sub-in{ scroll-behavior: auto; }
+}
+
+/* ==========================================================================
+   站点页脚
+   --------------------------------------------------------------------------
+   为什么要有：全站 117 页原本没有任何一个站点页脚（页内 class="foot" 是
+   数据表标签，不是页脚）。企业级站点的页脚承担四件事 —— 说明品牌是谁、
+   给出全部入口、交代内容依据、提供联系与法务出口。缺一项都是缺陷。
+   由 site-nav.js 的 buildFooter() 注入，页面零维护。
+
+   版式：4 栏（品牌 2fr + 三列 1fr）。≤880 折成 2 栏，≤560 单栏。
+   配色全部走主题 token，亮暗两版自动同步，不写死颜色。
+   ========================================================================== */
+footer.ccfoot{
+  margin-top: var(--sp-7);
+  border-top: 1px solid var(--line);
+  background: var(--panel);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+footer.ccfoot .ccfoot-in{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--sp-6) var(--sp-5);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--sp-7) var(--sp-5) var(--sp-5);
+  box-sizing: border-box;
+}
+
+/* ---- 品牌列 ---- */
+footer.ccfoot .cf-brand{ min-width: 0; }
+footer.ccfoot .cf-logo{
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--text); margin-bottom: var(--sp-3);
+}
+footer.ccfoot .cf-logo .lg{ width: 28px; height: 28px; flex: none; }
+footer.ccfoot .cf-logo .lg svg{ width: 100%; height: 100%; display: block; }
+footer.ccfoot .cf-logo .tx{
+  font-size: 15px; font-weight: 700; letter-spacing: .2px;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+footer.ccfoot .cf-tag{
+  margin: 0 0 6px; font-size: var(--fs-sm); color: var(--text); font-weight: 600;
+  line-height: 1.6; max-width: 22em;
+}
+footer.ccfoot .cf-claim{
+  margin: 0; font-size: var(--fs-xs); color: var(--muted);
+  line-height: 1.7; max-width: 24em;
+}
+
+/* ---- 链接列 ---- */
+footer.ccfoot .cf-h{
+  font-size: var(--fs-xs); font-weight: 700; letter-spacing: .08em;
+  color: var(--text); margin-bottom: var(--sp-3); opacity: .9;
+}
+footer.ccfoot .cf-list{ list-style: none; margin: 0; padding: 0; }
+footer.ccfoot .cf-list li{ margin-bottom: 9px; }
+footer.ccfoot .cf-list a{
+  color: var(--muted); text-decoration: none;
+  font-size: var(--fs-sm); line-height: 1.5;
+  /* 焦点与悬停都要可见：只靠颜色变化对键盘用户不友好 */
+  transition: color .15s ease;
+}
+footer.ccfoot .cf-list a:hover,
+footer.ccfoot .cf-list a:focus-visible{ color: var(--blue); }
+footer.ccfoot .cf-list a:focus-visible{ outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 3px; }
+
+/* ---- 底条 ---- */
+footer.ccfoot .cf-bar{
+  max-width: 1240px; margin: 0 auto;
+  padding: var(--sp-4) var(--sp-5) var(--sp-6);
+  border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 8px var(--sp-5);
+  justify-content: space-between; align-items: baseline;
+  font-size: var(--fs-xs); color: var(--dim);
+  box-sizing: border-box;
+}
+footer.ccfoot .cf-note{ color: var(--dim); }
+
+@media (max-width: 880px){
+  footer.ccfoot .ccfoot-in{
+    grid-template-columns: 1fr 1fr;
+    padding: var(--sp-6) var(--sp-4) var(--sp-4);
+    gap: var(--sp-5) var(--sp-4);
+  }
+  /* 品牌列占满整行 —— 两栏时挤在左半会显得局促 */
+  footer.ccfoot .cf-brand{ grid-column: 1 / -1; }
+  footer.ccfoot .cf-bar{ padding: var(--sp-4) var(--sp-4) var(--sp-5); }
+}
+@media (max-width: 560px){
+  footer.ccfoot .ccfoot-in{ grid-template-columns: 1fr; }
+  footer.ccfoot .cf-bar{ flex-direction: column; gap: 6px; }
+}
+
+/* 免责声明行：独立一条，字号最小、对比度最低，但不能省。
+   说明"数据往哪走"，属于用户有权知情的信息，不属于可裁剪的装饰。 */
+footer.ccfoot .cf-dis{
+  max-width: 1240px; margin: 0 auto;
+  padding: 0 var(--sp-5) var(--sp-6);
+  font-size: var(--fs-xs); line-height: 1.7; color: var(--dim);
+  border-top: 1px dashed var(--line);
+  padding-top: var(--sp-3);
+  box-sizing: border-box;
+}
+@media (max-width: 880px){
+  footer.ccfoot .cf-dis{ padding-left: var(--sp-4); padding-right: var(--sp-4); }
+}

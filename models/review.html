@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>模型横评 · 模型域 · 白驹 ccowork</title>
+<meta name="description" content="主流模型的横向对比：能力、价格、上下文与适用场景。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/review.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+/* ---------- 导航 ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:26px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-links a.active{color:var(--pink)}
+@media(max-width:900px){.nav-links{display:none}}
+/* ---------- Hero ---------- */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:120px 24px 60px;position:relative;
+  background:radial-gradient(900px 500px at 20% 10%,rgba(79,140,255,.16),transparent 60%),
+             radial-gradient(800px 500px at 85% 30%,rgba(139,92,246,.14),transparent 60%),
+             radial-gradient(700px 600px at 50% 100%,rgba(56,225,255,.10),transparent 60%),var(--bg)}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:999px;letter-spacing:2px;margin-bottom:28px;animation:float 4s ease-in-out infinite}
+.hero h1{font-size:clamp(34px,5.6vw,72px);font-weight:900;line-height:1.2;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:800px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:26px auto 40px}
+.stats{display:flex;gap:56px;margin-top:60px;flex-wrap:wrap;justify-content:center}
+.stat b{display:block;font-size:36px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:13px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* ---------- 布局 ---------- */
+section{max-width:1180px;margin:0 auto;padding:84px 24px}
+.sec-head{margin-bottom:48px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(28px,3.6vw,44px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:760px;margin-top:12px}
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+@media(max-width:520px){.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;transition:.3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 10% 0%,rgba(79,140,255,.10),transparent 60%);opacity:0;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:rgba(79,140,255,.5);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.card:hover::before{opacity:1}
+.card .icon{font-size:32px;margin-bottom:14px}
+.card h3{font-size:19px;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px}
+.card .pill{display:inline-block;margin-top:14px;font-size:12px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:999px;padding:3px 12px}
+.card .rank{position:absolute;top:18px;right:20px;font-size:30px;font-weight:900;opacity:.16;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* ---------- 分组标题 ---------- */
+.group-title{display:flex;align-items:center;gap:14px;margin:44px 0 22px;font-size:20px;font-weight:800}
+.group-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.group-title .dot{width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px rgba(79,140,255,.15)}
+/* ---------- 表格 ---------- */
+.ds-table{width:100%;border-collapse:collapse;font-size:14px;overflow:hidden;border-radius:14px}
+.ds-table th,.ds-table td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.ds-table th{background:#131d33;color:var(--cyan);font-size:13px;letter-spacing:1px;white-space:nowrap}
+.ds-table tr:hover td{background:rgba(79,140,255,.06)}
+.ds-table td:first-child{font-weight:700;color:var(--text);white-space:nowrap}
+.ds-table td{color:var(--muted)}
+.ds-table .open{color:var(--cyan);font-weight:700}
+.ds-table .closed{color:var(--pink);font-weight:700}
+.tag-cn{display:inline-block;font-size:11px;color:var(--bg);background:var(--grad);border-radius:6px;padding:1px 7px;font-weight:700;margin-left:6px;vertical-align:middle}
+/* ---------- 调用框 ---------- */
+.prompt-box{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:22px 24px;font-family:Consolas,monospace;font-size:14px;color:#b9c8ea;position:relative;margin-top:14px}
+.prompt-box b{color:var(--cyan)}
+/* ---------- 时间线 ---------- */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),var(--purple))}
+.tl-item{position:relative;margin-bottom:34px}
+.tl-item::before{content:"";position:absolute;left:-31px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(56,225,255,.15)}
+.tl-item h4{font-size:17px}
+.tl-item .time{color:var(--cyan);font-size:12px;letter-spacing:1px}
+.tl-item p{color:var(--muted);font-size:14px;margin-top:6px}
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:46px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+footer a{color:var(--cyan);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+.src{font-size:12px;color:var(--muted);margin-top:26px;line-height:2}
+.src a{color:var(--cyan);text-decoration:none}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+</head>
+<body data-ccnav="models" data-cctitle="模型">
+<div class="pg-wrap">
+<article class="merged-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-models.png" alt="ccowork · 2026 全球大模型对比 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="progress" id="progress"></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="tag">2026 · GLOBAL LLM LANDSCAPE</div>
+  <h1>2026 全球大模型对比<br><span>白驹 ccowork</span></h1>
+  <p class="sub">2026 年的格局由三条线同时改写：海外三强完成换代（GPT-6 家族、Claude Opus 5.5、Gemini 4 Argon），
+  国产把参数与上下文推到「3 万亿 / 100 万 token」量级（Kimi K3.1 Pro、Qwen3.8-Max、DeepSeek V4.1、GLM-5.3），
+  而 1M 上下文与峰谷计价让「顶级智能」第一次按真实成本被比较。
+  本页每一个数字都标注了官方来源与核验日期；打不开的官方页面，我们写「未核实」，不填猜测值。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  <div class="stats">
+    <div class="stat"><b>3</b><span>海外前沿实验室</span></div>
+    <div class="stat"><b>5</b><span>国产第一梯队</span></div>
+    <div class="stat"><b>1M</b><span>上下文新标配</span></div>
+    <div class="stat"><b>2026</b><span>换代之年</span></div>
+  </div>
+</header>
+<!-- ================= 格局总览 ================= -->
+<section id="overview">
+  <div class="sec-head">
+    <div class="kicker">Chapter 01</div>
+    <h2>格局总览：三强换代，国产追平</h2>
+    <p>截至 2026 年 10 月 27 日，海外仍由 OpenAI、Anthropic、Google 三足鼎立，但三家都在 2026 年内完成了新旗舰换代；
+    国产则以 3 万亿参数的 Kimi K3.1 Pro、2.4 万亿参数的 Qwen3.8-Max、原生多模态的 DeepSeek V4.1 与 1M 上下文的 GLM-5.3 组成第一梯队。
+    在 <b style="color:var(--cyan)">上下文长度、开源权重、单位 token 价格</b> 三个维度上，国产已具备正面对比的条件。</p>
+  </div>
+  <div class="group-title"><span class="dot"></span><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>海外三强 · 2026 款</div>
+  <div class="grid g3">
+    <div class="card">
+      <span class="rank">01</span>
+      <div class="icon"><i class="cc-ic cc-dot" data-ic="circle" style="color:#22c55e" aria-hidden="true"></i></div>
+      <h3>OpenAI · GPT-6 系列</h3>
+      <p>2026 年 9 月 3 日发布 <b style="color:var(--text)">GPT-6 Astra</b>，官方称其为「已大规模部署的最强模型」；9 月 22 日发布 <b style="color:var(--text)">GPT-6 Sol / Luna</b>；10 月 7 日把 GPT-6 推给全体免费用户并推出 Intelligent UI；10 月 26 日发布 <b style="color:var(--text)">GPT-6.1 Terra</b> 系统卡增补。
+      公开基准：Terminal-Bench 4.0 <b style="color:var(--text)">57.9%</b>、FrontierCode v1.1 53.3%（Anthropic 官方对比页引用 OpenAI 数据）。</p>
+      <span class="pill">闭源 · 多代并存 · 生态最广</span>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px">报价与上下文窗口：<b style="color:var(--pink)">未核实</b>（openai.com 对本机返回 403）</p>
+      <p style="font-size:12px;margin-top:8px"><a href="https://deploymentsafety.openai.com/gpt-6-astra" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：OpenAI Deployment Safety Hub</a> · 核验于 2026-10-27</p>
+    </div>
+    <div class="card">
+      <span class="rank">02</span>
+      <div class="icon"><i class="cc-ic cc-dot" data-ic="circle" style="color:#f97316" aria-hidden="true"></i></div>
+      <h3>Anthropic · Claude Opus 5.5</h3>
+      <p>2026 年 9 月 22 日发布 Claude 5.5 家族首个模型，官方称其在多数工作上达到 <b style="color:var(--text)">Fable 5.1</b> 水平，单位 token 成本比 Opus 5 低 20%、典型工作负载总成本低约 40%，并具备 <b style="color:var(--text)">1M 上下文</b>。
+      Terminal-Bench 4.0 <b style="color:var(--text)">66.4%</b>、GDPval-AA v2.1 1846、OSWorld 2.1 81.8%。</p>
+      <span class="pill">闭源 · 编码/Agent 领先 · $4 / $20</span>
+      <p style="font-size:12px;margin-top:14px"><a href="https://www.anthropic.com/claude-opus-5-5" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：Anthropic 发布页</a> · 核验于 2026-10-27</p>
+    </div>
+    <div class="card">
+      <span class="rank">03</span>
+      <div class="icon"><i class="cc-ic cc-dot" data-ic="circle" style="color:#3b82f6" aria-hidden="true"></i></div>
+      <h3>Google · Gemini 4 Argon</h3>
+      <p>2026 年 10 月 13 日向所有人开放，官方称其在衡量金融、编程、法律与税务等经济领域的 <b style="color:var(--text)">Vals Index 上排名第 1</b>，
+      并以「统一输入输出 <b style="color:var(--text)">1M token</b>」为 API 卖点。首发价 <b style="color:var(--text)">$2 / $10</b>（每 1M token，缓存输入 95% off），2026-11-30 后恢复 $4 / $20。</p>
+      <span class="pill">闭源 · 多模态 · 首发价最狠</span>
+      <p style="font-size:12px;margin-top:14px"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：Google Blog</a> · 核验于 2026-10-27</p>
+    </div>
+  </div>
+  <div class="group-title"><span class="dot"></span> 国产第一梯队 · 2026 款</div>
+  <div class="grid g3">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="cpu"></i></div>
+      <h3>DeepSeek · V4.1 Flash / V4 Pro<span class="tag-cn">开源</span></h3>
+      <p>2026 年 4 月 24 日换代到 V4，8 月 13 日 V4-Pro 正式可用，9 月 10 日 V4.1-Flash 转为原生多模态架构，10 月 17 日更新至 <b style="color:var(--text)">V4.1-Flash-1017</b>。
+      官方定价 <b style="color:var(--text)">1M 上下文 + 384K 输出</b>：Flash 峰值输入 $0.30 / 输出 $1.20，谷值半价。</p>
+      <span class="pill">开源 · 1M 上下文 · 峰谷半价</span>
+      <p style="font-size:12px;margin-top:14px"><a href="https://api-docs.deepseek.com/quick_start/pricing" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：DeepSeek API Docs</a> · 核验于 2026-10-27</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="cloud" aria-hidden="true"></i></div>
+      <h3>阿里 · Qwen3.8-Max<span class="tag-cn">开源</span></h3>
+      <p>2026 年 8 月 3 日发布，<b style="color:var(--text)">2.4 万亿总参数 / 950 亿激活</b>的稀疏 MoE + 混合注意力架构，原生多模态，
+      支持百万 token 上下文；官方称 <b style="color:var(--text)">Vision Arena 第 2、Text Arena 第 5、Frontend Code Arena 第 4</b>。国际站 $2 / $6 每 1M token。</p>
+      <span class="pill">开源 · 2.4T 参数 · 多模态强</span>
+      <p style="font-size:12px;margin-top:14px"><a href="https://www.alibabacloud.com/zh/press-room/alibaba-unveils-qwen3-8-max" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：阿里云新闻稿</a> · 核验于 2026-10-27</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i></div>
+      <h3>智谱 · GLM-5.3<span class="tag-cn">开源</span></h3>
+      <p>2026 年 8 月 18 日发布，与 GLM-5.2 同底座、全部提升来自后训练；官方称在 <b style="color:var(--text)">Z.ai Code Bench 上较 GLM-5.2 提升 50%</b>，Terminal Bench 3.0 与 Agents' Last Exam (CLI) 为开源 SOTA。
+      <b style="color:var(--text)">1M 上下文 / 128K 输出</b>，纯文本，$/1M 为 $1.4 / $4.4。</p>
+      <span class="pill">开源 · 编码 SOTA · 1M 上下文</span>
+      <p style="font-size:12px;margin-top:14px"><a href="https://docs.z.ai/guides/llm/glm-5.3" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：Z.AI 开发者文档</a> · 核验于 2026-10-27</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="moon" aria-hidden="true"></i></div>
+      <h3>月之暗面 · Kimi K3.1 Pro<span class="tag-cn">开源</span></h3>
+      <p>2026 年 10 月 24 日发布，<b style="color:var(--text)">3 万亿级参数</b>、<b style="color:var(--text)">100 万 token 上下文</b>，官方称其为参数规模全球最大的开源模型，完整权重计划 11 月 4 日前发布。
+      官方称 Office QA Pro v2 与 SpreadsheetBench v2 取得全球最佳。定价 ¥13 / ¥68 每 1M token。</p>
+      <span class="pill">开源 · 3T 参数 · 100 万上下文</span>
+      <p style="font-size:12px;margin-top:14px"><a href="https://platform.kimi.com/docs/guide/kimi-k3-1-pro-quickstart" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：Kimi API 开放平台</a> · 核验于 2026-10-27</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="music"></i></div>
+      <h3>字节 · 豆包 Seed2.1</h3>
+      <p>2026 年 6 月 23 日发布，分 <b style="color:var(--text)">Pro / Turbo</b> 两档，面向真实生产力场景的 Agent 模型，已在豆包、TRAE 与火山方舟上线。
+      官方 Model Card：<b style="color:var(--text)">Terminal Bench 2.1 71.0、VideoMME 89.2、MathVision 92.6</b>，GDPval 与 MobileWorld 称最高分。</p>
+      <span class="pill">闭源 · 视频理解 · C 端第一</span>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px">上下文与 API 定价：<b style="color:var(--pink)">未核实</b></p>
+      <p style="font-size:12px;margin-top:8px"><a href="https://seed.bytedance.com/zh/seed2_1" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：字节跳动 Seed 项目页</a> · 核验于 2026-10-27</p>
+    </div>
+  </div>
+</section>
+<!-- ================= DeepSeek 时刻 ================= -->
+<section id="deepseek">
+  <div class="sec-head">
+    <div class="kicker">Chapter 02</div>
+    <h2>DeepSeek 时刻：从 R1 到 V4.1 的路线延续</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-models.png" alt="ccowork · 2026 全球大模型对比 · 白驹 ccowork · DeepSeek 从 R1 到 V4.1 的路线延续" loading="lazy"></figure>
+    <p>R1 当年证明的命题——<b style="color:var(--cyan)">顶级智能可以不靠天价算力堆出来</b>——在 2026 年被 V4 家族继续执行：架构换代、原生多模态、1M 上下文，以及全线的峰谷半价。</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="time">2026.04.24 · V4 双型号上线</div>
+      <h4>V4-Pro 与 V4-Flash 同时开放 API</h4>
+      <p>DeepSeek 在 4 月 24 日把 API 换代到 V4：<code>deepseek-v4-pro</code> 与 <code>deepseek-v4-flash</code> 同时支持 OpenAI ChatCompletions 与 Anthropic 接口，
+    旧型号名 <code>deepseek-chat</code> / <code>deepseek-reasoner</code> 进入三个月下线倒计时。这一步把「换模型不换代码」变成默认体验。</p>
+    </div>
+    <div class="tl-item">
+      <div class="time">2026.08.13 · V4-Pro 正式可用</div>
+      <h4>Agent 能力大幅强化 + 原生 Responses API</h4>
+      <p>V4-Pro 的 GA 版本重点提升生产环境下的 Agent 能力，并原生支持 OpenAI Responses API、针对 Codex 做了适配；
+    思考模式引入 low / high / max 三档强度。官方同时宣布采用<b style="color:var(--cyan)">峰谷计价</b>，谷值为峰值半价。</p>
+    </div>
+    <div class="tl-item">
+      <div class="time">2026.09.10 · V4.1-Flash</div>
+      <h4>新架构 + 原生多模态视觉理解</h4>
+      <p>V4.1-Flash 被称为「新架构家族中最小的模型」，特点是原生多模态视觉理解、更高吞吐与更大的能力上限；
+    官方给出的基准为 GPQA Diamond 90.9、Codeforces Rating 3471、Terminal-Bench 2.1 90.6。价格同步下调。</p>
+    </div>
+    <div class="tl-item">
+      <div class="time">2026.10.17 · V4.1-Flash-1017</div>
+      <h4>同样的价格，更好的「性能—成本」帕累托点</h4>
+      <p>1017 版本在不改调用方式与价格的前提下提升基准（HLE 42.6、Terminal-Bench 4.0 42.3、DeepSWE v1.1 77.0），
+    并缩短任务运行时长与输出长度，让单任务成本进一步下降——这正是 2026 年竞争的真实单位：<b style="color:var(--cyan)">不是每 token 多少钱，而是每件事多少钱</b>。</p>
+    </div>
+  </div>
+</section>
+<!-- ================= 横向对比 ================= -->
+<section id="compare">
+  <div class="sec-head">
+    <div class="kicker">Chapter 03</div>
+    <h2>横向对比：一张表看清 8 个现役主力</h2>
+    <p>只放可核数据：发布时间、官方上下文、官方定价、官方公开基准。<b style="color:var(--cyan)">价格单位统一为「每 1M token 的输入 / 输出」</b>，
+    人民币定价保留原币种（Kimi 为 ¥）。未能取得官方页面的项写「未核实」，不做估算；所有来源页均于 <b style="color:var(--cyan)">2026-10-27 实测可打开</b>。</p>
+  </div>
+  <div style="overflow-x:auto">
+    <table class="ds-table">
+      <tr>
+        <th>模型</th>
+        <th>发布</th>
+        <th>上下文</th>
+        <th>输入价 / 1M</th>
+        <th>输出价 / 1M</th>
+        <th>开源</th>
+        <th>多模态</th>
+        <th>公开基准（摘）</th>
+      </tr>
+      <tr>
+        <td>Claude Opus 5.5</td>
+        <td>2026-09-22</td>
+        <td>1M</td>
+        <td>$4</td>
+        <td>$20</td>
+        <td class="closed">闭源</td>
+        <td>图像</td>
+        <td>Terminal-Bench 4.0 66.4%；HLE 67.7%（tools）；OSWorld 2.1 81.8%</td>
+      </tr>
+      <tr>
+        <td>Gemini 4 Argon</td>
+        <td>2026-10-13</td>
+        <td>1M（输入输出共享）</td>
+        <td>$2（11-30 后 $4）</td>
+        <td>$10（11-30 后 $20）</td>
+        <td class="closed">闭源</td>
+        <td>原生多模态</td>
+        <td>Vals Index 第 1；Gray Swan IPI 攻击成功率 0.7%</td>
+      </tr>
+      <tr>
+        <td>GPT-6 Astra</td>
+        <td>2026-09-03</td>
+        <td>未核实</td>
+        <td>未核实</td>
+        <td>未核实</td>
+        <td class="closed">闭源</td>
+        <td>官方页面未取到</td>
+        <td>Terminal-Bench 4.0 57.9%；FrontierCode 53.3%；GDPval-AA 1542</td>
+      </tr>
+      <tr>
+        <td>DeepSeek V4.1 Flash</td>
+        <td>2026-10-17</td>
+        <td>1M（输出 384K）</td>
+        <td>$0.30 峰值 / $0.15 谷值</td>
+        <td>$1.20 峰值 / $0.60 谷值</td>
+        <td class="open">开源</td>
+        <td>图像（原生）</td>
+        <td>HLE 42.6；Terminal-Bench 4.0 42.3；DeepSWE v1.1 77.0</td>
+      </tr>
+      <tr>
+        <td>DeepSeek V4-Pro</td>
+        <td>2026-08-13</td>
+        <td>1M</td>
+        <td>$1.32 峰值 / $0.66 谷值</td>
+        <td>$3.96 峰值 / $1.98 谷值</td>
+        <td class="open">开源</td>
+        <td>不支持视觉</td>
+        <td>HLE 42.7 / 60.0（tools）；Terminal Bench 2.1 87.9</td>
+      </tr>
+      <tr>
+        <td>Qwen3.8-Max</td>
+        <td>2026-08-03</td>
+        <td>1M</td>
+        <td>$2（内地 $1.650）</td>
+        <td>$6（内地 $4.951）</td>
+        <td class="open">开源路线</td>
+        <td>原生多模态</td>
+        <td>Text Arena 第 5；Vision Arena 第 2；Frontend Code Arena 第 4</td>
+      </tr>
+      <tr>
+        <td>GLM-5.3</td>
+        <td>2026-08-18</td>
+        <td>1M（输出 128K）</td>
+        <td>$1.4</td>
+        <td>$4.4</td>
+        <td class="open">开源</td>
+        <td>纯文本</td>
+        <td>Z.ai Code Bench 较 GLM-5.2 +50%；Terminal Bench 3.0 开源 SOTA</td>
+      </tr>
+      <tr>
+        <td>Kimi K3.1 Pro</td>
+        <td>2026-10-24</td>
+        <td>1,048,576</td>
+        <td>¥13</td>
+        <td>¥68</td>
+        <td class="open">开源（11-04 前放权重）</td>
+        <td>视觉输入</td>
+        <td>Office QA Pro v2、SpreadsheetBench v2 官方称全球最佳</td>
+      </tr>
+      <tr>
+        <td>豆包 Seed2.1 Pro</td>
+        <td>2026-06-23</td>
+        <td>未核实</td>
+        <td>未核实</td>
+        <td>未核实</td>
+        <td class="closed">闭源</td>
+        <td>图像 / 视频</td>
+        <td>Terminal Bench 2.1 71.0；VideoMME 89.2；MathVision 92.6</td>
+      </tr>
+    </table>
+  </div>
+  <div class="grid g3" style="margin-top:44px">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="trophy" aria-hidden="true"></i></div>
+      <h3>2026 的「榜单」已经换了赛道</h3>
+      <p>厂商主推的不再是聊天偏好票选，而是<b style="color:var(--text)">可交付工作</b>类基准：Terminal-Bench 4.0、FrontierCode、SWE-Atlas、Agents' Last Exam、
+      <b style="color:var(--text)">Vals Index / GDPval / Office QA Pro</b>。这直接对应「模型能不能替你把活干完」。</p>
+      <p style="font-size:12px;margin-top:12px"><a href="https://www.anthropic.com/claude-opus-5-5" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：Anthropic 对比基准表</a> · 核验于 2026-10-27</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i></div>
+      <h3>价格战从「每 token」打到「每件事」</h3>
+      <p>Opus 5.5 用「更少 token 完成同一任务」换来总成本 -40%；DeepSeek V4.1-Flash-1017 直接压缩运行时长与输出长度；
+      Gemini 4 Argon 用限时首发价抢开发者。<b style="color:var(--text)">看单价会误判，看单任务成本才准</b>。</p>
+      <p style="font-size:12px;margin-top:12px"><a href="https://api-docs.deepseek.com/updates/" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：DeepSeek Change Log</a> · 核验于 2026-10-27</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i></div>
+      <h3>开源不再等于「落后一档」</h3>
+      <p>GLM-5.3 在 Terminal Bench 3.0 与 Agents' Last Exam 上是开源 SOTA；Kimi K3.1 Pro 以 3 万亿参数把开源上限再抬一档；
+      Qwen3.8-Max 用 2.4T / 95B 激活守住性价比。<b style="color:var(--text)">2026 年的开源，是「能上台打」而不是「能跑起来」</b>。</p>
+      <p style="font-size:12px;margin-top:12px"><a href="https://docs.z.ai/release-notes/new-released" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">来源：Z.AI 发布记录</a> · 核验于 2026-10-27</p>
+    </div>
+  </div>
+</section>
+<!-- ================= 选型建议 ================= -->
+<section id="guide">
+  <div class="sec-head">
+    <div class="kicker">Chapter 04</div>
+    <h2>给创作者 / 个人 IP 的选型建议</h2>
+    <p>没有「最好」的模型，只有「最合适」的模型。选型公式：<b style="color:var(--cyan)">任务匹配 × 单任务成本 × 隐私与可控性</b>。</p>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></div>
+      <h3>长文写作 / 中文创作 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek / Qwen3.8-Max / Kimi</h3>
+      <p>写公众号、小红书、知乎、小说、脚本，中文语感和成本是首要考量。DeepSeek V4.1 Flash 输入 $0.30 起，Qwen3.8-Max 多模态可直接读图写稿，
+      Kimi K3.1 Pro 吃超长资料。三家合计覆盖「便宜量产 → 图文一体 → 超长上下文」的完整链路。</p>
+      <span class="pill">性价比首选</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i></div>
+      <h3>写代码 / 构建工具 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Claude Opus 5.5 / GLM-5.3</h3>
+      <p>复杂工程、长代码库重构首选 Claude Opus 5.5（Terminal-Bench 4.0 66.4%，官方称在 FrontierCode 上以约 20% 的单任务成本胜过 GPT-6 Astra）；
+      预算敏感或需要开源可自托管，用 GLM-5.3（$1.4 / $4.4，编码较 5.2 提升 50%）。</p>
+      <span class="pill">工程能力优先</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="image" aria-hidden="true"></i></div>
+      <h3>读图 / 读视频 / 多模态 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Gemini 4 Argon / Qwen3.8-Max / 豆包 Seed2.1</h3>
+      <p>要理解图片、视频、音频并产出结构化内容，Gemini 4 Argon 原生多模态 + 1M 统一额度最省心；Qwen3.8-Max 官方称 Vision Arena 第 2；
+      豆包 Seed2.1 官方 Model Card 的 VideoMME 为 89.2，长视频理解是其主场。</p>
+      <span class="pill">多模态首选</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div>
+      <h3>深度推理 / 选题策划 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek V4-Pro / Claude Opus 5.5</h3>
+      <p>需要「想清楚」的活——选题分析、剧情逻辑校验、商业策划、数学推导：DeepSeek V4-Pro 的 HLE 为 42.7（with tools 60.0），成本远低于闭源；
+      追求上限再上 Opus 5.5（HLE 67.7% with tools）。</p>
+      <span class="pill">推理质价比</span>
+    </div>
+  </div>
+  <div class="group-title"><span class="dot"></span><i class="cc-ic" data-ic="banknote" aria-hidden="true"></i>性价比怎么算</div>
+  <div class="grid g3">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="calculator" aria-hidden="true"></i></div>
+      <h3>算单任务成本，不算「每 token 单价」</h3>
+      <p>2026 年厂商都在「省 token」上做文章：Opus 5.5 官方称同一任务总成本比 Opus 5 低约 40%；DeepSeek V4.1-Flash-1017 直接缩短输出长度。
+      <b style="color:var(--text)">同一个任务跑两遍截图对比账单</b>，比背价格表有用。</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="scale" aria-hidden="true"></i></div>
+      <h3>「强模型定调 + 便宜模型量产」</h3>
+      <p>用贵模型打磨模板、定风格、审关键稿，用国产模型跑批量初稿与改写。80% 的活儿交给便宜模型，20% 的精品交给顶配——
+      这条 2026 年依然成立，只是便宜模型的「可用下限」比过去高得多。</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="box" aria-hidden="true"></i></div>
+      <h3>善用缓存与峰谷时段</h3>
+      <p>DeepSeek 缓存命中低至输入的 1/50 量级（$0.006 峰值），谷值为峰值半价；Kimi K3 系列缓存命中 ¥1.30、TTL 默认 5 分钟；
+      Claude 缓存读 $0.20。把「设定文档 / 风格参考 / 知识库」固定放上下文命中缓存，是最直接的降本手段。</p>
+    </div>
+  </div>
+  <div class="group-title"><span class="dot"></span><i class="cc-ic" data-ic="lock" aria-hidden="true"></i>自部署 vs 云 API</div>
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="house" aria-hidden="true"></i></div>
+      <h3>开源 + 本地自部署</h3>
+      <p><b style="color:var(--text)">适合</b>：隐私敏感数据、稳定可控、长期高频、有硬件/技术能力的创作者与团队。
+      <br><b style="color:var(--text)">路径</b>：Ollama / vLLM 拉取 GLM-5.3、DeepSeek V4.1、Qwen3.8-Max 或 Kimi K3.1 Pro 权重（后者 11-04 前发布）；
+      1M 上下文对显存要求高，实测前先按短上下文降级跑通。</p>
+      <span class="pill">隐私 + 长期成本</span>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="cloud" aria-hidden="true"></i></div>
+      <h3>云 API / 官方服务</h3>
+      <p><b style="color:var(--text)">适合</b>：快速上手、弹性用量、需要最新最强模型的创作者。
+      <br><b style="color:var(--text)">路径</b>：DeepSeek 官方 API（兼容 OpenAI / Anthropic 格式）、阿里云百炼（Qwen3.8-Max）、
+      Z.AI、Kimi 开放平台、火山方舟（Seed2.1）；海外三家按需接入。零维护、按量付费。</p>
+      <span class="pill">零维护 + 弹性</span>
+    </div>
+  </div>
+  <div class="card" style="margin-top:22px">
+    <h3 style="color:var(--cyan)"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>一句话选型清单</h3>
+    <div class="prompt-box">
+      <b>写作量产</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek V4.1 Flash / Qwen3.8-Max &nbsp;|&nbsp; <b>写代码</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Claude Opus 5.5 + GLM-5.3 &nbsp;|&nbsp;
+      <b>多模态</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Gemini 4 Argon / 豆包 Seed2.1 &nbsp;|&nbsp; <b>深度推理</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> DeepSeek V4-Pro &nbsp;|&nbsp;
+      <b>超长上下文</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> Kimi K3.1 Pro &nbsp;|&nbsp; <b>隐私自部署</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> GLM-5.3 / Qwen3.8-Max &nbsp;|&nbsp; <b>极客省钱</b> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 谷值时段 + 缓存命中
+    </div>
+  </div>
+</section>
+
+<script>
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.12});
+document.querySelectorAll('.card,.tl-item').forEach(el=>{
+  el.style.opacity=0;el.style.transform='translateY(26px)';
+  el.style.transition='opacity .6s ease,transform .6s ease';io.observe(el);});
+</script>
+
+
+  
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+
+
+<script>renderVideoSection('#vkHere', { categories: ["DeepSeek","Ollama","部署基础"], title: '模型 · 部署使用视频' });</script>
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

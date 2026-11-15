@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 学院 · 项目实战 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="按难度分层的实战项目清单、验收标准与产出物要求。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/projects.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+.hero{position:relative;overflow:hidden;background:var(--hero-grad);padding:56px 24px 44px}
+.hero::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:260px;height:260px;bottom:-80px;left:-60px;border-radius:50%;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%);pointer-events:none}
+.hero .inner{position:relative;max-width:1080px;margin:0 auto;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(30px,4.5vw,52px);font-weight:900;color:#fff;margin:14px 0 12px;letter-spacing:1px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+.hero .sub{color:rgba(255,255,255,.95);font-size:15px;max-width:760px;margin:0 auto;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.hero img.heroimg{width:min(640px,88%);border-radius:18px;margin:26px auto 0;box-shadow:0 14px 40px rgba(16,48,120,.35);display:block}
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow)}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35)}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;flex-wrap:wrap;overflow-x:auto;scrollbar-width:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer}
+section.block{max-width:1180px;margin:36px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:999px}
+.sec-head .filter{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.sec-head .filter a{padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;color:var(--muted);border:1px solid var(--line);background:rgba(120,160,220,.06);text-decoration:none;cursor:pointer}
+.sec-head .filter a.on{background:var(--grad);color:#fff;border-color:transparent}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;transition:.2s;box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;text-decoration:none;color:inherit}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(79,140,255,.4)}
+.pcard .pico{width:40px;height:40px;border-radius:10px;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.22)}
+body[data-theme="deep"] .pcard .pico{background:linear-gradient(120deg,#38e1ff,#5b8cff 50%,#8b5cf6)}
+.pcard .ptag{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;color:#fff;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);border-radius:999px;padding:3px 9px}
+.pcard h4{font-size:15px;font-weight:800;margin-top:4px}
+.pcard p{font-size:13px;color:var(--muted);flex:1;line-height:1.6}
+.pcard .meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.pcard .meta span{font-size:11px;color:var(--blue);background:rgba(120,160,220,.10);border-radius:999px;padding:2px 8px;font-weight:600}
+body[data-theme="deep"] .pcard .meta span{color:var(--cyan)}
+.pcard .go{font-size:12px;font-weight:700;color:var(--blue);margin-top:4px}
+body[data-theme="deep"] .pcard .go{color:var(--cyan)}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<section class="hero">
+  <div class="inner">
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 毕业设计项目库</div>
+    <h1>24 个可复现毕业设计</h1>
+    <p class="sub">每个项目都配齐：项目简介、功能特性、技术架构、核心代码骨架、运行步骤与扩展思路。照着做，技能就长在你身上。</p>
+    <img class="heroimg" src="/website/ai-academy/assets/projects.png" alt="毕业设计项目库">
+  </div>
+</section>
+<section class="block">
+  <div class="sec-head">
+    <h2><span class="em">全部项目</span></h2>
+    <span class="tag" id="countTag">24 个项目</span>
+    <div class="filter" id="filters">
+      <a data-f="all" class="on">全部</a>
+      <a data-f="data">数据金融</a>
+      <a data-f="content">内容创作</a>
+      <a data-f="office">办公效率</a>
+      <a data-f="service">健康服务</a>
+      <a data-f="dev">开发运维</a>
+    </div>
+  </div>
+  <div class="proj-grid" id="grid">
+    <a class="pcard" data-g="data" href="/learn/academy/projects/stock-insight.html"><span class="pico"><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i></span><span class="ptag">金融数据</span><h4>StockInsight 股票分析</h4><p>股票数据查询、K 线分析与投资洞察智能体</p><div class="meta"><span>金融</span><span>数据</span><span>Python</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="data" href="/learn/academy/projects/database-agent.html"><span class="pico"><i class="cc-ic" data-ic="archive" aria-hidden="true"></i></span><span class="ptag">数据库</span><h4>Database Agent</h4><p>自然语言 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> SQL 查询，对话式数据库操作</p><div class="meta"><span>数据库</span><span>NLP</span><span>LangChain</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="content" href="/learn/academy/projects/column-writer.html"><span class="pico"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></span><span class="ptag">内容创作</span><h4>ColumnWriter 专栏写手</h4><p>多智能体协作的专栏内容创作流水线</p><div class="meta"><span>内容</span><span>多智能体</span><span>创作</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="service" href="/learn/academy/projects/health-record.html"><span class="pico"><i class="cc-ic" data-ic="heart" aria-hidden="true"></i></span><span class="ptag">健康</span><h4>HealthRecord 健康助手</h4><p>健康记录管理、趋势洞察与建议生成</p><div class="meta"><span>健康</span><span>记录</span><span>洞察</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="office" href="/learn/academy/projects/email-assistant.html"><span class="pico"><i class="cc-ic" data-ic="mail" aria-hidden="true"></i></span><span class="ptag">办公效率</span><h4>EmailSmartAssistant</h4><p>邮件分类、摘要与智能回复助手</p><div class="meta"><span>邮件</span><span>NLP</span><span>自动化</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="dev" href="/learn/academy/projects/network-health.html"><span class="pico"><i class="cc-ic" data-ic="satellite" aria-hidden="true"></i></span><span class="ptag">运维</span><h4>NetworkHealthReport</h4><p>网络健康监测与自动诊断报告生成</p><div class="meta"><span>运维</span><span>诊断</span><span>报告</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="service" href="/learn/academy/projects/mind-echo.html"><span class="pico"><i class="cc-ic" data-ic="message-square" aria-hidden="true"></i></span><span class="ptag">心理健康</span><h4>MindEcho 心声回响</h4><p>基于长期记忆的心理陪伴与情绪记录 Agent</p><div class="meta"><span>心理</span><span>记忆</span><span>陪伴</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="data" href="/learn/academy/projects/data-analysis.html"><span class="pico"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></span><span class="ptag">数据分析</span><h4>DataAnalysisAgent</h4><p>数据探索、清洗与可视化分析智能体</p><div class="meta"><span>数据</span><span>分析</span><span>可视化</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="office" href="/learn/academy/projects/meeting-minutes.html"><span class="pico"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></span><span class="ptag">办公效率</span><h4>MeetingMinutes 会议纪要官</h4><p>语音转写 + 议题提炼 + 待办分派</p><div class="meta"><span>办公</span><span>语音</span><span>纪要</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="dev" href="/learn/academy/projects/code-reviewer.html"><span class="pico"><i class="cc-ic" data-ic="search" aria-hidden="true"></i></span><span class="ptag">开发工具</span><h4>CodeReviewer 代码评审助手</h4><p>代码审查、缺陷检测与重构建议</p><div class="meta"><span>开发</span><span>审查</span><span>重构</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="service" href="/learn/academy/projects/legal-assistant.html"><span class="pico"><i class="cc-ic" data-ic="scale" aria-hidden="true"></i></span><span class="ptag">法律服务</span><h4>LegalAssistant 法律咨询助手</h4><p>法规检索、条款解读与文书起草</p><div class="meta"><span>法律</span><span>检索</span><span>文书</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="service" href="/learn/academy/projects/tutor-agent.html"><span class="pico"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i></span><span class="ptag">教育</span><h4>TutorAgent 家教辅导</h4><p>个性化答疑、错题解析与学习计划</p><div class="meta"><span>教育</span><span>答疑</span><span>计划</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="office" href="/learn/academy/projects/resume-coach.html"><span class="pico"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i></span><span class="ptag">求职</span><h4>ResumeCoach 简历优化教练</h4><p>简历诊断、岗位匹配与面试模拟</p><div class="meta"><span>求职</span><span>简历</span><span>面试</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="data" href="/learn/academy/projects/finance-bot.html"><span class="pico"><i class="cc-ic" data-ic="banknote" aria-hidden="true"></i></span><span class="ptag">金融</span><h4>FinanceBot 理财顾问</h4><p>记账分析、预算建议与理财科普</p><div class="meta"><span>金融</span><span>理财</span><span>预算</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="office" href="/learn/academy/projects/travel-planner.html"><span class="pico"><i class="cc-ic" data-ic="plane" aria-hidden="true"></i></span><span class="ptag">出行</span><h4>TravelPlanner 行程规划师</h4><p>多约束行程编排与实时调整</p><div class="meta"><span>出行</span><span>规划</span><span>推荐</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="office" href="/learn/academy/projects/news-digest.html"><span class="pico"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i></span><span class="ptag">资讯</span><h4>NewsDigest 新闻摘要官</h4><p>热点聚合、事实核验与要点摘要</p><div class="meta"><span>资讯</span><span>摘要</span><span>核验</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="service" href="/learn/academy/projects/research-agent.html"><span class="pico"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></span><span class="ptag">学术</span><h4>ResearchAgent 论文研读助手</h4><p>论文要点抽取与综述生成</p><div class="meta"><span>学术</span><span>论文</span><span>综述</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="content" href="/learn/academy/projects/marketing-writer.html"><span class="pico"><i class="cc-ic" data-ic="megaphone" aria-hidden="true"></i></span><span class="ptag">营销</span><h4>MarketingWriter 营销文案机</h4><p>跨平台营销文案与广告创意生成</p><div class="meta"><span>营销</span><span>文案</span><span>广告</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="service" href="/learn/academy/projects/customer-support.html"><span class="pico"><i class="cc-ic" data-ic="headphones" aria-hidden="true"></i></span><span class="ptag">服务</span><h4>CustomerSupport 智能客服</h4><p>工单分类、知识库问答与情绪安抚</p><div class="meta"><span>客服</span><span>工单</span><span>知识库</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="dev" href="/learn/academy/projects/image-captioner.html"><span class="pico"></span><span class="ptag">多模态</span><h4>ImageCaptioner 看图说话</h4><p>图像理解、场景描述与内容标注</p><div class="meta"><span>多模态</span><span>图像</span><span>标注</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="data" href="/learn/academy/projects/data-cleaner.html"><span class="pico"><i class="cc-ic" data-ic="brush" aria-hidden="true"></i></span><span class="ptag">数据处理</span><h4>DataCleaner 数据清洗工</h4><p>缺失值、异常值、重复项自动清洗</p><div class="meta"><span>数据</span><span>清洗</span><span>质检</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="content" href="/learn/academy/projects/podcast-script.html"><span class="pico"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i></span><span class="ptag">内容创作</span><h4>PodcastScript 播客脚本工</h4><p>选题、提纲、口播稿与金句全流程</p><div class="meta"><span>内容</span><span>播客</span><span>脚本</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="service" href="/learn/academy/projects/health-coach.html"><span class="pico"></span><span class="ptag">健康</span><h4>HealthCoach 健身教练</h4><p>训练计划、饮食建议与打卡激励</p><div class="meta"><span>健康</span><span>健身</span><span>计划</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" data-g="dev" href="/learn/academy/projects/iot-monitor.html"><span class="pico"><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i></span><span class="ptag">物联网</span><h4>IoTMonitor 物联网监控</h4><p>设备采集、异常告警与预测性维护</p><div class="meta"><span>物联网</span><span>告警</span><span>预测</span></div><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+  </div>
+</section>
+
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+(function(){
+  var grid=document.getElementById('grid');var cards=[].slice.call(grid.querySelectorAll('.pcard'));
+  var filters=document.getElementById('filters');
+  filters.addEventListener('click',function(e){
+    var a=e.target.closest('a');if(!a)return;
+    [].slice.call(filters.children).forEach(function(x){x.classList.remove('on')});a.classList.add('on');
+    var f=a.getAttribute('data-f');var n=0;
+    cards.forEach(function(c){var show=f==='all'||c.getAttribute('data-g')===f;c.style.display=show?'':'none';if(show)n++;});
+    document.getElementById('countTag').textContent=n+' 个项目';
+  });
+})();
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 平台阵列 · 38 家 · 白驹 ccowork</title>
+<meta name="description" content="AI 平台阵列：云 API、本地运行、GPU 算力、Agent 平台、图像视频平台、网关中间层，统一标注国内可直连性与计价方式。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/page-ext.css">
+<link rel="stylesheet" href="/cover.css">
+</head>
+<body data-ccnav="toolbox" data-cctitle="平台阵列">
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/vendors.jpg" alt="" loading="eager" decoding="async"></div>
+  <div class="pg-hero">
+    <div data-cccrumb="平台阵列"></div>
+    <h1>平台阵列 · <em>从哪拿模型，从哪租卡</em></h1>
+    <p class="lede">AI 落地要解决两个采购问题：<b>推理能力从哪买</b>、<b>算力从哪租</b>。这一页把 6 类共 38 家放在一起，统一标出国内可直连性和计价方式——很多方案在纸面上便宜，卡在「访问不到」这一步就废了。</p>
+    <div class="ccjump" style="margin-top:18px"><a href="#api">云 API 平台 <b>17</b></a><a href="#local">本地运行 <b>4</b></a><a href="#gpu">GPU 算力 <b>4</b></a><a href="#app">Agent 平台 <b>4</b></a><a href="#gen">图像视频平台 <b>5</b></a><a href="#gate">网关 / 中间层 <b>4</b></a></div>
+  </div>
+
+  <div class="pg-sec" id="api">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>云 API 平台</h2>
+      <span class="cnt">17 家</span></div>
+    <p class="sub" style="margin:-6px 0 14px;font-size:13px;color:var(--muted);line-height:1.7">按 token 付费。选型看三件事：单价、可用性、以及模型版本是否跟得上。</p>
+    <div class="pg-grid" style="grid-template-columns:1fr">
+      <div class="pfx" data-t="DeepSeek 深度求索 价格是它最强的参数。OpenAI 兼容，改 base_url 就能接。推理与代码能力对得起价格，长文档与多模态要靠别家补。 V4-Flash ¥1 / ¥2；V4-Pro ¥3 / ¥6（输入/输出，缓存命中 ¥0.02）；工具调用自 2026-11-13 起单独计费：搜索与网页抓取 5 元/千次、OCR 1.5 元/千页、ASR 0.39 元/小时、TTS 1.5 元/万字符（语音两项限时五折）（源：DeepSeek 公告 2026-11-13）">
+        <div class="ph"><h3>DeepSeek</h3><span class="v">深度求索</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">价格是它最强的参数。OpenAI 兼容，改 base_url 就能接。推理与代码能力对得起价格，长文档与多模态要靠别家补。</p>
+        <p class="pp"><b>计价</b> · V4-Flash ¥1 / ¥2；V4-Pro ¥3 / ¥6（输入/输出，缓存命中 ¥0.02）；工具调用自 2026-11-13 起单独计费：搜索与网页抓取 5 元/千次、OCR 1.5 元/千页、ASR 0.39 元/小时、TTS 1.5 元/万字符（语音两项限时五折）（源：DeepSeek 公告 2026-11-13）</p>
+      </div>
+      <div class="pfx" data-t="阿里云百炼 阿里云 千问全家桶最全，从 0.6B 到旗舰都有，还内置工具调用与文档解析。新用户每个模型有免费额度，企业采购流程最顺。 qwen3.6-flash ¥0.8 / ¥2；qwen3.7-plus ¥2 / ¥8；max ¥12 / ¥36；已上架 kimi-k3.1-pro ¥13 / ¥68，但 Token Plan 套餐池不含 Kimi；双 11 全模型通享低至 4.5 折，新人实名 7000 万免费 Token（90 天）；Token Plan 个人版 2026-11-09 起调额：Lite ¥39 得 2 万 Credits、Essential ¥79 得 4.5 万、Standard ¥139 得 8 万（月费不变），Pro ¥312（原 ¥499）得 20 万（源：阿里云公告 2026-11-09）">
+        <div class="ph"><h3>阿里云百炼</h3><span class="v">阿里云</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">千问全家桶最全，从 0.6B 到旗舰都有，还内置工具调用与文档解析。新用户每个模型有免费额度，企业采购流程最顺。</p>
+        <p class="pp"><b>计价</b> · qwen3.6-flash ¥0.8 / ¥2；qwen3.7-plus ¥2 / ¥8；max ¥12 / ¥36；已上架 kimi-k3.1-pro ¥13 / ¥68，但 Token Plan 套餐池不含 Kimi；双 11 全模型通享低至 4.5 折，新人实名 7000 万免费 Token（90 天）；Token Plan 个人版 2026-11-09 起调额：Lite ¥39 得 2 万 Credits、Essential ¥79 得 4.5 万、Standard ¥139 得 8 万（月费不变），Pro ¥312（原 ¥499）得 20 万（源：阿里云公告 2026-11-09）</p>
+      </div>
+      <div class="pfx" data-t="硅基流动 SiliconFlow 一个 Key 接多家模型，国内直连快，注册送额度大方。适合做多模型对比与 A/B，缺点是高峰期限流。 DeepSeek-V3 ¥1 / ¥2；Qwen3 ¥0.4–1.2 / ¥3.2–7.2">
+        <div class="ph"><h3>硅基流动</h3><span class="v">SiliconFlow</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">一个 Key 接多家模型，国内直连快，注册送额度大方。适合做多模型对比与 A/B，缺点是高峰期限流。</p>
+        <p class="pp"><b>计价</b> · DeepSeek-V3 ¥1 / ¥2；Qwen3 ¥0.4–1.2 / ¥3.2–7.2</p>
+      </div>
+      <div class="pfx" data-t="火山方舟 字节跳动 豆包系列延迟低、价格狠，视频与图像生成也在同一平台。有 CLI 可直接在终端接 Agent。 豆包 2.0 Pro 约 ¥1.5 / ¥4；Lite 约 ¥0.11 / ¥0.11；Coding/Agent Plan 抵扣系数限时折扣：deepseek-v4.1-flash 在原 5 折上再享 7 折（系数 0.875）至 2026-12-30、deepseek-v4.1-flash-economy 折扣 5 折同期；Auto 模式与 kimi-k3.1-pro 折扣均已于 11-09 23:59 到期（源：火山方舟官方文档 2026-11-10）">
+        <div class="ph"><h3>火山方舟</h3><span class="v">字节跳动</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">豆包系列延迟低、价格狠，视频与图像生成也在同一平台。有 CLI 可直接在终端接 Agent。</p>
+        <p class="pp"><b>计价</b> · 豆包 2.0 Pro 约 ¥1.5 / ¥4；Lite 约 ¥0.11 / ¥0.11；Coding/Agent Plan 抵扣系数限时折扣：deepseek-v4.1-flash 在原 5 折上再享 7 折（系数 0.875）至 2026-12-30、deepseek-v4.1-flash-economy 折扣 5 折同期；Auto 模式与 kimi-k3.1-pro 折扣均已于 11-09 23:59 到期（源：火山方舟官方文档 2026-11-10）</p>
+      </div>
+      <div class="pfx" data-t="智谱 BigModel 智谱 AI GLM-4-Flash 长期免费是它最大的钩子，中文写作与办公场景扎实。旗舰档价格偏高。 GLM-5 约 ¥6 / ¥24；GLM-4-Flash 免费">
+        <div class="ph"><h3>智谱 BigModel</h3><span class="v">智谱 AI</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">GLM-4-Flash 长期免费是它最大的钩子，中文写作与办公场景扎实。旗舰档价格偏高。</p>
+        <p class="pp"><b>计价</b> · GLM-5 约 ¥6 / ¥24；GLM-4-Flash 免费</p>
+      </div>
+      <div class="pfx" data-t="月之暗面 Kimi Moonshot AI 长上下文起家，K2 系列在 Agent 与工具调用上表现好。适合喂长文档与做多轮工具链。 K3.1 Pro ¥13 / ¥68（缓存命中 ¥1.3）；K2 系列 2026-10-31 起停止向新注册用户开放、12 月底全线下线（源：Kimi 开放平台 2026-10-29）">
+        <div class="ph"><h3>月之暗面 Kimi</h3><span class="v">Moonshot AI</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">长上下文起家，K2 系列在 Agent 与工具调用上表现好。适合喂长文档与做多轮工具链。</p>
+        <p class="pp"><b>计价</b> · K3.1 Pro ¥13 / ¥68（缓存命中 ¥1.3）；K2 系列 2026-10-31 起停止向新注册用户开放、12 月底全线下线（源：Kimi 开放平台 2026-10-29）</p>
+      </div>
+      <div class="pfx" data-t="MiniMax MiniMax 百万上下文 + 语音合成/克隆一体。做有声内容时语音这条线比模型本身更有吸引力。 M3 约 ¥2.1 / ¥8.4（缓存 ¥0.21）">
+        <div class="ph"><h3>MiniMax</h3><span class="v">MiniMax</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">百万上下文 + 语音合成/克隆一体。做有声内容时语音这条线比模型本身更有吸引力。</p>
+        <p class="pp"><b>计价</b> · M3 约 ¥2.1 / ¥8.4（缓存 ¥0.21）</p>
+      </div>
+      <div class="pfx" data-t="百度千帆 百度智能云 文心系列 + 第三方模型托管，企业侧合规材料齐全。个人开发者体验不如前几家轻快。 Token Plan 积分制五档，双 11 首购 5 折：Mini ¥4.9 / Lite ¥19.9 / Standard ¥49.9 / Pro ¥99.9 / Max ¥299.9，对应月额度 1,400 / 11,500 / 23,760 / 49,500 / 184,800 积分，Standard 为本轮上新档；老客首续 6 折；DeepSeek-V4.1-Flash、V4-Pro-0813、GLM-5.3 每日 22:00–08:00 享 2 折至 2026-11-30（源：千帆 Token Plan 官方页 2026-11-10）">
+        <div class="ph"><h3>百度千帆</h3><span class="v">百度智能云</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">文心系列 + 第三方模型托管，企业侧合规材料齐全。个人开发者体验不如前几家轻快。</p>
+        <p class="pp"><b>计价</b> · Token Plan 积分制五档，双 11 首购 5 折：Mini ¥4.9 / Lite ¥19.9 / Standard ¥49.9 / Pro ¥99.9 / Max ¥299.9，对应月额度 1,400 / 11,500 / 23,760 / 49,500 / 184,800 积分，Standard 为本轮上新档；老客首续 6 折；DeepSeek-V4.1-Flash、V4-Pro-0813、GLM-5.3 每日 22:00–08:00 享 2 折至 2026-11-30（源：千帆 Token Plan 官方页 2026-11-10）</p>
+      </div>
+      <div class="pfx" data-t="腾讯混元 腾讯云 与腾讯生态（企业微信、文档、会议）打通是它独有的路。纯模型能力中规中矩。 Hunyuan Lite 约 ¥0.14 / ¥0.14；新用户 100 万 tokens / 12 个月">
+        <div class="ph"><h3>腾讯混元</h3><span class="v">腾讯云</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">与腾讯生态（企业微信、文档、会议）打通是它独有的路。纯模型能力中规中矩。</p>
+        <p class="pp"><b>计价</b> · Hunyuan Lite 约 ¥0.14 / ¥0.14；新用户 100 万 tokens / 12 个月</p>
+      </div>
+      <div class="pfx" data-t="OpenRouter OpenRouter 一个 Key 打通几乎所有国外模型，还能同一请求自动回退。国内直连不稳定，需自备网络。 按模型透传，部分模型免费；MiniMax M2.5 输入 $0.27 / 输出 $0.95、Particle-1 输出 $0.50（每百万 token，2026-11-02 核对 Models API）">
+        <div class="ph"><h3>OpenRouter</h3><span class="v">OpenRouter</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">一个 Key 打通几乎所有国外模型，还能同一请求自动回退。国内直连不稳定，需自备网络。</p>
+        <p class="pp"><b>计价</b> · 按模型透传，部分模型免费；MiniMax M2.5 输入 $0.27 / 输出 $0.95、Particle-1 输出 $0.50（每百万 token，2026-11-02 核对 Models API）</p>
+      </div>
+      <div class="pfx" data-t="Together AI Together 开源模型托管为主，200+ 模型，自带微调服务。想跑开源大模型又不想自己运维时的选项。 注册送 $25 额度">
+        <div class="ph"><h3>Together AI</h3><span class="v">Together</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">开源模型托管为主，200+ 模型，自带微调服务。想跑开源大模型又不想自己运维时的选项。</p>
+        <p class="pp"><b>计价</b> · 注册送 $25 额度</p>
+      </div>
+      <div class="pfx" data-t="Groq Groq LPU 硬件把推理速度推到极致，做实时语音与低延迟交互时体感差别明显。模型选择较少。 有免费档（限速）">
+        <div class="ph"><h3>Groq</h3><span class="v">Groq</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">LPU 硬件把推理速度推到极致，做实时语音与低延迟交互时体感差别明显。模型选择较少。</p>
+        <p class="pp"><b>计价</b> · 有免费档（限速）</p>
+      </div>
+      <div class="pfx" data-t="国家超算互联网 国家超算互联网 国家队算力平台，把 MaaS 调用和 TokenPlan 套餐打包卖，常有整点秒杀和夜间免费档。适合做压测与低成本批处理；稳定性一般，别把它当主线通道。 新客 DeepSeek-V4.1-Flash-1017 / GLM-5.3-Flash 5000 万 tokens ¥0.10（原价 ¥20.50）；TokenPlan 订阅用户 10-21 至 10-30 每晚 21:00–09:00 可免费调 Auto 模型（源：超算互联网活动页 2026-10-29）">
+        <div class="ph"><h3>国家超算互联网</h3><span class="v">国家超算互联网</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商用</span></div>
+        <p class="pd">国家队算力平台，把 MaaS 调用和 TokenPlan 套餐打包卖，常有整点秒杀和夜间免费档。适合做压测与低成本批处理；稳定性一般，别把它当主线通道。</p>
+        <p class="pp"><b>计价</b> · 新客 DeepSeek-V4.1-Flash-1017 / GLM-5.3-Flash 5000 万 tokens ¥0.10（原价 ¥20.50）；TokenPlan 订阅用户 10-21 至 10-30 每晚 21:00–09:00 可免费调 Auto 模型（源：超算互联网活动页 2026-10-29）</p>
+      </div>
+      <div class="pfx" data-t="OpenAI OpenAI 前沿闭源模型的第一手渠道，GPT-6 系列与计算机使用能力都在这里首发。订阅满 7 天后可领与订阅等额的 API 额度，是它现在最实在的省钱点；单价仍是全场最贵的档。 ChatGPT Pro 每月返等额 API 额度（$100 / $200 / $500 档）；Business 按席位池化（Standard $20、Premium $100），每工作区封顶 $500/月，年付上限 $6000（源：OpenAI 帮助中心 2026-10-28）；自 2026 年 12 月起 ChatGPT Plus / Pro / Business 额度与 Codex 合并、按 token 统一计量，Instant chat 不占额度（源：OpenAI 公告 2026-10-31）">
+        <div class="ph"><h3>OpenAI</h3><span class="v">OpenAI</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">前沿闭源模型的第一手渠道，GPT-6 系列与计算机使用能力都在这里首发。订阅满 7 天后可领与订阅等额的 API 额度，是它现在最实在的省钱点；单价仍是全场最贵的档。</p>
+        <p class="pp"><b>计价</b> · ChatGPT Pro 每月返等额 API 额度（$100 / $200 / $500 档）；Business 按席位池化（Standard $20、Premium $100），每工作区封顶 $500/月，年付上限 $6000（源：OpenAI 帮助中心 2026-10-28）；自 2026 年 12 月起 ChatGPT Plus / Pro / Business 额度与 Codex 合并、按 token 统一计量，Instant chat 不占额度（源：OpenAI 公告 2026-10-31）</p>
+      </div>
+      <div class="pfx" data-t="Anthropic Anthropic Opus / Sonnet 的原厂。长上下文、代码与工具调用稳，做对照实验时常被当成上限基准；国内需自备网络与支付。 Max $100/月、Ultra $200/月；Ultra 已完成验证账户取消 5 小时窗口，周额度仍为 Pro 的 10 倍（源：Anthropic 公告 2026-10-30）">
+        <div class="ph"><h3>Anthropic</h3><span class="v">Anthropic</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">Opus / Sonnet 的原厂。长上下文、代码与工具调用稳，做对照实验时常被当成上限基准；国内需自备网络与支付。</p>
+        <p class="pp"><b>计价</b> · Max $100/月、Ultra $200/月；Ultra 已完成验证账户取消 5 小时窗口，周额度仍为 Pro 的 10 倍（源：Anthropic 公告 2026-10-30）</p>
+      </div>
+      <div class="pfx" data-t="xAI Grok 马斯克旗下 xAI 的对话产品，与 X Premium 共用一套订阅与支付体系，一次付费两边解锁。支付门槛已拆到支付宝可直接扣款，但访问仍需自备网络环境。 Grok Premium $30/月，新用户首月半价 $15；2026-11-01 起支持支付宝与中国银联，账单地区可选中国大陆及港澳台（源：xAI 订阅页实测 2026-11-01）；Grok Bot 周额度实测缩水，每 1% 周额度可用 token 从约 730 万降至约 390 万（Cursor Pro+ 用户测算），马斯克称其成本相对收入「高得扛不住」（源：腾讯研究院 AI 速递 2026-11-04）">
+        <div class="ph"><h3>xAI</h3><span class="v">Grok</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">马斯克旗下 xAI 的对话产品，与 X Premium 共用一套订阅与支付体系，一次付费两边解锁。支付门槛已拆到支付宝可直接扣款，但访问仍需自备网络环境。</p>
+        <p class="pp"><b>计价</b> · Grok Premium $30/月，新用户首月半价 $15；2026-11-01 起支持支付宝与中国银联，账单地区可选中国大陆及港澳台（源：xAI 订阅页实测 2026-11-01）；Grok Bot 周额度实测缩水，每 1% 周额度可用 token 从约 730 万降至约 390 万（Cursor Pro+ 用户测算），马斯克称其成本相对收入「高得扛不住」（源：腾讯研究院 AI 速递 2026-11-04）</p>
+      </div>
+      <div class="pfx" data-t="谷歌 Gemini API Gemini 谷歌全系模型的官方 API 入口。视频生成 Omni 1.2 Flash 支持 3–15 秒、草稿先行再放大 4K，多轮对话式编辑适合批量短视频生产。国内访问需自备网络。 Gemini Omni 1.2 Flash 视频生成 720p $0.07/秒，较 1.1 版降约 30%，单条 3–15 秒；文本模型按 token 另计（源：谷歌发布说明 2026-11-05）">
+        <div class="ph"><h3>谷歌 Gemini API</h3><span class="v">Gemini</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">谷歌全系模型的官方 API 入口。视频生成 Omni 1.2 Flash 支持 3–15 秒、草稿先行再放大 4K，多轮对话式编辑适合批量短视频生产。国内访问需自备网络。</p>
+        <p class="pp"><b>计价</b> · Gemini Omni 1.2 Flash 视频生成 720p $0.07/秒，较 1.1 版降约 30%，单条 3–15 秒；文本模型按 token 另计（源：谷歌发布说明 2026-11-05）</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-sec" id="local">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>本地运行</h2>
+      <span class="cnt">4 家</span></div>
+    <p class="sub" style="margin:-6px 0 14px;font-size:13px;color:var(--muted);line-height:1.7">装在自己机器上。零 token 成本，代价是硬件与时间。</p>
+    <div class="pg-grid" style="grid-template-columns:1fr">
+      <div class="pfx" data-t="Ollama Ollama 一条命令跑本地模型，默认 OpenAI 兼容接口。开发与原型的最优解，多用户服务要换 vLLM。 免费">
+        <div class="ph"><h3>Ollama</h3><span class="v">Ollama</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源</span></div>
+        <p class="pd">一条命令跑本地模型，默认 OpenAI 兼容接口。开发与原型的最优解，多用户服务要换 vLLM。</p>
+        <p class="pp"><b>计价</b> · 免费</p>
+      </div>
+      <div class="pfx" data-t="LM Studio LM Studio 图形化本地模型客户端，内置模型搜索与性能测试。非技术用户的首选，企业使用需看许可。 个人免费">
+        <div class="ph"><h3>LM Studio</h3><span class="v">LM Studio</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">免费商用有限制</span></div>
+        <p class="pd">图形化本地模型客户端，内置模型搜索与性能测试。非技术用户的首选，企业使用需看许可。</p>
+        <p class="pp"><b>计价</b> · 个人免费</p>
+      </div>
+      <div class="pfx" data-t="vLLM vLLM Project 自建推理服务的生产标准。5 并发以上就该换它，之前用 Ollama 更快出结果。 免费">
+        <div class="ph"><h3>vLLM</h3><span class="v">vLLM Project</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源</span></div>
+        <p class="pd">自建推理服务的生产标准。5 并发以上就该换它，之前用 Ollama 更快出结果。</p>
+        <p class="pp"><b>计价</b> · 免费</p>
+      </div>
+      <div class="pfx" data-t="SGLang LMSYS / Berkeley 前缀复用与结构化输出的强项，RAG 与 Agent 长 system prompt 场景比 vLLM 划算。 免费">
+        <div class="ph"><h3>SGLang</h3><span class="v">LMSYS / Berkeley</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源</span></div>
+        <p class="pd">前缀复用与结构化输出的强项，RAG 与 Agent 长 system prompt 场景比 vLLM 划算。</p>
+        <p class="pp"><b>计价</b> · 免费</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-sec" id="gpu">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>GPU 算力</h2>
+      <span class="cnt">4 家</span></div>
+    <p class="sub" style="margin:-6px 0 14px;font-size:13px;color:var(--muted);line-height:1.7">按小时租卡。自建推理不想买卡时的过渡方案，注意出网带宽与存储费。</p>
+    <div class="pg-grid" style="grid-template-columns:1fr">
+      <div class="pfx" data-t="AutoDL AutoDL 国内租卡最普遍的选择，镜像预装环境省掉配驱动。做微调与短期推理实验性价比高。 按小时计费，学生优惠多">
+        <div class="ph"><h3>AutoDL</h3><span class="v">AutoDL</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">国内租卡最普遍的选择，镜像预装环境省掉配驱动。做微调与短期推理实验性价比高。</p>
+        <p class="pp"><b>计价</b> · 按小时计费，学生优惠多</p>
+      </div>
+      <div class="pfx" data-t="RunPod RunPod 按秒计费，模板里直接有 ComfyUI / vLLM / Ollama。国外节点，出网与支付需要条件。 RTX 4090 约 $0.34/小时起，首充 $10 送 $5–500">
+        <div class="ph"><h3>RunPod</h3><span class="v">RunPod</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">按秒计费，模板里直接有 ComfyUI / vLLM / Ollama。国外节点，出网与支付需要条件。</p>
+        <p class="pp"><b>计价</b> · RTX 4090 约 $0.34/小时起，首充 $10 送 $5–500</p>
+      </div>
+      <div class="pfx" data-t="Vast.ai Vast.ai 个人算力的撮合市场，同型号通常比大厂便宜，稳定性参差。适合能容忍中断的批量任务。 市场竞价，价格浮动">
+        <div class="ph"><h3>Vast.ai</h3><span class="v">Vast.ai</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">个人算力的撮合市场，同型号通常比大厂便宜，稳定性参差。适合能容忍中断的批量任务。</p>
+        <p class="pp"><b>计价</b> · 市场竞价，价格浮动</p>
+      </div>
+      <div class="pfx" data-t="阿里云 PAI 阿里云 企业级训练与推理平台，与 OSS、百炼打通。流程重，个人开发者用不上这些治理能力。 按实例计费">
+        <div class="ph"><h3>阿里云 PAI</h3><span class="v">阿里云</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">企业级训练与推理平台，与 OSS、百炼打通。流程重，个人开发者用不上这些治理能力。</p>
+        <p class="pp"><b>计价</b> · 按实例计费</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-sec" id="app">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>Agent 平台</h2>
+      <span class="cnt">4 家</span></div>
+    <p class="sub" style="margin:-6px 0 14px;font-size:13px;color:var(--muted);line-height:1.7">不写代码搭 Agent。差别在知识库质量、发布渠道与私有化能力。</p>
+    <div class="pg-grid" style="grid-template-columns:1fr">
+      <div class="pfx" data-t="Dify LangGenius 可视化 Agent / 工作流 / 知识库，能直接发布成 API 与网页。私有化能力强，国内团队自建首选。 自建免费；云版有免费额度">
+        <div class="ph"><h3>Dify</h3><span class="v">LangGenius</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源 + 云</span></div>
+        <p class="pd">可视化 Agent / 工作流 / 知识库，能直接发布成 API 与网页。私有化能力强，国内团队自建首选。</p>
+        <p class="pp"><b>计价</b> · 自建免费；云版有免费额度</p>
+      </div>
+      <div class="pfx" data-t="扣子 Coze 字节跳动 零代码搭 Bot 并一键发布到飞书、微信、网页。上手最快，深度定制受平台限制。 有免费额度">
+        <div class="ph"><h3>扣子 Coze</h3><span class="v">字节跳动</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">零代码搭 Bot 并一键发布到飞书、微信、网页。上手最快，深度定制受平台限制。</p>
+        <p class="pp"><b>计价</b> · 有免费额度</p>
+      </div>
+      <div class="pfx" data-t="FastGPT labring 知识库质量做得细，支持复杂分段与多维检索。中文文档问答场景比通用平台更合适。 自建免费">
+        <div class="ph"><h3>FastGPT</h3><span class="v">labring</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源 + 云</span></div>
+        <p class="pd">知识库质量做得细，支持复杂分段与多维检索。中文文档问答场景比通用平台更合适。</p>
+        <p class="pp"><b>计价</b> · 自建免费</p>
+      </div>
+      <div class="pfx" data-t="n8n n8n 把 AI 节点挂进已有业务流程，400+ 集成。适合「让 AI 参与现有工作」而不是「从零造 Agent」。 自建免费；云版按执行数">
+        <div class="ph"><h3>n8n</h3><span class="v">n8n</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源(非 OSI)</span></div>
+        <p class="pd">把 AI 节点挂进已有业务流程，400+ 集成。适合「让 AI 参与现有工作」而不是「从零造 Agent」。</p>
+        <p class="pp"><b>计价</b> · 自建免费；云版按执行数</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-sec" id="gen">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>图像视频平台</h2>
+      <span class="cnt">5 家</span></div>
+    <p class="sub" style="margin:-6px 0 14px;font-size:13px;color:var(--muted);line-height:1.7">生成类模型的服务化。开源能本地跑，闭源在画质与可控性上仍领先一档。</p>
+    <div class="pg-grid" style="grid-template-columns:1fr">
+      <div class="pfx" data-t="LiblibAI 哩布 LiblibAI 国内最大的模型与工作流社区，能直接在线跑 ComfyUI 工作流。找 LoRA 与提示词比翻 GitHub 快。 有免费额度，会员制">
+        <div class="ph"><h3>LiblibAI 哩布</h3><span class="v">LiblibAI</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">国内最大的模型与工作流社区，能直接在线跑 ComfyUI 工作流。找 LoRA 与提示词比翻 GitHub 快。</p>
+        <p class="pp"><b>计价</b> · 有免费额度，会员制</p>
+      </div>
+      <div class="pfx" data-t="即梦 字节跳动 图像与视频一站式，中文提示词理解好，出图快。商用授权需按平台条款确认。 有免费额度">
+        <div class="ph"><h3>即梦</h3><span class="v">字节跳动</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">图像与视频一站式，中文提示词理解好，出图快。商用授权需按平台条款确认。</p>
+        <p class="pp"><b>计价</b> · 有免费额度</p>
+      </div>
+      <div class="pfx" data-t="可灵 快手 国内视频生成第一梯队，运动幅度与物理一致性较好。做短视频素材比本地开源模型省时。 会员制">
+        <div class="ph"><h3>可灵</h3><span class="v">快手</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">商业</span></div>
+        <p class="pd">国内视频生成第一梯队，运动幅度与物理一致性较好。做短视频素材比本地开源模型省时。</p>
+        <p class="pp"><b>计价</b> · 会员制</p>
+      </div>
+      <div class="pfx" data-t="Replicate Replicate 把开源模型跑成 API，一行 curl 出结果。想试新模型又不想配环境时最快。 按秒/次计费">
+        <div class="ph"><h3>Replicate</h3><span class="v">Replicate</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">把开源模型跑成 API，一行 curl 出结果。想试新模型又不想配环境时最快。</p>
+        <p class="pp"><b>计价</b> · 按秒/次计费</p>
+      </div>
+      <div class="pfx" data-t="fal.ai fal 生成类模型推理速度极快，常作为新模型的第一个托管方。适合做实时生成的产品。 按次计费">
+        <div class="ph"><h3>fal.ai</h3><span class="v">fal</span></div>
+        <div class="tagline"><span class="n">需网络条件</span><span class="os">商业</span></div>
+        <p class="pd">生成类模型推理速度极快，常作为新模型的第一个托管方。适合做实时生成的产品。</p>
+        <p class="pp"><b>计价</b> · 按次计费</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg-sec" id="gate">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>网关 / 中间层</h2>
+      <span class="cnt">4 家</span></div>
+    <p class="sub" style="margin:-6px 0 14px;font-size:13px;color:var(--muted);line-height:1.7">多模型统一入口、成本管控、可观测。团队规模一到三人以上就必须有。</p>
+    <div class="pg-grid" style="grid-template-columns:1fr">
+      <div class="pfx" data-t="LiteLLM BerriAI 100+ 模型统一成 OpenAI 格式，带预算与密钥管理。自建服务的第一块中间件。 免费">
+        <div class="ph"><h3>LiteLLM</h3><span class="v">BerriAI</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源</span></div>
+        <p class="pd">100+ 模型统一成 OpenAI 格式，带预算与密钥管理。自建服务的第一块中间件。</p>
+        <p class="pp"><b>计价</b> · 免费</p>
+      </div>
+      <div class="pfx" data-t="One API / New API 开源社区 国内最常见的 API 分发系统，一个入口管多家 Key 与团队额度。部署简单、生态成熟。 免费">
+        <div class="ph"><h3>One API / New API</h3><span class="v">开源社区</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源</span></div>
+        <p class="pd">国内最常见的 API 分发系统，一个入口管多家 Key 与团队额度。部署简单、生态成熟。</p>
+        <p class="pp"><b>计价</b> · 免费</p>
+      </div>
+      <div class="pfx" data-t="Langfuse Langfuse LLM 调用链追踪与评测。调 Agent 不接追踪等于盲调，上线前就该接。 自建免费">
+        <div class="ph"><h3>Langfuse</h3><span class="v">Langfuse</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源 + 云</span></div>
+        <p class="pd">LLM 调用链追踪与评测。调 Agent 不接追踪等于盲调，上线前就该接。</p>
+        <p class="pp"><b>计价</b> · 自建免费</p>
+      </div>
+      <div class="pfx" data-t="Helicone Helicone 一行改 base_url 就能记录所有请求与成本。想知道钱花在哪的时候先接它。 自建免费">
+        <div class="ph"><h3>Helicone</h3><span class="v">Helicone</span></div>
+        <div class="tagline"><span class="y">国内可用</span><span class="os">开源 + 云</span></div>
+        <p class="pd">一行改 base_url 就能记录所有请求与成本。想知道钱花在哪的时候先接它。</p>
+        <p class="pp"><b>计价</b> · 自建免费</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="info" aria-hidden="true"></i>采购前先算这笔账</h2></div>
+    <div class="pg-note">
+      <i class="cc-ic" data-ic="calculator" aria-hidden="true"></i>
+      <div>
+        <b>先分清「训练成本」和「推理成本」。</b>大多数人只关心后者。推理成本 = 单价 × 月 token 量，量小的时候云 API 永远更便宜；
+        只有当<b>月 token 量稳定超过几亿</b>，自建 GPU 的折旧才开始划算——而且要把运维人力算进去。
+        <br><br>
+        <b>免费额度是获客手段，不是长期方案。</b>国内几家（百炼、硅基流动、智谱、混元）的免费额度加起来够个人用很久，
+        但都有限速与「仅实时推理」之类的约束。做产品时把它当开发期补贴，别写进成本模型。
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="ccfoot">
+  <div class="in">
+    <div class="col"><h4>白驹 ccowork</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:260px">把散落的 AI 工具与知识装进一个大脑。</p></div>
+    <div class="col"><h4>模型</h4>
+      <a href="/models/atlas.html">模型图谱</a><a href="/models/library.html">模型库</a>
+      <a href="/models/leaderboards.html">榜单矩阵</a><a href="/models/vendors.html">厂商阵列</a></div>
+    <div class="col"><h4>工具</h4>
+      <a href="/toolbox/repos.html">开源仓库</a><a href="/toolbox/platforms.html">平台阵列</a>
+      <a href="/learn/deploy.html">部署百科</a><a href="/toolbox/library.html">工具库</a></div>
+    <div class="col"><h4>关于</h4>
+      <a href="/about/">关于本站</a><a href="/works/museum.html">AI 博物馆</a></div>
+  </div>
+  <div class="bd"><span>数据快照 · 2026-11-09</span><span>条目可验证 · 链接直达原始仓库</span></div>
+</footer>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115b">
+<script src="/assets/baiju-gate.js?v=20261115b"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115b"></script>
+</body>
+</html>

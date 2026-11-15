@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>地图指引 · 关于域 · 白驹 ccowork</title>
+<meta name="description" content="全站内容的地图式导览，按主题串起分散的页面。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/about/map-guide.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --mapblue:#2f86ff; --mapgrad:linear-gradient(120deg,#2f86ff,#38b6ff 50%,#8b5cf6);
+  --nav-bg:rgba(255,255,255,.82); --nav-line:rgba(227,235,245,.95);
+  --nav-shadow:0 2px 16px rgba(31,45,77,.07);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+}
+body[data-theme="deep"]{
+  --mapblue:#4dd6ff; --mapgrad:linear-gradient(120deg,#38e1ff,#5b8cff 45%,#8b5cf6);
+  --nav-bg:rgba(8,5,28,.70); --nav-line:rgba(255,255,255,.08);
+  --nav-shadow:0 2px 16px rgba(0,0,0,.35);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#8b5cf6,#38e1ff 55%,#e879fa);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+/* 导航 */
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+nav.top .cta{padding:10px 20px;border:none;border-radius:999px;background:var(--grad);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.30);transition:.2s;white-space:nowrap}
+nav.top .cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.42)}
+.burger{display:none}
+/* Hero */
+#gate{position:relative;overflow:hidden;background:var(--hero-grad);transition:background .35s ease}
+#gate::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+body[data-theme="deep"] #gate::before{background:radial-gradient(circle,rgba(34,225,255,.5),transparent 70%)}
+#gate .inner{position:relative;max-width:1080px;margin:0 auto;padding:56px 20px 44px;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+#gate h1{font-size:clamp(30px,4.6vw,52px);font-weight:900;letter-spacing:1px;color:#fff;line-height:1.25;margin-top:14px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+#gate .sub{color:rgba(255,255,255,.95);font-size:15px;margin:14px auto 0;max-width:800px;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.gate-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px auto 0;max-width:860px}
+.gate-chips .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px);transition:.2s;cursor:pointer}
+.gate-chips .chip:hover{background:rgba(255,255,255,.30);transform:translateY(-2px)}
+/* 内容 */
+.wrap{max-width:1120px;margin:0 auto;padding:36px 20px 60px}
+h2.sec{font-size:24px;font-weight:900;margin:38px 0 6px;display:flex;align-items:center;gap:10px}
+h2.sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--grad),transparent)}
+p.sec-sub{color:var(--muted);font-size:14px;margin-bottom:18px}
+/* 定位卡 */
+.locate{display:flex;align-items:center;gap:14px;padding:18px 22px;border-radius:18px;background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(79,140,255,.25)}
+.locate .big{font-size:34px}
+.locate b{font-size:18px}
+.locate span{opacity:.92;font-size:14px}
+.locate .tag{margin-left:auto;background:rgba(255,255,255,.2);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+/* 全国直查器 */
+.querier{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--card-shadow);margin-top:16px}
+.querier .q-head{display:flex;align-items:center;gap:10px;font-weight:900;font-size:16px;margin-bottom:14px;flex-wrap:wrap}
+.querier .q-head .ic{width:38px;height:38px;border-radius:10px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+.querier .q-head em{font-style:normal;color:var(--blue)}
+.q-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.q-grid select,.q-grid input{padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:14px;outline:none;transition:.16s;width:100%}
+.q-grid select:focus,.q-grid input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,140,255,.12)}
+.q-grid label{display:block;font-size:12px;font-weight:800;color:var(--muted);margin-bottom:5px}
+.q-type{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.q-type button{padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;transition:.16s}
+.q-type button:hover{color:var(--blue);border-color:var(--blue)}
+.q-type button.on{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(79,140,255,.28)}
+.q-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.q-actions a{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:14px;font-weight:800;font-size:14px;transition:.18s}
+.q-actions .go{background:var(--grad);color:#fff;box-shadow:0 6px 16px rgba(79,140,255,.3)}
+.q-actions .go:hover{transform:translateY(-2px)}
+.q-actions .ghost{border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.q-actions .ghost:hover{color:var(--blue);border-color:var(--blue)}
+/* 分类 tab */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}
+.tabs button{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:14px;font-weight:700;cursor:pointer;transition:.18s}
+.tabs button:hover{color:var(--blue);border-color:var(--blue)}
+.tabs button.on{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(79,140,255,.28)}
+/* 场馆网格 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.venue{border-radius:18px;border:1px solid var(--line);background:var(--card);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--card-shadow);transition:.22s}
+.venue:hover{box-shadow:var(--card-shadow-h);transform:translateY(-3px)}
+.venue .v-head{display:flex;align-items:center;gap:10px;padding:16px 18px 10px}
+.venue .v-head .ico{width:40px;height:40px;border-radius:10px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
+.venue .v-head b{font-size:16px;line-height:1.35}
+.venue .v-head .city{margin-left:auto;font-size:12px;font-weight:800;color:var(--blue);background:var(--chip-bg);border:1px solid var(--chip-line);padding:3px 10px;border-radius:999px;white-space:nowrap}
+.venue .v-body{padding:4px 18px 14px;flex:1}
+.venue .v-body p{font-size:13px;color:var(--muted);line-height:1.6}
+.venue .v-body .geo{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--muted);margin-top:6px;opacity:.75}
+.venue .v-foot{display:flex;gap:8px;padding:0 18px 16px}
+.venue .v-foot a{flex:1;text-align:center;padding:9px 6px;border-radius:10px;font-size:13px;font-weight:800;transition:.18s;display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.venue .v-foot .nav{background:var(--grad);color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.25)}
+.venue .v-foot .nav:hover{transform:translateY(-1px)}
+.venue .v-foot .view{border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.venue .v-foot .view:hover{color:var(--blue);border-color:var(--blue)}
+/* 导航示例 */
+.route-map{position:relative;border-radius:14px;min-height:120px;background:linear-gradient(160deg,#eaf3ff,#f6f0ff);border:1px solid var(--line);padding:20px}
+body[data-theme="deep"] .route-map{background:linear-gradient(160deg,#0c1630,#1b1038)}
+.route-point{display:flex;align-items:flex-start;gap:12px;position:relative;padding:6px 0}
+.route-point .dot{width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;flex:none}
+.route-point .dot.a{background:linear-gradient(120deg,#22b07d,#38b6ff)}
+.route-point .dot.b{background:linear-gradient(120deg,#4f8cff,#8b5cf6)}
+.route-point b{font-size:15px}
+.route-point span{font-size:13px;color:var(--muted)}
+.route-line{width:2px;height:26px;margin:0 0 0 16px;background:repeating-linear-gradient(180deg,var(--blue) 0 6px,transparent 6px 12px);opacity:.5}
+.route-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.route-stats .st{padding:8px 14px;border-radius:10px;background:var(--panel);border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.route-stats .st b{color:var(--blue);font-size:15px}
+.route-nav{margin-top:16px}
+.route-nav a{display:inline-flex;align-items:center;gap:7px;padding:12px 24px;border-radius:14px;background:var(--grad);color:#fff;font-weight:800;font-size:15px;box-shadow:0 6px 16px rgba(79,140,255,.3);transition:.2s}
+.route-nav a:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(79,140,255,.4)}
+/* 数据来源 */
+.srcnote{display:flex;align-items:center;gap:10px;margin-top:30px;padding:14px 18px;border-radius:14px;border:1px dashed var(--line);background:var(--panel);color:var(--muted);font-size:13px}
+@media(max-width:760px){
+  nav.top{flex-wrap:wrap;height:auto;padding:10px 16px;gap:10px}
+  nav.top .links{order:3;width:100%;margin-left:0}
+  .burger{display:block;background:none;border:none;font-size:20px;color:var(--text);cursor:pointer}
+  nav.top .links{display:none}
+  nav.top .links.open{display:flex}
+  .locate{flex-wrap:wrap}
+  .locate .tag{margin-left:0}
+}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="about" data-cctitle="关于">
+<div class="pg-wrap">
+<article class="merged-content">
+<!-- 总站导航 -->
+
+<!-- Hero -->
+<section id="gate">
+  <div class="inner">
+    <div class="badge"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>地图指引 · 全国 AI 场馆导航 · 县级覆盖</div>
+    <h1>科技馆 · 图书馆 · AI 产业园<br><span style="background:linear-gradient(120deg,#fff,#d6e9ff);-webkit-background-clip:text;background-clip:text;color:transparent">比赛场馆 · 红色教育基地 —— 一键导航</span></h1>
+    <p class="sub">42 处真实精选地点（腾讯位置服务实时查询）+ 全国 34 省级 / 300+ 市级 / 全县级直查：选省选市填县 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 一键唤起腾讯地图搜索与导航。</p>
+    <div class="gate-chips">
+      <a class="chip" href="#querier"><i class="cc-ic" data-ic="search" aria-hidden="true"></i>全国直查</a>
+      <a class="chip" href="#science"><i class="cc-ic" data-ic="telescope"></i> 科技馆</a>
+      <a class="chip" href="#library"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>图书馆</a>
+      <a class="chip" href="#park"><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i>AI 产业园</a>
+      <a class="chip" href="#red"><i class="cc-ic cc-dot" data-ic="circle" style="color:#ef4444" aria-hidden="true"></i>红色教育</a>
+      <a class="chip" href="#arena"><i class="cc-ic" data-ic="map-pin"></i> 比赛场馆</a>
+      <a class="chip" href="#demo"><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>本地导航</a>
+    </div>
+  </div>
+</section>
+<div style="max-width:1120px;margin:0 auto;padding:20px 20px 0"><img src="/assets/covers/cover-map-guide.png" alt="地图指引" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<div class="wrap">
+  <!-- 我的位置 -->
+  <div class="locate" id="locate">
+    <span class="big"><i class="cc-ic" data-ic="map-pin" aria-hidden="true"></i></span>
+    <div>
+      <b id="locName">定位中…</b><br>
+      <span id="locDetail">通过腾讯地图 IP 定位获取当前所在城市</span>
+    </div>
+    <span class="tag" id="locTag">IP 定位</span>
+  </div>
+  <!-- 全国直查器 -->
+  <h2 class="sec" id="querier"><i class="cc-ic" data-ic="search" aria-hidden="true"></i>全国场馆直查 · 覆盖到县级</h2>
+  <p class="sec-sub">选省 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选市 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 填县（可留空查全市）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 选类型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 一键唤起腾讯地图搜索该区域场馆并导航</p>
+  <div class="querier">
+    <div class="q-head"><span class="ic"><i class="cc-ic" data-ic="compass" aria-hidden="true"></i></span>我要找 <em id="qTypeLabel">科技馆</em> —— 省 <em id="qProvLabel">江西</em> · 市 <em id="qCityLabel">宜春</em> · 县 <em id="qCountyLabel">（全市）</em></div>
+    <div class="q-grid">
+      <div><label>省份</label><select id="qProv"></select></div>
+      <div><label>地级市</label><select id="qCity"></select></div>
+      <div><label>县 / 区（填了覆盖到县级）</label><input id="qCounty" placeholder="如：袁州区 / 万载县 / 井冈山市…" autocomplete="off"></div>
+    </div>
+    <div class="q-type" id="qType"></div>
+    <div class="q-actions">
+      <a class="go" id="qGo" href="#" target="_blank" rel="noopener"><i class="cc-ic" data-ic="smartphone" aria-hidden="true"></i>唤起腾讯地图 · 搜索并导航</a>
+      <a class="ghost" id="qWeb" href="#" target="_blank" rel="noopener"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>网页版搜索</a>
+    </div>
+  </div>
+  <h2 class="sec" id="cats"><i class="cc-ic" data-ic="folder-open" aria-hidden="true"></i>精选真实地点</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-map-guide.png" alt="地图指引 · 白驹 ccowork · 全国 AI 场馆导航 · " loading="lazy"></figure>
+  <p class="sec-sub">共 <b id="venueCount">0</b> 处精选 POI · 全部来自腾讯地图连接器实时查询 · 2026-08-30</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="grid" id="grid"></div>
+  <!-- 导航示例 -->
+  <h2 class="sec" id="demo"><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>本地导航示例 · 从我的位置出发</h2>
+  <p class="sec-sub">起点 = 你的当前位置（IP 定位），终点 = 宜春科技之窗（驾车路线由腾讯地图实时规划）</p>
+  <div class="card" style="background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--card-shadow)">
+    <div class="route-map">
+      <div class="route-point"><span class="dot a"></span><div><b id="rFromName">我的位置</b><br><span id="rFromAddr">IP 定位 · 江西省宜春市袁州区</span></div></div>
+      <div class="route-line"></div>
+      <div class="route-point"><span class="dot b"></span><div><b>宜春科技之窗</b><br><span>江西省宜春市袁州区府北路 19 号</span></div></div>
+      <div class="route-stats">
+        <span class="st">总距离 <b id="stDist">3.2 km</b></span>
+        <span class="st">驾车 <b id="stTime">7 分钟</b></span>
+        <span class="st">打车费 <b id="stTaxi">≈ ¥8</b></span>
+        <span class="st">红绿灯 <b id="stLight">4 个</b></span>
+        <span class="st">过路费 <b id="stToll">¥0</b></span>
+      </div>
+      <div class="route-nav"><a id="routeBtn" href="#" target="_blank" rel="noopener"><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>打开腾讯地图 · 从我的位置开始导航</a></div>
+    </div>
+  </div>
+  <!-- 数据来源 -->
+  <div class="srcnote">
+    <span><i class="cc-ic" data-ic="lock" aria-hidden="true"></i></span>
+    <span><b>数据来源：</b>腾讯位置服务（lbs.qq.com）连接器实时查询 · 2026-08-30。42 处精选地点经纬度/地址均为真实返回数据；全国直查器通过腾讯地图官方 URI 唤起 App 搜索（覆盖全国县级），点「导航」直接进入路线规划。IP 定位：江西省宜春市袁州区（27.798170, 114.427730）。<br><b>接口复核 2026-10-27：</b>「导航」所用的腾讯路线规划 URI 实测可用（302 后仍带起终点坐标）；原「位置」按钮所用腾讯 marker URI 实测会在跳转时丢弃坐标，已改为高德 URI（跳转后仍保留经纬度与名称）；「网页版搜索」改用腾讯网页版规范参数 type=poi&amp;what=&amp;city=。场馆官网本次逐条实测，仅将 200 且标题匹配者写入数据（<span id="officialCount">7</span> 处）。</span>
+  </div>
+</div>
+
+
+
+
+<script>
+(function(){
+  var V = window.AI_VENUES, R = window.CN_REGIONS;
+  if (!V) { document.getElementById('grid').innerHTML = '<p>数据加载失败</p>'; return; }
+  // 定位卡
+  var loc = V.home;
+  document.getElementById('locName').textContent = '江西省' + loc.city + loc.district;
+  document.getElementById('locDetail').textContent = 'IP 定位 · ' + loc.label + '（' + loc.lat + ', ' + loc.lng + '）';
+  document.getElementById('locTag').textContent = 'IP 定位 · ' + loc.city.replace('市','');
+  // 计数
+  var total = 0;
+  V.categories.forEach(function(c){ total += c.venues.length });
+  document.getElementById('venueCount').textContent = total;
+  // ============ 全国直查器 ============
+  var provSel = document.getElementById('qProv'), citySel = document.getElementById('qCity');
+  var countyInp = document.getElementById('qCounty');
+  var qType = 'science';
+  var TYPE_MAP = {
+    science: '科技馆', library: '图书馆', park: 'AI产业园',
+    red: '红色教育基地', arena: '比赛场馆'
+  };
+  // 省份下拉（默认定位到江西）
+  (R || []).forEach(function(r){ provSel.add(new Option(r.p, r.p)); });
+  provSel.value = '江西';
+  // 城市联动
+  function fillCities(){
+    citySel.innerHTML = '';
+    var row = (R || []).find(function(r){ return r.p === provSel.value; });
+    (row ? row.c : []).forEach(function(c){ citySel.add(new Option(c, c)); });
+  }
+  fillCities();
+  citySel.value = '宜春';
+  provSel.onchange = fillCities;
+  citySel.onchange = updateLabels;
+  countyInp.oninput = updateLabels;
+  // 类型按钮
+  var qtBox = document.getElementById('qType');
+  Object.keys(TYPE_MAP).forEach(function(id){
+    var b = document.createElement('button');
+    b.textContent = TYPE_MAP[id];
+    b.dataset.id = id;
+    if (id === qType) b.classList.add('on');
+    b.onclick = function(){
+      qType = id;
+      document.querySelectorAll('#qType button').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); updateLabels();
+    };
+    qtBox.appendChild(b);
+  });
+  function updateLabels(){
+    var county = countyInp.value.trim();
+    document.getElementById('qTypeLabel').textContent = TYPE_MAP[qType];
+    document.getElementById('qProvLabel').textContent = provSel.value;
+    document.getElementById('qCityLabel').textContent = citySel.value || '—';
+    document.getElementById('qCountyLabel').textContent = county || '（全市）';
+    var region = provSel.value + (citySel.value ? citySel.value : '');
+    if (county) region += county;
+    var kw = encodeURIComponent(TYPE_MAP[qType]);
+    var reg = encodeURIComponent(region);
+    document.getElementById('qGo').href = 'https://apis.map.qq.com/uri/v1/search?keyword=' + kw + '&region=' + reg + '&referer=ccowork';
+    // 2026-10-27 实测：腾讯地图网页版认的是 type=poi&what=&city=（其 URI 302 后的规范形式），
+    // 旧写法 kw/region 非规范参数，改为规范形式；县级关键词并入 what 以保证精度
+    var whatTxt = encodeURIComponent(TYPE_MAP[qType] + (county ? ' ' + county : ''));
+    var cityTxt = encodeURIComponent(provSel.value + (citySel.value || ''));
+    document.getElementById('qWeb').href = 'https://map.qq.com/?type=poi&what=' + whatTxt + '&city=' + cityTxt;
+  }
+  updateLabels();
+  // ============ 精选地点 ============
+  var tabsBox = document.getElementById('tabs');
+  var grid = document.getElementById('grid');
+  var active = 'science';
+  function render(){
+    grid.innerHTML = '';
+    V.categories.forEach(function(c){
+      if (c.id !== active) return;
+      c.venues.forEach(function(v){
+        var route = 'https://apis.map.qq.com/uri/v1/routeplan?type=drive&from=' + loc.lat + ',' + loc.lng +
+          '&fromcoord=' + loc.lat + ',' + loc.lng +
+          '&to=' + v.lat + ',' + v.lng + '&tocoord=' + v.lat + ',' + v.lng + '&referer=ccowork';
+        // 2026-10-27 实测：apis.map.qq.com/uri/v1/marker 会 302 到 map.qq.com 并丢掉坐标参数，
+        // 故「位置」按钮改用高德 URI（实测 302 后仍保留 lng/lat/name），保证点开就是该地点坐标
+        var mark = 'https://uri.amap.com/marker?position=' + v.lng + ',' + v.lat +
+          '&name=' + encodeURIComponent(v.name) + '&src=ccowork&callnative=0';
+        grid.innerHTML +=
+          '<div class="venue">' +
+            '<div class="v-head"><span class="ico">' + c.icon + '</span><b>' + v.name + '</b><span class="city">' + v.city + '</span></div>' +
+            '<div class="v-body"><p>' + v.address + '</p>' +
+              '<p class="geo">' + v.lat + ', ' + v.lng + (v.tag ? ' · ' + v.tag : '') + '</p></div>' +
+            '<div class="v-foot">' +
+              '<a class="nav" href="' + route + '" target="_blank" rel="noopener"> 导航</a>' +
+              '<a class="view" href="' + mark + '" target="_blank" rel="noopener"> 位置</a>' +
+            '</div>' +
+          '</div>';
+      });
+    });
+  }
+  V.categories.forEach(function(c){
+    var b = document.createElement('button');
+    b.textContent = c.icon + ' ' + c.name + '（' + c.venues.length + '）';
+    b.onclick = function(){
+      active = c.id;
+      document.querySelectorAll('#tabs button').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); render();
+      window.scrollTo({top: document.getElementById('cats').offsetTop - 90, behavior:'smooth'});
+    };
+    if (c.id === active) b.classList.add('on');
+    tabsBox.appendChild(b);
+  });
+  render();
+  // ============ 导航示例（从我的位置出发） ============
+  var d = V.routeDemo;
+  if (d) {
+    document.getElementById('rFromName').textContent = '我的位置（' + loc.city.replace('市','') + '）';
+    document.getElementById('rFromAddr').textContent = loc.label + '（' + loc.lat + ', ' + loc.lng + '）';
+    document.getElementById('stDist').textContent = (d.driving.distance/1000).toFixed(1) + ' km';
+    document.getElementById('stTime').textContent = d.driving.durationMin + ' 分钟';
+    document.getElementById('stTaxi').textContent = '≈ ¥' + d.driving.taxiFee;
+    document.getElementById('stLight').textContent = d.driving.lights + ' 个';
+    document.getElementById('stToll').textContent = '¥' + d.driving.toll;
+    document.getElementById('routeBtn').href = 'https://apis.map.qq.com/uri/v1/routeplan?type=drive&from=' + loc.lat + ',' + loc.lng + '&fromcoord=' + loc.lat + ',' + loc.lng + '&to=' + d.to.lat + ',' + d.to.lng + '&tocoord=' + d.to.lat + ',' + d.to.lng + '&referer=ccowork';
+  }
+})();
+</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.getElementById('themeBtn') && document.getElementById('themeBtn').addEventListener('click', ccoworkTheme);
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<script src="/data/ai-venues.js"></script>
+<script src="/data/cn-regions.js"></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

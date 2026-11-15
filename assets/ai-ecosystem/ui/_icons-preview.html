@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="白驹 · 统一矢量图标系统 唯一真源 assets/ai-ecosystem/ui/icons.js 品牌标（矢量，非 emoji） 深色主题 · 全量图标 浅色主题校验">
+<meta name="keywords" content="白驹 · 图标系统总览,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta name="description" content="白驹 · 统一矢量图标系统 唯一真源 assets/ai-ecosystem/ui/icons.js 品牌标（矢量，非 emoji） 深色主题 · 全量图标 浅色主题校验">
+<meta charset="UTF-8">
+<title>图标系统总览 · 白驹 ccowork</title>
+<style>
+  :root{
+    --bg:#070a14; --card:#101728; --line:rgba(255,255,255,.10); --text:#e9f0fb; --muted:#8fa3bd;
+    --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:14px/1.6 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+  .wrap{padding:26px 30px 60px;max-width:1180px;margin:0 auto}
+  h1{font-size:20px;margin:0 0 6px;letter-spacing:.3px}
+  h1 small{color:var(--muted);font-weight:400;font-size:13px;margin-left:10px}
+  h2{font-size:13px;color:var(--muted);margin:30px 0 12px;letter-spacing:1.4px;text-transform:uppercase;
+    border-left:2px solid var(--cyan);padding-left:9px}
+  .brandrow{display:flex;align-items:center;gap:14px;margin:18px 0 8px}
+  .bm{display:flex;align-items:center;gap:10px;padding:9px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  .bm span{font-weight:800;letter-spacing:.4px}
+  .bm small{color:var(--muted);font-weight:500}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:9px}
+  .cell{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 8px 9px;
+    display:flex;flex-direction:column;align-items:center;gap:7px;transition:.18s}
+  .cell:hover{border-color:rgba(56,225,255,.5);transform:translateY(-2px)}
+  .cell code{font-size:10px;color:var(--muted);font-family:ui-monospace,Consolas,monospace;
+    max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bj-ic{width:24px;height:24px;flex:none;color:var(--cyan)}
+  .tile{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+    background:rgba(79,140,255,.10);border:1px solid var(--line)}
+  .tile .bj-ic{color:var(--text)}
+  /* 浅色主题对照 */
+  .light{background:#f4f7fc;border-radius:18px;padding:20px;margin-top:14px;border:1px solid var(--line)}
+  .light .cell{background:#fff;border-color:#e3ebf5}
+  .light .bj-ic{color:#1e293b}
+  .light h2{color:#5a6b85;border-color:var(--blue)}
+  .light code{color:#7b8ba3}
+  .light .bm{background:#fff;border-color:#e3ebf5;color:#1e293b}
+  .light .bm small{color:#5a6b85}
+  .stat{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 0;color:var(--muted);font-size:13px}
+  .stat b{color:var(--cyan);font-weight:700}
+</style>
+<link rel="stylesheet" href="/float-dock.css">
+<meta name="twitter:description" content="白驹 · 统一矢量图标系统 唯一真源 assets/ai-ecosystem/ui/icons.js 品牌标（矢量，非 emoji） 深色主题 · 全量图标 浅色主题校验">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/assets/ai-ecosystem/ui/_icons-preview.html">
+<meta property="og:title" content="图标系统总览 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/assets/ai-ecosystem/ui/_icons-preview.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="图标系统总览 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body>
+<div class="wrap">
+  <h1>白驹 · 统一矢量图标系统 <small>唯一真源 assets/ai-ecosystem/ui/icons.js</small></h1>
+  <div class="stat" id="stat"></div>
+
+  <h2>品牌标（矢量，非 emoji）</h2>
+  <div class="brandrow" id="brandrow"></div>
+
+  <h2>深色主题 · 全量图标</h2>
+  <div class="grid" id="grid"></div>
+
+  <div class="light">
+    <h2>浅色主题校验</h2>
+    <div class="brandrow" id="brandrow2"></div>
+    <div class="grid" id="grid2"></div>
+  </div>
+</div>
+<script src="../ui/icons.js"></script>
+<script>
+  var names = window.BJI.names;
+  document.getElementById('stat').innerHTML =
+    '<span>图标总数 <b>' + names.length + '</b></span>' +
+    '<span>画布 <b>24×24</b></span><span>描边 <b>1.7</b></span>' +
+    '<span>颜色 <b>currentColor</b></span><span>外链依赖 <b>0</b></span>';
+
+  var bhtml = '<div class="bm">' + BJI.brand(30) + '<span>白驹 · AI 生态库</span></div>' +
+              '<div class="bm">' + BJI.brand(20) + '<span>20px</span></div>' +
+              '<div class="bm">' + BJI.brand(16) + '<span>16px</span></div>';
+  document.getElementById('brandrow').innerHTML = bhtml;
+  document.getElementById('brandrow2').innerHTML = bhtml;
+
+  var g = '', g2 = '';
+  names.forEach(function (n) {
+    var cell = '<div class="cell"><div class="tile">' + BJI.svg(n) + '</div><code>' + n + '</code></div>';
+    g += cell; g2 += cell;
+  });
+  document.getElementById('grid').innerHTML = g;
+  document.getElementById('grid2').innerHTML = g2;
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

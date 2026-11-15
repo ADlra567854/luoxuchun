@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HealthCoach 健身教练 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="AI 学院实战项目：目标、拆解、实现步骤与验收标准。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/learn/academy/projects/health-coach.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-projects-health-coach.png" alt="HealthCoach 健身教练 · AI 学院 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1> HealthCoach 健身教练</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · AI 学院 毕业设计 23 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">健康</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>23 号毕业设计：HealthCoach 健身教练</h2>
+<p>很多健身新手缺乏科学的计划指导、饮食搭配和持续的打卡动力，难以坚持达成健身目标。本项目带你从零搭建私教Agent，掌握LLM应用开发、RAG知识库构建与用户状态管理的落地能力。</p>
+<h2>项目简介</h2>
+<p>HealthCoach 健身教练是一款面向健身新手与进阶爱好者的垂直领域私教Agent，基于大语言模型与健身领域知识库，为用户提供个性化训练计划生成、科学饮食建议、打卡激励与进度追踪服务，解决传统健身App计划僵化、反馈滞后、缺乏互动激励的痛点，相当于用户口袋里的24小时在线私教。项目采用轻量架构设计，无需复杂算力支持，普通个人电脑即可部署运行，适合AI应用开发初学者作为垂直领域Agent的入门实践项目。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-health-coach.png" alt="HealthCoach 健身教练 · AI 学院 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>个性化训练计划生成：根据用户填写的身高、体重、健身目标（增肌/减脂/塑形/康复）、可用器械、每周可训练时长，自动生成分阶段的周度训练计划，包含动作组数、次数、休息间隔与动作要点提示</li>
+<li>科学饮食建议：结合用户基础代谢率、训练目标与饮食偏好，生成每日三餐+加餐的食谱方案，标注热量、宏量营养素（蛋白质/碳水/脂肪）占比，支持外卖/食堂场景的食物替换建议</li>
+<li>智能打卡激励：支持用户上传训练/饮食打卡内容（文字/图片描述），自动识别完成度，给出针对性反馈，连续打卡触发成就徽章与正向激励话术，断卡时发送温和提醒</li>
+<li>健身知识库问答：基于专业健身教材、权威运动指南构建RAG知识库，解答动作标准性、运动损伤预防、补剂选择等常见问题，避免网络健身谣言误导</li>
+<li>进度数据追踪：自动记录用户体重、围度、训练重量等核心指标，每周生成进度复盘报告，动态调整后续训练与饮食方案，适配平台期用户需求</li>
+<li>场景化提醒：根据用户设置的作息时间，推送训练提醒、餐前饮食建议、睡前拉伸提示，贴合用户日常使用习惯</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>大语言模型</td><td>Qwen2-7B-Instruct（本地部署）/ 通义千问API</td><td>核心推理引擎，负责计划生成、对话交互、内容理解</td></tr>
+<tr><td>向量数据库</td><td>Chroma</td><td>存储健身领域知识库的向量切片，支撑RAG检索增强生成</td></tr>
+<tr><td>后端框架</td><td>FastAPI</td><td>提供HTTP接口，处理用户请求、业务逻辑调度</td></tr>
+<tr><td>前端界面</td><td>Gradio</td><td>快速搭建可视化交互界面，支持对话、打卡、数据查看</td></tr>
+<tr><td>知识库构建</td><td>LangChain + BGE-small-zh</td><td>文档切片、向量嵌入、检索链路编排，优化中文语义匹配效果</td></tr>
+<tr><td>用户数据存储</td><td>SQLite</td><td>轻量化存储用户基本信息、打卡记录、进度数据，无需额外部署数据库服务</td></tr>
+<tr><td>工具调用</td><td>LangChain Tools</td><td>集成代谢率计算、热量查询、日历提醒等外部工具，增强Agent实用能力</td></tr>
+</tbody>
+</table>
+<p>架构说明：项目采用经典的Agent分层架构，最上层为用户交互层，通过Gradio界面接收用户输入并展示结果；中间层为业务调度层，由FastAPI承接请求，通过LangChain编排大模型、工具、知识库的调用链路，判断用户意图后路由到对应功能模块；底层为数据与能力层，分别提供大模型推理、向量检索、结构化数据存储、工具能力支撑。所有组件优先选择轻量化开源方案，最小化部署门槛，同时保留替换为云服务的扩展空间。</p>
+<h2>核心代码骨架</h2>
+<pre><code># 核心模块：健康教练Agent主逻辑
+from langchain.agents import AgentExecutor, create_openai_tools_agent
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import HuggingFaceBgeEmbeddings
+from langchain.tools import tool
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.llms import Tongyi
+import sqlite3
+# 1. 初始化基础组件
+llm = Tongyi(model_name="qwen2-7b-instruct", temperature=0.3)
+# 加载中文嵌入模型，初始化健身知识库向量库
+embed_model = HuggingFaceBgeEmbeddings(model_name="BAAI/bge-small-zh")
+vector_db = Chroma(persist_directory="./fitness_kb", embedding_function=embed_model, collection_name="fitness")
+db_conn = sqlite3.connect("./healthcoach.db", check_same_thread=False)
+# 2. 定义Agent工具集
+@tool
+def calculate_bmr(weight: float, height: float, age: int, gender: str) -&gt; float:
+    """计算用户基础代谢率，传入体重(kg)、身高(cm)、年龄、性别(男/女)"""
+    if gender == "男":
+        return 10*weight + 6.25*height - 5*age + 5
+    else:
+        return 10*weight + 6.25*height - 5*age - 161
+@tool
+def search_fitness_knowledge(query: str) -&gt; str:
+    """检索健身知识库，解答动作、损伤、补剂等专业问题"""
+    docs = vector_db.similarity_search(query, k=3)
+    return "\n".join([doc.page_content for doc in docs])
+@tool
+def save_checkin_record(user_id: str, content: str) -&gt; str:
+    """保存用户打卡记录，返回连续打卡天数"""
+    cursor = db_conn.cursor()
+    cursor.execute("INSERT INTO checkin (user_id, content, date) VALUES (?, ?, date('now'))", (user_id, content))
+    cursor.execute("SELECT count(*) FROM checkin WHERE user_id = ? AND date &gt;= date('now', '-' || ? || ' days')",
+                   (user_id, 6))
+    streak = cursor.fetchone()[0]
+    db_conn.commit()
+    return f"打卡成功！当前连续打卡{streak}天，继续保持哦"
+# 3. 构建Agent执行链路
+tools = [calculate_bmr, search_fitness_knowledge, save_checkin_record]
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "你是专业的健身私教HealthCoach，回答要科学、接地气，多给用户正向激励，所有专业问题必须先调用知识库检索再回答，用户打卡必须调用打卡记录工具。"),
+    ("user", "{input}"),
+    ("placeholder", "{agent_scratchpad}")
+])
+agent = create_openai_tools_agent(llm, tools, prompt)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：安装Python 3.10+版本，执行<code>pip install fastapi uvicorn gradio langchain langchain-community chromadb bce-python-sdk dashscope sqlite3</code>安装所有依赖库，提前申请通义千问API Key（或本地部署Qwen2-7B模型替换）。</li>
+<li>知识库初始化：收集《运动营养学》《健身教练职业资格培训教材》等公开健身文档，保存为txt格式到<code>./raw_docs</code>目录，执行<code>python build_kb.py</code>完成文档切片、向量嵌入，生成Chroma向量库到<code>./fitness_kb</code>目录。</li>
+<li>数据库初始化：执行<code>python init_db.py</code>，自动创建SQLite数据库文件与用户表、打卡记录表、训练计划表三张核心表。</li>
+<li>配置环境变量：在项目根目录创建<code>.env</code>文件，写入<code>DASHSCOPE_API_KEY=你的API密钥</code>，本地部署模型的同学修改代码中llm初始化部分为Ollama加载本地模型的配置。</li>
+<li>启动后端服务：执行<code>uvicorn main:app --host 0.0.0.0 --port 8000</code>，启动FastAPI后端服务，接口文档可通过<code>http://localhost:8000/docs</code>查看。</li>
+<li>启动前端界面：新开终端执行<code>python ui.py</code>，启动Gradio交互界面，访问终端输出的本地地址（默认<code>http://localhost:7860</code>）即可进入产品页面。</li>
+<li>功能测试：首次进入填写个人身高、体重、年龄、健身目标等基础信息，测试生成训练计划、提问健身问题、提交打卡等核心功能，确认返回结果符合预期。</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>多模态打卡识别：接入Qwen-VL多模态模型，支持用户上传餐食照片、训练动作视频，自动识别餐食热量、判断动作标准度，给出更精准的反馈，替代纯文字打卡的体验。</li>
+<li>可穿戴设备对接：集成华为健康、小米运动等开放平台API，自动同步用户每日步数、睡眠时长、运动心率等数据，无需用户手动输入即可动态调整训练强度。</li>
+<li>社交互动模块：增加打卡广场、好友PK、组队挑战赛功能，引入社交激励机制，进一步提升用户坚持运动的动力，同时沉淀UGC内容丰富知识库。</li>
+<li>个性化模型微调：收集真实私教对话、用户反馈数据，对基础大模型做LoRA微调，让生成的计划、建议更符合国内用户的饮食与运动习惯，减少通用模型的常识错误。</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握垂直领域Agent的完整开发流程：从领域知识库构建、工具定义、Prompt工程到前后端联调，理解RAG与工具调用结合的Agent实现逻辑。</li>
+<li>学会轻量化AI应用的部署方案：使用Chroma、SQLite等轻量组件降低部署门槛，能够根据场景灵活选择云API或本地开源模型平衡成本与效果。</li>
+<li>理解产品化思维在AI项目中的应用：从用户真实健身场景出发设计功能，通过激励机制、动态调整提升用户留存，而非单纯堆砌大模型能力。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>扩展现有工具集：新增一个<code>food_calorie_query</code>工具，对接公开食物热量数据库，支持用户输入食物名称+重量返回对应热量与营养成分，替换原有大模型生成的估算值，提升饮食建议准确性。</li>
+<li>优化打卡激励逻辑：修改打卡记录工具的返回逻辑，当连续打卡满7天、30天时，自动生成专属成就徽章与个性化激励文案，当用户连续2天未打卡时，在对话中主动触发温和提醒。</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 AI 学院「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261115b"></script>
+</body>
+</html>

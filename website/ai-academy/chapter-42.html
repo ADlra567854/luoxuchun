@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="端侧 Agent 全栈开源实战,AI 学院,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="端侧 Agent 全栈开源实战：MiniCPM5-2B 权重 · 数据 · RL 框架 · 训练配方一把梭 · AI 学院 · 白驹 ccowork">
+<meta name="description" content="2B参数干翻12B模型！MiniCPM5-2B四件套全开：权重+数据+RL框架+训练配方，端侧Agent从零复现，单卡就能跑完整训练流程。">
+<meta property="og:description" content="2B参数干翻12B模型！MiniCPM5-2B四件套全开：权重+数据+RL框架+训练配方，端侧Agent从零复现，单卡就能跑完整训练流程。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>端侧 Agent 全栈开源实战：MiniCPM5-2B 权重 · 数据 · RL 框架 · 训练配方一把梭 · AI 学院 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"端侧 Agent 全栈开源实战：MiniCPM5-2B 权重·数据·RL 框架·训练配方一把梭 · AI 学院 · 白驹 ccowork","description":"2B参数干翻12B模型！MiniCPM5-2B四件套全开：权重+数据+RL框架+训练配方，端侧Agent从零复现，单卡就能跑完整训练流程。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<meta name="twitter:description" content="2B参数干翻12B模型！MiniCPM5-2B四件套全开：权重+数据+RL框架+训练配方，端侧Agent从零复现，单卡就能跑完整训练流程。">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/website/ai-academy/chapter-42.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/ai-academy/chapter-42.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="端侧 Agent 全栈开源实战：MiniCPM5-2B 权重 · 数据 · RL 框架 · 训练配方一把梭 · AI 学院 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<h1>端侧 Agent 全栈开源实战：MiniCPM5-2B 权重·数据·RL 框架·训练配方一把梭</h1>
+<div class="blog-open">
+  <div class="blog-badge">🐎 白驹 ccowork · AI 学院 第42章</div>
+  <div class="blog-meta"><span>📅 2026-10-27</span><span>⏱ 65 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)">🤖 AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="第42章 端侧 Agent 全栈开源实战：MiniCPM5-2B 权重·数据·RL 框架·训练配方一把梭" style="width:100%;height:auto;border-radius:18px;margin:0 0 22px;box-shadow:0 10px 28px rgba(31,45,77,.15)">
+  <defs>
+    <linearGradient id="covGrad42" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f8cff"/><stop offset=".5" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#covGrad42)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.10)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.07)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.06)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">AI 学院 · 第 42 章 · 每日新增</text>
+  <text x="56" y="142" font-size="46" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">端侧 Agent 全栈开源实战：MiniCPM5-2B 权重·数据·RL 框架·训练配方一把梭</text>
+  <text x="56" y="184" font-size="19" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">2B 参数 INT4 仅 1.2GB、AA 智能指数 23 分登顶 4B 以下、Agent 指数 20 分超同尺寸 10 倍，UltraData-RL-2609 八万六千可验证 RL 任务全开放</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">📘</text>
+</svg>
+<p>本章是端侧AI开发的实战核心章节，你将掌握MiniCPM5-2B从权重获取、数据处理、RL训练到端侧部署的全链路开源工具用法，学完可独立在单卡上复现端侧Agent模型的训练流程，完成手机/PC端离线Agent应用的落地验证。</p>
+<h2 id="ch42-热点背景与章节定位">热点背景与章节定位</h2>
+<p>2026年9月8日，面壁智能（OpenBMB）正式开源新一代端侧语言基础模型MiniCPM5-2B，官方仓库为OpenBMB/MiniCPM5，HuggingFace模型地址为openbmb/MiniCPM5-2B，采用Apache-2.0开源许可，相关发布信息可通过面壁智能官方公告、新智元、AI行业日报9月8日报道核验，所有细节请以官方文档为准。本次开源并非只放出模型权重，而是同步开放训练数据、数据治理方案、强化学习框架与完整训练配方，官方称之为「四件套全开」，是目前端侧小模型领域首个可完整复现训练全链路的开源项目。</p>
+<p>本章是端侧三部曲的收尾章节：第32章讲解Google LiteRT-LM端侧推理框架的使用方法，第33章介绍星火X2.5端侧百万上下文模型的部署方案，本章聚焦2B级端侧Agent模型的从零训练与配方复现；同时本章也是第36章Orchard工业级Agent训练基础设施的轻量化对照——Orchard基于K8s沙箱实现工业级大规模训练，本章的方案可在单卡上完成端侧模型的RL训练全链路复现，门槛更低、更适合个人开发者与中小团队。</p>
+<p>你可以通过执行以下命令拉取官方仓库验证开源内容完整性：</p>
+<pre><code>git clone https://github.com/OpenBMB/MiniCPM5.git
+cd MiniCPM5 &amp;&amp; ls -la
+# 正常应看到weights、data、rl_framework、recipes四个核心目录</code></pre>
+<h2 id="ch42-核心规格与性能表现">核心规格与性能表现</h2>
+<p>MiniCPM5-2B为Dense架构，总参数约24亿（含词表嵌入参数），原生支持128K上下文窗口，量化后体积完全适配端侧硬件：INT4量化后约1.2GB，INT8量化后约2.4GB，可在手机、PC、智能穿戴甚至嵌入式MCU设备上流畅运行，具体硬件适配列表请以官方模型卡为准。</p>
+<p>该模型被社区称为端侧「小钢炮」，核心原因是其参数效率远超同级别模型：根据Artificial Analysis Intelligence Index 2026年9月榜单，MiniCPM5-2B综合评分为23分，位列4B以下规模模型第一，超过Gemma 4 12B（22分）与Qwen3.5 9B（22分），参数量仅为后者的1/4~1/6。Agent能力表现更为突出：AA Agentic Index得分20分，第二名Granite 4.2 8B仅为9分，同级别2B~3B模型普遍得分在2分左右；GDPval-AA v2职业任务Elo为891，接近人类基线1000分，且单任务输出token数约21k，在同级模型中输出冗余度排第二低，推理效率优势明显。</p>
+<p>目前2B级模型已覆盖原本云端大模型专属的核心Agent能力，具体能力矩阵如下（评测结果以官方为准）：</p>
+<ul>
+<li>工具调用：支持标准Function Calling与JSON结构化输出，端侧可直接调用本地系统API</li>
+<li>深度搜索：支持多步检索与跨文档信息整合，可完成离线知识库问答</li>
+<li>代码生成与调试：支持Python/JS等主流语言的代码编写、错误定位与修复</li>
+<li>数学推理：覆盖小学到高中难度的数学题解题，可作为端侧计算助手</li>
+<li>长文档理解：支持128K以内的文档摘要、信息抽取与问答</li>
+</ul>
+<h2 id="ch42-四件套开源完整内容">「四件套开源」完整内容</h2>
+<p>本次MiniCPM5-2B开源的「四件套」覆盖了模型训练到部署的全链路资源，所有资源均采用Apache-2.0许可（第三方数据授权请以官方声明为准）：</p>
+<p>第一是模型权重：官方同步放出BF16/FP16原始权重，以及GGUF/INT4/INT8等多版本量化权重，在HuggingFace与ModelScope双平台同步上架，用户可根据硬件条件选择对应版本。</p>
+<p>第二是训练数据集UltraData-RL-2609：仓库地址为OpenBMB/UltraData-RL，共包含85995个可验证任务，覆盖数学、代码、长上下文、知识四大类，每道题均附带参考答案与可程序化校验的评分逻辑，与第36章Orchard的可验证任务设计思想同源，但规模小一个量级，可在单卡上完成训练复现。</p>
+<p>第三是RL训练框架：基于OpenBMB自研的BMTrain/RLHF工具链开发，原生支持GRPO（Group Relative Policy Optimization，DeepSeek R1同款算法家族）等主流RL算法，针对2B级端侧模型做了显存优化，单卡或单机多卡即可跑通完整训练流程，具体依赖版本请以官方requirements.txt为准。</p>
+<p>第四是完整训练配方：官方开放了从预训练数据配比、SFT数据构造、RL训练超参到对齐策略的全流程文档与可执行脚本，承诺「严格按文档操作可复现官方模型性能」，相关内容存放在仓库recipes目录下。</p>
+<p>你可以通过以下命令快速下载最小量化版本做快速验证：</p>
+<pre><code># 先安装Ollama（官网：ollama.com，支持Windows/macOS/Linux）
+ollama run minicpm5:2b
+# 启动后可直接输入对话测试工具调用能力，例如："帮我调用计算器计算123*456的结果"</code></pre>
+<h2 id="ch42-核心训练技术亮点">核心训练技术亮点</h2>
+<p>MiniCPM5-2B能以2B参数跑出4B+模型的性能，并非依赖特殊架构魔法，核心来自训练数据质量的严格把控与RL阶段的精细打磨。在架构选型上，官方明确2B级端侧模型选择Dense架构而非MoE架构，核心原因是端侧硬件的显存与带宽对MoE的路由调度不友好，Dense架构的推理延迟更稳定、内存占用更可控，这与第33章星火X2.5的端侧Dense选型逻辑一致。</p>
+<p>训练流程采用标准三阶段范式：大规模通用语料预训练→高质量指令数据SFT→GRPO算法RL对齐，其中RL阶段没有单独训练奖励模型，而是直接利用UltraData-RL数据集的可程序化校验逻辑生成奖励信号，大幅降低了RL训练的成本与门槛。</p>
+<p>UltraData-RL的数据工程方法论非常值得开发者借鉴：任务来源覆盖数学（GSM8K/MATH等数据集扩展）、代码（HumanEval/MBPP等数据集扩展）、长上下文（haystack检索类+真实文档问答）、知识（多领域事实校验题）四大类；「可验证」是该数据集的核心优势——RL训练的核心瓶颈是奖励信号质量，用程序判分的任务成本比人类标注低100倍，且不存在标注噪声，这与第36章Orchard的密集奖励信号设计思路完全一致。官方同时开放了完整的数据治理脚本，覆盖去重、难度分级、答案格式统一、负样本构造全流程，可直接迁移到自定义数据集的处理中。</p>
+<p>GRPO训练的核心超参（官方配方参考，具体请以官方recipes为准）如下：</p>
+<table>
+<thead><tr><th>超参数</th><th>取值</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>每批样本数</td><td>64</td><td>单24GB显卡可跑</td></tr>
+<tr><td>学习率</td><td>5e-7</td><td>RL阶段小学习率避免模型崩塌</td></tr>
+<tr><td>组大小</td><td>8</td><td>GRPO每组采样8个输出计算相对优势</td></tr>
+<tr><td>训练轮数</td><td>3</td><td>避免过拟合可验证任务</td></tr>
+</tbody>
+</table>
+<h2 id="ch42-部署实战路径由轻到重">部署实战路径（由轻到重）</h2>
+<p>根据硬件条件与使用需求，你可以选择从简单体验到二次开发的不同部署路径，所有操作均为官方支持的可执行流程：</p>
+<p>最轻量的体验路径是移动端部署：可通过MiniCPM官方App直接体验，Android/iOS端的支持情况请以官方应用商店公告为准，也可以集成官方移动端SDK到自有App中，实现离线AI功能。其次是PC端一键体验：安装Ollama后执行<code>ollama run minicpm5:2b</code>即可启动对话，也可以直接从HuggingFace下载GGUF量化版本，通过llama.cpp等工具加载运行。</p>
+<p>如果需要做二次开发与微调，可以通过transformers库直接加载原始权重，先安装对应依赖：<code>pip install transformers>=4.45.0 accelerate torch>=2.1.0</code>，然后即可通过标准接口加载模型做推理或LoRA微调。如果需要提供服务化接口，可以通过vLLM或SGLang部署OpenAI兼容的API服务，首发支持状态请以官方仓库的兼容性说明为准。</p>
+<p>最高阶的玩法是本地复现RL训练：使用UltraData-RL数据集搭配官方RL训练脚本，在单张24GB显存的消费级显卡（如RTX 3090/4090）上即可复现1B/2B级模型的GRPO训练流程，具体硬件门槛与启动命令请以官方训练教程为准。</p>
+<p>transformers加载推理的最小可执行代码示例如下：</p>
+<pre><code>from transformers import AutoTokenizer, AutoModelForCausalLM
+# 加载INT4量化版本，显存占用约1.2GB
+model_name = "openbmb/MiniCPM5-2B-INT4"
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    device_map="auto",
+    trust_remote_code=True
+)
+# 测试工具调用
+messages = [{"role": "user", "content": "帮我输出一个计算两数之和的Python函数，用JSON格式返回"}]
+inputs = tokenizer.apply_chat_template(messages, return_tensors="pt").to(model.device)
+outputs = model.generate(inputs, max_new_tokens=200)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))</code></pre>
+<h2 id="ch42-场景定位与同类对比">场景定位与同类对比</h2>
+<p>MiniCPM5-2B的核心优势是低延迟、高隐私、全离线，核心应用场景包括四类：一是离线个人助理，所有对话数据均留在本地，完全满足隐私优先的使用需求；二是嵌入式智能硬件，可集成到智能家居、服务机器人、车载系统中，无需联网即可提供智能交互能力；三是移动端生产力工具，可实现离线翻译、写作辅助、代码助手等功能，无网络也可正常使用；四是弱网环境下的Agent执行，例如野外作业、地下场景等无网络环境下的任务执行。其与云端Agent的分工非常明确：云端大模型负责复杂长周期规划、跨域知识整合，端侧模型负责低延迟执行、本地感知与即时响应，二者协同可实现成本与体验的最优平衡。</p>
+<p>与当前主流端侧模型对比，MiniCPM5-2B的差异化优势非常明显（所有评分来自Artificial Analysis 2026年9月公开榜单，自评结果请以官方说明为准）：对比Qwen3.5-4B，MiniCPM5-2B参数量约为其一半，综合智能指数相当，量化后体积小一半，更适合极低内存的端侧设备；对比Gemma 4 12B，MiniCPM5-2B参数量仅为其1/6，综合评分接近，推理速度快3倍以上；对比第33章介绍的星火X2.5-4B，后者主打百万超长上下文能力，MiniCPM5-2B则在Agent工具调用能力上有明显优势，开发者可根据具体场景选型。</p>
+<p>选型参考对照表如下：</p>
+<table>
+<thead><tr><th>模型</th><th>参数规模</th><th>核心优势</th><th>适配场景</th></tr></thead>
+<tbody>
+<tr><td>MiniCPM5-2B</td><td>2B</td><td>Agent能力强、体积小</td><td>低配置端侧设备、离线工具调用</td></tr>
+<tr><td>Qwen3.5-4B</td><td>4B</td><td>通用能力均衡</td><td>中配置移动端、通用端侧助手</td></tr>
+<tr><td>Gemma 4 12B</td><td>12B</td><td>知识覆盖广</td><td>高端PC端、本地知识库</td></tr>
+<tr><td>星火X2.5-4B</td><td>4B</td><td>百万长上下文</td><td>端侧长文档处理场景</td></tr>
+</tbody>
+</table>
+<h2 id="ch42-已知局限与注意事项">已知局限与注意事项</h2>
+<p>作为2B级端侧模型，MiniCPM5-2B存在明确的能力天花板，开发者在落地时需要理性评估：首先其复杂推理能力仍低于7B以上规模的模型，在超过100K的长上下文任务上性能会出现明显递减，Agent多步规划能力虽领先同级别模型，但仍远不如 GPT-6 系列、Claude Opus 5.5 等云端旗舰模型，GDPval-AA v2的891 Elo分与人类基线1000分的差距，可直观反映其职业任务能力的边界。</p>
+<p>其次开源的UltraData-RL数据集任务覆盖领域有限，目前偏重于数学、代码、结构化知识类任务，真实世界开放场景的任务覆盖不足，若要落地垂直场景仍需自行构造领域数据做微调。另外本次开源时间为2026年9月8日，官方给出的训练配方复现性仍需社区验证，后续复现结果请以社区公开报告为准。</p>
+<p>许可方面，模型本身采用Apache-2.0协议允许商用，但训练数据中包含的第三方开源数据集需遵守其对应授权要求，商用前请仔细核查官方声明中的数据授权说明，避免合规风险。你可以通过官方GitHub的Issue区跟踪最新的复现进度与问题反馈。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握MiniCPM5-2B的核心规格、性能表现与「四件套开源」的具体内容，理解端侧小模型的选型逻辑</li>
+<li>学会从权重下载、多路径部署到单卡RL训练复现的全流程操作，掌握GRPO算法在端侧模型训练中的落地方法</li>
+<li>理解可验证RL数据集的设计思路与数据治理方法论，可迁移到自定义端侧模型的训练流程中</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>本地安装Ollama，执行<code>ollama run minicpm5:2b</code>启动模型，测试其工具调用能力，验证结构化输出的格式正确性</li>
+<li>基于transformers加载MiniCPM5-2B-INT4权重，编写一个简单的本地代码助手脚本，实现离线Python代码纠错功能</li>
+<li>克隆UltraData-RL仓库，统计四类任务的数量占比，尝试运行官方提供的数据筛选脚本，生成100条自定义数学任务子集</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>阅读MiniCPM5官方技术报告中关于GRPO训练奖励函数设计的章节，对比其与第36章Orchard工业级RL训练框架在奖励信号设计、沙箱交互、任务构造上的异同，思考端侧轻量化RL训练与云端大规模RL训练的核心差异。</p>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');});
+</script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

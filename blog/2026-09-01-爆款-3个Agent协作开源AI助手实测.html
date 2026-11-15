@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="多 Agent 不是「让 AI 更聪明」，是「把活分给人」。分工能带来什么、会在哪里崩，取决于你选哪种编排模式。这篇给四种模式的适用条件与三个必跑的对照实验。">
+<meta name="keywords" content="3个Agent协作+记了30天对话不丢失,我测了刚上线的开源AI助手,比某付费GPT版还好用？,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta name="description" content="多 Agent 不是「让 AI 更聪明」，是「把活分给人」。分工能带来什么、会在哪里崩，取决于你选哪种编排模式。这篇给四种模式的适用条件与三个必跑的对照实验。">">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>多 Agent 协作到底解决什么：四种编排模式与各自的天花板 · 白驹 ccowork</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article hr{border:none;border-top:1px dashed var(--line);margin:30px 0}
+</style><link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html">
+<meta property="og:title" content="多 Agent 协作到底解决什么：四种编排模式与各自的天花板 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="多 Agent 协作到底解决什么：四种编排模式与各自的天花板 · 白驹 ccowork">
+<meta name="twitter:description" content="多 Agent 不是「让 AI 更聪明」，是「把活分给人」。分工能带来什么、会在哪里崩，取决于你选哪种编排模式。这篇给四种模式的适用条件与三个必跑的对照实验。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"多 Agent 协作到底解决什么：四种编排模式与各自的天花板","description":"多 Agent 不是「让 AI 更聪明」，是「把活分给人」。分工能带来什么、会在哪里崩，取决于你选哪种编排模式。这篇给四种模式的适用条件与三个必跑的对照实验。","url":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html"},"image":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/assets/img/og-cover.png","datePublished":"2026-09-01","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"dateModified":"2026-10-27","inLanguage":"zh-CN"}</script>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="works"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/sec/assistant.jpg" alt="多 Agent 协作到底解决什么：四种编排模式与各自的天花板" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy" decoding="async"></div>
+<article>
+<h1>多 Agent 协作到底解决什么：四种编排模式与各自的天花板</h1>
+<p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">「3 个 Agent 协作」「30 天记忆不丢失」这类结论依赖具体产品与测试条件，这里不作为依据。给的是多 Agent 的编排模式与判断方法，换一个框架依然成立。</p><p>先说一个容易误解的点：<strong>多 Agent 不会让模型变聪明</strong>。同一个模型，拆成三个角色互相说话，单步能力一点没变。</p><p>它真正带来的是三件事：<strong>上下文隔离、职责约束、可并行的分工</strong>。反过来说，如果你的问题不需要这三样，多 Agent 只会让你多付几倍的钱。</p><h2>四种常见的编排模式</h2><table><thead><tr><th style="white-space:nowrap">模式</th><th>怎么运转</th><th>什么时候值得用</th></tr></thead><tbody><tr><td style="white-space:nowrap">串行流水线</td><td>A 的输出喂给 B，B 给 C</td><td>任务本身天然分段，且每段标准不同</td></tr><tr><td style="white-space:nowrap">主管-工人</td><td>一个调度者拆任务，分给多个执行者</td><td>子任务可并行，数量不定</td></tr><tr><td style="white-space:nowrap">评审 / 辩论</td><td>一个产出，另一个挑错，循环若干轮</td><td>有明确的对错标准，且错误代价高</td></tr><tr><td style="white-space:nowrap">交接式</td><td>按条件把对话转给不同角色</td><td>客服、分流、多技能路由</td></tr></tbody></table><p>四种模式的天花板各不相同：</p><ul><li>串行流水线：<strong>错误会累积</strong>，第一段错一点，后面全歪</li><li>主管-工人：<strong>调度者是瓶颈</strong>，它拆错任务，工人再强也没用</li><li>评审 / 辩论：<strong>收益递减很快</strong>，通常两轮之后就没有新增价值</li><li>交接式：<strong>交接处丢信息</strong>，上下文压缩是最大的坑</li></ul><h2>三个必须自己跑的对照实验</h2><p>下面三个实验，每个都能在一个下午做完。做完你就知道该不该上多 Agent。</p><h3>实验一 · 单 Agent 基线</h3><p>先用<strong>一个 Agent + 一份完整提示词</strong>把任务做一遍，记录：完成率、产出可用率、总花费、总耗时。</p><p>这个基线非常重要。我见过太多方案，多 Agent 版本比单 Agent 更差——但因为没人跑过基线，所以没人知道。</p><h3>实验二 · 错误放大测试</h3><p>在中间某个环节<strong>人为注入一个错误输出</strong>，看系统会不会把它放大。</p><p>好的编排会把错误挡在下一道关卡（比如校验环节），差的编排会让错误扩散成整份产出都不可用。这个测试比测「成功率」更能看出设计的健壮性。</p><h3>实验三 · 轮数收益曲线</h3><p>把评审轮数从 1 加到 2 加到 3，记录质量与成本。</p><p>多数情况下，第二轮有明显提升，第三轮开始只有成本上升。<strong>找到那个拐点，就设成你的固定轮数上限</strong>。</p><h2>四个最常见的失败模式</h2><table><thead><tr><th style="white-space:nowrap">失败模式</th><th>表现</th><th>怎么防</th></tr></thead><tbody><tr><td style="white-space:nowrap">职责重叠</td><td>两个 Agent 干同一件事，产出还打架</td><td>给每个角色写清「不负责什么」</td></tr><tr><td style="white-space:nowrap">交接丢信息</td><td>下游不知道上游的约束条件</td><td>交接时带结构化字段，不要只带自然语言摘要</td></tr><tr><td style="white-space:nowrap">死循环</td><td>两个 Agent 互相要求对方重做</td><td>设轮数上限 + 明确的终止条件</td></tr><tr><td style="white-space:nowrap">成本爆炸</td><td>轮数 × 上下文，账单翻几倍</td><td>限制每次传递的上下文长度，日志里记花费</td></tr></tbody></table><p>第二条最隐蔽。自然语言摘要会丢约束——上游说「金额必须保留两位小数」，摘要之后这句话就没了。所以交接要传<strong>结构化字段</strong>，不是传一段话。</p><h2>关于「长期记忆」这件事</h2><p>很多产品把「记住你」当卖点。实际实现通常是三层，稳定性差别很大：</p><table><thead><tr><th style="white-space:nowrap">层</th><th>怎么实现</th><th>可靠性</th></tr></thead><tbody><tr><td style="white-space:nowrap">会话内上下文</td><td>就是窗口里的内容</td><td>高，但会随长度衰减</td></tr><tr><td style="white-space:nowrap">外部检索</td><td>存起来，用时按相似度捞回来</td><td>中，取决于检索质量</td></tr><tr><td style="white-space:nowrap">结构化状态</td><td>像数据库一样存字段</td><td>高，但需要设计 schema</td></tr></tbody></table><p>关键结论：<strong>记忆的难点不是「记住更多」，是「该忘的忘掉」</strong>。把所有历史都塞进去，结果就是关键的约束被淹没。</p><p>可用的做法：把「事实」和「当前任务状态」分开存。事实长期留，任务状态用完即弃。</p><h2>选型判断表</h2><p>拿你自己的任务对一遍，命中两行以上再考虑多 Agent：</p><table><thead><tr><th style="white-space:nowrap">你的情况</th><th>是否适合</th></tr></thead><tbody><tr><td style="white-space:nowrap">任务能自然分段，每段标准不同</td><td>适合串行流水线</td></tr><tr><td style="white-space:nowrap">有大量可并行的子任务</td><td>适合主管-工人</td></tr><tr><td style="white-space:nowrap">有明确对错标准且错误代价高</td><td>适合评审模式</td></tr><tr><td style="white-space:nowrap">单 Agent 已经做得不错，只是慢</td><td><strong>不适合</strong>，多 Agent 会更慢</td></tr><tr><td style="white-space:nowrap">问题在于模型不知道你的数据</td><td><strong>不适合</strong>，该上检索</td></tr><tr><td style="white-space:nowrap">问题在于输出格式不稳</td><td><strong>不适合</strong>，该改提示与校验</td></tr></tbody></table><p>后三行是现实中最常见的情况。把数据问题、格式问题当成「需要更强的智能体」来解决，是最贵的一种弯路。</p><h2>小结</h2><p>多 Agent 是一个<strong>工程结构</strong>，不是能力升级。它擅长把复杂任务拆开、把上下文隔开、把错误挡住；它不擅长让模型更懂你的业务。先跑通单 Agent 基线，再决定要不要加人。</p>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

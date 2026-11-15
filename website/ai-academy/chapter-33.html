@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="端侧百万上下文实战,AI 学院,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="端侧百万上下文实战：星火 X2.5 开源模型部署与 Agent 落地 · AI 学院 · 白驹 ccowork">
+<meta name="description" content="学完你可在本地设备完成整本文档解析、离线智能体搭建，无需依赖云端即可处理长文本办公、代码开发、硬件控制等需求。">
+<meta property="og:description" content="学完你可在本地设备完成整本文档解析、离线智能体搭建，无需依赖云端即可处理长文本办公、代码开发、硬件控制等需求。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>端侧百万上下文实战：星火 X2.5 开源模型部署与 Agent 落地 · AI 学院 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"端侧百万上下文实战：星火 X2.5 开源模型部署与 Agent 落地 · AI 学院 · 白驹 ccowork","description":"学完你可在本地设备完成整本文档解析、离线智能体搭建，无需依赖云端即可处理长文本办公、代码开发、硬件控制等需求。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261115b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261115b">
+<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/website/ai-academy/chapter-33.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/ai-academy/chapter-33.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="端侧百万上下文实战：星火 X2.5 开源模型部署与 Agent 落地 · AI 学院 · 白驹 ccowork">
+<meta name="twitter:description" content="学完你可在本地设备完成整本文档解析、离线智能体搭建，无需依赖云端即可处理长文本办公、代码开发、硬件控制等需求。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261115b">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<h1>端侧百万上下文实战：星火 X2.5 开源模型部署与 Agent 落地</h1>
+<div class="blog-open">
+  <div class="blog-badge"> 白驹 ccowork · AI 学院 第33章</div>
+  <div class="blog-meta"><span> 2026-10-27</span><span> 60 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)"> AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<p>本章将带你落地2026年9月最新开源的端侧百万上下文模型Spark-X2.5，从架构原理、多路径部署到Agent场景全流程实操。学完你可在本地设备完成整本文档解析、离线智能体搭建，无需依赖云端即可处理长文本办公、代码开发、硬件控制等需求。</p>
+<h2 id="ch33-一Spark-X25-开源背景与核心定位">一、Spark-X2.5 开源背景与核心定位</h2>
+<p>2026年9月1日，科大讯飞全资子公司词元星火正式开源端侧通用大模型Spark-X2.5-4B与Spark-X2.5-1.7B，项目托管于GitHub（XHToken/Spark-X2.5）与HuggingFace（XHToken/Spark-X2.5-4B），采用Apache-2.0开源许可，是业界首个端侧原生支持1,048,576（100万）Token上下文的开源模型，覆盖200+种语言。你可直接通过<code>git clone https://github.com/XHToken/Spark-X2.5</code>拉取官方部署脚本与说明文档验证项目真实性。</p>
+<p>该系列模型与本教程第32章介绍的Google LiteRT-LM端侧推理框架构成姊妹篇：LiteRT-LM提供端侧推理的底层运行时能力，Spark-X2.5是适配该类框架的国产长上下文开源模型；与第20章Ollama服务端私有化部署的定位差异在于，Spark-X2.5从预训练阶段就针对端侧芯片算力、内存带宽做了定向优化，无需高端服务器即可在消费级设备运行。</p>
+<p>本次开源的两个尺寸模型定位清晰：</p>
+<ul>
+<li>1.7B版本：面向智能家居、车载、穿戴设备等低资源嵌入式场景，最低2GB内存即可运行短上下文任务</li>
+<li>4B版本：面向PC、平板、边缘网关等设备，兼顾长上下文能力与推理速度，是个人开发者的首选版本</li>
+</ul>
+<h2 id="ch33-二为什么端侧+百万上下文是落地关键">二、为什么端侧+百万上下文是落地关键</h2>
+<p>过去端侧模型受上下文窗口限制，处理长文档、多轮对话时必须对内容做切段拆分，容易出现上下文遗忘、跨段信息遗漏、逻辑断裂等问题，无法胜任整份项目文档解析、全量代码库调试、连续多轮设备控制等场景。Spark-X2.5支持的100万Token约等于70多万汉字，可一次性加载一本300页产品手册、全量项目代码注释或全年销售明细数据，无需切段即可完成全量信息推理。</p>
+<p>端侧+长上下文的组合同时解决了两类核心痛点：一是数据隐私问题，所有推理过程完全在本地设备完成，文档、业务数据不会上传到云端，天然符合《个人信息保护法》《GDPR》对敏感数据处理的要求；二是可用性问题，无网络环境下（如野外作业、涉密内网、车载离线场景）依然可以正常运行，没有云端API的调用延迟、限流、断服风险。</p>
+<p>与云端长上下文模型相比，端侧部署的成本优势明显：以处理100万Token文档为例，云端API调用成本约为0.5-2元/次，而本地部署仅消耗设备电量，无持续调用费用，适合高频长文本处理场景。你可通过<code>huggingface-cli scan-cache</code>命令预校验本地磁盘空间是否满足权重存储要求。</p>
+<h2 id="ch33-三核心技术架构拆解">三、核心技术架构拆解</h2>
+<p>Spark-X2.5采用混合注意力架构，全量注意力层与滑动窗口注意力层交替排布（具体层数以官方技术说明为准）：全量注意力层负责捕捉跨长文档的全局关联信息，滑动窗口注意力层负责处理局部连续文本的语义理解，在保证100万Token上下文能力的同时，将推理时的KV Cache内存占用降低了60%以上。模型基于全国产算力平台完成预训练，训练数据量约20万亿Token，覆盖通用文本、代码、数学、多语言、智能体交互等多领域数据（具体训练配置以官方为准）。</p>
+<p>模型采用Dense（稠密）架构而非MoE（混合专家）架构，核心取舍是端侧部署的稳定性：MoE模型虽然理论算力效率更高，但推理时需要动态路由专家层，对端侧芯片的内存调度、算子优化要求更高，容易出现推理速度波动、内存占用峰值不可控的问题；Dense架构的计算路径固定，更易适配手机、嵌入式芯片等异构端侧硬件，推理延迟更稳定。</p>
+<p>预训练阶段团队围绕四大核心能力做了定向优化：</p>
+<ul>
+<li>智能体工具调用能力：针对函数调用、参数解析、多轮工具执行链路做了专项微调</li>
+<li>代码能力：覆盖20+编程语言的代码生成、调试、注释生成能力</li>
+<li>数学推理能力：强化了小学到大学阶段的数学题解题、数值计算准确率</li>
+<li>指令遵循能力：针对端侧场景的短指令、模糊指令做了对齐优化，降低拒答率</li>
+</ul>
+<p>你可通过官方GitHub仓库的<code>tech_report.pdf</code>获取最新的架构技术细节。</p>
+<h2 id="ch33-四多路径本地部署实战可直接执行">四、多路径本地部署实战（可直接执行）</h2>
+<p>Spark-X2.5提供多种部署路径，个人开发者可根据自身设备选择对应方案。首先是权重下载：4B版本BF16精度Safetensors权重约8.23GB（以官方发布为准），可通过以下命令下载：</p>
+<pre><code># 安装HuggingFace CLI
+pip install -U huggingface-hub
+# 下载4B版本权重到本地
+huggingface-cli download XHToken/Spark-X2.5-4B --local-dir ./Spark-X2.5-4B --local-dir-use-symlinks False</code></pre>
+<p>针对普通用户，推荐使用Ollama或LM Studio一键部署：目前Ollama官方已适配词元星火定制版llama.cpp，你可直接执行<code>ollama run spark-x2.5:4b</code>一键拉取量化后的GGUF权重并启动服务；LM Studio可直接在模型库搜索<code>Spark-X2.5-4B</code>，点击下载后即可启动本地对话服务，无需额外配置依赖。</p>
+<p>针对需要服务化部署的开发者，可选择vLLM或SGLang方案：vLLM部署需要安装官方提供的Spark-plugin插件（安装命令以官方文档为准），启动命令参考如下；SGLang需要使用官方指定的nightly镜像启动，避免出现算子不兼容问题。Apple芯片用户可直接使用MLX框架加载官方转换好的MLX格式权重，推理速度比通用CPU方案快3-5倍。</p>
+<pre><code># vLLM服务化启动示例（需先安装Spark-plugin）
+python -m vllm.entrypoints.openai.api_server --model ./Spark-X2.5-4B --trust-remote-code --max-model-len 131072
+# MLX推理启动示例（Apple Silicon芯片）
+pip install mlx-lm
+mlx_lm.generate --model XHToken/Spark-X2.5-4B-mlx --prompt "总结以下文档的核心内容：" --max-tokens 512</code></pre>
+<p>部署完成后可执行<code>curl http://localhost:11434/api/generate -d '{"model":"spark-x2.5:4b","prompt":"你好","stream":false}'</code>验证服务是否正常运行。</p>
+<h2 id="ch33-五显存资源占用说明与注意事项">五、显存资源占用说明与注意事项</h2>
+<p>需要明确的是：100万Token是模型支持的上下文能力上限，并非普通消费级设备可以低成本跑满的长度，实际显存/内存占用随上下文长度、并发量、KV Cache精度呈线性增长。官方给出的参考资源占用如下表所示（数据以官方文档为准）：</p>
+<table>
+<thead><tr><th>上下文长度</th><th>4B-BF16精度显存占用</th><th>4B-4bit量化内存占用</th><th>1.7B-4bit量化内存占用</th></tr></thead>
+<tbody>
+<tr><td>8k</td><td>~10GB</td><td>~3.5GB</td><td>~1.8GB</td></tr>
+<tr><td>32k</td><td>~14GB</td><td>~5GB</td><td>~2.5GB</td></tr>
+<tr><td>128k</td><td>~26GB</td><td>~9GB</td><td>~4GB</td></tr>
+<tr><td>1M</td><td>~120GB</td><td>~38GB</td><td>~18GB</td></tr>
+</tbody>
+</table>
+<p>普通个人PC（16GB内存）推荐使用4bit量化版本，最高可运行32k上下文任务，足以应对日常文档总结、代码开发、多轮对话需求；如果需要跑满100万上下文，推荐使用32GB以上内存的PC或边缘服务器，开启CPU+内存混合推理模式。</p>
+<p>另外需要注意KV Cache的配置：如果不需要超长上下文，可在启动时通过<code>--max-model-len</code>参数限制最大上下文长度，避免预分配过多内存导致启动失败；开启<code>--kv-cache-dtype fp8_e5m2</code>参数可将KV Cache占用降低一半，对长上下文推理的效果影响极小。你可通过<code>nvidia-smi</code>或系统活动监视器监控推理时的实际内存占用。</p>
+<h2 id="ch33-六Agent落地与工具调用实战">六、Agent落地与工具调用实战</h2>
+<p>长上下文能力解决了“信息能不能看全”的问题，工具调用能力解决了“看完能不能动手执行”的问题，两者结合才是端侧Agent的完整形态。Spark-X2.5原生支持标准OpenAI格式的工具调用协议，可直接接入主流开源Agent Harness框架，官方推荐的接入框架包括DeepSeek Harness、OpenCode、Codex、Pi等，接入方式以各框架的官方文档为准。</p>
+<p>最易落地的本地办公Agent场景流程如下：</p>
+<ol>
+<li>本地启动Spark-X2.5-4B的Ollama服务，开启工具调用权限</li>
+<li>接入OpenCode框架，配置本地文件读写、Python脚本执行两类工具</li>
+<li>上传全年销售明细表Excel文件，模型自动读取全量数据、编写Python脚本做数据汇总</li>
+<li>基于汇总结果生成3000字中英双语业绩报告，全程数据不出本地</li>
+</ol>
+<p>在代码场景中，4B版本的Spark-X2.5可一次性加载整个中小型项目的代码文件，无需切段即可完成跨文件Bug排查、功能迭代、注释生成，实测效果对标参数规模大2-3倍的云端代码模型；在硬件控制场景中，1.7B版本在Domux智能家居测试集上的控制指令端到端执行正确率达90.3%，平均响应0.85秒（官方公布数据，以官方为准），可直接部署到智能家居网关、车载域控制器实现连续感知与指令执行。</p>
+<p>你可通过以下最小示例测试工具调用能力：</p>
+<pre><code>from openai import OpenAI
+# 连接本地Ollama服务
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+response = client.chat.completions.create(
+  model="spark-x2.5:4b",
+  messages=[{"role":"user","content":"我现在桌面上有个sales.csv文件，帮我统计2026年Q3的总销售额"}],
+  tools=[{"type":"function","function":{"name":"read_file","description":"读取本地文件内容","parameters":{"type":"object","properties":{"file_path":{"type":"string"}}}}}]
+)
+print(response.choices[0].message.tool_calls)</code></pre>
+<h2 id="ch33-七快速体验与生态趋势">七、快速体验与生态趋势</h2>
+<p>如果暂时没有本地部署条件，可通过讯飞星辰MaaS平台（maas.xfyun.cn）的模型集市快速体验Spark-X2.5的API能力，官方在开源初期提供限时免费调用额度（具体活动规则以官方为准）。成本对比来看：个人开发者本地部署一次性投入设备成本后，无后续调用费用，适合高频、敏感数据场景；云端API适合低频、非敏感数据的快速验证场景，无需占用本地算力。</p>
+<p>生态层面，词元星火官方预告将于2026年9月7日发布293B参数的星火X2.5基座大模型（发布计划以官方为准），形成“端侧1.7B/4B-边缘侧14B-云端293B”的全尺寸端云协同模型矩阵，全系列模型均基于全国产算力平台训练，满足自主可控要求。与同尺寸开源端侧模型对比来看，Spark-X2.5的核心优势是原生100万上下文长度、端侧工具调用优化、全国产化适配，在长文档、智能体场景的表现优于Qwen3.5-4B、Gemma4-E4B等同参数模型（具体榜单数据以官方公布为准）。</p>
+<p>端侧大模型的未来趋势是端云协同：简单任务、敏感数据任务在端侧完成，复杂任务、超大规模计算任务动态调度到云端完成，兼顾隐私、成本与效果。你可访问MaaS平台的API文档，通过curl命令快速验证接口可用性。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>Spark-X2.5是2026年9月开源的端侧原生百万上下文开源模型，采用Apache-2.0协议，覆盖1.7B/4B两个尺寸，适合端侧离线、隐私敏感场景部署。</li>
+<li>端侧百万上下文解决了传统端侧模型长文本切段遗忘的问题，可一次性加载整本文档、全量项目代码，结合工具调用能力可实现本地端到端Agent落地。</li>
+<li>100万Token是模型能力上限，普通消费级设备推荐使用4bit量化版本运行32k以内上下文任务，跑满1M上下文需要32GB以上内存支持。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>在本地PC安装Ollama，执行<code>ollama run spark-x2.5:4b</code>完成模型部署，输入1000字左右的文档让模型做核心观点总结，验证基础对话能力。</li>
+<li>基于OpenAI兼容接口编写10行以内Python脚本，测试模型的工具调用解析能力，验证是否能正确生成读取本地文件的函数调用参数。</li>
+<li>调整模型启动的<code>--max-model-len</code>参数，分别测试8k、32k上下文下的内存占用差异，记录不同精度下的资源消耗数据。</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>可重点阅读官方GitHub仓库中的端侧NPU适配文档，尝试将1.7B版本部署到Android手机或树莓派等嵌入式设备，测试低资源硬件下的推理延迟与效果。</p>
+</article>
+<script src="/ccowork.js?v=20261115b"></script>
+<script src="/module.js?v=20261115b"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.textContent=next==='deep'?'':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.textContent=t==='deep'?'':'';});
+</script>
+<script src="/site-nav.js?v=20261115b" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">🐎 白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

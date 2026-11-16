@@ -216,7 +216,7 @@ body[data-theme="deep"] .vf-old{color:#f87171}
       else vfHtml = '<span class="vf vf-pending">待核验 · 聚合线索</span>';
       return '<tr>' +
         '<td>' + esc(r[0]) + '</td>' +
-        '<td>' + (vu ? '<a href="/" + esc(vu) + '" target="_blank" rel="noopener" title="打开 ' + esc(r[1]) + ' 官方站">' + esc(r[1]) + ' ↗</a>' : esc(r[1])) + '</td>' +
+        '<td>' + (vu ? '<a href="' + esc(vu) + '" target="_blank" rel="noopener" title="打开 ' + esc(r[1]) + ' 官方站">' + esc(r[1]) + ' ↗</a>' : esc(r[1])) + '</td>' +
         '<td>' + esc(MH.cn(r[2])) + '</td>' +
         '<td>' + esc(r[3]) + '</td>' +
         '<td>' + esc(r[4]) + '</td>' +
@@ -227,7 +227,7 @@ body[data-theme="deep"] .vf-old{color:#f87171}
         '<td class="star">' + (r[10] && r[10] !== '—' ? esc(r[10]) : '<span class="unverified">—</span>') + '</td>' +
         '<td class="direct">' + (r[11] && r[11] !== '—' ? '<span class="yes">' + esc(r[11]) + '</span>' : '<span class="unverified">—</span>') + '</td>' +
         '<td class="proto">' + (r[12] && r[12] !== '—' ? '<code style="font-size:11px">' + esc(r[12]) + '</code>' : '<span class="unverified">—</span>') + '</td>' +
-        '<td class="doc">' + (vu ? '<a href="/" + esc(vu) + '" target="_blank" rel="noopener" title="官方站 / 文档">文档 ↗</a>' : '<span class="unverified">—</span>') + '</td>' +
+        '<td class="doc">' + (vu ? '<a href="' + esc(vu) + '" target="_blank" rel="noopener" title="官方站 / 文档">文档 ↗</a>' : '<span class="unverified">—</span>') + '</td>' +
         '<td class="vf-cell">' + vfHtml + '</td>' +
         '</tr>';
     }).join('') : '<tr><td colspan="14" style="text-align:center;padding:40px;color:var(--muted)">没有符合条件的型号，试着放宽一个筛选条件</td></tr>';

@@ -1277,7 +1277,7 @@ $('mode').dispatchEvent(new Event('change'));
   if(!box || !roles.length) return;
   function paint(key){
     box.innerHTML = (OB[key] || OB.fan).map(function(p, i){
-      return '<a class="ob-path" href="/"+p.href+'">' +
+      return '<a class="ob-path" href="'+p.href+'">' +
              '<em>0'+(i+1)+' · '+['先看清','再深入','动手做'][i]+'</em>' +
              '<b>'+p.n+'</b><span>'+p.d+'</span></a>';
     }).join('');
@@ -1444,6 +1444,34 @@ const TOOLS=[
     const latest = new Date(its[0].ts + 8*3600e3).toISOString().slice(0,10);
     const week = its.filter(i=>i.ts >= Date.now() - 7*24*3600e3).length;
     setTxt('<b>更新至 '+latest+'</b> · 近 7 天共 '+week+' 条真实资讯 —— 点右侧查看完整简报。');
+
+    /* 首页「近 7 天」快讯条与日更数据联动：从 daily-brief.json 动态覆盖 gen-feed.py 的静态兜底。
+       静态兜底供无 JS/爬虫查看；有 JS 时一律显示当天最新条目，日更一跑即同步，永不写死。 */
+    var ffRow = document.querySelector('#ff-strip .ff-strip-row');
+    if (ffRow) {
+      var pad = function (n) { return String(n).padStart(2, '0'); };
+      var mdOf = function (t) { var x = new Date(t + 8 * 3600e3); return pad(x.getUTCMonth() + 1) + '-' + pad(x.getUTCDate()); };
+      var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); };
+      var todayMd = latest.slice(5);
+      var top = its.slice(0, 6);
+      ffRow.innerHTML = top.map(function (i) {
+        var isToday = mdOf(i.ts) === todayMd;
+        var badge = isToday ? '<em class="ff-badge">今日</em>' : '';
+        var cls = isToday ? 'ff-mini is-today' : 'ff-mini';
+        var src = i.source || '';
+        return '<a class="' + cls + '" href="/feed/#hot">' + badge + '<time>' + mdOf(i.ts) + '</time><b>' + esc(i.title) + '</b><i>' + esc(src) + '</i></a>';
+      }).join('');
+      var ffHint = document.querySelector('#ff-strip .ff-today');
+      if (ffHint) {
+        var nToday = its.filter(function (i) { return mdOf(i.ts) === todayMd; }).length;
+        ffHint.textContent = nToday ? ('今日新增 ' + nToday + ' 条') : ('最近更新 ' + latest);
+      }
+      var ffRange = document.querySelector('#ff-strip .ff-range');
+      if (ffRange) {
+        var oldest = its[its.length - 1];
+        ffRange.textContent = new Date(oldest.ts + 8 * 3600e3).toISOString().slice(0, 10) + ' — ' + latest;
+      }
+    }
   }).catch(()=>{ setTxt('AI 每日新闻已更新 —— 点右侧查看完整资讯。'); });
 })();
 
@@ -1530,7 +1558,7 @@ loadSettings();
 
   function cardHTML(p){
     var bg=grads[(p.name||'').length%grads.length];
-    return '<a class="wcard" href="/"+esc(p.url)+'" target="_blank" rel="noopener">'+
+    return '<a class="wcard" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+
       '<div class="cv" style="background:'+bg+'"><span class="badge">'+orgLabel(p.org)+'</span></div>'+
       '<div class="cb"><h4>'+esc(p.name)+'</h4><p>'+esc(p.desc)+'</p>'+
       '<span class="tg" style="color:#4f8cff">@'+(p.owner||p.author||'')+' · '+heat(p.heat)+'</span>'+

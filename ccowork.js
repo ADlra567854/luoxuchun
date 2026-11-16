@@ -18,25 +18,50 @@
     try {
       var forced = localStorage.getItem('baiju.gate.lock') === '1' ||
                    /[?&]gate=lock(?:[&#]|$)/.test(location.href)
-      /* GitHub Pages 公开版：首帧即全开，全站功能可见，无闪锁、无引导蒙层。
-         原沙箱版保留「未解锁先锁」行为不变。 */
+      /* 2026-11-16 老罗拍板：GitHub Pages 公开版「内容全开、AI 交互入口全关」。
+         旧版把整站 ok=true 导致悬浮助手/开始对话/对话页入口全露出，与发布态口径冲突。
+         现在拆成两个开关：
+           - ok（内容层）：公开版永远可见，不遮罩、不白屏；
+           - noAI（交互层）：公开版隐藏 AI 悬浮窗 / CTA / 编译模式 / 对话入口。
+         本地预览与内网仍自动放行全部功能（自己调试用）；?gate=lock 可强制模拟发布态。 */
+      var isPreview = (function () {
+        var h = location.hostname
+        return h === 'localhost' || h === '127.0.0.1' || h === '::1' || h === '' ||
+          /^192\.168\./.test(h) || /^10\./.test(h) ||
+          /^172\.(1[6-9]|2\d|3[01])\./.test(h)
+      })()
+      /* 公开版内容层永远 open（与 baiju-gate.js 的 isOpen()=true 同口径），不遮罩不白屏；
+         只有显式 ?gate=lock 才在内容层标 locked 供调试观察（实际全站无 bj-gated-page 类，不会遮正文）。 */
       var ok = true
-      if (!forced) {
-        var v = JSON.parse(localStorage.getItem('baiju.gate.v1') || 'null')
-        if (v && v.ok && v.exp && v.exp > Date.now()) ok = true
-        if (!ok) {
-          var h = location.hostname
-          if (h === 'localhost' || h === '127.0.0.1' || h === '::1' || h === '' ||
-              /^192\.168\./.test(h) || /^10\./.test(h) ||
-              /^172\.(1[6-9]|2\d|3[01])\./.test(h)) ok = true
-        }
-      }
+      var noAI = forced || !isPreview   /* 发布态（含公开版）一律关 AI 交互；本地/内网默认开 */
+      try { if (localStorage.getItem('bj.preview.ai') === '1') noAI = false } catch (e) {}
       var root = document.documentElement
       root.setAttribute('data-gate', ok ? 'open' : 'locked')
-      if (!ok) {
+      root.setAttribute('data-ai', noAI ? 'off' : 'on')
+      /* AI 交互入口隐藏规则：发布态一律生效，与内容是否锁定无关。
+         .bja-page-assist 是加在 body 上的类，绝不进隐藏清单，否则整页白屏。 */
+      if (noAI) {
         var st = document.createElement('style')
-        st.setAttribute('data-baiju-gate', 'prelock')
+        st.setAttribute('data-baiju-gate', 'prelock-ai')
         st.textContent =
+          'html[data-ai="off"] .bja-fab,' +
+          'html[data-ai="off"] .bja-panel,' +
+          'html[data-ai="off"] .bja-root,' +
+          'html[data-ai="off"] button.cta-tip,' +
+          'html[data-ai="off"] .ob-open,' +
+          'html[data-ai="off"] #compile,' +
+          'html[data-ai="off"] .modebtn[data-mode="compile"],' +
+          'html[data-ai="off"] [data-ai-entry],' +
+          'html[data-ai="off"] .ai-entry,' +
+          'html[data-ai="off"] .gate-hide,' +
+          'html[data-ai="off"] [data-gate-hide]' +
+          '{display:none !important}'
+        ;(document.head || root).appendChild(st)
+      }
+      if (!ok && !noAI) {
+        var st2 = document.createElement('style')
+        st2.setAttribute('data-baiju-gate', 'prelock')
+        st2.textContent =
           'html[data-gate="locked"] .bja-fab,' +
           'html[data-gate="locked"] .bja-panel,' +
           'html[data-gate="locked"] .bja-root,' +
@@ -47,7 +72,7 @@
           'html[data-gate="locked"] .gate-hide,' +
           'html[data-gate="locked"] [data-gate-hide]' +
           '{display:none !important}'
-        ;(document.head || root).appendChild(st)
+        ;(document.head || root).appendChild(st2)
       }
     } catch (e) {}
   })()
@@ -65,11 +90,11 @@
   try {
     var scr = document.currentScript || (function () { var s = document.getElementsByTagName('script'); return s[s.length - 1] })()
     /* ★ base 必须剥掉查询串再取目录。
-       旧写法 src.replace(/[^/]*$/, '') 遇到 '/ccowork.js?v=20261115b' 会算出 '/?v=21'，
+       旧写法 src.replace(/[^/]*$/, '') 遇到 '/ccowork.js?v=20261116a' 会算出 '/?v=21'，
        导致后续所有 base+'xxx' 拼出 '/?v=21/xxx' 而 404。
        这次挂图标系统时实测暴露，按标准 URL 解析重写。 */
     var base = (function () {
-      /* src 可能是 '/ccowork.js?v=20261115b'（要剥掉查询串），也可能拿不到
+      /* src 可能是 '/ccowork.js?v=20261116a'（要剥掉查询串），也可能拿不到
          （异步注入时 currentScript 为空、回退到的 elem 无 src）。
          拿不到时一律按根目录算：ccowork.js 是根级文件，旧写法算出 ''
          会让子目录页面去请求 /website/theme-cloud.css 之类，全是 404。 */
@@ -85,7 +110,7 @@
        site-redesign.css / siteframe.css。手机端无法强刷，换指纹强制取新资源。 */
     /* 2026-11-10 晚：全站统一层（brand-one.css / brand-one.js）——
        唯一助手、一套设置、正式品牌标识。换指纹让手机端也取到新资源。 */
-    var V = '20261115b'   /* 2026-11-15 多钥匙分组 + 开放资料页 + 纯预设问答接线，必须换指纹 */
+    var V = '20261116a'   /* 2026-11-16 发布态 AI 交互全隐藏（data-ai 开关）+ 多钥匙分组，两侧指纹必须同步 */
     var q = function (f) { return base + f + '?v=' + V }
 
     /* 朋友门锁：状态层脚本尽早注入（CSS 由它自注入，避免重复 link）。

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta property="og:description" content="228 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注发布时点与能力定位。">
+<meta property="og:description" content="230 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注发布时点与能力定位。">
 <meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>模型库 · 228 个具名型号 · 白驹 ccowork</title>
-<meta name="description" content="228 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注发布时点与能力定位。">
+<title>模型库 · 230 个具名型号 · 白驹 ccowork</title>
+<meta name="description" content="230 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注发布时点与能力定位。">
 <meta name="theme-color" content="#F4F7FC">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/theme-cloud.css">
@@ -16,13 +16,35 @@
 <link rel="stylesheet" href="/site-page.css">
 <link rel="stylesheet" href="/float-dock.css">
 <link rel="stylesheet" href="/cover.css">
-<meta name="twitter:description" content="228 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注发布时点与能力定位。">
-<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/library.html">
-<meta property="og:title" content="模型库 · 228 个具名型号 · 白驹 ccowork">
+<style>
+/* 模型库新增字段：星级 / 国内直连 / 传输协议（2026-11-16），沿用锁定双主题 token */
+.pg-tbl td.star{color:#f5a623;white-space:nowrap;font-size:13px;letter-spacing:1px}
+.pg-tbl td.direct{font-size:12px;max-width:180px}
+.pg-tbl td.direct .yes{color:#16a34a;background:rgba(22,163,74,.10);border:1px solid rgba(22,163,74,.25);border-radius:6px;padding:1px 6px}
+.pg-tbl td.proto code{color:var(--blue,#4f8cff)}
+.pg-tbl td.doc a,.pg-tbl td a{color:var(--blue,#4f8cff);text-decoration:none}
+.pg-tbl td.doc a:hover,.pg-tbl td a:hover{text-decoration:underline}
+.pg-tbl td .unverified{color:var(--muted,#94a3b8);opacity:.6}
+body[data-theme="deep"] .pg-tbl td.star{color:#ffcf6b}
+body[data-theme="deep"] .pg-tbl td.direct .yes{color:#4ade80;background:rgba(74,222,128,.12);border-color:rgba(74,222,128,.3)}
+@media(max-width:720px){.pg-tbl td.direct{max-width:120px}}
+/* 核验状态列（2026-11-16）：待核验=聚合线索未证实，不冒充事实 */
+.pg-tbl td.vf-cell{font-size:11px;white-space:nowrap}
+.vf{display:inline-block;border-radius:6px;padding:1px 7px;font-size:10.5px;font-weight:700;line-height:1.5}
+.vf-pending{color:#b45309;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.28)}
+.vf-ok{color:#16a34a;background:rgba(22,163,74,.10);border:1px solid rgba(22,163,74,.26)}
+.vf-old{color:#dc2626;background:rgba(220,38,38,.10);border:1px solid rgba(220,38,38,.28)}
+body[data-theme="deep"] .vf-pending{color:#fbbf24}
+body[data-theme="deep"] .vf-ok{color:#4ade80}
+body[data-theme="deep"] .vf-old{color:#f87171}
+</style>
+<meta name="twitter:description" content="230 个可直接检索的 AI 模型型号，按模态、规模、开源度、国别、厂商、许可筛选，标注星级、国内直连、传输协议与发布时点。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/models/library.html">
+<meta property="og:title" content="模型库 · 230 个具名型号 · 白驹 ccowork">
 <meta property="og:image" content="/assets/img/og-cover.png">
-<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/models/library.html">
+<meta property="og:url" content="https://ccoworkbaiju.cn/models/library.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="模型库 · 228 个具名型号 · 白驹 ccowork">
+<meta name="twitter:title" content="模型库 · 230 个具名型号 · 白驹 ccowork">
 <meta name="twitter:image" content="/assets/img/og-cover.png">
 </head>
 <body data-ccnav="models" data-cctitle="模型库">
@@ -32,13 +54,13 @@
 
   <div class="pg-hero">
     <div data-cccrumb="模型库"></div>
-    <h1>模型库 · <em>228 个具名型号</em></h1>
+    <h1>模型库 · <em>230 个具名型号</em></h1>
     <p class="lede">
       图谱回答「有哪些类别」，这一页回答「<b>具体用哪个</b>」。
       每条给出可核对的型号名、厂商、模态、规模档、开源度、许可与发布时点——这六项决定了它能不能进你的项目。
     </p>
     <div class="pg-stats">
-      <div class="st"><b data-cnt="228">0</b><span>型号</span></div>
+      <div class="st"><b data-cnt="230">0</b><span>型号</span></div>
       <div class="st"><b data-cnt="112">0</b><span>国产</span></div>
       <div class="st"><b data-cnt="108">0</b><span>可下载权重</span></div>
       <div class="st"><b data-cnt="43">0</b><span>厂商</span></div>
@@ -51,6 +73,17 @@
       <b>「开源度」分三档，不要混用：</b>开源 = 权重可下载且许可允许商用；
       开放权重 = 权重可下载但商用条款受限（如 Llama 社区许可、Gemma 条款）；
       闭源 = 仅 API 或仅私有部署授权。<b>能不能私有化</b>只看这一列。
+    </div>
+  </div>
+
+  <div class="pg-note" style="border-color:rgba(245,158,11,.32);background:rgba(245,158,11,.07)">
+    <i class="cc-ic" data-ic="shield-alert" aria-hidden="true"></i>
+    <div>
+      <b>先看清「核验」列再看型号：</b>本库多数条目来自公开聚合线索，标注
+      <span class="vf vf-pending">待核验</span> —— 意思是<b>尚未拿到官方逐条证实，不冒充事实</b>，只作检索线索，点厂商官网自行核对。
+      <span class="vf vf-ok">官方核实</span> = 有官方或权威来源交叉印证；
+      <span class="vf vf-old">已过时</span> = 已被同厂新型号取代（并登记进<a href="/works/museum.html">废墟馆</a>）。
+      星级、国内直连、协议三列里「—」统一表示<b>尚未核验，不是没有</b>。本站不为未核实的版本号背书。
     </div>
   </div>
 
@@ -80,6 +113,11 @@
             <th class="sortable" data-k="6">许可<span class="ar">↕</span></th>
             <th class="sortable" data-k="8">时点<span class="ar">↕</span></th>
             <th>定位</th>
+            <th title="★★★★★=综合旗舰，星级随核验更新；—=尚未核验，不是没有">星级</th>
+            <th title="是否可在国内直接用官方/平台入口访问">国内直连</th>
+            <th title="对外 API 协议；OpenAI 兼容=可直接用 OpenAI SDK 调用">传输协议</th>
+            <th title="点开到厂商官方站 / 文档">官方文档</th>
+            <th title="待核验=聚合线索未获官方逐条证实；已过时=被同厂新型号取代">核验</th>
           </tr>
         </thead>
         <tbody id="tb"></tbody>
@@ -109,14 +147,21 @@
 
 </main>
 
-<script src="/site-nav.js"></script>
+<script src="/site-nav.js?v=20261116a"></script>
 <script src="/models/hub.js"></script>
 <script>
 (function () {
   var MH = window.MH, esc = MH.esc;
   var tb = MH.$('#tb'), qIn = MH.$('#q'), rc = MH.$('#rc');
   var F = { mod: MH.$('#f-mod'), size: MH.$('#f-size'), open: MH.$('#f-open'), c: MH.$('#f-c') };
-  var ROWS = [], CATNAME = {};
+  var ROWS = [], CATNAME = {}, VENDOR_URL = {};
+  function vendorLink(name){
+    if(!name) return '';
+    if(VENDOR_URL[name]) return VENDOR_URL[name];
+    // 名称模糊兜底：厂商数据名与型号表厂商名可能不完全一致
+    for(var k in VENDOR_URL){ if(k.indexOf(name)>=0 || name.indexOf(k)>=0) return VENDOR_URL[k]; }
+    return '';
+  }
   var sortK = 0, sortDir = 1;
 
   /* 类别 id → 中文名（从图谱数据里借，避免重复维护一份） */
@@ -163,9 +208,15 @@
     rc.textContent = rows.length;
     tb.innerHTML = rows.length ? rows.map(function (r) {
       var openCls = r[5] === '开源' ? 'live' : (r[5] === '开放权重' ? 'slow' : 'dead');
+      var vu = vendorLink(r[1]);
+      var rawVf = String(r[13] || '').trim();
+      var vfHtml;
+      if (/过时/.test(rawVf)) vfHtml = '<span class="vf vf-old">已过时 · 见废墟馆</span>';
+      else if (/官方核实|开源许可|开放平台|已更新至/.test(rawVf)) vfHtml = '<span class="vf vf-ok">官方核实</span>';
+      else vfHtml = '<span class="vf vf-pending">待核验 · 聚合线索</span>';
       return '<tr>' +
         '<td>' + esc(r[0]) + '</td>' +
-        '<td>' + esc(r[1]) + '</td>' +
+        '<td>' + (vu ? '<a href="/" + esc(vu) + '" target="_blank" rel="noopener" title="打开 ' + esc(r[1]) + ' 官方站">' + esc(r[1]) + ' ↗</a>' : esc(r[1])) + '</td>' +
         '<td>' + esc(MH.cn(r[2])) + '</td>' +
         '<td>' + esc(r[3]) + '</td>' +
         '<td>' + esc(r[4]) + '</td>' +
@@ -173,9 +224,16 @@
         '<td><code style="font-size:11px">' + esc(r[6]) + '</code></td>' +
         '<td class="num">' + esc(r[8]) + '</td>' +
         '<td>' + esc(r[9]) + '</td>' +
+        '<td class="star">' + (r[10] && r[10] !== '—' ? esc(r[10]) : '<span class="unverified">—</span>') + '</td>' +
+        '<td class="direct">' + (r[11] && r[11] !== '—' ? '<span class="yes">' + esc(r[11]) + '</span>' : '<span class="unverified">—</span>') + '</td>' +
+        '<td class="proto">' + (r[12] && r[12] !== '—' ? '<code style="font-size:11px">' + esc(r[12]) + '</code>' : '<span class="unverified">—</span>') + '</td>' +
+        '<td class="doc">' + (vu ? '<a href="/" + esc(vu) + '" target="_blank" rel="noopener" title="官方站 / 文档">文档 ↗</a>' : '<span class="unverified">—</span>') + '</td>' +
+        '<td class="vf-cell">' + vfHtml + '</td>' +
         '</tr>';
-    }).join('') : '<tr><td colspan="9" style="text-align:center;padding:40px;color:var(--muted)">没有符合条件的型号，试着放宽一个筛选条件</td></tr>';
+    }).join('') : '<tr><td colspan="14" style="text-align:center;padding:40px;color:var(--muted)">没有符合条件的型号，试着放宽一个筛选条件</td></tr>';
   }
+
+  MH.getJSON('/data/vendor-official.json', function (vm) { VENDOR_URL = vm || {}; if (ROWS.length) render(); }, function () {});
 
   MH.getJSON('/data/models.json', function (d) {
     ROWS = d.rows;
@@ -208,10 +266,10 @@
   });
 })();
 </script>
-  <script src="/baiju-assistant.js" defer></script>
-<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
-<script src="/assets/baiju-gate.js?v=20261115a"></script>
-<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
-<script src="/ccowork.js?v=20261115b"></script>
+  <script src="/baiju-assistant.js?v=20261116a" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261116a">
+<script src="/assets/baiju-gate.js?v=20261116a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261116a"></script>
+<script src="/ccowork.js?v=20261116a"></script>
 </body>
 </html>

@@ -17,11 +17,26 @@
   window.__BAIJU_ASSISTANT__ = true
 
   var CSS = 'baiju-assistant.css'
+  var ASSIST_V = '20261116a'   /* 2026-11-16 常用直达 + 反馈入口；改助手资源必须同步 bump 全站 HTML 的 ?v= */
   var HIST_KEY = 'baiju.chat.v1'
   var PREF_KEY = 'baiju.prefs.v2'
   var POS_KEY = 'baiju.pos.v2'
   var MAX_TURNS = 8
   var MAX_CHARS = 4000
+
+  /* 常用直达（2026-11-16 老罗要求「助手内置直达链接多一点」）。
+     只放站内核心页，纯静态、不需要后端。要加链接只改这里。 */
+  var QUICK_LINKS = [
+    ['模型库 · 230 型号', '/models/library.html'],
+    ['开放资料 · 官方源', '/learn/open-library.html'],
+    ['教程 · 43 章', '/learn/tutorials/'],
+    ['书稿 · 成书', '/learn/books/'],
+    ['前沿流 · 每日更新', '/feed/'],
+    ['作品库 · 项目', '/works/projects.html']
+  ]
+  /* 反馈联系方式：老罗随后给邮箱 / QQ 群号后填入即可生效（留空则不显示联系方式行）。
+     仍是纯静态可见入口，不构成服务端工单；给了值就渲染成可点 mailto / 群链接。 */
+  var FEEDBACK = { email: '', qqGroup: '', note: '反馈会尽快处理' }
 
   /* ---------------- 偏好 ---------------- */
   var pref = {
@@ -57,7 +72,7 @@
     } catch (e) {}
     var l = document.createElement('link')
     l.rel = 'stylesheet'
-    l.href = base + CSS
+    l.href = base + CSS + '?v=' + ASSIST_V
     document.head.appendChild(l)
   }
 
@@ -77,11 +92,11 @@
       if (!document.querySelector('link[href*="site-nav.css"]')) {
         var l = document.createElement('link')
         l.rel = 'stylesheet'
-        l.href = BJS_BASE + 'site-nav.css?v=20261115b'
+        l.href = BJS_BASE + 'site-nav.css?v=20261116a'
         document.head.appendChild(l)
       }
       var s = document.createElement('script')
-      s.src = BJS_BASE + 'site-nav.js?v=20261115b'
+      s.src = BJS_BASE + 'site-nav.js?v=20261116a'
       s.async = false
       document.head.appendChild(s)
     } catch (e) {}
@@ -390,6 +405,20 @@
       '<button type="button" data-do="copy"><i>' + IC.link + '</i>复制本页链接</button>' +
       '<button type="button" data-do="reset"><i>' + IC.reset + '</i>按钮复位</button>' +
       '</div></div>' +
+      '<div class="sh-grp"><div class="sh-t">常用直达</div>' +
+      '<div class="sh-act sh-links">' +
+      QUICK_LINKS.map(function (x) {
+        return '<button type="button" data-do="go:' + x[1] + '"><i>' + IC.link + '</i>' + esc(x[0]) + '</button>'
+      }).join('') +
+      '</div></div>' +
+      '<div class="sh-grp"><div class="sh-t">反馈 · 实时</div>' +
+      '<div class="sh-act">' +
+      (FEEDBACK.email ? '<button type="button" data-do="fb:email"><i>' + IC.link + '</i>邮箱反馈</button>' : '') +
+      (FEEDBACK.qqGroup ? '<button type="button" data-do="fb:qq"><i>' + IC.link + '</i>加入 QQ 群</button>' : '') +
+      '<button type="button" data-do="fb:copy"><i>' + IC.link + '</i>复制反馈入口</button>' +
+      '</div>' +
+      '<p class="sh-tip">' + esc(FEEDBACK.note) + '。' + (FEEDBACK.email || FEEDBACK.qqGroup ? '' : '联系方式待填，先可复制入口。') + '</p>' +
+      '</div>' +
       '<div class="sh-grp"><div class="sh-t">记忆与成长</div>' +
       '<div class="sh-mem" data-sh-mem></div>' +
       '<div class="sh-act">' +
@@ -3283,6 +3312,21 @@
       return
     }
     if (k === 'reset') return resetPos()
+    /* 常用直达：站内跳转（2026-11-16） */
+    if (k.indexOf('go:') === 0) {
+      var url = k.slice(3)
+      toggle(false)
+      location.href = url
+      return
+    }
+    /* 反馈：实时入口（邮箱/QQ群留配置位，未填则复制入口说明） */
+    if (k === 'fb:email' && FEEDBACK.email) { toggle(false); location.href = 'mailto:' + FEEDBACK.email; return }
+    if (k === 'fb:qq' && FEEDBACK.qqGroup) { toggle(false); window.open(FEEDBACK.qqGroup, '_blank', 'noopener'); return }
+    if (k === 'fb:copy') {
+      var txt = FEEDBACK.email ? ('邮箱：' + FEEDBACK.email) : (FEEDBACK.qqGroup ? ('QQ群：' + FEEDBACK.qqGroup) : '反馈联系方式待公布')
+      try { navigator.clipboard.writeText(txt); tip('反馈入口已复制') } catch (e) { tip(txt) }
+      return
+    }
   }
 
   /* ---------------- 启动 ---------------- */

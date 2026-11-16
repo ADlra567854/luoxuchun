@@ -42,7 +42,7 @@
     sections: {
       models: [
         { n: '图谱',   href: '/models/atlas.html',        ic: 'grid-2x2', d: '模型关系一张图看懂' },
-        { n: '模型库', href: '/models/library.html',      ic: 'database', d: '228 个具名模型可查' },
+        { n: '模型库', href: '/models/library.html',      ic: 'database', d: '230 个具名模型可查' },
         { n: '榜单',   href: '/models/leaderboards.html', ic: 'trophy',   d: '按能力排个高下' },
         { n: '厂商',   href: '/models/vendors.html',      ic: 'building-2', d: '谁做的、国内能不能用' },
         { n: '前沿流', href: '/feed/',                    ic: 'flame',    d: '近 7 天 AI 新动态，带出处' }
@@ -51,6 +51,7 @@
         { n: '概览',   href: '/learn/',              ic: 'school',      d: 'AI 学院首页，先定起点' },
         { n: '教程',   href: '/learn/tutorials/',    ic: 'book-open',   d: '43 章从零到能做出东西' },
         { n: '书稿',   href: '/learn/books/',        ic: 'library-big', d: '五卷全书与实战书稿' },
+        { n: '工具使用', href: '/learn/ai-coding-tools.html', ic: 'code', d: '31 款工具怎么用：编程助手 + WorkBuddy + 开源工具，一页讲清' },
         { n: '部署',   href: '/learn/deploy.html',   ic: 'hard-drive',  d: '把模型跑在自己机器上' },
         { n: '路线图', href: '/learn/roadmap.html',  ic: 'route',       d: '按阶段排好的学习顺序' }
       ],
@@ -98,6 +99,7 @@
             { n: '常见问题', href: '/about/faq.html' },
             { n: '生态库',   href: '/about/ecosystem.html' },
             { n: '开源仓库', href: '/toolbox/repos.html' },
+            { n: '工具使用 · 31 款', href: '/learn/ai-coding-tools.html' },
             { n: '改进计划', href: '/about/plan.html' }
           ]
         },
@@ -683,7 +685,7 @@
       document.head.appendChild(s)
     }
     if (!loaded('module.js', function () { return document.getElementById('modSettings') })) {
-      load('/module.js?v=20261115b')
+      load('/module.js?v=20261116a')
     }
     if (!loaded('search.js', function () { return window.ccowSearchOpen })) {
       load('/search.js')

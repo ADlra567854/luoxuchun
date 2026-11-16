@@ -94,8 +94,14 @@
     var a = SCOPE_MAP[s] || SCOPE_MAP.guest
     return a.indexOf('*') >= 0 || a.indexOf(group) >= 0
   }
-  /* 只有全量分组才允许构建 AI 悬浮窗；资料层 / 基础层永远不出现 */
+  /* 只有全量分组才允许构建 AI 悬浮窗；资料层 / 基础层永远不出现。
+     2026-11-16 老罗拍板：公开版「内容全开、AI 交互全关」。ccowork.js 首帧预锁
+     会在 <html> 上写 data-ai="off"；发布态一律不建 AI 悬浮窗 DOM（不是靠 CSS 藏，
+     从源头不初始化）。本地预览 data-ai="on"，调试不受影响。 */
   Gate.aiAllowed = function () {
+    try {
+      if (document.documentElement.getAttribute('data-ai') === 'off') return false
+    } catch (e) {}
     if (!isOpen()) return false
     var s = Gate.scope()
     return !s || s === 'all'

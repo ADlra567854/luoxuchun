@@ -1506,13 +1506,13 @@ linguavista/
     {
       "name": "闪卡学习",
       "short_name": "闪卡",
-      "url": "https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/linguavista/flashcards.html",
+      "url": "https://ccoworkbaiju.cn/linguavista/flashcards.html",
       "icons": [{ "src": "assets/icons/flashcard-96.png", "sizes": "96x96" }]
     },
     {
       "name": "AI对话",
       "short_name": "对话",
-      "url": "https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/linguavista/chat.html",
+      "url": "https://ccoworkbaiju.cn/linguavista/chat.html",
       "icons": [{ "src": "assets/icons/chat-96.png", "sizes": "96x96" }]
     }
   ]

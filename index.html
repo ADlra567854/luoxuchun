@@ -450,12 +450,12 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/">
-<meta property="og:url" content="https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/">
+<link rel="canonical" href="https://ccoworkbaiju.cn/">
+<meta property="og:url" content="https://ccoworkbaiju.cn/">
 <meta name="twitter:title" content="白驹 ccowork · 个人自学 AI 的一站式入口">
 <meta name="twitter:description" content="从零起步定起点 → 按阶段学 43 章教程 → 用能跑的开源项目做出作品集。模型、工具、成本随时对照，每条结论标着来源与核验日期。">
 <meta name="twitter:image" content="/assets/img/og-cover.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"白驹 ccowork","url":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/","description":"个人自学 AI 的一站式入口：学习路线、43 章教程、能跑的开源项目、模型与工具对照，每条结论标着来源与核验日期。","inLanguage":"zh-CN","potentialAction":{"@type":"SearchAction","target":"https://ff7990a1cca34bd2aa943c80083c9dbd.app.workbuddy.host/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"白驹 ccowork","url":"https://ccoworkbaiju.cn/","description":"个人自学 AI 的一站式入口：学习路线、43 章教程、能跑的开源项目、模型与工具对照，每条结论标着来源与核验日期。","inLanguage":"zh-CN","potentialAction":{"@type":"SearchAction","target":"https://ccoworkbaiju.cn/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <link rel="stylesheet" href="/float-dock.css">
 <link rel="stylesheet" href="/site-nav.css">
 
@@ -571,7 +571,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 
     <div class="trust">
       <div class="t"><b><!--STAT:repos-->151<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
-      <div class="t"><b>228</b><span>具名模型在库</span><em>含厂商与开源度</em></div>
+      <div class="t"><b>230</b><span>具名模型在库</span><em>含厂商与开源度</em></div>
       <div class="t"><b>43</b><span>章 AI 学院教程</span><em>每章带调研出处</em></div>
       <div class="t"><b>每日</b><span>自动更新</span><em>更新日志可查</em></div>
     </div>
@@ -1123,7 +1123,7 @@ function speak(text){
     const u=new SpeechSynthesisUtterance(text.replace(/[#*`|>\[\]()_]/g,'').slice(0,600));
     u.lang='zh-CN';u.rate=1.05;
     u.onstart=()=>{speaking=true;$('wave-label').textContent='播报中';};
-    u.onend=()=>{speaking=false;$('wave-label').textContent='';};
+    u.onend=()=>{speaking=false;$('wave-label').textcontent="/";};
     speechSynthesis.speak(u);
   }catch(e){}
 }
@@ -1152,7 +1152,7 @@ $('mic').onclick=()=>{
   recog.onresult=e=>{const t=[...e.results].map(r=>r[0].transcript).join('');$('q').value=t;
     if(e.results[e.results.length-1].isFinal){stopRec();send();}};
   recog.onend=stopRec;recog.onerror=stopRec;recog.start();
-  function stopRec(){$('mic').classList.remove('on');$('wave-label').textContent='';recog=null;}
+  function stopRec(){$('mic').classList.remove('on');$('wave-label').textcontent="/";recog=null;}
 };
 let recog=null;
 
@@ -1277,7 +1277,7 @@ $('mode').dispatchEvent(new Event('change'));
   if(!box || !roles.length) return;
   function paint(key){
     box.innerHTML = (OB[key] || OB.fan).map(function(p, i){
-      return '<a class="ob-path" href="'+p.href+'">' +
+      return '<a class="ob-path" href="/"+p.href+'">' +
              '<em>0'+(i+1)+' · '+['先看清','再深入','动手做'][i]+'</em>' +
              '<b>'+p.n+'</b><span>'+p.d+'</span></a>';
     }).join('');
@@ -1513,9 +1513,9 @@ loadSettings();
   try{localStorage.setItem(CONF_KEY,JSON.stringify({mode:$('mode').value,key:$('apikey').value.trim(),voice:$('voice-on').checked,mm:$('mm-on').checked}));}catch(e){}
 }));
 </script>
-<script src="./ccowork.js?v=20261115b"></script>
-<script src="./module.js?v=20261115b"></script>
-<script src="./responsive.js?v=20261028e"></script>
+<script src="./ccowork.js?v=20261116a"></script>
+<script src="./module.js?v=20261116a"></script>
+<script src="./responsive.js?v=20261116a"></script>
   <script src="./compile-mode.js"></script>
   <script src="./ai-client.js"></script>
 <script>
@@ -1530,7 +1530,7 @@ loadSettings();
 
   function cardHTML(p){
     var bg=grads[(p.name||'').length%grads.length];
-    return '<a class="wcard" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+
+    return '<a class="wcard" href="/"+esc(p.url)+'" target="_blank" rel="noopener">'+
       '<div class="cv" style="background:'+bg+'"><span class="badge">'+orgLabel(p.org)+'</span></div>'+
       '<div class="cb"><h4>'+esc(p.name)+'</h4><p>'+esc(p.desc)+'</p>'+
       '<span class="tg" style="color:#4f8cff">@'+(p.owner||p.author||'')+' · '+heat(p.heat)+'</span>'+
@@ -1583,8 +1583,8 @@ loadSettings();
     .catch(function(e){G.innerHTML='<p class="ws-loading">开源作品库加载失败（'+(e.message||e)+'），请用 http(s) 访问。</p>';});
 })();
 </script>
-  <script src="/baiju-assistant.js" defer></script>
+  <script src="/baiju-assistant.js?v=20261116a" defer></script>
   <script src="/home-fold.js?v=1" defer></script>
-  <script src="/site-nav.js"></script>
+  <script src="/site-nav.js?v=20261116a"></script>
 </body>
 </html>

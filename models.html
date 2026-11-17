@@ -497,7 +497,7 @@ footer a:hover{text-decoration:underline}
     <div class="kicker">AI TOOLS · HOW TO USE</div>
     <h2>AI 工具 · 如何使用（好多款，点开照着做）</h2>
     <p>大模型负责「想得深」，工具负责「干得完」。这一块把 <b style="color:var(--text)">WorkBuddy + 8 款编程助手 + 12 款办公/知识/通用工具</b> 收在一起，
-      每款给一句定位、最简上手和官方入口。第三方主观评分均标来源、定价与入口以各产品官网当期页面为准；
+      <b style="color:var(--text)">编程工具按 7 种情况对号入座、通用工具按 9 类任务直接查表</b>，每款给一句定位、最简上手和官方入口。第三方主观评分均标来源、定价与入口以各产品官网当期页面为准；
       本站不托管任何第三方安装包、不代领积分、不提供生成式 AI 服务。</p>
   </div>
 
@@ -565,7 +565,42 @@ footer a:hover{text-decoration:underline}
     <a href="https://copilot.tencent.com" target="_blank" rel="noopener">CodeBuddy ↗</a> ·
     <a href="https://www.tabnine.com" target="_blank" rel="noopener">Tabnine ↗</a>。好用度综合自 3 篇 2026 年实测，主观记录；核验 2026-11-16。</p>
 
-  <div class="group-title"><span class="dot"></span>办公 · 知识 · 通用：每款一句话上手</div>
+  <h3 style="margin-top:22px;color:var(--cyan)">按情况对号入座：你属于哪种，直接抄</h3>
+  <p style="color:var(--muted);font-size:14px;margin-top:6px">工具没有「最好」，只有「对不对你的情况」。下面 7 种情况按推荐抄作业即可，理由全部来自上表已核验数据（好用度/中文支持/价格/定位），不掺新结论。</p>
+  <div class="pg-tblwrap" style="overflow-x:auto;margin-top:10px">
+    <table class="ds-table">
+      <thead><tr><th style="min-width:170px">你的情况</th><th>首推</th><th>备选</th><th style="min-width:280px">上手要点（照做少踩坑）</th></tr></thead>
+      <tbody>
+        <tr><td><b>零基础，第一次用 AI 写代码</b></td><td>TRAE</td><td>通义灵码</td><td>直接装 TRAE 客户端（跟 VS Code 同源，界面熟悉），别一上来折腾插件配置；第一个任务只说目标，让它先给方案你再点头。</td></tr>
+        <tr><td><b>已用 VS Code / JetBrains，只想提效</b></td><td>GitHub Copilot</td><td>CodeBuddy</td><td>扩展市场搜名字装插件、登录即用；行内补全按 Tab 接受，不懂的代码丢对话窗问「这段为什么这么写」。</td></tr>
+        <tr><td><b>接手大项目 / 跨文件重构</b></td><td>Cursor</td><td>Claude Code（预算够）</td><td>先让它读仓库出改动方案，你确认后再动手；改完必看 diff 自己审，别让它一口气改十几个文件。</td></tr>
+        <tr><td><b>预算 = 0</b></td><td>TRAE 基础版</td><td>通义灵码 / CodeBuddy / Copilot 免费层</td><td>免费层额度都会变，重活省着用；关键代码本地留底，别把唯一副本交给任何在线工具。</td></tr>
+        <tr><td><b>全中文环境 / 国内直连</b></td><td>TRAE</td><td>通义灵码 / CodeBuddy</td><td>三款都国内直连、中文支持优；需求用中文描述就行，顺手让它把注释和文档也写成中文。</td></tr>
+        <tr><td><b>终端党 / 想跑自动化长链路</b></td><td>Claude Code</td><td>—</td><td>终端里跑、能读整仓和执行命令；按用量计费，先用小任务试水；给它明确的验收标准，跑完查 git diff。</td></tr>
+        <tr><td><b>团队 / 企业私有化</b></td><td>通义灵码</td><td>Tabnine</td><td>两家企业私有化方案成熟；上企业版前先过安全评审，「代码不出内网」是硬要求，个人版方案别混用。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="src" style="margin-top:8px">推荐组合的依据=上表四列核验数据（中文支持、免费档、形态、定位），无新增未核验事实；各产品免费额度与价格随时会调，动手前点当期官网确认。</p>
+
+  <div class="group-title"><span class="dot"></span>办公 · 知识 · 通用：按任务找工具（先查这张表）</div>
+  <div class="pg-tblwrap" style="overflow-x:auto">
+    <table class="ds-table">
+      <thead><tr><th>你要干的事</th><th>直接用</th><th>为什么是它（均来自下方已核验卡片）</th></tr></thead>
+      <tbody>
+        <tr><td>写周报 / 会议纪要初稿</td><td>豆包</td><td>小程序随时调，基础智能体永久免费；复杂结果要人工核对。</td></tr>
+        <tr><td>啃长文档 / 整本资料</td><td>Kimi（或 NotebookLM）</td><td>Kimi 1M 上下文一次读整本；NotebookLM 答案严格基于资料，但需外网。</td></tr>
+        <tr><td>会议录音转文字</td><td>飞书妙记</td><td>自动区分发言人、提炼重点、生成待办；基础转写免费。</td></tr>
+        <tr><td>改公文 / 简历 / 论文措辞</td><td>秘塔写作猫</td><td>有专项模式，区分书面语与口语；基础免费。</td></tr>
+        <tr><td>Excel 公式不会写</td><td>WPS AI</td><td>本地文件打开即用，自然语言写公式；基础免费。</td></tr>
+        <tr><td>多人协作文档排版</td><td>腾讯文档 AI</td><td>共创时自动统一格式、AI 润色；已打通 WorkBuddy 智能体。</td></tr>
+        <tr><td>基于「自己的资料」问答（防编造）</td><td>ima.copilot</td><td>答案基于你上传的知识库，不易瞎编；已打通 WorkBuddy / 元宝。</td></tr>
+        <tr><td>中英互译 / 英语润色</td><td>有道词典（或 Grammarly）</td><td>有道国内直连查词翻译；Grammarly 浏览器插件逐条给理由，偏中高级。</td></tr>
+        <tr><td>日常问答 / 搜索</td><td>腾讯元宝 / 通义千问</td><td>元宝微信里当「朋友」用；千问上传长文档自动拆章节标页码。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:var(--muted);font-size:14px;margin-top:12px">下面是每款的详细卡（一句定位 + 怎么用 + 官方入口），查到目标工具后再下来看细节：</p>
   <div class="grid g3">
     <div class="card"><h3>腾讯元宝 <span class="pill">腾讯</span></h3><p><b style="color:var(--cyan)">怎么用：</b>微信里当「朋友」直接对话，写作 / 搜索 / Agent；已接混元 Hy4 flash，基础免费。</p><a class="pill" href="https://yuanbao.tencent.com" target="_blank" rel="noopener">官方入口 ↗</a></div>
     <div class="card"><h3>ima.copilot <span class="pill">腾讯</span></h3><p><b style="color:var(--cyan)">怎么用：</b>把 PDF/文档丢进知识库，直接提问要摘要和问答，答案基于你上传的资料、不易编造；已打通 WorkBuddy / 元宝。免费。</p><a class="pill" href="https://ima.qq.com" target="_blank" rel="noopener">官方入口 ↗</a></div>

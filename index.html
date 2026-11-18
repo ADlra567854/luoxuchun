@@ -570,7 +570,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
     </div>
 
     <div class="trust">
-      <div class="t"><b><!--STAT:repos-->151<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
+      <div class="t"><b><!--STAT:repos-->154<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
       <div class="t"><b>230</b><span>具名模型在库</span><em>含厂商与开源度</em></div>
       <div class="t"><b>43</b><span>章 AI 学院教程</span><em>每章带调研出处</em></div>
       <div class="t"><b>每日</b><span>自动更新</span><em>更新日志可查</em></div>
@@ -592,12 +592,12 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 <section id="ff-strip">
   <div class="fh"><b>近 7 天</b><span class="ff-today">今日新增 4 条</span><span class="ff-range">2026-11-09 — 2026-11-16</span><a class="ff-log" href="/about/changelog.html"><i class="cc-ic" data-ic="history" aria-hidden="true"></i>更新日志</a><a href="/feed/">全部前沿流 →</a></div>
   <div class="ff-strip-row">
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-15</time><b>Runway 开源机器人模型 Praxis-1</b><i>runway.com</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-15</time><b>英伟达 CEO 交接进入遴选</b><i>news.qq.com</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-15</time><b>东盟签首份数字规则硬协议</b><i>news.qq.com</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-15</time><b>国产超算灵晟登顶 TOP100</b><i>news.youth.cn</i></a>
-    <a class="ff-mini" href="/feed/#hot"><time>11-14</time><b>流程工业智能工厂国标发布</b><i>news.qq.com</i></a>
-    <a class="ff-mini" href="/feed/#hot"><time>11-13</time><b>llama.cpp 与 ggml 同发 1.0</b><i>huggingface.co</i></a>
+    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-17</time><b>OpenAI 发 GPT-6.2 双模型</b><i>openai.com</i></a>
+    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-17</time><b>微软一次发布七款 MAI 模型</b><i>microsoft.ai</i></a>
+    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-17</time><b>vLLM 0.34 默认自动分配 KV 缓存</b><i>github.com</i></a>
+    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-17</time><b>可灵 Image 4.0 首支持 8K</b><i>kling.ai</i></a>
+    <a class="ff-mini" href="/feed/#hot"><time>11-15</time><b>Runway 开源机器人模型 Praxis-1</b><i>runway.com</i></a>
+    <a class="ff-mini" href="/feed/#hot"><time>11-15</time><b>英伟达 CEO 交接进入遴选</b><i>news.qq.com</i></a>
   </div>
 </section>
 <!--FF:END-->
@@ -614,7 +614,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
     </a>
     <a class="wcard" href="./toolbox/repos.html">
       <div class="cv cv-photo"><img src="./assets/covers/sec/repos.jpg" alt="" loading="lazy" decoding="async"><span class="badge">开源仓库</span><i class="cc-ic" data-ic="git-branch"></i></div>
-      <div class="cb"><h4>开源仓库 · <!--STAT:repos-->151<!--/STAT:repos--> 个</h4><p>能自己跑起来才算数：推理引擎、RAG、Agent、图像、语音、编程 Agent 分 15 类，每条标星数、许可证、上手难度与国内可直连性。</p><span class="tg">15 类 · <!--STAT:repos-->151<!--/STAT:repos--> 个 · 4.98M 星</span><span class="go">进仓库库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+      <div class="cb"><h4>开源仓库 · <!--STAT:repos-->154<!--/STAT:repos--> 个</h4><p>能自己跑起来才算数：推理引擎、RAG、Agent、图像、语音、编程 Agent 分 15 类，每条标星数、许可证、上手难度与国内可直连性。</p><span class="tg">15 类 · <!--STAT:repos-->154<!--/STAT:repos--> 个 · 4.98M 星</span><span class="go">进仓库库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
     </a>
     <a class="wcard" href="./learn/deploy.html">
       <div class="cv cv-photo"><img src="./assets/covers/sec/deploy.jpg" alt="" loading="lazy" decoding="async"><span class="badge">部署百科</span><i class="cc-ic" data-ic="hard-drive"></i></div>
@@ -1123,7 +1123,7 @@ function speak(text){
     const u=new SpeechSynthesisUtterance(text.replace(/[#*`|>\[\]()_]/g,'').slice(0,600));
     u.lang='zh-CN';u.rate=1.05;
     u.onstart=()=>{speaking=true;$('wave-label').textContent='播报中';};
-    u.onend=()=>{speaking=false;$('wave-label').textcontent="/";};
+    u.onend=()=>{speaking=false;$('wave-label').textContent='';};
     speechSynthesis.speak(u);
   }catch(e){}
 }
@@ -1152,7 +1152,7 @@ $('mic').onclick=()=>{
   recog.onresult=e=>{const t=[...e.results].map(r=>r[0].transcript).join('');$('q').value=t;
     if(e.results[e.results.length-1].isFinal){stopRec();send();}};
   recog.onend=stopRec;recog.onerror=stopRec;recog.start();
-  function stopRec(){$('mic').classList.remove('on');$('wave-label').textcontent="/";recog=null;}
+  function stopRec(){$('mic').classList.remove('on');$('wave-label').textContent='';recog=null;}
 };
 let recog=null;
 

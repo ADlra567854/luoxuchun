@@ -48,6 +48,8 @@ a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 
 /* ---------- 总站导航（毛玻璃） ---------- */
+/* 几何（宽度基线 / 高度）不在这里定：nebula-skin.css 的 body > nav:not([id]) 带 !important
+   最后加载，是首页导航宽度与高度的唯一真源。这里只放降级默认值，两边不一致时会以皮肤层为准。 */
 nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 24px;height:64px;
   background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
@@ -413,8 +415,9 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
   .foot-inner{gap:40px}
 }
 @media(max-width:760px){
-  nav.top{height:56px;padding:0 14px}
-  nav.top .links{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;background:var(--card);padding:10px 16px;border-bottom:1px solid var(--line);box-shadow:var(--nav-shadow);flex-wrap:nowrap;overflow:visible}
+  /* 移动端导航的尺寸/内距统一由 nebula-skin.css 负责（皮肤层带 !important，且最后加载）。
+     留在这里的只有抽屉自身的定位与展开形态。 */
+  nav.top .links{display:none;position:absolute;top:var(--nb-nav-h,56px);left:0;right:0;flex-direction:column;background:var(--card);padding:10px 16px;border-bottom:1px solid var(--line);box-shadow:var(--nav-shadow);flex-wrap:nowrap;overflow:visible}
   nav.top .links.open{display:flex}
   /* 2026-10-28 修：抽屉是 nav 的绝对定位子元素，而 nav.top 的 z-index:50 形成了层叠上下文，
      子元素再怎么设 z-index 也超不过 module.js 注入的目录条 #modTocBar(z-index:9990)。
@@ -425,7 +428,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
      它的 8 个链接会垂到白色面板外面（面板到 y≈409，菜单一直排到 y≈782），
      在手机上等于「点开也看不到」。竖向抽屉本来就该全展开：
      隐藏「更多」按钮，把 8 项直接内联到列表末尾，抽屉本身可滚动。 */
-  nav.top .links.open{max-height:calc(100vh - 56px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+  nav.top .links.open{max-height:calc(100vh - var(--nb-nav-h,56px));overflow-y:auto;-webkit-overflow-scrolling:touch}
   nav.top .links.open .bj-more{display:block;position:static;width:100%;margin-top:2px}
   nav.top .links.open .bj-more-btn{display:none}
   nav.top .links.open .bj-more-menu{
@@ -570,7 +573,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
     </div>
 
     <div class="trust">
-      <div class="t"><b><!--STAT:repos-->154<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
+      <div class="t"><b><!--STAT:repos-->160<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
       <div class="t"><b>230</b><span>具名模型在库</span><em>含厂商与开源度</em></div>
       <div class="t"><b>43</b><span>章 AI 学院教程</span><em>每章带调研出处</em></div>
       <div class="t"><b>每日</b><span>自动更新</span><em>更新日志可查</em></div>
@@ -590,14 +593,14 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 <!-- ====== 工作台 · 场馆（技能弹药库驱动 · 真实数据） ====== -->
 <!--FF:START-->
 <section id="ff-strip">
-  <div class="fh"><b>近 7 天</b><span class="ff-today">今日新增 4 条</span><span class="ff-range">2026-11-09 — 2026-11-16</span><a class="ff-log" href="/about/changelog.html"><i class="cc-ic" data-ic="history" aria-hidden="true"></i>更新日志</a><a href="/feed/">全部前沿流 →</a></div>
+  <div class="fh"><b>近 7 天</b><span class="ff-today">今日新增 4 条</span><span class="ff-range">2026-11-13 — 2026-11-20</span><a class="ff-log" href="/about/changelog.html"><i class="cc-ic" data-ic="history" aria-hidden="true"></i>更新日志</a><a href="/feed/">全部前沿流 →</a></div>
   <div class="ff-strip-row">
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-17</time><b>OpenAI 发 GPT-6.2 双模型</b><i>openai.com</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-17</time><b>微软一次发布七款 MAI 模型</b><i>microsoft.ai</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-17</time><b>vLLM 0.34 默认自动分配 KV 缓存</b><i>github.com</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-17</time><b>可灵 Image 4.0 首支持 8K</b><i>kling.ai</i></a>
-    <a class="ff-mini" href="/feed/#hot"><time>11-15</time><b>Runway 开源机器人模型 Praxis-1</b><i>runway.com</i></a>
-    <a class="ff-mini" href="/feed/#hot"><time>11-15</time><b>英伟达 CEO 交接进入遴选</b><i>news.qq.com</i></a>
+    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-20</time><b>腾讯混元 Hy4 旗舰权重开源</b><i>news.qq.com</i></a>
+    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-20</time><b>谷歌发 Gemini 4 Neon</b><i>huanqiu.com</i></a>
+    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-20</time><b>Anthropic 上市首日涨 17%</b><i>huanqiu.com</i></a>
+    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-20</time><b>十五五算力十大趋势发布</b><i>stdaily.com</i></a>
+    <a class="ff-mini" href="/feed/#hot"><time>11-19</time><b>工信部连发 5 项人形机器人标准</b><i>finance.sina.com.cn</i></a>
+    <a class="ff-mini" href="/feed/#hot"><time>11-18</time><b>混元 Hy4 flash 开源三个版本</b><i>news.qq.com</i></a>
   </div>
 </section>
 <!--FF:END-->
@@ -614,7 +617,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
     </a>
     <a class="wcard" href="./toolbox/repos.html">
       <div class="cv cv-photo"><img src="./assets/covers/sec/repos.jpg" alt="" loading="lazy" decoding="async"><span class="badge">开源仓库</span><i class="cc-ic" data-ic="git-branch"></i></div>
-      <div class="cb"><h4>开源仓库 · <!--STAT:repos-->154<!--/STAT:repos--> 个</h4><p>能自己跑起来才算数：推理引擎、RAG、Agent、图像、语音、编程 Agent 分 15 类，每条标星数、许可证、上手难度与国内可直连性。</p><span class="tg">15 类 · <!--STAT:repos-->154<!--/STAT:repos--> 个 · 4.98M 星</span><span class="go">进仓库库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+      <div class="cb"><h4>开源仓库 · <!--STAT:repos-->160<!--/STAT:repos--> 个</h4><p>能自己跑起来才算数：推理引擎、RAG、Agent、图像、语音、编程 Agent 分 15 类，每条标星数、许可证、上手难度与国内可直连性。</p><span class="tg">15 类 · <!--STAT:repos-->160<!--/STAT:repos--> 个 · 4.98M 星</span><span class="go">进仓库库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
     </a>
     <a class="wcard" href="./learn/deploy.html">
       <div class="cv cv-photo"><img src="./assets/covers/sec/deploy.jpg" alt="" loading="lazy" decoding="async"><span class="badge">部署百科</span><i class="cc-ic" data-ic="hard-drive"></i></div>

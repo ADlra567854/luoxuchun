@@ -58,8 +58,10 @@
 
   --nb-ease: cubic-bezier(.22, 1, .36, 1);
 
-  /* 统一的顶部高度，后面所有锚点/吸顶都引用它，避免各处写死 64/56 打架 */
-  --nb-nav-h: 62px;
+  /* 统一的顶部高度，后面所有锚点/吸顶都引用它，避免各处写死 64/56 打架。
+     2026-11-20：62px → 60px，与内页 header.ccnav 主行（.ccnav-in 60px）对齐。
+     此前首页 62 / 内页 60，两页之间跳转会看到导航高度抖 2px、吸顶锚点错位。 */
+  --nb-nav-h: 60px;
 }
 
 /* ------------------------------------------------------------
@@ -92,7 +94,12 @@ figure.cc-pg-cover {
 }
 
 /* 2.3 注入的白驹导航：30 个链接默认折成 3 行共 203px。
-   这里强制单行 + 横向滚动 + 右侧渐隐提示，高度锁到 62px。 */
+   这里强制单行 + 横向滚动 + 右侧渐隐提示，高度锁到 --nb-nav-h。
+   2026-11-20 修「有宽有窄」：左右内距原先固定 18px，而内页 header.ccnav 的
+   .ccnav-in 是 max-width:1240px + 16px 内距（1440 屏下内容从 x=116 起）。
+   于是从首页点进任何内页，Logo 会横跳 82px，导航看起来一会儿宽一会儿窄。
+   这里用与内页同一套公式算内距，宽屏对齐到 1240 基线，窄屏自然退化为 18px；
+   毛玻璃背景条仍占满整宽，只有内容对齐，不通栏裁切。 */
 body > nav:not([id]) {
   height: var(--nb-nav-h) !important;
   min-height: var(--nb-nav-h) !important;
@@ -101,7 +108,8 @@ body > nav:not([id]) {
   flex-wrap: nowrap !important;
   align-items: center !important;
   gap: 10px !important;
-  padding: 0 18px !important;
+  padding-left: max(16px, calc((100% - 1240px) / 2 + 16px)) !important;
+  padding-right: max(16px, calc((100% - 1240px) / 2 + 16px)) !important;
   background: rgba(255, 255, 255, .80) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
@@ -581,15 +589,25 @@ body[data-theme="deep"] .nb-cursor-glow {
    8. 响应式
    ------------------------------------------------------------ */
 @media (max-width: 1024px) {
-  :root { --nb-nav-h: 58px; }
-  body > nav:not([id]) { padding: 0 12px !important; gap: 8px !important; }
+  /* 2026-11-20：原先这里把高度降到 58px，但内页 .ccnav-in 在 1024–901 之间仍是 60px，
+     平板竖屏跨页会抖 2px。内页没有这一档，首页也取消，统一 60 到 900 再降。
+     左右内距也不在这一档收：内页 901–1024 仍是 16px，这里收成 12px 会让 Logo 错位 4px。 */
+  :root { --nb-nav-h: 60px; }
+  body > nav:not([id]) { gap: 8px !important; }
   body > nav:not([id]) .logo { font-size: 14px !important; }
   body > nav:not([id]) .nav-links a { padding: 6px 9px !important; font-size: 13px !important; }
 }
 
+/* 2026-11-20：900px 是内页主行 60→54、内距 16→12 的断点，首页跟进同一档，
+   否则 900–641 之间首页 56/58、内页 54，还是会对不上。 */
+@media (max-width: 900px) {
+  :root { --nb-nav-h: 54px; }
+  body > nav:not([id]) { padding: 0 12px !important; }
+}
+
 @media (max-width: 640px) {
-  :root { --nb-nav-h: 56px; }
-  body > nav:not([id]) { padding: 0 10px !important; }
+  :root { --nb-nav-h: 54px; }
+  body > nav:not([id]) { padding: 0 12px !important; }
   /* 小屏只留品牌，链接交给汉堡菜单（responsive.js 已生成） */
   body > nav:not([id]) .nav-links { display: none !important; }
   body[data-theme] .nb-hero::before { width: 480px !important; height: 480px !important; margin-left: -240px !important; }
@@ -597,6 +615,36 @@ body[data-theme="deep"] .nb-cursor-glow {
   body[data-theme] .nb-hero .nb-orb { width: 320px; height: 320px; }
   .nb-cursor-glow { display: none !important; }
   #modTocBar { height: 40px !important; }
+}
+
+/* 2026-11-20 窄屏导航溢出修：
+   390px 视口下最右侧设置按钮被切掉一半（.nav-actions 右边缘 397 > 390），
+   360px / 320px 分别溢出 37 / 77px，页面还被撑出横向滚动。
+   成因是右侧控件太多：主题 44 + 身份芯片 105（图标 + "选身份" 文字）+ 设置 44 + 三道 6px 间距。
+   做法：窄屏下身份芯片只留图标，控件收到 34px、间距收到 4–5px，省出约 50px。 */
+@media (max-width: 480px) {
+  body > nav:not([id]) { gap: 6px !important; }
+  body > nav:not([id]) .nav-actions { gap: 5px !important; }
+  body > nav:not([id]) .bj-idbox { gap: 4px !important; }
+  body > nav:not([id]) .bj-idbox .bj-role-nm { display: none !important; }
+  body > nav:not([id]) .bj-idbox .bj-role-chip,
+  body > nav:not([id]) .bj-idbox .bj-login { padding-left: 10px !important; padding-right: 10px !important; }
+  body > nav:not([id]) .theme-btn,
+  body > nav:not([id]) .nav-gear,
+  body > nav:not([id]) .bj-nav-settings { width: 34px !important; height: 34px !important; min-width: 34px !important; }
+  body > nav:not([id]) .burger { width: 38px !important; font-size: 20px !important; }
+  /* 品牌允许收缩，极端情况下先让品牌名省略号而不是把右侧控件挤出屏幕 */
+  body > nav:not([id]) .brand { min-width: 0 !important; flex: 0 1 auto !important; }
+  body > nav:not([id]) .bj-brand { min-width: 0 !important; }
+  body > nav:not([id]) .bj-brand .bj-name { min-width: 0 !important; }
+}
+
+/* 2026-11-20：≤420 只保留图形标。
+   注入样式里原本就有这条意图（@media(max-width:420px){ nav .brand .nm{display:none} }），
+   但品牌归一化把 .nm 换成了 .bj-name，规则变成空转，窄屏才会溢出。
+   这里按新结构补回来：360 / 320 宽下省出约 90px，横向滚动彻底消失。 */
+@media (max-width: 420px) {
+  body > nav:not([id]) .bj-brand .bj-name { display: none !important; }
 }
 
 /* 尊重系统的"减少动效"设置 */

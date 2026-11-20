@@ -173,7 +173,13 @@ body[data-theme="cloud"] header.ccnav .ccnav-sub{ background: rgba(248,251,255,.
   header.ccnav .ccnav-act .cta,
   header.ccnav .ccnav-act .sr{ display: none; }
   header.ccnav .ccnav-burger{ display: grid; }
-  header.ccnav .ccnav-sub-in{ height: 42px; padding: 0 12px; }
+  /* 2026-11-20：副导航触控目标过小 —— 胶囊高只有 26px（--ctl-xs），
+     手指点按经常误触相邻项，视觉上也"太短、太挤"。
+     移动端把胶囊抬到 36px、整行抬到 50px；桌面端保持 26/46 不变。
+     行高变高后仍低于 60px 主行，不会喧宾夺主。 */
+  header.ccnav .ccnav-sub-in{ height: 50px; padding: 0 12px; }
+  header.ccnav .ccnav-sub-in a{ height: 36px; padding: 0 14px; font-size: 14px; }
+  header.ccnav .ccnav-sub-in a .cc-ic{ font-size: 14px; }
 }
 
 /* ---------- 抽屉（移动端唯一的二级入口，替代旧的汉堡+横滚两套并存）---------- */

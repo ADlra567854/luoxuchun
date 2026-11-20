@@ -329,7 +329,7 @@
     var chip = document.getElementById('bjRoleChip')
     var me = document.getElementById('bjMe')
     var lg = document.getElementById('bjLogin')
-    if (chip) chip.onclick = openRolePicker
+    if (chip) chip.onclick = goPickRole
     if (me) me.onclick = openAccount
     if (lg) lg.onclick = openAccount
     updateRoleEntryText(r)
@@ -462,6 +462,22 @@
     })
   }
 
+  /* 2026-11-20：导航「身份芯片」不再弹独立的 bjRoleDlg 模态框。
+     首页有 #onboard 面板时滚过去并高亮（唯一入口）；
+     其它页面跳回首页并带 pick=1，落地自动展开面板。
+     设置里的「切换身份」仍走 openRolePicker —— 那是主动操作，不是新手引导。 */
+  function goPickRole() {
+    var p = document.getElementById('onboard')
+    if (p) {
+      p.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      p.classList.add('flash')
+      setTimeout(function () { p.classList.remove('flash') }, 1500)
+      try { document.dispatchEvent(new CustomEvent('baiju:needpick')) } catch (e) {}
+      return
+    }
+    location.href = '/?pick=1#onboard'
+  }
+
   function openRolePicker() {
     var d = dlg('bjRoleDlg', '你是谁，就从这里开始',
       '<p class="bj-tip">选一个身份，站里只显示你该读的、可以跳过的，以及读完能带走什么。' +
@@ -470,29 +486,12 @@
     bindRoleCards(d)
   }
 
-  /* ---- 首次进入引导 ---- */
-  function maybeOnboard() {
-    if (rd(K.onboard, 0) || Role.get()) return
-    /* 只在首页弹：内容页一进来就盖一个 modal，读者还没读到第一段就得先关窗，
-       还会把点击吃掉。想看引导回首页即可。 */
-    if (!/^\/(index\.html?)?$/i.test(location.pathname)) return
-    setTimeout(function () {
-      var d = dlg('bjOnboardDlg', '先花 5 秒，选一下你是谁',
-        '<p class="bj-tip">这座站有 340+ 个页面。不先选身份，等于让你从第一页读到最后一页。</p>' +
-        roleCardsHtml() +
-        '<div class="bj-row"><button class="bj-btn ghost" id="bjSkip" type="button">先随便逛逛</button></div>')
-      bindRoleCards(d, function (r) {
-        setTimeout(function () { try { d.close() } catch (e) {} }, 420)
-        var go = r && r.go
-        if (go && confirm('已设为「' + r.name + '」。要现在去「' + r.goLabel + '」吗？')) {
-          // 站内统一用根绝对路径跳转，避免子目录相对路径失效
-          location.href = '/' + go.replace(/^\/+/, '')
-        }
-      })
-      var skip = document.getElementById('bjSkip')
-      if (skip) skip.onclick = function () { Role.set('everyone', true); try { d.close() } catch (e) {} }
-    }, 900)
-  }
+  /* ---- 首次进入引导（2026-11-20 已下线）----
+     原来首访 900ms 后弹「先花 5 秒，选一下你是谁」模态框，和首页内联的
+     #onboard 面板问的是同一件事，两套身份体系还会各写各的存储。
+     现在身份只在首页面板选，写 baiju.role 这一处；这里只留函数壳，避免
+     step() 注册处报未定义。 ---- */
+  function maybeOnboard() {}
 
   /* ---- 账号 / 登录 ---- */
   function openAccount() {

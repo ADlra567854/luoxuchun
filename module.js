@@ -129,23 +129,9 @@
     '#modSettings .s-switch::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--muted);transition:.2s}' +
     '#modSettings .s-switch.on{background:var(--grad);border-color:transparent}' +
     '#modSettings .s-switch.on::after{left:22px;background:#fff}' +
-    '#ccOnboard{position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;background:rgba(3,0,20,.62);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:.3s;padding:20px}' +
-    '#ccOnboard.show{opacity:1;pointer-events:auto}' +
-    '#ccOnboard .ob-card{width:min(440px,100%);border-radius:18px;padding:26px 26px 22px;background:var(--glass-strong);border:1px solid var(--line);box-shadow:var(--float-shadow);transform:translateY(12px) scale(.97);transition:.3s;font-family:var(--sans,"PingFang SC","Microsoft YaHei",sans-serif);color:var(--text)}' +
-    '#ccOnboard.show .ob-card{transform:none}' +
-    '#ccOnboard .ob-step{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--cyan);margin-bottom:8px}' +
-    '#ccOnboard .ob-icon{width:54px;height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px;background:var(--grad);color:#fff}' +
-    '#ccOnboard .ob-title{font-size:19px;font-weight:900;margin-bottom:8px}' +
-    '#ccOnboard .ob-text{font-size:14px;line-height:1.8;color:var(--muted);margin-bottom:20px}' +
-    '#ccOnboard .ob-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}' +
-    '#ccOnboard .ob-dots{display:flex;gap:6px}' +
-    '#ccOnboard .ob-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:.2s}' +
-    '#ccOnboard .ob-dots i.on{background:var(--grad);width:18px}' +
-    '#ccOnboard .ob-btn{border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:14px;padding:10px 20px;border-radius:999px;transition:.2s}' +
-    '#ccOnboard .ob-btn.primary{background:var(--grad);color:#fff}' +
-    '#ccOnboard .ob-btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}' +
-    '#ccOnboard .ob-btn:hover{transform:translateY(-1px)}' +
-    '@media(max-width:640px){#modReadBtn{bottom:62px;left:12px;padding:0 11px;font-size:12px}#modSettings .s-mine{font-size:12px}}'
+        /* 2026-11-20：首访 4 步全屏导览已下线（与首屏身份面板重复，用户要连关两个窗）。
+       它的价值点已并入首页 #onboard 面板底部的「个性化设置 / 打开助手」两个直连按钮。 */ +
+'@media(max-width:640px){#modReadBtn{bottom:62px;left:12px;padding:0 11px;font-size:12px}#modSettings .s-mine{font-size:12px}}'
   var st = document.createElement('style')
   st.textContent = css
   HEAD.appendChild(st)
@@ -396,67 +382,10 @@
     if (navPinned || document.getElementById('setBtn')) gear.style.display = 'none'
   })
 
-  // ---------- 新手引导（首次访问，4 步；?onboard 可强制重看） ----------
-  try {
-    var forceOnboard = /[?&]onboard\b/.test(location.search)
-    /* 只在首页弹引导：读者从搜索落到某一章某一节时，是来读内容的，
-       一个盖满全屏、还把点击吃掉的弹窗会直接把阅读打断。
-       想看引导走首页，或加 ?onboard 强制重看。 */
-    var ccIsHome = /^\/(index\.html?)?$/i.test(location.pathname)
-    /* 首页还有一层「先选身份」引导（assets/baiju-core.js 的 bjOnboardDlg）。
-       两层同时弹会叠成一坨，用户得连关两个窗。这里让路：
-       身份还没选时只留角色引导，选完身份后再轮到本导览。 */
-    var ccRolePending = false
-    try {
-      ccRolePending = !localStorage.getItem('baiju.role') && !localStorage.getItem('baiju.onboarded')
-    } catch (e) {}
-    /* GitHub Pages 公开版：默认不弹任何首访引导蒙层，打开即见完整内容。
-       仅当用户主动在 URL 加 ?onboard 时才播放导览。原沙箱版行为不变。 */
-    if (forceOnboard) {
-      var obSteps = [
-        { icon: 'palette', title: '欢迎来到白驹 ccowork', text: '这里是 AI 工具与学习的统一入口。先告诉你几个能立刻让体验变好的开关。' },
-        { icon: 'image', title: '换壁纸与主题', text: '点左下角 ⚙️ 或导航里的设置，切换「深空 / 云顶」主题，挑一张喜欢的壁纸，全站立即生效并自动记忆。' },
-        { icon: 'book-open', title: '阅读模式 + 书库', text: '长文和「阅读书库」可开启阅读模式，字号更大、排版更专注。书库收录 36 本经核实的 AI / 编程好书。' },
-        { icon: 'user', title: '设置你的角色', text: '在设置里选「教师 / 学生 / 开发者 / 爱好者」，书库与工具会按你的角色推荐。随时可在「我的页面」查看进度与收藏。' }
-      ]
-      var obI = 0
-      var ob = document.createElement('div')
-      ob.id = 'ccOnboard'
-      ob.setAttribute('role', 'dialog')
-      ob.setAttribute('aria-modal', 'true')
-      ob.setAttribute('aria-label', '新手引导')
-      function obRender() {
-        var s = obSteps[obI]
-        var dots = obSteps.map(function (_, k) { return '<i class="' + (k === obI ? 'on' : '') + '"></i>' }).join('')
-        ob.innerHTML =
-          '<div class="ob-card" role="document">' +
-            '<div class="ob-step">第 ' + (obI + 1) + ' / ' + obSteps.length + ' 步</div>' +
-            '<div class="ob-icon"><i class="cc-ic" data-ic="' + s.icon + '" aria-hidden="true"></i></div>' +
-            '<div class="ob-title">' + s.title + '</div>' +
-            '<div class="ob-text">' + s.text + '</div>' +
-            '<div class="ob-actions">' +
-              '<div class="ob-dots" aria-hidden="true">' + dots + '</div>' +
-              '<div style="display:flex;gap:10px">' +
-                '<button class="ob-btn ghost" type="button" id="obSkip">跳过</button>' +
-                '<button class="ob-btn primary" type="button" id="obNext">' + (obI === obSteps.length - 1 ? '开始探索' : '下一步') + '</button>' +
-              '</div>' +
-            '</div>' +
-          '</div>'
-        var next = ob.querySelector('#obNext')
-        var skip = ob.querySelector('#obSkip')
-        if (next) next.addEventListener('click', function () { if (obI < obSteps.length - 1) { obI++; obRender() } else obFinish() })
-        if (skip) skip.addEventListener('click', obFinish)
-      }
-      function obFinish() {
-        LS.set('ccowork.onboarded', '1')
-        ob.classList.remove('show')
-        setTimeout(function () { if (ob.parentNode) ob.parentNode.removeChild(ob) }, 320)
-      }
-      document.body.appendChild(ob)
-      obRender()
-      requestAnimationFrame(function () { ob.classList.add('show') })
-    }
-  } catch (e) {}
+  // ---------- 新手引导（2026-11-20 已下线）----------
+  /* 首访不再弹 4 步全屏导览：#onboard 面板已经在首屏把「你是谁 + 三条路径」讲完，
+     再盖一层模态要用户连关两个窗，就是「怎么有两个新手引导」的根源。
+     原 ?onboard 强制重看入口一并移除，需要引导回首页即可。 */
 
   // ---------- ③ 吸顶目录条 TOC ----------
   // 目录页抑制：<main class="no-toc"> / <body class="no-toc"> / URL 含 ?no-toc 均不生成

@@ -101,25 +101,49 @@ body[data-theme="cloud"] #gate .orb{opacity:.55}
 .gate-chips .chip-role{background:rgba(255,255,255,.34);border-color:rgba(255,255,255,.85);
   box-shadow:0 4px 16px rgba(16,48,120,.22);padding:9px 22px;font-size:14px}
 
-/* ====== 新手引导（2026-11-12）======
-   取消「快速开始」主 CTA + 次级入口 + 示例大按钮。
-   改成先选身份、再给三条真实可点路径的引导，落点页全部实测存在。 */
+/* ====== 新手引导（2026-11-20 合并：全站唯一一处「你是谁」）======
+   原先并存两套身份入口：① 导航右上「🙂 选身份」弹 bjRoleDlg 模态框（6 类身份，写 baiju.role）；
+   ② 首屏内联 .onboard 面板（3 类人群，不写任何存储）。两套体系互不相通，选完内联那套
+   等于白选，导航芯片还写着「选身份」；加上 module.js 首访还会盖一层 4 步全屏导览，
+   新用户得连关两个窗，看到的就是「怎么有两个新手引导」。
+   现在只留这一块内联面板，并把模态的两样东西并进来：
+   · 6 类身份全部落在这里（排序：任务导向 3 张在前，细分身份 3 张在后）；
+   · 选中即写 Baiju.Role.set()，导航身份芯片同步、跨页记忆；
+   · 模态的 4 步教学压成底部两个直连按钮（设置 / 助手），不再弹窗教学。
+   选过身份后面板收成紧凑条（data-state="ready"），回访不再常年占掉 349px 首屏。 */
 .onboard{max-width:940px;margin:24px auto 0;padding:18px 20px 16px;border-radius:18px;
-  background:var(--glass-card);border:1px solid var(--line);box-shadow:0 12px 36px rgba(20,40,90,.10)}
+  background:var(--glass-card);border:1px solid var(--line);box-shadow:0 12px 36px rgba(20,40,90,.10);
+  scroll-margin-top:84px;transition:box-shadow .35s}
+.onboard.flash{box-shadow:0 0 0 2px rgba(79,140,255,.6),0 18px 46px rgba(79,140,255,.3)}
 .onboard .ob-hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .onboard .ob-hd b{font-size:16px;font-weight:800;color:var(--text)}
-.onboard .ob-hd span{font-size:12.5px;color:var(--muted);line-height:1.6}
-.onboard .ob-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.onboard .ob-role{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;
-  padding:13px 14px;border-radius:13px;cursor:pointer;transition:.18s;
+.onboard .ob-hd span{font-size:12.5px;color:var(--muted);line-height:1.6;flex:1;min-width:200px}
+.onboard .ob-change{flex:none;margin-left:auto;padding:5px 13px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12px;font-weight:700;
+  font-family:inherit;transition:.18s}
+.onboard .ob-change:hover{border-color:#4f8cff;color:#4f8cff}
+/* 站点全局 button{display:flex} 会盖掉 UA 的 [hidden]{display:none}，这里必须显式复位 */
+.onboard .ob-change[hidden]{display:none!important}
+.onboard .ob-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.onboard .ob-role{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;
+  padding:11px 13px;border-radius:12px;cursor:pointer;transition:.18s;
   border:1px solid var(--line);background:rgba(79,140,255,.05);color:var(--text);font-family:inherit}
 .onboard .ob-role:hover{transform:translateY(-2px);border-color:#4f8cff;background:rgba(79,140,255,.11)}
 .onboard .ob-role.cur{border-color:#4f8cff;background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(79,140,255,.28)}
-.onboard .ob-role > i{font-size:19px;color:var(--blue);display:block;margin-bottom:5px}
-.onboard .ob-role.cur > i{color:#fff}
-.onboard .ob-role b{font-size:13.5px;font-weight:800}
-.onboard .ob-role span{font-size:11.5px;line-height:1.5;color:var(--muted)}
+.onboard .ob-role b{font-size:13px;font-weight:800;line-height:1.35}
+.onboard .ob-role span{font-size:11px;line-height:1.45;color:var(--muted)}
 .onboard .ob-role.cur span{color:rgba(255,255,255,.9)}
+.onboard[data-state="ready"] .ob-roles{display:none}
+/* 窄屏只先给 3 张任务卡，细分身份折在「更多身份」后面：
+   6 张卡 + 3 条路径在 390px 下会把面板顶到 805px，占满一整屏。 */
+.onboard .ob-more{display:none;align-items:center;justify-content:center;gap:5px;width:100%;
+  margin-top:8px;padding:8px;border-radius:10px;cursor:pointer;
+  border:1px dashed var(--line);background:transparent;color:var(--muted);
+  font-size:11.5px;font-weight:700;font-family:inherit}
+.onboard .ob-more:hover{border-color:#4f8cff;color:#4f8cff}
+.onboard[data-more="1"] .ob-more i{transform:rotate(180deg)}
+.onboard .ob-more i{transition:.2s;font-style:normal}
+.onboard[data-state="ready"] .ob-hd{margin-bottom:2px}
 .onboard .ob-paths{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
 .onboard .ob-path{display:block;padding:12px 14px;border-radius:12px;text-decoration:none;
   border:1px solid var(--line);background:rgba(79,140,255,.04);transition:.18s}
@@ -130,14 +154,29 @@ body[data-theme="cloud"] #gate .orb{opacity:.55}
 .onboard .ob-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
   margin-top:13px;padding-top:12px;border-top:1px solid var(--line)}
 .onboard .ob-foot span{font-size:11.5px;color:var(--muted);line-height:1.6;flex:1;min-width:220px}
-.onboard .ob-open{flex:none;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;
+.onboard .ob-foot-short{display:none}
+.onboard .ob-fbtns{display:flex;gap:8px;flex:none}
+.onboard .ob-open{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;
   border:1px solid rgba(79,140,255,.35);background:rgba(79,140,255,.10);color:var(--blue);
-  font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+  font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.18s;white-space:nowrap}
 .onboard .ob-open:hover{background:var(--grad);color:#fff;border-color:transparent}
-@media (max-width:720px){
+.onboard .ob-open.ghost{border-color:var(--line);background:transparent;color:var(--muted)}
+.onboard .ob-open.ghost:hover{border-color:#4f8cff;background:rgba(79,140,255,.10);color:var(--blue)}
+@media (max-width:760px){
   .onboard{padding:14px;margin:20px 12px 0}
-  .onboard .ob-roles,.onboard .ob-paths{grid-template-columns:1fr}
+  .onboard .ob-roles{grid-template-columns:repeat(2,1fr);gap:8px}
+  /* 默认只露 3 张任务卡，后 3 张细分身份折起来 */
+  .onboard .ob-role:nth-child(n+4){display:none}
+  .onboard[data-more="1"] .ob-role:nth-child(n+4){display:flex}
+  .onboard .ob-more{display:flex}
+  /* 路径收成紧凑行：去掉长描述，只留步骤标签 + 标题 */
+  .onboard .ob-paths{grid-template-columns:1fr;gap:7px}
+  .onboard .ob-path{padding:9px 12px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .onboard .ob-path em{margin:0}
+  .onboard .ob-path span{display:none}
   .onboard .ob-foot{flex-direction:column;align-items:flex-start}
+  .onboard .ob-fbtns{width:100%}
+  .onboard .ob-fbtns .ob-open{flex:1;justify-content:center}
 }
 
 /* 多段声波（亮底白波） */
@@ -501,32 +540,34 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
       <span id="wave-label"></span>
     </div>
 
-    <!-- 新手引导：先问「你是谁」，再给一条真能走完的路径。
-         不做「快速开始」大按钮、不做示例问句大按钮（用户明确取消）；
-         三类人群各给三个真实可点的落点页，不放假入口。 -->
-    <div class="onboard" id="onboard">
+    <!-- 新手引导（2026-11-20 合并：全站唯一一处「你是谁」）
+         身份只在这里选。选中即写 Baiju.Role.set()，导航右上角身份芯片同步、跨页记忆。
+         原来导航「选身份」弹的模态框（6 类身份）已并入本面板，不再单独弹窗；
+         原来首访盖全屏的 4 步导览已下线，它的「主题/阅读模式/角色」三件事
+         压成下面这两个直连按钮，需要时才点，不再弹窗教学。 -->
+    <div class="onboard" id="onboard" data-state="pick">
       <div class="ob-hd">
-        <b>第一次来？先选你是谁</b>
-        <span>这个站只做一件事：陪你把 AI 从零学到能做出东西。选完直接给你路径，不用猜该点哪。</span>
+        <b id="obTitle">第一次来？先选你是谁</b>
+        <span id="obSub">这个站只做一件事：陪你把 AI 从零学到能做出东西。选完直接给你路径，不用猜该点哪。</span>
+        <button type="button" class="ob-change" id="obChange" hidden>换身份</button>
       </div>
       <div class="ob-roles" role="group" aria-label="选择你的身份">
-        <button type="button" class="ob-role cur" data-role="fan" aria-pressed="true">
-          <i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i>
-          <b>普通爱好者</b><span>想先搞懂 AI 能干嘛</span>
-        </button>
-        <button type="button" class="ob-role" data-role="dev" aria-pressed="false">
-          <i class="cc-ic" data-ic="terminal" aria-hidden="true"></i>
-          <b>开发者部署</b><span>想把模型跑在自己机器上</span>
-        </button>
-        <button type="button" class="ob-role" data-role="side" aria-pressed="false">
-          <i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>
-          <b>副业创作</b><span>想用 AI 做出能发的作品</span>
-        </button>
+        <button type="button" class="ob-role cur" data-role="everyone" aria-pressed="true"><b>🙂 普通人</b><span>先搞懂 AI 能干嘛</span></button>
+        <button type="button" class="ob-role" data-role="developer" aria-pressed="false"><b>💻 开发者</b><span>想把模型跑在自己机器上</span></button>
+        <button type="button" class="ob-role" data-role="toolbox" aria-pressed="false"><b>🧰 工具台</b><span>想用 AI 做出能发的作品</span></button>
+        <button type="button" class="ob-role" data-role="teacher" aria-pressed="false"><b>🎓 老师</b><span>明天上课就能用</span></button>
+        <button type="button" class="ob-role" data-role="student" aria-pressed="false"><b>📚 学生</b><span>作业、选题、搞明白</span></button>
+        <button type="button" class="ob-role" data-role="engineer" aria-pressed="false"><b>⚙️ 技术人员</b><span>设备、产线、现场落地</span></button>
       </div>
+      <button type="button" class="ob-more" id="obMore" aria-expanded="false">更多身份（老师 / 学生 / 技术人员）<i>▾</i></button>
       <div class="ob-paths" id="obPaths" aria-live="polite"></div>
       <div class="ob-foot">
-        <span>三条路都通用：卡住了就问右下角助手 —— 读文档、算表格、整理材料、导出 Word / PDF 都在这台设备上跑。</span>
-        <button type="button" class="ob-open" onclick="var f=document.querySelector('.bja-fab');if(f){f.click()}else{location.href='/agent.html'}"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>打开助手</button>
+        <span class="ob-foot-long">卡住了就问右下角助手 —— 读文档、算表格、整理材料、导出 Word / PDF 都在这台设备上跑。想换主题、壁纸或开阅读模式，点导航右上的 ⚙。</span>
+        <span class="ob-foot-short">卡住问右下角助手；换主题 / 阅读模式点右上 ⚙。</span>
+        <div class="ob-fbtns">
+          <button type="button" class="ob-open ghost" id="obSet">⚙ 个性化设置</button>
+          <button type="button" class="ob-open" id="obAsk">打开助手</button>
+        </div>
       </div>
     </div>
 
@@ -1253,46 +1294,136 @@ $('mode').onchange=function(){
 $('mode').dispatchEvent(new Event('change'));
 
 /* ============================================================
-   首屏新手引导（2026-11-12）
-   取消「快速开始」大按钮与示例大按钮，改成先选身份再给路径。
+   首屏新手引导（2026-11-20 合并版）
+   身份表直接用 Baiju.ROLES 的 6 个 id，不再自造 fan/dev/side 一套；
    每条 href 都是磁盘上实测存在的页面，不放假入口、不跳空锚点。
    ============================================================ */
 (function(){
   var OB = {
-    fan: [
-      { n:'AI 学院 · 按阶段学', d:'先搞懂 AI 能干嘛，43 章教程从「会用」排到「会训练」', href:'/learn/' },
-      { n:'前沿流 · 近 7 天',   d:'只看模型发布、工具版本与价格变化，每条能点回原文',   href:'/feed/' },
-      { n:'AI 博物馆 · 十年',   d:'2017→2026 时间线，顺便看看哪些老办法已经不管用了',   href:'/works/museum.html' }
+    everyone: [
+      { n:'前沿流 · 近 7 天',   d:'只看模型发布、工具版本与价格变化，每条能点回原文', href:'/feed/' },
+      { n:'AI 学院 · 按阶段学', d:'43 章教程从「会用」排到「会训练」，按自己起点挑',   href:'/learn/' },
+      { n:'提示词模板库',       d:'拿来就能改的模板，复制走当你的第一条提示词',       href:'/toolbox/prompts.html' }
     ],
-    dev: [
+    developer: [
       { n:'部署百科 · 选路线',  d:'本地 / 图形 / 云额度 / 自建四条路线 + 硬件门槛决策树', href:'/learn/deploy.html' },
-      { n:'开源仓库 · 145 个',  d:'能自己跑起来才算数，标星数、许可证、国内可直连性',   href:'/toolbox/repos.html' },
-      { n:'平台阵列 · 33 家',   d:'从哪拿模型、从哪租卡，统一标国内可用性与计价方式',   href:'/toolbox/platforms.html' }
+      { n:'开源仓库 · 160 个',  d:'能自己跑起来才算数，标星数、许可证、国内可直连性',   href:'/toolbox/repos.html' },
+      { n:'平台阵列 · 38 家',   d:'从哪拿模型、从哪租卡，统一标国内可用性与计价方式',   href:'/toolbox/platforms.html' }
     ],
-    side: [
-      { n:'作品案例',           d:'先看别人用 AI 做成了什么，再决定自己做什么',         href:'/works/cases.html' },
-      { n:'43 章教程',          d:'挑跟创作相关的章节动手，每章带调研出处和可跑例子',   href:'/learn/tutorials/' },
-      { n:'白驹工作站',         d:'把想法落成提示词、分镜、表格，产出可复制可导出',     href:'/toolbox/workstation.html' }
+    toolbox: [
+      { n:'工具箱总览',         d:'写作、表格、图片、视频，按任务找工具而不是按名字',   href:'/toolbox/' },
+      { n:'白驹工作站',         d:'把想法落成提示词、分镜、表格，产出可复制可导出',     href:'/toolbox/workstation.html' },
+      { n:'作品案例',           d:'先看别人用 AI 做成了什么，再决定自己做什么',         href:'/works/cases.html' }
+    ],
+    teacher: [
+      { n:'AI 学院 · 课程',     d:'整门课按章节排好，可直接当备课线索',                 href:'/learn/academy.html' },
+      { n:'学习路线图',         d:'从零到能上课演示，按阶段拆开看',                     href:'/learn/' },
+      { n:'提示词模板库',       d:'教案、题目、评语都能套的模板',                       href:'/toolbox/prompts.html' }
+    ],
+    student: [
+      { n:'AI 学院 · 课程',     d:'按阶段排好的课，学完能自己跑例子',                   href:'/learn/academy.html' },
+      { n:'章节测验',           d:'学完一章立刻做题，错了能回看',                       href:'/learn/academy/quiz.html' },
+      { n:'43 章教程',          d:'想动手直接翻章节，每章带可跑例子',                   href:'/learn/tutorials/' }
+    ],
+    engineer: [
+      { n:'部署百科 · 选路线',  d:'硬件门槛、显存、量化怎么选，一条条对着挑',           href:'/learn/deploy.html' },
+      { n:'AI 编程工具',        d:'写代码、看日志、排故障，能装进产线的那些',           href:'/learn/ai-coding-tools.html' },
+      { n:'平台阵列 · 38 家',   d:'国内能直连的算力与模型，标计价方式',                 href:'/toolbox/platforms.html' }
     ]
   };
-  var box = document.getElementById('obPaths');
-  var roles = document.querySelectorAll('#onboard .ob-role');
-  if(!box || !roles.length) return;
+  var NAME = { everyone:'普通人', developer:'开发者', toolbox:'工具台', teacher:'老师', student:'学生', engineer:'技术人员' };
+  var panel = document.getElementById('onboard');
+  var box   = document.getElementById('obPaths');
+  var roles = [].slice.call(document.querySelectorAll('#onboard .ob-role'));
+  var title = document.getElementById('obTitle');
+  var sub   = document.getElementById('obSub');
+  var chg   = document.getElementById('obChange');
+  if (!panel || !box || !roles.length) return;
+
   function paint(key){
-    box.innerHTML = (OB[key] || OB.fan).map(function(p, i){
-      return '<a class="ob-path" href="'+p.href+'">' +
-             '<em>0'+(i+1)+' · '+['先看清','再深入','动手做'][i]+'</em>' +
-             '<b>'+p.n+'</b><span>'+p.d+'</span></a>';
-    }).join('');
+    box.innerHTML = (OB[key] || OB.everyone).map(function(p, i){
+      return '<a class="ob-path" href="' + p.href + '">' +
+             '<em>0' + (i + 1) + ' · ' + ['先看清','再深入','动手做'][i] + '</em>' +
+             '<b>' + p.n + '</b><span>' + p.d + '</span></a>'
+    }).join('')
+  }
+  function mark(key){
+    roles.forEach(function(x){
+      var on = x.getAttribute('data-role') === key
+      if (on) x.classList.add('cur'); else x.classList.remove('cur')
+      x.setAttribute('aria-pressed', on ? 'true' : 'false')
+    })
+  }
+  /* 选完之后收起 6 张卡，只留标题 + 三条路径，回访不再占首屏 */
+  function compact(key){
+    panel.setAttribute('data-state', 'ready')
+    if (title) title.textContent = '已按「' + (NAME[key] || '普通人') + '」排好三条路径'
+    if (sub)   sub.textContent = '换身份下面三条跟着换；导航右上角的身份芯片显示的就是这里的选项。'
+    if (chg)   chg.hidden = false
+    mark(key); paint(key)
+  }
+  function expand(){
+    panel.setAttribute('data-state', 'pick')
+    panel.setAttribute('data-more', '0')
+    var mb = document.getElementById('obMore')
+    if (mb) mb.setAttribute('aria-expanded', 'false')
+    if (title) title.textContent = '第一次来？先选你是谁'
+    if (sub)   sub.textContent = '这个站只做一件事：陪你把 AI 从零学到能做出东西。选完直接给你路径，不用猜该点哪。'
+    if (chg)   chg.hidden = true
+    roles.forEach(function(x){ x.classList.remove('cur'); x.setAttribute('aria-pressed','false') })
+    paint('everyone')
   }
   roles.forEach(function(b){
     b.addEventListener('click', function(){
-      roles.forEach(function(x){ x.classList.remove('cur'); x.setAttribute('aria-pressed','false'); });
-      b.classList.add('cur'); b.setAttribute('aria-pressed','true');
-      paint(b.getAttribute('data-role'));
-    });
-  });
-  paint('fan');
+      var k = b.getAttribute('data-role')
+      mark(k); paint(k); compact(k)
+      /* 唯一真源：写进 baiju.role，导航身份芯片与全站分流都读这一个键 */
+      if (window.Baiju && window.Baiju.Role) { try { window.Baiju.Role.set(k) } catch (e) {} }
+    })
+  })
+  if (chg) chg.onclick = function(){
+    expand()
+    try { panel.scrollIntoView({ behavior:'smooth', block:'center' }) } catch (e) {}
+  }
+  /* 窄屏「更多身份」折叠开关（桌面端这行是隐藏的，6 张卡直接铺开） */
+  var moreBtn = document.getElementById('obMore')
+  if (moreBtn) moreBtn.onclick = function(){
+    var on = panel.getAttribute('data-more') === '1'
+    panel.setAttribute('data-more', on ? '0' : '1')
+    moreBtn.setAttribute('aria-expanded', on ? 'false' : 'true')
+  }
+  var setBtn = document.getElementById('obSet')
+  if (setBtn) setBtn.onclick = function(){
+    var g = document.querySelector('#modGear, .nav-gear, .bj-nav-settings, #setBtn')
+    if (g) { g.click(); return }
+    var r = document.querySelector('nav .bj-idbox')
+    if (r) r.scrollIntoView({ block:'center' })
+  }
+  var askBtn = document.getElementById('obAsk')
+  if (askBtn) askBtn.onclick = function(){
+    var f = document.querySelector('.bja-fab')
+    if (f) f.click(); else location.href = '/agent.html'
+  }
+
+  /* 回访：已选过身份就直接紧凑显示。Baiju 可能晚于本脚本加载，多等两个时机。 */
+  function restore(){
+    try {
+      var r = window.Baiju && window.Baiju.Role && window.Baiju.Role.get()
+      if (r && r.id && panel.getAttribute('data-state') === 'pick') compact(r.id)
+    } catch (e) {}
+  }
+  document.addEventListener('DOMContentLoaded', restore)
+  window.addEventListener('load', restore)
+  setTimeout(restore, 1200)
+  document.addEventListener('baiju:role', restore)
+
+  paint('everyone')
+  if (/[?&]pick\b/.test(location.search) || location.hash === '#onboard') {
+    expand()
+    try { panel.scrollIntoView({ block:'center' }) } catch (e) {}
+    panel.classList.add('flash')
+    setTimeout(function(){ panel.classList.remove('flash') }, 1500)
+  }
 })();
 /* 2026-11-12：首页「白驹工作区 / 工作文」下线，相关生成器、生活工具函数一并移除。
    生图/生文/视频/表格/技能向导已整合进悬浮窗工作室；

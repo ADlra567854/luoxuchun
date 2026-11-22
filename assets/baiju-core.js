@@ -295,8 +295,12 @@
 
   /* ---- 顶栏：身份 + 铃铛 ---- */
   function dockHost() {
+    /* 2026-11-20：老式 header.nav 页（friends/lab/code/open-library 等）原来只找到
+       <header>，控件被 append 到 header 根节点、掉到导航行下方左堆叠，压住 hero。
+       优先挂进 header 内的 .wrap（导航 flex 行），让它和 logo / 返回学习同一行。 */
     var host = document.querySelector('nav.top .nav-actions') || document.querySelector('nav.top') ||
-      document.querySelector('header .nav-actions') || document.querySelector('header')
+      document.querySelector('header .nav-actions') ||
+      document.querySelector('header.nav .wrap') || document.querySelector('header')
     if (host) return { node: host, inline: true }
     var f = mk('div', 'bj-dock')
     document.body.appendChild(f)

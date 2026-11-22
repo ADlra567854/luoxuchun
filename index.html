@@ -175,6 +175,8 @@ body[data-theme="cloud"] #gate .orb{opacity:.55}
   .onboard .ob-path em{margin:0}
   .onboard .ob-path span{display:none}
   .onboard .ob-foot{flex-direction:column;align-items:flex-start}
+  .onboard .ob-foot-long{display:none}
+  .onboard .ob-foot-short{display:block}
   .onboard .ob-fbtns{width:100%}
   .onboard .ob-fbtns .ob-open{flex:1;justify-content:center}
 }
@@ -615,9 +617,9 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 
     <div class="trust">
       <div class="t"><b><!--STAT:repos-->160<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
-      <div class="t"><b>230</b><span>具名模型在库</span><em>含厂商与开源度</em></div>
-      <div class="t"><b>43</b><span>章 AI 学院教程</span><em>每章带调研出处</em></div>
-      <div class="t"><b>每日</b><span>自动更新</span><em>更新日志可查</em></div>
+      <div class="t"><b><!--STAT:models-->237<!--/STAT:models--></b><span>具名模型在库</span><em>含厂商与开源度</em></div>
+      <div class="t"><b><!--STAT:chapters-->43<!--/STAT:chapters--></b><span>章 AI 学院教程</span><em>每章带调研出处</em></div>
+      <div class="t"><b><!--STAT:books-->55<!--/STAT:books--></b><span>本 AI 书稿</span><em>按卷系统成书</em></div>
     </div>
   </div>
 </section>
@@ -744,7 +746,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 <section class="block" id="works">
   <div class="sec-head">
     <h2><span class="em">AI 作品精选</span></h2>
-    <span class="tag">6 件精选 + 122 个真实开源项目</span>
+    <span class="tag">6 件精选 + <!--STAT:repos-->160<!--/STAT:repos--> 个真实开源项目</span>
     <a class="more" href="/works/projects.html">全部作品 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
   </div>
   <div class="works-grid">
@@ -812,7 +814,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
     </div>
     <input id="wsSearch" class="ws-search" type="search" placeholder="搜索开源项目 / 作者…" autocomplete="off">
   </div>
-  <div class="works-grid" id="wsGrid" style="margin-top:18px"><p class="ws-loading">正在装载开源作品库（122 个真实 GitHub 项目）…</p></div>
+  <div class="works-grid" id="wsGrid" style="margin-top:18px"><p class="ws-loading">正在装载开源作品库（<!--STAT:repos-->160<!--/STAT:repos--> 个真实 GitHub 项目）…</p></div>
   <style>
     .ws-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:24px 0 4px}
     .ws-tabs{display:flex;gap:10px;flex-wrap:wrap}
@@ -1476,9 +1478,9 @@ const TOOLS=[
   ['学习','AI 简历','/toolbox/resume.html','AI 简历与求职材料','cover-growth.webp'],
   ['学习','答题宝库','/toolbox/quiz.html','单招/万题库/AI通识 10862 题','cover-ai70.webp'],
   ['学习','AI 赚钱攻略','/learn/ai-money.html','副业/接单/一人公司路径','cover-growth.webp'],
-  ['作品','开源作品大全','/works/projects.html','100 个真实项目·个人/团队分开','cover-global.webp'],
+  ['作品','开源作品大全','/works/projects.html','<!--STAT:repos-->160<!--/STAT:repos--> 个真实项目·按用途分类','cover-global.webp'],
   ['作品','作品内容库','/works/collection.html','内嵌全文，点开即读','cover-book.webp'],
-  ['作品','页面封面墙','/works/covers.html','15 封面 + 122 开源项目','cover-global.webp'],
+  ['作品','页面封面墙','/works/covers.html','<!--STAT:repos-->160<!--/STAT:repos--> 开源项目封面','cover-global.webp'],
   ['学习','免费工科软件','/learn/software.html','CAD/建模/仿真/电子/数学 一键教','cover-design.webp'],
   ['工具','开发者基地','/toolbox/devbase.html','部署/API/本地运行','cover-design.webp'],
   ['工具','白驹工作站','/toolbox/workstation.html','IDE × GitHub × AI','cover-data.webp'],

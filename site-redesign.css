@@ -1341,3 +1341,22 @@ body article table tbody tr:hover td{ background: rgba(79,140,255,.05); }
 }
 /* 宽表格 / 代码块 / 长图不许把整页撑出横向滚动 */
 :where(pre, table, img, iframe, video) { max-width: 100%; }
+
+/* ---------- 2026-11-20 · 老式 header.nav 身份控件归位 ----------
+   friends / lab/code / learn/open-library 这几页用的是 <header class="nav">，
+   白驹核心脚本把身份芯片、头像、铃铛 append 进来。旧版挂到 header 根节点，
+   它们掉到导航行下面左对齐竖排，390px 下正好压住 hero 标题（截图实锤）。
+   现在 dockHost() 改为挂进 .wrap；这里把它们压成单行、窄屏只留图标，
+   logo 让出空间，返回学习仍靠右，各断点实测不重叠、不溢出。 */
+@media (max-width: 760px){
+  header.nav .wrap{gap:6px !important;flex-wrap:nowrap !important}
+  header.nav .wrap .logo{max-width:88px !important;overflow:hidden;flex-shrink:1}
+  header.nav .wrap .logo span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  header.nav .wrap .home{margin-left:auto !important;font-size:12px !important;flex-shrink:0}
+  header.nav .wrap .bj-idbox .bj-role-nm,
+  header.nav .wrap .bj-idbox .bj-me-nm,
+  header.nav .wrap .bj-idbox .bj-login{display:none !important}
+  header.nav .wrap .bj-idbox .bj-role-chip,
+  header.nav .wrap .bj-idbox .bj-me,
+  header.nav .wrap .bj-bell{padding:0 8px !important;height:30px !important}
+}

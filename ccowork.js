@@ -412,6 +412,175 @@
     }
   })();
 
+  /* ---------- 全站「本页概览」注入（2026-11-24 立） ----------
+     需求：每个页面都要有「这页讲什么、有多少条、下一步去哪」，并且数字必须是真的。
+     做法：不逐个改 550+ 页，改由本注入层统一挂载，数据来自 /data/page-brief.json
+           （由 scripts/gen-page-brief.mjs 从各真源现算，已挂进每日日更）。
+     位置：首页不插（它有自己的 Hero，另由首页板块区承载）；子页插在 main 的最前面。
+     边界：iframe 内不插（工作台内嵌页会重影）；fetch 失败就整块不渲染，绝不留空壳。 */
+  (function pageBrief(){
+    try{
+      if (window.self !== window.top) return
+      var path = (location.pathname || '/').replace(/\/+$/, '')
+      /* 板块识别：路径优先，data-ccnav 兜底。
+         实测 data-ccnav 有标错的（blog/index.html 标成 works、feed/index.html 标成 models），
+         而路径首段永远准，所以不能让属性反过来覆盖路径。 */
+      var KNOWN = { models:1, learn:1, toolbox:1, works:1, blog:1, feed:1, about:1, lab:1, book:1 }
+      var parts = path.split('/').filter(Boolean)
+      var first = (parts[0] || '').toLowerCase()
+      if (/\.html?$/i.test(first)) first = ''
+      var seg = ''
+      if (KNOWN[first]) {
+        seg = first
+      } else {
+        var nav = document.body && document.body.getAttribute('data-ccnav')
+        if (nav && KNOWN[String(nav).trim()]) seg = String(nav).trim()
+      }
+      if (!seg) {
+        /* 首页走「板块增强」而不是插概览卡：它已有 Hero；
+           根目录其他单页（agent.html / chat.html / 专题页）给站点级概览。 */
+        if (path === '' || path === '/' || /^\/(index|home|hub|portal)\.html?$/i.test(path)) seg = '_home'
+        else seg = '_site'
+      }
+
+      var CSS = [
+        '.bj-brief{max-width:1120px;margin:20px auto 4px;padding:0 20px;box-sizing:border-box;text-align:left}',
+        '.bj-brief-in{background:var(--card,#fff);border:1px solid rgba(120,150,200,.24);border-radius:16px;padding:18px 20px;box-shadow:0 6px 22px rgba(20,40,80,.06)}',
+        '.bj-brief-badge{display:inline-block;font-size:12px;line-height:1;padding:6px 10px;border-radius:999px;background:rgba(79,140,255,.10);color:#3f6fd8;border:1px solid rgba(79,140,255,.24)}',
+        '.bj-brief-title{margin:10px 0 6px;font-size:19px;line-height:1.35;font-weight:800;letter-spacing:.2px}',
+        '.bj-brief-lead{margin:0;font-size:14px;line-height:1.85;opacity:.78}',
+        '.bj-brief-stats{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}',
+        '.bj-brief-stat{display:flex;align-items:baseline;gap:6px;padding:8px 12px;border-radius:12px;background:rgba(79,140,255,.07);border:1px solid rgba(79,140,255,.16)}',
+        '.bj-brief-stat b{font-size:17px;font-weight:800;color:#3f6fd8;font-variant-numeric:tabular-nums}',
+        '.bj-brief-stat i{font-style:normal;font-size:12px;opacity:.72}',
+        '.bj-brief-links{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}',
+        '.bj-brief-links a{display:inline-block;font-size:13px;padding:7px 12px;border-radius:10px;text-decoration:none;color:#2f5fd0;background:rgba(79,140,255,.08);border:1px solid rgba(79,140,255,.18);transition:.18s}',
+        '.bj-brief-links a:hover{background:rgba(79,140,255,.16);transform:translateY(-1px)}',
+        '.bj-brief-fb{margin:14px 0 0;padding-top:12px;border-top:1px dashed rgba(120,150,200,.28);font-size:12.5px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;opacity:.85}',
+        '.bj-brief-fb b{font-weight:700;opacity:.8}',
+        '.bj-brief-fb a{color:#2f5fd0;text-decoration:none;padding:3px 8px;border-radius:8px;background:rgba(79,140,255,.07)}',
+        '.bj-brief-fb a:hover{background:rgba(79,140,255,.15)}',
+        '[data-theme="deep"] .bj-brief-in{background:#101728;border-color:rgba(120,160,255,.24);color:#e9f0fb}',
+        '[data-theme="deep"] .bj-brief-badge{background:rgba(56,225,255,.10);color:#7fe4ff;border-color:rgba(56,225,255,.26)}',
+        '[data-theme="deep"] .bj-brief-stat{background:rgba(56,225,255,.07);border-color:rgba(56,225,255,.18)}',
+        '[data-theme="deep"] .bj-brief-stat b{color:#7fe4ff}',
+        '[data-theme="deep"] .bj-brief-links a,[data-theme="deep"] .bj-brief-fb a{color:#9dc4ff;background:rgba(56,225,255,.08);border-color:rgba(56,225,255,.18)}',
+        '@media(max-width:720px){.bj-brief{padding:0 14px;margin-top:14px}.bj-brief-in{padding:15px 16px;border-radius:14px}.bj-brief-title{font-size:17px}.bj-brief-lead{font-size:13.5px}.bj-brief-stat b{font-size:16px}}'
+      ].join('')
+
+      function esc(s){
+        return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+          return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]
+        })
+      }
+
+      function mount(html){
+        var box = document.createElement('section')
+        box.className = 'bj-brief'
+        box.id = 'bj-brief'
+        box.innerHTML = html
+        var host = document.querySelector('main') || document.querySelector('article')
+        if (host && host.firstElementChild) { host.insertBefore(box, host.firstElementChild) }
+        else if (host) { host.appendChild(box) }
+        else {
+          var wrap = document.querySelector('.pg-wrap, .wrap, .container, section')
+          if (wrap && wrap.parentNode) { wrap.parentNode.insertBefore(box, wrap) }
+          else if (document.body) { document.body.insertBefore(box, document.body.firstChild) }
+        }
+      }
+
+      /* 首页板块增强：给每个既有板块标题补一个「真实体量 + 直达」角标。
+         只做增量，不改原有结构；没有对应数据的板块直接跳过，不写假数字。 */
+      function homeEnhance(d){
+        try{
+          var b = d.boards || {}
+          var pick = function(key, idx){ var s = (b[key] && b[key].stats) || []; return s[idx] || null }
+          var MAP = [
+            ['explore', pick('models', 0), '/models/', '去模型库'],
+            ['works', pick('works', 0), '/works/projects.html', '去作品库'],
+            ['news', pick('feed', 1) || pick('feed', 0), '/feed/', '去前沿流'],
+            ['hot', pick('blog', 0), '/blog/', '去博客'],
+            ['content', pick('learn', 0), '/learn/', '去学习域'],
+            ['tools', pick('toolbox', 0), '/toolbox/', '去工具库'],
+            ['compile', pick('lab', 0), '/lab/code.html', '去源码台'],
+          ]
+          var CSS2 = '.bj-blk-tag{display:inline-flex;align-items:center;gap:8px;margin-left:10px;font-size:12.5px;font-weight:600;vertical-align:middle;text-decoration:none;padding:5px 11px;border-radius:999px;background:rgba(79,140,255,.10);border:1px solid rgba(79,140,255,.22);color:#3f6fd8;transition:.18s}.bj-blk-tag:hover{background:rgba(79,140,255,.18)}.bj-blk-tag b{font-variant-numeric:tabular-nums}[data-theme="deep"] .bj-blk-tag{background:rgba(56,225,255,.10);border-color:rgba(56,225,255,.24);color:#7fe4ff}@media(max-width:640px){.bj-blk-tag{margin-left:0;margin-top:8px;display:inline-flex}}'
+          if (!document.getElementById('bj-blk-style')){
+            var st2 = document.createElement('style')
+            st2.id = 'bj-blk-style'
+            st2.textContent = CSS2
+            document.head.appendChild(st2)
+          }
+          for (var i = 0; i < MAP.length; i++){
+            var id = MAP[i][0], stat = MAP[i][1], href = MAP[i][2], label = MAP[i][3]
+            if (!stat || stat.value == null) continue
+            var sec = document.getElementById(id)
+            if (!sec) continue
+            var h = sec.querySelector('h2') || sec.querySelector('.blk-head') || sec.querySelector('h3')
+            if (!h || h.querySelector('.bj-blk-tag')) continue
+            var a = document.createElement('a')
+            a.className = 'bj-blk-tag'
+            a.href = href
+            a.innerHTML = esc(stat.label) + ' <b>' + esc(stat.value) + '</b> · ' + esc(label) + ' →'
+            h.appendChild(a)
+          }
+        }catch(e){}
+      }
+
+      function render(d){
+        var b = d && d.boards && d.boards[seg]
+        if (!b) return
+        if (document.getElementById('bj-brief')) return
+        var style = document.getElementById('bj-brief-style')
+        if (!style){
+          style = document.createElement('style')
+          style.id = 'bj-brief-style'
+          style.textContent = CSS
+          document.head.appendChild(style)
+        }
+        var st = (b.stats || []).map(function(s){
+          return '<span class="bj-brief-stat"><b>' + esc(s.value) + '</b><i>' + esc(s.label) + '</i></span>'
+        }).join('')
+        var lk = (b.links || []).map(function(l){
+          return '<a href="' + esc(l.href) + '">' + esc(l.title) + ' →</a>'
+        }).join('')
+        var fb = d.feedback || {}
+        var fbItems = []
+        if (fb.email) fbItems.push('<a href="mailto:' + esc(fb.email) + '">✉ 邮箱 ' + esc(fb.email) + '</a>')
+        if (fb.qqGroup) fbItems.push('<a href="' + esc(fb.qqGroup) + '" target="_blank" rel="noopener">QQ 群</a>')
+        if (fb.weibo) fbItems.push('<a href="' + esc(fb.weibo) + '" target="_blank" rel="noopener">微博</a>')
+        if (fb.cnb) fbItems.push('<a href="' + esc(fb.cnb) + '" target="_blank" rel="noopener">CNB 仓库</a>')
+        if (fb.github) fbItems.push('<a href="' + esc(fb.github) + '" target="_blank" rel="noopener">GitHub</a>')
+        var fbHtml = fbItems.length
+          ? '<div class="bj-brief-fb"><b>技术反馈</b>' + fbItems.join('') + '</div>'
+          : ''
+        mount(
+          '<div class="bj-brief-in">' +
+            '<span class="bj-brief-badge">🐎 白驹 ccowork · ' + esc(b.title) + '</span>' +
+            '<h2 class="bj-brief-title">本页概览</h2>' +
+            '<p class="bj-brief-lead">' + esc(b.lead) + '</p>' +
+            (st ? '<div class="bj-brief-stats">' + st + '</div>' : '') +
+            (lk ? '<div class="bj-brief-links">' + lk + '</div>' : '') +
+            fbHtml +
+          '</div>'
+        )
+      }
+
+      try{
+        // V 定义在更内层作用域，这里必须容错：取不到就退回当前发布指纹常量
+        var qv = (typeof V !== 'undefined' && V) ? V : '20261124a'
+        fetch('/data/page-brief.json?v=' + qv, { credentials: 'same-origin' })
+          .then(function(r){ return r.ok ? r.json() : null })
+          .then(function(d){
+            if (!d) return
+            if (seg === '_home') homeEnhance(d)
+            else render(d)
+          })
+          .catch(function(){})
+      }catch(e){}
+    }catch(e){}
+  })();
+
   // 被 iframe 嵌入（如工作台 ccowork.html 内嵌的页面）时不创建悬浮宠物，避免重影
   var inIframe = false
   try { inIframe = window.self !== window.top } catch (e) { inIframe = true }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>面向对象语言的特征 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：面向对象语言的特征。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p066.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html" class="on">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 66 / 86 节
+    </div>
+    <h1>面向对象语言的特征</h1>
+    <h2 id="面向对象语言的特征"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/eb54c18184c0555acd9f636f5ef7875236b0ff53/src/ch18-01-what-is-oo.md">ch18-01-what-is-oo.md</a></p>
+<p>关于一门语言必须具备哪些特征才能被视为面向对象，目前在编程社区中并没有共识。Rust 受到了许多编程范式的影响，包括面向对象编程（OOP）；例如，在第 13 章中，我们探讨了来自函数式编程的特性。可以说，面向对象的语言共有一些共同的特征，即对象、封装和继承。我们将会讨论这些特征分别是什么，以及 Rust 是否支持它们。</p>
+<h3 id="对象包含数据和行为"></h3>
+<p>由 Erich Gamma、Richard Helm、Ralph Johnson 和 John Vlissides（Addison-Wesley, 1994）编写的书 <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>，通称 <em>The Gang of Four</em>，是一本面向对象设计模式的目录。它这样定义面向对象编程：</p>
+<blockquote>
+<p>Object-oriented programs are made up of objects. An <em>object</em> packages both
+data and the procedures that operate on that data. The procedures are
+typically called <em>methods</em> or <em>operations</em>.</p>
+<p>面向对象的程序由对象组成。一个<strong>对象</strong>同时封装了数据以及操作这些数据的过程。这些过程通常被称为<strong>方法</strong>或<strong>操作</strong>。</p>
+</blockquote>
+<p>在这个定义下，Rust 是面向对象的：结构体和枚举包含数据而 <code>impl</code> 块提供了在结构体和枚举之上的方法。虽然带有方法的结构体和枚举并不被<strong>称为</strong>对象，但是参考 <em>The Gang of Four</em> 中对象的定义，它们提供了与对象相同的功能。</p>
+<h3 id="封装隐藏了实现细节"></h3>
+<p>另一个通常与面向对象编程关联的概念是 <strong>封装</strong>（<em>encapsulation</em>）：一个对象的实现细节对使用该对象的代码不可见。因此，对象交互的唯一方式是通过其公有 API；使用对象的代码不应能直接触及对象的内部并改变数据或行为。这使得程序员能够更改和重构一个对象的内部实现，而无需改变使用该对象的代码。</p>
+<p>我们在第七章讨论了如何控制封装：我们可以使用 <code>pub</code> 关键字来决定代码中的哪些模块、类型、函数和方法是公有的，而默认情况下其他所有内容都是私有的。例如，我们可以定义一个 <code>AveragedCollection</code> 结构体，其中有一个存有 <code>Vec&lt;i32&gt;</code> 的字段。该结构体还可以有一个字段存储向量中值的平均值，从而无需在每次需要时重新计算。换句话说，<code>AveragedCollection</code> 会为我们缓存已计算的平均值。示例 18-1 给出了 <code>AveragedCollection</code> 结构体的定义：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">pub struct AveragedCollection {
+    list: Vec&lt;i32&gt;,
+    average: f64,
+}</code></pre>
+<p><span class="caption">示例 18-1: <code>AveragedCollection</code> 结构体维护了一个整型列表及其所有元素的平均值。</span></p>
+<p>该结构体被标记为 <code>pub</code>，这样其他代码就可以使用它，但结构体内的字段仍保持私有。这在这种情况下很重要，因为我们想确保每当列表中添加或删除值时，平均值也会更新。我们通过实现结构体上的 <code>add</code>、<code>remove</code> 和 <code>average</code> 方法来做到这一点，如示例 18-2 所示：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground"><span class="boring">pub struct AveragedCollection {
+</span><span class="boring">    list: Vec&lt;i32&gt;,
+</span><span class="boring">    average: f64,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl AveragedCollection {
+    pub fn add(&amp;mut self, value: i32) {
+        self.list.push(value);
+        self.update_average();
+    }
+
+    pub fn remove(&amp;mut self) -&gt; Option&lt;i32&gt; {
+        let result = self.list.pop();
+        match result {
+            Some(value) =&gt; {
+                self.update_average();
+                Some(value)
+            }
+            None =&gt; None,
+        }
+    }
+
+    pub fn average(&amp;self) -&gt; f64 {
+        self.average
+    }
+
+    fn update_average(&amp;mut self) {
+        let total: i32 = self.list.iter().sum();
+        self.average = total as f64 / self.list.len() as f64;
+    }
+}</code></pre>
+<p><span class="caption">示例 18-2: 在 <code>AveragedCollection</code> 结构体上实现了 <code>add</code>、<code>remove</code> 和 <code>average</code> 公有方法</span></p>
+<p>公有方法 <code>add</code>、<code>remove</code> 和 <code>average</code> 是访问或修改 <code>AveragedCollection</code> 实例中数据的唯一途径。当使用 <code>add</code> 方法把一个元素加入到 <code>list</code> 或者使用 <code>remove</code> 方法来删除时，这些方法的实现同时会调用私有的 <code>update_average</code> 方法来更新 <code>average</code> 字段。</p>
+<p><code>list</code> 和 <code>average</code> 是私有的，所以没有其他方式来使得外部的代码直接向 <code>list</code> 增加或者删除元素，否则 <code>list</code> 改变时可能会导致 <code>average</code> 字段不同步。<code>average</code> 方法返回 <code>average</code> 字段的值，这使得外部的代码只能读取 <code>average</code> 而不能修改它。</p>
+<p>因为我们已经封装了 <code>AveragedCollection</code> 的实现细节，改动数据结构等内部实现非常简单。例如，可以使用 <code>HashSet&lt;i32&gt;</code> 代替 <code>Vec&lt;i32&gt;</code> 作为 <code>list</code> 字段的类型。只要 <code>add</code>、<code>remove</code> 和 <code>average</code> 这些公有方法的签名保持不变，使用 <code>AveragedCollection</code> 的代码就无需改变。如果我们将 <code>list</code> 设为公有，情况就未必如此：<code>HashSet&lt;i32&gt;</code> 和 <code>Vec&lt;i32&gt;</code> 使用不同的方法增加或移除项，所以直接修改 <code>list</code> 的外部代码很可能需要相应改动。</p>
+<p>如果封装被认为是面向对象语言所必要的特征，那么 Rust 满足这个要求。在代码中不同的部分控制 <code>pub</code> 的使用来封装实现细节。</p>
+<h3 id="作为类型系统与代码共享的继承"></h3>
+<p><strong>继承</strong>（<em>Inheritance</em>）是一种机制：一个对象可以从另一个对象的定义中继承元素，从而获得父对象的数据和行为，无需再次定义。</p>
+<p>如果一种语言必须拥有继承才能算作面向对象，那么 Rust 就不是这样的语言。Rust 没有办法在不借助宏的情况下，定义一个结构体去继承父结构体的字段和方法实现。</p>
+<p>不过，如果你已经习惯了把继承作为编程工具箱的一部分，那么 Rust 也会根据你最初想借助继承解决的问题，提供其他方案。</p>
+<p>选择继承通常有两个主要原因。其一是复用代码：你可以先为某种类型实现特定行为，然后借助继承把这份实现复用到另一种类型上。在 Rust 中，可以通过 trait 方法的默认实现，在一定程度上做到这一点。你在示例 10-14 中已经见过：我们为 <code>Summary</code> trait 的 <code>summarize</code> 方法提供了默认实现。这样，任何实现 <code>Summary</code> trait 的类型，都会自动拥有 <code>summarize</code> 方法，而无需额外编写代码。这很像父类已经实现了某个方法，而继承它的子类也随之拥有这份实现。同样地，在实现 <code>Summary</code> trait 时，我们也可以覆盖 <code>summarize</code> 的默认实现，这又类似于子类去重写从父类继承而来的方法实现。</p>
+<p>另一个使用继承的原因和类型系统有关：它可以让子类型出现在父类型能出现的地方。这也被称为<strong>多态</strong>（<em>polymorphism</em>），意思是如果多个对象共享某些共同特征，那么在运行时就可以把它们彼此替换使用。</p>
+<blockquote>
+<h3 id="多态polymorphism"></h3>
+<p>对很多人来说，多态性与继承同义。但它实际上是一个更广义的概念，指的是可以处理多种类型数据的代码。对继承而言，这些类型通常是子类。</p>
+<p>Rust 使用泛型来抽象不同可能的类型，并通过 trait 约束来约束这些类型所必须提供的内容。这有时被称为 <em>bounded parametric polymorphism</em>。</p>
+</blockquote>
+<p>Rust 通过不提供继承，选择了另一组不同的权衡。继承常常有“共享了超出需要的代码”的风险。子类并不总是应该继承父类的全部特征，但使用继承时却往往会这样发生。这会让程序设计变得不够灵活。它还会引入这样一种可能：在子类上调用一些其实并不适用的方法，结果这些方法要么根本说不通，要么会导致错误。另外，一些语言只支持<strong>单继承</strong>（即一个子类只能继承一个父类），这也进一步限制了程序设计的灵活性。</p>
+<p>基于这些原因，Rust 采取了不同的做法：它使用 trait object，而不是继承，来实现运行时多态。接下来我们就来看看 trait object 是如何工作的。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p065.html">← future、任务和线程</a><a href="index.html">目录</a><a href="p067.html">使用 trait object 来抽象出共享行为 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>接受命令行参数 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：接受命令行参数。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p035.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html" class="on">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 35 / 86 节
+    </div>
+    <h1>接受命令行参数</h1>
+    <h2 id="接受命令行参数"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/d7c0e477a22bcb37fdb290c6046058565d6738c2/src/ch12-01-accepting-command-line-arguments.md">ch12-01-accepting-command-line-arguments.md</a></p>
+<p>一如既往使用 <code>cargo new</code> 新建一个项目，我们称之为 <code>minigrep</code> 以便与可能已经安装在系统上的 <code>grep</code> 工具相区分。</p>
+<pre><code class="language-console">$ cargo new minigrep
+     Created binary (application) `minigrep` project
+$ cd minigrep
+</code></pre>
+<p>第一个任务是让 <code>minigrep</code> 能够接受两个命令行参数：文件路径和要搜索的字符串。也就是说我们希望能够使用 <code>cargo run</code>，两个连字符来表明后面的参数是要传递给程序而不是 <code>cargo</code>，要搜索的字符串和被搜索的文件的路径来运行程序，像这样：</p>
+<pre><code class="language-console">$ cargo run -- searchstring example-filename.txt
+</code></pre>
+<p>现在 <code>cargo new</code> 生成的程序还不能处理我们传给它的参数。<a href="https://crates.io/">crates.io</a> 上有一些现成的库可以帮助编写接受命令行参数的程序，不过既然你现在正在学习这个概念，我们就自己来实现这个功能。</p>
+<h3 id="读取参数值"></h3>
+<p>为了确保 <code>minigrep</code> 能够获取传递给它的命令行参数的值，我们需要一个 Rust 标准库提供的 <code>std::env::args</code> 函数。这个函数返回一个传递给程序的命令行参数的<strong>迭代器</strong>（<em>iterator</em>）。我们会在<a href="#函数式语言特性迭代器与闭包">第十三章</a>全面介绍迭代器。但是现在只需理解迭代器的两个细节：迭代器生成一系列的值，可以在迭代器上调用 <code>collect</code> 方法将其转换为一个集合，比如包含所有迭代器产生元素的 vector。</p>
+<p>示例 12-1 中的代码允许 <code>minigrep</code> 程序读取任何传递给它的命令行参数并将其收集到一个 vector 中。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::env;
+
+fn main() {
+    let args: Vec&lt;String&gt; = env::args().collect();
+    dbg!(args);
+}</code></pre>
+<p><span class="caption">示例 12-1：将命令行参数收集到一个 vector 中并打印出来</span></p>
+<p>首先使用 <code>use</code> 语句来将 <code>std::env</code> 模块引入作用域以便可以使用它的 <code>args</code> 函数。注意 <code>std::env::args</code> 函数被嵌套进了两层模块中。正如<a href="#创建惯用的-use-路径">第七章</a>讲到的，当所需函数嵌套了多于一层模块时，通常将父模块引入作用域而不是其自身。这便于我们利用 <code>std::env</code> 中的其他函数。这比增加了 <code>use std::env::args;</code> 后仅仅使用 <code>args</code> 调用函数要更明确一些，因为 <code>args</code> 容易被错认成一个定义于当前模块的函数。</p>
+<blockquote>
+<h3 id="args-函数和无效的-unicode"></h3>
+<p>注意 <code>std::env::args</code> 在其任何参数包含无效 Unicode 字符时会 panic。如果你需要接受包含无效 Unicode 字符的参数，使用 <code>std::env::args_os</code> 代替。这个函数返回 <code>OsString</code> 值而不是 <code>String</code> 值。这里出于简单考虑使用了 <code>std::env::args</code>，因为 <code>OsString</code> 值每个平台都不一样而且比 <code>String</code> 值处理起来更为复杂。</p>
+</blockquote>
+<p>在 <code>main</code> 函数的第一行，我们调用了 <code>env::args</code>，并立即使用 <code>collect</code> 来创建了一个包含迭代器所有值的 vector。<code>collect</code> 可以被用来创建很多类型的集合，所以这里显式注明 <code>args</code> 的类型来指定我们需要一个字符串 vector。虽然在 Rust 中我们很少会需要注明类型，然而 <code>collect</code> 是一个经常需要注明类型的函数，因为 Rust 不能推断出你想要什么类型的集合。</p>
+<p>最后，我们使用调试宏打印出 vector。让我们先在不传递任何参数的情况下运行一次代码，然后再传入两个参数运行一次：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling minigrep v0.1.0 (file:///projects/minigrep)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.61s
+     Running `target/debug/minigrep`
+[src/main.rs:5:5] args = [
+    "target/debug/minigrep",
+]
+</code></pre>
+<pre><code class="language-console">$ cargo run -- needle haystack
+   Compiling minigrep v0.1.0 (file:///projects/minigrep)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.57s
+     Running `target/debug/minigrep needle haystack`
+[src/main.rs:5:5] args = [
+    "target/debug/minigrep",
+    "needle",
+    "haystack",
+]
+</code></pre>
+<p>注意 vector 的第一个值是 <code>"target/debug/minigrep"</code>，它是我们二进制文件的名称。这与 C 中的参数列表的行为相匹配，让程序使用在执行时调用它们的名称。如果要在消息中打印它或者根据用于调用程序的命令行别名更改程序的行为，通常可以方便地访问程序名称，不过考虑到本章的目的，我们将忽略它并只保存所需的两个参数。</p>
+<h3 id="将参数值保存进变量"></h3>
+<p>目前程序可以访问指定为命令行参数的值。现在需要将这两个参数的值保存进变量这样就可以在程序的余下部分使用这些值了。让我们如示例 12-2 这样做：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust should_panic noplayground">use std::env;
+
+fn main() {
+    let args: Vec&lt;String&gt; = env::args().collect();
+
+    let query = &amp;args[1];
+    let file_path = &amp;args[2];
+
+    println!("Searching for {query}");
+    println!("In file {file_path}");
+}</code></pre>
+<p><span class="caption">示例 12-2：创建变量来存放查询参数和文件路径参数</span></p>
+<p>正如之前打印出 vector 时所看到的，程序的名称占据了 vector 的第一个值 <code>args[0]</code>，所以我们从索引为 <code>1</code> 的参数开始。<code>minigrep</code> 获取的第一个参数是需要搜索的字符串，所以将第一个参数的引用存放在变量 <code>query</code> 中。第二个参数将是文件路径，所以将第二个参数的引用放入变量 <code>file_path</code> 中。</p>
+<p>我们将临时打印出这些变量的值来证明代码如我们期望的那样工作。使用参数 <code>test</code> 和 <code>sample.txt</code> 再次运行这个程序：</p>
+<pre><code class="language-console">$ cargo run -- test sample.txt
+   Compiling minigrep v0.1.0 (file:///projects/minigrep)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.0s
+     Running `target/debug/minigrep test sample.txt`
+Searching for test
+In file sample.txt
+</code></pre>
+<p>太好了，程序正常工作！我们将所需的参数值保存进了对应的变量中。之后会增加一些错误处理来应对类似用户没有提供参数的情况。不过现在我们将忽略它们并开始增加读取文件功能。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p034.html">← 测试的组织结构</a><a href="index.html">目录</a><a href="p036.html">读取文件 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

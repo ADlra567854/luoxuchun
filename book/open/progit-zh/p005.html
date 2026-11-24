@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1.5 起步 · 安装 Git · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：1.5 起步 - 安装 Git。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p005.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html" class="on">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html">10.5 Git 内部原理 - 引用规范</a><a href="p072.html">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 5 / 100 节
+    </div>
+    <h1>1.5 起步 - 安装 Git</h1>
+            <div>
+              <h2 id="_安装_git">安装 Git</h2>
+<div class="paragraph">
+<p>在你开始使用 Git 前，需要将它安装在你的计算机上。
+即便已经安装，最好将它升级到最新的版本。
+你可以通过软件包或者其它安装程序来安装，或者下载源码编译安装。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>本书写作时使用的 Git 版本为 <strong>2.8.0</strong>。
+我们使用的大部分命令仍然可以在很古老的 Git 版本上使用，但也有少部分命令不好用或者在旧版本中的行为有差异。
+因为 Git 在保持向后兼容方面表现很好，本书使用的这些命令在 2.8 之后的版本应该有效。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h3 id="_在_linux_上安装">在 Linux 上安装</h3>
+<div class="paragraph">
+<p>
+如果你想在 Linux 上用二进制安装程序来安装基本的 Git 工具，可以使用发行版包含的基础软件包管理工具来安装。
+以 Fedora 为例，如果你在使用它（或与之紧密相关的基于 RPM 的发行版，如 RHEL 或 CentOS），你可以使用 <code>dnf</code>：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo dnf install git-all</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果你在基于 Debian 的发行版上，如 Ubuntu，请使用 <code>apt</code>：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt install git-all</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>要了解更多选择，Git 官方网站上有在各种 Unix 发行版的系统上安装步骤，网址为 <a href="https://git-scm.com/download/linux" class="bare">https://git-scm.com/download/linux</a>。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_在_macos_上安装">在 macOS 上安装</h3>
+<div class="paragraph">
+<p>
+在 Mac 上安装 Git 有多种方式。
+最简单的方法是安装 Xcode Command Line Tools。
+Mavericks （10.9） 或更高版本的系统中，在 Terminal 里尝试首次运行 'git' 命令即可。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果没有安装过命令行开发者工具，将会提示你安装。</p>
+</div>
+<div class="paragraph">
+<p>如果你想安装更新的版本，可以使用二进制安装程序。
+官方维护的 macOS Git 安装程序可以在 Git 官方网站下载，网址为 <a href="https://git-scm.com/download/mac" class="bare">https://git-scm.com/download/mac</a>。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/git-osx-installer.png" alt="Git macOS 安装程序。">
+</div>
+<div class="title">Figure 7. Git macOS Installer.</div>
+</div>
+<div class="paragraph">
+<p>你也可以将它作为 GitHub for macOS 的一部分来安装。
+它们的图形化 Git 工具有一个安装命令行工具的选项。
+你可以从 GitHub for macOS 网站下载该工具，网址为 <a href="https://mac.github.com" class="bare">https://mac.github.com</a>。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_在_windows_上安装">在 Windows 上安装</h3>
+<div class="paragraph">
+<p>在 Windows 上安装 Git 也有几种安装方法。
+官方版本可以在 Git 官方网站下载。
+打开 <a href="https://git-scm.com/download/win" class="bare">https://git-scm.com/download/win</a>，下载会自动开始。
+要注意这是一个名为 Git for Windows 的项目（也叫做 msysGit），和 Git 是分别独立的项目；更多信息请访问 <a href="http://msysgit.github.io/" class="bare">http://msysgit.github.io/</a>。</p>
+</div>
+<div class="paragraph">
+<p>要进行自动安装，你可以使用 <a href="https://chocolatey.org/packages/git">Git Chocolatey 包</a>。
+注意 Chocolatey 包是由社区维护的。</p>
+</div>
+<div class="paragraph">
+<p>另一个简单的方法是安装 GitHub Desktop。
+该安装程序包含图形化和命令行版本的 Git。
+它也能支持 Powershell，提供了稳定的凭证缓存和健全的换行设置。
+稍后我们会对这方面有更多了解，现在只要一句话就够了，这些都是你所需要的。
+你可以在 GitHub for Windows 网站下载，网址为 <a href="https://desktop.github.com">GitHub Desktop 网站</a>。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_从源代码安装">从源代码安装</h3>
+<div class="paragraph">
+<p>有人觉得从源码安装 Git 更实用，因为你能得到最新的版本。
+二进制安装程序倾向于有一些滞后，当然近几年 Git 已经成熟，这个差异不再显著。</p>
+</div>
+<div class="paragraph">
+<p>如果你想从源码安装 Git，需要安装 Git 依赖的库：autotools、curl、zlib、openssl、expat 和 libiconv。
+如果你的系统上有 <code>dnf</code> （如 Fedora）或者 <code>apt</code>（如基于 Debian 的系统），
+可以使用对应的命令来安装最少的依赖以便编译并安装 Git 的二进制版：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo dnf install dh-autoreconf curl-devel expat-devel gettext-devel \
+  openssl-devel perl-devel zlib-devel
+$ sudo apt-get install dh-autoreconf libcurl4-gnutls-dev libexpat1-dev \
+  gettext libz-dev libssl-dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>为了添加文档的多种格式（doc、html、info），需要以下附加的依赖：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo dnf install asciidoc xmlto docbook2X
+$ sudo apt-get install asciidoc xmlto docbook2x</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>使用 RHEL 和 RHEL 衍生版，如 CentOS 和 Scientific Linux 的用户需要
+<a href="https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F">开启 EPEL 库</a>
+以便下载 <code>docbook2X</code> 包。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>如果你使用基于 Debian 的发行版（Debian/Ubuntu/Ubuntu-derivatives），你也需要 <code>install-info</code> 包：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo apt-get install install-info</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果你使用基于 RPM 的发行版（Fedora/RHEL/RHEL衍生版），你还需要 <code>getopt</code> 包
+（它已经在基于 Debian 的发行版中预装了）：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo dnf install getopt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>此外，如果你使用 Fedora/RHEL/RHEL衍生版，那么你需要执行以下命令：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo ln -s /usr/bin/db2x_docbook2texi /usr/bin/docbook2x-texi</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>以此来解决二进制文件名的不同。</p>
+</div>
+<div class="paragraph">
+<p>当你安装好所有的必要依赖，你可以继续从几个地方来取得最新发布版本的 tar 包。
+你可以从 Kernel.org 网站获取，网址为 <a href="https://www.kernel.org/pub/software/scm/git" class="bare">https://www.kernel.org/pub/software/scm/git</a>，
+或从 GitHub 网站上的镜像来获得，网址为 <a href="https://github.com/git/git/releases" class="bare">https://github.com/git/git/releases</a>。
+通常在 GitHub 上的是最新版本，但 kernel.org 上包含有文件下载签名，如果你想验证下载正确性的话会用到。</p>
+</div>
+<div class="paragraph">
+<p>接着，编译并安装：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ tar -zxf git-2.8.0.tar.gz
+$ cd git-2.8.0
+$ make configure
+$ ./configure --prefix=/usr
+$ make all doc info
+$ sudo make install install-doc install-html install-info</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>完成后，你可以使用 Git 来获取 Git 的更新：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone git://git.kernel.org/pub/scm/git/git.git</code></pre>
+</div>
+</div>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%91%BD%E4%BB%A4%E8%A1%8C">prev</a> | <a href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p004.html">← 1.4 起步 - 命令行</a><a href="index.html">目录</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

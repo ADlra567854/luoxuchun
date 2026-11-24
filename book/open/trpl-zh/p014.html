@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>方法语法 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：方法语法。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p014.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html" class="on">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 14 / 86 节
+    </div>
+    <h1>方法语法</h1>
+    <h2 id="方法"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/8a6130451b0817ead5c2522ce641dcb0f11a8571/src/ch05-03-method-syntax.md">ch05-03-method-syntax.md</a></p>
+<p><strong>方法</strong>（method）与函数类似：它们使用 <code>fn</code> 关键字和名称声明，可以拥有参数和返回值，同时包含在某处调用该方法时会执行的代码。不过方法与函数是不同的，因为它们在结构体的上下文中被定义（或者是枚举或 trait 对象的上下文，将分别在<a href="#枚举和模式匹配">第六章</a>和<a href="#使用-trait-object-来抽象出共享行为-1">第十八章</a>讲解），并且它们第一个参数总是 <code>self</code>，它代表调用该方法的结构体实例。</p>
+<p><a id="defining-methods"></a></p>
+<h3 id="方法语法"></h3>
+<p>让我们把前面实现的获取一个 <code>Rectangle</code> 实例作为参数的 <code>area</code> 函数，改写成一个定义于 <code>Rectangle</code> 结构体上的 <code>area</code> 方法，如示例 5-13 所示：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+    );
+}</code></pre>
+<p><span class="caption">示例 5-13：在 <code>Rectangle</code> 结构体上定义 <code>area</code> 方法</span></p>
+<p>为了使函数定义于 <code>Rectangle</code> 的上下文中，我们开始了一个 <code>impl</code> 块（<code>impl</code> 是 <em>implementation</em> 的缩写），这个 <code>impl</code> 块中的所有内容都将与 <code>Rectangle</code> 类型相关联。接着将 <code>area</code> 函数移动到 <code>impl</code> 大括号中，并将签名中的第一个（在这里也是唯一一个）参数和函数体中其他地方的对应参数改成 <code>self</code>。然后在 <code>main</code> 中将我们先前调用 <code>area</code> 方法并传递 <code>rect1</code> 作为参数的地方，改成使用 <strong>方法语法</strong>（<em>method syntax</em>）在 <code>Rectangle</code> 实例上调用 <code>area</code> 方法。方法语法获取一个实例并加上一个点号，后跟方法名、圆括号以及任何参数。</p>
+<p>在 <code>area</code> 的签名中，使用 <code>&amp;self</code> 来替代 <code>rectangle: &amp;Rectangle</code>，<code>&amp;self</code> 实际上是 <code>self: &amp;Self</code> 的缩写。在一个 <code>impl</code> 块中，<code>Self</code> 类型是 <code>impl</code> 块的类型的别名。方法的第一个参数必须有一个名为 <code>self</code> 的<code>Self</code> 类型的参数，所以 Rust 让你在第一个参数位置上只用 <code>self</code> 这个名字来简化。注意，我们仍然需要在 <code>self</code> 前面使用 <code>&amp;</code> 来表示这个方法借用了 <code>Self</code> 实例，就像我们在 <code>rectangle: &amp;Rectangle</code> 中做的那样。方法可以选择获得 <code>self</code> 的所有权，或者像我们这里一样不可变地借用 <code>self</code>，或者可变地借用 <code>self</code>，就跟其他参数一样。</p>
+<p>这里选择 <code>&amp;self</code> 的理由跟在函数版本中使用 <code>&amp;Rectangle</code> 是相同的：我们并不想获取所有权，只希望能够读取结构体中的数据，而不是写入。如果想要在方法中改变调用方法的实例，需要将第一个参数改为 <code>&amp;mut self</code>。通过仅仅使用 <code>self</code> 作为第一个参数来使方法获取实例的所有权是很少见的；这种技术通常用在当方法将 <code>self</code> 转换成别的实例的时候，这时我们想要防止调用者在转换之后使用原始的实例。</p>
+<p>使用方法替代函数，除了可使用方法语法和不需要在每个函数签名中重复 <code>self</code> 的类型之外，其主要好处在于组织性。我们将某个类型实例能做的所有事情都一起放入 <code>impl</code> 块中，而不是让将来的用户在我们的库中到处寻找 <code>Rectangle</code> 的功能。</p>
+<p>请注意，我们可以选择让方法与结构体中的某个字段同名。例如，我们可以在 <code>Rectangle</code> 上定义一个也叫做 <code>width</code> 的方法：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Rectangle {
+</span><span class="boring">    width: u32,
+</span><span class="boring">    height: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Rectangle {
+    fn width(&amp;self) -&gt; bool {
+        self.width &gt; 0
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    if rect1.width() {
+        println!("The rectangle has a nonzero width; it is {}", rect1.width);
+    }
+}</code></pre>
+<p>在这里，我们选择让 <code>width</code> 方法在实例的 <code>width</code> 字段的值大于 <code>0</code> 时返回 <code>true</code>，等于 <code>0</code> 时则返回 <code>false</code>：我们可以出于任何目的，在同名的方法中使用同名的字段。在 <code>main</code> 中，当我们在 <code>rect1.width</code> 后面加上括号时。Rust 知道我们指的是方法 <code>width</code>。当我们不使用圆括号时，Rust 知道我们指的是字段 <code>width</code>。</p>
+<p>通常情况下，虽然并不总是如此，与字段同名的方法会被定义为只返回该字段中的值，而不做其他事情。这样的方法被称为 <em>getters</em>。Rust 不会像其他一些语言那样为结构体字段自动生成 getter。Getter 很有用，因为你可以把字段设为私有，而把方法设为公有，从而将对该字段的只读访问作为该类型公有 API 的一部分。我们会在<a href="#使用-pub-关键字暴露路径">第七章</a>讨论什么是公有和私有，以及如何把字段或方法指定为公有或私有。</p>
+<blockquote>
+<h3 id="--运算符到哪去了"></h3>
+<p>在 C/C++ 语言中，有两个不同的运算符来调用方法：<code>.</code> 直接在对象上调用方法，而 <code>-&gt;</code> 在一个对象的指针上调用方法，这时需要先解引用（dereference）指针。换句话说，如果 <code>object</code> 是一个指针，那么 <code>object-&gt;something()</code> 就像 <code>(*object).something()</code> 一样。</p>
+<p>Rust 并没有一个与 <code>-&gt;</code> 等效的运算符；相反，Rust 有一个叫 <strong>自动引用和解引用</strong>（<em>automatic referencing and dereferencing</em>）的功能。方法调用是 Rust 中少数几个拥有这种行为的地方。</p>
+<p>它是这样工作的：当使用 <code>object.something()</code> 调用方法时，Rust 会自动为 <code>object</code> 添加 <code>&amp;</code>、<code>&amp;mut</code> 或 <code>*</code> 以便使 <code>object</code> 与方法签名匹配。也就是说，这些代码是等价的：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span><span class="boring">#[derive(Debug,Copy,Clone)]
+</span><span class="boring">struct Point {
+</span><span class="boring">    x: f64,
+</span><span class="boring">    y: f64,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Point {
+</span><span class="boring">   fn distance(&amp;self, other: &amp;Point) -&gt; f64 {
+</span><span class="boring">       let x_squared = f64::powi(other.x - self.x, 2);
+</span><span class="boring">       let y_squared = f64::powi(other.y - self.y, 2);
+</span><span class="boring">
+</span><span class="boring">       f64::sqrt(x_squared + y_squared)
+</span><span class="boring">   }
+</span><span class="boring">}
+</span><span class="boring">let p1 = Point { x: 0.0, y: 0.0 };
+</span><span class="boring">let p2 = Point { x: 5.0, y: 6.5 };
+</span>p1.distance(&amp;p2);
+(&amp;p1).distance(&amp;p2);
+<span class="boring">}</span></code></pre>
+<p>第一种写法看起来简洁得多。这种自动引用之所以成立，是因为方法有一个明确的接收者，也就是 <code>self</code> 的类型。给定接收者和方法名，Rust 就能明确推断出该方法是只读（<code>&amp;self</code>）、可变借用（<code>&amp;mut self</code>）还是获取所有权（<code>self</code>）。事实上，Rust 对方法接收者的这种隐式借用，是所有权机制在实践中更易用的重要原因之一。</p>
+</blockquote>
+<h3 id="带有更多参数的方法"></h3>
+<p>让我们通过实现 <code>Rectangle</code> 结构体上的另一方法来练习使用方法。这回，我们让一个 <code>Rectangle</code> 的实例获取另一个 <code>Rectangle</code> 实例，如果 <code>self</code> （第一个 <code>Rectangle</code>）能完全包含第二个长方形则返回 <code>true</code>；否则返回 <code>false</code>。一旦我们定义了 <code>can_hold</code> 方法，就可以编写示例 5-14 中的代码。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore">fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
+}</code></pre>
+<p><span class="caption">示例 5-14：使用还未实现的 <code>can_hold</code> 方法</span></p>
+<p>同时我们希望看到如下输出，因为 <code>rect2</code> 的两个维度都小于 <code>rect1</code>，而 <code>rect3</code> 比 <code>rect1</code> 要宽：</p>
+<pre><code class="language-text">Can rect1 hold rect2? true
+Can rect1 hold rect3? false
+</code></pre>
+<p>因为我们想定义一个方法，所以它应该位于 <code>impl Rectangle</code> 块中。方法名是 <code>can_hold</code>，并且它会获取另一个 <code>Rectangle</code> 的不可变借用作为参数。通过观察调用方法的代码可以看出参数是什么类型的：<code>rect1.can_hold(&amp;rect2)</code> 传入了 <code>&amp;rect2</code>，它是一个 <code>Rectangle</code> 的实例 <code>rect2</code> 的不可变借用。这是可以理解的，因为我们只需要读取 <code>rect2</code>（而不是写入，这意味着我们需要一个不可变借用），而且希望 <code>main</code> 保持 <code>rect2</code> 的所有权，这样就可以在调用这个方法后继续使用它。<code>can_hold</code> 的返回值是一个布尔值，其实现会分别检查 <code>self</code> 的宽高是否都大于另一个 <code>Rectangle</code>。让我们在示例 5-13 的 <code>impl</code> 块中增加这个新的 <code>can_hold</code> 方法，如示例 5-15 所示：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Rectangle {
+</span><span class="boring">    width: u32,
+</span><span class="boring">    height: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Rectangle {
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&amp;self, other: &amp;Rectangle) -&gt; bool {
+        self.width &gt; other.width &amp;&amp; self.height &gt; other.height
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let rect1 = Rectangle {
+</span><span class="boring">        width: 30,
+</span><span class="boring">        height: 50,
+</span><span class="boring">    };
+</span><span class="boring">    let rect2 = Rectangle {
+</span><span class="boring">        width: 10,
+</span><span class="boring">        height: 40,
+</span><span class="boring">    };
+</span><span class="boring">    let rect3 = Rectangle {
+</span><span class="boring">        width: 60,
+</span><span class="boring">        height: 45,
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+</span><span class="boring">    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
+</span><span class="boring">}</span></code></pre>
+<p><span class="caption">示例 5-15：在 <code>Rectangle</code> 上实现 <code>can_hold</code> 方法，它获取另一个 <code>Rectangle</code> 实例作为参数</span></p>
+<p>如果结合示例 5-14 的 <code>main</code> 函数来运行，就会看到期望的输出。在方法签名中，可以在 <code>self</code> 后增加多个参数，而且这些参数就像函数中的参数一样工作。</p>
+<h3 id="关联函数"></h3>
+<p>所有在 <code>impl</code> 块中定义的函数被称为 <strong>关联函数</strong>（<em>associated functions</em>），因为它们与 <code>impl</code> 后面命名的类型相关。我们可以定义不以 <code>self</code> 为第一参数的关联函数（因此不是方法），因为它们并不作用于一个结构体的实例。我们已经使用了一个这样的函数：在 <code>String</code> 类型上定义的 <code>String::from</code> 函数。</p>
+<p>不是方法的关联函数经常被用作返回一个结构体新实例的构造函数。这些函数的名称通常为 <code>new</code> ，但 <code>new</code> 并不是一个关键字。例如我们可以提供一个叫做 <code>square</code> 关联函数，它接受一个维度参数并且同时作为宽和高，这样可以更轻松的创建一个正方形 <code>Rectangle</code> 而不必指定两次同样的值：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Rectangle {
+</span><span class="boring">    width: u32,
+</span><span class="boring">    height: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Rectangle {
+    fn square(size: u32) -&gt; Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let sq = Rectangle::square(3);
+</span><span class="boring">}</span></code></pre>
+<p>关键字 <code>Self</code> 在函数的返回类型和函数体中，都是对 <code>impl</code> 关键字后所示类型的别名，这里是 <code>Rectangle</code>。</p>
+<p>要调用这个关联函数，我们使用结构体名和 <code>::</code> 语法；比如 <code>let sq = Rectangle::square(3);</code>。这个函数位于结构体的命名空间中：<code>::</code> 语法用于关联函数和模块创建的命名空间。<a href="#定义模块来控制作用域与私有性-1">第七章</a>会讲到模块。</p>
+<h3 id="多个-impl-块"></h3>
+<p>每个结构体都允许拥有多个 <code>impl</code> 块。例如，示例 5-15 中的代码等同于示例 5-16 中所示的代码，但后者每个方法有其自己的 <code>impl</code> 块。</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Rectangle {
+</span><span class="boring">    width: u32,
+</span><span class="boring">    height: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Rectangle {
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+}
+
+impl Rectangle {
+    fn can_hold(&amp;self, other: &amp;Rectangle) -&gt; bool {
+        self.width &gt; other.width &amp;&amp; self.height &gt; other.height
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let rect1 = Rectangle {
+</span><span class="boring">        width: 30,
+</span><span class="boring">        height: 50,
+</span><span class="boring">    };
+</span><span class="boring">    let rect2 = Rectangle {
+</span><span class="boring">        width: 10,
+</span><span class="boring">        height: 40,
+</span><span class="boring">    };
+</span><span class="boring">    let rect3 = Rectangle {
+</span><span class="boring">        width: 60,
+</span><span class="boring">        height: 45,
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+</span><span class="boring">    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
+</span><span class="boring">}</span></code></pre>
+<p><span class="caption">示例 5-16：使用多个 <code>impl</code> 块重写示例 5-15</span></p>
+<p>这里没有理由将这些方法分散在多个 <code>impl</code> 块中，不过这是有效的语法。第十章讨论泛型和 trait 时会看到实用的多 <code>impl</code> 块的用例。</p>
+<h2 id="总结-4"></h2>
+<p>结构体让你可以创建出在你的领域中有意义的自定义类型。通过结构体，我们可以将相关联的数据片段联系起来并命名它们，这样可以使得代码更加清晰。在 <code>impl</code> 块中，你可以定义与你的类型相关联的函数，而方法是一种相关联的函数，让你指定结构体的实例所具有的行为。</p>
+<p>但结构体并不是创建自定义类型的唯一方法：让我们转向 Rust 的枚举功能，为你的工具箱再添一个工具。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="枚举和模式匹配"></h1>
+<p><a href="https://github.com/rust-lang/book/blob/602a0d2e898f5e4ff030eac0b457755a10e0be1e/src/ch06-00-enums.md">ch06-00-enums.md</a></p>
+<p>本章我们会介绍<strong>枚举</strong>（<em>enumerations</em>），也叫作 <em>enums</em>。枚举让你可以通过列举某个类型所有可能的 <strong>变体</strong>（<em>variants</em>）来定义这个类型。首先，我们会定义并使用一个枚举，展示它如何把含义和数据一起编码进去。接着，我们会探索一个特别有用的枚举 <code>Option</code>，它表达的是一个值要么是某个值，要么什么都不是。然后，我们会看到 <code>match</code> 表达式中的模式匹配如何让我们针对枚举的不同值运行不同的代码。最后，我们会介绍 <code>if let</code>，这是在代码中处理枚举时另一种简洁方便的惯用写法。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p013.html">← 结构体示例程序</a><a href="index.html">目录</a><a href="p015.html">枚举的定义 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

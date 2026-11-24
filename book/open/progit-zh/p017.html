@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3.1 Git 分支 · 分支简介 · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：3.1 Git 分支 - 分支简介。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p017.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html" class="on">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html">10.5 Git 内部原理 - 引用规范</a><a href="p072.html">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 17 / 100 节
+    </div>
+    <h1>3.1 Git 分支 - 分支简介</h1>
+            <div>
+              <p>
+几乎所有的版本控制系统都以某种形式支持分支。
+使用分支意味着你可以把你的工作从开发主线上分离开来，以免影响开发主线。
+在很多版本控制系统中，这是一个略微低效的过程——常常需要完全创建一个源代码目录的副本。对于大项目来说，这样的过程会耗费很多时间。</p><p>有人把 Git 的分支模型称为它的“必杀技特性”，也正因为这一特性，使得 Git 从众多版本控制系统中脱颖而出。
+为何 Git 的分支模型如此出众呢？
+Git 处理分支的方式可谓是难以置信的轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷。
+与许多其它版本控制系统不同，Git 鼓励在工作流程中频繁地使用分支与合并，哪怕一天之内进行许多次。
+理解和精通这一特性，你便会意识到 Git 是如此的强大而又独特，并且从此真正改变你的开发方式。</p>
+<h2 id="_git_branches_overview">分支简介</h2>
+<div class="paragraph">
+<p>为了真正理解 Git 处理分支的方式，我们需要回顾一下 Git 是如何保存数据的。</p>
+</div>
+<div class="paragraph">
+<p>或许你还记得 <a href="https://git-scm.com/book/zh/v2/ch00/ch01-getting-started">起步</a> 的内容，
+Git 保存的不是文件的变化或者差异，而是一系列不同时刻的 <strong>快照</strong> 。</p>
+</div>
+<div class="paragraph">
+<p>在进行提交操作时，Git 会保存一个提交对象（commit object）。
+知道了 Git 保存数据的方式，我们可以很自然的想到——该提交对象会包含一个指向暂存内容快照的指针。
+但不仅仅是这样，该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的父对象的指针。
+首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象，
+而由多个分支合并产生的提交对象有多个父对象，</p>
+</div>
+<div class="paragraph">
+<p>为了更加形象地说明，我们假设现在有一个工作目录，里面包含了三个将要被暂存和提交的文件。
+暂存操作会为每一个文件计算校验和（使用我们在 <a href="https://git-scm.com/book/zh/v2/ch00/ch01-getting-started">起步</a>
+中提到的 SHA-1 哈希算法），然后会把当前版本的文件快照保存到 Git 仓库中
+（Git 使用 <em>blob</em> 对象来保存它们），最终将校验和加入到暂存区域等待提交：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git add README test.rb LICENSE
+$ git commit -m 'The initial commit of my project'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>当使用 <code>git commit</code> 进行提交操作时，Git 会先计算每一个子目录（本例中只有项目根目录）的校验和，
+然后在 Git 仓库中这些校验和保存为树对象。随后，Git 便会创建一个提交对象，
+它除了包含上面提到的那些信息外，还包含指向这个树对象（项目根目录）的指针。
+如此一来，Git 就可以在需要的时候重现此次保存的快照。</p>
+</div>
+<div class="paragraph">
+<p>现在，Git 仓库中有五个对象：三个 <em>blob</em> 对象（保存着文件快照）、一个 <strong>树</strong> 对象
+（记录着目录结构和 blob 对象索引）以及一个 <strong>提交</strong> 对象（包含着指向前述树对象的指针和所有提交信息）。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/commit-and-tree.png" alt="首次提交对象及其树结构。">
+</div>
+<div class="title">Figure 9. 首次提交对象及其树结构</div>
+</div>
+<div class="paragraph">
+<p>做些修改后再次提交，那么这次产生的提交对象会包含一个指向上次提交对象（父对象）的指针。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/commits-and-parents.png" alt="提交对象及其父对象。">
+</div>
+<div class="title">Figure 10. 提交对象及其父对象</div>
+</div>
+<div class="paragraph">
+<p>Git 的分支，其实本质上仅仅是指向提交对象的可变指针。
+Git 的默认分支名字是 <code>master</code>。
+在多次提交操作之后，你其实已经有一个指向最后那个提交对象的 <code>master</code> 分支。
+<code>master</code> 分支会在每次提交时自动向前移动。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Git 的 <code>master</code> 分支并不是一个特殊分支。
+它就跟其它分支完全没有区别。
+之所以几乎每一个仓库都有 master 分支，是因为 <code>git init</code> 命令默认创建它，并且大多数人都懒得去改动它。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/branch-and-history.png" alt="分支及其提交历史。">
+</div>
+<div class="title">Figure 11. 分支及其提交历史</div>
+</div>
+<div class="sect3">
+<h3 id="_create_new_branch">分支创建</h3>
+<div class="paragraph">
+<p>
+Git 是怎么创建新分支的呢？
+很简单，它只是为你创建了一个可以移动的新的指针。
+比如，创建一个 testing 分支，
+你需要使用 <code>git branch</code> 命令：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git branch testing</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这会在当前所在的提交对象上创建一个指针。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/two-branches.png" alt="两个指向相同提交历史的分支。">
+</div>
+<div class="title">Figure 12. 两个指向相同提交历史的分支</div>
+</div>
+<div class="paragraph">
+<p>那么，Git 又是怎么知道当前在哪一个分支上呢？
+也很简单，它有一个名为 <code>HEAD</code> 的特殊指针。
+请注意它和许多其它版本控制系统（如 Subversion 或 CVS）里的 <code>HEAD</code> 概念完全不同。
+在 Git 中，它是一个指针，指向当前所在的本地分支（译注：将 <code>HEAD</code> 想象为当前分支的别名）。
+在本例中，你仍然在 <code>master</code> 分支上。
+因为 <code>git branch</code> 命令仅仅 <strong>创建</strong> 一个新分支，并不会自动切换到新分支中去。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/head-to-master.png" alt="HEAD 指向当前所在的分支。">
+</div>
+<div class="title">Figure 13. HEAD 指向当前所在的分支</div>
+</div>
+<div class="paragraph">
+<p>你可以简单地使用 <code>git log</code> 命令查看各个分支当前所指的对象。
+提供这一功能的参数是 <code>--decorate</code>。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git log --oneline --decorate
+f30ab (HEAD -&gt; master, testing) add feature #32 - ability to add new formats to the central interface
+34ac2 Fixed bug #1328 - stack overflow under certain conditions
+98ca9 The initial commit of my project</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>正如你所见，当前 <code>master</code> 和 <code>testing</code> 分支均指向校验和以 <code>f30ab</code> 开头的提交对象。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_switching_branches">分支切换</h3>
+<div class="paragraph">
+<p>
+要切换到一个已存在的分支，你需要使用 <code>git checkout</code> 命令。
+我们现在切换到新创建的 <code>testing</code> 分支去：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git checkout testing</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这样 <code>HEAD</code> 就指向 <code>testing</code> 分支了。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/head-to-testing.png" alt="HEAD 指向当前所在的分支。">
+</div>
+<div class="title">Figure 14. HEAD 指向当前所在的分支</div>
+</div>
+<div class="paragraph">
+<p>那么，这样的实现方式会给我们带来什么好处呢？
+现在不妨再提交一次：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ vim test.rb
+$ git commit -a -m 'made a change'</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/advance-testing.png" alt="HEAD 分支随着提交操作自动向前移动。">
+</div>
+<div class="title">Figure 15. HEAD 分支随着提交操作自动向前移动</div>
+</div>
+<div class="paragraph">
+<p>如图所示，你的 <code>testing</code> 分支向前移动了，但是 <code>master</code> 分支却没有，它仍然指向运行 <code>git checkout</code> 时所指的对象。
+这就有意思了，现在我们切换回 <code>master</code> 分支看看：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git checkout master</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/checkout-master.png" alt="检出时 HEAD 随之移动。">
+</div>
+<div class="title">Figure 16. 检出时 HEAD 随之移动</div>
+</div>
+<div class="paragraph">
+<p>这条命令做了两件事。
+一是使 HEAD 指回 <code>master</code> 分支，二是将工作目录恢复成 <code>master</code> 分支所指向的快照内容。
+也就是说，你现在做修改的话，项目将始于一个较旧的版本。
+本质上来讲，这就是忽略 <code>testing</code> 分支所做的修改，以便于向另一个方向进行开发。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">分支切换会改变你工作目录中的文件</div>
+<div class="paragraph">
+<p>在切换分支时，一定要注意你工作目录里的文件会被改变。
+如果是切换到一个较旧的分支，你的工作目录会恢复到该分支最后一次提交时的样子。
+如果 Git 不能干净利落地完成这个任务，它将禁止切换分支。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>我们不妨再稍微做些修改并提交：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ vim test.rb
+$ git commit -a -m 'made other changes'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>现在，这个项目的提交历史已经产生了分叉（参见 <a href="https://git-scm.com/book/zh/v2/ch00/divergent_history">项目分叉历史</a>）。
+因为刚才你创建了一个新分支，并切换过去进行了一些工作，随后又切换回 master 分支进行了另外一些工作。
+上述两次改动针对的是不同分支：你可以在不同分支间不断地来回切换和工作，并在时机成熟时将它们合并起来。
+而所有这些工作，你需要的命令只有 <code>branch</code>、<code>checkout</code> 和 <code>commit</code>。</p>
+</div>
+<div id="divergent_history" class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/advance-master.png" alt="项目分叉历史。">
+</div>
+<div class="title">Figure 17. 项目分叉历史</div>
+</div>
+<div class="paragraph">
+<p>你可以简单地使用 <code>git log</code> 命令查看分叉历史。
+运行 <code>git log --oneline --decorate --graph --all</code> ，它会输出你的提交历史、各个分支的指向以及项目的分支分叉情况。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git log --oneline --decorate --graph --all
+* c2b9e (HEAD, master) made other changes
+| * 87ab2 (testing) made a change
+|/
+* f30ab add feature #32 - ability to add new formats to the
+* 34ac2 fixed bug #1328 - stack overflow under certain conditions
+* 98ca9 initial commit of my project</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>由于 Git 的分支实质上仅是包含所指对象校验和（长度为 40 的 SHA-1 值字符串）的文件，所以它的创建和销毁都异常高效。
+创建一个新分支就相当于往一个文件中写入 41 个字节（40 个字符和 1 个换行符），如此的简单能不快吗？</p>
+</div>
+<div class="paragraph">
+<p>这与过去大多数版本控制系统形成了鲜明的对比，它们在创建分支时，将所有的项目文件都复制一遍，并保存到一个特定的目录。
+完成这样繁琐的过程通常需要好几秒钟，有时甚至需要好几分钟。所需时间的长短，完全取决于项目的规模。
+而在 Git 中，任何规模的项目都能在瞬间创建新分支。
+同时，由于每次提交都会记录父对象，所以寻找恰当的合并基础（译注：即共同祖先）也是同样的简单和高效。
+这些高效的特性使得 Git 鼓励开发人员频繁地创建和使用分支。</p>
+</div>
+<div class="paragraph">
+<p>接下来，让我们看看你为什么应该这样做。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">创建新分支的同时切换过去</div>
+<div class="paragraph">
+<p>通常我们会在创建一个新分支后立即切换过去，这可以用 <code>git checkout -b &lt;newbranchname&gt;</code> 一条命令搞定。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%80%BB%E7%BB%93">prev</a> | <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p016.html">← 2.8 Git 基础 - 总结</a><a href="index.html">目录</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hello, World! · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：Hello, World!。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p002.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html" class="on">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 2 / 86 节
+    </div>
+    <h1>Hello, World!</h1>
+    <h2 id="hello-world"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/d46785983db2d2f94ca3d571db2cfbad0f5ad3e6/src/ch01-02-hello-world.md">ch01-02-hello-world.md</a></p>
+<p>既然安装好了 Rust，是时候来编写第一个 Rust 程序了。当学习一门新语言的时候，使用该语言在屏幕上打印 <code>Hello, world!</code> 是一项传统，我们将沿用这一传统！</p>
+<blockquote>
+<p>注意：本书假设你熟悉基本的命令行操作。Rust 对于你的编辑器、工具，以及代码位于何处并没有特定的要求，如果你更倾向于使用集成开发环境（IDE），而不是命令行，请尽管使用你喜欢的 IDE。目前很多 IDE 都在一定程度上支持 Rust；查看 IDE 文档以了解更多细节。Rust 团队一直致力于借助 <code>rust-analyzer</code> 提供强大的 IDE 支持。详见<a href="#d---实用开发工具">附录 D</a><!-- ignore -->。</p>
+</blockquote>
+<p><a id="creating-a-project-directory"></a></p>
+<h3 id="创建项目目录"></h3>
+<p>首先创建一个存放 Rust 代码的目录。Rust 并不关心代码存放在哪里，不过对于本书中的练习和项目，我们建议你在 home 目录中创建一个 <em>projects</em> 目录，并将所有项目都放在那里。</p>
+<p>打开终端并输入如下命令创建 <em>projects</em> 目录，并在 <em>projects</em> 目录中为 “Hello, world!” 项目创建一个目录。</p>
+<p>对于 Linux、macOS 和 Windows PowerShell，输入：</p>
+<pre><code class="language-console">$ mkdir ~/projects
+$ cd ~/projects
+$ mkdir hello_world
+$ cd hello_world
+</code></pre>
+<p>对于 Windows CMD，输入：</p>
+<pre><code class="language-cmd">&gt; mkdir "%USERPROFILE%\projects"
+&gt; cd /d "%USERPROFILE%\projects"
+&gt; mkdir hello_world
+&gt; cd hello_world
+</code></pre>
+<p><a id="writing-and-running-a-rust-program"></a></p>
+<h3 id="rust-程序基础"></h3>
+<p>接下来，新建一个源文件，命名为 <em>main.rs</em>。Rust 文件总是以 <em>.rs</em> 扩展名结尾。如果文件名包含多个单词，那么按照命名习惯，应当使用下划线来分隔单词。例如应命名为 <em>hello_world.rs</em>，而不是 <em>helloworld.rs</em>。</p>
+<p>现在打开刚创建的 <em>main.rs</em> 文件，输入示例 1-1 中的代码。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    println!("Hello, world!");
+}</code></pre>
+<figcaption>示例 1-1：一个打印 `Hello, world!` 的程序</figcaption>
+</figure>
+<p>保存文件，并回到当前目录为 <em>~/projects/hello_world</em> 的终端窗口。在 Linux 或 macOS 上，输入如下命令，编译并运行文件：</p>
+<pre><code class="language-console">$ rustc main.rs
+$ ./main
+Hello, world!
+</code></pre>
+<p>在 Windows 上，输入命令 <code>.\main</code>，而不是 <code>./main</code>：</p>
+<pre><code class="language-powershell">&gt; rustc main.rs
+&gt; .\main
+Hello, world!
+</code></pre>
+<p>不管使用何种操作系统，终端应该打印字符串 <code>Hello, world!</code>。如果没有看到这些输出，回到安装部分的 <a href="#故障排除troubleshooting">“故障排除”</a> 小节查找有帮助的方法。</p>
+<p>如果 <code>Hello, world!</code> 确实打印出来了，恭喜你！你已经正式写出了一个 Rust 程序。现在你已经是一名 Rust 程序员了，欢迎加入！</p>
+<p><a id="anatomy-of-a-rust-program"></a></p>
+<h3 id="rust-程序的结构"></h3>
+<p>现在，让我们回过头来仔细看看这个 “Hello, world!” 程序。这是第一块拼图：</p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+
+}</code></pre>
+<p>这几行定义了一个名叫 <code>main</code> 的函数。<code>main</code> 函数很特殊：在每个可执行的 Rust 程序中，它都是最先运行的代码。这里第一行声明了一个名为 <code>main</code> 的函数，它没有参数也没有返回值。如果有参数，它们会写在小括号 <code>()</code> 中。</p>
+<p>函数体被包裹在 <code>{}</code> 中。Rust 要求所有函数体都要用花括号包裹起来。一般来说，将左花括号与函数声明置于同一行并以空格分隔，是良好的代码风格。</p>
+<blockquote>
+<p>注：如果你希望在 Rust 项目中保持一种标准风格，可以使用名为 <code>rustfmt</code> 的自动格式化工具将代码格式化为特定的风格（更多内容详见<a href="#d---实用开发工具">附录 D</a> 中的 <code>rustfmt</code><!-- ignore -->）。Rust 团队已经在标准的 Rust 发行版中包含了这个工具，就像 <code>rustc</code> 一样。所以它应该已经安装在你的电脑中了！</p>
+</blockquote>
+<p>在 <code>main</code> 函数体中有如下代码：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>println!("Hello, world!");
+<span class="boring">}</span></code></pre>
+<p>这行代码完成这个简单程序的所有工作：在屏幕上打印文本。这里有三个重要的细节需要注意。</p>
+<p>首先，<code>println!</code> 调用了一个 Rust 宏（macro）。如果调用的是函数，就应该写成 <code>println</code>（不带 <code>!</code>）。Rust 宏是一种用来编写可生成代码的代码，从而扩展 Rust 语法的方式；我们将在<a href="#宏-1">第二十章</a>详细讨论宏。现在你只需要知道，看到 <code>!</code> 就意味着调用的是宏而不是普通函数，并且宏并不总是遵循与函数相同的规则。</p>
+<p>第二，<code>"Hello, world!"</code> 是一个字符串。我们把这个字符串作为一个参数传递给 <code>println!</code>，字符串将被打印到屏幕上。</p>
+<p>第三，该行以分号结尾（<code>;</code>），这代表一个表达式的结束和下一个表达式可以开始。大部分 Rust 代码行以分号结尾。</p>
+<p><a id="compiling-and-running-are-separate-steps"></a></p>
+<h3 id="编译与运行"></h3>
+<p>你刚刚运行了一个新创建的程序，那么让我们检查此过程中的每一个步骤。</p>
+<p>在运行 Rust 程序之前，必须先使用 Rust 编译器编译它，即输入 <code>rustc</code> 命令并传入源文件名称，如下：</p>
+<pre><code class="language-console">$ rustc main.rs
+</code></pre>
+<p>如果你有 C 或 C++ 背景，就会发现这与 <code>gcc</code> 和 <code>clang</code> 类似。编译成功后，Rust 会输出一个二进制的可执行文件。</p>
+<p>在 Linux、macOS，以及 Windows 的 PowerShell 上，你可以在 shell 中输入 <code>ls</code> 命令来查看这个可执行文件。</p>
+<pre><code class="language-console">$ ls
+main  main.rs
+</code></pre>
+<p>在 Linux 和 macOS，你会看到两个文件。在 Windows PowerShell 中，你会看到同使用 CMD 相同的三个文件。在 Windows 的 CMD 上，则输入如下命令：</p>
+<pre><code class="language-cmd">&gt; dir /B %= the /B option says to only show the file names =%
+main.exe
+main.pdb
+main.rs
+</code></pre>
+<p>这展示了带有 <em>.rs</em> 扩展名的源代码文件、可执行文件（Windows 上是 <em>main.exe</em>，其他平台上则是 <em>main</em>），以及在 Windows 上一个带有 <em>.pdb</em> 扩展名、包含调试信息的文件。接下来，你可以运行 <em>main</em> 或 <em>main.exe</em>，如下所示：</p>
+<pre><code class="language-console">$ ./main # Windows 是 .\main.exe
+</code></pre>
+<p>如果这里的 <em>main.rs</em> 是上文所述的 “Hello, world!” 程序，那么在终端上就会打印出 <code>Hello, world!</code>。</p>
+<p>如果你更熟悉 Ruby、Python 或 JavaScript 这样的动态语言，可能不太习惯把编译和运行分成两个独立步骤。Rust 是一种 <strong>预先编译</strong>（<em>ahead-of-time compiled</em>）语言，这意味着你可以先将程序编译好，再把可执行文件交给其他人；即使他们没有安装 Rust，也可以直接运行。如果你给别人的是一个 <em>.rb</em>、<em>.py</em> 或 <em>.js</em> 文件，他们就需要分别安装 Ruby、Python 或 JavaScript 的实现（运行时环境）。不过在这些语言中，编译和运行程序通常只需要一条命令。语言设计中的一切都是权衡取舍。</p>
+<p>仅仅使用 <code>rustc</code> 编译简单程序是没问题的，不过随着项目的增长，你可能需要管理你项目的方方面面，并让代码易于分享。接下来，我们要介绍一个叫做 Cargo 的工具，它会帮助你编写真实世界中的 Rust 程序。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p001.html">← 安装</a><a href="index.html">目录</a><a href="p003.html">Hello, Cargo! →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

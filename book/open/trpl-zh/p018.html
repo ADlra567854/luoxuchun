@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>包和 Crate · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：包和 Crate。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p018.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html" class="on">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 18 / 86 节
+    </div>
+    <h1>包和 Crate</h1>
+    <h2 id="包和-crate"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/79b9d15410a7b15a65cb86bcb40cbea99198a9e4/src/ch07-01-packages-and-crates.md">ch07-01-packages-and-crates.md</a></p>
+<p>模块系统的第一部分，我们将介绍包和 crate。</p>
+<p>crate 是 Rust 编译器每次处理的最小代码单位。即使你用 <code>rustc</code> 而不是 <code>cargo</code> 来编译单个源代码文件（正如我们在第一章的 <a href="#rust-程序基础">“Rust 程序基础”</a> 中做的那样），编译器也会把那个文件视为一个 crate。crate 可以包含模块，而这些模块也可以定义在其他文件中，并与该 crate 一起编译；我们会在接下来的小节中看到这一点。</p>
+<p>crate 有两种形式：二进制 crate 和库 crate。<strong>二进制 crate</strong>（<em>Binary crates</em>）可以被编译为可执行程序，比如命令行程序或者服务端。它们必须有一个名为 <code>main</code> 函数来定义当程序被执行的时候所需要做的事情。目前我们所创建的 crate 都是二进制 crate。</p>
+<p><strong>库 crate</strong>（<em>Library crates</em>）并没有 <code>main</code> 函数，它们也不会编译为可执行程序。相反它们定义了可供多个项目复用的功能模块。比如 <a href="#生成一个随机数">第二章</a> 的 <code>rand</code> crate 就提供了生成随机数的功能。大多数时间 <code>Rustaceans</code> 说的 “crate” 指的都是库 crate，这与其他编程语言中 “library” 概念一致。</p>
+<p><em>crate root</em> 是一个源文件，Rust 编译器以它为起始点，并构成你的 crate 的根模块（我们将在 <a href="#定义模块来控制作用域与私有性-1">“定义模块来控制作用域与私有性”</a> 一节深入解读）。</p>
+<p><em>包</em>（<em>package</em>）是提供一系列功能的一个或者多个 crate 的捆绑。一个包会包含一个 <em>Cargo.toml</em> 文件，阐述如何去构建这些 crate。Cargo 实际上就是一个包，它包含了用于构建你代码的命令行工具的二进制 crate。其他项目也依赖 Cargo 库来实现与 Cargo 命令行程序一样的逻辑。</p>
+<p>包中可以包含至多一个库 crate(library crate)。包中可以包含任意多个二进制 crate(binary crate)，但是必须至少包含一个 crate（无论是库的还是二进制的）。</p>
+<p>让我们来看看创建包的时候会发生什么。首先，我们输入命令 <code>cargo new my-project</code>：</p>
+<pre><code class="language-console">$ cargo new my-project
+     Created binary (application) `my-project` package
+$ ls my-project
+Cargo.toml
+src
+$ ls my-project/src
+main.rs
+</code></pre>
+<p>运行了这条命令后，我们先用 <code>ls</code> （译者注：此命令为 Linux 平台的指令，Windows 下可用 dir）来看看 Cargo 给我们创建了什么，Cargo 会给我们的包创建一个 <em>Cargo.toml</em> 文件。查看 <em>Cargo.toml</em> 的内容，会发现并没有提到 <em>src/main.rs</em>，因为 Cargo 遵循的一个约定：<em>src/main.rs</em> 就是一个与包同名的二进制 crate 的 crate 根。同样的，Cargo 知道如果包目录中包含 <em>src/lib.rs</em>，则包带有与其同名的库 crate，且 <em>src/lib.rs</em> 是 crate 根。crate 根文件将由 Cargo 传递给 <code>rustc</code> 来实际构建库或者二进制项目。</p>
+<p>在此，我们有了一个只包含 <em>src/main.rs</em> 的包，意味着它只含有一个名为 <code>my-project</code> 的二进制 crate。如果一个包同时含有 <em>src/main.rs</em> 和 <em>src/lib.rs</em>，则它有两个 crate：一个二进制的和一个库的，且名字都与包相同。通过将文件放在 <em>src/bin</em> 目录下，一个包可以拥有多个二进制 crate：每个 <em>src/bin</em> 下的文件都会被编译成一个独立的二进制 crate。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p017.html">← if let 和 let else 简洁控制流</a><a href="index.html">目录</a><a href="p019.html">定义模块来控制作用域与私有性 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

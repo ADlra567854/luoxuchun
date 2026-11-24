@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4.5 服务器上的 Git · Git 守护进程 · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：4.5 服务器上的 Git - Git 守护进程。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p028.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html" class="on">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html">10.5 Git 内部原理 - 引用规范</a><a href="p072.html">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 28 / 100 节
+    </div>
+    <h1>4.5 服务器上的 Git - Git 守护进程</h1>
+            <div>
+              <h2 id="_git_守护进程">Git 守护进程</h2>
+<div class="paragraph">
+<p>
+接下来我们将通过 “Git” 协议建立一个基于守护进程的仓库。
+对于快速且无需授权的 Git 数据访问，这是一个理想之选。
+请注意，因为其不包含授权服务，任何通过该协议管理的内容将在其网络上公开。</p>
+</div>
+<div class="paragraph">
+<p>如果运行在防火墙之外的服务器上，它应该只对那些公开的只读项目服务。
+如果运行在防火墙之内的服务器上，它可用于支撑大量参与人员或自动系统
+（用于持续集成或编译的主机）只读访问的项目，这样可以省去逐一配置 SSH 公钥的麻烦。</p>
+</div>
+<div class="paragraph">
+<p>无论何时，该 Git 协议都是相对容易设定的。
+通常，你只需要以守护进程的形式运行该命令：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git daemon --reuseaddr --base-path=/srv/git/ /srv/git/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>--reuseaddr</code> 选项允许服务器在无需等待旧连接超时的情况下重启，而
+<code>--base-path</code> 选项允许用户在未完全指定路径的条件下克隆项目，
+结尾的路径将告诉 Git 守护进程从何处寻找仓库来导出。
+如果有防火墙正在运行，你需要开放端口 9418 的通信权限。</p>
+</div>
+<div class="paragraph">
+<p>你可以通过许多方式将该进程以守护进程的方式运行，这主要取决于你所使用的操作系统。</p>
+</div>
+<div class="paragraph">
+<p>由于在现代的 Linux 发行版中，<code>systemd</code> 是最常见的初始化系统，因此你可以用它来达到此目的。
+只要在 <code>/etc/systemd/system/git-daemon.service</code> 中放一个文件即可，其内容如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">[Unit]
+Description=Start Git Daemon
+
+[Service]
+ExecStart=/usr/bin/git daemon --reuseaddr --base-path=/srv/git/ /srv/git/
+
+Restart=always
+RestartSec=500ms
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=git-daemon
+
+User=git
+Group=git
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你可能会注意这里以 <code>git</code> 启动的 Git 驻留程序同时使用了 Group 和 User 权限。
+按需修改它并确保提供的用户在此系统上。此外，请确保 Git 二进制文件位于
+<code>/usr/bin/git</code>，必要时可修改此路径。</p>
+</div>
+<div class="paragraph">
+<p>最后，你需要运行 <code>systemctl enable git-daemon</code> 以让它在系统启动时自动运行，
+这样也能让它通过 <code>systemctl start git-daemon</code> 启动，通过 <code>systemctl stop git-daemon</code> 停止。</p>
+</div>
+<div class="paragraph">
+<p>在其他系统中，你可以使用 <code>sysvinit</code> 系统中的 <code>xinetd</code> 脚本，或者另外的方式来实现——只要你能够将其命令守护进程化并实现监控。</p>
+</div>
+<div class="paragraph">
+<p>接下来，你需要告诉 Git 哪些仓库允许基于服务器的无授权访问。
+你可以在每个仓库下创建一个名为 <code>git-daemon-export-ok</code> 的文件来实现。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd /path/to/project.git
+$ touch git-daemon-export-ok</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>该文件将允许 Git 提供无需授权的项目访问服务。</p>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8">prev</a> | <a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-Smart-HTTP">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p027.html">← 4.4 服务器上的 Git - 配置服务器</a><a href="index.html">目录</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

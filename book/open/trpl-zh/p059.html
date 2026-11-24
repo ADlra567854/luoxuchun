@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>使用 Sync 与 Send Traits 的可扩展并发 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：使用 Sync 与 Send Traits 的可扩展并发。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p059.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html" class="on">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 59 / 86 节
+    </div>
+    <h1>使用 Sync 与 Send Traits 的可扩展并发</h1>
+    <h2 id="使用-send-和-sync-trait-的可扩展并发"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/9bd32402af8d3103302650895ec9d129ebfa47e1/src/ch16-04-extensible-concurrency-sync-and-send.md">ch16-04-extensible-concurrency-sync-and-send.md</a></p>
+<p>Rust 的并发模型中一个有趣的方面是：我们之前讨论的几乎所有内容，都属于标准库，而不是语言本身的内容。处理并发的方案并不受标准库或语言所限：我们可以编写自己的或使用他人编写的并发特性。</p>
+<p>然而，有一些关键的并发概念是内嵌于语言本身而非标准库的，其中就包括 <code>std::marker</code> 的 <code>Send</code> 和 <code>Sync</code> trait。</p>
+<h3 id="在线程间转移所有权"></h3>
+<p><code>Send</code> 标记 trait 表明实现了 <code>Send</code> 的类型值的所有权可以在线程间传送。几乎所有的 Rust 类型都是<code>Send</code> 的，不过有一些例外，包括 <code>Rc&lt;T&gt;</code>：这是不能实现 <code>Send</code> 的，因为如果克隆了 <code>Rc&lt;T&gt;</code> 的值并尝试将克隆的所有权转移到另一个线程，这两个线程都可能同时更新引用计数。为此，<code>Rc&lt;T&gt;</code> 被实现为用于单线程场景，这时不需要为拥有线程安全的引用计数而付出性能代价。</p>
+<p>因此，Rust 类型系统和 trait 约束确保永远也不会意外的将不安全的 <code>Rc&lt;T&gt;</code> 在线程间发送。当尝试在示例 16-14 中这么做的时候，会得到错误 <code>the trait Send is not implemented for Rc&lt;Mutex&lt;i32&gt;&gt;</code>。而使用实现了 <code>Send</code> 的 <code>Arc&lt;T&gt;</code> 时，代码就能成功编译。</p>
+<p>任何完全由 <code>Send</code> 的类型组成的类型也会自动被标记为 <code>Send</code>。几乎所有基本类型都是 <code>Send</code> 的，除了第二十章将会讨论的裸指针（raw pointer）。</p>
+<h3 id="多线程访问"></h3>
+<p><code>Sync</code> 标记 trait 表明一个实现了 <code>Sync</code> 的类型可以安全的在多个线程中拥有其值的引用。换一种方式来说，对于任意类型 <code>T</code>，如果 <code>&amp;T</code>（<code>T</code> 的不可变引用）实现了 <code>Send</code> 的话 <code>T</code> 就实现了 <code>Sync</code>，这意味着其引用就可以安全的发送到另一个线程。类似于 <code>Send</code> 的情况，基本类型都实现了 <code>Sync</code>，完全由实现了 <code>Sync</code> 的类型组成的类型也实现了 <code>Sync</code>。</p>
+<p>智能指针 <code>Rc&lt;T&gt;</code> 也没有实现 <code>Sync</code>，原因和它没有实现 <code>Send</code> 时一样。<code>RefCell&lt;T&gt;</code>（第十五章讨论过）和相关的 <code>Cell&lt;T&gt;</code> 系列类型也没有实现 <code>Sync</code>。<code>RefCell&lt;T&gt;</code> 在运行时进行的借用检查不是线程安全的。<code>Mutex&lt;T&gt;</code> 实现了 <code>Sync</code>，正如<a href="#给-mutext-共享访问">“给 <code>Mutex&lt;T&gt;</code> 共享访问”</a>中讲到的，它可以用来在多线程间共享访问。</p>
+<h3 id="手动实现-send-和-sync-是不安全的"></h3>
+<p>通常并不需要手动实现 <code>Send</code> 和 <code>Sync</code> trait，因为完全由实现了 <code>Send</code> 和 <code>Sync</code> 的类型组成的类型，也会自动实现 <code>Send</code> 和 <code>Sync</code>。因为它们是标记 trait，甚至都不需要实现任何方法。它们只是用来强制执行与并发有关的不变性。</p>
+<p>手动实现这些 trait 需要编写 unsafe Rust 代码。第二十章会讲到如何使用 unsafe Rust；目前更重要的是，要知道如果构建新的并发类型，而它又不是完全由实现了 <code>Send</code> 和 <code>Sync</code> 的部分组成，就需要认真思考，以维持其安全保证。<a href="https://doc.rust-lang.org/nomicon/index.html">“The Rustonomicon”</a> 中有更多关于这些保证以及如何维持它们的信息。</p>
+<h2 id="总结-15"></h2>
+<p>这不会是本书最后一个出现并发的章节：下一章我们会专注于异步编程，并且第二十一章的项目会在更现实的场景中使用这些概念，而不像本章中讨论的这些小例子。</p>
+<p>正如之前提到的，因为 Rust 本身很少有处理并发的部分内容，有很多的并发方案都由 crate 实现。它们比标准库要发展的更快；请在网上搜索当前最新的用于多线程场景的 crate。</p>
+<p>Rust 提供了用于消息传递的信道，和像 <code>Mutex&lt;T&gt;</code> 和 <code>Arc&lt;T&gt;</code> 这样可以安全的用于并发上下文的智能指针。类型系统和借用检查器会确保这些场景中的代码不会出现数据竞争和无效的引用。一旦代码可以编译了，我们就可以坚信这些代码可以正确地运行于多线程环境，而不会出现其他语言中经常出现的那些难以追踪的 bug。并发编程不再是什么可怕的概念：无所畏惧地并发起来吧！</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="异步编程基础asyncawaitfuture-与-stream"></h1>
+<p><a href="https://github.com/rust-lang/book/blob/0d5a0dd395aba1f82d7e5aaf6dbb59b2b843ad2c/src/ch17-00-async-await.md">ch17-00-async-await.md</a></p>
+<p>很多我们要求计算机执行的操作都需要一段时间才能完成。如果在等待这些长时间运行的过程结束时，我们还能做点别的事情，就再好不过了。现代计算机提供了两种同时处理多个操作的技术：并行和并发。然而，我们的程序逻辑通常是以近乎线性的方式编写的。我们希望能够描述程序应执行的操作，以及函数在哪些点可以暂停并让程序的其他部分转而运行，而不需要预先精确指定每段代码究竟该以什么顺序、用什么方式运行。<em>异步编程</em> 正是一种抽象，它让我们能够用“可能暂停的点”和“最终结果”来表达代码，而协调执行的细节则由它来替我们处理。</p>
+<p>本章以前一章通过线程实现并行和并发为基础，引入另一种编写代码的方式：Rust 的 futures、streams，以及 <code>async</code> 和 <code>await</code> 语法。它们让我们能够表达“操作可以是异步的”这一点；此外，还有由第三方 crate 提供的异步运行时，用来管理和协调这些异步操作的执行。</p>
+<p>来看一个例子。假设你正在导出一个家庭聚会的视频，这个操作可能要花上几分钟甚至几小时。视频导出会尽可能多地占用 CPU 和 GPU 资源。如果你只有一个 CPU 核，而操作系统又不会在导出完成前暂停这个任务，也就是说它会以<em>同步</em>方式执行导出，那么在这个任务运行期间你就什么别的都做不了。这会是相当糟糕的体验。幸运的是，你的操作系统可以，而且确实会，足够频繁地打断导出任务，让你同时完成其他工作。</p>
+<p>再假设你正在下载别人分享给你的视频。这个操作也可能耗时很长，但不会占用太多 CPU 时间。此时 CPU 主要是在等待网络数据到达。虽然数据一开始到达时你就可以开始读取，但全部数据到齐仍然可能需要一段时间。即便数据已经全部到达，如果视频文件很大，完整载入它也至少可能需要一两秒。听起来不算长，但对于每秒能执行数十亿次操作的现代处理器来说，这已经是很长的时间了。和前面的例子一样，操作系统也会在等待网络调用完成时悄悄打断程序，让 CPU 去处理其他工作。</p>
+<p>视频导出属于 <strong>CPU 密集型</strong>（<em>CPU-bound</em>）或 <strong>计算密集型</strong>（<em>compute-bound</em>）操作：它受限于 CPU 或 GPU 处理数据的速度，以及操作能分配到多少计算能力。视频下载则属于 <em>I/O-bound</em> 操作，因为它受限于计算机的 <em>输入输出</em>（<em>input and output</em>）速度；它的速度最多只能和网络传输数据的速度一样快。</p>
+<p>在上述两个例子中，操作系统的隐式中断提供了一种形式的并发。不过这种并发仅限于整个程序的级别：操作系统中断一个程序并让其它程序得以执行。在很多场景中，由于我们能比操作系统在更细粒度上理解我们的程序，因此我们可以观察到很多操作系统无法察觉的并发机会。</p>
+<p>例如，如果我们正在构建一个管理文件下载的工具，程序就应该能做到：启动一个下载任务不会让 UI 卡死，而且用户还能够同时启动多个下载任务。不过，许多操作系统中与网络交互的 API 都是 <em>blocking</em> 的；也就是说，在它们所处理的数据完全就绪之前，会阻止程序继续向前执行。</p>
+<blockquote>
+<p>注意：如果仔细想想，这其实也是<em>大多数</em>函数调用的工作方式。不过，<em>blocking</em> 这个术语通常保留给那些与文件、网络或计算机上其他资源交互的函数调用，因为正是在这些场景中，单个程序才会从 <em>non-blocking</em> 操作中明显受益。</p>
+</blockquote>
+<p>我们可以为每个文件单独创建一个线程来避免阻塞主线程。然而，这些线程所消耗的系统资源最终会成为问题。更理想的情况是：这些调用从一开始就不是阻塞的，并且我们只需定义程序想完成的一组任务，然后让运行时自行选择最佳的执行顺序和方式。</p>
+<p>这正是 Rust 的 <em>async</em>（<em>asynchronous</em> 的缩写）抽象所提供的能力。本章会介绍以下内容：</p>
+<ul>
+<li>如何使用 Rust 的 <code>async</code> 和 <code>await</code> 语法，并借助运行时执行异步函数</li>
+<li>如何用异步模型解决一些我们在第十六章中已经遇到过的挑战</li>
+<li>多线程和异步如何提供互补的解决方案，以及它们在许多场景下如何组合使用</li>
+</ul>
+<p>不过在看到 async 的实际工作方式之前，我们需要先稍微绕个远路，讨论一下并行（parallelism）和并发（concurrency）的区别。</p>
+<h2 id="并行与并发"></h2>
+<p>在上一章中，我们大致将并行和并发视为可以互换的概念。但现在我们需要更加精确地区分它们，因为它们的区别将在实际工作中显现出来。</p>
+<p>思考一下不同的团队分割方法来开发一个软件项目。我们可以分配给一个个人多个任务，也可以每个团队成员各自负责一个任务，或者可以采用这两种方法的组合。</p>
+<p>当一个人在任何一个任务都还没完成之前，就在多个不同任务之间切换工作，这就是 <em>并发</em>。一种实现并发的方式，很像你在电脑上同时 checkout 了两个不同项目；当你对其中一个项目感到厌倦，或是在上面卡住时，就切到另一个。你只有一个人，所以不可能在完全相同的时刻同时推进两个任务，但你可以通过在它们之间切换来多任务处理，一次推进一个任务。</p>
+<figure>
+<img src="https://kaisery.github.io/trpl-zh-cn/img/trpl17-01.svg" class="center" alt="并发工作流" />
+<figcaption>图 17-1：一个并发工作流，在任务 A 和任务 B 之间切换</figcaption>
+</figure>
+<p>当团队把一组任务拆开，让每个成员各自负责一个任务并单独推进时，这就是 <em>并行</em>。团队中的每个人都可以在完全相同的时间取得进展。</p>
+<figure>
+<img src="https://kaisery.github.io/trpl-zh-cn/img/trpl17-02.svg" class="center" alt="并行工作流" />
+<figcaption>图 17-2：一个并行流，其中任务 A 和任务 B 的工作同时独立进行</figcaption>
+</figure>
+<p>在这两种工作流中，你都可能需要在不同任务之间做协调。也许你原以为分配给某个人的任务和其他人的工作完全独立，但实际上它必须等另一个人先完成自己的任务。有些工作可以并行完成，但其中一些实际上是 <em>串行</em> 的：它们只能按顺序发生，一个接一个，如图 17-3 所示。</p>
+<figure>
+<img src="https://kaisery.github.io/trpl-zh-cn/img/trpl17-03.svg" class="center" alt="部分并行工作流" />
+<figcaption>图 17-3：一个部分并行的工作流，其中任务 A 和任务 B 的工作相互独立，直到任务 A3 阻塞在等待任务 B3 的结果</figcaption>
+</figure>
+<p>同样，你也可能意识到自己的一个任务依赖于另一个任务。那么你原本的并发工作也变成了串行。</p>
+<p>并行和并发之间也可能彼此交叉。如果你得知某位同事正在卡着，必须等你先完成某个任务，那你很可能会把全部精力都集中到那个任务上，好“解除阻塞”。这时你和同事就不能再并行工作了，而你自己也不能再并发地推进其他任务。</p>
+<p>同样的基础动态也作用于软件与硬件。在一个单核的机器上，CPU 一次只能执行一个操作，不过它仍然可以并发工作。借助像线程、进程和异步（async）等工具，计算机可以暂停一个活动，并在最终切换回第一个活动之前切换到其它活动。在一个有多个 CPU 核心的机器上，它也可以并行工作。一个核心可以做一件工作的同时另一个核心可以做一些完全不相关的工作，而且这些工作实际上是同时发生的。</p>
+<p>在 Rust 中运行 async 代码时，通常是在并发地执行。至于这种并发在底层是否也会利用并行，则取决于硬件、操作系统，以及所使用的异步运行时（稍后我们会进一步介绍异步运行时）。</p>
+<p>现在，让我们深入看看 Rust 中的异步编程究竟是如何工作的。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p058.html">← 共享状态并发</a><a href="index.html">目录</a><a href="p060.html">Futures 和 async 语法 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

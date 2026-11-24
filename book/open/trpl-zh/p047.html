@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cargo 工作空间 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：Cargo 工作空间。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p047.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html" class="on">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 47 / 86 节
+    </div>
+    <h1>Cargo 工作空间</h1>
+    <h2 id="cargo-工作空间"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/1500248d8f230566e4ec9f27fcbb8fe9e2898ab1/src/ch14-03-cargo-workspaces.md">ch14-03-cargo-workspaces.md</a></p>
+<p>第十二章中，我们构建了一个同时包含二进制 crate 和库 crate 的包。随着项目不断发展，你可能会发现库 crate 变得越来越大，并希望进一步将这个包拆分为多个库 crate。Cargo 提供了一项叫作<strong>工作空间</strong>（<em>workspace</em>）的功能，可以帮助管理多个彼此相关、并行开发的包。</p>
+<h3 id="创建工作空间"></h3>
+<p><strong>工作空间</strong>是一组共享同一个 <em>Cargo.lock</em> 和输出目录的包。让我们用工作空间创建一个项目，这里会使用简单代码，以便把注意力集中在工作空间的结构上。组织工作空间的方式有很多种，因此我们只展示一种常见方式。这个工作空间会包含一个二进制 crate 和两个库。二进制 crate 提供主要功能，并依赖这两个库。一个库提供 <code>add_one</code> 函数，另一个库提供 <code>add_two</code> 函数。这三个 crate 都属于同一个工作空间。我们先为工作空间创建一个新目录：</p>
+<pre><code class="language-console">$ mkdir add
+$ cd add
+</code></pre>
+<p>接下来，在 <em>add</em> 目录中创建 <em>Cargo.toml</em> 文件，用来配置整个工作空间。这个文件不会有 <code>[package]</code> 部分，而是会以 <code>[workspace]</code> 部分开头，这样我们就能向工作空间添加成员。我们还会把 <code>resolver</code> 的值设为 <code>"3"</code>，以便在工作空间中使用 Cargo 最新的依赖解析算法：</p>
+<p><span class="filename">文件名：Cargo.toml</span></p>
+<pre><code class="language-toml">[workspace]
+resolver = "3"
+</code></pre>
+<p>接下来，在 <em>add</em> 目录运行 <code>cargo new</code> 新建 <code>adder</code> 二进制 crate：</p>
+<pre><code class="language-console">$ cargo new adder
+     Created binary (application) `adder` package
+      Adding `adder` as member of workspace at `file:///projects/add`
+</code></pre>
+<p>在工作空间中运行 <code>cargo new</code> 时，新创建的包也会被自动加入工作空间 <em>Cargo.toml</em> 中 <code>[workspace]</code> 定义的 <code>members</code> 键，像这样：</p>
+<pre><code class="language-toml">[workspace]
+resolver = "3"
+members = ["adder"]
+</code></pre>
+<p>现在，我们可以运行 <code>cargo build</code> 来构建工作空间。你的 <em>add</em> 目录中的文件应如下所示：</p>
+<pre><code class="language-text">├── Cargo.lock
+├── Cargo.toml
+├── adder
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+└── target
+</code></pre>
+<p>工作空间在顶层只有一个 <em>target</em> 目录，用来存放编译产物；<code>adder</code> 包不会有自己的 <em>target</em> 目录。即使我们在 <em>adder</em> 目录中运行 <code>cargo build</code>，编译产物也仍会放到 <em>add/target</em>，而不是 <em>add/adder/target</em>。Cargo 之所以这样组织工作空间中的 <em>target</em> 目录，是因为工作空间中的 crate 本来就是要彼此依赖的。如果每个 crate 都有各自的 <em>target</em> 目录，那么每个 crate 都不得不重新编译工作空间中的其他 crate，才能把产物放进自己的 <em>target</em> 目录。共享一个 <em>target</em> 目录可以避免不必要的重复构建。</p>
+<h3 id="在工作空间中创建第二个包"></h3>
+<p>接下来，让我们在工作空间中创建另一个成员包，并将其命名为 <code>add_one</code>。生成一个名为 <code>add_one</code> 的库 crate：</p>
+<pre><code class="language-console">$ cargo new add_one --lib
+     Created library `add_one` package
+      Adding `add_one` as member of workspace at `file:///projects/add`
+</code></pre>
+<p>现在顶层的 <em>Cargo.toml</em> 的 <code>members</code> 列表将会包含 <em>add_one</em> 路径：</p>
+<p><span class="filename">文件名：Cargo.toml</span></p>
+<pre><code class="language-toml">[workspace]
+resolver = "3"
+members = ["adder", "add_one"]
+</code></pre>
+<p>现在 <em>add</em> 目录应该有如下目录和文件：</p>
+<pre><code class="language-text">├── Cargo.lock
+├── Cargo.toml
+├── add_one
+│   ├── Cargo.toml
+│   └── src
+│       └── lib.rs
+├── adder
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+└── target
+</code></pre>
+<p>在 <em>add_one/src/lib.rs</em> 文件中，增加一个 <code>add_one</code> 函数：</p>
+<p><span class="filename">文件名：add_one/src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">pub fn add_one(x: i32) -&gt; i32 {
+    x + 1
+}</code></pre>
+<p>现在，我们可以让二进制包 <code>adder</code> 依赖包含库的 <code>add_one</code> 包了。首先，需要在 <em>adder/Cargo.toml</em> 中把 <code>add_one</code> 添加为一个路径依赖：</p>
+<p><span class="filename">文件名：adder/Cargo.toml</span></p>
+<pre><code class="language-toml">[dependencies]
+add_one = { path = "../add_one" }
+</code></pre>
+<p>Cargo 并不会假定工作空间中的 crate 会彼此依赖，因此我们需要显式声明这些依赖关系。</p>
+<p>接下来，让我们在 <code>adder</code> crate 中使用 <code>add_one</code> crate 里的 <code>add_one</code> 函数。打开 <em>adder/src/main.rs</em> 文件，并将 <code>main</code> 函数改为调用 <code>add_one</code>，如示例 14-7 所示。</p>
+<p><span class="filename">文件名：adder/src/main.rs</span></p>
+<pre><code class="language-rust ignore">fn main() {
+    let num = 10;
+    println!("Hello, world! {num} plus one is {}!", add_one::add_one(num));
+}</code></pre>
+<p><span class="caption">示例 14-7：在 <code>adder</code> crate 中使用 <code>add_one</code> 库 crate</span></p>
+<p>在顶层 <em>add</em> 目录中运行 <code>cargo build</code> 来构建工作空间！</p>
+<pre><code class="language-console">$ cargo build
+   Compiling add_one v0.1.0 (file:///projects/add/add_one)
+   Compiling adder v0.1.0 (file:///projects/add/adder)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.22s
+</code></pre>
+<p>要从 <em>add</em> 目录运行这个二进制 crate，可以在 <code>cargo run</code> 时通过 <code>-p</code> 参数加上包名，指定要运行工作空间中的哪个包：</p>
+<pre><code class="language-console">$ cargo run -p adder
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s
+     Running `target/debug/adder`
+Hello, world! 10 plus one is 11!
+</code></pre>
+<p>这会运行 <em>adder/src/main.rs</em> 中的代码，其依赖 <code>add_one</code> crate。</p>
+<h4 id="依赖外部包"></h4>
+<p>注意，工作空间只在顶层有一个 <em>Cargo.lock</em> 文件，而不是让每个 crate 目录里都各自有一个 <em>Cargo.lock</em>。这能确保所有 crate 使用的都是同一个版本的依赖。如果我们把 <code>rand</code> 包同时加到 <em>adder/Cargo.toml</em> 和 <em>add_one/Cargo.toml</em> 中，Cargo 会把它们都解析为同一个 <code>rand</code> 版本，并把结果记录到唯一的 <em>Cargo.lock</em> 中。让工作空间中的所有 crate 使用相同依赖，意味着这些 crate 会始终彼此兼容。现在我们先把 <code>rand</code> crate 加到 <em>add_one/Cargo.toml</em> 的 <code>[dependencies]</code> 部分，以便能在 <code>add_one</code> crate 中使用它：</p>
+<p><span class="filename">文件名：add_one/Cargo.toml</span></p>
+<pre><code class="language-toml">[dependencies]
+rand = "0.10.1"
+</code></pre>
+<p>现在我们可以在 <em>add_one/src/lib.rs</em> 中加入 <code>use rand;</code>，然后在 <em>add</em> 目录中运行 <code>cargo build</code> 来构建整个工作空间，这会引入并编译 <code>rand</code> crate。我们会得到一条警告，因为我们并没有实际使用引入到作用域中的 <code>rand</code>：</p>
+<pre><code class="language-console">$ cargo build
+    Updating crates.io index
+  Downloaded rand v0.10.1
+   --snip--
+   Compiling rand v0.10.1
+   Compiling add_one v0.1.0 (file:///projects/add/add_one)
+warning: unused import: `rand`
+ --&gt; add_one/src/lib.rs:1:5
+  |
+1 | use rand;
+  |     ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `add_one` (lib) generated 1 warning (run `cargo fix --lib -p add_one` to apply 1 suggestion)
+   Compiling adder v0.1.0 (file:///projects/add/adder)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.95s
+</code></pre>
+<p>顶层的 <em>Cargo.lock</em> 现在已经包含了 <code>add_one</code> 依赖 <code>rand</code> 的信息。不过，即使 <code>rand</code> 在工作空间的某处被使用，我们也不能直接在工作空间里的其他 crate 中使用它，除非也把 <code>rand</code> 加到它们各自的 <em>Cargo.toml</em> 中。例如，如果我们在 <code>adder</code> 包的 <em>adder/src/main.rs</em> 中加入 <code>use rand;</code>，就会得到一个错误：</p>
+<pre><code class="language-console">$ cargo build
+  --snip--
+   Compiling adder v0.1.0 (file:///projects/add/adder)
+error[E0432]: unresolved import `rand`
+ --&gt; adder/src/main.rs:2:5
+  |
+2 | use rand;
+  |     ^^^^ no external crate `rand`
+</code></pre>
+<p>要修复这个错误，就编辑 <code>adder</code> 包的 <em>Cargo.toml</em> 文件，声明 <code>rand</code> 也是它的依赖。构建 <code>adder</code> 包时，会把 <code>rand</code> 加到 <em>Cargo.lock</em> 中 <code>adder</code> 的依赖列表里，但不会额外下载一份新的 <code>rand</code>。Cargo 会确保工作空间中每个使用 <code>rand</code> 的 crate 都使用同一个版本，只要它们声明的是彼此兼容的 <code>rand</code> 版本，这样既节省空间，也确保工作空间中的 crate 彼此兼容。</p>
+<p>如果工作空间中的 crate 为同一个依赖指定了彼此不兼容的版本，Cargo 仍然会分别解析它们，但会尽量把版本数量控制得尽可能少。</p>
+<h4 id="为工作空间增加测试"></h4>
+<p>作为另一个改进，让我们为 <code>add_one</code> crate 中的 <code>add_one::add_one</code> 函数增加一个测试：</p>
+<p><span class="filename">文件名：add_one/src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">pub fn add_one(x: i32) -&gt; i32 {
+    x + 1
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        assert_eq!(3, add_one(2));
+    }
+}</code></pre>
+<p>现在，在顶层 <em>add</em> 目录中运行 <code>cargo test</code>。在这种结构的工作空间里运行 <code>cargo test</code>，会执行工作空间中所有 crate 的测试：</p>
+<pre><code class="language-console">$ cargo test
+   Compiling add_one v0.1.0 (file:///projects/add/add_one)
+   Compiling adder v0.1.0 (file:///projects/add/adder)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.20s
+     Running unittests src/lib.rs (target/debug/deps/add_one-93c49ee75dc46543)
+
+running 1 test
+test tests::it_works ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/adder-3a47283c568d2b6a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests add_one
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+</code></pre>
+<p>输出的第一部分表明 <code>add_one</code> crate 中的 <code>it_works</code> 测试通过了。下一部分表明在 <code>adder</code> crate 中没有找到测试，最后一部分表明 <code>add_one</code> crate 中也没有文档测试。</p>
+<p>你也可以选择只运行工作空间中某个特定 crate 的测试，只需在根目录中使用 <code>-p</code> 参数并指定想要测试的 crate 名称：</p>
+<pre><code class="language-console">$ cargo test -p add_one
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/debug/deps/add_one-93c49ee75dc46543)
+
+running 1 test
+test tests::it_works ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests add_one
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+</code></pre>
+<p>输出表明，<code>cargo test</code> 只运行了 <code>add_one</code> crate 的测试，而没有运行 <code>adder</code> crate 的测试。</p>
+<p>如果你打算把工作空间中的 crate 发布到 <a href="https://crates.io/">crates.io</a> 上，那么工作空间中的每个 crate 都需要单独发布。和 <code>cargo test</code> 一样，你可以通过 <code>-p</code> 参数并指定要发布的 crate 名称，来发布工作空间中的某个特定 crate。</p>
+<p>现在，试着仿照 <code>add_one</code> crate 的方式，把 <code>add_two</code> crate 也加入工作空间，作为额外练习吧！</p>
+<p>随着项目规模增长，可以考虑使用工作空间：每个较小的组件都比一大块代码更容易理解。如果这些组件经常需要一起修改，那么把它们保留在同一个工作空间中，会更容易协调彼此的变更。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p046.html">← 将 crate 发布到 Crates.io</a><a href="index.html">目录</a><a href="p048.html">使用 cargo install 安装二进制文件 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

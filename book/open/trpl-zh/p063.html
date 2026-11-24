@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stream：按顺序出现的 Future · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：Stream：按顺序出现的 Future。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p063.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html" class="on">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 63 / 86 节
+    </div>
+    <h1>Stream：按顺序出现的 Future</h1>
+    <h2 id="stream按顺序出现的-future"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/2c56b53dfb99d0c3eca23b36e37fb0638eb57dbe/src/ch17-04-streams.md">ch17-04-streams.md</a></p>
+<p>回忆一下本章前面在<a href="#通过消息传递在两个任务之间发送数据">“通过消息传递在两个任务之间发送数据”</a><!-- ignore -->一节中，我们是如何使用异步信道的接收端的。异步版的 <code>recv</code> 方法会随着时间推移产出一系列条目。这正是一种更普遍模式的实例，通常称为 <em>流</em>（<em>stream</em>）。很多概念都很自然地适合表示成 stream：队列中逐步变得可用的项、当完整数据集太大而无法一次装入内存时从文件系统中逐块拉取的数据、或者随着时间逐渐从网络到达的数据。由于 stream 本身也和 future 密切相关，我们可以把它和其他类型的 future 一起使用，并以有趣的方式进行组合。比如，我们可以把事件分批处理，以避免触发过多网络调用；可以为一串长时间运行的操作设置超时；也可以对 UI 事件进行节流，避免做无谓的工作。</p>
+<p>我们在第十三章<a href="#iterator-trait-和-next-方法">“Iterator trait 和 <code>next</code> 方法”</a><!-- ignore -->一节中已经见过“按顺序产生一系列项”这回事，但迭代器和异步信道接收端之间有两个区别。第一个区别是时间：迭代器是同步的，而信道接收端是异步的。第二个区别是 API。直接处理 <code>Iterator</code> 时，我们会调用同步的 <code>next</code> 方法；而对于 <code>trpl::Receiver</code> 这个具体的 stream 来说，我们调用的是异步的 <code>recv</code> 方法。除此之外，这些 API 给人的感觉非常相似，而这种相似并非巧合。stream 就像迭代的一种异步形式。不过，<code>trpl::Receiver</code> 专门用于等待接收消息，而更通用的 stream API 则宽泛得多：它像 <code>Iterator</code> 一样提供“下一个条目”，只不过是以异步方式来做。</p>
+<p>Rust 中迭代器和 stream 的这种相似性意味着，我们实际上可以从任意迭代器创建一个 stream。和使用迭代器一样，我们也可以通过调用 stream 的 <code>next</code> 方法，再等待其输出，来处理它，如示例 17-21 所示。不过这段代码暂时还编译不过。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let iter = values.iter().map(|n| n * 2);
+        let mut stream = trpl::stream_from_iter(iter);
+
+        while let Some(value) = stream.next().await {
+            println!("The value was: {value}");
+        }
+<span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-21：从迭代器创建一个 stream，并打印出其中的值</figcaption>
+</figure>
+<p>我们从一个数字数组开始，把它转换为迭代器，然后调用 <code>map</code> 把其中所有值都翻倍。接着再使用 <code>trpl::stream_from_iter</code> 函数，把这个迭代器转换成一个 stream。最后，我们用 <code>while let</code> 循环，在 stream 中的值陆续到达时逐个处理它们。</p>
+<p>遗憾的是，当我们尝试运行这段代码时，编译器并不会通过，而是报告说没有可用的 <code>next</code> 方法：</p>
+<!-- manual-regeneration
+cd listings/ch17-async-await/listing-17-21
+cargo build
+copy only the error output
+-->
+<pre><code class="language-text">error[E0599]: no method named `next` found for struct `tokio_stream::iter::Iter` in the current scope
+  --&gt; src/main.rs:10:40
+   |
+10 |         while let Some(value) = stream.next().await {
+   |                                        ^^^^
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: the following traits which provide `next` are implemented but not in scope; perhaps you want to import one of them
+   |
+1  + use crate::trpl::StreamExt;
+   |
+1  + use futures_util::stream::stream::StreamExt;
+   |
+1  + use std::iter::Iterator;
+   |
+1  + use std::str::pattern::Searcher;
+   |
+help: there is a method `try_next` with a similar name
+   |
+10 |         while let Some(value) = stream.try_next().await {
+   |                                        ~~~~~~~~
+</code></pre>
+<p>正如这段输出解释的那样，编译错误的原因是：我们需要把正确的 trait 放进作用域，才能使用 <code>next</code> 方法。根据前面的讨论，你很可能会合理地猜测这个 trait 应该是 <code>Stream</code>，但实际上它是 <code>StreamExt</code>。这里的 <code>Ext</code> 是 <em>extension</em> 的缩写；在 Rust 社区里，用一个 trait 去扩展另一个 trait，是非常常见的模式。</p>
+<p><code>Stream</code> trait 定义的是一个底层接口，它实际上把 <code>Iterator</code> 和 <code>Future</code> trait 的特征结合在了一起。<code>StreamExt</code> 则在 <code>Stream</code> 之上提供了一组更高层的 API，其中包括 <code>next</code> 方法，以及其他一些和 <code>Iterator</code> trait 提供的工具方法相似的辅助方法。<code>Stream</code> 和 <code>StreamExt</code> 目前都还不是 Rust 标准库的一部分，不过生态系统中的大多数 crate 都使用相似的定义。</p>
+<p>修复这个编译错误的方式，就是像示例 17-22 那样，添加一条 <code>use trpl::StreamExt</code> 语句。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span>use trpl::StreamExt;
+
+fn main() {
+    trpl::block_on(async {
+        let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        // --snip--
+<span class="boring">        let iter = values.iter().map(|n| n * 2);
+</span><span class="boring">        let mut stream = trpl::stream_from_iter(iter);
+</span><span class="boring">
+</span><span class="boring">        while let Some(value) = stream.next().await {
+</span><span class="boring">            println!("The value was: {value}");
+</span><span class="boring">        }
+</span><span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-22：成功把迭代器作为 stream 的基础来使用</figcaption>
+</figure>
+<p>把这些部分拼起来之后，这段代码就会按我们想要的方式工作！更重要的是，既然我们已经把 <code>StreamExt</code> 引入作用域，就也能像使用迭代器时那样，使用它提供的整套工具方法。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p062.html">← 使用任意数量的 futures</a><a href="index.html">目录</a><a href="p064.html">深入理解 async 相关的 traits →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

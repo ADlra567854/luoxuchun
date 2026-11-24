@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>变量与可变性 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：变量与可变性。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p004.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html" class="on">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 4 / 86 节
+    </div>
+    <h1>变量与可变性</h1>
+    <h2 id="变量和可变性"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/9cc190796f28505c7a9a9cacea42f50d895ff3bd/src/ch03-01-variables-and-mutability.md">ch03-01-variables-and-mutability.md</a></p>
+<p>正如第二章中<a href="#使用变量储存值">“使用变量储存值”</a> 一节提到的那样，变量默认是不可变的（immutable）。这是 Rust 给你的众多提醒之一，促使你以能充分利用 Rust 所提供的安全性和易于并发的方式来编写代码。不过，你仍然可以把变量设为可变。让我们来探讨 Rust 为何以及如何鼓励你偏向使用不可变性，以及为什么有时你会想要选择不这么做。</p>
+<p>当变量不可变时，一旦值被绑定一个名称上，你就不能改变这个值。为了对此进行说明，使用 <code>cargo new variables</code> 命令在 <em>projects</em> 目录生成一个叫做 <em>variables</em> 的新项目。</p>
+<p>接着，在新建的 <em>variables</em> 目录中，打开 <em>src/main.rs</em> 并将其中的代码替换为下面这段代码。它现在还不能编译：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">fn main() {
+    let x = 5;
+    println!("The value of x is: {x}");
+    x = 6;
+    println!("The value of x is: {x}");
+}</code></pre>
+<p>保存并使用 <code>cargo run</code> 运行程序。应该会看到一条与不可变性有关的错误信息，如下输出所示：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling variables v0.1.0 (file:///projects/variables)
+error[E0384]: cannot assign twice to immutable variable `x`
+ --&gt; src/main.rs:4:5
+  |
+2 |     let x = 5;
+  |         - first assignment to `x`
+3 |     println!("The value of x is: {x}");
+4 |     x = 6;
+  |     ^^^^^ cannot assign twice to immutable variable
+  |
+help: consider making this binding mutable
+  |
+2 |     let mut x = 5;
+  |         +++
+
+For more information about this error, try `rustc --explain E0384`.
+error: could not compile `variables` (bin "variables") due to 1 previous error
+</code></pre>
+<p>这个例子展示了编译器如何帮助你发现程序中的错误。编译错误可能令人沮丧，但它们其实只意味着你的程序还没有以安全的方式完成你希望它完成的工作；这<strong>并不</strong>意味着你不是一个好程序员！经验丰富的 Rustaceans 也一样会遇到编译错误。</p>
+<p>你收到的错误信息 <code>cannot assign twice to immutable variable `x` </code>，是因为你试图给不可变变量 <code>x</code> 赋第二个值。</p>
+<p>当我们尝试修改一个被指定为不可变的值时，能够得到编译时错误是很重要的，因为这种情况可能会导致 bug。如果代码的一部分假设某个值永远不会改变，而另一部分代码却改变了这个值，那么前一部分代码就可能无法按设计那样运行。事后要追踪这类 bug 的根源会非常困难，尤其是当第二段代码只是<strong>有时</strong>才会修改这个值的时候。</p>
+<p>Rust 编译器保证，如果声明一个值不会变，它就真的不会变，所以你不必自己跟踪它。这意味着你的代码更易于推导。</p>
+<p>不过，可变性也非常有用，能让代码写起来更方便。尽管变量默认是不可变的，你仍然可以像<a href="#使用变量储存值">第二章</a>中那样，在变量名前加上 <code>mut</code> 使其变为可变。添加 <code>mut</code> 也能向未来阅读代码的人传达一种意图：这个变量的值将会被代码的其他部分改变。</p>
+<p>例如，让我们将 <em>src/main.rs</em> 修改为如下代码：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let mut x = 5;
+    println!("The value of x is: {x}");
+    x = 6;
+    println!("The value of x is: {x}");
+}</code></pre>
+<p>现在运行这个程序，会出现如下内容：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling variables v0.1.0 (file:///projects/variables)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.30s
+     Running `target/debug/variables`
+The value of x is: 5
+The value of x is: 6
+</code></pre>
+<p>使用 <code>mut</code> 后，我们就可以把绑定到 <code>x</code> 的值从 <code>5</code> 改成 <code>6</code>。归根结底，是否使用可变性由你自己决定，这取决于在特定场景下你觉得怎样会让代码更清晰。</p>
+<p><a id="constants"></a></p>
+<h3 id="常量"></h3>
+<p>和不可变变量类似，<em>常量（constants）</em> 也是绑定到某个名称且不允许改变的值，不过常量和变量之间还是有一些区别。</p>
+<p>首先，你不能对常量使用 <code>mut</code>。常量不只是默认不可变，它们永远都是不可变的。声明常量时要用 <code>const</code> 关键字，而不是 <code>let</code>，并且 <em>必须</em> 标注值的类型。在下一节<a href="#数据类型">“数据类型”</a>中，我们会介绍类型和类型注解，所以现在先不用担心细节；你只要记住：声明常量时必须总是标注类型。</p>
+<p>常量可以在任何作用域中声明，包括全局作用域，这在一个值需要被很多部分的代码用到时很有用。</p>
+<p>最后一个区别是，常量只能被设置为常量表达式，而不能是那些只能在运行时计算出来的值。</p>
+<p>下面是一个声明常量的例子：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+<span class="boring">}</span></code></pre>
+<p>这个常量的名字是 <code>THREE_HOURS_IN_SECONDS</code>，它的值通过 60（一分钟中的秒数）乘以 60（一小时中的分钟数）再乘以 3（我们这个程序中要计算的小时数）得出。Rust 对常量的命名约定是全部大写，并用下划线分隔单词。编译器可以在编译时对一组有限的操作进行求值，因此我们可以选择用更易于理解和验证的方式来写出这个值，而不是将此常量设置为值 10,800。关于声明常量时可以使用哪些操作的更多信息，请参阅 <a href="https://doc.rust-lang.org/reference/const_eval.html">Rust Reference 中关于常量求值的部分</a>。</p>
+<p>在其声明所在的作用域内，常量在程序运行的整个过程中都有效。这一特性使常量非常适合作为应用领域中的全局值，比如游戏中所有玩家能够获得的最高分，或者光速这样的值。</p>
+<p>把散落在应用程序中的硬编码值提取为常量，有助于让以后维护代码的人理解这个值的含义。如果未来需要更新这个硬编码值，也只需要修改一个地方。</p>
+<h3 id="遮蔽"></h3>
+<p>正如我们在<a href="#比较猜测的数字和秘密数字">第二章</a>的猜数字游戏中看到的，我们可以定义一个与之前变量同名的新变量。Rustaceans 把这种情况称为第一个变量被第二个变量 <strong>遮蔽（shadowed）</strong> 了。这意味着，当你使用这个变量名时，编译器看到的是第二个变量。实际上，第二个变量会遮住第一个变量，使得后续所有对该名称的使用都指向第二个变量，直到它自己又被遮蔽，或者它的作用域结束。我们可以通过重复使用同一个变量名并再次写出 <code>let</code> 关键字来遮蔽一个变量，如下所示：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let x = 5;
+
+    let x = x + 1;
+
+    {
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {x}");
+    }
+
+    println!("The value of x is: {x}");
+}</code></pre>
+<p>这个程序首先把 <code>x</code> 绑定到值 <code>5</code>。接着，它再次写出 <code>let x =</code>，创建了一个新的变量 <code>x</code>，取原来的值并加上 <code>1</code>，于是 <code>x</code> 的值变成了 <code>6</code>。然后，在由花括号创建的内部作用域中，第三个 <code>let</code> 语句再次遮蔽了 <code>x</code>，并创建了一个新变量，把之前的值乘以 <code>2</code>，因此 <code>x</code> 的值变成了 <code>12</code>。当这个作用域结束时，内部的遮蔽也随之结束，<code>x</code> 又回到 <code>6</code>。运行这个程序时，会得到如下输出：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling variables v0.1.0 (file:///projects/variables)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.31s
+     Running `target/debug/variables`
+The value of x in the inner scope is: 12
+The value of x is: 6
+</code></pre>
+<p>遮蔽和把变量标记为 <code>mut</code> 是不同的。如果你不小心尝试在没有使用 <code>let</code> 关键字的情况下重新给变量赋值，就会得到编译时错误。而通过再次使用 <code>let</code>，我们可以对这个值做一些变换，同时又能让变量在变换完成后继续保持不可变。</p>
+<p><code>mut</code> 和遮蔽之间的另一个区别是：当我们再次使用 <code>let</code> 时，实际上是在创建一个新变量，因此我们可以改变值的类型，同时继续复用相同的名字。例如，假设程序要求用户输入若干空格，以表示他们希望在某段文本之间显示多少空格，随后我们想把这个输入保存成一个数字：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let spaces = "   ";
+    let spaces = spaces.len();
+<span class="boring">}</span></code></pre>
+<p>第一个 <code>spaces</code> 变量是字符串类型，而第二个 <code>spaces</code> 变量是数字类型。遮蔽让我们不必想出不同的名字，比如 <code>spaces_str</code> 和 <code>spaces_num</code>；相反，我们可以继续复用更简单的 <code>spaces</code>。不过，如果像下面这样尝试使用 <code>mut</code>，就会得到一个编译时错误：</p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
+</span>    let mut spaces = "   ";
+    spaces = spaces.len();
+<span class="boring">}</span></code></pre>
+<p>这个错误说明，我们不能修改变量的类型：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling variables v0.1.0 (file:///projects/variables)
+error[E0308]: mismatched types
+ --&gt; src/main.rs:3:14
+  |
+2 |     let mut spaces = "   ";
+  |                      ----- expected due to this value
+3 |     spaces = spaces.len();
+  |              ^^^^^^^^^^^^ expected `&amp;str`, found `usize`
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `variables` (bin "variables") due to 1 previous error
+</code></pre>
+<p>现在我们已经了解了变量如何工作，让我们看看变量可以拥有的更多数据类型。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p003.html">← Hello, Cargo!</a><a href="index.html">目录</a><a href="p005.html">数据类型 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

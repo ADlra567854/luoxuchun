@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>使用线程同时地运行代码 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：使用线程同时地运行代码。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p056.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html" class="on">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 56 / 86 节
+    </div>
+    <h1>使用线程同时地运行代码</h1>
+    <h2 id="使用线程同时运行代码"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/9bd32402af8d3103302650895ec9d129ebfa47e1/src/ch16-01-threads.md">ch16-01-threads.md</a></p>
+<p>在大多数当前的操作系统中，一个运行中的程序代码会在一个<strong>进程</strong>（<em>process</em>）中执行，而操作系统会同时管理多个进程。在一个程序内部，也可以存在彼此独立、同时运行的多个部分。运行这些独立部分的功能被称为<strong>线程</strong>（<em>threads</em>）。例如，一个 web 服务器可以拥有多个线程，以便同时响应多个请求。</p>
+<p>将程序中的计算拆分进多个线程可以改善性能，因为程序可以同时进行多个任务，不过这也会增加复杂性。因为线程是同时运行的，所以无法预先保证不同线程中的代码的执行顺序。这会导致诸如此类的问题：</p>
+<ul>
+<li>竞态条件（Race conditions），多个线程以不一致的顺序访问数据或资源</li>
+<li>死锁（Deadlocks），两个线程相互等待对方，这会阻止两者继续运行</li>
+<li>只会发生在特定情况且难以稳定重现和修复的 bug</li>
+</ul>
+<p>Rust 尝试减轻使用线程的负面影响。不过在多线程上下文中编程仍需格外小心，同时其所要求的代码结构也不同于运行于单线程的程序。</p>
+<p>编程语言实现线程的方式各不相同，许多操作系统都提供了可供编程语言调用、用来创建新线程的 API。Rust 标准库使用的是线程实现的 <em>1:1</em> 模型，也就是程序中的每一个语言级线程都对应一个操作系统线程。也有一些 crate 实现了其他线程模型，它们相对于 1:1 模型有着不同的取舍。（我们将在下一章看到的 Rust async 系统，也提供了另一种并发方式。）</p>
+<h3 id="使用-spawn-创建新线程"></h3>
+<p>为了创建一个新线程，需要调用 <code>thread::spawn</code> 函数并传递一个闭包（第十三章学习了闭包），并在其中包含希望在新线程运行的代码。示例 16-1 中的例子在主线程打印了一些文本而另一些文本则由新线程打印：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    thread::spawn(|| {
+        for i in 1..10 {
+            println!("hi number {i} from the spawned thread!");
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    for i in 1..5 {
+        println!("hi number {i} from the main thread!");
+        thread::sleep(Duration::from_millis(1));
+    }
+}</code></pre>
+<p><span class="caption">示例 16-1: 创建一个打印某些内容的新线程同时主线程打印其它内容</span></p>
+<p>注意当 Rust 程序的主线程结束时，所有新线程也会结束，而不管其是否执行完毕。这个程序的输出可能每次都略有不同，不过它大体上看起来像这样：</p>
+<pre><code class="language-text">hi number 1 from the main thread!
+hi number 1 from the spawned thread!
+hi number 2 from the main thread!
+hi number 2 from the spawned thread!
+hi number 3 from the main thread!
+hi number 3 from the spawned thread!
+hi number 4 from the main thread!
+hi number 4 from the spawned thread!
+hi number 5 from the spawned thread!
+</code></pre>
+<p><code>thread::sleep</code> 调用强制线程停止执行一小段时间，这会允许其他不同的线程运行。这些线程可能会轮流运行，不过并不保证如此：这依赖操作系统如何调度线程。在这里，主线程首先打印，即便新创建线程的打印语句位于程序的开头，甚至即便我们告诉新建的线程打印直到 <code>i</code> 等于 9，它在主线程结束之前也只打印到了 5。</p>
+<p>如果运行代码只看到了主线程的输出，或没有出现重叠打印的现象，尝试增大区间 (变量 <code>i</code> 的范围) 来增加操作系统切换线程的机会。</p>
+<h3 id="等待所有线程结束"></h3>
+<p>由于主线程结束，示例 16-1 中的代码大部分时候不光会提早结束新建线程，因为无法保证线程运行的顺序，我们甚至不能实际保证新建线程会被执行！</p>
+<p>可以通过将 <code>thread::spawn</code> 的返回值储存在变量中来修复新建线程部分没有执行或者完全没有执行的问题。<code>thread::spawn</code> 的返回值类型是 <code>JoinHandle&lt;T&gt;</code>。<code>JoinHandle&lt;T&gt;</code> 是一个拥有所有权的值，当对其调用 <code>join</code> 方法时，它会等待其线程结束。示例 16-2 展示了如何使用示例 16-1 中创建的线程的 <code>JoinHandle&lt;T&gt;</code> 并调用 <code>join</code> 来确保新建线程在 <code>main</code> 退出前结束运行。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!("hi number {i} from the spawned thread!");
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    for i in 1..5 {
+        println!("hi number {i} from the main thread!");
+        thread::sleep(Duration::from_millis(1));
+    }
+
+    handle.join().unwrap();
+}</code></pre>
+<p><span class="caption">示例 16-2: 从 <code>thread::spawn</code> 保存一个 <code>JoinHandle&lt;T&gt;</code> 以确保该线程能够运行至结束</span></p>
+<p>对句柄调用 <code>join</code> 会阻塞当前正在运行的线程，直到该句柄所代表的线程结束。<strong>阻塞</strong>（<em>blocking</em>）一个线程，意味着这个线程会被阻止继续工作或退出。因为我们把 <code>join</code> 调用放在主线程的 <code>for</code> 循环之后，运行示例 16-2 时应该会得到类似如下的输出：</p>
+<pre><code class="language-text">hi number 1 from the main thread!
+hi number 2 from the main thread!
+hi number 1 from the spawned thread!
+hi number 3 from the main thread!
+hi number 2 from the spawned thread!
+hi number 4 from the main thread!
+hi number 3 from the spawned thread!
+hi number 4 from the spawned thread!
+hi number 5 from the spawned thread!
+hi number 6 from the spawned thread!
+hi number 7 from the spawned thread!
+hi number 8 from the spawned thread!
+hi number 9 from the spawned thread!
+</code></pre>
+<p>这两个线程仍然会交替执行，不过主线程会由于 <code>handle.join()</code> 调用而不会结束直到新建线程执行完毕。</p>
+<p>不过让我们看看将 <code>handle.join()</code> 移动到 <code>main</code> 中 <code>for</code> 循环之前会发生什么，如下：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!("hi number {i} from the spawned thread!");
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    handle.join().unwrap();
+
+    for i in 1..5 {
+        println!("hi number {i} from the main thread!");
+        thread::sleep(Duration::from_millis(1));
+    }
+}</code></pre>
+<p>主线程会等待直到新建线程执行完毕之后才开始执行 <code>for</code> 循环，所以输出将不会交替出现，如下所示：</p>
+<pre><code class="language-text">hi number 1 from the spawned thread!
+hi number 2 from the spawned thread!
+hi number 3 from the spawned thread!
+hi number 4 from the spawned thread!
+hi number 5 from the spawned thread!
+hi number 6 from the spawned thread!
+hi number 7 from the spawned thread!
+hi number 8 from the spawned thread!
+hi number 9 from the spawned thread!
+hi number 1 from the main thread!
+hi number 2 from the main thread!
+hi number 3 from the main thread!
+hi number 4 from the main thread!
+</code></pre>
+<p>诸如将 <code>join</code> 放置于何处这样的小细节，会影响线程是否同时运行。</p>
+<h3 id="将-move-闭包与线程一同使用"></h3>
+<p><code>move</code> 关键字经常用于传递给 <code>thread::spawn</code> 的闭包，因为闭包会获取从环境中取得的值的所有权，因此会将这些值的所有权从一个线程传送到另一个线程。在第十三章<a href="#捕获环境">“捕获环境”</a>部分讨论了闭包上下文中的 <code>move</code>。现在我们会更专注于 <code>move</code> 和 <code>thread::spawn</code> 之间的交互。</p>
+<p>注意示例 16-1 中传递给 <code>thread::spawn</code> 的闭包并没有任何参数：并没有在新建线程代码中使用任何主线程的数据。为了在新建线程中使用来自于主线程的数据，需要新建线程的闭包获取它需要的值。示例 16-3 展示了一个尝试在主线程中创建一个 vector 并用于新建线程的例子，不过这么写还不能工作，如下所示：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(|| {
+        println!("Here's a vector: {v:?}");
+    });
+
+    handle.join().unwrap();
+}</code></pre>
+<p><span class="caption">示例 16-3: 尝试在另一个线程使用主线程创建的 vector</span></p>
+<p>闭包使用了 <code>v</code>，所以闭包会捕获 <code>v</code> 并使其成为闭包环境的一部分。因为 <code>thread::spawn</code> 在一个新线程中运行这个闭包，所以可以在新线程中访问 <code>v</code>。然而当编译这个例子时，会得到如下错误：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling threads v0.1.0 (file:///projects/threads)
+error[E0373]: closure may outlive the current function, but it borrows `v`, which is owned by the current function
+ --&gt; src/main.rs:6:32
+  |
+6 |     let handle = thread::spawn(|| {
+  |                                ^^ may outlive borrowed value `v`
+7 |         println!("Here's a vector: {v:?}");
+  |                                     - `v` is borrowed here
+  |
+note: function requires argument type to outlive `'static`
+ --&gt; src/main.rs:6:18
+  |
+6 |       let handle = thread::spawn(|| {
+  |  __________________^
+7 | |         println!("Here's a vector: {v:?}");
+8 | |     });
+  | |______^
+help: to force the closure to take ownership of `v` (and any other referenced variables), use the `move` keyword
+  |
+6 |     let handle = thread::spawn(move || {
+  |                                ++++
+
+For more information about this error, try `rustc --explain E0373`.
+error: could not compile `threads` (bin "threads") due to 1 previous error
+</code></pre>
+<p>Rust 会<strong>推断</strong>如何捕获 <code>v</code>，因为 <code>println!</code> 只需要 <code>v</code> 的引用，闭包尝试借用 <code>v</code>。然而这有一个问题：Rust 不知道这个新建线程会执行多久，所以无法知晓对 <code>v</code> 的引用是否一直有效。</p>
+<p>示例 16-4 展示了一个 <code>v</code> 的引用很有可能不再有效的场景：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(|| {
+        println!("Here's a vector: {v:?}");
+    });
+
+    drop(v); // oh no!
+
+    handle.join().unwrap();
+}</code></pre>
+<p><span class="caption">示例 16-4: 一个具有闭包的线程，尝试使用一个在主线程中被回收的引用 <code>v</code></span></p>
+<p>如果 Rust 允许这段代码运行，则新建线程可能会立刻被转移到后台并完全没有机会运行。新建线程内部有一个 <code>v</code> 的引用，不过主线程立刻就使用第十五章讨论的 <code>drop</code> 丢弃了 <code>v</code>。接着当新建线程开始执行，<code>v</code> 已不再有效，所以其引用也是无效的。噢，这太糟了！</p>
+<p>为了修复示例 16-3 的编译错误，我们可以听取错误信息的建议：</p>
+<pre><code class="language-text">help: to force the closure to take ownership of `v` (and any other referenced variables), use the `move` keyword
+  |
+6 |     let handle = thread::spawn(move || {
+  |                                ++++
+</code></pre>
+<p>通过在闭包之前增加 <code>move</code> 关键字，我们强制闭包获取其使用的值的所有权，而不是任由 Rust 推断它应该借用值。示例 16-5 中展示的对示例 16-3 代码的修改，就能按预期编译并运行：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(move || {
+        println!("Here's a vector: {v:?}");
+    });
+
+    handle.join().unwrap();
+}</code></pre>
+<p><span class="caption">示例 16-5: 使用 <code>move</code> 关键字强制获取它使用的值的所有权</span></p>
+<p>我们可能希望尝试同样的方法来修复示例 16-4 中的代码，其主线程使用 <code>move</code> 闭包调用了 <code>drop</code>。然而这个修复行不通，因为示例 16-4 所尝试的操作由于一个不同的原因而不被允许。如果为闭包增加 <code>move</code>，将会把 <code>v</code> 移动进闭包的环境中，如此将不能在主线程中对其调用 <code>drop</code> 了。我们会得到如下不同的编译错误：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling threads v0.1.0 (file:///projects/threads)
+error[E0382]: use of moved value: `v`
+  --&gt; src/main.rs:10:10
+   |
+ 4 |     let v = vec![1, 2, 3];
+   |         - move occurs because `v` has type `Vec&lt;i32&gt;`, which does not implement the `Copy` trait
+ 5 |
+ 6 |     let handle = thread::spawn(move || {
+   |                                ------- value moved into closure here
+ 7 |         println!("Here's a vector: {v:?}");
+   |                                     - variable moved due to use in closure
+...
+10 |     drop(v); // oh no!
+   |          ^ value used here after move
+   |
+help: consider cloning the value before moving it into the closure
+   |
+ 6 ~     let value = v.clone();
+ 7 ~     let handle = thread::spawn(move || {
+ 8 ~         println!("Here's a vector: {value:?}");
+   |
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `threads` (bin "threads") due to 1 previous error
+</code></pre>
+<p>Rust 的所有权规则又一次帮助了我们！示例 16-3 中的错误是因为 Rust 是保守的并只会为线程借用 <code>v</code>，这意味着主线程理论上可能使新建线程的引用无效。通过告诉 Rust 将 <code>v</code> 的所有权移动到新建线程，我们向 Rust 保证主线程不会再使用 <code>v</code>。如果对示例 16-4 也做出如此修改，那么当在主线程中使用 <code>v</code> 时就会违反所有权规则。<code>move</code> 关键字覆盖了 Rust 默认保守的借用，但它不允许我们违反所有权规则。</p>
+<p>现在我们已经了解了线程的概念以及线程 API 提供的方法，下面让我们看看在什么情况下可以使用线程。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p055.html">← 引用循环会导致内存泄漏</a><a href="index.html">目录</a><a href="p057.html">使用消息传递在线程间通信 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

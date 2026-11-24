@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>所有可能会用到模式的位置 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：所有可能会用到模式的位置。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p069.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html" class="on">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 69 / 86 节
+    </div>
+    <h1>所有可能会用到模式的位置</h1>
+    <h2 id="所有可以使用模式的位置"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/1500248d8f230566e4ec9f27fcbb8fe9e2898ab1/src/ch19-01-all-the-places-for-patterns.md">ch19-01-all-the-places-for-patterns.md</a></p>
+<p>模式会出现在 Rust 的很多地方，而你可能已经在不知不觉中用了很多次！本节会讨论所有可以合法使用模式的位置。</p>
+<h3 id="match-分支"></h3>
+<p>正如第六章讨论过的，我们会在 <code>match</code> 表达式的分支中使用模式。从形式上看，<code>match</code> 表达式由 <code>match</code> 关键字、要匹配的值，以及一个或多个 <code>match</code> 分支组成；这些分支包含一个模式，以及当值匹配该分支模式时要运行的表达式，就像这样：</p>
+<pre><code>match <em>VALUE</em> {
+    <em>PATTERN</em> =&gt; <em>EXPRESSION</em>,
+    <em>PATTERN</em> =&gt; <em>EXPRESSION</em>,
+    <em>PATTERN</em> =&gt; <em>EXPRESSION</em>,
+}</code></pre>
+
+<p>例如，下面是示例 6-5 中那个匹配变量 <code>x</code> 内 <code>Option&lt;i32&gt;</code> 值的 <code>match</code> 表达式：</p>
+<pre><code class="language-rust ignore">match x {
+    None =&gt; None,
+    Some(i) =&gt; Some(i + 1),
+}</code></pre>
+<p>这个 <code>match</code> 表达式中的模式，就是每个箭头左边的 <code>None</code> 和 <code>Some(i)</code>。</p>
+<p><code>match</code> 表达式有一个要求，那就是它必须是<strong>穷尽的</strong>（<em>exhaustive</em>）：<code>match</code> 表达式中值的所有可能情况都必须被覆盖到。确保覆盖所有可能性的一种方式，是让最后一个分支使用“捕获所有”的模式；例如，一个可以匹配任意值的变量名永远不会失败，因此它能够覆盖所有剩余情况。</p>
+<p>特定的模式 <code>_</code> 可以匹配任何东西，但它永远不会绑定到变量上，因此常被用于最后一个 <code>match</code> 分支。当你想忽略某个未指定的值时，<code>_</code> 模式会非常有用。稍后在本章的 <a href="#忽略模式中的值">“忽略模式中的值”</a> 一节中，我们会更详细地讨论 <code>_</code> 模式。</p>
+<h3 id="let-语句"></h3>
+<p>在本章之前，我们只明确讨论过在 <code>match</code> 和 <code>if let</code> 中使用模式，但实际上，我们也在其他地方使用过模式，包括 <code>let</code> 语句。例如，来看这个简单直接的变量赋值：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 5;
+<span class="boring">}</span></code></pre>
+<p>每次你写出像这样的 <code>let</code> 语句时，其实都在使用模式，只是你可能没有意识到！更正式地说，<code>let</code> 语句看起来像这样：</p>
+<pre>
+<code>let <em>PATTERN</em> = <em>EXPRESSION</em>;</code>
+</pre>
+
+<p>在像 <code>let x = 5;</code> 这样的语句中，位于 <code>PATTERN</code> 位置的变量名只是模式的一种特别简单的形式。Rust 会拿表达式与模式进行比较，并将它找到的任何名字赋值。所以，在 <code>let x = 5;</code> 这个例子中，<code>x</code> 是一个模式，表示“把这里匹配到的内容绑定到变量 <code>x</code>”。因为名字 <code>x</code> 本身就是整个模式，所以这个模式实际上等于“无论值是什么，都把它绑定到变量 <code>x</code>”。</p>
+<p>为了更清楚地看出 <code>let</code> 的模式匹配这一面，来看示例 19-1，它在 <code>let</code> 中使用模式来解构一个元组。</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let (x, y, z) = (1, 2, 3);
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 19-1: 使用模式解构元组，并一次创建三个变量</span></p>
+<p>这里，我们让一个元组去匹配一个模式。Rust 会比较值 <code>(1, 2, 3)</code> 和模式 <code>(x, y, z)</code>，并发现该值和模式匹配，也就是说，两边的元素个数相同；于是 Rust 将 <code>1</code> 绑定到 <code>x</code>，将 <code>2</code> 绑定到 <code>y</code>，将 <code>3</code> 绑定到 <code>z</code>。你可以把这个元组模式看作其中嵌套了三个独立的变量模式。</p>
+<p>如果模式中的元素数量与元组中的元素数量不一致，那么整体类型就不会匹配，编译器也会报错。例如，示例 19-2 展示了试图用两个变量去解构一个三个元素的元组，这样是行不通的。</p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
+</span>    let (x, y) = (1, 2, 3);
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 19-2: 错误地构造了一个模式，其变量数量与元组中的元素数量不匹配</span></p>
+<p>尝试编译这段代码会得到如下类型错误：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling patterns v0.1.0 (file:///projects/patterns)
+error[E0308]: mismatched types
+ --&gt; src/main.rs:2:9
+  |
+2 |     let (x, y) = (1, 2, 3);
+  |         ^^^^^^   --------- this expression has type `({integer}, {integer}, {integer})`
+  |         |
+  |         expected a tuple with 3 elements, found one with 2 elements
+  |
+  = note: expected tuple `({integer}, {integer}, {integer})`
+             found tuple `(_, _)`
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `patterns` (bin "patterns") due to 1 previous error
+</code></pre>
+<p>要修复这个错误，可以像本章后面 <a href="#忽略模式中的值">“忽略模式中的值”</a> 一节中会看到的那样，使用 <code>_</code> 或 <code>..</code> 来忽略元组中的一个或多个值。如果问题在于模式里的变量太多，那么解决办法就是删掉一些变量，使变量数量与元组中的元素数量相等。</p>
+<h3 id="条件-if-let-表达式"></h3>
+<p>在第六章中，我们讨论过如何使用 <code>if let</code> 表达式，它主要是用来简写只匹配一种情况的 <code>match</code>。此外，<code>if let</code> 还可以有一个对应的 <code>else</code>，在 <code>if let</code> 中的模式不匹配时执行其中的代码。</p>
+<p>示例 19-3 表明，我们也可以混合使用 <code>if let</code>、<code>else if</code>、<code>else if let</code> 和 <code>else</code>。与 <code>match</code> 表达式相比，这样做给了我们更多灵活性；在 <code>match</code> 中，我们只能表达“把一个值与若干模式比较”。另外，Rust 也不要求一连串 <code>if let</code>、<code>else if</code> 和 <code>else if let</code> 分支中的条件彼此相关。</p>
+<p>示例 19-3 中的代码会根据一系列条件检查来决定背景色应该是什么。为了举例，我们创建了几个带硬编码值的变量；而在真实程序里，这些值可能来自用户输入。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let favorite_color: Option&lt;&amp;str&gt; = None;
+    let is_tuesday = false;
+    let age: Result&lt;u8, _&gt; = "34".parse();
+
+    if let Some(color) = favorite_color {
+        println!("Using your favorite color, {color}, as the background");
+    } else if is_tuesday {
+        println!("Tuesday is green day!");
+    } else if let Ok(age) = age {
+        if age &gt; 30 {
+            println!("Using purple as the background color");
+        } else {
+            println!("Using orange as the background color");
+        }
+    } else {
+        println!("Using blue as the background color");
+    }
+}</code></pre>
+<p><span class="caption">示例 19-3: 混合使用 <code>if let</code>、<code>else if</code>、<code>else if let</code> 和 <code>else</code></span></p>
+<p>如果用户指定了喜欢的颜色，就用该颜色作为背景色。如果没有指定喜欢的颜色，而且今天是星期二，那么背景色就是绿色。否则，如果用户把年龄作为字符串提供出来，并且我们能够成功将其解析为数字，那么背景色就会根据该数字的值变成紫色或橙色。如果这些条件都不满足，背景色就是蓝色。</p>
+<p>这种条件结构让我们能够支持复杂的需求。使用这里的硬编码值，这个例子会打印 <code>Using purple as the background color</code>。</p>
+<p>你还可以看到，<code>if let</code> 也能像 <code>match</code> 分支一样引入新变量，并遮蔽已有变量：<code>if let Ok(age) = age</code> 这一行引入了一个新的 <code>age</code> 变量，它保存 <code>Ok</code> 变体中的值，并遮蔽了原来的 <code>age</code> 变量。这意味着我们必须把 <code>if age &gt; 30</code> 这个条件放在该代码块内部：不能把这两个条件合并成 <code>if let Ok(age) = age &amp;&amp; age &gt; 30</code>。因为我们想拿来和 <code>30</code> 比较的那个新 <code>age</code>，在由大括号开启的新作用域开始之前是无效的。</p>
+<blockquote>
+<p>译者注：英文原文这里仍沿用了旧版限制。在本书使用的 Rust 1.98 和 2024 Edition 中，let 链已经允许写出 <code>if let Ok(age) = age &amp;&amp; age &gt; 30</code>，前一个条件引入的 <code>age</code> 绑定可用于后续条件。上面的嵌套写法仍然有效，但不再是唯一的写法。</p>
+</blockquote>
+<p>使用 <code>if let</code> 表达式的缺点是，编译器不会像检查 <code>match</code> 那样检查它的穷尽性。如果我们省略最后一个 <code>else</code> 块，从而漏掉对某些情况的处理，编译器也不会提醒我们这里可能存在逻辑错误。</p>
+<h3 id="while-let-条件循环"></h3>
+<p>与 <code>if let</code> 在结构上类似的是 <code>while let</code> 条件循环，它允许 <code>while</code> 循环在模式持续匹配期间一直运行。示例 19-4 展示了一个 <code>while let</code> 循环，它等待线程之间发送的消息，不过这里检查的是 <code>Result</code>，而不是 <code>Option</code>。</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let (tx, rx) = std::sync::mpsc::channel();
+    std::thread::spawn(move || {
+        for val in [1, 2, 3] {
+            tx.send(val).unwrap();
+        }
+    });
+
+    while let Ok(value) = rx.recv() {
+        println!("{value}");
+    }
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 19-4: 使用 <code>while let</code> 循环，只要 <code>rx.recv()</code> 返回 <code>Ok</code> 就打印值</span></p>
+<p>这个例子会打印 <code>1</code>、<code>2</code>，然后是 <code>3</code>。<code>recv</code> 方法会从信道的接收端取出第一条消息，并返回 <code>Ok(value)</code>。在第十六章第一次见到 <code>recv</code> 时，我们是直接对错误调用 <code>unwrap</code>，或者把它当作迭代器配合 <code>for</code> 循环使用。不过正如示例 19-4 所示，我们也可以使用 <code>while let</code>，因为只要发送端还存在，且不断有消息到达，<code>recv</code> 每次都会返回 <code>Ok</code>；当发送端断开连接后，它就会返回 <code>Err</code>。</p>
+<h3 id="for-循环"></h3>
+<p>在 <code>for</code> 循环中，紧跟在 <code>for</code> 关键字后面的值就是一个模式。例如，在 <code>for x in y</code> 中，<code>x</code> 就是那个模式。示例 19-5 展示了如何在 <code>for</code> 循环中使用模式来解构一个元组。</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v = vec!['a', 'b', 'c'];
+
+    for (index, value) in v.iter().enumerate() {
+        println!("{value} is at index {index}");
+    }
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 19-5: 在 <code>for</code> 循环中使用模式来解构一个元组</span></p>
+<p>示例 19-5 中的代码会打印出如下内容：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling patterns v0.1.0 (file:///projects/patterns)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.52s
+     Running `target/debug/patterns`
+a is at index 0
+b is at index 1
+c is at index 2
+</code></pre>
+<p>我们使用 <code>enumerate</code> 方法适配了一个迭代器，使它产生由“值及其索引”组成的元组。它产生的第一个值是元组 <code>(0, 'a')</code>。当该值与模式 <code>(index, value)</code> 匹配时，<code>index</code> 会是 <code>0</code>，<code>value</code> 会是 <code>'a'</code>，于是打印出输出的第一行。</p>
+<h3 id="函数参数"></h3>
+<p>函数参数也可以是模式。示例 19-6 中的代码声明了一个名为 <code>foo</code> 的函数，它接收一个名为 <code>x</code>、类型为 <code>i32</code> 的参数；到现在为止，这种写法应该已经很熟悉了。</p>
+<pre class="playground"><code class="language-rust edition2024">fn foo(x: i32) {
+    // code goes here
+}
+<span class="boring">
+</span><span class="boring">fn main() {}</span></code></pre>
+<p><span class="caption">示例 19-6: 在参数中使用模式的函数签名</span></p>
+<p><code>x</code> 这一部分就是一个模式！就像我们在 <code>let</code> 中做的那样，也可以在函数参数中用模式匹配一个元组。示例 19-7 展示了在向函数传参时如何拆开元组中的值。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn print_coordinates(&amp;(x, y): &amp;(i32, i32)) {
+    println!("Current location: ({x}, {y})");
+}
+
+fn main() {
+    let point = (3, 5);
+    print_coordinates(&amp;point);
+}</code></pre>
+<p><span class="caption">示例 19-7: 一个在参数中解构元组的函数</span></p>
+<p>这段代码会打印 <code>Current location: (3, 5)</code>。值 <code>&amp;(3, 5)</code> 会匹配模式 <code>&amp;(x, y)</code>，因此 <code>x</code> 的值是 <code>3</code>，<code>y</code> 的值是 <code>5</code>。</p>
+<p>由于闭包与函数类似，正如第十三章所讨论的那样，我们也可以像在函数参数列表中那样，在闭包参数列表中使用模式。</p>
+<p>现在我们已经看过很多使用模式的方式了，不过模式在各处并不总是以同样的方式工作；在某些位置，模式必须是不可反驳的（<em>irrefutable</em>），这意味着它们必须匹配所提供的任何值；而在另一些位置，它们则可以是可反驳的（<em>refutable</em>）。接下来让我们讨论这两个概念。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p068.html">← 面向对象设计模式的实现</a><a href="index.html">目录</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

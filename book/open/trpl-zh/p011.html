@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slice 类型 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：Slice 类型。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p011.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html" class="on">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 11 / 86 节
+    </div>
+    <h1>Slice 类型</h1>
+    <h2 id="slice-类型"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/8a6130451b0817ead5c2522ce641dcb0f11a8571/src/ch04-03-slices.md">ch04-03-slices.md</a></p>
+<p><strong>切片</strong>（<em>slice</em>）允许你引用集合中一段连续的元素序列，而不用引用整个集合。slice 是一种引用，所以它不拥有所有权。</p>
+<p>这里有一个编程小习题：编写一个函数，接收一个由空格分隔单词的字符串，并返回它在该字符串中找到的第一个单词。如果函数在该字符串中没有找到空格，那么整个字符串就是一个单词，因此应该返回整个字符串。</p>
+<blockquote>
+<p>注意：为了介绍字符串 slice，本小节假设只处理 ASCII；关于 UTF-8 处理的更完整讨论，请见第八章的<a href="#使用字符串储存-utf-8-编码的文本">“使用字符串储存 UTF-8 编码的文本”</a>一节。</p>
+</blockquote>
+<p>让我们先想想，如果不用 slice，该怎样写这个函数的签名，从而理解 slice 解决了什么问题：</p>
+<pre><code class="language-rust ignore">fn first_word(s: &amp;String) -&gt; ?</code></pre>
+<p><code>first_word</code> 函数有一个 <code>&amp;String</code> 类型的参数。因为我们不需要所有权，所以这没有问题。不过应该返回什么呢？我们其实没有办法真正表示字符串的<strong>一部分</strong>。不过，我们可以返回单词结尾的索引，也就是空格所在的位置。试试示例 4-7 中的代码。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn first_word(s: &amp;String) -&gt; usize {
+    let bytes = s.as_bytes();
+
+    for (i, &amp;item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+
+    s.len()
+}
+<span class="boring">
+</span><span class="boring">fn main() {}</span></code></pre>
+<p><span class="caption">示例 4-7：<code>first_word</code> 函数返回 <code>String</code> 参数的一个字节索引值</span></p>
+<p>因为我们需要逐个检查 <code>String</code> 中的元素是否为空格，所以要用 <code>as_bytes</code> 方法把 <code>String</code> 转换成字节数组。</p>
+<pre><code class="language-rust ignore"><span class="boring">fn first_word(s: &amp;String) -&gt; usize {
+</span>    let bytes = s.as_bytes();
+<span class="boring">
+</span><span class="boring">    for (i, &amp;item) in bytes.iter().enumerate() {
+</span><span class="boring">        if item == b' ' {
+</span><span class="boring">            return i;
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    s.len()
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn main() {}</span></code></pre>
+<p>接下来，使用 <code>iter</code> 方法在字节数组上创建一个迭代器：</p>
+<pre><code class="language-rust ignore"><span class="boring">fn first_word(s: &amp;String) -&gt; usize {
+</span><span class="boring">    let bytes = s.as_bytes();
+</span><span class="boring">
+</span>    for (i, &amp;item) in bytes.iter().enumerate() {
+<span class="boring">        if item == b' ' {
+</span><span class="boring">            return i;
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    s.len()
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn main() {}</span></code></pre>
+<p>我们会在<a href="#使用迭代器处理元素序列-1">第十三章</a>更详细地讨论迭代器。现在只需要知道，<code>iter</code> 方法会返回集合中的每个元素，而 <code>enumerate</code> 会包装 <code>iter</code> 的结果，把每个元素作为元组的一部分返回。<code>enumerate</code> 返回的元组中，第一个元素是索引，第二个元素是该元素的引用。这比我们自己手动计算索引更方便一些。</p>
+<p>因为 <code>enumerate</code> 方法返回的是元组，所以我们可以用模式来解构它；我们会在<a href="#绑定值的模式">第六章</a>进一步讨论模式。因此，在 <code>for</code> 循环中，我们指定了一个模式，其中元组里的 <code>i</code> 是索引，元组里的 <code>&amp;item</code> 是单个字节。因为我们从 <code>.iter().enumerate()</code> 拿到的是元素的引用，所以模式中用了 <code>&amp;</code>。</p>
+<p>在 <code>for</code> 循环中，我们通过字节的字面值语法来寻找代表空格的字节。如果找到了一个空格，返回它的位置。否则，使用 <code>s.len()</code> 返回字符串的长度。</p>
+<pre><code class="language-rust ignore"><span class="boring">fn first_word(s: &amp;String) -&gt; usize {
+</span><span class="boring">    let bytes = s.as_bytes();
+</span><span class="boring">
+</span><span class="boring">    for (i, &amp;item) in bytes.iter().enumerate() {
+</span>        if item == b' ' {
+            return i;
+        }
+    }
+
+    s.len()
+<span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn main() {}</span></code></pre>
+<p>现在有了一个找到字符串中第一个单词结尾索引的方法，不过这有一个问题。我们返回了一个独立的 <code>usize</code>，不过它只在 <code>&amp;String</code> 的上下文中才是一个有意义的数字。换句话说，因为它是一个与 <code>String</code> 相分离的值，无法保证将来它仍然有效。考虑一下示例 4-8 中使用了示例 4-7 中 <code>first_word</code> 函数的程序。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn first_word(s: &amp;String) -&gt; usize {
+</span><span class="boring">    let bytes = s.as_bytes();
+</span><span class="boring">
+</span><span class="boring">    for (i, &amp;item) in bytes.iter().enumerate() {
+</span><span class="boring">        if item == b' ' {
+</span><span class="boring">            return i;
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    s.len()
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn main() {
+    let mut s = String::from("hello world");
+
+    let word = first_word(&amp;s); // word 的值为 5
+
+    s.clear(); // 这清空了字符串，使其等于 ""
+
+    // word 在此处的值仍然是 5，
+    // 但是没有更多的字符串让我们可以有效地应用数值 5。word 的值现在完全无效！
+}</code></pre>
+<p><span class="caption">示例 4-8：存储 <code>first_word</code> 函数调用的返回值并接着改变 <code>String</code> 的内容</span></p>
+<p>这个程序编译时不会报任何错误，而且即使在调用 <code>s.clear()</code> 之后再使用 <code>word</code>，也同样不会报错。因为 <code>word</code> 和 <code>s</code> 的状态完全没有关联，所以 <code>word</code> 仍然包含值 <code>5</code>。我们可以尝试用这个值 <code>5</code> 从变量 <code>s</code> 中提取第一个单词，但这会出 bug，因为在把 <code>5</code> 保存进 <code>word</code> 之后，<code>s</code> 的内容已经变了。</p>
+<p>我们不得不时刻担心 <code>word</code> 的索引与 <code>s</code> 中的数据不再同步，这既繁琐又易出错！如果编写这么一个 <code>second_word</code> 函数的话，管理索引这件事将更加容易出问题。它的签名看起来像这样：</p>
+<pre><code class="language-rust ignore">fn second_word(s: &amp;String) -&gt; (usize, usize) {</code></pre>
+<p>现在我们要跟踪一个开始索引<strong>和</strong>一个结束索引，同时有了更多从数据的某个特定状态计算而来的值，但都完全没有与这个状态相关联。现在有三个飘忽不定的不相关变量需要保持同步。</p>
+<p>幸运的是，Rust 为这个问题提供了一个解决方法：字符串 slice。</p>
+<h3 id="字符串-slice"></h3>
+<p><strong>字符串 slice</strong>（<em>string slice</em>）是 <code>String</code> 中一部分值的引用，它看起来像这样：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let s = String::from("hello world");
+
+    let hello = &amp;s[0..5];
+    let world = &amp;s[6..11];
+<span class="boring">}</span></code></pre>
+<p>不同于整个 <code>String</code> 的引用，<code>hello</code> 是一个部分 <code>String</code> 的引用，由一个额外的 <code>[0..5]</code> 部分指定。可以使用一个由中括号中的 <code>[starting_index..ending_index]</code> 指定的 range 创建一个 slice，其中 <code>starting_index</code> 是 slice 的第一个位置，<code>ending_index</code> 则是 slice 最后一个位置的后一个值。在其内部，slice 的数据结构存储了 slice 的开始位置和长度，长度对应于 <code>ending_index</code> 减去 <code>starting_index</code> 的值。所以对于 <code>let world = &amp;s[6..11];</code> 的情况，<code>world</code> 将是一个包含指向 <code>s</code> 索引 6 的指针和长度值 5 的 slice。</p>
+<p>图 4-7 给出了示意图。</p>
+<p><img alt="Three tables: a table representing the stack data of s, which points
+to the byte at index 0 in a table of the string data &quot;hello world&quot; on
+the heap. The third table rep-resents the stack data of the slice world, which
+has a length value of 5 and points to byte 6 of the heap data table." src="https://kaisery.github.io/trpl-zh-cn/img/trpl04-07.svg" class="center" style="width: 50%;" /></p>
+<p><span class="caption">图 4-7：引用了部分 <code>String</code> 的字符串 slice</span></p>
+<p>对于 Rust 的 <code>..</code> range 语法，如果想要从索引 0 开始，可以不写两个点号之前的值。换句话说，如下两个语句是相同的：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from("hello");
+
+let slice = &amp;s[0..2];
+let slice = &amp;s[..2];
+<span class="boring">}</span></code></pre>
+<p>依此类推，如果 slice 包含 <code>String</code> 的最后一个字节，也可以舍弃尾部的数字。这意味着如下也是相同的：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from("hello");
+
+let len = s.len();
+
+let slice = &amp;s[3..len];
+let slice = &amp;s[3..];
+<span class="boring">}</span></code></pre>
+<p>也可以同时舍弃这两个值来获取整个字符串的 slice。所以如下亦是相同的：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from("hello");
+
+let len = s.len();
+
+let slice = &amp;s[0..len];
+let slice = &amp;s[..];
+<span class="boring">}</span></code></pre>
+<blockquote>
+<p>注意：字符串 slice range 的索引必须位于有效的 UTF-8 字符边界内，如果尝试从一个多字节字符的中间位置创建字符串 slice，则程序将会因错误而退出。</p>
+</blockquote>
+<p>有了这些知识之后，让我们重写 <code>first_word</code>，让它返回一个 slice。“字符串 slice” 的类型写作 <code>&amp;str</code>：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn first_word(s: &amp;String) -&gt; &amp;str {
+    let bytes = s.as_bytes();
+
+    for (i, &amp;item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &amp;s[0..i];
+        }
+    }
+
+    &amp;s[..]
+}
+<span class="boring">
+</span><span class="boring">fn main() {}</span></code></pre>
+<p>我们使用跟示例 4-7 相同的方式获取单词结尾的索引，通过寻找第一个出现的空格。当找到一个空格，我们返回一个字符串 slice，它使用字符串的开始和空格的索引作为开始和结束的索引。</p>
+<p>现在调用 <code>first_word</code> 时，它会返回一个与底层数据绑定在一起的值。这个值由一个指向 slice 起始位置的引用和 slice 中元素的数量组成。</p>
+<p><code>second_word</code> 函数也可以改为返回一个 slice：</p>
+<pre><code class="language-rust ignore">fn second_word(s: &amp;String) -&gt; &amp;str {</code></pre>
+<p>现在我们有了一个更直观、也更不容易出错的 API，因为编译器会确保指向 <code>String</code> 的引用始终有效。还记得示例 4-8 里的那个 bug 吗？我们先拿到了第一个单词结尾的索引，然后又清空了字符串，于是索引失效了。那段代码在逻辑上是错的，但当时却不会直接报错。问题会在之后你尝试对一个已被清空的字符串继续使用那个索引时才暴露出来。slice 让这种 bug 不再可能发生，并且会更早告诉我们代码出了问题。使用 slice 版本的 <code>first_word</code> 会得到一个编译时错误：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn first_word(s: &amp;String) -&gt; &amp;str {
+</span><span class="boring">    let bytes = s.as_bytes();
+</span><span class="boring">
+</span><span class="boring">    for (i, &amp;item) in bytes.iter().enumerate() {
+</span><span class="boring">        if item == b' ' {
+</span><span class="boring">            return &amp;s[0..i];
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    &amp;s[..]
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn main() {
+    let mut s = String::from("hello world");
+
+    let word = first_word(&amp;s);
+
+    s.clear(); // 错误！
+
+    println!("the first word is: {word}");
+}</code></pre>
+<p>这里是编译错误：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling ownership v0.1.0 (file:///projects/ownership)
+error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable
+  --&gt; src/main.rs:18:5
+   |
+16 |     let word = first_word(&amp;s);
+   |                           -- immutable borrow occurs here
+17 |
+18 |     s.clear(); // error!
+   |     ^^^^^^^^^ mutable borrow occurs here
+19 |
+20 |     println!("the first word is: {word}");
+   |                                   ---- immutable borrow later used here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `ownership` (bin "ownership") due to 1 previous error
+</code></pre>
+<p>回忆一下借用规则，当拥有某值的不可变引用时，就不能再获取一个可变引用。因为 <code>clear</code> 需要清空 <code>String</code>，它尝试获取一个可变引用。在调用 <code>clear</code> 之后的 <code>println!</code> 使用了 <code>word</code> 中的引用，所以这个不可变的引用在此时必须仍然有效。Rust 不允许 <code>clear</code> 中的可变引用和 <code>word</code> 中的不可变引用同时存在，因此编译失败。Rust 不仅使得我们的 API 简单易用，也在编译时就消除了一整类的错误！</p>
+<p><a id="string-literals-are-slices"></a></p>
+<h4 id="字符串字面值就是-slice"></h4>
+<p>还记得我们讲到过字符串字面值被储存在二进制文件中吗？现在知道 slice 了，我们就可以正确地理解字符串字面值了：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = "Hello, world!";
+<span class="boring">}</span></code></pre>
+<p>这里 <code>s</code> 的类型是 <code>&amp;str</code>：它是一个指向二进制程序特定位置的 slice。这也就是为什么字符串字面值是不可变的；<code>&amp;str</code> 是一个不可变引用。</p>
+<h4 id="字符串-slice-作为参数"></h4>
+<p>在知道了能够获取字面值和 <code>String</code> 的 slice 后，我们对 <code>first_word</code> 做了改进，这是它的签名：</p>
+<pre><code class="language-rust ignore">fn first_word(s: &amp;String) -&gt; &amp;str {</code></pre>
+<p>而更有经验的 Rustacean 会编写出示例 4-9 中的签名，因为它使得可以对 <code>&amp;String</code> 值和 <code>&amp;str</code> 值使用相同的函数：</p>
+<pre><code class="language-rust ignore">fn first_word(s: &amp;str) -&gt; &amp;str {
+<span class="boring">    let bytes = s.as_bytes();
+</span><span class="boring">
+</span><span class="boring">    for (i, &amp;item) in bytes.iter().enumerate() {
+</span><span class="boring">        if item == b' ' {
+</span><span class="boring">            return &amp;s[0..i];
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    &amp;s[..]
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let my_string = String::from("hello world");
+</span><span class="boring">
+</span><span class="boring">    // `first_word` 适用于 `String`（的 slice），部分或全部
+</span><span class="boring">    let word = first_word(&amp;my_string[0..6]);
+</span><span class="boring">    let word = first_word(&amp;my_string[..]);
+</span><span class="boring">    // `first_word` 也适用于 `String` 的引用，
+</span><span class="boring">    // 这等价于整个 `String` 的 slice
+</span><span class="boring">    let word = first_word(&amp;my_string);
+</span><span class="boring">
+</span><span class="boring">    let my_string_literal = "hello world";
+</span><span class="boring">
+</span><span class="boring">    // `first_word` 适用于字符串字面值，部分或全部
+</span><span class="boring">    let word = first_word(&amp;my_string_literal[0..6]);
+</span><span class="boring">    let word = first_word(&amp;my_string_literal[..]);
+</span><span class="boring">
+</span><span class="boring">    // 因为字符串字面值已经 **是** 字符串 slice 了，
+</span><span class="boring">    // 这也是适用的，无需 slice 语法！
+</span><span class="boring">    let word = first_word(my_string_literal);
+</span><span class="boring">}</span></code></pre>
+<p><span class="caption">示例 4-9: 通过将 <code>s</code> 参数的类型改为字符串 slice 来改进 <code>first_word</code> 函数</span></p>
+<p>如果我们有一个字符串 slice，就可以直接把它传进去。如果我们有一个 <code>String</code>，也可以传入整个 <code>String</code> 的 slice，或者传入对 <code>String</code> 的引用。这种灵活性利用了 <em>deref coercions</em>，也就是我们会在<a href="#在函数和方法中使用-deref-强制转换">“在函数和方法中使用 Deref 强制转换”</a>一节中讲到的特性。把函数参数定义为字符串 slice，而不是 <code>String</code> 的引用，会让我们的 API 更通用、更有用，而且不会损失任何功能：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn first_word(s: &amp;str) -&gt; &amp;str {
+</span><span class="boring">    let bytes = s.as_bytes();
+</span><span class="boring">
+</span><span class="boring">    for (i, &amp;item) in bytes.iter().enumerate() {
+</span><span class="boring">        if item == b' ' {
+</span><span class="boring">            return &amp;s[0..i];
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    &amp;s[..]
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn main() {
+    let my_string = String::from("hello world");
+
+    // `first_word` 适用于 `String`（的 slice），部分或全部
+    let word = first_word(&amp;my_string[0..6]);
+    let word = first_word(&amp;my_string[..]);
+    // `first_word` 也适用于 `String` 的引用，
+    // 这等价于整个 `String` 的 slice
+    let word = first_word(&amp;my_string);
+
+    let my_string_literal = "hello world";
+
+    // `first_word` 适用于字符串字面值，部分或全部
+    let word = first_word(&amp;my_string_literal[0..6]);
+    let word = first_word(&amp;my_string_literal[..]);
+
+    // 因为字符串字面值已经 **是** 字符串 slice 了，
+    // 这也是适用的，无需 slice 语法！
+    let word = first_word(my_string_literal);
+}</code></pre>
+<h3 id="其他类型的-slice"></h3>
+<p>字符串 slice，正如你想象的那样，是针对字符串的。不过也有更通用的 slice 类型。考虑一下这个数组：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = [1, 2, 3, 4, 5];
+<span class="boring">}</span></code></pre>
+<p>就跟我们想要获取字符串的一部分那样，我们也会想要引用数组的一部分。我们可以这样做：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = [1, 2, 3, 4, 5];
+
+let slice = &amp;a[1..3];
+
+assert_eq!(slice, &amp;[2, 3]);
+<span class="boring">}</span></code></pre>
+<p>这个 slice 的类型是 <code>&amp;[i32]</code>。它跟字符串 slice 的工作方式一样，通过存储第一个集合元素的引用和一个集合总长度。你可以对其他所有集合使用这类 slice。第八章讲到 vector 时会详细讨论这些集合。</p>
+<h2 id="总结-3"></h2>
+<p>所有权、借用和 slice 这些概念让 Rust 程序在编译时确保内存安全。Rust 语言提供了跟其他系统编程语言相同的方式来控制你使用的内存，但拥有数据所有者在离开作用域后自动清除其数据的功能意味着你无须额外编写和调试相关的控制代码。</p>
+<p>所有权系统影响了 Rust 中很多其他部分的工作方式，所以我们还会继续讲到这些概念，这将贯穿本书的余下内容。让我们开始第五章，来看看如何将多份数据组合进一个 <code>struct</code> 中。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="使用结构体组织相关联的数据"></h1>
+<p><a href="https://github.com/rust-lang/book/blob/8a6130451b0817ead5c2522ce641dcb0f11a8571/src/ch05-00-structs.md">ch05-00-structs.md</a></p>
+<p><strong>结构体</strong>（<em>struct</em>），或者 <em>structure</em>，是一个自定义数据类型，允许你包装和命名多个相关的值，从而形成一个有意义的组合。如果你熟悉一门面向对象语言，你会发现一个 struct 就像对象的数据属性。在本章中，我们会比较元组和结构体的异同，在你已有知识的基础上进一步探讨，并演示在何种情况下结构体是组合数据的更好方式。</p>
+<p>我们还将演示如何定义和实例化结构体，并讨论如何定义关联函数，特别是被称为 <em>方法</em> 的那种关联函数，以指定与结构体类型相关的行为。结构体和枚举（<em>enum</em>，会在第六章介绍）是为你的程序领域创建新类型的基础构件，从而可以充分利用 Rust 的编译时类型检查。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p010.html">← 引用与借用</a><a href="index.html">目录</a><a href="p012.html">结构体的定义和实例化 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

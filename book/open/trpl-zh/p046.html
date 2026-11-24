@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>将 crate 发布到 Crates.io · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：将 crate 发布到 Crates.io。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p046.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html" class="on">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 46 / 86 节
+    </div>
+    <h1>将 crate 发布到 Crates.io</h1>
+    <h2 id="将-crate-发布到-cratesio"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/1500248d8f230566e4ec9f27fcbb8fe9e2898ab1/src/ch14-02-publishing-to-crates-io.md">ch14-02-publishing-to-crates-io.md</a></p>
+<p>我们曾经在项目中使用 <a href="https://crates.io">crates.io</a><!-- ignore --> 上的包作为依赖，不过你也可以通过发布自己的包来向他人分享代码。<a href="https://crates.io">crates.io</a><!-- ignore --> 上的 crate 注册表会分发你包的源代码，因此它主要托管开源代码。</p>
+<p>Rust 和 Cargo 提供了一些功能，让你发布的包更容易被他人找到和使用。接下来我们会介绍其中一些功能，然后说明如何发布包。</p>
+<h3 id="编写有用的文档注释"></h3>
+<p>准确的包文档有助于其他用户理解如何以及何时使用它们，所以花一些时间编写文档是值得的。第三章中我们讨论了如何使用双斜杠 <code>//</code> 注释 Rust 代码。Rust 也有特定的用于文档的注释类型，通常被称为<strong>文档注释</strong>（<em>documentation comments</em>），它们会生成 HTML 文档。这些 HTML 展示公有 API 文档注释的内容，它们意在让对库感兴趣的程序员理解如何<strong>使用</strong>这个 crate，而不是它是如何被<strong>实现</strong>的。</p>
+<p>文档注释使用三条斜杠 <code>///</code>，而不是两条斜杠，并且支持使用 Markdown 标记来格式化文本。将文档注释放在它所说明的项之前。示例 14-1 展示了名为 <code>my_crate</code> 的 crate 中一个 <code>add_one</code> 函数的文档注释。</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust ignore">/// Adds one to the number given.
+///
+/// # Examples
+///
+/// ```
+/// let arg = 5;
+/// let answer = my_crate::add_one(arg);
+///
+/// assert_eq!(6, answer);
+/// ```
+pub fn add_one(x: i32) -&gt; i32 {
+    x + 1
+}</code></pre>
+<p><span class="caption">示例 14-1：一个函数的文档注释</span></p>
+<p>这里，我们描述了 <code>add_one</code> 函数的功能，接着以 <code>Examples</code> 为标题开始了一个小节，并给出了展示如何使用 <code>add_one</code> 函数的代码。可以运行 <code>cargo doc</code> 来根据这些文档注释生成 HTML 文档。这个命令会运行 Rust 自带的 <code>rustdoc</code> 工具，并将生成的 HTML 文档放到 <em>target/doc</em> 目录中。</p>
+<p>为了方便起见，运行 <code>cargo doc --open</code> 会为当前 crate 的文档构建 HTML（以及它所有依赖的文档），并在浏览器中打开结果。定位到 <code>add_one</code> 函数时，你会看到文档注释中的文本是如何被渲染的，如图 14-1 所示：</p>
+<img alt="Rendered HTML documentation for the `add_one` function of `my_crate`" src="https://kaisery.github.io/trpl-zh-cn/img/trpl14-01.png" class="center" />
+<p><span class="caption">图 14-1：<code>add_one</code> 函数的文档注释 HTML</span></p>
+<h4 id="常用章节"></h4>
+<p>示例 14-1 中使用了 <code># Examples</code> Markdown 标题在 HTML 中创建了一个以 “Examples” 为标题的部分。其他一些 crate 作者经常在文档注释中使用的部分有：</p>
+<ul>
+<li><strong>Panics</strong>：函数在什么情况下可能会 <code>panic!</code>。不希望程序 panic 的调用者应确保不会在这些情况下调用该函数。</li>
+<li><strong>Errors</strong>：如果函数返回 <code>Result</code>，说明可能出现哪些错误，以及什么条件会导致返回这些错误，会有助于调用者编写代码，以不同方式处理不同种类的错误。</li>
+<li><strong>Safety</strong>：如果调用该函数是 <code>unsafe</code> 的（我们会在第二十章讨论不安全代码），这里应解释为什么它是不安全的，并说明函数要求调用者维持哪些不变式。</li>
+</ul>
+<p>大多数文档注释不需要包含所有这些章节，但这是一份很好的检查清单，可以提醒你关注用户会想了解的内容。</p>
+<h4 id="文档注释作为测试"></h4>
+<p>在文档注释中添加示例代码块，有助于展示如何使用你的库，而且还有一个额外的好处：运行 <code>cargo test</code> 时，文档中的示例代码也会作为测试运行！没有什么比带示例的文档更好了，但也没有什么比示例失效的文档更糟糕了。如果我们对示例 14-1 中 <code>add_one</code> 函数的文档运行 <code>cargo test</code>，会在测试结果中看到如下内容：</p>
+<pre><code class="language-text">   Doc-tests my_crate
+
+running 1 test
+test src/lib.rs - add_one (line 5) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s
+</code></pre>
+<p>现在，如果我们修改函数或示例中的任意一方，使示例里的 <code>assert_eq!</code> 触发 panic，然后再次运行 <code>cargo test</code>，就会看到文档测试捕获到了示例与代码不同步的问题！</p>
+<h4 id="注释包含项的结构"></h4>
+<p><code>//!</code> 这种文档注释风格为“包含这些注释的项”添加文档，而不是为“位于这些注释之后的项”添加文档。我们通常在 crate 根文件（按惯例是 <em>src/lib.rs</em>）或模块内部使用这种文档注释，为整个 crate 或整个模块编写说明。</p>
+<p>例如，为了添加描述包含 <code>add_one</code> 函数的 <code>my_crate</code> crate 的用途的文档，我们可以在 <em>src/lib.rs</em> 文件开头加入以 <code>//!</code> 开头的文档注释，如示例 14-2 所示：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust ignore">//! # My Crate
+//!
+//! `my_crate` is a collection of utilities to make performing certain
+//! calculations more convenient.
+
+/// Adds one to the number given.
+// --snip--
+<span class="boring">///
+</span><span class="boring">/// # Examples
+</span><span class="boring">///
+</span><span class="boring">/// ```
+</span><span class="boring">/// let arg = 5;
+</span><span class="boring">/// let answer = my_crate::add_one(arg);
+</span><span class="boring">///
+</span><span class="boring">/// assert_eq!(6, answer);
+</span><span class="boring">/// ```
+</span><span class="boring">pub fn add_one(x: i32) -&gt; i32 {
+</span><span class="boring">    x + 1
+</span><span class="boring">}</span></code></pre>
+<p><span class="caption">示例 14-2：<code>my_crate</code> crate 整体的文档</span></p>
+<p>注意，最后一行以 <code>//!</code> 开头的注释后面没有任何代码。因为我们使用的是 <code>//!</code> 而不是 <code>///</code>，所以这里记录的是“包含这条注释的项”的文档，而不是“紧随这条注释之后的项”的文档。在这里，这个项就是 <em>src/lib.rs</em> 文件，也就是 crate 根。这些注释描述的是整个 crate。</p>
+<p>运行 <code>cargo doc --open</code> 后，这些注释会显示在 <code>my_crate</code> 文档首页的 crate 公有项列表上方，如图 14-2 所示：</p>
+<img alt="Rendered HTML documentation with a comment for the crate as a whole" src="https://kaisery.github.io/trpl-zh-cn/img/trpl14-02.png" class="center" />
+<p><span class="caption">图 14-2：包含 <code>my_crate</code> 整体描述的注释所渲染的文档</span></p>
+<p>项内部的文档注释特别适合用来描述 crate 和模块。使用它们来解释这个容器整体的目的，可以帮助用户理解 crate 的组织方式。</p>
+<h3 id="导出实用的公有-api"></h3>
+<p>公有 API 的结构是你发布 crate 时主要需要考虑的。crate 用户没有你那么熟悉其结构，并且如果模块层级过大他们可能会难以找到所需的部分。</p>
+<p>第七章介绍了如何使用 <code>pub</code> 关键字使项公开，以及如何使用 <code>use</code> 关键字将项引入作用域。不过，在你开发 crate 时对你来说合理的结构，对用户而言可能并不方便。你可能想把结构体组织成一个包含多层的层级结构，但想使用你定义在深层级中的某个类型的人，可能很难发现它的存在。他们也可能会厌烦不得不写 <code>use my_crate::some_module::another_module::UsefulType;</code>，而不是更简单的 <code>use my_crate::UsefulType;</code>。</p>
+<p>好消息是，如果这种结构对外部用户来说并不方便，你也不必重新安排内部组织。你可以使用 <code>pub use</code> 来重导出项，从而建立一个与私有结构不同的公有结构。<em>重导出（re-export）</em> 会把某个位置的公有项在另一个位置再次公开，就好像它原本就定义在那里一样。</p>
+<p>例如，假设我们创建了一个名为 <code>art</code> 的库，用来建模艺术概念。在这个库里，有两个模块：<code>kinds</code> 模块包含两个枚举 <code>PrimaryColor</code> 和 <code>SecondaryColor</code>，<code>utils</code> 模块包含一个名为 <code>mix</code> 的函数，如示例 14-3 所示：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground test_harness">//! # Art
+//!
+//! A library for modeling artistic concepts.
+
+pub mod kinds {
+    /// The primary colors according to the RYB color model.
+    pub enum PrimaryColor {
+        Red,
+        Yellow,
+        Blue,
+    }
+
+    /// The secondary colors according to the RYB color model.
+    pub enum SecondaryColor {
+        Orange,
+        Green,
+        Purple,
+    }
+}
+
+pub mod utils {
+    use crate::kinds::*;
+
+    /// Combines two primary colors in equal amounts to create
+    /// a secondary color.
+    pub fn mix(c1: PrimaryColor, c2: PrimaryColor) -&gt; SecondaryColor {
+        // --snip--
+<span class="boring">        unimplemented!();
+</span>    }
+}</code></pre>
+<p><span class="caption">示例 14-3：一个库 <code>art</code> 其组织包含 <code>kinds</code> 和 <code>utils</code> 模块</span></p>
+<p>图 14-3 展示了 <code>cargo doc</code> 为这个 crate 生成的文档首页。</p>
+<img alt="Rendered documentation for the `art` crate that lists the `kinds` and `utils` modules" src="https://kaisery.github.io/trpl-zh-cn/img/trpl14-03.png" class="center" />
+<p><span class="caption">图 14-3：包含 <code>kinds</code> 和 <code>utils</code> 模块的库 <code>art</code> 的文档首页</span></p>
+<p>注意 <code>PrimaryColor</code> 和 <code>SecondaryColor</code> 类型、以及 <code>mix</code> 函数都没有在首页中列出。我们必须点击 <code>kinds</code> 或 <code>utils</code> 才能看到它们。</p>
+<p>依赖这个库的另一个 crate 需要使用 <code>use</code> 语句，把 <code>art</code> 中的项引入作用域，同时必须指定当前定义的模块结构。示例 14-4 展示了一个使用 <code>art</code> crate 中 <code>PrimaryColor</code> 和 <code>mix</code> 的 crate：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore">use art::kinds::PrimaryColor;
+use art::utils::mix;
+
+fn main() {
+    let red = PrimaryColor::Red;
+    let yellow = PrimaryColor::Yellow;
+    mix(red, yellow);
+}</code></pre>
+<p><span class="caption">示例 14-4：一个通过导出内部结构使用 <code>art</code> crate 中项的 crate</span></p>
+<p>示例 14-4 中这段代码的作者，必须先弄清楚 <code>PrimaryColor</code> 在 <code>kinds</code> 模块中，而 <code>mix</code> 在 <code>utils</code> 模块中。<code>art</code> crate 的模块结构，对开发 <code>art</code> crate 的人来说比对使用它的人更有意义。这种内部结构并没有给想理解如何使用 <code>art</code> crate 的人提供有价值的信息，反而会带来困惑，因为用户必须先搞清楚该去哪里找需要的内容，还要在 <code>use</code> 语句中写出模块名。</p>
+<p>为了从公有 API 中去掉内部组织细节，我们可以修改示例 14-3 中的 <code>art</code> crate，加入 <code>pub use</code> 语句，在顶层重导出这些项，如示例 14-5 所示：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust ignore">//! # Art
+//!
+//! A library for modeling artistic concepts.
+
+pub use self::kinds::PrimaryColor;
+pub use self::kinds::SecondaryColor;
+pub use self::utils::mix;
+
+pub mod kinds {
+    // --snip--
+<span class="boring">    /// The primary colors according to the RYB color model.
+</span><span class="boring">    pub enum PrimaryColor {
+</span><span class="boring">        Red,
+</span><span class="boring">        Yellow,
+</span><span class="boring">        Blue,
+</span><span class="boring">    }
+</span><span class="boring">
+</span><span class="boring">    /// The secondary colors according to the RYB color model.
+</span><span class="boring">    pub enum SecondaryColor {
+</span><span class="boring">        Orange,
+</span><span class="boring">        Green,
+</span><span class="boring">        Purple,
+</span><span class="boring">    }
+</span>}
+
+pub mod utils {
+    // --snip--
+<span class="boring">    use crate::kinds::*;
+</span><span class="boring">
+</span><span class="boring">    /// Combines two primary colors in equal amounts to create
+</span><span class="boring">    /// a secondary color.
+</span><span class="boring">    pub fn mix(c1: PrimaryColor, c2: PrimaryColor) -&gt; SecondaryColor {
+</span><span class="boring">        SecondaryColor::Orange
+</span><span class="boring">    }
+</span>}</code></pre>
+<p><span class="caption">示例 14-5：增加 <code>pub use</code> 语句重导出项</span></p>
+<p>现在，<code>cargo doc</code> 为这个 crate 生成的 API 文档会在首页列出这些重导出项及其链接，如图 14-4 所示，这使 <code>PrimaryColor</code>、<code>SecondaryColor</code> 和 <code>mix</code> 更容易被找到。</p>
+<img alt="Rendered documentation for the `art` crate with the re-exports on the front page" src="https://kaisery.github.io/trpl-zh-cn/img/trpl14-04.png" class="center" />
+<p><span class="caption">图 14-4：列出重导出项的 <code>art</code> 文档首页</span></p>
+<p><code>art</code> crate 的用户仍然可以像示例 14-4 那样看到并使用示例 14-3 中的内部结构，也可以使用示例 14-5 中更方便的结构，如示例 14-6 所示：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore">use art::PrimaryColor;
+use art::mix;
+
+fn main() {
+    // --snip--
+<span class="boring">    let red = PrimaryColor::Red;
+</span><span class="boring">    let yellow = PrimaryColor::Yellow;
+</span><span class="boring">    mix(red, yellow);
+</span>}</code></pre>
+<p><span class="caption">示例 14-6：一个使用 <code>art</code> crate 中重导出项的程序</span></p>
+<p>在存在很多嵌套模块的情况下，使用 <code>pub use</code> 将类型重导出到顶层，会显著改善使用这个 crate 的体验。<code>pub use</code> 的另一个常见用法，是把当前 crate 的某个依赖中的定义重新导出，让那个 crate 的定义成为你这个 crate 公有 API 的一部分。</p>
+<p>创建有用的公有 API 结构更像是一门艺术，而不是科学；你可以不断迭代，找到最适合用户的 API。选择 <code>pub use</code> 能让你在 crate 内部结构的组织方式上保持灵活，并将其与你呈现给用户的结构解耦。可以看看你安装过的一些 crate 的源码，观察它们的内部结构是否和公有 API 不同。</p>
+<h3 id="创建-cratesio-账号"></h3>
+<p>在发布任何 crate 之前，你需要在 <a href="https://crates.io">crates.io</a><!-- ignore --> 上创建账号并获取一个 API token。为此，请访问 <a href="https://crates.io">crates.io</a><!-- ignore --> 首页，并通过 GitHub 账号登录。（目前 GitHub 账号仍然是必需的，不过未来这个网站可能会支持其他注册方式。）登录之后，前往 <a href="https://crates.io/me/">https://crates.io/me/</a><!-- ignore --> 的账户设置页面获取 API key。然后运行 <code>cargo login</code> 命令，并在提示时粘贴你的 API key，如下所示：</p>
+<pre><code class="language-console">$ cargo login
+abcdefghijklmnopqrstuvwxyz012345
+</code></pre>
+<p>这个命令会把你的 API token 告诉 Cargo，并将其保存在本地的 <em>~/.cargo/credentials</em> 文件中。注意，这个 token 是一个<strong>秘密</strong>，不应该与任何人共享。如果你因为任何原因泄露了它，应立即到 <a href="https://crates.io">crates.io</a><!-- ignore --> 撤销并重新生成一个 token。</p>
+<h3 id="向新-crate-添加元数据"></h3>
+<p>比如说你已经有一个希望发布的 crate。在发布之前，你需要在 crate 的 <em>Cargo.toml</em> 文件的 <code>[package]</code> 部分增加一些本 crate 的元数据（metadata）。</p>
+<p>首先，crate 需要一个唯一的名称。虽然在本地开发 crate 时，你可以随意命名，但 <a href="https://crates.io">crates.io</a><!-- ignore --> 上的 crate 名称遵循先到先得的原则。一旦某个 crate 名称已经被占用，就没有其他人能再用这个名称发布 crate。请搜索你想使用的名称，确认它是否已被占用。如果没有，就把 <em>Cargo.toml</em> 中 <code>[package]</code> 里的 <code>name</code> 字段改成你想发布时使用的名称，如下所示：</p>
+<p><span class="filename">文件名：Cargo.toml</span></p>
+<pre><code class="language-toml">[package]
+name = "guessing_game"
+</code></pre>
+<p>即使你选择了一个唯一的名称，如果此时尝试运行 <code>cargo publish</code> 发布该 crate 的话，会得到一个警告接着是一个错误：</p>
+<pre><code class="language-console">$ cargo publish
+    Updating crates.io index
+warning: manifest has no description, license, license-file, documentation, homepage or repository.
+See https://doc.rust-lang.org/cargo/reference/manifest.html#package-metadata for more info.
+--snip--
+error: failed to publish to registry at https://crates.io
+
+Caused by:
+  the remote server responded with an error (status 400 Bad Request): missing or empty metadata fields: description, license. Please see https://doc.rust-lang.org/cargo/reference/manifest.html for more information on configuring these fields
+</code></pre>
+<p>这个错误是因为我们缺少一些关键信息：关于该 crate 用途的描述，以及用户可以在什么许可条款下使用它。在 <em>Cargo.toml</em> 中添加一两句简短描述即可，因为它会在搜索结果中和你的 crate 一起显示。对于 <code>license</code> 字段，你需要填写一个<strong>许可证标识符值</strong>（<em>license identifier value</em>）。<a href="https://spdx.org/licenses/">Linux 基金会的 Software Package Data Exchange (SPDX)</a> 列出了可用的标识符。例如，如果要指定 crate 使用 MIT License，就添加 <code>MIT</code> 标识符：</p>
+<p><span class="filename">文件名：Cargo.toml</span></p>
+<pre><code class="language-toml">[package]
+name = "guessing_game"
+license = "MIT"
+</code></pre>
+<p>如果你想使用 SPDX 中不存在的许可证，就需要把许可证文本放入一个文件中，将该文件包含到项目里，然后使用 <code>license-file</code> 指定该文件名，而不是使用 <code>license</code> 字段。</p>
+<p>关于项目应采用何种许可证的建议超出了本书的范围。很多 Rust 社区成员选择与 Rust 本身相同的许可证，也就是双许可证 <code>MIT OR Apache-2.0</code>。这个例子也说明了，你可以用 <code>OR</code> 分隔多个许可证标识符，来为项目指定多个许可证。</p>
+<p>那么，有了唯一的名称、版本号、由 <code>cargo new</code> 新建项目时增加的作者信息、描述和所选择的 license，已经准备好发布的项目的 <em>Cargo.toml</em> 文件可能看起来像这样：</p>
+<p><span class="filename">文件名：Cargo.toml</span></p>
+<pre><code class="language-toml">[package]
+name = "guessing_game"
+version = "0.1.0"
+edition = "2024"
+description = "A fun game where you guess what number the computer has chosen."
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+</code></pre>
+<p><a href="https://doc.rust-lang.org/cargo/">Cargo 文档</a> 还描述了其他可指定的元数据，它们可以帮助你的 crate 更容易被发现和使用！</p>
+<h3 id="发布到-cratesio"></h3>
+<p>现在，我们已经创建了账号、保存了 API token、为 crate 选好了名字，并填入了所需的元数据，你就可以发布了！发布 crate 会将该 crate 的某个特定版本上传到 <a href="https://crates.io">crates.io</a><!-- ignore --> 供他人使用。</p>
+<p>发布 crate 时务必小心，因为发布是<strong>永久性的</strong>。对应版本无法被覆盖，其代码也无法被删除。<a href="https://crates.io">crates.io</a><!-- ignore --> 的一个主要目标，是充当代码的永久归档服务器，这样所有依赖 <a href="https://crates.io">crates.io</a><!-- ignore --> 上 crate 的项目都能一直正常工作。而如果允许删除版本，就无法实现这一目标。不过，可发布的版本号数量并没有限制。</p>
+<p>再次运行 <code>cargo publish</code> 命令。这次它应该会成功：</p>
+<pre><code class="language-console">$ cargo publish
+    Updating crates.io index
+   Packaging guessing_game v0.1.0 (file:///projects/guessing_game)
+    Packaged 6 files, 1.2KiB (895.0B compressed)
+   Verifying guessing_game v0.1.0 (file:///projects/guessing_game)
+   Compiling guessing_game v0.1.0
+(file:///projects/guessing_game/target/package/guessing_game-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.19s
+   Uploading guessing_game v0.1.0 (file:///projects/guessing_game)
+    Uploaded guessing_game v0.1.0 to registry `crates-io`
+note: waiting for `guessing_game v0.1.0` to be available at registry
+`crates-io`.
+You may press ctrl-c to skip waiting; the crate should be available shortly.
+   Published guessing_game v0.1.0 at registry `crates-io`
+</code></pre>
+<p>至此，你已经把代码分享给 Rust 社区了，任何人都可以轻松地把你的 crate 加入自己的项目依赖中。</p>
+<h3 id="发布现有-crate-的新版本"></h3>
+<p>当你修改了 crate 并准备发布新版本时，修改 <em>Cargo.toml</em> 中 <code>version</code> 的值。请使用<a href="https://semver.org/">语义化版本控制规则</a>，根据修改的类型决定下一个版本号。然后再次运行 <code>cargo publish</code> 来上传新版本。</p>
+<h3 id="使用-cargo-yank-从-cratesio-撤回版本"></h3>
+<p>虽然你不能删除 crate 的历史版本，但可以阻止未来的新项目把它加入依赖。这在某个版本因为某种原因损坏时会很有用。为此，Cargo 支持对某个版本执行<strong>撤回</strong>（<em>yank</em>）。</p>
+<p><strong>撤回</strong>某个版本会阻止新项目依赖这个版本，不过所有已经依赖它的项目仍然可以下载并继续依赖它。从本质上说，撤回意味着：所有已有 <em>Cargo.lock</em> 的项目都不会因此损坏，而任何新生成的 <em>Cargo.lock</em> 都不会再使用被撤回的版本。</p>
+<p>要撤回 crate 的某个版本，请在之前发布该 crate 的目录中运行 <code>cargo yank</code>，并指定要撤回的版本。例如，如果我们发布了名为 <code>guessing_game</code> 的 crate 的 <code>1.0.1</code> 版本，并想撤回它，就在 <code>guessing_game</code> 项目目录中运行：</p>
+<pre><code class="language-console">$ cargo yank --vers 1.0.1
+    Updating crates.io index
+        Yank guessing_game@1.0.1
+</code></pre>
+<p>你也可以撤销这次撤回，让项目重新可以依赖该版本，只需在命令中加上 <code>--undo</code>：</p>
+<pre><code class="language-console">$ cargo yank --vers 1.0.1 --undo
+    Updating crates.io index
+      Unyank guessing_game@1.0.1
+</code></pre>
+<p>撤回<strong>不会</strong>删除任何代码。例如，撤回功能并不能删除你不小心上传的秘密信息。如果发生了这种情况，请立刻轮换这些秘密信息。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p045.html">← 采用发布配置自定义构建</a><a href="index.html">目录</a><a href="p047.html">Cargo 工作空间 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

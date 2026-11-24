@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4.2 服务器上的 Git · 在服务器上搭建 Git · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：4.2 服务器上的 Git - 在服务器上搭建 Git。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p025.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html" class="on">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html">10.5 Git 内部原理 - 引用规范</a><a href="p072.html">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 25 / 100 节
+    </div>
+    <h1>4.2 服务器上的 Git - 在服务器上搭建 Git</h1>
+            <div>
+              <h2 id="_getting_git_on_a_server">在服务器上搭建 Git</h2>
+<div class="paragraph">
+<p>现在我们将讨论如何在你自己的服务器上搭建 Git 服务来运行这些协议。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>这里我们将要演示在 Linux 服务器上进行一次基本且简化的安装所需的命令与步骤，当然在 macOS 或 Windows 服务器上同样可以运行这些服务。
+事实上，在你的计算机基础架构中建立一个生产环境服务器，将不可避免的使用到不同的安全措施与操作系统工具。但是，希望你能从本节中获得一些必要的知识。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>在开始架设 Git 服务器前，需要把现有仓库导出为裸仓库——即一个不包含当前工作目录的仓库。
+这通常是很简单的。
+为了通过克隆你的仓库来创建一个新的裸仓库，你需要在克隆命令后加上 <code>--bare</code> 选项。
+按照惯例，裸仓库的目录名以 .git 结尾，就像这样：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone --bare my_project my_project.git
+Cloning into bare repository 'my_project.git'...
+done.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>现在，你的 <code>my_project.git</code> 目录中应该有 Git 目录的副本了。</p>
+</div>
+<div class="paragraph">
+<p>整体上效果大致相当于</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cp -Rf my_project/.git my_project.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>虽然在配置文件中有若干不同，但是对于你的目的来说，这两种方式都是一样的。
+它只取出 Git 仓库自身，不要工作目录，然后特别为它单独创建一个目录。</p>
+</div>
+<div class="sect3">
+<h3 id="_bare_repo">把裸仓库放到服务器上</h3>
+<div class="paragraph">
+<p>既然你有了裸仓库的副本，剩下要做的就是把裸仓库放到服务器上并设置你的协议。
+假设一个域名为 <code>git.example.com</code> 的服务器已经架设好，并可以通过 SSH 连接，
+你想把所有的 Git 仓库放在 <code>/srv/git</code> 目录下。
+假设服务器上存在 <code>/srv/git/</code> 目录，你可以通过以下命令复制你的裸仓库来创建一个新仓库：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ scp -r my_project.git user@git.example.com:/srv/git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>此时，其他可通过 SSH 读取此服务器上 <code>/srv/git</code> 目录的用户，可运行以下命令来克隆你的仓库。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone user@git.example.com:/srv/git/my_project.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果一个用户，通过使用 SSH 连接到一个服务器，并且其对 <code>/srv/git/my_project.git</code> 目录拥有可写权限，那么他将自动拥有推送权限。</p>
+</div>
+<div class="paragraph">
+<p>如果到该项目目录中运行 <code>git init</code> 命令，并加上 <code>--shared</code> 选项，
+那么 Git 会自动修改该仓库目录的组权限为可写。
+注意，运行此命令的工程中不会摧毁任何提交、引用等内容。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ssh user@git.example.com
+$ cd /srv/git/my_project.git
+$ git init --bare --shared</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>由此可见，根据现有的 Git 仓库创建一个裸仓库，然后把它放上你和协作者都有 SSH 访问权的服务器是多么容易。
+现在你们已经准备好在同一项目上展开合作了。</p>
+</div>
+<div class="paragraph">
+<p>值得注意的是，这的确是架设一个几个人拥有连接权的 Git 服务的全部——
+只要在服务器上加入可以用 SSH 登录的帐号，然后把裸仓库放在大家都有读写权限的地方。
+你已经准备好了一切，无需更多。</p>
+</div>
+<div class="paragraph">
+<p>下面的几节中，你会了解如何扩展到更复杂的设定。
+这些内容包含如何避免为每一个用户建立一个账户，给仓库添加公共读取权限，架设网页界面等等。
+然而，请记住这一点，如果只是和几个人在一个私有项目上合作的话，<em>仅仅</em> 是一个 SSH 服务器和裸仓库就足够了。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_小型安装">小型安装</h3>
+<div class="paragraph">
+<p>如果设备较少或者你只想在小型开发团队里尝试 Git ，那么一切都很简单。
+架设 Git 服务最复杂的地方在于用户管理。
+如果需要仓库对特定的用户可读，而给另一部分用户读写权限，那么访问和许可安排就会比较困难。</p>
+</div>
+<div class="sect4">
+<h4 id="_ssh_连接">SSH 连接</h4>
+<div class="paragraph">
+<p>
+如果你有一台所有开发者都可以用 SSH 连接的服务器，架设你的第一个仓库就十分简单了，
+因为你几乎什么都不用做（正如我们上一节所说的）。
+如果你想在你的仓库上设置更复杂的访问控制权限，只要使用服务器操作系统的普通的文件系统权限就行了。</p>
+</div>
+<div class="paragraph">
+<p>如果需要团队里的每个人都对仓库有写权限，又不能给每个人在服务器上建立账户，那么提供 SSH 连接就是唯一的选择了。
+我们假设用来共享仓库的服务器已经安装了 SSH 服务，而且你通过它访问服务器。</p>
+</div>
+<div class="paragraph">
+<p>有几个方法可以使你给团队每个成员提供访问权。
+第一个就是给团队里的每个人创建账号，这种方法很直接但也很麻烦。
+或许你不会想要为每个人运行一次 <code>adduser</code>（或者 <code>useradd</code>）并且设置临时密码。</p>
+</div>
+<div class="paragraph">
+<p>第二个办法是在主机上建立一个 'git' 账户，让每个需要写权限的人发送一个 SSH 公钥，
+然后将其加入 git 账户的 <code>~/.ssh/authorized_keys</code> 文件。
+这样一来，所有人都将通过 'git' 账户访问主机。
+这一点也不会影响提交的数据——访问主机用的身份不会影响提交对象的提交者信息。</p>
+</div>
+<div class="paragraph">
+<p>另一个办法是让 SSH 服务器通过某个 LDAP 服务，或者其他已经设定好的集中授权机制，来进行授权。
+只要每个用户可以获得主机的 shell 访问权限，任何 SSH 授权机制你都可视为是有效的。</p>
+</div>
+</div>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%8D%8F%E8%AE%AE">prev</a> | <a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p024.html">← 4.1 服务器上的 Git - 协议</a><a href="index.html">目录</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥 →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

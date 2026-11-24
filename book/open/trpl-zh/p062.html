@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>使用任意数量的 futures · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：使用任意数量的 futures。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p062.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">🐎 白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html" class="on">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 62 / 86 节
+    </div>
+    <h1>使用任意数量的 futures</h1>
+    <h3 id="将控制权交还给运行时"></h3>
+<p><a href="https://github.com/rust-lang/book/blob/dec931300f1a00e6e26021907192b0634980950c/src/ch17-03-more-futures.md">ch17-03-more-futures.md</a></p>
+<p>回忆一下我们在<a href="#第一个异步程序">“第一个异步程序”</a><!-- ignore -->一节中提到的内容：在每个 await 点，如果被等待的 future 还没准备好，Rust 就会给运行时一个机会来暂停当前任务并切换到其他任务。反过来也成立：Rust <em>只会</em> 在 await 点暂停 async 代码块，并把控制权交还给运行时。await 点之间的所有内容都是同步执行的。</p>
+<p>这意味着，如果你在一个 async 代码块中做了大量工作，却没有任何 await 点，那么这个 future 就会阻止其他 future 取得进展。有时你会听到人们把这称为一个 future 让其他 future <em>starve</em>（饥饿）。在某些场景下，这也许不是什么大问题；但如果你在做昂贵的初始化、长时间运行的工作，或者你有一个会无限执行某项任务的 future，就需要认真考虑该在何时、何地把控制权交还给运行时。</p>
+<p>让我们通过模拟一个长时间运行的操作来展示这种“饥饿”问题，再看看该如何解决。示例 17-14 引入了一个 <code>slow</code> 函数。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::{thread, time::Duration};
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span><span class="boring">        // We will call `slow` here later
+</span><span class="boring">    });
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn slow(name: &amp;str, ms: u64) {
+    thread::sleep(Duration::from_millis(ms));
+    println!("'{name}' ran for {ms}ms");
+}</code></pre>
+<figcaption>示例 17-14：使用 `thread::sleep` 来模拟缓慢的操作</figcaption>
+</figure>
+<p>这段代码使用的是 <code>std::thread::sleep</code>，而不是 <code>trpl::sleep</code>，因此调用 <code>slow</code> 会让当前线程阻塞若干毫秒。我们可以把 <code>slow</code> 看作现实世界中那些既耗时又会阻塞的操作的替身。</p>
+<p>在示例 17-15 中，我们用 <code>slow</code> 来模拟在一对 future 中执行这类 CPU 密集型工作。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::{thread, time::Duration};
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let a = async {
+            println!("'a' started.");
+            slow("a", 30);
+            slow("a", 10);
+            slow("a", 20);
+            trpl::sleep(Duration::from_millis(50)).await;
+            println!("'a' finished.");
+        };
+
+        let b = async {
+            println!("'b' started.");
+            slow("b", 75);
+            slow("b", 10);
+            slow("b", 15);
+            slow("b", 350);
+            trpl::sleep(Duration::from_millis(50)).await;
+            println!("'b' finished.");
+        };
+
+        trpl::select(a, b).await;
+<span class="boring">    });
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn slow(name: &amp;str, ms: u64) {
+</span><span class="boring">    thread::sleep(Duration::from_millis(ms));
+</span><span class="boring">    println!("'{name}' ran for {ms}ms");
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-15：调用 `slow` 函数来模拟缓慢操作</figcaption>
+</figure>
+<p>每个 future 都会在完成一大串缓慢操作之后，才把控制权交还给运行时。如果你运行这段代码，就会看到如下输出：</p>
+<!-- manual-regeneration
+cd listings/ch17-async-await/listing-17-15/
+cargo run
+copy just the output
+-->
+<pre><code class="language-text">'a' started.
+'a' ran for 30ms
+'a' ran for 10ms
+'a' ran for 20ms
+'b' started.
+'b' ran for 75ms
+'b' ran for 10ms
+'b' ran for 15ms
+'b' ran for 350ms
+'a' finished.
+</code></pre>
+<p>和示例 17-5 中用 <code>trpl::select</code> 让两个 URL 获取任务竞争时一样，<code>select</code> 仍然会在 <code>a</code> 完成时立刻结束。不过，这两个 future 里的 <code>slow</code> 调用之间完全没有交错执行。<code>a</code> future 会一路把自己的工作做完，直到等待 <code>trpl::sleep</code> 调用；接着 <code>b</code> future 又一路做完自己的工作，直到它自己的 <code>trpl::sleep</code> 被等待；最后 <code>a</code> future 才完成。要想让两个 future 在这些缓慢任务之间都取得进展，我们就需要一些 await 点，好把控制权交还给运行时。也就是说，我们得有某种可以被 await 的东西！</p>
+<p>实际上，我们已经能在示例 17-15 中看到这种“交接”是如何发生的：如果去掉 <code>a</code> future 末尾的 <code>trpl::sleep</code>，那么它会直接完成，而 <code>b</code> future <em>根本不会运行</em>。让我们先从 <code>trpl::sleep</code> 入手，试着让这些操作能够轮流取得进展，如示例 17-16 所示。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::{thread, time::Duration};
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let one_ms = Duration::from_millis(1);
+
+        let a = async {
+            println!("'a' started.");
+            slow("a", 30);
+            trpl::sleep(one_ms).await;
+            slow("a", 10);
+            trpl::sleep(one_ms).await;
+            slow("a", 20);
+            trpl::sleep(one_ms).await;
+            println!("'a' finished.");
+        };
+
+        let b = async {
+            println!("'b' started.");
+            slow("b", 75);
+            trpl::sleep(one_ms).await;
+            slow("b", 10);
+            trpl::sleep(one_ms).await;
+            slow("b", 15);
+            trpl::sleep(one_ms).await;
+            slow("b", 350);
+            trpl::sleep(one_ms).await;
+            println!("'b' finished.");
+        };
+<span class="boring">
+</span><span class="boring">        trpl::select(a, b).await;
+</span><span class="boring">    });
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn slow(name: &amp;str, ms: u64) {
+</span><span class="boring">    thread::sleep(Duration::from_millis(ms));
+</span><span class="boring">    println!("'{name}' ran for {ms}ms");
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-16：使用 `trpl::sleep` 让操作轮流推进</figcaption>
+</figure>
+<p>我们在每次调用 <code>slow</code> 之间都插入了 <code>trpl::sleep</code> 调用和 await 点。现在，两个 future 的工作就交错在一起了：</p>
+<!-- manual-regeneration
+cd listings/ch17-async-await/listing-17-16
+cargo run
+copy just the output
+-->
+<pre><code class="language-text">'a' started.
+'a' ran for 30ms
+'b' started.
+'b' ran for 75ms
+'a' ran for 10ms
+'b' ran for 10ms
+'a' ran for 20ms
+'b' ran for 15ms
+'a' finished.
+</code></pre>
+<p><code>a</code> future 仍然会在第一次把控制权交给 <code>b</code> 之前先运行一阵，因为它是在第一次调用 <code>trpl::sleep</code> 之前先执行了 <code>slow</code>；但在那之后，每当其中一个 future 命中 await 点，它们就会来回切换。在这个例子中，我们是在每次 <code>slow</code> 之后这么做的，不过实际上也可以按任何对你最合理的方式来拆分工作。</p>
+<p>但我们其实并不是真的想在这里<em>休眠</em>（<em>sleep</em>）；我们只是希望程序尽可能快地前进。我们真正需要的只是把控制权交还给运行时。可以直接通过 <code>trpl::yield_now</code> 来做到这一点。在示例 17-17 中，我们把前面的 <code>trpl::sleep</code> 全部替换成 <code>trpl::yield_now</code>。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::{thread, time::Duration};
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let a = async {
+            println!("'a' started.");
+            slow("a", 30);
+            trpl::yield_now().await;
+            slow("a", 10);
+            trpl::yield_now().await;
+            slow("a", 20);
+            trpl::yield_now().await;
+            println!("'a' finished.");
+        };
+
+        let b = async {
+            println!("'b' started.");
+            slow("b", 75);
+            trpl::yield_now().await;
+            slow("b", 10);
+            trpl::yield_now().await;
+            slow("b", 15);
+            trpl::yield_now().await;
+            slow("b", 350);
+            trpl::yield_now().await;
+            println!("'b' finished.");
+        };
+<span class="boring">
+</span><span class="boring">        trpl::select(a, b).await;
+</span><span class="boring">    });
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn slow(name: &amp;str, ms: u64) {
+</span><span class="boring">    thread::sleep(Duration::from_millis(ms));
+</span><span class="boring">    println!("'{name}' ran for {ms}ms");
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-17：使用 `yield_now` 让操作轮流推进</figcaption>
+</figure>
+<p>这段代码不仅更清楚地表达了真实意图，而且通常也会比使用 <code>sleep</code> 快得多，因为像 <code>sleep</code> 使用的那类计时器，往往都会受到最小粒度限制。比如我们这里使用的 <code>sleep</code>，即使你传入的是 1 纳秒的 <code>Duration</code>，它也至少会睡眠 1 毫秒。再说一次，现代计算机是非常<em>快</em>的：1 毫秒里已经能完成大量工作了！</p>
+<p>这说明：即使面对计算密集型任务，async 依然可能是有用的，具体取决于你的程序还在做什么，因为它提供了一种很实用的手段，用来组织程序不同部分之间的关系（当然代价是 async 状态机本身也有一定开销）。这是一种 <em>协作式多任务</em>（<em>cooperative multitasking</em>）：每个 future 都可以通过 await 点来决定何时交出控制权，因此每个 future 也都负有避免长时间阻塞的责任。在某些基于 Rust 的嵌入式操作系统中，这甚至是<em>唯一</em>的多任务形式！</p>
+<p>当然，在真实代码里，你通常不会在每一行之间都交替插入函数调用和 await 点。像这样主动交出控制权虽然相对便宜，但并不是没有代价。在很多情况下，试图把一个计算密集型任务切得太碎，反而可能显著拖慢它的执行速度，所以有时为了<em>整体</em>性能，让某个操作短暂阻塞一下反而更好。还是那句老话：一定要靠测量来确认代码真正的性能瓶颈。不过，如果你发现原本预期会并发执行的工作，实际上却大量串行发生，那么就要记住这里的底层机制。</p>
+<h3 id="构建我们自己的异步抽象"></h3>
+<p>我们还可以把多个 future 组合在一起，创造出新的模式。比如，完全可以用手头已有的 async 构件来写一个 <code>timeout</code> 函数。等我们做完，它本身就会成为另一个可以继续拿来构建更多 async 抽象的基础模块。</p>
+<p>示例 17-18 展示了我们希望这个 <code>timeout</code> 在面对一个缓慢 future 时应该如何工作。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let slow = async {
+            trpl::sleep(Duration::from_secs(5)).await;
+            "Finally finished"
+        };
+
+        match timeout(slow, Duration::from_secs(2)).await {
+            Ok(message) =&gt; println!("Succeeded with '{message}'"),
+            Err(duration) =&gt; {
+                println!("Failed after {} seconds", duration.as_secs())
+            }
+        }
+<span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-18：使用我们设想的 `timeout` 为一个缓慢操作设置时间限制</figcaption>
+</figure>
+<p>让我们来实现它。首先先想想 <code>timeout</code> 的 API：</p>
+<ul>
+<li>它本身需要是一个 async 函数，这样我们才能等待它。</li>
+<li>它的第一个参数应该是一个要执行的 future。我们可以把它设计成泛型，从而支持任意 future。</li>
+<li>它的第二个参数应该是最大等待时间。如果用 <code>Duration</code>，就能很方便地直接传给 <code>trpl::sleep</code>。</li>
+<li>它应该返回一个 <code>Result</code>。如果传入的 future 成功完成，结果应当是 <code>Ok</code>，内部带上该 future 产生的值；如果先发生超时，结果就应当是 <code>Err</code>，内部带上等待的时长。</li>
+</ul>
+<p>示例 17-19 展示了这个声明。</p>
+<!-- This is not tested because it intentionally does not compile. -->
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span><span class="boring">        let slow = async {
+</span><span class="boring">            trpl::sleep(Duration::from_secs(5)).await;
+</span><span class="boring">            "Finally finished"
+</span><span class="boring">        };
+</span><span class="boring">
+</span><span class="boring">        match timeout(slow, Duration::from_secs(2)).await {
+</span><span class="boring">            Ok(message) =&gt; println!("Succeeded with '{message}'"),
+</span><span class="boring">            Err(duration) =&gt; {
+</span><span class="boring">                println!("Failed after {} seconds", duration.as_secs())
+</span><span class="boring">            }
+</span><span class="boring">        }
+</span><span class="boring">    });
+</span><span class="boring">}
+</span><span class="boring">
+</span>async fn timeout&lt;F: Future&gt;(
+    future_to_try: F,
+    max_time: Duration,
+) -&gt; Result&lt;F::Output, Duration&gt; {
+    // Here is where our implementation will go!
+}</code></pre>
+<figcaption>示例 17-19：定义 `timeout` 的签名</figcaption>
+</figure>
+<p>这样类型层面的目标就满足了。接下来想想我们需要的<em>行为</em>：我们希望让传入的 future 和这个时长“竞争”。可以用 <code>trpl::sleep</code> 根据这个时长构造一个计时器 future，再用 <code>trpl::select</code> 让计时器和调用者传入的 future 一起运行。</p>
+<p>在示例 17-20 中，我们通过匹配 <code>trpl::select</code> 的等待结果来实现 <code>timeout</code>。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span>use trpl::Either;
+
+// --snip--
+
+<span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span><span class="boring">        let slow = async {
+</span><span class="boring">            trpl::sleep(Duration::from_secs(5)).await;
+</span><span class="boring">            "Finally finished"
+</span><span class="boring">        };
+</span><span class="boring">
+</span><span class="boring">        match timeout(slow, Duration::from_secs(2)).await {
+</span><span class="boring">            Ok(message) =&gt; println!("Succeeded with '{message}'"),
+</span><span class="boring">            Err(duration) =&gt; {
+</span><span class="boring">                println!("Failed after {} seconds", duration.as_secs())
+</span><span class="boring">            }
+</span><span class="boring">        }
+</span><span class="boring">    });
+</span><span class="boring">}
+</span><span class="boring">
+</span>async fn timeout&lt;F: Future&gt;(
+    future_to_try: F,
+    max_time: Duration,
+) -&gt; Result&lt;F::Output, Duration&gt; {
+    match trpl::select(future_to_try, trpl::sleep(max_time)).await {
+        Either::Left(output) =&gt; Ok(output),
+        Either::Right(_) =&gt; Err(max_time),
+    }
+}</code></pre>
+<figcaption>示例 17-20：使用 `select` 和 `sleep` 定义 `timeout`</figcaption>
+</figure>
+<p><code>trpl::select</code> 的实现并不是公平的：它总是按参数传入的顺序进行轮询（其他一些 <code>select</code> 实现会随机选择先轮询哪个参数）。因此，我们把 <code>future_to_try</code> 作为第一个参数传给 <code>select</code>，好让它即使在 <code>max_time</code> 很短的情况下，也仍然有机会先完成。如果 <code>future_to_try</code> 先完成，<code>select</code> 会返回 <code>Left</code>，其中包含 <code>future_to_try</code> 的输出；如果 <code>timer</code> 先完成，<code>select</code> 就会返回 <code>Right</code>，其中包含计时器的输出 <code>()</code>。</p>
+<p>如果 <code>future_to_try</code> 成功完成，并且我们得到了 <code>Left(output)</code>，那么就返回 <code>Ok(output)</code>。如果相反是睡眠计时器先结束，我们得到 <code>Right(())</code>，那就用 <code>_</code> 忽略这个 <code>()</code>，并返回 <code>Err(max_time)</code>。</p>
+<p>这样一来，我们就用另外两个 async 小工具拼出了一个可工作的 <code>timeout</code>。如果运行代码，它会在超时后打印出失败信息：</p>
+<pre><code class="language-text">Failed after 2 seconds
+</code></pre>
+<p>因为 future 可以和其他 future 组合，你就能利用更小的 async 构件构建出非常强大的工具。比如，完全可以用同样的方法把 timeout 和 retry 组合起来，再进一步把它们用在网络请求一类的操作上（例如示例 17-5 里的那些）。</p>
+<p>在实践中，你通常会主要直接使用 <code>async</code> 和 <code>await</code>，其次才是像 <code>select</code> 这样的函数，以及像 <code>join!</code> 这样的宏，来控制最外层的 future 应该如何执行。</p>
+<p>到这里，我们已经看过好几种同时处理多个 future 的方式了。接下来，我们将看看如何借助 <em>stream</em>，按照时间顺序处理一串 future。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p061.html">← 并发与 async</a><a href="index.html">目录</a><a href="p063.html">Stream：按顺序出现的 Future →</a></div>
+  </main>
+</div>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261124a">
+<script src="/assets/baiju-gate.js?v=20261124a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261124a"></script>
+</body>
+</html>

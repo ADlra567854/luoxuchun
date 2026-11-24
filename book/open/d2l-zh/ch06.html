@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第 6 章 卷积神经网络 · 动手学深度学习（全文在线阅读） · 白驹 ccowork</title>
+<title>第 6 章 卷积神经网络 · 动手学深度学习（全文在线阅读）</title>
 <meta name="description" content="动手学深度学习 第 7 部分：第 6 章 卷积神经网络。许可 Apache License 2.0，来源 https://zh.d2l.ai/。">
-<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/d2l-zh/ch06.html">
+<link rel="canonical" href="/book/open/d2l-zh/ch06.html">
 <meta name="robots" content="index,follow">
 <link rel="stylesheet" href="/book/open/book.css?v=20261124">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
@@ -24,7 +24,7 @@
     <div class="bk-lic">
       <b>来源与许可</b>：动手学深度学习 · 作者 阿斯顿·张（Aston Zhang）、扎卡里·C·立顿、李沐、亚历山大·J·斯莫拉 · 译者 何孝霆、瑞潮儿·胡 及社区 200 余位贡献者。<br>
       许可 <a href="https://github.com/d2l-ai/d2l-zh/blob/master/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a> · 仓库 <a href="https://github.com/d2l-ai/d2l-zh" target="_blank" rel="noopener">https://github.com/d2l-ai/d2l-zh</a><br>
-      本站抓取时间 2026-11-24 21:13 · 本章来自 https://zh.d2l.ai/chapter_convolutional-neural-networks/index.html
+      本站抓取时间 2026-11-24 21:24 · 本章来自 https://zh.d2l.ai/chapter_convolutional-neural-networks/index.html
     </div>
     <h1>第 6 章 卷积神经网络</h1>
     
@@ -56,7 +56,7 @@ networks，CNN）是机器学习利用自然图像中一些已知结构的创造
 卷积神经网络正是将<em>空间不变性</em>（spatial
 invariance）的这一概念系统化，从而基于这个模型使用较少的参数来学习有用的表示。</p>
 <div class="figure align-default" id="id11">
-<span id="img-waldo"></span><a class="reference internal image-reference" href="../_images/where-wally-walker-books.jpg"><img alt="../_images/where-wally-walker-books.jpg" src="https://zh.d2l.ai/_images/where-wally-walker-books.jpg" style="width: 400px;" /></a>
+<span id="img-waldo"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/where-wally-walker-books.jpg"><img alt="../_images/where-wally-walker-books.jpg" src="https://zh.d2l.ai/_images/where-wally-walker-books.jpg" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图6.1.1 </span><span class="caption-text">沃尔多游戏示例图。</span></p>
 </div>
 <p>现在，我们将上述想法总结一下，从而帮助我们设计适合于计算机视觉的神经网络架构。</p>
@@ -128,7 +128,7 @@ kernel）或者<em>滤波器</em>（filter），亦或简单地称之为该卷�
 <p>回到上面的“沃尔多在哪里”游戏，让我们看看它到底是什么样子。卷积层根据滤波器<span class="math notranslate nohighlight">\(\mathbf{V}\)</span>选取给定大小的窗口，并加权处理图片，如
 <a class="reference internal" href="#fig-waldo-mask"><span class="std std-numref">图6.1.2</span></a>中所示。我们的目标是学习一个模型，以便探测出在“沃尔多”最可能出现的地方。</p>
 <div class="figure align-default" id="id12">
-<span id="fig-waldo-mask"></span><a class="reference internal image-reference" href="../_images/waldo-mask.jpg"><img alt="../_images/waldo-mask.jpg" src="https://zh.d2l.ai/_images/waldo-mask.jpg" style="width: 400px;" /></a>
+<span id="fig-waldo-mask"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/waldo-mask.jpg"><img alt="../_images/waldo-mask.jpg" src="https://zh.d2l.ai/_images/waldo-mask.jpg" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图6.1.2 </span><span class="caption-text">发现沃尔多。</span></p>
 </div>
 <div class="section" id="subsec-why-conv-channels">
@@ -212,14 +212,14 @@ maps），因为每个通道都向后续层提供一组空间化的学习特征�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>6. 卷积神经网络</div>
          </div>
      </a>
-     <a id="button-next" href="conv-layer.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/conv-layer.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -239,7 +239,7 @@ maps），因为每个通道都向后续层提供一组空间化的学习特征�
 <h2><span class="section-number">6.2.1. </span>互相关运算</h2>
 <p>严格来说，卷积层是个错误的叫法，因为它所表达的运算其实是<em>互相关运算</em>（cross-correlation），而不是卷积运算。
 根据
-<a class="reference internal" href="why-conv.html#sec-why-conv"><span class="std std-numref">6.1节</span></a>中的描述，在卷积层中，输入张量和核张量通过互相关运算产生输出张量。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html#sec-why-conv"><span class="std std-numref">6.1节</span></a>中的描述，在卷积层中，输入张量和核张量通过互相关运算产生输出张量。</p>
 <p>首先，我们暂时忽略通道（第三维）这一情况，看看如何处理二维图像数据和隐藏表示。在
 <a class="reference internal" href="#fig-correlation"><span class="std std-numref">图6.2.1</span></a>中，输入是高度为<span class="math notranslate nohighlight">\(3\)</span>、宽度为<span class="math notranslate nohighlight">\(3\)</span>的二维张量（即形状为<span class="math notranslate nohighlight">\(3 \times 3\)</span>）。卷积核的高度和宽度都是<span class="math notranslate nohighlight">\(2\)</span>，而卷积核窗口（或卷积窗口）的形状由内核的高度和宽度决定（即<span class="math notranslate nohighlight">\(2 \times 2\)</span>）。</p>
 <div class="figure align-default" id="id10">
@@ -754,9 +754,9 @@ maps），因为每个通道都向后续层提供一组空间化的学习特征�
 <div class="section" id="id6">
 <h2><span class="section-number">6.2.5. </span>互相关和卷积</h2>
 <p>回想一下我们在
-<a class="reference internal" href="why-conv.html#sec-why-conv"><span class="std std-numref">6.1节</span></a>中观察到的互相关和卷积运算之间的对应关系。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html#sec-why-conv"><span class="std std-numref">6.1节</span></a>中观察到的互相关和卷积运算之间的对应关系。
 为了得到正式的<em>卷积</em>运算输出，我们需要执行
-<a class="reference internal" href="why-conv.html#equation-eq-2d-conv-discrete">(6.1.6)</a>中定义的严格卷积运算，而不是互相关运算。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html#equation-eq-2d-conv-discrete">(6.1.6)</a>中定义的严格卷积运算，而不是互相关运算。
 幸运的是，它们差别不大，我们只需水平和垂直翻转二维卷积核张量，然后对输入张量执行<em>互相关</em>运算。</p>
 <p>值得注意的是，由于卷积核是从数据中学习到的，因此无论这些层执行严格的卷积运算还是互相关运算，卷积层的输出都不会受到影响。
 为了说明这一点，假设卷积层执行<em>互相关</em>运算并学习
@@ -770,7 +770,7 @@ maps），因为每个通道都向后续层提供一组空间化的学习特征�
 </div>
 <div class="section" id="id7">
 <h2><span class="section-number">6.2.6. </span>特征映射和感受野</h2>
-<p>如在 <a class="reference internal" href="why-conv.html#subsec-why-conv-channels"><span class="std std-numref">6.1.4.1节</span></a>中所述，
+<p>如在 <a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html#subsec-why-conv-channels"><span class="std std-numref">6.1.4.1节</span></a>中所述，
 <a class="reference internal" href="#fig-correlation"><span class="std std-numref">图6.2.1</span></a>中输出的卷积层有时被称为<em>特征映射</em>（feature
 map），因为它可以被视为一个输入映射到下一层的空间维度的转换器。
 在卷积神经网络中，对于某一层的任意元素<span class="math notranslate nohighlight">\(x\)</span>，其<em>感受野</em>（receptive
@@ -847,14 +847,14 @@ field）是指在前向传播期间可能影响<span class="math notranslate noh
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="why-conv.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>6.1. 从全连接层到卷积</div>
          </div>
      </a>
-     <a id="button-next" href="padding-and-strides.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/padding-and-strides.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -870,9 +870,9 @@ field）是指在前向传播期间可能影响<span class="math notranslate noh
 <div class="bk-sub" id="ch06-3"><div class="section" id="sec-padding">
 <span id="id1"></span><h1><span class="section-number">6.3. </span>填充和步幅<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_convolutional-neural-networks/padding-and-strides.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_convolutional-neural-networks/padding-and-strides.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_convolutional-neural-networks/padding-and-strides.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_convolutional-neural-networks/padding-and-strides.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_convolutional-neural-networks/padding-and-strides.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_convolutional-neural-networks/padding-and-strides.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_convolutional-neural-networks/padding-and-strides.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_convolutional-neural-networks/padding-and-strides.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>在前面的例子
-<a class="reference internal" href="conv-layer.html#fig-correlation"><span class="std std-numref">图6.2.1</span></a>中，输入的高度和宽度都为<span class="math notranslate nohighlight">\(3\)</span>，卷积核的高度和宽度都为<span class="math notranslate nohighlight">\(2\)</span>，生成的输出表征的维数为<span class="math notranslate nohighlight">\(2\times2\)</span>。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/conv-layer.html#fig-correlation"><span class="std std-numref">图6.2.1</span></a>中，输入的高度和宽度都为<span class="math notranslate nohighlight">\(3\)</span>，卷积核的高度和宽度都为<span class="math notranslate nohighlight">\(2\)</span>，生成的输出表征的维数为<span class="math notranslate nohighlight">\(2\times2\)</span>。
 正如我们在
-<a class="reference internal" href="conv-layer.html#sec-conv-layer"><span class="std std-numref">6.2节</span></a>中所概括的那样，假设输入形状为<span class="math notranslate nohighlight">\(n_h\times n_w\)</span>，卷积核形状为<span class="math notranslate nohighlight">\(k_h\times k_w\)</span>，那么输出形状将是<span class="math notranslate nohighlight">\((n_h-k_h+1) \times (n_w-k_w+1)\)</span>。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/conv-layer.html#sec-conv-layer"><span class="std std-numref">6.2节</span></a>中所概括的那样，假设输入形状为<span class="math notranslate nohighlight">\(n_h\times n_w\)</span>，卷积核形状为<span class="math notranslate nohighlight">\(k_h\times k_w\)</span>，那么输出形状将是<span class="math notranslate nohighlight">\((n_h-k_h+1) \times (n_w-k_w+1)\)</span>。
 因此，卷积的输出形状取决于输入形状和卷积核的形状。</p>
 <p>还有什么因素会影响输出的大小呢？本节我们将介绍<em>填充</em>（padding）和<em>步幅</em>（stride）。假设以下情景：
 有时，在应用了连续的卷积之后，我们最终得到的输出远小于输入大小。这是由于卷积核的宽度和高度通常大于<span class="math notranslate nohighlight">\(1\)</span>所导致的。比如，一个<span class="math notranslate nohighlight">\(240 \times 240\)</span>像素的图像，经过<span class="math notranslate nohighlight">\(10\)</span>层<span class="math notranslate nohighlight">\(5 \times 5\)</span>的卷积后，将减少到<span class="math notranslate nohighlight">\(200 \times 200\)</span>像素。如此一来，原始图像的边界丢失了许多有用信息。而<em>填充</em>是解决此问题最有效的方法；
@@ -1152,14 +1152,14 @@ field）是指在前向传播期间可能影响<span class="math notranslate noh
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="conv-layer.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/conv-layer.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>6.2. 图像卷积</div>
          </div>
      </a>
-     <a id="button-next" href="channels.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/channels.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1175,7 +1175,7 @@ field）是指在前向传播期间可能影响<span class="math notranslate noh
 <div class="bk-sub" id="ch06-4"><div class="section" id="sec-channels">
 <span id="id1"></span><h1><span class="section-number">6.4. </span>多输入多输出通道<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_convolutional-neural-networks/channels.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_convolutional-neural-networks/channels.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_convolutional-neural-networks/channels.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_convolutional-neural-networks/channels.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_convolutional-neural-networks/channels.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_convolutional-neural-networks/channels.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_convolutional-neural-networks/channels.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_convolutional-neural-networks/channels.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>虽然我们在
-<a class="reference internal" href="why-conv.html#subsec-why-conv-channels"><span class="std std-numref">6.1.4.1节</span></a>中描述了构成每个图像的多个通道和多层卷积层。例如彩色图像具有标准的RGB通道来代表红、绿和蓝。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html#subsec-why-conv-channels"><span class="std std-numref">6.1.4.1节</span></a>中描述了构成每个图像的多个通道和多层卷积层。例如彩色图像具有标准的RGB通道来代表红、绿和蓝。
 但是到目前为止，我们仅展示了单个输入和单个输出通道的简化例子。
 这使得我们可以将输入、卷积核和输出看作二维张量。</p>
 <p>当我们添加通道时，我们的输入和隐藏的表示都变成了三维张量。例如，每个RGB输入图像具有<span class="math notranslate nohighlight">\(3\times h\times w\)</span>的形状。我们将这个大小为<span class="math notranslate nohighlight">\(3\)</span>的轴称为<em>通道</em>（channel）维度。本节将更深入地研究具有多输入和多输出通道的卷积核。</p>
@@ -1283,7 +1283,7 @@ field）是指在前向传播期间可能影响<span class="math notranslate noh
 <div class="section" id="id3">
 <h2><span class="section-number">6.4.2. </span>多输出通道</h2>
 <p>到目前为止，不论有多少输入通道，我们还只有一个输出通道。然而，正如我们在
-<a class="reference internal" href="why-conv.html#subsec-why-conv-channels"><span class="std std-numref">6.1.4.1节</span></a>中所讨论的，每一层有多个输出通道是至关重要的。在最流行的神经网络架构中，随着神经网络层数的加深，我们常会增加输出通道的维数，通过减少空间分辨率以获得更大的通道深度。直观地说，我们可以将每个通道看作对不同特征的响应。而现实可能更为复杂一些，因为每个通道不是独立学习的，而是为了共同使用而优化的。因此，多输出通道并不仅是学习多个单通道的检测器。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/why-conv.html#subsec-why-conv-channels"><span class="std std-numref">6.1.4.1节</span></a>中所讨论的，每一层有多个输出通道是至关重要的。在最流行的神经网络架构中，随着神经网络层数的加深，我们常会增加输出通道的维数，通过减少空间分辨率以获得更大的通道深度。直观地说，我们可以将每个通道看作对不同特征的响应。而现实可能更为复杂一些，因为每个通道不是独立学习的，而是为了共同使用而优化的。因此，多输出通道并不仅是学习多个单通道的检测器。</p>
 <p>用<span class="math notranslate nohighlight">\(c_i\)</span>和<span class="math notranslate nohighlight">\(c_o\)</span>分别表示输入和输出通道的数目，并让<span class="math notranslate nohighlight">\(k_h\)</span>和<span class="math notranslate nohighlight">\(k_w\)</span>为卷积核的高度和宽度。为了获得多个通道的输出，我们可以为每个输出通道创建一个形状为<span class="math notranslate nohighlight">\(c_i\times k_h\times k_w\)</span>的卷积核张量，这样卷积核的形状是<span class="math notranslate nohighlight">\(c_o\times c_i\times k_h\times k_w\)</span>。在互相关运算中，每个输出通道先获取所有输入通道，再以对应该输出通道的卷积核计算出结果。</p>
 <p>如下所示，我们实现一个计算多个通道的输出的互相关函数。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-5-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-5-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-5-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-5-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-5-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">corr2d_multi_in_out</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
@@ -1550,14 +1550,14 @@ field）是指在前向传播期间可能影响<span class="math notranslate noh
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="padding-and-strides.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/padding-and-strides.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>6.3. 填充和步幅</div>
          </div>
      </a>
-     <a id="button-next" href="pooling.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/pooling.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1575,7 +1575,7 @@ field）是指在前向传播期间可能影响<span class="math notranslate noh
 <p>通常当我们处理图像时，我们希望逐渐降低隐藏表示的空间分辨率、聚集信息，这样随着我们在神经网络中层叠的上升，每个神经元对其敏感的感受野（输入）就越大。</p>
 <p>而我们的机器学习任务通常会跟全局图像的问题有关（例如，“图像是否包含一只猫呢？”），所以我们最后一层的神经元应该对整个输入的全局敏感。通过逐渐聚合信息，生成越来越粗糙的映射，最终实现学习全局表示的目标，同时将卷积图层的所有优势保留在中间层。</p>
 <p>此外，当检测较底层的特征时（例如
-<a class="reference internal" href="conv-layer.html#sec-conv-layer"><span class="std std-numref">6.2节</span></a>中所讨论的边缘），我们通常希望这些特征保持某种程度上的平移不变性。例如，如果我们拍摄黑白之间轮廓清晰的图像<code class="docutils literal notranslate"><span class="pre">X</span></code>，并将整个图像向右移动一个像素，即<code class="docutils literal notranslate"><span class="pre">Z[i,</span> <span class="pre">j]</span> <span class="pre">=</span> <span class="pre">X[i,</span> <span class="pre">j</span> <span class="pre">+</span> <span class="pre">1]</span></code>，则新图像<code class="docutils literal notranslate"><span class="pre">Z</span></code>的输出可能大不相同。而在现实中，随着拍摄角度的移动，任何物体几乎不可能发生在同一像素上。即使用三脚架拍摄一个静止的物体，由于快门的移动而引起的相机振动，可能会使所有物体左右移动一个像素（除了高端相机配备了特殊功能来解决这个问题）。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/conv-layer.html#sec-conv-layer"><span class="std std-numref">6.2节</span></a>中所讨论的边缘），我们通常希望这些特征保持某种程度上的平移不变性。例如，如果我们拍摄黑白之间轮廓清晰的图像<code class="docutils literal notranslate"><span class="pre">X</span></code>，并将整个图像向右移动一个像素，即<code class="docutils literal notranslate"><span class="pre">Z[i,</span> <span class="pre">j]</span> <span class="pre">=</span> <span class="pre">X[i,</span> <span class="pre">j</span> <span class="pre">+</span> <span class="pre">1]</span></code>，则新图像<code class="docutils literal notranslate"><span class="pre">Z</span></code>的输出可能大不相同。而在现实中，随着拍摄角度的移动，任何物体几乎不可能发生在同一像素上。即使用三脚架拍摄一个静止的物体，由于快门的移动而引起的相机振动，可能会使所有物体左右移动一个像素（除了高端相机配备了特殊功能来解决这个问题）。</p>
 <p>本节将介绍<em>汇聚</em>（pooling）层，它具有双重目的：降低卷积层对位置的敏感性，同时降低对空间降采样表示的敏感性。</p>
 <div class="section" id="id2">
 <h2><span class="section-number">6.5.1. </span>最大汇聚层和平均汇聚层</h2>
@@ -1601,7 +1601,7 @@ pooling）和<em>平均汇聚层</em>（average pooling）。</p>
 无论<code class="docutils literal notranslate"><span class="pre">X[i,</span> <span class="pre">j]</span></code>和<code class="docutils literal notranslate"><span class="pre">X[i,</span> <span class="pre">j</span> <span class="pre">+</span> <span class="pre">1]</span></code>的值相同与否，或<code class="docutils literal notranslate"><span class="pre">X[i,</span> <span class="pre">j</span> <span class="pre">+</span> <span class="pre">1]</span></code>和<code class="docutils literal notranslate"><span class="pre">X[i,</span> <span class="pre">j</span> <span class="pre">+</span> <span class="pre">2]</span></code>的值相同与否，汇聚层始终输出<code class="docutils literal notranslate"><span class="pre">Y[i,</span> <span class="pre">j]</span> <span class="pre">=</span> <span class="pre">1</span></code>。
 也就是说，使用<span class="math notranslate nohighlight">\(2\times 2\)</span>最大汇聚层，即使在高度或宽度上移动一个元素，卷积层仍然可以识别到模式。</p>
 <p>在下面的代码中的<code class="docutils literal notranslate"><span class="pre">pool2d</span></code>函数，我们实现汇聚层的前向传播。 这类似于
-<a class="reference internal" href="conv-layer.html#sec-conv-layer"><span class="std std-numref">6.2节</span></a>中的<code class="docutils literal notranslate"><span class="pre">corr2d</span></code>函数。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/conv-layer.html#sec-conv-layer"><span class="std std-numref">6.2节</span></a>中的<code class="docutils literal notranslate"><span class="pre">corr2d</span></code>函数。
 然而，这里我们没有卷积核，输出为输入中每个区域的最大值或平均值。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
 <span class="kn">from</span> <span class="nn">mxnet.gluon</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -2085,14 +2085,14 @@ pooling）和<em>平均汇聚层</em>（average pooling）。</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="channels.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/channels.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>6.4. 多输入多输出通道</div>
          </div>
      </a>
-     <a id="button-next" href="lenet.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/lenet.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -2109,15 +2109,15 @@ pooling）和<em>平均汇聚层</em>（average pooling）。</p>
 <span id="sec-lenet"></span><h1><span class="section-number">6.6. </span>卷积神经网络（LeNet）<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_convolutional-neural-networks/lenet.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_convolutional-neural-networks/lenet.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_convolutional-neural-networks/lenet.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_convolutional-neural-networks/lenet.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_convolutional-neural-networks/lenet.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_convolutional-neural-networks/lenet.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_convolutional-neural-networks/lenet.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_convolutional-neural-networks/lenet.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>通过之前几节，我们学习了构建一个完整卷积神经网络的所需组件。
 回想一下，之前我们将softmax回归模型（
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>）和多层感知机模型（
-<a class="reference internal" href="../chapter_multilayer-perceptrons/mlp-scratch.html#sec-mlp-scratch"><span class="std std-numref">4.2节</span></a>）应用于Fashion-MNIST数据集中的服装图片。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>）和多层感知机模型（
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp-scratch.html#sec-mlp-scratch"><span class="std std-numref">4.2节</span></a>）应用于Fashion-MNIST数据集中的服装图片。
 为了能够应用softmax回归和多层感知机，我们首先将每个大小为<span class="math notranslate nohighlight">\(28\times28\)</span>的图像展平为一个784维的固定长度的一维向量，然后用全连接层对其进行处理。
 而现在，我们已经掌握了卷积层的处理方法，我们可以在图像中保留空间结构。
 同时，用卷积层代替全连接层的另一个好处是：模型更简洁、所需的参数更少。</p>
 <p>本节将介绍LeNet，它是最早发布的卷积神经网络之一，因其在计算机视觉任务中的高效性能而受到广泛关注。
 这个模型是由AT&amp;T贝尔实验室的研究员Yann
 LeCun在1989年提出的（并以其命名），目的是识别图像
-<span id="id1">(<a class="reference internal" href="../chapter_references/zreferences.html#id90" title="LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., &amp; others. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278–2324.">LeCun <em>et al.</em>, 1998</a>)</span>中的手写数字。 当时，Yann
+<span id="id1">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id90" title="LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., &amp; others. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278–2324.">LeCun <em>et al.</em>, 1998</a>)</span>中的手写数字。 当时，Yann
 LeCun发表了第一篇通过反向传播成功训练卷积神经网络的研究，这项工作代表了十多年来神经网络研究开发的成果。</p>
 <p>当时，LeNet取得了与支持向量机（support vector
 machines）性能相媲美的成果，成为监督学习的主流方法。
@@ -2306,7 +2306,7 @@ Bottou在上世纪90年代写的代码呢！</p>
 <p>虽然卷积神经网络的参数较少，但与深度的多层感知机相比，它们的计算成本仍然很高，因为每个参数都参与更多的乘法。
 通过使用GPU，可以用它加快训练。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar text"><a href="#mxnet-7-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-7-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#paddle-7-2" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-7-0"><p>为了进行评估，我们需要对
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>中描述的<code class="docutils literal notranslate"><span class="pre">evaluate_accuracy</span></code>函数进行轻微的修改。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>中描述的<code class="docutils literal notranslate"><span class="pre">evaluate_accuracy</span></code>函数进行轻微的修改。
 由于完整的数据集位于内存中，因此在模型使用GPU计算数据集之前，我们需要将其复制到显存中。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_accuracy_gpu</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">data_iter</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1">#@save</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;使用GPU计算模型在数据集上的精度&quot;&quot;&quot;</span>
@@ -2320,7 +2320,7 @@ Bottou在上世纪90年代写的代码呢！</p>
 </pre></div>
 </div>
 </div><div class="mdl-tabs__panel " id="pytorch-7-1"><p>为了进行评估，我们需要对
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>中描述的<code class="docutils literal notranslate"><span class="pre">evaluate_accuracy</span></code>函数进行轻微的修改。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>中描述的<code class="docutils literal notranslate"><span class="pre">evaluate_accuracy</span></code>函数进行轻微的修改。
 由于完整的数据集位于内存中，因此在模型使用GPU计算数据集之前，我们需要将其复制到显存中。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_accuracy_gpu</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">data_iter</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> <span class="c1">#@save</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;使用GPU计算模型在数据集上的精度&quot;&quot;&quot;</span>
@@ -2364,12 +2364,12 @@ Bottou在上世纪90年代写的代码呢！</p>
 </pre></div>
 </div>
 </div></div><p>为了使用GPU，我们还需要一点小改动。 与
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>中定义的<code class="docutils literal notranslate"><span class="pre">train_epoch_ch3</span></code>不同，在进行正向和反向传播之前，我们需要将每一小批量数据移动到我们指定的设备（例如GPU）上。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>中定义的<code class="docutils literal notranslate"><span class="pre">train_epoch_ch3</span></code>不同，在进行正向和反向传播之前，我们需要将每一小批量数据移动到我们指定的设备（例如GPU）上。</p>
 <p>如下所示，训练函数<code class="docutils literal notranslate"><span class="pre">train_ch6</span></code>也类似于
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>中定义的<code class="docutils literal notranslate"><span class="pre">train_ch3</span></code>。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>中定义的<code class="docutils literal notranslate"><span class="pre">train_ch3</span></code>。
 由于我们将实现多层神经网络，因此我们将主要使用高级API。
 以下训练函数假定从高级API创建的模型作为输入，并进行相应的优化。
-我们使用在 <a class="reference internal" href="../chapter_multilayer-perceptrons/numerical-stability-and-init.html#subsec-xavier"><span class="std std-numref">4.8.2.2节</span></a>中介绍的Xavier随机初始化模型参数。
+我们使用在 <a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html#subsec-xavier"><span class="std std-numref">4.8.2.2节</span></a>中介绍的Xavier随机初始化模型参数。
 与全连接层一样，我们使用交叉熵损失函数和小批量随机梯度下降。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-9-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-9-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-9-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-9-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-9-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@save</span>
 <span class="k">def</span> <span class="nf">train_ch6</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
@@ -2641,14 +2641,14 @@ Bottou在上世纪90年代写的代码呢！</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="pooling.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/pooling.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>6.5. 汇聚层</div>
          </div>
      </a>
-     <a id="button-next" href="../chapter_convolutional-modern/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_convolutional-modern/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>

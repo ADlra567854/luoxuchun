@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第 4 章 多层感知机 · 动手学深度学习（全文在线阅读） · 白驹 ccowork</title>
+<title>第 4 章 多层感知机 · 动手学深度学习（全文在线阅读）</title>
 <meta name="description" content="动手学深度学习 第 5 部分：第 4 章 多层感知机。许可 Apache License 2.0，来源 https://zh.d2l.ai/。">
-<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/d2l-zh/ch04.html">
+<link rel="canonical" href="/book/open/d2l-zh/ch04.html">
 <meta name="robots" content="index,follow">
 <link rel="stylesheet" href="/book/open/book.css?v=20261124">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
@@ -24,16 +24,16 @@
     <div class="bk-lic">
       <b>来源与许可</b>：动手学深度学习 · 作者 阿斯顿·张（Aston Zhang）、扎卡里·C·立顿、李沐、亚历山大·J·斯莫拉 · 译者 何孝霆、瑞潮儿·胡 及社区 200 余位贡献者。<br>
       许可 <a href="https://github.com/d2l-ai/d2l-zh/blob/master/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a> · 仓库 <a href="https://github.com/d2l-ai/d2l-zh" target="_blank" rel="noopener">https://github.com/d2l-ai/d2l-zh</a><br>
-      本站抓取时间 2026-11-24 21:13 · 本章来自 https://zh.d2l.ai/chapter_multilayer-perceptrons/index.html
+      本站抓取时间 2026-11-24 21:24 · 本章来自 https://zh.d2l.ai/chapter_multilayer-perceptrons/index.html
     </div>
     <h1>第 4 章 多层感知机</h1>
     
 <div class="bk-sub" id="ch04-1"><div class="section" id="sec-mlp">
 <span id="id1"></span><h1><span class="section-number">4.1. </span>多层感知机<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_multilayer-perceptrons/mlp.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_multilayer-perceptrons/mlp.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_multilayer-perceptrons/mlp.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_multilayer-perceptrons/mlp.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_multilayer-perceptrons/mlp.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_multilayer-perceptrons/mlp.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_multilayer-perceptrons/mlp.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_multilayer-perceptrons/mlp.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p>在 <a class="reference internal" href="../chapter_linear-networks/index.html#chap-linear"><span class="std std-numref">3节</span></a>中， 我们介绍了softmax回归（
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression.html#sec-softmax"><span class="std std-numref">3.4节</span></a>）， 然后我们从零开始实现了softmax回归（
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>）， 接着使用高级API实现了算法（
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-concise.html#sec-softmax-concise"><span class="std std-numref">3.7节</span></a>），
+<p>在 <a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/index.html#chap-linear"><span class="std std-numref">3节</span></a>中， 我们介绍了softmax回归（
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression.html#sec-softmax"><span class="std std-numref">3.4节</span></a>）， 然后我们从零开始实现了softmax回归（
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>）， 接着使用高级API实现了算法（
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-concise.html#sec-softmax-concise"><span class="std std-numref">3.7节</span></a>），
 并训练分类器从低分辨率图像中识别10类服装。
 在这个过程中，我们学习了如何处理数据，如何将输出转换为有效的概率分布，
 并应用适当的损失函数，根据模型参数最小化损失。
@@ -41,9 +41,9 @@
 现在我们可以开始对深度神经网络的探索，这也是本书主要涉及的一类模型。</p>
 <div class="section" id="id2">
 <h2><span class="section-number">4.1.1. </span>隐藏层</h2>
-<p>我们在 <a class="reference internal" href="../chapter_linear-networks/linear-regression.html#subsec-linear-model"><span class="std std-numref">3.1.1.1节</span></a>中描述了仿射变换，
+<p>我们在 <a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/linear-regression.html#subsec-linear-model"><span class="std std-numref">3.1.1.1节</span></a>中描述了仿射变换，
 它是一种带有偏置项的线性变换。 首先，回想一下如
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression.html#fig-softmaxreg"><span class="std std-numref">图3.4.1</span></a>中所示的softmax回归的模型架构。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression.html#fig-softmaxreg"><span class="std std-numref">图3.4.1</span></a>中所示的softmax回归的模型架构。
 该模型通过单个仿射变换将我们的输入直接映射到输出，然后进行softmax操作。
 如果我们的标签通过仿射变换后确实与我们的输入数据相关，那么这种方法确实足够了。
 但是，仿射变换中的<em>线性</em>是一个很强的假设。</p>
@@ -96,11 +96,11 @@ perceptron），通常缩写为<em>MLP</em>。
 因此，这个多层感知机中的层数为2。 注意，这两个层都是全连接的。
 每个输入都会影响隐藏层中的每个神经元，
 而隐藏层中的每个神经元又会影响输出层中的每个神经元。</p>
-<p>然而，正如 <a class="reference internal" href="../chapter_linear-networks/softmax-regression.html#subsec-parameterization-cost-fc-layers"><span class="std std-numref">3.4.3节</span></a>所说，
+<p>然而，正如 <a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression.html#subsec-parameterization-cost-fc-layers"><span class="std std-numref">3.4.3节</span></a>所说，
 具有全连接层的多层感知机的参数开销可能会高得令人望而却步。
 即使在不改变输入或输出大小的情况下，
 可能在参数节约和模型有效性之间进行权衡
-<span id="id5">(<a class="reference internal" href="../chapter_references/zreferences.html#id195" title="Zhang, A., Tay, Y., Zhang, S., Chan, A., Luu, A. T., Hui, S. C., &amp; Fu, J. (2021). Beyond fully-connected layers with quaternions: parameterization of hypercomplex multiplications with 1/n parameters. International Conference on Learning Representations.">Zhang <em>et al.</em>, 2021</a>)</span>。</p>
+<span id="id5">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id195" title="Zhang, A., Tay, Y., Zhang, S., Chan, A., Luu, A. T., Hui, S. C., &amp; Fu, J. (2021). Beyond fully-connected layers with quaternions: parameterization of hypercomplex multiplications with 1/n parameters. International Conference on Learning Representations.">Zhang <em>et al.</em>, 2021</a>)</span>。</p>
 </div>
 <div class="section" id="id6">
 <h3><span class="section-number">4.1.1.3. </span>从线性到非线性</h3>
@@ -151,7 +151,7 @@ function）<span class="math notranslate nohighlight">\(\sigma\)</span>。
 <p>由于<span class="math notranslate nohighlight">\(\mathbf{X}\)</span>中的每一行对应于小批量中的一个样本，
 出于记号习惯的考量，
 我们定义非线性函数<span class="math notranslate nohighlight">\(\sigma\)</span>也以按行的方式作用于其输入，
-即一次计算一个样本。 我们在 <a class="reference internal" href="../chapter_linear-networks/softmax-regression.html#subsec-softmax-vectorization"><span class="std std-numref">3.4.5节</span></a>中
+即一次计算一个样本。 我们在 <a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression.html#subsec-softmax-vectorization"><span class="std std-numref">3.4.5节</span></a>中
 以相同的方式使用了softmax符号来表示按行操作。
 但是本节应用于隐藏层的激活函数通常不仅按行操作，也按元素操作。
 这意味着在计算每一层的线性部分之后，我们可以计算每个活性值，
@@ -291,7 +291,7 @@ ReLU提供了一种非常简单的非线性变换。
 </div></div><p>使用ReLU的原因是，它求导表现得特别好：要么让参数消失，要么让参数通过。
 这使得优化表现得更好，并且ReLU减轻了困扰以往神经网络的梯度消失问题（稍后将详细介绍）。</p>
 <p>注意，ReLU函数有许多变体，包括<em>参数化ReLU</em>（Parameterized
-ReLU，<em>pReLU</em>） 函数 <span id="id9">(<a class="reference internal" href="../chapter_references/zreferences.html#id59" title="He, K., Zhang, X., Ren, S., &amp; Sun, J. (2015). Delving deep into rectifiers: surpassing human-level performance on imagenet classification. Proceedings of the IEEE international conference on computer vision (pp. 1026–1034).">He <em>et al.</em>, 2015</a>)</span>。
+ReLU，<em>pReLU</em>） 函数 <span id="id9">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id59" title="He, K., Zhang, X., Ren, S., &amp; Sun, J. (2015). Delving deep into rectifiers: surpassing human-level performance on imagenet classification. Proceedings of the IEEE international conference on computer vision (pp. 1026–1034).">He <em>et al.</em>, 2015</a>)</span>。
 该变体为ReLU添加了一个线性项，因此即使参数是负的，某些信息仍然可以通过：</p>
 <div class="math notranslate nohighlight" id="equation-chapter-multilayer-perceptrons-mlp-4">
 <span class="eqno">(4.1.5)</span>\[\operatorname{pReLU}(x) = \max(0, x) + \alpha \min(0, x).\]</div>
@@ -511,14 +511,14 @@ sigmoid仍然被广泛用作输出单元上的激活函数
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4. 多层感知机</div>
          </div>
      </a>
-     <a id="button-next" href="mlp-scratch.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp-scratch.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -533,11 +533,11 @@ sigmoid仍然被广泛用作输出单元上的激活函数
 </html></div>
 <div class="bk-sub" id="ch04-2"><div class="section" id="sec-mlp-scratch">
 <span id="id1"></span><h1><span class="section-number">4.2. </span>多层感知机的从零开始实现<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_multilayer-perceptrons/mlp-scratch.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_multilayer-perceptrons/mlp-scratch.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_multilayer-perceptrons/mlp-scratch.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_multilayer-perceptrons/mlp-scratch.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_multilayer-perceptrons/mlp-scratch.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_multilayer-perceptrons/mlp-scratch.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_multilayer-perceptrons/mlp-scratch.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_multilayer-perceptrons/mlp-scratch.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p>我们已经在 <a class="reference internal" href="mlp.html#sec-mlp"><span class="std std-numref">4.1节</span></a>中描述了多层感知机（MLP），
+<p>我们已经在 <a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp.html#sec-mlp"><span class="std std-numref">4.1节</span></a>中描述了多层感知机（MLP），
 现在让我们尝试自己实现一个多层感知机。 为了与之前softmax回归（
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a> ） 获得的结果进行比较，
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a> ） 获得的结果进行比较，
 我们将继续使用Fashion-MNIST图像分类数据集 （
-<a class="reference internal" href="../chapter_linear-networks/image-classification-dataset.html#sec-fashion-mnist"><span class="std std-numref">3.5节</span></a>）。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/image-classification-dataset.html#sec-fashion-mnist"><span class="std std-numref">3.5节</span></a>）。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">gluon</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
 <span class="kn">from</span> <span class="nn">d2l</span> <span class="kn">import</span> <span class="n">mxnet</span> <span class="k">as</span> <span class="n">d2l</span>
 
@@ -696,10 +696,10 @@ sigmoid仍然被广泛用作输出单元上的激活函数
 <div class="section" id="id5">
 <h2><span class="section-number">4.2.4. </span>损失函数</h2>
 <p>由于我们已经从零实现过softmax函数（
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>），
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a>），
 因此在这里我们直接使用高级API中的内置函数来计算softmax和交叉熵损失。
 回想一下我们之前在
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-concise.html#subsec-softmax-implementation-revisited"><span class="std std-numref">3.7.2节</span></a>中
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-concise.html#subsec-softmax-implementation-revisited"><span class="std std-numref">3.7.2节</span></a>中
 对这些复杂问题的讨论。
 我们鼓励感兴趣的读者查看损失函数的源代码，以加深对实现细节的了解。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-9-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-9-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-9-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-9-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-9-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loss</span> <span class="o">=</span> <span class="n">gluon</span><span class="o">.</span><span class="n">loss</span><span class="o">.</span><span class="n">SoftmaxCrossEntropyLoss</span><span class="p">()</span>
@@ -721,7 +721,7 @@ sigmoid仍然被广泛用作输出单元上的激活函数
 <h2><span class="section-number">4.2.5. </span>训练</h2>
 <p>幸运的是，多层感知机的训练过程与softmax回归的训练过程完全相同。
 可以直接调用<code class="docutils literal notranslate"><span class="pre">d2l</span></code>包的<code class="docutils literal notranslate"><span class="pre">train_ch3</span></code>函数（参见
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a> ），
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-scratch.html#sec-softmax-scratch"><span class="std std-numref">3.6节</span></a> ），
 将迭代周期数设置为10，并将学习率设置为0.1.</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-11-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-11-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-11-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-11-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-11-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_epochs</span><span class="p">,</span> <span class="n">lr</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span>
 <span class="n">d2l</span><span class="o">.</span><span class="n">train_ch3</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">,</span>
@@ -823,14 +823,14 @@ sigmoid仍然被广泛用作输出单元上的激活函数
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="mlp.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.1. 多层感知机</div>
          </div>
      </a>
-     <a id="button-next" href="mlp-concise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -872,7 +872,7 @@ sigmoid仍然被广泛用作输出单元上的激活函数
 </div>
 </div></div><div class="section" id="id2">
 <h2><span class="section-number">4.3.1. </span>模型</h2>
-<p>与softmax回归的简洁实现（ <a class="reference internal" href="../chapter_linear-networks/softmax-regression-concise.html#sec-softmax-concise"><span class="std std-numref">3.7节</span></a>）相比，
+<p>与softmax回归的简洁实现（ <a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression-concise.html#sec-softmax-concise"><span class="std std-numref">3.7节</span></a>）相比，
 唯一的区别是我们添加了2个全连接层（之前我们只添加了1个全连接层）。
 第一层是隐藏层，它包含256个隐藏单元，并使用了ReLU激活函数。
 第二层是输出层。</p>
@@ -1002,14 +1002,14 @@ sigmoid仍然被广泛用作输出单元上的激活函数
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="mlp-scratch.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp-scratch.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.2. 多层感知机的从零开始实现</div>
          </div>
      </a>
-     <a id="button-next" href="underfit-overfit.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/underfit-overfit.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1840,14 +1840,14 @@ dataset）， 也叫<em>验证集</em>（validation set）。
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="mlp-concise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.3. 多层感知机的简洁实现</div>
          </div>
      </a>
-     <a id="button-next" href="weight-decay.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/weight-decay.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1866,7 +1866,7 @@ dataset）， 也叫<em>验证集</em>（validation set）。
 我们总是可以通过去收集更多的训练数据来缓解过拟合。
 但这可能成本很高，耗时颇多，或者完全超出我们的控制，因而在短期内不可能做到。
 假设我们已经拥有尽可能多的高质量数据，我们便可以将重点放在正则化技术上。</p>
-<p>回想一下，在多项式回归的例子（ <a class="reference internal" href="underfit-overfit.html#sec-model-selection"><span class="std std-numref">4.4节</span></a>）中，
+<p>回想一下，在多项式回归的例子（ <a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/underfit-overfit.html#sec-model-selection"><span class="std std-numref">4.4节</span></a>）中，
 我们可以通过调整拟合多项式的阶数来限制模型的容量。
 实际上，限制特征的数量是缓解过拟合的一种常用技术。
 然而，简单地丢弃特征对这项工作来说可能过于生硬。
@@ -1881,7 +1881,7 @@ dataset）， 也叫<em>验证集</em>（validation set）。
 仅仅通过简单的限制特征数量（在多项式回归中体现为限制阶数），可能仍然使模型在过简单和过复杂中徘徊，
 我们需要一个更细粒度的工具来调整函数的复杂性，使其达到一个合适的平衡位置。
 ## 范数与权重衰减</p>
-<p>在 <a class="reference internal" href="../chapter_preliminaries/linear-algebra.html#subsec-lin-algebra-norms"><span class="std std-numref">2.3.10节</span></a>中，
+<p>在 <a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/linear-algebra.html#subsec-lin-algebra-norms"><span class="std std-numref">2.3.10节</span></a>中，
 我们已经描述了<span class="math notranslate nohighlight">\(L_2\)</span>范数和<span class="math notranslate nohighlight">\(L_1\)</span>范数，
 它们是更为一般的<span class="math notranslate nohighlight">\(L_p\)</span>范数的特殊情况。</p>
 <p>在训练参数化机器学习模型时， <em>权重衰减</em>（weight
@@ -1903,7 +1903,7 @@ decay）是最广泛使用的正则化的技术之一，
 现在，如果我们的权重向量增长的太大，
 我们的学习算法可能会更集中于最小化权重范数<span class="math notranslate nohighlight">\(\| \mathbf{w} \|^2\)</span>。
 这正是我们想要的。 让我们回顾一下
-<a class="reference internal" href="../chapter_linear-networks/linear-regression.html#sec-linear-regression"><span class="std std-numref">3.1节</span></a>中的线性回归例子。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/linear-regression.html#sec-linear-regression"><span class="std std-numref">3.1节</span></a>中的线性回归例子。
 我们的损失由下式给出：</p>
 <div class="math notranslate nohighlight" id="equation-chapter-multilayer-perceptrons-weight-decay-0">
 <span class="eqno">(4.5.1)</span>\[L(\mathbf{w}, b) = \frac{1}{n}\sum_{i=1}^n \frac{1}{2}\left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)^2.\]</div>
@@ -1935,7 +1935,7 @@ regression）算法， <span class="math notranslate nohighlight">\(L_1\)</span>
 相比之下，<span class="math notranslate nohighlight">\(L_1\)</span>惩罚会导致模型将权重集中在一小部分特征上，
 而将其他权重清除为零。 这称为<em>特征选择</em>（feature
 selection），这可能是其他场景下需要的。</p>
-<p>使用与 <a class="reference internal" href="../chapter_linear-networks/linear-regression.html#equation-eq-linreg-batch-update">(3.1.10)</a>中的相同符号，
+<p>使用与 <a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/linear-regression.html#equation-eq-linreg-batch-update">(3.1.10)</a>中的相同符号，
 <span class="math notranslate nohighlight">\(L_2\)</span>正则化回归的小批量随机梯度下降更新如下式：</p>
 <div class="math notranslate nohighlight" id="equation-chapter-multilayer-perceptrons-weight-decay-2">
 <span class="eqno">(4.5.3)</span>\[\begin{aligned}
@@ -2084,7 +2084,7 @@ selection），这可能是其他场景下需要的。</p>
 <div class="section" id="id5">
 <h3><span class="section-number">4.5.2.3. </span>定义训练代码实现</h3>
 <p>下面的代码将模型拟合训练数据集，并在测试数据集上进行评估。 从
-<a class="reference internal" href="../chapter_linear-networks/index.html#chap-linear"><span class="std std-numref">3节</span></a>以来，线性网络和平方损失没有变化，
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/index.html#chap-linear"><span class="std std-numref">3节</span></a>以来，线性网络和平方损失没有变化，
 所以我们通过<code class="docutils literal notranslate"><span class="pre">d2l.linreg</span></code>和<code class="docutils literal notranslate"><span class="pre">d2l.squared_loss</span></code>导入它们。
 唯一的变化是损失现在包括了惩罚项。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-9-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-9-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-9-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-9-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-9-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">lambd</span><span class="p">):</span>
@@ -2446,7 +2446,7 @@ decay超参数。 默认情况下，PyTorch同时衰减权重和偏移。
 <li><p>使用验证集来找到最佳值<span class="math notranslate nohighlight">\(\lambda\)</span>。它真的是最优值吗？这有关系吗？</p></li>
 <li><p>如果我们使用<span class="math notranslate nohighlight">\(\sum_i |w_i|\)</span>作为我们选择的惩罚（<span class="math notranslate nohighlight">\(L_1\)</span>正则化），那么更新方程会是什么样子？</p></li>
 <li><p>我们知道<span class="math notranslate nohighlight">\(\|\mathbf{w}\|^2 = \mathbf{w}^\top \mathbf{w}\)</span>。能找到类似的矩阵方程吗（见
-<a class="reference internal" href="../chapter_preliminaries/linear-algebra.html#subsec-lin-algebra-norms"><span class="std std-numref">2.3.10节</span></a> 中的Frobenius范数）？</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/linear-algebra.html#subsec-lin-algebra-norms"><span class="std std-numref">2.3.10节</span></a> 中的Frobenius范数）？</p></li>
 <li><p>回顾训练误差和泛化误差之间的关系。除了权重衰减、增加训练数据、使用适当复杂度的模型之外，还能想出其他什么方法来处理过拟合？</p></li>
 <li><p>在贝叶斯统计中，我们使用先验和似然的乘积，通过公式<span class="math notranslate nohighlight">\(P(w \mid x) \propto P(x \mid w) P(w)\)</span>得到后验。如何得到带正则化的<span class="math notranslate nohighlight">\(P(w)\)</span>？</p></li>
 </ol>
@@ -2489,14 +2489,14 @@ decay超参数。 默认情况下，PyTorch同时衰减权重和偏移。
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="underfit-overfit.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/underfit-overfit.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.4. 模型选择、欠拟合和过拟合</div>
          </div>
      </a>
-     <a id="button-next" href="dropout.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/dropout.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -2511,7 +2511,7 @@ decay超参数。 默认情况下，PyTorch同时衰减权重和偏移。
 </html></div>
 <div class="bk-sub" id="ch04-6"><div class="section" id="dropout">
 <span id="sec-dropout"></span><h1><span class="section-number">4.6. </span>暂退法（Dropout）<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_multilayer-perceptrons/dropout.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_multilayer-perceptrons/dropout.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_multilayer-perceptrons/dropout.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_multilayer-perceptrons/dropout.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_multilayer-perceptrons/dropout.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_multilayer-perceptrons/dropout.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_multilayer-perceptrons/dropout.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_multilayer-perceptrons/dropout.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p>在 <a class="reference internal" href="weight-decay.html#sec-weight-decay"><span class="std std-numref">4.5节</span></a> 中，
+<p>在 <a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/weight-decay.html#sec-weight-decay"><span class="std std-numref">4.5节</span></a> 中，
 我们介绍了通过惩罚权重的<span class="math notranslate nohighlight">\(L_2\)</span>范数来正则化统计模型的经典方法。
 在概率角度看，我们可以通过以下论证来证明这一技术的合理性：
 我们已经假设了一个先验，即权重的值取自均值为0的高斯分布。
@@ -2547,18 +2547,18 @@ tradeoff）。 线性模型有很高的偏差：它们只能表示一小类函�
 <p>在探究泛化性之前，我们先来定义一下什么是一个“好”的预测模型？
 我们期待“好”的预测模型能在未知的数据上有很好的表现：
 经典泛化理论认为，为了缩小训练和测试性能之间的差距，应该以简单的模型为目标。
-简单性以较小维度的形式展现， 我们在 <a class="reference internal" href="underfit-overfit.html#sec-model-selection"><span class="std std-numref">4.4节</span></a>
+简单性以较小维度的形式展现， 我们在 <a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/underfit-overfit.html#sec-model-selection"><span class="std std-numref">4.4节</span></a>
 讨论线性模型的单项式函数时探讨了这一点。 此外，正如我们在
-<a class="reference internal" href="weight-decay.html#sec-weight-decay"><span class="std std-numref">4.5节</span></a>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/weight-decay.html#sec-weight-decay"><span class="std std-numref">4.5节</span></a>
 中讨论权重衰减（<span class="math notranslate nohighlight">\(L_2\)</span>正则化）时看到的那样，
 参数的范数也代表了一种有用的简单性度量。</p>
 <p>简单性的另一个角度是平滑性，即函数不应该对其输入的微小变化敏感。
 例如，当我们对图像进行分类时，我们预计向像素添加一些随机噪声应该是基本无影响的。
 1995年，克里斯托弗·毕晓普证明了 具有输入噪声的训练等价于Tikhonov正则化
-<span id="id3">(<a class="reference internal" href="../chapter_references/zreferences.html#id9" title="Bishop, C. M. (1995). Training with noise is equivalent to tikhonov regularization. Neural computation, 7(1), 108–116.">Bishop, 1995</a>)</span>。
+<span id="id3">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id9" title="Bishop, C. M. (1995). Training with noise is equivalent to tikhonov regularization. Neural computation, 7(1), 108–116.">Bishop, 1995</a>)</span>。
 这项工作用数学证实了“要求函数光滑”和“要求函数对输入的随机噪声具有适应性”之间的联系。</p>
 <p>然后在2014年，斯里瓦斯塔瓦等人
-<span id="id4">(<a class="reference internal" href="../chapter_references/zreferences.html#id155" title="Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., &amp; Salakhutdinov, R. (2014). Dropout: a simple way to prevent neural networks from overfitting. The Journal of Machine Learning Research, 15(1), 1929–1958.">Srivastava <em>et al.</em>, 2014</a>)</span>
+<span id="id4">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id155" title="Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., &amp; Salakhutdinov, R. (2014). Dropout: a simple way to prevent neural networks from overfitting. The Journal of Machine Learning Research, 15(1), 1929–1958.">Srivastava <em>et al.</em>, 2014</a>)</span>
 就如何将毕晓普的想法应用于网络的内部层提出了一个想法：
 在训练过程中，他们建议在计算后续层之前向网络的每一层注入噪声。
 因为当训练一个有多层的深层网络时，注入噪声只会在输入-输出映射上增强平滑性。</p>
@@ -2592,7 +2592,7 @@ h' =
 </div>
 <div class="section" id="id5">
 <h2><span class="section-number">4.6.3. </span>实践中的暂退法</h2>
-<p>回想一下 <a class="reference internal" href="mlp.html#fig-mlp"><span class="std std-numref">图4.1.1</span></a>中带有1个隐藏层和5个隐藏单元的多层感知机。
+<p>回想一下 <a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp.html#fig-mlp"><span class="std std-numref">图4.1.1</span></a>中带有1个隐藏层和5个隐藏单元的多层感知机。
 当我们将暂退法应用到隐藏层，以<span class="math notranslate nohighlight">\(p\)</span>的概率将隐藏单元置为零时，
 结果可以看作一个只包含原始神经元子集的网络。 比如在
 <a class="reference internal" href="#fig-dropout2"><span class="std std-numref">图4.6.1</span></a>中，删除了<span class="math notranslate nohighlight">\(h_2\)</span>和<span class="math notranslate nohighlight">\(h_5\)</span>，
@@ -2770,7 +2770,7 @@ h' =
 </div></div><div class="section" id="id7">
 <h3><span class="section-number">4.6.4.1. </span>定义模型参数</h3>
 <p>同样，我们使用
-<a class="reference internal" href="../chapter_linear-networks/image-classification-dataset.html#sec-fashion-mnist"><span class="std std-numref">3.5节</span></a>中引入的Fashion-MNIST数据集。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/image-classification-dataset.html#sec-fashion-mnist"><span class="std std-numref">3.5节</span></a>中引入的Fashion-MNIST数据集。
 我们定义具有两个隐藏层的多层感知机，每个隐藏层包含256个单元。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-5-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-5-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-5-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-5-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-5-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_inputs</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">,</span> <span class="n">num_hiddens1</span><span class="p">,</span> <span class="n">num_hiddens2</span> <span class="o">=</span> <span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span>
 
@@ -3093,14 +3093,14 @@ h' =
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="weight-decay.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/weight-decay.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.5. 权重衰减</div>
          </div>
      </a>
-     <a id="button-next" href="backprop.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/backprop.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -3305,14 +3305,14 @@ memory）错误。</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="dropout.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/dropout.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.6. 暂退法（Dropout）</div>
          </div>
      </a>
-     <a id="button-next" href="numerical-stability-and-init.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -3367,7 +3367,7 @@ vanishing）问题：
 <div class="section" id="id3">
 <h3><span class="section-number">4.8.1.1. </span>梯度消失</h3>
 <p>曾经sigmoid函数<span class="math notranslate nohighlight">\(1/(1 + \exp(-x))\)</span>（
-<a class="reference internal" href="mlp.html#sec-mlp"><span class="std std-numref">4.1节</span></a>提到过）很流行， 因为它类似于阈值函数。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp.html#sec-mlp"><span class="std std-numref">4.1节</span></a>提到过）很流行， 因为它类似于阈值函数。
 由于早期的人工神经网络受到生物神经网络的启发，
 神经元要么完全激活要么完全不激活（就像生物神经元）的想法很有吸引力。
 然而，它却是导致梯度消失问题的一个常见的原因，
@@ -3567,7 +3567,7 @@ vanishing）问题：
 优化期间的注意和适当的正则化也可以进一步提高稳定性。</p>
 <div class="section" id="id7">
 <h3><span class="section-number">4.8.2.1. </span>默认初始化</h3>
-<p>在前面的部分中，例如在 <a class="reference internal" href="../chapter_linear-networks/linear-regression-concise.html#sec-linear-concise"><span class="std std-numref">3.3节</span></a>中，
+<p>在前面的部分中，例如在 <a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/linear-regression-concise.html#sec-linear-concise"><span class="std std-numref">3.3节</span></a>中，
 我们使用正态分布来初始化权重值。如果我们不指定初始化方法，
 框架将使用默认的随机初始化方法，对于中等难度的问题，这种方法通常很有效。</p>
 </div>
@@ -3602,7 +3602,7 @@ vanishing）问题：
 \sigma = \sqrt{\frac{2}{n_\mathrm{in} + n_\mathrm{out}}}.
 \end{aligned}\]</div>
 <p>这就是现在标准且实用的<em>Xavier初始化</em>的基础， 它以其提出者
-<span id="id8">(<a class="reference internal" href="../chapter_references/zreferences.html#id44" title="Glorot, X., &amp; Bengio, Y. (2010). Understanding the difficulty of training deep feedforward neural networks. Proceedings of the thirteenth international conference on artificial intelligence and statistics (pp. 249–256).">Glorot and Bengio, 2010</a>)</span> 第一作者的名字命名。
+<span id="id8">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id44" title="Glorot, X., &amp; Bengio, Y. (2010). Understanding the difficulty of training deep feedforward neural networks. Proceedings of the thirteenth international conference on artificial intelligence and statistics (pp. 249–256).">Glorot and Bengio, 2010</a>)</span> 第一作者的名字命名。
 通常，Xavier初始化从均值为零，方差
 <span class="math notranslate nohighlight">\(\sigma^2 = \frac{2}{n_\mathrm{in} + n_\mathrm{out}}\)</span>
 的高斯分布中采样权重。
@@ -3621,7 +3621,7 @@ vanishing）问题：
 此外，参数初始化一直是深度学习基础研究的热点领域。
 其中包括专门用于参数绑定（共享）、超分辨率、序列模型和其他情况的启发式算法。
 例如，Xiao等人演示了通过使用精心设计的初始化方法
-<span id="id10">(<a class="reference internal" href="../chapter_references/zreferences.html#id188" title="Xiao, L., Bahri, Y., Sohl-Dickstein, J., Schoenholz, S., &amp; Pennington, J. (2018). Dynamical isometry and a mean field theory of cnns: how to train 10,000-layer vanilla convolutional neural networks. International Conference on Machine Learning (pp. 5393–5402).">Xiao <em>et al.</em>, 2018</a>)</span>，
+<span id="id10">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id188" title="Xiao, L., Bahri, Y., Sohl-Dickstein, J., Schoenholz, S., &amp; Pennington, J. (2018). Dynamical isometry and a mean field theory of cnns: how to train 10,000-layer vanilla convolutional neural networks. International Conference on Machine Learning (pp. 5393–5402).">Xiao <em>et al.</em>, 2018</a>)</span>，
 可以无须架构上的技巧而训练10000层神经网络的可能性。</p>
 <p>如果有读者对该主题感兴趣，我们建议深入研究本模块的内容，
 阅读提出并分析每种启发式方法的论文，然后探索有关该主题的最新出版物。
@@ -3645,7 +3645,7 @@ vanishing）问题：
 <li><p>我们是否可以将线性回归或softmax回归中的所有权重参数初始化为相同的值？</p></li>
 <li><p>在相关资料中查找两个矩阵乘积特征值的解析界。这对确保梯度条件合适有什么启示？</p></li>
 <li><p>如果我们知道某些项是发散的，我们能在事后修正吗？看看关于按层自适应速率缩放的论文
-<span id="id13">(<a class="reference internal" href="../chapter_references/zreferences.html#id192" title="You, Y., Gitman, I., &amp; Ginsburg, B. (2017). Large batch training of convolutional networks. arXiv preprint arXiv:1708.03888.">You <em>et al.</em>, 2017</a>)</span> 。</p></li>
+<span id="id13">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id192" title="You, Y., Gitman, I., &amp; Ginsburg, B. (2017). Large batch training of convolutional networks. arXiv preprint arXiv:1708.03888.">You <em>et al.</em>, 2017</a>)</span> 。</p></li>
 </ol>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar text"><a href="#mxnet-5-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-5-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-5-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-5-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-5-0"><p><a class="reference external" href="https://discuss.d2l.ai/t/1819">Discussions</a></p>
 </div><div class="mdl-tabs__panel " id="pytorch-5-1"><p><a class="reference external" href="https://discuss.d2l.ai/t/1818">Discussions</a></p>
@@ -3688,14 +3688,14 @@ vanishing）问题：
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="backprop.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/backprop.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.7. 前向传播、反向传播和计算图</div>
          </div>
      </a>
-     <a id="button-next" href="environment.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/environment.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -3794,7 +3794,7 @@ vanishing）问题：
 我们会发现关于“软饮”名称的分布发生了相当大的概念偏移， 如
 <a class="reference internal" href="#fig-popvssoda"><span class="std std-numref">图4.9.3</span></a> 所示。</p>
 <div class="figure align-default" id="id29">
-<span id="fig-popvssoda"></span><a class="reference internal image-reference" href="../_images/popvssoda.png"><img alt="../_images/popvssoda.png" src="https://zh.d2l.ai/_images/popvssoda.png" style="width: 400px;" /></a>
+<span id="fig-popvssoda"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/popvssoda.png"><img alt="../_images/popvssoda.png" src="https://zh.d2l.ai/_images/popvssoda.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图4.9.3 </span><span class="caption-text">美国软饮名称的概念偏移</span></p>
 </div>
 <p>如果我们要建立一个机器翻译系统，
@@ -3918,7 +3918,7 @@ vanishing）问题：
 <p>在这种情况下，有一种非常有效的方法可以得到几乎与原始方法一样好的结果：
 <em>对数几率回归</em>（logistic regression）。
 这是用于二元分类的softmax回归（见
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression.html#sec-softmax"><span class="std std-numref">3.4节</span></a>）的一个特例。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression.html#sec-softmax"><span class="std std-numref">3.4节</span></a>）的一个特例。
 综上所述，我们学习了一个分类器来区分从<span class="math notranslate nohighlight">\(p(\mathbf{x})\)</span>抽取的数据
 和从<span class="math notranslate nohighlight">\(q(\mathbf{x})\)</span>抽取的数据。
 如果无法区分这两个分布，则意味着相关的样本可能来自这两个分布中的任何一个。
@@ -4072,7 +4072,7 @@ vanishing）问题：
 许多这样的算法形成了一个环境模型，在这个模型中，他们的行为使得他们的决策看起来不那么随机。
 近年来，控制理论（如PID的变体）也被用于自动调整超参数，
 以获得更好的解构和重建质量，提高生成文本的多样性和生成图像的重建质量
-<span id="id21">(<a class="reference internal" href="../chapter_references/zreferences.html#id151" title="Shao, H., Yao, S., Sun, D., Zhang, A., Liu, S., Liu, D., … Abdelzaher, T. (2020). Controlvae: controllable variational autoencoder. Proceedings of the 37th International Conference on Machine Learning.">Shao <em>et al.</em>, 2020</a>)</span>。</p>
+<span id="id21">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id151" title="Shao, H., Yao, S., Sun, D., Zhang, A., Liu, S., Liu, D., … Abdelzaher, T. (2020). Controlvae: controllable variational autoencoder. Proceedings of the 37th International Conference on Machine Learning.">Shao <em>et al.</em>, 2020</a>)</span>。</p>
 </div>
 <div class="section" id="id22">
 <h3><span class="section-number">4.9.4.5. </span>强化学习</h3>
@@ -4199,14 +4199,14 @@ learning）强调如何基于环境而行动，以取得最大化的预期利益
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="numerical-stability-and-init.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.8. 数值稳定性和模型初始化</div>
          </div>
      </a>
-     <a id="button-next" href="kaggle-house-price.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/kaggle-house-price.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -4224,7 +4224,7 @@ learning）强调如何基于环境而行动，以取得最大化的预期利益
 <p>之前几节我们学习了一些训练深度网络的基本工具和网络正则化的技术（如权重衰减、暂退法等）。
 本节我们将通过Kaggle比赛，将所学知识付诸实践。
 Kaggle的房价预测比赛是一个很好的起点。 此数据集由Bart de
-Cock于2011年收集 <span id="id1">(<a class="reference internal" href="../chapter_references/zreferences.html#id30" title="De Cock, D. (2011). Ames, iowa: alternative to the boston housing data as an end of semester regression project. Journal of Statistics Education, 19(3).">De Cock, 2011</a>)</span>，
+Cock于2011年收集 <span id="id1">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id30" title="De Cock, D. (2011). Ames, iowa: alternative to the boston housing data as an end of semester regression project. Journal of Statistics Education, 19(3).">De Cock, 2011</a>)</span>，
 涵盖了2006-2010年期间亚利桑那州埃姆斯市的房价。
 这个数据集是相当通用的，不会需要使用复杂模型架构。
 它比哈里森和鲁宾菲尔德的<a class="reference external" href="https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.names">波士顿房价</a>
@@ -4314,7 +4314,7 @@ Cock于2011年收集 <span id="id1">(<a class="reference internal" href="../chap
 如果我们想参加Kaggle比赛，首先需要注册一个账户（见
 <a class="reference internal" href="#fig-kaggle"><span class="std std-numref">图4.10.1</span></a>）。</p>
 <div class="figure align-default" id="id11">
-<span id="fig-kaggle"></span><a class="reference internal image-reference" href="../_images/kaggle.png"><img alt="../_images/kaggle.png" src="https://zh.d2l.ai/_images/kaggle.png" style="width: 400px;" /></a>
+<span id="fig-kaggle"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/kaggle.png"><img alt="../_images/kaggle.png" src="https://zh.d2l.ai/_images/kaggle.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图4.10.1 </span><span class="caption-text">Kaggle网站</span></p>
 </div>
 <p>在房价预测比赛页面（如 <a class="reference internal" href="#fig-house-pricing"><span class="std std-numref">图4.10.2</span></a>
@@ -4323,7 +4323,7 @@ Cock于2011年收集 <span id="id1">(<a class="reference internal" href="../chap
 <div><p><a class="reference external" href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques">https://www.kaggle.com/c/house-prices-advanced-regression-techniques</a></p>
 </div></blockquote>
 <div class="figure align-default" id="id12">
-<span id="fig-house-pricing"></span><a class="reference internal image-reference" href="../_images/house-pricing.png"><img alt="../_images/house-pricing.png" src="https://zh.d2l.ai/_images/house-pricing.png" style="width: 400px;" /></a>
+<span id="fig-house-pricing"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/house-pricing.png"><img alt="../_images/house-pricing.png" src="https://zh.d2l.ai/_images/house-pricing.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图4.10.2 </span><span class="caption-text">房价预测比赛页面</span></p>
 </div>
 </div>
@@ -4339,7 +4339,7 @@ Cock于2011年收集 <span id="id1">(<a class="reference internal" href="../chap
 我们只能在官方测试集中评估我们的模型。 在 <a class="reference internal" href="#fig-house-pricing"><span class="std std-numref">图4.10.2</span></a>
 中，“Data”选项卡有下载数据的链接。</p>
 <p>开始之前，我们将使用<code class="docutils literal notranslate"><span class="pre">pandas</span></code>读入并处理数据， 这是我们在
-<a class="reference internal" href="../chapter_preliminaries/pandas.html#sec-pandas"><span class="std std-numref">2.2节</span></a>中引入的。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/pandas.html#sec-pandas"><span class="std std-numref">2.2节</span></a>中引入的。
 因此，在继续操作之前，我们需要确保已安装<code class="docutils literal notranslate"><span class="pre">pandas</span></code>。
 幸运的是，如果我们正在用Jupyter阅读该书，可以在不离开笔记本的情况下安装<code class="docutils literal notranslate"><span class="pre">pandas</span></code>。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-7-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-7-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-7-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-7-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-7-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 如果没有安装pandas，请取消下一行的注释</span>
@@ -4541,7 +4541,7 @@ Cock于2011年收集 <span id="id1">(<a class="reference internal" href="../chap
 </div>
 <p>接下来，我们处理离散值。 这包括诸如“MSZoning”之类的特征。
 我们用独热编码替换它们， 方法与前面将多类别标签转换为向量的方式相同
-（请参见 <a class="reference internal" href="../chapter_linear-networks/softmax-regression.html#subsec-classification-problem"><span class="std std-numref">3.4.1节</span></a>）。
+（请参见 <a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression.html#subsec-classification-problem"><span class="std std-numref">3.4.1节</span></a>）。
 例如，“MSZoning”包含值“RL”和“Rm”。
 我们将创建两个新的指示器特征“MSZoning_RL”和“MSZoning_RM”，其值为0或1。
 根据独热编码，如果“MSZoning”的原始值为“RL”，
@@ -4786,7 +4786,7 @@ Adam优化器的主要吸引力在于它对初始学习率不那么敏感。</p>
 </div></div></div>
 <div class="section" id="k">
 <h2><span class="section-number">4.10.6. </span><span class="math notranslate nohighlight">\(K\)</span>折交叉验证</h2>
-<p>本书在讨论模型选择的部分（ <a class="reference internal" href="underfit-overfit.html#sec-model-selection"><span class="std std-numref">4.4节</span></a>）
+<p>本书在讨论模型选择的部分（ <a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/underfit-overfit.html#sec-model-selection"><span class="std std-numref">4.4节</span></a>）
 中介绍了K折交叉验证， 它有助于模型选择和超参数调整。
 我们首先需要定义一个函数，在<span class="math notranslate nohighlight">\(K\)</span>折交叉验证过程中返回第<span class="math notranslate nohighlight">\(i\)</span>折的数据。
 具体地说，它选择第<span class="math notranslate nohighlight">\(i\)</span>个切片作为验证数据，其余部分作为训练数据。
@@ -5082,7 +5082,7 @@ File”按钮，选择要上传的预测文件。</p></li>
 <li><p>点击页面底部的“Make Submission”按钮，即可查看结果。</p></li>
 </ul>
 <div class="figure align-default" id="id13">
-<span id="fig-kaggle-submit2"></span><a class="reference internal image-reference" href="../_images/kaggle-submit2.png"><img alt="../_images/kaggle-submit2.png" src="https://zh.d2l.ai/_images/kaggle-submit2.png" style="width: 400px;" /></a>
+<span id="fig-kaggle-submit2"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/kaggle-submit2.png"><img alt="../_images/kaggle-submit2.png" src="https://zh.d2l.ai/_images/kaggle-submit2.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图4.10.3 </span><span class="caption-text">向Kaggle提交数据</span></p>
 </div>
 </div>
@@ -5143,14 +5143,14 @@ File”按钮，选择要上传的预测文件。</p></li>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="environment.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/environment.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>4.9. 环境和分布偏移</div>
          </div>
      </a>
-     <a id="button-next" href="../chapter_deep-learning-computation/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_deep-learning-computation/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>

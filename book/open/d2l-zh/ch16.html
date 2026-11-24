@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第 16 章 附录：深度学习工具 · 动手学深度学习（全文在线阅读） · 白驹 ccowork</title>
+<title>第 16 章 附录：深度学习工具 · 动手学深度学习（全文在线阅读）</title>
 <meta name="description" content="动手学深度学习 第 17 部分：第 16 章 附录：深度学习工具。许可 Apache License 2.0，来源 https://zh.d2l.ai/。">
-<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/d2l-zh/ch16.html">
+<link rel="canonical" href="/book/open/d2l-zh/ch16.html">
 <meta name="robots" content="index,follow">
 <link rel="stylesheet" href="/book/open/book.css?v=20261124">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
@@ -24,56 +24,56 @@
     <div class="bk-lic">
       <b>来源与许可</b>：动手学深度学习 · 作者 阿斯顿·张（Aston Zhang）、扎卡里·C·立顿、李沐、亚历山大·J·斯莫拉 · 译者 何孝霆、瑞潮儿·胡 及社区 200 余位贡献者。<br>
       许可 <a href="https://github.com/d2l-ai/d2l-zh/blob/master/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a> · 仓库 <a href="https://github.com/d2l-ai/d2l-zh" target="_blank" rel="noopener">https://github.com/d2l-ai/d2l-zh</a><br>
-      本站抓取时间 2026-11-24 21:13 · 本章来自 https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/index.html
+      本站抓取时间 2026-11-24 21:24 · 本章来自 https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/index.html
     </div>
     <h1>第 16 章 附录：深度学习工具</h1>
     
 <div class="bk-sub" id="ch16-1"><div class="section" id="jupyter-notebook">
 <span id="sec-jupyter"></span><h1><span class="section-number">16.1. </span>使用Jupyter Notebook<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_appendix-tools-for-deep-learning/jupyter.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_appendix-tools-for-deep-learning/jupyter.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_appendix-tools-for-deep-learning/jupyter.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_appendix-tools-for-deep-learning/jupyter.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_appendix-tools-for-deep-learning/jupyter.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_appendix-tools-for-deep-learning/jupyter.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_appendix-tools-for-deep-learning/jupyter.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_appendix-tools-for-deep-learning/jupyter.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>本节介绍如何使用Jupyter Notebook编辑和运行本书各章中的代码。确保你已按照
-<a class="reference internal" href="../chapter_installation/index.html#chap-installation"><span class="std std-ref">安装</span></a>中的说明安装了Jupyter并下载了代码。如果你想了解更多关于Jupyter的信息，请参阅其<a class="reference external" href="https://jupyter.readthedocs.io/en/latest/">文档</a>中的优秀教程。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_installation/index.html#chap-installation"><span class="std std-ref">安装</span></a>中的说明安装了Jupyter并下载了代码。如果你想了解更多关于Jupyter的信息，请参阅其<a class="reference external" href="https://jupyter.readthedocs.io/en/latest/">文档</a>中的优秀教程。</p>
 <div class="section" id="id1">
 <h2><span class="section-number">16.1.1. </span>在本地编辑和运行代码</h2>
 <p>假设本书代码的本地路径为<code class="docutils literal notranslate"><span class="pre">xx/yy/d2l-en/</span></code>。使用shell将目录更改为此路径（<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">xx/yy/d2l-en</span></code>）并运行命令<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code>。如果浏览器未自动打开，请打开http://localhost:8888。此时你将看到Jupyter的界面以及包含本书代码的所有文件夹，如
 <a class="reference internal" href="#fig-jupyter00"><span class="std std-numref">图16.1.1</span></a>所示</p>
 <div class="figure align-default" id="id7">
-<span id="fig-jupyter00"></span><a class="reference internal image-reference" href="../_images/jupyter00.png"><img alt="../_images/jupyter00.png" src="https://zh.d2l.ai/_images/jupyter00.png" style="width: 600px;" /></a>
+<span id="fig-jupyter00"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/jupyter00.png"><img alt="../_images/jupyter00.png" src="https://zh.d2l.ai/_images/jupyter00.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">图16.1.1 </span><span class="caption-text">包含本书代码的文件夹</span></p>
 </div>
 <p>你可以通过单击网页上显示的文件夹来访问notebook文件。它们通常有后缀“.ipynb”。为了简洁起见，我们创建了一个临时的“test.ipynb”文件。单击后显示的内容如
 <a class="reference internal" href="#fig-jupyter01"><span class="std std-numref">图16.1.2</span></a>所示。此notebook包括一个标记单元格和一个代码单元格。标记单元格中的内容包括“This
 Is a Title”和“This is text.”。代码单元包含两行Python代码。</p>
 <div class="figure align-default" id="id8">
-<span id="fig-jupyter01"></span><a class="reference internal image-reference" href="../_images/jupyter01.png"><img alt="../_images/jupyter01.png" src="https://zh.d2l.ai/_images/jupyter01.png" style="width: 600px;" /></a>
+<span id="fig-jupyter01"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/jupyter01.png"><img alt="../_images/jupyter01.png" src="https://zh.d2l.ai/_images/jupyter01.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">图16.1.2 </span><span class="caption-text">“test.ipynb”文件中的markdown和代码块</span></p>
 </div>
 <p>双击标记单元格以进入编辑模式。在单元格末尾添加一个新的文本字符串“Hello
 world.”，如 <a class="reference internal" href="#fig-jupyter02"><span class="std std-numref">图16.1.3</span></a>所示。</p>
 <div class="figure align-default" id="id9">
-<span id="fig-jupyter02"></span><a class="reference internal image-reference" href="../_images/jupyter02.png"><img alt="../_images/jupyter02.png" src="https://zh.d2l.ai/_images/jupyter02.png" style="width: 600px;" /></a>
+<span id="fig-jupyter02"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/jupyter02.png"><img alt="../_images/jupyter02.png" src="https://zh.d2l.ai/_images/jupyter02.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">图16.1.3 </span><span class="caption-text">编辑markdown单元格</span></p>
 </div>
 <p>如 <a class="reference internal" href="#fig-jupyter03"><span class="std std-numref">图16.1.4</span></a>所示，单击菜单栏中的“Cell”
 <span class="math notranslate nohighlight">\(\rightarrow\)</span> “Run Cells”以运行编辑后的单元格。</p>
 <div class="figure align-default" id="id10">
-<span id="fig-jupyter03"></span><a class="reference internal image-reference" href="../_images/jupyter03.png"><img alt="../_images/jupyter03.png" src="https://zh.d2l.ai/_images/jupyter03.png" style="width: 600px;" /></a>
+<span id="fig-jupyter03"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/jupyter03.png"><img alt="../_images/jupyter03.png" src="https://zh.d2l.ai/_images/jupyter03.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">图16.1.4 </span><span class="caption-text">运行单元格</span></p>
 </div>
 <p>运行后，markdown单元格如 <a class="reference internal" href="#fig-jupyter04"><span class="std std-numref">图16.1.5</span></a>所示。</p>
 <div class="figure align-default" id="id11">
-<span id="fig-jupyter04"></span><a class="reference internal image-reference" href="../_images/jupyter04.png"><img alt="../_images/jupyter04.png" src="https://zh.d2l.ai/_images/jupyter04.png" style="width: 600px;" /></a>
+<span id="fig-jupyter04"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/jupyter04.png"><img alt="../_images/jupyter04.png" src="https://zh.d2l.ai/_images/jupyter04.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">图16.1.5 </span><span class="caption-text">编辑后的markdown单元格</span></p>
 </div>
 <p>接下来，单击代码单元。将最后一行代码后的元素乘以2，如
 <a class="reference internal" href="#fig-jupyter05"><span class="std std-numref">图16.1.6</span></a>所示。</p>
 <div class="figure align-default" id="id12">
-<span id="fig-jupyter05"></span><a class="reference internal image-reference" href="../_images/jupyter05.png"><img alt="../_images/jupyter05.png" src="https://zh.d2l.ai/_images/jupyter05.png" style="width: 600px;" /></a>
+<span id="fig-jupyter05"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/jupyter05.png"><img alt="../_images/jupyter05.png" src="https://zh.d2l.ai/_images/jupyter05.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">图16.1.6 </span><span class="caption-text">编辑代码单元格</span></p>
 </div>
 <p>你还可以使用快捷键（默认情况下为Ctrl+Enter）运行单元格，并从
 <a class="reference internal" href="#fig-jupyter06"><span class="std std-numref">图16.1.7</span></a>获取输出结果。</p>
 <div class="figure align-default" id="id13">
-<span id="fig-jupyter06"></span><a class="reference internal image-reference" href="../_images/jupyter06.png"><img alt="../_images/jupyter06.png" src="https://zh.d2l.ai/_images/jupyter06.png" style="width: 600px;" /></a>
+<span id="fig-jupyter06"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/jupyter06.png"><img alt="../_images/jupyter06.png" src="https://zh.d2l.ai/_images/jupyter06.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">图16.1.7 </span><span class="caption-text">运行代码单元格以获得输出</span></p>
 </div>
 <p>当一个notebook包含更多单元格时，我们可以单击菜单栏中的“Kernel”<span class="math notranslate nohighlight">\(\rightarrow\)</span>“Restart
@@ -175,14 +175,14 @@ Notebook中每个代码单元的执行时间。使用以下命令安装插件：
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>16. 附录：深度学习工具</div>
          </div>
      </a>
-     <a id="button-next" href="sagemaker.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/sagemaker.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -206,7 +206,7 @@ SageMaker运行本书的代码。</p>
 SageMaker”（参见
 <a class="reference internal" href="#fig-sagemaker"><span class="std std-numref">图16.2.1</span></a>），然后单击它打开SageMaker面板。</p>
 <div class="figure align-default" id="id5">
-<span id="fig-sagemaker"></span><a class="reference internal image-reference" href="../_images/sagemaker.png"><img alt="../_images/sagemaker.png" src="https://zh.d2l.ai/_images/sagemaker.png" style="width: 300px;" /></a>
+<span id="fig-sagemaker"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/sagemaker.png"><img alt="../_images/sagemaker.png" src="https://zh.d2l.ai/_images/sagemaker.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">图16.2.1 </span><span class="caption-text">搜索并打开SageMaker面板</span></p>
 </div>
 </div>
@@ -215,14 +215,14 @@ SageMaker”（参见
 <p>接下来，让我们创建一个notebook实例，如
 <a class="reference internal" href="#fig-sagemaker-create"><span class="std std-numref">图16.2.2</span></a>所示。</p>
 <div class="figure align-default" id="id6">
-<span id="fig-sagemaker-create"></span><a class="reference internal image-reference" href="../_images/sagemaker-create.png"><img alt="../_images/sagemaker-create.png" src="https://zh.d2l.ai/_images/sagemaker-create.png" style="width: 400px;" /></a>
+<span id="fig-sagemaker-create"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/sagemaker-create.png"><img alt="../_images/sagemaker-create.png" src="https://zh.d2l.ai/_images/sagemaker-create.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图16.2.2 </span><span class="caption-text">创建一个SageMaker实例</span></p>
 </div>
 <p>SageMaker提供多个具有不同计算能力和价格的<a class="reference external" href="https://aws.amazon.com/sagemaker/pricing/instance-types/">实例类型</a>。创建notebook实例时，可以指定其名称和类型。在
 <a class="reference internal" href="#fig-sagemaker-create-2"><span class="std std-numref">图16.2.3</span></a>中，我们选择<code class="docutils literal notranslate"><span class="pre">ml.p3.2xlarge</span></code>：使用一个Tesla
 V100 GPU和一个8核CPU，这个实例的性能足够本书的大部分内容使用。</p>
 <div class="figure align-default" id="id7">
-<span id="fig-sagemaker-create-2"></span><a class="reference internal image-reference" href="../_images/sagemaker-create-2.png"><img alt="../_images/sagemaker-create-2.png" src="https://zh.d2l.ai/_images/sagemaker-create-2.png" style="width: 400px;" /></a>
+<span id="fig-sagemaker-create-2"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/sagemaker-create-2.png"><img alt="../_images/sagemaker-create-2.png" src="https://zh.d2l.ai/_images/sagemaker-create-2.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图16.2.3 </span><span class="caption-text">选择实例类型</span></p>
 </div>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar text"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><p>用于与SageMaker一起运行的ipynb格式的整本书可从https://github.com/d2l-ai/d2l-en-sagemaker获得。
@@ -235,7 +235,7 @@ V100 GPU和一个8核CPU，这个实例的性能足够本书的大部分内容�
 我们可以指定此GitHub存储库URL（
 <a class="reference internal" href="#fig-sagemaker-create-3"><span class="std std-numref">图16.2.4</span></a>），以允许SageMaker在创建实例时克隆它。</p>
 </div></div><div class="figure align-default" id="id8">
-<span id="fig-sagemaker-create-3"></span><a class="reference internal image-reference" href="../_images/sagemaker-create-3.png"><img alt="../_images/sagemaker-create-3.png" src="https://zh.d2l.ai/_images/sagemaker-create-3.png" style="width: 400px;" /></a>
+<span id="fig-sagemaker-create-3"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/sagemaker-create-3.png"><img alt="../_images/sagemaker-create-3.png" src="https://zh.d2l.ai/_images/sagemaker-create-3.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图16.2.4 </span><span class="caption-text">指定GitHub存储库</span></p>
 </div>
 </div>
@@ -244,15 +244,15 @@ V100 GPU和一个8核CPU，这个实例的性能足够本书的大部分内容�
 <p>创建实例可能需要几分钟的时间。当实例准备就绪时，单击它旁边的“Open
 Jupyter”链接（
 <a class="reference internal" href="#fig-sagemaker-open"><span class="std std-numref">图16.2.5</span></a>），以便你可以在此实例上编辑并运行本书的所有Jupyter
-Notebook（类似于 <a class="reference internal" href="jupyter.html#sec-jupyter"><span class="std std-numref">16.1节</span></a>中的步骤）。</p>
+Notebook（类似于 <a class="reference internal" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/jupyter.html#sec-jupyter"><span class="std std-numref">16.1节</span></a>中的步骤）。</p>
 <div class="figure align-default" id="id9">
-<span id="fig-sagemaker-open"></span><a class="reference internal image-reference" href="../_images/sagemaker-open.png"><img alt="../_images/sagemaker-open.png" src="https://zh.d2l.ai/_images/sagemaker-open.png" style="width: 400px;" /></a>
+<span id="fig-sagemaker-open"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/sagemaker-open.png"><img alt="../_images/sagemaker-open.png" src="https://zh.d2l.ai/_images/sagemaker-open.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图16.2.5 </span><span class="caption-text">在创建的SageMaker实例上打开Jupyter</span></p>
 </div>
 <p>完成工作后，不要忘记停止实例以避免进一步收费（
 <a class="reference internal" href="#fig-sagemaker-stop"><span class="std std-numref">图16.2.6</span></a>）。</p>
 <div class="figure align-default" id="id10">
-<span id="fig-sagemaker-stop"></span><a class="reference internal image-reference" href="../_images/sagemaker-stop.png"><img alt="../_images/sagemaker-stop.png" src="https://zh.d2l.ai/_images/sagemaker-stop.png" style="width: 300px;" /></a>
+<span id="fig-sagemaker-stop"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/sagemaker-stop.png"><img alt="../_images/sagemaker-stop.png" src="https://zh.d2l.ai/_images/sagemaker-stop.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">图16.2.6 </span><span class="caption-text">停止SageMaker实例</span></p>
 </div>
 </div>
@@ -265,7 +265,7 @@ Notebook（类似于 <a class="reference internal" href="jupyter.html#sec-jupyte
 </div><div class="mdl-tabs__panel " id="tensorflow-3-2"><p>这本开源书的notebook将定期在GitHub上的<a class="reference external" href="https://github.com/d2l-ai/d2l-tensorflow-sagemaker">d2l-ai/d2l-tensorflow-sagemaker</a>存储库中更新。要更新至最新版本，你可以在SageMaker实例（
 <a class="reference internal" href="#fig-sagemaker-terminal"><span class="std std-numref">图16.2.7</span></a>）上打开终端。</p>
 </div></div><div class="figure align-default" id="id11">
-<span id="fig-sagemaker-terminal"></span><a class="reference internal image-reference" href="../_images/sagemaker-terminal.png"><img alt="../_images/sagemaker-terminal.png" src="https://zh.d2l.ai/_images/sagemaker-terminal.png" style="width: 300px;" /></a>
+<span id="fig-sagemaker-terminal"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/sagemaker-terminal.png"><img alt="../_images/sagemaker-terminal.png" src="https://zh.d2l.ai/_images/sagemaker-terminal.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">图16.2.7 </span><span class="caption-text">在SageMaker实例上打开终端</span></p>
 </div>
 <p>你可能希望在从远程存储库提取更新之前提交本地更改。否则，只需在终端中使用以下命令放弃所有本地更改：</p>
@@ -329,14 +329,14 @@ SageMaker创建一个GPU的notebook实例来运行本书的密集型代码。</p
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="jupyter.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/jupyter.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>16.1. 使用Jupyter Notebook</div>
          </div>
      </a>
-     <a id="button-next" href="aws.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/aws.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -352,7 +352,7 @@ SageMaker创建一个GPU的notebook实例来运行本书的密集型代码。</p
 <div class="bk-sub" id="ch16-3"><div class="section" id="amazon-ec2">
 <span id="sec-aws"></span><h1><span class="section-number">16.3. </span>使用Amazon EC2实例<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_appendix-tools-for-deep-learning/aws.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_appendix-tools-for-deep-learning/aws.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_appendix-tools-for-deep-learning/aws.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_appendix-tools-for-deep-learning/aws.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_appendix-tools-for-deep-learning/aws.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_appendix-tools-for-deep-learning/aws.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_appendix-tools-for-deep-learning/aws.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_appendix-tools-for-deep-learning/aws.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>本节将展示如何在原始Linux机器上安装所有库。回想一下，
-<a class="reference internal" href="sagemaker.html#sec-sagemaker"><span class="std std-numref">16.2节</span></a>讨论了如何使用Amazon
+<a class="reference internal" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/sagemaker.html#sec-sagemaker"><span class="std std-numref">16.2节</span></a>讨论了如何使用Amazon
 SageMaker，而在云上自己构建实例的成本更低。本演示包括三个步骤。</p>
 <ol class="arabic simple">
 <li><p>从AWS EC2请求GPU Linux实例。</p></li>
@@ -360,18 +360,18 @@ SageMaker，而在云上自己构建实例的成本更低。本演示包括三�
 <li><p>安装深度学习框架和其他库以运行本书的代码。</p></li>
 </ol>
 <p>此过程也适用于其他实例（和其他云），尽管需要一些细微的修改。在继续操作之前，你需要创建一个AWS帐户，有关更多详细信息，请参阅
-<a class="reference internal" href="sagemaker.html#sec-sagemaker"><span class="std std-numref">16.2节</span></a>。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/sagemaker.html#sec-sagemaker"><span class="std std-numref">16.2节</span></a>。</p>
 <div class="section" id="ec2">
 <h2><span class="section-number">16.3.1. </span>创建和运行EC2实例</h2>
 <p>登录到你的aws账户后，单击“EC2”（在
 <a class="reference internal" href="#fig-aws"><span class="std std-numref">图16.3.1</span></a>中用红色方框标记）进入EC2面板。</p>
 <div class="figure align-default" id="id9">
-<span id="fig-aws"></span><a class="reference internal image-reference" href="../_images/aws.png"><img alt="../_images/aws.png" src="https://zh.d2l.ai/_images/aws.png" style="width: 400px;" /></a>
+<span id="fig-aws"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/aws.png"><img alt="../_images/aws.png" src="https://zh.d2l.ai/_images/aws.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.1 </span><span class="caption-text">打开EC2控制台</span></p>
 </div>
 <p><a class="reference internal" href="#fig-ec2"><span class="std std-numref">图16.3.2</span></a>显示EC2面板，敏感帐户信息变为灰色。</p>
 <div class="figure align-default" id="id10">
-<span id="fig-ec2"></span><a class="reference internal image-reference" href="../_images/ec2.png"><img alt="../_images/ec2.png" src="https://zh.d2l.ai/_images/ec2.png" style="width: 700px;" /></a>
+<span id="fig-ec2"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/ec2.png"><img alt="../_images/ec2.png" src="https://zh.d2l.ai/_images/ec2.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.2 </span><span class="caption-text">EC2面板</span></p>
 </div>
 <div class="section" id="id1">
@@ -387,7 +387,7 @@ SageMaker，而在云上自己构建实例的成本更低。本演示包括三�
 limit
 increase”（请求增加限制）链接，申请更高的实例配额。一般来说，需要一个工作日的时间来处理申请。</p>
 <div class="figure align-default" id="id11">
-<span id="fig-limits"></span><a class="reference internal image-reference" href="../_images/limits.png"><img alt="../_images/limits.png" src="https://zh.d2l.ai/_images/limits.png" style="width: 700px;" /></a>
+<span id="fig-limits"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/limits.png"><img alt="../_images/limits.png" src="https://zh.d2l.ai/_images/limits.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.3 </span><span class="caption-text">实例数量限制</span></p>
 </div>
 </div>
@@ -399,7 +399,7 @@ Instance”（启动实例）按钮，启动你的实例。</p>
 Image，AMI）。在搜索框中输入“ubuntu”（
 <a class="reference internal" href="#fig-ubuntu"><span class="std std-numref">图16.3.4</span></a>中的红色框标记）。</p>
 <div class="figure align-default" id="id12">
-<span id="fig-ubuntu"></span><a class="reference internal image-reference" href="../_images/ubuntu-new.png"><img alt="../_images/ubuntu-new.png" src="https://zh.d2l.ai/_images/ubuntu-new.png" style="width: 700px;" /></a>
+<span id="fig-ubuntu"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/ubuntu-new.png"><img alt="../_images/ubuntu-new.png" src="https://zh.d2l.ai/_images/ubuntu-new.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.4 </span><span class="caption-text">选择一个AMI</span></p>
 </div>
 <p>EC2提供了许多不同的实例配置可供选择。对初学者来说，这有时会让人感到困惑。
@@ -443,7 +443,7 @@ Image，AMI）。在搜索框中输入“ubuntu”（
 <p>所有这些服务器都有多种类型，显示了使用的GPU数量。例如，p2.xlarge有1个GPU，而p2.16xlarge有16个GPU和更多内存。有关更多详细信息，请参阅<a class="reference external" href="https://aws.amazon.com/ec2/instance-types/">Amazon
 EC2 文档</a>。</p>
 <div class="figure align-default" id="id14">
-<span id="fig-p2x"></span><a class="reference internal image-reference" href="../_images/p2x.png"><img alt="../_images/p2x.png" src="https://zh.d2l.ai/_images/p2x.png" style="width: 700px;" /></a>
+<span id="fig-p2x"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/p2x.png"><img alt="../_images/p2x.png" src="https://zh.d2l.ai/_images/p2x.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.5 </span><span class="caption-text">选择一个实例</span></p>
 </div>
 <p>注意，你应该使用支持GPU的实例以及合适的驱动程序和支持GPU的深度学习框架。否则，你将感受不到使用GPU的任何好处。</p>
@@ -454,7 +454,7 @@ Security Group”（6.
 配置安全组）步骤的默认配置。点击“4.添加存储”并将默认硬盘大小增加到64GB(
 <a class="reference internal" href="#fig-disk"><span class="std std-numref">图16.3.6</span></a>中的红色框标记)。请注意，CUDA本身已经占用了4GB空间。</p>
 <div class="figure align-default" id="id15">
-<span id="fig-disk"></span><a class="reference internal image-reference" href="../_images/disk.png"><img alt="../_images/disk.png" src="https://zh.d2l.ai/_images/disk.png" style="width: 700px;" /></a>
+<span id="fig-disk"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/disk.png"><img alt="../_images/disk.png" src="https://zh.d2l.ai/_images/disk.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.6 </span><span class="caption-text">修改硬盘大小</span></p>
 </div>
 <p>最后，进入“7. Review”（7.
@@ -465,13 +465,13 @@ an existing key
 pair”（选择现有密钥对），然后选择之前生成的密钥对。单击“Launch
 Instances”（启动实例）即可启动创建的实例。</p>
 <div class="figure align-default" id="id16">
-<span id="fig-keypair"></span><a class="reference internal image-reference" href="../_images/keypair.png"><img alt="../_images/keypair.png" src="https://zh.d2l.ai/_images/keypair.png" style="width: 500px;" /></a>
+<span id="fig-keypair"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/keypair.png"><img alt="../_images/keypair.png" src="https://zh.d2l.ai/_images/keypair.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.7 </span><span class="caption-text">选择一个密钥对</span></p>
 </div>
 <p>如果生成了新密钥对，请确保下载密钥对并将其存储在安全位置。这是你通过SSH连接到服务器的唯一方式。单击
 <a class="reference internal" href="#fig-launching"><span class="std std-numref">图16.3.8</span></a>中显示的实例ID可查看该实例的状态。</p>
 <div class="figure align-default" id="id17">
-<span id="fig-launching"></span><a class="reference internal image-reference" href="../_images/launching.png"><img alt="../_images/launching.png" src="https://zh.d2l.ai/_images/launching.png" style="width: 700px;" /></a>
+<span id="fig-launching"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/launching.png"><img alt="../_images/launching.png" src="https://zh.d2l.ai/_images/launching.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.8 </span><span class="caption-text">单击实例ID</span></p>
 </div>
 </div>
@@ -480,7 +480,7 @@ Instances”（启动实例）即可启动创建的实例。</p>
 <p>如
 <a class="reference internal" href="#fig-connect"><span class="std std-numref">图16.3.9</span></a>所示，实例状态变为绿色后，右键单击实例，选择<code class="docutils literal notranslate"><span class="pre">Connect</span></code>（连接）查看实例访问方式。</p>
 <div class="figure align-default" id="id18">
-<span id="fig-connect"></span><a class="reference internal image-reference" href="../_images/connect.png"><img alt="../_images/connect.png" src="https://zh.d2l.ai/_images/connect.png" style="width: 700px;" /></a>
+<span id="fig-connect"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/connect.png"><img alt="../_images/connect.png" src="https://zh.d2l.ai/_images/connect.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.9 </span><span class="caption-text">查看实例访问方法</span></p>
 </div>
 <p>如果这是一个新密钥，它必须是不可公开查看的，SSH才能工作。转到存储<code class="docutils literal notranslate"><span class="pre">D2L_key.pem</span></code>的文件夹，并执行以下命令以使密钥不可公开查看：</p>
@@ -488,7 +488,7 @@ Instances”（启动实例）即可启动创建的实例。</p>
 </pre></div>
 </div>
 <div class="figure align-default" id="id19">
-<span id="fig-chmod"></span><a class="reference internal image-reference" href="../_images/chmod.png"><img alt="../_images/chmod.png" src="https://zh.d2l.ai/_images/chmod.png" style="width: 400px;" /></a>
+<span id="fig-chmod"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/chmod.png"><img alt="../_images/chmod.png" src="https://zh.d2l.ai/_images/chmod.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.10 </span><span class="caption-text">查看实例访问和启动方法</span></p>
 </div>
 <p>现在，复制 <a class="reference internal" href="#fig-chmod"><span class="std std-numref">图16.3.10</span></a>下方红色框中的ssh命令并粘贴到命令行：</p>
@@ -510,7 +510,7 @@ Instances”（启动实例）即可启动创建的实例。</p>
 10.1。访问NVIDIA的<a class="reference external" href="https://developer.nvidia.com/cuda-toolkit-archive">官方存储库</a>
 以找到下载链接，如 <a class="reference internal" href="#fig-cuda"><span class="std std-numref">图16.3.11</span></a>中所示。</p>
 <div class="figure align-default" id="id20">
-<span id="fig-cuda"></span><a class="reference internal image-reference" href="../_images/cuda101.png"><img alt="../_images/cuda101.png" src="https://zh.d2l.ai/_images/cuda101.png" style="width: 500px;" /></a>
+<span id="fig-cuda"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/cuda101.png"><img alt="../_images/cuda101.png" src="https://zh.d2l.ai/_images/cuda101.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.11 </span><span class="caption-text">查找CUDA 10.1下载地址</span></p>
 </div>
 <p>将说明复制粘贴到终端上，以安装CUDA 10.1。</p>
@@ -536,7 +536,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </
 <div class="section" id="id5">
 <h2><span class="section-number">16.3.3. </span>安装库以运行代码</h2>
 <p>要运行本书的代码，只需在EC2实例上为linux用户执行
-<a class="reference internal" href="../chapter_installation/index.html#chap-installation"><span class="std std-ref">安装</span></a>中的步骤，并使用以下提示在远程linux服务器上工作。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_installation/index.html#chap-installation"><span class="std std-ref">安装</span></a>中的步骤，并使用以下提示在远程linux服务器上工作。</p>
 <ul class="simple">
 <li><p>要在Miniconda安装页面下载bash脚本，请右击下载链接并选择“copy Link
 address”，然后执行<code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">[copied</span> <span class="pre">link</span> <span class="pre">address]</span></code>。</p></li>
@@ -558,7 +558,7 @@ address”，然后执行<code class="docutils literal notranslate"><span class=
 </div>
 <p><a class="reference internal" href="#fig-jupyter"><span class="std std-numref">图16.3.12</span></a>显示了运行Jupyter笔记本后可能的输出。最后一行是端口8888的URL。</p>
 <div class="figure align-default" id="id21">
-<span id="fig-jupyter"></span><a class="reference internal image-reference" href="../_images/jupyter.png"><img alt="../_images/jupyter.png" src="https://zh.d2l.ai/_images/jupyter.png" style="width: 700px;" /></a>
+<span id="fig-jupyter"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/jupyter.png"><img alt="../_images/jupyter.png" src="https://zh.d2l.ai/_images/jupyter.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.3.12 </span><span class="caption-text">运行Jupyter Notebook后的输出（最后一行是端口8888的URL）</span></p>
 </div>
 <p>由于你使用端口转发到端口8889，请复制
@@ -627,14 +627,14 @@ address”，然后执行<code class="docutils literal notranslate"><span class=
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="sagemaker.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/sagemaker.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>16.2. 使用Amazon SageMaker</div>
          </div>
      </a>
-     <a id="button-next" href="selecting-servers-gpus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/selecting-servers-gpus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -754,14 +754,14 @@ Ti和1080 Ti可以看出，较新型号具有更好的成本效益。RTX
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="aws.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/aws.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>16.3. 使用Amazon EC2实例</div>
          </div>
      </a>
-     <a id="button-next" href="contributing.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/contributing.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -793,7 +793,7 @@ request</a>。
 中查找源文件，以定位源文件（一个markdown文件）。 然后单击右上角的“Edit
 this file”按钮，在markdown文件中进行更改。</p>
 <div class="figure align-default" id="id9">
-<span id="fig-edit-file"></span><a class="reference internal image-reference" href="../_images/edit-file.png"><img alt="../_images/edit-file.png" src="https://zh.d2l.ai/_images/edit-file.png" style="width: 300px;" /></a>
+<span id="fig-edit-file"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/edit-file.png"><img alt="../_images/edit-file.png" src="https://zh.d2l.ai/_images/edit-file.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">图16.5.1 </span><span class="caption-text">在Github上编辑文件</span></p>
 </div>
 <p>完成后，在页面底部的“Propose file change”（“提交文件修改”）
@@ -809,7 +809,7 @@ this file”按钮，在markdown文件中进行更改。</p>
 例如引用公式、图像、章节和引文。
 你可以使用任何markdown编辑器打开这些文件并进行更改。</p>
 <p>如果你想要更改代码，我们建议你使用Jupyter Notebook打开这些标记文件， 如
-<a class="reference internal" href="jupyter.html#sec-jupyter"><span class="std std-numref">16.1节</span></a>中所述。 这样你就可以运行并测试你的更改。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/jupyter.html#sec-jupyter"><span class="std std-numref">16.1节</span></a>中所述。 这样你就可以运行并测试你的更改。
 请记住在提交更改之前清除所有输出，我们的CI系统将执行你更新的部分以生成输出。</p>
 <p>某些部分可能支持多个框架实现。如果你添加的新代码块不是使用mxnet，
 请使用<code class="docutils literal notranslate"><span class="pre">#&#64;tab</span></code>来标记代码块的起始行。
@@ -843,14 +843,14 @@ this file”按钮，在markdown文件中进行更改。</p>
 <a class="reference internal" href="#fig-git-fork"><span class="std std-numref">图16.5.3</span></a>右上角红色框中的<code class="docutils literal notranslate"><span class="pre">Fork</span></code>按钮，以复制本书的存储库。
 这将是你的副本，你可以随心所欲地更改它。</p>
 <div class="figure align-default" id="id11">
-<span id="fig-git-fork"></span><a class="reference internal image-reference" href="../_images/git-fork.png"><img alt="../_images/git-fork.png" src="https://zh.d2l.ai/_images/git-fork.png" style="width: 700px;" /></a>
+<span id="fig-git-fork"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/git-fork.png"><img alt="../_images/git-fork.png" src="https://zh.d2l.ai/_images/git-fork.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.5.3 </span><span class="caption-text">代码存储库页面</span></p>
 </div>
 <p>现在，本书的代码库将被分叉（即复制）到你的用户名，
 例如<code class="docutils literal notranslate"><span class="pre">astonzhang/d2l-en</span></code>显示在
 <a class="reference internal" href="#fig-git-forked"><span class="std std-numref">图16.5.4</span></a>的左上角。</p>
 <div class="figure align-default" id="id12">
-<span id="fig-git-forked"></span><a class="reference internal image-reference" href="../_images/git-forked.png"><img alt="../_images/git-forked.png" src="https://zh.d2l.ai/_images/git-forked.png" style="width: 700px;" /></a>
+<span id="fig-git-forked"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/git-forked.png"><img alt="../_images/git-forked.png" src="https://zh.d2l.ai/_images/git-forked.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.5.4 </span><span class="caption-text">分叉代码存储库</span></p>
 </div>
 </div>
@@ -859,10 +859,10 @@ this file”按钮，在markdown文件中进行更改。</p>
 <p>要克隆存储库（即制作本地副本），我们需要获取其存储库地址。 点击
 <a class="reference internal" href="#fig-git-clone"><span class="std std-numref">图16.5.5</span></a>中的绿色按钮显示此信息。
 如果你决定将此分支保留更长时间，请确保你的本地副本与主存储库保持最新。
-现在，只需按照 <a class="reference internal" href="../chapter_installation/index.html#chap-installation"><span class="std std-ref">安装</span></a>中的说明开始。
+现在，只需按照 <a class="reference internal" href="https://zh.d2l.ai/chapter_installation/index.html#chap-installation"><span class="std std-ref">安装</span></a>中的说明开始。
 主要区别在于，你现在下载的是你自己的存储库分支。</p>
 <div class="figure align-default" id="id13">
-<span id="fig-git-clone"></span><a class="reference internal image-reference" href="../_images/git-clone.png"><img alt="../_images/git-clone.png" src="https://zh.d2l.ai/_images/git-clone.png" style="width: 700px;" /></a>
+<span id="fig-git-clone"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/git-clone.png"><img alt="../_images/git-clone.png" src="https://zh.d2l.ai/_images/git-clone.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.5.5 </span><span class="caption-text">克隆存储库</span></p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 将your_github_username替换为你的github用户名</span>
@@ -873,7 +873,7 @@ this file”按钮，在markdown文件中进行更改。</p>
 <div class="section" id="id6">
 <h3><span class="section-number">16.5.3.4. </span>编辑和推送</h3>
 <p>现在是编辑这本书的时候了。最好按照
-<a class="reference internal" href="jupyter.html#sec-jupyter"><span class="std std-numref">16.1节</span></a>中的说明在Jupyter
+<a class="reference internal" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/jupyter.html#sec-jupyter"><span class="std std-numref">16.1节</span></a>中的说明在Jupyter
 Notebook中编辑它。进行更改并检查它们是否正常。假设我们已经修改了文件<code class="docutils literal notranslate"><span class="pre">~/d2l-en/chapter_appendix_tools/how-to-contribute.md</span></code>中的一个拼写错误。你可以检查你更改了哪些文件。</p>
 <p>此时，Git将提示<code class="docutils literal notranslate"><span class="pre">chapter_appendix_tools/how-to-contribute.md</span></code>文件已被修改。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mylaptop:d2l-en me$ git status
@@ -901,13 +901,13 @@ Changes not staged for commit:
 pull
 request”。这将打开一个页面，显示你的编辑与本书主存储库中的当前内容之间的更改。</p>
 <div class="figure align-default" id="id14">
-<span id="fig-git-newpr"></span><a class="reference internal image-reference" href="../_images/git-newpr.png"><img alt="../_images/git-newpr.png" src="https://zh.d2l.ai/_images/git-newpr.png" style="width: 700px;" /></a>
+<span id="fig-git-newpr"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/git-newpr.png"><img alt="../_images/git-newpr.png" src="https://zh.d2l.ai/_images/git-newpr.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.5.6 </span><span class="caption-text">新的Pull请求</span></p>
 </div>
 <p>最后，单击按钮提交Pull请求，如
 <a class="reference internal" href="#fig-git-createpr"><span class="std std-numref">图16.5.7</span></a>所示。请务必描述你在Pull请求中所做的更改。这将使作者更容易审阅它，并将其与本书合并。根据更改的不同，这可能会立即被接受，也可能会被拒绝，或者更有可能的是，你会收到一些关于更改的反馈。一旦你把它们合并了，你就做完了。</p>
 <div class="figure align-default" id="id15">
-<span id="fig-git-createpr"></span><a class="reference internal image-reference" href="../_images/git-createpr.png"><img alt="../_images/git-createpr.png" src="https://zh.d2l.ai/_images/git-createpr.png" style="width: 700px;" /></a>
+<span id="fig-git-createpr"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/git-createpr.png"><img alt="../_images/git-createpr.png" src="https://zh.d2l.ai/_images/git-createpr.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图16.5.7 </span><span class="caption-text">创建Pull请求</span></p>
 </div>
 </div>
@@ -964,14 +964,14 @@ request”。这将打开一个页面，显示你的编辑与本书主存储库�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="selecting-servers-gpus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/selecting-servers-gpus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>16.4. 选择服务器和GPU</div>
          </div>
      </a>
-     <a id="button-next" href="d2l.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/d2l.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1025,14 +1025,14 @@ request”。这将打开一个页面，显示你的编辑与本书主存储库�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="contributing.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_appendix-tools-for-deep-learning/contributing.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>16.5. 为本书做贡献</div>
          </div>
      </a>
-     <a id="button-next" href="../chapter_references/zreferences.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_references/zreferences.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>

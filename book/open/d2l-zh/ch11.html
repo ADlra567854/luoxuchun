@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第 11 章 优化算法 · 动手学深度学习（全文在线阅读） · 白驹 ccowork</title>
+<title>第 11 章 优化算法 · 动手学深度学习（全文在线阅读）</title>
 <meta name="description" content="动手学深度学习 第 12 部分：第 11 章 优化算法。许可 Apache License 2.0，来源 https://zh.d2l.ai/。">
-<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/d2l-zh/ch11.html">
+<link rel="canonical" href="/book/open/d2l-zh/ch11.html">
 <meta name="robots" content="index,follow">
 <link rel="stylesheet" href="/book/open/book.css?v=20261124">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
@@ -24,7 +24,7 @@
     <div class="bk-lic">
       <b>来源与许可</b>：动手学深度学习 · 作者 阿斯顿·张（Aston Zhang）、扎卡里·C·立顿、李沐、亚历山大·J·斯莫拉 · 译者 何孝霆、瑞潮儿·胡 及社区 200 余位贡献者。<br>
       许可 <a href="https://github.com/d2l-ai/d2l-zh/blob/master/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a> · 仓库 <a href="https://github.com/d2l-ai/d2l-zh" target="_blank" rel="noopener">https://github.com/d2l-ai/d2l-zh</a><br>
-      本站抓取时间 2026-11-24 21:13 · 本章来自 https://zh.d2l.ai/chapter_optimization/index.html
+      本站抓取时间 2026-11-24 21:24 · 本章来自 https://zh.d2l.ai/chapter_optimization/index.html
     </div>
     <h1>第 11 章 优化算法</h1>
     
@@ -34,7 +34,7 @@
 <div class="section" id="id2">
 <h2><span class="section-number">11.1.1. </span>优化的目标</h2>
 <p>尽管优化提供了一种最大限度地减少深度学习损失函数的方法，但本质上，优化和深度学习的目标是根本不同的。前者主要关注的是最小化目标，后者则关注在给定有限数据量的情况下寻找合适的模型。在
-<a class="reference internal" href="../chapter_multilayer-perceptrons/underfit-overfit.html#sec-model-selection"><span class="std std-numref">4.4节</span></a>中，我们详细讨论了这两个目标之间的区别。例如，训练误差和泛化误差通常不同：由于优化算法的目标函数通常是基于训练数据集的损失函数，因此优化的目标是减少训练误差。但是，深度学习（或更广义地说，统计推断）的目标是减少泛化误差。为了实现后者，除了使用优化算法来减少训练误差之外，我们还需要注意过拟合。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/underfit-overfit.html#sec-model-selection"><span class="std std-numref">4.4节</span></a>中，我们详细讨论了这两个目标之间的区别。例如，训练误差和泛化误差通常不同：由于优化算法的目标函数通常是基于训练数据集的损失函数，因此优化的目标是减少训练误差。但是，深度学习（或更广义地说，统计推断）的目标是减少泛化误差。为了实现后者，除了使用优化算法来减少训练误差之外，我们还需要注意过拟合。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits</span> <span class="kn">import</span> <span class="n">mplot3d</span>
 <span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
@@ -68,7 +68,7 @@
 </pre></div>
 </div>
 </div></div><p>为了说明上述不同的目标，引入两个概念<em>风险</em>和<em>经验风险</em>。如
-<a class="reference internal" href="../chapter_multilayer-perceptrons/environment.html#subsec-empirical-risk-and-risk"><span class="std std-numref">4.9.3.1节</span></a>所述，经验风险是训练数据集的平均损失，而风险则是整个数据群的预期损失。下面我们定义了两个函数：风险函数<code class="docutils literal notranslate"><span class="pre">f</span></code>和经验风险函数<code class="docutils literal notranslate"><span class="pre">g</span></code>。假设我们只有有限的训练数据。因此，这里的<code class="docutils literal notranslate"><span class="pre">g</span></code>不如<code class="docutils literal notranslate"><span class="pre">f</span></code>平滑。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/environment.html#subsec-empirical-risk-and-risk"><span class="std std-numref">4.9.3.1节</span></a>所述，经验风险是训练数据集的平均损失，而风险则是整个数据群的预期损失。下面我们定义了两个函数：风险函数<code class="docutils literal notranslate"><span class="pre">f</span></code>和经验风险函数<code class="docutils literal notranslate"><span class="pre">g</span></code>。假设我们只有有限的训练数据。因此，这里的<code class="docutils literal notranslate"><span class="pre">g</span></code>不如<code class="docutils literal notranslate"><span class="pre">f</span></code>平滑。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-3-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-3-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-3-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-3-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-3-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
 
@@ -157,7 +157,7 @@
 <div class="section" id="id3">
 <h2><span class="section-number">11.1.2. </span>深度学习中的优化挑战</h2>
 <p>本章将关注优化算法在最小化目标函数方面的性能，而不是模型的泛化误差。在
-<a class="reference internal" href="../chapter_linear-networks/linear-regression.html#sec-linear-regression"><span class="std std-numref">3.1节</span></a>中，我们区分了优化问题中的解析解和数值解。在深度学习中，大多数目标函数都很复杂，没有解析解。相反，我们必须使用数值优化算法。本章中的优化算法都属于此类别。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/linear-regression.html#sec-linear-regression"><span class="std std-numref">3.1节</span></a>中，我们区分了优化问题中的解析解和数值解。在深度学习中，大多数目标函数都很复杂，没有解析解。相反，我们必须使用数值优化算法。本章中的优化算法都属于此类别。</p>
 <p>深度学习优化存在许多挑战。其中最令人烦恼的是局部最小值、鞍点和梯度消失。</p>
 <div class="section" id="id4">
 <h3><span class="section-number">11.1.2.1. </span>局部最小值</h3>
@@ -312,7 +312,7 @@ point）是指函数的所有梯度都消失但既不是全局最小值也不是
 <div class="section" id="id6">
 <h3><span class="section-number">11.1.2.3. </span>梯度消失</h3>
 <p>可能遇到的最隐蔽问题是梯度消失。回想一下我们在
-<a class="reference internal" href="../chapter_multilayer-perceptrons/mlp.html#subsec-activation-functions"><span class="std std-numref">4.1.2节</span></a>中常用的激活函数及其衍生函数。例如，假设我们想最小化函数<span class="math notranslate nohighlight">\(f(x) = \tanh(x)\)</span>，然后我们恰好从<span class="math notranslate nohighlight">\(x = 4\)</span>开始。正如我们所看到的那样，<span class="math notranslate nohighlight">\(f\)</span>的梯度接近零。更具体地说，<span class="math notranslate nohighlight">\(f'(x) = 1 - \tanh^2(x)\)</span>，因此是<span class="math notranslate nohighlight">\(f'(4) = 0.0013\)</span>。因此，在我们取得进展之前，优化将会停滞很长一段时间。事实证明，这是在引入ReLU激活函数之前训练深度学习模型相当棘手的原因之一。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/mlp.html#subsec-activation-functions"><span class="std std-numref">4.1.2节</span></a>中常用的激活函数及其衍生函数。例如，假设我们想最小化函数<span class="math notranslate nohighlight">\(f(x) = \tanh(x)\)</span>，然后我们恰好从<span class="math notranslate nohighlight">\(x = 4\)</span>开始。正如我们所看到的那样，<span class="math notranslate nohighlight">\(f\)</span>的梯度接近零。更具体地说，<span class="math notranslate nohighlight">\(f'(x) = 1 - \tanh^2(x)\)</span>，因此是<span class="math notranslate nohighlight">\(f'(4) = 0.0013\)</span>。因此，在我们取得进展之前，优化将会停滞很长一段时间。事实证明，这是在引入ReLU激活函数之前训练深度学习模型相当棘手的原因之一。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-13-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-13-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-13-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-13-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-13-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 <span class="n">d2l</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
 <span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;vanishing gradient&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
@@ -358,7 +358,7 @@ point）是指函数的所有梯度都消失但既不是全局最小值也不是
 <ol class="arabic simple">
 <li><p>考虑一个简单的MLP，它有一个隐藏层，比如，隐藏层中维度为<span class="math notranslate nohighlight">\(d\)</span>和一个输出。证明对于任何局部最小值，至少有<span class="math notranslate nohighlight">\(d！\)</span>个等效方案。</p></li>
 <li><p>假设我们有一个对称随机矩阵<span class="math notranslate nohighlight">\(\mathbf{M}\)</span>，其中条目<span class="math notranslate nohighlight">\(M_{ij} = M_{ji}\)</span>各自从某种概率分布<span class="math notranslate nohighlight">\(p_{ij}\)</span>中抽取。此外，假设<span class="math notranslate nohighlight">\(p_{ij}(x) = p_{ij}(-x)\)</span>，即分布是对称的（详情请参见
-<span id="id9">(<a class="reference internal" href="../chapter_references/zreferences.html#id183" title="Wigner, E. P. (1958). On the distribution of the roots of certain symmetric matrices. Ann. Math (pp. 325–327).">Wigner, 1958</a>)</span>）。</p>
+<span id="id9">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id183" title="Wigner, E. P. (1958). On the distribution of the roots of certain symmetric matrices. Ann. Math (pp. 325–327).">Wigner, 1958</a>)</span>）。</p>
 <ol class="arabic simple">
 <li><p>证明特征值的分布也是对称的。也就是说，对于任何特征向量<span class="math notranslate nohighlight">\(\mathbf{v}\)</span>，关联的特征值<span class="math notranslate nohighlight">\(\lambda\)</span>满足<span class="math notranslate nohighlight">\(P(\lambda &gt; 0) = P(\lambda &lt; 0)\)</span>的概率为<span class="math notranslate nohighlight">\(P(\lambda &gt; 0) = P(\lambda &lt; 0)\)</span>。</p></li>
 <li><p>为什么以上<em>没有</em>暗示<span class="math notranslate nohighlight">\(P(\lambda &gt; 0) = 0.5\)</span>？</p></li>
@@ -408,14 +408,14 @@ point）是指函数的所有梯度都消失但既不是全局最小值也不是
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11. 优化算法</div>
          </div>
      </a>
-     <a id="button-next" href="convexity.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/convexity.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -436,7 +436,7 @@ point）是指函数的所有梯度都消失但既不是全局最小值也不是
 那通常我们很难在其他条件下看到好的结果。
 此外，即使深度学习中的优化问题通常是非凸的，
 它们也经常在局部极小值附近表现出一些凸性。 这可能会产生一些像
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id76" title="Izmailov, P., Podoprikhin, D., Garipov, T., Vetrov, D., &amp; Wilson, A. G. (2018). Averaging weights leads to wider optima and better generalization. arXiv preprint arXiv:1803.05407.">Izmailov <em>et al.</em>, 2018</a>)</span>这样比较有意思的新优化变体。</p>
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id76" title="Izmailov, P., Podoprikhin, D., Garipov, T., Vetrov, D., &amp; Wilson, A. G. (2018). Averaging weights leads to wider optima and better generalization. arXiv preprint arXiv:1803.05407.">Izmailov <em>et al.</em>, 2018</a>)</span>这样比较有意思的新优化变体。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits</span> <span class="kn">import</span> <span class="n">mplot3d</span>
 <span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
@@ -760,7 +760,7 @@ multipliers），它确保约束被正确地执行。
 <p>一种至少近似地满足约束优化问题的方法是采用拉格朗日函数<span class="math notranslate nohighlight">\(L\)</span>。除了满足<span class="math notranslate nohighlight">\(c_i(\mathbf{x}) \leq 0\)</span>之外，我们只需将<span class="math notranslate nohighlight">\(\alpha_i c_i(\mathbf{x})\)</span>添加到目标函数<span class="math notranslate nohighlight">\(f(x)\)</span>。
 这样可以确保不会严重违反约束。</p>
 <p>事实上，我们一直在使用这个技巧。 比如权重衰减
-<a class="reference internal" href="../chapter_multilayer-perceptrons/weight-decay.html#sec-weight-decay"><span class="std std-numref">4.5节</span></a>，在目标函数中加入<span class="math notranslate nohighlight">\(\frac{\lambda}{2} |\mathbf{w}|^2\)</span>，以确保<span class="math notranslate nohighlight">\(\mathbf{w}\)</span>不会增长太大。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/weight-decay.html#sec-weight-decay"><span class="std std-numref">4.5节</span></a>，在目标函数中加入<span class="math notranslate nohighlight">\(\frac{\lambda}{2} |\mathbf{w}|^2\)</span>，以确保<span class="math notranslate nohighlight">\(\mathbf{w}\)</span>不会增长太大。
 使用约束优化的观点，我们可以看到，对于若干半径<span class="math notranslate nohighlight">\(r\)</span>，这将确保<span class="math notranslate nohighlight">\(|\mathbf{w}|^2 - r^2 \leq 0\)</span>。
 通过调整<span class="math notranslate nohighlight">\(\lambda\)</span>的值，我们可以改变<span class="math notranslate nohighlight">\(\mathbf{w}\)</span>的大小。</p>
 <p>通常，添加惩罚是确保近似满足约束的一种好方法。
@@ -771,7 +771,7 @@ multipliers），它确保约束被正确地执行。
 <h3><span class="section-number">11.2.3.3. </span>投影</h3>
 <p>满足约束条件的另一种策略是<em>投影</em>（projections）。
 同样，我们之前也遇到过，例如在
-<a class="reference internal" href="../chapter_recurrent-neural-networks/rnn-scratch.html#sec-rnn-scratch"><span class="std std-numref">8.5节</span></a>中处理梯度截断时，我们通过</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-neural-networks/rnn-scratch.html#sec-rnn-scratch"><span class="std std-numref">8.5节</span></a>中处理梯度截断时，我们通过</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-convexity-16">
 <span class="eqno">(11.2.18)</span>\[\mathbf{g} \leftarrow \mathbf{g} \cdot \mathrm{min}(1, \theta/\|\mathbf{g}\|),\]</div>
 <p>确保梯度的长度以<span class="math notranslate nohighlight">\(\theta\)</span>为界限。</p>
@@ -864,14 +864,14 @@ multipliers），它确保约束被正确地执行。
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="optimization-intro.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/optimization-intro.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.1. 优化和深度学习</div>
          </div>
      </a>
-     <a id="button-next" href="gd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/gd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1459,7 +1459,7 @@ rate）决定目标函数能否收敛到局部最小值，以及何时收敛到�
 此外通过反向传播进行计算可能雪上加霜。
 然而，我们姑且先忽略这些考量，看看会得到什么算法。</p>
 <p>毕竟，<span class="math notranslate nohighlight">\(f\)</span>的最小值满足<span class="math notranslate nohighlight">\(\nabla f = 0\)</span>。 遵循
-<a class="reference internal" href="../chapter_preliminaries/calculus.html#sec-calculus"><span class="std std-numref">2.4节</span></a>中的微积分规则，
+<a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/calculus.html#sec-calculus"><span class="std std-numref">2.4节</span></a>中的微积分规则，
 通过取<span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span>对
 <a class="reference internal" href="#equation-gd-hot-taylor">(11.3.8)</a>的导数， 再忽略不重要的高阶项，我们便得到</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-gd-4">
@@ -1753,7 +1753,7 @@ rate）决定目标函数能否收敛到局部最小值，以及何时收敛到�
 也就是说，我们使用<span class="math notranslate nohighlight">\(\nabla f(\mathbf{x})\)</span>给出的方向，
 然后进行二分搜索，以确定哪个学习率<span class="math notranslate nohighlight">\(\eta\)</span>使<span class="math notranslate nohighlight">\(f(\mathbf{x} - \eta \nabla f(\mathbf{x}))\)</span>取最小值。</p>
 <p>有关分析和证明，此算法收敛迅速（请参见
-<span id="id11">(<a class="reference internal" href="../chapter_references/zreferences.html#id15" title="Boyd, S., &amp; Vandenberghe, L. (2004). Convex Optimization. Cambridge, England: Cambridge University Press.">Boyd and Vandenberghe, 2004</a>)</span>）。
+<span id="id11">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id15" title="Boyd, S., &amp; Vandenberghe, L. (2004). Convex Optimization. Cambridge, England: Cambridge University Press.">Boyd and Vandenberghe, 2004</a>)</span>）。
 然而，对深度学习而言，这不太可行。
 因为线搜索的每一步都需要评估整个数据集上的目标函数，实现它的方式太昂贵了。</p>
 </div>
@@ -1832,14 +1832,14 @@ rate）决定目标函数能否收敛到局部最小值，以及何时收敛到�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="convexity.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/convexity.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.2. 凸性</div>
          </div>
      </a>
-     <a id="button-next" href="sgd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/sgd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1855,7 +1855,7 @@ rate）决定目标函数能否收敛到局部最小值，以及何时收敛到�
 <div class="bk-sub" id="ch11-4"><div class="section" id="sec-sgd">
 <span id="id1"></span><h1><span class="section-number">11.4. </span>随机梯度下降<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/sgd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/sgd.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/sgd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/sgd.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/sgd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/sgd.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/sgd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/sgd.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>在前面的章节中，我们一直在训练过程中使用随机梯度下降，但没有解释它为什么起作用。为了澄清这一点，我们刚在
-<a class="reference internal" href="gd.html#sec-gd"><span class="std std-numref">11.3节</span></a>中描述了梯度下降的基本原则。本节继续更详细地说明<em>随机梯度下降</em>（stochastic
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/gd.html#sec-gd"><span class="std std-numref">11.3节</span></a>中描述了梯度下降的基本原则。本节继续更详细地说明<em>随机梯度下降</em>（stochastic
 gradient descent）。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="kn">import</span> <span class="nn">math</span>
@@ -2013,7 +2013,7 @@ gradient descent）。</p>
 <div class="figure align-default">
 <img alt="../_images/output_sgd_baca77_27_1.svg" src="https://zh.d2l.ai/_images/output_sgd_baca77_27_1.svg" /></div>
 </div></div><p>正如我们所看到的，随机梯度下降中变量的轨迹比我们在
-<a class="reference internal" href="gd.html#sec-gd"><span class="std std-numref">11.3节</span></a>中观察到的梯度下降中观察到的轨迹嘈杂得多。这是由于梯度的随机性质。也就是说，即使我们接近最小值，我们仍然受到通过<span class="math notranslate nohighlight">\(\eta \nabla f_i(\mathbf{x})\)</span>的瞬间梯度所注入的不确定性的影响。即使经过50次迭代，质量仍然不那么好。更糟糕的是，经过额外的步骤，它不会得到改善。这给我们留下了唯一的选择：改变学习率<span class="math notranslate nohighlight">\(\eta\)</span>。但是，如果我们选择的学习率太小，我们一开始就不会取得任何有意义的进展。另一方面，如果我们选择的学习率太大，我们将无法获得一个好的解决方案，如上所示。解决这些相互冲突的目标的唯一方法是在优化过程中<em>动态</em>降低学习率。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/gd.html#sec-gd"><span class="std std-numref">11.3节</span></a>中观察到的梯度下降中观察到的轨迹嘈杂得多。这是由于梯度的随机性质。也就是说，即使我们接近最小值，我们仍然受到通过<span class="math notranslate nohighlight">\(\eta \nabla f_i(\mathbf{x})\)</span>的瞬间梯度所注入的不确定性的影响。即使经过50次迭代，质量仍然不那么好。更糟糕的是，经过额外的步骤，它不会得到改善。这给我们留下了唯一的选择：改变学习率<span class="math notranslate nohighlight">\(\eta\)</span>。但是，如果我们选择的学习率太小，我们一开始就不会取得任何有意义的进展。另一方面，如果我们选择的学习率太大，我们将无法获得一个好的解决方案，如上所示。解决这些相互冲突的目标的唯一方法是在优化过程中<em>动态</em>降低学习率。</p>
 <p>这也是在<code class="docutils literal notranslate"><span class="pre">sgd</span></code>步长函数中添加学习率函数<code class="docutils literal notranslate"><span class="pre">lr</span></code>的原因。在上面的示例中，学习率调度的任何功能都处于休眠状态，因为我们将相关的<code class="docutils literal notranslate"><span class="pre">lr</span></code>函数设置为常量。</p>
 </div>
 <div class="section" id="id3">
@@ -2164,7 +2164,7 @@ decay）。在凸优化的情况下，有许多证据表明这种速率表现良
 <div class="section" id="id4">
 <h2><span class="section-number">11.4.3. </span>凸目标的收敛性分析</h2>
 <p>以下对凸目标函数的随机梯度下降的收敛性分析是可选读的，主要用于传达对问题的更多直觉。我们只限于最简单的证明之一
-<span id="id5">(<a class="reference internal" href="../chapter_references/zreferences.html#id116" title="Nesterov, Y., &amp; Vial, J.-P. (2000). Confidence level solutions for stochastic programming, Stochastic Programming E-Print Series.">Nesterov and Vial, 2000</a>)</span>。存在着明显更先进的证明技术，例如，当目标函数表现特别好时。</p>
+<span id="id5">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id116" title="Nesterov, Y., &amp; Vial, J.-P. (2000). Confidence level solutions for stochastic programming, Stochastic Programming E-Print Series.">Nesterov and Vial, 2000</a>)</span>。存在着明显更先进的证明技术，例如，当目标函数表现特别好时。</p>
 <p>假设所有<span class="math notranslate nohighlight">\(\boldsymbol{\xi}\)</span>的目标函数<span class="math notranslate nohighlight">\(f(\boldsymbol{\xi}, \mathbf{x})\)</span>在<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>中都是凸的。更具体地说，我们考虑随机梯度下降更新：</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-sgd-5">
 <span class="eqno">(11.4.6)</span>\[\mathbf{x}_{t+1} = \mathbf{x}_{t} - \eta_t \partial_\mathbf{x} f(\boldsymbol{\xi}_t, \mathbf{x}),\]</div>
@@ -2198,7 +2198,7 @@ decay）。在凸优化的情况下，有许多证据表明这种速率表现良
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-sgd-9">
 <span class="eqno">(11.4.15)</span>\[E\left(\frac{\sum_{t=1}^T \eta_t R(\mathbf{x}_t)}{\sum_{t=1}^T \eta_t}\right) = \frac{\sum_{t=1}^T \eta_t E[R(\mathbf{x}_t)]}{\sum_{t=1}^T \eta_t} = E[R(\mathbf{x}_t)],\]</div>
 <p>根据詹森不等式（令
-<a class="reference internal" href="convexity.html#equation-eq-jensens-inequality">(11.2.3)</a>中<span class="math notranslate nohighlight">\(i=t\)</span>，<span class="math notranslate nohighlight">\(\alpha_i = \eta_t/\sum_{t=1}^T \eta_t\)</span>）和<span class="math notranslate nohighlight">\(R\)</span>的凸性使其满足的<span class="math notranslate nohighlight">\(E[R(\mathbf{x}_t)] \geq E[R(\bar{\mathbf{x}})]\)</span>，因此，</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/convexity.html#equation-eq-jensens-inequality">(11.2.3)</a>中<span class="math notranslate nohighlight">\(i=t\)</span>，<span class="math notranslate nohighlight">\(\alpha_i = \eta_t/\sum_{t=1}^T \eta_t\)</span>）和<span class="math notranslate nohighlight">\(R\)</span>的凸性使其满足的<span class="math notranslate nohighlight">\(E[R(\mathbf{x}_t)] \geq E[R(\bar{\mathbf{x}})]\)</span>，因此，</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-sgd-10">
 <span class="eqno">(11.4.16)</span>\[\sum_{t=1}^T \eta_t E[R(\mathbf{x}_t)] \geq \sum_{t=1}^T \eta_t  E\left[R(\bar{\mathbf{x}})\right].\]</div>
 <p>将其代入不等式 <a class="reference internal" href="#equation-eq-sgd-x1-xstar">(11.4.13)</a>得到边界</p>
@@ -2269,14 +2269,14 @@ decay）。在凸优化的情况下，有许多证据表明这种速率表现良
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="gd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/gd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.3. 梯度下降</div>
          </div>
      </a>
-     <a id="button-next" href="minibatch-sgd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/minibatch-sgd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -2292,8 +2292,8 @@ decay）。在凸优化的情况下，有许多证据表明这种速率表现良
 <div class="bk-sub" id="ch11-5"><div class="section" id="sec-minibatch-sgd">
 <span id="id1"></span><h1><span class="section-number">11.5. </span>小批量随机梯度下降<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/minibatch-sgd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/minibatch-sgd.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/minibatch-sgd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/minibatch-sgd.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/minibatch-sgd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/minibatch-sgd.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/minibatch-sgd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/minibatch-sgd.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>到目前为止，我们在基于梯度的学习方法中遇到了两个极端情况：
-<a class="reference internal" href="gd.html#sec-gd"><span class="std std-numref">11.3节</span></a>中使用完整数据集来计算梯度并更新参数，
-<a class="reference internal" href="sgd.html#sec-sgd"><span class="std std-numref">11.4节</span></a>中一次处理一个训练样本来取得进展。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/gd.html#sec-gd"><span class="std std-numref">11.3节</span></a>中使用完整数据集来计算梯度并更新参数，
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/sgd.html#sec-sgd"><span class="std std-numref">11.4节</span></a>中一次处理一个训练样本来取得进展。
 二者各有利弊：每当数据非常相似时，梯度下降并不是非常“数据高效”。
 而由于CPU和GPU无法充分利用向量化，随机梯度下降并不特别“计算高效”。
 这暗示了两者之间可能有折中方案，这便涉及到<em>小批量随机梯度下降</em>（minibatch
@@ -2598,10 +2598,10 @@ access）或突发读取（burst read）相对开销较小。
 </pre></div>
 </div>
 </div></div><p>显而易见，小批量上的计算基本上与完整矩阵一样有效。 需要注意的是，在
-<a class="reference internal" href="../chapter_convolutional-modern/batch-norm.html#sec-batch-norm"><span class="std std-numref">7.5节</span></a>中，我们使用了一种在很大程度上取决于小批量中的方差的正则化。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-modern/batch-norm.html#sec-batch-norm"><span class="std std-numref">7.5节</span></a>中，我们使用了一种在很大程度上取决于小批量中的方差的正则化。
 随着后者增加，方差会减少，随之而来的是批量规范化带来的噪声注入的好处。
 关于实例，请参阅
-<span id="id4">(<a class="reference internal" href="../chapter_references/zreferences.html#id74" title="Ioffe, S. (2017). Batch renormalization: towards reducing minibatch dependence in batch-normalized models. Advances in neural information processing systems (pp. 1945–1953).">Ioffe, 2017</a>)</span>，了解有关如何重新缩放并计算适当项目。</p>
+<span id="id4">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id74" title="Ioffe, S. (2017). Batch renormalization: towards reducing minibatch dependence in batch-normalized models. Advances in neural information processing systems (pp. 1945–1953).">Ioffe, 2017</a>)</span>，了解有关如何重新缩放并计算适当项目。</p>
 </div>
 <div class="section" id="id5">
 <h2><span class="section-number">11.5.3. </span>读取数据集</h2>
@@ -2668,7 +2668,7 @@ access）或突发读取（burst read）相对开销较小。
 </div></div></div>
 <div class="section" id="id6">
 <h2><span class="section-number">11.5.4. </span>从零开始实现</h2>
-<p><a class="reference internal" href="../chapter_linear-networks/linear-regression-scratch.html#sec-linear-scratch"><span class="std std-numref">3.2节</span></a>一节中已经实现过小批量随机梯度下降算法。
+<p><a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/linear-regression-scratch.html#sec-linear-scratch"><span class="std std-numref">3.2节</span></a>一节中已经实现过小批量随机梯度下降算法。
 我们在这里将它的输入参数变得更加通用，主要是为了方便本章后面介绍的其他优化算法也可以使用同样的输入。
 具体来说，我们添加了一个状态输入<code class="docutils literal notranslate"><span class="pre">states</span></code>并将超参数放在字典<code class="docutils literal notranslate"><span class="pre">hyperparams</span></code>中。
 此外，我们将在训练函数里对各个小批量样本的损失求平均，因此优化算法中的梯度不需要除以批量大小。</p>
@@ -3235,14 +3235,14 @@ access）或突发读取（burst read）相对开销较小。
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="sgd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/sgd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.4. 随机梯度下降</div>
          </div>
      </a>
-     <a id="button-next" href="momentum.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/momentum.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -3258,7 +3258,7 @@ access）或突发读取（burst read）相对开销较小。
 <div class="bk-sub" id="ch11-6"><div class="section" id="sec-momentum">
 <span id="id1"></span><h1><span class="section-number">11.6. </span>动量法<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/momentum.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/momentum.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/momentum.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/momentum.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/momentum.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/momentum.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/momentum.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/momentum.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>在
-<a class="reference internal" href="sgd.html#sec-sgd"><span class="std std-numref">11.4节</span></a>一节中，我们详述了如何执行随机梯度下降，即在只有嘈杂的梯度可用的情况下执行优化时会发生什么。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/sgd.html#sec-sgd"><span class="std std-numref">11.4节</span></a>一节中，我们详述了如何执行随机梯度下降，即在只有嘈杂的梯度可用的情况下执行优化时会发生什么。
 对于嘈杂的梯度，我们在选择学习率需要格外谨慎。
 如果衰减速度太快，收敛就会停滞。
 相反，如果太宽松，我们可能无法收敛到最优解。</p>
@@ -3296,16 +3296,16 @@ average）取代梯度计算：</p>
 诚然，即使是对于无噪声凸问题，加速度这方面也是动量如此起效的关键原因之一。</p>
 <p>正如人们所期望的，由于其功效，动量是深度学习及其后优化中一个深入研究的主题。
 例如，请参阅<a class="reference external" href="https://distill.pub/2017/momentum/）（作者是%20:cite:%60Goh.2017%60">文章</a>，观看深入分析和互动动画。
-动量是由 <span id="id4">(<a class="reference internal" href="../chapter_references/zreferences.html#id128" title="Polyak, B. T. (1964). Some methods of speeding up the convergence of iteration methods. USSR Computational Mathematics and Mathematical Physics, 4(5), 1–17.">Polyak, 1964</a>)</span>提出的。
-<span id="id5">(<a class="reference internal" href="../chapter_references/zreferences.html#id115" title="Nesterov, Y. (2018). Lectures on convex optimization. Vol. 137. Springer.">Nesterov, 2018</a>)</span>在凸优化的背景下进行了详细的理论讨论。
+动量是由 <span id="id4">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id128" title="Polyak, B. T. (1964). Some methods of speeding up the convergence of iteration methods. USSR Computational Mathematics and Mathematical Physics, 4(5), 1–17.">Polyak, 1964</a>)</span>提出的。
+<span id="id5">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id115" title="Nesterov, Y. (2018). Lectures on convex optimization. Vol. 137. Springer.">Nesterov, 2018</a>)</span>在凸优化的背景下进行了详细的理论讨论。
 长期以来，深度学习的动量一直被认为是有益的。 有关实例的详细信息，请参阅
-<span id="id6">(<a class="reference internal" href="../chapter_references/zreferences.html#id159" title="Sutskever, I., Martens, J., Dahl, G., &amp; Hinton, G. (2013). On the importance of initialization and momentum in deep learning. International conference on machine learning (pp. 1139–1147).">Sutskever <em>et al.</em>, 2013</a>)</span>的讨论。</p>
+<span id="id6">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id159" title="Sutskever, I., Martens, J., Dahl, G., &amp; Hinton, G. (2013). On the importance of initialization and momentum in deep learning. International conference on machine learning (pp. 1139–1147).">Sutskever <em>et al.</em>, 2013</a>)</span>的讨论。</p>
 </div>
 <div class="section" id="id7">
 <h3><span class="section-number">11.6.1.2. </span>条件不佳的问题</h3>
 <p>为了更好地了解动量法的几何属性，我们复习一下梯度下降，尽管它的目标函数明显不那么令人愉快。
 回想我们在
-<a class="reference internal" href="gd.html#sec-gd"><span class="std std-numref">11.3节</span></a>中使用了<span class="math notranslate nohighlight">\(f(\mathbf{x}) = x_1^2 + 2 x_2^2\)</span>，即中度扭曲的椭球目标。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/gd.html#sec-gd"><span class="std std-numref">11.3节</span></a>中使用了<span class="math notranslate nohighlight">\(f(\mathbf{x}) = x_1^2 + 2 x_2^2\)</span>，即中度扭曲的椭球目标。
 我们通过向<span class="math notranslate nohighlight">\(x_1\)</span>方向伸展它来进一步扭曲这个函数</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-momentum-3">
 <span class="eqno">(11.6.4)</span>\[f(\mathbf{x}) = 0.1 x_1^2 + 2 x_2^2.\]</div>
@@ -3928,8 +3928,8 @@ average）取代梯度计算：</p>
 在<span class="math notranslate nohighlight">\(t\)</span>步之后，最初的值<span class="math notranslate nohighlight">\([v_0, x_0]\)</span>变为<span class="math notranslate nohighlight">\(\mathbf{R}(\beta, \eta, \lambda)^t [v_0, x_0]\)</span>。
 因此，收敛速度是由<span class="math notranslate nohighlight">\(\mathbf{R}\)</span>的特征值决定的。
 请参阅<a class="reference external" href="https://distill.pub/2017/momentum/">文章</a>
-<span id="id16">(<a class="reference internal" href="../chapter_references/zreferences.html#id45" title="Goh, G. (2017). Why momentum really works. Distill. URL: http://distill.pub/2017/momentum, doi:10.23915/distill.00006">Goh, 2017</a>)</span>了解精彩动画。 请参阅
-<span id="id17">(<a class="reference internal" href="../chapter_references/zreferences.html#id39" title="Flammarion, N., &amp; Bach, F. (2015). From averaging to acceleration, there is only a step-size. Conference on Learning Theory (pp. 658–695).">Flammarion and Bach, 2015</a>)</span>了解详细分析。
+<span id="id16">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id45" title="Goh, G. (2017). Why momentum really works. Distill. URL: http://distill.pub/2017/momentum, doi:10.23915/distill.00006">Goh, 2017</a>)</span>了解精彩动画。 请参阅
+<span id="id17">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id39" title="Flammarion, N., &amp; Bach, F. (2015). From averaging to acceleration, there is only a step-size. Conference on Learning Theory (pp. 658–695).">Flammarion and Bach, 2015</a>)</span>了解详细分析。
 简而言之，当<span class="math notranslate nohighlight">\(0 &lt; \eta \lambda &lt; 2 + 2 \beta\)</span>时动量收敛。
 与梯度下降的<span class="math notranslate nohighlight">\(0 &lt; \eta \lambda &lt; 2\)</span>相比，这是更大范围的可行参数。
 另外，一般而言较大值的<span class="math notranslate nohighlight">\(\beta\)</span>是可取的。</p>
@@ -4000,14 +4000,14 @@ average）取代梯度计算：</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="minibatch-sgd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/minibatch-sgd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.5. 小批量随机梯度下降</div>
          </div>
      </a>
-     <a id="button-next" href="adagrad.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/adagrad.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -4038,7 +4038,7 @@ average）取代梯度计算：</p>
 在这里<span class="math notranslate nohighlight">\(s(i, t)\)</span>计下了我们截至<span class="math notranslate nohighlight">\(t\)</span>时观察到功能<span class="math notranslate nohighlight">\(i\)</span>的次数。
 这其实很容易实施且不产生额外损耗。</p>
 <p>AdaGrad算法
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id36" title="Duchi, J., Hazan, E., &amp; Singer, Y. (2011). Adaptive subgradient methods for online learning and stochastic optimization. Journal of Machine Learning Research, 12(Jul), 2121–2159.">Duchi <em>et al.</em>, 2011</a>)</span>通过将粗略的计数器<span class="math notranslate nohighlight">\(s(i, t)\)</span>替换为先前观察所得梯度的平方之和来解决这个问题。
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id36" title="Duchi, J., Hazan, E., &amp; Singer, Y. (2011). Adaptive subgradient methods for online learning and stochastic optimization. Journal of Machine Learning Research, 12(Jul), 2121–2159.">Duchi <em>et al.</em>, 2011</a>)</span>通过将粗略的计数器<span class="math notranslate nohighlight">\(s(i, t)\)</span>替换为先前观察所得梯度的平方之和来解决这个问题。
 它使用<span class="math notranslate nohighlight">\(s(i, t+1) = s(i, t) + \left(\partial_i f(\mathbf{x})\right)^2\)</span>来调整学习率。
 这有两个好处：首先，我们不再需要决定梯度何时算足够大。
 其次，它会随梯度的大小自动变化。通常对应于较大梯度的坐标会显著缩小，而其他梯度较小的坐标则会得到更平滑的处理。
@@ -4051,7 +4051,7 @@ average）取代梯度计算：</p>
 毕竟对大多数非凸问题来说，获得有意义的理论保证很难，但是直觉和洞察往往会延续。
 让我们来看看最小化<span class="math notranslate nohighlight">\(f(\mathbf{x}) = \frac{1}{2} \mathbf{x}^\top \mathbf{Q} \mathbf{x} + \mathbf{c}^\top \mathbf{x} + b\)</span>这一问题。</p>
 <p>正如在
-<a class="reference internal" href="momentum.html#sec-momentum"><span class="std std-numref">11.6节</span></a>中那样，我们可以根据其特征分解<span class="math notranslate nohighlight">\(\mathbf{Q} = \mathbf{U}^\top \boldsymbol{\Lambda} \mathbf{U}\)</span>重写这个问题，来得到一个简化得多的问题，使每个坐标都可以单独解出：</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/momentum.html#sec-momentum"><span class="std std-numref">11.6节</span></a>中那样，我们可以根据其特征分解<span class="math notranslate nohighlight">\(\mathbf{Q} = \mathbf{U}^\top \boldsymbol{\Lambda} \mathbf{U}\)</span>重写这个问题，来得到一个简化得多的问题，使每个坐标都可以单独解出：</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-adagrad-0">
 <span class="eqno">(11.7.1)</span>\[f(\mathbf{x}) = \bar{f}(\bar{\mathbf{x}}) = \frac{1}{2} \bar{\mathbf{x}}^\top \boldsymbol{\Lambda} \bar{\mathbf{x}} + \bar{\mathbf{c}}^\top \bar{\mathbf{x}} + b.\]</div>
 <p>在这里我们使用了<span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{U} \mathbf{x}\)</span>，且因此<span class="math notranslate nohighlight">\(\mathbf{c} = \mathbf{U} \mathbf{c}\)</span>。
@@ -4092,7 +4092,7 @@ AdaGrad算法巧妙的思路是，使用一个代理来表示黑塞矩阵（Hess
 由于AdaGrad算法是一种随机梯度下降算法，所以即使是在最佳值中，我们也会看到具有非零方差的梯度。
 因此，我们可以放心地使用梯度的方差作为黑塞矩阵比例的廉价替代。
 详尽的分析（要花几页解释）超出了本节的范围，请读者参考
-<span id="id4">(<a class="reference internal" href="../chapter_references/zreferences.html#id36" title="Duchi, J., Hazan, E., &amp; Singer, Y. (2011). Adaptive subgradient methods for online learning and stochastic optimization. Journal of Machine Learning Research, 12(Jul), 2121–2159.">Duchi <em>et al.</em>, 2011</a>)</span>。</p>
+<span id="id4">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id36" title="Duchi, J., Hazan, E., &amp; Singer, Y. (2011). Adaptive subgradient methods for online learning and stochastic optimization. Journal of Machine Learning Research, 12(Jul), 2121–2159.">Duchi <em>et al.</em>, 2011</a>)</span>。</p>
 </div>
 <div class="section" id="id5">
 <h2><span class="section-number">11.7.3. </span>算法</h2>
@@ -4331,7 +4331,7 @@ AdaGrad算法巧妙的思路是，使用一个代理来表示黑塞矩阵（Hess
 </pre></div>
 </div>
 </div></div><p>与
-<a class="reference internal" href="minibatch-sgd.html#sec-minibatch-sgd"><span class="std std-numref">11.5节</span></a>一节中的实验相比，这里使用更大的学习率来训练模型。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/minibatch-sgd.html#sec-minibatch-sgd"><span class="std std-numref">11.5节</span></a>一节中的实验相比，这里使用更大的学习率来训练模型。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-7-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-7-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-7-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-7-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-7-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_iter</span><span class="p">,</span> <span class="n">feature_dim</span> <span class="o">=</span> <span class="n">d2l</span><span class="o">.</span><span class="n">get_data_ch11</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">d2l</span><span class="o">.</span><span class="n">train_ch11</span><span class="p">(</span><span class="n">adagrad</span><span class="p">,</span> <span class="n">init_adagrad_states</span><span class="p">(</span><span class="n">feature_dim</span><span class="p">),</span>
                <span class="p">{</span><span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span> <span class="n">data_iter</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">);</span>
@@ -4421,7 +4421,7 @@ AdaGrad算法巧妙的思路是，使用一个代理来表示黑塞矩阵（Hess
 <li><p>如果优化问题的结构相当不均匀，AdaGrad算法可以帮助缓解扭曲。</p></li>
 <li><p>AdaGrad算法对于稀疏特征特别有效，在此情况下由于不常出现的问题，学习率需要更慢地降低。</p></li>
 <li><p>在深度学习问题上，AdaGrad算法有时在降低学习率方面可能过于剧烈。我们将在
-<a class="reference internal" href="adam.html#sec-adam"><span class="std std-numref">11.10节</span></a>一节讨论缓解这种情况的策略。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/adam.html#sec-adam"><span class="std std-numref">11.10节</span></a>一节讨论缓解这种情况的策略。</p></li>
 </ul>
 </div>
 <div class="section" id="id9">
@@ -4431,7 +4431,7 @@ AdaGrad算法巧妙的思路是，使用一个代理来表示黑塞矩阵（Hess
 <li><p>尝试对函数<span class="math notranslate nohighlight">\(f(\mathbf{x}) = 0.1 x_1^2 + 2 x_2^2\)</span>、以及它旋转45度后的函数即<span class="math notranslate nohighlight">\(f(\mathbf{x}) = 0.1 (x_1 + x_2)^2 + 2 (x_1 - x_2)^2\)</span>使用AdaGrad算法。它的表现会不同吗？</p></li>
 <li><p>证明<a class="reference external" href="https://en.wikipedia.org/wiki/Gershgorin_circle_theorem">格什戈林圆盘定理</a>，其中提到，矩阵<span class="math notranslate nohighlight">\(\mathbf{M}\)</span>的特征值<span class="math notranslate nohighlight">\(\lambda_i\)</span>在至少一个<span class="math notranslate nohighlight">\(j\)</span>的选项中满足<span class="math notranslate nohighlight">\(|\lambda_i - \mathbf{M}_{jj}| \leq \sum_{k \neq j} |\mathbf{M}_{jk}|\)</span>的要求。</p></li>
 <li><p>关于对角线预处理矩阵<span class="math notranslate nohighlight">\(\mathrm{diag}^{-\frac{1}{2}}(\mathbf{M}) \mathbf{M} \mathrm{diag}^{-\frac{1}{2}}(\mathbf{M})\)</span>的特征值，格什戈林的定理告诉了我们什么？</p></li>
-<li><p>尝试对适当的深度网络使用AdaGrad算法，例如，<a class="reference internal" href="../chapter_convolutional-neural-networks/lenet.html#sec-lenet"><span class="std std-numref">6.6节</span></a>中应用于Fashion-MNIST的深度网络。</p></li>
+<li><p>尝试对适当的深度网络使用AdaGrad算法，例如，<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/lenet.html#sec-lenet"><span class="std std-numref">6.6节</span></a>中应用于Fashion-MNIST的深度网络。</p></li>
 <li><p>要如何修改AdaGrad算法，才能使其在学习率方面的衰减不那么激进？</p></li>
 </ol>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar text"><a href="#mxnet-11-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-11-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-11-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-11-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-11-0"><p><a class="reference external" href="https://discuss.d2l.ai/t/4318">Discussions</a></p>
@@ -4468,14 +4468,14 @@ AdaGrad算法巧妙的思路是，使用一个代理来表示黑塞矩阵（Hess
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="momentum.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/momentum.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.6. 动量法</div>
          </div>
      </a>
-     <a id="button-next" href="rmsprop.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/rmsprop.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -4490,10 +4490,10 @@ AdaGrad算法巧妙的思路是，使用一个代理来表示黑塞矩阵（Hess
 </html></div>
 <div class="bk-sub" id="ch11-8"><div class="section" id="rmsprop">
 <span id="sec-rmsprop"></span><h1><span class="section-number">11.8. </span>RMSProp算法<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/rmsprop.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/rmsprop.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/rmsprop.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/rmsprop.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/rmsprop.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/rmsprop.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/rmsprop.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/rmsprop.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p><a class="reference internal" href="adagrad.html#sec-adagrad"><span class="std std-numref">11.7节</span></a>中的关键问题之一，是学习率按预定时间表<span class="math notranslate nohighlight">\(\mathcal{O}(t^{-\frac{1}{2}})\)</span>显著降低。
+<p><a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/adagrad.html#sec-adagrad"><span class="std std-numref">11.7节</span></a>中的关键问题之一，是学习率按预定时间表<span class="math notranslate nohighlight">\(\mathcal{O}(t^{-\frac{1}{2}})\)</span>显著降低。
 虽然这通常适用于凸问题，但对于深度学习中遇到的非凸问题，可能并不理想。
 但是，作为一个预处理器，Adagrad算法按坐标顺序的适应性是非常可取的。</p>
-<p><span id="id1">(<a class="reference internal" href="../chapter_references/zreferences.html#id168" title="Tieleman, T., &amp; Hinton, G. (2012). Lecture 6.5-rmsprop: divide the gradient by a running average of its recent magnitude. COURSERA: Neural networks for machine learning, 4(2), 26–31.">Tieleman and Hinton, 2012</a>)</span>建议以RMSProp算法作为将速率调度与坐标自适应学习率分离的简单修复方法。
+<p><span id="id1">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id168" title="Tieleman, T., &amp; Hinton, G. (2012). Lecture 6.5-rmsprop: divide the gradient by a running average of its recent magnitude. COURSERA: Neural networks for machine learning, 4(2), 26–31.">Tieleman and Hinton, 2012</a>)</span>建议以RMSProp算法作为将速率调度与坐标自适应学习率分离的简单修复方法。
 问题在于，Adagrad算法将梯度<span class="math notranslate nohighlight">\(\mathbf{g}_t\)</span>的平方累加成状态矢量<span class="math notranslate nohighlight">\(\mathbf{s}_t = \mathbf{s}_{t-1} + \mathbf{g}_t^2\)</span>。
 因此，由于缺乏规范化，没有约束力，<span class="math notranslate nohighlight">\(\mathbf{s}_t\)</span>持续增长，几乎上是在算法收敛时呈线性递增。</p>
 <p>解决此问题的一种方法是使用<span class="math notranslate nohighlight">\(\mathbf{s}_t / t\)</span>。
@@ -4519,7 +4519,7 @@ AdaGrad算法巧妙的思路是，使用一个代理来表示黑塞矩阵（Hess
 &amp; = (1 - \gamma) \left(\mathbf{g}_t^2 + \gamma \mathbf{g}_{t-1}^2 + \gamma^2 \mathbf{g}_{t-2} + \ldots, \right).
 \end{aligned}\end{split}\]</div>
 <p>同之前在
-<a class="reference internal" href="momentum.html#sec-momentum"><span class="std std-numref">11.6节</span></a>小节一样，我们使用<span class="math notranslate nohighlight">\(1 + \gamma + \gamma^2 + \ldots, = \frac{1}{1-\gamma}\)</span>。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/momentum.html#sec-momentum"><span class="std std-numref">11.6节</span></a>小节一样，我们使用<span class="math notranslate nohighlight">\(1 + \gamma + \gamma^2 + \ldots, = \frac{1}{1-\gamma}\)</span>。
 因此，权重总和标准化为<span class="math notranslate nohighlight">\(1\)</span>且观测值的半衰期为<span class="math notranslate nohighlight">\(\gamma^{-1}\)</span>。
 让我们图像化各种数值的<span class="math notranslate nohighlight">\(\gamma\)</span>在过去40个时间步长的权重。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -4592,7 +4592,7 @@ AdaGrad算法巧妙的思路是，使用一个代理来表示黑塞矩阵（Hess
 <h2><span class="section-number">11.8.2. </span>从零开始实现</h2>
 <p>和之前一样，我们使用二次函数<span class="math notranslate nohighlight">\(f(\mathbf{x})=0.1x_1^2+2x_2^2\)</span>来观察RMSProp算法的轨迹。
 回想在
-<a class="reference internal" href="adagrad.html#sec-adagrad"><span class="std std-numref">11.7节</span></a>一节中，当我们使用学习率为0.4的Adagrad算法时，变量在算法的后期阶段移动非常缓慢，因为学习率衰减太快。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/adagrad.html#sec-adagrad"><span class="std std-numref">11.7节</span></a>一节中，当我们使用学习率为0.4的Adagrad算法时，变量在算法的后期阶段移动非常缓慢，因为学习率衰减太快。
 RMSProp算法中不会发生这种情况，因为<span class="math notranslate nohighlight">\(\eta\)</span>是单独控制的。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-3-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-3-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-3-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-3-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-3-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rmsprop_2d</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">):</span>
     <span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">x1</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x2</span><span class="p">,</span> <span class="mf">1e-6</span>
@@ -4865,14 +4865,14 @@ RMSProp算法中不会发生这种情况，因为<span class="math notranslate n
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="adagrad.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/adagrad.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.7. AdaGrad算法</div>
          </div>
      </a>
-     <a id="button-next" href="adadelta.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/adadelta.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -4887,22 +4887,22 @@ RMSProp算法中不会发生这种情况，因为<span class="math notranslate n
 </html></div>
 <div class="bk-sub" id="ch11-9"><div class="section" id="adadelta">
 <span id="sec-adadelta"></span><h1><span class="section-number">11.9. </span>Adadelta<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/adadelta.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_optimization/adadelta.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/adadelta.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_optimization/adadelta.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/adadelta.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_optimization/adadelta.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/adadelta.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_optimization/adadelta.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p>Adadelta是AdaGrad的另一种变体（ <a class="reference internal" href="adagrad.html#sec-adagrad"><span class="std std-numref">11.7节</span></a>），
+<p>Adadelta是AdaGrad的另一种变体（ <a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/adagrad.html#sec-adagrad"><span class="std std-numref">11.7节</span></a>），
 主要区别在于前者减少了学习率适应坐标的数量。
 此外，广义上Adadelta被称为没有学习率，因为它使用变化量本身作为未来变化的校准。
-Adadelta算法是在 <span id="id1">(<a class="reference internal" href="../chapter_references/zreferences.html#id194" title="Zeiler, M. D. (2012). Adadelta: an adaptive learning rate method. arXiv preprint arXiv:1212.5701.">Zeiler, 2012</a>)</span>中提出的。</p>
+Adadelta算法是在 <span id="id1">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id194" title="Zeiler, M. D. (2012). Adadelta: an adaptive learning rate method. arXiv preprint arXiv:1212.5701.">Zeiler, 2012</a>)</span>中提出的。</p>
 <div class="section" id="id2">
 <h2><span class="section-number">11.9.1. </span>Adadelta算法</h2>
 <p>简而言之，Adadelta使用两个状态变量，<span class="math notranslate nohighlight">\(\mathbf{s}_t\)</span>用于存储梯度二阶导数的泄露平均值，<span class="math notranslate nohighlight">\(\Delta\mathbf{x}_t\)</span>用于存储模型本身中参数变化二阶导数的泄露平均值。请注意，为了与其他出版物和实现的兼容性，我们使用作者的原始符号和命名（没有其它真正理由让大家使用不同的希腊变量来表示在动量法、AdaGrad、RMSProp和Adadelta中用于相同用途的参数）。</p>
 <p>以下是Adadelta的技术细节。鉴于参数du
 jour是<span class="math notranslate nohighlight">\(\rho\)</span>，我们获得了与
-<a class="reference internal" href="rmsprop.html#sec-rmsprop"><span class="std std-numref">11.8节</span></a>类似的以下泄漏更新：</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/rmsprop.html#sec-rmsprop"><span class="std std-numref">11.8节</span></a>类似的以下泄漏更新：</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-adadelta-0">
 <span class="eqno">(11.9.1)</span>\[\begin{aligned}
     \mathbf{s}_t &amp; = \rho \mathbf{s}_{t-1} + (1 - \rho) \mathbf{g}_t^2.
 \end{aligned}\]</div>
 <p>与
-<a class="reference internal" href="rmsprop.html#sec-rmsprop"><span class="std std-numref">11.8节</span></a>的区别在于，我们使用重新缩放的梯度<span class="math notranslate nohighlight">\(\mathbf{g}_t'\)</span>执行更新，即</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/rmsprop.html#sec-rmsprop"><span class="std std-numref">11.8节</span></a>的区别在于，我们使用重新缩放的梯度<span class="math notranslate nohighlight">\(\mathbf{g}_t'\)</span>执行更新，即</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-adadelta-1">
 <span class="eqno">(11.9.2)</span>\[\begin{split}\begin{aligned}
     \mathbf{x}_t  &amp; = \mathbf{x}_{t-1} - \mathbf{g}_t'. \\
@@ -5141,14 +5141,14 @@ jour是<span class="math notranslate nohighlight">\(\rho\)</span>，我们获得
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="rmsprop.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/rmsprop.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.8. RMSProp算法</div>
          </div>
      </a>
-     <a id="button-next" href="adam.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/adam.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -5167,23 +5167,23 @@ jour是<span class="math notranslate nohighlight">\(\rho\)</span>，我们获得
 在本节讨论之前，我们先详细回顾一下这些技术：</p>
 <ul class="simple">
 <li><p>在
-<a class="reference internal" href="sgd.html#sec-sgd"><span class="std std-numref">11.4节</span></a>中，我们学习了：随机梯度下降在解决优化问题时比梯度下降更有效。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/sgd.html#sec-sgd"><span class="std std-numref">11.4节</span></a>中，我们学习了：随机梯度下降在解决优化问题时比梯度下降更有效。</p></li>
 <li><p>在
-<a class="reference internal" href="minibatch-sgd.html#sec-minibatch-sgd"><span class="std std-numref">11.5节</span></a>中，我们学习了：在一个小批量中使用更大的观测值集，可以通过向量化提供额外效率。这是高效的多机、多GPU和整体并行处理的关键。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/minibatch-sgd.html#sec-minibatch-sgd"><span class="std std-numref">11.5节</span></a>中，我们学习了：在一个小批量中使用更大的观测值集，可以通过向量化提供额外效率。这是高效的多机、多GPU和整体并行处理的关键。</p></li>
 <li><p>在
-<a class="reference internal" href="momentum.html#sec-momentum"><span class="std std-numref">11.6节</span></a>中我们添加了一种机制，用于汇总过去梯度的历史以加速收敛。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/momentum.html#sec-momentum"><span class="std std-numref">11.6节</span></a>中我们添加了一种机制，用于汇总过去梯度的历史以加速收敛。</p></li>
 <li><p>在
-<a class="reference internal" href="adagrad.html#sec-adagrad"><span class="std std-numref">11.7节</span></a>中，我们通过对每个坐标缩放来实现高效计算的预处理器。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/adagrad.html#sec-adagrad"><span class="std std-numref">11.7节</span></a>中，我们通过对每个坐标缩放来实现高效计算的预处理器。</p></li>
 <li><p>在
-<a class="reference internal" href="rmsprop.html#sec-rmsprop"><span class="std std-numref">11.8节</span></a>中，我们通过学习率的调整来分离每个坐标的缩放。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/rmsprop.html#sec-rmsprop"><span class="std std-numref">11.8节</span></a>中，我们通过学习率的调整来分离每个坐标的缩放。</p></li>
 </ul>
 <p>Adam算法
-<span id="id1">(<a class="reference internal" href="../chapter_references/zreferences.html#id83" title="Kingma, D. P., &amp; Ba, J. (2014). Adam: a method for stochastic optimization. arXiv preprint arXiv:1412.6980.">Kingma and Ba, 2014</a>)</span>将所有这些技术汇总到一个高效的学习算法中。
+<span id="id1">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id83" title="Kingma, D. P., &amp; Ba, J. (2014). Adam: a method for stochastic optimization. arXiv preprint arXiv:1412.6980.">Kingma and Ba, 2014</a>)</span>将所有这些技术汇总到一个高效的学习算法中。
 不出预料，作为深度学习中使用的更强大和有效的优化算法之一，它非常受欢迎。
 但是它并非没有问题，尤其是
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id134" title="Reddi, S. J., Kale, S., &amp; Kumar, S. (2019). On the convergence of adam and beyond. arXiv preprint arXiv:1904.09237.">Reddi <em>et al.</em>, 2019</a>)</span>表明，有时Adam算法可能由于方差控制不良而发散。
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id134" title="Reddi, S. J., Kale, S., &amp; Kumar, S. (2019). On the convergence of adam and beyond. arXiv preprint arXiv:1904.09237.">Reddi <em>et al.</em>, 2019</a>)</span>表明，有时Adam算法可能由于方差控制不良而发散。
 在完善工作中，
-<span id="id3">(<a class="reference internal" href="../chapter_references/zreferences.html#id193" title="Zaheer, M., Reddi, S., Sachan, D., Kale, S., &amp; Kumar, S. (2018). Adaptive methods for nonconvex optimization. Advances in Neural Information Processing Systems (pp. 9793–9803).">Zaheer <em>et al.</em>, 2018</a>)</span>给Adam算法提供了一个称为Yogi的热补丁来解决这些问题。
+<span id="id3">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id193" title="Zaheer, M., Reddi, S., Sachan, D., Kale, S., &amp; Kumar, S. (2018). Adaptive methods for nonconvex optimization. Advances in Neural Information Processing Systems (pp. 9793–9803).">Zaheer <em>et al.</em>, 2018</a>)</span>给Adam算法提供了一个称为Yogi的热补丁来解决这些问题。
 下面我们了解一下Adam算法。</p>
 <div class="section" id="id4">
 <h2><span class="section-number">11.10.1. </span>算法</h2>
@@ -5404,7 +5404,7 @@ jour是<span class="math notranslate nohighlight">\(\rho\)</span>，我们获得
 <h2><span class="section-number">11.10.3. </span>Yogi</h2>
 <p>Adam算法也存在一些问题：
 即使在凸环境下，当<span class="math notranslate nohighlight">\(\mathbf{s}_t\)</span>的二次矩估计值爆炸时，它可能无法收敛。
-<span id="id6">(<a class="reference internal" href="../chapter_references/zreferences.html#id193" title="Zaheer, M., Reddi, S., Sachan, D., Kale, S., &amp; Kumar, S. (2018). Adaptive methods for nonconvex optimization. Advances in Neural Information Processing Systems (pp. 9793–9803).">Zaheer <em>et al.</em>, 2018</a>)</span>为<span class="math notranslate nohighlight">\(\mathbf{s}_t\)</span>提出了的改进更新和参数初始化。
+<span id="id6">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id193" title="Zaheer, M., Reddi, S., Sachan, D., Kale, S., &amp; Kumar, S. (2018). Adaptive methods for nonconvex optimization. Advances in Neural Information Processing Systems (pp. 9793–9803).">Zaheer <em>et al.</em>, 2018</a>)</span>为<span class="math notranslate nohighlight">\(\mathbf{s}_t\)</span>提出了的改进更新和参数初始化。
 论文中建议我们重写Adam算法更新如下：</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-adam-4">
 <span class="eqno">(11.10.5)</span>\[\mathbf{s}_t \leftarrow \mathbf{s}_{t-1} + (1 - \beta_2) \left(\mathbf{g}_t^2 - \mathbf{s}_{t-1}\right).\]</div>
@@ -5558,14 +5558,14 @@ jour是<span class="math notranslate nohighlight">\(\rho\)</span>，我们获得
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="adadelta.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/adadelta.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.9. Adadelta</div>
          </div>
      </a>
-     <a id="button-next" href="lr-scheduler.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/lr-scheduler.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -5584,14 +5584,14 @@ jour是<span class="math notranslate nohighlight">\(\rho\)</span>，我们获得
 然而，调整学习率通常与实际算法同样重要，有如下几方面需要考虑：</p>
 <ul class="simple">
 <li><p>首先，学习率的大小很重要。如果它太大，优化就会发散；如果它太小，训练就会需要过长时间，或者我们最终只能得到次优的结果。我们之前看到问题的条件数很重要（有关详细信息，请参见
-<a class="reference internal" href="momentum.html#sec-momentum"><span class="std std-numref">11.6节</span></a>）。直观地说，这是最不敏感与最敏感方向的变化量的比率。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/momentum.html#sec-momentum"><span class="std std-numref">11.6节</span></a>）。直观地说，这是最不敏感与最敏感方向的变化量的比率。</p></li>
 <li><p>其次，衰减速率同样很重要。如果学习率持续过高，我们可能最终会在最小值附近弹跳，从而无法达到最优解。
-<a class="reference internal" href="minibatch-sgd.html#sec-minibatch-sgd"><span class="std std-numref">11.5节</span></a>比较详细地讨论了这一点，在
-<a class="reference internal" href="sgd.html#sec-sgd"><span class="std std-numref">11.4节</span></a>中我们则分析了性能保证。简而言之，我们希望速率衰减，但要比<span class="math notranslate nohighlight">\(\mathcal{O}(t^{-\frac{1}{2}})\)</span>慢，这样能成为解决凸问题的不错选择。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/minibatch-sgd.html#sec-minibatch-sgd"><span class="std std-numref">11.5节</span></a>比较详细地讨论了这一点，在
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/sgd.html#sec-sgd"><span class="std std-numref">11.4节</span></a>中我们则分析了性能保证。简而言之，我们希望速率衰减，但要比<span class="math notranslate nohighlight">\(\mathcal{O}(t^{-\frac{1}{2}})\)</span>慢，这样能成为解决凸问题的不错选择。</p></li>
 <li><p>另一个同样重要的方面是初始化。这既涉及参数最初的设置方式（详情请参阅
-<a class="reference internal" href="../chapter_multilayer-perceptrons/numerical-stability-and-init.html#sec-numerical-stability"><span class="std std-numref">4.8节</span></a>），又关系到它们最初的演变方式。这被戏称为<em>预热</em>（warmup），即我们最初开始向着解决方案迈进的速度有多快。一开始的大步可能没有好处，特别是因为最初的参数集是随机的。最初的更新方向可能也是毫无意义的。</p></li>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html#sec-numerical-stability"><span class="std std-numref">4.8节</span></a>），又关系到它们最初的演变方式。这被戏称为<em>预热</em>（warmup），即我们最初开始向着解决方案迈进的速度有多快。一开始的大步可能没有好处，特别是因为最初的参数集是随机的。最初的更新方向可能也是毫无意义的。</p></li>
 <li><p>最后，还有许多优化变体可以执行周期性学习率调整。这超出了本章的范围，我们建议读者阅读
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id76" title="Izmailov, P., Podoprikhin, D., Garipov, T., Vetrov, D., &amp; Wilson, A. G. (2018). Averaging weights leads to wider optima and better generalization. arXiv preprint arXiv:1803.05407.">Izmailov <em>et al.</em>, 2018</a>)</span>来了解个中细节。例如，如何通过对整个路径参数求平均值来获得更好的解。</p></li>
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id76" title="Izmailov, P., Podoprikhin, D., Garipov, T., Vetrov, D., &amp; Wilson, A. G. (2018). Averaging weights leads to wider optima and better generalization. arXiv preprint arXiv:1803.05407.">Izmailov <em>et al.</em>, 2018</a>)</span>来了解个中细节。例如，如何通过对整个路径参数求平均值来获得更好的解。</p></li>
 </ul>
 <p>鉴于管理学习率需要很多细节，因此大多数深度学习框架都有自动应对这个问题的工具。
 在本章中，我们将梳理不同的调度策略对准确性的影响，并展示如何通过<em>学习率调度器</em>（learning
@@ -5602,7 +5602,7 @@ rate scheduler）来有效管理。</p>
 为此，我们选择了一个稍微现代化的LeNet版本（激活函数使用<code class="docutils literal notranslate"><span class="pre">relu</span></code>而不是<code class="docutils literal notranslate"><span class="pre">sigmoid</span></code>，汇聚层使用最大汇聚层而不是平均汇聚层），并应用于Fashion-MNIST数据集。
 此外，我们混合网络以提高性能。
 由于大多数代码都是标准的，我们只介绍基础知识，而不做进一步的详细讨论。如果需要，请参阅
-<a class="reference internal" href="../chapter_convolutional-neural-networks/index.html#chap-cnn"><span class="std std-numref">6节</span></a>进行复习。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/index.html#chap-cnn"><span class="std std-numref">6节</span></a>进行复习。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">autograd</span><span class="p">,</span> <span class="n">gluon</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">lr_scheduler</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
 <span class="kn">from</span> <span class="nn">mxnet.gluon</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -6203,7 +6203,7 @@ rate scheduler）来有效管理。</p>
 </div></div></div>
 <div class="section" id="id8">
 <h3><span class="section-number">11.11.3.3. </span>余弦调度器</h3>
-<p>余弦调度器是 <span id="id9">(<a class="reference internal" href="../chapter_references/zreferences.html#id101" title="Loshchilov, I., &amp; Hutter, F. (2016). Sgdr: stochastic gradient descent with warm restarts. arXiv preprint arXiv:1608.03983.">Loshchilov and Hutter, 2016</a>)</span>提出的一种启发式算法。
+<p>余弦调度器是 <span id="id9">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id101" title="Loshchilov, I., &amp; Hutter, F. (2016). Sgdr: stochastic gradient descent with warm restarts. arXiv preprint arXiv:1608.03983.">Loshchilov and Hutter, 2016</a>)</span>提出的一种启发式算法。
 它所依据的观点是：我们可能不想在一开始就太大地降低学习率，而且可能希望最终能用非常小的学习率来“改进”解决方案。
 这产生了一个类似于余弦的调度，函数形式如下所示，学习率的值在<span class="math notranslate nohighlight">\(t \in [0, T]\)</span>之间。</p>
 <div class="math notranslate nohighlight" id="equation-chapter-optimization-lr-scheduler-0">
@@ -6438,7 +6438,7 @@ rate scheduler）来有效管理。</p>
 <img alt="../_images/output_lr-scheduler_1dfeb6_179_1.svg" src="https://zh.d2l.ai/_images/output_lr-scheduler_1dfeb6_179_1.svg" /></div>
 </div></div><p>预热可以应用于任何调度器，而不仅仅是余弦。
 有关学习率调度的更多实验和更详细讨论，请参阅
-<span id="id11">(<a class="reference internal" href="../chapter_references/zreferences.html#id49" title="Gotmare, A., Keskar, N. S., Xiong, C., &amp; Socher, R. (2018). A closer look at deep learning heuristics: learning rate restarts, warmup and distillation. arXiv preprint arXiv:1810.13243.">Gotmare <em>et al.</em>, 2018</a>)</span>。
+<span id="id11">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id49" title="Gotmare, A., Keskar, N. S., Xiong, C., &amp; Socher, R. (2018). A closer look at deep learning heuristics: learning rate restarts, warmup and distillation. arXiv preprint arXiv:1810.13243.">Gotmare <em>et al.</em>, 2018</a>)</span>。
 其中，这篇论文的点睛之笔的发现：预热阶段限制了非常深的网络中参数的发散程度
 。
 这在直觉上是有道理的：在网络中那些一开始花费最多时间取得进展的部分，随机初始化会产生巨大的发散。</p>
@@ -6462,7 +6462,7 @@ rate scheduler）来有效管理。</p>
 <li><p>将余弦调度器应用于大型计算机视觉问题，例如训练ImageNet数据集。与其他调度器相比，它如何影响性能？</p></li>
 <li><p>预热应该持续多长时间？</p></li>
 <li><p>可以试着把优化和采样联系起来吗？首先，在随机梯度朗之万动力学上使用
-<span id="id14">(<a class="reference internal" href="../chapter_references/zreferences.html#id181" title="Welling, M., &amp; Teh, Y. W. (2011). Bayesian learning via stochastic gradient langevin dynamics. Proceedings of the 28th international conference on machine learning (ICML-11) (pp. 681–688).">Welling and Teh, 2011</a>)</span>的结果。</p></li>
+<span id="id14">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id181" title="Welling, M., &amp; Teh, Y. W. (2011). Bayesian learning via stochastic gradient langevin dynamics. Proceedings of the 28th international conference on machine learning (ICML-11) (pp. 681–688).">Welling and Teh, 2011</a>)</span>的结果。</p></li>
 </ol>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar text"><a href="#mxnet-27-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-27-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-27-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-27-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-27-0"><p><a class="reference external" href="https://discuss.d2l.ai/t/4333">Discussions</a></p>
 </div><div class="mdl-tabs__panel " id="pytorch-27-1"><p><a class="reference external" href="https://discuss.d2l.ai/t/4334">Discussions</a></p>
@@ -6502,14 +6502,14 @@ rate scheduler）来有效管理。</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="adam.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_optimization/adam.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>11.10. Adam算法</div>
          </div>
      </a>
-     <a id="button-next" href="../chapter_computational-performance/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_computational-performance/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>

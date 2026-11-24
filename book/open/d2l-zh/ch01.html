@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第 1 章 引言 · 动手学深度学习（全文在线阅读） · 白驹 ccowork</title>
+<title>第 1 章 引言 · 动手学深度学习（全文在线阅读）</title>
 <meta name="description" content="动手学深度学习 第 2 部分：第 1 章 引言。许可 Apache License 2.0，来源 https://zh.d2l.ai/。">
-<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/d2l-zh/ch01.html">
+<link rel="canonical" href="/book/open/d2l-zh/ch01.html">
 <meta name="robots" content="index,follow">
 <link rel="stylesheet" href="/book/open/book.css?v=20261124">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
@@ -24,7 +24,7 @@
     <div class="bk-lic">
       <b>来源与许可</b>：动手学深度学习 · 作者 阿斯顿·张（Aston Zhang）、扎卡里·C·立顿、李沐、亚历山大·J·斯莫拉 · 译者 何孝霆、瑞潮儿·胡 及社区 200 余位贡献者。<br>
       许可 <a href="https://github.com/d2l-ai/d2l-zh/blob/master/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a> · 仓库 <a href="https://github.com/d2l-ai/d2l-zh" target="_blank" rel="noopener">https://github.com/d2l-ai/d2l-zh</a><br>
-      本站抓取时间 2026-11-24 21:13 · 本章来自 https://zh.d2l.ai/chapter_introduction/index.html
+      本站抓取时间 2026-11-24 21:24 · 本章来自 https://zh.d2l.ai/chapter_introduction/index.html
     </div>
     <h1>第 1 章 引言</h1>
     <div class="section" id="chap-introduction">
@@ -304,11 +304,11 @@ classification）。
 classification）问题。 常见的例子包括手写字符识别
 <span class="math notranslate nohighlight">\(\mathrm{\{0, 1, 2, ... 9, a, b, c, ...\}}\)</span>。
 与解决回归问题不同，分类问题的常见损失函数被称为<em>交叉熵</em>（cross-entropy），本书
-<a class="reference internal" href="../chapter_linear-networks/softmax-regression.html#sec-softmax"><span class="std std-numref">3.4节</span></a> 将详细阐述。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_linear-networks/softmax-regression.html#sec-softmax"><span class="std std-numref">3.4节</span></a> 将详细阐述。</p>
 <p>请注意，最常见的类别不一定是最终用于决策的类别。
 举个例子，假设后院有一个如 <a class="reference internal" href="#fig-death-cap"><span class="std std-numref">图1.3.2</span></a> 所示的蘑菇。</p>
 <div class="figure align-default" id="id55">
-<span id="fig-death-cap"></span><a class="reference internal image-reference" href="../_images/death-cap.jpg"><img alt="../_images/death-cap.jpg" src="https://zh.d2l.ai/_images/death-cap.jpg" style="width: 200px;" /></a>
+<span id="fig-death-cap"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/death-cap.jpg"><img alt="../_images/death-cap.jpg" src="https://zh.d2l.ai/_images/death-cap.jpg" style="width: 200px;" /></a>
 <p class="caption"><span class="caption-number">图1.3.2 </span><span class="caption-text">死帽蕈——不能吃！！</span></p>
 </div>
 <p>现在，我们想要训练一个毒蘑菇检测分类器，根据照片预测蘑菇是否有毒。
@@ -343,7 +343,7 @@ classification)。
 取决于我们最终想用模型做什么，将其视为二项分类问题可能没有多大意义。
 取而代之，我们可能想让模型描绘输入图像的内容，一只猫、一只公鸡、一只狗，还有一头驴。</p>
 <div class="figure align-default" id="id56">
-<span id="subsec-recommender-systems"></span><span id="fig-stackedanimals"></span><a class="reference internal image-reference" href="../_images/stackedanimals.png"><img alt="../_images/stackedanimals.png" src="https://zh.d2l.ai/_images/stackedanimals.png" style="width: 300px;" /></a>
+<span id="subsec-recommender-systems"></span><span id="fig-stackedanimals"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/stackedanimals.png"><img alt="../_images/stackedanimals.png" src="https://zh.d2l.ai/_images/stackedanimals.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">图1.3.3 </span><span class="caption-text">一只猫、一只公鸡、一只狗、一头驴</span></p>
 </div>
 <p>学习预测不相互排斥的类别的问题称为<em>多标签分类</em>（multi-label
@@ -431,7 +431,7 @@ Ent  -    -    -     Ent      -    Ent
 也就是说，音频和文本之间没有1:1的对应关系，因为数千个样本可能对应于一个单独的单词。
 这也是“序列到序列”的学习问题，其中输出比输入短得多。</p>
 <div class="figure align-default" id="id58">
-<span id="fig-speech"></span><a class="reference internal image-reference" href="../_images/speech.png"><img alt="../_images/speech.png" src="https://zh.d2l.ai/_images/speech.png" style="width: 700px;" /></a>
+<span id="fig-speech"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/speech.png"><img alt="../_images/speech.png" src="https://zh.d2l.ai/_images/speech.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图1.3.5 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">-D-e-e-p-</span> <span class="pre">L-ea-r-ni-ng-</span></code> 在录音中。</span></p>
 </div>
 <p><strong>文本到语音</strong>。这与自动语音识别相反。
@@ -570,7 +570,7 @@ bandit problem）。</p>
 例如，<a class="reference external" href="https://www.maa.org/press/periodicals/convergence/mathematical-treasures-jacob-kobels-geometry">雅各布·克贝尔
 (1460–1533)</a>的几何学书籍举例说明，通过平均16名成年男性的脚的长度，可以得出一英尺的长度。</p>
 <div class="figure align-default" id="id61">
-<span id="fig-koebel"></span><a class="reference internal image-reference" href="../_images/koebel.jpg"><img alt="../_images/koebel.jpg" src="https://zh.d2l.ai/_images/koebel.jpg" style="width: 500px;" /></a>
+<span id="fig-koebel"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/koebel.jpg"><img alt="../_images/koebel.jpg" src="https://zh.d2l.ai/_images/koebel.jpg" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-number">图1.4.1 </span><span class="caption-text">估计一英尺的长度</span></p>
 </div>
 <p><a class="reference internal" href="#fig-koebel"><span class="std std-numref">图1.4.1</span></a> 说明了这个估计器是如何工作的。
@@ -584,13 +584,13 @@ bandit problem）。</p>
 甚至，费舍尔在1936年发布的鸢尾花卉数据集，有时仍然被用来解读机器学习算法。
 他也是优生学的倡导者，这提醒我们：数据科学在道德上存疑的使用，与其在工业和自然科学中的生产性使用一样，有着悠远而持久的历史。</p>
 <p>机器学习的第二个影响来自<a class="reference external" href="https://en.wikipedia.org/wiki/Claude_Shannon">克劳德·香农(1916–2001)</a>的信息论和<a class="reference external" href="https://en.wikipedia.org/wiki/Alan_Turing">艾伦·图灵（1912-1954）</a>的计算理论。
-图灵在他著名的论文《计算机器与智能》 <span id="id20">(<a class="reference internal" href="../chapter_references/zreferences.html#id171" title="Turing, A. (1950). Computing machinery and intelligence. Mind, 59(236), 433.">Turing, 1950</a>)</span>
+图灵在他著名的论文《计算机器与智能》 <span id="id20">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id171" title="Turing, A. (1950). Computing machinery and intelligence. Mind, 59(236), 433.">Turing, 1950</a>)</span>
 中提出了“机器能思考吗？”的问题。
 在他所描述的图灵测试中，如果人类评估者很难根据文本互动区分机器和人类的回答，那么机器就可以被认为是“智能的”。</p>
 <p>另一个影响可以在神经科学和心理学中找到。
 其中，最古老的算法之一是<a class="reference external" href="https://en.wikipedia.org/wiki/Donald_O._Hebb">唐纳德·赫布
 (1904–1985)</a>开创性的著作《行为的组织》
-<span id="id21">(<a class="reference internal" href="../chapter_references/zreferences.html#id62" title="Hebb, D. O., &amp; Hebb, D. (1949). The organization of behavior. Vol. 65. Wiley New York.">Hebb and Hebb, 1949</a>)</span> 。
+<span id="id21">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id62" title="Hebb, D. O., &amp; Hebb, D. (1949). The organization of behavior. Vol. 65. Wiley New York.">Hebb and Hebb, 1949</a>)</span> 。
 他提出神经元通过积极强化学习，是Rosenblatt感知器学习算法的原型，被称为“赫布学习”。
 这个算法也为当今深度学习的许多随机梯度下降算法奠定了基础：强化期望行为和减少不良行为，从而在神经网络中获得良好的参数设置。</p>
 <p><em>神经网络</em>（neural networks）的得名源于生物灵感。
@@ -671,36 +671,36 @@ models）等强大的统计工具（在经验上）证明是更为优越的。
 这意味着统计模型需要提高内存效率（这通常是通过添加非线性来实现的），同时由于计算预算的增加，能够花费更多时间来优化这些参数。
 因此，机器学习和统计的关注点从（广义的）线性模型和核方法转移到了深度神经网络。
 这也造就了许多深度学习的中流砥柱，如多层感知机
-<span id="id23">(<a class="reference internal" href="../chapter_references/zreferences.html#id106" title="McCulloch, W. S., &amp; Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. The bulletin of mathematical biophysics, 5(4), 115–133.">McCulloch and Pitts, 1943</a>)</span> 、卷积神经网络
-<span id="id24">(<a class="reference internal" href="../chapter_references/zreferences.html#id90" title="LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., &amp; others. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278–2324.">LeCun <em>et al.</em>, 1998</a>)</span> 、长短期记忆网络
-<span id="id25">(<a class="reference internal" href="../chapter_references/zreferences.html#id51" title="Graves, A., &amp; Schmidhuber, J. (2005). Framewise phoneme classification with bidirectional lstm and other neural network architectures. Neural networks, 18(5-6), 602–610.">Graves and Schmidhuber, 2005</a>)</span> 和Q学习 <span id="id26">(<a class="reference internal" href="../chapter_references/zreferences.html#id179" title="Watkins, C. J., &amp; Dayan, P. (1992). Q-learning. Machine learning, 8(3-4), 279–292.">Watkins and Dayan, 1992</a>)</span>
+<span id="id23">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id106" title="McCulloch, W. S., &amp; Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. The bulletin of mathematical biophysics, 5(4), 115–133.">McCulloch and Pitts, 1943</a>)</span> 、卷积神经网络
+<span id="id24">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id90" title="LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., &amp; others. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278–2324.">LeCun <em>et al.</em>, 1998</a>)</span> 、长短期记忆网络
+<span id="id25">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id51" title="Graves, A., &amp; Schmidhuber, J. (2005). Framewise phoneme classification with bidirectional lstm and other neural network architectures. Neural networks, 18(5-6), 602–610.">Graves and Schmidhuber, 2005</a>)</span> 和Q学习 <span id="id26">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id179" title="Watkins, C. J., &amp; Dayan, P. (1992). Q-learning. Machine learning, 8(3-4), 279–292.">Watkins and Dayan, 1992</a>)</span>
 ，在相对休眠了相当长一段时间之后，在过去十年中被“重新发现”。</p>
 <p>最近十年，在统计模型、应用和算法方面的进展就像寒武纪大爆发——历史上物种飞速进化的时期。
 事实上，最先进的技术不仅仅是将可用资源应用于几十年前的算法的结果。
 下面列举了帮助研究人员在过去十年中取得巨大进步的想法（虽然只触及了皮毛）。</p>
 <ul class="simple">
 <li><p>新的容量控制方法，如<em>dropout</em>
-<span id="id27">(<a class="reference internal" href="../chapter_references/zreferences.html#id155" title="Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., &amp; Salakhutdinov, R. (2014). Dropout: a simple way to prevent neural networks from overfitting. The Journal of Machine Learning Research, 15(1), 1929–1958.">Srivastava <em>et al.</em>, 2014</a>)</span>，有助于减轻过拟合的危险。这是通过在整个神经网络中应用噪声注入
-<span id="id28">(<a class="reference internal" href="../chapter_references/zreferences.html#id9" title="Bishop, C. M. (1995). Training with noise is equivalent to tikhonov regularization. Neural computation, 7(1), 108–116.">Bishop, 1995</a>)</span> 来实现的，出于训练目的，用随机变量来代替权重。</p></li>
+<span id="id27">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id155" title="Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., &amp; Salakhutdinov, R. (2014). Dropout: a simple way to prevent neural networks from overfitting. The Journal of Machine Learning Research, 15(1), 1929–1958.">Srivastava <em>et al.</em>, 2014</a>)</span>，有助于减轻过拟合的危险。这是通过在整个神经网络中应用噪声注入
+<span id="id28">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id9" title="Bishop, C. M. (1995). Training with noise is equivalent to tikhonov regularization. Neural computation, 7(1), 108–116.">Bishop, 1995</a>)</span> 来实现的，出于训练目的，用随机变量来代替权重。</p></li>
 <li><p>注意力机制解决了困扰统计学一个多世纪的问题：如何在不增加可学习参数的情况下增加系统的记忆和复杂性。研究人员通过使用只能被视为可学习的指针结构
-<span id="id29">(<a class="reference internal" href="../chapter_references/zreferences.html#id6" title="Bahdanau, D., Cho, K., &amp; Bengio, Y. (2014). Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473.">Bahdanau <em>et al.</em>, 2014</a>)</span>
+<span id="id29">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id6" title="Bahdanau, D., Cho, K., &amp; Bengio, Y. (2014). Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473.">Bahdanau <em>et al.</em>, 2014</a>)</span>
 找到了一个优雅的解决方案。不需要记住整个文本序列（例如用于固定维度表示中的机器翻译），所有需要存储的都是指向翻译过程的中间状态的指针。这大大提高了长序列的准确性，因为模型在开始生成新序列之前不再需要记住整个序列。</p></li>
 <li><p>多阶段设计。例如，存储器网络
-<span id="id30">(<a class="reference internal" href="../chapter_references/zreferences.html#id158" title="Sukhbaatar, S., Weston, J., Fergus, R., &amp; others. (2015). End-to-end memory networks. Advances in neural information processing systems (pp. 2440–2448).">Sukhbaatar <em>et al.</em>, 2015</a>)</span> 和神经编程器-解释器
-<span id="id31">(<a class="reference internal" href="../chapter_references/zreferences.html#id136" title="Reed, S., &amp; De Freitas, N. (2015). Neural programmer-interpreters. arXiv preprint arXiv:1511.06279.">Reed and De Freitas, 2015</a>)</span>。它们允许统计建模者描述用于推理的迭代方法。这些工具允许重复修改深度神经网络的内部状态，从而执行推理链中的后续步骤，类似于处理器如何修改用于计算的存储器。</p></li>
+<span id="id30">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id158" title="Sukhbaatar, S., Weston, J., Fergus, R., &amp; others. (2015). End-to-end memory networks. Advances in neural information processing systems (pp. 2440–2448).">Sukhbaatar <em>et al.</em>, 2015</a>)</span> 和神经编程器-解释器
+<span id="id31">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id136" title="Reed, S., &amp; De Freitas, N. (2015). Neural programmer-interpreters. arXiv preprint arXiv:1511.06279.">Reed and De Freitas, 2015</a>)</span>。它们允许统计建模者描述用于推理的迭代方法。这些工具允许重复修改深度神经网络的内部状态，从而执行推理链中的后续步骤，类似于处理器如何修改用于计算的存储器。</p></li>
 <li><p>另一个关键的发展是生成对抗网络
-<span id="id32">(<a class="reference internal" href="../chapter_references/zreferences.html#id48" title="Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., … Bengio, Y. (2014). Generative adversarial nets. Advances in neural information processing systems (pp. 2672–2680).">Goodfellow <em>et al.</em>, 2014</a>)</span>
+<span id="id32">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id48" title="Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., … Bengio, Y. (2014). Generative adversarial nets. Advances in neural information processing systems (pp. 2672–2680).">Goodfellow <em>et al.</em>, 2014</a>)</span>
 的发明。传统模型中，密度估计和生成模型的统计方法侧重于找到合适的概率分布（通常是近似的）和抽样算法。因此，这些算法在很大程度上受到统计模型固有灵活性的限制。生成式对抗性网络的关键创新是用具有可微参数的任意算法代替采样器。然后对这些数据进行调整，使得鉴别器（实际上是一个双样本测试）不能区分假数据和真实数据。通过使用任意算法生成数据的能力，它为各种技术打开了密度估计的大门。驰骋的斑马
-<span id="id33">(<a class="reference internal" href="../chapter_references/zreferences.html#id199" title="Zhu, J.-Y., Park, T., Isola, P., &amp; Efros, A. A. (2017). Unpaired image-to-image translation using cycle-consistent adversarial networks. Proceedings of the IEEE international conference on computer vision (pp. 2223–2232).">Zhu <em>et al.</em>, 2017</a>)</span> 和假名人脸
-<span id="id34">(<a class="reference internal" href="../chapter_references/zreferences.html#id81" title="Karras, T., Aila, T., Laine, S., &amp; Lehtinen, J. (2017). Progressive growing of gans for improved quality, stability, and variation. arXiv preprint arXiv:1710.10196.">Karras <em>et al.</em>, 2017</a>)</span>
+<span id="id33">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id199" title="Zhu, J.-Y., Park, T., Isola, P., &amp; Efros, A. A. (2017). Unpaired image-to-image translation using cycle-consistent adversarial networks. Proceedings of the IEEE international conference on computer vision (pp. 2223–2232).">Zhu <em>et al.</em>, 2017</a>)</span> 和假名人脸
+<span id="id34">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id81" title="Karras, T., Aila, T., Laine, S., &amp; Lehtinen, J. (2017). Progressive growing of gans for improved quality, stability, and variation. arXiv preprint arXiv:1710.10196.">Karras <em>et al.</em>, 2017</a>)</span>
 的例子都证明了这一进展。即使是业余的涂鸦者也可以根据描述场景布局的草图生成照片级真实图像（
-<span id="id35">(<a class="reference internal" href="../chapter_references/zreferences.html#id120" title="Park, T., Liu, M.-Y., Wang, T.-C., &amp; Zhu, J.-Y. (2019). Semantic image synthesis with spatially-adaptive normalization. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2337–2346).">Park <em>et al.</em>, 2019</a>)</span> ）。</p></li>
+<span id="id35">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id120" title="Park, T., Liu, M.-Y., Wang, T.-C., &amp; Zhu, J.-Y. (2019). Semantic image synthesis with spatially-adaptive normalization. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 2337–2346).">Park <em>et al.</em>, 2019</a>)</span> ）。</p></li>
 <li><p>在许多情况下，单个GPU不足以处理可用于训练的大量数据。在过去的十年中，构建并行和分布式训练算法的能力有了显著提高。设计可伸缩算法的关键挑战之一是深度学习优化的主力——随机梯度下降，它依赖于相对较小的小批量数据来处理。同时，小批量限制了GPU的效率。因此，在1024个GPU上进行训练，例如每批32个图像的小批量大小相当于总计约32000个图像的小批量。最近的工作，首先是由
-<span id="id36">(<a class="reference internal" href="../chapter_references/zreferences.html#id91" title="Li, M. (2017). Scaling Distributed Machine Learning with System and Algorithm Co-design (Doctoral dissertation). PhD Thesis, CMU.">Li, 2017</a>)</span> 完成的，随后是 <span id="id37">(<a class="reference internal" href="../chapter_references/zreferences.html#id192" title="You, Y., Gitman, I., &amp; Ginsburg, B. (2017). Large batch training of convolutional networks. arXiv preprint arXiv:1708.03888.">You <em>et al.</em>, 2017</a>)</span>
-和 <span id="id38">(<a class="reference internal" href="../chapter_references/zreferences.html#id79" title="Jia, X., Song, S., He, W., Wang, Y., Rong, H., Zhou, F., … others. (2018). Highly scalable deep learning training system with mixed-precision: training imagenet in four minutes. arXiv preprint arXiv:1807.11205.">Jia <em>et al.</em>, 2018</a>)</span>
+<span id="id36">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id91" title="Li, M. (2017). Scaling Distributed Machine Learning with System and Algorithm Co-design (Doctoral dissertation). PhD Thesis, CMU.">Li, 2017</a>)</span> 完成的，随后是 <span id="id37">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id192" title="You, Y., Gitman, I., &amp; Ginsburg, B. (2017). Large batch training of convolutional networks. arXiv preprint arXiv:1708.03888.">You <em>et al.</em>, 2017</a>)</span>
+和 <span id="id38">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id79" title="Jia, X., Song, S., He, W., Wang, Y., Rong, H., Zhou, F., … others. (2018). Highly scalable deep learning training system with mixed-precision: training imagenet in four minutes. arXiv preprint arXiv:1807.11205.">Jia <em>et al.</em>, 2018</a>)</span>
 ，将观察大小提高到64000个，将ResNet-50模型在ImageNet数据集上的训练时间减少到不到7分钟。作为比较——最初的训练时间是按天为单位的。</p></li>
 <li><p>并行计算的能力也对强化学习的进步做出了相当关键的贡献。这导致了计算机在围棋、雅达里游戏、星际争霸和物理模拟（例如，使用MuJoCo）中实现超人性能的重大进步。有关如何在AlphaGo中实现这一点的说明，请参见如
-<span id="id39">(<a class="reference internal" href="../chapter_references/zreferences.html#id152" title="Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., Van Den Driessche, G., … others. (2016). Mastering the game of go with deep neural networks and tree search. nature, 529(7587), 484.">Silver <em>et al.</em>, 2016</a>)</span>
+<span id="id39">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id152" title="Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., Van Den Driessche, G., … others. (2016). Mastering the game of go with deep neural networks and tree search. nature, 529(7587), 484.">Silver <em>et al.</em>, 2016</a>)</span>
 。简而言之，如果有大量的（状态、动作、奖励）三元组可用，即只要有可能尝试很多东西来了解它们之间的关系，强化学习就会发挥最好的作用。仿真提供了这样一条途径。</p></li>
 <li><p>深度学习框架在传播思想方面发挥了至关重要的作用。允许轻松建模的第一代框架包括<a class="reference external" href="https://github.com/BVLC/caffe">Caffe</a>、<a class="reference external" href="https://github.com/torch">Torch</a>和<a class="reference external" href="https://github.com/Theano/Theano">Theano</a>。许多开创性的论文都是用这些工具写的。到目前为止，它们已经被<a class="reference external" href="https://github.com/tensorflow/tensorflow">TensorFlow</a>（通常通过其高级API
 <a class="reference external" href="https://github.com/keras-team/keras">Keras</a>使用）、<a class="reference external" href="https://github.com/Microsoft/CNTK">CNTK</a>、<a class="reference external" href="https://github.com/caffe2/caffe2">Caffe
@@ -720,17 +720,17 @@ API</a>和<a class="reference external" href="https://github.com/google/jax">Jax
 <ul class="simple">
 <li><p>智能助理，如苹果的Siri、亚马逊的Alexa和谷歌助手，都能够相当准确地回答口头问题。这包括一些琐碎的工作，比如打开电灯开关（对残疾人来说是个福音）甚至预约理发师和提供电话支持对话。这可能是人工智能正在影响我们生活的最明显的迹象。</p></li>
 <li><p>数字助理的一个关键要素是准确识别语音的能力。逐渐地，在某些应用中，此类系统的准确性已经提高到与人类同等水平的程度
-<span id="id41">(<a class="reference internal" href="../chapter_references/zreferences.html#id190" title="Xiong, W., Wu, L., Alleva, F., Droppo, J., Huang, X., &amp; Stolcke, A. (2018). The microsoft 2017 conversational speech recognition system. 2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (pp. 5934–5938).">Xiong <em>et al.</em>, 2018</a>)</span>。</p></li>
+<span id="id41">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id190" title="Xiong, W., Wu, L., Alleva, F., Droppo, J., Huang, X., &amp; Stolcke, A. (2018). The microsoft 2017 conversational speech recognition system. 2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (pp. 5934–5938).">Xiong <em>et al.</em>, 2018</a>)</span>。</p></li>
 <li><p>物体识别同样也取得了长足的进步。估计图片中的物体在2010年是一项相当具有挑战性的任务。在ImageNet基准上，来自NEC实验室和伊利诺伊大学香槟分校的研究人员获得了28%的Top-5错误率
-<span id="id42">(<a class="reference internal" href="../chapter_references/zreferences.html#id96" title="Lin, Y., Lv, F., Zhu, S., Yang, M., Cour, T., Yu, K., … others. (2010). Imagenet classification: fast descriptor coding and large-scale svm training. Large scale visual recognition challenge.">Lin <em>et al.</em>, 2010</a>)</span> 。到2017年，这一错误率降低到2.25%
-<span id="id43">(<a class="reference internal" href="../chapter_references/zreferences.html#id72" title="Hu, J., Shen, L., &amp; Sun, G. (2018). Squeeze-and-excitation networks. Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 7132–7141).">Hu <em>et al.</em>, 2018</a>)</span>
+<span id="id42">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id96" title="Lin, Y., Lv, F., Zhu, S., Yang, M., Cour, T., Yu, K., … others. (2010). Imagenet classification: fast descriptor coding and large-scale svm training. Large scale visual recognition challenge.">Lin <em>et al.</em>, 2010</a>)</span> 。到2017年，这一错误率降低到2.25%
+<span id="id43">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id72" title="Hu, J., Shen, L., &amp; Sun, G. (2018). Squeeze-and-excitation networks. Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 7132–7141).">Hu <em>et al.</em>, 2018</a>)</span>
 。同样，在鉴别鸟类或诊断皮肤癌方面也取得了惊人的成果。</p></li>
 <li><p>游戏曾经是人类智慧的堡垒。从TD-Gammon开始，一个使用时差强化学习的五子棋游戏程序，算法和计算的进步导致了算法被广泛应用。与五子棋不同的是，国际象棋有一个复杂得多的状态空间和一组动作。深蓝公司利用大规模并行性、专用硬件和高效搜索游戏树
-<span id="id44">(<a class="reference internal" href="../chapter_references/zreferences.html#id19" title="Campbell, M., Hoane Jr, A. J., &amp; Hsu, F.-h. (2002). Deep blue. Artificial intelligence, 134(1-2), 57–83.">Campbell <em>et al.</em>, 2002</a>)</span> 击败了加里·卡斯帕罗夫(Garry
+<span id="id44">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id19" title="Campbell, M., Hoane Jr, A. J., &amp; Hsu, F.-h. (2002). Deep blue. Artificial intelligence, 134(1-2), 57–83.">Campbell <em>et al.</em>, 2002</a>)</span> 击败了加里·卡斯帕罗夫(Garry
 Kasparov)。围棋由于其巨大的状态空间，难度更大。AlphaGo在2015年达到了相当于人类的棋力，使用和蒙特卡洛树抽样
-<span id="id45">(<a class="reference internal" href="../chapter_references/zreferences.html#id152" title="Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., Van Den Driessche, G., … others. (2016). Mastering the game of go with deep neural networks and tree search. nature, 529(7587), 484.">Silver <em>et al.</em>, 2016</a>)</span>
+<span id="id45">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id152" title="Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., Van Den Driessche, G., … others. (2016). Mastering the game of go with deep neural networks and tree search. nature, 529(7587), 484.">Silver <em>et al.</em>, 2016</a>)</span>
 相结合的深度学习。扑克中的挑战是状态空间很大，而且没有完全观察到（我们不知道对手的牌）。在扑克游戏中，库图斯使用有效的结构化策略超过了人类的表现
-<span id="id46">(<a class="reference internal" href="../chapter_references/zreferences.html#id18" title="Brown, N., &amp; Sandholm, T. (2017). Libratus: the superhuman ai for no-limit poker. IJCAI (pp. 5226–5228).">Brown and Sandholm, 2017</a>)</span>
+<span id="id46">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id18" title="Brown, N., &amp; Sandholm, T. (2017). Libratus: the superhuman ai for no-limit poker. IJCAI (pp. 5226–5228).">Brown and Sandholm, 2017</a>)</span>
 。这说明了游戏取得了令人瞩目的进步以及先进的算法在其中发挥了关键作用的事实。</p></li>
 <li><p>人工智能进步的另一个迹象是自动驾驶汽车和卡车的出现。虽然完全自主还没有完全触手可及，但在这个方向上已经取得了很好的进展，特斯拉（Tesla）、英伟达（NVIDIA）和Waymo等公司的产品至少实现了部分自主。让完全自主如此具有挑战性的是，正确的驾驶需要感知、推理和将规则纳入系统的能力。目前，深度学习主要应用于这些问题的计算机视觉方面。其余部分则由工程师进行大量调整。</p></li>
 </ul>
@@ -768,8 +768,8 @@ learning）目的是寻找表示本身，因此深度学习可以称为“多级
 毋庸置疑，深度学习方法中最显著的共同点是使用端到端训练。
 也就是说，与其基于单独调整的组件组装系统，不如构建系统，然后联合调整它们的性能。
 例如，在计算机视觉中，科学家们习惯于将特征工程的过程与建立机器学习模型的过程分开。
-Canny边缘检测器 <span id="id48">(<a class="reference internal" href="../chapter_references/zreferences.html#id20" title="Canny, J. (1987). A computational approach to edge detection. Readings in computer vision (pp. 184–203). Elsevier.">Canny, 1987</a>)</span> 和SIFT特征提取器
-<span id="id49">(<a class="reference internal" href="../chapter_references/zreferences.html#id102" title="Lowe, D. G. (2004). Distinctive image features from scale-invariant keypoints. International journal of computer vision, 60(2), 91–110.">Lowe, 2004</a>)</span>
+Canny边缘检测器 <span id="id48">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id20" title="Canny, J. (1987). A computational approach to edge detection. Readings in computer vision (pp. 184–203). Elsevier.">Canny, 1987</a>)</span> 和SIFT特征提取器
+<span id="id49">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id102" title="Lowe, D. G. (2004). Distinctive image features from scale-invariant keypoints. International journal of computer vision, 60(2), 91–110.">Lowe, 2004</a>)</span>
 作为将图像映射到特征向量的算法，在过去的十年里占据了至高无上的地位。
 在过去的日子里，将机器学习应用于这些问题的关键部分是提出人工设计的特征工程方法，将数据转换为某种适合于浅层模型的形式。
 然而，与一个算法自动执行的数百万个选择相比，人类通过特征工程所能完成的事情很少。
@@ -859,14 +859,14 @@ Canny边缘检测器 <span id="id48">(<a class="reference internal" href="../cha
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="../chapter_notation/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_notation/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>符号</div>
          </div>
      </a>
-     <a id="button-next" href="../chapter_preliminaries/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_preliminaries/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>

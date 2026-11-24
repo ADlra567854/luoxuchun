@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第 12 章 计算性能 · 动手学深度学习（全文在线阅读） · 白驹 ccowork</title>
+<title>第 12 章 计算性能 · 动手学深度学习（全文在线阅读）</title>
 <meta name="description" content="动手学深度学习 第 13 部分：第 12 章 计算性能。许可 Apache License 2.0，来源 https://zh.d2l.ai/。">
-<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/d2l-zh/ch12.html">
+<link rel="canonical" href="/book/open/d2l-zh/ch12.html">
 <meta name="robots" content="index,follow">
 <link rel="stylesheet" href="/book/open/book.css?v=20261124">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
@@ -24,7 +24,7 @@
     <div class="bk-lic">
       <b>来源与许可</b>：动手学深度学习 · 作者 阿斯顿·张（Aston Zhang）、扎卡里·C·立顿、李沐、亚历山大·J·斯莫拉 · 译者 何孝霆、瑞潮儿·胡 及社区 200 余位贡献者。<br>
       许可 <a href="https://github.com/d2l-ai/d2l-zh/blob/master/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a> · 仓库 <a href="https://github.com/d2l-ai/d2l-zh" target="_blank" rel="noopener">https://github.com/d2l-ai/d2l-zh</a><br>
-      本站抓取时间 2026-11-24 21:13 · 本章来自 https://zh.d2l.ai/chapter_computational-performance/index.html
+      本站抓取时间 2026-11-24 21:24 · 本章来自 https://zh.d2l.ai/chapter_computational-performance/index.html
     </div>
     <h1>第 12 章 计算性能</h1>
     
@@ -706,14 +706,14 @@ tf.saved_model.save(net, &#39;my_mlp&#39;)
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_computational-performance/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>12. 计算性能</div>
          </div>
      </a>
-     <a id="button-next" href="async-computation.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_computational-performance/async-computation.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -867,7 +867,7 @@ programming）模型来提高性能，而PyTorch则使用了Python自己的调�
 <p>广义上说，飞桨有一个用于与用户直接交互的前端（例如通过Python），还有一个由系统用来执行计算的后端。如
 <a class="reference internal" href="#fig-frontends"><span class="std std-numref">图12.2.1</span></a>所示，用户可以用各种前端语言编写Python程序，如Python和C++。不管使用的前端编程语言是什么，飞桨程序的执行主要发生在C++实现的后端。由前端语言发出的操作被传递到后端执行。后端管理自己的线程，这些线程不断收集和执行排队的任务。请注意，要使其工作，后端必须能够跟踪计算图中各个步骤之间的依赖关系。因此，不可能并行化相互依赖的操作。</p>
 </div></div><div class="figure align-default" id="id7">
-<span id="fig-frontends"></span><a class="reference internal image-reference" href="../_images/frontends.png"><img alt="../_images/frontends.png" src="https://zh.d2l.ai/_images/frontends.png" style="width: 300px;" /></a>
+<span id="fig-frontends"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/frontends.png"><img alt="../_images/frontends.png" src="https://zh.d2l.ai/_images/frontends.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">图12.2.1 </span><span class="caption-text">编程语言前端和深度学习框架后端</span></p>
 </div>
 <p>接下来看看另一个简单例子，以便更好地理解依赖关系图。</p>
@@ -1026,14 +1026,14 @@ programming）模型来提高性能，而PyTorch则使用了Python自己的调�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="hybridize.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_computational-performance/hybridize.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>12.1. 编译器和解释器</div>
          </div>
      </a>
-     <a id="button-next" href="auto-parallelism.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_computational-performance/auto-parallelism.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1049,10 +1049,10 @@ programming）模型来提高性能，而PyTorch则使用了Python自己的调�
 <div class="bk-sub" id="ch12-3"><div class="section" id="sec-auto-para">
 <span id="id1"></span><h1><span class="section-number">12.3. </span>自动并行<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_computational-performance/auto-parallelism.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_computational-performance/auto-parallelism.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_computational-performance/auto-parallelism.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_computational-performance/auto-parallelism.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_computational-performance/auto-parallelism.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_computational-performance/auto-parallelism.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_computational-performance/auto-parallelism.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_computational-performance/auto-parallelism.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>深度学习框架（例如，MxNet、飞桨和PyTorch）会在后端自动构建计算图。利用计算图，系统可以了解所有依赖关系，并且可以选择性地并行执行多个不相互依赖的任务以提高速度。例如，
-<a class="reference internal" href="async-computation.html#sec-async"><span class="std std-numref">12.2节</span></a>中的
-<a class="reference internal" href="async-computation.html#fig-asyncgraph"><span class="std std-numref">图12.2.2</span></a>独立初始化两个变量。因此，系统可以选择并行执行它们。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/async-computation.html#sec-async"><span class="std std-numref">12.2节</span></a>中的
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/async-computation.html#fig-asyncgraph"><span class="std std-numref">图12.2.2</span></a>独立初始化两个变量。因此，系统可以选择并行执行它们。</p>
 <p>通常情况下单个操作符将使用所有CPU或单个GPU上的所有计算资源。例如，即使在一台机器上有多个CPU处理器，<code class="docutils literal notranslate"><span class="pre">dot</span></code>操作符也将使用所有CPU上的所有核心（和线程）。这样的行为同样适用于单个GPU。因此，并行化对单设备计算机来说并不是很有用，而并行化对于多个设备就很重要了。虽然并行化通常应用在多个GPU之间，但增加本地CPU以后还将提高少许性能。例如，
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id54" title="Hadjis, S., Zhang, C., Mitliagkas, I., Iter, D., &amp; Ré, C. (2016). Omnivore: an optimizer for multi-device deep learning on cpus and gpus. arXiv preprint arXiv:1606.04487.">Hadjis <em>et al.</em>, 2016</a>)</span>则把结合GPU和CPU的训练应用到计算机视觉模型中。借助自动并行化框架的便利性，我们可以依靠几行Python代码实现相同的目标。对自动并行计算的讨论主要集中在使用CPU和GPU的并行计算上，以及计算和通信的并行化内容。</p>
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id54" title="Hadjis, S., Zhang, C., Mitliagkas, I., Iter, D., &amp; Ré, C. (2016). Omnivore: an optimizer for multi-device deep learning on cpus and gpus. arXiv preprint arXiv:1606.04487.">Hadjis <em>et al.</em>, 2016</a>)</span>则把结合GPU和CPU的训练应用到计算机视觉模型中。借助自动并行化框架的便利性，我们可以依靠几行Python代码实现相同的目标。对自动并行计算的讨论主要集中在使用CPU和GPU的并行计算上，以及计算和通信的并行化内容。</p>
 <p>请注意，本节中的实验至少需要两个GPU来运行。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#paddle-1-2" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
 <span class="kn">from</span> <span class="nn">d2l</span> <span class="kn">import</span> <span class="n">mxnet</span> <span class="k">as</span> <span class="n">d2l</span>
@@ -1332,14 +1332,14 @@ Express、存储（通常是固态硬盘或网络存储）和网络带宽，为�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="async-computation.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_computational-performance/async-computation.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>12.2. 异步计算</div>
          </div>
      </a>
-     <a id="button-next" href="hardware.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_computational-performance/hardware.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1361,7 +1361,7 @@ Express、存储（通常是固态硬盘或网络存储）和网络带宽，为�
 </div>
 <p>也可以通过
 <a class="reference internal" href="#fig-latencynumbers"><span class="std std-numref">图12.4.1</span></a>进行简单的了解，图片源自科林·斯科特的<a class="reference external" href="https://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html">互动帖子</a>，在帖子中很好地概述了过去十年的进展。原始的数字是取自于杰夫迪恩的<a class="reference external" href="https://static.googleusercontent.com/media/research.google.com/en//people/jeff/Stanford-DL-Nov-2010.pdf">Stanford讲座</a>。下面的讨论解释了这些数字的一些基本原理，以及它们如何指导我们去设计算法。下面的讨论是非常笼统和粗略的。很显然，它并不能代替一门完整的课程，而只是为了给统计建模者提供足够的信息，让他们做出合适的设计决策。对于计算机体系结构的深入概述，建议读者参考
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id64" title="Hennessy, J. L., &amp; Patterson, D. A. (2011). Computer architecture: a quantitative approach. Elsevier.">Hennessy and Patterson, 2011</a>)</span>或关于该主题的最新课程，例如<a class="reference external" href="http://inst.eecs.berkeley.edu/~cs152/sp19/">Arste
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id64" title="Hennessy, J. L., &amp; Patterson, D. A. (2011). Computer architecture: a quantitative approach. Elsevier.">Hennessy and Patterson, 2011</a>)</span>或关于该主题的最新课程，例如<a class="reference external" href="http://inst.eecs.berkeley.edu/~cs152/sp19/">Arste
 Asanovic</a>。</p>
 <div class="section" id="id3">
 <h2><span class="section-number">12.4.1. </span>计算机</h2>
@@ -1475,7 +1475,7 @@ sharing）。当处理器<span class="math notranslate nohighlight">\(1\)</span>
 <div class="section" id="gpu">
 <h2><span class="section-number">12.4.5. </span>GPU和其他加速卡</h2>
 <p>毫不夸张地说，如果没有GPU，深度学习就不会成功。基于同样的原因，有理由认为GPU制造商的财富由于深度学习而显著增加。这种硬件和算法的协同进化导致了这样一种情况：无论好坏，深度学习都是更可取的统计建模范式。因此，了解GPU和其他加速卡（如TPU
-<span id="id12">(<a class="reference internal" href="../chapter_references/zreferences.html#id80" title="Jouppi, N. P., Young, C., Patil, N., Patterson, D., Agrawal, G., Bajwa, R., … others. (2017). In-datacenter performance analysis of a tensor processing unit. 2017 ACM/IEEE 44th Annual International Symposium on Computer Architecture (ISCA) (pp. 1–12).">Jouppi <em>et al.</em>, 2017</a>)</span>）的具体好处是值得的。</p>
+<span id="id12">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id80" title="Jouppi, N. P., Young, C., Patil, N., Patterson, D., Agrawal, G., Bajwa, R., … others. (2017). In-datacenter performance analysis of a tensor processing unit. 2017 ACM/IEEE 44th Annual International Symposium on Computer Architecture (ISCA) (pp. 1–12).">Jouppi <em>et al.</em>, 2017</a>)</span>）的具体好处是值得的。</p>
 <p>值得注意的是，在实践中经常会有这样一个判别：加速卡是为训练还是推断而优化的。对于后者，我们只需要计算网络中的前向传播。而反向传播不需要存储中间数据。还有，我们可能不需要非常精确的计算（FP16或INT8通常就足够了）。对于前者，即训练过程中需要存储所有的中间结果用来计算梯度。而且，累积梯度也需要更高的精度，以避免数值下溢（或溢出）。这意味着最低要求也是FP16（或FP16与FP32的混合精度）。所有这些都需要更快、更大的内存（HBM2或者GDDR6）和更高的处理能力。例如，NVIDIA优化了<a class="reference external" href="https://devblogs.nvidia.com/nvidia-turing-architecture-in-depth/">Turing</a>
 T4 GPU用于推断和V100 GPU用于训练。</p>
 <p>回想一下如
@@ -1484,25 +1484,25 @@ T4 GPU用于推断和V100 GPU用于训练。</p>
 cores）。第二，如果我们增加更多的核心呢？简而言之，以上就是GPU设计决策中的两种策略。
 <a class="reference internal" href="#fig-turing-processing-block"><span class="std std-numref">图12.4.7</span></a>给出了基本处理块的概述。它包含<span class="math notranslate nohighlight">\(16\)</span>个整数单位和<span class="math notranslate nohighlight">\(16\)</span>个浮点单位。除此之外，两个张量核加速了与深度学习相关的附加操作的狭窄的子集。每个流式多处理器都由这样的四个块组成。</p>
 <div class="figure align-default" id="id25">
-<span id="fig-turing-processing-block"></span><a class="reference internal image-reference" href="../_images/turing-processing-block.png"><img alt="../_images/turing-processing-block.png" src="https://zh.d2l.ai/_images/turing-processing-block.png" style="width: 150px;" /></a>
+<span id="fig-turing-processing-block"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/turing-processing-block.png"><img alt="../_images/turing-processing-block.png" src="https://zh.d2l.ai/_images/turing-processing-block.png" style="width: 150px;" /></a>
 <p class="caption"><span class="caption-number">图12.4.7 </span><span class="caption-text">NVIDIA Turing处理块（图片由英伟达提供）</span></p>
 </div>
 <p>接下来，将<span class="math notranslate nohighlight">\(12\)</span>个流式多处理器分组为图形处理集群，这些集群构成了高端TU102处理器。充足的内存通道和二级缓存完善了配置。
 <a class="reference internal" href="#fig-turing"><span class="std std-numref">图12.4.8</span></a>有相关的细节。设计这种设备的原因之一是可以根据需要独立地添加或删除模块，从而满足设计更紧凑的芯片和处理良品率问题（故障模块可能无法激活）的需要。幸运的是，在CUDA和框架代码层之下，这类设备的编程对深度学习的临时研究员隐藏得很好。特别是，只要有可用的资源GPU上就可以同时执行多个程序。尽管如此，了解设备的局限性是值得的，以避免对应的设备内存的型号不合适。</p>
 <div class="figure align-default" id="id26">
-<span id="fig-turing"></span><a class="reference internal image-reference" href="../_images/turing.png"><img alt="../_images/turing.png" src="https://zh.d2l.ai/_images/turing.png" style="width: 350px;" /></a>
+<span id="fig-turing"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/turing.png"><img alt="../_images/turing.png" src="https://zh.d2l.ai/_images/turing.png" style="width: 350px;" /></a>
 <p class="caption"><span class="caption-number">图12.4.8 </span><span class="caption-text">NVIDIA Turing架构（图片由英伟达提供）</span></p>
 </div>
 <p>最后值得一提的是<em>张量核</em>（tensor
 core）。它们是最近增加更多优化电路趋势的一个例子，这些优化电路对深度学习特别有效。例如，TPU添加了用于快速矩阵乘法的脉动阵列
-<span id="id13">(<a class="reference internal" href="../chapter_references/zreferences.html#id89" title="Kung, S. Y. (1988). Vlsi array processors. Englewood Cliffs, NJ, Prentice Hall, 1988, 685 p. Research supported by the Semiconductor Research Corp., SDIO, NSF, and US Navy.">Kung, 1988</a>)</span>，这种设计是为了支持非常小数量（第一代TPU支持数量为1）的大型操作。而张量核是另一个极端。它们针对<span class="math notranslate nohighlight">\(4 \times 4\)</span>和<span class="math notranslate nohighlight">\(16 \times 16\)</span>矩阵之间的小型运算进行了优化，具体取决于它们的数值精度。
+<span id="id13">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id89" title="Kung, S. Y. (1988). Vlsi array processors. Englewood Cliffs, NJ, Prentice Hall, 1988, 685 p. Research supported by the Semiconductor Research Corp., SDIO, NSF, and US Navy.">Kung, 1988</a>)</span>，这种设计是为了支持非常小数量（第一代TPU支持数量为1）的大型操作。而张量核是另一个极端。它们针对<span class="math notranslate nohighlight">\(4 \times 4\)</span>和<span class="math notranslate nohighlight">\(16 \times 16\)</span>矩阵之间的小型运算进行了优化，具体取决于它们的数值精度。
 <a class="reference internal" href="#fig-tensorcore"><span class="std std-numref">图12.4.9</span></a>给出了优化的概述。</p>
 <div class="figure align-default" id="id27">
-<span id="fig-tensorcore"></span><a class="reference internal image-reference" href="../_images/tensorcore.jpg"><img alt="../_images/tensorcore.jpg" src="https://zh.d2l.ai/_images/tensorcore.jpg" style="width: 400px;" /></a>
+<span id="fig-tensorcore"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/tensorcore.jpg"><img alt="../_images/tensorcore.jpg" src="https://zh.d2l.ai/_images/tensorcore.jpg" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">图12.4.9 </span><span class="caption-text">NVIDIA Turing架构中的张量核心（图片由英伟达提供）</span></p>
 </div>
 <p>显然，我们最终会在优化计算时做出某些妥协。其中之一是GPU不太擅长处理稀疏数据和中断。尽管有一些明显的例外，如<a class="reference external" href="https://github.com/gunrock/gunrock">Gunrock</a>
-<span id="id14">(<a class="reference internal" href="../chapter_references/zreferences.html#id175" title="Wang, Y., Davidson, A., Pan, Y., Wu, Y., Riffel, A., &amp; Owens, J. D. (2016). Gunrock: a high-performance graph processing library on the gpu. ACM SIGPLAN Notices (p. 11).">Wang <em>et al.</em>, 2016</a>)</span>，但GPU擅长的高带宽突发读取操作并不适合稀疏的矩阵和向量的访问模式。访问稀疏数据和处理中断这两个目标是一个积极研究的领域。例如：<a class="reference external" href="http://dgl.ai">DGL</a>，一个专为图深度学习而设计的库。</p>
+<span id="id14">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id175" title="Wang, Y., Davidson, A., Pan, Y., Wu, Y., Riffel, A., &amp; Owens, J. D. (2016). Gunrock: a high-performance graph processing library on the gpu. ACM SIGPLAN Notices (p. 11).">Wang <em>et al.</em>, 2016</a>)</span>，但GPU擅长的高带宽突发读取操作并不适合稀疏的矩阵和向量的访问模式。访问稀疏数据和处理中断这两个目标是一个积极研究的领域。例如：<a class="reference external" href="http://dgl.ai">DGL</a>，一个专为图深度学习而设计的库。</p>
 </div>
 <div class="section" id="id15">
 <h2><span class="section-number">12.4.6. </span>网络和总线</h2>
@@ -1820,14 +1820,14 @@ Tbit。在一个2.5英寸的硬盘上，多少信息能够存储一个环中？�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="auto-parallelism.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_computational-performance/auto-parallelism.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>12.3. 自动并行</div>
          </div>
      </a>
-     <a id="button-next" href="multiple-gpus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1843,21 +1843,21 @@ Tbit。在一个2.5英寸的硬盘上，多少信息能够存储一个环中？�
 <div class="bk-sub" id="ch12-5"><div class="section" id="gpu">
 <span id="sec-multi-gpu"></span><h1><span class="section-number">12.5. </span>多GPU训练<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_computational-performance/multiple-gpus.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_computational-performance/multiple-gpus.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_computational-performance/multiple-gpus.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_computational-performance/multiple-gpus.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_computational-performance/multiple-gpus.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_computational-performance/multiple-gpus.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_computational-performance/multiple-gpus.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_computational-performance/multiple-gpus.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>到目前为止，我们讨论了如何在CPU和GPU上高效地训练模型，同时在
-<a class="reference internal" href="auto-parallelism.html#sec-auto-para"><span class="std std-numref">12.3节</span></a>中展示了深度学习框架如何在CPU和GPU之间自动地并行化计算和通信，还在
-<a class="reference internal" href="../chapter_deep-learning-computation/use-gpu.html#sec-use-gpu"><span class="std std-numref">5.6节</span></a>中展示了如何使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>命令列出计算机上所有可用的GPU。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/auto-parallelism.html#sec-auto-para"><span class="std std-numref">12.3节</span></a>中展示了深度学习框架如何在CPU和GPU之间自动地并行化计算和通信，还在
+<a class="reference internal" href="https://zh.d2l.ai/chapter_deep-learning-computation/use-gpu.html#sec-use-gpu"><span class="std std-numref">5.6节</span></a>中展示了如何使用<code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>命令列出计算机上所有可用的GPU。
 但是我们没有讨论如何真正实现深度学习训练的并行化。
 是否一种方法，以某种方式分割数据到多个设备上，并使其能够正常工作呢？
 本节将详细介绍如何从零开始并行地训练网络，
 这里需要运用小批量随机梯度下降算法（详见
-<a class="reference internal" href="../chapter_optimization/minibatch-sgd.html#sec-minibatch-sgd"><span class="std std-numref">11.5节</span></a>）。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_optimization/minibatch-sgd.html#sec-minibatch-sgd"><span class="std std-numref">11.5节</span></a>）。
 后面我还讲介绍如何使用高级API并行训练网络（请参阅
-<a class="reference internal" href="multiple-gpus-concise.html#sec-multi-gpu-concise"><span class="std std-numref">12.6节</span></a>）。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus-concise.html#sec-multi-gpu-concise"><span class="std std-numref">12.6节</span></a>）。</p>
 <div class="section" id="id1">
 <h2><span class="section-number">12.5.1. </span>问题拆分</h2>
 <p>我们从一个简单的计算机视觉问题和一个稍稍过时的网络开始。
 这个网络有多个卷积层和汇聚层，最后可能有几个全连接的层，看起来非常类似于LeNet
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id90" title="LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., &amp; others. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278–2324.">LeCun <em>et al.</em>, 1998</a>)</span>或AlexNet
-<span id="id3">(<a class="reference internal" href="../chapter_references/zreferences.html#id88" title="Krizhevsky, A., Sutskever, I., &amp; Hinton, G. E. (2012). Imagenet classification with deep convolutional neural networks. Advances in neural information processing systems (pp. 1097–1105).">Krizhevsky <em>et al.</em>, 2012</a>)</span>。
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id90" title="LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., &amp; others. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278–2324.">LeCun <em>et al.</em>, 1998</a>)</span>或AlexNet
+<span id="id3">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id88" title="Krizhevsky, A., Sutskever, I., &amp; Hinton, G. E. (2012). Imagenet classification with deep convolutional neural networks. Advances in neural information processing systems (pp. 1097–1105).">Krizhevsky <em>et al.</em>, 2012</a>)</span>。
 假设我们有多个GPU（如果是桌面服务器则有<span class="math notranslate nohighlight">\(2\)</span>个，AWS
 g4dn.12xlarge上有<span class="math notranslate nohighlight">\(4\)</span>个，p3.16xlarge上有<span class="math notranslate nohighlight">\(8\)</span>个，p2.16xlarge上有<span class="math notranslate nohighlight">\(16\)</span>个）。
 我们希望以一种方式对训练进行拆分，为实现良好的加速比，还能同时受益于简单且可重复的设计选择。
@@ -1871,7 +1871,7 @@ footprint）可以得到很好的控制，虽然它只是整个网络显存的�
 <p>然而，GPU的接口之间需要的密集同步可能是很难办的，特别是层之间计算的工作负载不能正确匹配的时候，
 还有层之间的接口需要大量的数据传输的时候（例如：激活值和梯度，数据量可能会超出GPU总线的带宽）。
 此外，计算密集型操作的顺序对拆分来说也是非常重要的，这方面的最好研究可参见
-<span id="id4">(<a class="reference internal" href="../chapter_references/zreferences.html#id111" title="Mirhoseini, A., Pham, H., Le, Q. V., Steiner, B., Larsen, R., Zhou, Y., … Dean, J. (2017). Device placement optimization with reinforcement learning. Proceedings of the 34th International Conference on Machine Learning-Volume 70 (pp. 2430–2439).">Mirhoseini <em>et al.</em>, 2017</a>)</span>，其本质仍然是一个困难的问题，目前还不清楚研究是否能在特定问题上实现良好的线性缩放。
+<span id="id4">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id111" title="Mirhoseini, A., Pham, H., Le, Q. V., Steiner, B., Larsen, R., Zhou, Y., … Dean, J. (2017). Device placement optimization with reinforcement learning. Proceedings of the 34th International Conference on Machine Learning-Volume 70 (pp. 2430–2439).">Mirhoseini <em>et al.</em>, 2017</a>)</span>，其本质仍然是一个困难的问题，目前还不清楚研究是否能在特定问题上实现良好的线性缩放。
 综上所述，除非存框架或操作系统本身支持将多个GPU连接在一起，否则不建议这种方法。</p>
 <p>第二种方法，拆分层内的工作。
 例如，将问题分散到<span class="math notranslate nohighlight">\(4\)</span>个GPU，每个GPU生成<span class="math notranslate nohighlight">\(16\)</span>个通道的数据，而不是在单个GPU上计算<span class="math notranslate nohighlight">\(64\)</span>个通道。
@@ -1899,7 +1899,7 @@ operation），因为每一层都依赖于所有其他层的结果。
 <p><a class="reference internal" href="#fig-splitting"><span class="std std-numref">图12.5.2</span></a>中比较了多个GPU上不同的并行方式。
 总体而言，只要GPU的显存足够大，数据并行是最方便的。
 有关分布式训练分区的详细描述，请参见
-<span id="id5">(<a class="reference internal" href="../chapter_references/zreferences.html#id92" title="Li, M., Andersen, D. G., Park, J. W., Smola, A. J., Ahmed, A., Josifovski, V., … Su, B.-Y. (2014). Scaling distributed machine learning with the parameter server. 11th $\$USENIX$\$ Symposium on Operating Systems Design and Implementation ($\$OSDI$\$ 14) (pp. 583–598).">Li <em>et al.</em>, 2014</a>)</span>。
+<span id="id5">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id92" title="Li, M., Andersen, D. G., Park, J. W., Smola, A. J., Ahmed, A., Josifovski, V., … Su, B.-Y. (2014). Scaling distributed machine learning with the parameter server. 11th $\$USENIX$\$ Symposium on Operating Systems Design and Implementation ($\$OSDI$\$ 14) (pp. 583–598).">Li <em>et al.</em>, 2014</a>)</span>。
 在深度学习的早期，GPU的显存曾经是一个棘手的问题，然而如今除了非常特殊的情况，这个问题已经解决。
 下面我们将重点讨论数据并行性。</p>
 </div>
@@ -1923,7 +1923,7 @@ operation），因为每一层都依赖于所有其他层的结果。
 <p>在实践中请注意，当在<span class="math notranslate nohighlight">\(k\)</span>个GPU上训练时，需要扩大小批量的大小为<span class="math notranslate nohighlight">\(k\)</span>的倍数，这样每个GPU都有相同的工作量，就像只在单个GPU上训练一样。
 因此，在16-GPU服务器上可以显著地增加小批量数据量的大小，同时可能还需要相应地提高学习率。
 还请注意，
-<a class="reference internal" href="../chapter_convolutional-modern/batch-norm.html#sec-batch-norm"><span class="std std-numref">7.5节</span></a>中的批量规范化也需要调整，例如，为每个GPU保留单独的批量规范化参数。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-modern/batch-norm.html#sec-batch-norm"><span class="std std-numref">7.5节</span></a>中的批量规范化也需要调整，例如，为每个GPU保留单独的批量规范化参数。</p>
 <p>下面我们将使用一个简单网络来演示多GPU训练。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#paddle-1-2" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">autograd</span><span class="p">,</span> <span class="n">gluon</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
@@ -1952,7 +1952,7 @@ operation），因为每一层都依赖于所有其他层的结果。
 </div></div></div>
 <div class="section" id="id7">
 <h2><span class="section-number">12.5.3. </span>简单网络</h2>
-<p>我们使用 <a class="reference internal" href="../chapter_convolutional-neural-networks/lenet.html#sec-lenet"><span class="std std-numref">6.6节</span></a>中介绍的（稍加修改的）LeNet，
+<p>我们使用 <a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/lenet.html#sec-lenet"><span class="std std-numref">6.6节</span></a>中介绍的（稍加修改的）LeNet，
 从零开始定义它，从而详细说明参数交换和同步。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-3-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-3-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#paddle-3-2" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-3-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 初始化模型参数</span>
 <span class="n">scale</span> <span class="o">=</span> <span class="mf">0.01</span>
@@ -2517,14 +2517,14 @@ allreduce之后：
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="hardware.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_computational-performance/hardware.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>12.4. 硬件</div>
          </div>
      </a>
-     <a id="button-next" href="multiple-gpus-concise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus-concise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -2540,7 +2540,7 @@ allreduce之后：
 <div class="bk-sub" id="ch12-6"><div class="section" id="gpu">
 <span id="sec-multi-gpu-concise"></span><h1><span class="section-number">12.6. </span>多GPU的简洁实现<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_computational-performance/multiple-gpus-concise.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_computational-performance/multiple-gpus-concise.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_computational-performance/multiple-gpus-concise.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_computational-performance/multiple-gpus-concise.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_computational-performance/multiple-gpus-concise.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_computational-performance/multiple-gpus-concise.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_computational-performance/multiple-gpus-concise.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_computational-performance/multiple-gpus-concise.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>每个新模型的并行计算都从零开始实现是无趣的。此外，优化同步工具以获得高性能也是有好处的。下面我们将展示如何使用深度学习框架的高级API来实现这一点。数学和算法与
-<a class="reference internal" href="multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>中的相同。本节的代码至少需要两个GPU来运行。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>中的相同。本节的代码至少需要两个GPU来运行。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#paddle-1-2" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">autograd</span><span class="p">,</span> <span class="n">gluon</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
 <span class="kn">from</span> <span class="nn">mxnet.gluon</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">from</span> <span class="nn">d2l</span> <span class="kn">import</span> <span class="n">mxnet</span> <span class="k">as</span> <span class="n">d2l</span>
@@ -2564,9 +2564,9 @@ allreduce之后：
 </div></div><div class="section" id="id1">
 <h2><span class="section-number">12.6.1. </span>简单网络</h2>
 <p>让我们使用一个比
-<a class="reference internal" href="multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>的LeNet更有意义的网络，它依然能够容易地和快速地训练。我们选择的是
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id60" title="He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep residual learning for image recognition. Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770–778).">He <em>et al.</em>, 2016</a>)</span>中的ResNet-18。因为输入的图像很小，所以稍微修改了一下。与
-<a class="reference internal" href="../chapter_convolutional-modern/resnet.html#sec-resnet"><span class="std std-numref">7.6节</span></a>的区别在于，我们在开始时使用了更小的卷积核、步长和填充，而且删除了最大汇聚层。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>的LeNet更有意义的网络，它依然能够容易地和快速地训练。我们选择的是
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id60" title="He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep residual learning for image recognition. Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770–778).">He <em>et al.</em>, 2016</a>)</span>中的ResNet-18。因为输入的图像很小，所以稍微修改了一下。与
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-modern/resnet.html#sec-resnet"><span class="std std-numref">7.6节</span></a>的区别在于，我们在开始时使用了更小的卷积核、步长和填充，而且删除了最大汇聚层。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-3-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-3-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#paddle-3-2" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-3-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@save</span>
 <span class="k">def</span> <span class="nf">resnet18</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;稍加修改的ResNet-18模型&quot;&quot;&quot;</span>
@@ -2656,7 +2656,7 @@ allreduce之后：
 <div class="section" id="id3">
 <h2><span class="section-number">12.6.2. </span>网络初始化</h2>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar text"><a href="#mxnet-5-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-5-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#paddle-5-2" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-5-0"><p><code class="docutils literal notranslate"><span class="pre">initialize</span></code>函数允许我们在所选设备上初始化参数。请参阅
-<a class="reference internal" href="../chapter_multilayer-perceptrons/numerical-stability-and-init.html#sec-numerical-stability"><span class="std std-numref">4.8节</span></a>复习初始化方法。这个函数在多个设备上初始化网络时特别方便。下面在实践中试一试它的运作方式。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html#sec-numerical-stability"><span class="std std-numref">4.8节</span></a>复习初始化方法。这个函数在多个设备上初始化网络时特别方便。下面在实践中试一试它的运作方式。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">resnet18</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="c1"># 获取GPU列表</span>
 <span class="n">devices</span> <span class="o">=</span> <span class="n">d2l</span><span class="o">.</span><span class="n">try_all_gpus</span><span class="p">()</span>
@@ -2670,7 +2670,7 @@ allreduce之后：
 </pre></div>
 </div>
 <p>使用
-<a class="reference internal" href="multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>中引入的<code class="docutils literal notranslate"><span class="pre">split_and_load</span></code>函数可以切分一个小批量数据，并将切分后的分块数据复制到<code class="docutils literal notranslate"><span class="pre">devices</span></code>变量提供的设备列表中。网络实例自动使用适当的GPU来计算前向传播的值。我们将在下面生成<span class="math notranslate nohighlight">\(4\)</span>个观测值，并在GPU上将它们拆分。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>中引入的<code class="docutils literal notranslate"><span class="pre">split_and_load</span></code>函数可以切分一个小批量数据，并将切分后的分块数据复制到<code class="docutils literal notranslate"><span class="pre">devices</span></code>变量提供的设备列表中。网络实例自动使用适当的GPU来计算前向传播的值。我们将在下面生成<span class="math notranslate nohighlight">\(4\)</span>个观测值，并在GPU上将它们拆分。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
 <span class="n">x_shards</span> <span class="o">=</span> <span class="n">gluon</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">split_and_load</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">devices</span><span class="p">)</span>
 <span class="n">net</span><span class="p">(</span><span class="n">x_shards</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">net</span><span class="p">(</span><span class="n">x_shards</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -2719,7 +2719,7 @@ allreduce之后：
 </div>
 <p>接下来，让我们使用在多个设备上并行工作的代码来替换前面的评估模型的代码。
 这里主要是
-<a class="reference internal" href="../chapter_convolutional-neural-networks/lenet.html#sec-lenet"><span class="std std-numref">6.6节</span></a>的<code class="docutils literal notranslate"><span class="pre">evaluate_accuracy_gpu</span></code>函数的替代，代码的主要区别在于在调用网络之前拆分了一个小批量，其他在本质上是一样的。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-neural-networks/lenet.html#sec-lenet"><span class="std std-numref">6.6节</span></a>的<code class="docutils literal notranslate"><span class="pre">evaluate_accuracy_gpu</span></code>函数的替代，代码的主要区别在于在调用网络之前拆分了一个小批量，其他在本质上是一样的。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@save</span>
 <span class="k">def</span> <span class="nf">evaluate_accuracy_gpus</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">data_iter</span><span class="p">,</span> <span class="n">split_f</span><span class="o">=</span><span class="n">d2l</span><span class="o">.</span><span class="n">split_batch</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;使用多个GPU计算数据集上模型的精度&quot;&quot;&quot;</span>
@@ -2738,7 +2738,7 @@ allreduce之后：
 </pre></div>
 </div>
 </div><div class="mdl-tabs__panel " id="pytorch-5-1"><p>我们将在训练回路中初始化网络。请参见
-<a class="reference internal" href="../chapter_multilayer-perceptrons/numerical-stability-and-init.html#sec-numerical-stability"><span class="std std-numref">4.8节</span></a>复习初始化方法。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html#sec-numerical-stability"><span class="std std-numref">4.8节</span></a>复习初始化方法。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">resnet18</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="c1"># 获取GPU列表</span>
 <span class="n">devices</span> <span class="o">=</span> <span class="n">d2l</span><span class="o">.</span><span class="n">try_all_gpus</span><span class="p">()</span>
@@ -2876,7 +2876,7 @@ allreduce之后：
 <div class="figure align-default">
 <img alt="../_images/output_multiple-gpus-concise_2e111f_65_1.svg" src="https://zh.d2l.ai/_images/output_multiple-gpus-concise_2e111f_65_1.svg" /></div>
 </div></div><p>接下来我们使用2个GPU进行训练。与
-<a class="reference internal" href="multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>中评估的LeNet相比，ResNet-18的模型要复杂得多。这就是显示并行化优势的地方，计算所需时间明显大于同步参数需要的时间。因为并行化开销的相关性较小，因此这种操作提高了模型的可伸缩性。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>中评估的LeNet相比，ResNet-18的模型要复杂得多。这就是显示并行化优势的地方，计算所需时间明显大于同步参数需要的时间。因为并行化开销的相关性较小，因此这种操作提高了模型的可伸缩性。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-11-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-11-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a></div><div class="mdl-tabs__panel is-active" id="mxnet-11-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="p">(</span><span class="n">num_gpus</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2962,14 +2962,14 @@ p2.16xlarge实例上）尝试此操作，会发生什么？</p></li>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="multiple-gpus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>12.5. 多GPU训练</div>
          </div>
      </a>
-     <a id="button-next" href="parameterserver.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_computational-performance/parameterserver.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -2986,14 +2986,14 @@ p2.16xlarge实例上）尝试此操作，会发生什么？</p></li>
 <span id="id1"></span><h1><span class="section-number">12.7. </span>参数服务器<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_computational-performance/parameterserver.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_computational-performance/parameterserver.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_computational-performance/parameterserver.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_computational-performance/parameterserver.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_computational-performance/parameterserver.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_computational-performance/parameterserver.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_computational-performance/parameterserver.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_computational-performance/parameterserver.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>当我们从一个GPU迁移到多个GPU时，以及再迁移到包含多个GPU的多个服务器时（可能所有服务器的分布跨越了多个机架和多个网络交换机），分布式并行训练算法也需要变得更加复杂。通过细节可以知道，一方面是不同的互连方式的带宽存在极大的区别（例如，NVLink可以通过设置实现跨<span class="math notranslate nohighlight">\(6\)</span>条链路的高达100GB/s的带宽，16通道的PCIe4.0提供32GB/s的带宽，而即使是高速100GbE以太网也只能提供大约10GB/s的带宽）；另一方面是期望开发者既能完成统计学习建模还精通系统和网络也是不切实际的。</p>
 <p>参数服务器的核心思想首先是由
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id154" title="Smola, A., &amp; Narayanamurthy, S. (2010). An architecture for parallel topic models. Proceedings of the VLDB Endowment, 3(1-2), 703–710.">Smola and Narayanamurthy, 2010</a>)</span>在分布式隐变量模型的背景下引入的。然后，在
-<span id="id3">(<a class="reference internal" href="../chapter_references/zreferences.html#id3" title="Ahmed, A., Aly, M., Gonzalez, J., Narayanamurthy, S., &amp; Smola, A. J. (2012). Scalable inference in latent variable models. Proceedings of the fifth ACM international conference on Web search and data mining (pp. 123–132).">Ahmed <em>et al.</em>, 2012</a>)</span>中描述了Push和Pull的语义，又在
-<span id="id4">(<a class="reference internal" href="../chapter_references/zreferences.html#id92" title="Li, M., Andersen, D. G., Park, J. W., Smola, A. J., Ahmed, A., Josifovski, V., … Su, B.-Y. (2014). Scaling distributed machine learning with the parameter server. 11th $\$USENIX$\$ Symposium on Operating Systems Design and Implementation ($\$OSDI$\$ 14) (pp. 583–598).">Li <em>et al.</em>, 2014</a>)</span>中描述了系统和开源库。下面，我们将介绍用于提高计算效率的组件。</p>
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id154" title="Smola, A., &amp; Narayanamurthy, S. (2010). An architecture for parallel topic models. Proceedings of the VLDB Endowment, 3(1-2), 703–710.">Smola and Narayanamurthy, 2010</a>)</span>在分布式隐变量模型的背景下引入的。然后，在
+<span id="id3">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id3" title="Ahmed, A., Aly, M., Gonzalez, J., Narayanamurthy, S., &amp; Smola, A. J. (2012). Scalable inference in latent variable models. Proceedings of the fifth ACM international conference on Web search and data mining (pp. 123–132).">Ahmed <em>et al.</em>, 2012</a>)</span>中描述了Push和Pull的语义，又在
+<span id="id4">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id92" title="Li, M., Andersen, D. G., Park, J. W., Smola, A. J., Ahmed, A., Josifovski, V., … Su, B.-Y. (2014). Scaling distributed machine learning with the parameter server. 11th $\$USENIX$\$ Symposium on Operating Systems Design and Implementation ($\$OSDI$\$ 14) (pp. 583–598).">Li <em>et al.</em>, 2014</a>)</span>中描述了系统和开源库。下面，我们将介绍用于提高计算效率的组件。</p>
 <div class="section" id="id5">
 <h2><span class="section-number">12.7.1. </span>数据并行训练</h2>
 <p>让我们回顾一下在分布式架构中数据并行的训练方法，因为在实践中它的实现相对简单，因此本节将排除其他内容只对其进行介绍。由于当今的GPU拥有大量的显存，因此在实际场景中（不包括图深度学习）只有数据并行这种并行训练策略值得推荐。图
 <a class="reference internal" href="#fig-parameterserver"><span class="std std-numref">图12.7.1</span></a>描述了在
-<a class="reference internal" href="multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>中实现的数据并行的变体。其中的关键是梯度的聚合需要在单个GPU（GPU
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus.html#sec-multi-gpu"><span class="std std-numref">12.5节</span></a>中实现的数据并行的变体。其中的关键是梯度的聚合需要在单个GPU（GPU
 0）上完成，然后再将更新后的参数广播给所有GPU。</p>
 <div class="figure align-default" id="id14">
 <span id="fig-parameterserver"></span><img alt="../_images/ps.svg" src="https://zh.d2l.ai/_images/ps.svg" /><p class="caption"><span class="caption-number">图12.7.1 </span><span class="caption-text">左图是单GPU训练；右图是多GPU训练的一个变体：（1）计算损失和梯度，（2）所有梯度聚合在一个GPU上，（3）发生参数更新，并将参数重新广播给所有GPU</span></p>
@@ -3001,8 +3001,8 @@ p2.16xlarge实例上）尝试此操作，会发生什么？</p></li>
 <p>回顾来看，选择GPU
 0进行聚合似乎是个很随便的决定，当然也可以选择CPU上聚合，事实上只要优化算法支持，在实际操作中甚至可以在某个GPU上聚合其中一些参数，而在另一个GPU上聚合另一些参数。例如，如果有四个与参数向量相关的梯度<span class="math notranslate nohighlight">\(\mathbf{g}_1, \ldots, \mathbf{g}_4\)</span>，还可以一个GPU对一个<span class="math notranslate nohighlight">\(\mathbf{g}_i (i = 1, \ldots, 4\)</span>）地进行梯度聚合。</p>
 <p>这样的推断似乎是轻率和武断的，毕竟数学应该是逻辑自洽的。但是，我们处理的是如
-<a class="reference internal" href="hardware.html#sec-hardware"><span class="std std-numref">12.4节</span></a>中所述的真实的物理硬件，其中不同的总线具有不同的带宽。考虑一个如
-<a class="reference internal" href="hardware.html#sec-hardware"><span class="std std-numref">12.4节</span></a>中所述的真实的<span class="math notranslate nohighlight">\(4\)</span>路GPU服务器。如果它的连接是特别完整的，那么可能拥有一个100GbE的网卡。更有代表性的数字是1-10GbE范围内，其有效带宽为100MB/s到1GB/s。因为CPU的PCIe通道太少（例如，消费级的Intel
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/hardware.html#sec-hardware"><span class="std std-numref">12.4节</span></a>中所述的真实的物理硬件，其中不同的总线具有不同的带宽。考虑一个如
+<a class="reference internal" href="https://zh.d2l.ai/chapter_computational-performance/hardware.html#sec-hardware"><span class="std std-numref">12.4节</span></a>中所述的真实的<span class="math notranslate nohighlight">\(4\)</span>路GPU服务器。如果它的连接是特别完整的，那么可能拥有一个100GbE的网卡。更有代表性的数字是1-10GbE范围内，其有效带宽为100MB/s到1GB/s。因为CPU的PCIe通道太少（例如，消费级的Intel
 CPU有<span class="math notranslate nohighlight">\(24\)</span>个通道），所以无法直接与所有的GPU相连接，因此需要<a class="reference external" href="https://www.broadcom.com/products/pcie-switches-bridges/pcie-switches">multiplexer</a>。CPU在16x
 Gen3链路上的带宽为16GB/s，这也是每个GPU连接到交换机的速度，这意味着GPU设备之间的通信更有效。</p>
 <div class="figure align-default" id="id15">
@@ -3014,7 +3014,7 @@ Gen3链路上的带宽为16GB/s，这也是每个GPU连接到交换机的速度�
 <span id="fig-ps-distributed"></span><img alt="../_images/ps-distributed.svg" src="https://zh.d2l.ai/_images/ps-distributed.svg" /><p class="caption"><span class="caption-number">图12.7.3 </span><span class="caption-text">参数同步策略</span></p>
 </div>
 <p>请注意，我们还可以使用另一个工具来改善性能：在深度网络中，从顶部到底部计算所有梯度需要一些时间，因此即使还在忙着为某些参数计算梯度时，就可以开始为准备好的参数同步梯度了。想了解详细信息可以参见
-<span id="id6">(<a class="reference internal" href="../chapter_references/zreferences.html#id149" title="Sergeev, A., &amp; Del Balso, M. (2018). Horovod: fast and easy distributed deep learning in tensorflow. arXiv preprint arXiv:1802.05799.">Sergeev and Del Balso, 2018</a>)</span>，想知道如何操作可参考<a class="reference external" href="https://github.com/horovod/horovod">Horovod</a>。</p>
+<span id="id6">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id149" title="Sergeev, A., &amp; Del Balso, M. (2018). Horovod: fast and easy distributed deep learning in tensorflow. arXiv preprint arXiv:1802.05799.">Sergeev and Del Balso, 2018</a>)</span>，想知道如何操作可参考<a class="reference external" href="https://github.com/horovod/horovod">Horovod</a>。</p>
 </div>
 <div class="section" id="ring-synchronization">
 <h2><span class="section-number">12.7.2. </span>环同步（Ring Synchronization）</h2>
@@ -3024,7 +3024,7 @@ p3.16xlarge和NVIDIA DGX-2实例中的连接都使用了
 <div class="figure align-default" id="id17">
 <span id="fig-nvlink"></span><img alt="../_images/nvlink.svg" src="https://zh.d2l.ai/_images/nvlink.svg" /><p class="caption"><span class="caption-number">图12.7.4 </span><span class="caption-text">在8台V100 GPU服务器上连接NVLink（图片由英伟达提供）</span></p>
 </div>
-<p><span id="id7">(<a class="reference internal" href="../chapter_references/zreferences.html#id176" title="Wang, L., Li, M., Liberty, E., &amp; Smola, A. J. (2018). Optimal message scheduling for aggregation. NETWORKS, 2(3), 2–3.">Wang <em>et al.</em>, 2018</a>)</span>的研究结果表明最优的同步策略是将网络分解成两个环，并基于两个环直接同步数据。
+<p><span id="id7">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id176" title="Wang, L., Li, M., Liberty, E., &amp; Smola, A. J. (2018). Optimal message scheduling for aggregation. NETWORKS, 2(3), 2–3.">Wang <em>et al.</em>, 2018</a>)</span>的研究结果表明最优的同步策略是将网络分解成两个环，并基于两个环直接同步数据。
 <a class="reference internal" href="#fig-nvlink-twoloop"><span class="std std-numref">图12.7.5</span></a>描述了网络可以分解为一个具有双NVLink带宽的环（1-2-3-4-5-6-7-8-1）和一个具有常规带宽的环（1-4-6-3-5-8-2-7-1）。在这种情况下，设计一个高效的同步协议是非常重要的。</p>
 <div class="figure align-default" id="id18">
 <span id="fig-nvlink-twoloop"></span><img alt="../_images/nvlink-twoloop.svg" src="https://zh.d2l.ai/_images/nvlink-twoloop.svg" /><p class="caption"><span class="caption-number">图12.7.5 </span><span class="caption-text">将NVLink网络分解为两个环。</span></p>
@@ -3056,7 +3056,7 @@ GPU同步160MB，我们得到的结果大约是<span class="math notranslate noh
 </div>
 <p>以上这些操作似乎都相当简单，而且事实上它们可以在一台机器内高效地执行，但是当我们考虑多台机器时，就会发现中央的参数服务器成为了瓶颈。毕竟，每个服务器的带宽是有限的，因此对<span class="math notranslate nohighlight">\(m\)</span>个工作节点来说，将所有梯度发送到服务器所需的时间是<span class="math notranslate nohighlight">\(\mathcal{O}(m)\)</span>。我们也可以通过将参数服务器数量增加到<span class="math notranslate nohighlight">\(n\)</span>来突破这一障碍。此时，每个服务器只需要存储<span class="math notranslate nohighlight">\(\mathcal{O}(1/n)\)</span>个参数，因此更新和优化的总时间变为<span class="math notranslate nohighlight">\(\mathcal{O}(m/n)\)</span>。这两个数字的匹配会产生稳定的伸缩性，而不用在乎我们需要处理多少工作节点。在实际应用中，我们使用同一台机器既作为工作节点还作为服务器。设计说明请参考
 <a class="reference internal" href="#fig-ps-multips"><span class="std std-numref">图12.7.8</span></a>（技术细节请参考
-<span id="id9">(<a class="reference internal" href="../chapter_references/zreferences.html#id92" title="Li, M., Andersen, D. G., Park, J. W., Smola, A. J., Ahmed, A., Josifovski, V., … Su, B.-Y. (2014). Scaling distributed machine learning with the parameter server. 11th $\$USENIX$\$ Symposium on Operating Systems Design and Implementation ($\$OSDI$\$ 14) (pp. 583–598).">Li <em>et al.</em>, 2014</a>)</span>）。特别是，确保多台机器只在没有不合理延迟的情况下工作是相当困难的。</p>
+<span id="id9">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id92" title="Li, M., Andersen, D. G., Park, J. W., Smola, A. J., Ahmed, A., Josifovski, V., … Su, B.-Y. (2014). Scaling distributed machine learning with the parameter server. 11th $\$USENIX$\$ Symposium on Operating Systems Design and Implementation ($\$OSDI$\$ 14) (pp. 583–598).">Li <em>et al.</em>, 2014</a>)</span>）。特别是，确保多台机器只在没有不合理延迟的情况下工作是相当困难的。</p>
 <div class="figure align-default" id="id21">
 <span id="fig-ps-multips"></span><img alt="../_images/ps-multips.svg" src="https://zh.d2l.ai/_images/ps-multips.svg" /><p class="caption"><span class="caption-number">图12.7.8 </span><span class="caption-text">上图：单参数服务器是一个瓶颈，因为它的带宽是有限的；下图：多参数服务器使用聚合带宽存储部分参数</span></p>
 </div>
@@ -3071,7 +3071,7 @@ store）的抽象。</p>
 <p>其中<span class="math notranslate nohighlight">\(\mathbf{g}_{ijk}\)</span>是在工作节点<span class="math notranslate nohighlight">\(k\)</span>的GPU<span class="math notranslate nohighlight">\(j\)</span>上拆分的梯度<span class="math notranslate nohighlight">\(i\)</span>的一部分。这个运算的关键在于它是一个<em>交换归约</em>（commutative
 reduction），也就是说，它把许多向量变换成一个向量，而运算顺序在完成向量变换时并不重要。这对实现我们的目标来说是非常好的，因为不需要为何时接收哪个梯度进行细粒度的控制。此外，请注意，这个操作在不同的<span class="math notranslate nohighlight">\(i\)</span>之间是独立的。</p>
 <p>这就允许我们定义下面两个操作：<em>push</em>（用于累积梯度）和<em>pull</em>（用于取得聚合梯度）。因为我们有很多层，也就有很多不同的梯度集合，因此需要用一个键<span class="math notranslate nohighlight">\(i\)</span>来对梯度建索引。这个与Dynamo
-<span id="id11">(<a class="reference internal" href="../chapter_references/zreferences.html#id31" title="DeCandia, G., Hastorun, D., Jampani, M., Kakulapati, G., Lakshman, A., Pilchin, A., … Vogels, W. (2007). Dynamo: amazon's highly available key-value store. ACM SIGOPS operating systems review (pp. 205–220).">DeCandia <em>et al.</em>, 2007</a>)</span>中引入的<em>键－值存储</em>之间存在相似性并非巧合。它们两个定义都拥有许多相似的性质，特别是在多个服务器之间分发参数时。</p>
+<span id="id11">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id31" title="DeCandia, G., Hastorun, D., Jampani, M., Kakulapati, G., Lakshman, A., Pilchin, A., … Vogels, W. (2007). Dynamo: amazon's highly available key-value store. ACM SIGOPS operating systems review (pp. 205–220).">DeCandia <em>et al.</em>, 2007</a>)</span>中引入的<em>键－值存储</em>之间存在相似性并非巧合。它们两个定义都拥有许多相似的性质，特别是在多个服务器之间分发参数时。</p>
 <p><em>键－值存储</em>的push与pull操作描述如下：</p>
 <ul class="simple">
 <li><p><strong>push（key，value）</strong>将特定的梯度值从工作节点发送到公共存储，在那里通过某种方式（例如，相加）来聚合值；</p></li>
@@ -3124,14 +3124,14 @@ reduction），也就是说，它把许多向量变换成一个向量，而运�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="multiple-gpus-concise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_computational-performance/multiple-gpus-concise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>12.6. 多GPU的简洁实现</div>
          </div>
      </a>
-     <a id="button-next" href="../chapter_computer-vision/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_computer-vision/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>

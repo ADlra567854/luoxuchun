@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第 10 章 注意力机制 · 动手学深度学习（全文在线阅读） · 白驹 ccowork</title>
+<title>第 10 章 注意力机制 · 动手学深度学习（全文在线阅读）</title>
 <meta name="description" content="动手学深度学习 第 11 部分：第 10 章 注意力机制。许可 Apache License 2.0，来源 https://zh.d2l.ai/。">
-<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/d2l-zh/ch10.html">
+<link rel="canonical" href="/book/open/d2l-zh/ch10.html">
 <meta name="robots" content="index,follow">
 <link rel="stylesheet" href="/book/open/book.css?v=20261124">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
@@ -24,7 +24,7 @@
     <div class="bk-lic">
       <b>来源与许可</b>：动手学深度学习 · 作者 阿斯顿·张（Aston Zhang）、扎卡里·C·立顿、李沐、亚历山大·J·斯莫拉 · 译者 何孝霆、瑞潮儿·胡 及社区 200 余位贡献者。<br>
       许可 <a href="https://github.com/d2l-ai/d2l-zh/blob/master/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a> · 仓库 <a href="https://github.com/d2l-ai/d2l-zh" target="_blank" rel="noopener">https://github.com/d2l-ai/d2l-zh</a><br>
-      本站抓取时间 2026-11-24 21:13 · 本章来自 https://zh.d2l.ai/chapter_attention-mechanisms/index.html
+      本站抓取时间 2026-11-24 21:24 · 本章来自 https://zh.d2l.ai/chapter_attention-mechanisms/index.html
     </div>
     <h1>第 10 章 注意力机制</h1>
     
@@ -54,7 +54,7 @@
 <p>注意力是如何应用于视觉世界中的呢？
 这要从当今十分普及的<em>双组件</em>（two-component）的框架开始讲起：
 这个框架的出现可以追溯到19世纪90年代的威廉·詹姆斯，
-他被认为是“美国心理学之父” <span id="id3">(<a class="reference internal" href="../chapter_references/zreferences.html#id78" title="James, W. (2007). The principles of psychology. Vol. 1. Cosimo, Inc.">James, 2007</a>)</span>。
+他被认为是“美国心理学之父” <span id="id3">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id78" title="James, W. (2007). The principles of psychology. Vol. 1. Cosimo, Inc.">James, 2007</a>)</span>。
 在这个框架中，受试者基于<em>非自主性提示</em>和<em>自主性提示</em>
 有选择地引导注意力的焦点。</p>
 <p>非自主性提示是基于环境中物体的突出性和易见性。
@@ -66,7 +66,7 @@
 不由自主地引起人们的注意。 所以我们会把视力最敏锐的地方放到咖啡上， 如
 <a class="reference internal" href="#fig-eye-coffee"><span class="std std-numref">图10.1.1</span></a>所示。</p>
 <div class="figure align-default" id="id9">
-<span id="fig-eye-coffee"></span><a class="reference internal image-reference" href="../_images/eye-coffee.svg"><img alt="../_images/eye-coffee.svg" src="https://zh.d2l.ai/_images/eye-coffee.svg" width="400px" /></a>
+<span id="fig-eye-coffee"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/eye-coffee.svg"><img alt="../_images/eye-coffee.svg" src="https://zh.d2l.ai/_images/eye-coffee.svg" width="400px" /></a>
 <p class="caption"><span class="caption-number">图10.1.1 </span><span class="caption-text">由于突出性的非自主性提示（红杯子），注意力不自主地指向了咖啡杯</span></p>
 </div>
 <p>喝咖啡后，我们会变得兴奋并想读书，
@@ -77,7 +77,7 @@
 因此注意力在基于自主性提示去辅助选择时将更为谨慎。
 受试者的主观意愿推动，选择的力量也就更强大。</p>
 <div class="figure align-default" id="id10">
-<span id="fig-eye-book"></span><a class="reference internal image-reference" href="../_images/eye-book.svg"><img alt="../_images/eye-book.svg" src="https://zh.d2l.ai/_images/eye-book.svg" width="400px" /></a>
+<span id="fig-eye-book"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/eye-book.svg"><img alt="../_images/eye-book.svg" src="https://zh.d2l.ai/_images/eye-book.svg" width="400px" /></a>
 <p class="caption"><span class="caption-number">图10.1.2 </span><span class="caption-text">依赖于任务的意志提示（想读一本书），注意力被自主引导到书上</span></p>
 </div>
 </div>
@@ -105,7 +105,7 @@
 因此这个框架下的模型将成为本章的中心。
 然而，注意力机制的设计有许多替代方案。
 例如可以设计一个不可微的注意力模型， 该模型可以使用强化学习方法
-<span id="id5">(<a class="reference internal" href="../chapter_references/zreferences.html#id112" title="Mnih, V., Heess, N., Graves, A., &amp; others. (2014). Recurrent models of visual attention. Advances in neural information processing systems (pp. 2204–2212).">Mnih <em>et al.</em>, 2014</a>)</span>进行训练。</p>
+<span id="id5">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id112" title="Mnih, V., Heess, N., Graves, A., &amp; others. (2014). Recurrent models of visual attention. Advances in neural information processing systems (pp. 2204–2212).">Mnih <em>et al.</em>, 2014</a>)</span>进行训练。</p>
 </div>
 <div class="section" id="id6">
 <h2><span class="section-number">10.1.3. </span>注意力的可视化</h2>
@@ -296,14 +296,14 @@
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_attention-mechanisms/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>10. 注意力机制</div>
          </div>
      </a>
-     <a id="button-next" href="nadaraya-waston.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_attention-mechanisms/nadaraya-waston.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -318,7 +318,7 @@
 </html></div>
 <div class="bk-sub" id="ch10-2"><div class="section" id="nadaraya-watson">
 <span id="sec-nadaraya-watson"></span><h1><span class="section-number">10.2. </span>注意力汇聚：Nadaraya-Watson 核回归<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_attention-mechanisms/nadaraya-waston.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_attention-mechanisms/nadaraya-waston.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_attention-mechanisms/nadaraya-waston.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_attention-mechanisms/nadaraya-waston.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_attention-mechanisms/nadaraya-waston.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_attention-mechanisms/nadaraya-waston.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_attention-mechanisms/nadaraya-waston.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_attention-mechanisms/nadaraya-waston.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p>上节介绍了框架下的注意力机制的主要成分 <a class="reference internal" href="attention-cues.html#fig-qkv"><span class="std std-numref">图10.1.3</span></a>：
+<p>上节介绍了框架下的注意力机制的主要成分 <a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-cues.html#fig-qkv"><span class="std std-numref">图10.1.3</span></a>：
 查询（自主提示）和键（非自主提示）之间的交互形成了注意力汇聚；
 注意力汇聚有选择地聚合了值（感官输入）以生成最终的输出。
 本节将介绍注意力汇聚的更多细节，
@@ -477,8 +477,8 @@
 <div class="section" id="id3">
 <h2><span class="section-number">10.2.3. </span>非参数注意力汇聚</h2>
 <p>显然，平均汇聚忽略了输入<span class="math notranslate nohighlight">\(x_i\)</span>。 于是Nadaraya
-<span id="id4">(<a class="reference internal" href="../chapter_references/zreferences.html#id114" title="Nadaraya, E. A. (1964). On estimating regression. Theory of Probability &amp; Its Applications, 9(1), 141–142.">Nadaraya, 1964</a>)</span>和 Watson
-<span id="id5">(<a class="reference internal" href="../chapter_references/zreferences.html#id180" title="Watson, G. S. (1964). Smooth regression analysis. Sankhyā: The Indian Journal of Statistics, Series A, pp. 359–372.">Watson, 1964</a>)</span>提出了一个更好的想法，
+<span id="id4">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id114" title="Nadaraya, E. A. (1964). On estimating regression. Theory of Probability &amp; Its Applications, 9(1), 141–142.">Nadaraya, 1964</a>)</span>和 Watson
+<span id="id5">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id180" title="Watson, G. S. (1964). Smooth regression analysis. Sankhyā: The Indian Journal of Statistics, Series A, pp. 359–372.">Watson, 1964</a>)</span>提出了一个更好的想法，
 根据输入的位置对输出<span class="math notranslate nohighlight">\(y_i\)</span>进行加权：</p>
 <div class="math notranslate nohighlight" id="equation-eq-nadaraya-watson">
 <span class="eqno">(10.2.3)</span>\[f(x) = \sum_{i=1}^n \frac{K(x - x_i)}{\sum_{j=1}^n K(x - x_j)} y_i,\]</div>
@@ -486,7 +486,7 @@
 <a class="reference internal" href="#equation-eq-nadaraya-watson">(10.2.3)</a>所描述的估计器被称为
 <em>Nadaraya-Watson核回归</em>（Nadaraya-Watson kernel regression）。
 这里不会深入讨论核函数的细节， 但受此启发， 我们可以从
-<a class="reference internal" href="attention-cues.html#fig-qkv"><span class="std std-numref">图10.1.3</span></a>中的注意力机制框架的角度 重写
+<a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-cues.html#fig-qkv"><span class="std std-numref">图10.1.3</span></a>中的注意力机制框架的角度 重写
 <a class="reference internal" href="#equation-eq-nadaraya-watson">(10.2.3)</a>，
 成为一个更加通用的<em>注意力汇聚</em>（attention pooling）公式：</p>
 <div class="math notranslate nohighlight" id="equation-eq-attn-pooling">
@@ -1012,14 +1012,14 @@ kernel），其定义为：</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="attention-cues.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-cues.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>10.1. 注意力提示</div>
          </div>
      </a>
-     <a id="button-next" href="attention-scoring-functions.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-scoring-functions.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1034,15 +1034,15 @@ kernel），其定义为：</p>
 </html></div>
 <div class="bk-sub" id="ch10-3"><div class="section" id="sec-attention-scoring-functions">
 <span id="id1"></span><h1><span class="section-number">10.3. </span>注意力评分函数<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_attention-mechanisms/attention-scoring-functions.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_attention-mechanisms/attention-scoring-functions.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_attention-mechanisms/attention-scoring-functions.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_attention-mechanisms/attention-scoring-functions.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_attention-mechanisms/attention-scoring-functions.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_attention-mechanisms/attention-scoring-functions.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_attention-mechanisms/attention-scoring-functions.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_attention-mechanisms/attention-scoring-functions.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p><a class="reference internal" href="nadaraya-waston.html#sec-nadaraya-watson"><span class="std std-numref">10.2节</span></a>使用了高斯核来对查询和键之间的关系建模。
-<a class="reference internal" href="nadaraya-waston.html#equation-eq-nadaraya-watson-gaussian">(10.2.6)</a>中的
+<p><a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/nadaraya-waston.html#sec-nadaraya-watson"><span class="std std-numref">10.2节</span></a>使用了高斯核来对查询和键之间的关系建模。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/nadaraya-waston.html#equation-eq-nadaraya-watson-gaussian">(10.2.6)</a>中的
 高斯核指数部分可以视为<em>注意力评分函数</em>（attention scoring
 function）， 简称<em>评分函数</em>（scoring function），
 然后把这个函数的输出结果输入到softmax函数中进行运算。
 通过上述步骤，将得到与键对应的值的概率分布（即注意力权重）。
 最后，注意力汇聚的输出就是基于这些注意力权重的值的加权和。</p>
 <p>从宏观来看，上述算法可以用来实现
-<a class="reference internal" href="attention-cues.html#fig-qkv"><span class="std std-numref">图10.1.3</span></a>中的注意力机制框架。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-cues.html#fig-qkv"><span class="std std-numref">图10.1.3</span></a>中的注意力机制框架。
 <a class="reference internal" href="#fig-attention-output"><span class="std std-numref">图10.3.1</span></a>说明了
 如何将注意力汇聚的输出计算成为值的加权和，
 其中<span class="math notranslate nohighlight">\(a\)</span>表示注意力评分函数。 由于注意力权重是概率分布，
@@ -1095,7 +1095,7 @@ function）， 简称<em>评分函数</em>（scoring function），
 <h2><span class="section-number">10.3.1. </span>掩蔽softmax操作</h2>
 <p>正如上面提到的，softmax操作用于输出一个概率分布作为注意力权重。
 在某些情况下，并非所有的值都应该被纳入到注意力汇聚中。 例如，为了在
-<a class="reference internal" href="../chapter_recurrent-modern/machine-translation-and-dataset.html#sec-machine-translation"><span class="std std-numref">9.5节</span></a>中高效处理小批量数据集，
+<a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/machine-translation-and-dataset.html#sec-machine-translation"><span class="std std-numref">9.5节</span></a>中高效处理小批量数据集，
 某些文本序列被填充了没有意义的特殊词元。
 为了仅将有意义的词元作为值来获取注意力汇聚，
 可以指定一个有效序列长度（即词元的个数），
@@ -1709,14 +1709,14 @@ dot-product attention）评分函数为：</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="nadaraya-waston.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_attention-mechanisms/nadaraya-waston.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>10.2. 注意力汇聚：Nadaraya-Watson 核回归</div>
          </div>
      </a>
-     <a id="button-next" href="bahdanau-attention.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_attention-mechanisms/bahdanau-attention.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1731,7 +1731,7 @@ dot-product attention）评分函数为：</p>
 </html></div>
 <div class="bk-sub" id="ch10-4"><div class="section" id="bahdanau">
 <span id="sec-seq2seq-attention"></span><h1><span class="section-number">10.4. </span>Bahdanau 注意力<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_attention-mechanisms/bahdanau-attention.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_attention-mechanisms/bahdanau-attention.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_attention-mechanisms/bahdanau-attention.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_attention-mechanisms/bahdanau-attention.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_attention-mechanisms/bahdanau-attention.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_attention-mechanisms/bahdanau-attention.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_attention-mechanisms/bahdanau-attention.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_attention-mechanisms/bahdanau-attention.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p><a class="reference internal" href="../chapter_recurrent-modern/seq2seq.html#sec-seq2seq"><span class="std std-numref">9.7节</span></a>中探讨了机器翻译问题：
+<p><a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/seq2seq.html#sec-seq2seq"><span class="std std-numref">9.7节</span></a>中探讨了机器翻译问题：
 通过设计一个基于两个循环神经网络的编码器-解码器架构，
 用于序列到序列学习。
 具体来说，循环神经网络编码器将长度可变的序列转换为固定形状的上下文变量，
@@ -1740,18 +1740,18 @@ dot-product attention）评分函数为：</p>
 然而，即使并非所有输入（源）词元都对解码某个词元都有用，
 在每个解码步骤中仍使用编码<em>相同</em>的上下文变量。
 有什么方法能改变上下文变量呢？</p>
-<p>我们试着从 <span id="id1">(<a class="reference internal" href="../chapter_references/zreferences.html#id50" title="Graves, A. (2013). Generating sequences with recurrent neural networks. arXiv preprint arXiv:1308.0850.">Graves, 2013</a>)</span>中找到灵感：
+<p>我们试着从 <span id="id1">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id50" title="Graves, A. (2013). Generating sequences with recurrent neural networks. arXiv preprint arXiv:1308.0850.">Graves, 2013</a>)</span>中找到灵感：
 在为给定文本序列生成手写的挑战中， Graves设计了一种可微注意力模型，
 将文本字符与更长的笔迹对齐， 其中对齐方式仅向一个方向移动。
 受学习对齐想法的启发，Bahdanau等人提出了一个没有严格单向对齐限制的
-可微注意力模型 <span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id6" title="Bahdanau, D., Cho, K., &amp; Bengio, Y. (2014). Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473.">Bahdanau <em>et al.</em>, 2014</a>)</span>。
+可微注意力模型 <span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id6" title="Bahdanau, D., Cho, K., &amp; Bengio, Y. (2014). Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473.">Bahdanau <em>et al.</em>, 2014</a>)</span>。
 在预测词元时，如果不是所有输入词元都相关，模型将仅对齐（或参与）输入序列中与当前预测相关的部分。这是通过将上下文变量视为注意力集中的输出来实现的。</p>
 <div class="section" id="id3">
 <h2><span class="section-number">10.4.1. </span>模型</h2>
 <p>下面描述的Bahdanau注意力模型 将遵循
-<a class="reference internal" href="../chapter_recurrent-modern/seq2seq.html#sec-seq2seq"><span class="std std-numref">9.7节</span></a>中的相同符号表达。 这个新的基于注意力的模型与
-<a class="reference internal" href="../chapter_recurrent-modern/seq2seq.html#sec-seq2seq"><span class="std std-numref">9.7节</span></a>中的模型相同， 只不过
-<a class="reference internal" href="../chapter_recurrent-modern/seq2seq.html#equation-eq-seq2seq-s-t">(9.7.3)</a>中的上下文变量<span class="math notranslate nohighlight">\(\mathbf{c}\)</span>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/seq2seq.html#sec-seq2seq"><span class="std std-numref">9.7节</span></a>中的相同符号表达。 这个新的基于注意力的模型与
+<a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/seq2seq.html#sec-seq2seq"><span class="std std-numref">9.7节</span></a>中的模型相同， 只不过
+<a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/seq2seq.html#equation-eq-seq2seq-s-t">(9.7.3)</a>中的上下文变量<span class="math notranslate nohighlight">\(\mathbf{c}\)</span>
 在任何解码时间步<span class="math notranslate nohighlight">\(t'\)</span>都会被<span class="math notranslate nohighlight">\(\mathbf{c}_{t'}\)</span>替换。
 假设输入序列中有<span class="math notranslate nohighlight">\(T\)</span>个词元，
 解码时间步<span class="math notranslate nohighlight">\(t'\)</span>的上下文变量是注意力集中的输出：</p>
@@ -1759,10 +1759,10 @@ dot-product attention）评分函数为：</p>
 <span class="eqno">(10.4.1)</span>\[\mathbf{c}_{t'} = \sum_{t=1}^T \alpha(\mathbf{s}_{t' - 1}, \mathbf{h}_t) \mathbf{h}_t,\]</div>
 <p>其中，时间步<span class="math notranslate nohighlight">\(t' - 1\)</span>时的解码器隐状态<span class="math notranslate nohighlight">\(\mathbf{s}_{t' - 1}\)</span>是查询，
 编码器隐状态<span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>既是键，也是值，
-注意力权重<span class="math notranslate nohighlight">\(\alpha\)</span>是使用 <a class="reference internal" href="attention-scoring-functions.html#equation-eq-attn-scoring-alpha">(10.3.2)</a>
+注意力权重<span class="math notranslate nohighlight">\(\alpha\)</span>是使用 <a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-scoring-functions.html#equation-eq-attn-scoring-alpha">(10.3.2)</a>
 所定义的加性注意力打分函数计算的。</p>
 <p>与
-<a class="reference internal" href="../chapter_recurrent-modern/seq2seq.html#fig-seq2seq-details"><span class="std std-numref">图9.7.2</span></a>中的循环神经网络编码器-解码器架构略有不同，
+<a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/seq2seq.html#fig-seq2seq-details"><span class="std std-numref">图9.7.2</span></a>中的循环神经网络编码器-解码器架构略有不同，
 <a class="reference internal" href="#fig-s2s-attention-details"><span class="std std-numref">图10.4.1</span></a>描述了Bahdanau注意力的架构。</p>
 <div class="figure align-default" id="id8">
 <span id="fig-s2s-attention-details"></span><img alt="../_images/seq2seq-attention-details.svg" src="https://zh.d2l.ai/_images/seq2seq-attention-details.svg" /><p class="caption"><span class="caption-number">图10.4.1 </span><span class="caption-text">一个带有Bahdanau注意力的循环神经网络编码器-解码器模型</span></p>
@@ -2080,11 +2080,11 @@ dot-product attention）评分函数为：</p>
 </div></div></div>
 <div class="section" id="id5">
 <h2><span class="section-number">10.4.3. </span>训练</h2>
-<p>与 <a class="reference internal" href="../chapter_recurrent-modern/seq2seq.html#sec-seq2seq-training"><span class="std std-numref">9.7.4节</span></a>类似，
+<p>与 <a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/seq2seq.html#sec-seq2seq-training"><span class="std std-numref">9.7.4节</span></a>类似，
 我们在这里指定超参数，实例化一个带有Bahdanau注意力的编码器和解码器，
 并对这个模型进行机器翻译训练。
 由于新增的注意力机制，训练要比没有注意力机制的
-<a class="reference internal" href="../chapter_recurrent-modern/seq2seq.html#sec-seq2seq-training"><span class="std std-numref">9.7.4节</span></a>慢得多。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/seq2seq.html#sec-seq2seq-training"><span class="std std-numref">9.7.4节</span></a>慢得多。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-9-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-9-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-9-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-9-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-9-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embed_size</span><span class="p">,</span> <span class="n">num_hiddens</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">,</span> <span class="n">dropout</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span>
 <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_steps</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span>
 <span class="n">lr</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">,</span> <span class="n">device</span> <span class="o">=</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="n">d2l</span><span class="o">.</span><span class="n">try_gpu</span><span class="p">()</span>
@@ -2314,14 +2314,14 @@ i&#39;m home . =&gt; je suis chez moi .,  bleu 1.000
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="attention-scoring-functions.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-scoring-functions.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>10.3. 注意力评分函数</div>
          </div>
      </a>
-     <a id="button-next" href="multihead-attention.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_attention-mechanisms/multihead-attention.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -2349,7 +2349,7 @@ projections）来变换查询、键和值。
 最后，将这<span class="math notranslate nohighlight">\(h\)</span>个注意力汇聚的输出拼接在一起，
 并且通过另一个可以学习的线性投影进行变换， 以产生最终输出。
 这种设计被称为<em>多头注意力</em>（multihead attention）
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id174" title="Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., … Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems (pp. 5998–6008).">Vaswani <em>et al.</em>, 2017</a>)</span>。
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id174" title="Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., … Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems (pp. 5998–6008).">Vaswani <em>et al.</em>, 2017</a>)</span>。
 对于<span class="math notranslate nohighlight">\(h\)</span>个注意力汇聚输出，每一个注意力汇聚都被称作一个<em>头</em>（head）。
 <a class="reference internal" href="#fig-multi-head-attention"><span class="std std-numref">图10.5.1</span></a>
 展示了使用全连接层来实现可学习的线性变换的多头注意力。</p>
@@ -2370,7 +2370,7 @@ projections）来变换查询、键和值。
 <span class="math notranslate nohighlight">\(\mathbf W_i^{(k)}\in\mathbb R^{p_k\times d_k}\)</span>和
 <span class="math notranslate nohighlight">\(\mathbf W_i^{(v)}\in\mathbb R^{p_v\times d_v}\)</span>，
 以及代表注意力汇聚的函数<span class="math notranslate nohighlight">\(f\)</span>。 <span class="math notranslate nohighlight">\(f\)</span>可以是
-<a class="reference internal" href="attention-scoring-functions.html#sec-attention-scoring-functions"><span class="std std-numref">10.3节</span></a>中的
+<a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-scoring-functions.html#sec-attention-scoring-functions"><span class="std std-numref">10.3节</span></a>中的
 加性注意力和缩放点积注意力。 多头注意力的输出需要经过另一个线性转换，
 它对应着<span class="math notranslate nohighlight">\(h\)</span>个头连结后的结果，因此其可学习参数是
 <span class="math notranslate nohighlight">\(\mathbf W_o\in\mathbb R^{p_o\times h p_v}\)</span>：</p>
@@ -2793,14 +2793,14 @@ projections）来变换查询、键和值。
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="bahdanau-attention.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_attention-mechanisms/bahdanau-attention.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>10.4. Bahdanau 注意力</div>
          </div>
      </a>
-     <a id="button-next" href="self-attention-and-positional-encoding.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_attention-mechanisms/self-attention-and-positional-encoding.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -2821,9 +2821,9 @@ projections）来变换查询、键和值。
 具体来说，每个查询都会关注所有的键－值对并生成一个注意力输出。
 由于查询、键和值来自同一组输入，因此被称为
 <em>自注意力</em>（self-attention）
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id94" title="Lin, Z., Feng, M., Santos, C. N. d., Yu, M., Xiang, B., Zhou, B., &amp; Bengio, Y. (2017). A structured self-attentive sentence embedding. arXiv preprint arXiv:1703.03130.">Lin <em>et al.</em>, 2017</a>, <a class="reference internal" href="../chapter_references/zreferences.html#id174" title="Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., … Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems (pp. 5998–6008).">Vaswani <em>et al.</em>, 2017</a>)</span>，
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id94" title="Lin, Z., Feng, M., Santos, C. N. d., Yu, M., Xiang, B., Zhou, B., &amp; Bengio, Y. (2017). A structured self-attentive sentence embedding. arXiv preprint arXiv:1703.03130.">Lin <em>et al.</em>, 2017</a>, <a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id174" title="Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., … Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems (pp. 5998–6008).">Vaswani <em>et al.</em>, 2017</a>)</span>，
 也被称为<em>内部注意力</em>（intra-attention）
-<span id="id3">(<a class="reference internal" href="../chapter_references/zreferences.html#id22" title="Cheng, J., Dong, L., &amp; Lapata, M. (2016). Long short-term memory-networks for machine reading. Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing (pp. 551–561).">Cheng <em>et al.</em>, 2016</a>, <a class="reference internal" href="../chapter_references/zreferences.html#id119" title="Parikh, A. P., Täckström, O., Das, D., &amp; Uszkoreit, J. (2016). A decomposable attention model for natural language inference. arXiv preprint arXiv:1606.01933.">Parikh <em>et al.</em>, 2016</a>, <a class="reference internal" href="../chapter_references/zreferences.html#id121" title="Paulus, R., Xiong, C., &amp; Socher, R. (2017). A deep reinforced model for abstractive summarization. arXiv preprint arXiv:1705.04304.">Paulus <em>et al.</em>, 2017</a>)</span>。
+<span id="id3">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id22" title="Cheng, J., Dong, L., &amp; Lapata, M. (2016). Long short-term memory-networks for machine reading. Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing (pp. 551–561).">Cheng <em>et al.</em>, 2016</a>, <a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id119" title="Parikh, A. P., Täckström, O., Das, D., &amp; Uszkoreit, J. (2016). A decomposable attention model for natural language inference. arXiv preprint arXiv:1606.01933.">Parikh <em>et al.</em>, 2016</a>, <a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id121" title="Paulus, R., Xiong, C., &amp; Socher, R. (2017). A deep reinforced model for abstractive summarization. arXiv preprint arXiv:1705.04304.">Paulus <em>et al.</em>, 2017</a>)</span>。
 本节将使用自注意力进行序列编码，以及如何使用序列的顺序作为补充信息。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">autograd</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
@@ -2861,7 +2861,7 @@ projections）来变换查询、键和值。
 <span class="math notranslate nohighlight">\(\mathbf{y}_1, \ldots, \mathbf{y}_n\)</span>，其中：</p>
 <div class="math notranslate nohighlight" id="equation-chapter-attention-mechanisms-self-attention-and-positional-encoding-0">
 <span class="eqno">(10.6.1)</span>\[\mathbf{y}_i = f(\mathbf{x}_i, (\mathbf{x}_1, \mathbf{x}_1), \ldots, (\mathbf{x}_n, \mathbf{x}_n)) \in \mathbb{R}^d\]</div>
-<p>根据 <a class="reference internal" href="nadaraya-waston.html#equation-eq-attn-pooling">(10.2.4)</a>中定义的注意力汇聚函数<span class="math notranslate nohighlight">\(f\)</span>。
+<p>根据 <a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/nadaraya-waston.html#equation-eq-attn-pooling">(10.2.4)</a>中定义的注意力汇聚函数<span class="math notranslate nohighlight">\(f\)</span>。
 下面的代码片段是基于多头注意力对一个张量完成自注意力的计算，
 张量的形状为（批量大小，时间步的数目或词元序列的长度，<span class="math notranslate nohighlight">\(d\)</span>）。
 输出与输入的张量形状相同。</p>
@@ -2934,7 +2934,7 @@ projections）来变换查询、键和值。
 <div class="section" id="subsec-cnn-rnn-self-attention">
 <span id="id5"></span><h2><span class="section-number">10.6.2. </span>比较卷积神经网络、循环神经网络和自注意力</h2>
 <p>接下来比较下面几个架构，目标都是将由<span class="math notranslate nohighlight">\(n\)</span>个词元组成的序列映射到另一个长度相等的序列，其中的每个输入词元或输出词元都由<span class="math notranslate nohighlight">\(d\)</span>维向量表示。具体来说，将比较的是卷积神经网络、循环神经网络和自注意力这几个架构的计算复杂性、顺序操作和最大路径长度。请注意，顺序操作会妨碍并行计算，而任意的序列位置组合之间的路径越短，则能更轻松地学习序列中的远距离依赖关系
-<span id="id6">(<a class="reference internal" href="../chapter_references/zreferences.html#id67" title="Hochreiter, S., Bengio, Y., Frasconi, P., Schmidhuber, J., &amp; others (2001). Gradient flow in recurrent nets: the difficulty of learning long-term dependencies.">Hochreiter <em>et al.</em>, 2001</a>)</span>。</p>
+<span id="id6">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id67" title="Hochreiter, S., Bengio, Y., Frasconi, P., Schmidhuber, J., &amp; others (2001). Gradient flow in recurrent nets: the difficulty of learning long-term dependencies.">Hochreiter <em>et al.</em>, 2001</a>)</span>。</p>
 <div class="figure align-default" id="id13">
 <span id="fig-cnn-rnn-self-attention"></span><img alt="../_images/cnn-rnn-self-attention.svg" src="https://zh.d2l.ai/_images/cnn-rnn-self-attention.svg" /><p class="caption"><span class="caption-number">图10.6.1 </span><span class="caption-text">比较卷积神经网络（填充词元被忽略）、循环神经网络和自注意力三种架构</span></p>
 </div>
@@ -2953,7 +2953,7 @@ projections）来变换查询、键和值。
 根据 <a class="reference internal" href="#fig-cnn-rnn-self-attention"><span class="std std-numref">图10.6.1</span></a>，
 有<span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span>个顺序操作无法并行化，最大路径长度也是<span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span>。</p>
 <p>在自注意力中，查询、键和值都是<span class="math notranslate nohighlight">\(n \times d\)</span>矩阵。 考虑
-<a class="reference internal" href="attention-scoring-functions.html#equation-eq-softmax-qk-v">(10.3.5)</a>中缩放的”点－积“注意力，
+<a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/attention-scoring-functions.html#equation-eq-softmax-qk-v">(10.3.5)</a>中缩放的”点－积“注意力，
 其中<span class="math notranslate nohighlight">\(n \times d\)</span>矩阵乘以<span class="math notranslate nohighlight">\(d \times n\)</span>矩阵。
 之后输出的<span class="math notranslate nohighlight">\(n \times n\)</span>矩阵乘以<span class="math notranslate nohighlight">\(n \times d\)</span>矩阵。
 因此，自注意力具有<span class="math notranslate nohighlight">\(\mathcal{O}(n^2d)\)</span>计算复杂性。 正如在
@@ -2973,7 +2973,7 @@ projections）来变换查询、键和值。
 encoding）来注入绝对的或相对的位置信息。
 位置编码可以通过学习得到也可以直接固定得到。
 接下来描述的是基于正弦函数和余弦函数的固定位置编码
-<span id="id8">(<a class="reference internal" href="../chapter_references/zreferences.html#id174" title="Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., … Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems (pp. 5998–6008).">Vaswani <em>et al.</em>, 2017</a>)</span>。</p>
+<span id="id8">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id174" title="Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., … Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems (pp. 5998–6008).">Vaswani <em>et al.</em>, 2017</a>)</span>。</p>
 <p>假设输入表示<span class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{n \times d}\)</span>
 包含一个序列中<span class="math notranslate nohighlight">\(n\)</span>个词元的<span class="math notranslate nohighlight">\(d\)</span>维嵌入表示。
 位置编码使用相同形状的位置嵌入矩阵
@@ -3270,14 +3270,14 @@ encoding）来注入绝对的或相对的位置信息。
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="multihead-attention.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_attention-mechanisms/multihead-attention.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>10.5. 多头注意力</div>
          </div>
      </a>
-     <a id="button-next" href="transformer.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_attention-mechanisms/transformer.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -3292,17 +3292,17 @@ encoding）来注入绝对的或相对的位置信息。
 </html></div>
 <div class="bk-sub" id="ch10-7"><div class="section" id="transformer">
 <span id="sec-transformer"></span><h1><span class="section-number">10.7. </span>Transformer<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_attention-mechanisms/transformer.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_attention-mechanisms/transformer.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_attention-mechanisms/transformer.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_attention-mechanisms/transformer.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_attention-mechanisms/transformer.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_attention-mechanisms/transformer.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_attention-mechanisms/transformer.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_attention-mechanisms/transformer.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
-<p><a class="reference internal" href="self-attention-and-positional-encoding.html#subsec-cnn-rnn-self-attention"><span class="std std-numref">10.6.2节</span></a>中比较了卷积神经网络（CNN）、循环神经网络（RNN）和自注意力（self-attention）。值得注意的是，自注意力同时具有并行计算和最短的最大路径长度这两个优势。因此，使用自注意力来设计深度架构是很有吸引力的。对比之前仍然依赖循环神经网络实现输入表示的自注意力模型
-<span id="id1">(<a class="reference internal" href="../chapter_references/zreferences.html#id22" title="Cheng, J., Dong, L., &amp; Lapata, M. (2016). Long short-term memory-networks for machine reading. Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing (pp. 551–561).">Cheng <em>et al.</em>, 2016</a>, <a class="reference internal" href="../chapter_references/zreferences.html#id94" title="Lin, Z., Feng, M., Santos, C. N. d., Yu, M., Xiang, B., Zhou, B., &amp; Bengio, Y. (2017). A structured self-attentive sentence embedding. arXiv preprint arXiv:1703.03130.">Lin <em>et al.</em>, 2017</a>, <a class="reference internal" href="../chapter_references/zreferences.html#id121" title="Paulus, R., Xiong, C., &amp; Socher, R. (2017). A deep reinforced model for abstractive summarization. arXiv preprint arXiv:1705.04304.">Paulus <em>et al.</em>, 2017</a>)</span>，Transformer模型完全基于注意力机制，没有任何卷积层或循环神经网络层
-<span id="id2">(<a class="reference internal" href="../chapter_references/zreferences.html#id174" title="Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., … Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems (pp. 5998–6008).">Vaswani <em>et al.</em>, 2017</a>)</span>。尽管Transformer最初是应用于在文本数据上的序列到序列学习，但现在已经推广到各种现代的深度学习中，例如语言、视觉、语音和强化学习领域。</p>
+<p><a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/self-attention-and-positional-encoding.html#subsec-cnn-rnn-self-attention"><span class="std std-numref">10.6.2节</span></a>中比较了卷积神经网络（CNN）、循环神经网络（RNN）和自注意力（self-attention）。值得注意的是，自注意力同时具有并行计算和最短的最大路径长度这两个优势。因此，使用自注意力来设计深度架构是很有吸引力的。对比之前仍然依赖循环神经网络实现输入表示的自注意力模型
+<span id="id1">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id22" title="Cheng, J., Dong, L., &amp; Lapata, M. (2016). Long short-term memory-networks for machine reading. Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing (pp. 551–561).">Cheng <em>et al.</em>, 2016</a>, <a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id94" title="Lin, Z., Feng, M., Santos, C. N. d., Yu, M., Xiang, B., Zhou, B., &amp; Bengio, Y. (2017). A structured self-attentive sentence embedding. arXiv preprint arXiv:1703.03130.">Lin <em>et al.</em>, 2017</a>, <a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id121" title="Paulus, R., Xiong, C., &amp; Socher, R. (2017). A deep reinforced model for abstractive summarization. arXiv preprint arXiv:1705.04304.">Paulus <em>et al.</em>, 2017</a>)</span>，Transformer模型完全基于注意力机制，没有任何卷积层或循环神经网络层
+<span id="id2">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id174" title="Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., … Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems (pp. 5998–6008).">Vaswani <em>et al.</em>, 2017</a>)</span>。尽管Transformer最初是应用于在文本数据上的序列到序列学习，但现在已经推广到各种现代的深度学习中，例如语言、视觉、语音和强化学习领域。</p>
 <div class="section" id="id3">
 <h2><span class="section-number">10.7.1. </span>模型</h2>
 <p>Transformer作为编码器－解码器架构的一个实例，其整体架构图在
 <a class="reference internal" href="#fig-transformer"><span class="std std-numref">图10.7.1</span></a>中展示。正如所见到的，Transformer是由编码器和解码器组成的。与
-<a class="reference internal" href="bahdanau-attention.html#fig-s2s-attention-details"><span class="std std-numref">图10.4.1</span></a>中基于Bahdanau注意力实现的序列到序列的学习相比，Transformer的编码器和解码器是基于自注意力的模块叠加而成的，源（输入）序列和目标（输出）序列的<em>嵌入</em>（embedding）表示将加上<em>位置编码</em>（positional
+<a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/bahdanau-attention.html#fig-s2s-attention-details"><span class="std std-numref">图10.4.1</span></a>中基于Bahdanau注意力实现的序列到序列的学习相比，Transformer的编码器和解码器是基于自注意力的模块叠加而成的，源（输入）序列和目标（输出）序列的<em>嵌入</em>（embedding）表示将加上<em>位置编码</em>（positional
 encoding），再分别输入到编码器和解码器中。</p>
 <div class="figure align-default" id="id14">
-<span id="fig-transformer"></span><a class="reference internal image-reference" href="../_images/transformer.svg"><img alt="../_images/transformer.svg" src="https://zh.d2l.ai/_images/transformer.svg" width="500px" /></a>
+<span id="fig-transformer"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/transformer.svg"><img alt="../_images/transformer.svg" src="https://zh.d2l.ai/_images/transformer.svg" width="500px" /></a>
 <p class="caption"><span class="caption-number">图10.7.1 </span><span class="caption-text">transformer架构</span></p>
 </div>
 <p>图
@@ -3310,15 +3310,15 @@ encoding），再分别输入到编码器和解码器中。</p>
 self-attention）汇聚；第二个子层是<em>基于位置的前馈网络</em>（positionwise
 feed-forward
 network）。具体来说，在计算编码器的自注意力时，查询、键和值都来自前一个编码器层的输出。受
-<a class="reference internal" href="../chapter_convolutional-modern/resnet.html#sec-resnet"><span class="std std-numref">7.6节</span></a>中残差网络的启发，每个子层都采用了<em>残差连接</em>（residual
+<a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-modern/resnet.html#sec-resnet"><span class="std std-numref">7.6节</span></a>中残差网络的启发，每个子层都采用了<em>残差连接</em>（residual
 connection）。在Transformer中，对于序列中任何位置的任何输入<span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^d\)</span>，都要求满足<span class="math notranslate nohighlight">\(\mathrm{sublayer}(\mathbf{x}) \in \mathbb{R}^d\)</span>，以便残差连接满足<span class="math notranslate nohighlight">\(\mathbf{x} + \mathrm{sublayer}(\mathbf{x}) \in \mathbb{R}^d\)</span>。在残差连接的加法计算之后，紧接着应用<em>层规范化</em>（layer
 normalization）
-<span id="id4">(<a class="reference internal" href="../chapter_references/zreferences.html#id5" title="Ba, J. L., Kiros, J. R., &amp; Hinton, G. E. (2016). Layer normalization. arXiv preprint arXiv:1607.06450.">Ba <em>et al.</em>, 2016</a>)</span>。因此，输入序列对应的每个位置，Transformer编码器都将输出一个<span class="math notranslate nohighlight">\(d\)</span>维表示向量。</p>
+<span id="id4">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id5" title="Ba, J. L., Kiros, J. R., &amp; Hinton, G. E. (2016). Layer normalization. arXiv preprint arXiv:1607.06450.">Ba <em>et al.</em>, 2016</a>)</span>。因此，输入序列对应的每个位置，Transformer编码器都将输出一个<span class="math notranslate nohighlight">\(d\)</span>维表示向量。</p>
 <p>Transformer解码器也是由多个相同的层叠加而成的，并且层中使用了残差连接和层规范化。除了编码器中描述的两个子层之外，解码器还在这两个子层之间插入了第三个子层，称为<em>编码器－解码器注意力</em>（encoder-decoder
 attention）层。在编码器－解码器注意力中，查询来自前一个解码器层的输出，而键和值来自整个编码器的输出。在解码器自注意力中，查询、键和值都来自上一个解码器层的输出。但是，解码器中的每个位置只能考虑该位置之前的所有位置。这种<em>掩蔽</em>（masked）注意力保留了<em>自回归</em>（auto-regressive）属性，确保预测仅依赖于已生成的输出词元。</p>
 <p>在此之前已经描述并实现了基于缩放点积多头注意力
-<a class="reference internal" href="multihead-attention.html#sec-multihead-attention"><span class="std std-numref">10.5节</span></a>和位置编码
-<a class="reference internal" href="self-attention-and-positional-encoding.html#subsec-positional-encoding"><span class="std std-numref">10.6.3节</span></a>。接下来将实现Transformer模型的剩余部分。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/multihead-attention.html#sec-multihead-attention"><span class="std std-numref">10.5节</span></a>和位置编码
+<a class="reference internal" href="https://zh.d2l.ai/chapter_attention-mechanisms/self-attention-and-positional-encoding.html#subsec-positional-encoding"><span class="std std-numref">10.6.3节</span></a>。接下来将实现Transformer模型的剩余部分。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-1-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-1-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-1-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-1-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-1-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">autograd</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">npx</span>
@@ -3473,7 +3473,7 @@ attention）层。在编码器－解码器注意力中，查询来自前一个�
 <h2><span class="section-number">10.7.3. </span>残差连接和层规范化</h2>
 <p>现在让我们关注
 <a class="reference internal" href="#fig-transformer"><span class="std std-numref">图10.7.1</span></a>中的<em>加法和规范化</em>（add&amp;norm）组件。正如在本节开头所述，这是由残差连接和紧随其后的层规范化组成的。两者都是构建有效的深度架构的关键。</p>
-<p><a class="reference internal" href="../chapter_convolutional-modern/batch-norm.html#sec-batch-norm"><span class="std std-numref">7.5节</span></a>中解释了在一个小批量的样本内基于批量规范化对数据进行重新中心化和重新缩放的调整。层规范化和批量规范化的目标相同，但层规范化是基于特征维度进行规范化。尽管批量规范化在计算机视觉中被广泛应用，但在自然语言处理任务中（输入通常是变长序列）批量规范化通常不如层规范化的效果好。</p>
+<p><a class="reference internal" href="https://zh.d2l.ai/chapter_convolutional-modern/batch-norm.html#sec-batch-norm"><span class="std std-numref">7.5节</span></a>中解释了在一个小批量的样本内基于批量规范化对数据进行重新中心化和重新缩放的调整。层规范化和批量规范化的目标相同，但层规范化是基于特征维度进行规范化。尽管批量规范化在计算机视觉中被广泛应用，但在自然语言处理任务中（输入通常是变长序列）批量规范化通常不如层规范化的效果好。</p>
 <p>以下代码对比不同维度的层规范化和批量规范化的效果。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-7-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-7-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-7-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-7-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-7-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">()</span>
 <span class="n">ln</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
@@ -4265,7 +4265,7 @@ model），在训练阶段，其输出序列的所有位置（时间步）的词
 <div class="section" id="id9">
 <h2><span class="section-number">10.7.6. </span>训练</h2>
 <p>依照Transformer架构来实例化编码器－解码器模型。在这里，指定Transformer的编码器和解码器都是2层，都使用4头注意力。与
-<a class="reference internal" href="../chapter_recurrent-modern/seq2seq.html#sec-seq2seq-training"><span class="std std-numref">9.7.4节</span></a>类似，为了进行序列到序列的学习，下面在“英语－法语”机器翻译数据集上训练Transformer模型。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_recurrent-modern/seq2seq.html#sec-seq2seq-training"><span class="std std-numref">9.7.4节</span></a>类似，为了进行序列到序列的学习，下面在“英语－法语”机器翻译数据集上训练Transformer模型。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-27-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-27-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-27-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-27-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-27-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_hiddens</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">,</span> <span class="n">dropout</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_steps</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">10</span>
 <span class="n">lr</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">,</span> <span class="n">device</span> <span class="o">=</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">d2l</span><span class="o">.</span><span class="n">try_gpu</span><span class="p">()</span>
 <span class="n">ffn_num_hiddens</span><span class="p">,</span> <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span>
@@ -4634,9 +4634,9 @@ i&#39;m home . =&gt; je suis chez moi .,  bleu 1.000
 <li><p>对于语言模型，应该使用Transformer的编码器还是解码器，或者两者都用？如何设计？</p></li>
 <li><p>如果输入序列很长，Transformer会面临什么挑战？为什么？</p></li>
 <li><p>如何提高Transformer的计算速度和内存使用效率？提示：可以参考论文
-<span id="id12">(<a class="reference internal" href="../chapter_references/zreferences.html#id166" title="Tay, Y., Dehghani, M., Bahri, D., &amp; Metzler, D. (2020). Efficient transformers: a survey. arXiv preprint arXiv:2009.06732.">Tay <em>et al.</em>, 2020</a>)</span>。</p></li>
+<span id="id12">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id166" title="Tay, Y., Dehghani, M., Bahri, D., &amp; Metzler, D. (2020). Efficient transformers: a survey. arXiv preprint arXiv:2009.06732.">Tay <em>et al.</em>, 2020</a>)</span>。</p></li>
 <li><p>如果不使用卷积神经网络，如何设计基于Transformer模型的图像分类任务？提示：可以参考Vision
-Transformer <span id="id13">(<a class="reference internal" href="../chapter_references/zreferences.html#id34" title="Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., … others. (2021). An image is worth 16x16 words: transformers for image recognition at scale. International Conference on Learning Representations.">Dosovitskiy <em>et al.</em>, 2021</a>)</span>。</p></li>
+Transformer <span id="id13">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id34" title="Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., … others. (2021). An image is worth 16x16 words: transformers for image recognition at scale. International Conference on Learning Representations.">Dosovitskiy <em>et al.</em>, 2021</a>)</span>。</p></li>
 </ol>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar text"><a href="#mxnet-41-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-41-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#paddle-41-2" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-41-0"><p><a class="reference external" href="https://discuss.d2l.ai/t/5755">Discussions</a></p>
 </div><div class="mdl-tabs__panel " id="pytorch-41-1"><p><a class="reference external" href="https://discuss.d2l.ai/t/5756">Discussions</a></p>
@@ -4672,14 +4672,14 @@ Transformer <span id="id13">(<a class="reference internal" href="../chapter_refe
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="self-attention-and-positional-encoding.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_attention-mechanisms/self-attention-and-positional-encoding.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>10.6. 自注意力和位置编码</div>
          </div>
      </a>
-     <a id="button-next" href="../chapter_optimization/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_optimization/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>

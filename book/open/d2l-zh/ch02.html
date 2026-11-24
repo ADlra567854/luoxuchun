@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>第 2 章 预备知识 · 动手学深度学习（全文在线阅读） · 白驹 ccowork</title>
+<title>第 2 章 预备知识 · 动手学深度学习（全文在线阅读）</title>
 <meta name="description" content="动手学深度学习 第 3 部分：第 2 章 预备知识。许可 Apache License 2.0，来源 https://zh.d2l.ai/。">
-<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/d2l-zh/ch02.html">
+<link rel="canonical" href="/book/open/d2l-zh/ch02.html">
 <meta name="robots" content="index,follow">
 <link rel="stylesheet" href="/book/open/book.css?v=20261124">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
@@ -24,7 +24,7 @@
     <div class="bk-lic">
       <b>来源与许可</b>：动手学深度学习 · 作者 阿斯顿·张（Aston Zhang）、扎卡里·C·立顿、李沐、亚历山大·J·斯莫拉 · 译者 何孝霆、瑞潮儿·胡 及社区 200 余位贡献者。<br>
       许可 <a href="https://github.com/d2l-ai/d2l-zh/blob/master/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a> · 仓库 <a href="https://github.com/d2l-ai/d2l-zh" target="_blank" rel="noopener">https://github.com/d2l-ai/d2l-zh</a><br>
-      本站抓取时间 2026-11-24 21:13 · 本章来自 https://zh.d2l.ai/chapter_preliminaries/index.html
+      本站抓取时间 2026-11-24 21:24 · 本章来自 https://zh.d2l.ai/chapter_preliminaries/index.html
     </div>
     <h1>第 2 章 预备知识</h1>
     
@@ -503,7 +503,7 @@
 </pre></div>
 </div>
 </div></div><p>除了按元素计算外，我们还可以执行线性代数运算，包括向量点积和矩阵乘法。
-我们将在 <a class="reference internal" href="linear-algebra.html#sec-linear-algebra"><span class="std std-numref">2.3节</span></a>中解释线性代数的重点内容。</p>
+我们将在 <a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/linear-algebra.html#sec-linear-algebra"><span class="std std-numref">2.3节</span></a>中解释线性代数的重点内容。</p>
 <p>我们也可以把多个张量<em>连结</em>（concatenate）在一起，
 把它们端对端地叠起来形成一个更大的张量。
 我们只需要提供张量列表，并给出沿哪个轴连结。
@@ -1144,14 +1144,14 @@ torch张量和numpy数组将共享它们的底层内存，就地操作更改一�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_preliminaries/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>2. 预备知识</div>
          </div>
      </a>
-     <a id="button-next" href="pandas.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_preliminaries/pandas.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1363,7 +1363,7 @@ torch张量和numpy数组将共享它们的底层内存，就地操作更改一�
 <h2><span class="section-number">2.2.3. </span>转换为张量格式</h2>
 <p>现在<code class="docutils literal notranslate"><span class="pre">inputs</span></code>和<code class="docutils literal notranslate"><span class="pre">outputs</span></code>中的所有条目都是数值类型，它们可以转换为张量格式。
 当数据采用张量格式后，可以通过在
-<a class="reference internal" href="ndarray.html#sec-ndarray"><span class="std std-numref">2.1节</span></a>中引入的那些张量函数来进一步操作。</p>
+<a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/ndarray.html#sec-ndarray"><span class="std std-numref">2.1节</span></a>中引入的那些张量函数来进一步操作。</p>
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect"><div class="mdl-tabs__tab-bar code"><a href="#mxnet-9-0" onclick="tagClick('mxnet'); return false;" class="mdl-tabs__tab is-active">mxnet</a><a href="#pytorch-9-1" onclick="tagClick('pytorch'); return false;" class="mdl-tabs__tab ">pytorch</a><a href="#tensorflow-9-2" onclick="tagClick('tensorflow'); return false;" class="mdl-tabs__tab ">tensorflow</a><a href="#paddle-9-3" onclick="tagClick('paddle'); return false;" class="mdl-tabs__tab ">paddle</a></div><div class="mdl-tabs__panel is-active" id="mxnet-9-0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span>
 
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
@@ -1474,14 +1474,14 @@ torch张量和numpy数组将共享它们的底层内存，就地操作更改一�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="ndarray.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_preliminaries/ndarray.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>2.1. 数据操作</div>
          </div>
      </a>
-     <a id="button-next" href="linear-algebra.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_preliminaries/linear-algebra.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -1919,7 +1919,7 @@ matrix）<span class="math notranslate nohighlight">\(\mathbf{A}\)</span>等于�
 </div></div><p>矩阵是有用的数据结构：它们允许我们组织具有不同模式的数据。
 例如，我们矩阵中的行可能对应于不同的房屋（数据样本），而列可能对应于不同的属性。
 曾经使用过电子表格软件或已阅读过
-<a class="reference internal" href="pandas.html#sec-pandas"><span class="std std-numref">2.2节</span></a>的人，应该对此很熟悉。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/pandas.html#sec-pandas"><span class="std std-numref">2.2节</span></a>的人，应该对此很熟悉。
 因此，尽管单个向量的默认方向是列向量，但在表示表格数据集的矩阵中，
 将每个数据样本作为矩阵中的行向量更为常见。
 后面的章节将讲到这点，这种约定将支持常见的深度学习实践。
@@ -2937,7 +2937,7 @@ norm）是矩阵元素平方和的平方根：</p>
 当开始动手尝试并在真实数据集上应用了有效的机器学习模型，你会更倾向于学习更多数学。
 因此，这一节到此结束，本书将在后面介绍更多数学知识。</p>
 <p>如果渴望了解有关线性代数的更多信息，可以参考<a class="reference external" href="https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/geometry-linear-algebraic-ops.html">线性代数运算的在线附录</a>或其他优秀资源
-<span id="id15">(<a class="reference internal" href="../chapter_references/zreferences.html#id85" title="Kolter, Z. (2008). Linear algebra review and reference. Available online: http.">Kolter, 2008</a>, <a class="reference internal" href="../chapter_references/zreferences.html#id127" title="Petersen, K. B., Pedersen, M. S., &amp; others. (2008). The matrix cookbook. Technical University of Denmark, 7(15), 510.">Petersen <em>et al.</em>, 2008</a>, <a class="reference internal" href="../chapter_references/zreferences.html#id156" title="Strang, G. (1993). Introduction to linear algebra. Vol. 3. Wellesley-Cambridge Press Wellesley, MA.">Strang, 1993</a>)</span>。</p>
+<span id="id15">(<a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id85" title="Kolter, Z. (2008). Linear algebra review and reference. Available online: http.">Kolter, 2008</a>, <a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id127" title="Petersen, K. B., Pedersen, M. S., &amp; others. (2008). The matrix cookbook. Technical University of Denmark, 7(15), 510.">Petersen <em>et al.</em>, 2008</a>, <a class="reference internal" href="https://zh.d2l.ai/chapter_references/zreferences.html#id156" title="Strang, G. (1993). Introduction to linear algebra. Vol. 3. Wellesley-Cambridge Press Wellesley, MA.">Strang, 1993</a>)</span>。</p>
 </div>
 <div class="section" id="id16">
 <h2><span class="section-number">2.3.12. </span>小结</h2>
@@ -3012,14 +3012,14 @@ norm）是矩阵元素平方和的平方根：</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="pandas.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_preliminaries/pandas.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>2.2. 数据预处理</div>
          </div>
      </a>
-     <a id="button-next" href="calculus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_preliminaries/calculus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -3046,7 +3046,7 @@ norm）是矩阵元素平方和的平方根：</p>
 2000多年后，微积分的另一支，<em>微分</em>（differential
 calculus）被发明出来。
 在微分学最重要的应用是优化问题，即考虑如何把事情做到最好。 正如在
-<a class="reference internal" href="linear-algebra.html#subsec-norms-and-objectives"><span class="std std-numref">2.3.10.1节</span></a>中讨论的那样，
+<a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/linear-algebra.html#subsec-norms-and-objectives"><span class="std std-numref">2.3.10.1节</span></a>中讨论的那样，
 这种问题在深度学习中是无处不在的。</p>
 <p>在深度学习中，我们“训练”模型，不断更新它们，使它们在看到越来越多的数据时变得越来越好。
 通常情况下，变得更好意味着最小化一个<em>损失函数</em>（loss function），
@@ -3419,14 +3419,14 @@ derivative）为：</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="linear-algebra.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_preliminaries/linear-algebra.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>2.3. 线性代数</div>
          </div>
      </a>
-     <a id="button-next" href="autograd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_preliminaries/autograd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -3442,7 +3442,7 @@ derivative）为：</p>
 <div class="bk-sub" id="ch02-5"><div class="section" id="sec-autograd">
 <span id="id1"></span><h1><span class="section-number">2.5. </span>自动微分<div class="d2l-tabs" style="float:right"><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_preliminaries/autograd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-colab/blob/master/chapter_preliminaries/autograd.ipynb'); return false;"> <button style="float:right", id="Colab_[mxnet]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [mxnet] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[mxnet]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_preliminaries/autograd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-pytorch-colab/blob/master/chapter_preliminaries/autograd.ipynb'); return false;"> <button style="float:right", id="Colab_[pytorch]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [pytorch] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[pytorch]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_preliminaries/autograd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-tensorflow-colab/blob/master/chapter_preliminaries/autograd.ipynb'); return false;"> <button style="float:right", id="Colab_[tensorflow]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [tensorflow] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[tensorflow]"> Open the notebook in Colab</div></div><div class="d2l-tabs__tab"><a href="https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_preliminaries/autograd.ipynb" onclick="captureOutboundLink('https://colab.research.google.com/github/d2l-ai/d2l-zh-paddle-colab/blob/master/chapter_preliminaries/autograd.ipynb'); return false;"> <button style="float:right", id="Colab_[paddle]" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> Colab [paddle] </button></a><div class="mdl-tooltip" data-mdl-for="Colab_[paddle]"> Open the notebook in Colab</div></div></div><a href="https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb" onclick="captureOutboundLink('https://studiolab.sagemaker.aws/import/github/d2l-ai/d2l-pytorch-sagemaker-studio-lab/blob/main/GettingStarted-D2L.ipynb'); return false;"> <button style="float:right", id="SageMaker_Studio_Lab" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"> <i class=" fas fa-external-link-alt"></i> SageMaker Studio Lab </button></a><div class="mdl-tooltip" data-mdl-for="SageMaker_Studio_Lab"> Open the notebook in SageMaker Studio Lab</div></h1>
 <p>正如
-<a class="reference internal" href="calculus.html#sec-calculus"><span class="std std-numref">2.4节</span></a>中所说，求导是几乎所有深度学习优化算法的关键步骤。
+<a class="reference internal" href="https://zh.d2l.ai/chapter_preliminaries/calculus.html#sec-calculus"><span class="std std-numref">2.4节</span></a>中所说，求导是几乎所有深度学习优化算法的关键步骤。
 虽然求导的计算很简单，只需要一些基本的微积分。
 但对于复杂的模型，手工进行更新是一件很痛苦的事情（而且经常容易出错）。</p>
 <p>深度学习框架通过自动计算导数，即<em>自动微分</em>（automatic
@@ -3955,14 +3955,14 @@ graph）， 来跟踪计算是哪些数据通过哪些操作组合起来产生�
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="calculus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_preliminaries/calculus.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>2.4. 微积分</div>
          </div>
      </a>
-     <a id="button-next" href="probability.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_preliminaries/probability.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -3993,7 +3993,7 @@ graph）， 来跟踪计算是哪些数据通过哪些操作组合起来产生�
 这听起来可能很简单，但对于机器却可能是一个艰巨的挑战。
 首先，问题的难度可能取决于图像的分辨率。</p>
 <div class="figure align-default" id="id15">
-<span id="fig-cat-dog"></span><a class="reference internal image-reference" href="../_images/cat-dog-pixels.png"><img alt="../_images/cat-dog-pixels.png" src="https://zh.d2l.ai/_images/cat-dog-pixels.png" style="width: 300px;" /></a>
+<span id="fig-cat-dog"></span><a class="reference internal image-reference" href="https://zh.d2l.ai/_images/cat-dog-pixels.png"><img alt="../_images/cat-dog-pixels.png" src="https://zh.d2l.ai/_images/cat-dog-pixels.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">图2.6.1 </span><span class="caption-text">不同分辨率的图像 (<span class="math notranslate nohighlight">\(10 \times 10\)</span>, <span class="math notranslate nohighlight">\(20 \times 20\)</span>,
 <span class="math notranslate nohighlight">\(40 \times 40\)</span>, <span class="math notranslate nohighlight">\(80 \times 80\)</span>, 和 <span class="math notranslate nohighlight">\(160 \times 160\)</span>
 pixels)</span></p>
@@ -4543,14 +4543,14 @@ E[X^2] - E[X]^2.\]</div>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="autograd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_preliminaries/autograd.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>2.5. 自动微分</div>
          </div>
      </a>
-     <a id="button-next" href="lookup-api.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_preliminaries/lookup-api.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
@@ -4846,14 +4846,14 @@ ones(shape, dtype=None, name=None)
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="probability.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="https://zh.d2l.ai/chapter_preliminaries/probability.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <i class="pagenation-arrow-L fas fa-arrow-left fa-lg"></i>
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
             <div>2.6. 概率</div>
          </div>
      </a>
-     <a id="button-next" href="../chapter_linear-networks/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="https://zh.d2l.ai/chapter_linear-networks/index.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
          <i class="pagenation-arrow-R fas fa-arrow-right fa-lg"></i>
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>

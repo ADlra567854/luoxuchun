@@ -685,7 +685,7 @@
       document.head.appendChild(s)
     }
     if (!loaded('module.js', function () { return document.getElementById('modSettings') })) {
-      load('/module.js?v=20261116a')
+      load('/module.js?v=20261124a')
     }
     if (!loaded('search.js', function () { return window.ccowSearchOpen })) {
       load('/search.js')

@@ -90,11 +90,11 @@
   try {
     var scr = document.currentScript || (function () { var s = document.getElementsByTagName('script'); return s[s.length - 1] })()
     /* ★ base 必须剥掉查询串再取目录。
-       旧写法 src.replace(/[^/]*$/, '') 遇到 '/ccowork.js?v=20261116a' 会算出 '/?v=21'，
+       旧写法 src.replace(/[^/]*$/, '') 遇到 '/ccowork.js?v=20261124a' 会算出 '/?v=21'，
        导致后续所有 base+'xxx' 拼出 '/?v=21/xxx' 而 404。
        这次挂图标系统时实测暴露，按标准 URL 解析重写。 */
     var base = (function () {
-      /* src 可能是 '/ccowork.js?v=20261116a'（要剥掉查询串），也可能拿不到
+      /* src 可能是 '/ccowork.js?v=20261124a'（要剥掉查询串），也可能拿不到
          （异步注入时 currentScript 为空、回退到的 elem 无 src）。
          拿不到时一律按根目录算：ccowork.js 是根级文件，旧写法算出 ''
          会让子目录页面去请求 /website/theme-cloud.css 之类，全是 404。 */
@@ -110,7 +110,7 @@
        site-redesign.css / siteframe.css。手机端无法强刷，换指纹强制取新资源。 */
     /* 2026-11-10 晚：全站统一层（brand-one.css / brand-one.js）——
        唯一助手、一套设置、正式品牌标识。换指纹让手机端也取到新资源。 */
-    var V = '20261116a'   /* 2026-11-16 发布态 AI 交互全隐藏（data-ai 开关）+ 多钥匙分组，两侧指纹必须同步 */
+    var V = '20261124a'   /* 2026-11-24 页脚公示 ICP 备案号 赣ICP备2026031925号；两侧指纹必须同步 */
     var q = function (f) { return base + f + '?v=' + V }
 
     /* 朋友门锁：状态层脚本尽早注入（CSS 由它自注入，避免重复 link）。
@@ -356,7 +356,7 @@
           '<div class="foot-bar">' +
             '<span>© 2026 白驹 ccowork</span>' +
             '<span>MIT License · 内容取自站内实际数据</span>' +
-            '<span class="foot-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。</span>' +
+            '<span class="foot-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号</span>' +
           '</div>' +
         '</footer>';
       var oldFoot = document.querySelector('footer');

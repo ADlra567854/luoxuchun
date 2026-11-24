@@ -422,6 +422,9 @@
     try{
       if (window.self !== window.top) return
       var path = (location.pathname || '/').replace(/\/+$/, '')
+      /* 开源书阅读页自带「来源与许可」块 + 章节目录 + 上一章/下一章，
+         再塞一张「本页概览」只会挡住正文，所以整片跳过（备案号仍由 ensureICP 兜底）。 */
+      if (/^\/book\/open\//.test(path)) return
       /* 板块识别：路径优先，data-ccnav 兜底。
          实测 data-ccnav 有标错的（blog/index.html 标成 works、feed/index.html 标成 models），
          而路径首段永远准，所以不能让属性反过来覆盖路径。 */
@@ -460,6 +463,14 @@
         '.bj-brief-fb b{font-weight:700;opacity:.8}',
         '.bj-brief-fb a{color:#2f5fd0;text-decoration:none;padding:3px 8px;border-radius:8px;background:rgba(79,140,255,.07)}',
         '.bj-brief-fb a:hover{background:rgba(79,140,255,.15)}',
+        '.bj-brief-qr{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0 0}',
+        '.bj-qr{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px;border-radius:14px;border:1px solid rgba(120,150,200,.24);background:rgba(79,140,255,.04);text-decoration:none;transition:.18s;width:120px}',
+        '.bj-qr:hover{transform:translateY(-2px);border-color:rgba(79,140,255,.42);background:rgba(79,140,255,.09)}',
+        '.bj-qr img{width:98px;height:98px;object-fit:cover;object-position:center 30%;border-radius:8px;display:block;background:#fff}',
+        '.bj-qr b{font-size:12.5px;color:#2f5fd0;font-weight:700}',
+        '.bj-qr i{font-style:normal;font-size:11.5px;opacity:.72;text-align:center;line-height:1.4}',
+        '[data-theme="deep"] .bj-qr{border-color:rgba(56,225,255,.22);background:rgba(56,225,255,.06)}',
+        '[data-theme="deep"] .bj-qr b{color:#9dc4ff}',
         '[data-theme="deep"] .bj-brief-in{background:#101728;border-color:rgba(120,160,255,.24);color:#e9f0fb}',
         '[data-theme="deep"] .bj-brief-badge{background:rgba(56,225,255,.10);color:#7fe4ff;border-color:rgba(56,225,255,.26)}',
         '[data-theme="deep"] .bj-brief-stat{background:rgba(56,225,255,.07);border-color:rgba(56,225,255,.18)}',
@@ -547,13 +558,30 @@
         var fb = d.feedback || {}
         var fbItems = []
         if (fb.email) fbItems.push('<a href="mailto:' + esc(fb.email) + '">✉ 邮箱 ' + esc(fb.email) + '</a>')
-        if (fb.qqGroup) fbItems.push('<a href="' + esc(fb.qqGroup) + '" target="_blank" rel="noopener">QQ 群</a>')
-        if (fb.weibo) fbItems.push('<a href="' + esc(fb.weibo) + '" target="_blank" rel="noopener">微博</a>')
         if (fb.cnb) fbItems.push('<a href="' + esc(fb.cnb) + '" target="_blank" rel="noopener">CNB 仓库</a>')
         if (fb.github) fbItems.push('<a href="' + esc(fb.github) + '" target="_blank" rel="noopener">GitHub</a>')
-        var fbHtml = fbItems.length
-          ? '<div class="bj-brief-fb"><b>技术反馈</b>' + fbItems.join('') + '</div>'
-          : ''
+        // QQ 群 / 微博：支持 { name, qr, tip } 对象，点击二维码看大图；没配就整块不渲染
+        var qrItems = []
+        ;[['QQ 群', fb.qqGroup], ['微博', fb.weibo]].forEach(function(pair){
+          var label = pair[0], v = pair[1]
+          if (!v) return
+          if (typeof v === 'string') {
+            if (/^https?:/.test(v)) qrItems.push('<a href="' + esc(v) + '" target="_blank" rel="noopener">' + label + '</a>')
+            return
+          }
+          if (!v.qr) return
+          qrItems.push(
+            '<a class="bj-qr" href="' + esc(v.qr) + '" target="_blank" rel="noopener" title="' + esc(v.tip || '扫码') + '">' +
+              '<img src="' + esc(v.qr) + '" alt="' + esc(label) + ' · ' + esc(v.name || '') + '" loading="lazy">' +
+              '<b>' + esc(label) + '</b><i>' + esc(v.name || '') + '</i>' +
+            '</a>'
+          )
+        })
+        var fbHtml = ''
+        if (fbItems.length || qrItems.length) {
+          fbHtml = '<div class="bj-brief-fb"><b>技术反馈</b>' + fbItems.join('') + '</div>'
+          if (qrItems.length) fbHtml += '<div class="bj-brief-qr">' + qrItems.join('') + '</div>'
+        }
         mount(
           '<div class="bj-brief-in">' +
             '<span class="bj-brief-badge">🐎 白驹 ccowork · ' + esc(b.title) + '</span>' +

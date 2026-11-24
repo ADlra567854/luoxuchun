@@ -378,6 +378,40 @@
     }catch(e){}
   })();
 
+  /* ---------- ICP 备案号全站兜底公示（2026-11-24 立） ----------
+     赣ICP备2026031925号 已下证，属于法定公示信息，必须每个公开页可见。
+     上面的 siteFooter 检测到页面自带 footer（footer.ccfoot / .site-footer 等）会直接 return，
+     不再注入品牌页脚 —— 实测首页 /models/ /about/changelog.html 等 500+ 页因此看不到备案号。
+     这里独立兜底：只要整页文本里还没有这个号，就往该页最后一个 footer 末尾补一条 .foot-legal。
+     幂等：先查 body 文本，已存在即跳过；load 后再补一次，兼容 JS 后渲染的页脚。 */
+  (function ensureICP(){
+    var ICP = '赣ICP备2026031925号'
+    var LEGAL = '本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：' + ICP
+    function run(){
+      try{
+        if (!document.body) return
+        if (document.body.innerText.indexOf(ICP) !== -1) return
+        var foots = document.getElementsByTagName('footer')
+        var host = foots.length ? foots[foots.length - 1] : null
+        if (!host){
+          // 无 footer 的页面（极少数），在 body 末尾补一条极简法务条
+          host = document.createElement('footer')
+          host.className = 'site-footer foot-fallback'
+          document.body.appendChild(host)
+        }
+        var span = document.createElement('span')
+        span.className = 'foot-legal'
+        span.style.cssText = 'display:block;margin-top:10px;font-size:12px;line-height:1.7;opacity:.72;color:inherit'
+        span.textContent = LEGAL
+        host.appendChild(span)
+      }catch(e){}
+    }
+    run()
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', run, { once: true })
+    }
+  })();
+
   // 被 iframe 嵌入（如工作台 ccowork.html 内嵌的页面）时不创建悬浮宠物，避免重影
   var inIframe = false
   try { inIframe = window.self !== window.top } catch (e) { inIframe = true }

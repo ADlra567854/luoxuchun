@@ -487,6 +487,13 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
   .foot-inner{flex-direction:column;gap:28px}
   .foot-bar{flex-direction:column;text-align:center}
 }
+.entry-line{max-width:1180px;margin:00 auto;padding:14px 20px 0;display:flex;flex-wrap:wrap;align-items:center;gap:7px;font-size:13px;color:var(--muted)}
+.entry-line span{font-weight:700}
+.entry-line a{color:#2f5fd0;font-weight:700;text-decoration:none;border:none}
+.entry-line a:hover{text-decoration:underline}
+.entry-line i{opacity:.35;font-style:normal}
+[data-theme="deep"] .entry-line a{color:#7fe4ff}
+@media(max-width:640px){.entry-line{padding:12px 14px 0;font-size:12.5px}}
 </style>
 <link rel="stylesheet" href="./responsive.css">
 <link rel="stylesheet" href="./compile-mode.css">
@@ -577,31 +584,6 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
          原来导航「选身份」弹的模态框（6 类身份）已并入本面板，不再单独弹窗；
          原来首访盖全屏的 4 步导览已下线，它的「主题/阅读模式/角色」三件事
          压成下面这两个直连按钮，需要时才点，不再弹窗教学。 -->
-    <div class="onboard" id="onboard" data-state="pick">
-      <div class="ob-hd">
-        <b id="obTitle">第一次来？先选你是谁</b>
-        <span id="obSub">这个站只做一件事：陪你把 AI 从零学到能做出东西。选完直接给你路径，不用猜该点哪。</span>
-        <button type="button" class="ob-change" id="obChange" hidden>换身份</button>
-      </div>
-      <div class="ob-roles" role="group" aria-label="选择你的身份">
-        <button type="button" class="ob-role cur" data-role="everyone" aria-pressed="true"><b>🙂 普通人</b><span>先搞懂 AI 能干嘛</span></button>
-        <button type="button" class="ob-role" data-role="developer" aria-pressed="false"><b>💻 开发者</b><span>想把模型跑在自己机器上</span></button>
-        <button type="button" class="ob-role" data-role="toolbox" aria-pressed="false"><b>🧰 工具台</b><span>想用 AI 做出能发的作品</span></button>
-        <button type="button" class="ob-role" data-role="teacher" aria-pressed="false"><b>🎓 老师</b><span>明天上课就能用</span></button>
-        <button type="button" class="ob-role" data-role="student" aria-pressed="false"><b>📚 学生</b><span>作业、选题、搞明白</span></button>
-        <button type="button" class="ob-role" data-role="engineer" aria-pressed="false"><b>⚙️ 技术人员</b><span>设备、产线、现场落地</span></button>
-      </div>
-      <button type="button" class="ob-more" id="obMore" aria-expanded="false">更多身份（老师 / 学生 / 技术人员）<i>▾</i></button>
-      <div class="ob-paths" id="obPaths" aria-live="polite"></div>
-      <div class="ob-foot">
-        <span class="ob-foot-long">卡住了就问右下角助手 —— 读文档、算表格、整理材料、导出 Word / PDF 都在这台设备上跑。想换主题、壁纸或开阅读模式，点导航右上的 ⚙。</span>
-        <span class="ob-foot-short">卡住问右下角助手；换主题 / 阅读模式点右上 ⚙。</span>
-        <div class="ob-fbtns">
-          <button type="button" class="ob-open ghost" id="obSet">⚙ 个性化设置</button>
-          <button type="button" class="ob-open" id="obAsk">打开助手</button>
-        </div>
-      </div>
-    </div>
 
     <!-- 兼容桩：内嵌对话工作台整体下线（视觉切除），保留 DOM 供旧脚本取元素，不产生第二套对话。 -->
     <div id="chatbox" hidden aria-hidden="true">
@@ -655,12 +637,16 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 </section>
 
 <!-- ====== 主路径导航（去重后 4 项） ====== -->
-<div id="modebar">
-  <button class="modebtn cur" data-mode="work" onclick="switchMode('work',this)"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i>对话</button>
-  <button class="modebtn" data-mode="tools" onclick="switchMode('tools',this)"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>工具</button>
-  <button class="modebtn" data-mode="compile" onclick="switchMode('compile',this)"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>编译</button>
-  <button class="modebtn" data-mode="explore" onclick="switchMode('explore',this)"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>探索</button>
-</div>
+<!-- 2026-11-25：原来这里是 4 个模式按钮（对话 / 工具 / 编译 / 探索）。
+     实测「编译」指向的 #compile 已带 style="display:none"，点了毫无反应，是个死按钮；
+     「对话」「工具」与右下角白驹助手悬浮球完全重复；只有「探索」是真的跳转。
+     所以按钮整条撤掉，改成一行文字入口，目标地址都指向真实页面而不是页内隐藏区块。 -->
+<nav class="entry-line" aria-label="功能入口">
+  <span>要动手的话：</span>
+  <a href="/agent.html">对话与智能体</a><i>·</i>
+  <a href="/toolbox/">工具工坊</a><i>·</i>
+  <a href="/toolbox/workstation.html">本地编译环境</a>
+</nav>
 
 <!-- ====== 白区：可交互工作台（设计稿工作台面板） ====== -->
 <!-- ====== 工作台 · 场馆（技能弹药库驱动 · 真实数据） ====== -->
@@ -677,6 +663,34 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
   </div>
 </section>
 <!--FF:END-->
+<!-- 2026-11-25：身份问卷从首屏移到这里。它占 369px，把「今天有什么变化」挤出了第一屏；
+     内容站应当先给答案再问问题。功能与 DOM id 完全不变，只是换了位置，JS 照常工作。 -->
+    <div class="onboard" id="onboard" data-state="pick">
+      <div class="ob-hd">
+        <b id="obTitle">第一次来？先选你是谁</b>
+        <span id="obSub">这个站只做一件事：陪你把 AI 从零学到能做出东西。选完直接给你路径，不用猜该点哪。</span>
+        <button type="button" class="ob-change" id="obChange" hidden>换身份</button>
+      </div>
+      <div class="ob-roles" role="group" aria-label="选择你的身份">
+        <button type="button" class="ob-role cur" data-role="everyone" aria-pressed="true"><b>🙂 普通人</b><span>先搞懂 AI 能干嘛</span></button>
+        <button type="button" class="ob-role" data-role="developer" aria-pressed="false"><b>💻 开发者</b><span>想把模型跑在自己机器上</span></button>
+        <button type="button" class="ob-role" data-role="toolbox" aria-pressed="false"><b>🧰 工具台</b><span>想用 AI 做出能发的作品</span></button>
+        <button type="button" class="ob-role" data-role="teacher" aria-pressed="false"><b>🎓 老师</b><span>明天上课就能用</span></button>
+        <button type="button" class="ob-role" data-role="student" aria-pressed="false"><b>📚 学生</b><span>作业、选题、搞明白</span></button>
+        <button type="button" class="ob-role" data-role="engineer" aria-pressed="false"><b>⚙️ 技术人员</b><span>设备、产线、现场落地</span></button>
+      </div>
+      <button type="button" class="ob-more" id="obMore" aria-expanded="false">更多身份（老师 / 学生 / 技术人员）<i>▾</i></button>
+      <div class="ob-paths" id="obPaths" aria-live="polite"></div>
+      <div class="ob-foot">
+        <span class="ob-foot-long">卡住了就问右下角助手 —— 读文档、算表格、整理材料、导出 Word / PDF 都在这台设备上跑。想换主题、壁纸或开阅读模式，点导航右上的 ⚙。</span>
+        <span class="ob-foot-short">卡住问右下角助手；换主题 / 阅读模式点右上 ⚙。</span>
+        <div class="ob-fbtns">
+          <button type="button" class="ob-open ghost" id="obSet">⚙ 个性化设置</button>
+          <button type="button" class="ob-open" id="obAsk">打开助手</button>
+        </div>
+      </div>
+    </div>
+
 <section class="block" id="explore">
   <div class="sec-head">
     <h2><span class="em">按需要查</span></h2>

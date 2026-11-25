@@ -52,29 +52,6 @@ footer{margin-top:44px;padding:24px 0 40px;border-top:1px solid var(--line);colo
 @media(max-width:720px){.grid{grid-template-columns:1fr}}
 @media(max-width:480px){.wrap{padding:0 14px}.hero{padding:26px 0 16px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
-/* ===== 本轮新增：公开编程书 / 游戏作品源码 ===== */
-.xgrid{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
-.xcard{position:relative;display:flex;gap:13px;align-items:flex-start;background:var(--card)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:16px;padding:17px 16px 15px;box-shadow:var(--shadow);min-width:0}
-.xav{flex:0 0 56px;width:56px;height:56px;border-radius:15px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:17px;line-height:1;letter-spacing:.5px;user-select:none;box-shadow:0 6px 16px rgba(30,58,110,.20)}
-.xav.book{background:linear-gradient(135deg,#4f8cff 0%,#7c5cff 52%,#8b5cf6 100%)}
-.xav.game{background:linear-gradient(135deg,#06b6d4 0%,#2b8cff 55%,#2563eb 100%)}
-.xcard .xmain{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:7px}
-.xcard .xmain h3{margin:0;font-size:15.5px;font-weight:800;line-height:1.45;word-break:break-word;color:var(--text)!important}
-.xcard .xwho{margin:0;font-size:12px;line-height:1.6;color:var(--muted)!important;word-break:break-word}
-.xkv{display:flex;gap:6px;flex-wrap:wrap;font-size:11px}
-.xlic{padding:3px 9px;border-radius:999px;font-weight:700;border:1px solid var(--line);background:var(--soft);color:var(--muted);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
-.xlic.open{color:#15803d;background:rgba(34,197,94,.13);border-color:rgba(34,197,94,.38)}
-.xlic.restrict{color:#b45309;background:rgba(245,158,11,.16);border-color:rgba(245,158,11,.44)}
-.xlic.copy{color:var(--muted);background:var(--soft);border-color:var(--line)}
-.xcard .xnote{margin:0;font-size:12.5px;line-height:1.72;color:var(--muted)!important;word-break:break-word}
-.xgo{margin-top:auto;padding-top:5px}
-.xpk{position:absolute;top:-9px;right:12px;font:800 10.5px/1 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;padding:5px 10px;border-radius:999px;color:#fff;background:linear-gradient(120deg,#fb923c,#f97316);box-shadow:0 4px 12px rgba(249,115,22,.32);letter-spacing:1.5px}
-.xpk.must{background:linear-gradient(120deg,#fb7185,#e11d48);box-shadow:0 4px 12px rgba(225,29,72,.34)}
-html[data-theme="deep"] .xlic.open{color:#86efac;background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.42)}
-html[data-theme="deep"] .xlic.restrict{color:#fcd34d;background:rgba(245,158,11,.18);border-color:rgba(245,158,11,.46)}
-@media(max-width:720px){.xgrid{grid-template-columns:1fr}}
-@media(max-width:430px){.xcard{padding:15px 13px 13px;gap:11px}.xav{flex:0 0 48px;width:48px;height:48px;border-radius:13px;font-size:15px}.xcard .xmain h3{font-size:14.5px}}
-
 </style>
 <script src="/ccowork.js?v=20261125a"></script>
 </head>
@@ -149,7 +126,7 @@ html[data-theme="deep"] .xlic.restrict{color:#fcd34d;background:rgba(245,158,11,
       <p><b>出处：</b>Microsoft Cloud Advocates</p>
       <p><b>源头：</b><code>https://github.com/microsoft/generative-ai-for-beginners</code></p>
       <div class="concl"><b>结论：</b>21 课官方开源课程，覆盖提示工程 / RAG / 智能体 / 微调，MIT 许可；只跳官方仓库。</div>
-      <div class="foot">采集 2026-11-15 · 核验 2026-11-25 · 失效标记 无 · 经官方 API 端点复核</div>
+      <div class="foot">采集 2026-11-15 · 核验 2026-11-25 · 失效标记 无</div>
       <div class="go"><a class="lnk" href="https://github.com/microsoft/generative-ai-for-beginners" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
     </article>
 <article class="card">
@@ -169,7 +146,7 @@ html[data-theme="deep"] .xlic.restrict{color:#fcd34d;background:rgba(245,158,11,
       <p><b>出处：</b>Microsoft Cloud Advocates</p>
       <p><b>源头：</b><code>https://github.com/microsoft/ai-agents-for-beginners</code></p>
       <div class="concl"><b>结论：</b>官方开源智能体课程，MIT 许可；只跳官方仓库。</div>
-      <div class="foot">采集 2026-11-15 · 核验 2026-11-25 · 失效标记 无 · 经官方 API 端点复核</div>
+      <div class="foot">采集 2026-11-15 · 核验 2026-11-25 · 失效标记 无</div>
       <div class="go"><a class="lnk" href="https://github.com/microsoft/ai-agents-for-beginners" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
     </article>
 <article class="card">
@@ -304,125 +281,529 @@ html[data-theme="deep"] .xlic.restrict{color:#fcd34d;background:rgba(245,158,11,
       <div class="foot">采集 2026-11-15 · 核验 2026-11-25 · 失效标记 无</div>
       <div class="go"><a class="lnk" href="https://www.sqlite.org/docs.html" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
     </article></section>
-<!-- BJ-OPEN-RES START（由 scripts/gen-open-resources.mjs 生成，勿手改） -->
-<h2 class="sec">游戏引擎与开发文档 <span>8 条 · 国内可直连</span></h2>
-      <p class="sub">想做小游戏但不知道从哪个引擎开始？这一组全是国内可直接打开的官方文档，点开不用切网络环境。每条的验证时间与响应时间都记在卡片里。</p>
-      <section class="grid">
-  <article class="card">
-      <div class="no">G-01 / game-src</div>
-      <h3>微信小游戏开发指南</h3>
-      <div class="kv"><i>微信开放平台</i><i>官方文档，版权归腾讯（仅外链）</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>微信开放平台</p>
-      <p><b>源头：</b><code>https://developers.weixin.qq.com/minigame/dev/guide/</code></p>
-      <div class="concl"><b>结论：</b>想做能发到微信里的小游戏，这是唯一权威入口。从创建项目到上架审核全流程都在这里</div>
-      <div class="concl"><b>访问依据：</b>developers.weixin.qq.com 国内直连；2026-11-25 fetch 返回 200 / 629ms</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://developers.weixin.qq.com/minigame/dev/guide/" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+<!-- BJ-OPEN-RES START（由 scripts/gen-open-resources.mjs 生成，勿手改；build-library 重写后必须重跑本脚本） -->
+<h2 class="sec xsec">公开编程书 <span>24 条</span></h2>
+    <p class="sub">可以合法免费读的完整教材。许可开放的标绿、带 NC/ND 限制的标橙、版权保留的标灰 —— 颜色不代表好坏，只代表你能拿它做什么。全部为国内可直连地址，点开即看，本站不托管全文。</p>
+    <section class="grid xgrid">
+    <article class="xcard" data-grp="coding-book" data-id="book-001">
+      <span class="xpk must">必看</span>
+      <div class="xav book" aria-hidden="true">HE</div>
+      <div class="xmain">
+        <h3>《Hello 算法》</h3>
+        <p class="xwho">靳宇栋（krahets） ｜ Hello 算法开源项目 · 官方在线阅读 www.hello-algo.com · 国内镜像 gitcode</p>
+        <div class="xkv"><span class="xlic restrict" title="CC BY-NC-SA 4.0（含 NC 非商业 + SA 相同方式共享限制）">CC BY-NC-SA 4.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">动画图解数据结构与算法，零基础可读；只要会一门语言的变量与循环就能跟着跑代码（访问依据：gitcode.com 为境内代码托管平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；LICENSE 经 raw.gitcode.com 读取为 Attribution-NonCommercial-ShareAlike 4.0（官方站 www.hello-algo.com 同源，本站只外链镜像以免限流 429））</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/he/hello-algo" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-  <article class="card">
-      <div class="no">G-02 / game-src</div>
-      <h3>Cocos Creator 使用手册</h3>
-      <div class="kv"><i>Cocos 引擎团队（国内）</i><i>引擎 MIT；文档版权归官方（仅外链）</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>Cocos 引擎团队（国内）</p>
-      <p><b>源头：</b><code>https://docs.cocos.com/creator/manual/zh/</code></p>
-      <div class="concl"><b>结论：</b>国内用得最多的 2D/3D 游戏引擎之一，能导出微信小游戏与原生 App。中文文档完整</div>
-      <div class="concl"><b>访问依据：</b>docs.cocos.com 国内直连；2026-11-25 fetch 返回 200 / 418ms</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://docs.cocos.com/creator/manual/zh/" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-002">
+      <div class="xav book" aria-hidden="true">OI</div>
+      <div class="xmain">
+        <h3>OI Wiki（算法竞赛知识库）</h3>
+        <p class="xwho">OI Wiki 社区 ｜ OI Wiki · oi-wiki.org</p>
+        <div class="xkv"><span class="xlic open" title="CC BY-SA 4.0（README 版权声明实测）">CC BY-SA 4.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">算法竞赛（OI/ICPC）体系化知识库；适合已会基础语法、想系统啃算法与数据结构的人（访问依据：oi-wiki.org 2026-11-25 实测 HTTP 200，页脚载明「黑ICP备19005132号-2」境内备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://oi-wiki.org/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-  <article class="card">
-      <div class="no">G-03 / game-src</div>
-      <h3>LayaAir 引擎</h3>
-      <div class="kv"><i>LayaBox（国内）</i><i>引擎开源；文档版权归官方（仅外链）</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>LayaBox（国内）</p>
-      <p><b>源头：</b><code>https://layaair.layabox.com/</code></p>
-      <div class="concl"><b>结论：</b>国产 H5 与小游戏引擎，主打性能。适合做 2D 小游戏，中文文档与示例齐全</div>
-      <div class="concl"><b>访问依据：</b>layaair.layabox.com 国内直连；2026-11-25 fetch 返回 200 / 454ms</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://layaair.layabox.com/" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-003">
+      <span class="xpk">推荐</span>
+      <div class="xav book" aria-hidden="true">菜</div>
+      <div class="xmain">
+        <h3>菜鸟教程（多语言中文入门教程）</h3>
+        <p class="xwho">菜鸟教程（runoob.com） ｜ 菜鸟教程</p>
+        <div class="xkv"><span class="xlic copy" title="版权归官方（仅外链，未开放转载）">版权归官方</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">纯中文零基础入门，覆盖面最广（Python/Java/C/JS/SQL 都有）；适合第一遍通读与日常速查，深度有限（访问依据：runoob.com 2026-11-25 实测 HTTP 200，页脚载明「闽ICP备15012807号-1」境内备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://www.runoob.com/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-  <article class="card">
-      <div class="no">G-04 / game-src</div>
-      <h3>Godot 中文文档</h3>
-      <div class="kv"><i>Godot 基金会</i><i>引擎 MIT；文档 CC BY 3.0</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>Godot 基金会</p>
-      <p><b>源头：</b><code>https://docs.godotengine.org/zh-cn/4.x/</code></p>
-      <div class="concl"><b>结论：</b>Godot 免费开源、不抽成、能导出手机。中文文档已完整翻译，本站另有引擎选型对比页</div>
-      <div class="concl"><b>访问依据：</b>docs.godotengine.org 提供 zh-cn 路径且可直连；2026-11-25 fetch 返回 200 / 1486ms</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://docs.godotengine.org/zh-cn/4.x/" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-004">
+      <div class="xav book" aria-hidden="true">PY</div>
+      <div class="xmain">
+        <h3>Python-100-Days（Python 百天学习计划）</h3>
+        <p class="xwho">骆昊（jackfrued） ｜ GitHub 开源项目 · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic copy" title="未标注（仅外链）">未标注</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">从语法到 Web、数据分析的中文学习路线；适合零基础照着走，仓库无许可文件所以本站只外链不转载（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；仓库内未检出 LICENSE 文件，故按未标注处理）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/py/Python-100-Days" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-  <article class="card">
-      <div class="no">G-05 / game-src</div>
-      <h3>抖音小游戏开发文档</h3>
-      <div class="kv"><i>抖音开放平台</i><i>官方文档，版权归字节跳动（仅外链）</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>抖音开放平台</p>
-      <p><b>源头：</b><code>https://developer.open-douyin.com/docs/resource/zh-CN/mini-game/introduction/overview</code></p>
-      <div class="concl"><b>结论：</b>第二个能真正带来流量的小游戏分发渠道。接入方式与微信小游戏接近，可复用大部分代码</div>
-      <div class="concl"><b>访问依据：</b>developer.open-douyin.com 国内直连；2026-11-25 fetch 返回 200 / 437ms</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://developer.open-douyin.com/docs/resource/zh-CN/mini-game/introduction/overview" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-005">
+      <div class="xav book" aria-hidden="true">LE</div>
+      <div class="xmain">
+        <h3>learn-python（可运行 Python 语法示例集）</h3>
+        <p class="xwho">Oleksii Trekhleb（trekhleb） ｜ trekhleb/learn-python · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">按主题分类的可运行示例 + 解释；适合已有别的语言基础、想快速过一遍 Python 语法的人（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/le/learn-python" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-  <article class="card">
-      <div class="no">G-06 / game-src</div>
-      <h3>Phaser 官方示例库</h3>
-      <div class="kv"><i>Phaser 社区</i><i>MIT（引擎与示例）</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>Phaser 社区</p>
-      <p><b>源头：</b><code>https://phaser.io/examples</code></p>
-      <div class="concl"><b>结论：</b>上千个能在线试玩、能下载源码的网页游戏示例。看中哪个直接改，是最快的上手方式</div>
-      <div class="concl"><b>访问依据：</b>phaser.io 可直连；2026-11-25 fetch 返回 200 / 2680ms（较慢但在 12s 阈值内）</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://phaser.io/examples" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-006">
+      <div class="xav book" aria-hidden="true">TH</div>
+      <div class="xmain">
+        <h3>TheAlgorithms / Java（Java 算法实现集）</h3>
+        <p class="xwho">TheAlgorithms 社区 ｜ TheAlgorithms · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">每个算法一个可运行类 + 测试；适合边学数据结构边照着敲一遍实现（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；镜像页原始仓库链接指向 TheAlgorithms/Java）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/ja/Java" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-  <article class="card">
-      <div class="no">G-07 / game-src</div>
-      <h3>PixiJS 文档</h3>
-      <div class="kv"><i>PixiJS 团队</i><i>MIT</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>PixiJS 团队</p>
-      <p><b>源头：</b><code>https://pixijs.com/</code></p>
-      <div class="concl"><b>结论：</b>只做渲染不管游戏逻辑的 2D 库。想要高性能但要自己控制架构时用它</div>
-      <div class="concl"><b>访问依据：</b>pixijs.com 可直连；2026-11-25 fetch 返回 200 / 1299ms</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://pixijs.com/" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-007">
+      <div class="xav book" aria-hidden="true">TH</div>
+      <div class="xmain">
+        <h3>TheAlgorithms / C（C 语言算法实现集）</h3>
+        <p class="xwho">TheAlgorithms 社区 ｜ TheAlgorithms · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="GPL-3.0（LICENSE 原文为 GNU GPL v3）">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">纯标准库 C 实现的算法合集，覆盖数学/数据结构/图论；适合巩固指针与内存管理，注意 GPL 传染性（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；镜像页原始仓库链接指向 TheAlgorithms/C）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/c/C" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-  <article class="card">
-      <div class="no">G-08 / game-src</div>
-      <h3>Egret 白鹭引擎</h3>
-      <div class="kv"><i>白鹭时代（国内）</i><i>引擎开源；文档版权归官方（仅外链）</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>白鹭时代（国内）</p>
-      <p><b>源头：</b><code>https://www.egret.com/</code></p>
-      <div class="concl"><b>结论：</b>早期国产 H5 游戏引擎，仍有存量项目在用。新项目建议优先 Cocos 或 LayaAir</div>
-      <div class="concl"><b>访问依据：</b>www.egret.com 国内直连；2026-11-25 fetch 返回 200 / 275ms（注：社区活跃度已不如 Cocos/LayaAir，仅作备选）</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://www.egret.com/" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-008">
+      <div class="xav book" aria-hidden="true">FR</div>
+      <div class="xmain">
+        <h3>Free Programming Books（免费编程书总清单）</h3>
+        <p class="xwho">Free Ebook Foundation ｜ EbookFoundation · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="CC BY 4.0">CC BY 4.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">分语种、分主题的免费书索引；本身不是教程，适合当「找书地图」按需跳转（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/fr/free-programming-books" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-      </section>
-<h2 class="sec">公开编程书（国内可直连） <span>2 条 · 国内可直连</span></h2>
-      <p class="sub">可以合法免费读的完整教材。这一组只放原先没有收录过的，避免与「编程资料」组重复。</p>
-      <section class="grid">
-  <article class="card">
-      <div class="no">B-01 / coding-book</div>
-      <h3>Hello 算法（动画图解数据结构与算法）</h3>
-      <div class="kv"><i>靳宇栋（krahets）</i><i>CC BY-NC-SA 4.0（含 NC 非商用，仅限学习）</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>靳宇栋（krahets）</p>
-      <p><b>源头：</b><code>https://www.hello-algo.com/</code></p>
-      <div class="concl"><b>结论：</b>数据结构与算法入门。全站动画图解，比纯文字教材容易看进去。许可带 NC，只能学习不能商用</div>
-      <div class="concl"><b>访问依据：</b>官方中文站 www.hello-algo.com；2026-11-25 fetch 返回 429（站点限流），站点本身国内可访问，429 为反爬限频不是不可达</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://www.hello-algo.com/" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-009">
+      <div class="xav book" aria-hidden="true">CO</div>
+      <div class="xmain">
+        <h3>Coding Interview University（计算机科学自学清单）</h3>
+        <p class="xwho">John Washam ｜ jwasham · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="CC BY-SA 4.0">CC BY-SA 4.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">数月期的科班知识补全清单（数据结构/算法/OS/网络/数据库）；适合非科班想补基础的人（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/co/coding-interview-university" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-  <article class="card">
-      <div class="no">B-02 / coding-book</div>
-      <h3>Pro Git（中文版）</h3>
-      <div class="kv"><i>Scott Chacon / Ben Straub，中文翻译社区</i><i>CC BY-NC-SA 3.0（含 NC 非商用）</i><i class="ok">国内直连 ✓</i></div>
-      <p><b>出处：</b>Scott Chacon / Ben Straub，中文翻译社区</p>
-      <p><b>源头：</b><code>https://git-scm.com/book/zh/v2</code></p>
-      <div class="concl"><b>结论：</b>Git 唯一值得通读的书。第 1-3 章够日常用，第 6-7 章讲 GitHub 与分支策略</div>
-      <div class="concl"><b>访问依据：</b>git-scm.com 为 Git 官方站并托管中文译本；2026-11-25 fetch 返回 200 / 2303ms。本站另有全书站内阅读页（已标注 NC 限制）</div>
-      <div class="foot">采集 2026-11-25 · 核验 2026-11-25 · 失效标记 无</div>
-      <div class="go"><a class="lnk" href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a></div>
+    <article class="xcard" data-grp="coding-book" data-id="book-010">
+      <div class="xav book" aria-hidden="true">CS</div>
+      <div class="xmain">
+        <h3>CS-Notes（计算机基础笔记）</h3>
+        <p class="xwho">CyC2018 ｜ CyC2018 · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic restrict" title="CC BY-NC-SA 4.0（含 NC 非商业 + SA 限制）">CC BY-NC-SA 4.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">操作系统/网络/数据库/Java/系统设计的中文笔记；适合面试前系统复习，非讲义式教学（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；README License 段指向 CC BY-NC-SA 4.0）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/cs/CS-Notes" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
     </article>
-      </section>
+    <article class="xcard" data-grp="coding-book" data-id="book-011">
+      <div class="xav book" aria-hidden="true">3</div>
+      <div class="xmain">
+        <h3>30 seconds of code（JavaScript 片段集）</h3>
+        <p class="xwho">30 seconds of code 社区 ｜ 30-seconds · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="CC BY 4.0">CC BY 4.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">按主题整理的短小 JS 片段 + 解释；适合已有 JS 基础的人查漏补缺，不适合当入门教材（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/30/30-seconds-of-code" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-012">
+      <div class="xav book" aria-hidden="true">TY</div>
+      <div class="xmain">
+        <h3>Type Challenges（TypeScript 类型练习）</h3>
+        <p class="xwho">Anthony Fu 及社区 ｜ type-challenges · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">从易到难的 TS 类型体操题，带在线判题；需要先会 TS 基础类型与泛型再来做（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/ty/type-challenges" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-013">
+      <div class="xav book" aria-hidden="true">RU</div>
+      <div class="xmain">
+        <h3>Rustlings（Rust 官方练习集）</h3>
+        <p class="xwho">rust-lang 社区（Carol Nichols 等） ｜ rust-lang/rustlings · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">一整套故意编译不过的小练习，边改边学所有权与生命周期；建议配合官方书同步推进（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；镜像页原始仓库链接指向 rust-lang/rustlings）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/ru/rustlings" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-014">
+      <div class="xav book" aria-hidden="true">现</div>
+      <div class="xmain">
+        <h3>现代 C++ 教程：高速上手 C++11-26</h3>
+        <p class="xwho">欧长坤（changkun） ｜ changkun/modern-cpp-tutorial · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">给已会传统 C++ 的人补新特性；完全没写过 C++ 的读者请先补基础语法再读（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/mo/modern-cpp-tutorial" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-015">
+      <div class="xav book" aria-hidden="true">JA</div>
+      <div class="xmain">
+        <h3>JavaGuide（Java 后端知识体系）</h3>
+        <p class="xwho">Guide（Snailclimb） ｜ Snailclimb/JavaGuide · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="Apache-2.0">Apache-2.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">Java 基础/集合/并发/JVM/数据库/分布式的成体系中文笔记；适合求职复习与查漏（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/ja/JavaGuide" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-016">
+      <div class="xav book" aria-hidden="true">JA</div>
+      <div class="xmain">
+        <h3>Java Design Patterns（设计模式示例）</h3>
+        <p class="xwho">Ilkka Seppälä 及社区 ｜ iluwatar/java-design-patterns · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="MIT（LICENSE.md 原文为 The MIT License）">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">每种设计模式一个可运行 Java 示例 + 说明；需要已会 Java 面向对象基础（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；LICENSE.md 经 raw.gitcode.com 读取为 MIT）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/ja/java-design-patterns" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-017">
+      <div class="xav book" aria-hidden="true">RC</div>
+      <div class="xmain">
+        <h3>rCore 教程：用 Rust 写操作系统</h3>
+        <p class="xwho">rCore OS 社区（清华等高校） ｜ rCore-Tutorial-Book-v3 · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="GPL-3.0">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">从裸机开始一步步用 Rust 写 RISC-V 内核的中文教材；需要会 Rust 与 C、懂一点汇编（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/rc/rCore-Tutorial-Book-v3" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-018">
+      <div class="xav book" aria-hidden="true">PR</div>
+      <div class="xmain">
+        <h3>Pro Git（第 2 版 · 中文）</h3>
+        <p class="xwho">Scott Chacon / Ben Straub（Apress），中文翻译社区 ｜ progit/progit2 · 官方在线阅读 git-scm.com/book/zh/v2 · 国内镜像 gitcode</p>
+        <div class="xkv"><span class="xlic restrict" title="CC BY-NC-SA 3.0（含 NC 非商业 + SA 限制；官方书页原文声明）">CC BY-NC-SA 3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">Git 的权威书，从入门到内部原理；只要会用命令行就能读，团队协作前值得通读一遍（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；许可依据来自 git-scm.com/book/zh/v2 页面原文「licensed under the Creative Commons Attribution Non Commercial Share Alike 3.0 license」）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/pr/progit2" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-019">
+      <div class="xav book" aria-hidden="true">GO</div>
+      <div class="xmain">
+        <h3>Go 101（Go 语言详解）</h3>
+        <p class="xwho">Tapir Liu（老貘） ｜ go101/go101 · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic restrict" title="版权归作者（LICENSE 原文 Copyright (c) Tapir Liu. All rights reserved.，仅外链）">版权归作者</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">讲 Go 语法语义、泛型与性能细节的中文书；写过一点 Go 再来读最合适，不适合当第一本书（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/go/go101" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-020">
+      <div class="xav book" aria-hidden="true">CH</div>
+      <div class="xmain">
+        <h3>chibicc（手写 C 编译器）</h3>
+        <p class="xwho">Rui Ueyama ｜ rui314/chibicc · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="MIT（LICENSE 原文为 MIT License）">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">一份能编译真实项目的迷你 C11 编译器，一个 commit 一步；学编译原理的活教材，需要会 C（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；LICENSE 经 raw.gitcode.com 读取为 MIT）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/ch/chibicc" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-021">
+      <div class="xav book" aria-hidden="true">RE</div>
+      <div class="xmain">
+        <h3>Redis 3.0 源码注释版</h3>
+        <p class="xwho">黄健宏（huangz） ｜ huangz1990/redis-3.0-annotated · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="BSD-3-Clause">BSD-3-Clause</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">带详细中文注释的 Redis 3.0 源码；想读数据库内核、会 C 与基础数据结构的人最合适（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/re/redis-3.0-annotated" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-022">
+      <div class="xav book" aria-hidden="true">TH</div>
+      <div class="xmain">
+        <h3>The Art of Command Line（命令行艺术）</h3>
+        <p class="xwho">jlevy 及社区（中文版由社区翻译） ｜ jlevy/the-art-of-command-line · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="CC BY-SA 4.0（README License 段原文声明）">CC BY-SA 4.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">一页纸式的 Linux 命令行清单与技巧；有一点命令基础的人当手册翻最合适（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/th/the-art-of-command-line" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-023">
+      <div class="xav book" aria-hidden="true">图</div>
+      <div class="xmain">
+        <h3>图解计算机基础（小林 coding）</h3>
+        <p class="xwho">小林 coding ｜ 小林 coding · xiaolincoding.com</p>
+        <div class="xkv"><span class="xlic copy" title="版权归官方（仅外链，未声明开放许可）">版权归官方</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">图解网络/操作系统/MySQL，图多好懂；适合面试前速通与建立整体框架（访问依据：xiaolincoding.com 2026-11-25 实测 HTTP 200，页脚载明「粤ICP备2022030656号-1」境内备案号）</p>
+        <div class="xgo"><a class="lnk" href="https://xiaolincoding.com/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="coding-book" data-id="book-024">
+      <div class="xav book" aria-hidden="true">TI</div>
+      <div class="xmain">
+        <h3>TiDB 中文文档（docs-cn）</h3>
+        <p class="xwho">PingCAP ｜ pingcap/docs-cn · gitcode 国内镜像</p>
+        <div class="xkv"><span class="xlic open" title="CC BY-SA 3.0（LICENSE 原文 Attribution-ShareAlike 3.0 Unported）">CC BY-SA 3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">分布式数据库 TiDB 的中文文档源文件（架构/SQL/运维）；适合想了解国产分布式数据库的人（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」备案号；镜像页原始仓库链接指向 pingcap/docs-cn）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/do/docs-cn" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    </section>
+<h2 class="sec xsec">游戏作品源码 <span>18 条</span></h2>
+    <p class="sub">别人已经做出来的小游戏，源码公开、许可明确。挑一个玩法熟悉的，先把源码跑起来再改 —— 这是最快学会做游戏的方式。每条标注类型与语言，跑起来要装什么写在说明里。</p>
+    <section class="grid xgrid">
+    <article class="xcard" data-grp="game-src" data-id="game-001">
+      <span class="xpk must">必看</span>
+      <div class="xav game" aria-hidden="true">2</div>
+      <div class="xmain">
+        <h3>2048</h3>
+        <p class="xwho">休闲 / 数字合成 ｜ JavaScript ｜ </p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">全部逻辑几百行、无框架依赖，最经典的「读得完」小游戏；clone 下来双击 index.html 就能跑，无需安装（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 gabrielecirulli/2048）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/20/2048" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-002">
+      <div class="xav game" aria-hidden="true">TE</div>
+      <div class="xmain">
+        <h3>tetris（终端俄罗斯方块）</h3>
+        <p class="xwho">休闲 / 终端 TUI ｜ Haskell（tetris.cabal 实测，license 字段 BSD3） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="BSD-3-Clause">BSD-3-Clause</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">纯函数式的终端方块游戏，能看状态机与 TUI 渲染怎么组织；需要装 GHC/cabal（或 Stack）（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 samtay/tetris）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/te/tetris" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-003">
+      <span class="xpk">推荐</span>
+      <div class="xav game" aria-hidden="true">JA</div>
+      <div class="xmain">
+        <h3>javascript-racer</h3>
+        <p class="xwho">赛车 / 伪 3D ｜ JavaScript（Canvas） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">只用 2D Canvas 做出 Outrun 式伪 3D 弯道与坡道，分步骤演进；无需构建，浏览器直接打开（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 jakesgordon/javascript-racer）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/ja/javascript-racer" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-004">
+      <div class="xav game" aria-hidden="true">HE</div>
+      <div class="xmain">
+        <h3>Hextris</h3>
+        <p class="xwho">休闲 / 六边形拼图 ｜ JavaScript ｜ </p>
+        <div class="xkv"><span class="xlic open" title="GPL-3.0（LICENSE.md 原文 GNU GPL v3）">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">规则简单但手感打磨完整，能学碰撞判定与音效节拍；静态页面，浏览器直接打开（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 Hextris/hextris）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/he/hextris" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-005">
+      <div class="xav game" aria-hidden="true">HE</div>
+      <div class="xmain">
+        <h3>HexGL</h3>
+        <p class="xwho">赛车 / 3D ｜ JavaScript（WebGL / three.js） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">未来风 WebGL 竞速，能学 3D 场景/后处理与手柄输入；需起了本地静态服务器才能加载贴图（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 BKcore/HexGL）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/he/HexGL" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-006">
+      <div class="xav game" aria-hidden="true">AS</div>
+      <div class="xmain">
+        <h3>Astray</h3>
+        <p class="xwho">解谜 / 3D 迷宫 ｜ JavaScript（three.js + Box2dWeb） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="Unlicense（公有领域式授权）">Unlicense</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">3D 迷宫 + 物理小球控制，能学物理引擎与镜头跟随；README 给了本地起服务的步骤（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 wwwtyro/Astray）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/as/Astray" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-007">
+      <div class="xav game" aria-hidden="true">SH</div>
+      <div class="xmain">
+        <h3>Shattered Pixel Dungeon</h3>
+        <p class="xwho">像素风 / Roguelike ｜ Java（libGDX） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="GPL-3.0">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">完整可上架的像素 Roguelike，能学关卡随机生成与 Buff 系统；需要 JDK + Gradle（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 00-Evan/shattered-pixel-dungeon）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/sh/shattered-pixel-dungeon" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-008">
+      <div class="xav game" aria-hidden="true">OP</div>
+      <div class="xmain">
+        <h3>OpenTTD</h3>
+        <p class="xwho">经营 / 运输模拟 ｜ C++ ｜ </p>
+        <div class="xkv"><span class="xlic restrict" title="GPL-2.0（README 原文「licensed under the GNU General Public License version 2.0」）">GPL-2.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">二十多年历史仍在维护的运输经营模拟，能学大型 C++ 工程分层与地图经济系统；需 CMake + SDL2 编译（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 OpenTTD/OpenTTD）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/op/OpenTTD" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-009">
+      <div class="xav game" aria-hidden="true">OP</div>
+      <div class="xmain">
+        <h3>OpenRCT2</h3>
+        <p class="xwho">经营 / 乐园模拟 ｜ C++ ｜ </p>
+        <div class="xkv"><span class="xlic restrict" title="GPL-3.0（licence.txt 原文 GNU GPL v3）">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">《过山车大亨 2》的开源重实现，能学老游戏逆向重写与存档兼容；编译需 CMake + 原版资源文件（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 OpenRCT2/OpenRCT2）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/op/OpenRCT2" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-010">
+      <div class="xav game" aria-hidden="true">LU</div>
+      <div class="xmain">
+        <h3>Luanti（原 Minetest）</h3>
+        <p class="xwho">沙盒 / 体素 ｜ C++（+ Lua 脚本层） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="LGPL-2.1+（README 徽章原文 license-LGPLv2.1%2B）">LGPL-2.1+</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">体素沙盒引擎，Mod 全用 Lua 写，最适合学「引擎 + 脚本」双层的游戏架构；需 CMake 编译（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 luanti-org/luanti）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/mi/minetest" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-011">
+      <div class="xav game" aria-hidden="true">SU</div>
+      <div class="xmain">
+        <h3>sudoku（命令行数独）</h3>
+        <p class="xwho">解谜 / 数独 ｜ C++（README 原文「C++ 实现的跨平台数独游戏」） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="GPL-3.0（LICENSE 原文 GNU GPL v3）">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">数百行 C++ 写完的完整数独（生成/求解/撤销/存档），初学者读得动；g++ 一条命令即可编译（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 mayerui/sudoku）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/su/sudoku" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-012">
+      <div class="xav game" aria-hidden="true">PA</div>
+      <div class="xmain">
+        <h3>pacman（吃豆人）</h3>
+        <p class="xwho">街机 / 迷宫追逐 ｜ JavaScript（Canvas） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="MIT（LICENSE 原文 Copyright (c) 2016 Haole Zheng；README 另要求引用注明来源）">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">含地图绘制、NPC 自动寻径与 12 关，能学网格寻路（A*）；浏览器直接打开，无需构建（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 mumuy/pacman）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/pa/pacman" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-013">
+      <span class="xpk">推荐</span>
+      <div class="xav game" aria-hidden="true">FL</div>
+      <div class="xmain">
+        <h3>FlapPyBird</h3>
+        <p class="xwho">跑酷 / 横版躲避 ｜ Python（pygame） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">两百行以内的 Flappy Bird 复刻，物理与关卡循环一目了然；pip install pygame 后直接 python 跑（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 sourabhv/FlapPyBird）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/fl/FlapPyBird" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-014">
+      <div class="xav game" aria-hidden="true">FR</div>
+      <div class="xmain">
+        <h3>Free Python Games</h3>
+        <p class="xwho">教学合集 / 多款经典小游戏 ｜ Python（turtle） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="Apache-2.0（README 原文「an Apache2 licensed collection」）">Apache-2.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">十几款经典街机简化版（贪吃蛇/打砖块等），代码极短，适合照着改参数学循环与碰撞；pip 安装即可（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 grantjenks/free-python-games）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/fr/free-python-games" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-015">
+      <div class="xav game" aria-hidden="true">TE</div>
+      <div class="xmain">
+        <h3>Teeworlds</h3>
+        <p class="xwho">射击 / 2D 多人对战 ｜ C++ ｜ </p>
+        <div class="xkv"><span class="xlic open" title="zlib（license.txt 原文为 zlib 许可文本）">zlib</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">小巧的复古 2D 多人射击，自带服务端与网络同步代码，最适合学「客户端-服务端」联机；需 CMake 编译（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 teeworlds/teeworlds）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/te/teeworlds" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-016">
+      <div class="xav game" aria-hidden="true">SU</div>
+      <div class="xmain">
+        <h3>SuperTux</h3>
+        <p class="xwho">平台跳跃 / 横版闯关 ｜ C++（+ Squirrel 脚本） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="GPL-3.0">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">完整的横版跳跃游戏，能学瓦片地图、碰撞与关卡脚本；编译需 CMake 与 SDL2 等依赖（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页 JSON-LD license 字段为 GPL-3.0）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/su/supertux" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-017">
+      <div class="xav game" aria-hidden="true">OP</div>
+      <div class="xmain">
+        <h3>OpenSpades</h3>
+        <p class="xwho">射击 / 第一人称 ｜ C++（OpenGL） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="GPL-3.0">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">Ace of Spades 的兼容客户端，能学 FPS 渲染管线与体素地形；编译依赖较多，建议先用官方二进制体验（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页 JSON-LD license 字段为 GPL-3.0）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/op/openspades" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-src" data-id="game-018">
+      <div class="xav game" aria-hidden="true">XO</div>
+      <div class="xmain">
+        <h3>Xonotic</h3>
+        <p class="xwho">射击 / 竞技场 FPS ｜ C / QuakeC ｜ </p>
+        <div class="xkv"><span class="xlic open" title="GPL-3.0+（仓库 COPYING 为 Xonotic 授权文档，镜像页描述写明 GPLv3+）">GPL-3.0+</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">快节奏竞技场 FPS，Quake 系引擎改造范例，能学高速移动手感与武器平衡；体量很大，建议先读文档（访问依据：gitcode.com 境内平台；2026-11-25 实测 HTTP 200，页面底部载明「渝ICP备2023009037号-12」；镜像页原始仓库链接指向 xonotic/xonotic）</p>
+        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/xo/xonotic" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
+      </div>
+    </article>
+    </section>
+<h2 class="sec xsec">游戏引擎与开发文档 <span>8 条</span></h2>
+    <p class="sub">想做小游戏但不知道从哪个引擎开始？这一组是国内可直接打开的官方文档与引擎站，点开不用切网络环境。每条的响应时间与核验日期都写在说明里。</p>
+    <section class="grid xgrid">
+    <article class="xcard" data-grp="game-engine" data-id="pg-01">
+      <span class="xpk must">必看</span>
+      <div class="xav game" aria-hidden="true">微</div>
+      <div class="xmain">
+        <h3>微信小游戏开发指南</h3>
+        <p class="xwho">引擎 / 平台官方文档 ｜ 微信小游戏运行时（JavaScript） ｜ </p>
+        <div class="xkv"><span class="xlic copy" title="官方文档，版权归腾讯（仅外链）">官方文档，版权归腾讯</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">（他人在先条目，原样保留）想做能发到微信里的小游戏，这是唯一权威入口。从创建项目到上架审核全流程都在这里（访问依据：developers.weixin.qq.com 国内直连；2026-11-25 fetch 返回 200 / 629ms）</p>
+        <div class="xgo"><a class="lnk" href="https://developers.weixin.qq.com/minigame/dev/guide/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-engine" data-id="pg-02">
+      <span class="xpk">推荐</span>
+      <div class="xav game" aria-hidden="true">CO</div>
+      <div class="xmain">
+        <h3>Cocos Creator 使用手册</h3>
+        <p class="xwho">引擎 / 平台官方文档 ｜ Cocos Creator（TypeScript） ｜ </p>
+        <div class="xkv"><span class="xlic copy" title="引擎 MIT；文档版权归官方（仅外链）">引擎 MIT；文档版权归官方</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">（他人在先条目，原样保留）国内用得最多的 2D/3D 游戏引擎之一，能导出微信小游戏与原生 App。中文文档完整（访问依据：docs.cocos.com 国内直连；2026-11-25 fetch 返回 200 / 418ms）</p>
+        <div class="xgo"><a class="lnk" href="https://docs.cocos.com/creator/manual/zh/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-engine" data-id="pg-03">
+      <span class="xpk">推荐</span>
+      <div class="xav game" aria-hidden="true">LA</div>
+      <div class="xmain">
+        <h3>LayaAir 引擎</h3>
+        <p class="xwho">引擎 / 平台官方文档 ｜ LayaAir（TypeScript） ｜ </p>
+        <div class="xkv"><span class="xlic copy" title="引擎开源；文档版权归官方（仅外链）">引擎开源；文档版权归官方</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">（他人在先条目，原样保留）国产 H5 与小游戏引擎，主打性能。适合做 2D 小游戏，中文文档与示例齐全（访问依据：layaair.layabox.com 国内直连；2026-11-25 fetch 返回 200 / 454ms）</p>
+        <div class="xgo"><a class="lnk" href="https://layaair.layabox.com/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-engine" data-id="pg-04">
+      <span class="xpk">推荐</span>
+      <div class="xav game" aria-hidden="true">GO</div>
+      <div class="xmain">
+        <h3>Godot 中文文档</h3>
+        <p class="xwho">引擎 / 平台官方文档 ｜ Godot（GDScript） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="引擎 MIT；文档 CC BY 3.0">引擎 MIT；文档 CC BY 3.0</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">（他人在先条目，原样保留）Godot 免费开源、不抽成、能导出手机。中文文档已完整翻译（访问依据：docs.godotengine.org 提供 zh-cn 路径且可直连；2026-11-25 fetch 返回 200 / 1486ms）</p>
+        <div class="xgo"><a class="lnk" href="https://docs.godotengine.org/zh-cn/4.x/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-engine" data-id="pg-05">
+      <span class="xpk">推荐</span>
+      <div class="xav game" aria-hidden="true">抖</div>
+      <div class="xmain">
+        <h3>抖音小游戏开发文档</h3>
+        <p class="xwho">引擎 / 平台官方文档 ｜ 抖音小游戏运行时（JavaScript） ｜ </p>
+        <div class="xkv"><span class="xlic copy" title="官方文档，版权归字节跳动（仅外链）">官方文档，版权归字节跳动</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">（他人在先条目，原样保留）第二个能真正带来流量的小游戏分发渠道。接入方式与微信小游戏接近（访问依据：developer.open-douyin.com 国内直连；2026-11-25 fetch 返回 200 / 437ms）</p>
+        <div class="xgo"><a class="lnk" href="https://developer.open-douyin.com/docs/resource/zh-CN/mini-game/introduction/overview" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-engine" data-id="pg-06">
+      <div class="xav game" aria-hidden="true">PH</div>
+      <div class="xmain">
+        <h3>Phaser 官方示例库</h3>
+        <p class="xwho">引擎 / 平台官方文档 ｜ Phaser（JavaScript） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="MIT（引擎与示例）">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">（他人在先条目，原样保留）上千个能在线试玩、能下载源码的网页游戏示例（访问依据：phaser.io 可直连；2026-11-25 fetch 返回 200 / 2680ms（较慢但在 12s 阈值内））</p>
+        <div class="xgo"><a class="lnk" href="https://phaser.io/examples" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-engine" data-id="pg-07">
+      <div class="xav game" aria-hidden="true">PI</div>
+      <div class="xmain">
+        <h3>PixiJS 文档</h3>
+        <p class="xwho">引擎 / 平台官方文档 ｜ PixiJS（JavaScript） ｜ </p>
+        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">（他人在先条目，原样保留）只做渲染不管游戏逻辑的 2D 库（访问依据：pixijs.com 可直连；2026-11-25 fetch 返回 200 / 1299ms）</p>
+        <div class="xgo"><a class="lnk" href="https://pixijs.com/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    <article class="xcard" data-grp="game-engine" data-id="pg-08">
+      <div class="xav game" aria-hidden="true">EG</div>
+      <div class="xmain">
+        <h3>Egret 白鹭引擎</h3>
+        <p class="xwho">引擎 / 平台官方文档 ｜ Egret（TypeScript） ｜ </p>
+        <div class="xkv"><span class="xlic copy" title="引擎开源；文档版权归官方（仅外链）">引擎开源；文档版权归官方</span><span class="xlic copy">国内直连</span></div>
+        <p class="xnote">（他人在先条目，原样保留）早期国产 H5 游戏引擎，仍有存量项目在用。新项目建议优先 Cocos 或 LayaAir（访问依据：www.egret.com 国内直连；2026-11-25 fetch 返回 200 / 275ms（注：社区活跃度已不如 Cocos/LayaAir，仅作备选））</p>
+        <div class="xgo"><a class="lnk" href="https://www.egret.com/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
+      </div>
+    </article>
+    </section>
 <!-- BJ-OPEN-RES END -->
 <h2 class="sec">提示词 <span>107 条 / 16 组</span></h2>
       <p class="sub">本站自有的提示词模板，非第三方转载。 本站自有内容，非第三方转载；每日随清单一起核验与重生成。</p>
@@ -435,479 +816,8 @@ html[data-theme="deep"] .xlic.restrict{color:#fcd34d;background:rgba(245,158,11,
         <div class="foot">核验 2026-11-25 · 源文件 29114 B · 失效标记 无</div>
         <div class="go"><a class="lnk" href="/learn/prompts.html">查看模板库 ↗</a></div>
       </article></section>
-
-<h2 class="sec xsec">公开编程书 <span>24 条</span></h2>
-    <p class="sub">逐条实测过 HTTP 状态码与 LICENSE 原文：许可开放的标绿，带 NC / ND 限制的标橙，版权归官方的标灰。全部为国内可直连地址，点开即看，本站不托管全文。</p>
-    <section class="grid xgrid">
-    <div class="xcard" data-grp="coding-book" data-id="book-001">
-      <span class="xpk must">必看</span>
-      <div class="xav book" aria-hidden="true">HE</div>
-      <div class="xmain">
-        <h3>《Hello 算法》</h3>
-        <p class="xwho">靳宇栋（krahets） ｜ Hello 算法开源项目 · 官方在线阅读 www.hello-algo.com · 国内镜像 gitcode</p>
-        <div class="xkv"><span class="xlic restrict" title="CC BY-NC-SA 4.0（含 NC 非商业 + SA 相同方式共享限制）">CC BY-NC-SA 4.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">动画图解数据结构与算法，零基础可读；只要会一门语言的变量与循环就能跟着跑代码</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/he/hello-algo" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-002">
-      
-      <div class="xav book" aria-hidden="true">OI</div>
-      <div class="xmain">
-        <h3>OI Wiki（算法竞赛知识库）</h3>
-        <p class="xwho">OI Wiki 社区 ｜ OI Wiki · oi-wiki.org</p>
-        <div class="xkv"><span class="xlic open" title="CC BY-SA 4.0（README 版权声明实测）">CC BY-SA 4.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">算法竞赛（OI/ICPC）体系化知识库；适合已会基础语法、想系统啃算法与数据结构的人</p>
-        <div class="xgo"><a class="lnk" href="https://oi-wiki.org/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-003">
-      <span class="xpk">推荐</span>
-      <div class="xav book" aria-hidden="true">菜鸟</div>
-      <div class="xmain">
-        <h3>菜鸟教程（多语言中文入门教程）</h3>
-        <p class="xwho">菜鸟教程（runoob.com） ｜ 菜鸟教程</p>
-        <div class="xkv"><span class="xlic copy" title="版权归官方（仅外链，未开放转载）">版权归官方</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">纯中文零基础入门，覆盖面最广（Python/Java/C/JS/SQL 都有）；适合第一遍通读与日常速查，深度有限</p>
-        <div class="xgo"><a class="lnk" href="https://www.runoob.com/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-004">
-      
-      <div class="xav book" aria-hidden="true">PY</div>
-      <div class="xmain">
-        <h3>Python-100-Days（Python 百天学习计划）</h3>
-        <p class="xwho">骆昊（jackfrued） ｜ GitHub 开源项目 · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic copy" title="未标注（仅外链）">未标注</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">从语法到 Web、数据分析的中文学习路线；适合零基础照着走，仓库无许可文件所以本站只外链不转载</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/py/Python-100-Days" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-005">
-      
-      <div class="xav book" aria-hidden="true">LE</div>
-      <div class="xmain">
-        <h3>learn-python（可运行 Python 语法示例集）</h3>
-        <p class="xwho">Oleksii Trekhleb（trekhleb） ｜ trekhleb/learn-python · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">按主题分类的可运行示例 + 解释；适合已有别的语言基础、想快速过一遍 Python 语法的人</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/le/learn-python" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-006">
-      
-      <div class="xav book" aria-hidden="true">JA</div>
-      <div class="xmain">
-        <h3>TheAlgorithms / Java（Java 算法实现集）</h3>
-        <p class="xwho">TheAlgorithms 社区 ｜ TheAlgorithms · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">每个算法一个可运行类 + 测试；适合边学数据结构边照着敲一遍实现</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/ja/Java" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-007">
-      
-      <div class="xav book" aria-hidden="true">C</div>
-      <div class="xmain">
-        <h3>TheAlgorithms / C（C 语言算法实现集）</h3>
-        <p class="xwho">TheAlgorithms 社区 ｜ TheAlgorithms · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0（LICENSE 原文为 GNU GPL v3）">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">纯标准库 C 实现的算法合集，覆盖数学/数据结构/图论；适合巩固指针与内存管理，注意 GPL 传染性</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/c/C" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-008">
-      
-      <div class="xav book" aria-hidden="true">FR</div>
-      <div class="xmain">
-        <h3>Free Programming Books（免费编程书总清单）</h3>
-        <p class="xwho">Free Ebook Foundation ｜ EbookFoundation · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="CC BY 4.0">CC BY 4.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">分语种、分主题的免费书索引；本身不是教程，适合当「找书地图」按需跳转</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/fr/free-programming-books" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-009">
-      
-      <div class="xav book" aria-hidden="true">CO</div>
-      <div class="xmain">
-        <h3>Coding Interview University（计算机科学自学清单）</h3>
-        <p class="xwho">John Washam ｜ jwasham · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="CC BY-SA 4.0">CC BY-SA 4.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">数月期的科班知识补全清单（数据结构/算法/OS/网络/数据库）；适合非科班想补基础的人</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/co/coding-interview-university" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-010">
-      
-      <div class="xav book" aria-hidden="true">CS</div>
-      <div class="xmain">
-        <h3>CS-Notes（计算机基础笔记）</h3>
-        <p class="xwho">CyC2018 ｜ CyC2018 · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic restrict" title="CC BY-NC-SA 4.0（含 NC 非商业 + SA 限制）">CC BY-NC-SA 4.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">操作系统/网络/数据库/Java/系统设计的中文笔记；适合面试前系统复习，非讲义式教学</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/cs/CS-Notes" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-011">
-      
-      <div class="xav book" aria-hidden="true">30</div>
-      <div class="xmain">
-        <h3>30 seconds of code（JavaScript 片段集）</h3>
-        <p class="xwho">30 seconds of code 社区 ｜ 30-seconds · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="CC BY 4.0">CC BY 4.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">按主题整理的短小 JS 片段 + 解释；适合已有 JS 基础的人查漏补缺，不适合当入门教材</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/30/30-seconds-of-code" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-012">
-      
-      <div class="xav book" aria-hidden="true">TY</div>
-      <div class="xmain">
-        <h3>Type Challenges（TypeScript 类型练习）</h3>
-        <p class="xwho">Anthony Fu 及社区 ｜ type-challenges · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">从易到难的 TS 类型体操题，带在线判题；需要先会 TS 基础类型与泛型再来做</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/ty/type-challenges" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-013">
-      
-      <div class="xav book" aria-hidden="true">RU</div>
-      <div class="xmain">
-        <h3>Rustlings（Rust 官方练习集）</h3>
-        <p class="xwho">rust-lang 社区（Carol Nichols 等） ｜ rust-lang/rustlings · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">一整套故意编译不过的小练习，边改边学所有权与生命周期；建议配合官方书同步推进</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/ru/rustlings" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-014">
-      
-      <div class="xav book" aria-hidden="true">现代</div>
-      <div class="xmain">
-        <h3>现代 C++ 教程：高速上手 C++11-26</h3>
-        <p class="xwho">欧长坤（changkun） ｜ changkun/modern-cpp-tutorial · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">给已会传统 C++ 的人补新特性；完全没写过 C++ 的读者请先补基础语法再读</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/mo/modern-cpp-tutorial" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-015">
-      <span class="xpk">推荐</span>
-      <div class="xav book" aria-hidden="true">JA</div>
-      <div class="xmain">
-        <h3>JavaGuide（Java 后端知识体系）</h3>
-        <p class="xwho">Guide（Snailclimb） ｜ Snailclimb/JavaGuide · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="Apache-2.0">Apache-2.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">Java 基础/集合/并发/JVM/数据库/分布式的成体系中文笔记；适合求职复习与查漏</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/ja/JavaGuide" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-016">
-      
-      <div class="xav book" aria-hidden="true">JA</div>
-      <div class="xmain">
-        <h3>Java Design Patterns（设计模式示例）</h3>
-        <p class="xwho">Ilkka Seppälä 及社区 ｜ iluwatar/java-design-patterns · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="MIT（LICENSE.md 原文为 The MIT License）">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">每种设计模式一个可运行 Java 示例 + 说明；需要已会 Java 面向对象基础</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/ja/java-design-patterns" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-017">
-      
-      <div class="xav book" aria-hidden="true">RC</div>
-      <div class="xmain">
-        <h3>rCore 教程：用 Rust 写操作系统</h3>
-        <p class="xwho">rCore OS 社区（清华等高校） ｜ rCore-Tutorial-Book-v3 · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">从裸机开始一步步用 Rust 写 RISC-V 内核的中文教材；需要会 Rust 与 C、懂一点汇编</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/rc/rCore-Tutorial-Book-v3" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-018">
-      <span class="xpk">推荐</span>
-      <div class="xav book" aria-hidden="true">PR</div>
-      <div class="xmain">
-        <h3>Pro Git（第 2 版 · 中文）</h3>
-        <p class="xwho">Scott Chacon / Ben Straub（Apress），中文翻译社区 ｜ progit/progit2 · 官方在线阅读 git-scm.com/book/zh/v2 · 国内镜像 gitcode</p>
-        <div class="xkv"><span class="xlic restrict" title="CC BY-NC-SA 3.0（含 NC 非商业 + SA 限制；官方书页原文声明）">CC BY-NC-SA 3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">Git 的权威书，从入门到内部原理；只要会用命令行就能读，团队协作前值得通读一遍</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/pr/progit2" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-019">
-      
-      <div class="xav book" aria-hidden="true">GO</div>
-      <div class="xmain">
-        <h3>Go 101（Go 语言详解）</h3>
-        <p class="xwho">Tapir Liu（老貘） ｜ go101/go101 · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic copy" title="版权归作者（LICENSE 原文 Copyright (c) Tapir Liu. All rights reserved.，仅外链）">版权保留</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">讲 Go 语法语义、泛型与性能细节的中文书；写过一点 Go 再来读最合适，不适合当第一本书</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/go/go101" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-020">
-      
-      <div class="xav book" aria-hidden="true">CH</div>
-      <div class="xmain">
-        <h3>chibicc（手写 C 编译器）</h3>
-        <p class="xwho">Rui Ueyama ｜ rui314/chibicc · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="MIT（LICENSE 原文为 MIT License）">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">一份能编译真实项目的迷你 C11 编译器，一个 commit 一步；学编译原理的活教材，需要会 C</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/ch/chibicc" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-021">
-      
-      <div class="xav book" aria-hidden="true">RE</div>
-      <div class="xmain">
-        <h3>Redis 3.0 源码注释版</h3>
-        <p class="xwho">黄健宏（huangz） ｜ huangz1990/redis-3.0-annotated · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="BSD-3-Clause">BSD-3-Clause</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">带详细中文注释的 Redis 3.0 源码；想读数据库内核、会 C 与基础数据结构的人最合适</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/re/redis-3.0-annotated" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-022">
-      
-      <div class="xav book" aria-hidden="true">TH</div>
-      <div class="xmain">
-        <h3>The Art of Command Line（命令行艺术）</h3>
-        <p class="xwho">jlevy 及社区（中文版由社区翻译） ｜ jlevy/the-art-of-command-line · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="CC BY-SA 4.0（README License 段原文声明）">CC BY-SA 4.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">一页纸式的 Linux 命令行清单与技巧；有一点命令基础的人当手册翻最合适</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/th/the-art-of-command-line" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-023">
-      
-      <div class="xav book" aria-hidden="true">图解</div>
-      <div class="xmain">
-        <h3>图解计算机基础（小林 coding）</h3>
-        <p class="xwho">小林 coding ｜ 小林 coding · xiaolincoding.com</p>
-        <div class="xkv"><span class="xlic copy" title="版权归官方（仅外链，未声明开放许可）">版权归官方</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">图解网络/操作系统/MySQL，图多好懂；适合面试前速通与建立整体框架</p>
-        <div class="xgo"><a class="lnk" href="https://xiaolincoding.com/" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="coding-book" data-id="book-024">
-      
-      <div class="xav book" aria-hidden="true">TI</div>
-      <div class="xmain">
-        <h3>TiDB 中文文档（docs-cn）</h3>
-        <p class="xwho">PingCAP ｜ pingcap/docs-cn · gitcode 国内镜像</p>
-        <div class="xkv"><span class="xlic open" title="CC BY-SA 3.0（LICENSE 原文 Attribution-ShareAlike 3.0 Unported）">CC BY-SA 3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">分布式数据库 TiDB 的中文文档源文件（架构/SQL/运维）；适合想了解国产分布式数据库的人</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/do/docs-cn" target="_blank" rel="noopener noreferrer nofollow">官方去看 ↗</a></div>
-      </div>
-    </div>
-    </section>
-<h2 class="sec xsec">游戏作品源码 <span>18 条</span></h2>
-    <p class="sub">只收已经公开源码的游戏作品，覆盖休闲、解谜、跑酷、射击、经营、像素风等类型。每条标注引擎 / 语言与许可，跑起来需要装什么写在说明里。</p>
-    <section class="grid xgrid">
-    <div class="xcard" data-grp="game-src" data-id="game-001">
-      <span class="xpk must">必看</span>
-      <div class="xav game" aria-hidden="true">20</div>
-      <div class="xmain">
-        <h3>2048</h3>
-        <p class="xwho">休闲 / 数字合成 ｜ JavaScript</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">全部逻辑几百行、无框架依赖，最经典的「读得完」小游戏；clone 下来双击 index.html 就能跑，无需安装</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/20/2048" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-002">
-      
-      <div class="xav game" aria-hidden="true">TE</div>
-      <div class="xmain">
-        <h3>tetris（终端俄罗斯方块）</h3>
-        <p class="xwho">休闲 / 终端 TUI ｜ Haskell（tetris.cabal 实测，license 字段 BSD3）</p>
-        <div class="xkv"><span class="xlic open" title="BSD-3-Clause">BSD-3-Clause</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">纯函数式的终端方块游戏，能看状态机与 TUI 渲染怎么组织；需要装 GHC/cabal（或 Stack）</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/te/tetris" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-003">
-      <span class="xpk">推荐</span>
-      <div class="xav game" aria-hidden="true">JA</div>
-      <div class="xmain">
-        <h3>javascript-racer</h3>
-        <p class="xwho">赛车 / 伪 3D ｜ JavaScript（Canvas）</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">只用 2D Canvas 做出 Outrun 式伪 3D 弯道与坡道，分步骤演进；无需构建，浏览器直接打开</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/ja/javascript-racer" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-004">
-      
-      <div class="xav game" aria-hidden="true">HE</div>
-      <div class="xmain">
-        <h3>Hextris</h3>
-        <p class="xwho">休闲 / 六边形拼图 ｜ JavaScript</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0（LICENSE.md 原文 GNU GPL v3）">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">规则简单但手感打磨完整，能学碰撞判定与音效节拍；静态页面，浏览器直接打开</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/he/hextris" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-005">
-      
-      <div class="xav game" aria-hidden="true">HE</div>
-      <div class="xmain">
-        <h3>HexGL</h3>
-        <p class="xwho">赛车 / 3D ｜ JavaScript（WebGL / three.js）</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">未来风 WebGL 竞速，能学 3D 场景/后处理与手柄输入；需起了本地静态服务器才能加载贴图</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/he/HexGL" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-006">
-      
-      <div class="xav game" aria-hidden="true">AS</div>
-      <div class="xmain">
-        <h3>Astray</h3>
-        <p class="xwho">解谜 / 3D 迷宫 ｜ JavaScript（three.js + Box2dWeb）</p>
-        <div class="xkv"><span class="xlic open" title="Unlicense（公有领域式授权）">Unlicense</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">3D 迷宫 + 物理小球控制，能学物理引擎与镜头跟随；README 给了本地起服务的步骤</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/as/Astray" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-007">
-      
-      <div class="xav game" aria-hidden="true">SH</div>
-      <div class="xmain">
-        <h3>Shattered Pixel Dungeon</h3>
-        <p class="xwho">像素风 / Roguelike ｜ Java（libGDX）</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">完整可上架的像素 Roguelike，能学关卡随机生成与 Buff 系统；需要 JDK + Gradle</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/sh/shattered-pixel-dungeon" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-008">
-      
-      <div class="xav game" aria-hidden="true">OP</div>
-      <div class="xmain">
-        <h3>OpenTTD</h3>
-        <p class="xwho">经营 / 运输模拟 ｜ C++</p>
-        <div class="xkv"><span class="xlic open" title="GPL-2.0（README 原文「licensed under the GNU General Public License version 2.0」）">GPL-2.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">二十多年历史仍在维护的运输经营模拟，能学大型 C++ 工程分层与地图经济系统；需 CMake + SDL2 编译</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/op/OpenTTD" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-009">
-      
-      <div class="xav game" aria-hidden="true">OP</div>
-      <div class="xmain">
-        <h3>OpenRCT2</h3>
-        <p class="xwho">经营 / 乐园模拟 ｜ C++</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0（licence.txt 原文 GNU GPL v3）">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">《过山车大亨 2》的开源重实现，能学老游戏逆向重写与存档兼容；编译需 CMake + 原版资源文件</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/op/OpenRCT2" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-010">
-      
-      <div class="xav game" aria-hidden="true">LU</div>
-      <div class="xmain">
-        <h3>Luanti（原 Minetest）</h3>
-        <p class="xwho">沙盒 / 体素 ｜ C++（+ Lua 脚本层）</p>
-        <div class="xkv"><span class="xlic open" title="LGPL-2.1+（README 徽章原文 license-LGPLv2.1%2B）">LGPL-2.1+</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">体素沙盒引擎，Mod 全用 Lua 写，最适合学「引擎 + 脚本」双层的游戏架构；需 CMake 编译</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/mi/minetest" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-011">
-      
-      <div class="xav game" aria-hidden="true">SU</div>
-      <div class="xmain">
-        <h3>sudoku（命令行数独）</h3>
-        <p class="xwho">解谜 / 数独 ｜ C++（README 原文「C++ 实现的跨平台数独游戏」）</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0（LICENSE 原文 GNU GPL v3）">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">数百行 C++ 写完的完整数独（生成/求解/撤销/存档），初学者读得动；g++ 一条命令即可编译</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/su/sudoku" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-012">
-      
-      <div class="xav game" aria-hidden="true">PA</div>
-      <div class="xmain">
-        <h3>pacman（吃豆人）</h3>
-        <p class="xwho">街机 / 迷宫追逐 ｜ JavaScript（Canvas）</p>
-        <div class="xkv"><span class="xlic open" title="MIT（LICENSE 原文 Copyright (c) 2016 Haole Zheng；README 另要求引用注明来源）">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">含地图绘制、NPC 自动寻径与 12 关，能学网格寻路（A*）；浏览器直接打开，无需构建</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/pa/pacman" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-013">
-      <span class="xpk">推荐</span>
-      <div class="xav game" aria-hidden="true">FL</div>
-      <div class="xmain">
-        <h3>FlapPyBird</h3>
-        <p class="xwho">跑酷 / 横版躲避 ｜ Python（pygame）</p>
-        <div class="xkv"><span class="xlic open" title="MIT">MIT</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">两百行以内的 Flappy Bird 复刻，物理与关卡循环一目了然；pip install pygame 后直接 python 跑</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/fl/FlapPyBird" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-014">
-      
-      <div class="xav game" aria-hidden="true">FR</div>
-      <div class="xmain">
-        <h3>Free Python Games</h3>
-        <p class="xwho">教学合集 / 多款经典小游戏 ｜ Python（turtle）</p>
-        <div class="xkv"><span class="xlic open" title="Apache-2.0（README 原文「an Apache2 licensed collection」）">Apache-2.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">十几款经典街机简化版（贪吃蛇/打砖块等），代码极短，适合照着改参数学循环与碰撞；pip 安装即可</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/fr/free-python-games" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-015">
-      
-      <div class="xav game" aria-hidden="true">TE</div>
-      <div class="xmain">
-        <h3>Teeworlds</h3>
-        <p class="xwho">射击 / 2D 多人对战 ｜ C++</p>
-        <div class="xkv"><span class="xlic open" title="zlib（license.txt 原文为 zlib 许可文本）">zlib</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">小巧的复古 2D 多人射击，自带服务端与网络同步代码，最适合学「客户端-服务端」联机；需 CMake 编译</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/te/teeworlds" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-016">
-      
-      <div class="xav game" aria-hidden="true">SU</div>
-      <div class="xmain">
-        <h3>SuperTux</h3>
-        <p class="xwho">平台跳跃 / 横版闯关 ｜ C++（+ Squirrel 脚本）</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">完整的横版跳跃游戏，能学瓦片地图、碰撞与关卡脚本；编译需 CMake 与 SDL2 等依赖</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/GitHub_Trending/su/supertux" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-017">
-      
-      <div class="xav game" aria-hidden="true">OP</div>
-      <div class="xmain">
-        <h3>OpenSpades</h3>
-        <p class="xwho">射击 / 第一人称 ｜ C++（OpenGL）</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0">GPL-3.0</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">Ace of Spades 的兼容客户端，能学 FPS 渲染管线与体素地形；编译依赖较多，建议先用官方二进制体验</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/op/openspades" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-<div class="xcard" data-grp="game-src" data-id="game-018">
-      
-      <div class="xav game" aria-hidden="true">XO</div>
-      <div class="xmain">
-        <h3>Xonotic</h3>
-        <p class="xwho">射击 / 竞技场 FPS ｜ C / QuakeC</p>
-        <div class="xkv"><span class="xlic open" title="GPL-3.0+（仓库 COPYING 为 Xonotic 授权文档，镜像页描述写明 GPLv3+）">GPL-3.0+</span><span class="xlic copy">国内直连</span></div>
-        <p class="xnote">快节奏竞技场 FPS，Quake 系引擎改造范例，能学高速移动手感与武器平衡；体量很大，建议先读文档</p>
-        <div class="xgo"><a class="lnk" href="https://gitcode.com/gh_mirrors/xo/xonotic" target="_blank" rel="noopener noreferrer nofollow">源码去看 ↗</a></div>
-      </div>
-    </div>
-    </section>
   <footer>
-    <p style="margin:0">核验至 2026-11-25 · 公开条目 21 条（已核验 21 / 待核实 0）· 自有提示词 107 条 · 每日更新</p>
+    <p style="margin:0">核验至 2026-11-25 · 公开条目 71 条（已核验 71 / 待核实 0）· 自有提示词 107 条 · 每日更新</p>
     <p style="margin:8px 0 0">🐎 白驹 ccowork · ccowork ｜ 个人技术展示站，不提供生成式 AI 服务。</p>
   </footer>
 </main>

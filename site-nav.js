@@ -56,7 +56,7 @@
         { n: '提示词库', href: '/learn/prompts.html',      ic: 'sparkles',    d: '可直接抄用的提示词，每天加' },
         { n: '学科×AI',  href: '/learn/subjects.html',     ic: 'atom',        d: '物理 / 化学 / 数学 + AI，高中也能用' },
         { n: '软件学院', href: '/learn/software.html',     ic: 'app-window',  d: '编程语言与工具怎么学' },
-        { n: '软件详情', href: '/learn/software-detail.html', ic: 'info',     d: '每款软件的安装、许可与替代' },
+        { n: '书单',     href: '/learn/books-list.html',   ic: 'book-marked', d: '55 本书按阶段分组，标了必读' },
         { n: '书稿',     href: '/learn/books/',            ic: 'library-big', d: '五卷全书与实战书稿' }
       ],
       toolbox: [

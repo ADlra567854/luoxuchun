@@ -1145,3 +1145,23 @@ body[data-theme="deep"] .bja-studio .lf-row input { background: rgba(30, 41, 64,
   .bja-cap { padding: 0 9px 6px; }
   .bja-att { padding: 5px 9px; }
 }
+
+/* ---------- 2026-11-25 · 手机端悬浮球缩小（老罗：导航有些东西太遮挡了） ----------
+   实测：390px 屏上 54px 的球固定在右侧中部，正好压住书单页数据卡的右半边
+   （截图 y≈395 那一块），用户看不到「6 个阶段分组」这个数字。
+   处理：缩到 46px（仍大于 44px 触控标准）+ 常态 0.9 透明度，按下时恢复不透明。
+   不动 JS 的拖动逻辑，只改尺寸，避免把拖拽功能弄坏。 */
+@media (max-width: 720px) {
+  .bja {
+    width: 46px; height: 46px;
+    /* 只缩尺寸不够：它由 JS 固定在「右侧垂直居中」，390px 屏上仍压住数据卡右半
+       （实测缩小后还压住 1 张卡）。这里把垂直位置钉到底部拇指区，
+       底部 76px 是为了让开 float-dock（右下 12px / 48px）。
+       水平方向不动，JS 的左右拖动仍然可用。 */
+    top: auto !important;
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .bja-fab { width: 46px !important; height: 46px !important; border-radius: 15px !important; opacity: .9; }
+  .bja-fab .horse { width: 27px; height: 27px; }
+  .bja:hover .bja-fab, .bja.open .bja-fab { opacity: 1; }
+}

@@ -57,7 +57,7 @@
         { n: '学科×AI',  href: '/learn/subjects.html',     ic: 'atom',        d: '物理 / 化学 / 数学 + AI，高中也能用' },
         { n: '软件学院', href: '/learn/software.html',     ic: 'app-window',  d: '编程语言与工具怎么学' },
         { n: '书单',     href: '/learn/books-list.html',   ic: 'book-marked', d: '55 本书按阶段分组，标了必读' },
-        { n: '书稿',     href: '/learn/books/',            ic: 'library-big', d: '五卷全书与实战书稿' }
+        { n: '阅读',     href: '/read/',                   ic: 'book-open',  d: '书稿 33 + 博文 55 + 开源书 3 本' }
       ],
       toolbox: [
         { n: '开源仓库', href: '/toolbox/repos.html',          ic: 'git-branch', d: '国内可直连优先，标维护状态' },
@@ -71,7 +71,8 @@
         { n: '案例',     href: '/works/cases.html',    ic: 'briefcase',   d: '别人用 AI 做成了什么' },
         { n: '漫剧',     href: '/works/manju.html',    ic: 'film',        d: 'AI 漫剧怎么做，案例与工具' },
         { n: '博物馆',   href: '/works/museum.html',   ic: 'landmark',    d: 'AI 发展时间线 + 已失效做法' },
-        { n: '博客',     href: '/blog/',               ic: 'newspaper',   d: '带出处的长文与笔记' }
+        { n: '博客',     href: '/blog/',               ic: 'newspaper',   d: '带出处的长文与笔记' },
+        { n: '每日观察', href: '/feed/picks.html',      ic: 'sparkles',    d: '每天 3–5 条写透，其余全量可查' }
       ],
       about: [
         { n: '关于',     href: '/about/index.html',      ic: 'info',    d: '这个站是干什么的' },

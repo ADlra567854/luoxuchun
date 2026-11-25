@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>阅读 · 33 篇书稿 + 54 篇博文 + 3 本开源书 · 白驹 ccowork</title>
+<meta name="description" content="站内所有可读内容聚在一页：33 篇书稿（有阅读顺序）、54 篇原创博文（按时间倒序）、3 本开放许可的书全文，合计约 23.9 万字。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/read/">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+article.merged-content{max-width:1180px!important}
+.rd-wrap{max-width:1180px;margin:0 auto;padding:24px 20px 60px}
+.rd-hero{background:linear-gradient(135deg,rgba(79,140,255,.12),rgba(139,92,246,.10));border:1px solid rgba(79,140,255,.24);border-radius:20px;padding:26px 26px;margin-bottom:16px}
+.rd-hero h1{font-size:clamp(22px,3.1vw,31px);font-weight:900;line-height:1.32;margin:0 0 10px}
+.rd-hero p{font-size:14.5px;line-height:1.9;color:var(--muted);max-width:840px;margin:0}
+.rd-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 0}
+.rd-kpi div{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:12px;padding:12px 14px}
+.rd-kpi b{display:block;font-size:20px;font-weight:900;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.rd-kpi span{display:block;font-size:11.5px;color:var(--muted);margin-top:3px}
+.rd-filter{display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:13px;padding:12px 15px;margin:0 0 18px}
+.rd-filter>span{font-size:12px;font-weight:800;color:var(--muted);margin-right:2px}
+.rd-f{font-size:12.5px;font-weight:700;padding:5px 13px;border-radius:999px;cursor:pointer;border:1px solid rgba(120,150,200,.28);background:transparent;color:var(--muted);font-family:inherit;transition:.15s}
+.rd-f b{font-size:10.5px;opacity:.7;margin-left:4px;font-weight:800}
+.rd-f:hover{border-color:rgba(79,140,255,.5);color:#2f5fd0}
+.rd-f.on{background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);color:#fff;border-color:transparent}
+[data-theme="deep"] .rd-f:hover{color:#7fe4ff}
+.rd-sec{margin:0 0 26px}
+.rd-sec>h2{font-size:18px;font-weight:900;margin:0 0 5px;display:flex;align-items:center;gap:10px}
+.rd-sec>h2::before{content:"";width:5px;height:18px;border-radius:3px;background:linear-gradient(#4f8cff,#38b6ff 50%,#8b5cf6)}
+.rd-sec>h2 em{font-size:11.5px;font-weight:700;color:var(--muted);font-style:normal;background:rgba(120,150,200,.12);padding:2px 9px;border-radius:999px}
+.rd-sec>.rd-sub{font-size:13px;color:var(--muted);margin:0 0 13px;line-height:1.75}
+.rd-list{display:flex;flex-direction:column;gap:7px}
+.rd-item{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid rgba(120,150,200,.16);border-radius:11px;padding:11px 14px;text-decoration:none;transition:.15s}
+.rd-item:hover{border-color:rgba(79,140,255,.45);background:rgba(79,140,255,.045);transform:translateX(2px)}
+.rd-num{flex:0 0 34px;font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:800;color:#2f5fd0;background:rgba(79,140,255,.1);border-radius:7px;padding:3px 0;text-align:center;margin-top:2px}
+.rd-date{flex:0 0 44px;font-size:11.5px;color:var(--muted);font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+.rd-tx{flex:1 1 auto;min-width:0}
+.rd-tx b{display:block;font-size:14px;font-weight:800;color:var(--text);line-height:1.5;margin-bottom:3px}
+.rd-tx small{display:block;font-size:12px;color:var(--muted);line-height:1.65;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+.rd-mt{flex:0 0 auto;font-size:11.5px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums}
+.rd-books{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:11px}
+.rd-book{display:block;text-decoration:none;background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:13px;padding:15px 17px;transition:.16s}
+.rd-book:hover{border-color:rgba(139,92,246,.45);transform:translateY(-2px);box-shadow:0 9px 22px rgba(139,92,246,.12)}
+.rd-book b{display:block;font-size:15px;font-weight:800;color:var(--text);margin-bottom:5px}
+.rd-book span{display:block;font-size:11.5px;color:#7048d0;margin-bottom:7px}
+[data-theme="deep"] .rd-book span{color:#c4a6ff}
+.rd-book small{display:block;font-size:12.5px;color:var(--muted);line-height:1.7}
+.rd-note{margin-top:22px;padding:14px 16px;border-radius:12px;background:rgba(120,150,200,.07);border:1px solid rgba(120,150,200,.16);font-size:12px;line-height:1.9;color:var(--muted)}
+.rd-note b{color:var(--text)}
+[hidden]{display:none!important}
+@media(max-width:900px){.rd-kpi{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .rd-wrap{padding:14px 13px 46px}
+  .rd-hero{padding:19px 16px;border-radius:16px}
+  .rd-item{gap:9px;padding:10px 11px}
+  .rd-num{flex:0 0 28px;font-size:11px}
+  .rd-date{flex:0 0 38px;font-size:11px}
+  .rd-tx b{font-size:13.5px}
+  .rd-tx small{-webkit-line-clamp:2}
+  .rd-mt{display:none}
+  .rd-books{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body data-ccnav="learn" data-cctitle="阅读">
+
+<div class="rd-wrap">
+
+  <div class="rd-hero">
+    <h1>阅读 · 一个地方读完站里所有东西</h1>
+    <p>站里能读的东西原来分散在三个地方：书稿在一个目录、博文在另一个、开源书全文又在第三个，导航上互相不通。现在聚到这一页。<b>不搬家</b>——点进去还是原来的页面，所以老链接和你分享过的地址都不会断。书稿有编号，按顺序读；博文按时间倒序，挑着读。</p>
+    <div class="rd-kpi">
+      <div><b>33</b><span>篇书稿（有顺序）</span></div>
+      <div><b>54</b><span>篇原创博文</span></div>
+      <div><b>3</b><span>本开源书全文</span></div>
+      <div><b>23.9 万</b><span>字合计</span></div>
+    </div>
+  </div>
+
+  <div class="rd-filter" id="rdFilter">
+    <span>只看</span>
+    <button class="rd-f on" data-f="all">全部<b>90</b></button>
+    <button class="rd-f" data-f="chapter">书稿<b>33</b></button>
+    <button class="rd-f" data-f="post">博文<b>54</b></button>
+    <button class="rd-f" data-f="openbook">开源书<b>3</b></button>
+  </div>
+
+  <section class="rd-sec" id="sec-chapter">
+    <h2>书稿 <em>33 篇 · 91,192 字 · 按编号读</em></h2>
+    <p class="rd-sub">从总纲开始，顺着编号往下。这是站里最原创的部分，不是转载。</p>
+    <div class="rd-list">
+    <a class="rd-item" href="/website/book/AI实战全书.html" data-k="chapter">
+      <span class="rd-num">00</span>
+      <span class="rd-tx">
+        <b>AI 实战全书</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">10,301 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/00-AI%E4%B8%AA%E4%BA%BAIP%E8%B6%85%E7%BA%A7%E5%86%85%E5%AE%B9%E7%9F%A9%E9%98%B5%E6%80%BB%E8%93%9D%E5%9B%BE.html" data-k="chapter">
+      <span class="rd-num">00</span>
+      <span class="rd-tx">
+        <b>AI 个人 IP 超级内容矩阵 · 总蓝图</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">3,168 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/01-DeepSeek-V4-Pro-%E5%B0%8F%E7%99%BD%E5%85%A5%E9%97%A8.html" data-k="chapter">
+      <span class="rd-num">01</span>
+      <span class="rd-tx">
+        <b>DeepSeek V4-Pro 小白入门（2026-10 更新）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">3,684 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/02-AI%E5%B7%A5%E5%85%B7%E5%85%A8%E6%99%AF%E5%9B%BE-%E5%9B%BD%E5%86%85%E5%9B%BD%E5%A4%96.html" data-k="chapter">
+      <span class="rd-num">02</span>
+      <span class="rd-tx">
+        <b>AI 工具全景图（国内 + 国外，2026 版）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,197 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/03-AI%E5%8F%98%E7%8E%B0%E8%B7%AF%E7%BA%BF%E5%9B%BE-%E5%B0%8F%E7%99%BD%E7%89%88.html" data-k="chapter">
+      <span class="rd-num">03</span>
+      <span class="rd-tx">
+        <b>AI 变现路线图（小白版）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,689 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/04-AI%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7-IDE%E7%BC%96%E8%AF%91%E5%AE%A1%E9%98%85%E6%B5%8F%E8%A7%88.html" data-k="chapter">
+      <span class="rd-num">04</span>
+      <span class="rd-tx">
+        <b>AI 编程工具：IDE / 编译 / 审阅 / 浏览（小白版）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,387 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/05-%E4%B9%A6%E7%A8%BF%E6%80%BB%E7%9B%AE%E5%BD%95-AI%E5%B7%A5%E5%85%B7%E7%AE%80%E5%8F%B2%E4%B8%8E%E5%AE%9E%E6%88%98%E5%85%A8%E4%B9%A6.html" data-k="chapter">
+      <span class="rd-num">05</span>
+      <span class="rd-tx">
+        <b>书稿总目录（旗舰产品）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,738 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/06-%E4%B9%A6%E7%A8%BF-%E7%AC%AC10%E7%AB%A0-DeepSeek%E5%8F%91%E5%B1%95%E5%8F%B2.html" data-k="chapter">
+      <span class="rd-num">06</span>
+      <span class="rd-tx">
+        <b>第 10 章 · DeepSeek 发展史：从量化基金到国产大模型旗帜</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">3,131 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/07-%E4%B9%A6%E7%A8%BF-%E7%AC%AC1%E7%AB%A0-AI%E4%B8%83%E5%8D%81%E5%B9%B4.html" data-k="chapter">
+      <span class="rd-num">07</span>
+      <span class="rd-tx">
+        <b>第 1 章 · AI 七十年：一条能看懂的时间线</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,162 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/08-%E4%B9%A6%E7%A8%BF-%E7%AC%AC3%E7%AB%A0-ChatGPT%E7%82%B9%E7%87%83%E5%85%A8%E6%B0%91AI%E6%97%B6%E4%BB%A3.html" data-k="chapter">
+      <span class="rd-num">08</span>
+      <span class="rd-tx">
+        <b>第 3 章 · ChatGPT 如何点燃全民 AI 时代</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,040 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/09-%E4%B9%A6%E7%A8%BF-%E7%AC%AC4%E7%AB%A0-%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E7%AE%80%E5%8F%B2.html" data-k="chapter">
+      <span class="rd-num">09</span>
+      <span class="rd-tx">
+        <b>第 4 章 · 图像生成简史：从「不像」到「以假乱真」</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">1,888 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/10-%E4%B9%A6%E7%A8%BF-%E7%AC%AC5%E7%AB%A0-%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E7%AE%80%E5%8F%B2.html" data-k="chapter">
+      <span class="rd-num">10</span>
+      <span class="rd-tx">
+        <b>第 5 章 · 视频生成简史：从几秒到完整叙事</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">1,662 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/11-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97-2026%E6%9C%80%E6%96%B0%E7%89%88.html" data-k="chapter">
+      <span class="rd-num">11</span>
+      <span class="rd-tx">
+        <b>提示词完全指南（2026 最新版）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,366 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/12-AI%E5%BD%B1%E5%93%8D%E9%9D%A2-%E4%BB%8E%E7%9F%AD%E8%A7%86%E9%A2%91%E5%88%B0%E5%A4%A9%E6%B0%94%E5%86%8D%E5%88%B0%E6%AF%8F%E4%B8%80%E4%B8%AA%E4%BA%BA.html" data-k="chapter">
+      <span class="rd-num">12</span>
+      <span class="rd-tx">
+        <b>AI 影响面：从短视频、赚钱、博文到天气，再到每一个人</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,560 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/13-%E5%BC%80%E6%BA%90AI%E5%B7%A5%E5%85%B7-%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8%E6%8C%87%E5%8D%97.html" data-k="chapter">
+      <span class="rd-num">13</span>
+      <span class="rd-tx">
+        <b>开源 AI 工具 · 开箱即用指南（2026 最火）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">3,134 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/14-AI%E5%B0%8F%E8%AF%B4%E4%B8%8E%E7%9F%AD%E5%89%A7%E7%9A%84%E5%BD%B1%E5%93%8D.html" data-k="chapter">
+      <span class="rd-num">14</span>
+      <span class="rd-tx">
+        <b>AI 写小说、短剧带来的影响（2026 最新数据）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">2,827 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/15-%E4%B8%AD%E5%9B%BDAI%E6%94%BF%E7%AD%96%E4%B8%8E%E5%9B%BD%E5%A4%96%E9%87%8D%E8%A7%86.html" data-k="chapter">
+      <span class="rd-num">15</span>
+      <span class="rd-tx">
+        <b>中国 AI 政策 与 国外对 AI 的重视（2026）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">1,649 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/16-GitHub%E6%9C%80%E6%96%B0%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E7%9B%98%E7%82%B9%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8A%E6%89%8B.html" data-k="chapter">
+      <span class="rd-num">16</span>
+      <span class="rd-tx">
+        <b>GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">3,284 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/17-%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%80%90%E4%B8%AA%E4%B8%8A%E6%89%8B%E6%89%8B%E5%86%8C.html" data-k="chapter">
+      <span class="rd-num">17</span>
+      <span class="rd-tx">
+        <b>开源项目逐个上手手册（安装 · 一键使用 · 打包下载 · 手机端）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">4,084 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/18-AI%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E8%AF%A6%E8%A7%A3-%E7%9F%A5%E8%AF%86%E7%BD%91.html" data-k="chapter">
+      <span class="rd-num">18</span>
+      <span class="rd-tx">
+        <b>AI 研究方向详解（知识网 · 给所有人看）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">3,195 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/19-%E8%A1%8C%E8%A1%8C%E5%87%BA%E7%8A%B6%E5%85%83-%E5%90%84%E8%A1%8C%E5%90%84%E4%B8%9A%E5%A6%82%E4%BD%95%E7%9C%8BAI%E5%A6%82%E4%BD%95%E5%AD%A6AI.html" data-k="chapter">
+      <span class="rd-num">19</span>
+      <span class="rd-tx">
+        <b>行行出状元：各行各业如何看 AI、如何学 AI</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">3,600 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/20-AI%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BA%B2-%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%BC%9A%E7%94%A8.html" data-k="chapter">
+      <span class="rd-num">20</span>
+      <span class="rd-tx">
+        <b>AI 学习总纲：从零到会用（统一路线图）</b>
+        <small>个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航</small>
+      </span>
+      <span class="rd-mt">1,766 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/21-%E4%B9%A6%E7%A8%BF-%E7%AC%AC2%E7%AB%A0-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%9D%A9%E5%91%BD.html" data-k="chapter">
+      <span class="rd-num">21</span>
+      <span class="rd-tx">
+        <b>第 2 章 · 深度学习革命：从感知机到Transformer</b>
+        <small>第 2 章 · 深度学习革命：从感知机到Transformer 深度学习不是一夜之间冒出来的。</small>
+      </span>
+      <span class="rd-mt">2,641 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/22-%E4%B9%A6%E7%A8%BF-%E7%AC%AC6%E7%AB%A0-AI%E7%BC%96%E7%A8%8B%E9%9D%A9%E5%91%BD.html" data-k="chapter">
+      <span class="rd-num">22</span>
+      <span class="rd-tx">
+        <b>第 6 章 · AI编程革命：从Copilot到自主Agent</b>
+        <small>第 6 章 · AI编程革命：从Copilot到自主Agent 2021年GitHub Copilot发布时，很多人觉得它只</small>
+      </span>
+      <span class="rd-mt">2,378 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/23-%E4%B9%A6%E7%A8%BF-%E7%AC%AC7%E7%AB%A0-AI%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96.html" data-k="chapter">
+      <span class="rd-num">23</span>
+      <span class="rd-tx">
+        <b>第 7 章 · AI办公自动化：从Excel到全流程</b>
+        <small>第 7 章 · AI办公自动化：从Excel到全流程 办公自动化不是新概念，但AI让「自动化」第一次有了「智能」。</small>
+      </span>
+      <span class="rd-mt">2,268 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/24-%E4%B9%A6%E7%A8%BF-%E7%AC%AC8%E7%AB%A0-AI%E6%95%99%E8%82%B2%E5%8F%98%E9%9D%A9.html" data-k="chapter">
+      <span class="rd-num">24</span>
+      <span class="rd-tx">
+        <b>第 8 章 · AI教育变革：从标准化到个性化</b>
+        <small>第 8 章 · AI教育变革：从标准化到个性化 工业革命带来了标准化教育，AI革命将带来个性化教育。</small>
+      </span>
+      <span class="rd-mt">2,002 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/25-%E4%B9%A6%E7%A8%BF-%E7%AC%AC9%E7%AB%A0-AI%E5%8C%BB%E7%96%97%E5%BA%94%E7%94%A8.html" data-k="chapter">
+      <span class="rd-num">25</span>
+      <span class="rd-tx">
+        <b>第 9 章 · AI医疗应用：从辅助诊断到新药研发</b>
+        <small>第 9 章 · AI医疗应用：从辅助诊断到新药研发 医疗是AI最有价值的应用场景之一。</small>
+      </span>
+      <span class="rd-mt">2,319 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/26-%E4%B9%A6%E7%A8%BF-%E7%AC%AC11%E7%AB%A0-AI%E4%BC%A6%E7%90%86%E4%B8%8E%E5%AE%89%E5%85%A8.html" data-k="chapter">
+      <span class="rd-num">26</span>
+      <span class="rd-tx">
+        <b>第 11 章 · AI伦理与安全：技术狂奔时代的护栏</b>
+        <small>从算法偏见到深度伪造，从隐私泄露到就业冲击，AI带来的不只是机遇，还有前所未有的挑战。</small>
+      </span>
+      <span class="rd-mt">2,148 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/27-%E4%B9%A6%E7%A8%BF-%E7%AC%AC12%E7%AB%A0-AI%E4%B8%8E%E5%B0%B1%E4%B8%9A.html" data-k="chapter">
+      <span class="rd-num">27</span>
+      <span class="rd-tx">
+        <b>第 12 章 · AI与就业：谁会被取代，谁会更值钱</b>
+        <small>第 12 章 · AI与就业：谁会被取代，谁会更值钱 每次技术革命都会引发「失业恐慌」，但最终都创造了更多新岗位。</small>
+      </span>
+      <span class="rd-mt">2,188 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/28-%E4%B9%A6%E7%A8%BF-%E7%AC%AC13%E7%AB%A0-AI%E5%88%9B%E4%B8%9A%E6%8C%87%E5%8D%97.html" data-k="chapter">
+      <span class="rd-num">28</span>
+      <span class="rd-tx">
+        <b>第 13 章 · AI创业指南：从想法到产品</b>
+        <small>第 13 章 · AI创业指南：从想法到产品 AI降低了创业的门槛，但也提高了竞争的烈度。</small>
+      </span>
+      <span class="rd-mt">2,418 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/29-%E4%B9%A6%E7%A8%BF-%E7%AC%AC14%E7%AB%A0-AI%E4%B8%8E%E6%9C%AA%E6%9D%A5%E7%A4%BE%E4%BC%9A.html" data-k="chapter">
+      <span class="rd-num">29</span>
+      <span class="rd-tx">
+        <b>第 14 章 · AI与未来社会：2035年的世界</b>
+        <small>第 14 章 · AI与未来社会：2035年的世界 预测未来最好的方式是创造未来。</small>
+      </span>
+      <span class="rd-mt">2,076 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/30-%E4%B9%A6%E7%A8%BF-%E7%AC%AC15%E7%AB%A0-AI%E4%B8%8E%E5%9B%BD%E5%AE%B6%E5%AE%89%E5%85%A8.html" data-k="chapter">
+      <span class="rd-num">30</span>
+      <span class="rd-tx">
+        <b>第 15 章 · AI与国家安全：新边疆的博弈</b>
+        <small>第 15 章 · AI与国家安全：新边疆的博弈 AI不仅是技术革命，也是国家安全的新边疆。</small>
+      </span>
+      <span class="rd-mt">2,124 字</span>
+    </a>
+    <a class="rd-item" href="/website/book/pages/31-%E4%B9%A6%E7%A8%BF-%E7%AC%AC16%E7%AB%A0-AI%E4%B8%8E%E6%96%87%E5%8C%96%E5%88%9B%E6%84%8F.html" data-k="chapter">
+      <span class="rd-num">31</span>
+      <span class="rd-tx">
+        <b>第 16 章 · AI与文化创意：从工具到伙伴</b>
+        <small>第 16 章 · AI与文化创意：从工具到伙伴 AI不只是效率工具，它正在成为创意伙伴。</small>
+      </span>
+      <span class="rd-mt">2,118 字</span>
+    </a>
+    </div>
+  </section>
+
+  <section class="rd-sec" id="sec-post">
+    <h2>博文 <em>54 篇 · 147,407 字 · 按时间倒序</em></h2>
+    <p class="rd-sub">具体怎么用、怎么省钱、怎么省时间。每条都尽量给到能照着做的步骤。</p>
+    <div class="rd-list">
+    <a class="rd-item" href="/blog/tutorial-zero-cost-podcast.html" data-k="post">
+      <span class="rd-date">10-27</span>
+      <span class="rd-tx">
+        <b>零成本做一版播客：从录音到上架</b>
+        <small>零成本播客制作流程：定选题与三段式结构、写提纲、布置录音环境、手机分段录、Audacity 降噪与响度归一化、做封面、上传喜马拉雅等平台。含耗时</small>
+      </span>
+      <span class="rd-mt">2,818 字</span>
+    </a>
+    <a class="rd-item" href="/blog/tutorial-30min-oral-video.html" data-k="post">
+      <span class="rd-date">10-27</span>
+      <span class="rd-tx">
+        <b>手机 30 分钟做完一条口播视频</b>
+        <small>普通人用手机做口播视频的完整流程：AI 写 300 字口语稿、找光布景、分段录制、剪映识别字幕与配乐、导出发布。含具体按钮路径、耗时成本、三个常</small>
+      </span>
+      <span class="rd-mt">2,566 字</span>
+    </a>
+    <a class="rd-item" href="/blog/tutorial-ai-resume.html" data-k="post">
+      <span class="rd-date">10-27</span>
+      <span class="rd-tx">
+        <b>用 AI 做一份能投的简历：从空白到投递的 90 分钟</b>
+        <small>面向普通人的 AI 简历教程：先手写真实素材，再让 AI 按约束改写成简历句，对着岗位 JD 做关键词对齐，最后排版导出 PDF 并记录投递反馈</small>
+      </span>
+      <span class="rd-mt">2,970 字</span>
+    </a>
+    <a class="rd-item" href="/blog/tutorial-free-personal-homepage.html" data-k="post">
+      <span class="rd-date">10-27</span>
+      <span class="rd-tx">
+        <b>用免费工具搭一个个人主页：一晚上上线</b>
+        <small>普通人搭个人主页的完整路线：定五块内容、写一个最小 index.html、本地预览、用 Netlify Drop 或 Cloudflare Pa</small>
+      </span>
+      <span class="rd-mt">3,872 字</span>
+    </a>
+    <a class="rd-item" href="/blog/tutorial-ai-english-speaking.html" data-k="post">
+      <span class="rd-date">10-27</span>
+      <span class="rd-tx">
+        <b>AI 练英语口语：每天 20 分钟，没人陪也能练</b>
+        <small>用 AI 语音对话练英语口语的每日流程：定具体场景、给 AI 设定严格纠错规则、跟读 5 分钟、对话 10 分钟、复盘 5 分钟，配合剑桥词典与</small>
+      </span>
+      <span class="rd-mt">2,575 字</span>
+    </a>
+    <a class="rd-item" href="/blog/tutorial-remove-ai-tone.html" data-k="post">
+      <span class="rd-date">10-27</span>
+      <span class="rd-tx">
+        <b>AI 写作怎么去掉「AI 味」：7 个可执行的改稿动作</b>
+        <small>AI 味的五个可识别特征，以及 7 个能直接执行的改稿动作：删连接词、拆排比、抽象名词换动作、加真实细节、长短句交替、留一点不完美、用反向提示让</small>
+      </span>
+      <span class="rd-mt">2,542 字</span>
+    </a>
+    <a class="rd-item" href="/blog/tutorial-ai-photo-id.html" data-k="post">
+      <span class="rd-date">10-27</span>
+      <span class="rd-tx">
+        <b>AI 修图与证件照：免费工具 40 分钟搞定</b>
+        <small>用免费工具做电子证件照与日常修图：remove.bg 抠图换底色、Photopea 定尺寸裁剪、iLoveIMG 与 Squoosh 压缩到报名</small>
+      </span>
+      <span class="rd-mt">2,658 字</span>
+    </a>
+    <a class="rd-item" href="/blog/tutorial-excel-ai-monthly-report.html" data-k="post">
+      <span class="rd-date">10-27</span>
+      <span class="rd-tx">
+        <b>Excel + AI 做月度报表：不会函数也能交差</b>
+        <small>月度报表的完整流程：把明细整理成一维表、脱敏、用数据透视表算核心指标、让 AI 写 SUMIFS 公式并交叉验证、出图、起草文字说明。含耗时成本</small>
+      </span>
+      <span class="rd-mt">2,866 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026.9.9-%E5%AE%9E%E6%B5%8B%EF%BC%9A%E7%8E%B0%E5%9C%A8%E7%94%A8AI%E5%81%9A%E8%A7%86%E9%A2%91%EF%BC%8C%E5%B7%B2%E7%BB%8F%E4%B8%8D%E7%94%A8%E6%8B%BC%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%BA%86.html" data-k="post">
+      <span class="rd-date">09-09</span>
+      <span class="rd-tx">
+        <b>AI 做视频：现在拼的不是提示词，是可控性</b>
+        <small>AI 视频的门槛已经从「能不能生成」转到「能不能稳定复现」。这篇讲素材驱动的工作流、合规要求，以及普通从业者真正能切入的位置。</small>
+      </span>
+      <span class="rd-mt">1,192 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-09-08-%E7%88%86%E6%AC%BE-2B%E5%8F%82%E6%95%B0%E6%89%93%E5%B9%B312B%E6%A8%A1%E5%9E%8B%EF%BC%81%E7%AB%AF%E4%BE%A7Agent%E9%9B%B6%E6%88%90%E6%9C%AC%E5%95%86%E7%94%A8%EF%BC%8C%E4%BD%A0%E7%9A%84%E6%89%8B%E6%9C%BA%E3%80%81%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%AE%BE%E5%A4%87%E4%B8%8B%E5%91%A8%E5%B0%B1%E8%83%BD%E8%B7%91.html" data-k="post">
+      <span class="rd-date">09-08</span>
+      <span class="rd-tx">
+        <b>「2B 打平 12B」这类宣称，怎么自己核验</b>
+        <small>小模型打平大模型的消息每隔一阵就有一条，多数是真的——但在特定条件下。这篇给一套核验顺序：先看基准表分项，再查评测污染，最后用自己的任务测。</small>
+      </span>
+      <span class="rd-mt">1,736 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B49%E6%9C%88AI%E5%8F%98%E7%8E%B0%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E6%A6%82%E5%BF%B5%EF%BC%8C%E8%BF%993%E4%B8%AA%E4%BD%8E%E9%97%A8%E6%A7%9B%E8%B5%9B%E9%81%93%E6%99%AE%E9%80%9A%E4%BA%BA%E5%BD%93%E6%9C%88%E5%B0%B1%E8%83%BD%E8%A7%81%E7%8E%B0%E9%87%91%E6%B5%81.html" data-k="post">
+      <span class="rd-date">09-08</span>
+      <span class="rd-tx">
+        <b>一个人能做的 AI 生意：六个判断问题</b>
+        <small>不列「赛道」，给判据。用六个问题筛掉大部分不靠谱的方向，剩下的才值得投入时间。附一份两周内可执行的验证流程。</small>
+      </span>
+      <span class="rd-mt">1,095 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-09-07-%E6%9C%AC%E5%91%A8AI%E5%A4%A7%E4%BA%8B%E8%AE%B0-2026%E5%B9%B49%E6%9C%88%E7%AC%AC1%E5%91%A8.html" data-k="post">
+      <span class="rd-date">09-07</span>
+      <span class="rd-tx">
+        <b>一次模型更新的公告，怎么读出它的真实增量</b>
+        <small>厂商公告里「全面超越」「快 3 倍」「成本降一半」这类表述，多数是口径差异而非能力差异。这篇给一套把公告拆成可核字段、再用三个小实验验证的读法。</small>
+      </span>
+      <span class="rd-mt">1,620 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B49%E6%9C%88AI%E5%AD%A6%E4%B9%A0%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%EF%BC%9A%E5%88%AB%E5%86%8D%E8%A2%AB3%E5%B9%B4%E5%89%8D%E7%9A%84%E6%97%A7%E6%95%99%E7%A8%8B%E5%9D%91%E4%BA%86.html" data-k="post">
+      <span class="rd-date">09-04</span>
+      <span class="rd-tx">
+        <b>AI 教程过期的六个信号，和一套替换路径</b>
+        <small>不是所有旧教程都该扔。底层原理几乎不变，API 形态几年一变，产品界面几个月一变。分清你在学哪一层，比追新版教程更重要。这篇给六个过期信号和一套</small>
+      </span>
+      <span class="rd-mt">2,705 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-AI-%E5%88%9B%E4%B8%9A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97%EF%BC%9A%E5%91%8A%E5%88%AB%E2%80%9C%E5%A5%97%E5%A3%B3%E2%80%9D%EF%BC%8C%E6%AD%BB%E7%A3%95%E5%9E%82%E7%9B%B4%E4%BB%A3%E7%90%86.html" data-k="post">
+      <span class="rd-date">09-03</span>
+      <span class="rd-tx">
+        <b>2026 AI 创业生存指南：告别“套壳”，死磕垂直代理</b>
+        <small>一个正在被反复验证的判断：2024 年做 LLM 应用算一个项目，2026 年能站住的，是拥有自主推理与工具能力的垂直代理。这句话没有署名作者，</small>
+      </span>
+      <span class="rd-mt">3,371 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-09-03-%E7%88%86%E6%AC%BE-100%E4%B8%87%E4%B8%8A%E4%B8%8B%E6%96%87%E5%A1%9E%E8%BF%9B4B%E5%B0%8F%E6%A8%A1%E5%9E%8B%EF%BC%81%E8%AE%AF%E9%A3%9E%E5%BC%80%E6%BA%90%E6%98%9F%E7%81%ABX2.5%EF%BC%9A%E6%9C%AC%E5%9C%B0%E8%B7%91%E7%9B%B4%E6%8E%A5%E5%B9%B2%E7%BF%BB%E4%BA%91%E7%AB%AF%E5%A4%A7%E6%A8%A1%E5%9E%8B.html" data-k="post">
+      <span class="rd-date">09-03</span>
+      <span class="rd-tx">
+        <b>小模型的百万上下文是怎么来的：一笔可以自己算的显存账</b>
+        <small>「4B 参数 + 100 万上下文」听起来矛盾，其实不矛盾——因为瓶颈从来不是参数量，是 KV 缓存。这篇把显存算式摊开，你就能判断任何一条长上</small>
+      </span>
+      <span class="rd-mt">2,016 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-09-03-%E7%88%86%E6%AC%BE-3%E4%B8%AA%E6%96%B0%E8%83%BD%E5%8A%9B%E5%8F%8D%E8%B6%85GPT-4o%EF%BC%9FOpenAI%20Astra%E7%AA%81%E8%A2%AD%E4%B8%8A%E7%BA%BF%EF%BC%9A%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E9%9B%B6%E6%88%90%E6%9C%AC%E4%B8%8A%E6%89%8B.html" data-k="post">
+      <span class="rd-date">09-03</span>
+      <span class="rd-tx">
+        <b>OpenAI 当前档位怎么读：旗舰、主力、轻量三层的差别</b>
+        <small>去掉发布会式的表述，只看官方定价页：OpenAI 当前三层档位分别适合什么任务、价格差在哪、什么情况下不值得上旗舰。</small>
+      </span>
+      <span class="rd-mt">863 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B49%E6%9C%88AI%E5%88%9B%E4%B8%9A%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E9%80%9A%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BA%86%EF%BC%8C%E8%BF%99%E4%B8%89%E4%B8%AA%E5%9E%82%E7%9B%B4%E8%B5%9B%E9%81%93%E7%9A%84%E8%90%BD%E5%9C%B0%E7%AA%97%E5%8F%A3%E5%88%9A%E5%88%9A%E6%89%93%E5%BC%80.html" data-k="post">
+      <span class="rd-date">09-02</span>
+      <span class="rd-tx">
+        <b>AI 项目怎么报价：三种交付形态的成本与风险对比</b>
+        <small>同一个技术方案，按人天、按项目、按效果收费，风险归属完全不同。这篇讲三种形态各自的适用条件、定价逻辑与必须写进合同的东西。</small>
+      </span>
+      <span class="rd-mt">967 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026.9.1-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%90%BD%E5%9C%B0%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E5%8F%82%E6%95%B0%E7%A5%9E%E8%AF%9D%EF%BC%8C%E8%BF%993%E4%B8%AA%E6%8A%80%E6%9C%AF%E6%96%B9%E5%90%91%E5%B7%B2%E7%BB%8F%E8%B7%91%E5%87%BA%E7%9C%9FROI.html" data-k="post">
+      <span class="rd-date">09-01</span>
+      <span class="rd-tx">
+        <b>大模型落地观察：三个真在产生价值的技术方向</b>
+        <small>端侧小模型、多模态 RAG、Agent 工作流——这三个方向的价值不在参数，在于它们各自解决了什么实际问题。逐个说清能力边界与成本结构。</small>
+      </span>
+      <span class="rd-mt">1,142 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-09-01-%E7%88%86%E6%AC%BE-3%E4%B8%AAAgent%E5%8D%8F%E4%BD%9C%E5%BC%80%E6%BA%90AI%E5%8A%A9%E6%89%8B%E5%AE%9E%E6%B5%8B.html" data-k="post">
+      <span class="rd-date">09-01</span>
+      <span class="rd-tx">
+        <b>多 Agent 协作到底解决什么：四种编排模式与各自的天花板</b>
+        <small>多 Agent 不是「让 AI 更聪明」，是「把活分给人」。分工能带来什么、会在哪里崩，取决于你选哪种编排模式。这篇给四种模式的适用条件与三个必</small>
+      </span>
+      <span class="rd-mt">1,556 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-%E5%B9%B4-AI-%E8%A7%86%E9%A2%91%E5%88%9B%E4%BD%9C%E5%AE%9E%E6%88%98%EF%BC%9A%E4%BB%8E%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%88%B0%E5%AF%BC%E6%BC%94%E7%9A%84%E5%AE%8C%E6%95%B4%E5%B7%A5%E4%BD%9C%E6%B5%81.html" data-k="post">
+      <span class="rd-date">08-31</span>
+      <span class="rd-tx">
+        <b>2026 年 AI 视频创作实战：从提示词到导演的完整工作流</b>
+        <small>站在 2026 年 8 月的节点回望，AI 视频领域已经彻底告别了“初代混乱期”。如果说一年前大家还在争论 Sora 和 Runway 谁更强，</small>
+      </span>
+      <span class="rd-mt">2,653 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-AI-%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98%EF%BC%9A%E4%BB%8E%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86%E5%88%B0-Agent-%E9%83%A8%E7%BD%B2%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84.html" data-k="post">
+      <span class="rd-date">08-31</span>
+      <span class="rd-tx">
+        <b>2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径</b>
+        <small>AI 不会取代你，但掌握 AI 的人会。这句话流传太广，以至于没人记得是谁先说的——不过它指向的事实不需要作者背书：同一套工具，会不会用，产出差</small>
+      </span>
+      <span class="rd-mt">2,507 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B48%E6%9C%88AI%E5%B7%A5%E5%85%B7%E6%A8%AA%E8%AF%84%EF%BC%9A%E5%88%AB%E8%BF%BD%E6%A6%82%E5%BF%B5%EF%BC%8C%E8%BF%994%E6%AC%BE%E5%B7%A5%E5%85%B7%E7%9C%9F%E8%83%BD%E5%B8%AE%E4%BD%A0%E6%AF%8F%E5%A4%A9%E7%9C%812%E5%B0%8F%E6%97%B6.html" data-k="post">
+      <span class="rd-date">08-31</span>
+      <span class="rd-tx">
+        <b>工具选型怎么验收：把「每天省两小时」拆成可测的四步</b>
+        <small>「每天省两小时」这个说法几乎无法被证伪，因为没人告诉你省的是哪两小时。这篇给一套自己就能跑的验收流程：找任务、建基线、只换一个变量、算净收益。</small>
+      </span>
+      <span class="rd-mt">1,574 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-08-31-%E6%9C%AC%E5%91%A8AI%E5%A4%A7%E4%BA%8B%E8%AE%B0-2026%E5%B9%B48%E6%9C%88%E7%AC%AC5%E5%91%A8.html" data-k="post">
+      <span class="rd-date">08-31</span>
+      <span class="rd-tx">
+        <b>AI 资讯怎么筛：四层过滤与一份可核信息源清单</b>
+        <small>原稿是 8 月第 5 周的新闻汇总，逐条列了模型评测分数、企业采购金额与市占率变化——这些数字无从核实，新闻本身也已过期。改讲方法：一条 AI </small>
+      </span>
+      <span class="rd-mt">1,906 字</span>
+    </a>
+    <a class="rd-item" href="/blog/%E4%B8%AD%E5%9B%BDAI%E5%8F%91%E5%B1%95%E5%8F%B2.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>从跟跑到并跑：中国 AI 发展史（附 DeepSeek 时刻复盘）</b>
+        <small>从实验室里的控制论萌芽，到互联网与移动互联网的海量数据积累，再到人脸识别、语音、安防、自动驾驶的追赶，最后到大模型「百家争鸣」与 2025 年「</small>
+      </span>
+      <span class="rd-mt">5,037 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B4%E4%B8%ADAI%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E5%AE%9E%E6%B5%8B%EF%BC%9A%E5%88%AB%E5%86%8D%E5%95%833%E5%B9%B4%E5%89%8D%E7%9A%84%E6%97%A7%E6%95%99%E7%A8%8B%E4%BA%86%EF%BC%8C%E8%BF%99%E6%98%AF%E6%88%91%E9%AA%8C%E8%AF%81%E8%BF%87%E7%9A%84%E6%97%A0%E6%B0%B4%E5%88%86%E5%85%A5%E9%97%A8%E5%88%B0%E8%90%BD%E5%9C%B0%E8%B7%AF%E7%BA%BF.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>从零到能交付：一条可自查的 AI 学习路径</b>
+        <small>这条路线不承诺「几个月转行」，只回答一个问题：到什么程度算学会了。每个阶段都给了可自查的验收动作，做不到就说明还没过这一关。</small>
+      </span>
+      <span class="rd-mt">2,061 字</span>
+    </a>
+    <a class="rd-item" href="/blog/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86%E4%B8%8ETransformer.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>大模型原理与Transformer：一次看懂 AI 的大脑</b>
+        <small>今天我们随口说出的“大模型”三个字，背后站着 2017 年的一篇论文、一场算力军备竞赛、以及一次关于“规模能否换来智能”的大赌注。这篇文章不写代</small>
+      </span>
+      <span class="rd-mt">5,966 字</span>
+    </a>
+    <a class="rd-item" href="/blog/%E5%85%AC%E5%8A%A1%E5%91%98AI%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>公文与政务场景用 AI：能用的环节、不能碰的边界</b>
+        <small>公文写作、政策检索、材料预审——这些环节 AI 确实能省时间。但涉密、个人信息、对外答复这三条线一旦越过，代价不是效率问题。这篇给可执行的做法和</small>
+      </span>
+      <span class="rd-mt">1,859 字</span>
+    </a>
+    <a class="rd-item" href="/blog/%E5%BC%80%E6%BA%90AI%E8%BF%9B%E9%98%B6-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8%E4%B8%8E%E6%89%8B%E6%9C%BA%E6%93%8D%E4%BD%9C.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作</b>
+        <small>这是《最新开源对话式 AI 项目全景》的进阶篇。上一篇教你把项目跑起来，这一篇回答三个更实际的问题： ① 开源 AI 和网络安全什么关系，怎么用</small>
+      </span>
+      <span class="rd-mt">3,025 字</span>
+    </a>
+    <a class="rd-item" href="/blog/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>提示词工程实战：把 AI 用出十倍效果</b>
+        <small>要理解提示词工程，先要理解大模型是怎么「思考」的。Google 在 2024 年发布的《Prompt Engineering》白皮书中开宗明义：</small>
+      </span>
+      <span class="rd-mt">5,898 字</span>
+    </a>
+    <a class="rd-item" href="/blog/%E6%B7%B1%E5%BA%A6%E9%95%BF%E6%96%87.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>我用 DeepSeek 重构了整个创作流程：一篇长文的完整实操记录</b>
+        <small>我用 DeepSeek 重构了整个创作流程：长文实操记录，含提示词设计、创作工作流与真实输出对比（AI 生成已标注）。白驹 ccowork。</small>
+      </span>
+      <span class="rd-mt">4,648 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-08-30-%E7%88%86%E6%AC%BE-5%E4%B8%AA%E5%85%8D%E8%B4%B9AI%E5%B7%A5%E5%85%B7%E6%95%91%E4%BA%86%E6%88%91%E5%A4%A7%E5%AD%A64%E5%B9%B4%EF%BC%9A%E4%BB%8E%E6%9C%9F%E6%9C%AB3%E5%A4%A9%E7%AA%81%E5%87%BB80%2B%E5%88%B0%E6%9C%AC%E7%A7%91%E5%8F%912%E7%AF%87%E6%99%AE%E5%88%8A%EF%BC%8C%E7%BB%A9%E7%82%B9%E4%BB%8E2..html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>学生用 AI：五个真正省时间的场景，和三条不能碰的红线</b>
+        <small>把 AI 用在学习上，省时间的其实是整理和自测，不是替你写。这篇给五个可执行的场景，每个都配验证方法，外加三条一旦越界就是学术不端的红线。</small>
+      </span>
+      <span class="rd-mt">2,518 字</span>
+    </a>
+    <a class="rd-item" href="/blog/%E5%88%B6%E9%80%A0%E4%B8%9AAI%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>制造业上 AI：六个场景的数据前提与验收方式</b>
+        <small>制造业的 AI 项目失败，八成不是算法不行，是数据前提没满足。这篇按六个典型场景拆：需要什么数据、技术路径是什么、怎么验收、常见死法。不承诺效果</small>
+      </span>
+      <span class="rd-mt">2,530 字</span>
+    </a>
+    <a class="rd-item" href="/blog/%E6%9C%80%E6%96%B0%E5%BC%80%E6%BA%90%E5%AF%B9%E8%AF%9D%E5%BC%8FAI%E9%A1%B9%E7%9B%AE%E5%85%A8%E6%99%AF%E4%B8%8E%E4%B8%80%E9%94%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>最新开源对话式 AI 项目全景 · 一键使用指南</b>
+        <small>这份清单基于 2026 年 8 月的 GitHub 与公开资料整理。目标就一个：把当前最火的开源对话式 AI 项目全部罗列出来，讲清它们的共同特</small>
+      </span>
+      <span class="rd-mt">4,220 字</span>
+    </a>
+    <a class="rd-item" href="/blog/Agent%E6%99%BA%E8%83%BD%E4%BD%93%E5%AE%9E%E6%88%98.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>Agent 智能体实战：从概念到亲手搭建</b>
+        <small>如果说大模型是“会说话的大脑”，那 Agent（智能体）就是“长出手脚的大脑”。它能自己规划、自己调用工具、自己看结果再调整。这一篇，我们从原理</small>
+      </span>
+      <span class="rd-mt">6,968 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B48%E6%9C%88%E5%AE%9E%E6%B5%8B%EF%BC%9A%E5%88%AB%E8%BF%B7%E4%BF%A1%E2%80%9C%E5%85%A8AI%E5%8A%9E%E5%85%AC%E2%80%9D%EF%BC%8C%E8%BF%994%E4%B8%AA%E8%90%BD%E5%9C%B0%E5%9C%BA%E6%99%AF%E6%89%8D%E6%98%AF%E7%9C%9F%E7%9A%84%E7%9C%81%E6%97%B6%E9%97%B4.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 办公的四个高杠杆场景与三条边界</b>
+        <small>不是所有办公活都适合交给 AI。这篇按「输入是否结构化、结果是否可验证」两条线，划出四个真正省时间的场景和三个不该碰的边界。</small>
+      </span>
+      <span class="rd-mt">2,089 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E7%BC%96%E7%A8%8B%E8%BF%9B%E9%98%B6%E5%AE%9E%E6%88%98.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 编程进阶：三档工具、五步工作流与四件必须自己守的事</b>
+        <small>从补全到 Agent，三档工具解决的问题完全不同。搞混了就会用 Agent 干补全的活。这篇给分档、工作流、代码审查提示写法，以及四件绝不能外包</small>
+      </span>
+      <span class="rd-mt">2,143 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E5%8F%98%E7%8E%B0%E5%AE%9E%E6%93%8D%E6%89%8B%E5%86%8C.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 变现的四类生意：成本结构、见钱速度与风险</b>
+        <small>变现路径不该按「热门程度」排，而该按「交付物形态」排。内容、服务、产品、知识四类，启动成本、见钱速度、天花板完全不同。这篇给成本结构与验证流程，</small>
+      </span>
+      <span class="rd-mt">1,641 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B48%E6%9C%88AI%E5%88%9B%E4%B8%9A%E5%A4%8D%E7%9B%98%EF%BC%9A%E5%88%AB%E8%BF%BD%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%83%AD%E7%82%B9%EF%BC%8C%E8%BF%993%E4%B8%AA%E5%9E%82%E7%9B%B4%E6%96%B9%E5%90%91%E5%B7%B2%E7%BB%8F%E8%B7%91%E9%80%9A%E6%AD%A3%E5%90%91%E7%8E%B0%E9%87%91%E6%B5%81.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 创业：三个不追大模型的垂直方向</b>
+        <small>通用大模型赛道已经不适合小团队进场。这篇讲三个垂直方向的真实成本结构、交付形态与竞争壁垒，以及为什么两个热门赛道注定做不成。</small>
+      </span>
+      <span class="rd-mt">1,372 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B4%E4%B8%ADAI%E5%88%9B%E4%B8%9A%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%83%AD%E7%82%B9%EF%BC%8C%E8%B5%9A%E7%A1%AE%E5%AE%9A%E7%9A%84%E9%92%B1%E6%89%8D%E6%98%AF%E6%B4%BB%E4%B8%8B%E5%8E%BB%E7%9A%84%E6%A0%B8%E5%BF%83.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 创业的成本结构与三条生存铁律</b>
+        <small>AI 创业死掉的原因多数不是技术，是成本结构和销售方式。这篇把模型调用成本、人力成本、获客路径拆开算，讲清什么情况下这门生意不成立。</small>
+      </span>
+      <span class="rd-mt">996 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E5%88%9B%E4%B8%9A%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 创业实战指南：机会图谱、验证顺序与四个陷阱</b>
+        <small>AI 创业失败的主因不是技术不够，是没人付钱。这篇按「谁付钱」重排机会图谱，给出三步验证顺序和四种常见死法，不承诺收益。</small>
+      </span>
+      <span class="rd-mt">1,798 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-08-30-%E7%88%86%E6%AC%BE-17%E4%B8%AAAI%E5%B7%A5%E5%85%B7%E6%8C%89%E5%9C%BA%E6%99%AF%E6%80%8E%E4%B9%88%E9%80%89%EF%BC%9A%E5%88%AB%E5%86%8D%E4%B9%B1%E8%8A%B1%E9%92%B1%E4%BA%86%EF%BC%8C%E7%9C%9F%E6%AD%A3%E6%AF%8F%E5%A4%A9%E7%94%A8%E7%9A%84%E6%98%AF%E8%BF%996%E4%B8%AA.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 工具按场景怎么选：先想清楚你要它干哪一步</b>
+        <small>工具选型失败多半不是工具不行，是没想清楚它接在流程的哪一步。按四个高频场景给选型逻辑，并说明什么情况下不该买。</small>
+      </span>
+      <span class="rd-mt">2,063 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B48%E6%9C%88AI%E5%B7%A5%E5%85%B7%E6%A8%AA%E8%AF%84%EF%BC%9A3%E7%B1%BB%E9%AB%98%E9%A2%91%E5%9C%BA%E6%99%AF%E5%AE%9E%E6%B5%8B%EF%BC%8C%E9%81%BF%E5%BC%8090%E7%99%BE%E5%88%86%E4%B9%8B%E7%9A%84%E5%8A%9F%E8%83%BD%E5%AE%A3%E4%BC%A0%E9%99%B7%E9%98%B1.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 工具横评该怎么做：三类场景的验收标准</b>
+        <small>不看宣传看验收。长文生产、表格查数、短视频生成这三类场景，各自有一套能自己跑的验证方法，比任何第三方排名可靠。</small>
+      </span>
+      <span class="rd-mt">2,075 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E7%BB%98%E7%94%BB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 绘画：三类工具的取舍、四段式提示词与可控性手段</b>
+        <small>生成图片不难，难的是可控。这篇讲三类工具各自的取舍、提示词的四段结构、四种提高可控性的手段，以及商用前必须确认的四件事。</small>
+      </span>
+      <span class="rd-mt">2,778 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E6%95%99%E8%82%B2%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 教育应用实战：教师、学生、家长三方各自的边界</b>
+        <small>教育场景用 AI，最大的风险不是效果不好，是把「理解」换成了「完成」。这篇按三方拆：哪些环节真能减负、哪些必须人来把关、学校层面落地要先解决什么</small>
+      </span>
+      <span class="rd-mt">2,771 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E6%97%B6%E4%BB%A3%E5%B7%A5%E7%A7%91%E5%AD%A6%E4%B9%A0-%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8E%A7%E4%BB%BF%E7%9C%9F%E5%AE%9E%E6%88%98.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 时代工科学习全景 · 编程 / 计算机 / 数控 / 仿真（实战篇）</b>
+        <small>这一篇不跟你讲虚的。你要的是「真的能写、真的能练、真的能下载」。所以下面每个主题，我都给真实代码、真实工具、真实步骤。AI 时代的工科学习，核心</small>
+      </span>
+      <span class="rd-mt">4,560 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E5%AE%9E%E6%88%98%E5%85%A8%E4%B9%A6.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 实战全书：一个人就是一支创作军团</b>
+        <small>从零基础到用 AI 做出作品、做出收入、做出个人品牌的最实用指南 适用人群：完全零基础、想用 AI 提效赚钱、想做个人 IP、想转型 AI 方向</small>
+      </span>
+      <span class="rd-mt">9,076 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B4%E4%B8%ADAI%E8%A7%86%E9%A2%91%E5%88%9B%E4%BD%9C%E8%90%BD%E5%9C%B0%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E8%BF%BD%E5%8F%82%E6%95%B0%E4%BA%86%EF%BC%8C%E8%BF%993%E4%B8%AA%E6%96%B9%E6%B3%95%E8%83%BD%E6%8A%8A%E5%8F%98%E7%8E%B0%E6%95%88%E7%8E%87%E6%8B%89%E6%BB%A1.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 视频的量产流程：素材库、分层生成与人工兜底</b>
+        <small>量产的关键不是生成更快，是把不确定性从生成环节挪走。这篇拆三步：前置素材库、分层生成、配音字幕人工兜底，并给出时间构成的真实比例。</small>
+      </span>
+      <span class="rd-mt">1,451 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026%E5%B9%B4%E4%B8%ADAI%E8%A7%86%E9%A2%91%E5%88%9B%E4%BD%9C%E8%90%BD%E5%9C%B0%E8%A7%82%E5%AF%9F%EF%BC%9A%E5%88%AB%E5%8D%B7%E5%8F%82%E6%95%B0%E4%BA%86%EF%BC%8C%E8%BF%993%E4%B8%AA%E5%AE%9E%E6%93%8D%E6%96%B9%E5%90%91%E6%89%8D%E6%98%AF%E6%99%AE%E9%80%9A%E4%BA%BA%E7%9A%84%E5%8F%98%E7%8E%B0%E8%B7%AF%E5%BE%84.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 视频的三个交付档位：成本、可控性与风险差在哪</b>
+        <small>素材片、口播配画面、品牌片——这三档对一致性的要求完全不同，成本和风险也不同。分不清档位就去报价，是这一行最常见的亏法。</small>
+      </span>
+      <span class="rd-mt">1,597 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E8%A7%86%E9%A2%91%E5%88%B6%E4%BD%9C%E5%AE%9E%E6%88%98.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 视频制作实战：一个人做出一条视频</b>
+        <small>在动手之前，先搞清楚 AI 视频能帮你解决哪类问题。它不是来取代导演的，而是来替你扛掉那些重复、昂贵、技术门槛高的脏活。把合适的工作交给 AI，</small>
+      </span>
+      <span class="rd-mt">4,669 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E6%9C%AA%E6%9D%A5%E8%B6%8B%E5%8A%BF-%E6%95%B0%E5%AD%97%E7%89%A9%E7%90%86%E9%87%8F%E5%AD%90%E6%96%B0%E8%B4%A8%E6%9D%90%E6%96%99.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 未来趋势：数字智能 × 物理智能 × 量子算力 × 新质材料</b>
+        <small>过去三年，AI 的主战场在屏幕里：聊天、写作、画画、剪视频。但如果你只盯着屏幕，就会错过未来十年真正的大戏。</small>
+      </span>
+      <span class="rd-mt">2,631 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E5%86%99%E4%BD%9C%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 写作完全指南：流程、技巧与去「AI 味」</b>
+        <small>AI 写的是概率上最像的下一句，这决定了它擅长套路、不擅长事实。按这个前提设计流程，写作效率才真的提得起来。含五个场景的具体做法与去 AI 味的</small>
+      </span>
+      <span class="rd-mt">1,907 字</span>
+    </a>
+    <a class="rd-item" href="/blog/AI%E5%8C%BB%E7%96%97%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97.html" data-k="post">
+      <span class="rd-date">08-30</span>
+      <span class="rd-tx">
+        <b>AI 在医疗场景的应用：哪些环节能做、哪些必须绕开</b>
+        <small>医疗 AI 的门槛不在模型，在合规与责任。涉及诊断的软件通常按医疗器械管理，个人和小团队的现实机会在文书、检索、随访、管理这些不碰诊断的环节。</small>
+      </span>
+      <span class="rd-mt">2,838 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026-08-28-%E7%88%86%E6%AC%BE-%E6%AF%8F%E5%A4%A9%E5%8A%A0%E7%8F%AD3%E5%B0%8F%E6%97%B6%E5%88%B0%E5%87%86%E7%82%B9%E8%B5%B0%EF%BC%9A%E6%88%91%E7%94%A83%E4%B8%AAAI%E5%B7%A5%E5%85%B7%E6%8A%8A%E5%91%A8%E5%B7%A5%E4%BD%9C%E9%87%8F%E5%8E%8B%E5%88%B016%E5%B0%8F%E6%97%B6%EF%BC%8C%E8%80%81%E6%9D%BF%E8%BF%98%E4%BB%A5%E4%B8%BA%E6%88%91%E6%8B%9B%E4%BA%86.html" data-k="post">
+      <span class="rd-date">08-28</span>
+      <span class="rd-tx">
+        <b>职场里 AI 真正能省的三类时间（2026-10 版）</b>
+        <small>AI 不会替你上班，它省的是「不用动脑但要动手」的脏活。这篇把职场场景拆成三类可量化的时间，并给出每类的具体做法与判断标准。</small>
+      </span>
+      <span class="rd-mt">2,178 字</span>
+    </a>
+    <a class="rd-item" href="/blog/2026.08.25-AI%E6%99%BA%E8%83%BD%E4%BD%93%E7%8E%B0%E7%8A%B6%EF%BC%9A%E5%88%AB%E5%86%8D%E5%81%9ADemo%E4%BA%86%EF%BC%8C%E8%BF%993%E4%B8%AA%E5%8F%AF%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88%E6%88%91%E8%B7%91%E4%BA%863%E4%B8%AA%E6%9C%88ROI%E8%B6%85300%E7%99%BE%E5%88%86%E4%B9%8B.html" data-k="post">
+      <span class="rd-date">08-25</span>
+      <span class="rd-tx">
+        <b>AI 智能体落地：别再做 Demo，这三个方案能自己算出账（2026-10 版）</b>
+        <small>智能体落地的真实成本几乎全在接口和规则，不在 token。本文用各厂官方定价把账算给你看，再拆三个能直接照做的场景：售后、线索初筛、内部问答。</small>
+      </span>
+      <span class="rd-mt">2,274 字</span>
+    </a>
+    </div>
+  </section>
+
+  <section class="rd-sec" id="sec-openbook">
+    <h2>开源书全文 <em>3 本 · 开放许可</em></h2>
+    <p class="rd-sub">可以合法免费读完的整本书。许可已核验，本站只做阅读入口，不改变原文。</p>
+    <div class="rd-books">
+    <a class="rd-book" href="/book/open/d2l-zh/" data-k="openbook">
+      <b>动手学深度学习</b>
+      <span>Dive into Deep Learning · 中文版全文</span>
+      <small>想系统学深度学习但不想买书的，从这里读。每章配可运行代码。</small>
+    </a>
+    <a class="rd-book" href="/book/open/trpl-zh/" data-k="openbook">
+      <b>Rust 程序设计语言</b>
+      <span>The Rust Programming Language · 中文版全文</span>
+      <small>Rust 官方教材中文版。零基础建议先有点编程经验再读。</small>
+    </a>
+    <a class="rd-book" href="/book/open/progit-zh/" data-k="openbook">
+      <b>Pro Git</b>
+      <span>Pro Git · 中文版全文</span>
+      <small>Git 唯一值得通读的书。第 1–3 章够日常用。</small>
+    </a>
+    </div>
+  </section>
+
+  <div class="rd-note">
+    <b>为什么合并但不搬家</b>：每篇都还留在原来的地址。如果把 89 篇全迁到新目录，所有外来链接和分享卡片都会 404，而阅读体验并没有变好。<br>
+    <b>字数口径</b>：脚本去掉了导航、页脚、脚本和样式，只算正文；和页面上的「阅读时长」可能略有出入。<br>
+    <b>数据时间</b>：2026-11-25 · 每次日更重算。
+  </div>
+
+</div>
+
+<script src="/site-nav.js"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+(function(){
+  try{
+    var box = document.getElementById('rdFilter');
+    if (!box) return;
+    var secs = { chapter: document.getElementById('sec-chapter'), post: document.getElementById('sec-post'), openbook: document.getElementById('sec-openbook') };
+    box.addEventListener('click', function(e){
+      var b = e.target.closest ? e.target.closest('.rd-f') : null;
+      if (!b) return;
+      var f = b.getAttribute('data-f');
+      [].slice.call(box.querySelectorAll('.rd-f')).forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      Object.keys(secs).forEach(function(k){
+        if (!secs[k]) return;
+        secs[k].hidden = !(f === 'all' || f === k);
+      });
+    });
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

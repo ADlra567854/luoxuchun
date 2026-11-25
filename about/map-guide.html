@@ -7,12 +7,13 @@
 <meta name="description" content="全站内容的地图式导览，按主题串起分散的页面。">
 <link rel="canonical" href="https://ccoworkbaiju.cn/about/map-guide.html">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/theme-cloud.css?v=20261124a">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
 <link rel="stylesheet" href="/site-nav.css">
 <link rel="stylesheet" href="/design-norms.css?v=20261030b">
-<link rel="stylesheet" href="/site-redesign.css?v=20261124a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
 <link rel="stylesheet" href="/site-page.css?v=20261030b">
 <link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<link rel="stylesheet" href="/assets/venues-panel.css?v=20261125a">
 <style>
 :root{
   --mapblue:#2f86ff; --mapgrad:linear-gradient(120deg,#2f86ff,#38b6ff 50%,#8b5cf6);
@@ -172,6 +173,64 @@ body[data-theme="deep"] .route-map{background:linear-gradient(160deg,#0c1630,#1b
   </div>
 </section>
 <div style="max-width:1120px;margin:0 auto;padding:20px 20px 0"><img src="/assets/covers/cover-map-guide.png" alt="地图指引" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<!-- ===== 场馆总览面板（新增）：数字全部来自 data/ai-venues.js，由页面脚本现算回填 ===== -->
+<section class="vp-panel" id="venues-overview" aria-label="AI 场馆总览">
+  <div class="vp-head">
+    <div>
+      <h2 class="vp-title">AI 场馆总览 · 一眼看清有什么</h2>
+      <p class="vp-sub">数据源 <b>data/ai-venues.json</b> · 腾讯位置服务 · 连接器真实查询 · 2026-08-30 · 下方全部数字由本页脚本从该文件现算后回填</p>
+    </div>
+    <span class="vp-badge">全部为真实 POI · 可一键唤起腾讯地图</span>
+  </div>
+  <div class="vp-stats">
+    <div class="vp-stat"><span class="vp-lbl">场馆分类</span><b class="vp-num" data-vp="cats">5</b><span class="vp-unit">类</span><span class="vp-hint">科技馆 / 图书馆 / 产业园 / 场馆 / 红色教育</span></div>
+    <div class="vp-stat"><span class="vp-lbl">精选地点</span><b class="vp-num" data-vp="venues">42</b><span class="vp-unit">处</span><span class="vp-hint">经纬度与地址均为实时查询结果</span></div>
+    <div class="vp-stat"><span class="vp-lbl">覆盖城市</span><b class="vp-num" data-vp="cities">22</b><span class="vp-unit">座</span><span class="vp-hint">另有全国省/市/县级在线直查</span></div>
+    <div class="vp-stat"><span class="vp-lbl">数据核验</span><b class="vp-num is-date" data-vp="checkedAt">2026-10-27</b><span class="vp-hint">官网逐条实测，7 处可访问</span></div>
+  </div>
+  <h3 class="vp-sec-title">分类分布 <span class="vp-count">按地点数占比</span></h3>
+  <div class="vp-bars">
+    <div class="vp-bar" data-cat="science"><span class="vp-bar-name">🔭 科技馆</span><span class="vp-bar-track"><i style="width:28.6%" data-pct="28.6"></i></span><b class="vp-bar-num">12 个</b></div>
+    <div class="vp-bar" data-cat="library"><span class="vp-bar-name">📚 图书馆 · AI 学习馆</span><span class="vp-bar-track"><i style="width:14.3%" data-pct="14.3"></i></span><b class="vp-bar-num">6 个</b></div>
+    <div class="vp-bar" data-cat="park"><span class="vp-bar-name">🏢 AI 产业园区</span><span class="vp-bar-track"><i style="width:28.6%" data-pct="28.6"></i></span><b class="vp-bar-num">12 个</b></div>
+    <div class="vp-bar" data-cat="arena"><span class="vp-bar-name">🏟️ 比赛 · 演出场馆</span><span class="vp-bar-track"><i style="width:9.5%" data-pct="9.5"></i></span><b class="vp-bar-num">4 个</b></div>
+    <div class="vp-bar" data-cat="red"><span class="vp-bar-name">🔴 红色教育基地</span><span class="vp-bar-track"><i style="width:19.0%" data-pct="19.0"></i></span><b class="vp-bar-num">8 个</b></div>
+  </div>
+  <h3 class="vp-sec-title">覆盖城市 <span class="vp-count">22 座 · 按地点数排序</span></h3>
+  <div class="vp-cities"><div class="vp-tags" id="vpCityTags">
+<span class="vp-tag">深圳<b>5</b></span>
+<span class="vp-tag">武汉<b>5</b></span>
+<span class="vp-tag">北京<b>4</b></span>
+<span class="vp-tag">宜春<b>3</b></span>
+<span class="vp-tag">上海<b>3</b></span>
+<span class="vp-tag">成都<b>3</b></span>
+<span class="vp-tag">杭州<b>2</b></span>
+<span class="vp-tag">重庆<b>2</b></span>
+<span class="vp-tag">南京<b>2</b></span>
+<span class="vp-tag">广州<b>1</b></span>
+<span class="vp-tag">西安<b>1</b></span>
+<span class="vp-tag">苏州<b>1</b></span>
+<span class="vp-tag">长沙<b>1</b></span>
+<span class="vp-tag">合肥<b>1</b></span>
+<span class="vp-tag">吉安<b>1</b></span>
+<span class="vp-tag">延安<b>1</b></span>
+<span class="vp-tag">石家庄<b>1</b></span>
+<span class="vp-tag">湘潭<b>1</b></span>
+<span class="vp-tag">赣州<b>1</b></span>
+<span class="vp-tag">南昌<b>1</b></span>
+<span class="vp-tag">嘉兴<b>1</b></span>
+<span class="vp-tag">遵义<b>1</b></span>
+  </div></div>
+  <div class="vp-links">
+    <a class="vp-link is-primary" href="#querier">全国场馆直查</a>
+    <a class="vp-link" href="#science">🔭 科技馆</a>
+    <a class="vp-link" href="#library">📚 图书馆 · AI 学习馆</a>
+    <a class="vp-link" href="#park">🏢 AI 产业园区</a>
+    <a class="vp-link" href="#arena">🏟️ 比赛 · 演出场馆</a>
+    <a class="vp-link" href="#red">🔴 红色教育基地</a>
+  </div>
+  <p class="vp-foot">延伸阅读：<a href="/learn/">学习中心</a> · <a href="/works/museum.html">AI 博物馆</a> · <a href="/about/plan.html">关于域</a></p>
+</section>
 <div class="wrap">
   <!-- 我的位置 -->
   <div class="locate" id="locate">
@@ -198,6 +257,8 @@ body[data-theme="deep"] .route-map{background:linear-gradient(160deg,#0c1630,#1b
       <a class="ghost" id="qWeb" href="#" target="_blank" rel="noopener"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>网页版搜索</a>
     </div>
   </div>
+  <!-- 分类锚点（新增）：让 Hero 与总览面板里的 #science / #library / #park / #arena / #red 真正能跳到位 -->
+  <div class="vp-anchors" aria-hidden="true"><span id="science"></span><span id="library"></span><span id="park"></span><span id="arena"></span><span id="red"></span></div>
   <h2 class="sec" id="cats"><i class="cc-ic" data-ic="folder-open" aria-hidden="true"></i>精选真实地点</h2>
 <figure class="cc-body-img"><img src="/assets/body/bb-map-guide.png" alt="地图指引 · 白驹 ccowork · 全国 AI 场馆导航 · " loading="lazy"></figure>
   <p class="sec-sub">共 <b id="venueCount">0</b> 处精选 POI · 全部来自腾讯地图连接器实时查询 · 2026-08-30</p>
@@ -232,6 +293,14 @@ body[data-theme="deep"] .route-map{background:linear-gradient(160deg,#0c1630,#1b
 
 
 <script>
+/* 2026-11-25 修复（既有 bug，非本次改造引入）：
+   本段内联脚本原先在解析到此处（第 295 行）时立即执行，而数据源 /data/ai-venues.js（第 436 行）、
+   /data/cn-regions.js（第 437 行）写在文件末尾，此刻 window.AI_VENUES / window.CN_REGIONS 必然还是
+   undefined，于是走 if (!V) 分支：#grid 被写成「数据加载失败」、#tabs 渲染 0 个按钮、#venueCount 恒为 0。
+   改法：等 DOMContentLoaded 再初始化——该事件一定在所有同步脚本（含末尾的数据源）执行完之后触发，
+   与脚本标签的物理顺序解耦，日后即便再调整标签位置也不会回归。
+   业务逻辑一行未改。 */
+document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var V = window.AI_VENUES, R = window.CN_REGIONS;
   if (!V) { document.getElementById('grid').innerHTML = '<p>数据加载失败</p>'; return; }
@@ -353,6 +422,7 @@ body[data-theme="deep"] .route-map{background:linear-gradient(160deg,#0c1630,#1b
     document.getElementById('routeBtn').href = 'https://apis.map.qq.com/uri/v1/routeplan?type=drive&from=' + loc.lat + ',' + loc.lng + '&fromcoord=' + loc.lat + ',' + loc.lng + '&to=' + d.to.lat + ',' + d.to.lng + '&tocoord=' + d.to.lat + ',' + d.to.lng + '&referer=ccowork';
   }
 })();
+});
 </script>
 <script>
 function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
@@ -368,6 +438,58 @@ document.addEventListener('DOMContentLoaded',function(){var t=document.body.getA
 <link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
 <script src="/assets/baiju-gate.js?v=20261115a"></script>
 <script src="/assets/baiju-static-qa.js?v=20261115a"></script>
-<script src="/ccowork.js?v=20261124a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+<!-- ===== 场馆总览面板：数字从 data/ai-venues.js 现算回填 + 分类锚点联动（新增） ===== -->
+<script>
+(function(){
+  var V = window.AI_VENUES;
+  if (!V || !V.categories) return;
+  var total = 0, seen = {}, cityCount = 0, byId = {};
+  V.categories.forEach(function(c){
+    byId[c.id] = c;
+    total += c.venues.length;
+    c.venues.forEach(function(v){
+      if (!v.city) return;
+      if (!seen[v.city]) { seen[v.city] = 0; cityCount++; }
+      seen[v.city]++;
+    });
+  });
+  function set(k, val){
+    var els = document.querySelectorAll('[data-vp="' + k + '"]');
+    for (var i = 0; i < els.length; i++) els[i].textContent = val;
+  }
+  set('cats', V.categories.length);
+  set('venues', total);
+  set('cities', cityCount);
+  if (V.verify && V.verify.checkedAt) set('checkedAt', V.verify.checkedAt);
+  var rows = document.querySelectorAll('.vp-bar');
+  for (var i = 0; i < rows.length; i++) {
+    var c = byId[rows[i].getAttribute('data-cat')];
+    if (!c) continue;
+    var num = rows[i].querySelector('.vp-bar-num');
+    if (num) num.textContent = c.venues.length + ' 个';
+    var bar = rows[i].querySelector('.vp-bar-track i');
+    if (bar && total) bar.style.width = (c.venues.length / total * 100).toFixed(1) + '%';
+  }
+  function selectByHash(){
+    var id = (location.hash || '').replace('#', '');
+    if (!byId[id]) return;
+    var btns = document.querySelectorAll('#tabs button');
+    var idx = -1;
+    V.categories.forEach(function(c, i){ if (c.id === id) idx = i; });
+    if (idx > -1 && btns[idx]) btns[idx].click();
+  }
+  window.addEventListener('hashchange', selectByHash);
+  document.addEventListener('DOMContentLoaded', selectByHash);
+  var barEls = document.querySelectorAll('.vp-bar-track i');
+  for (var j = 0; j < barEls.length; j++) {
+    (function(el, k){
+      var w = el.style.width;
+      el.style.width = '0';
+      setTimeout(function(){ el.style.width = w; }, 140 + k * 70);
+    })(barEls[j], j);
+  }
+})();
+</script>
 </body>
 </html>

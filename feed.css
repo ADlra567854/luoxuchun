@@ -304,3 +304,376 @@ body[data-theme="deep"] .ff-dom-list time { color: #38E1FF; }
   .ff-m li { grid-template-columns: 50px minmax(0, 1fr); }
   .ff-m li .v, .ff-m li em { grid-column: 2; }
 }
+
+/* ===== 2026-11-25 前沿流卡片改版：加分类配图 + 摘要区，解决「点进去没内容」 ===== */
+.ff-card { display: flex; gap: 14px; align-items: flex-start; }
+.ff-thumb { flex: 0 0 118px; }
+.ff-thumb img { width: 118px; height: 88px; border-radius: 12px; display: block; object-fit: cover; }
+.ff-body { flex: 1 1 auto; min-width: 0; }
+.ff-card h3 { margin: 0 0 8px; }
+.ff-card h3 a { color: inherit; text-decoration: none; }
+.ff-card h3 a:hover { color: #3f6fd8; text-decoration: underline; }
+.ff-card p { margin: 0 0 4px; line-height: 1.75; font-size: 13.5px; }
+.ff-nosum { color: var(--muted, #94a3b8); font-style: normal; font-size: 12.5px; }
+[data-theme="deep"] .ff-card h3 a:hover { color: #7fe4ff; }
+@media (max-width: 640px) {
+  .ff-card { gap: 10px; }
+  .ff-thumb { flex: 0 0 84px; }
+  .ff-thumb img { width: 84px; height: 66px; border-radius: 10px; }
+  .ff-card p { font-size: 13px; }
+}
+
+/* ============================================================
+   2026-11-25 「每日速递」改版 · 追加规则（不改动上面任何已有规则）
+   目标：按日期分组的紧凑版面 —— 醒目、密、有反馈
+   品牌渐变统一 #4f8cff → #38b6ff → #8b5cf6；卡片圆角 16px
+   ============================================================ */
+
+/* ---------- 顶部数据条 ---------- */
+.ff-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.ff-st {
+  flex: 1 1 108px;
+  min-width: 0;
+  padding: 11px 14px;
+  border-radius: 16px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .22));
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+.ff-st b {
+  display: block;
+  font: 800 22px/1.1 system-ui, -apple-system, "PingFang SC", sans-serif;
+  letter-spacing: -.6px;
+  color: var(--text, #1E293B);
+  font-variant-numeric: tabular-nums;
+}
+.ff-st span {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--muted, #64748B);
+}
+.ff-meta {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: var(--muted, #94a3b8);
+}
+
+/* ---------- 日期跳转 ---------- */
+.ff-daysnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+.ff-daysnav a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font: 700 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--muted, #64748B);
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .28));
+  text-decoration: none;
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.ff-daysnav a:hover {
+  color: #4f8cff;
+  border-color: rgba(79, 140, 255, .55);
+  background: rgba(79, 140, 255, .07);
+}
+.ff-daysnav a b {
+  font-weight: 800;
+  color: #4F8CFF;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 每天一个区块 ---------- */
+.ff-days {
+  display: grid;
+  gap: 28px;
+  margin-top: 20px;
+}
+.ff-day { scroll-margin-top: 84px; }
+.ff-dayhead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* 醒目：品牌渐变竖条 + 21px 加粗日期 */
+.ff-dayhead h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -.4px;
+  color: var(--text, #1E293B);
+}
+.ff-dayhead h2::before {
+  content: '';
+  flex: 0 0 5px;
+  width: 5px;
+  height: 20px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #4f8cff 0%, #38b6ff 52%, #8b5cf6 100%);
+}
+.ff-dayhead h2 em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #4F8CFF;
+  background: rgba(79, 140, 255, .1);
+  border: 1px solid rgba(79, 140, 255, .22);
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+.ff-dayhead .ff-daylink {
+  margin-left: auto;
+  font-size: 11.5px;
+  color: var(--muted, #94a3b8);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .15s ease;
+}
+.ff-dayhead .ff-daylink:hover { color: #4F8CFF; }
+/* 区块标题下的渐变分隔线 */
+.ff-dayrule {
+  height: 3px;
+  border-radius: 999px;
+  margin: 9px 0 12px;
+  background: linear-gradient(90deg, #4F8CFF 0%, #38B6FF 34%, #8B5CF6 62%, rgba(139, 92, 246, 0) 100%);
+}
+
+/* ---------- 卡片公共：圆角 16px + 整块可点 + hover 反馈 ---------- */
+.ff-days .ff-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 13px;
+  border-radius: 16px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .22));
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+  transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+.ff-days .ff-card:hover {
+  border-color: rgba(79, 140, 255, .45);
+  box-shadow: 0 4px 16px rgba(79, 140, 255, .14);
+  transform: translateY(-1px);
+}
+/* 点标题 = 点整块（标题链接铺满卡片；来源链接单独浮在上层仍可点） */
+.ff-days .ff-card h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  z-index: 1;
+}
+.ff-days .ff-card .ff-src {
+  position: relative;
+  z-index: 2;
+}
+/* 缩略图圆角统一 */
+.ff-days .ff-thumb img {
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+/* 日期角标统一 */
+.ff-days .ff-db {
+  display: inline-block;
+  margin: 0 0 4px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font: 700 10px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .3px;
+  color: #fff;
+  background: linear-gradient(120deg, #4F8CFF, #38B6FF 55%, #8B5CF6);
+}
+.ff-days .ff-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.ff-days .ff-card h3 a:hover { text-decoration: underline; }
+/* 来源标签统一：一枚小胶囊 */
+.ff-days a.ff-src {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted, #64748B);
+  background: transparent;
+  border: 1px solid var(--line, rgba(148, 163, 184, .3));
+  text-decoration: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.ff-days a.ff-src:hover {
+  color: #4f8cff;
+  border-color: rgba(79, 140, 255, .55);
+  background: rgba(79, 140, 255, .07);
+}
+.ff-days a.ff-src .cc-ic { font-size: 11px; }
+
+/* ---------- 今日要闻：明显更大的一条 ---------- */
+.ff-days .ff-lead {
+  gap: 16px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(79, 140, 255, .1), rgba(139, 92, 246, .055)),
+    var(--card, #fff);
+  border: 1px solid rgba(79, 140, 255, .34);
+  box-shadow: 0 5px 20px rgba(79, 140, 255, .11);
+}
+.ff-days .ff-lead:hover { box-shadow: 0 8px 26px rgba(79, 140, 255, .18); }
+.ff-days .ff-lead .ff-thumb { flex: 0 0 176px; }
+.ff-days .ff-lead .ff-thumb img { width: 176px; height: 132px; border-radius: 12px; }
+.ff-lead-tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font: 800 10px/1.4 system-ui, -apple-system, "PingFang SC", sans-serif;
+  letter-spacing: .3px;
+  color: #fff;
+  background: linear-gradient(120deg, #4F8CFF, #8B5CF6);
+  vertical-align: 1px;
+}
+.ff-days .ff-lead h3 {
+  margin: 7px 0 6px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.36;
+  letter-spacing: -.5px;
+  color: var(--text, #1E293B);
+  overflow-wrap: anywhere;
+}
+.ff-days .ff-lead p.ff-sum {
+  display: -webkit-box;
+  /* 头条是一天最重要的一条，放 3 行；小卡仍收 2 行 */
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.68;
+  color: var(--muted, #475569);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 紧凑列表 ---------- */
+.ff-list {
+  display: grid;
+  gap: 8px;
+}
+.ff-days .ff-card-s { gap: 11px; padding: 9px 12px; }
+.ff-days .ff-card-s .ff-thumb { flex: 0 0 88px; }
+.ff-days .ff-card-s .ff-thumb img { width: 88px; height: 66px; border-radius: 12px; }
+.ff-days .ff-card-s h3 {
+  margin: 0 0 3px;
+  font-size: 14.5px;
+  font-weight: 650;
+  line-height: 1.42;
+  letter-spacing: -.2px;
+  color: var(--text, #1E293B);
+  overflow-wrap: anywhere;
+}
+.ff-days .ff-card-s p.ff-sum {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--muted, #475569);
+  overflow-wrap: anywhere;
+}
+.ff-days .ff-nosum {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted, #94a3b8);
+}
+
+/* 深色主题 */
+body[data-theme="deep"] .ff-days .ff-lead,
+[data-theme="deep"] .ff-days .ff-lead {
+  background:
+    linear-gradient(135deg, rgba(56, 225, 255, .1), rgba(139, 92, 246, .07)),
+    var(--card, #101728);
+  border-color: rgba(56, 225, 255, .3);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
+}
+body[data-theme="deep"] .ff-days .ff-card h3 a:hover,
+body[data-theme="deep"] .ff-days .ff-lead h3 a:hover { color: #7fe4ff; }
+body[data-theme="deep"] .ff-days .ff-dayhead h2 em {
+  color: #38e1ff;
+  background: rgba(56, 225, 255, .1);
+  border-color: rgba(56, 225, 255, .28);
+}
+
+/* ---------- 移动端：单列更紧 ---------- */
+@media (max-width: 640px) {
+  .ff-stats { gap: 7px; margin-top: 12px; }
+  .ff-st { flex: 1 1 calc(33.333% - 5px); padding: 9px 10px; border-radius: 14px; }
+  .ff-st b { font-size: 18px; }
+  .ff-st span { font-size: 10.5px; }
+  .ff-meta { font-size: 10.5px; line-height: 1.6; }
+  .ff-daysnav { gap: 6px; margin-top: 12px; }
+  .ff-daysnav a { padding: 4px 9px; font-size: 11px; }
+  .ff-days { gap: 22px; margin-top: 16px; }
+  .ff-dayhead { gap: 8px; }
+  .ff-dayhead h2 { font-size: 20px; gap: 8px; }
+  .ff-dayhead h2::before { height: 18px; flex-basis: 4px; width: 4px; }
+  .ff-dayhead h2 em { font-size: 11px; padding: 2px 7px; }
+  .ff-dayhead .ff-daylink { font-size: 11px; }
+  .ff-dayrule { margin: 7px 0 10px; }
+
+  /* 头条：图在上通栏，避免 390px 下挤压 */
+  .ff-days .ff-lead { flex-direction: column; gap: 10px; padding: 11px 12px; margin-bottom: 8px; }
+  .ff-days .ff-lead .ff-thumb { flex: none; width: 100%; }
+  .ff-days .ff-lead .ff-thumb img { width: 100%; height: 88px; border-radius: 12px; }
+  .ff-days .ff-lead h3 { font-size: 20px; margin: 6px 0 5px; line-height: 1.34; }
+  .ff-days .ff-lead p.ff-sum { font-size: 13px; line-height: 1.6; }
+
+  /* 小卡：缩略图 72px / 标题 15px / 摘要 13px，间距收到最紧 */
+  .ff-list { gap: 7px; }
+  .ff-days .ff-card-s { gap: 9px; padding: 8px 10px; }
+  .ff-days .ff-card-s .ff-thumb { flex: 0 0 72px; }
+  .ff-days .ff-card-s .ff-thumb img { width: 72px; height: 72px; border-radius: 10px; }
+  .ff-days .ff-card-s h3 { font-size: 15px; line-height: 1.4; margin-bottom: 2px; }
+  .ff-days .ff-card-s p.ff-sum { font-size: 13px; line-height: 1.5; }
+  .ff-days .ff-nosum { font-size: 12.5px; }
+  .ff-days a.ff-src { margin-top: 5px; font-size: 10.5px; padding: 2px 8px; }
+}
+
+/* 窄屏兜底 */
+@media (max-width: 380px) {
+  .ff-stats { gap: 6px; }
+  .ff-st { flex: 1 1 100%; }
+}

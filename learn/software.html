@@ -7,10 +7,10 @@
 <meta name="description" content="从装环境到部署上线：软件工程基础与 AI 辅助编程。">
 <link rel="canonical" href="https://ccoworkbaiju.cn/learn/software.html">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/theme-cloud.css?v=20261124a">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
 <link rel="stylesheet" href="/site-nav.css">
 <link rel="stylesheet" href="/design-norms.css?v=20261030b">
-<link rel="stylesheet" href="/site-redesign.css?v=20261124a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
 <link rel="stylesheet" href="/site-page.css?v=20261030b">
 <link rel="stylesheet" href="/siteframe.css?v=20261029b">
 <style>
@@ -338,7 +338,16 @@ footer a{color:var(--cyan)}
     var btn = document.getElementById('themeBtn');
     if(btn) btn.textContent = t === 'cloud' ? '☀️ 浅色' : '🌙 深色';
   }
-  document.getElementById('themeBtn').addEventListener('click', function(){
+  /* 2026-11-25 修复（既有 bug，非本次改造引入）：
+     原来这里直接写 document.getElementById('themeBtn').addEventListener(...)，
+     但本页 DOM 里没有 id="themeBtn"（主题按钮已由 /site-nav.js 动态注入自己的按钮），
+     上一行 apply() 里有 if(btn) 判空，唯独这一行漏了 → 抛 TypeError: Cannot read properties of null。
+     该异常发生在 330-345 这段 IIFE 里，而「数据加载与渲染」代码就在同一个 <script> 标签内，
+     异常会终止整个 script 元素的执行，于是下面全部渲染逻辑都没跑：
+     #tabs/#ptabs/#vhTabs/#vhGrid/#starters/#rm/#res 七个容器全空、页面只剩 2271 字静态壳。
+     改法：与相邻 apply() 的写法保持一致，先取再判空。业务逻辑一行未改。 */
+  var themeBtnEl = document.getElementById('themeBtn');
+  if (themeBtnEl) themeBtnEl.addEventListener('click', function(){
     var next = document.body.getAttribute('data-theme') === 'cloud' ? 'deep' : 'cloud';
     apply(next); localStorage.setItem('ccowork.theme', next);
   });
@@ -594,6 +603,6 @@ function renderGallery(){
 <link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
 <script src="/assets/baiju-gate.js?v=20261115a"></script>
 <script src="/assets/baiju-static-qa.js?v=20261115a"></script>
-<script src="/ccowork.js?v=20261124a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
 </body>
 </html>

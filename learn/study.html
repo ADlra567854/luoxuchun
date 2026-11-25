@@ -7,10 +7,10 @@
 <meta name="description" content="用 AI 辅助学习的路径与常见误区。">
 <link rel="canonical" href="https://ccoworkbaiju.cn/learn/study.html">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/theme-cloud.css?v=20261124a">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
 <link rel="stylesheet" href="/site-nav.css">
 <link rel="stylesheet" href="/design-norms.css?v=20261030b">
-<link rel="stylesheet" href="/site-redesign.css?v=20261124a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
 <link rel="stylesheet" href="/site-page.css?v=20261030b">
 <link rel="stylesheet" href="/siteframe.css?v=20261029b">
 <style>
@@ -127,6 +127,14 @@ footer a.btn{display:inline-block;margin-top:10px;border:1px solid var(--line);p
 
 
 <script>
+/* 2026-11-25 修复（既有 bug，非本次改造引入）：
+   本段内联脚本原先在解析到此处（第 129 行）时立即执行，而数据源 /data/study-cases.js
+   （第 196 行）写在文件末尾，此刻 window.STUDY_CATS / STUDY_CASES / STUDY_ROADS 必然还是 undefined；
+   而下面用的是 `window.X || []` 兜底，所以既不报错也不提示——「真实自学案例」「五条自学路线」
+   两个区块直接渲染成空，用户点进来只看到标题和按钮。
+   改法：等 DOMContentLoaded 再初始化（该事件一定在所有同步脚本，含末尾数据源执行完之后触发），
+   与标签物理顺序解耦。业务逻辑一行未改。 */
+document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var CATS = window.STUDY_CATS || [];
   var CASES = window.STUDY_CASES || [];
@@ -182,6 +190,7 @@ footer a.btn{display:inline-block;margin-top:10px;border:1px solid var(--line);p
     render(b.dataset.k);
   });
 })();
+});
 </script>
 
 
@@ -198,6 +207,6 @@ document.addEventListener('DOMContentLoaded',function(){var t=document.body.getA
 <link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
 <script src="/assets/baiju-gate.js?v=20261115a"></script>
 <script src="/assets/baiju-static-qa.js?v=20261115a"></script>
-<script src="/ccowork.js?v=20261124a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
 </body>
 </html>

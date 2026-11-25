@@ -7,10 +7,10 @@
 <meta name="description" content="用低代码与 AI 快速搭建小工具、小站点的操作台。">
 <link rel="canonical" href="https://ccoworkbaiju.cn/toolbox/ai-build-hall.html">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/theme-cloud.css?v=20261124a">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
 <link rel="stylesheet" href="/site-nav.css">
 <link rel="stylesheet" href="/design-norms.css?v=20261030b">
-<link rel="stylesheet" href="/site-redesign.css?v=20261124a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
 <link rel="stylesheet" href="/site-page.css?v=20261030b">
 <link rel="stylesheet" href="/siteframe.css?v=20261029b">
 <style>
@@ -149,6 +149,15 @@ p.sec-sub{color:var(--muted);font-size:14px;margin-bottom:18px}
 
 
 <script>
+/* 2026-11-25 修复（既有 bug，非本次改造引入）：
+   本段内联脚本原先在解析到此处（第 151 行）时立即执行，而三个数据源
+   /data/digital-twin.js（第 210 行）、/data/smart-manufacturing.js（211 行）、
+   /data/ai-venues.js（212 行）都写在文件末尾，此刻 window.DIGITAL_TWIN /
+   window.SMART_MANUFACTURING / window.AI_VENUES 必然还是 undefined；
+   因为下面都用了 `if (SM && ...)` 之类兜底，所以不报错、只是各大区块渲染为空。
+   改法：等 DOMContentLoaded 再初始化（该事件一定在所有同步脚本，含末尾数据源执行完之后触发），
+   与标签物理顺序解耦。业务逻辑一行未改。 */
+document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var DT = window.DIGITAL_TWIN, SM = window.SMART_MANUFACTURING, V = window.AI_VENUES;
   // 概念（智能制造 + 数字孪生）
@@ -197,6 +206,7 @@ p.sec-sub{color:var(--muted);font-size:14px;margin-bottom:18px}
     }
   }
 })();
+});
 </script>
 <script>
 function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
@@ -213,6 +223,6 @@ document.addEventListener('DOMContentLoaded',function(){var t=document.body.getA
 <link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
 <script src="/assets/baiju-gate.js?v=20261115a"></script>
 <script src="/assets/baiju-static-qa.js?v=20261115a"></script>
-<script src="/ccowork.js?v=20261124a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
 </body>
 </html>

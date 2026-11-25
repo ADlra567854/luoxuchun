@@ -55,3 +55,9 @@ body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.9 -app
   .bk-main h1 { font-size: 22px; }
   .bk-main h2 { font-size: 19px; }
 }
+
+/* 开源书阅读页法务条（静态写入，不依赖 JS，保证备案号在每个页面可见） */
+.bk-legal { max-width: 1180px; margin: 0 auto; padding: 18px 20px 40px; font-size: 12.5px; line-height: 1.9; color: var(--muted); opacity: .8; text-align: center; }
+.bk-legal a { color: var(--acc); text-decoration: none; }
+.bk-legal a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .bk-legal { padding: 14px 14px 30px; } }

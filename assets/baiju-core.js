@@ -326,7 +326,8 @@
         '<span class="bj-ava">' + esc(u.nick.slice(0, 1)) + '</span>' +
         '<span class="bj-me-nm">' + esc(u.nick) + '</span></button>'
     } else {
-      html += '<button class="bj-login" id="bjLogin" type="button">登录</button>'
+      // 2026-11-25 老罗要求：入口文案从「登录」改为「我的」（进去才是登录/资料/设置）
+      html += '<button class="bj-login" id="bjLogin" type="button">我的</button>'
     }
     box.innerHTML = html
 

@@ -7,10 +7,10 @@
 <meta name="description" content="厂商、模型、工具与开源项目的关系图谱，含生态点位索引。">
 <link rel="canonical" href="https://ccoworkbaiju.cn/about/ecosystem.html">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/theme-cloud.css?v=20261124a">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
 <link rel="stylesheet" href="/site-nav.css">
 <link rel="stylesheet" href="/design-norms.css?v=20261030b">
-<link rel="stylesheet" href="/site-redesign.css?v=20261124a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
 <link rel="stylesheet" href="/site-page.css?v=20261030b">
 <link rel="stylesheet" href="/siteframe.css?v=20261029b">
 <link rel="stylesheet" href="/assets/ai-ecosystem/ui/ecosystem.css">
@@ -133,6 +133,19 @@ footer a{color:var(--cyan);text-decoration:none}
 .rows.collapsed .row p{display:none}
 .rows.collapsed .row .ask,.rows.collapsed .row .copy{display:none}
 .layer-fav{order:-1}
+/* 2026-11-25 修复（既有 bug，非本次改造引入）：
+   /assets/ai-ecosystem/ui/ecosystem.css 的 .g-vendor 用 repeat(auto-fill,minmax(310px,1fr)) 定列，
+   390px 手机下厂商网格的实际可用宽度只有约 234px（页面多层容器各有左右 padding），
+   minmax 的 310px 下限撑不住收缩，卡片被撑到约 359px，右边缘溢到 390 视口外被裁
+   （详情按钮、右侧标签文字被切掉，docScrollWidth 被裁成 380 所以还看不出横向滚动条）。
+   这里只在窄屏把列下限改成 0、卡片宽度改回自适应容器，不写死像素；桌面端规则完全不动。 */
+@media(max-width:640px){
+  .g-vendor{grid-template-columns:minmax(0,1fr) !important}
+  .g-vendor > .card{width:auto !important;min-width:0 !important;max-width:100% !important}
+  .g-vendor .card-top,.g-vendor .card-title,.g-vendor .card-tags,.g-vendor .card-foot{min-width:0 !important}
+  .g-vendor .card-tags{flex-wrap:wrap}
+  .g-vendor .card-foot .btn{flex:1 1 auto;min-width:0}
+}
 </style>
 <style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
 <script src="/data/deploy-videos.js"></script>
@@ -337,6 +350,16 @@ footer a{color:var(--cyan);text-decoration:none}
  * 数据源：/data/ai-ecosystem.json（与小程序端同源，避免双份维护）
  * 图标：全部经 BJI.svg() 输出，页面内不存在 emoji 或第三方图标字体
  * ========================================================================== */
+/* 2026-11-25 修复（既有 bug，非本次改造引入）：
+   本段内联脚本（第 334 行）原先在解析到时立即执行，而它依赖的三个模块
+   /assets/ai-ecosystem/ui/icons.js（第 1597 行，定义 window.BJI）、
+   world.js（1598 行）、points.js（1599 行）都写在页面末尾，此刻 window.BJI 还是 undefined，
+   于是第 348 行 ic() 里的 window.BJI.svg() 抛 TypeError（Cannot read properties of undefined），
+   同样打断整个 IIFE，导致 hydrate() 之后的 fetch('/data/ai-ecosystem.json') 根本发不出去。
+   （这与上面 initTheme 的判空缺失是两个独立病根：先修好判空，这个才会暴露出来。）
+   改法：等 DOMContentLoaded 再初始化（该事件一定在所有同步脚本，含末尾模块执行完之后触发），
+   与标签物理顺序解耦。业务逻辑一行未改。 */
+document.addEventListener('DOMContentLoaded', function () {
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
@@ -375,7 +398,15 @@ footer a{color:var(--cyan);text-decoration:none}
     var t = 'deep';
     try { t = localStorage.getItem(THEME_KEY) || 'deep'; } catch (e) {}
     applyTheme(t);
-    $('themeBtn').addEventListener('click', function () {
+    /* 2026-11-25 修复（既有 bug，非本次改造引入）：
+       原来这里直接写 $('themeBtn').addEventListener(...)，但本页 DOM 里已没有 id="themeBtn" 的元素
+       （主题按钮改由 /site-nav.js 动态注入自己的按钮，见 site-nav.js 的 .cc-theme-ics），
+       $() 返回 null 于是抛 TypeError: Cannot read properties of null (reading 'addEventListener')。
+       这个 throw 发生在顶层 IIFE 里，直接把后面的 hydrate() 和 fetch('/data/ai-ecosystem.json') 全打断，
+       表现为 #vgrid 永远停在「加载中…」、#tgrid/#tutGrid/#resGrid/#newsGrid 全空——整页动态内容 100% 不加载。
+       改法：与相邻 applyTheme() 里的 if (b) 写法保持一致，先取再判空；不包 try/catch，避免吞掉其他真实错误。 */
+    var b = $('themeBtn');
+    if (b) b.addEventListener('click', function () {
       applyTheme(document.documentElement.hasAttribute('data-theme') ? 'deep' : 'cloud');
     });
   }
@@ -460,7 +491,13 @@ footer a{color:var(--cyan);text-decoration:none}
     $('tutNum').textContent = s.tutorials + ' 条';
     $('resSub').innerHTML = '<b>' + s.resources + '</b> 条';
     $('mapDate').textContent = D.meta.updatedAt;
-    $('footDate').textContent = D.meta.updatedAt;
+    /* 2026-11-25 修复（既有 bug，非本次改造引入）：本页 DOM 里已无 id="footDate" 的元素
+       （页脚更新时间那块标记被删过，全页 0 处 id="footDate"），原来直接 .textContent 会抛
+       Cannot set properties of null，且这个 throw 发生在 boot() 内部，被 .catch 捕获后把
+       #vgrid 整块替换成「数据加载失败」，等于数据都取到了却整页渲染不出来。
+       改法：与同函数其他行一致，先取再判空；元素不存在时就跳过页脚日期，不影响其余渲染。 */
+    var footDateEl = $('footDate');
+    if (footDateEl) footDateEl.textContent = D.meta.updatedAt;
     document.title = '白驹 · AI 生态库 — ' + s.vendors + ' 家厂商 / ' + s.countries + ' 个国家地区';
   }
   /* ---------- 模块：快捷入口 ---------- */
@@ -1203,9 +1240,10 @@ footer a{color:var(--cyan);text-decoration:none}
         '<div>数据加载失败：' + esc(e.message) + '<br>请通过站点根地址访问（而非直接双击打开文件）。</div></div>';
     });
 })();
+});
 </script>
 <button class="totop" id="toTop" type="button" title="回到顶部" aria-label="回到顶部"><i data-ic="arrow_up"></i></button>
-<link rel="stylesheet" href="/assets/baiju-core.css?v=20261124a">
+<link rel="stylesheet" href="/assets/baiju-core.css?v=20261125a">
 </article>
 
 <section class="merged-appendix" id="生态库-工具与资源索引">
@@ -1592,6 +1630,6 @@ document.addEventListener('DOMContentLoaded',function(){var t=document.body.getA
 <link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
 <script src="/assets/baiju-gate.js?v=20261115a"></script>
 <script src="/assets/baiju-static-qa.js?v=20261115a"></script>
-<script src="/ccowork.js?v=20261124a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
 </body>
 </html>

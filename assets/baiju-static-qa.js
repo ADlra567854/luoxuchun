@@ -72,7 +72,7 @@
     panel.hidden = true
 
     var hd = el('div', 'bjqa-hd')
-    hd.appendChild(el('span', 'bjqa-mark', '🐎 白驹 ccowork'))
+    hd.appendChild(el('span', 'bjqa-mark', '白驹 ccowork'))
     var close = el('button', 'bjqa-x', '收起')
     close.type = 'button'
     close.addEventListener('click', function () { setOpen(false) })

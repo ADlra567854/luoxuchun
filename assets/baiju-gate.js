@@ -177,7 +177,7 @@
     overlay.className = 'bj-gate-overlay'
     overlay.innerHTML =
       '<div class="bj-gate-box" role="dialog" aria-modal="true" aria-label="访问确认">' +
-        '<span class="bj-gate-mark">🐎 白驹 ccowork</span>' +
+        '<span class="bj-gate-mark">白驹 ccowork</span>' +
         '<div class="bj-gate-lock" aria-hidden="true">🔒</div>' +
         '<h1>访问确认</h1>' +
         '<input class="bj-gate-input" type="password" placeholder="请输入访问码" autocomplete="off" spellcheck="false" aria-label="访问码">' +

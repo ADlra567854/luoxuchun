@@ -505,7 +505,38 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 
 <link rel="stylesheet" href="/feed.css">
 <link rel="stylesheet" href="./cover.css">
-<link rel="stylesheet" href="./home-fold.css?v=1">
+<!-- 2026-11-25：移除 home-fold 首屏折叠。它把除第一块外的所有板块默认 .hf-hide，
+     首页中间出现大片空白、必须连点「下一步」才展开，老罗反馈「点进去一看都没有内容」。
+     内容站应当直给，折叠机制与定位相悖。 -->
+<style id="homeCompactCss">
+/* 2026-11-25 首页精简：长板块默认只露一屏，其余点「展开全部」再看，避免首页过长 */
+.block.bj-collapsed > .bj-clip { max-height: 460px; overflow: hidden; position: relative; }
+.block.bj-collapsed > .bj-clip::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 88px; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(244,247,252,0), var(--bg, #f4f7fc) 88%);
+}
+[data-theme="deep"] .block.bj-collapsed > .bj-clip::after {
+  background: linear-gradient(to bottom, rgba(3,0,20,0), var(--bg, #030014) 88%);
+}
+.bj-more { display: block; margin: 14px auto 0; padding: 9px 22px; border-radius: 999px; font-size: 13.5px;
+  font-weight: 700; cursor: pointer; color: #2f5fd0; background: rgba(79,140,255,.10);
+  border: 1px solid rgba(79,140,255,.32); transition: .18s; }
+.bj-more:hover { background: rgba(79,140,255,.20); transform: translateY(-1px); }
+[data-theme="deep"] .bj-more { color: #7fe4ff; background: rgba(56,225,255,.10); border-color: rgba(56,225,255,.32); }
+@media (max-width: 640px) { .block.bj-collapsed > .bj-clip { max-height: 380px; } }
+/* 作品板块：标题旁已有「全部作品」入口，这里直接限高 + 渐变遮罩，不依赖 JS */
+#works .works-grid { max-height: 470px; overflow: hidden; position: relative; }
+#works .works-grid::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(244,247,252,0), var(--bg, #f4f7fc) 88%);
+}
+[data-theme="deep"] #works .works-grid::after {
+  background: linear-gradient(to bottom, rgba(3,0,20,0), var(--bg, #030014) 88%);
+}
+@media (max-width: 640px) { #works .works-grid { max-height: 400px; } }
+/* 内容与实验：与 explore 导航重叠，压缩到一屏内 */
+#content { max-height: 520px; overflow: hidden; }
+</style>
 </head>
 <body>
 <figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="assets/pg/pg-index.png" alt="ccowork · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
@@ -616,7 +647,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
     </div>
 
     <div class="trust">
-      <div class="t"><b><!--STAT:repos-->160<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
+      <div class="t"><b><!--STAT:repos-->163<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
       <div class="t"><b><!--STAT:models-->241<!--/STAT:models--></b><span>具名模型在库</span><em>含厂商与开源度</em></div>
       <div class="t"><b><!--STAT:chapters-->43<!--/STAT:chapters--></b><span>章 AI 学院教程</span><em>每章带调研出处</em></div>
       <div class="t"><b><!--STAT:books-->55<!--/STAT:books--></b><span>本 AI 书稿</span><em>按卷系统成书</em></div>
@@ -636,14 +667,14 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 <!-- ====== 工作台 · 场馆（技能弹药库驱动 · 真实数据） ====== -->
 <!--FF:START-->
 <section id="ff-strip">
-  <div class="fh"><b>近 7 天</b><span class="ff-today">今日新增 4 条</span><span class="ff-range">2026-11-13 — 2026-11-20</span><a class="ff-log" href="/about/changelog.html"><i class="cc-ic" data-ic="history" aria-hidden="true"></i>更新日志</a><a href="/feed/">全部前沿流 →</a></div>
+  <div class="fh"><b>近 7 天</b><span class="ff-today">今日新增 6 条</span><span class="ff-range">2026-11-18 — 2026-11-25</span><a class="ff-log" href="/about/changelog.html"><i class="cc-ic" data-ic="history" aria-hidden="true"></i>更新日志</a><a href="/feed/">全部每日速递 →</a></div>
   <div class="ff-strip-row">
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-20</time><b>腾讯混元 Hy4 旗舰权重开源</b><i>news.qq.com</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-20</time><b>谷歌发 Gemini 4 Neon</b><i>huanqiu.com</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-20</time><b>Anthropic 上市首日涨 17%</b><i>huanqiu.com</i></a>
-    <a class="ff-mini is-today" href="/feed/#hot"><em class="ff-badge">今日</em><time>11-20</time><b>十五五算力十大趋势发布</b><i>stdaily.com</i></a>
-    <a class="ff-mini" href="/feed/#hot"><time>11-19</time><b>工信部连发 5 项人形机器人标准</b><i>finance.sina.com.cn</i></a>
-    <a class="ff-mini" href="/feed/#hot"><time>11-18</time><b>混元 Hy4 flash 开源三个版本</b><i>news.qq.com</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-25"><em class="ff-badge">今日</em><time>11-25</time><b>作者访谈：finprim——TypeScript 金融校验统一库实践案例</b><i>InfoQ 中国</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-25"><em class="ff-badge">今日</em><time>11-25</time><b>Octop 托管 CodeBuddy 实战：打造 7×24 小时在线的 AI 程序员</b><i>InfoQ 中国</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-25"><em class="ff-badge">今日</em><time>11-25</time><b>用 Super-agent 的理念，拆解 Octop 团队模式</b><i>InfoQ 中国</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-25"><em class="ff-badge">今日</em><time>11-25</time><b>Clipto首席科学家韩玫已确认出席 AICon北京，分享Agent 的长上下文从哪里来</b><i>InfoQ 中国</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-25"><em class="ff-badge">今日</em><time>11-25</time><b>Cloudflare 正式推出 Basin 无服务器分析服务</b><i>InfoQ 中国</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-25"><em class="ff-badge">今日</em><time>11-25</time><b>Google Cloud 终于能“封顶”账单了，但超出的费用仍可能照常收</b><i>InfoQ 中国</i></a>
   </div>
 </section>
 <!--FF:END-->
@@ -660,7 +691,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
     </a>
     <a class="wcard" href="./toolbox/repos.html">
       <div class="cv cv-photo"><img src="./assets/covers/sec/repos.jpg" alt="" loading="lazy" decoding="async"><span class="badge">开源仓库</span><i class="cc-ic" data-ic="git-branch"></i></div>
-      <div class="cb"><h4>开源仓库 · <!--STAT:repos-->160<!--/STAT:repos--> 个</h4><p>能自己跑起来才算数：推理引擎、RAG、Agent、图像、语音、编程 Agent 分 15 类，每条标星数、许可证、上手难度与国内可直连性。</p><span class="tg">15 类 · <!--STAT:repos-->160<!--/STAT:repos--> 个 · 4.98M 星</span><span class="go">进仓库库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+      <div class="cb"><h4>开源仓库 · <!--STAT:repos-->163<!--/STAT:repos--> 个</h4><p>能自己跑起来才算数：推理引擎、RAG、Agent、图像、语音、编程 Agent 分 15 类，每条标星数、许可证、上手难度与国内可直连性。</p><span class="tg">15 类 · <!--STAT:repos-->163<!--/STAT:repos--> 个 · 4.98M 星</span><span class="go">进仓库库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
     </a>
     <a class="wcard" href="./learn/deploy.html">
       <div class="cv cv-photo"><img src="./assets/covers/sec/deploy.jpg" alt="" loading="lazy" decoding="async"><span class="badge">部署百科</span><i class="cc-ic" data-ic="hard-drive"></i></div>
@@ -698,7 +729,9 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
      天气/日历/地图已搬进悬浮窗的三角折叠区（天气支持真实定位）。
      首页不再保留第二套 AI 工具区，避免出现两个入口、两套设置。 -->
 
-<section class="block" id="compile">
+<!-- 2026-11-25 收掉（老罗：首页过多辅助模块）：编译模式 884px 只装 229 字 2 个链接，
+       与站点定位（个人博文分享 + 开源作品展示）无关，保留 DOM 但默认不显示，需要时去掉 style 即可恢复 -->
+<section class="block" id="compile" style="display:none" aria-hidden="true">
   <div class="sec-head">
     <h2><span class="em">编译模式</span> · COO 本地运行环境</h2>
     <span class="tag">HTML / JS / Python / Markdown · 浏览器本地真跑</span>
@@ -746,7 +779,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 <section class="block" id="works">
   <div class="sec-head">
     <h2><span class="em">AI 作品精选</span></h2>
-    <span class="tag">6 件精选 + <!--STAT:repos-->160<!--/STAT:repos--> 个真实开源项目</span>
+    <span class="tag">6 件精选 + <!--STAT:repos-->163<!--/STAT:repos--> 个真实开源项目</span>
     <a class="more" href="/works/projects.html">全部作品 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
   </div>
   <div class="works-grid">
@@ -814,7 +847,7 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
     </div>
     <input id="wsSearch" class="ws-search" type="search" placeholder="搜索开源项目 / 作者…" autocomplete="off">
   </div>
-  <div class="works-grid" id="wsGrid" style="margin-top:18px"><p class="ws-loading">正在装载开源作品库（<!--STAT:repos-->160<!--/STAT:repos--> 个真实 GitHub 项目）…</p></div>
+  <div class="works-grid" id="wsGrid" style="margin-top:18px"><p class="ws-loading">正在装载开源作品库（<!--STAT:repos-->163<!--/STAT:repos--> 个真实 GitHub 项目）…</p></div>
   <style>
     .ws-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:24px 0 4px}
     .ws-tabs{display:flex;gap:10px;flex-wrap:wrap}
@@ -827,7 +860,9 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 </section>
 
 <!-- ====== 今日 AI 快讯（3 玻璃卡） ====== -->
-<section class="block" id="news">
+<!-- 2026-11-25 收掉：与顶部 ff-strip「近 7 天 · 今日新增」重复，都是今日快讯；
+       老罗要求首页不过多过大过长，同一信息只留一处 -->
+<section class="block" id="news" style="display:none" aria-hidden="true">
   <div class="sec-head"><h2><span class="em">今日</span> · AI 快讯</h2><span class="tag">每日更新</span><a class="more" href="/feed/news.html">全部新闻 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div>
   <div class="news-grid">
     <a class="ncard" href="/feed/news.html">
@@ -849,7 +884,8 @@ body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba
 </section>
 
 <!-- ====== 热榜（本地轻量统计：逛过的页面排 Top） ====== -->
-<section class="block" id="hot">
+<!-- 2026-11-25 收掉：热榜仅有「数据积累中」占位（40 字 / 1 链接），无真实数据支撑，先隐藏 -->
+<section class="block" id="hot" style="display:none" aria-hidden="true">
   <div class="sec-head"><h2><span class="em">热榜</span> · 大家都在读</h2><span class="tag">本地统计</span></div>
   <div id="ccoworkHot" class="hot-box"><p class="hot-empty">数据积累中：多逛几页，热榜就会亮起来。</p></div>
 </section>
@@ -1478,9 +1514,9 @@ const TOOLS=[
   ['学习','AI 简历','/toolbox/resume.html','AI 简历与求职材料','cover-growth.webp'],
   ['学习','答题宝库','/toolbox/quiz.html','单招/万题库/AI通识 10862 题','cover-ai70.webp'],
   ['学习','AI 赚钱攻略','/learn/ai-money.html','副业/接单/一人公司路径','cover-growth.webp'],
-  ['作品','开源作品大全','/works/projects.html','<!--STAT:repos-->160<!--/STAT:repos--> 个真实项目·按用途分类','cover-global.webp'],
+  ['作品','开源作品大全','/works/projects.html','<!--STAT:repos-->163<!--/STAT:repos--> 个真实项目·按用途分类','cover-global.webp'],
   ['作品','作品内容库','/works/collection.html','内嵌全文，点开即读','cover-book.webp'],
-  ['作品','页面封面墙','/works/covers.html','<!--STAT:repos-->160<!--/STAT:repos--> 开源项目封面','cover-global.webp'],
+  ['作品','页面封面墙','/works/covers.html','<!--STAT:repos-->163<!--/STAT:repos--> 开源项目封面','cover-global.webp'],
   ['学习','免费工科软件','/learn/software.html','CAD/建模/仿真/电子/数学 一键教','cover-design.webp'],
   ['工具','开发者基地','/toolbox/devbase.html','部署/API/本地运行','cover-design.webp'],
   ['工具','白驹工作站','/toolbox/workstation.html','IDE × GitHub × AI','cover-data.webp'],
@@ -1677,8 +1713,8 @@ loadSettings();
   try{localStorage.setItem(CONF_KEY,JSON.stringify({mode:$('mode').value,key:$('apikey').value.trim(),voice:$('voice-on').checked,mm:$('mm-on').checked}));}catch(e){}
 }));
 </script>
-<script src="./ccowork.js?v=20261124a"></script>
-<script src="./module.js?v=20261124a"></script>
+<script src="./ccowork.js?v=20261125a"></script>
+<script src="./module.js?v=20261125a"></script>
 <script src="./responsive.js?v=20261116a"></script>
   <script src="./compile-mode.js"></script>
   <script src="./ai-client.js"></script>
@@ -1747,8 +1783,40 @@ loadSettings();
     .catch(function(e){G.innerHTML='<p class="ws-loading">开源作品库加载失败（'+(e.message||e)+'），请用 http(s) 访问。</p>';});
 })();
 </script>
-  <script src="/baiju-assistant.js?v=20261124a" defer></script>
-  <script src="/home-fold.js?v=1" defer></script>
-  <script src="/site-nav.js?v=20261124a"></script>
+  <script src="/baiju-assistant.js?v=20261125a" defer></script>
+  <!-- 2026-11-25：home-fold.js 一并移除（同上，取消首屏折叠） -->
+  <script src="/site-nav.js?v=20261125a"></script>
+<script>
+/* 2026-11-25 首页精简：把过长的板块默认收起，加「展开全部」按钮 */
+(function(){
+  try{
+    var TARGETS = ['tools', 'works'];
+    TARGETS.forEach(function(id){
+      var sec = document.getElementById(id);
+      if (!sec) return;
+      var host = sec.querySelector('.grid') || sec.querySelector('.works-grid') || null;
+      if (!host) {
+        var cands = Array.prototype.slice.call(sec.children).filter(function(c){
+          return c.tagName === 'DIV' && !/sec-head|tools-bar|sh/.test(c.className || '');
+        });
+        host = cands[0] || null;
+      }
+      if (!host) return;
+      if (host.scrollHeight < 520) return;
+      host.classList.add('bj-clip');
+      sec.classList.add('bj-collapsed');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'bj-more';
+      btn.textContent = '展开全部 ↓';
+      btn.addEventListener('click', function(){
+        sec.classList.remove('bj-collapsed');
+        btn.remove();
+      });
+      sec.appendChild(btn);
+    });
+  }catch(e){}
+})();
+</script>
 </body>
 </html>

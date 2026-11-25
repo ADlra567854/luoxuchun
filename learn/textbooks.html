@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>教材库 · 从高中到大学 · 白驹 ccowork</title>
+<meta name="description" content="教材库：高中信息科技与人工智能、大学 AI / 物联网 / 嵌入式专业教材、编程实用官方文档。有版权的教材只做官方外链，本站不托管全文。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/learn/textbooks.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem('ccowork.theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+:root{--bg:#F4F7FC;--card:#FFFFFF;--text:#1E293B;--muted:#475569;--line:rgba(148,163,184,.28);--soft:rgba(79,140,255,.09);--grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);--shadow:0 10px 30px rgba(30,58,110,.09);--ok:#16a34a;--okbg:rgba(34,197,94,.13);--okbd:rgba(34,197,94,.34);--warn:#b45309;--warnbg:rgba(245,158,11,.14);--warnbd:rgba(245,158,11,.40);--neutral:#64748b;--neutralbg:rgba(100,116,139,.12);--neutralbd:rgba(100,116,139,.30)}
+html[data-theme="deep"],body[data-theme="deep"]{--bg:#030014;--card:#101728;--text:#E9F0FB;--muted:#8FA3BD;--line:rgba(143,163,189,.22);--soft:rgba(91,140,255,.13);--grad:linear-gradient(120deg,#38e1ff,#5b8cff 45%,#8b5cf6);--shadow:0 10px 34px rgba(0,0,0,.42);--ok:#4ade80;--okbg:rgba(74,222,128,.14);--okbd:rgba(74,222,128,.34);--warn:#fbbf24;--warnbg:rgba(251,191,36,.14);--warnbd:rgba(251,191,36,.38);--neutral:#94a3b8;--neutralbg:rgba(148,163,184,.14);--neutralbd:rgba(148,163,184,.32)}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+a{color:inherit}
+.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(255,255,255,.82);border-bottom:1px solid var(--line)}
+html[data-theme="deep"] .nav{background:rgba(8,5,28,.70)}
+.nav .wrap{display:flex;align-items:center;gap:10px;min-height:60px;flex-wrap:nowrap}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;min-width:0}
+.logo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:16px;flex:none}
+.home{margin-left:auto;color:#2B62C9;text-decoration:none;font-size:13px;font-weight:700;white-space:nowrap}
+html[data-theme="deep"] .home{color:#7CC8FF}
+.hero{padding:38px 0 20px}
+.pill{display:inline-flex;gap:7px;align-items:center;padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:700;color:#2B62C9;background:rgba(79,140,255,.11);border:1px solid rgba(79,140,255,.28)}
+html[data-theme="deep"] .pill{color:#7CC8FF;background:rgba(56,225,255,.10);border-color:rgba(56,225,255,.28)}
+.hero h1{font-size:clamp(25px,4.4vw,40px);line-height:1.28;margin:14px 0 10px;font-weight:900;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:840px;margin:0}
+.notice{margin-top:18px;border-left:3px solid #4F8CFF;background:var(--soft);border-radius:0 12px 12px 0;padding:13px 16px;font-size:13px;line-height:1.85}
+.notice b{color:var(--text)}
+.notice ul{margin:8px 0 0;padding-left:18px}
+.notice li{margin:3px 0}
+.rule{height:3px;width:120px;border-radius:99px;background:var(--grad);margin-top:20px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;padding:6px 0 2px;margin-top:26px;position:sticky;top:60px;z-index:15;background:linear-gradient(var(--bg) 72%,transparent)}
+.tab{appearance:none;cursor:pointer;font:700 13.5px/1 inherit;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:11px 18px;transition:transform .16s ease,box-shadow .16s ease;display:inline-flex;align-items:center;gap:8px}
+.tab:hover{transform:translateY(-1px)}
+.tab[aria-selected="true"]{color:#fff;background:var(--grad);border-color:transparent;box-shadow:0 8px 20px rgba(79,140,255,.28)}
+.tab i{font-style:normal;font-size:11.5px;padding:2px 7px;border-radius:999px;background:rgba(148,163,184,.18)}
+.tab[aria-selected="true"] i{background:rgba(255,255,255,.24)}
+.panel{padding-top:6px;animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.panel[hidden]{display:none}
+.lead{color:var(--muted);font-size:13.5px;margin:14px 0 4px;max-width:860px}
+h2.grp{font-size:19px;font-weight:900;margin:30px 0 10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;line-height:1.4}
+h2.grp::before{content:"";width:4px;height:18px;border-radius:3px;background:var(--grad);flex:none}
+h2.grp .n{font-size:12px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px;min-width:0;transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(30,58,110,.13)}
+.card h3{margin:0;font-size:15.5px;font-weight:800;line-height:1.45;word-break:break-word}
+.card .row{display:flex;gap:6px;flex-wrap:wrap;font-size:11.5px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-weight:800;border:1px solid transparent;max-width:100%}
+.badge.open{color:var(--ok);background:var(--okbg);border-color:var(--okbd)}
+.badge.lim{color:var(--warn);background:var(--warnbg);border-color:var(--warnbd)}
+.badge.mute{color:var(--neutral);background:var(--neutralbg);border-color:var(--neutralbd)}
+.badge b{font-weight:800}
+.tag{display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11.5px;background:var(--soft);border:1px solid var(--line);color:var(--muted)}
+.card .by{font-size:12.5px;color:var(--muted);line-height:1.65;word-break:break-word}
+.card .by span{color:var(--text);font-weight:700}
+.card .note{margin:0;color:var(--muted);font-size:12.5px;line-height:1.72;word-break:break-word}
+.card .foot{margin-top:auto;display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:11px;flex-wrap:wrap}
+.go{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;border-radius:999px;background:var(--grad);color:#fff;text-decoration:none;font-size:12.5px;font-weight:800;white-space:nowrap}
+.go:hover{filter:brightness(1.06)}
+.vt{font-size:11.5px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.state{margin:32px 0;padding:18px;border:1px dashed var(--line);border-radius:16px;color:var(--muted);font-size:13.5px;background:var(--card)}
+footer{margin-top:44px;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.8}
+footer a{color:#2B62C9;text-decoration:none;font-weight:700}
+html[data-theme="deep"] footer a{color:#7CC8FF}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+@media(max-width:480px){.wrap{padding:0 14px}.hero{padding:26px 0 14px}.tab{padding:10px 14px;font-size:13px}.tabs{top:56px}.nav .wrap{min-height:56px}.card{padding:15px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<script src="/ccowork.js?v=20261125a"></script>
+</head>
+<body>
+<header class="nav"><div class="wrap"><div class="logo"><i class="cc-mark" aria-hidden="true"></i><span>白驹 ccowork</span></div><a class="home" href="/learn/index.html">← 返回学习</a></div></header>
+<main class="wrap">
+  <section class="hero">
+    <span class="pill">学习域 · 教材库</span>
+    <h1>教材库<br><em>从高中到大学，再到能上手写代码</em></h1>
+    <p>高中只收信息科技、信息技术、人工智能相关的官方入口；大学只收 AI、物联网、嵌入式、控制、机器人这些方向的教材；编程只收官方文档。三类都按「能不能合法给你看」排序，不按「看起来多不多」排序。</p>
+    <div class="notice">
+      <b>收录原则（先看这三条再往下点）：</b>
+      <ul>
+        <li><b>有版权的教材只做官方外链，本站不托管。</b>人教版、苏教版等高中教材，以及 Cambridge、MIT Press、Springer 之类出版但在官网免费公开的书，一律只给官方地址，不转载、不镜像、不打包下载。</li>
+        <li><b>只有许可明确允许再分发的才可能站内托管。</b>CC BY / CC BY-SA / Apache-2.0 / MIT / BSD / Public Domain 这一类才列入可托管；带 <b>NC（禁止商用）</b>或 <b>ND（禁止改作）</b>的一律只外链，并在徽章上直接标出限制。</li>
+        <li><b>许可查不到就写「未标注」或「版权归官方」，不猜。</b>每条都标了核验日期与许可依据来源；本期不抓取任何第三方全文。</li>
+      </ul>
+    </div>
+    <div class="rule"></div>
+  </section>
+
+  <div class="tabs" role="tablist" aria-label="教材分组">
+    <button class="tab" role="tab" id="tab-highschool" aria-controls="panel-highschool" aria-selected="true" data-group="highschool">高中 <i id="cnt-highschool">—</i></button>
+    <button class="tab" role="tab" id="tab-university" aria-controls="panel-university" aria-selected="false" data-group="university" tabindex="-1">大学专业 <i id="cnt-university">—</i></button>
+    <button class="tab" role="tab" id="tab-coding" aria-controls="panel-coding" aria-selected="false" data-group="coding" tabindex="-1">编程实用 <i id="cnt-coding">—</i></button>
+  </div>
+
+  <section class="panel" id="panel-highschool" role="tabpanel" aria-labelledby="tab-highschool">
+    <p class="lead">高中教材的版权在出版社，本站只能带路。国标课程文件属政府公开文件，同样只外链。</p>
+    <div class="grid" data-list="highschool"></div>
+  </section>
+  <section class="panel" id="panel-university" role="tabpanel" aria-labelledby="tab-university" hidden>
+    <p class="lead">按「物联网 → 智能体」这条线挑：AI 与机器学习打底，强化学习与多智能体接智能体，物联网、嵌入式、控制、机器人接硬件那一端。</p>
+    <div class="grid" data-list="university"></div>
+  </section>
+  <section class="panel" id="panel-coding" role="tabpanel" aria-labelledby="tab-coding" hidden>
+    <p class="lead">只收官方文档或明确开放许可的教程。官方文档没有开放许可的，标「版权归官方」并只外链。</p>
+    <div class="grid" data-list="coding"></div>
+  </section>
+
+  <div class="state" id="state" hidden></div>
+
+  <footer>
+    <p style="margin:0" id="footline">核验至 2026-11-25 · 条目与许可依据见每条卡片</p>
+    <p style="margin:8px 0 0">白驹 ccowork · ccowork ｜ 个人技术展示站，不提供生成式 AI 服务。所有教材版权归原作者与出版方，本站仅提供官方地址导航。<a href="/learn/open-library.html">开放学习资料 →</a></p>
+  </footer>
+</main>
+<script>
+(function () {
+  var DATA_URL = '/data/textbooks.json';
+  var GROUPS = ['highschool', 'university', 'coding'];
+  var GROUP_NAME = { highschool: '高中', university: '大学专业', coding: '编程实用' };
+  var lists = {};
+  GROUPS.forEach(function (g) { lists[g] = document.querySelector('[data-list="' + g + '"]'); });
+  var stateEl = document.getElementById('state');
+
+  function shortLicense(s) {
+    var i = String(s || '').indexOf('（');
+    var j = String(s || '').indexOf('(');
+    var k = -1;
+    if (i > -1 && j > -1) k = Math.min(i, j); else k = (i > -1 ? i : j);
+    var out = k > -1 ? String(s).slice(0, k) : String(s || '');
+    return out.trim() || '未标注';
+  }
+
+  // 徽章分级：带 NC / ND 限制 → 限制（橙）；版权归官方 / 未标注 / 官方标准 → 中性（灰）；其余开放许可 → 开放（绿）
+  function badgeKind(license) {
+    var s = String(license || '');
+    if (/NC|ND\b|NonCommercial|NoDerivatives/i.test(s)) return { cls: 'lim', label: '有限制' };
+    if (/版权归|未标注|政府公开文件|Document License|多许可|NOASSERTION|仅外链/i.test(s)) return { cls: 'mute', label: '仅外链' };
+    return { cls: 'open', label: '开放许可' };
+  }
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function card(it) {
+    var a = el('article', 'card');
+    a.appendChild(el('h3', null, it.title));
+
+    var kind = badgeKind(it.license);
+    var row = el('div', 'row');
+    var bd = el('span', 'badge ' + kind.cls);
+    bd.appendChild(el('b', null, kind.label));
+    bd.appendChild(document.createTextNode(' · ' + shortLicense(it.license)));
+    bd.title = it.license;
+    row.appendChild(bd);
+    row.appendChild(el('span', 'tag', it.subject));
+    a.appendChild(row);
+
+    var by = el('div', 'by');
+    by.appendChild(el('span', null, '作者/机构：'));
+    by.appendChild(document.createTextNode(it.author || '—'));
+    by.appendChild(document.createElement('br'));
+    by.appendChild(el('span', null, '出版方：'));
+    by.appendChild(document.createTextNode(it.publisher || '—'));
+    a.appendChild(by);
+
+    a.appendChild(el('p', 'note', it.note || ''));
+
+    var foot = el('div', 'foot');
+    var go = el('a', 'go', '去官方看 ↗');
+    go.href = it.url;
+    go.target = '_blank';
+    go.rel = 'noopener noreferrer nofollow';
+    foot.appendChild(go);
+    foot.appendChild(el('span', 'vt', '核验 ' + (it.verifiedAt || '').slice(5)));
+    a.appendChild(foot);
+
+    if (it.licenseUrl) {
+      var lr = el('div', 'by');
+      lr.style.fontSize = '11.5px';
+      var la = el('a', null, '许可原文 →');
+      la.href = it.licenseUrl;
+      la.target = '_blank';
+      la.rel = 'noopener noreferrer nofollow';
+      la.style.cssText = 'color:#2B62C9;text-decoration:none;font-weight:700';
+      lr.appendChild(la);
+      lr.appendChild(document.createTextNode('　' + (it.hosting === 'fulltext' ? '许可允许再分发，本期未抓取全文' : '仅供查阅')));
+      a.appendChild(lr);
+    } else if (it.hosting === 'fulltext') {
+      var f2 = el('div', 'by', '许可允许再分发，本期未抓取全文');
+      f2.style.fontSize = '11.5px';
+      a.appendChild(f2);
+    }
+    return a;
+  }
+
+  function render(items) {
+    var byGroup = { highschool: [], university: [], coding: [] };
+    items.forEach(function (it) { if (byGroup[it.group]) byGroup[it.group].push(it); });
+
+    GROUPS.forEach(function (g) {
+      var list = lists[g];
+      list.textContent = '';
+      var arr = byGroup[g];
+      var cn = document.getElementById('cnt-' + g);
+      if (cn) cn.textContent = arr.length + ' 条';
+
+      // 组内按 subject 再分小节，保持数据里出现的先后顺序
+      var order = [], bucket = {};
+      arr.forEach(function (it) {
+        if (!bucket[it.subject]) { bucket[it.subject] = []; order.push(it.subject); }
+        bucket[it.subject].push(it);
+      });
+
+      var host = list.parentNode;
+      // 清掉上一次渲染的小节标题
+      Array.prototype.slice.call(host.querySelectorAll('h2.grp')).forEach(function (h) { h.remove(); });
+
+      order.forEach(function (sub) {
+        var h = el('h2', 'grp');
+        h.appendChild(document.createTextNode(sub));
+        var n = el('span', 'n', bucket[sub].length + ' 条');
+        h.appendChild(n);
+        host.insertBefore(h, list);
+
+        var g2 = el('div', 'grid');
+        bucket[sub].forEach(function (it) { g2.appendChild(card(it)); });
+        host.insertBefore(g2, list);
+      });
+      // 原占位 grid 已空，隐藏掉
+      list.hidden = true;
+    });
+
+    var total = items.length;
+    var c = { highschool: 0, university: 0, coding: 0 };
+    items.forEach(function (i) { if (c[i.group] != null) c[i.group]++; });
+    var fl = document.getElementById('footline');
+    if (fl) fl.textContent = '核验至 2026-11-25 · 共 ' + total + ' 条（高中 ' + c.highschool + ' / 大学专业 ' + c.university + ' / 编程实用 ' + c.coding + '）· 本期未抓取任何第三方全文';
+    var d = document.getElementById('generated');
+    if (d && stateEl.dataset.generatedAt) d.textContent = stateEl.dataset.generatedAt;
+  }
+
+  function showState(msg) {
+    stateEl.hidden = false;
+    stateEl.textContent = msg;
+  }
+
+  function selectTab(g, push) {
+    GROUPS.forEach(function (k) {
+      var t = document.getElementById('tab-' + k);
+      var p = document.getElementById('panel-' + k);
+      var on = k === g;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      p.hidden = !on;
+    });
+    if (push && location.hash !== '#' + g) history.replaceState(null, '', '#' + g);
+  }
+
+  document.querySelectorAll('.tab').forEach(function (btn) {
+    btn.addEventListener('click', function () { selectTab(btn.dataset.group, true); });
+    btn.addEventListener('keydown', function (e) {
+      var i = GROUPS.indexOf(btn.dataset.group), n = null;
+      if (e.key === 'ArrowRight') n = GROUPS[(i + 1) % GROUPS.length];
+      if (e.key === 'ArrowLeft') n = GROUPS[(i + GROUPS.length - 1) % GROUPS.length];
+      if (n) { e.preventDefault(); selectTab(n, true); document.getElementById('tab-' + n).focus(); }
+    });
+  });
+
+  var initial = (location.hash || '').replace('#', '');
+  selectTab(GROUPS.indexOf(initial) > -1 ? initial : 'highschool', false);
+
+  fetch(DATA_URL, { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (d) {
+      if (!d || !Array.isArray(d.items)) throw new Error('数据格式不对');
+      if (d.generatedAt) stateEl.dataset.generatedAt = d.generatedAt;
+      render(d.items);
+    })
+    .catch(function (e) {
+      showState('教材清单加载失败（' + e.message + '）。数据文件：' + DATA_URL + '。若在本地双击打开页面，浏览器会拦截本地 JSON 读取，请通过站点服务访问。');
+    });
+})();
+</script>
+</body>
+</html>

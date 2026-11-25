@@ -7,10 +7,10 @@
 <meta name="description" content="按步骤拆解的软件实操教程，含环境准备与常见坑位。">
 <link rel="canonical" href="https://ccoworkbaiju.cn/learn/software-detail.html">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/theme-cloud.css?v=20261124a">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
 <link rel="stylesheet" href="/site-nav.css">
 <link rel="stylesheet" href="/design-norms.css?v=20261030b">
-<link rel="stylesheet" href="/site-redesign.css?v=20261124a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
 <link rel="stylesheet" href="/site-page.css?v=20261030b">
 <link rel="stylesheet" href="/siteframe.css?v=20261029b">
 <style>
@@ -170,7 +170,14 @@ footer a{color:var(--cyan)}
   var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'cloud' : 'deep');
   apply(theme);
   function apply(t){ document.body.setAttribute('data-theme',t); var b=document.getElementById('themeBtn'); if(b) b.textContent = t==='cloud'?'☀️ 浅色':'🌙 深色'; }
-  document.getElementById('themeBtn').addEventListener('click',function(){ var n=document.body.getAttribute('data-theme')==='cloud'?'deep':'cloud'; apply(n); localStorage.setItem('ccowork.theme',n); });
+  /* 2026-11-25 修复（既有 bug，非本次改造引入）：
+     与 learn/software.html 同一个病根——本页 DOM 里没有 id="themeBtn"（主题按钮由 /site-nav.js 注入），
+     上面一行 apply() 有 if(b) 判空，这一行漏了，直接 .addEventListener 会抛
+     TypeError: Cannot read properties of null (reading 'addEventListener')。
+     本页内容由页面内联数据结构渲染，影响比 software.html 小（实测文本仅差 13 字），
+     但为避免后来者照抄坏写法，一并改成先取再判空。业务逻辑一行未改。 */
+  var themeBtnEl = document.getElementById('themeBtn');
+  if (themeBtnEl) themeBtnEl.addEventListener('click',function(){ var n=document.body.getAttribute('data-theme')==='cloud'?'deep':'cloud'; apply(n); localStorage.setItem('ccowork.theme',n); });
 })();
 var CAT_PHOTO = {
   'CAD三维设计':'eng7.jpg','工程制图':'eng12.jpg','三维建模':'eng7.jpg',
@@ -277,7 +284,7 @@ function render(s, all){
 <link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
 <script src="/assets/baiju-gate.js?v=20261115a"></script>
 <script src="/assets/baiju-static-qa.js?v=20261115a"></script>
-<script src="/ccowork.js?v=20261124a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
 
 <section class="bj-src" style="max-width:960px;margin:36px auto 56px;padding:20px 22px;border-radius:16px;border:1px solid rgba(120,160,220,.18);background:rgba(15,22,38,.55);color:#9fb0c8;font-size:13.5px;line-height:1.95">
   <strong style="display:block;margin-bottom:10px;color:#eaf1fc;font-size:15px;font-weight:700">来源与出处</strong>

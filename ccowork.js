@@ -90,11 +90,11 @@
   try {
     var scr = document.currentScript || (function () { var s = document.getElementsByTagName('script'); return s[s.length - 1] })()
     /* ★ base 必须剥掉查询串再取目录。
-       旧写法 src.replace(/[^/]*$/, '') 遇到 '/ccowork.js?v=20261124a' 会算出 '/?v=21'，
+       旧写法 src.replace(/[^/]*$/, '') 遇到 '/ccowork.js?v=20261125a' 会算出 '/?v=21'，
        导致后续所有 base+'xxx' 拼出 '/?v=21/xxx' 而 404。
        这次挂图标系统时实测暴露，按标准 URL 解析重写。 */
     var base = (function () {
-      /* src 可能是 '/ccowork.js?v=20261124a'（要剥掉查询串），也可能拿不到
+      /* src 可能是 '/ccowork.js?v=20261125a'（要剥掉查询串），也可能拿不到
          （异步注入时 currentScript 为空、回退到的 elem 无 src）。
          拿不到时一律按根目录算：ccowork.js 是根级文件，旧写法算出 ''
          会让子目录页面去请求 /website/theme-cloud.css 之类，全是 404。 */
@@ -110,7 +110,7 @@
        site-redesign.css / siteframe.css。手机端无法强刷，换指纹强制取新资源。 */
     /* 2026-11-10 晚：全站统一层（brand-one.css / brand-one.js）——
        唯一助手、一套设置、正式品牌标识。换指纹让手机端也取到新资源。 */
-    var V = '20261124a'   /* 2026-11-24 页脚公示 ICP 备案号 赣ICP备2026031925号；两侧指纹必须同步 */
+    var V = '20261125a'   /* 2026-11-24 页脚公示 ICP 备案号 赣ICP备2026031925号；两侧指纹必须同步 */
     var q = function (f) { return base + f + '?v=' + V }
 
     /* 朋友门锁：状态层脚本尽早注入（CSS 由它自注入，避免重复 link）。
@@ -386,7 +386,10 @@
      幂等：先查 body 文本，已存在即跳过；load 后再补一次，兼容 JS 后渲染的页脚。 */
   (function ensureICP(){
     var ICP = '赣ICP备2026031925号'
-    var LEGAL = '本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：' + ICP
+    /* 2026-11-25 加强（老罗："备案号一点都不明显"）：
+       原来是 12px + opacity .72 的灰小字，几乎看不见。
+       现在改成独立法务条 + 蓝色胶囊徽章（带边框、加粗、可点进工信部查询），
+       并给深浅两套主题各自的配色，保证任何页面都能一眼看到。 */
     function run(){
       try{
         if (!document.body) return
@@ -394,16 +397,38 @@
         var foots = document.getElementsByTagName('footer')
         var host = foots.length ? foots[foots.length - 1] : null
         if (!host){
-          // 无 footer 的页面（极少数），在 body 末尾补一条极简法务条
           host = document.createElement('footer')
           host.className = 'site-footer foot-fallback'
           document.body.appendChild(host)
         }
-        var span = document.createElement('span')
-        span.className = 'foot-legal'
-        span.style.cssText = 'display:block;margin-top:10px;font-size:12px;line-height:1.7;opacity:.72;color:inherit'
-        span.textContent = LEGAL
-        host.appendChild(span)
+        if (!document.getElementById('bj-icp-style')) {
+          var st = document.createElement('style')
+          st.id = 'bj-icp-style'
+          st.textContent = [
+            '.bj-legal-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;',
+            'margin:16px 0 0;padding:14px 12px 4px;border-top:1px solid rgba(120,150,200,.28);',
+            'font-size:13px;line-height:1.9;text-align:center}',
+            '.bj-legal-bar .bj-legal-txt{opacity:.8;max-width:640px}',
+            '.bj-icp{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;',
+            'background:rgba(79,140,255,.12);border:1px solid rgba(79,140,255,.40);color:#2f5fd0!important;',
+            'font-weight:800;font-size:13.5px;text-decoration:none!important;letter-spacing:.2px;',
+            'transition:.18s;white-space:nowrap}',
+            '.bj-icp:hover{background:rgba(79,140,255,.22);transform:translateY(-1px)}',
+            '.bj-icp::before{content:"🛡";font-size:13px;line-height:1}',
+            '[data-theme="deep"] .bj-legal-bar{border-top-color:rgba(120,160,255,.30)}',
+            '[data-theme="deep"] .bj-icp{background:rgba(56,225,255,.12);border-color:rgba(56,225,255,.42);color:#7fe4ff!important}',
+            '[data-theme="deep"] .bj-icp:hover{background:rgba(56,225,255,.22)}',
+            '@media(max-width:640px){.bj-legal-bar{flex-direction:column;gap:8px;font-size:12.5px;padding:12px 10px 4px}',
+            '.bj-legal-bar .bj-legal-txt{font-size:12px}.bj-icp{font-size:13px;padding:6px 12px}}'
+          ].join('')
+          document.head.appendChild(st)
+        }
+        var bar = document.createElement('div')
+        bar.className = 'bj-legal-bar foot-legal'
+        bar.innerHTML =
+          '<span class="bj-legal-txt">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。</span>' +
+          '<a class="bj-icp" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" title="点击到工信部政务服务平台查询该备案号">' + ICP + '</a>'
+        host.appendChild(bar)
       }catch(e){}
     }
     run()
@@ -425,26 +450,18 @@
       /* 开源书阅读页自带「来源与许可」块 + 章节目录 + 上一章/下一章，
          再塞一张「本页概览」只会挡住正文，所以整片跳过（备案号仍由 ensureICP 兜底）。 */
       if (/^\/book\/open\//.test(path)) return
-      /* 板块识别：路径优先，data-ccnav 兜底。
-         实测 data-ccnav 有标错的（blog/index.html 标成 works、feed/index.html 标成 models），
-         而路径首段永远准，所以不能让属性反过来覆盖路径。 */
-      var KNOWN = { models:1, learn:1, toolbox:1, works:1, blog:1, feed:1, about:1, lab:1, book:1 }
+      /* 2026-11-25 收敛（老罗反馈：概览卡＋技术反馈满站播、挡住首屏内容）：
+         只在 5 个主域首页保留（模型 / 学习 / 工具 / 作品 / 关于），
+         且挂到页面**底部**，不再插在 main 最前面。子页、博客、前沿流、实验、书稿一律不注入。 */
+      var MAIN_BOARDS = { models: 1, learn: 1, toolbox: 1, works: 1, about: 1 }
       var parts = path.split('/').filter(Boolean)
-      var first = (parts[0] || '').toLowerCase()
-      if (/\.html?$/i.test(first)) first = ''
-      var seg = ''
-      if (KNOWN[first]) {
-        seg = first
-      } else {
-        var nav = document.body && document.body.getAttribute('data-ccnav')
-        if (nav && KNOWN[String(nav).trim()]) seg = String(nav).trim()
-      }
-      if (!seg) {
-        /* 首页走「板块增强」而不是插概览卡：它已有 Hero；
-           根目录其他单页（agent.html / chat.html / 专题页）给站点级概览。 */
-        if (path === '' || path === '/' || /^\/(index|home|hub|portal)\.html?$/i.test(path)) seg = '_home'
-        else seg = '_site'
-      }
+      var seg = (parts[0] || '').toLowerCase()
+      if (/\.html?$/i.test(seg)) seg = ''
+      /* 首页只做「板块角标」增强（每个板块标题后挂真实体量 + 直达），不插概览卡 */
+      var isHome = path === '' || path === '/' || /^\/(index|home|hub|portal)\.html?$/i.test(path)
+      var isBoardHome = !!MAIN_BOARDS[seg] &&
+        (parts.length === 1 || (parts.length === 2 && /^index\.html?$/i.test(parts[1])))
+      if (!isHome && !isBoardHome) return
 
       var CSS = [
         '.bj-brief{max-width:1120px;margin:20px auto 4px;padding:0 20px;box-sizing:border-box;text-align:left}',
@@ -485,19 +502,16 @@
         })
       }
 
+      /* 2026-11-25：一律挂到页面**底部**（main/article 末尾），
+         不再插在首屏最前面挡正文。老罗原话："你放在上面干嘛？" */
       function mount(html){
         var box = document.createElement('section')
         box.className = 'bj-brief'
         box.id = 'bj-brief'
         box.innerHTML = html
         var host = document.querySelector('main') || document.querySelector('article')
-        if (host && host.firstElementChild) { host.insertBefore(box, host.firstElementChild) }
-        else if (host) { host.appendChild(box) }
-        else {
-          var wrap = document.querySelector('.pg-wrap, .wrap, .container, section')
-          if (wrap && wrap.parentNode) { wrap.parentNode.insertBefore(box, wrap) }
-          else if (document.body) { document.body.insertBefore(box, document.body.firstChild) }
-        }
+        if (host) { host.appendChild(box) }
+        else if (document.body) { document.body.appendChild(box) }
       }
 
       /* 首页板块增强：给每个既有板块标题补一个「真实体量 + 直达」角标。
@@ -584,7 +598,7 @@
         }
         mount(
           '<div class="bj-brief-in">' +
-            '<span class="bj-brief-badge">🐎 白驹 ccowork · ' + esc(b.title) + '</span>' +
+            '<span class="bj-brief-badge">白驹 ccowork · ' + esc(b.title) + '</span>' +
             '<h2 class="bj-brief-title">本页概览</h2>' +
             '<p class="bj-brief-lead">' + esc(b.lead) + '</p>' +
             (st ? '<div class="bj-brief-stats">' + st + '</div>' : '') +
@@ -601,11 +615,138 @@
           .then(function(r){ return r.ok ? r.json() : null })
           .then(function(d){
             if (!d) return
-            if (seg === '_home') homeEnhance(d)
+            if (isHome) homeEnhance(d)
             else render(d)
           })
           .catch(function(){})
       }catch(e){}
+    }catch(e){}
+  })();
+
+  /* ---------- 全站「下一步去哪」路线条 --------------------------------------
+     老罗 2026-11-25：每一页的路线指引要多一点、要有预设内容。
+     做法：按所属板块给一组预设的下一步，渲染成页面底部一条紧凑横条
+     （不是大卡片，高度约 60px，不抢正文）。只覆盖 5 大板块，
+     首页 / 开源书阅读页 / 隐藏层不插，避免重复与干扰阅读。
+     按钮文案是"动作"，不是"栏目名"——用户看的是"我接下来能干什么"。 */
+  ;(function nextSteps(){
+    try{
+      if (window.self !== window.top) return
+      var path = (location.pathname || '/').replace(/\/+$/, '')
+      if (!path) return                                   /* 站点首页有自己的 Hero 与板块区 */
+      if (/^\/book\/open\//.test(path)) return            /* 开源书正文，别挡 */
+      if (/friends/i.test(path)) return                   /* 隐藏层不挂任何公共模块 */
+      if (/^\/(index|home|hub|portal)\.html?$/i.test(path)) return
+
+      var KNOWN = { models:1, learn:1, toolbox:1, works:1, about:1 }
+      var first = (path.split('/').filter(Boolean)[0] || '').toLowerCase()
+      var seg = KNOWN[first] ? first : ''
+      if (!seg) return
+
+      var R = {
+        models:  { t:'看完模型，接着可以',
+                   l:[['查某个模型能做什么','/models/library.html'],
+                      ['看它是谁做的、国内能不能用','/models/vendors.html'],
+                      ['今天有什么新模型','/feed/'],
+                      ['把它跑在自己机器上','/learn/deploy.html']] },
+        learn:   { t:'不知道下一步学什么',
+                   l:[['按路线选一条路','/learn/study.html'],
+                      ['从第一课开始','/learn/tutorials/'],
+                      ['做几道题验掌握','/learn/academy/quiz.html'],
+                      ['拿一句提示词直接用','/learn/prompts.html'],
+                      ['学科怎么和 AI 结合','/learn/subjects.html']] },
+        toolbox: { t:'想马上用起来',
+                   l:[['找国内能直连的仓库','/toolbox/repos.html'],
+                      ['看工具怎么落地','/toolbox/ai-build-hall.html'],
+                      ['去哪拿模型、去哪租卡','/toolbox/platforms.html'],
+                      ['先打基础再动手','/learn/study.html']] },
+        works:   { t:'想自己做一个',
+                   l:[['从小游戏源码改起','/works/games.html'],
+                      ['看别人怎么做成','/works/cases.html'],
+                      ['AI 漫剧怎么做','/works/manju.html'],
+                      ['读带出处的长文','/blog/']] },
+        about:   { t:'还想了解',
+                   l:[['这个站收录了什么','/about/ecosystem.html'],
+                      ['附近有哪些 AI 场馆','/about/map-guide.html'],
+                      ['最近改了什么','/about/changelog.html'],
+                      ['回到学习起点','/learn/study.html']] }
+      }
+      var r = R[seg]
+      if (!r) return
+
+      var cur = path.replace(/\/index\.html?$/i, '')
+      var links = []
+      for (var i = 0; i < r.l.length; i++) {
+        var h = r.l[i][1], hn = h.replace(/\/$/, '')
+        if (hn !== cur) links.push(r.l[i])
+      }
+      if (!links.length) return
+      if (links.length > 5) links = links.slice(0, 5)
+
+      var box = document.createElement('section')
+      box.className = 'bj-next'
+      box.id = 'bj-next'
+      box.setAttribute('aria-label', '下一步去哪')
+
+      var h2 = document.createElement('b')
+      h2.className = 'bj-next-t'
+      h2.textContent = r.t
+      box.appendChild(h2)
+
+      var wrap = document.createElement('div')
+      wrap.className = 'bj-next-l'
+      for (var j = 0; j < links.length; j++) {
+        var a = document.createElement('a')
+        a.href = links[j][1]
+        a.textContent = links[j][0] + ' →'
+        wrap.appendChild(a)
+      }
+      box.appendChild(wrap)
+
+      var css = ''
+      css += '.bj-next{max-width:1180px;margin:34px auto 0;padding:15px 18px;border-radius:14px;'
+      css += 'background:rgba(79,140,255,.055);border:1px solid rgba(79,140,255,.17);'
+      css += 'display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-sizing:border-box}'
+      css += '.bj-next-t{font-size:13.5px;font-weight:800;color:#2f5fd0;flex:0 0 auto}'
+      css += '.bj-next-l{display:flex;gap:8px;flex-wrap:wrap}'
+      css += '.bj-next-l a{font-size:12.5px;font-weight:700;color:#2f5fd0;text-decoration:none;'
+      css += 'padding:6px 13px;border-radius:999px;background:rgba(79,140,255,.1);'
+      css += 'border:1px solid rgba(79,140,255,.24);transition:.16s;white-space:nowrap}'
+      css += '.bj-next-l a:hover{background:rgba(79,140,255,.2);transform:translateY(-1px)}'
+      css += '[data-theme="deep"] .bj-next{background:rgba(56,225,255,.05);border-color:rgba(56,225,255,.18)}'
+      css += '[data-theme="deep"] .bj-next-t,[data-theme="deep"] .bj-next-l a{color:#7fe4ff}'
+      css += '[data-theme="deep"] .bj-next-l a{background:rgba(56,225,255,.09);border-color:rgba(56,225,255,.24)}'
+      css += '[data-theme="deep"] .bj-next-l a:hover{background:rgba(56,225,255,.18)}'
+      css += '@media(max-width:640px){.bj-next{margin:24px 14px 0;padding:12px 13px;gap:8px}'
+      css += '.bj-next-t{font-size:12.5px;width:100%}'
+      /* 手机端改换行，不做横向滚动：横滑时最后一个胶囊会被右边缘切一半，
+         用户看不出还有内容（实测 390px 第三个按钮被裁）。换行后每个都完整可见。
+         同时只露前 4 个 —— 老罗要求底部的引导不要展开太多，5 个会排到第 3 行。 */
+      css += '.bj-next-l{flex-wrap:wrap;width:100%;gap:6px}'
+      css += '.bj-next-l a{font-size:11.5px;padding:6px 10px;white-space:normal}'
+      css += '.bj-next-l a:nth-child(n+5){display:none}}'
+
+      try{
+        var st = document.createElement('style')
+        st.id = 'bjNextCss'
+        st.appendChild(document.createTextNode(css))
+        ;(document.head || document.documentElement).appendChild(st)
+      }catch(e){}
+
+      function mount(){
+        try{
+          if (document.getElementById('bj-next')) return true
+          var f = document.querySelector('footer.ccfoot') || document.querySelector('footer')
+          if (f && f.parentNode) { f.parentNode.insertBefore(box, f); return true }
+          var main = document.querySelector('main') || document.body
+          if (main) { main.appendChild(box); return true }
+        }catch(e){}
+        return false
+      }
+      if (!mount()) {
+        window.addEventListener('load', function(){ mount() }, { once: true })
+        setTimeout(mount, 1200)
+      }
     }catch(e){}
   })();
 

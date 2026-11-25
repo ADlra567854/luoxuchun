@@ -31,45 +31,52 @@
 
     /* 主导航：固定 5 项。增删域请在这里改，全站同步，不需要动任何页面。 */
     primary: [
-      { k: 'models', n: '模型', ic: 'brain',         href: '/models/', d: '图谱 · 模型库 · 榜单 · 厂商' },
-      { k: 'learn',  n: '学习', ic: 'graduation-cap', href: '/learn/',  d: '学院 · 概念 · 路线 · 题库' },
-      { k: 'toolbox', n: '工具', ic: 'wrench',         href: '/toolbox/', d: '工具库 · 平台 · 技能 · 绘画' },
-      { k: 'works',  n: '作品', ic: 'layout-grid',    href: '/works/',  d: '项目 · 案例 · 博客' },
-      { k: 'about',  n: '关于', ic: 'info',           href: '/about/',  d: '站点 · 生态 · 更新记录' }
+      { k: 'models', n: '模型图谱', ic: 'brain',         href: '/models/', d: '图谱 · 模型库 · 榜单 · 厂商 · 前沿流' },
+      { k: 'learn',  n: '学习路径', ic: 'graduation-cap', href: '/learn/',  d: '自学路线 · 教程 · 题库 · 提示词 · 学科×AI' },
+      { k: 'toolbox', n: '工具工坊', ic: 'wrench',         href: '/toolbox/', d: '开源仓库 · AI 建造馆 · 平台 · 工具库' },
+      { k: 'works',  n: '作品展厅', ic: 'layout-grid',    href: '/works/',  d: '开源项目 · 游戏源码 · 案例 · 漫剧' },
+      { k: 'about',  n: '关于本站', ic: 'info',           href: '/about/',  d: '生态库 · 场馆地图 · 更新日志' }
     ],
 
     /* 分区条：每个域 3–8 项，只放本域的页。这是"副导航"，不再有第二个名字。 */
     sections: {
       models: [
-        { n: '图谱',   href: '/models/atlas.html',        ic: 'grid-2x2', d: '模型关系一张图看懂' },
-        { n: '模型库', href: '/models/library.html',      ic: 'database', d: '230 个具名模型可查' },
-        { n: '榜单',   href: '/models/leaderboards.html', ic: 'trophy',   d: '按能力排个高下' },
+        { n: '图谱',   href: '/models/atlas.html',        ic: 'grid-2x2',   d: '模型关系一张图看懂' },
+        { n: '模型库', href: '/models/library.html',      ic: 'database',   d: '241 个具名模型可查' },
+        { n: '榜单',   href: '/models/leaderboards.html', ic: 'trophy',     d: '按能力排个高下' },
         { n: '厂商',   href: '/models/vendors.html',      ic: 'building-2', d: '谁做的、国内能不能用' },
-        { n: '前沿流', href: '/feed/',                    ic: 'flame',    d: '近 7 天 AI 新动态，带出处' }
+        { n: '追踪',   href: '/models/tracking.html',     ic: 'activity',   d: '新模型上线时间线' },
+        { n: '前沿流', href: '/feed/',                    ic: 'flame',      d: '每日实抓，带出处与配图' }
       ],
       learn: [
-        { n: '概览',   href: '/learn/',              ic: 'school',      d: 'AI 学院首页，先定起点' },
-        { n: '教程',   href: '/learn/tutorials/',    ic: 'book-open',   d: '43 章从零到能做出东西' },
-        { n: '书稿',   href: '/learn/books/',        ic: 'library-big', d: '五卷全书与实战书稿' },
-        { n: '工具使用', href: '/learn/ai-coding-tools.html', ic: 'code', d: '31 款工具怎么用：编程助手 + WorkBuddy + 开源工具，一页讲清' },
-        { n: '部署',   href: '/learn/deploy.html',   ic: 'hard-drive',  d: '把模型跑在自己机器上' },
-        { n: '路线图', href: '/learn/roadmap.html',  ic: 'route',       d: '按阶段排好的学习顺序' }
+        { n: '概览',     href: '/learn/',                  ic: 'school',      d: '学习路径首页，先定起点' },
+        { n: '自学路线', href: '/learn/study.html',        ic: 'route',       d: '零基础到能做出东西的完整路径' },
+        { n: '教程',     href: '/learn/tutorials/',        ic: 'book-open',   d: '43 章从零到能做出东西' },
+        { n: '题库',     href: '/learn/academy/quiz.html', ic: 'list-checks', d: '按知识点自测与练习' },
+        { n: '提示词库', href: '/learn/prompts.html',      ic: 'sparkles',    d: '可直接抄用的提示词，每天加' },
+        { n: '学科×AI',  href: '/learn/subjects.html',     ic: 'atom',        d: '物理 / 化学 / 数学 + AI，高中也能用' },
+        { n: '软件学院', href: '/learn/software.html',     ic: 'app-window',  d: '编程语言与工具怎么学' },
+        { n: '软件详情', href: '/learn/software-detail.html', ic: 'info',     d: '每款软件的安装、许可与替代' },
+        { n: '书稿',     href: '/learn/books/',            ic: 'library-big', d: '五卷全书与实战书稿' }
       ],
       toolbox: [
-        { n: '开源仓库', href: '/toolbox/repos.html',   ic: 'git-branch', d: '145 个能自己跑起来的项目' },
-        { n: '平台',   href: '/toolbox/platforms.html', ic: 'layers',     d: '33 家去哪拿模型、去哪租卡' },
-        { n: '工具库', href: '/toolbox/library.html',  ic: 'wrench',      d: '17 个 AI 工具，标官网与定价' }
+        { n: '开源仓库', href: '/toolbox/repos.html',          ic: 'git-branch', d: '国内可直连优先，标维护状态' },
+        { n: 'AI 建造馆', href: '/toolbox/ai-build-hall.html',  ic: 'hammer',     d: '概念 → 工具 → 应用 → 园区' },
+        { n: '平台',     href: '/toolbox/platforms.html',      ic: 'layers',     d: '33 家去哪拿模型、去哪租卡' },
+        { n: '工具库',   href: '/toolbox/library.html',        ic: 'wrench',     d: '17 个 AI 工具，标官网与定价' }
       ],
       works: [
-        { n: '项目',   href: '/works/projects.html', ic: 'folder-open', d: '开源作品与来源清单' },
-        { n: '案例',   href: '/works/cases.html',    ic: 'briefcase',   d: '别人用 AI 做成了什么' },
-        { n: '博物馆', href: '/works/museum.html',   ic: 'landmark',    d: 'AI 发展时间线 + 已失效做法' },
-        { n: '博客',   href: '/blog/',               ic: 'newspaper',   d: '带出处的长文与笔记' }
+        { n: '项目',     href: '/works/projects.html', ic: 'folder-open', d: '开源作品与来源清单' },
+        { n: '游戏源码', href: '/works/games.html',    ic: 'gamepad-2',   d: '能直接跑的小游戏与源码' },
+        { n: '案例',     href: '/works/cases.html',    ic: 'briefcase',   d: '别人用 AI 做成了什么' },
+        { n: '漫剧',     href: '/works/manju.html',    ic: 'film',        d: 'AI 漫剧怎么做，案例与工具' },
+        { n: '博物馆',   href: '/works/museum.html',   ic: 'landmark',    d: 'AI 发展时间线 + 已失效做法' },
+        { n: '博客',     href: '/blog/',               ic: 'newspaper',   d: '带出处的长文与笔记' }
       ],
       about: [
         { n: '关于',     href: '/about/index.html',      ic: 'info',    d: '这个站是干什么的' },
-        { n: '生态库',   href: '/about/ecosystem.html',  ic: 'globe',   d: '收录范围与来源说明' },
-        { n: '改进',     href: '/about/plan.html',       ic: 'list',    d: '待办与已修清单' },
+        { n: '生态库',   href: '/about/ecosystem.html',  ic: 'globe',   d: '189 家厂商与收录范围' },
+        { n: '场馆地图', href: '/about/map-guide.html',  ic: 'map-pin', d: '42 处 AI 场馆，22 座城市' },
         { n: '更新日志', href: '/about/changelog.html',  ic: 'history', d: '每天改了什么，可查' }
       ]
     },
@@ -85,11 +92,11 @@
         {
           n: '站点',
           items: [
-            { n: '模型', href: '/models/' },
-            { n: '学习', href: '/learn/' },
-            { n: '工具', href: '/toolbox/' },
-            { n: '作品', href: '/works/' },
-            { n: '关于', href: '/about/' }
+            { n: '模型图谱', href: '/models/' },
+            { n: '学习路径', href: '/learn/' },
+            { n: '工具工坊', href: '/toolbox/' },
+            { n: '作品展厅', href: '/works/' },
+            { n: '关于本站', href: '/about/' }
           ]
         },
         {
@@ -100,7 +107,7 @@
             { n: '生态库',   href: '/about/ecosystem.html' },
             { n: '开源仓库', href: '/toolbox/repos.html' },
             { n: '工具使用 · 31 款', href: '/learn/ai-coding-tools.html' },
-            { n: '改进计划', href: '/about/plan.html' }
+            { n: '场馆地图', href: '/about/map-guide.html' }
           ]
         },
         {
@@ -108,8 +115,7 @@
           items: [
             { n: '隐私说明', href: '/about/privacy.html' },
             { n: '安全说明', href: '/about/security.html' },
-            { n: '使用协议', href: '/LICENSE' },
-            { n: '站点地图', href: '/sitemap.xml' }
+            { n: '使用协议', href: '/LICENSE' }
           ]
         }
       ],
@@ -226,7 +232,7 @@
 
   /* ======================= 三、构建 ======================= */
   /* 品牌标识（内联 SVG）。
-     为什么不用 emoji：🐎 在 Windows / macOS / Android 上是三套完全不同的图形，
+     为什么不用 emoji：动物 emoji 在 Windows / macOS / Android 上是三套完全不同的图形，
      无法做单色版、无法控制字重与基线，导出与印刷会变成豆腐块。见 BRAND.md §2。
      为什么内联而不是 <img src>：标识每页都要用，内联省一次请求、无闪烁，
      并且能直接继承文档的渲染时序，不占 LCP。
@@ -565,7 +571,12 @@
     if (dn && title === dn) {
       html = '<a href="/">首页</a><span class="sep">/</span><span class="cur" aria-current="page">' + esc(dn) + '</span>';
     }
-    holder.className = 'cccrumb';
+    /* 2026-11-25 修复：原来这里是 holder.className = 'cccrumb'，会把上面
+       buildCrumb 给自动容器加的 cccrumb-auto 类整体覆盖掉 —— 于是失去
+       max-width / margin:auto / 左右 gutter，面包屑贴到视口左边缘，
+       首段「首页」被切掉半个字（实测 1440 与 390 都复现）。
+       改为追加类，不清空已有类。 */
+    holder.classList.add('cccrumb');
     holder.innerHTML = html;
   }
 
@@ -617,7 +628,7 @@
     }
 
     /* 分站老框架条（inject-siteframe.py 注入的 .ccbar，170 页）与全站导航
-       是两套全局导航：叠在一起就是两条顶栏、两套品牌写法（🐎 / 白驹 ccowork）。
+       是两套全局导航：叠在一起就是两条顶栏、两套品牌写法（/ 白驹 ccowork）。
        按 BRAND.md §6.1「导航全站唯一、页面不得自建导航」收编：
        统一导航已提供「品牌回首页 + 五域 + 分区条 + 面包屑」，老细栏让位。
        必须放在 hasLegacyNav() 之前，旧架构页也不会残留两套。 */
@@ -685,7 +696,7 @@
       document.head.appendChild(s)
     }
     if (!loaded('module.js', function () { return document.getElementById('modSettings') })) {
-      load('/module.js?v=20261124a')
+      load('/module.js?v=20261125a')
     }
     if (!loaded('search.js', function () { return window.ccowSearchOpen })) {
       load('/search.js')

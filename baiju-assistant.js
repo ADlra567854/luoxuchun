@@ -92,11 +92,11 @@
       if (!document.querySelector('link[href*="site-nav.css"]')) {
         var l = document.createElement('link')
         l.rel = 'stylesheet'
-        l.href = BJS_BASE + 'site-nav.css?v=20261124a'
+        l.href = BJS_BASE + 'site-nav.css?v=20261125a'
         document.head.appendChild(l)
       }
       var s = document.createElement('script')
-      s.src = BJS_BASE + 'site-nav.js?v=20261124a'
+      s.src = BJS_BASE + 'site-nav.js?v=20261125a'
       s.async = false
       document.head.appendChild(s)
     } catch (e) {}

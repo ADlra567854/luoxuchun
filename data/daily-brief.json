@@ -1,12 +1,12 @@
 {
  "meta": {
-  "generated": "2026-11-26T04:05:29.127Z",
-  "generatedCn": "2026/11/26 12:05:29",
+  "generated": "2026-11-26T04:21:33.571Z",
+  "generatedCn": "2026/11/26 12:21:33",
   "method": "直接抓取各站公开 RSS/Atom，不做任何 AI 生成或改写",
   "keepDays": 7,
   "windowStart": "2026-11-20",
   "windowEnd": "2026-11-26",
-  "carried": 322,
+  "carried": 321,
   "futureSkipped": 0,
   "sources": [
    {
@@ -48,10 +48,10 @@
     "url": "https://blog.google/technology/ai/rss/",
     "lang": "en",
     "ok": true,
-    "status": "error",
-    "count": 0,
+    "status": "ok",
+    "count": 20,
     "why": null,
-    "error": "fetch failed"
+    "error": null
    },
    {
     "id": "ithome",
@@ -61,6 +61,39 @@
     "ok": true,
     "status": "ok",
     "count": 60,
+    "why": null,
+    "error": null
+   },
+   {
+    "id": "sspai",
+    "name": "少数派",
+    "url": "https://sspai.com/feed",
+    "lang": "zh",
+    "ok": true,
+    "status": "ok",
+    "count": 10,
+    "why": null,
+    "error": null
+   },
+   {
+    "id": "ifanr",
+    "name": "爱范儿",
+    "url": "https://www.ifanr.com/feed",
+    "lang": "zh",
+    "ok": true,
+    "status": "ok",
+    "count": 20,
+    "why": null,
+    "error": null
+   },
+   {
+    "id": "theverge",
+    "name": "The Verge",
+    "url": "https://www.theverge.com/rss/index.xml",
+    "lang": "en",
+    "ok": true,
+    "status": "ok",
+    "count": 10,
     "why": null,
     "error": null
    },
@@ -110,24 +143,36 @@
    }
   ],
   "stats": {
-   "total": 424,
-   "datedCount": 424,
+   "total": 467,
+   "datedCount": 467,
    "undated": 0,
    "tagDist": {
-    "模型发布": 141,
+    "开发工具": 59,
+    "模型发布": 151,
     "模型能力": 37,
-    "开发工具": 56,
     "研究论文": 13,
-    "政策监管": 29,
-    "商业融资": 30,
+    "政策监管": 30,
+    "商业融资": 32,
     "教育应用": 1
    },
-   "okSources": 4,
-   "deadSources": 5,
+   "okSources": 8,
+   "deadSources": 4,
    "futureSkipped": 0
   }
  },
  "items": [
+  {
+   "title": "Siri AI 开发者预览版让 iOS、iPadOS 和 macOS 应用能够与 Siri 集成",
+   "url": "https://www.infoq.cn/article/j1aQzS6OrB9aDlChCwiQ?utm_source=rss&utm_medium=article",
+   "summary": "",
+   "ts": 1795694400000,
+   "source": "InfoQ 中国",
+   "sourceId": "infoq",
+   "lang": "zh",
+   "tags": [
+    "开发工具"
+   ]
+  },
   {
    "title": "AI写代码，谁来交付？",
    "url": "https://www.infoq.cn/video/zrq9NZI5eJVetI8kA5kW?utm_source=rss&utm_medium=article",
@@ -215,6 +260,28 @@
    "tags": []
   },
   {
+   "title": "首款鸿蒙小折叠电脑正式发布，生态创新重新定义折叠电脑体验",
+   "url": "https://www.ifanr.com/1695349?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "未来随着更多生态伙伴的加入，鸿蒙电脑还将持续解锁更多场景化创新，为用户带来兼顾便携与高效的桌面生产力新选择。#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795665864000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
+   ]
+  },
+  {
+   "title": "OPPO Reno17 Pro 体验：在手机里装进一只猫，分几步？",
+   "url": "https://www.ifanr.com/1691222?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "哈基米，浮出机面#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795665729000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
+  },
+  {
    "title": "铠侠与英伟达合作，探索如何将 GPU 有效显存扩展至 PB 级",
    "url": "https://www.ithome.com/1/032/722.htm",
    "summary": "IT之家 11 月 26 日消息，铠侠今日宣布与英伟达展开合作，启动面向 AI 应用的概念验证。该项目将利用英伟达 SCADA 软件，结合铠侠 SSD 的性能，探索如何将 GPU 的有效显存扩展至 PB 级。IT之家了解到，此次合作将在一套英伟达 GB200 NVL72 机架级系统上展开验证。该系统搭载 144 块容量为 7.68TB 的 KIOXIA XD8 系列 E1.S NVMe SSD，总容量约 1.106PB，双方将测试其处理",
@@ -268,6 +335,16 @@
     "模型发布",
     "研究论文"
    ]
+  },
+  {
+   "title": "专访《影之刃零》梁其伟：我想让年轻人觉得，中国功夫很酷丨多样性公司",
+   "url": "https://www.ifanr.com/1695256?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "中国功夫，也能很酷#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795664909000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
   },
   {
    "title": "中国牵头制定，人工智能训练数据质量国际标准成 30 余个欧洲国家重要技术参考",
@@ -402,6 +479,16 @@
    "ts": 1795663331000,
    "source": "IT之家",
    "sourceId": "ithome",
+   "lang": "zh",
+   "tags": []
+  },
+  {
+   "title": "我用AI做了一张两千年的中国历史地图",
+   "url": "https://sspai.com/post/117510",
+   "summary": "希望这张地图，能陪更多人走一遍故纸堆里的万里江山。查看全文",
+   "ts": 1795662833000,
+   "source": "少数派",
+   "sourceId": "sspai",
    "lang": "zh",
    "tags": []
   },
@@ -606,6 +693,16 @@
    "ts": 1795660200000,
    "source": "IT之家",
    "sourceId": "ithome",
+   "lang": "zh",
+   "tags": []
+  },
+  {
+   "title": "Robotaxi 即将开启无人运营、机器人脱稿演讲，小鹏科技日迎来了自己的「奇点时刻」",
+   "url": "https://www.ifanr.com/1695212?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "技术实力的外溢。#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795659924000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
    "lang": "zh",
    "tags": []
   },
@@ -864,6 +961,16 @@
    ]
   },
   {
+   "title": "A社曝光了一份AI整顿职场魔幻实录，请甩给你那位沉迷AI提效的老板",
+   "url": "https://www.ifanr.com/1691748?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "你用公司的 AI 省下的时间是公司的#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795656510000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
+  },
+  {
    "title": "英特尔 7 款 Nova Lake-S 处理器曝光：旗舰睿频 5.5GHz、最高 144MB L3 缓存",
    "url": "https://www.ithome.com/1/032/570.htm",
    "summary": "IT之家 11 月 26 日消息，科技媒体 Videocardz 昨日（11 月 25 日）披露一份英特尔内部文件，曝光了英特尔下一代 Nova Lake-S（也称酷睿 Ultra 4000 系列）桌面处理器的初步规格，共涉及 7 款型号。CPU 名称核心数／线程数核心配置（性能核＋能效核＋低功耗能效核）末级缓存（LLC）基础功耗（PL1）集成显卡酷睿 Ultra 9 4970K BFC28 核／28 线程8＋16＋4144MB125W",
@@ -914,6 +1021,92 @@
    "tags": []
   },
   {
+   "title": "派早报：蔚来举办 2026 创新科技日、Tidal 将拒绝 AI 音乐等",
+   "url": "https://sspai.com/post/119560",
+   "summary": "阿里千问 Go 开放免费代打电话服务、Sand.ai 发布视频生成模型 MAGI-2 等。查看全文",
+   "ts": 1795651687000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
+   ]
+  },
+  {
+   "title": "Now Google’s Familiar Faces AI feature works on Walmart’s $35 smart home camera too",
+   "url": "https://www.theverge.com/tech/1042938/google-home-familiar-faces-onn-cameras",
+   "summary": "A couple of Walmart's budget-friendly smart home cameras will be able to recognize people around your house now using Google's familiar face detection feature. A new Google Home update brings Familiar Faces support to th",
+   "ts": 1795651474000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
+   "tags": []
+  },
+  {
+   "title": "早报｜手机厂商集体下调明年出货目标，曝小米降幅达25%/小鹏悠游开启主驾无人载客/宕机后，微软进入「红色警报」",
+   "url": "https://www.ifanr.com/1695128?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "· Counterpoint：2027 年全球智能手机出货量预计再降 6%，2028 年反弹 6% · 理想汽车 2026 年 Q3 营收 288.34 亿元，经营与自由现金流转正 · 26.99 万元起，宝马首款国产新世代车型 iX3 上市并开始交付#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795651377000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "商业融资"
+   ]
+  },
+  {
+   "title": "Amazon loses its latest attempt to get out of handling more recall notices",
+   "url": "https://www.theverge.com/tech/1042870/amazon-recall-order-cpsc",
+   "summary": "Amazon is on the hook to recall more than 400,000 hazardous products after losing its legal battle against the US Consumer Product Safety Commission (CPSC). The US District Court for the District of Maryland ruled in fav",
+   "ts": 1795651004000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
+   "tags": [
+    "政策监管"
+   ]
+  },
+  {
+   "title": "Google’s patent for custom AI video feeds paints a bleak picture of entertainment’s future",
+   "url": "https://www.theverge.com/entertainment/1042221/google-my-channel-ai-video-patent",
+   "summary": "Last year, Google filed a patent for a system called My Channel that's designed to create feeds filled with personalized, AI-generated videos and advertisements based on information the company knows about its users. The",
+   "ts": 1795643486000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
+   "tags": []
+  },
+  {
+   "title": "The Verge’s 2026 holiday gift guide for travelers",
+   "url": "https://www.theverge.com/gadgets/1021917/best-gifts-for-travelers-2026",
+   "summary": "Everyone has that traveler in their life. That person who feels more at home on a 14-hour train ride than a quiet Sunday on the couch. They speak multiple languages, have a gut like a goat, and make friends wherever they",
+   "ts": 1795643280000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
+   "tags": []
+  },
+  {
+   "title": "WhatsApp’s new scheduled messages let you choose the right time to send",
+   "url": "https://www.theverge.com/tech/1042532/whatsapp-scheduled-messages",
+   "summary": "WhatsApp's 3 billion users are getting an option that Meta says is one of the most requested features, with the ability to schedule messages in advance for both private conversations and group chats. Most messaging platf",
+   "ts": 1795638708000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
+   "tags": []
+  },
+  {
+   "title": "EPA reports ‘zero’ airborne lead following controlled Army detonation in Iowa",
+   "url": "https://www.theverge.com/science/1042109/us-army-detonation-lead-azide-explosives-iowa-ammunition-plant",
+   "summary": "Saying it was necessary to prevent the possible spontaneous explosion of a stockpile of material used in igniters and blasting caps, the US Army conducted a controlled detonation of over 9,700 pounds of lead azide today ",
+   "ts": 1795635951000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
+   "tags": []
+  },
+  {
    "title": "AMD 联合中科慧灵完成人形机器人端侧 AI 验证，探索“大小脑”双处理器架构",
    "url": "https://www.infoq.cn/article/stLpgV1kNHuvr21qRH9x?utm_source=rss&utm_medium=article",
    "summary": "",
@@ -921,6 +1114,16 @@
    "source": "InfoQ 中国",
    "sourceId": "infoq",
    "lang": "zh",
+   "tags": []
+  },
+  {
+   "title": "1Password breach leaked customer names and emails, but not passwords",
+   "url": "https://www.theverge.com/tech/1042409/1password-data-breach-leak",
+   "summary": "1Password says a hacker stole customer names and email addresses after gaining access to its backend systems. The breach didn't expose passwords or other information stored in customer vaults, but could put users at risk",
+   "ts": 1795633815000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
    "tags": []
   },
   {
@@ -973,6 +1176,36 @@
    "source": "InfoQ 中国",
    "sourceId": "infoq",
    "lang": "zh",
+   "tags": []
+  },
+  {
+   "title": "The Fairphone 6 Plus is modular, repairable, and $100 off right now",
+   "url": "https://www.theverge.com/gadgets/1041460/fairphone-6-plus-repairable-phone-black-friday-2026-deal-sale",
+   "summary": "Unlike most smartphones, the Fairphone 6 Plus is designed for home repair, with easily replaceable parts that could help extend its lifespan well into the future. That makes its midrange price point easier to justify, es",
+   "ts": 1795629600000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
+   "tags": []
+  },
+  {
+   "title": "The loneliest peptide party in New York",
+   "url": "https://www.theverge.com/column/1041761/optimizer-peptide-parties-afterglow",
+   "summary": "This is Optimizer, a weekly newsletter sent from Verge senior reviewer Victoria Song that dissects and discusses the latest gizmos and potions that swear they're going to change your life. Opt in for Optimizer here. On a",
+   "ts": 1795629600000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
+   "tags": []
+  },
+  {
+   "title": "FCC signs off on SpaceX’s plan to put up to 1 million data center satellites into space",
+   "url": "https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers",
+   "summary": "In an announcement on Wednesday, the FCC says it authorized SpaceX to deploy up to 1 million AI chip-equipped satellites as part of the Elon Musk-owned company's \"Starmind\" initiative. With several others also pursuing t",
+   "ts": 1795628691000,
+   "source": "The Verge",
+   "sourceId": "theverge",
+   "lang": "en",
    "tags": []
   },
   {
@@ -1171,6 +1404,28 @@
    "tags": []
   },
   {
+   "title": "翻开 2027， 值得入手的新年日历推荐",
+   "url": "https://sspai.com/post/119264",
+   "summary": "按照中国的农历纪年法，2027年是羊年，《说文解字》说「羊，祥也」。《诗经・小雅・无羊》云「尔羊来思，其角濈濈」，写羊群缓缓归野，安然相聚，恰合丁未岁的平和气象。一只吉羊，一册日历，便是收纳这一年日常 ...查看全文",
+   "ts": 1795600114000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": []
+  },
+  {
+   "title": "拓竹 P3C 发布：国补后 6374 元起，下一代 3D 打印机开始卷性价比",
+   "url": "https://www.ifanr.com/1691661?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "打印机开始卷手艺#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795597230000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
+   ]
+  },
+  {
    "title": "Anthropic还藏着2个最强模型…",
    "url": "https://www.qbitai.com/2026/11/512538.html",
    "summary": "Fable5.2已经很旧了。",
@@ -1199,6 +1454,30 @@
    "sourceId": "infoq",
    "lang": "zh",
    "tags": []
+  },
+  {
+   "title": "App+1｜Yab：开源、AI 友好的双内核浏览器，给舍不得 Arc 的你",
+   "url": "https://sspai.com/post/119310",
+   "summary": "Arc 花了很大力气重新设计「人该如何使用浏览器」，YAB 在继承这份交互遗产的同时，又顺手为 AI 打开了另一扇门。查看全文",
+   "ts": 1795589956000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
+   ]
+  },
+  {
+   "title": "Seedance 2.5 级别，价格只要 1/10，我们实测了计划开源的 MAGI-2",
+   "url": "https://www.ifanr.com/1691445?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "AI 视频「烧钱」终结者#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795584064000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
+   ]
   },
   {
    "title": "卡普空宣布《原始袭变》2027 年 9 月 29 日停服，明年 3 月停售",
@@ -1321,6 +1600,16 @@
     "开发工具",
     "政策监管"
    ]
+  },
+  {
+   "title": "怀旧手记｜Palm Pre：内藏「划时代」系统的手机",
+   "url": "https://sspai.com/post/118791",
+   "summary": "Matrix首页推荐Matrix是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选Matrix最优质的文章，展示来自用户的最真实的体验和观点。文章代表作者个人观点 ...查看全文",
+   "ts": 1795576061000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": []
   },
   {
    "title": "波音时隔九年再获中国客运航司大单：厦航 50 架 737-8 订单敲定，目录价 74 亿美元",
@@ -1759,6 +2048,18 @@
    "tags": []
   },
   {
+   "title": "派早报：华为发布 Mate X8 与 MateBook Fold S、微软将推出自研驱动等",
+   "url": "https://sspai.com/post/119527",
+   "summary": "豆包 AI 个人助理「小豆」开启公测，Teenage Engineering 推出复古 CD 播放器 EP / BC-1 等。查看全文",
+   "ts": 1795566155000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
+   ]
+  },
+  {
    "title": "首次中外联合飞行“神舟二十四号”伴着朝霞发射升空：汤洪波三赴“天宫”，巴基斯坦载荷专家短期驻留",
    "url": "https://www.ithome.com/1/031/923.htm",
    "summary": "IT之家 11 月 25 日消息，晨曦微露，朝霞漫天，北京时间 11 月 25 日 08 时 18 分 52 秒 460 毫秒，神舟二十四号载人飞船搭乘长征二号 F 遥二十四运载火箭在酒泉卫星发射中心点火发射升空。神舟二十四号飞行乘组由航天驾驶员汤洪波、航天飞行工程师武毅和载荷专家穆罕默德 · 齐尚 · 阿里三人组成，汤洪波担任指令长。其中，汤洪波此前已执行过神舟十二号与神舟十七号载人飞行任务，此次飞行将使他成为首位三次到访“天宫”的航",
@@ -1788,6 +2089,18 @@
    "lang": "zh",
    "tags": [
     "开发工具"
+   ]
+  },
+  {
+   "title": "早报｜黄仁勋复职后首开全员大会致歉/豆包推出AI个人助理「小豆」/华为鸿蒙终端突破1亿台",
+   "url": "https://www.ifanr.com/1691400?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "· 华为发布 Mate X8、Mate 90 Air 和小折叠电脑 MateBook Fold S · 神舟二十四号任务将开展一年期在轨驻留试验 · PlayStation 公布《GTA 6》首发数据，四天吸引逾 3900 万玩家#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795565301000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
    ]
   },
   {
@@ -1913,6 +2226,18 @@
    "sourceId": "infoq",
    "lang": "zh",
    "tags": []
+  },
+  {
+   "title": "18.79 万元起！比亚迪唐 EV 正式上市，砍掉七座换来 850km 续航，还有线控底盘",
+   "url": "https://www.ifanr.com/1691381?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "十年之后，比亚迪唐终于卸下了第三排的担子。#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795527366000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "商业融资"
+   ]
   },
   {
    "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
@@ -2227,6 +2552,18 @@
    ]
   },
   {
+   "title": "实测小豆：主动办事的背后，AI 正在走向每一个人",
+   "url": "https://www.ifanr.com/1691355?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "Personal Agent 的下半场，拼的是主动办事#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795518280000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "开发工具"
+   ]
+  },
+  {
    "title": "Searching for distant planets with Astra",
    "url": "https://openai.com/index/searching-for-distant-planets-with-astra",
    "summary": "See how two amateur astronomers used Codex and Astra to find potential exoplanets in public data from NASA’s Kepler and TESS space telescopes.",
@@ -2303,6 +2640,18 @@
    "sourceId": "ithome",
    "lang": "zh",
    "tags": []
+  },
+  {
+   "title": "华为发布了大折叠手机和小折叠电脑，但 1 亿鸿蒙设备才是最大的亮点",
+   "url": "https://www.ifanr.com/1691302?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "一亿台鸿蒙设备之后#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795516204000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
+   ]
   },
   {
    "title": "大众旗下 Elli 推出双向充电桩，电动汽车能给电网供电赚钱",
@@ -2537,6 +2886,16 @@
    "tags": []
   },
   {
+   "title": "社区速递 167｜迪卡侬折叠车、静电白板贴与跨系统设备协同",
+   "url": "https://sspai.com/post/119492",
+   "summary": "除了首页时间流和侧栏的精选展位，少数派Matrix社区还有很多优秀内容因条件所限无法得到有效曝光，因此我们决定重启Matrix周报，并在此基础上添加更多社区内容、作者投稿新玩意呈现给大家。上周社区速递 ...查看全文",
+   "ts": 1795511651000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": []
+  },
+  {
    "title": "腾讯发布混元翻译模型 HyMT3：翻译结果更准确、更完整、更遵循用户指令",
    "url": "https://www.ithome.com/1/031/681.htm",
    "summary": "IT之家 11 月 24 日消息，腾讯今天（24 日）下午宣布，第三代翻译模型 HyMT3 发布并开源。相比前代模型 HyMT2，能够带来更准确、更完整、更遵循用户指令的翻译结果。根据介绍，在真实场景数据上，误译样本比例降低 43%，漏译 / 增译比例降低 74%，指令遵循类错误降低 40%；支持语种从 38 种扩充到 102 种。HyMT3 包含 1.8B、7B 和 30B-A3B 三个尺寸，广泛适用于端侧例如 PC、手机、智能设备等",
@@ -2547,6 +2906,16 @@
    "tags": [
     "模型发布"
    ]
+  },
+  {
+   "title": "在一个长期相信考试可以改变命运的社会里，AI 已经开始动摇人们对成绩的信任",
+   "url": "https://www.ifanr.com/1691270?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "AI 带来的技术平权，甚至把作弊的门槛也一并打了下来#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795511354000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
   },
   {
    "title": "影石经销商称 Luna 云台系列产品将于 12 月 15 日起涨价",
@@ -2767,6 +3136,16 @@
     "开发工具",
     "政策监管"
    ]
+  },
+  {
+   "title": "[限时特惠] 从构思到完稿，让长文写作更有条理：妙笔",
+   "url": "https://sspai.com/post/119035",
+   "summary": "写一篇短文，我们可能只需要一个能让人打开即用的编辑器，比如说Apple用户最常用的系统备忘录，或者广为人知的桌面应用MicrosoftWord。但当文章的篇幅逐渐变长，一些原本不太起眼的事情也会变得麻 ...查看全文",
+   "ts": 1795505922000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": []
   },
   {
    "title": "4999 元起：华为 Mate 90 Air 手机发布，7 英寸轻薄大屏 + 麒麟 9020 处理器",
@@ -3262,6 +3641,16 @@
    ]
   },
   {
+   "title": "「试用期」已到，苹果开始给 AI 收费了 &#124; AG&#038;I",
+   "url": "https://www.ifanr.com/1691186?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "两年之期已到#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795499723000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
+  },
+  {
    "title": "Anthropic 数学家澄清 Claude 证明黎曼猜想争议：“25 万页”的说法只是开玩笑，没想到大家都当真了",
    "url": "https://www.ithome.com/1/031/476.htm",
    "summary": "IT之家 11 月 24 日消息，当地时间 11 月 23 日，参与使用 Claude 研究黎曼猜想的数学家 Levent Alpöge 在 X 上发文，承认自己做了一些傻事，并对此前公布的证明材料及相关争议作出解释。首先，他表示最受争议的「超 25 万页」证明文档实际上只是一个玩笑，他根本没打算发布如此庞大的可读版证明材料。他表示，自己发布的 Lean 代码确实“满是垃圾”，但可以编译通过。他认为外界对这些冗余代码的批评“完全合理”，",
@@ -3293,6 +3682,16 @@
    "ts": 1795499523000,
    "source": "IT之家",
    "sourceId": "ithome",
+   "lang": "zh",
+   "tags": []
+  },
+  {
+   "title": "iPhone 相机掌门人退休：他把「果味」做成标杆，也制造了争议",
+   "url": "https://www.ifanr.com/1691162?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "「果味」影像，迎来新的变量#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795498849000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
    "lang": "zh",
    "tags": []
   },
@@ -3502,6 +3901,16 @@
    ]
   },
   {
+   "title": "写在动荡之后：漫步巴黎的寻常一日",
+   "url": "https://sspai.com/post/119412",
+   "summary": "巴黎市徽上的那艘船，依然留着它的格言：「任凭风浪，亦不沉没。」查看全文",
+   "ts": 1795489390000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": []
+  },
+  {
    "title": "“得Agent开发者，得天下”，70+技术大咖共探AI技术演进与生态变革，2026奇点智能技术大会圆满收官！",
    "url": "https://www.qbitai.com/2026/11/512297.html",
    "summary": "「2026 奇点智能技术大会」与「2026 C++ 及系统软件技术大会」在北京万达文华酒店成功举办。",
@@ -3512,6 +3921,16 @@
    "tags": [
     "开发工具"
    ]
+  },
+  {
+   "title": "刚刚，Claude 黎曼猜想证明的主导者回应一切",
+   "url": "https://www.ifanr.com/1691152?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "这玩笑并不好笑#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795486219000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
   },
   {
    "title": "具身行业，终于等来了自己的通用智能时刻",
@@ -3532,6 +3951,18 @@
    "sourceId": "qbitai",
    "lang": "zh",
    "tags": []
+  },
+  {
+   "title": "早报｜黄仁勋回归，英伟达股价一夜暴涨31%/《复仇者联盟5》发布终极预告/3399起，荣耀700系列发布",
+   "url": "https://www.ifanr.com/1691119?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "· 蚂蚁阿福上线视频咨询，同时推出福环和福戒 · 韩国国家资格考试恢复统一收手机，考生还穿上了围裙 · 知乎参投基金间接入股 DeepSeek#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795478521000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": [
+    "模型发布"
+   ]
   },
   {
    "title": "How Intentful uses dots to make more time for growth",
@@ -3699,6 +4130,26 @@
    "tags": []
   },
   {
+   "title": "刚刚，黄仁勋重返英伟达！董事会全票通过，盘前大涨 30%",
+   "url": "https://www.ifanr.com/1691103?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "皮衣战神回宫#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795445412000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
+  },
+  {
+   "title": "突发！黄仁勋恢复英伟达 CEO 职位，董事会全票通过",
+   "url": "https://www.ifanr.com/1691096?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "黄仁勋回来了#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795444200000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
+  },
+  {
    "title": "安谋科技发布“星辰100e” AIoT 原型平台，AI推理性能最高提升 340 倍",
    "url": "https://www.infoq.cn/article/pdjVKiH3ONYjePlUDufv?utm_source=rss&utm_medium=article",
    "summary": "",
@@ -3798,6 +4249,16 @@
    ]
   },
   {
+   "title": "派评 | 近期值得关注的 App",
+   "url": "https://sspai.com/post/119438",
+   "summary": ">下载少数派客户端、关注少数派公众号，解锁全新阅读体验📰>实用、好用的正版软件，少数派为你呈现🚀查看全文",
+   "ts": 1795428509000,
+   "source": "少数派",
+   "sourceId": "sspai",
+   "lang": "zh",
+   "tags": []
+  },
+  {
    "title": "李健回应华为推出子品牌星芒：对荣耀不用有任何担心，已经走出了自己的道路",
    "url": "https://www.ithome.com/1/031/092.htm",
    "summary": "IT之家 11 月 23 日消息，在今天的荣耀 700 系列追光之旅暨全场景新品发布会后，荣耀 CEO 李健，荣耀产品线总裁方飞，荣耀品牌营销部总裁、全球 CMO 关海涛与媒体对话。日前，华为正式推出子品牌星芒，并发布首款产品。谈及此事，李健表示，对荣耀不用有任何担心，现在的荣耀不是六年前的荣耀，荣耀已经走出了自己的道路。他强调，荣耀的手机业务明年只会比今年更好；另外荣耀也不只是一个手机厂商了，会有五个新的产业一步步出来。“越有竞争，越",
@@ -3808,6 +4269,16 @@
    "tags": [
     "模型发布"
    ]
+  },
+  {
+   "title": "AI 降本增笑，全世界都在被迫接受审美大降级",
+   "url": "https://www.ifanr.com/1691079?utm_source=rss&utm_medium=rss&utm_campaign",
+   "summary": "日本开始狂用 AI 了#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "ts": 1795427628000,
+   "source": "爱范儿",
+   "sourceId": "ifanr",
+   "lang": "zh",
+   "tags": []
   },
   {
    "title": "懂车帝回应“测试内容大调整”：信息多处失实，部分内容为 AI 撰写",
@@ -4387,478 +4858,6 @@
     "开发工具",
     "政策监管"
    ]
-  },
-  {
-   "title": "代码显示谷歌正为 YouTube 应用引入自定义图标功能",
-   "url": "https://www.ithome.com/1/030/916.htm",
-   "summary": "IT之家 11 月 23 日消息，外媒 Android Authority 在拆解谷歌最新 YouTube 应用 21.47.483-BETA 版本代码时，发现谷歌又为应用加入了 7 款可更换的图标，不过相应功能目前暂时禁用，目前尚不清楚谷歌会向所有用户开放这项功能，还是将其限制为 YouTube Premium 订阅用户专享。事实上，谷歌在今年 10 月就已悄悄为应用加入了 3 款图标，其中一款图标将 YouTube 播放按钮改为黑白",
-   "ts": 1795418319000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "小鹏 MONA L05 车型官宣 11 月交付量超万台：纯电增程双动力，13.98 万元起",
-   "url": "https://www.ithome.com/1/030/915.htm",
-   "summary": "IT之家 11 月 23 日消息，小鹏汽车官方今日宣布，MONA L05 车型 11 月交付量截至目前已超过 10,000 台。据IT之家此前报道，11 月 4 日，小鹏汽车举办 MONA L05 首批车主交付仪式，小鹏集团董事长何小鹏亲临现场，为车主完成新车交付。小鹏 MONA L05 共推出 6 款车型，售价区间 14.48-17.68 万元，限时权益价区间 13.98-17.18 万元。小鹏 MONA L05 于 10 月 29 ",
-   "ts": 1795418098000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "宇树科技午后触及 20% 涨停，股价升至 708 元",
-   "url": "https://www.ithome.com/1/030/914.htm",
-   "summary": "IT之家 11 月 23 日消息，今日午后，宇树科技股价持续拉升并触及 20% 涨停。截至发稿报 708 元，较前一交易日上涨 118 元。这是宇树科技继 10 月 23 日上市后首次涨停以来，再度收获 20% 涨停板。IT之家注意到，宇树科技今日开盘报价为 582 元，随后股价震荡走高并在午后加速上攻。触发涨停时成交额约 44.47 亿元，换手率为 22.91%，涨停价封单约 1.27 万手。",
-   "ts": 1795418098000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "商业融资"
-   ]
-  },
-  {
-   "title": "Open Benchtable 开放式 PC 测试平台诞生十周年，纪念版发布",
-   "url": "https://www.ithome.com/1/030/913.htm",
-   "summary": "IT之家 11 月 23 日消息，Open Benchtable 是一款折叠便携的开放式 PC 测试平台，专为极限超频玩家出行而打造。其历史可追溯到 2016 年的社区版，后续则经历了 V1、V1.1、V2 的迭代。而在当地时间本月 18 日，Open Benchtable 迎来了其十周年纪念版：该版本在延续整体形制的同时将铝合金板材的主体厚度从 8mm 降低到 4mm（边缘仍为 8mm），这使得整体质量从 1.82kg 降低至 1.2",
-   "ts": 1795417835000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布"
-   ]
-  },
-  {
-   "title": "欧洲加速摆脱美国云服务依赖：政府采购转向本土供应商，数字主权成新考量",
-   "url": "https://www.ithome.com/1/030/912.htm",
-   "summary": "IT之家 11 月 23 日消息，据路透社报道，欧洲正在加快推动关键数字服务实现自主可控。业内高管表示，越来越多欧洲政府部门和受监管行业在采购云服务时，开始将数字主权纳入重要考量。这一趋势正在逐渐反映到政府采购标准和合同授予结果中。尽管数字主权多年来一直是欧洲的政策目标，但如今相关要求正从政治层面的讨论，逐步转化为实际采购标准。这一变化与过去一年欧洲对美国技术依赖的担忧加剧有关。美国总统唐纳德 · 特朗普（Donald Trump）重返",
-   "ts": 1795417740000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "政策监管"
-   ]
-  },
-  {
-   "title": "新款深蓝 L07 车型将于 11 月 27 日广州车展亮相：采用 800V 高压平台、搭载豆包大模型",
-   "url": "https://www.ithome.com/1/030/911.htm",
-   "summary": "IT之家 11 月 23 日消息，深蓝汽车宣布旗下新款 L07 车型将于 11 月 27 日开幕的 2026 广州车展上亮相。据介绍，新款深蓝 L07 采用 800V 高压平台，全系标配激光雷达，其智能辅助驾驶能力可覆盖通勤、高速、泊车等高频出行场景；搭载端到端开放域豆包大模型，支持车内外语音交互。作为参考，去年上市的 2026 款深蓝 L07 车型尺寸为 4875×1890×1480mm、轴距 2900mm，定位中型轿车，拥有 473",
-   "ts": 1795417440000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型能力",
-    "商业融资"
-   ]
-  },
-  {
-   "title": "达尔优 AE5 抓握电竞鼠标即将登场，55g 轻量化机身",
-   "url": "https://www.ithome.com/1/030/909.htm",
-   "summary": "IT之家 11 月 23 日消息，达尔优今天宣布 AE5 抓握电竞鼠标即将登场，具体上市时间暂未公布。据介绍，这款鼠标在不打孔的情况下，实现了 55g 轻量化机身。拥有专属抓握模具，机身两侧带有微微不对称的收腰，正好卡住右手无名指。标准抓握时五指弓起，指尖覆盖按键、掌心悬空，手掌后段轻靠在鼠背上。截至目前，达尔优暂未公布该鼠标的详细配置，IT之家将持续关注，第一时间带来后续消息。",
-   "ts": 1795417375000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "商业融资"
-   ]
-  },
-  {
-   "title": "“Agent版arXiv”来了！936个智能体12个星期狂发近千篇论文，连同行评议都整上了",
-   "url": "https://www.qbitai.com/2026/11/512004.html",
-   "summary": "一个完全由AI组成的科学家社会，是什么样？",
-   "ts": 1795417178000,
-   "source": "量子位",
-   "sourceId": "qbitai",
-   "lang": "zh",
-   "tags": [
-    "开发工具",
-    "研究论文"
-   ]
-  },
-  {
-   "title": "Shopify CEO 吕特克称黄仁勋离职像一场精心编排的权力清洗，英伟达董事会是蠢货",
-   "url": "https://www.ithome.com/1/030/908.htm",
-   "summary": "IT之家 11 月 23 日消息，Shopify 首席执行官托比 · 吕特克（Tobi Lütke）对英伟达董事会处理黄仁勋离职事件的方式提出强烈质疑。他认为，黄仁勋离职前接连出现的一系列指控，时间安排过于巧合，不像是偶然发生的，更像是一场经过精心编排的行动。在当地时间上周日发布的一期播客节目中，吕特克接受了主持人大卫 · 森拉（David Senra）的采访，并谈到了黄仁勋离职事件。吕特克直言：“说实话，这一切简直像经过精确设计：婚外",
-   "ts": 1795417090000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布"
-   ]
-  },
-  {
-   "title": "TML 发布循环 Transformer 模型 Inkling 2 Mini，多项表现在 100B 以内领先",
-   "url": "https://www.ithome.com/1/030/907.htm",
-   "summary": "IT之家 11 月 23 日消息，人工智能初创企业 Thinking Machines Lab (TML) 当地时间本月 20 日发布了 Inkling 2 Mini 模型。该模型采用循环 Transformer 架构，拥有 24 层，分为四个 6 层模块，中间两个模块运行 3 次、首尾模块则各运行一次。其对专家节点进行了大幅剪枝，在层初始的 384 个中仅保留了最常用的 128 个。整体来看，Inkling 2 Mini 是一个 26",
-   "ts": 1795416925000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布"
-   ]
-  },
-  {
-   "title": "我国发起的世界无线局域网应用发展联盟获 ISO / IEC 认可，成为 A 类联络组织",
-   "url": "https://www.ithome.com/1/030/906.htm",
-   "summary": "IT之家 11 月 23 日消息，市场监管总局今日宣布，国际标准化组织和国际电工委员会第一联合技术委员会系统间远程通信和信息交换分技术委员会（ISO / IEC JTC 1/SC 6）已正式批准由我国发起成立的世界无线局域网应用发展联盟（WAA）成为其 A 类联络组织。据介绍，这标志着我国 WLAN 应用领域标准化工作获得国际认可，融入全球标准治理体系进程取得突破。IT之家注意到，关于 A 类联络组织的定位，文章称其是我国国际性标准组织",
-   "ts": 1795416679000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "政策监管"
-   ]
-  },
-  {
-   "title": "苹果 MacBook 触控板竟能当扬声器：开源工具 nospeaker 用触觉马达发声",
-   "url": "https://www.ithome.com/1/030/905.htm",
-   "summary": "IT之家 11 月 23 日消息，MacBook 的触控板之所以能让用户感受到点击反馈，是因为玻璃面板下方的触觉马达会产生振动，模拟手指按压的感觉。而一款名为 nospeaker 的全新开源工具，竟然利用这套马达，让 MacBook 触控板直接发出了声音。据IT之家了解，这款有趣的小工具由开发者科迪 · 科利尔（Cody Collier）开发，项目已在 GitHub 上开源，开发者账号为 os6。该工具通过命令行运行，能够利用触控板播放",
-   "ts": 1795416267000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布",
-    "开发工具"
-   ]
-  },
-  {
-   "title": "法国人工智能企业 Mistral AI 在新加坡设立亚太总部，为政府开发定制 AI 模型",
-   "url": "https://www.ithome.com/1/030/904.htm",
-   "summary": "IT之家 11 月 23 日消息，法国人工智能企业 Mistral AI 上周（11 月 20 日）宣布在新加坡设立亚太地区总部，计划 2027 年将该区域员工数增加至 200 人以上。Mistral AI 表示，新加坡办公室将作为扩展科学中心运营，负责为政府机构、工业客户开发定制 AI 模型。该企业计划在新加坡招聘科研、工程、AI 和机器人领域的人才。在正式将新加坡定为亚太总部之前，Mistral AI 就已在新加坡开展业务。今年 4",
-   "ts": 1795416216000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "开发者绕过苹果限制，成功为 iPhone 第三方键盘实现直接语音输入",
-   "url": "https://www.ithome.com/1/030/903.htm",
-   "summary": "IT之家 11 月 23 日消息，据外媒 cultofmac 报道，近期开发者们成功将语音输入功能直接集成到 iPhone 第三方键盘中，用户现在无需切换应用，只需点击键盘上的麦克风图标，就能直接开始语音输入。此前，苹果不允许第三方键盘直接访问设备麦克风，此类应用必须先打开自己的主应用启动录音，完成语音识别后再返回原本的文本输入界面。iOS 26.4 又进一步增加了使用上的不便。苹果调整了第三方键盘获取当前运行应用信息的权限，导致键盘无",
-   "ts": 1795416180000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "开发工具"
-   ]
-  },
-  {
-   "title": "比亚迪海洋网独立 9 系旗舰 MPV 开启征名，张卓称新车基于全新平台打造、搭载多项黑科技",
-   "url": "https://www.ithome.com/1/030/902.htm",
-   "summary": "IT之家 11 月 23 日消息，比亚迪汽车海洋网销售事业部总经理张卓今日发文，宣布比亚迪海洋网独立 9 系产品开启征名。张卓表示，新车基于比亚迪全新平台打造，搭载多项黑科技，号称“重新定义家用旗舰的价值标杆”。今年 8 月，张卓在接受博主采访时就曾透露，海洋网 MPV 年底可能要上市了，并表示 MPV 也是市场独一无二的存在。IT之家注意到，在今年 4 月的 2026 北京国际车展上，比亚迪海洋网发布了一款 Ocean-V 概念车，宣",
-   "ts": 1795416018000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布",
-    "商业融资"
-   ]
-  },
-  {
-   "title": "蚂蚁阿福同款大模型宣布开源，全球医生一台电脑就能解锁专业医疗 AI 能力",
-   "url": "https://www.qbitai.com/2026/11/511998.html",
-   "summary": "阿福App宣布新一轮升级，解锁越来越多健康服务新本领",
-   "ts": 1795406194000,
-   "source": "量子位",
-   "sourceId": "qbitai",
-   "lang": "zh",
-   "tags": [
-    "模型发布",
-    "模型能力"
-   ]
-  },
-  {
-   "title": "算力周期更迭，数据复合增长：为何存储经济性对中国规模化 AI 至关重要",
-   "url": "https://www.qbitai.com/2026/11/511989.html",
-   "summary": "AI 的未来将依赖能够在数据全生命周期中平衡性能、可靠性与经济性的存储架构。",
-   "ts": 1795405666000,
-   "source": "量子位",
-   "sourceId": "qbitai",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "当大模型接上真实机器人：RoboChallenge Zero首期评测发布",
-   "url": "https://www.qbitai.com/2026/11/511978.html",
-   "summary": "RoboChallenge正式发布全新评测基准RoboChallenge Zero",
-   "ts": 1795403586000,
-   "source": "量子位",
-   "sourceId": "qbitai",
-   "lang": "zh",
-   "tags": [
-    "模型发布",
-    "模型能力"
-   ]
-  },
-  {
-   "title": "豆姐威武！豆包工作上新21个专业工作台，AI直接替你上班",
-   "url": "https://www.qbitai.com/2026/11/511933.html",
-   "summary": "豆包工作是目前字节优先级最高的产品",
-   "ts": 1795400964000,
-   "source": "量子位",
-   "sourceId": "qbitai",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "姚顺雨和混元团队上Reddit答网友，Hy小模型已进路线图",
-   "url": "https://www.qbitai.com/2026/11/511921.html",
-   "summary": "还透露了不少训练背后的秘诀",
-   "ts": 1795399799000,
-   "source": "量子位",
-   "sourceId": "qbitai",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "财务团队的 AI 蓝图",
-   "url": "https://www.infoq.cn/video/UUqekkOQ8haEXZ792UjU?utm_source=rss&utm_medium=article",
-   "summary": "",
-   "ts": 1795370098000,
-   "source": "InfoQ 中国",
-   "sourceId": "infoq",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "打造 AI 优先的销售与营销运营体系",
-   "url": "https://www.infoq.cn/video/mihBFvImttvJlSFUqC49?utm_source=rss&utm_medium=article",
-   "summary": "",
-   "ts": 1795369309000,
-   "source": "InfoQ 中国",
-   "sourceId": "infoq",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "智能体企业新前沿：驱动高效智能",
-   "url": "https://www.infoq.cn/video/Ly5HbhY4pNMCF04abkFo?utm_source=rss&utm_medium=article",
-   "summary": "",
-   "ts": 1795369108000,
-   "source": "InfoQ 中国",
-   "sourceId": "infoq",
-   "lang": "zh",
-   "tags": [
-    "开发工具"
-   ]
-  },
-  {
-   "title": "Pinterest 联合英特尔将开源性能分析推向互联网级规模",
-   "url": "https://www.infoq.cn/article/fs4IuBTjwIwR1xUgdjqt?utm_source=rss&utm_medium=article",
-   "summary": "",
-   "ts": 1795345200000,
-   "source": "InfoQ 中国",
-   "sourceId": "infoq",
-   "lang": "zh",
-   "tags": [
-    "模型发布"
-   ]
-  },
-  {
-   "title": "智能体身份国际标准化：体系布局与研制实践｜AICon北京",
-   "url": "https://www.infoq.cn/article/721YPdyIZ1D8xz20D22C?utm_source=rss&utm_medium=article",
-   "summary": "",
-   "ts": 1795341600000,
-   "source": "InfoQ 中国",
-   "sourceId": "infoq",
-   "lang": "zh",
-   "tags": [
-    "开发工具"
-   ]
-  },
-  {
-   "title": "亚马逊云科技推出 TorchNeuron，可以直接在 AWS Trainium 上运行 PyTorch 模型，无需任何修改",
-   "url": "https://www.infoq.cn/article/XhtWUmaolJECUhPX2jzY?utm_source=rss&utm_medium=article",
-   "summary": "",
-   "ts": 1795341600000,
-   "source": "InfoQ 中国",
-   "sourceId": "infoq",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "vivo Y21s/Y11s/Y05s 三款 5G 手机规格曝光：6.74 英寸 120Hz LCD 屏、6500mAh 电池",
-   "url": "https://www.ithome.com/1/030/588.htm",
-   "summary": "IT之家 11 月 22 日消息，消息源 Sudhanshu1414 现已曝光了 vivo 旗下 Y21s/Y11s/Y05s 三款 5G 手机规格信息，IT之家整理价格信息如下：vivo Y21s该机正面配备一块 6.74 英寸 1600x720 分辨率 120Hz LCD 面板，匹配 5Mp 自拍摄像头；手机后置 50Mp 主摄及 0.08Mp 辅助摄像头。手机搭载联发科天玑 6300 芯片，可选 4/6GB RAM 和 64/12",
-   "ts": 1795331313000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "消息称 Rockstar 对《荒野大镖客》影视改编持开放态度，纯版权授权报价超 1 亿美元",
-   "url": "https://www.ithome.com/1/030/587.htm",
-   "summary": "IT之家 11 月 22 日消息，随着许多传统系列作品的衰落，且鲜有新系列作品能够走红，好莱坞已转向电子游戏寻找大票房大片。此前曾出现过像《我的世界》这样的巨大成功案例，也出现过像《无主之地》这样的票房惨败。据好莱坞娱乐商业媒体 The Ankler 报道，多位消息人士透露，尽管多年来渴望改编《GTA》这一现象级 IP 的娱乐公司纷纷主动接洽，Rockstar Games 仍然不感兴趣。不过该媒体爆料称，Rockstar 旗下另一部价值",
-   "ts": 1795331290000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "因分享《GTA 6》成人内容截图，Xbox 和 PS5 玩家遭平台处罚",
-   "url": "https://www.ithome.com/1/030/586.htm",
-   "summary": "IT之家 11 月 22 日消息，Rockstar 新作《侠盗猎车手 VI》（Grand Theft Auto VI，简称《GTA 6》）因暴力、粗俗语言以及部分裸露内容，被评为成人级游戏。随着游戏正式推出，玩家开始发现，分享包含成人内容的游戏截图和视频也可能带来账号处罚。IT之家注意到，一名 Xbox 用户因上传了一段海滩场景视频，画面中出现了穿着暴露的游客，结果账号被暂停使用 48 小时。与此同时，一名 PS5 玩家因为拍摄游戏内裸",
-   "ts": 1795331071000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "电动汽车成为《GTA6》主流交通工具之一：充电对应现实时间约 10 秒、受损时从底盘电池位置着火",
-   "url": "https://www.ithome.com/1/030/584.htm",
-   "summary": "IT之家 11 月 22 日消息，综合外媒 electrek 报道，电动汽车终于在《GTA 6》中成为主流交通工具之一，游戏中的罪恶城街头随处可见电动汽车和充电站。游戏最初将玩家带到岛礁地区（Keys），这是游戏中莱奥尼达州（Leonida）相对落后的区域。当地街道上主要是老旧汽车和廉价二手车，电动汽车并不常见。不过，随着玩家启程前往市区，街头车辆开始发生变化。越接近城市中心，出现的电动汽车就越多，沿途也能看到越来越多的充电站。进入城市",
-   "ts": 1795330533000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "开发工具"
-   ]
-  },
-  {
-   "title": "法拉利 296 Challenge 双车发布：基于纯燃油动力架构打造",
-   "url": "https://www.ithome.com/1/030/583.htm",
-   "summary": "IT之家 11 月 22 日消息，法拉利今天宣布推出 296 Challenge 和 296 Challenge EVO 超跑。这两款新车均基于纯燃油动力架构打造，整车更加轻巧，响应更直接，并融入源自赛车的空气动力学设计。IT之家了解到，法拉利 296 Challenge Stradale 仅搭载发动机，没有电动机和电池，成功减重 140kg。该车面向公路驾驶打造，最大输出功率达 670 cv，配备固定式尾翼与专属动态性能控制系统。座舱",
-   "ts": 1795330228000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布"
-   ]
-  },
-  {
-   "title": "微软公布 Outlook 全球宕机最终报告：部分邮件投递失败，安全功能也受影响",
-   "url": "https://www.ithome.com/1/030/582.htm",
-   "summary": "IT之家 11 月 22 日消息，11 月 12 日，微软发生大规模服务故障，导致全球数百万用户无法正常访问 Outlook、Exchange Online 以及其他多项 Microsoft 365 服务。微软经过约 12 小时才逐步恢复全部服务。上周，该公司发布了初步事故报告，解释了此次故障的原因。如今，微软公布了最终事故报告，披露了一些此前未公开的细节：部分邮件未能成功送达预定收件人。此外，此次故障还影响了微软多项电子邮件安全功能，",
-   "ts": 1795330142000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布",
-    "政策监管"
-   ]
-  },
-  {
-   "title": "TikTok 上线 AI 深度伪造检测工具，为创造者推出“肖像检测”功能",
-   "url": "https://www.ithome.com/1/030/581.htm",
-   "summary": "IT之家 11 月 22 日消息，当地时间 11 月 19 日，TikTok 宣布推出两项新工具，进一步推进人工智能透明度建设，让社区用户在 TikTok 上创作和接触人工智能内容时，拥有更高的知情度与掌控力。TikTok 推出了一款新的透明度工具，让任何人都能自主进行核验。即便没有 TikTok 账号，用户也可以上传图片或视频，检测其是否由 TikTok 的人工智能创作功能生成或编辑。除了内容凭证外，该工具还会检测 TikTok 专有",
-   "ts": 1795329981000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布",
-    "开发工具"
-   ]
-  },
-  {
-   "title": "《GTA 6》掀起全球网络流量高峰，多家运营商带宽创纪录",
-   "url": "https://www.ithome.com/1/030/580.htm",
-   "summary": "IT之家 11 月 22 日消息，美国互联网服务提供商 Comcast 于 11 月 20 日发布题为《互联网历史上流量最大的一天》的报告，称 11 月 18 日是其网络有史以来流量最高的一天。Comcast 表示，在流量峰值时段，GTA 6 下载和游戏活动产生的流量最高占其整个网络总流量的 24%。需要注意的是，这一比例仅统计 Comcast 在美国运营的网络，并不代表全球互联网流量占比，同时反映的是特定时段的峰值数据，而非全天平均水",
-   "ts": 1795329895000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布"
-   ]
-  },
-  {
-   "title": "《GTA 6》Xbox 版存解锁帧率漏洞：最高可跑到 100FPS，但游戏速度也变快",
-   "url": "https://www.ithome.com/1/030/579.htm",
-   "summary": "IT之家 11 月 22 日消息，备受期待的《侠盗猎车手 VI》（Grand Theft Auto VI，简称《GTA 6》）于 11 月 19 日在全球正式发售。游戏获得了媒体和玩家的广泛好评，并以首日 37.9 亿美元（IT之家注：现汇率约合 253.68 亿元人民币）的销售额，创下历史上所有娱乐媒介中规模最大的首发纪录。事实上，在正式发售之前，《GTA 6》就已售出 3250 万份，成为史上预购量最高的电子游戏。上个月，Rocks",
-   "ts": 1795329853000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "打破前作传统：《GTA6》终于可以让火车停下来",
-   "url": "https://www.ithome.com/1/030/577.htm",
-   "summary": "IT之家 11 月 22 日消息，据 4Gamers 报道，在《GTA 5》中，无论玩家使用什么方法，都无法让火车停下来。不过这一延续多部作品的传统似乎终于在《GTA 6》中被打破。究其原因，《GTA5》中的火车并未采用真实的物理运算机制，而是通过按照时间不断更新坐标的方式运行，且完全无敌，无法被摧毁。因此无论玩家设置什么障碍，即便是杀死司机、投掷大量炸药、乃至开装甲车坦克阻挡，都无法真正阻止火车前进，火车会像一台坚不可摧的推土机一样，",
-   "ts": 1795329545000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": []
-  },
-  {
-   "title": "腾讯 Chatterfly 输入法安卓版开启内测，支持语音转写、自动翻译等 AI 功能",
-   "url": "https://www.ithome.com/1/030/576.htm",
-   "summary": "IT之家 11 月 22 日消息，腾讯 Chatterfly 输入法安卓版现已开启内测，iOS 版目前状态为“即将发布”。据介绍，Chatterfly 输入法除了将语音变成文字外，还能理解上下文，识别不同的意图和场景，还能听懂用户的需求，帮用户执行任务。IT之家附该输入法主要特性如下：语音输入，说完即成稿：不用组织语言，Chatterfly 能自动识别语境，帮你理成清楚、得体的话；说完自动翻译：翻译模式支持一键唤起，将语音直接翻译为指定",
-   "ts": 1795329165000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布",
-    "模型能力"
-   ]
-  },
-  {
-   "title": "特斯拉更新 Robotaxi 应急方案：确认 Cybercab 新硬件，个人车辆入网在即",
-   "url": "https://www.ithome.com/1/030/575.htm",
-   "summary": "IT之家 11 月 22 日消息，特斯拉更新了 Robotaxi（无人驾驶出租车）应急人员交互方案，此次调整也透露出这项服务下一阶段的发展方向。X 用户 @scotsrule08 发现，特斯拉 Cybercab 的应急计划版本已从 1.2 升级至 1.3，Model Y Robotaxi 的应急计划则从此前版本更新至 1.6。两份文件的发布日期均为 2026 年 11 月 20 日。此次更新确认了 Cybercab 的新硬件配置，新增了",
-   "ts": 1795329014000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布"
-   ]
-  },
-  {
-   "title": "北汽张建勇：享界是北汽品牌向上的战略承重墙，与华为的战略共同体就是墙的根基",
-   "url": "https://www.ithome.com/1/030/574.htm",
-   "summary": "IT之家 11 月 22 日消息，北京汽车集团有限公司官方微博昨日发布视频，回顾了北汽集团党委书记、董事长张建勇的讲话。张建勇表示，前几天与华为再次探讨双方的合作，最核心的八个字是“同甘共苦，并肩同行”，这是在当前向上突破的关键阶段，彼此坚定的长期承诺。他提到，对北汽而言，享界不是其产品矩阵中“一个高端选项”，而是北汽品牌向上的战略承重墙，与华为的战略共同体就是这座墙的根基。据IT之家此前报道，在 11 月 20 日的鸿蒙智行享界 V8",
-   "ts": 1795328745000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布"
-   ]
-  },
-  {
-   "title": "全球电子协会警告 PCB 或短缺至 2027 年上半年，风险堪比 2021 年芯片短缺",
-   "url": "https://www.ithome.com/1/030/573.htm",
-   "summary": "IT之家 11 月 22 日消息，全球电子协会（Global Electronics Association）11 月 18 日发布行业警报称，印制电路板（PCB）供应链短缺持续加剧，汽车、工业、医疗、国防和电信企业均反映交期延长、难以保障供应，AI 需求正在挤占本就紧张的产能。协会指出，这轮需求不仅规模超出供应链原有承载能力，形态也更耗材料。普通 PCB 约为 12 层，AI 服务器用板正转向 40-60 层以上，每增加一层都要消耗更",
-   "ts": 1795328723000,
-   "source": "IT之家",
-   "sourceId": "ithome",
-   "lang": "zh",
-   "tags": [
-    "模型发布",
-    "模型能力"
-   ]
-  },
-  {
-   "title": "Nature：糖尿病大鼠成功恢复正常血糖！用电刺激迷走神经控糖",
-   "url": "https://www.qbitai.com/2026/11/511904.html",
-   "summary": "",
-   "ts": 1795328507000,
-   "source": "量子位",
-   "sourceId": "qbitai",
-   "lang": "zh",
-   "tags": []
   }
  ]
 }

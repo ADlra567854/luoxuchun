@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="免费工科工具上手,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>免费工科工具上手 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"免费工科工具上手 · 白驹 ccowork","description":"CAD / 工程制图 / 三维建模 / 仿真CAE / 电子EDA / 数学计算 / 编程开发 / 工程文档 —— 完全免费或开源的工科软件，逐个教下载、教部署、教使用，含成长路线与实训资源。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<meta name="description" content="CAD / 工程制图 / 三维建模 / 仿真CAE / 电子EDA / 数学计算 / 编程开发 / 工程文档 —— 完全免费或开源的工科软件，逐个教下载、教部署、教使用，含成长路线与实训资源。">
+<meta property="og:description" content="CAD / 工程制图 / 三维建模 / 仿真CAE / 电子EDA / 数学计算 / 编程开发 / 工程文档 —— 完全免费或开源的工科软件，逐个教下载、教部署、教使用，含成长路线与实训资源。">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f5c26b;
+  --green:#2bbd7e; --orange:#f5933b;
+  --text:#e8eefc; --muted:#8fa0c4;
+  --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+[data-theme="cloud"]{
+  --bg:#F4F7FC; --bg2:#eaf0fa; --card:#ffffff; --line:rgba(30,42,68,.12);
+  --text:#1E293B; --muted:#5a6b8c;
+  --green:#10966a; --orange:#d97706;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s}
+::selection{background:var(--blue);color:#fff}
+a{color:inherit;text-decoration:none}
+img{display:block}
+/* 导航 */
+nav.top{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:13px 26px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:.3s}
+[data-theme="cloud"] nav.top{background:rgba(255,255,255,.82)}
+nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
+nav .brand .logo{width:26px;height:26px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:15px}
+nav .links{display:flex;gap:16px;font-size:14px;flex-wrap:wrap;align-items:center}
+nav .links a{color:var(--muted);transition:.25s}
+nav .links a:hover,nav .links a.cur{color:var(--cyan)}
+.theme-btn{cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--text);
+  border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;transition:.2s}
+.theme-btn:hover{border-color:var(--cyan)}
+/* Hero */
+.hero{position:relative;padding:64px 24px 30px;text-align:center;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(1.05)}
+.hero .bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(6,8,15,.55),rgba(6,8,15,.92)),radial-gradient(800px 420px at 50% -8%,rgba(79,140,255,.28),transparent 60%)}
+[data-theme="cloud"] .hero .bg::after{background:linear-gradient(180deg,rgba(244,247,252,.5),rgba(244,247,252,.92)),radial-gradient(800px 420px at 50% -8%,rgba(79,140,255,.22),transparent 60%)}
+.hero>*{position:relative;z-index:2}
+.hero .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:6px 16px;margin-bottom:18px;background:rgba(255,255,255,.04)}
+.hero h1{font-size:clamp(28px,4.8vw,54px);font-weight:900;letter-spacing:1px;line-height:1.18}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:780px;margin:16px auto 0;color:var(--muted);font-size:15px}
+.stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:28px 0 4px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 24px;min-width:118px}
+.stat b{display:block;font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:13px;color:var(--muted)}
+/* 区块 */
+.sec{max-width:1200px;margin:0 auto;padding:50px 22px}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.sec-head h2{font-size:clamp(22px,3vw,32px);font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{color:var(--muted);font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 14px}
+.sec-head .sub{color:var(--muted);font-size:14px;margin-left:auto;max-width:520px;text-align:right}
+/* 搜索+筛选 */
+.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px;position:sticky;top:58px;z-index:40;background:linear-gradient(180deg,var(--bg) 70%,transparent);padding:12px 0;backdrop-filter:blur(6px)}
+.search{flex:1;min-width:230px;display:flex;align-items:center;gap:8px;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.search input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:14px}
+.search input::placeholder{color:var(--muted)}
+.tabs{display:flex;gap:9px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--muted);
+  padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;transition:.18s}
+.tab:hover{border-color:rgba(120,160,220,.45);color:var(--text)}
+.tab.cur{background:var(--grad);color:#fff;border-color:transparent}
+/* 软件网格 */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.scard{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:.26s;display:flex;flex-direction:column}
+.scard:hover{transform:translateY(-4px);border-color:rgba(56,225,255,.5);box-shadow:0 14px 38px rgba(56,225,255,.16)}
+.sc-top{display:flex;gap:14px;padding:16px 16px 12px;align-items:flex-start}
+.sc-logo{position:relative;width:54px;height:54px;flex:none;border-radius:14px;overflow:hidden;
+  background:linear-gradient(135deg,var(--blue),var(--purple));display:grid;place-items:center;cursor:pointer;transition:.2s}
+.sc-logo:hover{transform:scale(1.06);box-shadow:0 6px 18px rgba(56,225,255,.3)}
+.sc-logo .mono{font-size:24px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.3);z-index:1}
+.sc-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8px;background:#fff;z-index:2}
+.sc-info{flex:1;min-width:0}
+.sc-name{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.sc-name b{font-size:17px;font-weight:800}
+.sc-namelink{color:inherit;transition:.18s}
+.sc-namelink:hover{color:var(--cyan)}
+.sc-cat{font-size:12px;color:var(--cyan);border:1px solid var(--line);border-radius:999px;padding:1px 9px}
+.badge{font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.badge.open{color:var(--green);background:rgba(43,189,126,.14);border:1px solid rgba(43,189,126,.4)}
+.badge.free{color:var(--blue);background:rgba(79,140,255,.14);border:1px solid rgba(79,140,255,.4)}
+.badge.limit{color:var(--orange);background:rgba(245,147,59,.14);border:1px solid rgba(245,147,59,.42)}
+.sc-lic{font-size:12px;color:var(--muted);margin-top:4px}
+.sc-os{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.sc-os span{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px}
+.sc-desc{font-size:13px;color:var(--muted);padding:0 16px 12px;line-height:1.6}
+.sc-actions{padding:0 16px 16px;margin-top:auto;display:flex;gap:8px}
+.teach-btn{flex:1;border:1px solid var(--line);background:rgba(79,140,255,.08);color:var(--text);
+  border-radius:10px;padding:9px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.teach-btn:hover{border-color:var(--cyan);background:rgba(56,225,255,.12)}
+.detail-btn{flex:1;border:1px solid var(--line);background:transparent;color:var(--cyan);
+  border-radius:10px;padding:9px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.detail-btn:hover{border-color:var(--cyan);background:rgba(56,225,255,.12)}
+.teach-btn .arr{transition:.25s;color:var(--cyan)}
+.teach-btn.open .arr{transform:rotate(180deg)}
+.sc-detail{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 16px}
+.sc-detail.show{padding:0 16px 16px}
+.tips-mini{margin-top:12px;font-size:12px;color:var(--muted);line-height:1.62;
+  background:linear-gradient(135deg,rgba(43,189,126,.09),rgba(79,140,255,.05));
+  border:1px solid rgba(43,189,126,.3);border-radius:10px;padding:10px 12px}
+.step{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.step:last-child{border-bottom:none}
+.step .k{flex:none;width:46px;height:24px;border-radius:10px;background:var(--grad);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center}
+.step .v{font-size:13px;color:var(--muted);line-height:1.55}
+.videos{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}
+.vbtn{flex:1;min-width:120px;text-align:center;border:1px solid var(--line);border-radius:10px;padding:8px;font-size:13px;font-weight:700;color:var(--cyan);transition:.2s}
+.vbtn:hover{background:rgba(56,225,255,.1);border-color:var(--cyan)}
+/* 视频专区 */
+.hero-jump{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:14px;font-weight:800;
+  color:var(--text);border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:9px 20px;transition:.22s}
+.hero-jump:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.vh-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:22px}
+.vh-fcard{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px;transition:.22s}
+.vh-fcard:hover{border-color:rgba(56,225,255,.45);transform:translateY(-3px)}
+.vh-fcard video{width:100%;border-radius:10px;display:block;background:#000;aspect-ratio:16/9;object-fit:cover}
+.vh-fmeta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+.vh-fmeta b{font-size:14px;font-weight:800}
+.vh-fbadge{font-size:11px;font-weight:800;color:#fff;background:var(--grad);border-radius:999px;padding:2px 9px;white-space:nowrap}
+.vh-flink{display:inline-block;margin-top:7px;font-size:12px;font-weight:700;color:var(--cyan)}
+.vh-bar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
+.vh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:12px}
+.vh-card{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:13px 14px;transition:.22s;display:flex;flex-direction:column;gap:11px}
+.vh-card:hover{border-color:rgba(56,225,255,.45);transform:translateY(-3px)}
+.vh-hd{display:flex;align-items:center;gap:10px;min-width:0}
+.vh-logo{width:32px;height:32px;border-radius:10px;position:relative;overflow:hidden;flex:none;
+  background:linear-gradient(135deg,var(--blue),var(--purple));display:grid;place-items:center;color:#fff;font-weight:900;font-size:14px}
+.vh-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px;background:#fff}
+.vh-nm{min-width:0}
+.vh-nm b{display:block;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vh-nm span{font-size:11px;color:var(--muted)}
+.vh-plats{display:flex;gap:7px;margin-top:auto}
+.vh-plats a{flex:1;text-align:center;font-size:12px;font-weight:700;color:var(--cyan);
+  border:1px solid var(--line);border-radius:10px;padding:7px 6px;transition:.2s;white-space:nowrap}
+.vh-plats a:hover{background:rgba(56,225,255,.1);border-color:var(--cyan)}
+.vh-plats a.doc{color:var(--green)}
+.vh-plats a.doc:hover{background:rgba(43,189,126,.1);border-color:rgba(43,189,126,.6)}
+/* 成长路线 */
+.rm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+.rm-card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:20px;transition:.25s}
+.rm-card:hover{border-color:rgba(139,92,246,.5);transform:translateY(-3px)}
+.rm-hd{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.rm-hd .ic{font-size:24px}
+.rm-hd b{font-size:18px;font-weight:800}
+.rm-sum{font-size:13px;color:var(--muted);margin-bottom:14px}
+.stages{position:relative;display:flex;flex-direction:column;gap:0}
+.stage{position:relative;padding:10px 0 10px 26px;border-left:2px solid var(--line)}
+.stage:last-child{border-left-color:transparent}
+.stage::before{content:"";position:absolute;left:-7px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 3px var(--card)}
+.stage .st{font-size:11px;color:var(--cyan);font-weight:800;letter-spacing:.5px}
+.stage .nm{font-size:14px;font-weight:700;margin:1px 0 2px}
+.stage .nt{font-size:12px;color:var(--muted);line-height:1.5}
+/* 实训资源 */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:26px}
+.res-card{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:15px 16px;transition:.22s;display:block}
+.res-card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.res-card .rt{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.res-card b{font-size:15px;font-weight:800}
+.res-card .rtag{font-size:11px;color:#fff;background:var(--grad);border-radius:999px;padding:2px 9px;white-space:nowrap}
+.res-card p{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.55}
+/* 实拍画廊 */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.gal figure{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:.25s}
+.gal figure:hover{transform:translateY(-3px);border-color:rgba(56,225,255,.5)}
+.gal img{width:100%;height:150px;object-fit:cover}
+.gal figcaption{font-size:12px;color:var(--muted);padding:9px 12px}
+/* 开源专区 */
+.oss{border:1px solid var(--line);background:linear-gradient(135deg,rgba(43,189,126,.07),rgba(79,140,255,.05));border-radius:18px;padding:24px}
+.oss h3{font-size:19px;font-weight:800;margin-bottom:8px}
+.oss p{font-size:14px;color:var(--muted);line-height:1.7;max-width:880px}
+.oss .lic{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.oss .lic span{font-size:12px;color:var(--green);border:1px solid rgba(43,189,126,.4);background:rgba(43,189,126,.1);border-radius:10px;padding:5px 12px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:36px 20px;border-top:1px solid var(--line)}
+footer a{color:var(--cyan)}
+.loading{padding:60px;text-align:center;color:var(--muted)}
+*{-webkit-tap-highlight-color:transparent}
+@media(max-width:900px){
+  .sgrid{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+  .rm-grid{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+}
+@media(max-width:640px){
+  nav.top{padding:10px 13px;flex-wrap:nowrap;gap:10px}
+  nav .brand{font-size:15px}
+  nav .brand .bname{display:none}
+  nav .links{gap:9px;font-size:13px;flex-wrap:nowrap}
+  .theme-btn{padding:5px 10px;font-size:12px;white-space:nowrap}
+  .hero{padding:34px 15px 20px}
+  .hero h1{letter-spacing:0}
+  .hero p{font-size:14px}
+  .sec{padding:28px 14px}
+  /* 筛选条:两行 tab 改横向滚动,不换行不挤压 */
+  .bar{top:52px;padding:10px 0;gap:9px}
+  .search{min-width:0;flex:1 1 100%;padding:9px 12px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;padding:7px 13px;font-size:13px}
+  .sec-head .sub{text-align:left;margin-left:0;width:100%;font-size:13px}
+  .sgrid{grid-template-columns:1fr;gap:13px}
+  .rm-grid{grid-template-columns:1fr;gap:13px}
+  .sc-actions{flex-wrap:wrap}
+  .sc-actions .teach-btn,.sc-actions .detail-btn{flex:1 1 100%}
+  .sc-top{padding:14px 14px 10px;gap:12px}
+  .sc-desc{padding:0 14px 11px}
+  .sc-actions{padding:0 14px 14px}
+  .videos .vbtn{flex:1 1 100%}
+  .stats{gap:9px}
+  .stats .stat{flex:1 1 30%;min-width:88px;padding:11px 10px}
+  .stat b{font-size:21px}
+  .stat span{font-size:12px}
+  .res-grid{grid-template-columns:1fr;gap:11px}
+  .vh-grid{grid-template-columns:1fr;gap:11px}
+  .vh-feat{grid-template-columns:1fr;gap:12px}
+  .vh-bar{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .vh-bar::-webkit-scrollbar{display:none}
+  .vh-bar .tab{flex:none}
+  .gal{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+  .gal img{height:118px}
+  .oss{padding:18px 16px}
+  .oss p{font-size:13px}
+}
+@media(max-width:400px){
+  .stats .stat{flex:1 1 45%}
+  .gal{grid-template-columns:1fr 1fr}
+}
+</style>
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:description" content="CAD / 工程制图 / 三维建模 / 仿真CAE / 电子EDA / 数学计算 / 编程开发 / 工程文档 —— 完全免费或开源的工科软件，逐个教下载、教部署、教使用，含成长路线与实训资源。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/learn/software.html">
+<meta property="og:title" content="免费工科工具上手 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/learn/software.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="免费工科工具上手 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav class="top">
+  <a class="brand" href="/index.html"><i class="cc-mark" aria-hidden="true"></i><span class="bname">白驹 ccowork</span></a>
+  <div class="links">
+    <a href="/index.html">首页</a>
+    <a href="./covers.html">封面墙</a>
+    <a href="./software.html" class="cur">工具上手</a>
+    <button class="theme-btn" id="themeBtn">🌙 深色</button>
+  </div>
+</nav>
+<header class="hero">
+  <div class="bg" style="background-image:url('/assets/software/photos/eng1.jpg')"></div>
+  <div class="badge">🛠️ 工科实训 · 三维建模 · 成长路线 · 100% 免费/开源</div>
+  <h1>免费<span>工科软件</span>学院</h1>
+  <p>学校要花几万买的 CAD / 仿真 / EDA / 数学软件，这里全用<span style="color:var(--cyan)">免费或开源</span>的合法替代。逐个教你<b>下载 → 部署 → 使用</b>，并配真实图标、实拍图与成长路线。</p>
+  <a class="hero-jump" href="#videos">▶ 视频教程专区 · <span id="hjVid">120</span> 条一键直达</a>
+  <div class="stats">
+    <div class="stat"><b id="sNum">60</b><span>款精选软件</span></div>
+    <div class="stat"><b id="sStep">360</b><span>上手步骤</span></div>
+    <div class="stat"><b id="sVid">120</b><span>视频教程</span></div>
+    <div class="stat"><b id="sDoc">60</b><span>官方文档</span></div>
+    <div class="stat"><b>8</b><span>工科大类</span></div>
+    <div class="stat"><b>100%</b><span>免费 / 开源</span></div>
+  </div>
+</header>
+<main>
+  <!-- 软件库 -->
+  <section class="sec" id="lib">
+    <div class="sec-head">
+      <h2>软件<span class="em">库</span></h2>
+      <span class="tag" id="catTag">全部</span>
+      <span class="sub">点「一键教学」展开下载 / 部署 / 使用三步，附 B站 · YouTube 视频教程深链。</span>
+    </div>
+    <div class="bar">
+      <label class="search">🔍<input id="q" type="text" placeholder="搜软件名 / 类别 / 关键词，如 FreeCAD、仿真、PCB…"></label>
+      <div class="tabs" id="tabs"></div>
+      <div class="tabs" id="ptabs" style="margin-top:2px"></div>
+    </div>
+    <div class="sgrid" id="grid"><div class="loading">加载中…</div></div>
+  </section>
+  <!-- 视频教程专区 -->
+  <section class="sec" id="videos">
+    <div class="sec-head">
+      <h2>视频<span class="em">教程</span>专区</h2>
+      <span class="tag" id="vhTag">全部</span>
+      <span class="sub">3 支 AI 先导片 + 按 8 大类聚合全部视频入口，点开直达 B站 / YouTube；每款还配官方文档。</span>
+    </div>
+    <div class="vh-feat" id="vhFeat"></div>
+    <div class="vh-bar" id="vhTabs"></div>
+    <div class="vh-grid" id="vhGrid"></div>
+  </section>
+  <!-- 新手推荐 -->
+  <section class="sec" id="start">
+    <div class="sec-head">
+      <h2>新手<span class="em">从这里</span>开始</h2>
+      <span class="tag">按需求选</span>
+      <span class="sub">不会挑就照着装——点软件名直接跳到下方对应卡片。</span>
+    </div>
+    <div class="res-grid" id="starters"></div>
+  </section>
+  <!-- 成长路线 -->
+  <section class="sec" id="road">
+    <div class="sec-head">
+      <h2>成长<span class="em">路线</span></h2>
+      <span class="tag">由易到难</span>
+      <span class="sub">按方向给你排好学习顺序，每一步对应上面的一款软件。</span>
+    </div>
+    <div class="rm-grid" id="rm"></div>
+  </section>
+  <!-- 工科实训 -->
+  <section class="sec" id="train">
+    <div class="sec-head">
+      <h2>工科<span class="em">实训</span>资源</h2>
+      <span class="tag">真实平台</span>
+      <span class="sub">免费课程、虚拟实验与实拍场景，配合软件动手练。</span>
+    </div>
+    <div class="res-grid" id="res"></div>
+    <div class="gal" id="gal"></div>
+  </section>
+  <!-- 开源专区 -->
+  <section class="sec" id="oss">
+    <div class="oss">
+      <h3>🔓 开源组件专区</h3>
+      <p>本页所有标注「开源」的软件均可查看与修改源码，遵循各自开源许可证（如 GPL、LGPL、MIT、BSD、CeCILL、Apache 等）。商用或再分发前请阅读对应许可证条款——多数要求保留版权声明与开源义务。标「个人免费 / 教育免费 / 免费」的为厂商授权版本，通常限制非商用或仅限教育用途。图标来自真实品牌开源图标集（Simple Icons），场景图来自真实开源图库。</p>
+      <div class="lic">
+        <span>GPL / LGPL</span><span>MIT</span><span>BSD</span><span>Apache-2.0</span><span>CeCILL</span><span>AGPL</span><span>MPL</span><span>LPPL</span>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  白驹 ccowork · 免费工科工具上手 ｜ 数据驱动 · 双主题 · 真实开源资源<br>
+  返回 <a href="/index.html">首页</a> ｜ <a href="./covers.html">封面墙</a>
+</footer>
+<script>
+/* ===== 双主题 ===== */
+(function(){
+  var saved = localStorage.getItem('ccowork.theme');
+  var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'cloud' : 'deep');
+  apply(theme);
+  function apply(t){
+    document.body.setAttribute('data-theme', t);
+    var btn = document.getElementById('themeBtn');
+    if(btn) btn.textContent = t === 'cloud' ? '☀️ 浅色' : '🌙 深色';
+  }
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var next = document.body.getAttribute('data-theme') === 'cloud' ? 'deep' : 'cloud';
+    apply(next); localStorage.setItem('ccowork.theme', next);
+  });
+})();
+/* ===== 数据加载与渲染 ===== */
+var STATE = { cat: '全部', plat: '全部', q: '' };
+var DATA = null;
+fetch('/data/software.json').then(function(r){ return r.json(); }).then(function(d){
+  DATA = d;
+  var sw = d.software || [];
+  var totalVid = sw.reduce(function(a,x){return a+((x.videos||[]).length);},0);
+  document.getElementById('sNum').textContent = sw.length;
+  document.getElementById('sStep').textContent = sw.reduce(function(a,x){return a+((x.steps||[]).length||3);},0);
+  document.getElementById('sVid').textContent = totalVid;
+  document.getElementById('hjVid').textContent = totalVid;
+  document.getElementById('sDoc').textContent = sw.filter(function(x){return x.docs;}).length;
+  buildTabs(d.categories);
+  buildPlatformTabs();
+  buildVideoTabs(d.categories);
+  renderGrid();
+  renderVideoFeat();
+  renderVideoHub();
+  renderRoadmaps(d.roadmaps || []);
+  renderResources(d.resources || []);
+  renderGallery();
+  renderStarters(d.software);
+}).catch(function(e){
+  document.getElementById('grid').innerHTML = '<div class="loading">数据加载失败：'+e+'</div>';
+});
+function buildTabs(cats){
+  var tabs = ['全部'].concat(cats);
+  var box = document.getElementById('tabs');
+  box.innerHTML = tabs.map(function(c){
+    return '<button class="tab'+(c==='全部'?' cur':'')+'" data-c="'+c+'">'+c+'</button>';
+  }).join('');
+  box.querySelectorAll('.tab').forEach(function(b){
+    b.addEventListener('click', function(){
+      STATE.cat = b.getAttribute('data-c');
+      box.querySelectorAll('.tab').forEach(function(x){x.classList.remove('cur');});
+      b.classList.add('cur');
+      document.getElementById('catTag').textContent = STATE.cat;
+      renderGrid();
+    });
+  });
+}
+function buildPlatformTabs(){
+  var plats = ['全部','Windows','macOS','Linux','浏览器'];
+  var box = document.getElementById('ptabs');
+  box.innerHTML = '<span style="font-size:12px;color:var(--muted);align-self:center;margin-right:4px">平台</span>' + plats.map(function(p){
+    return '<button class="tab'+(p==='全部'?' cur':'')+'" data-p="'+p+'">'+p+'</button>';
+  }).join('');
+  box.querySelectorAll('.tab').forEach(function(b){
+    b.addEventListener('click', function(){
+      STATE.plat = b.getAttribute('data-p');
+      box.querySelectorAll('.tab').forEach(function(x){x.classList.remove('cur');});
+      b.classList.add('cur');
+      renderGrid();
+    });
+  });
+}
+/* ===== 视频教程专区 ===== */
+/* AI 生成的领域先导片（5s 本地 MP4）→ 海报图取自同目录真实工程照片 */
+var CLIPS = [
+  { id:'freecad', f:'freecad.mp4', p:'eng7.jpg' },
+  { id:'blender', f:'blender.mp4', p:'eng7.jpg' },
+  { id:'kicad',   f:'kicad.mp4',   p:'eng1.jpg' }
+];
+function renderVideoFeat(){
+  if(!DATA) return;
+  var box = document.getElementById('vhFeat');
+  box.innerHTML = CLIPS.map(function(c){
+    var s = DATA.software.filter(function(x){return x.id===c.id;})[0];
+    if(!s) return '';
+    return '<div class="vh-fcard">'+
+      '<video src="/assets/software/videos/'+c.f+'" poster="/assets/software/photos/'+c.p+'" controls muted loop playsinline preload="none"></video>'+
+      '<div class="vh-fmeta"><b>'+s.name+'</b><span class="vh-fbadge">🎬 先导片 5s</span></div>'+
+      '<a class="vh-flink" href="software-detail.html?id='+c.id+'">查看完整 6 步教学 →</a>'+
+    '</div>';
+  }).join('');
+}
+var VSTATE = { cat: '全部' };
+function buildVideoTabs(cats){
+  var tabs = ['全部'].concat(cats);
+  var box = document.getElementById('vhTabs');
+  box.innerHTML = tabs.map(function(c){
+    return '<button class="tab'+(c==='全部'?' cur':'')+'" data-v="'+c+'">'+c+'</button>';
+  }).join('');
+  box.querySelectorAll('.tab').forEach(function(b){
+    b.addEventListener('click', function(){
+      VSTATE.cat = b.getAttribute('data-v');
+      box.querySelectorAll('.tab').forEach(function(x){x.classList.remove('cur');});
+      b.classList.add('cur');
+      renderVideoHub();
+    });
+  });
+}
+function renderVideoHub(){
+  if(!DATA) return;
+  var list = DATA.software.filter(function(s){
+    return (VSTATE.cat === '全部' || s.category === VSTATE.cat) && (s.videos||[]).length;
+  });
+  var nVid = list.reduce(function(a,x){ return a + (x.videos||[]).length; }, 0);
+  document.getElementById('vhTag').textContent = VSTATE.cat + ' · ' + nVid + ' 条';
+  var grid = document.getElementById('vhGrid');
+  if(!list.length){ grid.innerHTML = '<div class="loading">该分类暂无视频。</div>'; return; }
+  grid.innerHTML = list.map(function(s){
+    var logo = s.logo ? '<img src="'+s.logo+'" alt="" onerror="this.remove()">' : '';
+    var plats = (s.videos||[]).map(function(v){
+      var ic = v.platform === 'B站' ? '📺' : '▶';
+      return '<a href="'+v.url+'" target="_blank" rel="noopener">'+ic+' '+v.platform+'</a>';
+    }).join('');
+    var doc = s.docs ? '<a class="doc" href="'+s.docs+'" target="_blank" rel="noopener">📖 文档</a>' : '';
+    return '<div class="vh-card">'+
+      '<a class="vh-hd" href="software-detail.html?id='+s.id+'">'+
+        '<span class="vh-logo">'+s.name.charAt(0)+logo+'</span>'+
+        '<span class="vh-nm"><b>'+s.name+'</b><span>'+s.category+' · '+s.free+'</span></span>'+
+      '</a>'+
+      '<div class="vh-plats">'+plats+doc+'</div>'+
+    '</div>';
+  }).join('');
+}
+var STARTERS = [
+  {t:'机械新生', who:'机械/车辆/模具', ids:['Tinkercad','FreeCAD','OpenSCAD','Ultimaker Cura']},
+  {t:'电子入门', who:'电类/自动化/物联网', ids:['Arduino IDE','KiCad','EasyEDA','LTspice']},
+  {t:'仿真起步', who:'力学/流体科研', ids:['GNU Octave','Gmsh','CalculiX','ParaView']},
+  {t:'零基础小白', who:'没装过任何软件', ids:['Tinkercad','EasyEDA','GeoGebra','Visual Studio Code']}
+];
+function renderStarters(list){
+  document.getElementById('starters').innerHTML = STARTERS.map(function(g){
+    var chips = g.ids.map(function(n){ return '<span class="schip" data-n="'+n+'">'+n+'</span>'; }).join('');
+    return '<div class="res-card" style="cursor:default"><div class="rt"><b>'+g.t+'</b><span class="rtag">'+g.who+'</span></div><p style="margin-top:8px">照着装 → '+chips+'</p></div>';
+  }).join('');
+  document.querySelectorAll('.schip').forEach(function(c){
+    c.style.cssText = 'display:inline-block;margin:3px 6px 0 0;padding:2px 11px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--cyan);cursor:pointer';
+    c.addEventListener('click', function(){
+      var n = c.getAttribute('data-n');
+      document.getElementById('q').value = n; STATE.q = n.toLowerCase(); STATE.cat='全部'; STATE.plat='全部';
+      document.querySelector('#tabs .tab').classList.add('cur');
+      document.querySelectorAll('#tabs .tab').forEach(function(x){ if(x!==document.querySelector('#tabs .tab')) x.classList.remove('cur'); });
+      document.querySelector('#ptabs .tab').classList.add('cur');
+      document.querySelectorAll('#ptabs .tab').forEach(function(x){ if(x!==document.querySelector('#ptabs .tab')) x.classList.remove('cur'); });
+      renderGrid();
+      document.getElementById('lib').scrollIntoView({behavior:'smooth'});
+    });
+  });
+}
+document.getElementById('q').addEventListener('input', function(e){
+  STATE.q = e.target.value.trim().toLowerCase();
+  renderGrid();
+});
+function badgeClass(free){
+  if(free === '开源') return 'open';
+  if(free === '免费') return 'free';
+  return 'limit'; // 个人免费 / 教育免费 / 免费(浏览器) 等
+}
+function renderGrid(){
+  if(!DATA) return;
+  var q = STATE.q;
+  var list = DATA.software.filter(function(s){
+    var okCat = STATE.cat === '全部' || s.category === STATE.cat;
+    var okPlat = STATE.plat === '全部' || (s.os||[]).indexOf(STATE.plat) > -1;
+    var okQ = !q || (s.name+' '+s.category+' '+s.desc+' '+(s.license||'')).toLowerCase().indexOf(q) > -1;
+    return okCat && okPlat && okQ;
+  });
+  var grid = document.getElementById('grid');
+  if(!list.length){ grid.innerHTML = '<div class="loading">没有匹配的软件，换个关键词试试。</div>'; return; }
+  grid.innerHTML = list.map(function(s){
+    var first = s.name.charAt(0);
+    var osTags = (s.os||[]).map(function(o){return '<span>'+o+'</span>';}).join('');
+    var vids = (s.videos||[]).map(function(v){
+      return '<a class="vbtn" href="'+v.url+'" target="_blank" rel="noopener">▶ '+v.platform+' 教程</a>';
+    }).join('');
+    var docsBtn = s.docs ? '<a class="vbtn" href="'+s.docs+'" target="_blank" rel="noopener">📖 官方文档</a>' : '';
+    var logo = s.logo ? '<img src="'+s.logo+'" alt="'+s.name+'" onerror="this.remove()">' : '';
+    var stepsHtml = (s.steps && s.steps.length)
+      ? s.steps.map(function(t,i){ return step('第'+(i+1)+'步', t); }).join('')
+      : step('下载', s.teach && s.teach.download)+step('部署', s.teach && s.teach.deploy)+step('使用', s.teach && s.teach.use);
+    var tipsHtml = s.tips ? '<div class="tips-mini">💡 '+s.tips+'</div>' : '';
+    return ''+
+    '<article class="scard">'+
+      '<div class="sc-top">'+
+        '<a class="sc-logo" href="software-detail.html?id='+s.id+'" title="查看 '+s.name+' 详情"><span class="mono">'+first+'</span>'+logo+'</a>'+
+        '<div class="sc-info">'+
+          '<div class="sc-name"><a class="sc-namelink" href="software-detail.html?id='+s.id+'" title="查看 '+s.name+' 详情"><b>'+s.name+'</b></a>'+
+            '<span class="sc-cat">'+s.category+'</span>'+
+            '<span class="badge '+badgeClass(s.free)+'">'+s.free+'</span></div>'+
+          '<div class="sc-lic">⚖️ '+(s.license||'')+(s.repo?' · <a href="'+s.repo+'" target="_blank" rel="noopener" style="color:var(--green)">源码</a>':'')+'</div>'+
+          '<div class="sc-os">'+osTags+'</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="sc-desc">'+s.desc+'</div>'+
+      '<div class="sc-actions">'+
+        '<a class="detail-btn" href="software-detail.html?id='+s.id+'">🔍 查看详情</a>'+
+        '<button class="teach-btn" onclick="toggleTeach(this)">📘 一键教学 <span class="arr">▾</span></button>'+
+      '</div>'+
+      '<div class="sc-detail">'+
+        stepsHtml+
+        tipsHtml+
+        '<div class="videos">'+vids+docsBtn+'</div>'+
+      '</div>'+
+    '</article>';
+  }).join('');
+}
+function step(k, v){
+  if(!v) return '';
+  return '<div class="step"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';
+}
+function toggleTeach(btn){
+  btn.classList.toggle('open');
+  var d = btn.closest('.scard').querySelector('.sc-detail');
+  if(d.classList.contains('show')){ d.classList.remove('show'); d.style.maxHeight = '0px'; }
+  else { d.classList.add('show'); d.style.maxHeight = d.scrollHeight + 'px'; }
+}
+function renderRoadmaps(rms){
+  document.getElementById('rm').innerHTML = rms.map(function(r){
+    var st = r.stages.map(function(s){
+      return '<div class="stage"><div class="st">'+s.step+'</div><div class="nm">'+s.name+'</div><div class="nt">'+s.note+'</div></div>';
+    }).join('');
+    return '<div class="rm-card"><div class="rm-hd"><span class="ic">'+r.icon+'</span><b>'+r.track+'</b></div><div class="rm-sum">'+r.summary+'</div><div class="stages">'+st+'</div></div>';
+  }).join('');
+}
+function renderResources(res){
+  document.getElementById('res').innerHTML = res.map(function(r){
+    return '<a class="res-card" href="'+r.url+'" target="_blank" rel="noopener"><div class="rt"><b>'+r.name+'</b><span class="rtag">'+r.tag+'</span></div><p>'+r.desc+'</p></a>';
+  }).join('');
+}
+/* 真实工程照片画廊（13 张已落地本地） */
+var GAL = [
+  {f:'eng2.jpg',c:'创客空间 · 动手实践'},
+  {f:'eng3.jpg',c:'工程工作站'},
+  {f:'eng4.jpg',c:'设计协作'},
+  {f:'eng5.jpg',c:'代码与仿真'},
+  {f:'eng6.jpg',c:'实验室一角'},
+  {f:'eng7.jpg',c:'3D 打印现场'},
+  {f:'eng8.jpg',c:'硬件开发'},
+  {f:'eng9.jpg',c:'智能制造'},
+  {f:'eng10.jpg',c:'项目讨论'},
+  {f:'eng11.jpg',c:'机器人实训'},
+  {f:'eng12.jpg',c:'电工电子'},
+  {f:'eng14.jpg',c:'产品验证'}
+];
+function renderGallery(){
+  document.getElementById('gal').innerHTML = GAL.map(function(g){
+    return '<figure><img src="/assets/software/photos/'+g.f+'" alt="'+g.c+'" loading="lazy"><figcaption>'+g.c+'</figcaption></figure>';
+  }).join('');
+}
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

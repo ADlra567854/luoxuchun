@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud" data-wall="none">
+<head>
+<meta property="og:description" content="白驹 ccowork：一个人写的 AI。每天实抓的 AI 事实（带出处）、个人见解与长文、能直接跑起来的开源作品。每条结论都标着来源与核验日期。">
+<meta name="keywords" content="ccowork,白驹,自学 AI,AI 学习路线,AI 教程,开源项目,模型对比,个人学习">
+<meta charset="UTF-8">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta property="og:title" content="白驹 ccowork · 一个人写的 AI">
+<meta name="description" content="白驹 ccowork：一个人写的 AI。每天实抓的 AI 事实（带出处）、个人见解与长文、能直接跑起来的开源作品。每条结论都标着来源与核验日期。">
+<title>白驹 ccowork · 一个人写的 AI</title>
+<style>
+/* ============================================================
+   设计系统 · 双主题 Token
+   说明：基础 token（--bg/--card/--grad/--cyan...）由全站主题引擎
+   theme-cloud.css（ccowork.js 自动注入）统一提供，本文件仅定义
+   引擎未覆盖的补充变量，保证与全站 47+ 页面双主题同步。
+   对应 Ardot 设计稿：明亮版（蓝青紫渐变·毛玻璃·白卡）/
+   深色版（深空沉浸底·极光青紫·半透明玻璃卡）
+   ============================================================ */
+:root{
+  --green:#22b07d; --amber:#f0a93c;
+  --grad2:linear-gradient(120deg,#22b07d,#38b6ff);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+  --msg-user-bg:#e8f1ff; --msg-user-line:#cfe2ff; --msg-user-text:#1d3a66;
+  --chip-bg:rgba(255,255,255,.16); --chip-line:rgba(255,255,255,.38);
+  --glass-card:rgba(255,255,255,.85);
+  --code-bg:#0f1830; --code-text:#dceaff;
+}
+body[data-theme="deep"]{
+  --green:#2ed3a0; --amber:#f6b45c;
+  --grad2:linear-gradient(120deg,#2ed3a0,#4dd6ff);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#7c3aed,#4dd6ff 60%,#c026d3);
+  --msg-user-bg:#12203a; --msg-user-line:#1e3a5f; --msg-user-text:#cfe2ff;
+  --chip-bg:rgba(255,255,255,.07); --chip-line:rgba(255,255,255,.12);
+  --glass-card:rgba(255,255,255,.05);
+  --code-bg:#0a0f1e; --code-text:#dceaff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ---------- 总站导航（毛玻璃） ---------- */
+/* 几何（宽度基线 / 高度）不在这里定：nebula-skin.css 的 body > nav:not([id]) 带 !important
+   最后加载，是首页导航宽度与高度的唯一真源。这里只放降级默认值，两边不一致时会以皮肤层为准。 */
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 24px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;flex-wrap:nowrap;margin-left:12px;overflow-x:auto;scrollbar-width:none}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+nav.top .cta{padding:10px 20px;border:none;border-radius:999px;background:var(--grad);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.30);transition:.2s;white-space:nowrap}
+nav.top .cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.42)}
+.burger{display:none}
+
+/* ---------- Hero 门区（渐变 · 徽章 · 光斑） ---------- */
+#gate{position:relative;overflow:hidden;background:var(--hero-grad);transition:background .35s ease}
+#gate::before,#gate::after{content:"";position:absolute;border-radius:50%;pointer-events:none;filter:blur(2px)}
+#gate::before{width:320px;height:320px;top:-60px;right:-40px;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%)}
+#gate::after{width:260px;height:260px;bottom:-80px;left:-60px;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%)}
+/* 设计稿极光光斑（深色版增强：青/紫/粉三光斑） */
+body[data-theme="deep"] #gate::before{background:radial-gradient(circle,rgba(34,225,255,.5),transparent 70%)}
+body[data-theme="deep"] #gate::after{background:radial-gradient(circle,rgba(139,92,246,.55),transparent 70%)}
+#gate .orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(1px)}
+#gate .orb.o1{width:260px;height:260px;bottom:-60px;right:12%;background:radial-gradient(circle,rgba(232,121,250,.40),transparent 70%)}
+#gate .orb.o2{width:180px;height:180px;top:8%;left:6%;background:radial-gradient(circle,rgba(94,234,212,.35),transparent 70%)}
+body[data-theme="cloud"] #gate .orb{opacity:.55}
+#gate .inner{position:relative;max-width:1080px;margin:0 auto;padding:56px 20px 44px;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+  background:var(--chip-bg);border:1px solid var(--chip-line);color:#fff;font-size:13px;font-weight:700;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);letter-spacing:.5px}
+#gate h1{font-size:clamp(34px,5.2vw,60px);font-weight:900;letter-spacing:1px;color:#fff;line-height:1.25;margin-top:16px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+/* 强调字：深色 hero 底上必须高对比。
+   原来白→#d6e9ff 的渐变在深底上第二行偏暗，几乎看不见；
+   改成 青(#7ef0ff) → 蓝(#4f8cff) → 紫(#c9a4ff) 三段，两端都够亮。 */
+#gate h1 .g{background:linear-gradient(120deg,#8ef2ff,#5aa2ff 48%,#c9a4ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 2px 24px rgba(79,140,255,.28)}
+#gate .sub{color:rgba(255,255,255,.95);font-size:15px;margin:16px auto 0;max-width:720px;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.gate-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:22px auto 2px;max-width:800px}
+.gate-chips .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;
+  background:var(--chip-bg);border:1px solid var(--chip-line);color:#fff;font-size:13px;font-weight:700;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:.2s;text-shadow:0 1px 4px rgba(16,48,120,.30);cursor:pointer}
+.gate-chips .chip:hover{background:rgba(255,255,255,.30);transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,48,120,.25)}
+/* 「你是谁」= 身份分流入口，给它实心高亮，与其它功能型chip 拉开层级 */
+.gate-chips .chip-role{background:rgba(255,255,255,.34);border-color:rgba(255,255,255,.85);
+  box-shadow:0 4px 16px rgba(16,48,120,.22);padding:9px 22px;font-size:14px}
+
+/* ====== 新手引导（2026-11-20 合并：全站唯一一处「你是谁」）======
+   原先并存两套身份入口：① 导航右上「🙂 选身份」弹 bjRoleDlg 模态框（6 类身份，写 baiju.role）；
+   ② 首屏内联 .onboard 面板（3 类人群，不写任何存储）。两套体系互不相通，选完内联那套
+   等于白选，导航芯片还写着「选身份」；加上 module.js 首访还会盖一层 4 步全屏导览，
+   新用户得连关两个窗，看到的就是「怎么有两个新手引导」。
+   现在只留这一块内联面板，并把模态的两样东西并进来：
+   · 6 类身份全部落在这里（排序：任务导向 3 张在前，细分身份 3 张在后）；
+   · 选中即写 Baiju.Role.set()，导航身份芯片同步、跨页记忆；
+   · 模态的 4 步教学压成底部两个直连按钮（设置 / 助手），不再弹窗教学。
+   选过身份后面板收成紧凑条（data-state="ready"），回访不再常年占掉 349px 首屏。 */
+.onboard{max-width:940px;margin:24px auto 0;padding:18px 20px 16px;border-radius:18px;
+  background:var(--glass-card);border:1px solid var(--line);box-shadow:0 12px 36px rgba(20,40,90,.10);
+  scroll-margin-top:84px;transition:box-shadow .35s}
+.onboard.flash{box-shadow:0 0 0 2px rgba(79,140,255,.6),0 18px 46px rgba(79,140,255,.3)}
+.onboard .ob-hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.onboard .ob-hd b{font-size:16px;font-weight:800;color:var(--text)}
+.onboard .ob-hd span{font-size:12.5px;color:var(--muted);line-height:1.6;flex:1;min-width:200px}
+.onboard .ob-change{flex:none;margin-left:auto;padding:5px 13px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12px;font-weight:700;
+  font-family:inherit;transition:.18s}
+.onboard .ob-change:hover{border-color:#4f8cff;color:#4f8cff}
+/* 站点全局 button{display:flex} 会盖掉 UA 的 [hidden]{display:none}，这里必须显式复位 */
+.onboard .ob-change[hidden]{display:none!important}
+.onboard .ob-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.onboard .ob-role{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;
+  padding:11px 13px;border-radius:12px;cursor:pointer;transition:.18s;
+  border:1px solid var(--line);background:rgba(79,140,255,.05);color:var(--text);font-family:inherit}
+.onboard .ob-role:hover{transform:translateY(-2px);border-color:#4f8cff;background:rgba(79,140,255,.11)}
+.onboard .ob-role.cur{border-color:#4f8cff;background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(79,140,255,.28)}
+.onboard .ob-role b{font-size:13px;font-weight:800;line-height:1.35}
+.onboard .ob-role span{font-size:11px;line-height:1.45;color:var(--muted)}
+.onboard .ob-role.cur span{color:rgba(255,255,255,.9)}
+.onboard[data-state="ready"] .ob-roles{display:none}
+/* 窄屏只先给 3 张任务卡，细分身份折在「更多身份」后面：
+   6 张卡 + 3 条路径在 390px 下会把面板顶到 805px，占满一整屏。 */
+.onboard .ob-more{display:none;align-items:center;justify-content:center;gap:5px;width:100%;
+  margin-top:8px;padding:8px;border-radius:10px;cursor:pointer;
+  border:1px dashed var(--line);background:transparent;color:var(--muted);
+  font-size:11.5px;font-weight:700;font-family:inherit}
+.onboard .ob-more:hover{border-color:#4f8cff;color:#4f8cff}
+.onboard[data-more="1"] .ob-more i{transform:rotate(180deg)}
+.onboard .ob-more i{transition:.2s;font-style:normal}
+.onboard[data-state="ready"] .ob-hd{margin-bottom:2px}
+.onboard .ob-paths{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.onboard .ob-path{display:block;padding:12px 14px;border-radius:12px;text-decoration:none;
+  border:1px solid var(--line);background:rgba(79,140,255,.04);transition:.18s}
+.onboard .ob-path:hover{transform:translateY(-2px);border-color:#4f8cff;background:rgba(79,140,255,.10)}
+.onboard .ob-path em{font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.6px;color:var(--blue);display:block;margin-bottom:5px}
+.onboard .ob-path b{display:block;font-size:13px;font-weight:800;color:var(--text)}
+.onboard .ob-path span{display:block;font-size:11.5px;line-height:1.6;color:var(--muted);margin-top:4px}
+.onboard .ob-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin-top:13px;padding-top:12px;border-top:1px solid var(--line)}
+.onboard .ob-foot span{font-size:11.5px;color:var(--muted);line-height:1.6;flex:1;min-width:220px}
+.onboard .ob-foot-short{display:none}
+.onboard .ob-fbtns{display:flex;gap:8px;flex:none}
+.onboard .ob-open{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(79,140,255,.35);background:rgba(79,140,255,.10);color:var(--blue);
+  font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.18s;white-space:nowrap}
+.onboard .ob-open:hover{background:var(--grad);color:#fff;border-color:transparent}
+.onboard .ob-open.ghost{border-color:var(--line);background:transparent;color:var(--muted)}
+.onboard .ob-open.ghost:hover{border-color:#4f8cff;background:rgba(79,140,255,.10);color:var(--blue)}
+@media (max-width:760px){
+  .onboard{padding:14px;margin:20px 12px 0}
+  .onboard .ob-roles{grid-template-columns:repeat(2,1fr);gap:8px}
+  /* 默认只露 3 张任务卡，后 3 张细分身份折起来 */
+  .onboard .ob-role:nth-child(n+4){display:none}
+  .onboard[data-more="1"] .ob-role:nth-child(n+4){display:flex}
+  .onboard .ob-more{display:flex}
+  /* 路径收成紧凑行：去掉长描述，只留步骤标签 + 标题 */
+  .onboard .ob-paths{grid-template-columns:1fr;gap:7px}
+  .onboard .ob-path{padding:9px 12px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .onboard .ob-path em{margin:0}
+  .onboard .ob-path span{display:none}
+  .onboard .ob-foot{flex-direction:column;align-items:flex-start}
+  .onboard .ob-foot-long{display:none}
+  .onboard .ob-foot-short{display:block}
+  .onboard .ob-fbtns{width:100%}
+  .onboard .ob-fbtns .ob-open{flex:1;justify-content:center}
+}
+
+/* 多段声波（亮底白波） */
+#wavewrap{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0 4px}
+/* 2026-10-29：去掉空闲态的白色半透明底板。
+   那块 440×54 的白框画在深色 hero 上，空了就像个故障占位框；
+   波形本身已经能表达"语音"，标签压到 11px、透明度 .62 就够。 */
+#wave{width:min(400px,74vw);height:40px;border-radius:var(--r-sm,10px);background:transparent;border:0}
+#wave-label{font-size:11px;color:rgba(255,255,255,.62);letter-spacing:1px;min-width:52px;text-align:left}
+
+/* 对话卡片（白卡 · 投影 · 圆角20） */
+/* 内嵌对话工作台整体下线：hidden 必须压过作者样式，避免露出第二套对话 */
+#chatbox[hidden]{display:none!important}
+#chatbox{max-width:860px;margin:16px auto 0;background:var(--glass-card);border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 18px 48px rgba(25,50,115,.22);overflow:hidden;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:background .35s ease,border .35s ease}
+.chat-head{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--line)}
+.chat-head .t{font-size:14px;font-weight:800;color:var(--text)}
+.chat-head .st{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--green)}
+.chat-head .st i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(34,176,125,.18)}
+#msgs{max-height:46vh;overflow-y:auto;padding:18px 18px 6px}
+.msg{margin:11px 0;padding:12px 16px;border-radius:14px;font-size:15px;line-height:1.8;max-width:90%;white-space:pre-wrap;word-wrap:break-word}
+.msg.user{margin-left:auto;background:var(--msg-user-bg);border:1px solid var(--msg-user-line);color:var(--msg-user-text)}
+.msg.bot{background:var(--card);border:1px solid var(--line);box-shadow:0 2px 10px rgba(31,45,77,.04)}
+.msg.sys{background:none;border:1px dashed var(--line);color:var(--muted);font-size:13px;max-width:100%}
+.msg.bot h1,.msg.bot h2,.msg.bot h3{font-size:16px;margin:9px 0 5px;color:var(--blue)}
+.msg.bot ul,.msg.bot ol{padding-left:20px;margin:5px 0}
+.msg.bot li{margin:3px 0}
+.msg.bot table{width:100%;border-collapse:collapse;font-size:13px;margin:7px 0}
+.msg.bot th,.msg.bot td{border:1px solid var(--line);padding:5px 9px;text-align:left}
+.msg.bot code{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:var(--blue)}
+.msg.bot pre{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:11px;overflow-x:auto}
+.msg.bot pre code{background:none;border:none;padding:0}
+.msg.bot a{color:var(--blue)}
+.typing{color:var(--muted);font-style:italic}
+#quick{display:flex;gap:8px;flex-wrap:wrap;padding:6px 16px 0}
+#quick button{background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 13px;font-size:12px;cursor:pointer;transition:.18s}
+#quick button:hover{color:var(--blue);border-color:var(--blue)}
+#bar{display:flex;gap:9px;align-items:flex-end;padding:12px 16px 16px}
+#q{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 15px;font-size:15px;resize:none;font-family:inherit;max-height:130px;color:var(--text);transition:border .2s}
+#q:focus{outline:none;border-color:var(--blue)}
+#mic{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 15px;font-size:17px;cursor:pointer;transition:.18s}
+#mic:hover{border-color:var(--blue)} #mic.on{background:rgba(34,176,125,.12);border-color:var(--green);animation:pulse 1s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(34,176,125,.12)}}
+#send{padding:11px 24px;border:none;border-radius:14px;background:var(--grad);color:#fff;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.25)}
+#brain{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:0 16px 14px;font-size:13px;color:var(--muted)}
+#brain select,#brain input{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:6px 10px;font-size:13px;font-family:inherit}
+#brain input[type=password]{width:200px}
+#brain label{display:flex;align-items:center;gap:5px;cursor:pointer}
+#brain .mm{color:var(--green)}
+/* ===== 品牌链路 · 白驹路径 ===== */
+#bj-path{display:flex;gap:0;align-items:stretch;margin:0 0 12px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);font-size:12px}
+#bj-path .step{flex:1;padding:8px 10px;text-align:center;color:var(--muted);position:relative}
+#bj-path .step+.step{border-left:1px solid var(--line)}
+#bj-path .step b{display:block;color:var(--text);font-size:13px;font-weight:600;margin-bottom:2px}
+#bj-path .step.on{background:linear-gradient(180deg,color-mix(in srgb,var(--blue)14%,transparent),transparent);color:var(--blue)}
+#bj-artifacts{margin:0 0 12px;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:10px 12px}
+#bj-artifacts .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px;color:var(--muted)}
+#bj-artifacts .hd b{color:var(--text);font-size:13px}
+#bj-artifacts .list{display:flex;flex-direction:column;gap:6px;max-height:140px;overflow:auto}
+#bj-artifacts .item{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer;transition:.15s}
+#bj-artifacts .item:hover{border-color:var(--blue);color:var(--blue)}
+#bj-artifacts .item .t{flex:1;font-size:13px;color:var(--text);line-height:1.35}
+#bj-artifacts .item .t small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+#bj-artifacts .empty{font-size:12px;color:var(--muted);padding:6px 2px}
+#msgs .actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+#msgs .actions button{background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:4px 10px;font-size:12px;cursor:pointer}
+#msgs .actions button:hover{color:var(--blue);border-color:var(--blue)}
+.gate-chips .chip.more-all{border-style:dashed}
+#modebar{justify-content:center}
+.modebtn{min-width:0}
+
+/* 信任数据 */
+.trust{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.trust .t{display:flex;align-items:baseline;gap:8px}
+/* P04：信任条改成「数字 + 标签 + 出处说明」三段式，垂直堆叠更好读 */
+.trust .t{flex-direction:column;align-items:center;gap:2px;text-align:center;min-width:130px}
+.trust .t b{font-size:26px;font-weight:800;color:#fff;text-shadow:0 2px 12px rgba(16,48,120,.3);line-height:1.1}
+.trust .t span{font-size:13px;font-weight:600;color:rgba(220,235,255,.92)}
+.trust .t em{font-style:normal;font-size:11px;color:rgba(200,220,250,.72);font-weight:500}
+.trust .t span{font-size:13px;font-weight:600;color:rgba(220,235,255,.92)}
+
+/* ---------- 区段通用 ---------- */
+section.block{max-width:1180px;margin:34px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:999px}
+.sec-head .more{margin-left:auto;font-size:13px;color:var(--blue);font-weight:600}
+.sec-head .more:hover{text-decoration:underline}
+
+/* 主路径切换（2026-11-12 收敛为 4 项：对话 / 工具 / 编译 / 探索） */
+#modebar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin:6px auto 0;max-width:1080px;padding:0 20px}
+.modebtn{padding:10px 18px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:14px;font-weight:700;cursor:pointer;transition:.18s}
+.modebtn.cur{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(79,140,255,.25)}
+
+/* 白区 tabs（设计稿模式按钮） */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.tab{padding:10px 18px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:14px;font-weight:700;cursor:pointer;transition:.18s;display:flex;align-items:center;gap:6px}
+.tab:hover{border-color:var(--blue);color:var(--blue)}
+.tab.cur{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(79,140,255,.25)}
+.panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--card-shadow);transition:background .35s ease}
+.panel.cur{display:block}
+.panel .ph{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.panel .ph .ico{font-size:26px}
+.panel .ph h3{font-size:17px;font-weight:800}
+.panel .ph p{font-size:13px;color:var(--muted);margin-left:auto;max-width:50%}
+.field{margin:10px 0}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;font-family:inherit;color:var(--text);background:var(--panel);transition:border .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue)}
+.field textarea{min-height:90px;resize:vertical}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row .field{flex:1;min-width:160px}
+.genout{margin-top:12px;background:var(--code-bg);color:var(--code-text);border-radius:14px;padding:14px;font-size:13px;white-space:pre-wrap;line-height:1.7;max-height:340px;overflow:auto;font-family:"SF Mono",Consolas,monospace}
+.minibtn{margin-top:8px;padding:7px 14px;border:none;border-radius:10px;background:var(--grad2);color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:.18s}
+.minibtn:hover{filter:brightness(1.08)}
+.minibtn.ghost{background:rgba(120,160,220,.12);color:var(--blue)}
+.hint{font-size:12px;color:var(--dim);margin-top:6px}
+
+/* 编译模式 */
+#compile .edwrap{display:flex;gap:12px;flex-wrap:wrap}
+#compile textarea{flex:1;min-width:300px;min-height:280px;font-family:"SF Mono",Consolas,monospace;font-size:13px;background:var(--code-bg);color:var(--code-text);border:1px solid var(--line);border-radius:14px;padding:12px}
+#compile .run{width:100%;height:300px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-top:10px}
+#compile .presets{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+#compile .presets button{padding:6px 12px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;font-size:12px;cursor:pointer}
+#compile .presets button:hover{color:var(--blue);border-color:var(--blue)}
+
+/* ---------- 工具整合：筛选条 + 轻卡网格（2026-11-12） ----------
+   设计取向：34 个入口不再靠「一整面」制造丰富感，而是先分类再逐层展开，
+   主操作每张卡只留一个，次要操作收成封面角标，减少重复按钮的视觉噪音。 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px}
+/* 探索段：9 张卡固定 3 列，宽屏排成 3×3；
+   用 auto-fill 会变 4+4+1，最后一行单张孤悬，看着像没收尾。 */
+#explore .explore-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:1024px){#explore .explore-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){#explore .explore-grid{grid-template-columns:1fr}}
+
+.tools-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.tools-chips{display:flex;gap:6px;flex:1 1 520px;min-width:0;overflow-x:auto;scrollbar-width:none;padding:2px}
+.tools-chips::-webkit-scrollbar{display:none}
+.tools-chip{flex:none;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font:700 12.5px/1 inherit;cursor:pointer;white-space:nowrap;transition:.18s}
+.tools-chip:hover{color:var(--blue);border-color:rgba(79,140,255,.45)}
+.tools-chip.cur{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 5px 14px rgba(79,140,255,.28)}
+.tools-chip .n{font-weight:600;opacity:.72;margin-left:5px;font-size:11px}
+.tools-search{position:relative;display:flex;align-items:center;flex:0 0 194px;height:34px;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:0 11px;gap:7px;transition:.18s}
+.tools-search:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,140,255,.12)}
+.tools-search .cc-ic{font-size:14px;color:var(--muted);flex:none}
+.tools-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:500 12.5px/1 inherit}
+.tools-search input::placeholder{color:var(--muted);opacity:.75}
+.tools-count{flex:none;font-size:11.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tools-empty{margin:18px 0 0;padding:22px;text-align:center;font-size:13px;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:14px}
+
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--card-shadow);
+  opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease,box-shadow .2s ease,border-color .2s}
+.tcard.in{opacity:1;transform:none}
+.tcard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h)}
+.tcard[hidden]{display:none}
+.tcard .cv{height:84px;background-color:rgba(120,160,220,.18);background-size:cover;background-position:center;position:relative}
+.tcard .cv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,10,26,.06),rgba(4,10,26,.46))}
+.tcard .cv .cat{position:absolute;left:10px;top:9px;z-index:1;font-size:10.5px;font-weight:700;letter-spacing:.3px;color:#fff;
+  background:rgba(10,18,38,.46);border:1px solid rgba(255,255,255,.22);padding:3px 9px;border-radius:999px;backdrop-filter:blur(6px)}
+/* 分类色点：让同一类的卡在网格里能被一眼扫出来，不靠重复的大图 */
+.tcard .cv .cat::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:5px;vertical-align:1px;background:var(--cat, #7dd3fc)}
+.tcard[data-cat="对话"]{--cat:#7dd3fc}.tcard[data-cat="创作"]{--cat:#c4b5fd}
+.tcard[data-cat="学习"]{--cat:#86efac}.tcard[data-cat="作品"]{--cat:#fcd34d}
+.tcard[data-cat="工具"]{--cat:#93c5fd}.tcard[data-cat="知识"]{--cat:#f9a8d4}
+.tcard .cv .ask{position:absolute;right:9px;top:8px;z-index:1;width:27px;height:27px;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.34);border-radius:9px;background:rgba(10,18,38,.42);color:#fff;cursor:pointer;
+  backdrop-filter:blur(6px);transition:.18s;padding:0}
+.tcard .cv .ask:hover{background:var(--grad);border-color:transparent;transform:translateY(-1px)}
+.tcard .cv .ask .cc-ic{font-size:14px}
+.tcard .cb{padding:12px 14px 13px;flex:1;display:flex;flex-direction:column;gap:0}
+.tcard h4{font-size:14.5px;font-weight:800;letter-spacing:.1px;line-height:1.35}
+.tcard p{font-size:12.5px;line-height:1.55;color:var(--muted);margin:5px 0 12px;flex:1;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tcard .acts{display:flex}
+/* 主按钮默认描边态：34 张卡若全铺饱和渐变，整片网格会变成一条条紫带，
+   反而把分类角标和标题压下去。hover / focus 才上渐变，把注意力还给内容。 */
+.tcard .acts .go{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;border-radius:10px;
+  font-size:12.5px;font-weight:700;text-decoration:none;color:var(--blue);
+  background:rgba(79,140,255,.09);border:1px solid rgba(79,140,255,.22);transition:.18s}
+.tcard .acts .go:hover,.tcard .acts .go:focus-visible{background:var(--grad);border-color:transparent;color:#fff;transform:translateY(-1px)}
+.tcard .acts .go .cc-ic{font-size:13px}
+@media(max-width:640px){
+  .tools-bar{gap:9px}
+  .tools-chips{flex-basis:100%;order:1}
+  .tools-search{flex:1 1 auto;order:2}
+  .tools-count{order:3}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:10px}
+  .tcard .cv{height:72px}
+  .tcard .cb{padding:10px 11px 11px}
+  .tcard h4{font-size:13.5px}
+}
+
+/* ---------- AI 作品精选（6 卡） ---------- */
+#works{scroll-margin-top:80px}
+.works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+/* 废墟馆首页小入口：横向一条，不占封面卡位，靠色带和标题独立成块 */
+.ruin-entry{display:block;margin-top:16px;border-color:rgba(139,92,246,.30);background:linear-gradient(100deg,rgba(139,92,246,.07),rgba(79,140,255,.05))}
+.ruin-entry .cb{padding:16px 20px;gap:6px}
+.ruin-entry h4{display:flex;align-items:center;gap:8px}
+.ruin-entry h4 .cc-ic{color:#8b5cf6}
+.ruin-entry p strong{color:var(--text)}
+.wcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.22s;box-shadow:var(--card-shadow);display:flex;flex-direction:column}
+.wcard:hover{transform:translateY(-4px);box-shadow:var(--card-shadow-h);border-color:rgba(120,160,220,.35)}
+.wcard .cv{height:110px;position:relative;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+.wcard .cv .badge{position:absolute;top:10px;left:12px;font-size:11px;font-weight:600;color:#fff;background:rgba(0,0,0,.32);padding:3px 10px;border-radius:999px;backdrop-filter:blur(4px);letter-spacing:.5px}
+.wcard .cb{padding:16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.wcard h4{font-size:16px;font-weight:800}
+.wcard p{font-size:13px;color:var(--muted);line-height:1.7}
+.wcard .tg{font-size:12px;font-weight:700;letter-spacing:.3px}
+.wcard .go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--blue);cursor:pointer}
+.wcard .go:hover{text-decoration:underline}
+.wcard .go .arr{transition:.18s}
+.wcard:hover .go .arr{transform:translateX(3px)}
+
+/* ---------- AI 快讯（3 玻璃卡） ---------- */
+#news .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.ncard{background:var(--glass-card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--card-shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.2s;display:flex;flex-direction:column;gap:8px;cursor:pointer}
+.ncard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(120,160,220,.35)}
+.ncard .dt{font-size:12px;font-weight:600;color:var(--dim);letter-spacing:.5px}
+.ncard h4{font-size:16px;font-weight:800}
+.ncard p{font-size:13px;color:var(--muted);line-height:1.7}
+.ncard .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(34,176,125,.15);display:inline-block;margin-right:6px}
+
+/* ---------- 内容与实验（3 入口） ---------- */
+#content .entry-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.ecard{background:var(--glass-card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;gap:16px;align-items:center;box-shadow:var(--card-shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.2s;cursor:pointer}
+.ecard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(120,160,220,.35)}
+.ecard .ico{width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;flex:none;box-shadow:0 6px 14px rgba(31,45,77,.16)}
+.ecard .txt{display:flex;flex-direction:column;gap:4px}
+.ecard h4{font-size:17px;font-weight:800}
+.ecard p{font-size:13px;color:var(--muted);line-height:1.6}
+.ecard .lk{font-size:12px;font-weight:700;color:var(--blue);margin-top:2px}
+
+/* ---------- 热榜（本地轻量统计） ---------- */
+#hot .hot-list{display:flex;flex-direction:column;gap:8px}
+.hot-item{display:flex;align-items:center;gap:12px;background:var(--glass-card);border:1px solid var(--line);border-radius:14px;padding:11px 16px;text-decoration:none;box-shadow:var(--card-shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.2s}
+.hot-item:hover{transform:translateX(4px);border-color:rgba(240,185,92,.4)}
+.hot-rank{font-family:var(--mono,monospace);font-size:14px;font-weight:800;min-width:22px;text-align:center;color:var(--gold,#f0b95c);background:linear-gradient(120deg,rgba(240,185,92,.14),rgba(139,92,246,.14));border-radius:10px;padding:2px 0}
+.hot-title{flex:1;font-size:14px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hot-count{font-family:var(--mono,monospace);font-size:12px;color:var(--dim);white-space:nowrap}
+.hot-empty{color:var(--dim);font-size:13px;padding:10px 2px}
+
+/* ---------- 页脚（品牌列 + 三列链接） ---------- */
+footer{margin-top:44px;background:rgba(13,22,46,.95);color:#a9b8d4;border-top:1px solid rgba(255,255,255,.06)}
+body[data-theme="deep"] footer{background:rgba(2,0,10,.92);border-top-color:rgba(255,255,255,.06)}
+.foot-inner{max-width:1180px;margin:0 auto;padding:44px 20px 20px;display:flex;gap:80px;flex-wrap:wrap}
+.foot-brand{max-width:300px;display:flex;flex-direction:column;gap:14px}
+.foot-brand .logo-row{display:flex;align-items:center;gap:10px}
+.foot-brand .logo-row .logo{width:34px;height:34px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
+.foot-brand .logo-row b{font-size:17px;font-weight:800;color:#fff}
+.foot-brand p{font-size:13px;line-height:1.8;color:#8fa3bd}
+.foot-col{display:flex;flex-direction:column;gap:10px;min-width:110px}
+.foot-col b{font-size:14px;font-weight:800;color:#fff;margin-bottom:4px}
+.foot-col a{font-size:13px;color:#8fa3bd;transition:.15s}
+.foot-col a:hover{color:#5ea2ff}
+.foot-bar{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:12px;color:#7d8fae}
+
+/* 设置抽屉 */
+#setBtn{position:fixed;right:18px;bottom:18px;z-index:60;width:54px;height:54px;border-radius:18px;background:var(--grad);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 10px 26px rgba(79,140,255,.35)}
+#setPanel{position:fixed;right:-380px;top:0;bottom:0;width:360px;max-width:90vw;background:var(--card);border-left:1px solid var(--line);z-index:61;padding:22px;overflow-y:auto;transition:right .3s ease;box-shadow:-10px 0 40px rgba(31,45,77,.12)}
+#setPanel.open{right:0}
+#setPanel h3{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:var(--text)}
+#setPanel .close{margin-left:auto;cursor:pointer;color:var(--muted);font-size:20px}
+#setPanel .grp{margin:14px 0;padding-top:14px;border-top:1px solid var(--line)}
+#setPanel .grp:first-of-type{border-top:none;padding-top:0}
+#setPanel label{font-size:13px;color:var(--muted);font-weight:600;display:block;margin-bottom:6px}
+#setPanel select,#setPanel input{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:13px;font-family:inherit;background:var(--panel);color:var(--text)}
+#setPanel .sw{display:flex;align-items:center;justify-content:space-between;font-size:13px;padding:8px 0;color:var(--text)}
+#setPanel .sw input{width:auto}
+#setPanel .note{font-size:12px;color:var(--dim);margin-top:5px;line-height:1.6}
+
+@media(max-width:900px){
+  .foot-inner{gap:40px}
+}
+@media(max-width:760px){
+  /* 移动端导航的尺寸/内距统一由 nebula-skin.css 负责（皮肤层带 !important，且最后加载）。
+     留在这里的只有抽屉自身的定位与展开形态。 */
+  nav.top .links{display:none;position:absolute;top:var(--nb-nav-h,56px);left:0;right:0;flex-direction:column;background:var(--card);padding:10px 16px;border-bottom:1px solid var(--line);box-shadow:var(--nav-shadow);flex-wrap:nowrap;overflow:visible}
+  nav.top .links.open{display:flex}
+  /* 2026-10-28 修：抽屉是 nav 的绝对定位子元素，而 nav.top 的 z-index:50 形成了层叠上下文，
+     子元素再怎么设 z-index 也超不过 module.js 注入的目录条 #modTocBar(z-index:9990)。
+     结果是抽屉顶部 40px 被目录条压住，第一项「对话」被盖掉、点不到。
+     抽屉打开时把 nav 整体抬到目录条之上。:has() 为主，body.nav-open 兜底老内核。 */
+  nav.top:has(#navlinks.open),body.nav-open nav.top{z-index:9993}
+  /* 2026-10-28 修：「更多」在竖向抽屉里是个 absolute 下拉（top:100%;right:0），
+     它的 8 个链接会垂到白色面板外面（面板到 y≈409，菜单一直排到 y≈782），
+     在手机上等于「点开也看不到」。竖向抽屉本来就该全展开：
+     隐藏「更多」按钮，把 8 项直接内联到列表末尾，抽屉本身可滚动。 */
+  nav.top .links.open{max-height:calc(100vh - var(--nb-nav-h,56px));overflow-y:auto;-webkit-overflow-scrolling:touch}
+  nav.top .links.open .bj-more{display:block;position:static;width:100%;margin-top:2px}
+  nav.top .links.open .bj-more-btn{display:none}
+  nav.top .links.open .bj-more-menu{
+    display:grid!important;position:static;right:auto;top:auto;min-width:0;
+    max-height:none;overflow:visible;padding:0;border:0;background:transparent;box-shadow:none;
+  }
+  nav.top .links.open .bj-more-menu a{padding:11px 13px;border-radius:10px}
+  .burger{display:block;margin-left:auto;font-size:22px;background:none;border:none;cursor:pointer;color:var(--text)}
+  nav.top .nav-actions{margin-left:0}
+  nav.top .cta{display:none}
+  #gate .inner{padding:36px 14px 32px}
+  .trust{gap:20px}
+  .panel .ph p{display:none}
+  #brain input[type=password]{width:140px}
+  .foot-inner{flex-direction:column;gap:28px}
+  .foot-bar{flex-direction:column;text-align:center}
+}
+.entry-line{max-width:1180px;margin:00 auto;padding:14px 20px 0;display:flex;flex-wrap:wrap;align-items:center;gap:7px;font-size:13px;color:var(--muted)}
+.entry-line span{font-weight:700}
+.entry-line a{color:#2f5fd0;font-weight:700;text-decoration:none;border:none}
+.entry-line a:hover{text-decoration:underline}
+.entry-line i{opacity:.35;font-style:normal}
+[data-theme="deep"] .entry-line a{color:#7fe4ff}
+@media(max-width:640px){.entry-line{padding:12px 14px 0;font-size:12.5px}}
+</style>
+<link rel="stylesheet" href="./responsive.css">
+<link rel="stylesheet" href="./compile-mode.css">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ccoworkbaiju.cn/">
+<meta property="og:url" content="https://ccoworkbaiju.cn/">
+<meta name="twitter:title" content="白驹 ccowork · 一个人写的 AI">
+<meta name="twitter:description" content="从零起步定起点 → 按阶段学 43 章教程 → 用能跑的开源项目做出作品集。模型、工具、成本随时对照，每条结论标着来源与核验日期。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"白驹 ccowork","url":"https://ccoworkbaiju.cn/","description":"白驹 ccowork：一个人写的 AI。每天实抓的 AI 事实（带出处）、个人见解与长文、能直接跑起来的开源作品。每条结论都标着来源与核验日期。","inLanguage":"zh-CN","potentialAction":{"@type":"SearchAction","target":"https://ccoworkbaiju.cn/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/site-nav.css">
+
+<link rel="stylesheet" href="/feed.css">
+<link rel="stylesheet" href="./cover.css">
+<!-- 2026-11-25：移除 home-fold 首屏折叠。它把除第一块外的所有板块默认 .hf-hide，
+     首页中间出现大片空白、必须连点「下一步」才展开，老罗反馈「点进去一看都没有内容」。
+     内容站应当直给，折叠机制与定位相悖。 -->
+<style id="homeCompactCss">
+/* 2026-11-25 首页精简：长板块默认只露一屏，其余点「展开全部」再看，避免首页过长 */
+.block.bj-collapsed > .bj-clip { max-height: 460px; overflow: hidden; position: relative; }
+.block.bj-collapsed > .bj-clip::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 88px; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(244,247,252,0), var(--bg, #f4f7fc) 88%);
+}
+[data-theme="deep"] .block.bj-collapsed > .bj-clip::after {
+  background: linear-gradient(to bottom, rgba(3,0,20,0), var(--bg, #030014) 88%);
+}
+.bj-more { display: block; margin: 14px auto 0; padding: 9px 22px; border-radius: 999px; font-size: 13.5px;
+  font-weight: 700; cursor: pointer; color: #2f5fd0; background: rgba(79,140,255,.10);
+  border: 1px solid rgba(79,140,255,.32); transition: .18s; }
+.bj-more:hover { background: rgba(79,140,255,.20); transform: translateY(-1px); }
+[data-theme="deep"] .bj-more { color: #7fe4ff; background: rgba(56,225,255,.10); border-color: rgba(56,225,255,.32); }
+@media (max-width: 640px) { .block.bj-collapsed > .bj-clip { max-height: 380px; } }
+/* 作品板块：标题旁已有「全部作品」入口，这里直接限高 + 渐变遮罩，不依赖 JS */
+#works .works-grid { max-height: 470px; overflow: hidden; position: relative; }
+#works .works-grid::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(244,247,252,0), var(--bg, #f4f7fc) 88%);
+}
+[data-theme="deep"] #works .works-grid::after {
+  background: linear-gradient(to bottom, rgba(3,0,20,0), var(--bg, #030014) 88%);
+}
+@media (max-width: 640px) { #works .works-grid { max-height: 400px; } }
+/* 内容与实验：与 explore 导航重叠，压缩到一屏内 */
+#content { max-height: 520px; overflow: hidden; }
+
+/* ============================================================
+   2026-11-26 首页渐进展开 + 导航条 + 作品卡降级
+   ============================================================ */
+
+/* --- A. 折叠容器 --- */
+#fold-hide{overflow:hidden;max-height:0;opacity:0;transition:max-height .6s cubic-bezier(.22,1,.36,1),opacity .4s ease}
+#fold-hide.open{max-height:5000px;opacity:1}
+/* 动画关键帧（作为 .open 状态的补充细节） */
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+#fold-hide.open > *{animation:slideDown .5s ease both}
+
+/* 折叠开关按钮 */
+#fold-toggle{display:flex;align-items:center;justify-content:center;gap:10px;margin:32px auto 20px;
+  padding:16px 36px;border-radius:999px;border:2px dashed var(--line);background:var(--card);
+  color:var(--blue);font-size:15px;font-weight:800;cursor:pointer;transition:.22s;
+  box-shadow:var(--card-shadow);font-family:inherit}
+#fold-toggle:hover{background:var(--grad);color:#fff;border-color:transparent;
+  transform:translateY(-2px);box-shadow:0 12px 28px rgba(79,140,255,.28)}
+#fold-toggle .ft-ico{font-size:18px;transition:transform .3s}
+#fold-toggle[aria-expanded="true"] .ft-ico{transform:rotate(180deg)}
+
+/* --- B. 本页导航条（scrollspy + sticky） --- */
+#page-nav{position:sticky;top:64px;z-index:49;max-width:1180px;margin:0 auto;
+  display:flex;align-items:center;gap:10px;padding:10px 20px;flex-wrap:wrap;
+  background:var(--nav-bg,rgba(255,255,255,.85));
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--nav-line,var(--line));
+  border-top:1px solid var(--nav-line,var(--line));
+  transition:background .35s}
+#page-nav .pn-label{font-size:13px;font-weight:800;color:var(--muted);flex:none}
+#page-nav a{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:999px;
+  font-size:13px;font-weight:700;color:var(--muted);text-decoration:none;border:1px solid transparent;transition:.18s;white-space:nowrap}
+#page-nav a:hover{color:var(--blue);background:rgba(79,140,255,.08)}
+#page-nav a.pn-cur{background:var(--grad);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(79,140,255,.25)}
+#page-nav .pn-sep{color:var(--muted);opacity:.4}
+@media(max-width:760px){
+  #page-nav{top:auto;position:relative;margin-top:12px;gap:6px;padding:8px 12px}
+  #page-nav .pn-label{display:none}
+  #page-nav a{padding:6px 10px;font-size:12px}
+}
+
+/* --- C. 作品卡降级 --- */
+/* 作品卡封面高度从 110px 降到 72px */
+#works .wcard .cv{height:72px;background:var(--panel)!important;box-shadow:inset 0 0 0 1px var(--line)}
+#works .wcard .cv img{opacity:.08;filter:saturate(.3)}
+#works .wcard .cv i{font-size:22px;color:var(--blue);opacity:.55;text-shadow:none}
+#works .wcard .cv .badge{background:rgba(79,140,255,.12);color:var(--blue);border:1px solid rgba(79,140,255,.25);
+  font-size:10px;font-weight:700;padding:2px 8px}
+#works .wcard .cb{padding:10px 14px}
+#works .wcard h4{font-size:14px;font-weight:700}
+#works .wcard p{font-size:12px;-webkit-line-clamp:2;line-height:1.5}
+#works .wcard .tg{font-size:11px}
+#works .wcard .go{font-size:12px}
+#works .works-grid{max-height:none!important}
+#works .works-grid::after{display:none!important}
+/* 区块标题升级为「💡 精选作品（点击进入）」视觉 */
+#works .sec-head h2::before{content:"💡 ";font-size:18px}
+
+/* --- D. 面包屑 --- */
+.breadcrumb{max-width:1180px;margin:0 auto;padding:10px 20px;font-size:12.5px;color:var(--muted);font-weight:600}
+.breadcrumb .bc-home{color:var(--blue);font-weight:700}
+.breadcrumb .bc-sep{margin:0 6px;opacity:.4;font-style:normal}
+
+/* 给各区块加导航锚点标记 */
+.block .anchor-tag{display:inline-block;font-size:11px;color:var(--blue);font-weight:800;
+  padding:2px 8px;border-radius:6px;background:rgba(79,140,255,.08);margin-right:6px;letter-spacing:.5px}
+</style>
+</head>
+<body>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="assets/pg/pg-index.png" alt="ccowork · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<!-- ====== 总站导航（毛玻璃 · Logo + 8 链接 + 主题切换 + CTA） ====== -->
+<nav class="top">
+  <div class="brand">
+    <span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><span class="nm">白驹 ccowork</span>
+  </div>
+  <button class="burger" onclick="var l=document.querySelector('.top .links');l.classList.toggle('open');document.body.classList.toggle('nav-open',l.classList.contains('open'))"><i class="cc-ic" data-ic="menu"></i></button>
+  <div class="links" id="navlinks">
+    <a href="/models/"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>模型图谱</a>
+    <a href="/learn/"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>学习路径</a>
+    <a href="/toolbox/"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工具工坊</a>
+    <a href="/works/"><i class="cc-ic" data-ic="layout-grid" aria-hidden="true"></i>作品展厅</a>
+    <a href="/about/"><i class="cc-ic" data-ic="info" aria-hidden="true"></i>关于本站</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="切换亮暗主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+<button type="button" class="cta cta-tip" aria-label="打开助手对话" onclick="var f=document.querySelector('.bja-fab');if(f){f.click()}else{location.href='/agent.html'}"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i><span class="tx">开始对话</span></button>
+  </div>
+</nav>
+
+<!-- D. 面包屑 / 位置感 -->
+<div class="breadcrumb" aria-label="位置">
+  📍 <span class="bc-home">白驹 ccowork</span><i class="bc-sep">→</i><span>白驹 ccowork首页</span>
+</div>
+
+<!-- ====== Hero 门区（徽章 · 双行标题 · chips · 对话卡 · 信任数据） ====== -->
+<section id="gate">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="inner">
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>每天更新 · 每条都有原文</div>
+    <h1>一个人写的 AI<br><span class="g">每天的事实、见解与能跑的作品</span></h1>
+    <p class="sub">每天从各站公开 RSS 实抓的 AI 事实（带出处与配图）、自己对 AI 与智能体的见解与长文、以及能直接跑起来的开源作品。每条都标着来源与核验日期，不用信我，去点原文。</p>
+    <div id="wavewrap">
+      <canvas id="wave" width="440" height="54"></canvas>
+      <span id="wave-label"></span>
+    </div>
+
+    <!-- 新手引导（2026-11-20 合并：全站唯一一处「你是谁」）
+         身份只在这里选。选中即写 Baiju.Role.set()，导航右上角身份芯片同步、跨页记忆。
+         原来导航「选身份」弹的模态框（6 类身份）已并入本面板，不再单独弹窗；
+         原来首访盖全屏的 4 步导览已下线，它的「主题/阅读模式/角色」三件事
+         压成下面这两个直连按钮，需要时才点，不再弹窗教学。 -->
+
+    <!-- 兼容桩：内嵌对话工作台整体下线（视觉切除），保留 DOM 供旧脚本取元素，不产生第二套对话。 -->
+    <div id="chatbox" hidden aria-hidden="true">
+      <div class="chat-head">
+        <span class="t">白驹 · 对话工作台</span>
+        <span class="st" id="brain-st"><i></i>待命 · 云端免费</span>
+      </div>
+      <div id="bj-path" aria-label="白驹使用路径">
+        <div class="step on" id="path-ask"><b>1 问</b>说清目标</div>
+        <div class="step" id="path-out"><b>2 得</b>看见产出</div>
+        <div class="step" id="path-art"><b>3 存</b>进工件墙</div>
+        <div class="step" id="path-again"><b>4 改</b>再来一版</div>
+      </div>
+      <div id="msgs"></div>
+      <div id="quick"></div>
+      <div id="bar">
+        <button id="mic" title="语音输入"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i></button>
+        <textarea id="q" rows="1" placeholder="例：帮我写一条小红书种草｜给三个副业路径｜做个学习工作台｜带我去编年史"></textarea>
+        <button id="send"><i class="cc-ic" data-ic="send"></i> 发送</button>
+      </div>
+      <div id="brain">
+        <span>大脑：</span>
+        <select id="mode">
+          <option value="cloud" selected>云端白驹 · 免 Key 优先</option>
+          <option value="zhipu">智谱 GLM（免费·自填 Key）</option>
+          <option value="webllm">下载本地模型（~1GB）</option>
+          <option value="ollama">本地 Ollama（需已安装）</option>
+          <option value="deepseek">DeepSeek API（需 Key）</option>
+          <option value="local">站内书稿检索（兜底）</option>
+        </select>
+        <input id="apikey" type="password" placeholder="DeepSeek Key（仅存本地）" style="display:none">
+        <label><input type="checkbox" id="voice-on"> 语音播报</label>
+        <label class="mm"><input type="checkbox" id="mm-on"> 附图理解</label>
+        <input id="imgfile" type="file" accept="image/*" style="display:none">
+        <button id="imgbtn" class="minibtn ghost" style="margin:0" onclick="document.getElementById('imgfile').click()"><i class="cc-ic" data-ic="image" aria-hidden="true"></i>附图</button>
+      </div>
+      <div class="ai-note" style="font-size:12px;color:#8fa3bd;line-height:1.6;padding:2px 2px 0">🔒 AI 对话经站内服务端代理转发，密钥由服务端持有，不在浏览器暴露。</div>
+      <div id="bj-artifacts">
+        <div class="hd"><b>最近工件</b><span id="art-count">0</span></div>
+        <div class="list" id="art-list"><div class="empty">还没有工件——问完一点「存入工件」就会出现在这里，下次回来接着改。</div></div>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="t"><b><!--STAT:repos-->168<!--/STAT:repos--></b><span>能跑的开源项目</span><em>附仓库与许可证</em></div>
+      <div class="t"><b><!--STAT:models-->243<!--/STAT:models--></b><span>具名模型在库</span><em>含厂商与开源度</em></div>
+      <div class="t"><b><!--STAT:chapters-->43<!--/STAT:chapters--></b><span>章 自学路线教程</span><em>34 章已完成 · 9 章在建</em></div>
+      <div class="t"><b><!--STAT:books-->55<!--/STAT:books--></b><span>本 AI 书稿</span><em>按卷系统成书</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- A. 折叠开关按钮（默认只露这一个） -->
+<button id="fold-toggle" type="button" aria-expanded="false" aria-controls="fold-hide">
+  <i class="cc-ic ft-ico" data-ic="chevron-down" aria-hidden="true"></i>
+  <span id="fold-toggle-txt">↓ 开始探索 白驹</span>
+</button>
+
+<!-- B. 本页导航条（scrollspy） -->
+<nav id="page-nav" aria-label="本页导航">
+  <span class="pn-label">📌 本页导航：</span>
+  <a href="#ff-strip" class="pn-link" data-target="ff-strip">今日快讯</a>
+  <a href="#explore" class="pn-link" data-target="explore">AI 创作模式</a>
+  <a href="#compile" class="pn-link" data-target="compile">编译中心</a>
+  <a href="#works" class="pn-link" data-target="works">精选作品</a>
+  <a href="#content" class="pn-link" data-target="content">内容工厂</a>
+  <a href="#tools" class="pn-link" data-target="tools">工具整合</a>
+</nav>
+
+<!-- A. 折叠容器：Hero 下方所有区块包进这里 -->
+<div id="fold-hide">
+<!-- 2026-11-25：原来这里是 4 个模式按钮（对话 / 工具 / 编译 / 探索）。
+     实测「编译」指向的 #compile 已带 style="display:none"，点了毫无反应，是个死按钮；
+     「对话」「工具」与右下角白驹助手悬浮球完全重复；只有「探索」是真的跳转。
+     所以按钮整条撤掉，改成一行文字入口，目标地址都指向真实页面而不是页内隐藏区块。 -->
+<nav class="entry-line" aria-label="功能入口">
+  <span>要动手的话：</span>
+  <a href="/agent.html">对话与智能体</a><i>·</i>
+  <a href="/toolbox/">工具工坊</a><i>·</i>
+  <a href="/toolbox/workstation.html">本地编译环境</a>
+</nav>
+
+<!-- ====== 白区：可交互工作台（设计稿工作台面板） ====== -->
+<!-- ====== 工作台 · 场馆（技能弹药库驱动 · 真实数据） ====== -->
+<!--FF:START-->
+<section id="ff-strip">
+  <div class="fh"><b>近 7 天</b><span class="ff-today">今日新增 6 条</span><span class="ff-range">2026-11-19 — 2026-11-26</span><a class="ff-log" href="/about/changelog.html"><i class="cc-ic" data-ic="history" aria-hidden="true"></i>更新日志</a><a href="/feed/">全部每日速递 →</a></div>
+  <div class="ff-strip-row">
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-26"><em class="ff-badge">今日</em><time>11-26</time><b>查帧率、看负载、开日志：hrut_camsys 的 J6X Camsys 调试日常</b><i>稀土掘金</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-26"><em class="ff-badge">今日</em><time>11-26</time><b>长城汽车魏建军称现在汽车贬值速度太离谱，格力电器董明珠回应“有些产业害虫该灭就灭”</b><i>IT之家</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-26"><em class="ff-badge">今日</em><time>11-26</time><b>税考状元舞弊、教育部长辞职：韩国高考攻防背后，AI 正在摧毁东亚千年应试秩序</b><i>钛媒体</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-26"><em class="ff-badge">今日</em><time>11-26</time><b>中国女首富都投了，联发科高管做芯片，干出50亿独角兽</b><i>钛媒体</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-26"><em class="ff-badge">今日</em><time>11-26</time><b>阿里达摩院玄铁 IP 芯片累计出货超 60 亿颗，安卓 17 正式支持 RISC-V</b><i>IT之家</i></a>
+    <a class="ff-mini is-today" href="/feed/#d-2026-11-26"><em class="ff-badge">今日</em><time>11-26</time><b>Context Scaling: A New Frontier of AI Scaling</b><i>arXiv cs.AI</i></a>
+  </div>
+</section>
+<!--FF:END-->
+<!-- 2026-11-25：身份问卷从首屏移到这里。它占 369px，把「今天有什么变化」挤出了第一屏；
+     内容站应当先给答案再问问题。功能与 DOM id 完全不变，只是换了位置，JS 照常工作。 -->
+    <div class="onboard" id="onboard" data-state="pick">
+      <div class="ob-hd">
+        <b id="obTitle">第一次来？先选你是谁</b>
+        <span id="obSub">这个站只做一件事：陪你把 AI 从零学到能做出东西。选完直接给你路径，不用猜该点哪。</span>
+        <button type="button" class="ob-change" id="obChange" hidden>换身份</button>
+      </div>
+      <div class="ob-roles" role="group" aria-label="选择你的身份">
+        <button type="button" class="ob-role cur" data-role="everyone" aria-pressed="true"><b>🙂 普通人</b><span>先搞懂 AI 能干嘛</span></button>
+        <button type="button" class="ob-role" data-role="developer" aria-pressed="false"><b>💻 开发者</b><span>想把模型跑在自己机器上</span></button>
+        <button type="button" class="ob-role" data-role="toolbox" aria-pressed="false"><b>🧰 工具台</b><span>想用 AI 做出能发的作品</span></button>
+        <button type="button" class="ob-role" data-role="teacher" aria-pressed="false"><b>🎓 老师</b><span>明天上课就能用</span></button>
+        <button type="button" class="ob-role" data-role="student" aria-pressed="false"><b>📚 学生</b><span>作业、选题、搞明白</span></button>
+        <button type="button" class="ob-role" data-role="engineer" aria-pressed="false"><b>⚙️ 技术人员</b><span>设备、产线、现场落地</span></button>
+      </div>
+      <button type="button" class="ob-more" id="obMore" aria-expanded="false">更多身份（老师 / 学生 / 技术人员）<i>▾</i></button>
+      <div class="ob-paths" id="obPaths" aria-live="polite"></div>
+      <div class="ob-foot">
+        <span class="ob-foot-long">卡住了就问右下角助手 —— 读文档、算表格、整理材料、导出 Word / PDF 都在这台设备上跑。想换主题、壁纸或开阅读模式，点导航右上的 ⚙。</span>
+        <span class="ob-foot-short">卡住问右下角助手；换主题 / 阅读模式点右上 ⚙。</span>
+        <div class="ob-fbtns">
+          <button type="button" class="ob-open ghost" id="obSet">⚙ 个性化设置</button>
+          <button type="button" class="ob-open" id="obAsk">打开助手</button>
+        </div>
+      </div>
+    </div>
+
+<section class="block" id="explore">
+  <div class="sec-head">
+    <h2><span class="em">按需要查</span></h2>
+    <span class="tag">自学路上会用到的资料与工具</span>
+    <a class="more" href="/learn/"><i class="cc-ic" data-ic="route" aria-hidden="true"></i>按阶段进入学习 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="grid explore-grid">
+    <a class="wcard" href="./feed/">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/feed.jpg" alt="" loading="lazy" decoding="async"><span class="badge">前沿流</span><i class="cc-ic" data-ic="flame"></i></div>
+      <div class="cb"><h4>AI 前沿流 · 近 7 天 8 条</h4><p>只收模型发布、工具版本与价格变化。10 月 23 条、9 月 7 条，每条都能点回原始出处；另附 2026 年 1-8 月模型时间线。</p><span class="tg">带日期 · 带出处 · 每日更新</span><span class="go">看这几天的变化 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+    <a class="wcard" href="./toolbox/repos.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/repos.jpg" alt="" loading="lazy" decoding="async"><span class="badge">开源仓库</span><i class="cc-ic" data-ic="git-branch"></i></div>
+      <div class="cb"><h4>开源仓库 · <!--STAT:repos-->168<!--/STAT:repos--> 个</h4><p>能自己跑起来才算数：推理引擎、RAG、Agent、图像、语音、编程 Agent 分 15 类，每条标星数、许可证、上手难度与国内可直连性。</p><span class="tg">15 类 · <!--STAT:repos-->168<!--/STAT:repos--> 个 · 4.98M 星</span><span class="go">进仓库库 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+    <a class="wcard" href="./learn/deploy.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/deploy.jpg" alt="" loading="lazy" decoding="async"><span class="badge">部署百科</span><i class="cc-ic" data-ic="hard-drive"></i></div>
+      <div class="cb"><h4>部署百科 · 先选路线</h4><p>四条路线（本地 / 图形 / 云额度 / 自建服务）+ 决策树 + 6 个引擎横评 + 五档硬件门槛 + 六种量化格式，附可直接复制的启动命令。</p><span class="tg">引擎横评 · 硬件门槛 · 一键命令</span><span class="go">看部署方案 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+    <a class="wcard" href="./toolbox/platforms.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/vendors.jpg" alt="" loading="lazy" decoding="async"><span class="badge">平台阵列</span><i class="cc-ic" data-ic="layers"></i></div>
+      <div class="cb"><h4>平台阵列 · 33 家</h4><p>从哪拿模型、从哪租卡：云 API、本地运行、GPU 算力、Agent 平台、图像视频、网关中间层，统一标国内可用性与计价方式。</p><span class="tg">6 类 33 家 · 带价目</span><span class="go">比一比平台 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+    <a class="wcard" href="/learn/">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/learn.jpg" alt="" loading="lazy" decoding="async"><span class="badge">自学路线 · 主线</span><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i></div>
+      <div class="cb"><h4>自学路线 · 按阶段学</h4><p>从「会用」到「会调」「会搭」「会训练」四阶段：43 章教程（提示词 / Agent / RAG / 微调 / 多模态 / 职场），已完成 34 章、9 章在建 + 毕业设计与打卡进度。</p><span class="tg">先定阶段 · 再往下学</span><span class="go">进入学院 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+    <a class="wcard" href="./works/museum.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/museum.jpg" alt="" loading="lazy" decoding="async"><span class="badge">通识 · AI 博物馆</span><i class="cc-ic" data-ic="landmark"></i></div>
+      <div class="cb"><h4>AI 博物馆 · 十年十四节点</h4><p>从 2017 年 Transformer 到 2026 年开源追平。外加一间「废墟馆」：Prompt 咒语、微调一切、全自主 Agent——记下已经不管用的做法。</p><span class="tg">时间轴 · 废墟馆 · 判断依据</span><span class="go">进展馆 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></div>
+    </a>
+  </div>
+
+  <!-- 2026-11-12：废墟馆从「博物馆子页里的一段」提到首页独立小入口。
+       评审意见：这是本站最有辨识度的内容，藏太深；同时把「为什么失效」说清楚，
+       免得用户照着网上过时教程踩坑。样式沿用 .wcard，不新开页面。 -->
+  <a class="wcard ruin-entry" href="./works/museum.html#ruins">
+    <div class="cb">
+      <h4><i class="cc-ic" data-ic="archive" aria-hidden="true"></i> 废墟馆 · 5 件已经不管用的做法</h4>
+      <p>Prompt 魔法咒语、微调一切、AutoGPT 式全自主循环、向量库军备竞赛、参数量排行榜——每一条都写清了<strong>当年为什么成立、现在为什么失效、沉淀下来该用什么</strong>。照着过时教程做，浪费的是你的时间和显卡钱。</p>
+      <span class="tg">带失效原因 · 带替代做法 · AI 博物馆内</span>
+      <span class="go">去看看别踩这些坑 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+    </div>
+  </a>
+</section>
+
+<!-- 2026-11-12：首页「白驹工作区 / 工作文」整块下线。
+     生图/生文/生视频/数据整理/技能向导已整合进右下角悬浮窗的工作室；
+     天气/日历/地图已搬进悬浮窗的三角折叠区（天气支持真实定位）。
+     首页不再保留第二套 AI 工具区，避免出现两个入口、两套设置。 -->
+
+<!-- 2026-11-25 收掉（老罗：首页过多辅助模块）：编译模式 884px 只装 229 字 2 个链接，
+       与站点定位（个人博文分享 + 开源作品展示）无关，保留 DOM 但默认不显示，需要时去掉 style 即可恢复 -->
+<section class="block" id="compile" style="display:none" aria-hidden="true">
+  <div class="sec-head">
+    <h2><span class="em">编译模式</span> · COO 本地运行环境</h2>
+    <span class="tag">HTML / JS / Python / Markdown · 浏览器本地真跑</span>
+    <a class="more" href="/toolbox/workstation.html">白驹工作站 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="coo">
+    <div class="coo-bar">
+      <div class="coo-lang">
+        <button data-lang="html" class="cur"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>HTML</button>
+        <button data-lang="js"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>JavaScript</button>
+        <button data-lang="python"><i class="cc-ic" data-ic="code"></i> Python</button>
+        <button data-lang="markdown"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>Markdown</button>
+      </div>
+      <div class="coo-acts">
+        <button class="run" id="cooRun"><i class="cc-ic" data-ic="play"></i> 运行</button>
+        <button class="sec" id="cooExample"><i class="cc-ic" data-ic="box" aria-hidden="true"></i>示例</button>
+        <button class="ghost" id="cooCopy"><i class="cc-ic" data-ic="clipboard-list" aria-hidden="true"></i>复制</button>
+        <button class="ghost" id="cooClear"><i class="cc-ic" data-ic="brush" aria-hidden="true"></i>清空</button>
+        <button class="ai" id="cooAI"><i class="cc-mark" aria-hidden="true"></i>AI 辅助</button>
+      </div>
+    </div>
+    <div class="coo-main">
+      <div class="coo-editor-wrap">
+        <label>代码编辑器 <span style="opacity:.7;font-weight:400">Ctrl/ + Enter 运行</span></label>
+        <textarea id="cooEditor" class="coo-editor" spellcheck="false" placeholder="在这里写代码，点「运行」即可在本地执行…"></textarea>
+      </div>
+      <div class="coo-out">
+        <div class="coo-out-head">
+          <span class="t cur" data-t="preview"><i class="cc-ic" data-ic="eye" aria-hidden="true"></i>预览</span>
+          <span class="t" data-t="console"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>控制台</span>
+        </div>
+        <div class="coo-preview-wrap" id="cooPreviewWrap">
+          <iframe id="cooPreview" class="coo-preview" title="运行预览" sandbox="allow-scripts allow-modals"></iframe>
+        </div>
+        <div class="coo-console" id="cooConsole"></div>
+      </div>
+    </div>
+    <div class="coo-status" id="cooStatus"><span class="dot"></span><span class="txt">就绪</span></div>
+    <iframe id="cooRunner" class="coo-runner" sandbox="allow-scripts" title="runner"></iframe>
+  </div>
+  <p class="hint">HTML / JS / Python 均在你的浏览器本地执行，代码不上传。JS 与 Python 的输出、报错会实时回传到「控制台」。Python 首次运行需联网加载运行时（Pyodide，约数十 MB）。</p>
+</section>
+
+<!-- ====== AI 作品精选（6 卡 · 对应设计稿） ====== -->
+<section class="block" id="works">
+  <div class="sec-head">
+    <h2><span class="em">精选作品（点击进入）</span></h2>
+    <span class="tag">6 件精选 + <!--STAT:repos-->168<!--/STAT:repos--> 个真实开源项目</span>
+    <a class="more" href="/works/projects.html">全部作品 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="works-grid">
+    <a class="wcard" href="/works/projects.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/chat.jpg" alt="" loading="lazy" decoding="async"><span class="badge">微信小程序</span><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>星云校园 v3.0</h4>
+        <p>微信小程序 AI 校园助手：浮动助手、消息中心、AI 中心、资源中心，基于微信云开发。</p>
+        <span class="tg" style="color:#4f8cff">微信小程序 · 云开发 · AI 助手</span>
+        <span class="go">查看作品 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="/works/projects.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/leaderboards.jpg" alt="" loading="lazy" decoding="async"><span class="badge">开源 · 内测</span></div>
+      <div class="cb">
+        <h4>DeepSeek Harness</h4>
+        <p>开源插件化 AI Agent 平台，插件即插即用，开发者文档与插件市场规划中。</p>
+        <span class="tg" style="color:#8b5cf6">开源 · Agent 平台 · v0.1.0-rc.5</span>
+        <span class="go">查看作品 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="./lab/index.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/atlas.jpg" alt="" loading="lazy" decoding="async"><span class="badge">交互仿真</span><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>10 大科学仿真</h4>
+        <p>PID 控制、弹簧阻尼、抛体运动、RC 电路、蒙特卡洛、单摆、波动方程等交互仿真脚本。</p>
+        <span class="tg" style="color:#22b07d">Python · matplotlib · 交互</span>
+        <span class="go">进入实验室 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="/agent.html" data-gate-hide>
+      <div class="cv cv-photo"><img src="./assets/covers/sec/assistant.jpg" alt="" loading="lazy" decoding="async"><span class="badge">创作中枢</span><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>白驹 ccowork</h4>
+        <p>一站式 AI 创作中枢：门户 + 对话工作台 + 工作站 + 生图生视频，所有 AI 入口收进一个大脑。</p>
+        <span class="tg" style="color:#8b5cf6">创作中枢 · 多模态 · 本地优先</span>
+        <span class="go">回到大脑 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="/works/videos.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/chat.jpg" alt="" loading="lazy" decoding="async"><span class="badge">竖屏短剧</span><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>古装竖屏短剧</h4>
+        <p>10 集 AI 生成古装短剧，9:16 竖屏格式，每集 50 秒，角色与场景全流程 AI 制作。</p>
+        <span class="tg" style="color:#e85a4a">竖屏短剧 · 9:16 · AI 生成</span>
+        <span class="go">查看剧集 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+    <a class="wcard" href="/learn/ai-edu.html">
+      <div class="cv cv-photo"><img src="./assets/covers/sec/learn.jpg" alt="" loading="lazy" decoding="async"><span class="badge">教育 · 交互</span><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div>
+      <div class="cb">
+        <h4>英语学习网站</h4>
+        <p>交互式英语练习平台：词汇、听力、AI 对话陪练，学习进度可视化追踪。</p>
+        <span class="tg" style="color:#e8963c">教育 · 交互 · AI 陪练</span>
+        <span class="go">开始学习 <span class="arr"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></span>
+      </div>
+    </a>
+  </div>
+
+  <div class="ws-bar">
+    <div class="ws-tabs" id="wsTabs">
+      <button class="ws-tab cur" data-f="all">全部</button>
+      <button class="ws-tab" data-f="team">团队</button>
+      <button class="ws-tab" data-f="person">个人</button>
+    </div>
+    <input id="wsSearch" class="ws-search" type="search" placeholder="搜索开源项目 / 作者…" autocomplete="off">
+  </div>
+  <div class="works-grid" id="wsGrid" style="margin-top:18px"><p class="ws-loading">正在装载开源作品库（<!--STAT:repos-->168<!--/STAT:repos--> 个真实 GitHub 项目）…</p></div>
+  <style>
+    .ws-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:24px 0 4px}
+    .ws-tabs{display:flex;gap:10px;flex-wrap:wrap}
+    .ws-tab{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:7px 18px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;transition:.18s}
+    .ws-tab:hover{border-color:rgba(120,160,220,.45);color:var(--text)}
+    .ws-tab.cur{background:var(--grad);color:#fff;border-color:transparent}
+    .ws-search{flex:1;min-width:200px;background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:8px 16px;font-size:13px;outline:none}
+    .ws-loading{color:var(--muted);font-size:13px;padding:14px 2px}
+  </style>
+</section>
+
+<!-- ====== 今日 AI 快讯（3 玻璃卡） ====== -->
+<!-- 2026-11-25 收掉：与顶部 ff-strip「近 7 天 · 今日新增」重复，都是今日快讯；
+       老罗要求首页不过多过大过长，同一信息只留一处 -->
+<section class="block" id="news" style="display:none" aria-hidden="true">
+  <div class="sec-head"><h2><span class="em">今日</span> · AI 快讯</h2><span class="tag">每日更新</span><a class="more" href="/feed/news.html">全部新闻 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div>
+  <div class="news-grid">
+    <a class="ncard" href="/feed/news.html">
+      <span class="dt"><span class="dot"></span>最新 · 平台</span>
+      <h4>AI 每日快讯已更新</h4>
+      <p id="newsTxt">加载中…</p>
+    </a>
+    <a class="ncard" href="/feed/news.html">
+      <span class="dt">10-27 · 公司</span>
+      <h4>Anthropic 公开 335 页招股书：史上最大 IPO</h4>
+      <p>量子位 10 月 27 日报道：Anthropic 公开招股书，被称史上最大 IPO、史上最亏 AI 公司。</p>
+    </a>
+    <a class="ncard" href="/feed/news.html">
+      <span class="dt">10-27 · 工具</span>
+      <h4>微信输入法新增 AI 录音笔功能</h4>
+      <p>IT之家 10 月 27 日消息：录音可实时转写，并可将说话内容转写为网页。</p>
+    </a>
+  </div>
+</section>
+
+<!-- ====== 热榜（本地轻量统计：逛过的页面排 Top） ====== -->
+<!-- 2026-11-25 收掉：热榜仅有「数据积累中」占位（40 字 / 1 链接），无真实数据支撑，先隐藏 -->
+<section class="block" id="hot" style="display:none" aria-hidden="true">
+  <div class="sec-head"><h2><span class="em">热榜</span> · 大家都在读</h2><span class="tag">本地统计</span></div>
+  <div id="ccoworkHot" class="hot-box"><p class="hot-empty">数据积累中：多逛几页，热榜就会亮起来。</p></div>
+</section>
+
+<!-- ====== 内容与实验（3 入口） ====== -->
+<section class="block" id="content">
+  <div class="sec-head"><h2><span class="em">内容与实验</span></h2><span class="tag">视频 · 图文教程 · 五卷全书 · 实验室</span><a class="more" href="./blog/index.html">视频首页 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div>
+  <div class="entry-grid">
+    <a class="ecard" href="./blog/index.html">
+      <span class="ico" style="background:linear-gradient(120deg,#4f8cff,#38b6ff)"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></span>
+      <div class="txt">
+        <h4>视频 · 博文 / Blog</h4>
+        <p>175 条真实 B 站视频 + 图文教程，普通人也能照着做</p>
+        <span class="lk">去视频首页 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+    <a class="ecard" href="/learn/books/index.html">
+      <span class="ico" style="background:linear-gradient(120deg,#8b5cf6,#4f8cff)"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></span>
+      <div class="txt">
+        <h4>五卷全书</h4>
+        <p>系统化 AI 知识体系，五卷打包阅读</p>
+        <span class="lk">开始阅读 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+    <a class="ecard" href="./lab/index.html">
+      <span class="ico" style="background:linear-gradient(120deg,#22b07d,#38b6ff)"><i class="cc-ic" data-ic="microscope" aria-hidden="true"></i></span>
+      <div class="txt">
+        <h4>实验室 / Lab</h4>
+        <p>算法、仿真、数值计算与 AI 实验</p>
+        <span class="lk">进入实验室 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+    <a class="ecard" href="/about/plan.html">
+      <span class="ico" style="background:linear-gradient(120deg,#f0b95c,#8b5cf6)"><i class="cc-ic" data-ic="map" aria-hidden="true"></i></span>
+      <div class="txt">
+        <h4>内容路线图</h4>
+        <p>选题库公开排期：想看哪条先出？催更这里</p>
+        <span class="lk">查看选题 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ====== 工具整合（全工具网格） ======
+     2026-11-12 界面优化：34 张卡原本一整面平铺、无筛选、每张两个按钮，
+     且 badge 数据全为空串却仍渲染出空胶囊。改为「分类 chips + 即时搜索 + 计数 +
+     轻卡」：封面压到 84px、主 CTA 只留一个、问白驹收成封面右上角图标按钮。 -->
+<section class="block" id="tools">
+  <div class="sec-head">
+    <h2><span class="em">全工具</span> · 整合进白驹</h2>
+    <span class="tag">所有 AI 工具 / 助手 / 工作台 一处直达</span>
+  </div>
+  <div class="tools-bar">
+    <div class="tools-chips" id="toolChips" role="group" aria-label="按分类筛选工具"></div>
+    <label class="tools-search">
+      <i class="cc-ic" data-ic="search" aria-hidden="true"></i>
+      <input id="toolSearch" type="search" placeholder="找工具…" aria-label="搜索工具名称或说明" autocomplete="off">
+    </label>
+    <span class="tools-count" id="toolCount" aria-live="polite"></span>
+  </div>
+  <div class="grid" id="toolGrid"></div>
+  <p class="tools-empty" id="toolsEmpty" hidden>没有匹配的工具 · 换个关键词，或点「全部」重新看。</p>
+</section>
+
+<!-- A. 折叠容器结束 -->
+</div>
+
+<!-- ====== 页脚（品牌列 + 三列链接） ====== -->
+
+<button id="setBtn" title="白驹模型设置" onclick="document.getElementById('setPanel').classList.toggle('open')"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></button>
+<div id="setPanel">
+  <h3><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>白驹 · 模型与设置 <span class="close" onclick="document.getElementById('setPanel').classList.toggle('open')">×</span></h3>
+  <div class="grp">
+    <label>默认大脑（模型）</label>
+    <select id="sMode"><option value="cloud" selected>云端白驹 · DeepSeek 服务端（免 Key·推荐）</option><option value="webllm">内置大模型 · 浏览器本地（Qwen2.5，免 Key）</option><option value="ollama">本地 Ollama</option><option value="deepseek">DeepSeek API（多模态）</option><option value="local">极简书稿检索</option></select>
+    <div class="note">所有问答、白区生成、编译辅助，统一走这里设置的模型。</div>
+  </div>
+  <div class="grp">
+    <label>DeepSeek API Key</label>
+    <input id="sKey" type="password" placeholder="sk-...（仅存本地浏览器）">
+  </div>
+  <div class="grp">
+    <div class="sw"><span><i class="cc-ic" data-ic="volume-2" aria-hidden="true"></i>语音播报</span><input type="checkbox" id="sVoice" checked></div>
+    <div class="sw"><span><i class="cc-ic" data-ic="image" aria-hidden="true"></i>多模态（图片输入，需 DeepSeek）</span><input type="checkbox" id="sMM"></div>
+    <div class="sw"><span><i class="cc-ic" data-ic="contrast"></i> 深空主题</span><input type="checkbox" id="sDeep"></div>
+  </div>
+  <div class="grp">
+    <label>壁纸</label>
+    <select id="sWall"><option value="epoch">纪元</option><option value="nebula">星云</option><option value="cloud-hero">云顶</option><option value="garden">花园</option><option value="train">列车</option><option value="island">岛屿</option><option value="cafe">咖啡馆</option><option value="none">无</option></select>
+  </div>
+  <div class="grp">
+    <button class="minibtn" onclick="saveSettings()" style="width:100%"><i class="cc-ic" data-ic="save" aria-hidden="true"></i>保存设置</button>
+    <p class="note">设置会被记住，下次打开自动恢复。模型与多模态统一由白驹调度。</p>
+  </div>
+</div>
+
+  <script src="./assets/marked.min.js"></script>
+  <script src="./assets/cal.js"></script>
+  <script src="./website/_corpus.js"></script>
+<script>
+/* ============================================================
+   白驹 ccowork · 统一引擎（门户+对话+工作站+工具整合）
+   ============================================================ */
+const CORPUS_OBJ=window.BJ_CORPUS||{};
+const PAGES={
+  '总站':'/about/index.html','主站':'/about/index.html','助手':'./index.html','大脑':'./index.html','首页':'./index.html',
+  '实战全书':'/learn/books/index.html','书库':'/learn/books/index.html','书稿':'/learn/books/index.html',
+  '编年史':'/learn/academy/history.html','开发者基地':'/toolbox/devbase.html','工作站':'/toolbox/workstation.html',
+  '前沿':'/feed/frontiers.html','成果':'/works/showcase.html','模型':'/models/review.html','路线图':'/learn/roadmap.html',
+  '开源':'/toolbox/repos.html','工科':'/learn/ai-jobs.html','漫剧':'/works/manju.html','绘画':'/works/gallery.html',
+  '教育':'/learn/ai-edu.html','就业':'/learn/ai-jobs.html','赚钱':'/learn/ai-money.html','提示词':'/toolbox/prompts.html',
+  '作品':'/works/projects.html','新闻':'/feed/news.html','视频':'/works/videos.html','天气':'#life','日历':'#life','地图':'#life'
+};
+let CORPUS=[];
+const $=id=>document.getElementById(id);
+
+function loadCorpus(){
+  CORPUS=Object.keys(CORPUS_OBJ).map(name=>({name,text:CORPUS_OBJ[name]}));
+  const k=Math.round(CORPUS.reduce((s,c)=>s+c.text.length,0)/1000);
+  const st=document.getElementById('corpusStat');
+  if(st)st.textContent='已驮载 '+CORPUS.length+' 部书稿 / 约 '+k+'k 字';
+}
+loadCorpus();
+
+/* 检索 */
+const SYNONYMS={
+  '工科':['工科','实训','仿真','数控','编程','计算机','G代码','代码'],'实训':['实训','工科','实战','编程','仿真','数控'],
+  '仿真':['仿真','模拟','实训','数控','代码'],'赚钱':['赚钱','变现','副业','接单','一人公司','路径'],
+  '提示词':['提示词','prompt','模板','公式'],'视频':['视频','剪辑','分镜','镜头','短片'],
+  '写作':['写作','文案','小说','博文','大纲'],'模型':['模型','部署','本地','Ollama','开源'],
+  '漫剧':['漫剧','短剧','分镜','剧本','角色'],'教育':['教育','教学','课程','学生'],'就业':['就业','求职','简历','面试'],
+  '绘画':['绘画','生图','画图','AI绘画','风格'],'数据':['数据','表格','整理','分析']
+};
+function expandKeys(q){
+  const base=q.match(/[\u4e00-\u9fa5]{1,}|[a-zA-Z0-9]{2,}/g)||[];
+  let keys=new Set();
+  base.forEach(w=>{if(w.length>=2)keys.add(w);});
+  base.forEach(w=>{for(let i=0;i<w.length-1;i++)keys.add(w.slice(i,i+2));});
+  for(const k in SYNONYMS)if(q.includes(k))SYNONYMS[k].forEach(s=>keys.add(s));
+  return [...keys].filter(k=>k.length>=2);
+}
+function retrieve(q){
+  const keys=expandKeys(q);
+  return CORPUS.filter(c=>c.text).map(c=>{
+    const scored=c.text.split(/\n{2,}/).map(p=>{
+      let s=0;keys.forEach(k=>{s+=(p.split(k).length-1)*(k.length>3?3:1);});
+      return {p,s};
+    }).filter(x=>x.s>1).sort((a,b)=>b.s-a.s).slice(0,5);
+    return scored.length?{name:c.name,hits:scored.map(x=>x.p)}:null;
+  }).filter(Boolean);
+}
+
+/* 消息 */
+/* ====== P04 步骤 5：首页对话历史持久化 + 跨页互通 ======
+   首页 chatbox 原来消息只在内存里，刷新就丢；
+   而 /chat.html 与 /agent.html 各存各的，互不相通。
+   现在三处统一写进 ccowork.sessions.v1（格式与 agent.html 一致：
+   sessions = [{id, title, time, msgs:[{role,content}]}]），历史自然互通。
+   首页自己的 slot id 是 'home-workbench'，chat.html 是 'chat-page'，
+   两边都能读到全部会话列表，但各自只渲染自己的那一段。 */
+const BJ_SESS_KEY='ccowork.sessions.v1';
+const BJ_SESS_ID='home-workbench';
+function bjLoadSessions(){
+  try{var raw=localStorage.getItem(BJ_SESS_KEY);if(!raw)return[];
+    var l=JSON.parse(raw);return Array.isArray(l)?l:[];}catch(e){return[];}
+}
+function bjSaveMsg(role,content){
+  try{
+    if(!content||content==='思考中…')return;
+    var list=bjLoadSessions(), slot=null;
+    for(var i=0;i<list.length;i++) if(list[i]&&list[i].id===BJ_SESS_ID) slot=list[i];
+    if(!slot){slot={id:BJ_SESS_ID,title:'首页对话',time:Date.now(),msgs:[]};list.unshift(slot);}
+    slot.msgs=slot.msgs||[];
+    slot.msgs.push({role:role,content:content});
+    if(slot.msgs.length>100) slot.msgs=slot.msgs.slice(-100);
+    slot.time=Date.now();
+    localStorage.setItem(BJ_SESS_KEY, JSON.stringify(list.slice(0,30)));
+  }catch(e){}
+}
+/* 模型输出属于不可信输入：marked 默认放行 raw HTML，直接 innerHTML 会形成
+   持久化 XSS —— 历史消息从 sessionStorage 恢复时同样会执行。这里先转义全部
+   raw HTML 再交给 Markdown 解析，并挡掉 javascript: 链接与 on* 属性。
+   代价：回答里的裸 HTML 标签按字面显示；对 AI 助手这是安全且可接受的取舍。 */
+function mdSafe(s){
+  var t=String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  var h;try{h=marked['parse'](t)}catch(e){return t.replace(/\n/g,'<br>')}
+  return String(h).replace(/href\s*=\s*(["'])javascript:[^"']*\1/gi,'href="#"')
+                  .replace(/\son[a-z]+\s*=\s*(["'])[^"']*\1/gi,'');
+}
+function bjRestoreMsgs(){
+  try{
+    var list=bjLoadSessions();
+    for(var i=0;i<list.length;i++){
+      var s=list[i];
+      if(!s||s.id!==BJ_SESS_ID||!Array.isArray(s.msgs)||!s.msgs.length)continue;
+      var msgs=$('msgs');if(!msgs)return;
+      msgs.innerHTML='';
+      for(var j=0;j<s.msgs.length;j++){
+        var m=s.msgs[j];if(!m||!m.content)continue;
+        var role=m.role==='user'?'user':'bot';
+        var d=document.createElement('div');d.className='msg '+role;
+        d.innerHTML=(role==='bot')?mdSafe(m.content):m.content.replace(/</g,'&lt;');
+        msgs.appendChild(d);
+      }
+      msgs.scrollTop=1e9;
+    }
+  }catch(e){}
+}
+function add(t,cls){const d=document.createElement('div');d.className='msg '+cls;
+  d.innerHTML=(cls==='bot')?mdSafe(t):t.replace(/</g,'&lt;');$('msgs').appendChild(d);$('msgs').scrollTop=1e9;
+  if(cls==='user'||cls==='bot')bjSaveMsg(cls==='user'?'user':'assistant', t);
+  return d;}
+function sys(t){add(t,'sys')}
+function quick(arr){$('quick').innerHTML='';arr.forEach(t=>{const b=document.createElement('button');
+  b.textContent=t;b.onclick=()=>{$('q').value=t;send();};$('quick').appendChild(b);});}
+
+/* 白驹链路 + 工件墙（品牌留存） */
+const BJ_ART_KEY='baiju.artifacts.v1';
+function setPath(n){
+  ['path-ask','path-out','path-art','path-again'].forEach((id,i)=>{
+    const el=$(id);if(!el)return;
+    el.classList.toggle('on', i<=n);
+  });
+}
+function loadArtifacts(){
+  try{return JSON.parse(localStorage.getItem(BJ_ART_KEY)||'[]');}catch(e){return [];}
+}
+function saveArtifacts(list){
+  try{localStorage.setItem(BJ_ART_KEY,JSON.stringify(list.slice(0,20)));}catch(e){}
+  renderArtifacts();
+}
+function renderArtifacts(){
+  const list=loadArtifacts();
+  const box=$('art-list');if(!box)return;
+  $('art-count').textContent=String(list.length);
+  if(!list.length){box.innerHTML='<div class="empty">还没有工件——问完一点「存入工件」就会出现在这里，下次回来接着改。</div>';return;}
+  box.innerHTML=list.map((a,i)=>{
+    const t=(a.title||'未命名').replace(/</g,'&lt;');
+    return '<div class="item" data-i="'+i+'"><div class="t">'+t+'<small>'+new Date(a.ts).toLocaleString()+'</small></div></div>';
+  }).join('');
+  box.querySelectorAll('.item').forEach(el=>{
+    el.onclick=()=>{
+      const a=list[+el.dataset.i];if(!a)return;
+      $('q').value=a.prompt||'';
+      setPath(3);
+      $('q').focus();
+      sys('已载入工件，改一版再发送即可。');
+    };
+  });
+}
+function saveArtifact(prompt,answer){
+  const list=loadArtifacts();
+  const title=(prompt||answer||'').replace(/\s+/g,' ').slice(0,42);
+  list.unshift({title:title||'未命名产出',prompt:prompt||'',body:answer||'',ts:Date.now()});
+  saveArtifacts(list);
+  setPath(2);
+}
+function attachActions(msgEl,prompt,answer){
+  if(!msgEl||msgEl.querySelector('.actions'))return;
+  const bar=document.createElement('div');
+  bar.className='actions';
+  const b1=document.createElement('button');b1.textContent='复制';b1.onclick=()=>{try{navigator.clipboard.writeText(answer);}catch(e){} b1.textContent='已复制';setTimeout(()=>b1.textContent='复制',1200);};
+  const b2=document.createElement('button');b2.textContent='存入工件';b2.onclick=()=>{saveArtifact(prompt,answer);b2.textContent='已存入';setPath(2);};
+  const b3=document.createElement('button');b3.textContent='再改一版';b3.onclick=()=>{$('q').value='在上一版基础上优化：\n'+(answer||'').slice(0,80);setPath(3);$('q').focus();};
+  bar.appendChild(b1);bar.appendChild(b2);bar.appendChild(b3);
+  msgEl.appendChild(bar);
+}
+function updateBrainBadge(label){
+  const el=$('brain-st');if(!el)return;
+  el.innerHTML='<i></i>'+label;
+}
+renderArtifacts();
+setPath(0);
+
+/* 导航意图 */
+function navIntent(q){
+  if(!/(带我去|打开|跳转|导航|进入)/.test(q))return null;
+  for(const k in PAGES)if(q.includes(k))return {name:k,url:PAGES[k]};
+  return null;
+}
+
+/* 大脑调用 */
+async function ask(url,model,q,ctx,key,img){
+  const sysPrompt='你是"白驹"，白驹 ccowork门户的全局助手。只根据以下书稿语料回答；语料没有就明说并指引到相关章节。回答精炼、可执行、可用表格。\n\n语料：\n'+ctx;
+  const headers={'Content-Type':'application/json'};
+  if(key)headers['Authorization']='Bearer '+key;
+  const content=[];
+  if(img)content.push({type:'image_url',image_url:{url:img}});
+  content.push({type:'text',text:q});
+  const body={model,messages:[{role:'system',content:sysPrompt},{role:'user',content}]};
+  const r=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  return (await r.json()).choices[0].message.content;
+}
+function localAnswer(q,ctx){
+  if(!ctx.length)return '行囊里没有直接命中「'+q+'」。\n\n试试上方**工具整合**里的分站，或换个关键词（提示词、赚钱、工科、视频、漫剧）。';
+  let out='**为你检索到 '+ctx.length+' 处相关内容：**\n\n';
+  ctx.slice(0,3).forEach(c=>{out+='### 出自《'+c.name+'》\n> '+c.hits[0].slice(0,300).replace(/\n/g,' ')+'…\n\n';});
+  out+='---\n切换到「本地 Ollama」或「DeepSeek API」大脑，我会基于这些内容生成连贯的完整回答。';
+  return out;
+}
+
+/* WebLLM 本地大模型 */
+let engine=null,engineLoading=false;
+async function ensureEngine(onProgress){
+  if(engine)return engine;
+  if(!navigator.gpu)throw new Error('当前浏览器不支持 WebGPU，请用最新版 Chrome/Edge，或切换其他大脑');
+  if(engineLoading)throw new Error('模型加载中，请稍候…');
+  engineLoading=true;
+  const webllm=await import('https://esm.run/@mlc-ai/web-llm');
+  engine=await webllm.CreateMLCEngine('Qwen2.5-1.5B-Instruct-q4f16_1-MLC',{initProgressCallback:p=>onProgress&&onProgress(p.text||'加载中…')});
+  engineLoading=false;return engine;
+}
+
+/* 语音 */
+let speaking=false;
+function speak(text){
+  if(!$('voice-on').checked)return;
+  try{speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text.replace(/[#*`|>\[\]()_]/g,'').slice(0,600));
+    u.lang='zh-CN';u.rate=1.05;
+    u.onstart=()=>{speaking=true;$('wave-label').textContent='播报中';};
+    u.onend=()=>{speaking=false;$('wave-label').textContent='';};
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+/* 多段声波 */
+const wc=$('wave').getContext('2d');let wt=0;
+(function drawWave(){
+  requestAnimationFrame(drawWave);wt+=0.04;
+  const w=$('wave').width,h=$('wave').height;wc.clearRect(0,0,w,h);
+  const layers=speaking?5:3;
+  for(let L=0;L<layers;L++){
+    const amp=(speaking?7:2.2)*(1-L*0.12), off=L*h/(layers+1), col=speaking?'rgba(255,255,255,'+(0.95-L*0.15)+')':'rgba(255,255,255,'+(0.6-L*0.1)+')';
+    wc.strokeStyle=col;wc.lineWidth=1.5;wc.lineCap='round';wc.beginPath();
+    for(let x=0;x<w;x++){
+      const y=off+Math.sin(x*0.08+wt*2+L)*amp*Math.sin(x/w*Math.PI)*(speaking?(0.6+0.4*Math.sin(wt*5+L)):1);
+      x===0?wc.moveTo(x,y):wc.lineTo(x,y);
+    }
+    wc.stroke();
+  }
+})();
+$('mic').onclick=()=>{
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){sys('当前浏览器不支持语音识别，请用 Chrome/Edge。');return;}
+  if(recog){recog.stop();return;}
+  recog=new SR();recog.lang='zh-CN';recog.interimResults=true;
+  $('mic').classList.add('on');$('wave-label').textContent='聆听中…';
+  recog.onresult=e=>{const t=[...e.results].map(r=>r[0].transcript).join('');$('q').value=t;
+    if(e.results[e.results.length-1].isFinal){stopRec();send();}};
+  recog.onend=stopRec;recog.onerror=stopRec;recog.start();
+  function stopRec(){$('mic').classList.remove('on');$('wave-label').textContent='';recog=null;}
+};
+let recog=null;
+
+/* 图片附图 */
+let attachedImg=null;
+$('imgfile').onchange=e=>{const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();r.onload=()=>{attachedImg=r.result;$('imgbtn').textContent=' 已附图';};r.readAsDataURL(f);};
+
+/* 发送主流程 */
+let imgToSend=null;
+async function send(){
+  const q=$('q').value.trim();if(!q&&!attachedImg)return;
+  setPath(0);
+  add(q,'user');$('q').value='';
+  imgToSend=attachedImg;if(attachedImg){attachedImg=null;$('imgbtn').textContent=' 附图';}
+  const nav=navIntent(q);
+  if(nav){
+    add('好，这就带你去 **'+nav.name+'**。\n\n[ 如未自动跳转，点这里]('+nav.url+')','bot');
+    setPath(1);
+    if(!nav.url.startsWith('#'))setTimeout(()=>location.href=nav.url,900);else location.href=nav.url;return;}
+  const ctx=retrieve(q);
+  const ctxText=ctx.map(c=>'【'+c.name+'】\n'+c.hits.join('\n')).join('\n\n').slice(0,2500);
+  const mode=$('mode').value, mm=$('mm-on').checked;
+  const typing=add('思考中…','bot typing');
+  try{
+    let ans;
+    let brainLabel='站内检索';
+    if(mode==='cloud'||mode==='zhipu'){
+      updateBrainBadge('连接中…');
+      const msgs=[
+        {role:'system',content:'你是"白驹"（ccowork），用户的一站式 AI 大脑。回答精炼、可执行、可用表格。若【书稿语料】相关则引用；否则用通用知识直接给可用答案。\n\n【书稿语料】：\n'+ctxText},
+        {role:'user',content:q}
+      ];
+      try {
+        ans = await window.AI.complete({providers:['ark','zhipu','deepseek'], messages:msgs, maxTokens:1800});
+        brainLabel='云端 · 已应答';
+      } catch(e1) {
+        ans = localAnswer(q, ctx);
+        brainLabel='云端失败 · 站内检索';
+        sys('云端模型未接通（可能是网络/CORS/Key）。已切换站内书稿检索，不是假成功。');
+      }
+    }else if(mode==='webllm'){
+      updateBrainBadge('本地模型下载中…');
+      if(!engine){
+        typing.innerHTML=' 首次使用：本地模型约 1GB 下载…<br><span style="font-size:12px;color:var(--muted)" id="dlprog">准备中…</span>';
+        await ensureEngine(t=>{const el=$('dlprog');if(el)el.textContent=t;});
+        typing.innerHTML=' 模型就绪，开始思考…';
+      }
+      const sp='你是"白驹"。根据书稿语料回答；没有就说明并给通用建议。\n\n语料：\n'+ctxText;
+      const reply=await engine.chat.completions.create({messages:[{role:'system',content:sp},{role:'user',content:q}]});
+      ans=reply.choices[0].message.content;
+      brainLabel='本地 · WebLLM';
+    }else if(mode==='deepseek'){
+      updateBrainBadge('DeepSeek…');
+      const key=$('apikey').value.trim();if(!key)throw new Error('请先填入 DeepSeek API Key');
+      ans=await ask('https://api.deepseek.com/v1/chat/completions','deepseek-chat',q,ctxText,key,mm?imgToSend:null);
+      brainLabel='DeepSeek';
+    }else if(mode==='ollama'){
+      updateBrainBadge('Ollama…');
+      ans=await ask('http://localhost:11434/v1/chat/completions','qwen3:8b',q,ctxText);
+      brainLabel='本地 · Ollama';
+    }else{
+      ans=localAnswer(q,ctx);
+      brainLabel='站内检索';
+    }
+    updateBrainBadge(brainLabel+' · 在线');
+    typing.classList.remove('typing');
+    typing.innerHTML=mdSafe(ans);
+    attachActions(typing,q,ans);
+    speak(ans);
+    setPath(1);
+  }catch(e){
+    typing.classList.remove('typing');
+    const msg=(e&&e.message)?String(e.message):'未知错误';
+    typing.innerHTML=mdSafe('**这次没有成功生成。**\n\n原因：`'+msg+'`\n\n可选：\n1. 换「云端白驹 · 免 Key」再试\n2. 检查网络 / Key / 代理\n3. 改用「站内书稿检索」\n\n（不会假装已经答好）');
+    updateBrainBadge('失败 · 已显示原因');
+    setPath(0);
+  }
+  $('msgs').scrollTop=1e9;
+}
+$('send').onclick=send;
+$('q').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+function askWith(t){$('q').value=t;$('msgs').scrollTop=0;send();}
+
+/* 开场 */
+sys(' 白驹路径：问一句 → 看产出 → 存工件 → 改一版。默认云端免费优先，失败会明说原因。');
+add('你好，我是 **白驹 ccowork**。\n\n这页只教你一条链路：\n1. **问** —— 点示例或直接说目标\n2. **得** —— 看见可复制的产出\n3. **存** —— 点「存入工件」，下次回来还在\n4. **改** —— 点「再改一版」继续迭代\n\n需要地图/学院等更多入口，用下方 **探索**，不要在首屏迷路。','bot');
+quick(['给我三个副业路径','写一条小红书种草','怎么用 AI 做漫剧？','带我去编年史','做个学习工作台','Ollama 怎么装？']);
+$('mode').onchange=function(){
+  const v=this.value;
+  $('apikey').style.display=(v==='deepseek')?'':'none';
+  const map={cloud:'云端 · 免 Key',zhipu:'智谱 · 自填 Key',webllm:'本地 · 首次约 1GB',ollama:'本地 · Ollama',deepseek:'DeepSeek · 需 Key',local:'站内检索'};
+  updateBrainBadge(map[v]||'待命');
+};
+$('mode').dispatchEvent(new Event('change'));
+
+/* ============================================================
+   首屏新手引导（2026-11-20 合并版）
+   身份表直接用 Baiju.ROLES 的 6 个 id，不再自造 fan/dev/side 一套；
+   每条 href 都是磁盘上实测存在的页面，不放假入口、不跳空锚点。
+   ============================================================ */
+(function(){
+  var OB = {
+    everyone: [
+      { n:'前沿流 · 近 7 天',   d:'只看模型发布、工具版本与价格变化，每条能点回原文', href:'/feed/' },
+      { n:'自学路线 · 按阶段学', d:'43 章教程从「会用」排到「会训练」，按自己起点挑',   href:'/learn/' },
+      { n:'提示词模板库',       d:'拿来就能改的模板，复制走当你的第一条提示词',       href:'/toolbox/prompts.html' }
+    ],
+    developer: [
+      { n:'部署百科 · 选路线',  d:'本地 / 图形 / 云额度 / 自建四条路线 + 硬件门槛决策树', href:'/learn/deploy.html' },
+      { n:'开源仓库 · 160 个',  d:'能自己跑起来才算数，标星数、许可证、国内可直连性',   href:'/toolbox/repos.html' },
+      { n:'平台阵列 · 38 家',   d:'从哪拿模型、从哪租卡，统一标国内可用性与计价方式',   href:'/toolbox/platforms.html' }
+    ],
+    toolbox: [
+      { n:'工具箱总览',         d:'写作、表格、图片、视频，按任务找工具而不是按名字',   href:'/toolbox/' },
+      { n:'白驹工作站',         d:'把想法落成提示词、分镜、表格，产出可复制可导出',     href:'/toolbox/workstation.html' },
+      { n:'作品案例',           d:'先看别人用 AI 做成了什么，再决定自己做什么',         href:'/works/cases.html' }
+    ],
+    teacher: [
+      { n:'自学路线 · 课程',     d:'整门课按章节排好，可直接当备课线索',                 href:'/learn/academy.html' },
+      { n:'学习路线图',         d:'从零到能上课演示，按阶段拆开看',                     href:'/learn/' },
+      { n:'提示词模板库',       d:'教案、题目、评语都能套的模板',                       href:'/toolbox/prompts.html' }
+    ],
+    student: [
+      { n:'自学路线 · 课程',     d:'按阶段排好的课，学完能自己跑例子',                   href:'/learn/academy.html' },
+      { n:'章节测验',           d:'学完一章立刻做题，错了能回看',                       href:'/learn/academy/quiz.html' },
+      { n:'43 章教程',          d:'想动手直接翻章节，每章带可跑例子',                   href:'/learn/tutorials/' }
+    ],
+    engineer: [
+      { n:'部署百科 · 选路线',  d:'硬件门槛、显存、量化怎么选，一条条对着挑',           href:'/learn/deploy.html' },
+      { n:'AI 编程工具',        d:'写代码、看日志、排故障，能装进产线的那些',           href:'/learn/ai-coding-tools.html' },
+      { n:'平台阵列 · 38 家',   d:'国内能直连的算力与模型，标计价方式',                 href:'/toolbox/platforms.html' }
+    ]
+  };
+  var NAME = { everyone:'普通人', developer:'开发者', toolbox:'工具台', teacher:'老师', student:'学生', engineer:'技术人员' };
+  var panel = document.getElementById('onboard');
+  var box   = document.getElementById('obPaths');
+  var roles = [].slice.call(document.querySelectorAll('#onboard .ob-role'));
+  var title = document.getElementById('obTitle');
+  var sub   = document.getElementById('obSub');
+  var chg   = document.getElementById('obChange');
+  if (!panel || !box || !roles.length) return;
+
+  function paint(key){
+    box.innerHTML = (OB[key] || OB.everyone).map(function(p, i){
+      return '<a class="ob-path" href="' + p.href + '">' +
+             '<em>0' + (i + 1) + ' · ' + ['先看清','再深入','动手做'][i] + '</em>' +
+             '<b>' + p.n + '</b><span>' + p.d + '</span></a>'
+    }).join('')
+  }
+  function mark(key){
+    roles.forEach(function(x){
+      var on = x.getAttribute('data-role') === key
+      if (on) x.classList.add('cur'); else x.classList.remove('cur')
+      x.setAttribute('aria-pressed', on ? 'true' : 'false')
+    })
+  }
+  /* 选完之后收起 6 张卡，只留标题 + 三条路径，回访不再占首屏 */
+  function compact(key){
+    panel.setAttribute('data-state', 'ready')
+    if (title) title.textContent = '已按「' + (NAME[key] || '普通人') + '」排好三条路径'
+    if (sub)   sub.textContent = '换身份下面三条跟着换；导航右上角的身份芯片显示的就是这里的选项。'
+    if (chg)   chg.hidden = false
+    mark(key); paint(key)
+  }
+  function expand(){
+    panel.setAttribute('data-state', 'pick')
+    panel.setAttribute('data-more', '0')
+    var mb = document.getElementById('obMore')
+    if (mb) mb.setAttribute('aria-expanded', 'false')
+    if (title) title.textContent = '第一次来？先选你是谁'
+    if (sub)   sub.textContent = '这个站只做一件事：陪你把 AI 从零学到能做出东西。选完直接给你路径，不用猜该点哪。'
+    if (chg)   chg.hidden = true
+    roles.forEach(function(x){ x.classList.remove('cur'); x.setAttribute('aria-pressed','false') })
+    paint('everyone')
+  }
+  roles.forEach(function(b){
+    b.addEventListener('click', function(){
+      var k = b.getAttribute('data-role')
+      mark(k); paint(k); compact(k)
+      /* 唯一真源：写进 baiju.role，导航身份芯片与全站分流都读这一个键 */
+      if (window.Baiju && window.Baiju.Role) { try { window.Baiju.Role.set(k) } catch (e) {} }
+    })
+  })
+  if (chg) chg.onclick = function(){
+    expand()
+    try { panel.scrollIntoView({ behavior:'smooth', block:'center' }) } catch (e) {}
+  }
+  /* 窄屏「更多身份」折叠开关（桌面端这行是隐藏的，6 张卡直接铺开） */
+  var moreBtn = document.getElementById('obMore')
+  if (moreBtn) moreBtn.onclick = function(){
+    var on = panel.getAttribute('data-more') === '1'
+    panel.setAttribute('data-more', on ? '0' : '1')
+    moreBtn.setAttribute('aria-expanded', on ? 'false' : 'true')
+  }
+  var setBtn = document.getElementById('obSet')
+  if (setBtn) setBtn.onclick = function(){
+    var g = document.querySelector('#modGear, .nav-gear, .bj-nav-settings, #setBtn')
+    if (g) { g.click(); return }
+    var r = document.querySelector('nav .bj-idbox')
+    if (r) r.scrollIntoView({ block:'center' })
+  }
+  var askBtn = document.getElementById('obAsk')
+  if (askBtn) askBtn.onclick = function(){
+    var f = document.querySelector('.bja-fab')
+    if (f) f.click(); else location.href = '/agent.html'
+  }
+
+  /* 回访：已选过身份就直接紧凑显示。Baiju 可能晚于本脚本加载，多等两个时机。 */
+  function restore(){
+    try {
+      var r = window.Baiju && window.Baiju.Role && window.Baiju.Role.get()
+      if (r && r.id && panel.getAttribute('data-state') === 'pick') compact(r.id)
+    } catch (e) {}
+  }
+  document.addEventListener('DOMContentLoaded', restore)
+  window.addEventListener('load', restore)
+  setTimeout(restore, 1200)
+  document.addEventListener('baiju:role', restore)
+
+  paint('everyone')
+  if (/[?&]pick\b/.test(location.search) || location.hash === '#onboard') {
+    expand()
+    try { panel.scrollIntoView({ block:'center' }) } catch (e) {}
+    panel.classList.add('flash')
+    setTimeout(function(){ panel.classList.remove('flash') }, 1500)
+  }
+})();
+/* 2026-11-12：首页「白驹工作区 / 工作文」下线，相关生成器、生活工具函数一并移除。
+   生图/生文/视频/表格/技能向导已整合进悬浮窗工作室；
+   天气（真实定位）/ 日历 / 地图已搬进悬浮窗三角折叠区。 */
+
+/* ============================================================
+   编译模式 COO
+   ============================================================ */
+function switchMode(m,btn){document.querySelectorAll('.modebtn').forEach(b=>b.classList.remove('cur'));btn.classList.add('cur');
+  var api=window.BaijuOne||{};
+  /* 工具：不再有首页第二套工作区，统一打开右下角悬浮窗里的三角折叠区 */
+  if(m==='tools'){
+    if(typeof api.open==='function')api.open();
+    else {var fb=document.querySelector('.bja-fab');if(fb)fb.click();}
+    setTimeout(function(){
+      var tri=document.querySelector('.bja-hd .bja-studio-entry');
+      if(tri && tri.getAttribute('aria-pressed')!=='true')tri.click();
+    },260);
+    return;
+  }
+  if(m==='work'){
+    if(typeof api.open==='function')api.open();
+    else if(typeof api.toggle==='function')api.toggle(true);
+    else {var fb2=document.querySelector('.bja-fab');if(fb2)fb2.click();}
+    return;
+  }
+  const map={'compile':'#compile','explore':'#explore'};
+  const target=document.querySelector(map[m]||'#explore');
+  if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ============================================================
+   工具整合网格
+   ============================================================ */
+/* 第一列 = 分类（原为空串，渲染出 34 个空胶囊，已改为真正有用的分类标签）。
+   分类顺序即筛选条顺序；新增工具时务必带上分类，否则会落到「全部」但无角标。 */
+const TOOLS=[
+  ['对话','AI 对话工作台','/chat.html','开箱即用对话 UI，多模型切换','cover-chatgpt.webp'],
+  ['对话','AI 语音助手','/toolbox/voice.html','语音识别/合成/克隆，说给白驹听','cover-videogen.webp'],
+  ['对话','全能智能体','/agent.html','Agent 自动化工作流与智能巡航','cover-ai70.webp'],
+  ['创作','AI 漫剧指南','/works/manju.html','从创意到分账，一个人做一条剧','cover-videogen.webp'],
+  ['创作','AI 绘画生图','/works/gallery.html','即梦/ComfyUI/SD 实战与模板','cover-imagegen.webp'],
+  ['创作','漫剧书库','/works/comic.html','漫剧分镜与故事创作','cover-videogen.webp'],
+  ['创作','提示词实战','/toolbox/prompts.html','40 条精选可复制提示词+术语','cover-prompts.webp'],
+  ['创作','提示词百宝库','/toolbox/prompts100.html','100+ 提示词模板速查','cover-prompts.webp'],
+  ['学习','书稿库','/learn/books/','五卷全书/实战全书/中国科技故事','cover-book.webp'],
+  ['学习','书稿阅读器','/learn/books/reader.html','沉浸式阅读全部书稿','cover-book.webp'],
+  ['学习','AI 赋能教育','/learn/ai-edu.html','课程/教学/学生全场景','cover-growth.webp'],
+  ['学习','AI 赋能就业','/learn/ai-jobs.html','简历/面试/工科实训','cover-engineering.webp'],
+  ['学习','AI 简历','/toolbox/resume.html','AI 简历与求职材料','cover-growth.webp'],
+  ['学习','答题宝库','/toolbox/quiz.html','单招/万题库/AI通识 10862 题','cover-ai70.webp'],
+  ['学习','AI 赚钱攻略','/learn/ai-money.html','副业/接单/一人公司路径','cover-growth.webp'],
+  ['作品','开源作品大全','/works/projects.html','<!--STAT:repos-->168<!--/STAT:repos--> 个真实项目·按用途分类','cover-global.webp'],
+  ['作品','作品内容库','/works/collection.html','内嵌全文，点开即读','cover-book.webp'],
+  ['作品','页面封面墙','/works/covers.html','<!--STAT:repos-->168<!--/STAT:repos--> 开源项目封面','cover-global.webp'],
+  ['学习','免费工科软件','/learn/software.html','CAD/建模/仿真/电子/数学 一键教','cover-design.webp'],
+  ['工具','开发者基地','/toolbox/devbase.html','部署/API/本地运行','cover-design.webp'],
+  ['工具','白驹工作站','/toolbox/workstation.html','IDE × GitHub × AI','cover-data.webp'],
+  ['工具','本地 AI','/toolbox/local-ai.html','本地部署全家桶','cover-deepseek.webp'],
+  ['知识','模型横评','/models/review.html','主流模型对比选型','cover-deepseek.webp'],
+  ['知识','AI 生态图谱','/about/ecosystem.html','工具/模型生态地图','cover-global.webp'],
+  ['知识','AI 生态库','/about/ecosystem.html','192 家厂商 · 教程 · 资料 · 三端齐上','cover-global.webp'],
+  ['知识','AI 知识收纳站','/about/ecosystem.html','全方向门户入口','cover-research.webp'],
+  ['学习','行业实战手册','/learn/industry.html','各行业 AI 落地','cover-industry.webp'],
+  ['学习','专业指南','/learn/majors.html','AI + 专业选择','cover-engineering.webp'],
+  ['学习','上手起步','/learn/roadmap.html','从零开始玩 AI','cover-future.webp'],
+  ['知识','AI 前沿','/feed/frontiers.html','最新趋势全景','cover-future.webp'],
+  ['知识','编年史','/learn/academy/history.html','AI 全景编年','cover-research.webp'],
+  ['知识','每日新闻','/feed/news.html','今日 AI 快讯','cover-data.webp'],
+  ['知识','FAQ 50问','/about/faq.html','高频问题速查','cover-prompts.webp'],
+  ['知识','AI 安全','/about/security.html','安全与合规指南','cover-design.webp'],
+];
+(function(){
+  const g=$('toolGrid'), chips=$('toolChips'), search=$('toolSearch'),
+        count=$('toolCount'), empty=$('toolsEmpty');
+  if(!g) return;
+  const CATS=['全部','对话','创作','学习','作品','工具','知识'];
+  let cur='全部';
+
+  /* 卡片：主 CTA 只留「进入」，问白驹收进封面右上角的图标按钮。
+     角标显示真实分类，空 badge 彻底下线。 */
+  TOOLS.forEach(([cat,name,page,desc,img])=>{
+    const card=document.createElement('div');
+    card.className='tcard'; card.dataset.cat=cat;
+    card.dataset.key=(name+' '+desc+' '+cat+' '+page).toLowerCase();
+    card.innerHTML=`<div class="cv" data-bg="./assets/img/${img}">
+        <span class="cat">${cat}</span>
+        <button class="ask" type="button" title="问白驹：${name}" aria-label="问白驹：${name}"
+          onclick="askWith('介绍一下${name}（${desc}），并给我上手步骤')"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i></button>
+      </div>
+      <div class="cb"><h4>${name}</h4><p>${desc}</p>
+      <div class="acts"><a class="go" href="${page}">进入 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div></div>`;
+    g.appendChild(card);
+  });
+
+  /* 筛选条：分类 + 数量一次看清 */
+  CATS.forEach(c=>{
+    const n=c==='全部'?TOOLS.length:TOOLS.filter(t=>t[0]===c).length;
+    const b=document.createElement('button');
+    b.type='button'; b.className='tools-chip'+(c==='全部'?' cur':'');
+    b.dataset.cat=c;
+    b.innerHTML=c+'<span class="n">'+n+'</span>';
+    b.setAttribute('aria-pressed', c==='全部'?'true':'false');
+    b.addEventListener('click',()=>{
+      cur=c;
+      chips.querySelectorAll('.tools-chip').forEach(x=>{
+        const on=x.dataset.cat===c;
+        x.classList.toggle('cur',on); x.setAttribute('aria-pressed',on?'true':'false');
+      });
+      apply();
+    });
+    chips.appendChild(b);
+  });
+
+  const cards=[...g.querySelectorAll('.tcard')];
+  function loadBg(card){
+    const cv=card.querySelector('.cv');
+    if(cv && cv.dataset.bg){cv.style.backgroundImage=`url('${cv.dataset.bg}')`;cv.removeAttribute('data-bg');}
+    card.classList.add('in');
+  }
+  function apply(){
+    const kw=(search.value||'').trim().toLowerCase();
+    let shown=0;
+    cards.forEach(card=>{
+      const hit=(cur==='全部'||card.dataset.cat===cur) && (!kw||card.dataset.key.indexOf(kw)>=0);
+      card.hidden=!hit;
+      if(hit) shown++;
+    });
+    if(count) count.textContent='显示 '+shown+' / '+TOOLS.length+' 个';
+    if(empty) empty.hidden=shown!==0;
+  }
+  search.addEventListener('input',apply);
+  search.addEventListener('search',apply);
+
+  /* 懒加载：hidden 时 IO 不触发，切回分类 / 清空搜索会自动补上背景与入场动画。
+     未命中筛选的卡片始终不会被请求，34 张封面不会一次性全拉。 */
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{
+      es.forEach(en=>{ if(en.isIntersecting){ loadBg(en.target.closest('.tcard')); io.unobserve(en.target); } });
+    },{rootMargin:'120px'});
+    cards.forEach(c=>io.observe(c.querySelector('.cv')));
+  }else{ cards.forEach(loadBg); }
+  apply();
+})();
+
+/* 今日新闻（读真实简报数据：最近日期 + 近 7 天条数，不写死年份） */
+(function(){
+  const setTxt = t => { const el = document.getElementById('newsTxt'); if (el) el.innerHTML = t; };
+  fetch('./data/daily-brief.json').then(r=>r.json()).then(d=>{
+    const its = (d.items||[]).filter(i=>i && typeof i.ts==='number').slice().sort((a,b)=>b.ts-a.ts);
+    if(!its.length) throw new Error('empty');
+    const latest = new Date(its[0].ts + 8*3600e3).toISOString().slice(0,10);
+    const week = its.filter(i=>i.ts >= Date.now() - 7*24*3600e3).length;
+    setTxt('<b>更新至 '+latest+'</b> · 近 7 天共 '+week+' 条真实资讯 —— 点右侧查看完整简报。');
+
+    /* 首页「近 7 天」快讯条与日更数据联动：从 daily-brief.json 动态覆盖 gen-feed.py 的静态兜底。
+       静态兜底供无 JS/爬虫查看；有 JS 时一律显示当天最新条目，日更一跑即同步，永不写死。 */
+    var ffRow = document.querySelector('#ff-strip .ff-strip-row');
+    if (ffRow) {
+      var pad = function (n) { return String(n).padStart(2, '0'); };
+      var mdOf = function (t) { var x = new Date(t + 8 * 3600e3); return pad(x.getUTCMonth() + 1) + '-' + pad(x.getUTCDate()); };
+      var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); };
+      var todayMd = latest.slice(5);
+      var top = its.slice(0, 6);
+      ffRow.innerHTML = top.map(function (i) {
+        var isToday = mdOf(i.ts) === todayMd;
+        var badge = isToday ? '<em class="ff-badge">今日</em>' : '';
+        var cls = isToday ? 'ff-mini is-today' : 'ff-mini';
+        var src = i.source || '';
+        return '<a class="' + cls + '" href="/feed/#hot">' + badge + '<time>' + mdOf(i.ts) + '</time><b>' + esc(i.title) + '</b><i>' + esc(src) + '</i></a>';
+      }).join('');
+      var ffHint = document.querySelector('#ff-strip .ff-today');
+      if (ffHint) {
+        var nToday = its.filter(function (i) { return mdOf(i.ts) === todayMd; }).length;
+        ffHint.textContent = nToday ? ('今日新增 ' + nToday + ' 条') : ('最近更新 ' + latest);
+      }
+      var ffRange = document.querySelector('#ff-strip .ff-range');
+      if (ffRange) {
+        var oldest = its[its.length - 1];
+        ffRange.textContent = new Date(oldest.ts + 8 * 3600e3).toISOString().slice(0, 10) + ' — ' + latest;
+      }
+    }
+  }).catch(()=>{ setTxt('AI 每日新闻已更新 —— 点右侧查看完整资讯。'); });
+})();
+
+/* ============================================================
+   设置（白驹模型统一调度）+ 主题切换
+   ============================================================ */
+const CONF_KEY='baiju-config-v2';
+function saveSettings(){
+  const deep=$('sDeep').checked;
+  document.body.setAttribute('data-theme',deep?'deep':'cloud');
+  document.body.setAttribute('data-wall',$('sWall').value);
+  try{localStorage.setItem('ccowork.theme',deep?'deep':'cloud');   /* A4 B1：同步真源键 */
+    if($('sWall').value)localStorage.setItem('ccowork.wall',$('sWall').value);
+    localStorage.setItem(CONF_KEY,JSON.stringify({
+    mode:$('sMode').value,key:$('sKey').value.trim(),voice:$('sVoice').checked,mm:$('sMM').checked,deep,wall:$('sWall').value
+  }));}catch(e){}
+  $('mode').value=$('sMode').value;$('apikey').value=$('sKey').value;$('voice-on').checked=$('sVoice').checked;$('mm-on').checked=$('sMM').checked;
+  syncThemeBtn();
+  sys(' 设置已保存：大脑='+$('sMode').value+(deep?'，深空主题':'，云顶主题'));
+}
+function loadSettings(){
+  try{const c=JSON.parse(localStorage.getItem(CONF_KEY)||'null');if(!c)return;
+    if(c.mode)$('sMode').value=c.mode,$('mode').value=c.mode;
+    if(c.key)$('sKey').value=c.key,$('apikey').value=c.key;
+    if(typeof c.voice==='boolean')$('sVoice').checked=c.voice,$('voice-on').checked=c.voice;
+    else $('voice-on').checked=false,$('sVoice').checked=false;
+    if(typeof c.mm==='boolean')$('sMM').checked=c.mm,$('mm-on').checked=c.mm;
+    /* A4 B1：主题唯一真源 = ccowork.theme；旧键 baiju-config-v2.deep 仅作首访初始化与反向同步 */
+    var themeStored='';try{themeStored=localStorage.getItem('ccowork.theme')||''}catch(e){}
+    var theme=themeStored||(typeof c.deep==='boolean'?(c.deep?'deep':'cloud'):'');
+    if(theme){document.body.setAttribute('data-theme',theme);$('sDeep').checked=(theme==='deep');
+      try{if(!themeStored)localStorage.setItem('ccowork.theme',theme)}catch(e){}}
+    var wallStored='';try{wallStored=localStorage.getItem('ccowork.wall')||''}catch(e){}
+    var wall=wallStored||(c.wall||'');
+    if(wall){$('sWall').value=wall;document.body.setAttribute('data-wall',wall);
+      try{if(!wallStored)localStorage.setItem('ccowork.wall',wall)}catch(e){}}
+    syncThemeBtn();
+  }catch(e){}
+}
+function syncThemeBtn(){
+  const tb=$('themeBtn');
+  if(tb)tb.textContent=(document.body.getAttribute('data-theme')==='deep')?'':'';
+}
+function toggleTheme(){
+  const deep=document.body.getAttribute('data-theme')==='deep';
+  const next=deep?'cloud':'deep';
+  document.body.setAttribute('data-theme',next);
+  $('sDeep').checked=!deep;
+  syncThemeBtn();
+  try{localStorage.setItem('ccowork.theme',next);   /* A4 B1：同步真源键 */
+    const c=JSON.parse(localStorage.getItem(CONF_KEY)||'{}');c.deep=!deep;localStorage.setItem(CONF_KEY,JSON.stringify(c));}catch(e){}
+}
+(function(){
+  const tb=$('themeBtn');
+  if(tb)tb.onclick=toggleTheme;
+})();
+loadSettings();
+
+/* P04 步骤 5：启动恢复首页对话历史（与 /chat.html 共享 ccowork.sessions.v1）。
+   DOM ready 后再跑 —— 此时 #msgs 已存在。 */
+(function(){
+  function bjBoot(){ try{ bjRestoreMsgs(); }catch(e){} }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', bjBoot);
+  else bjBoot();
+})();
+['mode','apikey','voice-on','mm-on'].forEach(id=>$(id).addEventListener('change',()=>{
+  try{localStorage.setItem(CONF_KEY,JSON.stringify({mode:$('mode').value,key:$('apikey').value.trim(),voice:$('voice-on').checked,mm:$('mm-on').checked}));}catch(e){}
+}));
+</script>
+<script src="./ccowork.js?v=20261125a"></script>
+<script src="./module.js?v=20261125a"></script>
+<script src="./responsive.js?v=20261116a"></script>
+  <script src="./compile-mode.js"></script>
+  <script src="./ai-client.js"></script>
+<script>
+/* 首页开源作品画廊（数据驱动 · 复用 .wcard · 分批放出，不一次铺 122 张） */
+(function(){
+  var WS={data:[],filter:'all',q:'',batch:6,shown:0};
+  function orgLabel(o){return o==='team'?'团队':(o==='person'||o==='个人')?'个人':o;}
+  function heat(h){h=Math.max(1,Math.min(5,h||1));return '★★★★★'.slice(0,h)+'☆☆☆☆☆'.slice(0,5-h);}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  var G=document.getElementById('wsGrid');
+  var grads=['linear-gradient(120deg,#4f8cff,#38b6ff)','linear-gradient(120deg,#8b5cf6,#4f8cff)','linear-gradient(120deg,#22b07d,#38b6ff)','linear-gradient(120deg,#f0a93c,#f07266)','linear-gradient(120deg,#38e1ff,#5b8cff)'];
+
+  function cardHTML(p){
+    var bg=grads[(p.name||'').length%grads.length];
+    return '<a class="wcard" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+
+      '<div class="cv" style="background:'+bg+'"><span class="badge">'+orgLabel(p.org)+'</span></div>'+
+      '<div class="cb"><h4>'+esc(p.name)+'</h4><p>'+esc(p.desc)+'</p>'+
+      '<span class="tg" style="color:#4f8cff">@'+(p.owner||p.author||'')+' · '+heat(p.heat)+'</span>'+
+      '<span class="go">GitHub 查看 <span class="arr"><i class="cc-ic" data-ic="arrow-right"></i></span></span></div></a>';
+  }
+  function listNow(){
+    return WS.data.filter(function(p){
+      if(WS.filter==='team'&&p.org!=='team')return false;
+      if(WS.filter==='person'&&p.org==='team')return false;
+      if(WS.q){var s=(p.name+' '+(p.owner||'')+' '+(p.author||'')+' '+(p.desc||'')).toLowerCase();if(s.indexOf(WS.q.toLowerCase())<0)return false;}
+      return true;
+    }).sort(function(a,b){return (b.heat||0)-(a.heat||0);});
+  }
+  // 渲染下一批（首次调用前清空）；按钮走委托，不重复绑定
+  function paint(reset){
+    if(reset)WS.shown=0;
+    var list=listNow();
+    if(!list.length){G.innerHTML='<p class="ws-loading">没有匹配的项目。</p>';return;}
+    if(!WS.shown)G.innerHTML='';
+    // 砍掉上一次残留的「再看 N 个」按钮与收尾提示
+    G.querySelectorAll('.ws-more,.ws-end').forEach(function(n){n.remove()});
+    var next=list.slice(WS.shown, WS.shown+WS.batch);
+    G.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
+    WS.shown+=next.length;
+    var rest=list.length-WS.shown;
+    if(rest>0){
+      G.insertAdjacentHTML('beforeend',
+        '<button type="button" class="ws-more">'+
+        '<i class="cc-ic" data-ic="chevrons-down" aria-hidden="true"></i>'+
+        '再看 '+Math.min(WS.batch,rest)+' 个<span class="ws-rest">还剩 '+rest+' 个</span></button>');
+    }else if(WS.shown>WS.batch){
+      G.insertAdjacentHTML('beforeend',
+        '<a class="ws-end" href="/works/projects.html">'+
+        '<i class="cc-ic" data-ic="library" aria-hidden="true"></i>全部 '+list.length+' 个都在作品库，按分类看更清楚</a>');
+    }
+  }
+  G.addEventListener('click',function(e){
+    var b=e.target.closest('.ws-more');if(!b)return;
+    b.disabled=true;
+    paint(false);
+  });
+  document.getElementById('wsTabs').addEventListener('click',function(e){
+    var b=e.target.closest('.ws-tab');if(!b)return;
+    document.querySelectorAll('#wsTabs .ws-tab').forEach(function(x){x.classList.remove('cur')});
+    b.classList.add('cur');WS.filter=b.dataset.f;paint(true);
+  });
+  document.getElementById('wsSearch').addEventListener('input',function(e){WS.q=e.target.value.trim();paint(true);});
+  fetch('/data/ai-projects.json').then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(function(d){WS.data=d;paint(true);})
+    .catch(function(e){G.innerHTML='<p class="ws-loading">开源作品库加载失败（'+(e.message||e)+'），请用 http(s) 访问。</p>';});
+})();
+</script>
+  <script src="/baiju-assistant.js?v=20261125a" defer></script>
+  <!-- 2026-11-25：home-fold.js 一并移除（同上，取消首屏折叠） -->
+  <script src="/site-nav.js?v=20261125a"></script>
+<script>
+/* 2026-11-25 首页精简：把过长的板块默认收起，加「展开全部」按钮 */
+(function(){
+  try{
+    var TARGETS = ['tools', 'works'];
+    TARGETS.forEach(function(id){
+      var sec = document.getElementById(id);
+      if (!sec) return;
+      var host = sec.querySelector('.grid') || sec.querySelector('.works-grid') || null;
+      if (!host) {
+        var cands = Array.prototype.slice.call(sec.children).filter(function(c){
+          return c.tagName === 'DIV' && !/sec-head|tools-bar|sh/.test(c.className || '');
+        });
+        host = cands[0] || null;
+      }
+      if (!host) return;
+      if (host.scrollHeight < 520) return;
+      host.classList.add('bj-clip');
+      sec.classList.add('bj-collapsed');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'bj-more';
+      btn.textContent = '展开全部 ↓';
+      btn.addEventListener('click', function(){
+        sec.classList.remove('bj-collapsed');
+        btn.remove();
+      });
+      sec.appendChild(btn);
+    });
+  }catch(e){}
+})();
+</script>
+<script>
+/* ============================================================
+   2026-11-26：首页渐进展开 + scrollspy 导航
+   ============================================================ */
+(function(){
+  // --- A. 折叠切换 ---
+  var fold = document.getElementById('fold-hide');
+  var btn  = document.getElementById('fold-toggle');
+  var txt  = document.getElementById('fold-toggle-txt');
+  if (fold && btn) {
+    btn.addEventListener('click', function(){
+      var open = fold.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (txt) txt.textContent = open ? '↑ 收起' : '↓ 开始探索 白驹';
+      if (open) {
+        // 展开后自动滚到导航条
+        var nav = document.getElementById('page-nav');
+        if (nav) setTimeout(function(){ nav.scrollIntoView({ behavior:'smooth', block:'start' }); }, 60);
+      }
+    });
+    // URL 带锚点则自动展开
+    if (location.hash && !['#','#gate'].includes(location.hash)) {
+      fold.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      if (txt) txt.textContent = '↑ 收起';
+    }
+  }
+
+  // --- B. scrollspy（IntersectionObserver）---
+  var navLinks = document.querySelectorAll('#page-nav .pn-link');
+  if ('IntersectionObserver' in window && navLinks.length) {
+    var secIds = [];
+    navLinks.forEach(function(a){ var t=a.getAttribute('data-target'); if(t) secIds.push(t); });
+    var sections = secIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+
+    var curActive = null;
+    function onObs(entries){
+      // 找最靠上且可见的 section
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if (!visible.length) return;
+      // 取 intersectionRatio 最大的
+      visible.sort(function(a,b){ return b.intersectionRatio - a.intersectionRatio; });
+      var target = visible[0].target.id;
+      if (curActive === target) return;
+      curActive = target;
+      navLinks.forEach(function(a){
+        a.classList.toggle('pn-cur', a.getAttribute('data-target') === target);
+      });
+    }
+    var io = new IntersectionObserver(onObs, {
+      rootMargin: '-80px -40% -60% -40%',
+      threshold: [0.1, 0.3, 0.5]
+    });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  // 点击导航锚点时自动展开
+  document.querySelectorAll('#page-nav a').forEach(function(a){
+    a.addEventListener('click', function(){
+      if (fold && !fold.classList.contains('open')) {
+        fold.classList.add('open');
+        btn && btn.setAttribute('aria-expanded','true');
+        if (txt) txt.textContent = '↑ 收起';
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

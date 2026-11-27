@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · AI 前沿全景 · 前辈成果展示, viewport-fit=cover · 白驹 ccowork">
+<meta name="description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta property="og:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · AI 前沿全景 · 前辈成果展示 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"ccowork · AI 前沿全景 · 前辈成果展示","description":"个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+/* ---------- 导航 ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(6,8,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:26px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--cyan)}
+@media(max-width:900px){.nav-links{display:none}}
+
+/* ====== A. Hero 增强 ====== */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:120px 24px 60px;position:relative;overflow:hidden;
+  background:radial-gradient(900px 500px at 20% 10%,rgba(79,140,255,.16),transparent 60%),
+             radial-gradient(800px 500px at 85% 30%,rgba(139,92,246,.14),transparent 60%),
+             radial-gradient(700px 600px at 50% 100%,rgba(56,225,255,.10),transparent 60%),var(--bg)}
+.hero .tag{font-size:13px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:6px 18px;border-radius:999px;letter-spacing:2px;margin-bottom:28px;animation:float 4s ease-in-out infinite}
+.hero h1{font-size:clamp(38px,6.5vw,84px);font-weight:900;line-height:1.25;letter-spacing:2px}
+.hero h1 .h-line1{display:block;font-size:clamp(14px,1.3vw,18px);font-weight:500;letter-spacing:4px;color:var(--cyan);margin-bottom:14px;background:none;-webkit-text-fill-color:var(--cyan)}
+.hero h1 .h-line2{display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:clamp(42px,7vw,92px);letter-spacing:2px}
+.hero h1 .h-line3{display:block;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:var(--muted);margin-top:18px;letter-spacing:1px;background:none;-webkit-text-fill-color:var(--muted)}
+.hero p.sub{max-width:820px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:26px auto 40px}
+
+/* Hero 巨人手 SVG 装饰 */
+.hero-giant{position:absolute!important;right:4%;top:18%;width:clamp(140px,18vw,220px);height:auto;z-index:1;opacity:.85;pointer-events:none;animation:giantFloat 6s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(56,225,255,.25))}
+.hero-giant svg{width:100%;height:auto}
+@keyframes giantFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* 飞散星星 */
+.hero-stars{position:absolute!important;right:4%;top:18%;width:clamp(140px,18vw,220px);height:clamp(260px,32vw,400px);pointer-events:none;z-index:2}
+.hero-stars .star{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px 2px var(--cyan);opacity:.9;animation:starTwinkle 3s ease-in-out infinite}
+@keyframes starTwinkle{0%,100%{opacity:.4;transform:scale(.7)}50%{opacity:1;transform:scale(1.2)}}
+
+.btns{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.btn{padding:14px 34px;border-radius:14px;font-size:15px;font-weight:600;text-decoration:none;transition:.3s;border:1px solid transparent}
+.btn-primary{background:var(--grad);color:#04101f}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(79,140,255,.4)}
+.btn-ghost{border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* Stats 增强 */
+.stats{display:flex;gap:40px;margin-top:70px;flex-wrap:wrap;justify-content:center}
+.stat{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;padding:14px 22px;border:1px solid var(--line);border-radius:14px;background:rgba(16,23,40,.6);backdrop-filter:blur(6px);min-width:120px;transition:.3s}
+.stat:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 10px 30px rgba(56,225,255,.15)}
+.stat .stat-ico{font-size:20px;opacity:.8}
+.stat b{font-size:44px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;line-height:1;letter-spacing:1px;animation:statPop .8s cubic-bezier(.22,.8,.36,1) both}
+.stat b.n1{animation-delay:.1s}
+.stat b.n2{animation-delay:.25s}
+.stat b.n3{animation-delay:.4s}
+.stat b.n4{animation-delay:.55s}
+.stat span{color:var(--muted);font-size:12px;letter-spacing:1px}
+@keyframes statPop{0%{transform:translateY(14px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ---------- 布局 ---------- */
+section{max-width:1180px;margin:0 auto;padding:90px 24px}
+.sec-head{margin-bottom:48px}
+.sec-head .kicker{color:var(--cyan);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(28px,3.6vw,44px);font-weight:800;margin-top:8px}
+.sec-head p{color:var(--muted);max-width:760px;margin-top:12px}
+.sec-sub{font-size:22px;font-weight:800;margin:60px 0 26px;color:var(--text)}
+.sec-sub span{display:block;font-size:13px;color:var(--cyan);letter-spacing:2px;margin-bottom:6px;font-weight:600}
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+@media(max-width:520px){.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;transition:.3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 10% 0%,rgba(79,140,255,.10),transparent 60%);opacity:0;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:rgba(79,140,255,.5);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.card:hover::before{opacity:1}
+.card .icon{font-size:32px;margin-bottom:14px}
+.card h3{font-size:19px;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px}
+.card .pill{display:inline-block;margin-top:14px;font-size:12px;color:var(--cyan);border:1px solid rgba(56,225,255,.3);border-radius:999px;padding:3px 12px}
+
+/* ====== B. 延伸阅读 ====== */
+.extend-read{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:12px}
+.extend-read .er-title{color:var(--muted);letter-spacing:1px;margin-bottom:8px;font-size:11px;text-transform:uppercase}
+.extend-read a{display:block;color:var(--cyan);text-decoration:none;padding:5px 0;transition:.25s;position:relative}
+.extend-read a::before{content:"→";margin-right:6px;opacity:.7}
+.extend-read a:hover{color:#fff;padding-left:6px}
+.extend-read a .er-hint{display:none;color:var(--muted);font-size:11px;margin-left:14px}
+.extend-read a:hover .er-hint{display:inline}
+
+/* ---------- 人物成就卡 ---------- */
+.person .emoji{font-size:36px;margin-bottom:10px}
+.person h3{font-size:18px;margin-bottom:2px}
+.person .role{color:var(--cyan);font-size:12px;letter-spacing:1px;margin-bottom:10px}
+.person p{color:var(--muted);font-size:14px}
+
+/* ====== C. 前辈头像 ====== */
+.person-avatar{width:56px;height:56px;margin:-4px 0 12px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,rgba(79,140,255,.18),rgba(139,92,246,.18));border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.3s;cursor:pointer}
+.person-avatar:hover{border-color:var(--cyan);box-shadow:0 0 16px rgba(56,225,255,.3)}
+.person-avatar svg{width:42px;height:42px}
+.person-quote{margin-top:10px}
+.person-quote summary{list-style:none;cursor:pointer;font-size:12px;color:var(--muted);padding:6px 10px;border:1px dashed var(--line);border-radius:8px;transition:.25s}
+.person-quote summary::-webkit-details-marker{display:none}
+.person-quote summary::before{content:"💬";margin-right:6px}
+.person-quote summary:hover{color:var(--cyan);border-color:rgba(56,225,255,.3)}
+.person-quote details[open] summary{border-color:var(--cyan)}
+.person-quote .quote-body{margin-top:10px;padding:12px 14px;background:rgba(56,225,255,.06);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;font-size:13px;color:var(--text);font-style:italic;line-height:1.7}
+.person-quote .quote-body::before{content:"\201C";color:var(--cyan);font-size:22px;line-height:0;margin-right:4px;vertical-align:-4px}
+
+/* ====== D. 时间线增强 ====== */
+.timeline-wrap{display:flex;gap:24px;align-items:flex-start}
+.timeline-year-ruler{flex:0 0 60px;position:sticky;top:100px;display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:8px}
+.timeline-year-ruler .yr{font-size:11px;color:var(--cyan);letter-spacing:1px;padding:3px 8px;border:1px solid rgba(56,225,255,.25);border-radius:6px;background:rgba(56,225,255,.06);font-weight:700;white-space:nowrap}
+.timeline{flex:1;position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),var(--purple))}
+.tl-item{position:relative;margin-bottom:34px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;cursor:pointer;transition:.3s}
+.tl-item:hover{border-color:rgba(56,225,255,.4);transform:translateX(4px)}
+.tl-item::before{content:"";position:absolute;left:-31px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(56,225,255,.15);transition:.3s}
+.tl-item.open::before{background:#fff;box-shadow:0 0 0 5px rgba(56,225,255,.35),0 0 12px 2px var(--cyan)}
+.tl-item .tl-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.tl-item .time{color:var(--cyan);font-size:13px;letter-spacing:1px;font-weight:700;flex:0 0 auto}
+.tl-item h4{font-size:17px;flex:1;min-width:200px}
+.tl-item .tl-chevron{color:var(--muted);font-size:14px;transition:transform .3s}
+.tl-item.open .tl-chevron{transform:rotate(180deg);color:var(--cyan)}
+.tl-item .tl-body{max-height:0;overflow:hidden;transition:max-height .4s ease,margin-top .3s ease}
+.tl-item.open .tl-body{max-height:300px;margin-top:14px}
+.tl-item p{color:var(--muted);font-size:14px}
+.tl-item .tl-readmore{margin-top:10px;font-size:12px}
+.tl-item .tl-readmore a{color:var(--cyan);text-decoration:none;transition:.25s}
+.tl-item .tl-readmore a:hover{text-decoration:underline}
+
+/* ---------- 大事记 ---------- */
+.events{display:grid;gap:16px}
+.event{display:flex;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 28px;transition:.3s}
+.event:hover{border-color:rgba(56,225,255,.5);transform:translateX(6px)}
+.event .date{flex:0 0 150px;color:var(--cyan);font-size:13px;font-weight:700;letter-spacing:1px;padding-top:2px}
+.event h4{font-size:16px;margin-bottom:6px}
+.event p{color:var(--muted);font-size:14px}
+@media(max-width:640px){.event{flex-direction:column;gap:8px}.event .date{flex:none}}
+
+/* ====== E. CTA 区 ====== */
+.cta-section{max-width:1180px;margin:0 auto;padding:90px 24px 100px;text-align:center;position:relative}
+.cta-section::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:240px;height:240px;background:radial-gradient(circle,rgba(56,225,255,.12),transparent 70%);pointer-events:none}
+.cta-section .cta-title{font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.3}
+.cta-section .cta-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta-section .cta-sub{color:var(--muted);max-width:680px;margin:16px auto 44px;font-size:15px}
+.cta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1080px;margin:0 auto}
+.cta-btn{display:flex;flex-direction:column;gap:10px;padding:28px 22px;background:var(--card);border:1px solid var(--line);border-radius:18px;text-decoration:none;color:var(--text);transition:.35s;position:relative;overflow:hidden}
+.cta-btn::before{content:"";position:absolute;inset:0;background:radial-gradient(200px 100px at 50% 0%,rgba(56,225,255,.15),transparent 70%);opacity:0;transition:.35s}
+.cta-btn:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 18px 40px rgba(56,225,255,.18)}
+.cta-btn:hover::before{opacity:1}
+.cta-btn .cta-ico{font-size:30px;margin-bottom:4px}
+.cta-btn .cta-txt{font-size:16px;font-weight:700}
+.cta-btn .cta-arrow{color:var(--cyan);font-size:12px;letter-spacing:1px;transition:.25s}
+.cta-btn:hover .cta-arrow{letter-spacing:3px}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);padding:46px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer .logo{font-size:16px}
+footer a{color:var(--cyan);text-decoration:none}
+footer a:hover{color:var(--text)}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+
+/* 响应式 */
+@media(max-width:820px){
+  .hero-giant{display:none}
+  .timeline-wrap{flex-direction:column}
+  .timeline-year-ruler{flex-direction:row;flex-wrap:wrap;gap:10px;position:static;margin-left:34px;margin-bottom:14px}
+}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://ccoworkbaiju.cn/frontiers.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/frontiers.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · AI 前沿全景 · 前辈成果展示 · 白驹 ccowork">
+<meta name="twitter:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-frontiers.png" alt="ccowork · AI 前沿全景 · 前辈成果展示" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="progress" id="progress"></div>
+<nav>
+  <div class="logo">AI 前沿全景</div>
+  <div class="nav-links">
+    <a href="./index.html">首页</a>
+    <a href="#directions">研究方向</a>
+    <a href="#pioneers">前辈成果</a>
+    <a href="#events">大事记</a>
+
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+
+<!-- ================= HERO（增强版） ================= -->
+<header class="hero">
+  <!-- A. SVG 巨人手 + 星星装饰 -->
+  <div class="hero-giant" aria-hidden="true">
+    <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- 巨人的手剪影 -->
+      <defs>
+        <linearGradient id="handGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1e2a44" stop-opacity=".9"/>
+          <stop offset="100%" stop-color="#0b1020" stop-opacity="1"/>
+        </linearGradient>
+        <radialGradient id="chipGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#38e1ff" stop-opacity="1"/>
+          <stop offset="60%" stop-color="#4f8cff" stop-opacity=".7"/>
+          <stop offset="100%" stop-color="#8b5cf6" stop-opacity=".1"/>
+        </radialGradient>
+      </defs>
+      <!-- 手臂/手掌剪影 -->
+      <path d="M80 260 C 60 240, 55 200, 65 170
+               L 70 150
+               C 65 135, 70 120, 80 115
+               L 95 110
+               C 90 90, 95 70, 110 65
+               L 130 60
+               C 128 45, 135 35, 145 35
+               L 160 38
+               C 165 28, 175 25, 182 32
+               L 188 45
+               C 195 42, 202 48, 200 58
+               L 195 70
+               C 205 72, 210 82, 205 92
+               L 195 100
+               C 200 110, 198 125, 188 130
+               L 170 135
+               C 175 148, 172 165, 162 172
+               L 145 178
+               C 148 195, 140 215, 125 222
+               L 100 230
+               C 90 245, 82 255, 80 260 Z"
+            fill="url(#handGrad)" stroke="#38e1ff" stroke-opacity=".3" stroke-width="1"/>
+      <!-- 发光 AI 芯片 -->
+      <g transform="translate(140,10) rotate(15)">
+        <circle r="35" fill="url(#chipGlow)"/>
+        <rect x="-18" y="-18" width="36" height="36" rx="4" fill="#0b1020" stroke="#38e1ff" stroke-width="1.5"/>
+        <rect x="-10" y="-10" width="20" height="20" rx="2" fill="#4f8cff" fill-opacity=".6"/>
+        <text x="0" y="4" text-anchor="middle" fill="#38e1ff" font-size="10" font-weight="900" font-family="monospace" opacity=".9">AI</text>
+        <!-- 芯片引脚 -->
+        <line x1="-22" y1="-10" x2="-18" y2="-10" stroke="#38e1ff" stroke-width="1.2"/>
+        <line x1="-22" y1="-4"  x2="-18" y2="-4"  stroke="#38e1ff" stroke-width="1.2"/>
+        <line x1="-22" y1="2"   x2="-18" y2="2"   stroke="#38e1ff" stroke-width="1.2"/>
+        <line x1="-22" y1="8"   x2="-18" y2="8"   stroke="#38e1ff" stroke-width="1.2"/>
+        <line x1="18"  y1="-10" x2="22"  y2="-10" stroke="#38e1ff" stroke-width="1.2"/>
+        <line x1="18"  y1="-4"  x2="22"  y2="-4"  stroke="#38e1ff" stroke-width="1.2"/>
+        <line x1="18"  y1="2"   x2="22"  y2="2"   stroke="#38e1ff" stroke-width="1.2"/>
+        <line x1="18"  y1="8"   x2="22"  y2="8"   stroke="#38e1ff" stroke-width="1.2"/>
+      </g>
+    </svg>
+  </div>
+  <!-- 10 颗飞散的小星星（代表 10 位前辈） -->
+  <div class="hero-stars" aria-hidden="true">
+    <span class="star" style="top:2%;left:30%;animation-delay:.1s"></span>
+    <span class="star" style="top:10%;left:60%;animation-delay:.4s"></span>
+    <span class="star" style="top:20%;left:15%;animation-delay:.7s"></span>
+    <span class="star" style="top:32%;left:80%;animation-delay:1s"></span>
+    <span class="star" style="top:45%;left:45%;animation-delay:1.3s"></span>
+    <span class="star" style="top:58%;left:20%;animation-delay:1.6s"></span>
+    <span class="star" style="top:68%;left:70%;animation-delay:1.9s"></span>
+    <span class="star" style="top:78%;left:5%;animation-delay:2.2s"></span>
+    <span class="star" style="top:85%;left:55%;animation-delay:2.5s"></span>
+    <span class="star" style="top:92%;left:85%;animation-delay:2.8s"></span>
+  </div>
+
+  <div class="tag">AI 前沿全景 · 前辈成果展示</div>
+  <!-- A. 三行诗式标题 -->
+  <h1>
+    <span class="h-line1">75 年 · 10 位前辈 · 13 条方向</span>
+    <span class="h-line2">他们抬着 AI 走到了今天</span>
+    <span class="h-line3">现在轮到你，从他们的肩膀上看见下一程</span>
+  </h1>
+  <p class="sub">这是一份写给后来者的「AI 前沿地图」。它带你扫一遍当下最热的研究方向，
+  认识那些亲手把 AI 推到今天的前辈，再对一对 2025–2026 年正在发生的里程碑。
+  读懂它，你就不再只是"用 AI 的人"，而是能看懂 AI 走向的人。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  <div class="btns">
+    <a class="btn btn-primary" href="#directions"><i class="cc-ic" data-ic="compass"></i> 开始探索</a>
+    <a class="btn btn-ghost" href="#pioneers"><i class="cc-ic" data-ic="heart"></i> 致敬前辈</a>
+    <a class="btn btn-ghost" href="#events"><i class="cc-ic" data-ic="calendar"></i> 看大事记</a>
+  </div>
+  <!-- A. 增强 stats：图标 + 渐变数字 + 动画 -->
+  <div class="stats">
+    <div class="stat"><div class="stat-ico">🧭</div><b class="n1">13</b><span>大前沿方向</span></div>
+    <div class="stat"><div class="stat-ico">👥</div><b class="n2">10</b><span>位前辈人物</span></div>
+    <div class="stat"><div class="stat-ico">🏁</div><b class="n3">10</b><span>个里程碑</span></div>
+    <div class="stat"><div class="stat-ico">📅</div><b class="n4">75</b><span>年 AI 历程</span></div>
+  </div>
+</header>
+
+<!-- ================= 研究方向（加延伸阅读） ================= -->
+<section id="directions">
+  <div class="sec-head">
+    <div class="kicker">Research Landscape</div>
+    <h2>AI 研究所有方向</h2>
+    <p>AI 不是"一个大模型"，而是一片正在同时爆发的战场。下面 13 个方向，每个都值得你记住一句话，以及它在 2025 年最值得关注的代表进展、2026 年正在展开的新方向。</p>
+  </div>
+  <div class="grid g3">
+    <!-- 1 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></div>
+      <h3>大语言模型与推理模型</h3>
+      <p>用海量文本预训练出的通用语言引擎，叠加「思维链」逐步推理能力，构成所有 AI 应用的大脑。写作、代码、对话、分析都从这里来。</p>
+      <span class="pill">2025：DeepSeek-R1 / GPT-5 / Claude / Gemini 3 / Qwen3 / Kimi / GLM</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="../models.html">去 models.html 看 8 款现役大模型对比 <span class="er-hint">../models.html</span></a>
+        <a href="/blog/index.html">读《上下文长度战争：从 32K 到 1M》 <span class="er-hint">/blog/index.html</span></a>
+        <a href="/lab/index.html">自己测 prompt · 去 lab/prompt-evals <span class="er-hint">/lab/index.html</span></a>
+      </div>
+    </div>
+    <!-- 2 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="eye" aria-hidden="true"></i></div>
+      <h3>多模态</h3>
+      <p>让模型像人一样同时"看懂"文字、图像、音频与视频，在多种信息之间对齐、交叉理解与推理。</p>
+      <span class="pill">2025：GPT-5 原生多模态 · Gemini 3 视觉推理</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="../models.html#multimodal">去 models.html 看多模态模型横评 <span class="er-hint">../models.html#multimodal</span></a>
+        <a href="/blog/index.html">读《多模态对齐：从 CLIP 到 原生融合》 <span class="er-hint">/blog/index.html</span></a>
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i></div>
+      <h3>图像生成</h3>
+      <p>文本转图像的扩散模型，从海报、封面到商业设计一应俱全，文字渲染与可控性逐年跃升。</p>
+      <span class="pill">2025：即梦 / Midjourney / Flux / 混元图像迭代</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/toolbox/p/stable-diffusion-webui.html">去 toolbox 看 图像生成工具集 <span class="er-hint">/toolbox/p/stable-diffusion-webui.html</span></a>
+        <a href="/blog/index.html">读《Flux vs SD 3：扩散模型的现在进行时》 <span class="er-hint">/blog/index.html</span></a>
+      </div>
+    </div>
+    <!-- 4 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i></div>
+      <h3>视频生成</h3>
+      <p>文生视频 / 图生视频，让静态画面动起来，并保持物理一致与连贯叙事，是当下最卷的赛道。</p>
+      <span class="pill">2025：Sora 2 · 可灵 · 即梦 · Runway · Veo</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/toolbox/index.html">去 toolbox 看 视频生成工具对比 <span class="er-hint">/toolbox/index.html</span></a>
+        <a href="/blog/index.html">读《Sora 2 技术拆解：一致性如何实现》 <span class="er-hint">/blog/index.html</span></a>
+      </div>
+    </div>
+    <!-- 5 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i></div>
+      <h3>语音与音乐</h3>
+      <p>语音合成、声音克隆、实时语音对话与音乐生成，让 AI 拥有"嗓音"，成为多模态交互的标配。</p>
+      <span class="pill">2025：ElevenLabs · Suno · 实时语音模型</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="../toolbox/voice.html">去 toolbox 看 语音/音乐工具集 <span class="er-hint">../toolbox/voice.html</span></a>
+        <a href="/learn/index.html">去 learn 做一个声音克隆小项目 <span class="er-hint">/learn/index.html</span></a>
+      </div>
+    </div>
+    <!-- 6 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i></div>
+      <h3>具身智能与机器人</h3>
+      <p>给 AI 一副"身体"，让它能感知环境、规划动作、在真实物理世界完成任务。</p>
+      <span class="pill">2025：Figure Helix · 特斯拉 Optimus · 商汤开悟 3.0</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/blog/index.html">读《具身智能路线图 2026》 <span class="er-hint">/blog/index.html</span></a>
+        <a href="/website/frontiers.html">看近期机器人里程碑 <span class="er-hint">/website/frontiers.html</span></a>
+      </div>
+    </div>
+    <!-- 7 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div>
+      <h3>世界模型</h3>
+      <p>学习世界的运行规律，预测"下一步会发生什么"，被视为大语言模型之后的第二场革命。</p>
+      <span class="pill">2025：Sora / Genie / 开悟世界模型 · 李飞飞提出分类法</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/blog/index.html">读《世界模型：大模型之后的下一站》 <span class="er-hint">/blog/index.html</span></a>
+        <a href="https://arxiv.org/abs/1804.00617">去 papers.html 找 世界模型原始论文 <span class="er-hint">https://arxiv.org/abs/1804.00617</span></a>
+      </div>
+    </div>
+    <!-- 8 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="target"></i></div>
+      <h3>强化学习</h3>
+      <p>通过试错与奖励信号学习最优策略，是推理模型与机器人控制背后共同的"教练"。</p>
+      <span class="pill">2025：大规模 RL（GRPO）催生 R1 级自我反思</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/blog/index.html">读《GRPO vs PPO：RLHF 2.0》 <span class="er-hint">/blog/index.html</span></a>
+        <a href="/lab/index.html">自己玩 RL · lab/rl-gridworld <span class="er-hint">/lab/index.html</span></a>
+      </div>
+    </div>
+    <!-- 9 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="microscope" aria-hidden="true"></i></div>
+      <h3>AI for Science</h3>
+      <p>用 AI 加速科学发现：破解蛋白质结构、预报天气、发现新材料，让科研周期从十年缩到数月。</p>
+      <span class="pill">2025：AlphaFold3 · GenCast 天气 · 材料发现</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/blog/index.html">读《AlphaFold 3：一个新时代的起点》 <span class="er-hint">/blog/index.html</span></a>
+        <a href="https://www.nature.com/subjects/machine-learning">去 papers.html 找 AI 与科学论文 <span class="er-hint">https://www.nature.com/subjects/machine-learning</span></a>
+      </div>
+    </div>
+    <!-- 10 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i></div>
+      <h3>AI Agent 智能体</h3>
+      <p>能自主规划、调用工具、多步执行并自我纠错的 AI 系统，让模型从"会聊天"走向"会办事"。</p>
+      <span class="pill">2025：被称「Agent 元年」· 智能体编程全面落地</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/learn/index.html">跟着做 3 个 Agent 入门项目 <span class="er-hint">/learn/index.html</span></a>
+        <a href="/toolbox/index.html">去 toolbox 看 Agent 工具链 <span class="er-hint">/toolbox/index.html</span></a>
+        <a href="/blog/index.html">读《Agent 元年：2025 复盘》 <span class="er-hint">/blog/index.html</span></a>
+      </div>
+    </div>
+    <!-- 11 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="box" aria-hidden="true"></i></div>
+      <h3>开源生态</h3>
+      <p>开放权重与开放工具链，让顶尖能力不再被少数公司垄断，AI 因此走向民主化。</p>
+      <span class="pill">2025：中国开源霸榜 · 下载量超美国</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="../models.html#open">去 models.html 看 开源模型榜单 <span class="er-hint">../models.html#open</span></a>
+        <a href="/blog/index.html">读《中国开源为何霸榜》 <span class="er-hint">/blog/index.html</span></a>
+      </div>
+    </div>
+    <!-- 12 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i></div>
+      <h3>芯片与算力</h3>
+      <p>AI 的物理底座：没有 GPU 集群与数据中心，再聪明的算法也无处安放。</p>
+      <span class="pill">2025：英伟达 Blackwell · 推理成本降至 1/35</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/blog/index.html">读《Blackwell vs H100：算力代际差》 <span class="er-hint">/blog/index.html</span></a>
+        <a href="/toolbox/index.html">去 toolbox 看 GPU 云平台对比 <span class="er-hint">/toolbox/index.html</span></a>
+      </div>
+    </div>
+    <!-- 13 -->
+    <div class="card">
+      <div class="icon"><i class="cc-ic" data-ic="shield" aria-hidden="true"></i></div>
+      <h3>AI 安全与对齐</h3>
+      <p>让越来越强大的 AI 与人类价值观对齐，可控、可解释、可问责，是 AI 能走多远的前提。</p>
+      <span class="pill">2025：红队测试 · 可解释性 · 全球 AI 治理立法</span>
+      <div class="extend-read">
+        <div class="er-title">相关推荐</div>
+        <a href="/blog/index.html">读《对齐问题的 2026 版本》 <span class="er-hint">/blog/index.html</span></a>
+        <a href="https://arxiv.org/abs/2212.03917">去 papers.html 找 AI 安全论文 <span class="er-hint">https://arxiv.org/abs/2212.03917</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 前辈成果（加时间线交互 + 头像 + 名言） ================= -->
+<section id="pioneers">
+  <div class="sec-head">
+    <div class="kicker">Hall of Pioneers</div>
+    <h2>前辈成果展示</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-frontiers.png" alt="ccowork · AI 前沿全景 · 前辈成果展示 · 前辈成果展示" loading="lazy"></figure>
+    <p>今天每一行模型代码，都站在前人的肩膀上。先看一条从图灵到 DeepSeek 的里程碑长河，再认识十位亲手改写历史的前辈。</p>
+  </div>
+  <div class="sec-sub"><span>Milestones · 一条时间线</span>AI 发展里程碑 <small style="color:var(--muted);font-size:12px;letter-spacing:0;font-weight:500">（点击展开详情 →）</small></div>
+
+  <!-- D. 时间线：年份标尺 + 可点击展开 -->
+  <div class="timeline-wrap">
+    <div class="timeline-year-ruler">
+      <span class="yr">1950</span>
+      <span class="yr">1956</span>
+      <span class="yr">1960s</span>
+      <span class="yr">1986</span>
+      <span class="yr">2012</span>
+      <span class="yr">2016</span>
+      <span class="yr">2017</span>
+      <span class="yr">2020</span>
+      <span class="yr">2022</span>
+      <span class="yr">2025</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item" data-open>
+        <div class="tl-head"><span class="time">1950</span><h4>图灵提问「机器能思考吗」</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>艾伦·图灵发表《计算机器与智能》，提出「图灵测试」，为"机器智能"立下第一根标尺。</p>
+          <div class="tl-readmore"><a href="https://academic.oup.com/mind/article/LIX/236/433/986238">📄 读原始论文《Computing Machinery and Intelligence》</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">1956</span><h4>达特茅斯会议</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>麦卡锡、明斯基等人在达特茅斯提出「人工智能」一词，AI 作为一门学科正式诞生。</p>
+          <div class="tl-readmore"><a href="/blog/index.html">📖 读《达特茅斯会议：AI 的生日》</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">1960s–1980s</span><h4>专家系统</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>把专家知识写成规则（MYCIN、XCON），AI 迎来第一次产业化浪潮，也经历"AI 寒冬"的沉淀。</p>
+          <div class="tl-readmore"><a href="/blog/index.html">📖 读《两度寒冬：AI 史的启示》</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">1986–2012</span><h4>深度学习奠基</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>反向传播与卷积神经网络被提出，辛顿、LeCun、Bengio 三巨头在质疑中坚守，为复兴埋下火种。</p>
+          <div class="tl-readmore"><a href="https://www.nature.com/articles/323533a0">📄 读 Rumelhart & Hinton 反向传播论文</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">2012</span><h4>ImageNet 时刻</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>AlexNet 以深度学习大幅刷新图像识别纪录，点燃深度学习革命，GPU 算力成为主角。</p>
+          <div class="tl-readmore"><a href="https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html">📄 读 AlexNet 原始论文</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">2016</span><h4>AlphaGo 击败李世石</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>DeepMind 的 AlphaGo 战胜人类围棋冠军，深度强化学习征服了"直觉"的最后堡垒。</p>
+          <div class="tl-readmore"><a href="/blog/index.html">📖 读《AlphaGo 十年》</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">2017</span><h4>Transformer 诞生</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>Google 提出「注意力即一切」，Transformer 架构成为几乎所有现代大模型的共同底座。</p>
+          <div class="tl-readmore"><a href="https://arxiv.org/abs/1706.03762">📄 读《Attention Is All You Need》原始论文</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">2020</span><h4>AlphaFold 破解蛋白质折叠</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>AlphaFold2 高精度预测蛋白质结构，开创「AI for Science」新纪元，2024 年摘得诺贝尔化学奖。</p>
+          <div class="tl-readmore"><a href="https://www.nature.com/articles/s41586-021-03819-2">📄 读 AlphaFold2 Nature 论文</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">2022</span><h4>ChatGPT 横空出世</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>OpenAI 发布对话大模型，两个月破亿用户，把生成式 AI 从实验室带进千家万户。</p>
+          <div class="tl-readmore"><a href="/blog/index.html">📖 读《ChatGPT 三年：改变了什么》</a></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><span class="time">2025</span><h4>「DeepSeek 时刻」</h4><span class="tl-chevron">▾</span></div>
+        <div class="tl-body">
+          <p>DeepSeek-R1 以开源 + 极致性价比震动全球，中国 AI 迎来自己的"斯普特尼克时刻"，开源格局被彻底改写。</p>
+          <div class="tl-readmore"><a href="/blog/index.html">📖 读《DeepSeek 时刻：改写了什么》</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-sub"><span>People · 人物成就卡</span>十位前辈 · 一人一句核心贡献</div>
+  <div class="grid g3">
+    <!-- 图灵 -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="landmark" aria-hidden="true"></i></div>
+      <!-- C. SVG 头像轮廓（圆+简单曲线，代表古典学者气质） -->
+      <div class="person-avatar" title="点击看图灵名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 浓密卷发 -->
+          <path d="M17 20 Q20 12 30 11 Q40 12 43 20 Q42 16 38 14 Q34 12 30 12 Q26 12 22 14 Q18 16 17 20" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 眼睛 -->
+          <circle cx="25" cy="26" r="1.6" fill="#38e1ff"/>
+          <circle cx="35" cy="26" r="1.6" fill="#38e1ff"/>
+          <!-- 领结 -->
+          <path d="M22 40 L30 36 L38 40 L30 44 Z" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>艾伦·图灵</h3>
+      <div class="role">Alan Turing · 计算理论之父</div>
+      <p>提出图灵机与图灵测试，用「机器能否思考」定义了人工智能这门学问的起点。</p>
+      <!-- 名言 -->
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">我们能够看到得很远，也许在很大程度上就是因为我们站在巨人的肩膀上。</div></details>
+    </div>
+
+    <!-- 明斯基 -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="puzzle" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看明斯基名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 秃头 -->
+          <path d="M17 24 Q18 15 30 14 Q42 15 43 24" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 圆眼镜 -->
+          <circle cx="24" cy="26" r="3.6" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <circle cx="36" cy="26" r="3.6" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <line x1="27.6" y1="26" x2="32.4" y2="26" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 严肃的嘴 -->
+          <line x1="27" y1="35" x2="33" y2="35" stroke="#38e1ff" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>马文·明斯基</h3>
+      <div class="role">Marvin Minsky · AI 先驱</div>
+      <p>1956 达特茅斯会议发起人之一，MIT 人工智能实验室创始人，把"让机器思考"变成一门工程。</p>
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">为什么说 AI 是个难题？因为每一个我们真正理解的智能领域，都不再被叫做"AI"了。</div></details>
+    </div>
+
+    <!-- 辛顿 -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看辛顿名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 稀疏白发 -->
+          <path d="M18 20 Q22 14 30 13 Q38 14 42 20" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 方形眼镜（标志性） -->
+          <rect x="19" y="22" width="9" height="7" rx="1.4" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <rect x="32" y="22" width="9" height="7" rx="1.4" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <line x1="28" y1="25.5" x2="32" y2="25.5" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 和蔼的笑嘴 -->
+          <path d="M26 35 Q30 38 34 35" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>杰弗里·辛顿</h3>
+      <div class="role">Geoffrey Hinton · 深度学习之父</div>
+      <p>反向传播与神经网络奠基人，几十年如一日坚持，让深度学习成为主流，获 2024 诺贝尔物理学奖。</p>
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">当我开始做神经网络的时候，几乎没有人相信这个方向。但我知道它是对的。</div></details>
+    </div>
+
+    <!-- LeCun -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="image" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看 LeCun 名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 浓密卷发 -->
+          <path d="M16 22 Q18 12 30 11 Q42 12 44 22 Q43 14 38 13 Q34 13 30 13 Q26 13 22 13 Q17 14 16 22" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <path d="M18 16 Q21 13 25 13" fill="none" stroke="#38e1ff" stroke-width="1"/>
+          <path d="M35 13 Q39 13 42 16" fill="none" stroke="#38e1ff" stroke-width="1"/>
+          <!-- 眼睛 -->
+          <circle cx="25" cy="27" r="1.4" fill="#38e1ff"/>
+          <circle cx="35" cy="27" r="1.4" fill="#38e1ff"/>
+          <!-- 胡子 -->
+          <path d="M24 35 Q30 39 36 35 Q34 42 30 42 Q26 42 24 35" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>杨立昆</h3>
+      <div class="role">Yann LeCun · CNN 之父</div>
+      <p>发明卷积神经网络（CNN），让机器"看懂"图像，现任 Meta 首席 AI 科学家。</p>
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">我坚信世界模型是让机器真正"理解"世界的关键。</div></details>
+    </div>
+
+    <!-- Bengio -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看 Bengio 名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 头发 -->
+          <path d="M18 20 Q22 13 30 12 Q38 13 42 20" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 大眼睛 -->
+          <circle cx="25" cy="26" r="2" fill="#38e1ff"/>
+          <circle cx="35" cy="26" r="2" fill="#38e1ff"/>
+          <!-- 大大的笑脸（标志性） -->
+          <path d="M24 34 Q30 40 36 34" fill="none" stroke="#38e1ff" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>约书亚·本吉奥</h3>
+      <div class="role">Yoshua Bengio · 深度学习三巨头</div>
+      <p>在语言建模与生成模型上作出奠基贡献，如今是最坚定的 AI 安全倡导者之一。</p>
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">AI 的力量如此巨大，我们必须确保它与人类的价值观对齐。</div></details>
+    </div>
+
+    <!-- 李飞飞 -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="user" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看李飞飞名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 长发 -->
+          <path d="M16 22 Q18 12 30 11 Q42 12 44 22 L44 40 L40 38 Q40 28 30 28 Q20 28 20 38 L16 40 Z" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 眼睛 -->
+          <circle cx="25" cy="26" r="1.4" fill="#38e1ff"/>
+          <circle cx="35" cy="26" r="1.4" fill="#38e1ff"/>
+          <!-- 优雅的笑 -->
+          <path d="M27 34 Q30 36 33 34" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>李飞飞</h3>
+      <div class="role">Fei-Fei Li · ImageNet 之母</div>
+      <p>建立 ImageNet 数据集，直接引爆 2012 深度学习革命，如今倡导"空间智能"的新方向。</p>
+      <details class="person-quote"><summary>她说过</summary><div class="quote-body">数据是 AI 的燃料，好数据比好算法更重要。</div></details>
+    </div>
+
+    <!-- 黄仁勋 -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看黄仁勋名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 黑发 -->
+          <path d="M17 22 Q19 13 30 12 Q41 13 43 22" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 眼睛 -->
+          <circle cx="25" cy="27" r="1.4" fill="#38e1ff"/>
+          <circle cx="35" cy="27" r="1.4" fill="#38e1ff"/>
+          <!-- 咧嘴笑 -->
+          <path d="M25 35 Q30 39 35 35" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <h3>黄仁勋</h3>
+      <div class="role">Jensen Huang · 英伟达创始人</div>
+      <p>用 GPU 为深度学习提供算力引擎，一手打造支撑整个 AI 时代的计算帝国。</p>
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">我们正站在计算史上最伟大的转折点，AI 将重新定义每一个行业。</div></details>
+    </div>
+
+    <!-- Hassabis -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="dna" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看哈萨比斯名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 短卷发 -->
+          <path d="M18 21 Q21 14 30 13 Q39 14 42 21" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 眼睛 -->
+          <circle cx="25" cy="26" r="1.4" fill="#38e1ff"/>
+          <circle cx="35" cy="26" r="1.4" fill="#38e1ff"/>
+          <!-- 专注的嘴 -->
+          <path d="M27 35 L33 35" stroke="#38e1ff" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>德米斯·哈萨比斯</h3>
+      <div class="role">Demis Hassabis · DeepMind 联合创始人</div>
+      <p>主导 AlphaGo 与 AlphaFold，把 AI 从棋局推向科学发现，获 2024 诺贝尔化学奖。</p>
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">通用人工智能是本世纪最重要的科学工程挑战。</div></details>
+    </div>
+
+    <!-- 梁文锋 -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看梁文锋名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 整齐短发 -->
+          <path d="M18 21 Q21 14 30 13 Q39 14 42 21 L42 19 L18 19 Z" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 眼睛 -->
+          <circle cx="25" cy="26" r="1.4" fill="#38e1ff"/>
+          <circle cx="35" cy="26" r="1.4" fill="#38e1ff"/>
+          <!-- 沉稳的嘴 -->
+          <path d="M27 35 Q30 36 33 35" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>梁文锋</h3>
+      <div class="role">Liang Wenfeng · DeepSeek 创始人</div>
+      <p>用开源 + 极致性价比（约 560 万美元训练成本）改写全球 AI 格局，引发"DeepSeek 时刻"。</p>
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">真正的创新，是在资源受限下找到全新的解法。</div></details>
+    </div>
+
+    <!-- Altman -->
+    <div class="card person">
+      <div class="emoji"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i></div>
+      <div class="person-avatar" title="点击看奥特曼名言">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="26" r="14" fill="none" stroke="#38e1ff" stroke-width="1.4"/>
+          <!-- 稀疏头发 -->
+          <path d="M19 22 Q22 13 30 13 Q38 13 41 22" fill="none" stroke="#38e1ff" stroke-width="1.2"/>
+          <!-- 眼睛 -->
+          <circle cx="25" cy="27" r="1.4" fill="#38e1ff"/>
+          <circle cx="35" cy="27" r="1.4" fill="#38e1ff"/>
+          <!-- 标志性的胡子 -->
+          <path d="M25 34 L35 34" stroke="#38e1ff" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <h3>萨姆·奥特曼</h3>
+      <div class="role">Sam Altman · OpenAI 首席执行官</div>
+      <p>ChatGPT 与 GPT 系列背后的掌舵人，把生成式 AI 从演示变成席卷全球的产品时代。</p>
+      <details class="person-quote"><summary>他说过</summary><div class="quote-body">AI 会比电力和互联网更具颠覆性。</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 大事记 ================= -->
+<section id="events">
+  <div class="sec-head">
+    <div class="kicker">2025 – 2026</div>
+    <h2>2025–2026 大事记</h2>
+    <p>这两年是 AI 史上节奏最快的一段。以下关键进展，是你跟同行聊 AI 时必须对得上号的"时事账本"。</p>
+  </div>
+  <div class="events">
+    <div class="event">
+      <div class="date">2025.01</div>
+      <div><h4>「DeepSeek 时刻」引爆全球</h4><p>DeepSeek-R1 开源并以极低成本逼近顶级闭源模型，美股震荡、下载霸榜，被称为中国 AI 的"斯普特尼克时刻"。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2025</div>
+      <div><h4>中国开源模型霸榜，下载量超美国</h4><p>Hugging Face 年度回顾显示，全球前十开源模型一度有 7 款来自中国，开源模型下载量超越美国——开源格局被彻底改写。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2025</div>
+      <div><h4>大模型进入"月抛"时代</h4><p>一个月内 GPT-5、Claude 4.1、Gemini 3、Qwen3、Kimi K2、GLM-4.5 等多款旗舰密集发布，迭代速度空前。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2025.08</div>
+      <div><h4>GPT-5 正式发布</h4><p>OpenAI 推出原生多模态、更强推理的 GPT-5，标志闭源阵营进入新一轮军备竞赛。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2025</div>
+      <div><h4>AI 视频爆发：Sora / 可灵 / 即梦</h4><p>文生视频与图生视频进入商业化，Sora 2、可灵、即梦、Runway、Veo 竞争白热化，单镜头物理一致性大幅提升。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2025</div>
+      <div><h4>AI 天气预报超越传统模式</h4><p>DeepMind 的 GenCast / WeatherNext 以机器学习实现 15 天高精度预报，AI for Science 走向实用。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2025</div>
+      <div><h4>「Agent 元年」落地</h4><p>智能体编程（Cursor、CodeBuddy）、浏览器自动化与企业级 Agent 全面落地，AI 从"会答"走向"会做"。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2025</div>
+      <div><h4>AI 摘下诺贝尔奖</h4><p>辛顿获物理学奖，哈萨比斯与江珀获化学奖——AI 获得科学界最高认可，标志着 AI for Science 的成人礼。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2025–2026</div>
+      <div><h4>推理成本大幅下降</h4><p>英伟达 Blackwell（GB200/B300）交付，Agent 推理性能提升约 50 倍、单位 token 成本降至约 1/35，算力进入"性价比"时代。</p></div>
+    </div>
+    <div class="event">
+      <div class="date">2026.01</div>
+      <div><h4>国产旗舰持续冲顶</h4><p>阿里巴巴、月之暗面升级模型，通义千问 3.7 旗舰强化智能体编程能力，中国开源生态继续领跑全球。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= E. CTA 区（新增） ================= -->
+<section class="cta-section">
+  <h2 class="cta-title">站上去之后，<span>你想往哪看？</span></h2>
+  <p class="cta-sub">他们搭好了梯子，现在由你来决定视野。从下面四条路里挑一条开始——每一条都能带你更接近"看懂 AI 走向的那个人"。</p>
+  <div class="cta-grid">
+    <a class="cta-btn" href="../toolbox/">
+      <span class="cta-ico">🛠️</span>
+      <span class="cta-txt">测测你的 AI 工具链</span>
+      <span class="cta-arrow">去 toolbox →</span>
+    </a>
+    <a class="cta-btn" href="../learn/">
+      <span class="cta-ico">📚</span>
+      <span class="cta-txt">跟着做 3 个入门项目</span>
+      <span class="cta-arrow">去 learn →</span>
+    </a>
+    <a class="cta-btn" href="https://arxiv.org/list/cs.AI/recent">
+      <span class="cta-ico">📄</span>
+      <span class="cta-txt">读他们的原始论文</span>
+      <span class="cta-arrow">去 papers →</span>
+    </a>
+    <a class="cta-btn" href="../blog/">
+      <span class="cta-ico">✍️</span>
+      <span class="cta-txt">把你学到的写出来</span>
+      <span class="cta-arrow">去 blog →</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">白驹 ccowork</div>
+  <p style="margin-top:10px">AI 前沿全景 · 前辈成果展示 · 由 AI 协同创作 · 2026</p>
+  <p style="margin-top:8px"><a href="/"><i class="cc-ic cc-back" data-ic="arrow-left"></i>← 回总站</a></p>
+</footer>
+
+<script>
+// 阅读进度条
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+
+// 卡片与时间线入场动画
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.12});
+document.querySelectorAll('.card,.tl-item,.event').forEach(el=>{
+  el.style.opacity=0;el.style.transform='translateY(26px)';
+  el.style.transition='opacity .6s ease,transform .6s ease';io.observe(el);});
+
+// ===== D. 时间线点击展开交互 =====
+document.querySelectorAll('.tl-item').forEach(item=>{
+  // 默认第一个展开
+  if(item.hasAttribute('data-open')){item.classList.add('open')}
+  item.addEventListener('click',e=>{
+    // 点击链接时不触发折叠
+    if(e.target.closest('a')){return}
+    item.classList.toggle('open');
+  });
+});
+
+// ===== C. 前辈卡头像点击：点击头像区域自动展开名言 =====
+document.querySelectorAll('.person-avatar').forEach(av=>{
+  av.addEventListener('click',()=>{
+    const det=av.closest('.person').querySelector('.person-quote details');
+    if(det){det.open=!det.open}
+  });
+});
+
+// ===== A. Stats 滚动进入时数字 pop 动画 =====
+const statIO=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    const nums=e.target.querySelectorAll('b');
+    nums.forEach((n,i)=>{
+      n.style.animation='none';
+      n.offsetHeight; // reflow
+      n.style.animation='statPop .8s cubic-bezier(.22,.8,.36,1) both';
+      n.style.animationDelay=(.1+i*.15)+'s';
+    });
+    statIO.unobserve(e.target);
+  }
+}),{threshold:.3});
+const statsWrap=document.querySelector('.stats');
+if(statsWrap){statIO.observe(statsWrap)}
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

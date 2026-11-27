@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 作品内容库,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 作品内容库 · 白驹 ccowork">
+<meta name="description" content="一页看尽全部作品：小说、博文等所有用 AI 写成的内容内嵌进页面，点开标题即可展开正文，开箱即用。">
+<meta property="og:description" content="一页看尽全部作品：小说、博文等所有用 AI 写成的内容内嵌进页面，点开标题即可展开正文，开箱即用。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · 作品内容库 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ccowork · 作品内容库 · 白驹 ccowork","description":"一页看尽全部作品：小说、博文等所有用 AI 写成的内容内嵌进页面，点开标题即可展开正文，开箱即用。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --gold:#f5c26b;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.8;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#243355;border-radius:6px}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;background:rgba(6,8,15,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:17px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:18px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--cyan)}
+.hero{padding:64px 24px 30px;text-align:center;
+  background:radial-gradient(900px 460px at 50% -10%,rgba(79,140,255,.14),transparent 60%),var(--bg)}
+.hero h1{font-size:clamp(28px,4.5vw,52px);font-weight:900;letter-spacing:1px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:760px;margin:16px auto 0;font-size:15px}
+.toolbar{display:flex;justify-content:center;gap:10px;margin:22px 0 6px;flex-wrap:wrap}
+.toolbar button{background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:7px 16px;font-size:13px;cursor:pointer;transition:.25s}
+.toolbar button:hover{border-color:var(--cyan)}
+.chips{display:flex;justify-content:center;gap:9px;margin:10px 0 4px;flex-wrap:wrap}
+.chip{background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 16px;font-size:13px;cursor:pointer;transition:.25s}
+.chip:hover{border-color:var(--cyan);color:var(--text)}
+.chip.on{background:var(--grad);color:#03121a;border-color:transparent;font-weight:700}
+.count{text-align:center;color:var(--muted);font-size:13px;margin:6px 0 18px}
+.count b{color:var(--cyan);font-family:var(--mono)}
+.wrap{max-width:900px;margin:0 auto;padding:10px 20px 80px}
+.work{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;transition:.25s}
+.work.hide{display:none}
+.work[open]{border-color:rgba(79,140,255,.4)}
+.work summary{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;list-style:none;user-select:none}
+.work summary::-webkit-details-marker{display:none}
+.work summary:hover{background:var(--bg2)}
+.w-cover{width:48px;height:48px;border-radius:10px;object-fit:cover;border:1px solid var(--line);flex:none;background:#0b1224}
+.w-title{font-weight:700;font-size:15px;flex:1;line-height:1.4}
+.w-tag{font-size:11px;color:var(--cyan);border:1px solid rgba(56,225,255,.35);padding:2px 10px;border-radius:999px;white-space:nowrap}
+.w-caret{color:var(--muted);font-size:13px;transition:transform .25s;flex:none}
+.work[open] .w-caret{transform:rotate(90deg)}
+.w-body{padding:6px 22px 24px;border-top:1px solid var(--line);color:#d7e0f4;font-size:15px}
+.w-body article{max-width:100%}
+.w-body h1{font-size:24px;margin:14px 0 12px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.w-body h2{font-size:21px;margin:22px 0 10px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.w-body h3{font-size:17px;margin:18px 0 8px;color:var(--cyan)}
+.w-body h4{font-size:15px;margin:14px 0 6px;color:var(--gold)}
+.w-body p{margin:10px 0}
+.w-body blockquote{border-left:3px solid var(--purple);padding:4px 14px;color:var(--muted);margin:12px 0;font-style:italic}
+.w-body ul,.w-body ol{margin:10px 0 10px 22px}
+.w-body li{margin:4px 0}
+.w-body hr{border:none;border-top:1px solid var(--line);margin:18px 0}
+.w-body a{color:var(--cyan)}
+.w-body code{background:#0b1224;border:1px solid var(--line);padding:1px 6px;border-radius:6px;font-size:13px}
+.w-body img{max-width:100%;border-radius:10px;border:1px solid var(--line);margin:10px 0}
+.w-body b{color:#fff}
+.w-body table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13px}
+.w-body th,.w-body td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+.hint{text-align:center;color:var(--muted);font-size:13px;padding:16px}
+.err{color:var(--pink)}
+.loading{color:var(--muted);font-size:13px;padding:8px 0}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://ccoworkbaiju.cn/works.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/works.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 作品内容库 · 白驹 ccowork">
+<meta name="twitter:description" content="一页看尽全部作品：小说、博文等所有用 AI 写成的内容内嵌进页面，点开标题即可展开正文，开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-skeleton="cards"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav>
+  <div class="logo">作品内容库</div>
+  <div class="nav-links">
+    <a href="/">← 回总站</a>
+    <a href="chronicle.html">AI 编年史</a>
+    <a href="models.html">模型对比</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<header class="hero">
+  <h1>一页看尽<span>全部作品</span></h1>
+  <p>这里把小说、博文、书稿等所有用 AI 写成的内容「内嵌」进页面——点开标题即可展开正文，开箱即用，不再是一个只放链接的展示厅。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px">
+    <a href="ai-projects.html" style="padding:10px 24px;border-radius:999px;background:var(--grad);color:#04101f;font-weight:700;text-decoration:none;font-size:14px"><i class="cc-ic" data-ic="box" aria-hidden="true"></i>看 100 个开源作品大全（GitHub 真实仓库）</a>
+    <a href="prompts-guide.html" style="padding:10px 24px;border-radius:999px;border:1px solid var(--line);color:var(--text);text-decoration:none;font-size:14px"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>提示词实战指南</a>
+  </div>
+  <div class="toolbar">
+    <button id="expandAll"><i class="cc-ic" data-ic="unfold-vertical"></i> 全部展开</button>
+    <button id="collapseAll"><i class="cc-ic" data-ic="unfold-vertical"></i> 全部收起</button>
+  </div>
+  <div class="chips" id="chips">
+    <button class="chip on" data-cat="all"><i class="cc-ic" data-ic="chevron-right"></i> 全部</button>
+    <button class="chip" data-cat="book"><i class="cc-ic" data-ic="book" aria-hidden="true"></i>书稿</button>
+    <button class="chip" data-cat="novel"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>小说</button>
+    <button class="chip" data-cat="blog"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>博文</button>
+  </div>
+  <div class="count" id="count"></div>
+</header>
+<main class="wrap no-toc" id="works"></main>
+<p class="hint" id="footNote"></p>
+<script>
+const MANIFEST = [
+  { title:'《AI 实战全书》· 一个人就是一支创作军团', cat:'book', cover:'/assets/img/cover-book.webp', url:'../blog/AI实战全书.html' },
+  { title:'小说《白驹 ccowork》', cat:'novel', cover:'/assets/img/cover-future.webp', url:'../novel/AI创作纪元.html' },
+  { title:'AI 写作完全指南：从入门到精通', cat:'blog', cover:'/assets/img/cover-prompts.webp', url:'../blog/AI写作完全指南.html' },
+  { title:'AI 绘画从入门到精通', cat:'blog', cover:'/assets/img/cover-imagegen.webp', url:'../blog/AI绘画从入门到精通.html' },
+  { title:'AI 编程进阶实战', cat:'blog', cover:'/assets/img/cover-engineering.webp', url:'../blog/AI编程进阶实战.html' },
+  { title:'AI 创业实战指南', cat:'blog', cover:'/assets/img/cover-growth.webp', url:'../blog/AI创业实战指南.html' },
+  { title:'AI 变现实操手册', cat:'blog', cover:'/assets/img/cover-book.webp', url:'../blog/AI变现实操手册.html' },
+  { title:'AI 医疗应用指南', cat:'blog', cover:'/assets/img/cover-research.webp', url:'../blog/AI医疗应用指南.html' },
+  { title:'AI 教育应用实战', cat:'blog', cover:'/assets/img/cover-growth.webp', url:'../blog/AI教育应用实战.html' },
+  { title:'制造业 AI 应用实战', cat:'blog', cover:'/assets/img/cover-industry.webp', url:'../blog/制造业AI应用实战.html' },
+  { title:'公务员 AI 应用指南', cat:'blog', cover:'/assets/img/cover-global.webp', url:'../blog/公务员AI应用指南.html' },
+  { title:'中国 AI 发展史：从跟跑到并跑', cat:'blog', cover:'/assets/img/cover-global.webp', url:'../blog/中国AI发展史.html' },
+  { title:'AI 未来趋势：数字 × 物理 × 量子 × 新质材料', cat:'blog', cover:'/assets/img/cover-future.webp', url:'../blog/AI未来趋势-数字物理量子新质材料.html' },
+  { title:'最新开源对话式 AI 项目全景与一键使用指南', cat:'blog', cover:'/assets/img/cover-data.webp', url:'../blog/最新开源对话式AI项目全景与一键使用指南.html' },
+  { title:'开源 AI 进阶：网络安全、一人公司与手机操作', cat:'blog', cover:'/assets/img/cover-data.webp', url:'../blog/开源AI进阶-网络安全一人公司与手机操作.html' },
+  { title:'AI 时代工科学习：编程·计算机·数控·仿真实战', cat:'blog', cover:'/assets/img/cover-engineering.webp', url:'../blog/AI时代工科学习-编程计算机数控仿真实战.html' },
+  { title:'深度长文：我用 DeepSeek 重构了整个创作流程', cat:'blog', cover:'/assets/img/cover-ai70.webp', url:'../blog/深度长文.html' },
+  { title:'《大模型原理与Transformer》· 一次看懂 AI 的大脑', cat:'blog', cover:'../blog/assets/cover-w-llm.png', url:'../blog/大模型原理与Transformer.html' },
+  { title:'《Agent 智能体实战》· 从概念到亲手搭建', cat:'blog', cover:'../blog/assets/cover-w-agent.png', url:'../blog/Agent智能体实战.html' },
+  { title:'《提示词工程实战》· 把 AI 用出十倍效果', cat:'blog', cover:'../blog/assets/cover-w-prompt.png', url:'../blog/提示词工程实战.html' },
+  { title:'《AI 视频制作实战》· 一个人做出一条视频', cat:'blog', cover:'../blog/assets/cover-w-video.png', url:'../blog/AI视频制作实战.html' },
+]
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+/*
+// 抽取 <article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-works.png" alt="ccowork · 作品内容库 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+ 正文，剥离脚本，并把资源路径重写为绝对地址（保证图片/链接可加载）
+*/
+function extractArticle(html, baseUrl){
+  var m = html.match(/<article[\s\S]*?<\/article>/i);
+  var art = m ? m[0] : html;
+  art = art.replace(/<script[\s\S]*?<\/script>/gi, '');
+  // 剥掉 <article> 外壳
+  art = art.replace(/^<article[^>]*>/i, '').replace(/<\/article>\s*$/i, '');
+  try {
+    var base = new url(baseUrl, location.href);
+    art = art.replace(/(src|href)="([^"]*)"/gi, function(full, attr, val){
+      if(/^(https?:|data:|#|mailto:)/.test(val)) return full;
+      try { return attr + '="' + new url(val, base).href + '"'; } catch(e){ return full; }
+    });
+  } catch(e){}
+  // 去掉与卡片标题重复的首个 h1
+  art = art.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>/i, '');
+  return art;
+}
+var wrap = document.getElementById('works')
+var loaded = 0
+MANIFEST.forEach(function(item, idx){
+  var d = document.createElement('details')
+  d.className = 'work'
+  d.dataset.cat = item.cat
+  d.open = idx < 3   // 前 3 部默认展开，其余懒加载
+  d.innerHTML =
+    '<summary>' +
+      '<img class="w-cover" src="'+item.cover+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+      '<span class="w-title">'+esc(item.title)+'</span>' +
+      '<span class="w-tag">'+item.cat+'</span>' +
+      '<span class="w-caret"></span>' +
+    '</summary>' +
+    '<div class="w-body"><div class="loading">加载中…</div></div>'
+  wrap.appendChild(d)
+  var body = d.querySelector('.w-body')
+  function load(){
+    if(d.dataset.loaded) return
+    d.dataset.loaded = '1'
+    fetch(item.url)
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text() })
+      .then(function(html){ body.innerHTML = extractArticle(html, item.url); loaded++; updateCount() })
+      .catch(function(e){ body.innerHTML = '<span class="err">无法加载：'+esc(item.url)+'（'+esc(e.message)+'）</span>' })
+  }
+  // 默认展开的直接加载；其余在首次打开时懒加载
+  if(d.open) load()
+  d.addEventListener('toggle', function(){ if(d.open) load() })
+})
+function updateCount(){
+  document.getElementById('count').innerHTML = '共 <b>'+MANIFEST.length+'</b> 部作品 · 已载入 <b>'+loaded+'</b> 部 · 点标题展开正文'
+}
+updateCount()
+document.getElementById('expandAll').onclick = function(){
+  wrap.querySelectorAll('details').forEach(function(d){ if(!d.classList.contains('hide')){ d.open = true; /* 触发懒加载 */ if(!d.dataset.loaded){ var ev=new Event('toggle'); d.dispatchEvent(ev); } } })
+}
+document.getElementById('collapseAll').onclick = function(){
+  wrap.querySelectorAll('details').forEach(function(d){ d.open = false })
+}
+// 分类筛选
+document.getElementById('chips').addEventListener('click', function(e){
+  var btn = e.target.closest('.chip'); if(!btn) return
+  document.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on') })
+  btn.classList.add('on')
+  var cat = btn.dataset.cat
+  wrap.querySelectorAll('.work').forEach(function(d){
+    d.classList.toggle('hide', cat !== 'all' && d.dataset.cat !== cat)
+  })
+})
+document.getElementById('footNote').textContent = '提示：正文为真实内嵌内容。若某部显示「无法加载」，请用 http(s) 方式访问（本地 node server.mjs 或已部署的云端链接）。'
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

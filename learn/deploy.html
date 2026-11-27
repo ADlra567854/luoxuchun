@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>部署百科 · 路线 · 引擎 · 硬件 · 量化 · 白驹 ccowork</title>
+<meta name="description" content="AI 部署百科：四条路线（本地/图形/云额度/自建服务）、决策树、6 个推理引擎横评、五档硬件门槛、六种量化格式与可直接复制的启动命令。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/page-ext.css">
+<link rel="stylesheet" href="/cover.css">
+</head>
+<body data-ccnav="learn" data-cctitle="部署百科">
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/deploy.jpg" alt="" loading="eager" decoding="async"></div>
+  <div class="pg-hero">
+    <div data-cccrumb="部署百科"></div>
+    <h1>部署百科 · <em>先选路线，再选引擎</em></h1>
+    <p class="lede">自建推理最常见的错误是<b>顺序搞反</b>：先挑一个「性能最强」的引擎，装到一半发现显卡装不下、或者服务端跑得好但自己只是单人用。正确顺序是<b>先定路线（本地 / 云 / 自建服务），再定引擎</b>。这一页按这个顺序写。</p>
+    <div class="pg-stats">
+      <div class="st"><b>4</b><span>条部署路线</span></div>
+      <div class="st"><b>6</b><span>个推理引擎</span></div>
+      <div class="st"><b>5</b><span>档硬件门槛</span></div>
+      <div class="st"><b>6</b><span>种量化格式</span></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="route" aria-hidden="true"></i>第一步 · 选路线</h2>
+      <span class="sub">四种路线覆盖 95% 的需求，按人群分</span></div>
+    <div class="pg-grid">
+      <div class="rpx" style="cursor:default">
+        <div class="rh"><div><h3>命令行派 · Ollama</h3><span class="repo">开发者 / 技术爱好者</span></div>
+          <span class="star" style="color:#047857;background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.26)">最省事</span></div>
+        <p class="desc">一行命令跑起来，模型库覆盖 100+ 模型，默认开 OpenAI 兼容接口（11434）。适合把本地模型接进自己的脚本与工具链。</p>
+        <div class="mx"><span class="lv1">难度 1</span><span>免费</span><span class="cn-y">国内可直连</span></div>
+      </div>
+      <div class="rpx" style="cursor:default">
+        <div class="rh"><div><h3>图形界面派 · LM Studio</h3><span class="repo">非技术用户</span></div>
+          <span class="star" style="color:#0369a1;background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.26)">零门槛</span></div>
+        <p class="desc">可视化下载模型、性能测试、开 API 服务。不用碰命令行，代价是安装包大、扩展性不如 Ollama。</p>
+        <div class="mx"><span class="lv1">难度 1</span><span>个人免费</span><span class="cn-y">国内可直连</span></div>
+      </div>
+      <div class="rpx" style="cursor:default">
+        <div class="rh"><div><h3>云端免费派</h3><span class="repo">不想装任何东西</span></div>
+          <span class="star" style="color:#b45309;background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.26)">零硬件</span></div>
+        <p class="desc">阿里云百炼、硅基流动、智谱、混元都有新用户额度，国内直连快。缺点有限速与「仅实时推理」约束，数据要过第三方。</p>
+        <div class="mx"><span class="lv1">难度 0</span><span>免费额度</span><span class="cn-y">国内可直连</span></div>
+      </div>
+      <div class="rpx" style="cursor:default">
+        <div class="rh"><div><h3>企业级路线 · vLLM / SGLang</h3><span class="repo">IT / MLOps</span></div>
+          <span class="star" style="color:#b91c1c;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.24)">要运维</span></div>
+        <p class="desc">高并发、多卡、可观测。需要 GPU 服务器与运维能力，个人用不上，团队上线必备。</p>
+        <div class="mx"><span class="lv3">难度 3</span><span>需要 GPU</span><span class="cn-y">国内可直连</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="split" aria-hidden="true"></i>第二步 · 按条件走决策树</h2>
+      <span class="sub">从上往下读，第一条命中的就是答案，不用全部比较</span></div>
+    <ul class="dec">
+<li><div class="cond">完全没有 GPU，只有 CPU<small>纯 CPU 或老笔记本</small></div><div class="arrow">→</div><div class="res">llama.cpp 直接跑<small>唯一认真对待 CPU 的引擎，AVX2/NEON 都有优化</small></div></li><li><div class="cond">Apple Silicon 笔记本<small>MacBook / Mac mini</small></div><div class="arrow">→</div><div class="res">Ollama 或 LM Studio<small>MLX 走后端，比纯 CPU 快数倍，安装零门槛</small></div></li><li><div class="cond">一张消费级显卡，单人用<small>RTX 4060 / 4090</small></div><div class="arrow">→</div><div class="res">Ollama 起步，需要调参再换 llama.cpp<small>单用户场景 vLLM 的并发优势用不上</small></div></li><li><div class="cond">3–10 人共享一台 GPU 工作站<small>团队内部工具</small></div><div class="arrow">→</div><div class="res">LM Studio 远端 / Ollama 加反代<small>不用运维整套服务，性能够用</small></div></li><li><div class="cond">生产服务，5 并发以上<small>A100 / H100 单机</small></div><div class="arrow">→</div><div class="res">vLLM<small>连续批处理真正开始回本，运维成本可接受</small></div></li><li><div class="cond">多机多卡、多租户<small>集群</small></div><div class="arrow">→</div><div class="res">vLLM 或 SGLang<small>张量并行 + PagedAttention 是生产标准</small></div></li><li><div class="cond">RAG / Agent，前缀高度重复<small>长 system prompt、多轮</small></div><div class="arrow">→</div><div class="res">SGLang 优先，其次 vLLM<small>RadixAttention 的前缀缓存在这个形状下优势最大</small></div></li><li><div class="cond">模型装不进一张卡<small>显存不够</small></div><div class="arrow">→</div><div class="res">llama.cpp --tensor-split / vLLM 张量并行<small>单用户拆卡用前者，对外服务用后者</small></div></li>
+    </ul>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="gauge" aria-hidden="true"></i>引擎横评</h2>
+      <span class="cnt">6 个引擎</span></div>
+    <div class="pg-tblwrap"><div class="pg-tblscroll">
+      <table>
+        <caption>吞吐量为 2026 年公开评测数据（A100/H100 上测 70B 级模型；llama.cpp 一行为 7B 模型单机 CPU/Metal 测试，与 GPU 数据不可直接比较）。</caption>
+        <thead><tr><th>引擎</th><th>出品方</th><th>吞吐 token/s</th><th>上手难度</th><th>什么时候选它</th></tr></thead>
+        <tbody><tr><td><b>vLLM</b></td><td>VLM 团队</td><td style="font-variant-numeric:tabular-nums">1000–2000</td><td>中等</td><td>生产级高并发默认选择。PagedAttention 做显存分页复用，连续批处理把吞吐拉满。5 并发以上就该换它。</td></tr><tr><td><b>TensorRT-LLM</b></td><td>NVIDIA</td><td style="font-variant-numeric:tabular-nums">2500–4000+</td><td>困难</td><td>吞吐天花板，但要针对显卡型号编译引擎，换卡就要重编。有专职工程团队才值得上。</td></tr><tr><td><b>SGLang</b></td><td>LMSYS / Berkeley</td><td style="font-variant-numeric:tabular-nums">很高（前缀命中时领先）</td><td>中等</td><td>RadixAttention 复用前缀 KV 缓存。system prompt 长、多轮、RAG 场景优势明显；每个请求都不同时优势消失。</td></tr><tr><td><b>TGI</b></td><td>Hugging Face</td><td style="font-variant-numeric:tabular-nums">800–1500</td><td>中等</td><td>企业级部署的老方案，2025 年 12 月起进入维护模式，只修 bug 不加功能。新项目不建议再选。</td></tr><tr><td><b>llama.cpp</b></td><td>ggml-org</td><td style="font-variant-numeric:tabular-nums">80–100（7B / M2 Ultra，CPU+Metal）</td><td>中等</td><td>唯一把纯 CPU 推理当一等公民的引擎，GGUF 格式的定义者。边缘设备与离线场景无可替代。</td></tr><tr><td><b>Ollama</b></td><td>Ollama</td><td style="font-variant-numeric:tabular-nums">较低（多请求时吞吐见顶）</td><td>极低</td><td>一行命令起步，底层是 llama.cpp。开发原型与单用户的最佳选择，不是服务端方案。</td></tr></tbody>
+      </table>
+    </div></div>
+    <div class="pg-note" style="margin-top:14px">
+      <i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>
+      <div><b>吞吐量不是唯一指标。</b>vLLM 在高并发下最强，但单用户低延迟场景可能不如别的；llama.cpp 的绝对数字低，却是 CPU 和边缘设备上唯一现实的选择。先定场景，再看数字。</div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="cpu" aria-hidden="true"></i>第三步 · 算硬件够不够</h2>
+      <span class="sub">显存 + 内存是唯一需要关心的两个数字</span></div>
+    <div class="pg-tblwrap"><div class="pg-tblscroll">
+      <table>
+        <caption>「显存 + 内存」指量化后可装入的总容量，不是模型原始体积。32 GB 内存已成为 2026 年的入门基线。</caption>
+        <thead><tr><th>模型规模</th><th>量化后占用</th><th>推荐配置</th><th>能干什么</th></tr></thead>
+        <tbody><tr><td><b>1B – 3B</b></td><td>1 – 2 GB</td><td>任何近五年的电脑</td><td>轻量对话、输入法补全、端侧分类</td></tr><tr><td><b>7B – 8B</b></td><td>4 – 6 GB</td><td>8 GB 内存 + 核显即可</td><td>日常对话、写作辅助、简单 RAG</td></tr><tr><td><b>13B – 14B</b></td><td>8 – 10 GB</td><td>16 GB 内存 + 独显</td><td>复杂推理、长文本摘要、代码补全</td></tr><tr><td><b>32B – 34B</b></td><td>18 – 22 GB</td><td>32 GB 内存 + 中高端独显（24G 卡）</td><td>高级推理、成规模的代码生成</td></tr><tr><td><b>70B+</b></td><td>40 GB+</td><td>48 GB+ 内存 + 高端独显或多卡</td><td>专业任务、接近云端水平的通用能力</td></tr></tbody>
+      </table>
+    </div></div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>第四步 · 选量化格式</h2>
+      <span class="sub">Q4_K_M 是绝大多数人的答案</span></div>
+    <div class="pg-tblwrap"><div class="pg-tblscroll">
+      <table>
+        <thead><tr><th>格式</th><th>位宽</th><th>压缩率</th><th>质量</th><th>适用</th><th>建议</th></tr></thead>
+        <tbody><tr><td><b>Q2_K</b></td><td>2 bit</td><td>极高</td><td>较差</td><td>只考内存极度受限时</td><td>不推荐</td></tr><tr><td><b>Q3_K_M</b></td><td>3 bit</td><td>高</td><td>一般</td><td>空间紧张且能接受质量下降</td><td>勉强</td></tr><tr><td><b>Q4_K_M</b></td><td>4 bit</td><td>中高</td><td>良好</td><td>绝大多数场景</td><td>推荐</td></tr><tr><td><b>Q5_K_M</b></td><td>5 bit</td><td>中</td><td>较好</td><td>质量要求高于速度</td><td>可选</td></tr><tr><td><b>Q8_0</b></td><td>8 bit</td><td>低</td><td>接近原始</td><td>对速度不敏感但要求质量</td><td>高配</td></tr><tr><td><b>FP16</b></td><td>16 bit</td><td>无</td><td>原始</td><td>专业级、不计资源</td><td>基准</td></tr></tbody>
+      </table>
+    </div></div>
+    <p class="sub" style="margin-top:12px;font-size:13px;color:var(--muted);line-height:1.75">
+      量化就是把 16 位浮点参数压成 4–8 位整数。Q4_K_M 把体积压到原来的约四分之一，同时保住九成以上能力，所以成了默认推荐。
+      觉得质量不够再升 Q5 或 Q8，不要一上来就用 Q2 —— 省下的那点内存换来的质量下降通常不值。
+    </p>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="terminal" aria-hidden="true"></i>第五步 · 跑起来</h2>
+      <span class="sub">三条命令覆盖三种典型场景</span></div>
+
+    <h3 style="font-size:14.5px;margin:4px 0 2px">场景 A · 本地先跑通（Ollama）</h3>
+    <div class="cmd"><span class="c"># 安装（Windows 直接下安装包，Linux 用这行）</span>
+<span class="k">curl</span> -fsSL https://ollama.com/install.sh | sh
+
+<span class="c"># 拉一个 8B 量化模型并对话</span>
+<span class="k">ollama</span> run qwen3:8b
+
+<span class="c"># 它同时在 11434 开了 OpenAI 兼容接口，任何框架都能直接接</span>
+<span class="k">curl</span> http://localhost:11434/v1/chat/completions \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"model":"qwen3:8b","messages":[{"role":"user","content":"你好"}]}'</span></div>
+
+    <h3 style="font-size:14.5px;margin:20px 0 2px">场景 B · 团队共享一台 GPU（vLLM）</h3>
+    <div class="cmd"><span class="c"># 装 vLLM（需要 CUDA 环境）</span>
+<span class="k">pip</span> install vllm
+
+<span class="c"># 起一个 OpenAI 兼容服务：吞吐按显存比例分配，0.9 是常用值</span>
+<span class="k">vllm</span> serve Qwen/Qwen3-8B \
+  --gpu-memory-utilization <b>0.90</b> \
+  --max-model-len <b>32768</b> \
+  --port <b>8000</b>
+
+<span class="c"># 客户端只改 base_url，其余代码不用动</span>
+<span class="k">curl</span> http://localhost:8000/v1/chat/completions ...</div>
+
+    <h3 style="font-size:14.5px;margin:20px 0 2px">场景 C · 没有显卡，纯 CPU 硬跑（llama.cpp）</h3>
+    <div class="cmd"><span class="c"># 从 HuggingFace 下 GGUF（注意选 Q4_K_M）</span>
+<span class="k">huggingface-cli</span> download Qwen/Qwen3-8B-GGUF qwen3-8b-q4_k_m.gguf
+
+<span class="c"># 起一个带网页界面的本地服务，--n-gpu-layers 0 表示纯 CPU</span>
+<span class="k">./llama-server</span> -m qwen3-8b-q4_k_m.gguf \
+  -c <b>4096</b> --n-gpu-layers <b>0</b> --port <b>8080</b></div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>踩坑清单</h2>
+      <span class="sub">这些错误每周都有人在犯</span></div>
+    <div class="pg-note warn">
+      <i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>
+      <div>
+        <b>① 用 Ollama 上生产。</b>单人用没问题；5 并发以上吞吐会突然见顶，而且不是调参能救的——那是工具选错了，不是配置问题。
+        <br><br>
+        <b>② 显存刚好够就以为能跑。</b>KV cache 会随上下文长度线性增长。8G 卡装 7B 时，把 --max-model-len 设成 32k 大概率 OOM。
+        <br><br>
+        <b>③ 下 GGUF 不看来源。</b>llama.cpp 的 GGUF 解析器在 2026 年 5 月被披露过 6 个未编号 CVE 的漏洞，恶意文件在推理开始前就能触发。只从可信仓库下载。
+        <br><br>
+        <b>④ 忽略模型许可证。</b>开放权重不等于可商用。Llama 系列有命名与用户数条款，部分中文模型禁止特定用途。上线前读一遍。
+        <br><br>
+        <b>⑤ 忘了算电费与时间。</b>本地跑不花 token 钱，但一张 4090 满载是 450W。真正的成本对比要把硬件折旧、电费、以及你调环境的两天一起算进去。
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="ccfoot">
+  <div class="in">
+    <div class="col"><h4>白驹 ccowork</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:260px">把散落的 AI 工具与知识装进一个大脑。</p></div>
+    <div class="col"><h4>模型</h4>
+      <a href="/models/atlas.html">模型图谱</a><a href="/models/library.html">模型库</a>
+      <a href="/models/leaderboards.html">榜单矩阵</a><a href="/models/vendors.html">厂商阵列</a></div>
+    <div class="col"><h4>工具</h4>
+      <a href="/toolbox/repos.html">开源仓库</a><a href="/toolbox/platforms.html">平台阵列</a>
+      <a href="/learn/deploy.html">部署百科</a><a href="/toolbox/library.html">工具库</a></div>
+    <div class="col"><h4>关于</h4>
+      <a href="/about/">关于本站</a><a href="/works/museum.html">AI 博物馆</a></div>
+  </div>
+  <div class="bd"><span>数据快照 · 2026-10-29</span><span>条目可验证 · 链接直达原始仓库</span></div>
+</footer>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

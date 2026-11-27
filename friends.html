@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>资料预览 · 白驹 ccowork</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<script>
+(function(){try{
+  var forced=localStorage.getItem('baiju.gate.lock')==='1'||/[?&]gate=lock(?:[&#]|$)/.test(location.href),ok=false;
+  try{var v=JSON.parse(localStorage.getItem('baiju.gate.v1')||'null');if(v&&v.ok&&v.exp&&v.exp>Date.now())ok=true}catch(e){}
+  var h=location.hostname,local=h==='localhost'||h==='127.0.0.1'||h==='::1'||h===''||/^192\.168\./.test(h)||/^10\./.test(h)||/^172\.(1[6-9]|2\d|3[01])\./.test(h);
+  if(forced||(!ok&&!local))document.documentElement.setAttribute('data-gate','locked');
+}catch(e){document.documentElement.setAttribute('data-gate','locked')}})();
+</script>
+<script>try{var t=localStorage.getItem('ccowork.theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+:root{
+  --bg:#F4F7FC;--card:#FFFFFF;--text:#1E293B;--muted:#475569;
+  --line:rgba(148,163,184,.28);--soft:rgba(79,140,255,.09);
+  --grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+  --shadow:0 10px 30px rgba(30,58,110,.09);
+}
+html[data-theme="deep"],body[data-theme="deep"]{
+  --bg:#030014;--card:#101728;--text:#E9F0FB;--muted:#8FA3BD;
+  --line:rgba(143,163,189,.22);--soft:rgba(91,140,255,.13);
+  --grad:linear-gradient(120deg,#38e1ff,#5b8cff 45%,#8b5cf6);
+  --shadow:0 10px 34px rgba(0,0,0,.42);
+}
+html[data-gate="locked"] body.bj-gated-page > *:not(.bj-gate-overlay){display:none!important}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:color-mix(in srgb,var(--card) 82%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:12px;min-height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800}
+.mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:16px}
+.pill{display:inline-flex;gap:7px;align-items:center;padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:700;color:#2B62C9;background:rgba(79,140,255,.11);border:1px solid rgba(79,140,255,.28)}
+html[data-theme="deep"] .pill,body[data-theme="deep"] .pill{color:#7CC8FF;background:rgba(56,225,255,.10);border-color:rgba(56,225,255,.28)}
+.hero{padding:38px 0 22px}
+.hero h1{font-size:clamp(26px,4.6vw,40px);line-height:1.3;margin:14px 0 10px;font-weight:900}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:760px;margin:0}
+.rule{height:3px;width:120px;border-radius:99px;background:var(--grad);margin-top:20px}
+h2.sec{font-size:20px;font-weight:900;margin:30px 0 6px;display:flex;align-items:center;gap:10px}
+h2.sec span{font-size:12px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px}
+.card .no{font:700 12px/1 ui-monospace,monospace;color:#2B62C9;letter-spacing:1px}
+html[data-theme="deep"] .card .no,body[data-theme="deep"] .card .no{color:#7CC8FF}
+.card h3{margin:0;font-size:16px;font-weight:800;line-height:1.4}
+.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.65;word-break:break-word}
+.card .kv{display:flex;gap:7px;flex-wrap:wrap;font-size:11.5px}
+.card .kv i{font-style:normal;padding:3px 9px;border-radius:999px;background:var(--soft);border:1px solid var(--line)}
+.card .kv i.hi{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.38)}
+.card .kv i.ok{background:rgba(34,197,94,.13);border-color:rgba(34,197,94,.34)}
+.card .concl{border-left:3px solid #4F8CFF;background:var(--soft);border-radius:0 10px 10px 0;padding:9px 12px;font-size:12.5px;line-height:1.65}
+.card .foot{margin-top:auto;font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:9px}
+.card code{font-size:11.5px;word-break:break-all}
+.lnk{display:inline-flex;padding:5px 12px;border-radius:999px;background:var(--grad);color:#fff;text-decoration:none;font-size:12px;font-weight:800}
+.pending{display:inline-flex;padding:5px 12px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:12px;font-weight:700}
+.dom{font:700 13px/1.4 ui-monospace,monospace;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lineB{border-left:3px solid #8B5CF6}
+.lineA{border-left:3px solid #38B6FF}
+footer{margin-top:40px;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+.cite{display:inline-flex;padding:5px 12px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:12px;font-weight:700}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+@media(max-width:480px){.wrap{padding:0 14px}.hero{padding:26px 0 16px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="bj-gated-page">
+<header class="nav"><div class="wrap">
+  <div class="logo"><i class="cc-mark" aria-hidden="true"></i><span>白驹 ccowork</span></div>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="pill">白驹 ccowork · 资料预览</span>
+    <h1>资料预览<br><em>核验中，尚未公开</em></h1>
+    <p>本站自有作品、源码、教程与数据展示已公开；以下条目仍在来源核验与整理阶段，暂不纳入公开内容。</p>
+    <p class="sub" id="digest" style="margin-top:12px">核验至 —</p>
+    <div class="rule"></div>
+  </section>
+
+  <h2 class="sec">内容板块 <span id="secCount">—</span></h2>
+  <p class="sub">每条均标注来源机构、许可、采集与核验时间、结论及失效标记；来源未核实的条目不提供链接。</p>
+  <section class="grid" id="boards"></section>
+
+  <h2 class="sec">资料库 <span id="libCount">—</span></h2>
+  <p class="sub">按来源官方口径收集，仅保留元数据与官方外链，不托管全文与安装包。</p>
+  <section id="library"></section>
+
+  <h2 class="sec">站点规划 <span id="domCount">—</span></h2>
+  <p class="sub">按自有内容与外部资源分线整理，逐项核验后再行启用。</p>
+  <section class="grid" id="domains"></section>
+
+  <footer>
+    <span class="cite" id="cite">核验至 —</span>
+    <p style="margin:10px 0 0">白驹 ccowork · ccowork ｜ 个人技术展示站，不提供生成式 AI 服务。</p>
+  </footer>
+</main>
+
+<script id="bj-friends-data" type="application/json">{"date":"2026-11-26","sections":[{"id":"01-books","no":"01","title":"正式电子书籍","desc":"只收录来源官方、许可明确的书籍；禁止自编内容充数。","risk":"高","items":3,"verified":3,"pending":0,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"02-online-docs","no":"02","title":"在线资料与许可","desc":"官方在线资料入口与许可全文，供核实来源与授权边界。","risk":"中","items":3,"verified":3,"pending":0,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"03-exam-bank","no":"03","title":"计算机 / AI 专升本题库","desc":"专升本与考试政策官方源；自编题解须明确标注为原创。","risk":"高","items":2,"verified":1,"pending":1,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"04-eng-software","no":"04","title":"工科理科软件","desc":"制图、建模、仿真、数学与地理信息类官方软件入口。","risk":"中","items":3,"verified":3,"pending":0,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"05-source-code","no":"05","title":"自研项目源码","desc":"历史自研项目整理后以独立仓库发布，保留原署名与 LICENSE。","risk":"低","items":2,"verified":0,"pending":2,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"06-data-lab","no":"06","title":"数据实验室","desc":"带完整注释、可复现、有明确结论的实验与数据集。","risk":"低","items":1,"verified":0,"pending":1,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"07-contests","no":"07","title":"赛事导航","desc":"AI 创作者大赛、省市级与国内官方赛事，链接必须能正式打开。","risk":"低","items":3,"verified":1,"pending":2,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"08-oss-software","no":"08","title":"免费开源与编程软件","desc":"免费开源工具与编程环境的官方入口。","risk":"低","items":2,"verified":2,"pending":0,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"09-free-token","no":"09","title":"每日免费大模型试用专线","desc":"各平台官方免费额度 / 试用入口，每日核验。","risk":"高","items":6,"verified":5,"pending":1,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false},{"id":"10-feedback","no":"10","title":"留言与工单","desc":"非 AI、非实时的留言与工单，仅收集反馈。","risk":"中","items":1,"verified":0,"pending":1,"publishState":"核验中 · 暂不公开","verifiedAt":"2026-11-26","conclusion":"来源与许可逐条核验中，未核实条目不提供链接。","expired":false}],"domains":[{"sub":"code.","line":"A","purpose":"自研项目源码与代码预览","status":"规划中","built":false,"publicEntry":false},{"sub":"lab.","line":"A","purpose":"带注释有结论的数据实验室","status":"规划中","built":false,"publicEntry":false},{"sub":"study.","line":"B","purpose":"官方电子书与在线资料导航","status":"规划中","built":false,"publicEntry":false},{"sub":"download.","line":"B","purpose":"工科理科与免费编程软件官方源导航","status":"规划中","built":false,"publicEntry":false},{"sub":"match.","line":"B","purpose":"AI 与学科赛事官方链接导航","status":"规划中","built":false,"publicEntry":false},{"sub":"token.","line":"B","purpose":"每日免费大模型试用官方入口导航","status":"规划中","built":false,"publicEntry":false}],"library":[{"id":"books","title":"有版权书籍","scope":"books","items":[{"id":"r-01","kind":"books","title":"Deep Learning（花书）","publisher":"Ian Goodfellow · Yoshua Bengio · Aaron Courville（MIT Press）","canonical":"https://www.deeplearningbook.org/","license":"版权所有 · 官网提供免费在线阅读","licenseStatus":"有版权，未开放自由再分发","collectedAt":"2026-11-15","verifiedAt":"2026-11-26","conclusion":"经典教材；官网可免费阅读不等于开放许可。本站只留元数据与官方外链，不托管 PDF、不转载章节。","status":"verified","hosting":"metadata-only","brand":"MIT Press / Deep Learning Book","expired":false,"expiredReason":"","lastCheck":"2026-11-26","httpCode":200,"verifiedVia":"canonical","lastVerifiedAt":"2026-11-26","verifiedCanonical":"https://www.deeplearningbook.org/","consecutiveFailures":0,"probeNote":""},{"id":"r-02","kind":"books","title":"An Introduction to Statistical Learning（ISLR）","publisher":"Gareth James · Daniela Witten · Trevor Hastie · Robert Tibshirani（Springer）","canonical":"https://www.statlearning.com/","license":"版权所有 · 作者官网提供免费 PDF","licenseStatus":"有版权，未开放自由再分发","collectedAt":"2026-11-15","verifiedAt":"2026-11-26","conclusion":"作者官网免费 PDF 属阅读便利，不是 CC 授权。本站只留元数据与官方外链。","status":"verified","hosting":"metadata-only","brand":"ISLR / Springer","expired":false,"expiredReason":"","lastCheck":"2026-11-26","httpCode":200,"verifiedVia":"canonical","lastVerifiedAt":"2026-11-26","verifiedCanonical":"https://www.statlearning.com/","consecutiveFailures":0,"probeNote":""},{"id":"r-03","kind":"books","title":"Mathematics for Machine Learning（MML）","publisher":"Marc Peter Deisenroth · A. Aldo Faisal · Cheng Soon Ong（Cambridge University Press）","canonical":"https://mml-book.github.io/","license":"版权所有 · 官网提供免费 PDF","licenseStatus":"有版权，未开放自由再分发","collectedAt":"2026-11-15","verifiedAt":"2026-11-26","conclusion":"数学基础教材；官网免费 PDF 不等于开放许可。本站只留元数据与官方外链。","status":"verified","hosting":"metadata-only","brand":"MML / Cambridge University Press","expired":false,"expiredReason":"","lastCheck":"2026-11-26","httpCode":200,"verifiedVia":"canonical","lastVerifiedAt":"2026-11-26","verifiedCanonical":"https://mml-book.github.io/","consecutiveFailures":0,"probeNote":""}]},{"id":"docs","title":"许可待核实资料","scope":"docs","items":[{"id":"r-04","kind":"docs","title":"Prompt Engineering Guide · 提示工程指南","publisher":"DAIR.AI","canonical":"https://www.promptingguide.ai/","license":"许可待核实","licenseStatus":"未核实，不转载、不镜像","collectedAt":"2026-11-15","verifiedAt":"2026-11-26","conclusion":"提示词资料入口；许可未核实前只留元数据与官方外链，不托管任何正文。","status":"verified","hosting":"metadata-only","brand":"DAIR.AI / Prompt Engineering Guide","expired":false,"expiredReason":"","lastCheck":"2026-11-26","httpCode":200,"verifiedVia":"canonical","lastVerifiedAt":"2026-11-26","verifiedCanonical":"https://www.promptingguide.ai/","consecutiveFailures":0,"probeNote":""},{"id":"r-05","kind":"docs","title":"Google 机器学习速成课程","publisher":"Google","canonical":"","license":"许可待核实","licenseStatus":"未核实","collectedAt":"2026-11-15","verifiedAt":"","conclusion":"本次核验超时，源头未确认，canonical 留空且不给可点链接；待核实后再补。绝不编造 URL。","status":"pending","hosting":"metadata-only","brand":"Google","expired":false,"expiredReason":"本次核验超时","lastCheck":"2026-11-26","httpCode":0},{"id":"r-07","kind":"docs","title":"Hugging Face LLM Course","publisher":"Hugging Face","canonical":"","license":"官方仓库 Apache-2.0（GitHub API 实测）· 课程网页许可待核实","licenseStatus":"未核实","collectedAt":"2026-11-15","verifiedAt":"","conclusion":"先收集元数据：仓库许可已实测为 Apache-2.0，但课程网页入口本次核验超时、网页许可未确认，canonical 留空且不给可点链接；恢复后逐条复核再决定是否进公开层。","status":"pending","hosting":"metadata-only","brand":"Hugging Face","expired":false,"expiredReason":"本次核验超时","lastCheck":"2026-11-26","httpCode":0},{"id":"r-08","kind":"docs","title":"Web Dev for Beginners","publisher":"Microsoft Cloud Advocates","canonical":"","license":"MIT License（官方仓库 license.spdx_id 实测）","licenseStatus":"许可已核实 · 网页入口未核实","collectedAt":"2026-11-15","verifiedAt":"","conclusion":"先收集元数据：仓库许可 MIT 已实测，但 github.com 网页域本机持续超时，官方免费入口本次无法复核，canonical 留空且不给可点链接；待网页域恢复再补进公开层。","status":"pending","hosting":"metadata-only","brand":"Microsoft","expired":false,"expiredReason":"本次核验超时","lastCheck":"2026-11-26","httpCode":0}]},{"id":"programming","title":"编程进阶资料","scope":"programming","items":[{"id":"r-06","kind":"programming","title":"Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow","publisher":"O'Reilly Media","canonical":"","license":"版权所有","licenseStatus":"有版权","collectedAt":"2026-11-15","verifiedAt":"","conclusion":"先收集元数据；官方页面未核实，canonical 留空，不提供链接，不托管全文。","status":"pending","hosting":"metadata-only","brand":"O'Reilly Media","expired":false,"expiredReason":"源头未核实，canonical 留空","lastCheck":"2026-11-26","httpCode":0}]}],"publicDigest":{"date":"2026-11-26","stats":{"public":21,"verified":21,"pending":0,"restricted":8,"hostedFullText":0,"hostedInstaller":0,"groups":4},"prompts":{"count":107,"groups":16,"bytes":29114,"source":"/learn/prompts.html","publisher":"白驹 ccowork · ccowork（本站自有）","license":"本站原创 · 可用于学习与教学，保留署名即可","brand":"🐎 白驹 ccowork"}}}</script>
+<script src="/assets/baiju-gate.js?v=20261125a"></script>
+<script>
+(function(){
+  /* 整段渲染抽成函数：首帧处于访问确认阶段时分组为空，
+     确认后 baiju-gate.js 只撤遮罩、不会重画，必须监听状态事件重渲染。 */
+  function render(){
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function allowed(g){return !!(window.BaijuGate&&window.BaijuGate.allows&&window.BaijuGate.allows(g))}
+  var d={};
+  try{d=JSON.parse(document.getElementById('bj-friends-data').textContent||'{}')}catch(e){}
+  var dg=d.publicDigest,de=document.getElementById('digest');
+  if(de)de.textContent=dg?('核验至 '+dg.date+' · 开放资料 '+dg.stats.public+' 条（已核验 '+dg.stats.verified+'）· 自有提示词 '+dg.prompts.count+' 条 / '+dg.prompts.groups+' 组 · 待上线条目 '+dg.stats.restricted+' 条 · 每日重生成'):'核验至 —';
+  var boards=d.sections||[],doms=d.domains||[],libs=(d.library||[]).filter(function(g){return allowed(g.scope)});
+  document.getElementById('secCount').textContent=boards.length+' 个板块';
+  document.getElementById('domCount').textContent=doms.length+' 项';
+  document.getElementById('cite').textContent='核验至 '+(d.date||'—')+' · 出处 '+boards.length+' 个板块';
+  document.getElementById('boards').innerHTML=boards.map(function(x){
+    return '<article class="card">'+
+      '<div class="no">'+esc(x.no)+' / '+esc(x.id)+'</div>'+
+      '<h3>'+esc(x.title)+'</h3><p>'+esc(x.desc||'')+'</p>'+
+      '<div class="kv"><i>条目 '+x.items+'</i><i class="ok">已核实 '+x.verified+'</i><i class="'+(x.pending?'hi':'')+'">待核实 '+x.pending+'</i><i class="hi">风险 '+esc(x.risk||'—')+'</i></div>'+
+      '<div class="concl"><b>结论：</b>'+esc(x.conclusion)+'</div>'+
+      '<div class="foot">'+esc(x.publishState)+' · 核验 '+esc(x.verifiedAt)+' · 失效标记 '+(x.expired?'已失效':'无')+'</div>'+
+    '</article>'
+  }).join('')||'<div class="card">暂无数据</div>';
+
+  var n=libs.reduce(function(a,g){return a+(g.items||[]).length},0);
+  document.getElementById('libCount').textContent=libs.length+' 组 / '+n+' 条';
+  document.getElementById('library').innerHTML=libs.map(function(g){
+    var cards=(g.items||[]).map(function(x){
+      var ok=x.status==='verified'&&!!x.canonical;
+      return '<article class="card">'+
+        '<div class="no">'+esc(x.id)+' / '+esc(x.kind)+'</div>'+
+        '<h3>'+esc(x.title)+'</h3>'+
+        '<div class="kv"><i>'+esc(x.brand)+'</i><i>'+esc(x.license)+'</i><i class="'+(ok?'ok':'hi')+'">'+(ok?'已核验':'待核实')+'</i></div>'+
+        '<p><b>出处：</b>'+esc(x.publisher)+'</p>'+
+        '<p><b>源头：</b>'+(ok?'<code>'+esc(x.canonical)+'</code>':'未核实，留空')+'</p>'+
+        '<div class="concl"><b>结论：</b>'+esc(x.conclusion)+'</div>'+
+        '<div class="foot">采集 '+esc(x.collectedAt)+' · 核验 '+esc(x.verifiedAt||'—')+' · 失效标记 '+(x.expired?'已失效':'无')+'</div>'+
+        (ok?'<a class="lnk" href="'+esc(x.canonical)+'" target="_blank" rel="noopener noreferrer nofollow">前往官方源 ↗</a>':'<span class="pending">待核实 · 暂不提供链接</span>')+
+      '</article>'
+    }).join('')||'<div class="card">暂无条目</div>';
+    return '<h2 class="sec" style="font-size:17px;margin-top:22px">'+esc(g.title)+' <span>'+(g.items||[]).length+' 条</span></h2>'+
+      '<section class="grid">'+cards+'</section>'
+  }).join('')||'<div class="card">暂无数据</div>';
+
+  if(allowed('planning')){
+    document.getElementById('domains').innerHTML=doms.map(function(x){
+      return '<article class="card '+(x.line==='A'?'lineA':'lineB')+'">'+
+        '<div class="dom">'+esc(x.sub)+'</div>'+
+        '<h3>'+esc(x.purpose)+'</h3>'+
+        '<div class="kv"><i>'+esc(x.line)+' 线</i><i>'+esc(x.status)+'</i><i>公开入口 '+(x.publicEntry?'有':'0')+'</i></div>'+
+      '</article>'
+    }).join('')||'<div class="card">暂无数据</div>'
+  }else{
+    document.getElementById('domains').innerHTML='<div class="card">暂无数据</div>'
+  }
+  }
+  render()
+  document.addEventListener('baiju:gate-open', render)
+  document.addEventListener('baiju:gate-close', render)
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render)
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="AI 发展史  · 自学路线,自学路线,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="AI 发展史 · 自学路线 · 白驹 ccowork">
+<meta name="description" content="看懂它，你就明白今天的大模型、Agent、RAG 不是凭空冒出来的——每一次突破都站在前人的肩膀上。">
+<meta property="og:description" content="看懂它，你就明白今天的大模型、Agent、RAG 不是凭空冒出来的——每一次突破都站在前人的肩膀上。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI 发展史 · 自学路线 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 发展史 · 自学路线 · 白驹 ccowork","description":"看懂它，你就明白今天的大模型、Agent、RAG 不是凭空冒出来的——每一次突破都站在前人的肩膀上。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-industrial.css?v=20261028e">
+<style>
+  .hist{position:relative;margin:20px 0 0;padding-left:34px}
+  .hist::before{content:'';position:absolute;left:11px;top:8px;bottom:8px;width:3px;
+    background:linear-gradient(180deg,#4f8cff,#38b6ff 40%,#8b5cf6 75%,#f59e0b)}
+  .h-item{position:relative;margin-bottom:22px}
+  .h-dot{position:absolute;left:-30px;top:4px;width:16px;height:16px;border-radius:50%;
+    background:linear-gradient(120deg,#4f8cff,#8b5cf6);border:3px solid var(--card);
+    box-shadow:0 0 0 3px rgba(79,140,255,.22)}
+  .h-era{position:absolute;left:-30px;top:4px;width:16px;height:16px;border-radius:50%;
+    background:linear-gradient(120deg,#f59e0b,#d97706);border:3px solid var(--card);
+    box-shadow:0 0 0 3px rgba(245,158,11,.25)}
+  .h-year{font-size:20px;font-weight:900;background:linear-gradient(120deg,#4f8cff,#8b5cf6);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-family:ui-monospace,Consolas,monospace;letter-spacing:1px}
+  .h-card{background:var(--card);border:1px solid var(--line,rgba(120,160,220,.18));border-radius:14px;
+    padding:13px 16px;margin-top:5px;transition:.22s}
+  .h-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,45,77,.1)}
+  .h-card h3{font-size:16px;margin:0 0 6px}
+  .h-card p{font-size:13px;color:var(--muted);line-height:1.7;margin:0}
+  .h-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .h-tag{font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px}
+  .t-paper{color:#8b5cf6;background:rgba(139,92,246,.10);border:1px solid rgba(139,92,246,.22)}
+  .t-era{color:#d97706;background:rgba(250,204,21,.10);border:1px solid rgba(217,119,6,.25)}
+  .t-lab{color:#0891b2;background:rgba(56,182,255,.10);border:1px solid rgba(56,182,255,.25)}
+  .h-repro{margin-top:9px;padding:8px 11px;border-left:3px solid #38b6ff;background:rgba(56,182,255,.06);
+    border-radius:0 10px 10px 0;font-size:12px;line-height:1.65}
+  .h-repro b{color:#0891b2}
+  .era-head{font-size:17px;font-weight:800;margin:30px 0 2px;color:#d97706}
+  .stat-strip{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 4px}
+  .stat-pill{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:14px;padding:8px 14px;font-size:13px}
+  .stat-pill b{font-size:18px;background:linear-gradient(120deg,#4f8cff,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+</style>
+<link rel="canonical" href="https://ccoworkbaiju.cn/ai-academy-history.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/ai-academy-history.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 发展史 · 自学路线 · 白驹 ccowork">
+<meta name="twitter:description" content="看懂它，你就明白今天的大模型、Agent、RAG 不是凭空冒出来的——每一次突破都站在前人的肩膀上。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-theme="cloud"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav>
+  <div class="logo"><i class="cc-mark" aria-hidden="true"></i>白驹 · 自学路线</div>
+  <a href="./ai-academy.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 学院总门户</a>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-ai-academy-history.png" alt="AI 发展史 · 自学路线 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 自学路线 分站</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-30</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>18 个历史瞬间</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1><i class="cc-ic" data-ic="clock" aria-hidden="true"></i>AI 发展史 · 从图灵测试到智能体元年</h1>
+<p style="color:var(--muted);font-size:14px;max-width:780px">这是一条 <b>76 年的时间线</b>。看懂它，你就明白今天的大模型、Agent、RAG 不是凭空冒出来的——每一次突破都站在前人的肩膀上。<b>每个节点都挂着当年的关键论文，以及「用今天工具复现当年成果」的迷你项目</b>，学历史也练手。</p>
+<div class="stat-strip">
+  <div class="stat-pill"><i class="cc-ic" data-ic="clock" aria-hidden="true"></i><b>76</b> 年跨度</div>
+  <div class="stat-pill"><i class="cc-ic" data-ic="map-pin" aria-hidden="true"></i><b>18</b> 个历史节点</div>
+  <div class="stat-pill"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i><b>18</b> 篇关键论文</div>
+  <div class="stat-pill"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i><b>18</b> 个复现项目</div>
+</div>
+<h2 class="era-head"><i class="cc-ic" data-ic="sprout" aria-hidden="true"></i>第一纪元 · 梦想与寒冬（1950—1993）</h2>
+<div class="hist">
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">1950</div>
+    <div class="h-card">
+      <h3>图灵提出「机器能思考吗」</h3>
+      <p>艾伦·图灵发表《计算机器与智能》，提出以「模仿游戏」（后世称图灵测试）判断机器是否具备智能，避开「什么是思考」的哲学纠缠，改用可操作的行为标准。这篇论文为整个 AI 领域奠定了思想起点。</p>
+      <div class="h-meta"><span class="h-tag t-era">思想起点</span><span class="h-tag t-lab">Alan Turing</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用任意大模型 API 写一个「20 问猜物」小游戏，让 AI 扮演被猜测的对象，体验图灵测试的原始形态。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-era"></div>
+    <div class="h-year">1956</div>
+    <div class="h-card">
+      <h3>达特茅斯会议 · AI 正式命名</h3>
+      <p>麦卡锡、明斯基、香农等人在达特茅斯学院召开夏季研讨会，首次提出「Artificial Intelligence」一词。会议虽未产出技术突破，却确立了学科名称、研究共同体与「智能可被机器模拟」的核心信念。</p>
+      <div class="h-meta"><span class="h-tag t-era">学科诞生</span><span class="h-tag t-lab">Dartmouth Workshop</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：读一遍 1956 年会议提案原文（公开可查），对比今天 AI 的能力清单，看看哪些预言已实现、哪些仍未兑现。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">1958</div>
+    <div class="h-card">
+      <h3>感知机：第一个会「学习」的神经网络</h3>
+      <p>Rosenblatt 提出感知机模型，能通过调整权重从样本中学习分类，引发第一次神经网络热潮。1969 年 Minsky 与 Papert 指出它连 XOR 都解不了，热潮随之退去。</p>
+      <div class="h-meta"><span class="h-tag t-era">连接主义起点</span><span class="h-tag t-lab">Perceptron</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 20 行 NumPy 写一个感知机，手动验证它确实学不会 XOR；再加一个隐藏层，看问题如何解决。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">1966</div>
+    <div class="h-card">
+      <h3>ELIZA：第一个「骗到人」的聊天机器人</h3>
+      <p>魏岑鲍姆编写 ELIZA，用模式匹配模拟心理治疗师对话。许多人明知对方是程序仍愿意倾诉，史称「ELIZA 效应」——提示我们：人极易对机器投射情感，这是今天 AI 产品设计必须直面的伦理课题。</p>
+      <div class="h-meta"><span class="h-tag t-era">人机交互起点</span><span class="h-tag t-lab">ELIZA Effect</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用一条系统提示词让大模型扮演心理治疗师，对比它与 ELIZA 的「共情感」差距，体会 60 年的进步。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-era"></div>
+    <div class="h-year">1974—1980 / 1987—1993</div>
+    <div class="h-card">
+      <h3>两次 AI 冬天</h3>
+      <p>算力不足、承诺落空、 funding 削减，AI 两度陷入低谷。这段历史的价值在于提醒：技术炒作周期真实存在，能穿越低谷的往往是有真实场景支撑的方向。</p>
+      <div class="h-meta"><span class="h-tag t-era">AI Winter</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天思考</b>：对照当下 AI 热潮，哪些是「真需求」、哪些可能是下一轮泡沫？写一份自己的判断清单。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">1986</div>
+    <div class="h-card">
+      <h3>反向传播普及 · 神经网络复活</h3>
+      <p>Rumelhart、Hinton、Williams 系统阐述反向传播算法，多层网络终于可有效训练。这一基础性工作，是 2012 年深度学习革命的技术前提，Hinton 因此获 2024 年诺贝尔物理学奖。</p>
+      <div class="h-meta"><span class="h-tag t-paper">奠基算法</span><span class="h-tag t-lab">Backpropagation</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：不用框架，纯 NumPy 实现一个两层网络 + 反向传播，在 MNIST 上跑通，理解梯度是怎么「流」回去的。</div>
+    </div>
+  </div>
+</div>
+<h2 class="era-head"><i class="cc-ic" data-ic="zap" aria-hidden="true"></i>第二纪元 · 深度学习革命（2012—2017）</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-ai-academy-history.png" alt="AI 发展史 · 自学路线 · 白驹 ccowork · " loading="lazy"></figure>
+<div class="hist">
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2012</div>
+    <div class="h-card">
+      <h3>AlexNet 夺冠 · 深度学习的「大爆炸」</h3>
+      <p>AlexNet 用 GPU 训练深层 CNN，在 ImageNet 上以压倒性优势夺冠，错误率远低于传统方法。算力 + 大数据 + 深层网络三要素齐备，深度学习从此统治视觉领域。</p>
+      <div class="h-meta"><span class="h-tag t-paper">范式转折点</span><span class="h-tag t-lab">AlexNet · ImageNet</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 PyTorch 加载预训练 ResNet，对自己拍的 20 张照片做分类，十分钟内重现当年震撼。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2014</div>
+    <div class="h-card">
+      <h3>GAN：让机器学会「造假」</h3>
+      <p>Goodfellow 提出生成对抗网络，生成器与判别器相互博弈，产出以假乱真的图像。它开启了 AI 的创造力时代，也埋下了深度伪造的隐患。</p>
+      <div class="h-meta"><span class="h-tag t-paper"><a href="https://arxiv.org/abs/1406.2661" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:1406.2661</a></span><span class="h-tag t-lab">GAN</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：跑一个 DCGAN 小 demo 生成手写数字，观察从噪声到成形的全过程。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2016</div>
+    <div class="h-card">
+      <h3>AlphaGo 击败李世石</h3>
+      <p>DeepMind 的 AlphaGo 结合深度神经网络与蒙特卡洛树搜索，在被誉为「人类最后智力堡垒」的围棋上战胜世界冠军。强化学习由此进入大众视野。</p>
+      <div class="h-meta"><span class="h-tag t-paper">Nature 2016</span><span class="h-tag t-lab">AlphaGo · RL</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 Q-learning 写一个走迷宫的小智能体，理解「奖励塑造行为」的基本原理。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-era"></div>
+    <div class="h-year">2017</div>
+    <div class="h-card">
+      <h3>Transformer 诞生 · 一切的起点</h3>
+      <p>Google 团队发表《Attention Is All You Need》，用自注意力替代循环与卷积，实现完全并行的序列建模。今天你用的每一个大模型——GPT、Claude、豆包、DeepSeek——都建立在这篇论文之上。它的重要性怎么强调都不过分。</p>
+      <div class="h-meta"><span class="h-tag t-paper"><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:1706.03762</a></span><span class="h-tag t-era">最关键节点</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 PyTorch 的 nn.Transformer 搭一个迷你字符级语言模型，在一段中文文本上训练，看它学会续写。</div>
+    </div>
+  </div>
+</div>
+<h2 class="era-head"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>第三纪元 · 大模型时代（2018—2022）</h2>
+<div class="hist">
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2018</div>
+    <div class="h-card">
+      <h3>BERT 与 GPT-1：预训练范式确立</h3>
+      <p>Google 发布 BERT（双向编码器）横扫 NLP 榜单，OpenAI 发布 GPT-1（自回归解码器）。「大规模预训练 + 下游微调」成为标准范式，NLP 从此告别「每个任务单独造模型」。</p>
+      <div class="h-meta"><span class="h-tag t-paper"><a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:1810.04805</a></span><span class="h-tag t-lab">BERT · GPT-1</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 HuggingFace 加载 bert-base-chinese，跑一个情感分类，感受「预训练 + 微调」的威力。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2020</div>
+    <div class="h-card">
+      <h3>GPT-3：1750 亿参数与「涌现」</h3>
+      <p>GPT-3 证明规模本身就是能力：无需微调，仅靠提示词就能完成翻译、写作、代码等任务。少样本学习成为新范式，「大力出奇迹」成为行业信条。</p>
+      <div class="h-meta"><span class="h-tag t-paper"><a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:2005.14165</a></span><span class="h-tag t-lab">GPT-3 · Few-shot</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：给同一个任务写零样本与三样本两种提示，对比输出质量差异，理解示例的作用。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2021</div>
+    <div class="h-card">
+      <h3>CLIP、AlphaFold2、扩散模型：多点开花</h3>
+      <p>CLIP 打通图文语义空间；AlphaFold2 基本解决蛋白质结构预测难题，造福生命科学；扩散模型在图像生成上超越 GAN。AI 的能力边界在这一年同时向视觉、科学、生成三个方向扩张。</p>
+      <div class="h-meta"><span class="h-tag t-paper"><a href="https://arxiv.org/abs/2103.00020" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:2103.00020</a></span><span class="h-tag t-paper"><a href="https://arxiv.org/abs/2006.11239" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:2006.11239</a></span><span class="h-tag t-lab">CLIP · AlphaFold2 · Diffusion</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 CLIP 做一次「以文搜图」，在自己的照片库里找「夕阳下的狗」。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-era"></div>
+    <div class="h-year">2022</div>
+    <div class="h-card">
+      <h3>ChatGPT 与 Stable Diffusion：AI 走向大众</h3>
+      <p>InstructGPT 的 RLHF 方法让模型「听懂人话」，ChatGPT 两个月破亿用户，成为史上增长最快的消费级应用。Stable Diffusion 开源文生图模型，让每个人都能在本地生成图像。AI 从此不再是实验室的名词。</p>
+      <div class="h-meta"><span class="h-tag t-paper"><a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:2203.02155</a></span><span class="h-tag t-era">全民 AI 元年</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 RLHF 的思路，写 20 条偏好数据（好/坏回答对），体会对齐是怎么教出来的。</div>
+    </div>
+  </div>
+</div>
+<h2 class="era-head"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>第四纪元 · 智能体时代（2023—2026）</h2>
+<div class="hist">
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2023</div>
+    <div class="h-card">
+      <h3>GPT-4 与开源浪潮</h3>
+      <p>GPT-4 展现强大的多模态与推理能力；Meta 的 LLaMA 系列开源，催生全球开源大模型生态。闭源领跑能力、开源普及能力，双轨并行格局形成。</p>
+      <div class="h-meta"><span class="h-tag t-lab">GPT-4 · LLaMA</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 Ollama 在本地跑一个 7B 开源模型，体验「数据不出本机」的私有化 AI。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2024</div>
+    <div class="h-card">
+      <h3>多模态爆发与 MCP 协议</h3>
+      <p>Sora 展示文生视频的想象力，GPT-4o 实现实时语音交互；Anthropic 开源 MCP（模型上下文协议），为大模型连接外部工具提供统一标准，被称作 AI 应用的「USB-C 接口」。智能体生态开始有了通用底座。</p>
+      <div class="h-meta"><span class="h-tag t-lab">Sora · GPT-4o · MCP</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 Python SDK 写一个最小 MCP server（如 SQLite 查询工具），用兼容客户端调用它。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-dot"></div>
+    <div class="h-year">2025</div>
+    <div class="h-card">
+      <h3>RAG 与推理模型成为标配</h3>
+      <p>RAG（检索增强生成）从研究走向企业标配，成为抑制幻觉、接入私有知识的标准方案；带链式思考的推理模型在数学与代码上大幅跃升。工程重心从「能不能做」转向「稳不稳、贵不贵」。</p>
+      <div class="h-meta"><span class="h-tag t-paper"><a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:2005.11401</a></span><span class="h-tag t-lab">RAG · Reasoning</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：用 Chroma + 任意 embedding 模型，给 10 篇自己的文档搭一个问答机器人。</div>
+    </div>
+  </div>
+  <div class="h-item"><div class="h-era"></div>
+    <div class="h-year">2026</div>
+    <div class="h-card">
+      <h3>智能体元年 · 从「会聊」到「会做」</h3>
+      <p>Agent 从概念走向工程：ReAct 范式、工具调用、多智能体编排、沙箱安全与运行时框架（Harness）成为新基建。AI 的定位从「回答问题的助手」变为「能交付结果的数字同事」——这也是本学院课程的核心落点。</p>
+      <div class="h-meta"><span class="h-tag t-paper"><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener" style="color:var(--blue)">arXiv:2210.03629</a></span><span class="h-tag t-era">现在进行时</span></div>
+      <div class="h-repro"><b><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>今天复现</b>：跟着本学院 <a href="/website/ai-academy/chapter-25.html" style="color:var(--blue);font-weight:600">第 25 章</a> 用 LangGraph 搭一个三智能体内容工厂，或直接从 <a href="ai-academy-projects.html" style="color:var(--blue);font-weight:600">24 个毕业设计</a>里挑一个做完。</div>
+    </div>
+  </div>
+</div>
+<div class="note" style="margin-top:24px"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i><b>读史三用</b>：① 看论文原文去 <a href="ai-academy-resources.html" style="color:var(--blue);font-weight:600">权威资源馆</a>（18 篇经典论文都在这）；② 遇不懂的词查 <a href="ai-academy-glossary.html" style="color:var(--blue);font-weight:600">AI 概念库</a>；③ 想系统学按 <a href="ai-academy-roadmap.html" style="color:var(--blue);font-weight:600">学习路线图</a> 走。历史给你「为什么」，课程给你「怎么做」。</div>
+</article>
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="logo-row"><span class="logo"><i class="cc-mark" aria-hidden="true"></i></span><b>白驹 ccowork</b></div>
+      <p>自学路线 · AI 发展史：看懂过去，才知道该学什么。</p>
+    </div>
+    <div class="foot-links">
+      <b>学院</b>
+      <a href="./ai-academy.html">总门户</a>
+      <a href="./ai-academy-glossary.html">AI 概念库</a>
+      <a href="./ai-academy-resources.html">权威资源馆</a>
+    </div>
+  </div>
+  <div class="foot-bar"><span>© 2026 白驹 ccowork</span><span>AI 生成整理 · 史实以权威记载为准</span></div>
+</footer>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script src="/speak.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

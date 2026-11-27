@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>使用 Vector 储存列表 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：使用 Vector 储存列表。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p023.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html" class="on">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 23 / 86 节
+    </div>
+    <h1>使用 Vector 储存列表</h1>
+    <h2 id="使用-vector-储存列表"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/2581c23b669eff30c26e036a13475ec5cf70c1b8/src/ch08-01-vectors.md">ch08-01-vectors.md</a></p>
+<p>我们要讨论的第一种集合类型是 <code>Vec&lt;T&gt;</code>，也被称为 <em>vector</em>。vector 允许你在单个数据结构中存放多个值，并把这些值在内存中彼此相邻地排列起来。vector 只能存储相同类型的值。当你有一组项目要处理时，它就很有用，例如文件中的文本行，或者购物车中商品的价格。</p>
+<h3 id="新建-vector"></h3>
+<p>要创建一个新的空 vector，可以调用 <code>Vec::new</code> 函数，如示例 8-1 所示。</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v: Vec&lt;i32&gt; = Vec::new();
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-1：新建一个空的 vector 来储存 <code>i32</code> 类型的值</span></p>
+<p>注意，这里我们加了一个类型注解。因为还没有往这个 vector 里插入任何值，Rust 并不知道我们打算存储什么类型的元素。这一点很重要。vector 是使用泛型实现的；第十章会讲到如何在你自己的类型上使用泛型。现在你只需要知道，标准库提供的 <code>Vec&lt;T&gt;</code> 类型可以容纳任意类型。当我们创建一个用来存放特定类型的 vector 时，可以在尖括号中指定这个类型。在示例 8-1 中，我们告诉 Rust，<code>v</code> 中的 <code>Vec&lt;T&gt;</code> 将存放 <code>i32</code> 类型的元素。</p>
+<p>更常见的情况是，我们会用初始值创建 <code>Vec&lt;T&gt;</code>，而 Rust 会推断出你想存储的值的类型，所以很少需要写这种类型注解。Rust 还很贴心地提供了 <code>vec!</code> 宏，它会创建一个新的 vector，并把你提供的值放进去。示例 8-2 创建了一个包含 <code>1</code>、<code>2</code> 和 <code>3</code> 的新 <code>Vec&lt;i32&gt;</code>。这里的整数类型之所以是 <code>i32</code>，是因为它是默认整数类型，正如我们在第三章的<a href="#数据类型">“数据类型”</a>部分讨论过的那样：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v = vec![1, 2, 3];
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-2：新建一个包含初值的 vector</span></p>
+<p>因为我们给出了 <code>i32</code> 类型的初始值，Rust 可以推断出 <code>v</code> 的类型是 <code>Vec&lt;i32&gt;</code>，因此这里不需要类型注解。接下来看看如何修改 vector。</p>
+<h3 id="更新-vector"></h3>
+<p>要先创建一个 vector 再向其中添加元素，可以使用 <code>push</code> 方法，如示例 8-3 所示：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let mut v = Vec::new();
+
+    v.push(5);
+    v.push(6);
+    v.push(7);
+    v.push(8);
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-3：使用 <code>push</code> 方法向 vector 增加值</span></p>
+<p>和任何变量一样，如果想修改它的值，就必须像第三章讲过的那样，使用 <code>mut</code> 关键字让它变成可变的。放进去的数字都是 <code>i32</code> 类型，Rust 会从数据中推断出这一点，因此也不需要写 <code>Vec&lt;i32&gt;</code> 注解。</p>
+<h3 id="读取-vector-的元素"></h3>
+<p>有两种方式可以引用 vector 中存储的值：通过索引，或者使用 <code>get</code> 方法。在接下来的示例中，为了更清楚地说明这一点，我们给这些函数返回的值标注了类型。</p>
+<p>示例 8-4 展示了访问 vector 中某个值的两种方式：索引语法和 <code>get</code> 方法。</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v = vec![1, 2, 3, 4, 5];
+
+    let third: &amp;i32 = &amp;v[2];
+    println!("The third element is {third}");
+
+    let third: Option&lt;&amp;i32&gt; = v.get(2);
+    match third {
+        Some(third) =&gt; println!("The third element is {third}"),
+        None =&gt; println!("There is no third element."),
+    }
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-4：使用索引语法或 <code>get</code> 方法来访问 vector 中的项</span></p>
+<p>这里有几个细节需要注意。我们用索引值 <code>2</code> 获取第三个元素，因为 vector 的索引是从 0 开始的。使用 <code>&amp;</code> 和 <code>[]</code> 会得到索引位置处元素的引用。当我们把索引作为参数传给 <code>get</code> 方法时，会得到一个可以与 <code>match</code> 一起使用的 <code>Option&lt;&amp;T&gt;</code>。</p>
+<p>Rust 提供这两种引用元素的方式，是为了让你可以选择：当尝试使用超出已有元素范围的索引值时，程序该如何表现。举个例子，假设我们有一个包含 5 个元素的 vector，然后尝试分别用这两种技术访问索引 100 处的元素，看看会发生什么，如示例 8-5 所示：</p>
+<pre class="playground"><code class="language-rust should_panic panics edition2024"><span class="boring">fn main() {
+</span>    let v = vec![1, 2, 3, 4, 5];
+
+    let does_not_exist = &amp;v[100];
+    let does_not_exist = v.get(100);
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-5：尝试访问一个包含 5 个元素的 vector 的索引 100 处的元素</span></p>
+<p>运行这段代码时，第一种 <code>[]</code> 方法会让程序 panic，因为它引用了一个不存在的元素。当你希望程序在有人尝试访问 vector 末尾之外的元素时直接崩溃，这种方式就很合适。</p>
+<p>当传给 <code>get</code> 方法的索引超出了 vector 的范围时，它不会 panic，而是返回 <code>None</code>。如果在正常情况下，访问超出 vector 范围的元素偶尔是可能发生的，那么你就会使用这种方法。此时你的代码可以像第六章讨论过的那样，处理 <code>Some(&amp;element)</code> 和 <code>None</code> 两种情况。例如，索引可能来自用户输入的数字。如果用户不小心输入了一个过大的数字，程序就会得到 <code>None</code>，这时你可以告诉用户当前 vector 中有多少项，并给他们一次重新输入有效值的机会。这就比因为一个输入错误而让程序崩溃更友好。</p>
+<p>当程序拿到了一个有效引用后，借用检查器会应用所有权和借用规则（第四章讲过），来确保这个对 vector 内容的引用以及其他任何引用都保持有效。回忆一下那条规则：在同一作用域中，不能同时拥有可变引用和不可变引用。这条规则就适用于示例 8-6：我们持有了 vector 第一个元素的不可变引用，然后又尝试在 vector 末尾添加一个元素。如果还想在函数后面继续使用那个元素，这个程序就无法通过编译：</p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
+</span>    let mut v = vec![1, 2, 3, 4, 5];
+
+    let first = &amp;v[0];
+
+    v.push(6);
+
+    println!("The first element is: {first}");
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-6：尝试在拥有 vector 中项的引用的同时向其增加一个元素</span></p>
+<p>编译会给出这个错误：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling collections v0.1.0 (file:///projects/collections)
+error[E0502]: cannot borrow `v` as mutable because it is also borrowed as immutable
+ --&gt; src/main.rs:6:5
+  |
+4 |     let first = &amp;v[0];
+  |                  - immutable borrow occurs here
+5 |
+6 |     v.push(6);
+  |     ^^^^^^^^^ mutable borrow occurs here
+7 |
+8 |     println!("The first element is: {first}");
+  |                                      ----- immutable borrow later used here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `collections` (bin "collections") due to 1 previous error
+</code></pre>
+<p>示例 8-6 中的代码看起来似乎应该能工作：为什么对第一个元素的引用，会在乎 vector 末尾发生的变化呢？这是由 vector 的工作方式决定的。因为 vector 会把值彼此相邻地存放在内存中，所以如果末尾追加一个新元素，而当前存放位置又没有足够空间容纳所有元素，程序就可能需要分配一块新内存，并把旧元素复制到新空间里去。在这种情况下，原来指向第一个元素的引用就会指向已释放的内存。借用规则正是为了防止程序陷入这种情况。</p>
+<blockquote>
+<p>注意：如果想了解 <code>Vec&lt;T&gt;</code> 类型更多的实现细节，请参阅 <a href="https://doc.rust-lang.org/nomicon/vec/vec.html">“The Rustonomicon”</a>。</p>
+</blockquote>
+<h3 id="遍历-vector-中的元素"></h3>
+<p>如果想依次访问 vector 中的每个元素，我们会遍历所有元素，而不是一次只通过索引访问一个。示例 8-7 展示了如何使用 <code>for</code> 循环，获取一个装有 <code>i32</code> 值的 vector 中每个元素的不可变引用，并把它们打印出来：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v = vec![100, 32, 57];
+    for i in &amp;v {
+        println!("{i}");
+    }
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-7：通过 <code>for</code> 循环遍历 vector 的元素并打印</span></p>
+<p>我们也可以遍历可变 vector 中每个元素的可变引用，从而修改所有元素。示例 8-8 中的 <code>for</code> 循环会给每个元素都加上 <code>50</code>：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let mut v = vec![100, 32, 57];
+    for i in &amp;mut v {
+        *i += 50;
+    }
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-8：遍历 vector 中元素的可变引用</span></p>
+<p>要修改可变引用所指向的值，在使用 <code>+=</code> 运算符前，必须先使用解引用运算符 <code>*</code> 取到 <code>i</code> 指向的值。第十五章的<a href="#追踪引用的值">“追踪引用的值”</a>部分会更详细地讨论解引用运算符。</p>
+<p>由于借用检查器的规则，不管是可变还是不可变地遍历 vector，都是安全的。如果我们尝试在示例 8-7 和示例 8-8 的 <code>for</code> 循环体内插入或删除项，就会得到一个和示例 8-6 类似的编译错误。<code>for</code> 循环持有的那个对 vector 的引用，会阻止对整个 vector 的同时修改。</p>
+<h3 id="使用枚举来储存多种类型"></h3>
+<p>vector 只能存储相同类型的值。这可能会带来不便；确实有些场景需要存放一组不同类型的值。幸运的是，枚举的各个变体都定义在同一个枚举类型之下，所以当我们需要用一个类型来表示不同种类的元素时，就可以定义并使用枚举！</p>
+<p>例如，假设我们想从电子表格的一行中读取值，而这一行中有些列包含整数，有些包含浮点数，还有些是字符串。我们可以定义一个枚举，让它的各个变体分别持有这些不同类型的值，而所有这些枚举变体都会被视为同一种类型，也就是该枚举本身的类型。然后，我们就可以创建一个存放这种枚举的 vector，从而最终在其中保存不同类型的值。示例 8-9 展示了这种做法：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    enum SpreadsheetCell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from("blue")),
+        SpreadsheetCell::Float(10.12),
+    ];
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-9：定义一个枚举，以便能在 vector 中存放不同类型的数据</span></p>
+<p>Rust 必须在编译时知道 vector 中会有哪些类型，这样它才能准确知道在堆上存储每个元素需要多少内存。我们还必须明确指出这个 vector 允许哪些类型。如果 Rust 允许 vector 存放任意类型，那么在对 vector 元素执行操作时，就有可能因为某一种或多种类型而导致错误。使用枚举再配合 <code>match</code> 表达式，意味着 Rust 会像第六章所说的那样，在编译时确保每一种可能的情况都得到了处理。</p>
+<p>如果在编写程序时，你并不知道运行时究竟会有哪些类型需要存进 vector，那么这种枚举技巧就不适用了。相反，你可以使用 trait 对象，第 18 章会讲到它。</p>
+<p>现在我们已经讨论了一些最常见的 vector 用法，记得去看看标准库为 <code>Vec&lt;T&gt;</code> 定义的许多其他实用方法的 <a href="https://doc.rust-lang.org/std/vec/struct.Vec.html">API 文档</a>。例如，除了 <code>push</code> 之外，还有一个 <code>pop</code> 方法会移除并返回 vector 的最后一个元素。</p>
+<h3 id="丢弃-vector-时也会丢弃其所有元素"></h3>
+<p>和其他任何 <code>struct</code> 一样，vector 会在离开作用域时被释放，如示例 8-10 所标示的那样：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    {
+        let v = vec![1, 2, 3, 4];
+
+        // 使用 v
+    } // &lt;- 在这里 v 离开作用域并被释放
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 8-10：展示 vector 和其元素于何处被丢弃</span></p>
+<p>当 vector 被丢弃时，它包含的所有内容也都会被一并丢弃，这意味着它持有的整数会被清理掉。借用检查器会确保，对 vector 内容的任何引用都只会在 vector 本身有效时被使用。</p>
+<p>让我们继续下一个集合类型：<code>String</code>！</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p022.html">← 将模块拆分成多个文件</a><a href="index.html">目录</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

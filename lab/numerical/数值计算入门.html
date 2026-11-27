@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta name="description" content="配套脚本见同目录 01_newton_root.py ~ 05_interpolation.py ，每个都可直接 python xxx.py 运行。">
+<meta property="og:description" content="配套脚本见同目录 01_newton_root.py ~ 05_interpolation.py ，每个都可直接 python xxx.py 运行。">
+<meta name="keywords" content="数值计算入门,白驹 ccowork,ccowork,AI 工具,智能体">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数值计算入门 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"数值计算入门","description":"配套脚本见同目录 01_newton_root.py ~ 05_interpolation.py ，每个都可直接 python xxx.py 运行。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ccoworkbaiju.cn/lab/numerical/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%A5%E9%97%A8.html">
+<meta property="og:title" content="数值计算入门 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/lab/numerical/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%A5%E9%97%A8.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="数值计算入门 · 白驹 ccowork">
+<meta name="twitter:description" content="配套脚本见同目录 01_newton_root.py ~ 05_interpolation.py ，每个都可直接 python xxx.py 运行。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav><div class="logo">白驹 ccowork · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-lab-numerical-数值计算入门.png" alt="数值计算入门 · 白驹 ccowork（离线版）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>14 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>数值计算入门</h1>
+<blockquote>
+<p>面向工科生的数值计算（Numerical Computation / Numerical Analysis）入门讲义。
+配套脚本见同目录 <code>01_newton_root.py</code> ~ <code>05_interpolation.py</code>，每个都可直接 <code>python xxx.py</code> 运行。</p>
+</blockquote>
+<hr>
+<h2>一、数值计算是什么</h2>
+<p>现实中的工程问题，最终大多会归结为一类数学问题：解方程、算积分、解微分方程、拟合数据、求极值等等。但这些问题的<strong>解析解（精确的公式解）</strong>往往不存在，或者形式过于复杂无法手算。</p>
+<p><strong>数值计算</strong>就是研究如何用<strong>有限步的四则运算</strong>，得到一个足够接近真值的<strong>近似解</strong>，并分析这个近似解的<strong>误差</strong>和<strong>可靠性</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>解析解（符号解）</th>
+<th>数值解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>形式</td>
+<td>精确公式，如 <code>x = (1+√5)/2</code></td>
+<td>近似数值，如 <code>x ≈ 1.618034</code></td>
+</tr>
+<tr>
+<td>适用范围</td>
+<td>只有少数问题能解出</td>
+<td>几乎所有问题都能算</td>
+</tr>
+<tr>
+<td>计算量</td>
+<td>推导难，代入易</td>
+<td>推导易，计算量大（交给计算机）</td>
+</tr>
+<tr>
+<td>精度</td>
+<td>精确</td>
+<td>可控近似，够用即可</td>
+</tr>
+</tbody></table>
+<p><strong>一句话</strong>：解析解是&quot;少数幸运儿&quot;的特权，数值解是工程实践的通用语言。计算机的出现让数值方法从&quot;纸上的理论&quot;变成了&quot;手里的工具&quot;。</p>
+<blockquote>
+<p>例子：方程 <code>x^3 - x - 2 = 0</code> 有解析解（卡丹公式），但写出来是一长串根号嵌套，工程上没人用它；而牛顿迭代 5 步就能得到 1.5213797068，足够实用。</p>
+</blockquote>
+<hr>
+<h2>二、误差来源</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-数值计算入门.png" alt="数值计算入门 · 白驹 ccowork（离线版） · 二、误差来源" loading="lazy"></figure>
+<p>数值计算永远带着误差，理解误差从哪来，是&quot;会用&quot;和&quot;会用且不踩坑&quot;的分水岭。</p>
+<h3>1. 模型误差（Model Error）</h3>
+<p>把现实问题抽象成数学模型时产生的偏差。例如把空气阻力忽略、把材料当成理想弹性体。</p>
+<blockquote>
+<p>这是&quot;建模&quot;阶段的问题，不属于数值计算本身，但决定了结果的天花板。</p>
+</blockquote>
+<h3>2. 观测误差（Measurement Error）</h3>
+<p>模型中的参数来自测量，而测量必有误差。例如传感器读数、实验数据。</p>
+<h3>3. 截断误差（Truncation Error）</h3>
+<p>用有限项近似无限过程时产生的误差。这是数值方法<strong>固有的</strong>误差。</p>
+<blockquote>
+<p>例如泰勒展开只取前几项、无穷级数截断、积分用梯形近似、微分用差商近似。</p>
+</blockquote>
+<h3>4. 舍入误差（Round-off Error）</h3>
+<p>计算机用<strong>有限位二进制</strong>表示实数，任何运算都可能丢失精度。</p>
+<blockquote>
+<p>例如 <code>0.1 + 0.2 != 0.3</code>（浮点数表示误差）；两个接近的数相减会&quot;灾难性抵消&quot;。</p>
+</blockquote>
+<h3>5. 误差的累积与传播</h3>
+<ul>
+<li><strong>稳定性</strong>：算法会不会把小误差放大成大误差。</li>
+<li><strong>病态问题（ill-conditioned）</strong>：输入的小扰动导致输出的大变化，这是问题本身&quot;难算&quot;，换算法也救不了。</li>
+<li><strong>收敛阶</strong>：截断误差随计算量增加而下降的速度。记 <code>O(h^p)</code>，<code>p</code> 越大收敛越快。</li>
+</ul>
+<blockquote>
+<p>经验法则：<strong>先保证算法稳定、问题良态，再追求高收敛阶。</strong> 二阶、四阶的经典方法（梯形 <code>O(h²)</code>、辛普森/RK4 <code>O(h⁴)</code>）对工科应用通常已经足够。</p>
+</blockquote>
+<hr>
+<h2>三、常用方法速查表</h2>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>常用方法</th>
+<th>阶/特点</th>
+<th>本目录脚本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方程求根 <code>f(x)=0</code></td>
+<td>二分法</td>
+<td>稳但慢，线性收敛</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>牛顿迭代法</td>
+<td>二阶收敛，快但依赖初值</td>
+<td><code>01_newton_root.py</code></td>
+</tr>
+<tr>
+<td></td>
+<td>割线法</td>
+<td>免求导，超线性收敛</td>
+<td>—</td>
+</tr>
+<tr>
+<td>线性方程组 <code>Ax=b</code></td>
+<td>高斯消元 / LU 分解</td>
+<td>直接法，精确（忽略舍入）</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>雅可比 / 高斯-赛德尔 / 共轭梯度</td>
+<td>迭代法，适合大型稀疏</td>
+<td>—</td>
+</tr>
+<tr>
+<td>数值积分 <code>∫f dx</code></td>
+<td>梯形法</td>
+<td><code>O(h²)</code>，简单直观</td>
+<td><code>03_numerical_integration.py</code></td>
+</tr>
+<tr>
+<td></td>
+<td>辛普森法</td>
+<td><code>O(h⁴)</code>，精度高</td>
+<td><code>03_numerical_integration.py</code></td>
+</tr>
+<tr>
+<td></td>
+<td>高斯求积</td>
+<td>节点非均匀，精度最高</td>
+<td>—</td>
+</tr>
+<tr>
+<td>常微分方程（ODE）</td>
+<td>欧拉法</td>
+<td><code>O(h)</code>，概念入门</td>
+<td>—</td>
+</tr>
+<tr>
+<td></td>
+<td>四阶龙格-库塔（RK4）</td>
+<td><code>O(h⁴)</code>，工程主力</td>
+<td><code>02_runge_kutta.py</code></td>
+</tr>
+<tr>
+<td>数据拟合</td>
+<td>最小二乘</td>
+<td>全局误差最小，闭式解</td>
+<td><code>04_least_squares.py</code></td>
+</tr>
+<tr>
+<td>插值</td>
+<td>拉格朗日插值</td>
+<td>精确过点，易实现</td>
+<td><code>05_interpolation.py</code></td>
+</tr>
+<tr>
+<td></td>
+<td>牛顿插值 / 三次样条</td>
+<td>更稳定 / 更光滑</td>
+<td>—</td>
+</tr>
+<tr>
+<td>特征值</td>
+<td>幂法 / QR 算法</td>
+<td>求主特征值 / 全部特征值</td>
+<td>—</td>
+</tr>
+<tr>
+<td>最优化</td>
+<td>梯度下降 / 牛顿法 / 拟牛顿</td>
+<td>求极值，机器学习基础</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>记忆线索：<strong>求根</strong>（二分/牛顿）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>积分</strong>（梯形/辛普森）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>微分方程</strong>（欧拉/RK4）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>拟合与插值</strong>（最小二乘/拉格朗日）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>线性代数</strong>（消元/迭代）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> <strong>优化</strong>（梯度法）。</p>
+</blockquote>
+<hr>
+<h2>四、数值计算与仿真的关系</h2>
+<p><strong>数值计算是仿真（Simulation）的地基。</strong></p>
+<ul>
+<li>仿真 = <strong>物理建模</strong>（写出支配方程）+ <strong>数值求解</strong>（离散化 + 迭代）+ <strong>可视化与验证</strong>。</li>
+<li>你看到的有限元分析（FEM）、计算流体力学（CFD）、电路仿真（SPICE）、控制系统仿真，本质都是：<ol>
+<li>把连续域（时间/空间）<strong>离散</strong>成网格和时间步；</li>
+<li>把偏微分方程<strong>离散</strong>成大型代数方程组；</li>
+<li>用本目录里的那类数值方法（积分、求导、迭代、线性代数）去<strong>求解</strong>。</li>
+</ol>
+</li>
+</ul>
+<p>一个典型的关联链条：</p>
+<pre><code>物理定律 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 微分方程（连续模型）
+        <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 离散化（有限差分 / 有限元 / 有限体积）
+        <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 数值方法（RK4、高斯消元、迭代法……）
+        <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 计算机求解 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 可视化 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 与实验对比验证
+</code></pre>
+<p><strong>要点</strong>：</p>
+<ul>
+<li>仿真结果的误差，来自&quot;建模误差 + 离散/截断误差 + 舍入误差&quot;三者叠加，缺一不可忽视。</li>
+<li>会用商业软件（ANSYS、MATLAB/Simulink、COMSOL）不等于懂数值计算；<strong>懂底层方法才能看懂收敛、调对网格、判对结果</strong>。</li>
+<li>工科学数值计算的最终目的，是<strong>能判断&quot;这个仿真结果可不可信&quot;</strong>，而不是手推公式。</li>
+</ul>
+<hr>
+<h2>五、学习建议</h2>
+<ol>
+<li><strong>先写代码，再看理论</strong>：每个方法亲手实现一遍（本目录 5 个脚本就是最小可运行版本），比读十页公式记得牢。</li>
+<li><strong>学会看误差</strong>：每次跑完都问一句&quot;误差多大、随步长怎么变、方法几阶&quot;。</li>
+<li><strong>无第三方依赖起步</strong>：先用纯 Python 理解算法本质，再学 NumPy/SciPy 享受现成高效实现。</li>
+<li><strong>对照解析解验证</strong>：凡是能算出解析解的问题（如 <code>e^x</code>、<code>sin</code> 的积分），先用它当&quot;标准答案&quot;检验你的代码，这是工程上的<strong>验证（Verification）</strong>习惯。</li>
+</ol>
+<hr>
+<p><em>配套脚本：<code>01_newton_root.py</code>、<code>02_runge_kutta.py</code>、<code>03_numerical_integration.py</code>、<code>04_least_squares.py</code>、<code>05_interpolation.py</code></em></p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

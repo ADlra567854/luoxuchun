@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "title": "图标系统设计规范与色彩使用规则",
+    "decidedAt": "2026-10-07",
+    "problem": "全站存在两套图标系统（CSS mask 317 个 SVG 文件 / JS 注入 137 个图标），且全部图标都是单色 currentColor。用户要求「统一架构 + 鲜艳一点 + 页面眼前一亮」。",
+    "principle": "鲜艳不等于全彩。依据 Material Design 3 与 WCAG 2.2 的公开规范：色彩应用于「需要引导注意力」的位置，全彩图标铺满会降级为视觉噪音。"
+  },
+
+  "whyNotAllColor": {
+    "headline": "为什么不做「所有图标都上色」",
+    "reasons": [
+      {
+        "title": "WCAG 2.2 AA 要求图形对象对比度 ≥ 3:1",
+        "detail": "鲜艳的彩色在浅色背景上往往达不到 3:1。实测反例：#9ca3af 在白底只有 2.9:1（不达标）；#60a5fa 在 #f8fafc 上只有 2.5:1（不达标）。",
+        "srcUrl": "https://icojoy.com/blog/responsive-accessible-iconography-aria-contrast-seo-2026"
+      },
+      {
+        "title": "Material Design 3 明确要求「避免过度使用高强调」",
+        "detail": "官方原文：「Use the filled style for visual impact and key actions that require high emphasis. Avoid overusing the filled style on a screen. Use them sparingly.」——强调色要省着用。",
+        "srcUrl": "https://material.io/components/icon-buttons/guidelines"
+      },
+      {
+        "title": "阿联酋设计系统：图标颜色「应限制使用」",
+        "detail": "官方建议只用白/主色/黑三种组合，并指出「Overuse of iconography leads to distracting and visually overwhelming interfaces」（图标过度使用会导致界面分散注意力且视觉压迫）。",
+        "srcUrl": "http://designsystem.gov.ae/guidelines/iconography"
+      },
+      {
+        "title": "深色模式下彩色需要专门调校，不能直接搬",
+        "detail": "在白底清晰的蓝色放到深灰底会「发浑」（looks muddy），需要在深色模式下把亮度提 10–15%，有时还要调饱和度。2026 年流行的鲜艳渐变图标，若不双主题各自调校，深色下会「发光刺眼」。",
+        "srcUrl": "https://icojoy.com/blog/color-theme-icon-design-dark-mode-vibrant-palettes"
+      },
+      {
+        "title": "颜色不能是唯一信息载体",
+        "detail": "全站规范一致：绝不能只靠颜色传达含义（色盲用户会漏掉状态变化）。状态图标必须同时有形状或文字。",
+        "srcUrl": "https://arch.archlabs.dev/blog/icon-usage-guidelines"
+      }
+    ]
+  },
+
+  "emphasisLadder": {
+    "title": "四级强调阶梯（据 M3 的 Filled → Tonal → Outlined → Standard 顺序改编）",
+    "note": "M3 官方定义四种图标按钮颜色样式并按强调度排序。照搬到图标系统上，就有了可执行的「什么时候该上色」判据。",
+    "levels": [
+      {
+        "level": 4,
+        "name": "填充色",
+        "when": "页面唯一主动作、主 CTA、当前选中项",
+        "count": "全站每屏不超过 1~2 个",
+        "rule": "用品牌渐变实底 + 白色图标，对比度最高"
+      },
+      {
+        "level": 3,
+        "name": "柔和着色",
+        "when": "分类标签、行业标签、状态标识（开源/免费/教程等）",
+        "count": "允许较多，但要同屏色相不超过 4 种",
+        "rule": "淡色底 + 同色系深字/图标，色相按分类固定"
+      },
+      {
+        "level": 2,
+        "name": "描边着色",
+        "when": "卡片图标、列表项图标（当前生态库厂商卡属于这一层）",
+        "count": "不限但同屏收敛",
+        "rule": "1.5~1.7px 描边 + 分类色，不填色块"
+      },
+      {
+        "level": 1,
+        "name": "单色",
+        "when": "正文行内图标、工具栏、辅助说明",
+        "count": "不限",
+        "rule": "currentColor 继承文字色，最低调"
+      }
+    ],
+    "srcUrl": "https://m3.material.io/components/icon-buttons"
+  },
+
+  "colorSystem": {
+    "title": "分类色板（沿用站内已有 token，不新造轮子）",
+    "note": "站内已有蓝青紫渐变体系（#4f8cff → #38b6ff → #8b5cf6）。分类色从这三条主轴派生，保证品牌统一。",
+    "primary": { "name": "品牌蓝", "light": "#4f8cff", "dark": "#7aa9ff" },
+    "cyan": { "name": "功能青", "light": "#0e9aa7", "dark": "#38d9e8" },
+    "violet": { "name": "强调紫", "light": "#7c4ddb", "dark": "#a78bfa" },
+    "success": { "name": "开源/免费", "light": "#0f8a5f", "dark": "#34d399" },
+    "warn": { "name": "需注意", "light": "#b45309", "dark": "#fbbf24" },
+    "danger": { "name": "风险", "light": "#dc2626", "dark": "#f87171" },
+    "note": "深色模式的色值统一比浅色提亮（依据：深色底需提亮度 10–15% 才不发浑）"
+  },
+
+  "unifyPlan": {
+    "title": "两套系统合并方案",
+    "problem": "hub.html 只加载 responsive.css，走 CSS mask 那 317 个 SVG；AI 生态库走 icons.js 的 137 个 JS 注入。同一页面两套并存，导致新增页面时不知道该用哪套，必然继续踩空图标的坑。",
+    "decision": "以 icons.js 为唯一真源（它是手绘风格、有分类前缀体系、可编程控制颜色），把 CSS mask 那套的独有图标补进 icons.js，再让全站统一走 JS 注入。",
+    "reason": "CSS mask 方案要求 317 个独立文件 + 317 条 CSS 规则，改一个图标要动三个地方；JS 注入只需改一处，且颜色可控（可做强调阶梯）。",
+    "steps": [
+      "① 盘点 assets/icons/*.svg 里 317 个图标名，与 icons.js 的 137 个求差集",
+      "② 差集里的图标按语义改写成 icons.js 的 path 格式（手绘描边风格）",
+      "③ 全站 cc-ic 元素接入统一水合（把 site-redesign.css 的 mask 规则降级为兜底）",
+      "④ 建立四级强调阶梯的 CSS 工具类（.ico-fill / .ico-soft / .ico-line / .ico-mute）",
+      "⑤ 新增 verify-icon-system.mjs 长期守卫：一套系统 / 零空图标 / 对比度达标"
+    ],
+    "todo": "第 ② 步是把 317 个 SVG 改写成 path 文本，工作量最大，建议分批（先补生态库与学院页用到的，其余按需补）"
+  },
+
+  "visualImpact": {
+    "title": "页面「眼前一亮」该从哪来 —— 不是靠图标颜色",
+    "reasons": [
+      "图标只占页面视觉面积的 1~3%，把图标调鲜艳，对页面整体观感的提升不到 5%",
+      "真正带来「亮眼」的是：留白节奏、层级对比、渐变主线色在关键元素上的聚焦、以及交互反馈的即时性",
+      "188 张厂商卡如果每张卡图标都上色，页面会从「专业工具」变成「儿童积木」"
+    ],
+    "recommendation": "图标做「统一 + 分级」，视觉冲击靠三个更有杠杆的地方：① 品牌渐变只用在真正重要的地方；② 卡片 hover 时的上浮与阴影；③ 空状态与首屏的仪式感。"
+  },
+
+  "sources": [
+    { "n": "Material Design 3 · Icons", "u": "https://m3.material.io/styles/icons/applying-icons" },
+    { "n": "Material Design · Icon buttons（强调度四级）", "u": "https://material.io/components/icon-buttons/guidelines" },
+    { "n": "WCAG 2.2 图标对比度要求（3:1）与实测数据", "u": "https://icojoy.com/blog/responsive-accessible-iconography-aria-contrast-seo-2026" },
+    { "n": "阿联酋政府设计系统 · Iconography（限制图标颜色）", "u": "http://designsystem.gov.ae/guidelines/iconography" },
+    { "n": "图标色彩与深色模式（含 token 表与鲜艳图标规则）", "u": "https://icojoy.com/blog/color-theme-icon-design-dark-mode-vibrant-palettes" },
+    { "n": "Arch Labs · Icon Usage Guidelines（颜色不能是唯一信息载体）", "u": "https://arch.archlabs.dev/blog/icon-usage-guidelines" },
+    { "n": "SVG 图标网格与描边宽度规范（24×24 / 1.5–2px）", "u": "https://scenith.in/blogs/free-svg-icons-complete-guide-2026" }
+  ]
+}

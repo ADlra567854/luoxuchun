@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>流量指南 · 关于域 · 白驹 ccowork</title>
+<meta name="description" content="内容分发与流量获取的实操说明。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/about/traffic-guide.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --tg-bg:#f7f9fc; --tg-card:#fff; --tg-card2:#f2f6fb;
+  --tg-text:#0f172a; --tg-muted:#5b6b83;
+  --tg-line:#dfe7f1; --tg-line2:#cbd8e8;
+  --tg-grad:linear-gradient(120deg,#4f8cff,#38b6ff 52%,#8b5cf6);
+  --tg-red:#dc2626; --tg-green:#0f8a5f; --tg-amber:#b45309;
+}
+[data-theme="deep"]{
+  --tg-bg:#030014; --tg-card:#101728; --tg-card2:#161f33;
+  --tg-text:#e9f0fb; --tg-muted:#8fa3bd;
+  --tg-line:#1e2d47; --tg-line2:#2a3b5c;
+  --tg-red:#f87171; --tg-green:#34d399; --tg-amber:#fbbf24;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--tg-bg);color:var(--tg-text);
+  font:16px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.tg-wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+/* 开篇 */
+.tg-hero{padding:38px 0 26px}
+.tg-tag{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--tg-grad);
+  padding:4px 13px;border-radius:999px}
+.tg-hero h1{margin:14px 0 8px;font-size:32px;font-weight:900;line-height:1.35;letter-spacing:-.3px}
+.tg-hero .tg-sub{margin:0 0 14px;font-size:16px;color:var(--tg-muted);line-height:1.8}
+.tg-meta{display:flex;gap:9px;flex-wrap:wrap;font-size:13px;color:var(--tg-muted)}
+.tg-meta span{background:var(--tg-card2);border:1px solid var(--tg-line);padding:4px 11px;border-radius:999px}
+/* 板块 */
+.tg-sec{margin:0;max-width:none;padding:32px 0;border-top:1px solid var(--tg-line)}
+.tg-sec h2{margin:0 0 8px;font-size:22px;font-weight:900;line-height:1.5}
+.tg-sec h2 em{display:block;font-style:normal;font-size:14px;font-weight:600;color:var(--tg-muted);margin-top:5px}
+.tg-note{margin:0 0 18px;font-size:14px;color:var(--tg-muted);line-height:1.8}
+.tg-quote{margin:0 0 18px;padding:16px 20px;border-left:4px solid #4f8cff;
+  background:var(--tg-card);border-radius:0 14px 14px 0}
+.tg-quote b{display:block;font-size:16px;font-weight:900;margin-bottom:6px}
+.tg-quote p{margin:0 0 8px;font-size:15px;line-height:1.9}
+.tg-quote cite{font-style:normal;font-size:13px;color:var(--tg-muted)}
+.tg-srcline{font-size:13px;color:var(--tg-muted);margin:8px 0 0}
+.tg-srcline a{color:#4f8cff}
+/* 优先级阶梯 */
+.tg-ranks{list-style:none;margin:0 0 16px;padding:0}
+.tg-rank{display:flex;align-items:center;gap:12px;padding:11px 15px;margin-bottom:7px;
+  background:var(--tg-card);border:1px solid var(--tg-line);border-radius:10px}
+.tg-rank.is-top{border-color:#4f8cff;background:linear-gradient(120deg,rgba(79,140,255,.09),rgba(139,92,246,.09))}
+.tg-idx{width:24px;height:24px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:900;background:var(--tg-card2);color:var(--tg-muted);border:1px solid var(--tg-line)}
+.tg-rank.is-top .tg-idx{background:var(--tg-grad);color:#fff;border-color:transparent}
+.tg-rname{font-size:15px;font-weight:800}
+.tg-rnote{margin-left:auto;font-size:13px;color:var(--tg-muted);text-align:right}
+/* 边界 */
+.tg-bound{display:flex;gap:13px;padding:13px 16px;margin-bottom:9px;
+  background:var(--tg-card);border:1px solid var(--tg-line);border-radius:14px}
+.tg-bound.is-no{border-color:rgba(220,38,38,.32);background:rgba(220,38,38,.05)}
+.tg-bound.is-ok{border-color:rgba(15,138,95,.34);background:rgba(15,138,95,.06)}
+.tg-bmark{flex:none;width:52px;height:24px;border-radius:999px;font-size:12px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;color:#fff}
+.tg-bound.is-no .tg-bmark{background:var(--tg-red)}
+.tg-bound.is-ok .tg-bmark{background:var(--tg-green)}
+.tg-bmain b{display:block;font-size:15px;font-weight:800;margin-bottom:3px}
+.tg-bmain p{margin:0;font-size:14px;line-height:1.8;color:var(--tg-muted)}
+/* 三个看 */
+.tg-looks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-bottom:14px}
+.tg-look{padding:15px 17px;background:var(--tg-card);border:1px solid var(--tg-line);border-radius:14px}
+.tg-lnum{display:inline-block;font-size:12px;font-weight:900;color:#fff;background:var(--tg-grad);
+  padding:2px 10px;border-radius:999px;margin-bottom:8px}
+.tg-look b{display:block;font-size:15px;font-weight:800;margin-bottom:5px}
+.tg-look p{margin:0;font-size:14px;line-height:1.8;color:var(--tg-muted)}
+.tg-mirror{padding:13px 17px;border-radius:14px;background:var(--tg-card2);border:1px dashed var(--tg-line2);
+  font-size:14px;line-height:1.85}
+.tg-mirror b{color:#4f8cff}
+.tg-mirror-src{display:block;margin-top:6px;font-size:12px;color:var(--tg-muted)}
+/* 手势表 */
+.tg-table{width:100%;border-collapse:collapse;background:var(--tg-card);
+  border:1px solid var(--tg-line);border-radius:14px;overflow:hidden;font-size:14px}
+.tg-table th{background:var(--tg-card2);color:var(--tg-muted);font-weight:800;font-size:13px;
+  text-align:left;padding:11px 13px;border-bottom:1px solid var(--tg-line);white-space:nowrap}
+.tg-table td{padding:11px 13px;border-bottom:1px solid var(--tg-line);vertical-align:top;line-height:1.75}
+.tg-table tr:last-child td{border-bottom:none}
+.tg-table tr.is-key{background:rgba(79,140,255,.05)}
+.tg-sig td{vertical-align:top}
+.tg-sig.is-key .tg-badge{box-shadow:0 0 0 3px rgba(79,140,255,.2)}
+.tg-c-no{width:52px}
+.tg-c-name{width:132px}
+.tg-c-act{width:36%;color:var(--tg-text)}
+.tg-c-mean{color:var(--tg-muted)}
+.tg-badge{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;
+  border-radius:6px;font-size:13px;font-weight:900;color:#fff;background:var(--tg-grad)}
+.tg-helper{margin:12px 0 0;font-size:14px;line-height:1.85;color:var(--tg-muted)}
+.tg-confuse{margin:12px 0;padding:13px 17px;border-radius:14px;
+  background:rgba(180,83,9,.07);border:1px solid rgba(180,83,9,.3);font-size:14px;line-height:1.85}
+.tg-confuse b{color:var(--tg-amber)}
+.tg-mnemo{margin:12px 0 0;padding:15px 18px;border-radius:14px;background:var(--tg-card2);
+  border:1px solid var(--tg-line)}
+.tg-mnemo b{display:block;font-size:14px;font-weight:800;margin-bottom:7px}
+.tg-mnemo p{margin:0 0 6px;font-size:15px;line-height:2;letter-spacing:.4px}
+.tg-mnemo span{font-size:12px;color:var(--tg-muted)}
+/* 罚则 */
+.tg-pens{display:grid;gap:11px;margin-bottom:16px}
+.tg-pen{padding:14px 17px;background:var(--tg-card);border:1px solid var(--tg-line);border-radius:14px}
+.tg-pen-h{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:8px}
+.tg-pen-h b{font-size:15px;font-weight:800}
+.tg-pt{font-size:12px;font-weight:900;padding:3px 11px;border-radius:999px}
+.tg-pt-6{background:rgba(220,38,38,.12);color:var(--tg-red);border:1px solid rgba(220,38,38,.34)}
+.tg-pt-3{background:rgba(180,83,9,.12);color:var(--tg-amber);border:1px solid rgba(180,83,9,.34)}
+.tg-pt-unknown{background:rgba(91,107,131,.1);color:var(--tg-muted);border:1px solid var(--tg-line2)}
+.tg-pen p{margin:0 0 4px;font-size:14px;line-height:1.8}
+.tg-pen-law{color:var(--tg-muted)}
+.tg-pen-fine{color:var(--tg-text)}
+.tg-caveat{margin:0 0 16px;padding:16px 19px;border-radius:14px;
+  background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.32)}
+.tg-caveat h4{margin:0 0 8px;font-size:16px;font-weight:900;color:var(--tg-red)}
+.tg-caveat p{margin:0 0 7px;font-size:14px;line-height:1.85}
+.tg-caveat .tg-how{color:var(--tg-muted)}
+.tg-caveat .tg-warn{font-weight:800;color:var(--tg-text)}
+/* 申诉 */
+.tg-sub2{font-size:17px;font-weight:900;margin:22px 0 10px;padding-left:11px;border-left:4px solid #4f8cff}
+.tg-steps{list-style:none;margin:0 0 8px;padding:0}
+.tg-steps li{position:relative;padding:9px 0 9px 40px;font-size:14px;line-height:1.85;border-bottom:1px dashed var(--tg-line)}
+.tg-steps li:last-child{border-bottom:none}
+.tg-step{position:absolute;left:0;top:10px;width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;
+  background:var(--tg-grad);color:#fff}
+.tg-notred{margin:0 0 8px;padding-left:22px;font-size:14px;line-height:1.95}
+.tg-notred li{margin-bottom:5px}
+/* 特权 */
+.tg-key{padding:15px 19px;border-radius:14px;background:rgba(15,138,95,.07);
+  border:1px solid rgba(15,138,95,.32);font-size:15px;line-height:1.9;margin-bottom:14px}
+.tg-key b{color:var(--tg-green)}
+.tg-free{margin:0 0 14px;padding:15px 18px;border-radius:14px;background:var(--tg-card);border:1px solid var(--tg-line)}
+.tg-free h4{margin:0 0 8px;font-size:15px;font-weight:900}
+.tg-free p{margin:0 0 7px;font-size:14px;line-height:1.85}
+.tg-free ul{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.tg-case{padding:16px 19px;border-radius:14px;background:var(--tg-card2);border:1px solid var(--tg-line)}
+.tg-case h4{margin:0 0 9px;font-size:16px;font-weight:900}
+.tg-case p{margin:0 0 8px;font-size:14px;line-height:1.85}
+.tg-case .tg-what{font-weight:700}
+.tg-casesrcs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
+.tg-casecaveat{margin:10px 0 0;font-size:13px;line-height:1.8;color:var(--tg-muted);
+  padding-top:9px;border-top:1px dashed var(--tg-line2)}
+/* 图片 */
+.tg-figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:13px;margin-bottom:14px}
+.tg-fig{margin:0;background:var(--tg-card);border:1px solid var(--tg-line);border-radius:14px;overflow:hidden}
+.tg-fig img{display:block;width:100%;height:auto}
+.tg-fig figcaption{padding:12px 15px}
+.tg-fig figcaption b{display:block;font-size:14px;font-weight:800;margin-bottom:4px}
+.tg-fig figcaption span{display:block;font-size:13px;color:var(--tg-muted)}
+.tg-fig figcaption em{display:block;font-size:12px;color:var(--tg-amber);margin-top:4px;font-style:normal}
+.tg-gap{margin:0;padding:15px 18px;border-radius:14px;border:1px dashed var(--tg-line2);background:var(--tg-card2)}
+.tg-gap h4{margin:0 0 8px;font-size:15px;font-weight:900}
+.tg-gap p{margin:0 0 7px;font-size:14px;line-height:1.85}
+.tg-gap .tg-why{font-weight:800}
+/* 三条 */
+.tg-rules{list-style:none;margin:0;padding:0}
+.tg-rule{display:flex;gap:14px;padding:16px 19px;margin-bottom:11px;
+  background:linear-gradient(120deg,rgba(79,140,255,.08),rgba(139,92,246,.08));
+  border:1px solid var(--tg-line);border-radius:14px}
+.tg-rbadge{flex:none;width:76px;height:26px;border-radius:999px;font-size:12px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;color:#fff;background:var(--tg-grad)}
+.tg-rule b{display:block;font-size:16px;font-weight:900;margin-bottom:5px}
+.tg-rule p{margin:0;font-size:14px;line-height:1.85}
+/* 出处 */
+.tg-srcs{list-style:none;margin:0;padding:0;columns:2;column-gap:22px}
+.tg-srcs li{break-inside:avoid;margin-bottom:9px;font-size:13px;line-height:1.75}
+.tg-snum{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
+  border-radius:6px;font-size:12px;font-weight:900;background:var(--tg-card2);
+  color:var(--tg-muted);border:1px solid var(--tg-line);margin-right:7px}
+.tg-srcs a{color:#4f8cff;text-decoration:none}
+.tg-srcs a:hover{text-decoration:underline}
+.tg-src{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;color:#4f8cff;text-decoration:none}
+.tg-foot{margin:34px 0 0;padding:20px 0 34px;border-top:1px solid var(--tg-line);
+  font-size:13px;color:var(--tg-muted);line-height:1.9}
+@media(max-width:760px){
+  .tg-wrap{padding:0 16px}
+  .tg-hero h1{font-size:25px}
+  .tg-table{font-size:13px}
+  .tg-c-name,.tg-c-act{width:auto}
+  .tg-srcs{columns:1}
+  .tg-rule{flex-direction:column;gap:9px}
+}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="about" data-cctitle="关于">
+<div class="pg-wrap">
+<article class="merged-content">
+<div class="tg-wrap">
+  <header class="tg-hero">
+    <span class="tg-tag">实操落地 · 可回溯</span>
+    <h1>交警手势 vs 红绿灯：车主实操落地</h1>
+    <p class="tg-sub">不是辟谣，是下次真碰到时该怎么走</p>
+    <div class="tg-meta">
+      <span>整理时间 2026-10-06</span>
+      <span>依据 13 处公开来源</span>
+      <span>手势 8 种</span>
+    </div>
+  </header>
+  <!-- 一、核心问题 -->
+  <section class="tg-sec">
+    <h2>一、路口红灯，交警却挥手让你走 —— 走还是停<em>这一条有法律条文，不是我在讲道理</em></h2>
+    <blockquote class="tg-quote">
+      <b>路口亮着红灯，但交警挥手示意你走 —— 走还是停？</b>
+      <p><strong>听交警的。</strong></p>
+      <cite>《《中华人民共和国道路交通安全法》第三十八条》：车辆、行人应当按照交通信号通行；遇有交通警察现场指挥时，应当按照交通警察的指挥通行；在没有交通信号的道路上，应当在确保安全、畅通的原则下通行。</cite>
+    </blockquote>
+    <p class="tg-srcline">来源：<a href="https://www.mz.gov.cn/xwzx/shms/1517481.htm" target="_blank" rel="noopener">绵竹市公安局交警大队《信号灯与交警手势不一致时，听谁的？》</a>　|　鸡西市鸡冠区人民法院普法案例：路口信号灯与交警指示不一致时，应以交警的指挥为准（经 122 法律咨询网转述）</p>
+    <h3 class="tg-sub2">四类交通信号的优先级</h3>
+    <ol class="tg-ranks">
+    <li class="tg-rank is-top">
+      <span class="tg-idx">1</span>
+      <span class="tg-rname">交通警察现场指挥手势</span>
+      <span class="tg-rnote">最高，法律效力最强</span>
+    </li>
+    <li class="tg-rank">
+      <span class="tg-idx">2</span>
+      <span class="tg-rname">交通信号灯</span>
+      <span class="tg-rnote">无交警指挥时才看灯</span>
+    </li>
+    <li class="tg-rank">
+      <span class="tg-idx">3</span>
+      <span class="tg-rname">交通标志</span>
+      <span class="tg-rnote">禁令类必须遵守</span>
+    </li>
+    <li class="tg-rank">
+      <span class="tg-idx">4</span>
+      <span class="tg-rname">交通标线</span>
+      <span class="tg-rnote">同上</span>
+    </li></ol>
+    <p class="tg-srcline">依据：<a href="https://www.huarong.gov.cn/33047/content_1009933.html" target="_blank" rel="noopener">华容县人民政府《掌握交通知识 养成良好的交通习惯》</a> —— 四种交通信号中，交警的指挥信号高于其他三种。</p>
+  </section>
+  <!-- 二、什么才算交警指挥 -->
+  <section class="tg-sec">
+    <h2>二、什么才算「交警指挥」<em>「交警优先」被误用的最大原因，是把它扩大成「有人在挥手」</em></h2>
+    <p class="tg-note">「交警优先」被误用的最大原因，是把「交警现场指挥」扩大成「有人在挥手」。法律条文里的门槛比想象的窄。</p>
+    
+      <div class="tg-bound is-no">
+        <span class="tg-bmark" aria-hidden="true">不算</span>
+        <div class="tg-bmain">
+          <b>志愿者引导</b>
+          <p>不是「交通警察现场指挥」。122 法律咨询网明确提示：这里的「交通警察」必须是正在执勤、面向路口做出明确指挥动作的人民警察，不包括志愿者引导。</p>
+        </div>
+      </div>
+      <div class="tg-bound is-no">
+        <span class="tg-bmark" aria-hidden="true">不算</span>
+        <div class="tg-bmain">
+          <b>远处看不清的随意挥手</b>
+          <p>同上，必须是「明确的指挥动作」。距离太远、分不清手势时，应按信号灯通行。</p>
+        </div>
+      </div>
+      <div class="tg-bound is-no">
+        <span class="tg-bmark" aria-hidden="true">不算</span>
+        <div class="tg-bmain">
+          <b>交通协管员 / 辅警单独指挥</b>
+          <p>各地授权范围不同，多数协管员不具有指挥交通的法定权限。遇到争议可要求执勤交警确认，并可事后申诉。</p>
+        </div>
+      </div>
+      <div class="tg-bound is-ok">
+        <span class="tg-bmark" aria-hidden="true">算</span>
+        <div class="tg-bmain">
+          <b>执勤交警面向你的车道、做出标准手势</b>
+          <p>这是法律意义上的「现场指挥」，信号灯与之不一致时一律服从交警。</p>
+        </div>
+      </div>
+    <p class="tg-srcline">来源：<a href="https://www.122lawyers.com/news/79151.html" target="_blank" rel="noopener">122 法律咨询网《2026年交警指挥与交通信号灯不一致怎么办》</a></p>
+  </section>
+  <!-- 三、三个看 -->
+  <section class="tg-sec">
+    <h2>三、看不懂手势？记住「三个看」<em>交警和围观群众总结的是同一套</em></h2>
+    <div class="tg-looks">
+        <div class="tg-look">
+          <span class="tg-lnum">一看</span>
+          <b>交警是否看向你</b>
+          <p>交警看向你，代表指挥的是你这个方向的车辆，你就要注意听指挥了。</p>
+        </div>
+        <div class="tg-look">
+          <span class="tg-lnum">二看</span>
+          <b>交警身体面朝哪边</b>
+          <p>身体正对你，通常示意停车或变道；侧身对你，示意按要求通行。</p>
+        </div>
+        <div class="tg-look">
+          <span class="tg-lnum">三看</span>
+          <b>交警手部动作</b>
+          <p>结合你与交警的站位关系理解动作含义。</p>
+        </div></div>
+    <div class="tg-mirror"><b>还有一条镜像规律：</b>还有个镜像规律：交警正对着你时，他的左手对应你的右边、右手对应你的左边，像照镜子，别把方向搞反。
+      <span class="tg-mirror-src">出处：今日头条《交警站路中间打手势，第一排司机僵住》（非官方媒体，但所述规律与官方「三个看」一致）</span>
+    </div>
+    <p class="tg-srcline">「三个看」来源：<a href="https://www.xuancheng.gov.cn/Livelihood/show/3818.html" target="_blank" rel="noopener">宣城市人民政府《开车必知：交警的指挥手势都是啥意思？》</a></p>
+  </section>
+  <!-- 四、8 手势 -->
+  <section class="tg-sec">
+    <h2>四、8 种法定手势逐条对照<em>依据 2007 年 8 月 13 日公安部《关于发布交通警察手势信号的通告》，2007 年 10 月 1 日起施行，手势由原 11 种减为 8 种。</em></h2>
+    <table class="tg-table">
+      <thead><tr><th>#</th><th>手势</th><th>动作要领</th><th>含义</th></tr></thead>
+      <tbody>
+      <tr class="tg-sig is-key">
+        <td class="tg-c-no"><span class="tg-badge">1</span></td>
+        <td class="tg-c-name"><b>停止信号</b></td>
+        <td class="tg-c-act">左臂向前上方直伸，掌心向前</td>
+        <td class="tg-c-mean">不准前方车辆通行</td>
+      </tr>
+      <tr class="tg-sig is-key">
+        <td class="tg-c-no"><span class="tg-badge">2</span></td>
+        <td class="tg-c-name"><b>直行信号</b></td>
+        <td class="tg-c-act">左臂向左平伸，掌心向前；右臂向右平伸，掌心向前，向左摆动</td>
+        <td class="tg-c-mean">准许右方直行的车辆通行</td>
+      </tr>
+      <tr class="tg-sig">
+        <td class="tg-c-no"><span class="tg-badge">3</span></td>
+        <td class="tg-c-name"><b>左转弯信号</b></td>
+        <td class="tg-c-act">右臂向前平伸，掌心向前；左臂与手掌平直向右前方摆动，掌心向右</td>
+        <td class="tg-c-mean">准许车辆左转弯，在不妨碍被放行车辆通行的情况下可以掉头</td>
+      </tr>
+      <tr class="tg-sig">
+        <td class="tg-c-no"><span class="tg-badge">4</span></td>
+        <td class="tg-c-name"><b>右转弯信号</b></td>
+        <td class="tg-c-act">左臂向前平伸，掌心向前；右臂与手掌平直向左前方摆动，手掌向左</td>
+        <td class="tg-c-mean">准许右方的车辆右转弯</td>
+      </tr>
+      <tr class="tg-sig">
+        <td class="tg-c-no"><span class="tg-badge">5</span></td>
+        <td class="tg-c-name"><b>左转弯待转信号</b></td>
+        <td class="tg-c-act">左臂向左下方平伸，掌心向下；左臂与手掌平直向下方摆动</td>
+        <td class="tg-c-mean">准许左方左转弯的车辆进入路口，沿左转弯行驶方向靠近路口中心，等候左转弯信号</td>
+      </tr>
+      <tr class="tg-sig">
+        <td class="tg-c-no"><span class="tg-badge">6</span></td>
+        <td class="tg-c-name"><b>变道信号</b></td>
+        <td class="tg-c-act">右臂向前平伸，掌心向左；右臂向左水平摆动</td>
+        <td class="tg-c-mean">车辆应当腾空指定的车道，减速慢行</td>
+      </tr>
+      <tr class="tg-sig">
+        <td class="tg-c-no"><span class="tg-badge">7</span></td>
+        <td class="tg-c-name"><b>减速缓行信号</b></td>
+        <td class="tg-c-act">右臂向右前方平伸，掌心向下；右臂与手掌平直向下方摆动</td>
+        <td class="tg-c-mean">车辆应当减速慢行</td>
+      </tr>
+      <tr class="tg-sig">
+        <td class="tg-c-no"><span class="tg-badge">8</span></td>
+        <td class="tg-c-name"><b>示意车辆靠边停车信号</b></td>
+        <td class="tg-c-act">左臂向前上方直伸，掌心向前；右臂向前下方平伸，掌心向左；右臂向左水平摆动</td>
+        <td class="tg-c-mean">车辆应当靠边停车</td>
+      </tr></tbody>
+    </table>
+    <p class="tg-helper"><strong>指挥棒同样有效：</strong>夜间没有路灯、照明不良，或遇雨雪雾沙尘冰雹等低能见度天气执勤时，交警可以用右手持指挥棒，按上述手势指挥，指挥棒指挥同样具有法律效能。</p>
+    <div class="tg-confuse"><b>最容易认错的一对 —— 减速缓行 vs 左转弯待转</b><br>两者手臂动作相似。关键区别：减速缓行是右手臂上下摆动，左转弯待转是左手臂下压摆动。</div>
+    <div class="tg-mnemo">
+      <b>交警和宣传部门流传的口诀（官方号发布，非法律条文）</b>
+      <p>左高右放要叫停，左右折叠是直行，左手在下左转弯，右手在下右转弯，左手下摆即待转，右手平摆要变道，左手下放要减速，左手抬起靠边停。</p>
+      <span>出处：<a href="https://www.toutiao.com/article/7288303581588095522" target="_blank" rel="noopener">贺州市公安局交通警察支队（转自湖南交警）</a></span>
+    </div>
+    <p class="tg-srcline">手势动作依据：<a href="https://baike.baidu.com/item/%E4%BA%A4%E9%80%9A%E6%B0%91%E8%AD%A6%E6%8C%87%E6%8C%A5%E6%89%8B%E5%8A%BF/7584203" target="_blank" rel="noopener">百度百科 · 交通警察手势信号（词条内引用公安部通告原文）</a></p>
+  </section>
+  <!-- 五、罚则 -->
+  <section class="tg-sec">
+    <h2>五、不听指挥 vs 闯红灯，罚得不一样<em>这两件事最常被搞混，直接决定你是记 1 分还是 6 分。</em></h2>
+    <div class="tg-pens">
+        <div class="tg-pen">
+          <div class="tg-pen-h">
+            <b>不按交通信号灯指示通行</b>
+            <span class="tg-pt tg-pt-6">记 6 分</span>
+          </div>
+          <p class="tg-pen-law"><b>依据：</b>《道路交通安全违法行为记分管理办法》（公安部令第163号）第十条第八项</p>
+          <p class="tg-pen-fine"><b>罚则：</b>警告或 20 元以上 200 元以下罚款（第九十条）</p>
+          <a class="tg-src" href="https://big5.www.gov.cn/gate/big5/www.gov.cn/zhengce/2021-12/27/content_5712880.htm" target="_blank" rel="noopener">查看条文出处</a>
+        </div>
+        <div class="tg-pen">
+          <div class="tg-pen-h">
+            <b>违反道路通行规定（不服从交警指挥属于此类）</b>
+            <span class="tg-pt tg-pt-unknown">记分无明确条文依据</span>
+          </div>
+          <p class="tg-pen-law"><b>依据：</b>《道路交通安全法》第九十条</p>
+          <p class="tg-pen-fine"><b>罚则：</b>警告或者二十元以上二百元以下罚款</p>
+          <a class="tg-src" href="https://www.122lawyers.com/news/79151.html" target="_blank" rel="noopener">查看条文出处</a>
+        </div>
+        <div class="tg-pen">
+          <div class="tg-pen-h">
+            <b>不避让执行紧急任务的特种车辆</b>
+            <span class="tg-pt tg-pt-3">记 3 分</span>
+          </div>
+          <p class="tg-pen-law"><b>依据：</b>《道路交通安全法》第五十三条规定让行义务；处罚依据第九十条</p>
+          <p class="tg-pen-fine"><b>罚则：</b>各地执法口径，一经查实即处罚</p>
+          <a class="tg-src" href="https://www.czxyhg.net/news/257529.html" target="_blank" rel="noopener">查看条文出处</a>
+        </div></div>
+    <div class="tg-caveat">
+      <h4>⚠ 一个必须说清的事实核查结果</h4>
+      <p>网上有法律资讯站称「不服从交警指挥一次记 1 分」，并引用公安部令 163 号第十二条第四项。本站逐条核对了 163 号原文：第十二条第四项是「驾驶机动车违反禁令标志、禁止标线指示的」，与不服从交警指挥无关；该办法的记分项里并没有单列「不服从交警指挥」。因此本站不写「不服从交警指挥记 1 分」这个说法 —— 它缺乏条文支撑。</p>
+      <p class="tg-how">关于这一行为如何记分，目前公开检索未找到明确的条文依据，建议以本人所在地交警部门的官方口径为准。</p>
+      <p class="tg-warn">这条正是本页面存在的意义：连法律资讯站都可能引错条文号。</p>
+    </div>
+  </section>
+  <!-- 六、申诉 -->
+  <section class="tg-sec">
+    <h2>六、被拍成闯红灯，但当时是听交警指挥的<em>别默默认罚</em></h2>
+    <h3 class="tg-sub2">怎么办</h3>
+    <ol class="tg-steps">
+          <li><span class="tg-step">1</span>到事发地交警大队开具调流证明，说明当时交警手势情况</li>
+          <li><span class="tg-step">2</span>或向交警大队提出申诉，由警方调取路口监控与信号灯配时记录核验</li>
+          <li><span class="tg-step">3</span>交警在疏导高峰时打的手势可能与信号灯不一致，路口有电子警察全方位拍摄的，信号灯和交警指挥会同时进入画面</li>
+          <li><span class="tg-step">4</span>对抓拍认定有异议的，可到交警大队提出申诉；处罚决定被依法变更或撤销的，相应记分也应变更或撤销</li></ol>
+    <p class="tg-srcline">来源：<a href="https://www.mz.gov.cn/xwzx/shms/1517481.htm" target="_blank" rel="noopener">绵竹市公安局交警大队</a></p>
+    <h3 class="tg-sub2">这几种情况不算闯红灯</h3>
+    <ul class="tg-notred"><li>红灯亮时车头刚冲出停止线随即停住 —— 不处罚</li><li>因故刹不住导致车身全部越过停止线，之后未再继续移动 —— 属越线停车，不算闯红灯</li><li>交警示意通行而信号灯为红灯 —— 服从交警，不算闯红灯，可开具调流证明免于处罚</li></ul>
+    <p class="tg-srcline">来源：<a href="https://lvshi.sogou.com/article/detail/DSLMABJNH6W2.html" target="_blank" rel="noopener">广东天穗律师事务所（执业律师文章，含六种闯灯情形的实务归纳）</a></p>
+  </section>
+  <!-- 七、特权 -->
+  <section class="tg-sec">
+    <h2>七、采访车、转播车有特权吗<em>没有。而且通行费免费 ≠ 闯红灯免罚</em></h2>
+    <p class="tg-note">这一条要说清楚，因为网上流传的说法把两件事混在一起了。</p>
+    <blockquote class="tg-quote">
+      <b>《《中华人民共和国道路交通安全法》第五十三条第一款》</b>
+      <p>警车、消防车、救护车、工程救险车执行紧急任务时，在确保安全的前提下，不受行驶路线、行驶方向、行驶速度和信号灯的限制，其他车辆和行人应当让行。</p>
+    </blockquote>
+    <div class="tg-key">法律只给了四类车在「执行紧急任务时」的通行豁免：警车、消防车、救护车、工程救险车。电视台采访车、广播电视转播车不在其中，也不存在「因为是媒体所以有特权」的规则。</div>
+    <div class="tg-free">
+      <h4>顺带说清另一件常被误会的事：抢险救灾车辆免费通行</h4>
+      <p>高速公路上执行抢险救灾任务的车辆免交通行费，但这说的是「通行费」，不是「闯红灯免罚」。两件事没有关系。</p>
+      <p><strong>新规：</strong>2025 年 11 月 3 日交通运输部办公厅、应急管理部办公厅印发《执行抢险救灾任务车辆免费通行服务保障规程》，2026 年 1 月 1 日起实施。</p>
+      <ul><li>认定需同时具备两个条件：一是县级及以上人民政府有关部门启动应急响应时；二是必须由应急管理部（跨省）或省级应急管理部门（省内）组织或同意前往执行抢险救灾任务。</li><li>经营性物流运输车辆，以及集体、个人或企事业单位自行前往灾害事故地区的车辆，不在任务车辆范围内，应依法缴纳通行费。</li><li>规程明确了对假冒执行抢险救灾任务车辆的稽核处理规则，并设计了《非抢险救灾任务车辆特情告知书》防止误解引发纠纷。</li></ul>
+      <p class="tg-srcline">来源：<a href="https://news.china.com.cn/2025-12/16/content_118230991.shtml" target="_blank" rel="noopener">交通运输部 / 应急管理部《执行抢险救灾任务车辆免费通行服务保障规程》全文（中国网转载）</a>　|　<a href="https://news.sina.cn/2025-12-16/detail-inhaysif3173816.d.html?vt=4" target="_blank" rel="noopener">央视新闻《事关抢险救灾任务车辆通行 政策解读》</a></p>
+    </div>
+    <h3 class="tg-sub2">被广泛传播的那件事，事实是这样的</h3>
+    <div class="tg-case">
+      <p class="tg-what">2026 年 1 月 23 日下午，台北市中山区南京东路与一江街口，一辆电视台采访车失控冲入彰化银行吉林分行大厅，造成 10 人轻重受伤，含撞毁 ATM 与柜台。</p>
+      <p>警方调阅周边监视器画面，显示事发时路口号志已转为红灯，肇事车辆未亮起刹车灯。路口等候民众提供的行车记录器显示：绿灯亮起时该车尚未进入画面，2 秒后即冲出画面。据此，被认定为闯红灯而非抢黄灯。</p>
+      <p>警方依过失伤害罪嫌移送台北地检署，检察官谕令新台币 50 万元交保并限制出境出海。北市劳动局介入，要求电视台提供出勤纪录，厘清是否涉及过劳或其他职业安全因素。</p>
+      <p>电视台已发声明致歉，承诺承担赔偿与法律责任，并成立专案小组调查事故原因与用车管理流程。</p>
+      <div class="tg-casesrcs"><a class="tg-src" href="https://www.chinatimes.com/realtimenews/20260124002932-260405" target="_blank" rel="noopener">中时新闻网</a><a class="tg-src" href="https://www.cdnnews.com.tw/articles/1352710" target="_blank" rel="noopener">台数位时报（原表）</a><a class="tg-src" href="https://www.nownews.com/news/6779410" target="_blank" rel="noopener">NOWnews</a><a class="tg-src" href="https://udn.com/news/story/7321/9287430" target="_blank" rel="noopener">联合新闻网 udn</a><a class="tg-src" href="https://www.taisounds.com/news/content/96/237985" target="_blank" rel="noopener">太报 TaiSounds</a></div>
+      <p class="tg-casecaveat">此处引用的是台湾地区一起具体事故的公开报道，用于说明「媒体车辆是否有通行豁免」这一普遍疑问。该事故的责任认定仍以当地司法程序为准，本站不作法律结论。</p>
+    </div>
+  </section>
+  <!-- 八、图片 -->
+  <section class="tg-sec">
+    <h2>八、真实配图<em>只放抓取到的真实图片并标注来源。抓不到的就写明抓不到 —— 本站不用 AI 生成图冒充交警手势示范。</em></h2>
+    <div class="tg-figs">
+        <figure class="tg-fig">
+          <img src="/assets/img/traffic/police-direct.jpg" alt="交警在路口打出指挥手势" loading="lazy">
+          <figcaption>
+            <b>交警在路口打出指挥手势</b>
+            <span>来源：绵竹日报 / 绵竹市人民政府网</span>
+            <em>图片右下角有「绵竹日报」水印，未去除 —— 水印是出处标识</em>
+            <a class="tg-src" href="https://www.mz.gov.cn/xwzx/shms/1517481.htm" target="_blank" rel="noopener">看原始出处</a>
+          </figcaption>
+        </figure>
+        <figure class="tg-fig">
+          <img src="/assets/img/traffic/gesture-video.png" alt="龙门交警「沉浸式」教学视频封面：8 个交通手势演示" loading="lazy">
+          <figcaption>
+            <b>龙门交警「沉浸式」教学视频封面：8 个交通手势演示</b>
+            <span>来源：南方+（广东广播电视台）龙门交警联合龙门县融媒体中心</span>
+            
+            <a class="tg-src" href="https://www.nfnews.com/content/r6d5EDGDoE.html" target="_blank" rel="noopener">看原始出处</a>
+          </figcaption>
+        </figure></div>
+    <div class="tg-gap">
+      <h4>没有抓到的：8 种手势的标准对照图</h4>
+      <p>本站尝试从绵竹市、宣城市等政府网站及南方+ 抓取 8 种手势的标准对照图，实际情况是：政府页面的手势图为懒加载，抓取时无法取到；南方+ 页面只有栏目 logo 与视频封面。当前只拿到 2 张真实图片。</p>
+      <p class="tg-why">为什么不用 AI 生成图补位：</p>
+      <p>不用 AI 生成图补位 —— 一个生成的手势示意图放在交通法规页上，一旦动作画错，就是给公众制造新的误解，比缺图更危险。</p>
+      <p><strong>怎么补：</strong>如果你手上有正规来源的 8 手势图（公安部教材、交警官方公众号原图），发我链接或文件，我补进去并标注出处。</p>
+    </div>
+  </section>
+  <!-- 九、三条 -->
+  <section class="tg-sec">
+    <h2>九、给所有车主的三条</h2>
+    <ul class="tg-rules">
+        <li class="tg-rule">
+          <span class="tg-rbadge">第 1 条</span>
+          <div>
+            <b>手势优先，灯是备份</b>
+            <p>路口有交警在指挥，一律按手势走，灯什么颜色都不作数。这一条有《道路交通安全法》第三十八条支撑，不是我在讲道理。</p>
+          </div>
+        </li>
+        <li class="tg-rule">
+          <span class="tg-rbadge">第 2 条</span>
+          <div>
+            <b>先看交警有没有在看你</b>
+            <p>交警看向你，才是指挥你。侧身对着你、远处随意挥手，都不是「现场指挥」，此时按信号灯走。分清这一条，就不会被误指挥带着闯灯。</p>
+          </div>
+        </li>
+        <li class="tg-rule">
+          <span class="tg-rbadge">第 3 条</span>
+          <div>
+            <b>被拍了不要认栽，先问一句是不是听指挥的</b>
+            <p>信号灯与交警指挥不一致时按交警走却被记闯红灯的，可以到事发地交警大队开具调流证明或提出申诉，路口监控会同时拍到信号灯和交警指挥。别默默认罚。</p>
+          </div>
+        </li></ul>
+  </section>
+  <!-- 十、出处 -->
+  <section class="tg-sec">
+    <h2>十、出处清单<em>每条都可以点开核对</em></h2>
+    <ol class="tg-srcs"><li><span class="tg-snum">1</span><a href="https://www.mz.gov.cn/xwzx/shms/1517481.htm" target="_blank" rel="noopener">绵竹市公安局交警大队《信号灯与交警手势不一致时，听谁的？》</a></li><li><span class="tg-snum">2</span><a href="https://www.xuancheng.gov.cn/Livelihood/show/3818.html" target="_blank" rel="noopener">宣城市人民政府《开车必知：交警的指挥手势都是啥意思？》</a></li><li><span class="tg-snum">3</span><a href="https://www.nfnews.com/content/r6d5EDGDoE.html" target="_blank" rel="noopener">南方+《龙门交警「沉浸式」教学上线！这 8 个交通手势你还能认全吗？》</a></li><li><span class="tg-snum">4</span><a href="https://big5.www.gov.cn/gate/big5/www.gov.cn/zhengce/2021-12/27/content_5712880.htm" target="_blank" rel="noopener">中国政府网《道路交通安全违法行为记分管理办法》（公安部令第163号）</a></li><li><span class="tg-snum">5</span><a href="https://gaj.gz.gov.cn/gkmlpt/content/8/8301/post_8301059.html" target="_blank" rel="noopener">广州市公安局《道路交通安全违法行为记分管理办法》全文</a></li><li><span class="tg-snum">6</span><a href="https://news.china.com.cn/2025-12/16/content_118230991.shtml" target="_blank" rel="noopener">中国网《执行抢险救灾任务车辆免费通行服务保障规程》全文</a></li><li><span class="tg-snum">7</span><a href="https://news.sina.cn/2025-12-16/detail-inhaysif3173816.d.html?vt=4" target="_blank" rel="noopener">央视新闻《事关抢险救灾任务车辆通行 政策解读》</a></li><li><span class="tg-snum">8</span><a href="https://www.toutiao.com/article/7288303581588095522" target="_blank" rel="noopener">贺州市公安局交通警察支队《路遇交警，手势信号看不明白？》（含口诀）</a></li><li><span class="tg-snum">9</span><a href="https://www.122lawyers.com/news/79151.html" target="_blank" rel="noopener">122 法律咨询网《2026年交警指挥与交通信号灯不一致怎么办》</a></li><li><span class="tg-snum">10</span><a href="https://baike.baidu.com/item/%E4%BA%A4%E9%80%9A%E6%B0%91%E8%AD%A6%E6%8C%87%E6%8C%A5%E6%89%8B%E5%8A%BF/7584203" target="_blank" rel="noopener">百度百科 · 交通警察手势信号（引用公安部 2007 年通告）</a></li><li><span class="tg-snum">11</span><a href="https://lvshi.sogou.com/article/detail/DSLMABJNH6W2.html" target="_blank" rel="noopener">广东天穗律师事务所《闯红灯多少分》（六种闯灯情形实务归纳）</a></li><li><span class="tg-snum">12</span><a href="https://www.hntv.tv/news/0/2023254117594554369" target="_blank" rel="noopener">大象网《交通警察的指挥手势：比信号灯更优先》</a></li><li><span class="tg-snum">13</span><a href="https://www.huarong.gov.cn/33047/content_1009933.html" target="_blank" rel="noopener">华容县人民政府《掌握交通知识 养成良好的交通习惯》（四类交通信号优先级）</a></li></ol>
+  </section>
+  
+</div>
+<link rel="stylesheet" href="/assets/baiju-core.css?v=20261125a">
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

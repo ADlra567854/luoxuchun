@@ -1,0 +1,2912 @@
+{
+  "meta": {
+    "title": "免费工科工具上手",
+    "description": "CAD / 工程制图 / 三维建模 / 仿真 CAE / 电子 EDA / 数学计算 / 编程开发 / 工程文档 —— 完全免费或开源的工科软件，逐个教下载、教部署、教使用，并结合开源组件、成长路线与实训资源。",
+    "lastUpdated": "2026-09-20",
+    "note": "标「个人免费 / 教育免费 / 免费」的为商业软件授权版本或免费工具，通常限制非商用或仅限教育用途，商用前请阅读其许可条款。标「开源」的均可查看 / 修改源码。",
+    "lastLinkCheck": "2026-10-28",
+    "linkCheckNote": "2026-10-28 对 60 个软件条目的官网/GitHub 链接做了一次实测：非 2xx 的条目标了 linkStatus，blocked(403) 不等于死链；条目、版本、许可未改动。"
+  },
+  "categories": [
+    "CAD三维设计",
+    "工程制图",
+    "三维建模",
+    "仿真CAE",
+    "电子EDA",
+    "数学计算",
+    "编程开发",
+    "工程文档"
+  ],
+  "software": [
+    {
+      "id": "freecad",
+      "name": "FreeCAD",
+      "category": "CAD三维设计",
+      "free": "开源",
+      "opensource": true,
+      "license": "LGPL-2.0+",
+      "url": "https://www.freecad.org",
+      "repo": "https://github.com/FreeCAD/FreeCAD",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/freecad.svg",
+      "desc": "参数化 3D 建模，适合机械零件、装配体与工程图，工科入门首选开源 CAD。",
+      "teach": {
+        "download": "官网 Downloads 选对应系统安装包；Linux 可用 Flatpak/Snap，也有便携版直接解压运行。",
+        "deploy": "首次启动在 Edit→Preferences→General 选中文；建议用 Tools→Addon Manager 安装 Assembly4、SheetMetal 等插件。",
+        "use": "Part Design 建草图→拉伸成实体→加孔/倒角→TechDraw 出工程图，文件保存为 .FCStd。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=FreeCAD%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=FreeCAD+tutorial+beginner"
+        }
+      ],
+      "docs": "https://wiki.freecad.org/Manual",
+      "tips": "新手先学 Part Design(建模)+TechDraw(出图)两个工作台。草图务必『完全约束』变绿再拉伸,否则容易重建失败。保存用 .FCStd 保留参数化历史,别直接导 STEP 丢特征。",
+      "steps": [
+        "官网下载对应系统安装包,Linux 可用 Flatpak/Snap;首次启动在欢迎页选 Part Design 工作台",
+        "编辑→偏好设置:单位改 mm、显示网格(1mm),方便对齐",
+        "切 Sketcher 画草图轮廓,用尺寸/重合/平行约束把它完全约束(变绿)",
+        "退出草图,Part Design 里用 Pad 拉伸成实体、Pocket 挖孔、Chamfer/Fillet 倒角",
+        "要工程图切 TechDraw:新建图纸→拖入形体→智能标注尺寸",
+        "Ctrl+S 存为 .FCStd,后续改参数可随时重建"
+      ]
+    },
+    {
+      "id": "openscad",
+      "name": "OpenSCAD",
+      "category": "CAD三维设计",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://openscad.org",
+      "repo": "https://github.com/openscad/openscad",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/openscad.svg",
+      "desc": "用代码描述模型（程序化建模），适合精确、可参数化的零件与零件库。",
+      "teach": {
+        "download": "官网 Download 下载安装包，或用包管理器（brew/apt/choco）安装。",
+        "deploy": "无需复杂配置，打开即可写脚本；建议装预览增强插件。",
+        "use": "左侧写 cube()/cylinder()/union() 等代码，右侧实时预览，F6 渲染后导出 STL。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=OpenSCAD%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=OpenSCAD+tutorial"
+        }
+      ],
+      "docs": "https://openscad.org/documentation.html",
+      "tips": "OpenSCAD 是『写代码建模』,没有鼠标拖拽。先熟 cube/cylinder/sphere 基本体,再用 union/difference 做布尔。F5 预览快,F6 才真正编译生成可导出实体。",
+      "steps": [
+        "安装后打开,左侧写 .scad 脚本,右侧实时预览",
+        "用 cube()/cylinder()/sphere() 定义基本体,translate()/rotate() 定位",
+        "用 union(){}(并)、difference(){}(减)、intersection()(交)做布尔组合",
+        "用 linear_extrude/rotate_extrude 把 2D 轮廓拉伸/旋转成 3D",
+        "F5 预览,F6 编译;用 $fn 提高曲面精度",
+        "导出 STL 给切片软件,或 OFF/AMF 给下游"
+      ]
+    },
+    {
+      "id": "solvespace",
+      "name": "SolveSpace",
+      "category": "CAD三维设计",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://solvespace.com",
+      "repo": "https://github.com/solvespace/solvespace",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "参数化 2D/3D 建模器，体积仅几十 MB，适合约束驱动的设计。",
+      "teach": {
+        "download": "GitHub Releases 下载对应系统压缩包，解压即运行（便携）。",
+        "deploy": "无需安装；首次使用在 Help→Reference 看约束类型速查。",
+        "use": "画草图加几何约束→拉伸/旋转成实体→导出 STEP/STL/DXF。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=SolveSpace%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=SolveSpace+tutorial"
+        }
+      ],
+      "docs": "https://solvespace.com/help.pl",
+      "tips": "SolveSpace 是参数化草图直接建模,适合零件与机构。约束求解很智能,复杂装配不如 FreeCAD。多用『等长/平行/对称』约束更快。",
+      "steps": [
+        "打开新建,选平面画草图(线/圆/弧)",
+        "用约束工具(等长、平行、相切、尺寸)完全约束轮廓",
+        "Group→Extrude 拉伸、Revolve 旋转、Helix 螺旋生成实体",
+        "多个 Group 之间用 Boolean 做并/差/交",
+        "Analyze 可量距离/面积/质心",
+        "Export→STEP/STL 给下游"
+      ]
+    },
+    {
+      "id": "brlcad",
+      "name": "BRL-CAD",
+      "category": "CAD三维设计",
+      "free": "开源",
+      "opensource": true,
+      "license": "LGPL/BSD",
+      "url": "https://brlcad.org",
+      "repo": "https://github.com/BRL-CAD/brlcad",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "美国军方出身的实体建模与射线追踪系统，军工/科研级 CSG 建模。",
+      "teach": {
+        "download": "官网 Download 下安装包；源码可编译，体积较大。",
+        "deploy": "MGED 为传统命令行界面，新手建议配合 Archer 图形前端。",
+        "use": "用 CSG 基元搭几何→区域划分材质→rt 命令做射线追踪渲染。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=BRL-CAD%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=BRL-CAD+tutorial"
+        }
+      ],
+      "docs": "https://brlcad.org/d/docs/",
+      "steps": [
+        "官网 Download 下 Windows/Linux/macOS 安装包;源码编译体积大,新手直接装二进制包",
+        "打开 Archer 图形界面(新手友好)或 mged 命令行,新建一个 .g 数据库文件",
+        "用 make 命令建 CSG 基元:make sph.s sph(球)、make rpp.r rpp(长方体)、make rec.c rec(圆柱)",
+        "用 comb 把基元做布尔运算(并/差/交)拼装成零件,再划分成 region 区域",
+        "用 mater、color 给区域赋材质与颜色,组织成装配层级",
+        "用 rt / rtweight 做射线追踪出图,或从 Archer 导出 STL 去 3D 打印"
+      ],
+      "tips": "BRL-CAD 是命令行优先的军工级 CSG 工具,先背熟 make / comb / rt 三个命令就能出活。它的建模思路是「基元 + 布尔」,不是草图拉伸;图形界面 Archer 更适合新手,别一上来硬啃 mged。",
+      "linkStatus": [
+        {
+          "url": "https://github.com/BRL-CAD/brlcad",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "wings3d",
+      "name": "Wings 3D",
+      "category": "CAD三维设计",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL",
+      "url": "https://www.wings3d.com",
+      "repo": "https://github.com/dgud/Wings3D",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "轻量细分曲面建模器，适合有机造型与角色粗模，导出的网格可进 Blender。",
+      "teach": {
+        "download": "官网 Download 下各系统安装包，开箱即用。",
+        "deploy": "无需配置；配合 Blender 做后续精修与渲染。",
+        "use": "选面/边/点建模→细分平滑→导出 OBJ 给渲染软件。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Wings3D%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Wings3D+tutorial"
+        }
+      ],
+      "docs": "http://www.wings3d.com/",
+      "tips": "Wings3D 是细分曲面建模,适合有机形态。它没有动画/渲染,胜在轻量。多学 Cut/Extrude 和镜像对称建模。",
+      "steps": [
+        "打开,右键物体进编辑,左键选面/边/点",
+        "用 Cut 切分、Extrude 拉伸、Bridge 桥接做形体",
+        "开启镜像对称快速做左右一致模型",
+        "Smooth 预览细分效果",
+        "File→Export 选 .obj/.stl 给下游",
+        "配合 Blender 做最终渲染"
+      ],
+      "linkStatus": [
+        {
+          "url": "https://github.com/dgud/Wings3D",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "tinkercad",
+      "name": "Tinkercad",
+      "category": "CAD三维设计",
+      "free": "教育免费",
+      "opensource": false,
+      "license": "免费（浏览器 / 教育）",
+      "url": "https://www.tinkercad.com",
+      "repo": null,
+      "os": [
+        "浏览器"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/autodesk.svg",
+      "desc": "Autodesk 出品的在线 3D 建模与电路入门工具，零安装、课堂首选。",
+      "teach": {
+        "download": "浏览器打开 tinkercad.com，注册免费账号即用，无需安装。",
+        "deploy": "教育用户可用 Classroom 创建班级；国内访问需稳定网络。",
+        "use": "拖放形状拼装模型或搭电路→直接导出 STL/PCB，适合中小学创客。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Tinkercad%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Tinkercad+tutorial"
+        }
+      ],
+      "docs": "https://www.tinkercad.com/learn",
+      "steps": [
+        "浏览器打开 tinkercad.com,用邮箱注册免费 Autodesk 账号(教育场景可用学校邮箱)",
+        "Dashboard 里点 Create → 3D Design,新建一个空白设计",
+        "右侧 Shapes 面板拖入立方体/圆柱等基元,拖动角上白色小方块改尺寸",
+        "用「对齐」和「吸附」把零件摆正,再 Group 合并;把其中一个改成 Hole 就能挖孔",
+        "切到 Circuits 模式,拖电池、LED、电阻到面包板上连线,做电路入门",
+        "完成后右上角 Export 导出 STL(去打印)或 Gerber(去打板)"
+      ],
+      "tips": "Tinkercad 零安装、纯浏览器,最适合第一节课堂演示。建模精髓就两个按钮:把零件设成 Hole(空洞)再 Group 合并,能做出 80% 的造型;先玩熟这两个再学别的。"
+    },
+    {
+      "id": "fusion360",
+      "name": "Fusion 360",
+      "category": "CAD三维设计",
+      "free": "个人免费",
+      "opensource": false,
+      "license": "免费（个人非商用）",
+      "url": "https://www.autodesk.com/products/fusion-360/personal",
+      "repo": null,
+      "os": [
+        "Windows",
+        "macOS"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/autodesk.svg",
+      "desc": "Autodesk 的一体化 CAD/CAM/CAE，个人版功能强，限非商用。",
+      "teach": {
+        "download": "官网「Personal Use」注册 Autodesk 账号后下载，需联网激活。",
+        "deploy": "安装后每年需重新确认个人免费资格；商用须购买订阅。",
+        "use": "Sketch→Model→装配→工程图/ CAM 刀路，云端协作，适合进阶用户。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Fusion360%E4%B8%AA%E4%BA%BA%E7%89%88%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Fusion+360+personal+tutorial"
+        }
+      ],
+      "docs": "https://help.autodesk.com/view/fusion360/ENU/",
+      "steps": [
+        "官网选 Personal Use(个人版)注册 Autodesk 账号,再下载安装器",
+        "安装后登录,首选项里把默认单位改成 mm、开启自动保存",
+        "新建 Design → Create Sketch 画草图,用尺寸约束把它完全约束(变黑)",
+        "退出草图后用 E(拉伸)/ H(打孔)/ F(圆角)等快捷键建实体特征",
+        "用 Assemble 装配多零件,加 Joint 约束并检查干涉",
+        "要加工就切 Manufacture 生成 CAM 刀路,要图纸就切 Drawing 出工程图"
+      ],
+      "tips": "Fusion 360 个人版免费但仅限非商用,每 12 个月要点一次续期,别忘了。快捷键 S 能呼出工具搜索框,比一层层翻菜单快得多,强烈建议从第一天就用快捷键。"
+    },
+    {
+      "id": "onshape",
+      "name": "Onshape",
+      "category": "CAD三维设计",
+      "free": "教育免费",
+      "opensource": false,
+      "license": "免费（教育 / 云端）",
+      "url": "https://www.onshape.com/en/education",
+      "repo": null,
+      "os": [
+        "浏览器"
+      ],
+      "logo": null,
+      "desc": "纯云端参数化 CAD，教育免费，多人实时协作，无需本地算力。",
+      "teach": {
+        "download": "浏览器打开 onshape.com，教育用户用学校邮箱申请免费计划。",
+        "deploy": "全程云端，无安装；依赖网络，注意数据存于云端。",
+        "use": "建 Part Studio 画草图→装配→出工程图，团队可同时编辑同一文档。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Onshape%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Onshape+tutorial"
+        }
+      ],
+      "docs": "https://cad.onshape.com/help/Content/",
+      "steps": [
+        "浏览器打开 onshape.com,教育用户用学校邮箱申请免费 Education 计划",
+        "新建 Document → Part Studio,进入草图模式画轮廓",
+        "加尺寸与几何约束,草图线条变黑即代表完全约束",
+        "用 Extrude(拉伸)/ Revolve(旋转)/ Fillet(圆角)生成三维特征",
+        "新建 Assembly 把零件装到一起,加 Mate 约束看运动关系",
+        "切 Drawing 出工程图,或直接 Share 链接让队友同时编辑"
+      ],
+      "tips": "Onshape 全程跑在云端,本地什么配置都能用,打开浏览器就能建模。所有改动实时存版本历史,改坏了随时回滚;团队多人协作是它的杀手锏,别浪费这个能力。"
+    },
+    {
+      "id": "librecad",
+      "name": "LibreCAD",
+      "category": "工程制图",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://librecad.org",
+      "repo": "https://github.com/LibreCAD/LibreCAD",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "轻量 2D CAD 制图软件，画平面图、机械图、建筑图零门槛。",
+      "teach": {
+        "download": "官网 Download 选系统安装包，或用各发行版软件商店直接装。",
+        "deploy": "安装后界面默认英文，可在 Edit→Application Preferences→General 调语言与单位。",
+        "use": "新建图层→用直线/圆/尺寸工具画图→导出 DXF/DWG 或打印 PDF。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=LibreCAD%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=LibreCAD+tutorial"
+        }
+      ],
+      "docs": "https://wiki.librecad.org/",
+      "tips": "LibreCAD 是纯 2D CAD,画平面图/机械三视图够用,不做 3D。图层(Layer)和块(Block)是效率关键,出图用打印预览设比例。",
+      "steps": [
+        "新建→选图纸单位与图层,关掉不需要的层",
+        "用 Line/Arc/Circle 画几何,Trim/Offset/Fillet 修整",
+        "用 Dimension 标尺寸,Text 注说明",
+        "把重复图形做成 Block 插入复用",
+        "Layer 设线型/颜色,打印样式表控制出图",
+        "打印预览设 1:1 或 1:100 比例导出 PDF"
+      ]
+    },
+    {
+      "id": "qcad",
+      "name": "QCAD",
+      "category": "工程制图",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://www.qcad.org",
+      "repo": "https://github.com/qcad/qcad",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "2D CAD 老牌开源，界面类似 AutoCAD，DXF/DWG 兼容好。",
+      "teach": {
+        "download": "官网下 Community 版（免费开源）；Professional 版含 3D 但收费。",
+        "deploy": "安装即用；中文在 Edit→Application Preferences→Language 设置。",
+        "use": "图层+图块绘图→尺寸标注→导出 DXF/DWG/PDF。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=QCAD%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=QCAD+tutorial"
+        }
+      ],
+      "docs": "https://www.qcad.org/en/documentation",
+      "steps": [
+        "官网下 Community 版(免费开源);Professional 版含 3D 功能需付费",
+        "首选项把单位设成 mm、精度 0.00,打开栅格与捕捉",
+        "建图层分层管理:轮廓线、中心线、标注各占一层",
+        "用直线/圆/圆弧画图形,配合偏移、修剪、倒角修外形",
+        "用尺寸标注工具标注线性、半径、角度尺寸",
+        "文件另存为 DXF,或导出 PDF 交付打印"
+      ],
+      "tips": "QCAD 的界面和命令高度对标 AutoCAD,会 AutoCAD 基本零学习成本;它的 DXF/DWG 兼容性在开源 CAD 里数一数二,做二维制图很稳。"
+    },
+    {
+      "id": "nanocad",
+      "name": "nanoCAD",
+      "category": "工程制图",
+      "free": "免费",
+      "opensource": false,
+      "license": "免费（个人非商用）",
+      "url": "https://www.nanocad.com",
+      "repo": null,
+      "os": [
+        "Windows"
+      ],
+      "logo": null,
+      "desc": "类 AutoCAD 界面的免费 2D CAD，命令兼容，适合习惯 CAD 操作的人。",
+      "teach": {
+        "download": "官网注册免费账号后下载安装（仅 Windows）。",
+        "deploy": "安装后激活免费许可；注意仅限个人非商用。",
+        "use": "命令行/工具栏绘图→标注→输出 DWG，操作接近 AutoCAD。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=nanoCAD%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=nanoCAD+tutorial"
+        }
+      ],
+      "docs": "https://www.nanocad.com/support/",
+      "steps": [
+        "官网注册免费账号后下载安装包(仅 Windows)",
+        "启动时选经典界面,熟悉的 AutoCAD 命令行原样保留",
+        "建图层并设线型线宽,按 F8 开正交、F3 开对象捕捉",
+        "用 LINE / CIRCLE / OFFSET / TRIM 等经典命令绘图",
+        "用 DIM 系列命令标注尺寸、公差与文字说明",
+        "保存为 DWG,或打印输出为 PDF"
+      ],
+      "tips": "nanoCAD 免费版的命令和 AutoCAD 几乎一一对应,是 AutoCAD 老用户迁移的首选。注意它只在 Windows 上跑,且免费版功能比专业版少一些高级模块。"
+    },
+    {
+      "id": "draftsight",
+      "name": "DraftSight",
+      "category": "工程制图",
+      "free": "免费",
+      "opensource": false,
+      "license": "免费（个人非商用）",
+      "url": "https://www.draftsight.com",
+      "repo": null,
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "达索出品的 2D/轻 3D CAD，DWG 原生兼容，个人版免费。",
+      "teach": {
+        "download": "官网注册后下载免费版安装包。",
+        "deploy": "安装需联网激活；商用须购买。",
+        "use": "打开/编辑 DWG→绘图标注→打印或导出。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=DraftSight%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=DraftSight+tutorial"
+        }
+      ],
+      "docs": "https://www.draftsight.com/support",
+      "steps": [
+        "官网注册后下载免费版安装包(首次使用需联网激活)",
+        "启动后把工作空间单位设成 mm,打开栅格与捕捉",
+        "新建图层开始绘图,用 L / C / O / TR 等经典快捷命令",
+        "用标注工具标尺寸,加引线与形位公差",
+        "直接打开并编辑 DWG 文件,原生兼容不掉格式",
+        "导出 PDF 或按比例打印出图"
+      ],
+      "tips": "DraftSight 免费版可以原生打开与编辑 DWG,是替代 AutoCAD 的「正规军」。免费版需要定期联网校验许可,断网太久会提示激活。"
+    },
+    {
+      "id": "inkscape",
+      "name": "Inkscape",
+      "category": "工程制图",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://inkscape.org",
+      "repo": "https://gitlab.com/inkscape/inkscape",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/inkscape.svg",
+      "desc": "开源矢量图软件，画技术示意图、框图、封面、激光切割图都好用。",
+      "teach": {
+        "download": "官网 Download 装各系统版；也可 Flatpak/Snap。",
+        "deploy": "装中文包；建议熟悉路径/贝塞尔工具。",
+        "use": "画矢量图形→导出 SVG/PNG/PDF，或转 DXF 给激光切割。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Inkscape%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Inkscape+tutorial"
+        }
+      ],
+      "docs": "https://inkscape.org/doc/",
+      "tips": "Inkscape 是矢量图,适合画流程图/图标/工程示意图,导出 PNG 用『导出位图』设 DPI。做技术图多用对齐+分布面板。",
+      "steps": [
+        "打开,画布设 mm 单位(文件→文档属性)",
+        "用 贝塞尔/矩形/文字 画图形",
+        "对象→对齐分布 排版整齐",
+        "路径→描摹位图 把图片转矢量(可选)",
+        "滤镜/渐变点缀,但工程图尽量扁平",
+        "导出 PNG 设 300 DPI,或存 SVG 给排版"
+      ],
+      "linkStatus": [
+        {
+          "url": "https://inkscape.org",
+          "state": "blocked",
+          "code": 403,
+          "checkedAt": "2026-10-28",
+          "note": "实测 HTTP 403（反爬/区域限制，不能据此判定死链）"
+        }
+      ]
+    },
+    {
+      "id": "sk1",
+      "name": "sK1",
+      "category": "工程制图",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://sk1project.org",
+      "repo": "https://github.com/sk1project/sk1-wx",
+      "os": [
+        "Windows",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "开源矢量编辑器，专注印刷/工程图预处理，支持 CDR 等格式。",
+      "teach": {
+        "download": "官网下安装包或源码编译（Linux 友好）。",
+        "deploy": "安装即用；适合做图稿预处理。",
+        "use": "导入/绘制矢量图→调色彩与出血→导出印刷/切割格式。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=sK1%20%E5%90%91%E9%87%8F%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=sK1+vector+editor"
+        }
+      ],
+      "docs": "https://sk1project.net/",
+      "steps": [
+        "官网下 Windows/Linux 安装包,或源码编译(Linux 支持更友好)",
+        "新建文档,按最终印刷或切割尺寸设好页面与出血",
+        "导入 CDR/SVG,或用贝塞尔工具自己绘制矢量图形",
+        "用调色板与渐变管理填充色(印刷用途建议用 CMYK)",
+        "加轮廓线与定位标记,方便模切、裁切对位",
+        "导出 SVG / PDF / PLT 等切割或印刷格式"
+      ],
+      "tips": "sK1 的定位是「工程图与印刷前的矢量预处理」,不是 CAD。它擅长把 CDR 这类格式转成可加工的矢量,常配合刻字机和激光切割机使用。"
+    },
+    {
+      "id": "blender",
+      "name": "Blender",
+      "category": "三维建模",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://www.blender.org",
+      "repo": "https://github.com/blender/blender",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/blender.svg",
+      "desc": "全能 3D 建模 / 雕刻 / 动画 / 渲染 / 特效，影视与产品可视化通吃。",
+      "teach": {
+        "download": "官网 Download 选系统版本（LTS 长期支持版最稳），或用 Steam 装。",
+        "deploy": "解压即跑；建议装 Node Wrangler、Hard Ops 等常用插件。",
+        "use": "编辑模式建模型→材质/灯光→ cycles/evee 渲染→导出 glTF/OBJ/FBX。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Blender%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Blender+tutorial+beginner"
+        }
+      ],
+      "docs": "https://docs.blender.org/manual/en/latest/",
+      "tips": "Blender 快捷键即生产力:Tab 进编辑模式、G 移动/R 旋转/S 缩放、Shift+A 加物体。新手先学『盒子建模』循环边,别一上来追材质节点。",
+      "steps": [
+        "官网下 LTS 长期支持版(最稳),或 Steam 装",
+        "打开把界面改中文(Edit→Preferences→Interface→Language)",
+        "Shift+A 加立方体,Tab 进编辑模式用循环边建模",
+        "右侧修改器加 Subdivision/Bevel,M 赋材质",
+        "灯光+相机摆好,渲染用 Cycles(质量)或 Eevee(快)",
+        "导出 glTF/OBJ/FBX 给游戏或 3D 打印"
+      ]
+    },
+    {
+      "id": "meshmixer",
+      "name": "Meshmixer",
+      "category": "三维建模",
+      "free": "免费",
+      "opensource": false,
+      "license": "免费（Autodesk）",
+      "url": "https://www.autodesk.com/products/meshmixer",
+      "repo": null,
+      "os": [
+        "Windows",
+        "macOS"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/autodesk.svg",
+      "desc": "网格编辑与修复工具，3D 打印前修模、支撑、拼接最顺手。",
+      "teach": {
+        "download": "Autodesk 官网下载安装包，免费但已停止大版本更新仍可用。",
+        "deploy": "安装即用；对较高分辨率网格吃内存，建议 16G 以上。",
+        "use": "导入 STL→Analysis→Inspector 自动修破面→加支撑→导出打印。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Meshmixer%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Meshmixer+tutorial"
+        }
+      ],
+      "docs": "https://knowledge.autodesk.com/support/meshmixer",
+      "steps": [
+        "Autodesk 官网下载 Meshmixer 安装包(免费,虽已停止更新但仍稳定可用)",
+        "File → Import 导入 STL / OBJ 网格模型",
+        "Analysis → Inspector 自动找出破面与空洞,一键修复(全部变蓝即合格)",
+        "用 Edit → Plane Cut 切平底面,Sculpt 笔刷微调细节",
+        "Overhangs 分析悬垂角度,再 Add Supports 生成打印支撑",
+        "Export 导出 STL,拿去切片软件打印"
+      ],
+      "tips": "Meshmixer 是 3D 打印前的「修模 + 加支撑」专用工具,和切片软件是黄金搭档。Inspector 的自动修破面几乎能救回所有 3D 扫描来的烂模型,先学会用这一个功能。",
+      "linkStatus": [
+        {
+          "url": "https://www.autodesk.com/products/meshmixer",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "sketchup-free",
+      "name": "SketchUp Free",
+      "category": "三维建模",
+      "free": "免费",
+      "opensource": false,
+      "license": "免费（浏览器）",
+      "url": "https://app.sketchup.com",
+      "repo": null,
+      "os": [
+        "浏览器"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/sketchup.svg",
+      "desc": "浏览器版 3D 建模，建筑 / 室内 / 室内设计入门快。",
+      "teach": {
+        "download": "浏览器打开 app.sketchup.com，免费账号即用，无需安装。",
+        "deploy": "进阶桌面版（Pro）付费；免费版存于云端 Trimble 账户。",
+        "use": "推拉工具拉出墙体→组组件→3D Warehouse 拉模型→导出。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=SketchUp%20Free%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=SketchUp+free+tutorial"
+        }
+      ],
+      "docs": "https://learn.sketchup.com/",
+      "steps": [
+        "浏览器打开 app.sketchup.com,注册 Trimble 免费账号",
+        "新建模型,先把单位设成 mm 或米,选合适模板",
+        "用矩形工具画面,再用推拉(Push/Pull)拉出墙体与主体",
+        "把构件成组或转成组件(Ctrl+G),避免模型互相粘连",
+        "从 3D Warehouse 拖入门窗、家具模型充实场景",
+        "加尺寸标注与相机视图,导出 SKP / DWG 或出图"
+      ],
+      "tips": "SketchUp 的灵魂是「推拉」:画个面往上一拉就是体,一句话就能上手。务必养成随手成组件的习惯,不然模型会粘成一坨,后面想改都改不动。"
+    },
+    {
+      "id": "cura",
+      "name": "Ultimaker Cura",
+      "category": "三维建模",
+      "free": "开源",
+      "opensource": true,
+      "license": "LGPL-3.0",
+      "url": "https://ultimaker.com/software/ultimaker-cura",
+      "repo": "https://github.com/Ultimaker/Cura",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "主流 3D 打印切片软件，把 STL 转成打印机可跑的 G-code。",
+      "teach": {
+        "download": "Ultimaker 官网下载，或用 Flatpak/包管理器安装。",
+        "deploy": "首次启动选打印机型号，导入机型配置（或 Marketplace 装插件）。",
+        "use": "导入模型→调层高/填充/支撑→切片预览→存 G-code 给打印机。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Cura%E5%88%87%E7%89%87%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Cura+slicer+tutorial"
+        }
+      ],
+      "docs": "https://support.ultimaker.com/s/article/1635047280105-Cura-software",
+      "steps": [
+        "Ultimaker 官网下载 Cura,或用包管理器 / Flatpak 安装",
+        "首次启动选自己的打印机型号,没有就加自定义机型",
+        "导入 STL,用左侧工具旋转、缩放、摆正模型",
+        "选打印参数:层高 0.2mm、填充 15%、按需开支撑",
+        "点 Slice 切片,用预览逐层检查有没有悬空或断料",
+        "保存 G-code 到 SD 卡,或直接发送给打印机"
+      ],
+      "tips": "Cura 里「层高 + 填充 + 支撑」三个参数决定成败:层高越小越精细但越慢,填充 15% 够日常使用,悬垂超过 45 度就必须开支撑,否则一定塌。",
+      "linkStatus": [
+        {
+          "url": "https://ultimaker.com/software/ultimaker-cura",
+          "state": "blocked",
+          "code": 403,
+          "checkedAt": "2026-10-28",
+          "note": "实测 HTTP 403（反爬/区域限制，不能据此判定死链）"
+        }
+      ]
+    },
+    {
+      "id": "art-of-illusion",
+      "name": "Art of Illusion",
+      "category": "三维建模",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL",
+      "url": "https://www.artofillusion.org",
+      "repo": "https://github.com/ArtOfIllusion/ArtOfIllusion",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "Java 写的轻量 3D 建模与渲染器，脚本可扩展，适合教学。",
+      "teach": {
+        "download": "官网下 jar 包，需本机有 Java 运行环境。",
+        "deploy": "装好 JRE 后双击 jar 运行；可装插件扩展。",
+        "use": "建网格/曲面→打光→渲染出图，或导出给其它软件。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Art%20of%20Illusion%203D%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Art+of+Illusion+tutorial"
+        }
+      ],
+      "docs": "http://www.artofillusion.org/documentation",
+      "steps": [
+        "官网下载 jar 包,先确认本机已装好 Java 运行环境",
+        "双击启动 AOI,按自己的习惯 Layout 排好建模/材质/渲染面板",
+        "用 Create 菜单建多边形网格、球体、曲线等基础几何",
+        "用曲线工具画轮廓,再旋转或拉伸成体,也可直接做布尔",
+        "给模型加材质与纹理,摆好灯光与相机",
+        "渲染出图,或导出 OBJ 给其他软件继续处理"
+      ],
+      "tips": "Art of Illusion 是 Java 写的轻量 3D 工具,胜在体积小、可用脚本扩展,适合课堂教学演示渲染流程。它不适合做高精度工程件,定位是教学与轻量创作。",
+      "linkStatus": [
+        {
+          "url": "https://www.artofillusion.org",
+          "state": "dead",
+          "code": "ERR",
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "makehuman",
+      "name": "MakeHuman",
+      "category": "三维建模",
+      "free": "开源",
+      "opensource": true,
+      "license": "AGPL/CC0",
+      "url": "http://www.makehumancommunity.org",
+      "repo": "https://github.com/makehumancommunity/makehuman",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "开源人体参数化建模，做角色/人因工程模型一键生成。",
+      "teach": {
+        "download": "社区官网下安装包；也可源码构建。",
+        "deploy": "滑杆调体型/五官→生成网格→导出 BLEND/OBJ/FBX。",
+        "use": "参数化生成人体→导入 Blender 精修→用于动画或装配人体工学评估。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=MakeHuman%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=MakeHuman+tutorial"
+        }
+      ],
+      "docs": "http://www.makehumancommunity.org/wiki/Main_Page",
+      "steps": [
+        "社区官网下载 MakeHuman 安装包,或源码构建",
+        "启动后在 Modelling 页用滑块调身高、体重、三围比例",
+        "切到 Parameters / Proxies 页调性别、年龄、肌肉量",
+        "给角色穿配衣服与材质,到 Pose 页调整姿态",
+        "File → Export 导出 FBX / OBJ 网格",
+        "导入 Blender 精修与绑定骨骼,用于动画或人体工学评估"
+      ],
+      "tips": "MakeHuman 专攻「参数化人体」:拖滑块就能出一个人,省掉从零雕刻的苦工。导出后进 Blender 做骨骼绑定是标准工作流,两者配合使用。"
+    },
+    {
+      "id": "povray",
+      "name": "POV-Ray",
+      "category": "三维建模",
+      "free": "开源",
+      "opensource": true,
+      "license": "AGPL",
+      "url": "https://www.povray.org",
+      "repo": "https://github.com/POV-Ray/povray",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "经典光线追踪渲染器，纯文本场景描述，画质惊艳适合科研制图。",
+      "teach": {
+        "download": "官网下安装包；源码在 GitHub。",
+        "deploy": "写 .pov 场景文件→设相机/灯光/材质→命令行渲染。",
+        "use": "用 CSG 与过程材质描述场景→渲染高分图，常用于论文配图。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=POV-Ray%E6%B8%B2%E6%9F%93%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=POV-Ray+tutorial"
+        }
+      ],
+      "docs": "https://www.povray.org/documentation/",
+      "tips": "POV-Ray 是『写场景文件』做光线追踪,不是建模软件。先定义 camera/light/物体,render 出照片级静帧。学 SDL 语法需要点耐心。",
+      "steps": [
+        "装 POV-Ray,新建 .pov 场景文件",
+        "定义 camera 机位、light_source 灯光",
+        "用 sphere/box/cone 摆物体,贴材质",
+        "#include 标准包含文件取现成模型",
+        "命令行或 GUI 渲染出图",
+        "调光照/反射迭代质感"
+      ],
+      "linkStatus": [
+        {
+          "url": "https://www.povray.org",
+          "state": "blocked",
+          "code": 403,
+          "checkedAt": "2026-10-28",
+          "note": "实测 HTTP 403（反爬/区域限制，不能据此判定死链）"
+        }
+      ]
+    },
+    {
+      "id": "openfoam",
+      "name": "OpenFOAM",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://www.openfoam.com",
+      "repo": "https://github.com/OpenFOAM/OpenFOAM",
+      "os": [
+        "Linux",
+        "Windows(WSL)",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "工业级计算流体力学（CFD），求解器齐全，科研与工程常用。",
+      "teach": {
+        "download": "OpenFOAM.com 下官方版，或 OpenFOAM.org 社区版；Windows 用 WSL/容器。",
+        "deploy": "Linux 解压后 source etc/bashrc 配置环境；建议跟着官方 tutorials 走。",
+        "use": "复制 cavity 算例→改 0/ 边界与 constant/ 参数→blockMesh→icoFoam→用 ParaView 看结果。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=OpenFOAM%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=OpenFOAM+tutorial+beginner"
+        }
+      ],
+      "docs": "https://doc.openfoam.com/",
+      "steps": [
+        "OpenFOAM.com 下官方版(Windows 走 WSL / 容器),或装 OpenFOAM.org 社区版",
+        "work 目录执行 foamNewCase 新建,或直接复制 tutorials/incompressible/icoFoam/cavity 算例",
+        "改 0/ 里的 U 与 p 边界条件、constant/ 里的粘度与网格尺寸",
+        "blockMesh 生成网格,再用 checkMesh 检查网格质量",
+        "运行 icoFoam(或对应求解器)求解,paraFoam 启动 ParaView 看流场",
+        "后处理用 postProcess 或 functionObject 提取需要的数据"
+      ],
+      "tips": "OpenFOAM 是命令行 CFD,精髓是「复制现成算例改参数」,千万别从零手搓。Windows 用户必须走 WSL2,原生环境跑不起来,这是新手第一个大坑。",
+      "linkStatus": [
+        {
+          "url": "https://github.com/OpenFOAM/OpenFOAM",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "calculix",
+      "name": "CalculiX",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "http://www.calculix.de",
+      "repo": "https://github.com/calculix-cae/CalculiX",
+      "os": [
+        "Windows",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "有限元分析（FEA）套件，结构力学 / 热分析，可替代部分商业求解器。",
+      "teach": {
+        "download": "官网下 Windows 版压缩包，或 Linux 用包管理器 / 源码编译。",
+        "deploy": "Windows 自带可运行环境；常用前处理 Prepomax（图形界面）搭配。",
+        "use": "用 Prepomax 建几何+网格+约束→生成 .inp→CalculiX 求解→看应力云图。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=CalculiX%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=CalculiX+tutorial"
+        }
+      ],
+      "docs": "http://www.calculix.de/",
+      "tips": "CalculiX 免费替代 Abaqus,前处理用 CGX 画网格,求解器 CCX 跑 .inp。语法学 Abaqus 的 INP 格式,资料多。",
+      "steps": [
+        "装 CalculiX(CGX+CCX)",
+        "CGX 画几何并生成网格 .inp",
+        "写 INP:节点/单元/材料/边界/步",
+        "ccx 求解生成 .frd 结果",
+        "CGX 打开 .frd 看应力/位移云图",
+        "对照 Abaqus INP 教程迁移"
+      ],
+      "linkStatus": [
+        {
+          "url": "https://github.com/calculix-cae/CalculiX",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "code_aster",
+      "name": "Code_Aster",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://code-aster.org",
+      "repo": "https://github.com/codeaster/pkg",
+      "os": [
+        "Linux",
+        "Windows"
+      ],
+      "logo": null,
+      "desc": "法国电力开发的结构力学有限元求解器，非线性 / 多物理场强。",
+      "teach": {
+        "download": "官网下载 Salomé-Meca 集成包（含前后处理），最省心。",
+        "deploy": "Salomé-Meca 一键安装；纯求解器需在 Linux 编译。",
+        "use": "Salomé 建几何与网格→Aster 写命令文件→提交计算→后处理看结果。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Code_Aster%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Code_Aster+tutorial"
+        }
+      ],
+      "docs": "https://code-aster.org/V2/spam/doc/",
+      "tips": "Code_Aster 是工业级有限元,靠命令文件(.comm)+ 网格(.med)驱动,没有图形前处理。学习曲线陡,先用官方 Salome+Aster 案例改。",
+      "steps": [
+        "装 Code_Aster + Salome 前处理",
+        "Salome 建几何→网格→导出 .med",
+        "写 .comm 命令文件:定义材料/边界/载荷",
+        "用 ASTK 或命令行跑求解",
+        "后处理读 .rmed 看位移/应力云图",
+        "从官方用例改,别从零写"
+      ],
+      "linkStatus": [
+        {
+          "url": "https://github.com/codeaster/pkg",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "elmer",
+      "name": "Elmer FEM",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://www.elmerfem.org",
+      "repo": "https://github.com/ElmerCSC/elmerfem",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "多物理场有限元软件，热 / 流 / 电磁 / 结构耦合分析。",
+      "teach": {
+        "download": "官网下载安装包（Windows 有现成版），或源码编译。",
+        "deploy": "用 ElmerGUI 上手最方便；复杂算例可用 ElmerSolver 命令行。",
+        "use": "ElmerGUI 建网格→设方程与边界→求解→用 ParaView / 自带后处理看场。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Elmer%20FEM%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Elmer+FEM+tutorial"
+        }
+      ],
+      "docs": "https://www.elmerfem.org/",
+      "steps": [
+        "官网下载 Windows 现成安装包,或自行源码编译",
+        "打开 ElmerGUI,导入或新建几何(支持 STEP 等格式)",
+        "设好网格尺寸并生成有限元网格",
+        "Model → Equation 里挂上物理方程(热 / 流 / 电磁 / 结构)",
+        "给边界和体赋材料属性与边界条件,Set 后求解",
+        "用 ParaView 或自带后处理看结果云图"
+      ],
+      "tips": "Elmer 的强项是「多物理场耦合」,比如热-结构、流-固耦合。做耦合分析时,在 Equation 里挂多个方程让它们共享同一套网格就行,不用来回倒数据。",
+      "linkStatus": [
+        {
+          "url": "https://www.elmerfem.org",
+          "state": "blocked",
+          "code": 403,
+          "checkedAt": "2026-10-28",
+          "note": "实测 HTTP 403（反爬/区域限制，不能据此判定死链）"
+        }
+      ]
+    },
+    {
+      "id": "gmsh",
+      "name": "Gmsh",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://gmsh.info",
+      "repo": "https://github.com/geuzgmsh/gmsh",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "三维有限元网格生成器，也是几何建模与后处理工具，常配合求解器。",
+      "teach": {
+        "download": "官网 Download 下各系统安装包，或包管理器安装。",
+        "deploy": "自带 GUI，也支持脚本（.geo）批处理生成网格。",
+        "use": "建点线面体→设网格尺寸→生成 2D/3D 网格→导出 MSH 给求解器。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Gmsh%E7%BD%91%E6%A0%BC%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Gmsh+tutorial"
+        }
+      ],
+      "docs": "https://gmsh.info/doc/texinfo/gmsh.html",
+      "steps": [
+        "官网下载各系统安装包,或用 apt / brew 安装",
+        "新建 .geo 文件,或直接用几何菜单建点、线、面、体",
+        "用 Extrude(拉伸)或布尔运算生成三维实体几何",
+        "设全局与局部网格尺寸,应力集中处适当加密",
+        "Mesh → 2D / 3D 生成网格,检查网格质量指标",
+        "导出 .msh(MSH 格式)交给 OpenFOAM / Elmer / CalculiX 等求解器"
+      ],
+      "tips": "Gmsh 是「专职网格工」:通常先在它或 Salome 里建几何划网格,再喂给求解器算。用 .geo 脚本可参数化批量出网格,做参数化研究时特别省事。",
+      "linkStatus": [
+        {
+          "url": "https://gmsh.info",
+          "state": "dead",
+          "code": "ERR",
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        },
+        {
+          "url": "https://github.com/geuzgmsh/gmsh",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "freefem",
+      "name": "FreeFEM",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "LGPL",
+      "url": "https://freefem.org",
+      "repo": "https://github.com/FreeFem/FreeFEM",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "偏微分方程有限元求解器，用脚本定义弱形式，科研极灵活。",
+      "teach": {
+        "download": "官网下安装包或源码编译；有 Windows 现成版。",
+        "deploy": "写 .edp 脚本定义网格/方程/边界；IDE 高亮。",
+        "use": "freefem 跑脚本→解 PDE→输出vtk用 ParaView 看；适合定制方程。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=FreeFEM%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=FreeFEM+tutorial"
+        }
+      ],
+      "docs": "https://doc.freefem.org/",
+      "steps": [
+        "官网下载 Windows 安装包,或源码编译(Linux / macOS)",
+        "新建 .edp 脚本,用 mesh 语法定义几何与边界",
+        "用弱形式(fespace + solve)把要解的偏微分方程写出来",
+        "运行脚本求解,用 plot 直接看结果",
+        "要精细后处理就导出 vtk 到 ParaView 里看",
+        "改参数做参数扫描或收敛性分析"
+      ],
+      "tips": "FreeFEM 的精髓是「用脚本写弱形式」:方程怎么推就怎么写,做科研定制 PDE 极其灵活。新手别硬啃手册,先跑自带 examples,找最接近的改。",
+      "linkStatus": [
+        {
+          "url": "https://github.com/FreeFem/FreeFEM",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "su2",
+      "name": "SU2",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "LGPL-2.1",
+      "url": "https://su2code.github.io",
+      "repo": "https://github.com/su2code/SU2",
+      "os": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "logo": null,
+      "desc": "开源 CFD 与多物理场求解器，面向气动优化，学术与工业兼顾。",
+      "teach": {
+        "download": "GitHub Releases 下预编译包，或源码 CMake 编译。",
+        "deploy": "配置 MPI 可并行；跟着 quickstart 算例走。",
+        "use": "准备网格与 .cfg→SU2_CFD 求解→SU2_SOL 后处理看流场。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=SU2%20CFD%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=SU2+code+tutorial"
+        }
+      ],
+      "docs": "https://su2code.github.io/docs/",
+      "steps": [
+        "GitHub Releases 下预编译包,或用 CMake 源码编译(可选开 MPI)",
+        "准备网格(mesh.su2 或 CGNS),放进算例目录",
+        "写配置文件 *.cfg:设求解器类型、来流条件、迭代步数",
+        "运行 SU2_CFD config.cfg 求解流场",
+        "用 SU2_SOL 导出解数据,在 ParaView 里看压力、马赫数云图",
+        "做外形优化可跑 SU2_DEF / SU2_OPT 系列做气动优化"
+      ],
+      "tips": "SU2 面向气动设计与优化,配置文件 .cfg 是核心,先照着官方 tutorial 改最省力。它是少数自带伴随优化能力的开源 CFD,做翼型优化的人冲这个来。"
+    },
+    {
+      "id": "paraview",
+      "name": "ParaView",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "BSD",
+      "url": "https://www.paraview.org",
+      "repo": "https://github.com/Kitware/ParaView",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "科学可视化后处理标配，看 CFD/FEM 结果云图、流线、切片。",
+      "teach": {
+        "download": "官网 Download 装各系统版；科研集群常用并行版。",
+        "deploy": "打开 VTK/VTU/EnSight 等结果文件；可录屏做动画。",
+        "use": "加载求解结果→调色标/切片/流线→导出图片或动画用于论文。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=ParaView%E5%90%8E%E5%A4%84%E7%90%86%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=ParaView+tutorial"
+        }
+      ],
+      "docs": "https://docs.paraview.org/",
+      "tips": "ParaView 专看大规模科学数据(VTK/CSV/Exodus)。管道(Pipeline)思维:读入→滤镜→渲染。大数据用『分块』和 Extract 减负。",
+      "steps": [
+        "打开,File→Open 读 VTK/CSV/Exodus",
+        "Pipeline 加 Filter(剪裁/切片/等值面)",
+        "配色用色标,设数据范围",
+        "动画用 Time 轴,录屏导出",
+        "字体/视角调好,File→Save Screenshot",
+        "大数据用 Parallel 版分布式"
+      ]
+    },
+    {
+      "id": "salome",
+      "name": "Salome",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "LGPL",
+      "url": "https://www.salome-platform.org",
+      "repo": "https://github.com/salome-platform/SALOME",
+      "os": [
+        "Linux",
+        "Windows"
+      ],
+      "logo": null,
+      "desc": "开源前/后处理平台，几何建模 + 网格 + 数据后处理一体化。",
+      "teach": {
+        "download": "官网下 Salome 或 Salomé-Meca 集成包。",
+        "deploy": "GUI 模块化管理；可对接 Code_Aster/CalculiX。",
+        "use": "GEOM 建几何→SMESH 网格→导出给求解器或后处理。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Salome%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Salome+platform+tutorial"
+        }
+      ],
+      "docs": "https://docs.salome-platform.org/",
+      "steps": [
+        "官网下载 Salome 或 Salomé-Meca 集成包(Linux / Windows)",
+        "打开后进 GEOM 模块,建几何或导入 STEP / IGES",
+        "用布尔、倒角、抽壳等操作修形,得到分析用实体",
+        "切到 SMESH 模块,设网格算法与尺寸,生成体网格",
+        "导出网格给 Code_Aster / OpenFOAM 等求解器",
+        "或用 PARAVIS 模块做结果后处理与可视化"
+      ],
+      "tips": "Salome 是「几何 + 网格」一体化平台,常与 Code_Aster 配对做开源结构分析。几何和网格都在同一个环境里完成,不用来回倒格式,这点比 Gmsh 单干省心。",
+      "linkStatus": [
+        {
+          "url": "https://github.com/salome-platform/SALOME",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "mfem",
+      "name": "MFEM",
+      "category": "仿真CAE",
+      "free": "开源",
+      "opensource": true,
+      "license": "BSD",
+      "url": "https://mfem.org",
+      "repo": "https://github.com/mfem/mfem",
+      "os": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "logo": null,
+      "desc": "轻量高性能有限元库，做大规模并行 FEM 研发与教学。",
+      "teach": {
+        "download": "GitHub 克隆源码，CMake 编译（需 MPI 可选）。",
+        "deploy": "接 HYPRE/PETSc 等可解大型稀疏系统；跑 examples。",
+        "use": "改 examples 里的网格与双线性形式→求解→输出 vtk 看结果。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=MFEM%20%E6%9C%89%E9%99%90%E5%85%83%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=MFEM+tutorial"
+        }
+      ],
+      "docs": "https://mfem.org/documentation/",
+      "steps": [
+        "git clone MFEM 源码,用 CMake 配置后编译(可选开 MPI 并行)",
+        "进 examples/ 目录,挑一个最接近的示例(如 ex1 泊松方程)",
+        "改 mesh 文件与双线性形式定义,匹配自己要解的方程",
+        "make 编译并运行,输出 vtk 结果",
+        "用 GLVis 或 ParaView 看解的云图",
+        "要大规模计算就开并行,用 mpirun 跑多进程"
+      ],
+      "tips": "MFEM 是「库」不是点开就用的软件,面向会写 C++ 的人。它的亮点是高阶有限元与大规模并行,做算法研发和教学演示很强,纯应用场景选 Elmer 更省事。"
+    },
+    {
+      "id": "kicad",
+      "name": "KiCad",
+      "category": "电子EDA",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://www.kicad.org",
+      "repo": "https://github.com/KiCad/kicad-source-mirror",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/kicad.svg",
+      "desc": "原理图 + PCB + 3D 视图 + SPICE 仿真的完整开源 EDA 工具链。",
+      "teach": {
+        "download": "官网 Download 装对应系统版（v8/v9 稳定），或用包管理器。",
+        "deploy": "首次启动配置语言与默认库路径；可导入厂商封装库。",
+        "use": "Eeschema 画原理图→标注→Pcbnew 布局布线→3D 预览→导出 Gerber 打样。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=KiCad%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=KiCad+tutorial+beginner"
+        }
+      ],
+      "docs": "https://docs.kicad.org/",
+      "tips": "KiCad 流程固定:原理图→标注→PCB→布线→3D→Gerber。新人卡点常在封装(Footprint)和差分对。线宽按电流查表,别全用 0.25mm。",
+      "steps": [
+        "下载 v8/v9 稳定版;首次设置默认单位和库路径",
+        "Eeschema 放符号画原理图,连线加电源/地",
+        "工具栏标注自动编号,ERC 查电气错误",
+        "切 Pcbnew 关联封装,先布局再布线",
+        "设计规则设线宽/间距,铺铜接地,3D 预览检查",
+        "File→Fabrication 导出 Gerber+Drill 给打样厂"
+      ]
+    },
+    {
+      "id": "ngspice",
+      "name": "Ngspice",
+      "category": "电子EDA",
+      "free": "开源",
+      "opensource": true,
+      "license": "BSD-3",
+      "url": "http://ngspice.sourceforge.net",
+      "repo": "https://github.com/ngspice/ngspice",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "开源 SPICE 电路仿真器，做模拟 / 混合信号电路分析。",
+      "teach": {
+        "download": "SourceForge 下 Windows 安装包，或 Linux 包管理器装。",
+        "deploy": "命令行运行；也可在 KiCad 内作为 SPICE 后端调用。",
+        "use": "写 .cir 网表（电源/电阻/晶体管）→ngspice 运行→看波形与节点电压。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=ngspice%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=ngspice+tutorial"
+        }
+      ],
+      "docs": "http://ngspice.sourceforge.net/docs.html",
+      "tips": "Ngspice 是 SPICE 引擎,既能命令行也能配合 KiCad/EasyEDA。网表 .cir 里写电路,.control 块定义仿真类型。",
+      "steps": [
+        "写 .cir 网表:元件+连接+源",
+        ".control 里 ac/de/tran 设仿真",
+        "ngspice 读网表运行",
+        "print/plot 看节点电压电流",
+        "和 KiCad 联动做 PCB 后仿真",
+        "保存波形截图交报告"
+      ],
+      "linkStatus": [
+        {
+          "url": "http://ngspice.sourceforge.net",
+          "state": "blocked",
+          "code": 403,
+          "checkedAt": "2026-10-28",
+          "note": "实测 HTTP 403（反爬/区域限制，不能据此判定死链）"
+        }
+      ]
+    },
+    {
+      "id": "easyeda",
+      "name": "EasyEDA",
+      "category": "电子EDA",
+      "free": "免费",
+      "opensource": false,
+      "license": "免费（浏览器）",
+      "url": "https://easyeda.com",
+      "repo": null,
+      "os": [
+        "浏览器"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/easyeda.svg",
+      "desc": "在线 EDA，画原理图 / PCB / 仿真一体化，可直接下单打样。",
+      "teach": {
+        "download": "浏览器打开 easyeda.com，免费账号即用，无需安装。",
+        "deploy": "国内访问顺畅；项目存于云端，可一键导入立创商城元件。",
+        "use": "画原理图→转 PCB 布局布线→仿真→直接生成下单文件给嘉立创。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=EasyEDA%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=EasyEDA+tutorial"
+        }
+      ],
+      "docs": "https://docs.easyeda.com/",
+      "tips": "EasyEDA 云端画板,免安装、元件库全、可直接下单打样。新手从别人开源工程『克隆』改最快。仿真用内置 Ngspice。",
+      "steps": [
+        "浏览器开 EasyEDA,登录",
+        "搜元件库放置,画原理图",
+        "转 PCB 自动布局,手动布线铺铜",
+        "内置仿真跑 Ngspice 看波形",
+        "一键下单 PCB 打样",
+        "导出 Gerber 或共享工程链接"
+      ]
+    },
+    {
+      "id": "circuitmaker",
+      "name": "CircuitMaker",
+      "category": "电子EDA",
+      "free": "免费",
+      "opensource": false,
+      "license": "免费（非商用）",
+      "url": "https://www.circuitmaker.com",
+      "repo": null,
+      "os": [
+        "Windows"
+      ],
+      "logo": null,
+      "desc": "Altium 出的免费 PCB 设计软件，界面接近专业 Altium，限非商用。",
+      "teach": {
+        "download": "官网注册免费账号后下载安装（仅 Windows）。",
+        "deploy": "需联网登录；项目云端协作，商用须转 Altium 订阅。",
+        "use": "建工程→画原理图→PCB 布线→3D 查看→导出制造文件。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=CircuitMaker%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=CircuitMaker+tutorial"
+        }
+      ],
+      "docs": "https://www.altium.com/circuitmaker/learn",
+      "steps": [
+        "官网注册免费账号后下载安装(仅 Windows,限非商用)",
+        "新建 Project,建原理图页并放置元件库符号",
+        "连线完成原理图,跑 ERC 电气规则检查",
+        "转到 PCB:布局元件、设板框与布线规则",
+        "自动或手动布线,跑 DRC 检查,用 3D 视图看实物效果",
+        "导出 Gerber + 钻孔文件交给板厂打样"
+      ],
+      "tips": "CircuitMaker 界面几乎就是免费版 Altium,适合从学生过渡到专业工具。注意它默认把项目公开在云端社区,做商业项目要慎用,这是它的硬伤。"
+    },
+    {
+      "id": "fritzing",
+      "name": "Fritzing",
+      "category": "电子EDA",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://fritzing.org",
+      "repo": "https://github.com/fritzing/fritzing-app",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "面向教育与创客的电路设计，面包板视图直观，适合教学与文档。",
+      "teach": {
+        "download": "官网下安装包（建议捐助后下载，但源码免费）。",
+        "deploy": "打开即用；从面包板视图拖元件最直观。",
+        "use": "面包板/原理图/PCB 三视图切换→导出 Gerber 或文档图。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Fritzing%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Fritzing+tutorial"
+        }
+      ],
+      "docs": "https://fritzing.org/learning/",
+      "tips": "Fritzing 三大视图:面包板(接线图,新手最友好)、原理图、PCB。做原型先画面包板视图,想打样再切 PCB 视图导出 Gerber。",
+      "steps": [
+        "新建,从部件库拖 Arduino/面包板/元件到画布",
+        "面包板视图按引脚连线,颜色区分信号",
+        "切原理图视图自动生成,整理布局",
+        "切 PCB 视图自动布铜,手动优化走线",
+        "Design Rules 检查,导出 Gerber 打样",
+        "导出共享文件 .fzz 给同学"
+      ],
+      "linkStatus": [
+        {
+          "url": "https://fritzing.org",
+          "state": "blocked",
+          "code": 403,
+          "checkedAt": "2026-10-28",
+          "note": "实测 HTTP 403（反爬/区域限制，不能据此判定死链）"
+        }
+      ]
+    },
+    {
+      "id": "qucs",
+      "name": "Qucs",
+      "category": "电子EDA",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL",
+      "url": "https://www.qucs.org",
+      "repo": "https://github.com/Qucs/qucs",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "电路仿真套件，原理图 + 射频/微波/噪声仿真，学术常用。",
+      "teach": {
+        "download": "官网下安装包或源码编译；有 Windows 版。",
+        "deploy": "QucsStudio 为增强版（Windows）；开源版跨平台。",
+        "use": "画原理图→设仿真类型→运行→看 S 参数/波特图等。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Qucs%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Qucs+tutorial"
+        }
+      ],
+      "docs": "http://qucs.sourceforge.net/",
+      "tips": "Qucs 画原理图做电路仿真(S 参数/直流/交流)。新手先跑 DC 仿真看工作点,再做 AC 扫频。元件参数按真实选型填。",
+      "steps": [
+        "打开,原理图放元件连线",
+        "放 仿真组件:DC/AC/Transient",
+        "设激励源与地,检查未连接脚",
+        "Simulation→计算,结果窗看图",
+        "S 参数做史密斯圆图匹配",
+        "导出网表或截图贴报告"
+      ],
+      "linkStatus": [
+        {
+          "url": "https://www.qucs.org",
+          "state": "dead",
+          "code": "ERR",
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "ltspice",
+      "name": "LTspice",
+      "category": "电子EDA",
+      "free": "免费",
+      "opensource": false,
+      "license": "免费（Analog Devices）",
+      "url": "https://www.analog.com/ltspice",
+      "repo": null,
+      "os": [
+        "Windows",
+        "macOS"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/ltspice.svg",
+      "desc": "ADI 出品的高速 SPICE 仿真器，开关电源 / 模拟电路分析神器。",
+      "teach": {
+        "download": "ADI 官网下安装包，免费注册即可。",
+        "deploy": "安装即用；自带大量 ADI 器件模型。",
+        "use": "画原理图→.tran/.ac 仿真→看波形，适合电源与运放电路。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=LTspice%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=LTspice+tutorial"
+        }
+      ],
+      "docs": "https://www.analog.com/en/resources/tools-software/simulators/ltspice",
+      "steps": [
+        "ADI 官网下载 LTspice 安装包(免费,注册即可)",
+        "新建原理图,从元件库拖电阻、电容、电源、MOS 管",
+        "按 F2 选元件、F3 连线,记得给电路加接地符号",
+        "加仿真指令:.tran 瞬态 / .ac 交流 / .dc 直流扫描",
+        "点 Run 跑仿真,在波形窗口看电压电流曲线",
+        "用 .meas 自动测量,或用 .step 做参数扫描"
+      ],
+      "tips": "LTspice 是电源与模拟电路的免费神器,开关电源仿真几乎人人用它。学它先掌握两条指令就够了:.tran 看时域波形,.ac 看频率响应。"
+    },
+    {
+      "id": "horizon",
+      "name": "Horizon EDA",
+      "category": "电子EDA",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://horizon-eda.org",
+      "repo": "https://github.com/horizon-eda/horizon",
+      "os": [
+        "Linux",
+        "Windows",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "开源 PCB 设计工具，重规则驱动与可用性，适合复杂板卡。",
+      "teach": {
+        "download": "官网下 AppImage/安装包，或源码编译。",
+        "deploy": "以工程为单位管理；规则检查（DRC）严格。",
+        "use": "建工程→原理图→布局布线→DRC→导出制造文件。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Horizon%20EDA%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Horizon+EDA+tutorial"
+        }
+      ],
+      "docs": "https://www.horizon-simulation.fr/",
+      "steps": [
+        "官网下 AppImage(Linux)或对应安装包,也可源码编译",
+        "新建 Project,选好目标厂商的元件库(pool)",
+        "画原理图,用 Net 与 Bus 连接,标注元件参数",
+        "校验网络表并生成 PCB,导入板框",
+        "布局布线,开启交互式 DRC 实时排查违规",
+        "导出 Gerber 与 BOM 交付制造"
+      ],
+      "tips": "Horizon EDA 的杀手锏是「规则驱动」:把设计规则写清楚,布线时它会实时拦住违规。元件池(pool)这个概念需要先理解,懂了就顺手了。"
+    },
+    {
+      "id": "octave",
+      "name": "GNU Octave",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://octave.org",
+      "repo": "https://github.com/gnu-octave/octave",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/octave.svg",
+      "desc": "与 MATLAB 语法高度兼容的开源数值计算环境，工科计算首选替代。",
+      "teach": {
+        "download": "官网 Download 装各系统版，或用包管理器 / conda 装。",
+        "deploy": "自带 GUI（Qt）；多数 .m 脚本可与 MATLAB 互通。",
+        "use": "命令行 / 编辑器写脚本→矩阵运算 / 绘图→存 .m 文件复用。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=GNU%20Octave%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=GNU+Octave+tutorial"
+        }
+      ],
+      "docs": "https://docs.octave.org/",
+      "tips": "Octave 语法≈MATLAB,旧 .m 文件大多直接跑。画图用 plot,矩阵运算别写循环。包管理 pkg 装额外工具箱。",
+      "steps": [
+        "官网下对应系统版,或 conda/pip 装",
+        "命令行或编辑器写 .m 脚本,A=rand(3) 试矩阵",
+        "用 plot()/surf() 画图,print 导出图",
+        "pkg install 装信号/控制工具箱再 load",
+        "写函数文件 function y=f(x),path 加路径复用",
+        "save/load .mat 存工作区"
+      ]
+    },
+    {
+      "id": "scilab",
+      "name": "Scilab",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "CeCILL",
+      "url": "https://www.scilab.org",
+      "repo": "https://github.com/scilaborg/scilab",
+      "os": [
+        "Windows",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/scilab.svg",
+      "desc": "开源科学计算平台，数值优化、信号处理、Xcos 建模仿真。",
+      "teach": {
+        "download": "官网 Download 下安装包（Windows/Linux）。",
+        "deploy": "安装即用；Xcos 提供图形化仿真，类似 Simulink。",
+        "use": "控制台算矩阵 / 画图→写 .sce 脚本→Xcos 搭框图做动态仿真。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Scilab%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Scilab+tutorial"
+        }
+      ],
+      "docs": "https://help.scilab.org/",
+      "tips": "Scilab 用 Xcos 做框图仿真,类似 Simulink。数值计算用 .sce 脚本。注意它和 MATLAB 函数名有差异,迁移时需查表。",
+      "steps": [
+        "装 Scilab,打开编辑器写 .sce 脚本",
+        "用矩阵/ode 求解微分方程,plot 出图",
+        "ATOMS 管理器装额外模块",
+        "从 Applications 开 Xcos 拖模块搭仿真",
+        "仿真设步长运行,示波器看结果",
+        "save 工程,exec 重跑脚本"
+      ]
+    },
+    {
+      "id": "sagemath",
+      "name": "SageMath",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://www.sagemath.org",
+      "repo": "https://github.com/sagemath/sage",
+      "os": [
+        "Linux",
+        "macOS",
+        "Windows(WSL)"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/sagemath.svg",
+      "desc": "开源数学系统，整合数论 / 代数 / 微积分，符号计算强。",
+      "teach": {
+        "download": "官网下载镜像 / 安装包，或用在线 CoCalc 免装。",
+        "deploy": "本地安装较重；新手建议先用 CoCalc 在线版体验。",
+        "use": "在 Notebook 写符号/数值运算→绘图→导出，覆盖大学数学课程。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=SageMath%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=SageMath+tutorial"
+        }
+      ],
+      "docs": "https://doc.sagemath.org/",
+      "steps": [
+        "官网下载安装包,或直接用在线 CoCalc 免安装",
+        "打开 Jupyter Notebook 或 Sage 命令行",
+        "用 var(x) 定义符号变量,做求导、积分、解方程",
+        "用 plot() / implicit_plot() 画函数图像",
+        "做线性代数、数论、群论等计算(支持精确有理数运算)",
+        "导出 LaTeX 公式与图表,直接放进实验报告"
+      ],
+      "tips": "SageMath 把几十个开源数学库整合成一套统一语法,大学数学课程几乎全覆盖。不想装就直接用在线 CoCalc,浏览器打开即用,特别适合临时算题。"
+    },
+    {
+      "id": "geogebra",
+      "name": "GeoGebra",
+      "category": "数学计算",
+      "free": "免费",
+      "opensource": false,
+      "license": "免费 / 开源（部分）",
+      "url": "https://www.geogebra.org",
+      "repo": null,
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "浏览器"
+      ],
+      "logo": null,
+      "desc": "动态几何 / 代数 / 微积分可视化，中小学到大学数学教学神器。",
+      "teach": {
+        "download": "官网下载桌面版，或直接用浏览器版，免费账号同步。",
+        "deploy": "课堂用网页版零部署；可建班级与资源库。",
+        "use": "输入函数即时画图→拖动几何对象观察变化→导出课件 / 动画。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=GeoGebra%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=GeoGebra+tutorial"
+        }
+      ],
+      "docs": "https://wiki.geogebra.org/",
+      "tips": "GeoGebra 几何/代数/3D 一体,教学神器。输入栏直接打函数即时出图,拖动滑杆做动态演示。课堂用 Classroom 版可发作业。",
+      "steps": [
+        "打开,输入栏打 f(x)=x^2 即时出曲线",
+        "用 点/线/圆 工具画几何,拖动看关系",
+        "代数区与绘图区联动,改参数即时变",
+        "滑杆 slider 做动态演示",
+        "3D 计算器画曲面/立体",
+        "文件→导出 SVG/PNG 贴课件"
+      ]
+    },
+    {
+      "id": "python-math",
+      "name": "Python 科学栈",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "PSF/BSD",
+      "url": "https://www.python.org",
+      "repo": "https://github.com/python/cpython",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/python.svg",
+      "desc": "Python + NumPy/SciPy/Matplotlib/SymPy，免费可复现的科学计算栈。",
+      "teach": {
+        "download": "python.org 下安装包（勾 Add to PATH）；或用 Anaconda 一体装。",
+        "deploy": "pip install numpy scipy matplotlib sympy；推荐 Jupyter 写笔记。",
+        "use": "写脚本做矩阵运算 / 拟合 / 绘图 / 符号推导，工科计算与数据处理通吃。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Python%20NumPy%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Python+NumPy+SciPy+tutorial"
+        }
+      ],
+      "docs": "https://www.python.org/doc/",
+      "tips": "这里的『Python 数学』指用 NumPy/SciPy/SymPy 做科学计算。NumPy 数组代替列表,向量化代替循环,速度差百倍。",
+      "steps": [
+        "pip install numpy scipy sympy matplotlib",
+        "import numpy as np 建数组做线性代数",
+        "scipy 解微分方程/优化/插值",
+        "matplotlib 画图,seaborn 美化",
+        "sympy 做符号推导,latex 导出",
+        "Jupyter 里迭代做实验笔记"
+      ]
+    },
+    {
+      "id": "maxima",
+      "name": "Maxima",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://maxima.sourceforge.io",
+      "repo": "https://github.com/robert-dodier/maxima",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": null,
+      "desc": "符号计算系统（CAS），做微积分 / 方程 / 矩阵代数推导。",
+      "teach": {
+        "download": "SourceForge 下安装包；wxMaxima 为友好前端。",
+        "deploy": "装 wxMaxima 图形界面更易上手；命令行也可。",
+        "use": "输入 diff()/integrate()/solve() 做符号推导→导出结果用于报告。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Maxima%E7%AC%A6%E5%8F%B7%E8%AE%A1%E7%AE%97%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Maxima+CAS+tutorial"
+        }
+      ],
+      "docs": "https://maxima.sourceforge.io/docs.html",
+      "tips": "Maxima 是老牌计算机代数系统,交互式 REPL。wxMaxima 是它的图形前端,公式渲染好看,教学首选。",
+      "steps": [
+        "装 Maxima + wxMaxima 前端",
+        "REPL 里输入 diff(...)/integrate(...) 直接算",
+        "用 solve() 解方程,tex() 出 LaTeX",
+        "load(函数包) 扩展功能",
+        "wxMaxima 里 %% 细胞块分段运行",
+        "save 会话或导出 .wxm 课件"
+      ],
+      "linkStatus": [
+        {
+          "url": "https://maxima.sourceforge.io",
+          "state": "blocked",
+          "code": 403,
+          "checkedAt": "2026-10-28",
+          "note": "实测 HTTP 403（反爬/区域限制，不能据此判定死链）"
+        },
+        {
+          "url": "https://github.com/robert-dodier/maxima",
+          "state": "dead",
+          "code": 404,
+          "checkedAt": "2026-10-28",
+          "note": "实测非 2xx，入口可能已迁移或下线，待人工确认"
+        }
+      ]
+    },
+    {
+      "id": "r-lang",
+      "name": "R 语言",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://www.r-project.org",
+      "repo": "https://github.com/wch/r-source",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/r.svg",
+      "desc": "统计计算与绘图语言，科研数据分析 / 实验可视化首选。",
+      "teach": {
+        "download": "CRAN 下安装包；配合 RStudio（免费）更好用。",
+        "deploy": "装 tidyverse/ggplot2 等包；设国内镜像加速。",
+        "use": "读数据→统计建模→ggplot2 出出版级图表，写报告一键生成。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=R%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=R+language+tutorial"
+        }
+      ],
+      "docs": "https://cran.r-project.org/manuals.html",
+      "tips": "R 核心是向量化,尽量避免 for 循环。数据清洗用 dplyr,画图用 ggplot2。RStudio 是标配 IDE,新手必备。",
+      "steps": [
+        "装 R + RStudio,设好 CRAN 镜像",
+        "read.csv/readxl 读数据进 data.frame",
+        "dplyr 管道 %>% 做筛选/分组/汇总",
+        "ggplot2 画图层图:ggplot+geom_point+theme",
+        "用 lm() 做回归,broom 整理结果",
+        "R Markdown 一键出报告/图"
+      ]
+    },
+    {
+      "id": "julia",
+      "name": "Julia",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "MIT",
+      "url": "https://julialang.org",
+      "repo": "https://github.com/JuliaLang/julia",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/julia.svg",
+      "desc": "高性能科学计算语言，语法像 Python、速度近 C，适合数值仿真。",
+      "teach": {
+        "download": "官网下安装包；JuliaPro/VS Code 插件可增强体验。",
+        "deploy": "Pkg.add() 装包；Jupyter 可接 Julia 内核。",
+        "use": "写数值/微分方程脚本→直接跑高性能计算，科研复现友好。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Julia%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Julia+language+tutorial"
+        }
+      ],
+      "docs": "https://docs.julialang.org/",
+      "tips": "Julia 第一次跑函数会『编译预热』偏慢,后续飞快,别误判卡死。矩阵运算原生快,科学计算替代 MATLAB 的好选择。",
+      "steps": [
+        "下载 Julia,VS Code 装 Julia 插件",
+        "REPL 里写 x=[1,2,3]; 试向量运算",
+        "用 Plots 画图,using 加载包",
+        "写函数 function f(x) ... end",
+        "包管理 ]add 装包, ]instantiate 复环境",
+        "Jupyter 里用 IJulia 写笔记"
+      ]
+    },
+    {
+      "id": "sympy",
+      "name": "SymPy",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "BSD",
+      "url": "https://www.sympy.org",
+      "repo": "https://github.com/sympy/sympy",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/sympy.svg",
+      "desc": "Python 符号数学库，做公式推导、积分、线性代数、方程求解。",
+      "teach": {
+        "download": "pip install sympy 即可（需 Python）。",
+        "deploy": "在 Jupyter/脚本里 import sympy 使用。",
+        "use": "symbols() 定义符号→solve()/integrate() 推导→pretty() 输出美观公式。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=SymPy%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=SymPy+tutorial"
+        }
+      ],
+      "docs": "https://docs.sympy.org/",
+      "tips": "SymPy 是符号计算,解不定积分/方程/化简比数值库强。先在 Python 里 from sympy import *,用 symbols 声明符号变量。",
+      "steps": [
+        "pip install sympy,Python 里 import sympy as sp",
+        "sp.symbols('x y') 声明符号变量",
+        "sp.integrate/sp.diff 求积分求导,sp.solve 解方程",
+        "sp.simplify 化简单式,sp.factor 因式分解",
+        "sp.latex() 导出 LaTeX 贴报告",
+        "和 NumPy 配合做符号+数值混合"
+      ]
+    },
+    {
+      "id": "wxmaxima",
+      "name": "wxMaxima",
+      "category": "数学计算",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL",
+      "url": "https://wxmaxima-developers.github.io/wxmaxima/",
+      "repo": "https://github.com/wxMaxima-developers/wxmaxima",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "Maxima 的图形前端，菜单化操作符号计算，教学友好。",
+      "teach": {
+        "download": "官网下安装包（含 Maxima 内核）。",
+        "deploy": "打开即用；菜单点选命令，免记语法。",
+        "use": "菜单做求导/积分/解方程→导出 LaTeX/图片进实验报告。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=wxMaxima%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=wxMaxima+tutorial"
+        }
+      ],
+      "docs": "https://wxmaxima-developers.github.io/wxmaxima/help.html",
+      "steps": [
+        "官网下载 wxMaxima(安装包已内含 Maxima 内核)",
+        "新建文档,用菜单操作或直接敲命令做符号运算",
+        "用 diff / integrate / solve / limit 做微积分与解方程",
+        "定义函数与变量,做化简、展开、代入",
+        "用 plot2d / plot3d 画图,把公式导出成 LaTeX",
+        "整篇 Notebook 导出 PDF / HTML,当作业或报告交"
+      ],
+      "tips": "wxMaxima 是 Maxima 的图形前端,新手不用背命令也能用菜单点出来。写实验报告时用它导出 LaTeX 公式,比手打公式快十倍,这是它最实用的地方。"
+    },
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "category": "编程开发",
+      "free": "免费",
+      "opensource": true,
+      "license": "MIT（内核）",
+      "url": "https://code.visualstudio.com",
+      "repo": "https://github.com/microsoft/vscode",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": null,
+      "desc": "微软开源代码编辑器，插件生态极丰富，写代码 / 调试 / 远程开发。",
+      "teach": {
+        "download": "官网下载安装包，或用包管理器（brew/choco/apt）安装。",
+        "deploy": "装中文包 + Python / C++ / 嵌入式插件；登录同步配置。",
+        "use": "打开文件夹→装语言插件→终端跑代码→调试断点，工程化起点。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=VS%20Code%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=VS+Code+tutorial+beginner"
+        }
+      ],
+      "docs": "https://code.visualstudio.com/docs",
+      "tips": "VS Code 效率在插件和命令面板(Ctrl+Shift+P)。Python/C++ 装对应扩展即获智能补全。设置同步用微软账号,换机不丢配置。",
+      "steps": [
+        "官网下装,首次启动装中文包",
+        "扩展商店装 Python/C++/GitLens 等",
+        "Ctrl+Shift+P 唤起命令面板,模糊搜一切",
+        "集成终端直接跑代码,免切窗口",
+        "设置同步登录账号,配置云端备份",
+        "配置 tasks/launch.json 做一键调试"
+      ]
+    },
+    {
+      "id": "arduino",
+      "name": "Arduino IDE",
+      "category": "编程开发",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL/LGPL",
+      "url": "https://www.arduino.cc",
+      "repo": "https://github.com/arduino/arduino-ide",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/arduino.svg",
+      "desc": "开源嵌入式入门 IDE，连开发板写代码，硬件创客第一站。",
+      "teach": {
+        "download": "官网下载 IDE 2.x 安装包，或用 Web Editor 浏览器版。",
+        "deploy": "装 USB 驱动→选开发板型号与端口→装所需库（库管理器）。",
+        "use": "写 setup()/loop()→编译上传→看串口监视器，做传感器 / 控制实验。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Arduino%20IDE%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Arduino+IDE+tutorial"
+        }
+      ],
+      "docs": "https://docs.arduino.cc/",
+      "tips": "Arduino 入门三件套:选对板子+选对端口+装驱动。烧录前务必『编译』通过再上传。库管理(Library)装传感器驱动比手动复制稳。",
+      "steps": [
+        "官网下 IDE(或用 Web Editor),装 USB 驱动",
+        "工具→开发板选型号,端口选识别到的 COM",
+        "文件→示例跑 Blink 验证环境",
+        "用库管理器装传感器库(如 DHT/Adafruit)",
+        "写 setup()/loop(),接传感器读数据串口打印",
+        "编译(√)通过后上传(→)看串口监视器"
+      ]
+    },
+    {
+      "id": "platformio",
+      "name": "PlatformIO",
+      "category": "编程开发",
+      "free": "开源",
+      "opensource": true,
+      "license": "Apache-2.0",
+      "url": "https://platformio.org",
+      "repo": "https://github.com/platformio/platformio-core",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/platformio.svg",
+      "desc": "开源嵌入式开发生态，跨平台 / 跨芯片，工程化比 Arduino IDE 强。",
+      "teach": {
+        "download": "作为 VS Code 插件安装最方便（PlatformIO IDE 扩展）。",
+        "deploy": "装好后新建工程选开发板→自动拉取工具链与框架。",
+        "use": "写代码→pio run 编译→pio run -t upload 烧录→串口监视，支持 CI。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=PlatformIO%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=PlatformIO+tutorial"
+        }
+      ],
+      "docs": "https://docs.platformio.org/",
+      "tips": "PlatformIO 是 VS Code 上的嵌入式平台,跨芯片统一管理,比 Arduino IDE 专业。建项目选开发板,lib 装驱动,串口监视一键。",
+      "steps": [
+        "VS Code 装 PlatformIO 插件",
+        "新建项目选开发板(ESP32/STM32)",
+        "lib 管理器装传感器库",
+        "写 src/main.cpp,编译烧录一键",
+        "串口监视看日志,debug 配探针",
+        "platformio.ini 锁版本复现"
+      ]
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "category": "编程开发",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://git-scm.com",
+      "repo": "https://github.com/git/git",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/git.svg",
+      "desc": "版本控制事实标准，管理课设 / 毕设 / 工程项目代码必备。",
+      "teach": {
+        "download": "git-scm.com 下安装包；Windows 自带 Git Bash。",
+        "deploy": "配 user.name/email；装 VS Code 或 TortoiseGit 图形前端。",
+        "use": "clone→add→commit→push 管理版本；分支做实验不丢原稿。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Git%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Git+tutorial+beginner"
+        }
+      ],
+      "docs": "https://git-scm.com/doc",
+      "tips": "Git 先配 user.name/email 再提交。日常三连:add→commit→push。大文件别进仓库,用 .gitignore 或 LFS。冲突先 pull 再解。",
+      "steps": [
+        "git config --global user.name/email 设身份",
+        "git init 或 clone 拉仓库",
+        "改完 git add 暂存,git commit -m 提交",
+        "git status/diff 看改动,branch 开分支",
+        "git pull 拉远端,有冲突手动解",
+        "git push 推上去;远程协作走 PR"
+      ]
+    },
+    {
+      "id": "jupyter",
+      "name": "Jupyter",
+      "category": "编程开发",
+      "free": "开源",
+      "opensource": true,
+      "license": "BSD",
+      "url": "https://jupyter.org",
+      "repo": "https://github.com/jupyter/notebook",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/jupyter.svg",
+      "desc": "交互式笔记本，代码 + 公式 + 图 + 文字一体，实验报告与教学神器。",
+      "teach": {
+        "download": "pip install jupyterlab 或装 Anaconda（自带）。",
+        "deploy": "jupyter lab 启动本地服务→浏览器打开；可接 Python/R/Julia 内核。",
+        "use": "建 .ipynb→写代码块逐步运行→导出 PDF/HTML 当实验报告。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Jupyter%20Notebook%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Jupyter+notebook+tutorial"
+        }
+      ],
+      "docs": "https://docs.jupyter.org/",
+      "tips": "Jupyter 单元格分代码/Markdown,Shift+Enter 运行并下移。长计算加 %%time 看耗时。导出可含 .ipynb/.py/.html/.pdf。",
+      "steps": [
+        "pip install jupyterlab,终端 jupyter lab 起服务",
+        "新建 Notebook,代码格写 Python 跑",
+        "Markdown 格写说明,构成可复现报告",
+        "%matplotlib inline 内嵌画图",
+        "Kernel→Restart&Run-All 全跑一遍",
+        "File→Export 出 HTML/PDF 交作业"
+      ]
+    },
+    {
+      "id": "processing",
+      "name": "Processing",
+      "category": "编程开发",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-2.0",
+      "url": "https://processing.org",
+      "repo": "https://github.com/processing/processing",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/processingfoundation.svg",
+      "desc": "创意编程入门语言，画交互图形 / 数据可视化，零基础学编程友好。",
+      "teach": {
+        "download": "官网下 Processing IDE（含 Java 运行环境）。",
+        "deploy": "打开即用；可加库做音频/视觉/硬件。",
+        "use": "写 setup()/draw()→实时出图形→导出应用或嵌入网页（p5.js）。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=Processing%E7%BC%96%E7%A8%8B%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=Processing+tutorial"
+        }
+      ],
+      "docs": "https://processing.org/reference/",
+      "tips": "Processing 用简化 Java 做创意编程/可视化,setup()初始化、draw()循环。想做交互加 mouse/key 事件。教学与生成艺术首选。",
+      "steps": [
+        "下 Processing IDE,选语言(Java/p5)",
+        "setup() 里 size()/背景初始化",
+        "draw() 里写循环绘图代码",
+        "加 mousePressed/keyPressed 做交互",
+        "导出 Application 或存草图分享",
+        "进阶用 p5.js 搬网页"
+      ]
+    },
+    {
+      "id": "gcc",
+      "name": "GCC / MinGW",
+      "category": "编程开发",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://gcc.gnu.org",
+      "repo": "https://github.com/gcc-mirror/gcc",
+      "os": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/gnu.svg",
+      "desc": "GNU 编译器集合，C/C++/Fortran 工科编译基石，MinGW 给 Windows 用。",
+      "teach": {
+        "download": "Linux 自带；Windows 装 MSYS2/MinGW-w64 或 TDM-GCC。",
+        "deploy": "把 gcc 加入 PATH；写 hello.c 测试 `gcc hello.c`。",
+        "use": "gcc -O2 main.c -o app 编译工程；配合 Make/CMake 管理大型代码。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=GCC%20%E7%BC%96%E8%AF%91%E5%99%A8%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=GCC+compiler+tutorial"
+        }
+      ],
+      "docs": "https://gcc.gnu.org/onlinedocs/",
+      "steps": [
+        "Linux 自带;Windows 装 MSYS2 或 MinGW-w64,把 bin 目录加进 PATH",
+        "写一个 hello.c,命令行执行 gcc hello.c -o hello 编译",
+        "常用参数:-O2 开优化、-Wall 开全部警告、-g 带调试信息",
+        "多文件工程写 Makefile,或用 CMake 管理构建",
+        "用 gdb 调试程序,objdump / readelf 看汇编与符号",
+        "Fortran 用 gfortran、C++ 用 g++,流程完全一样"
+      ],
+      "tips": "这是工科生的编译基石:gcc 会了,g++ 和 gfortran 基本就会了。Windows 上强烈推荐 MSYS2,比单独装 MinGW 省心,还能用 pacman 顺手装各种库。"
+    },
+    {
+      "id": "drawio",
+      "name": "draw.io",
+      "category": "编程开发",
+      "free": "开源",
+      "opensource": true,
+      "license": "Apache-2.0",
+      "url": "https://www.drawio.com",
+      "repo": "https://github.com/jgraph/drawio",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux",
+        "浏览器"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/diagramsdotnet.svg",
+      "desc": "开源流程图 / 框图工具，画系统架构、实验流程、算法图零成本。",
+      "teach": {
+        "download": "浏览器打开 app.diagrams.net，或下桌面版，免费。",
+        "deploy": "可存本地/OneDrive/GitHub；离线桌面版免网络。",
+        "use": "拖图形→连箭头→导出 PNG/SVG/PDF，写文档与汇报直接贴。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=draw.io%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=draw.io+tutorial"
+        }
+      ],
+      "docs": "https://www.drawio.com/documents",
+      "tips": "draw.io(diagrams.net)画流程图/架构图/电路框图,纯网页免登。组件多,导出含 SVG/PNG/PDF,也能存 GitHub 实时协作。",
+      "steps": [
+        "开 app.diagrams.net,选空白/模板",
+        "左侧拖形状,连线自动吸附",
+        "用 图层/容器 组织复杂图",
+        "样式面板改颜色/线型统一视觉",
+        "Arrange→插入→图片 嵌截图",
+        "导出 SVG/PNG/PDF,或存云端"
+      ]
+    },
+    {
+      "id": "latex",
+      "name": "LaTeX (TeX Live)",
+      "category": "工程文档",
+      "free": "开源",
+      "opensource": true,
+      "license": "LPPL",
+      "url": "https://www.latex-project.org",
+      "repo": "https://github.com/latex3/latex3",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/latex.svg",
+      "desc": "科技论文 / 实验报告 / 毕设排版标准，公式与参考文献自动化。",
+      "teach": {
+        "download": "装 TeX Live（全量）或 MiKTeX（按需）；在线可用 Overleaf。",
+        "deploy": "配中文宏包（ctex/xeCJK）；编辑器用 TeXstudio/VS Code。",
+        "use": "写 .tex→xelatex 编译→出 PDF；模板搞定毕设/期刊排版。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=LaTeX%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=LaTeX+tutorial+beginner"
+        }
+      ],
+      "docs": "https://www.latex-project.org/help/documentation/",
+      "tips": "LaTeX 写论文/公式强,但编译要链完整。新手用 TeX Live + 编辑器(TeXstudio/Overleaf)。中文用 ctex 宏包或 XeLaTeX+fontspec。",
+      "steps": [
+        "装 TeX Live(或 MiKTeX)/Overleaf 在线",
+        "\\documentclass 起文档,导言区加宏包",
+        "正文写内容,\\section 分章,\\cite 引文献",
+        "公式用 $...$ 行内或 equation 环境",
+        "bibtex/biber 管理参考文献",
+        "xelatex 编译两遍生成 PDF"
+      ]
+    },
+    {
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "category": "工程文档",
+      "free": "开源",
+      "opensource": true,
+      "license": "MPL-2.0",
+      "url": "https://www.libreoffice.org",
+      "repo": "https://github.com/LibreOffice/core",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/libreoffice.svg",
+      "desc": "开源办公套件，Writer/Calc/Impress 写报告、做表、做答辩 PPT。",
+      "teach": {
+        "download": "官网下安装包；也可各系统软件商店装。",
+        "deploy": "导入 MS Office 文档兼容好；设默认保存为 ODF 或 DOCX。",
+        "use": "Writer 写报告→Calc 处理实验数据→Impress 做答辩幻灯片。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=LibreOffice%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=LibreOffice+tutorial"
+        }
+      ],
+      "docs": "https://documentation.libreoffice.org/",
+      "tips": "LibreOffice 套件:Calc 替代 Excel、Impress 做演示、Draw 画矢量图、Writer 写文档。公式用 Math 组件,兼容 MS 格式但复杂排版偶有差异。",
+      "steps": [
+        "装 LibreOffice 套件",
+        "Writer 写报告,Draw 画流程图/示意图",
+        "Calc 做数据表,数据→透视表汇总",
+        "Impress 做幻灯片,母版统一风格",
+        "Math 组件写公式插文档",
+        "导出 PDF 或存 .odt 跨平台"
+      ]
+    },
+    {
+      "id": "gimp",
+      "name": "GIMP",
+      "category": "工程文档",
+      "free": "开源",
+      "opensource": true,
+      "license": "GPL-3.0",
+      "url": "https://www.gimp.org",
+      "repo": "https://github.com/GNOME/gimp",
+      "os": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "logo": "https://ccoworkbaiju.cn/assets/software/logos/gimp.svg",
+      "desc": "开源图像编辑，处理实验截图、标注、拼图，替代 Photoshop。",
+      "teach": {
+        "download": "官网下安装包（Win/Mac/Linux 均有）。",
+        "deploy": "装中文包；常用图层/选区/文字工具。",
+        "use": "打开截图→裁剪标注→导出 PNG 进报告或论文。"
+      },
+      "videos": [
+        {
+          "platform": "B站",
+          "url": "https://search.bilibili.com/all?keyword=GIMP%E6%95%99%E7%A8%8B"
+        },
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/results?search_query=GIMP+tutorial"
+        }
+      ],
+      "docs": "https://docs.gimp.org/",
+      "tips": "GIMP 是位图处理(修照片/做贴图),不是矢量。抠图用『前景选择/路径』,批量用 BIMP 插件。工程截图标注用文字+箭头工具。",
+      "steps": [
+        "打开图片,用 缩放/裁剪 调构图",
+        "抠图:前景选择工具或 路径 转选区",
+        "图层→新建 分层编辑,不破坏原图",
+        "文字+箭头 给工程截图加标注",
+        "滤镜做去噪/锐化(适度)",
+        "导出 PNG/JPG,或 .xcf 留图层"
+      ]
+    }
+  ],
+  "roadmaps": [
+    {
+      "track": "机械设计路线",
+      "icon": "🔧",
+      "summary": "从零到能出工程图的完整 CAD 进阶。",
+      "stages": [
+        {
+          "step": "入门",
+          "name": "Tinkercad",
+          "note": "浏览器零安装，建立三维空间感"
+        },
+        {
+          "step": "核心",
+          "name": "FreeCAD",
+          "note": "参数化建模 + 工程图，课设毕设够用"
+        },
+        {
+          "step": "进阶",
+          "name": "OpenSCAD",
+          "note": "代码建模，做可参数化零件库"
+        },
+        {
+          "step": "工业",
+          "name": "Fusion 360",
+          "note": "个人免费，CAM/CAE 一体"
+        },
+        {
+          "step": "仿真",
+          "name": "CalculiX / OpenFOAM",
+          "note": "把模型拿去做结构/流体分析"
+        }
+      ]
+    },
+    {
+      "track": "电子硬件路线",
+      "icon": "⚡",
+      "summary": "从电路入门到打样 PCB。",
+      "stages": [
+        {
+          "step": "入门",
+          "name": "Tinkercad Circuits",
+          "note": "在线搭电路，免硬件"
+        },
+        {
+          "step": "硬件",
+          "name": "Arduino IDE",
+          "note": "连开发板写控制程序"
+        },
+        {
+          "step": "原理",
+          "name": "LTspice / Ngspice",
+          "note": "先仿真再焊，少炸芯片"
+        },
+        {
+          "step": "制板",
+          "name": "KiCad",
+          "note": "画原理图→PCB→导出 Gerber 打样"
+        },
+        {
+          "step": "进阶",
+          "name": "Horizon EDA",
+          "note": "规则驱动，做复杂板卡"
+        }
+      ]
+    },
+    {
+      "track": "仿真分析路线",
+      "icon": "🌊",
+      "summary": "数学基础 → 建模 → 求解 → 后处理。",
+      "stages": [
+        {
+          "step": "数学",
+          "name": "GNU Octave / Python",
+          "note": "矩阵与数值基础"
+        },
+        {
+          "step": "网格",
+          "name": "Gmsh / Salome",
+          "note": "几何与网格前处理"
+        },
+        {
+          "step": "结构",
+          "name": "CalculiX / Code_Aster",
+          "note": "有限元结构分析"
+        },
+        {
+          "step": "流体",
+          "name": "OpenFOAM / SU2",
+          "note": "计算流体力学"
+        },
+        {
+          "step": "后处理",
+          "name": "ParaView",
+          "note": "看云图、切片、流线、出动画"
+        }
+      ]
+    },
+    {
+      "track": "编程开发路线",
+      "icon": "💻",
+      "summary": "工科通用的工程化编程能力。",
+      "stages": [
+        {
+          "step": "语言",
+          "name": "Python",
+          "note": "科学计算与自动化脚本"
+        },
+        {
+          "step": "编辑器",
+          "name": "VS Code",
+          "note": "装插件、调试、远程开发"
+        },
+        {
+          "step": "版本",
+          "name": "Git",
+          "note": "管理课设/毕设代码不丢稿"
+        },
+        {
+          "step": "笔记",
+          "name": "Jupyter",
+          "note": "可复现实验报告"
+        },
+        {
+          "step": "硬件",
+          "name": "PlatformIO",
+          "note": "工程化嵌入式开发"
+        }
+      ]
+    },
+    {
+      "track": "工程文档路线",
+      "icon": "📐",
+      "summary": "把成果写成规范报告与答辩材料。",
+      "stages": [
+        {
+          "step": "排版",
+          "name": "LaTeX",
+          "note": "论文/毕设公式与参考文献自动化"
+        },
+        {
+          "step": "办公",
+          "name": "LibreOffice",
+          "note": "报告/数据/答辩幻灯片"
+        },
+        {
+          "step": "配图",
+          "name": "Inkscape / GIMP",
+          "note": "矢量图与图像处理"
+        },
+        {
+          "step": "图示",
+          "name": "draw.io",
+          "note": "系统架构与流程图"
+        },
+        {
+          "step": "协作",
+          "name": "Git",
+          "note": "文档版本与团队协同"
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "name": "中国大学MOOC",
+      "url": "https://www.icourse163.org",
+      "desc": "国内高校工科公开课，免费旁听",
+      "tag": "课程"
+    },
+    {
+      "name": "MIT OpenCourseWare",
+      "url": "https://ocw.mit.edu",
+      "desc": "麻省理工开放课件，原版英文教材与视频",
+      "tag": "课程"
+    },
+    {
+      "name": "PhET 互动仿真",
+      "url": "https://phet.colorado.edu",
+      "desc": "物理/工程可视化互动实验，课堂直接用",
+      "tag": "仿真"
+    },
+    {
+      "name": "LibreTexts Engineering",
+      "url": "https://eng.libretexts.org",
+      "desc": "开源工程教材库，免费查阅",
+      "tag": "教材"
+    },
+    {
+      "name": "Autodesk Design Academy",
+      "url": "https://www.autodesk.com/education",
+      "desc": "免费设计与制造系列课程",
+      "tag": "课程"
+    },
+    {
+      "name": "edX",
+      "url": "https://www.edx.org",
+      "desc": "多高校工科认证课，可免费旁听",
+      "tag": "课程"
+    },
+    {
+      "name": "B站 工科专区",
+      "url": "https://search.bilibili.com/all?keyword=%E5%B7%A5%E7%A7%91%20%E6%95%99%E7%A8%8B",
+      "desc": "海量中文实操视频教程",
+      "tag": "视频"
+    },
+    {
+      "name": "国家虚拟仿真实验教学项目",
+      "url": "http://www.ilab-x.com",
+      "desc": "国家级虚拟仿真实验平台",
+      "tag": "实验"
+    }
+  ]
+}

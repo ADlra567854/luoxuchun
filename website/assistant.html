@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>正在转到「开始对话」 · 白驹 ccowork</title>
+<meta name="description" content="白驹 ccowork 的对话入口已统一为 /agent.html，本地址保留为跳转，旧链接不会失效。">
+<link rel="canonical" href="/agent.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#F4F7FC">
+<meta http-equiv="refresh" content="0;url=../agent.html">
+<style>
+  :root{color-scheme:light dark}
+  html,body{height:100%;margin:0}
+  body{
+    display:flex;align-items:center;justify-content:center;
+    background:#F4F7FC;color:#1E293B;
+    font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .box{display:flex;flex-direction:column;align-items:center;gap:18px;padding:24px;text-align:center}
+  .mk{width:52px;height:52px;display:block}
+  .tx{font-size:14px;line-height:1.7;color:#475569;margin:0}
+  .tx b{color:#1E293B}
+  .go{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 18px;border-radius:12px;text-decoration:none;
+    font-size:14px;font-weight:600;color:#fff;
+    background:linear-gradient(120deg,#4F8CFF,#38B6FF 50%,#8B5CF6);
+    box-shadow:0 6px 18px rgba(79,140,255,.28);
+  }
+  .bar{width:132px;height:3px;border-radius:99px;background:rgba(79,140,255,.16);overflow:hidden}
+  .bar i{display:block;height:100%;width:40%;border-radius:99px;background:linear-gradient(90deg,#4F8CFF,#8B5CF6);animation:run 1s ease-in-out infinite}
+  @keyframes run{0%{transform:translateX(-110%)}100%{transform:translateX(360%)}}
+  @media (prefers-reduced-motion:reduce){.bar i{animation:none;width:100%}}
+  @media (prefers-color-scheme:dark){
+    body{background:#030014;color:#E9F0FB}
+    .tx{color:#8FA3BD}
+    .tx b{color:#E9F0FB}
+    .bar{background:rgba(56,225,255,.14)}
+    .bar i{background:linear-gradient(90deg,#38E1FF,#8B5CF6)}
+  }
+</style>
+</head>
+<body>
+<div class="box" role="status" aria-live="polite">
+  <img class="mk" src="/assets/brand/mark.svg" alt="白驹 ccowork" width="52" height="52">
+  <p class="tx"><b>正在转到「开始对话」</b><br>白驹 ccowork 全站只有一个助手，旧入口保留为跳转。</p>
+  <div class="bar" aria-hidden="true"><i></i></div>
+  <a class="go" id="go" href="../agent.html">没反应？点这里继续 →</a>
+</div>
+<script>
+(function(){
+  var t = "/agent.html".replace(/^\//, location.pathname.indexOf('/website/') === 0 ? '../' : '');
+  /* 保留 ?ask= / ?session= 等参数与锚点，转发到 canonical 入口 */
+  var url = t + location.search + location.hash;
+  var a = document.getElementById('go');
+  if (a) a.href = url;
+  try { location.replace(url) } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261125a">
+<script src="/assets/baiju-gate.js?v=20261125a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261125a"></script>
+</body>
+</html>

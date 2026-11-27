@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>每日精选 · 前沿流 · 白驹 ccowork</title>
+<meta name="description" content="公众号每日精选的成稿与选题理由。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/feed/wechat-pick.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--card2:#f2f6fb;--text:#0f172a;--muted:#5b6b83;--line:#dfe7f1;--line2:#cbd8e8;--grad:linear-gradient(120deg,#4f8cff,#38b6ff 52%,#8b5cf6)}
+[data-theme="deep"]{--bg:#030014;--card:#101728;--card2:#161f33;--text:#e9f0fb;--muted:#8fa3bd;--line:#1e2d47;--line2:#2a3b5c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.7}
+a{color:inherit}
+.wp-wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.wp-hero{padding:44px 0 18px;border-bottom:1px solid var(--line)}
+.wp-k{font-size:12px;font-weight:800;color:#0e7490;letter-spacing:.1em}
+.wp-hero h1{font-size:32px;font-weight:900;margin:8px 0 10px;letter-spacing:-.02em}
+.wp-hero p{margin:0;font-size:13.5px;color:var(--muted);max-width:760px}
+.wp-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0 0}
+.wp-btn{padding:10px 18px;border-radius:10px;border:0;cursor:pointer;font-size:14px;font-weight:800;background:var(--grad);color:#fff;text-decoration:none;display:inline-block}
+.wp-btn:hover{filter:brightness(1.06)}
+.wp-btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line2)}
+.wp-btn.ghost:hover{border-color:#4f8cff;color:#4f8cff}
+.wp-btn:focus-visible{outline:2px solid #4f8cff;outline-offset:2px}
+.wp-hint{font-size:12px;color:var(--muted)}
+.wp-sec{padding:26px 0 8px}
+.wp-sec>h2{font-size:21px;font-weight:900;margin:0 0 4px}
+.wp-sec>h2 em{font-style:normal;font-size:12px;font-weight:700;color:var(--muted);margin-left:8px}
+.wp-list{display:grid;gap:12px}
+.wp-item{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .16s,transform .16s}
+.wp-item:hover{border-color:#4f8cff;transform:translateY(-2px)}
+.wp-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.wp-rk{font-size:11px;font-weight:900;color:#fff;background:var(--grad);border-radius:6px;padding:2px 8px}
+.wp-src{font-size:11.5px;font-weight:800;color:#0e7490;background:rgba(56,225,255,.12);border:1px solid rgba(56,225,255,.3);padding:2px 9px;border-radius:999px}
+.wp-dt{font-size:11.5px;color:var(--muted);margin-left:auto}
+.wp-item h3{margin:0 0 8px;font-size:17px;font-weight:900;line-height:1.55}
+.wp-item h3 a{text-decoration:none}
+.wp-item h3 a:hover{color:#4f8cff}
+.wp-sum{margin:0 0 8px;font-size:13.5px;color:var(--muted);line-height:1.8}
+.wp-why{font-size:12px;color:var(--muted);background:var(--card2);border-radius:8px;padding:8px 10px;line-height:1.7}
+.wp-why b{color:var(--text)}
+.wp-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.wp-tg{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.24);color:var(--muted)}
+.wp-roles{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.wp-role{font-size:11px;font-weight:800;padding:2px 9px;border-radius:999px;background:rgba(79,140,255,.12);color:#2f6fe0}
+.wp-prev{margin-top:14px;border:1px dashed var(--line2);border-radius:14px;padding:18px;background:var(--card2);display:none}
+.wp-prev.on{display:block}
+.wp-prev h4{margin:0 0 10px;font-size:14px;font-weight:900}
+.wp-md{width:100%;min-height:260px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);padding:12px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;line-height:1.7}
+.wp-foot{padding:24px 0 44px;font-size:12.5px;color:var(--muted);line-height:1.9}
+.wp-hist{display:flex;gap:8px;flex-wrap:wrap}
+.wp-hd{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.wp-hd.on{background:rgba(16,185,129,.14);border-color:rgba(16,185,129,.4);color:#0f8a5f;font-weight:800}
+.wp-hd.off{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.35);color:#b45309}
+.wp-pub{margin:16px 0 0;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.85;border:1px solid rgba(245,158,11,.4);background:rgba(245,158,11,.10);color:#8a5209}
+.wp-pub.on{border-color:rgba(16,185,129,.42);background:rgba(16,185,129,.10);color:#0f6b48}
+.wp-pub b{font-weight:900}
+.wp-pub code{font-family:ui-monospace,Consolas,monospace;font-size:12px;background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+[data-theme="deep"] .wp-pub{background:rgba(245,158,11,.12);color:#fbbf24}
+[data-theme="deep"] .wp-pub.on{background:rgba(16,185,129,.12);color:#34d399}
+[data-theme="deep"] .wp-pub code{background:rgba(0,0,0,.35)}
+@media (max-width:640px){.wp-hero h1{font-size:25px}.wp-wrap{padding:0 14px}}
+@media (prefers-reduced-motion:reduce){.wp-item{transition:none}.wp-item:hover{transform:none}}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="models" data-cctitle="前沿流">
+<div class="pg-wrap">
+<article class="merged-content">
+<main class="wp-wrap">
+  <header class="wp-hero">
+    <div class="wp-k">每日精选 · 公众号发文</div>
+    <h1>2026-11-10 · 8 条值得发的</h1>
+    <p>全部来自 5 个公开 RSS 源的真实抓取（候选池 218 条，过 AI 相关性过滤后 74 条），按「标签权重 + 新鲜度 + 是否中文 + 标题信息量 + 是否直指 AI 主体」打分挑出，
+    <b>不做任何 AI 改写</b>。每条都给出入选理由、原始发布时间和原文链接，可直接复制到公众号编辑器。</p>
+    <div class="wp-bar">
+      <button class="wp-btn" id="copyRich" type="button">复制公众号排版</button>
+      <button class="wp-btn ghost" id="copyMd" type="button">复制 Markdown</button>
+      <button class="wp-btn ghost" id="togglePrev" type="button" aria-expanded="false">预览排版</button>
+      <button class="wp-btn ghost" id="markSeen" type="button">标为已读</button>
+      <a class="wp-btn ghost" href="/feed/wechat-plan.html">未来 7 天排期 →</a>
+      <span class="wp-hint" id="hint"></span>
+    </div>
+    <div class="wp-pub" id="pubBox">
+      <b>发布状态：</b>○ 未发布 · pending — 未在公众号后台确认，按待发布（pending）记录 —— 不虚标已发布
+      <br>确认已发到公众号后，运行 <code>node scripts/daily/build-wechat-pick.mjs --mark-published</code> 写入本地台账（脚本永不自动标已发布；写错了用 <code>--mark-pending</code> 撤回）。
+    </div>
+  </header>
+
+  <section class="wp-sec">
+    <h2>今日入选<em>8 条 · 标签 模型发布 / 模型能力 / 开发工具 / 政策监管 / 商业融资</em></h2>
+    <div class="wp-list">
+      <article class="wp-item">
+        <div class="wp-top"><span class="wp-rk">1</span><span class="wp-src">IT之家</span><span class="wp-dt">原文发布 2026-11-09 22:16</span></div>
+        <h3><a href="https://www.ithome.com/1/024/556.htm" target="_blank" rel="noopener">美团龙猫开源 LongCat-2.5 模型：总参数 1.6 万亿，支持百万上下文</a></h3>
+        <p class="wp-sum">IT之家 11 月 9 日消息，11 月 2 日，美团龙猫发布面向长程智能体任务的原生多模态模型 LongCat-2.5。随后来到今天（9 日），美团宣布该模型正式开源。该模型采用 MIT 协议，支持商用推理部署与二次训练，无需额外授权，是面向长程智能体任务的原生多模态模型。在复杂代码库开发、完整项目构建、Visual</p>
+        <div class="wp-why"><b>为什么选它：</b>标签权重 8.0（模型发布·模型能力·开发工具） · 新（1 天前） · 中文源 · 标题信息量足 · 有原文摘要 · AI 相关 · 标题直指 AI 主体</div>
+        <div class="wp-tags"><span class="wp-tg">模型发布</span><span class="wp-tg">模型能力</span><span class="wp-tg">开发工具</span></div>
+        <div class="wp-roles"><span class="wp-role">适合：开发者</span><span class="wp-role">适合：技术人员</span><span class="wp-role">适合：普通人</span><span class="wp-role">适合：工具台</span></div>
+      </article>
+      <article class="wp-item">
+        <div class="wp-top"><span class="wp-rk">2</span><span class="wp-src">InfoQ 中国</span><span class="wp-dt">原文发布 2026-11-10 00:26</span></div>
+        <h3><a href="https://www.infoq.cn/article/1Mz0ADa02PxcDsVfpVEb?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">千问办公2.0发布，首个支持多人与Agent协作的Team Agent来了</a></h3>
+        <p class="wp-sum">（该源未提供摘要，只转标题与出处，不代写）</p>
+        <div class="wp-why"><b>为什么选它：</b>标签权重 6.0（模型发布·开发工具） · 新（当天） · 中文源 · 标题信息量足 · AI 相关 · 标题直指 AI 主体</div>
+        <div class="wp-tags"><span class="wp-tg">模型发布</span><span class="wp-tg">开发工具</span></div>
+        <div class="wp-roles"><span class="wp-role">适合：开发者</span><span class="wp-role">适合：技术人员</span><span class="wp-role">适合：普通人</span><span class="wp-role">适合：工具台</span></div>
+      </article>
+      <article class="wp-item">
+        <div class="wp-top"><span class="wp-rk">3</span><span class="wp-src">量子位</span><span class="wp-dt">原文发布 2026-11-09 13:09</span></div>
+        <h3><a href="https://www.qbitai.com/2026/11/508603.html" target="_blank" rel="noopener">基元律动发布NeoHorse-1.5-Flash Preview，Agent模型RSI进入第二轮迭代</a></h3>
+        <p class="wp-sum">11月5日，基元律动（TokenRhythm）发布Agent原生模型NeoHorse-1.5-Flash Preview。</p>
+        <div class="wp-why"><b>为什么选它：</b>标签权重 6.0（模型发布·开发工具） · 新（1 天前） · 中文源 · 有原文摘要 · AI 相关 · 标题直指 AI 主体</div>
+        <div class="wp-tags"><span class="wp-tg">模型发布</span><span class="wp-tg">开发工具</span></div>
+        <div class="wp-roles"><span class="wp-role">适合：开发者</span><span class="wp-role">适合：技术人员</span><span class="wp-role">适合：普通人</span><span class="wp-role">适合：工具台</span></div>
+      </article>
+      <article class="wp-item">
+        <div class="wp-top"><span class="wp-rk">4</span><span class="wp-src">InfoQ 中国</span><span class="wp-dt">原文发布 2026-11-10 00:55</span></div>
+        <h3><a href="https://www.infoq.cn/article/CUgMFMX7uRJNMec1pfYo?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">AI越来越聪明，企业却快管不住了：Gartner 2027年十大趋势，智能体治理成新战场</a></h3>
+        <p class="wp-sum">（该源未提供摘要，只转标题与出处，不代写）</p>
+        <div class="wp-why"><b>为什么选它：</b>标签权重 5.0（开发工具·政策监管） · 新（当天） · 中文源 · 标题信息量足 · AI 相关 · 标题直指 AI 主体</div>
+        <div class="wp-tags"><span class="wp-tg">开发工具</span><span class="wp-tg">政策监管</span></div>
+        <div class="wp-roles"><span class="wp-role">适合：开发者</span><span class="wp-role">适合：工具台</span><span class="wp-role">适合：老师</span><span class="wp-role">适合：普通人</span></div>
+      </article>
+      <article class="wp-item">
+        <div class="wp-top"><span class="wp-rk">5</span><span class="wp-src">InfoQ 中国</span><span class="wp-dt">原文发布 2026-11-10 01:02</span></div>
+        <h3><a href="https://www.infoq.cn/article/1g0PWSVhNkb0sgud4heO?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener">千问“死磕”Personal Agent：为什么下限比上限更重要？</a></h3>
+        <p class="wp-sum">（该源未提供摘要，只转标题与出处，不代写）</p>
+        <div class="wp-why"><b>为什么选它：</b>标签权重 3.0（开发工具） · 新（当天） · 中文源 · 标题信息量足 · AI 相关 · 标题直指 AI 主体</div>
+        <div class="wp-tags"><span class="wp-tg">开发工具</span></div>
+        <div class="wp-roles"><span class="wp-role">适合：开发者</span><span class="wp-role">适合：工具台</span></div>
+      </article>
+      <article class="wp-item">
+        <div class="wp-top"><span class="wp-rk">6</span><span class="wp-src">OpenAI 官方博客</span><span class="wp-dt">原文发布 2026-11-09 16:00</span></div>
+        <h3><a href="https://openai.com/index/coderabbit-codex-daybreak" target="_blank" rel="noopener">CodeRabbit scales agentic software development and ships 20x more</a></h3>
+        <p class="wp-sum">CodeRabbit uses OpenAI models to govern and trust AI-generated code and Codex to ship 20 times more software with the same engineering team.</p>
+        <div class="wp-why"><b>为什么选它：</b>标签权重 3.0（开发工具） · 新（1 天前） · 有原文摘要 · AI 相关 · 标题直指 AI 主体</div>
+        <div class="wp-tags"><span class="wp-tg">开发工具</span></div>
+        <div class="wp-roles"><span class="wp-role">适合：开发者</span><span class="wp-role">适合：工具台</span></div>
+      </article>
+      <article class="wp-item">
+        <div class="wp-top"><span class="wp-rk">7</span><span class="wp-src">IT之家</span><span class="wp-dt">原文发布 2026-11-09 19:32</span></div>
+        <h3><a href="https://www.ithome.com/1/024/499.htm" target="_blank" rel="noopener">国行 iPad、MacBook 用上“Apple 智能”在望，相关生成式 AI 服务完成备案</a></h3>
+        <p class="wp-sum">IT之家 11 月 9 日消息，据“网信上海”公众号，根据《生成式人工智能服务管理暂行办法》相关要求，“Apple 智能”生成式人工智能服务新增苹果平板和苹果笔记本电脑两类场景，已完成备案。目前适用场景为苹果手机、平板、笔记本电脑。据IT之家此前报道，苹果多款 iPhone 手机于 9 月 29 日国行备案换证，增加搭</p>
+        <div class="wp-why"><b>为什么选它：</b>标签权重 1.0（无标签） · 新（1 天前） · 中文源 · 标题信息量足 · 有原文摘要 · AI 相关 · 标题直指 AI 主体</div>
+        <div class="wp-tags"></div>
+        
+      </article>
+      <article class="wp-item">
+        <div class="wp-top"><span class="wp-rk">8</span><span class="wp-src">量子位</span><span class="wp-dt">原文发布 2026-11-07 17:38</span></div>
+        <h3><a href="https://www.qbitai.com/2026/11/508449.html" target="_blank" rel="noopener">GitHub不堪重负！OpenAI收购替代品，A社原地自研，马斯克也要搞</a></h3>
+        <p class="wp-sum">AI写代码太快，基础设施跟不上了</p>
+        <div class="wp-why"><b>为什么选它：</b>标签权重 2.0（商业融资） · 中文源 · 标题信息量足 · 有原文摘要 · AI 相关 · 标题直指 AI 主体</div>
+        <div class="wp-tags"><span class="wp-tg">商业融资</span></div>
+        <div class="wp-roles"><span class="wp-role">适合：普通人</span><span class="wp-role">适合：工具台</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wp-sec">
+    <h2>排版预览<em>粘贴到公众号编辑器即可</em></h2>
+    <div class="wp-prev" id="prevBox" aria-live="polite"></div>
+    <textarea class="wp-md" id="mdBox" readonly aria-label="Markdown 版"></textarea>
+  </section>
+
+  <div class="wp-foot">
+    <div>数据：直接抓取各站公开 RSS/Atom，不做任何 AI 生成或改写 · 抓取时间 2026/11/10 06:34:35 · 可用源 5 个，失效源 4 个（如实登记，不假装抓到）。</div>
+    <div>生成口径：同一天同一份 daily-brief 重复执行，本页与 JSON 完全不变（幂等校验 sig e371a52559a5）。</div>
+    <div class="wp-hist"><span class="wp-hd off">2026-11-10 · 8 条 · 待发布</span><span class="wp-hd off">2026-11-09 · 8 条 · 待发布</span><span class="wp-hd off">2026-11-04 · 8 条 · 待发布</span><span class="wp-hd off">2026-11-02 · 8 条 · 待发布</span><span class="wp-hd off">2026-10-28 · 8 条 · 待发布</span><span class="wp-hd off">2026-10-27 · 8 条 · 待发布</span><span class="wp-hd off">2026-10-13 · 8 条 · 待发布</span></div>
+    <div>发布台账：只记「人工确认过」的结果；没有平台回执的一律 pending（不虚标已发布、不虚标发布日期）。历史批次同样按 pending 处理。</div>
+    <div><a href="/feed/wechat-plan.html">未来 7 天公众号排期 →</a> · <a href="/feed/daily.html">每日简报</a> · <a href="/about/index.html">全部入口</a></div>
+  </div>
+</main>
+
+<script>
+var DATA = {"date":"2026-11-10","sig":"e371a52559a5","generated":"2026-11-09T22:34:35.395Z","generatedCn":"2026/11/10 06:34:35","method":"从公开 RSS/Atom 真实抓取后按可解释规则挑选，未做任何 AI 生成或改写","sourceOf":"data/daily-brief.json","stats":{"total":8,"pool":218,"candidatePool":74,"okSources":5,"deadSources":4},"items":[{"title":"美团龙猫开源 LongCat-2.5 模型：总参数 1.6 万亿，支持百万上下文","url":"https://www.ithome.com/1/024/556.htm","source":"IT之家","sourceId":"ithome","tags":["模型发布","模型能力","开发工具"],"ts":1794233798000,"date":"2026-11-09","time":"22:16","publishedCn":"2026-11-09 22:16","summary":"IT之家 11 月 9 日消息，11 月 2 日，美团龙猫发布面向长程智能体任务的原生多模态模型 LongCat-2.5。随后来到今天（9 日），美团宣布该模型正式开源。该模型采用 MIT 协议，支持商用推理部署与二次训练，无需额外授权，是面向长程智能体任务的原生多模态模型。在复杂代码库开发、完整项目构建、Visual","score":18.9,"why":"标签权重 8.0（模型发布·模型能力·开发工具） · 新（1 天前） · 中文源 · 标题信息量足 · 有原文摘要 · AI 相关 · 标题直指 AI 主体","roles":["developer","engineer","everyone","toolbox"],"roleNames":["开发者","技术人员","普通人","工具台"]},{"title":"千问办公2.0发布，首个支持多人与Agent协作的Team Agent来了","url":"https://www.infoq.cn/article/1Mz0ADa02PxcDsVfpVEb?utm_source=rss&utm_medium=article","source":"InfoQ 中国","sourceId":"infoq","tags":["模型发布","开发工具"],"ts":1794241611000,"date":"2026-11-10","time":"00:26","publishedCn":"2026-11-10 00:26","summary":"","score":17.1,"why":"标签权重 6.0（模型发布·开发工具） · 新（当天） · 中文源 · 标题信息量足 · AI 相关 · 标题直指 AI 主体","roles":["developer","engineer","everyone","toolbox"],"roleNames":["开发者","技术人员","普通人","工具台"]},{"title":"基元律动发布NeoHorse-1.5-Flash Preview，Agent模型RSI进入第二轮迭代","url":"https://www.qbitai.com/2026/11/508603.html","source":"量子位","sourceId":"qbitai","tags":["模型发布","开发工具"],"ts":1794200963000,"date":"2026-11-09","time":"13:09","publishedCn":"2026-11-09 13:09","summary":"11月5日，基元律动（TokenRhythm）发布Agent原生模型NeoHorse-1.5-Flash Preview。","score":16.4,"why":"标签权重 6.0（模型发布·开发工具） · 新（1 天前） · 中文源 · 有原文摘要 · AI 相关 · 标题直指 AI 主体","roles":["developer","engineer","everyone","toolbox"],"roleNames":["开发者","技术人员","普通人","工具台"]},{"title":"AI越来越聪明，企业却快管不住了：Gartner 2027年十大趋势，智能体治理成新战场","url":"https://www.infoq.cn/article/CUgMFMX7uRJNMec1pfYo?utm_source=rss&utm_medium=article","source":"InfoQ 中国","sourceId":"infoq","tags":["开发工具","政策监管"],"ts":1794243359000,"date":"2026-11-10","time":"00:55","publishedCn":"2026-11-10 00:55","summary":"","score":16.1,"why":"标签权重 5.0（开发工具·政策监管） · 新（当天） · 中文源 · 标题信息量足 · AI 相关 · 标题直指 AI 主体","roles":["developer","toolbox","teacher","everyone"],"roleNames":["开发者","工具台","老师","普通人"]},{"title":"千问“死磕”Personal Agent：为什么下限比上限更重要？","url":"https://www.infoq.cn/article/1g0PWSVhNkb0sgud4heO?utm_source=rss&utm_medium=article","source":"InfoQ 中国","sourceId":"infoq","tags":["开发工具"],"ts":1794243759000,"date":"2026-11-10","time":"01:02","publishedCn":"2026-11-10 01:02","summary":"","score":14.1,"why":"标签权重 3.0（开发工具） · 新（当天） · 中文源 · 标题信息量足 · AI 相关 · 标题直指 AI 主体","roles":["developer","toolbox"],"roleNames":["开发者","工具台"]},{"title":"CodeRabbit scales agentic software development and ships 20x more","url":"https://openai.com/index/coderabbit-codex-daybreak","source":"OpenAI 官方博客","sourceId":"openai","tags":["开发工具"],"ts":1794211200000,"date":"2026-11-09","time":"16:00","publishedCn":"2026-11-09 16:00","summary":"CodeRabbit uses OpenAI models to govern and trust AI-generated code and Codex to ship 20 times more software with the same engineering team.","score":12.8,"why":"标签权重 3.0（开发工具） · 新（1 天前） · 有原文摘要 · AI 相关 · 标题直指 AI 主体","roles":["developer","toolbox"],"roleNames":["开发者","工具台"]},{"title":"国行 iPad、MacBook 用上“Apple 智能”在望，相关生成式 AI 服务完成备案","url":"https://www.ithome.com/1/024/499.htm","source":"IT之家","sourceId":"ithome","tags":[],"ts":1794223927000,"date":"2026-11-09","time":"19:32","publishedCn":"2026-11-09 19:32","summary":"IT之家 11 月 9 日消息，据“网信上海”公众号，根据《生成式人工智能服务管理暂行办法》相关要求，“Apple 智能”生成式人工智能服务新增苹果平板和苹果笔记本电脑两类场景，已完成备案。目前适用场景为苹果手机、平板、笔记本电脑。据IT之家此前报道，苹果多款 iPhone 手机于 9 月 29 日国行备案换证，增加搭","score":11.9,"why":"标签权重 1.0（无标签） · 新（1 天前） · 中文源 · 标题信息量足 · 有原文摘要 · AI 相关 · 标题直指 AI 主体","roles":[],"roleNames":[]},{"title":"GitHub不堪重负！OpenAI收购替代品，A社原地自研，马斯克也要搞","url":"https://www.qbitai.com/2026/11/508449.html","source":"量子位","sourceId":"qbitai","tags":["商业融资"],"ts":1794044336000,"date":"2026-11-07","time":"17:38","publishedCn":"2026-11-07 17:38","summary":"AI写代码太快，基础设施跟不上了","score":10.5,"why":"标签权重 2.0（商业融资） · 中文源 · 标题信息量足 · 有原文摘要 · AI 相关 · 标题直指 AI 主体","roles":["everyone","toolbox"],"roleNames":["普通人","工具台"]}],"publish":{"date":"2026-11-10","published":false,"pending":true,"publishedAt":null,"confirmSource":"unconfirmed","note":"未在公众号后台确认，按待发布（pending）记录 —— 不虚标已发布"}};
+function richHtml(){
+  var h = '<section style="font-family:-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei,sans-serif;font-size:15px;line-height:1.8;color:#222;">';
+  h += '<p style="margin:0 0 6px;font-size:13px;color:#0e7490;font-weight:700;">每日精选 · ' + DATA.date + '</p>';
+  h += '<h2 style="margin:0 0 14px;font-size:21px;font-weight:800;line-height:1.5;color:#111;">今天 ' + DATA.items.length + ' 条值得看的 AI 消息</h2>';
+  DATA.items.forEach(function(it, i){
+    h += '<section style="margin:0 0 18px;padding:14px 16px;border-radius:12px;background:#f6f8fc;">';
+    h += '<p style="margin:0 0 6px;font-size:12px;color:#7a8798;">' + (i+1) + ' / ' + (it.source||'未标源') + (it.publishedCn ? ' · ' + it.publishedCn : '') + '</p>';
+    h += '<h3 style="margin:0 0 8px;font-size:17px;font-weight:800;line-height:1.55;color:#0f172a;">' + it.title.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</h3>';
+    if (it.summary) h += '<p style="margin:0 0 8px;font-size:14px;color:#5b6b83;line-height:1.8;">' + it.summary.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</p>';
+    h += '<p style="margin:0 0 4px;font-size:13px;color:#5b6b83;">为什么值得看：' + it.why.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</p>';
+    h += '<p style="margin:0;font-size:14px;"><a href="' + it.url + '" style="color:#2f6fe0;text-decoration:none;">阅读原文 →</a></p>';
+    h += '</section>';
+  });
+  h += '<p style="margin:18px 0 0;font-size:12px;color:#9aa5b5;line-height:1.8;">内容来自公开 RSS/Atom 真实抓取，未做 AI 改写；出处与链接均为原文。</p>';
+  h += '</section>';
+  return h;
+}
+function mdText(){
+  var s = '# 每日精选 · ' + DATA.date + '\n\n> 真实抓取，未做 AI 改写。\n\n';
+  DATA.items.forEach(function(it, i){
+    s += '## ' + (i+1) + '. ' + it.title + '\n\n';
+    s += '- 来源：' + (it.source||'未标源') + (it.publishedCn ? ' · ' + it.publishedCn : '') + '\n';
+    if (it.summary) s += '- 摘要：' + it.summary + '\n';
+    s += '- 入选理由：' + it.why + '\n';
+    s += '- 原文：' + it.url + '\n\n';
+  });
+  return s;
+}
+function fallbackCopy(html, text){
+  var d = document.createElement('div');
+  d.contentEditable = 'true'; d.innerHTML = html;
+  d.style.position = 'fixed'; d.style.left = '-9999px';
+  document.body.appendChild(d);
+  var r = document.createRange(); r.selectNodeContents(d);
+  var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  var ok = false; try { ok = document.execCommand('copy') } catch(e){}
+  sel.removeAllRanges(); d.remove();
+  if (!ok && text) { var t = document.createElement('textarea'); t.value = text; t.style.position='fixed'; t.style.left='-9999px'; document.body.appendChild(t); t.select(); try { ok = document.execCommand('copy') } catch(e){} t.remove() }
+  return ok;
+}
+function hint(msg){ var h = document.getElementById('hint'); if (h) { h.textContent = msg; setTimeout(function(){ h.textContent = '' }, 2600) } }
+document.getElementById('copyRich').onclick = function(){
+  var html = richHtml(), text = mdText();
+  if (navigator.clipboard && window.ClipboardItem) {
+    try {
+      navigator.clipboard.write([new ClipboardItem({'text/html': new Blob([html],{type:'text/html'}), 'text/plain': new Blob([text],{type:'text/plain'})})])
+        .then(function(){ hint('✅ 已复制，去公众号编辑器直接粘贴') })
+        .catch(function(){ hint(fallbackCopy(html, text) ? '✅ 已复制（兼容模式）' : '❌ 复制失败，请手动选中') });
+      return
+    } catch(e){}
+  }
+  hint(fallbackCopy(html, text) ? '✅ 已复制（兼容模式）' : '❌ 复制失败，请手动选中');
+};
+document.getElementById('copyMd').onclick = function(){
+  var text = mdText();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function(){ hint('✅ Markdown 已复制') }).catch(function(){ hint('❌ 复制失败') });
+  } else { var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand('copy') } catch(e){} t.remove(); hint('✅ Markdown 已复制') }
+};
+var prev = document.getElementById('prevBox'), tg = document.getElementById('togglePrev');
+tg.onclick = function(){ var on = prev.classList.toggle('on'); prev.innerHTML = on ? richHtml() : ''; tg.setAttribute('aria-expanded', on ? 'true':'false'); tg.textContent = on ? '收起预览' : '预览排版' };
+document.getElementById('mdBox').value = mdText();
+document.getElementById('markSeen').onclick = function(){
+  try { localStorage.setItem('baiju.pick.seenDate', DATA.date) } catch(e){}
+  hint('✅ 已标为已读，铃铛红点会消失');
+};
+try { if (localStorage.getItem('baiju.pick.seenDate') === DATA.date) document.getElementById('markSeen').textContent = '今日已读' } catch(e){}
+</script>
+
+<!-- 全站内核（身份区/导航/主题/评论/页脚）：每次重建都必须带上，否则裸页会失去内核 -->
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

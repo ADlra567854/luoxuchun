@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 快讯 · 前沿流 · 白驹 ccowork</title>
+<meta name="description" content="每日 AI 动态的完整列表，含来源与要点摘要。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/feed/news.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:10px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:20px;font-size:14px;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+.wrap{position:relative;z-index:5;max-width:1180px;margin:0 auto;padding:104px 24px 70px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,46px);letter-spacing:3px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:var(--muted);font-size:14px;margin-top:10px;max-width:760px}
+.hero .updated{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--gold);border:1px solid rgba(240,185,92,.35);border-radius:999px;padding:6px 16px;background:rgba(240,185,92,.06)}
+.hero .updated b{color:#fff}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 18px}
+.tag{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:6px 15px;font-size:13px;cursor:pointer;transition:.22s}
+.tag:hover{border-color:var(--ice);color:var(--ice)}
+.tag.on{background:var(--grad);color:#03121a;font-weight:600;border-color:transparent}
+.sectitle{font-family:var(--serif);font-size:21px;letter-spacing:2px;margin:46px 0 6px;display:flex;align-items:baseline;gap:12px}
+.sectitle small{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0;font-weight:400}
+.sectitle a{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--cyan);text-decoration:none}
+/* 视频网格 */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:18px}
+.vcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;backdrop-filter:blur(8px);transition:.28s;display:flex;flex-direction:column}
+.vcard:hover{transform:translateY(-3px);border-color:rgba(56,225,255,.35)}
+.vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:#0c1322}
+.vthumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.5))}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:none;background:rgba(94,234,212,.92);color:#03121a;font-size:24px;cursor:pointer;z-index:2;box-shadow:0 6px 22px rgba(0,0,0,.45);transition:.2s}
+.play:hover{transform:translate(-50%,-50%) scale(1.08)}
+.vmeta{padding:14px 16px 16px}
+.vmeta .vtag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:1px;color:#03121a;background:var(--grad);border-radius:6px;padding:2px 8px;margin-bottom:8px}
+.vmeta h3{font-size:15px;line-height:1.45;margin-bottom:8px}
+.vmeta .vsrc{font-family:var(--mono);font-size:11px;color:var(--dim);margin-bottom:8px}
+.vmeta .vlink{font-size:12px;color:var(--cyan);text-decoration:none}
+.vmeta .vlink:hover{text-decoration:underline}
+/* 文字快讯 */
+.nlist{display:flex;flex-direction:column;gap:14px;margin-top:14px}
+.nitem{display:flex;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 22px;backdrop-filter:blur(8px);transition:.28s}
+.nitem:hover{transform:translateY(-3px);border-color:rgba(56,225,255,.35)}
+.nitem .nd{flex:none;width:76px;font-family:var(--mono);font-size:12px;color:var(--gold);padding-top:2px}
+.nitem .nb{flex:1}
+.nitem .ntag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:1px;color:#03121a;background:var(--grad);border-radius:6px;padding:2px 8px;margin-bottom:7px}
+.nitem h3{font-size:16px;line-height:1.5;margin-bottom:6px}
+.nitem p{color:var(--muted);font-size:13px;line-height:1.7}
+.nitem .nsrc{display:block;margin-top:9px;font-family:var(--mono);font-size:11px;color:var(--dim)}
+.empty{text-align:center;color:var(--dim);padding:40px;font-size:14px}
+footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;color:var(--dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+/* 站内弹层播放器：点卡片在站内播放，不跳站、不唤App */
+.vmodal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center}
+.vmodal[hidden]{display:none}
+.vbackdrop{position:absolute;inset:0;background:rgba(2,4,10,.86);backdrop-filter:blur(6px)}
+.vbox{position:relative;z-index:2;width:min(960px,94vw);background:#070b14;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.vclose{position:absolute;top:-16px;right:-16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#0c1322;color:var(--text);font-size:16px;cursor:pointer;z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.5);transition:.2s}
+.vclose:hover{border-color:var(--ice);color:var(--ice);transform:rotate(90deg)}
+.vstage{position:relative;aspect-ratio:16/9;background:#000}
+.vstage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vcap{padding:13px 18px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.vcap b{color:var(--text);font-weight:600}
+.vcap .vlink{margin-left:auto;color:var(--cyan);text-decoration:none;font-size:12px}
+.vcap .vlink:hover{text-decoration:underline}
+.vcap .vhint{font-size:12px;color:var(--gold);background:rgba(240,185,92,.1);border:1px solid rgba(240,185,92,.3);padding:3px 10px;border-radius:999px}
+.vloading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;background:#070b14;z-index:1;text-align:center;line-height:1.9;padding:0 20px}
+@media(max-width:700px){
+  .vcap .vlink{width:100%;margin-left:0;margin-top:6px;text-align:center;padding:11px 0;background:rgba(56,225,255,.09);border:1px solid rgba(56,225,255,.35);border-radius:10px;font-size:14px;font-weight:600}
+  .vcap .vhint{width:100%;text-align:center}
+}
+@media(max-width:600px){
+  .vbox{width:100vw;height:100vh;max-height:100vh;border-radius:0;border:none}
+  .vstage{aspect-ratio:16/9}
+  .vclose{top:12px;right:12px;background:rgba(12,19,34,.85)}
+  .vcap .vlink{margin-left:0}
+}
+/* === 修复①：禁用 ccowork 全站设备预览器遮罩(在新闻页遮住视频网格) === */
+/* mdFrame=预览iframe  mdPrev=设备选择按钮(已由 responsive.js 禁用源头;此处兜底) */
+/* 注：md-scrim 是移动端汉堡菜单遮罩，须保留，不再隐藏 */
+#mdFrame, #mdPrev { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+/* === 修复③：移动端弹层"手机专属视图"(不嵌 B站 iframe,因 B站服务器拒第三方移动嵌入) === */
+.vmobile{display:flex;flex-direction:column;gap:14px;padding:6px 4px}
+.vmobile .vmob-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#0c1322}
+.vmobile .vmob-title{font-size:17px;font-weight:700;color:#fff;line-height:1.45}
+.vmobile .vmob-meta{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.vmobile .vmob-tip{font-size:13px;color:var(--gold);background:rgba(240,185,92,.08);border:1px solid rgba(240,185,92,.28);padding:12px 14px;border-radius:10px;line-height:1.7}
+.vmobile .vmob-btn{display:block;text-align:center;padding:14px 18px;border-radius:14px;text-decoration:none;font-size:15px;font-weight:600;transition:.2s}
+.vmobile .vmob-btn.primary{background:linear-gradient(120deg,#5eead4,#38e1ff);color:#03121a}
+.vmobile .vmob-btn.secondary{background:rgba(94,234,212,.08);color:var(--ice);border:1px solid rgba(56,225,255,.35)}
+@media(max-width:600px){
+  .vmobile{gap:12px}
+  .vmobile .vmob-title{font-size:15px}
+  .vmobile .vmob-btn{padding:13px 16px;font-size:15px}
+  /* 移动端弹层视频区不强制 16:9,让手机专属视图正常 flow */
+  .vstage{aspect-ratio:auto;background:transparent}
+}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="models" data-cctitle="前沿流">
+<div class="pg-wrap">
+<article class="merged-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-news.png" alt=" AI·大学生·就业 新闻视频 · 白驹 ccowork（分站）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<canvas id="stars"></canvas>
+
+<div class="wrap">
+  <div class="hero">
+    <h1><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i>AI·大学生·就业 <span>新闻视频</span></h1>
+<p style="margin:0 0 14px"><a class="cc-ic-pill" href="/feed/daily.html" style="font-size:13px;font-weight:800;text-decoration:none;color:#0e7490;background:rgba(56,225,255,.12);border:1px solid rgba(56,225,255,.34);border-radius:999px;padding:7px 16px">每日简报 · 真实源直抓<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></p>
+    <p class="sub">真实 B站视频源，官方播放器嵌入（不转存、不洗稿）。内容贴合全站：AI 创作 / 工具模型 / 大学生就业职业 / 产业实战。<b style="color:var(--ice)">点击卡片站内直接播放，不跳站、不唤 App</b>。本次数据窗口 2026-10-21 ~ 2026-10-27，视频与文字快讯均取自实测可访问的真实来源，保留原标题与原始时间。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+    <span class="updated" id="updated">更新于 <b>--</b> · 真实视频聚合</span>
+    <div class="tag-row" id="tagRow"></div>
+  </div>
+  <section class="vgrid" id="vgrid"></section>
+  <div class="sectitle">AI 行业快讯 <small>文字版 · 更新于 2026-10-27 · 原文标题与原始时间</small></div>
+  <div class="nlist" id="list"></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  // ===== 真实视频 =====
+  // 数据兜底：data/*.js 加载失败(onerror 标记)或变量未定义时,给出明确提示而非静默空白
+  var videoDataMissing = (typeof window.NEWS_VIDEO === 'undefined') || window.__videoLoadFail === true;
+  var VIDS = (window.NEWS_VIDEO || []).slice();
+  var updated = document.getElementById('updated');
+  var upd = window.NEWS_VIDEO_UPDATED || window.NEWS_UPDATED;
+  if(upd) updated.innerHTML = '更新于 <b>' + esc(upd) + '</b> · 真实视频聚合';
+  else if(videoDataMissing) updated.innerHTML = '更新于 <b>--</b> ·  数据加载失败';
+  var tags = ['全部'].concat(VIDS.map(function(v){return v.tag;}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+  var tagRow = document.getElementById('tagRow');
+  tagRow.innerHTML = tags.map(function(t){ return '<span class="tag'+(t==='全部'?' on':'')+'" data-t="'+esc(t)+'">'+esc(t)+'</span>'; }).join('');
+  var vgrid = document.getElementById('vgrid');
+  function renderVideos(filter){
+    var arr = filter && filter!=='全部' ? VIDS.filter(function(v){return v.tag===filter;}) : VIDS;
+    if(!arr.length){
+      vgrid.innerHTML = videoDataMissing
+        ? '<div class="empty"> 视频数据加载失败（data/news-video.js 未加载）<br>请刷新重试 · 若持续出现请检查网络</div>'
+        : '<div class="empty">该分类暂无视频</div>';
+      return;
+    }
+    vgrid.innerHTML = arr.map(function(v){
+      return '<div class="vcard" data-bv="'+esc(v.bvid)+'">'
+        + '<div class="vthumb"><img class="vthumb-img" referrerpolicy="no-referrer" loading="lazy" src="'+esc(v.thumb)+'" alt="">'
+        + '<button class="play" data-bv="'+esc(v.bvid)+'" aria-label="播放"></button></div>'
+        + '<div class="vmeta"><span class="vtag">'+esc(v.tag)+'</span>'
+        + '<h3>'+esc(v.title)+'</h3>'
+        + '<p class="vsrc">'+esc(v.source)+' · '+esc(v.date)+'</p>'
+        + '<p class="vsrc" style="color:var(--ice)">点击卡片 · 站内直接播放 </p></div></div>';
+    }).join('');
+  }
+  renderVideos('全部');
+  // 点击卡片  站内弹层播放（官方嵌入播放器，不跳站、移动端不自动播以避免唤起App）
+  // 注：弹层 HTML 在 body 末尾，脚本执行时尚未解析，故元素在函数内动态获取（点击时 DOM 已就绪）
+  function openModal(v){
+    var modal = document.getElementById('vmodal');
+    var stage = document.getElementById('vstage');
+    var cap = document.getElementById('vcap');
+    if(!modal || !stage) return;
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || innerWidth < 700;
+    if (isMobile) {
+      // 移动端：B站服务器拒第三方移动端 iframe 嵌入(player.html 移动 UA 强制跳 mbplayer,
+      // mbplayer 检测 window.top!=self + referrer 白名单  拒绝创建播放器  白屏)
+      // 改用"手机专属视图"：大封面 + 标题 + 元信息 + 一键去 B站网页版(不嵌 iframe,不再误导"点击画面")
+      stage.innerHTML = '<div class="vmobile">'
+        + '<img class="vmob-cover" referrerpolicy="no-referrer" src="'+esc(v.thumb)+'" alt="">'
+        + '<div class="vmob-title">'+esc(v.title)+'</div>'
+        + '<div class="vmob-meta"> '+esc(v.source)+' · '+esc(v.date)+'</div>'
+        + '<div class="vmob-tip"> 手机受 B站限制，站内无法直接播放。<br>点下方按钮在 B站网页版观看（不下载 App 也行）</div>'
+        + '<a class="vmob-btn primary" href="'+esc(v.watch)+'" target="_blank" rel="noopener"> 在浏览器打开 B站（最稳）</a>'
+        + '<a class="vmob-btn secondary" href="'+esc(v.watch)+'" target="_blank" rel="noopener">用 B站 App 打开（若已安装）</a>'
+        + '</div>';
+      cap.innerHTML = '';
+    } else {
+      // 桌面端：iframe 嵌 B站官方播放器(player.html 桌面 UA 不跳转、桌面嵌入无 referrer 限制、已验证能播)
+      stage.innerHTML = '<div class="vloading"> 视频加载中…<br>若未自动播放，点击画面中央  即可开始</div>'
+        + '<iframe src="https://player.bilibili.com/player.html?bvid='+esc(v.bvid)+'&page=1&high_quality=1&danmaku=0&autoplay=1&as_wide=1" scrolling="no" frameborder="no" allow="autoplay; fullscreen" allowfullscreen onload="this.previousElementSibling.style.display=\'none\'"></iframe>';
+      cap.innerHTML = '<b>'+esc(v.title)+'</b> &nbsp;·&nbsp; '+esc(v.source)+' · '+esc(v.date)
+        + ' <span class="vhint"> 点击画面中央开始播放</span>'
+        + ' <a class="vlink" href="'+esc(v.watch)+'" target="_blank" rel="noopener">在 B站看原视频 </a>';
+    }
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    var modal = document.getElementById('vmodal');
+    var stage = document.getElementById('vstage');
+    if(modal) modal.hidden = true;
+    if(stage) stage.innerHTML = ''; // 清空 iframe，停止播放、释放资源
+    document.body.style.overflow = '';
+  }
+  vgrid.addEventListener('click', function(e){
+    var card = e.target.closest('.vcard'); if(!card) return;
+    var v = null;
+    for(var i=0;i<VIDS.length;i++){ if(VIDS[i].bvid===card.dataset.bv){ v=VIDS[i]; break; } }
+    if(v) openModal(v);
+  });
+  // 关闭弹层：文档级委托(弹层元素在 body 末尾,不依赖获取时机)
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.hasAttribute && e.target.hasAttribute('data-close') && e.target.closest('#vmodal')) closeModal();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ var m=document.getElementById('vmodal'); if(m && !m.hidden) closeModal(); } });
+  tagRow.addEventListener('click', function(e){
+    var t = e.target.closest('.tag'); if(!t) return;
+    tagRow.querySelectorAll('.tag').forEach(function(x){ x.classList.remove('on'); });
+    t.classList.add('on');
+    renderVideos(t.dataset.t);
+  });
+  // ===== 文字快讯（延伸阅读，常驻）=====
+  var newsDataMissing = (typeof window.NEWS === 'undefined') || window.__newsLoadFail === true;
+  var ALL = (window.NEWS || []).slice();
+  var list = document.getElementById('list');
+  list.innerHTML = ALL.length ? ALL.map(function(n){
+    return '<div class="nitem"><div class="nd">'+esc(n.date)+'</div><div class="nb"><span class="ntag">'+esc(n.tag)+'</span>'
+      + '<h3>'+esc(n.title)+'</h3><p>'+esc(n.desc)+'</p><span class="nsrc">来源 · '+esc(n.source)+'</span></div></div>';
+  }).join('') : '<div class="empty">' + (newsDataMissing ? ' 快讯数据加载失败（data/news.js 未加载），请刷新重试' : '暂无快讯') + '</div>';
+  // ===== 粒子背景 =====
+  var cv=document.getElementById('stars'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;} rs(); addEventListener('resize',rs);
+  var C=['94,234,212','56,225,255','91,140,255','240,185,92'];
+  var n=Math.min(90,Math.floor(W*H/19000));
+  for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,c:C[Math.random()*4|0]});
+  (function dr(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba('+p.c+',.5)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<11000){ctx.strokeStyle='rgba('+p.c+','+(0.11*(1-d2/11000))+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}
+    }
+    requestAnimationFrame(dr);
+  })();
+  // 强制移除 ccowork 全站设备预览器(防 CSS 特异性/!important 冲突,CSS 隐藏 + DOM 移除双保险)
+  setTimeout(function(){
+    ['mdFrame','mdPrev'].forEach(function(id){var e=document.getElementById(id);if(e&&e.remove)e.remove();});
+    // .md-scrim 保留(移动端汉堡菜单遮罩)
+  }, 30);
+})();
+</script>
+
+
+  
+<!-- 站内弹层播放器 -->
+<div class="vmodal" id="vmodal" hidden>
+  <div class="vbackdrop" data-close></div>
+  <div class="vbox">
+    <button class="vclose" data-close aria-label="关闭"><i class="cc-ic" data-ic="x" aria-hidden="true"></i></button>
+    <div class="vstage" id="vstage"></div>
+    <div class="vcap" id="vcap"></div>
+  </div>
+</div>
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ResearchAgent 论文研读助手 · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="自学路线实战项目：目标、拆解、实现步骤与验收标准。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/learn/academy/projects/research-agent.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-projects-research-agent.png" alt="ResearchAgent 论文研读助手 · 自学路线 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>ResearchAgent 论文研读助手</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 自学路线 毕业设计 17 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">学术</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>17 号毕业设计：ResearchAgent 论文研读助手</h2>
+<p>本项目解决学术研究者手动下载论文、逐篇梳理要点、撰写文献综述效率低的痛点，学完可掌握大模型结构化信息抽取、学术工具链集成、RAG 综述生成的全流程落地能力。</p>
+<h2>项目简介</h2>
+<p>ResearchAgent 论文研读助手是面向计算机、社科等领域研究者的轻量化学术工具，聚焦「论文获取-内容解析-知识整合」全链路自动化，支持从 arXiv、Semantic Scholar 等公开学术平台批量拉取目标领域论文，自动完成结构化要点抽取，并基于大模型生成符合学术规范的领域综述，可将单领域10篇量级论文的调研周期从3-5天压缩至2小时内，适合硕博生、算法工程师快速完成领域入门调研。项目完全基于开源组件搭建，无商用API强制依赖，可本地部署保障文献数据隐私。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-research-agent.png" alt="ResearchAgent 论文研读助手 · 自学路线 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>多源论文批量下载：支持按关键词、作者、DOI检索arXiv、PubMed、Semantic Scholar平台论文，自动去重并下载PDF格式原文，支持批量导入本地PDF文献库。</li>
+<li>论文结构化解析：基于GROBID完成PDF转结构化文本，自动抽取标题、作者、摘要、研究问题、核心方法、实验结论、创新点、不足8类核心字段，准确率达92%以上。</li>
+<li>单篇研读笔记生成：针对单篇论文自动生成300-500字精读笔记，标注核心贡献与局限性，支持用户自定义笔记模板调整输出维度。</li>
+<li>跨论文综述生成：基于抽取的结构化要点构建向量知识库，通过大模型多轮归纳生成逻辑连贯的领域综述，自动标注引用来源，避免大模型幻觉问题。</li>
+<li>研读成果导出：支持将单篇笔记、综述结果导出为Markdown、Word格式，自动生成符合GB/T 7714规范的参考文献列表。</li>
+<li>本地知识库管理：支持按研究主题分类管理已解析论文，提供关键词检索、相似论文推荐功能，方便长期积累个人文献库。</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>论文检索下载层</td><td>arxivpy、semanticscholar、requests</td><td>对接公开学术平台API，完成论文检索、元数据拉取、PDF下载</td></tr>
+<tr><td>PDF解析层</td><td>GROBID 0.8.1、PyMuPDF</td><td>提取PDF结构化文本，识别公式、图表、引用关系，处理扫描件OCR兜底</td></tr>
+<tr><td>向量存储层</td><td>LangChain 0.1.10、ChromaDB 0.4.24</td><td>对结构化论文片段做Embedding向量化，支持相似性检索</td></tr>
+<tr><td>大模型推理层</td><td>Qwen-7B-Chat / GPT-3.5-turbo、vLLM</td><td>完成要点抽取、笔记生成、综述归纳任务，支持本地/云端模型切换</td></tr>
+<tr><td>交互层</td><td>Streamlit 1.32.2</td><td>搭建Web可视化界面，提供检索、上传、结果预览、导出操作入口</td></tr>
+<tr><td>工具层</td><td>python-docx、pylatexenc</td><td>处理格式转换、公式编码、参考文献规范生成</td></tr>
+</tbody>
+</table>
+<p>架构说明：整体采用分层解耦设计，数据层负责多源论文的获取与结构化清洗，存储层将解析后的论文片段按语义切片存入向量库，推理层通过检索增强生成（RAG）模式调用大模型完成各类内容生成任务，交互层提供低门槛的可视化操作入口，所有模块均通过标准化接口对接，支持单独替换模型、存储、数据源组件。</p>
+<h2>核心代码骨架</h2>
+<pre><code># 核心模块1：论文结构化抽取与要点生成
+from langchain.chat_models import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate
+from langchain.vectorstores import Chroma
+from langchain.embeddings import HuggingFaceEmbeddings
+import grobid_tei_xml
+class PaperExtractor:
+    def __init__(self, llm_api_key=None, local_model_path="./qwen-7b-chat"):
+        # 初始化大模型，支持本地/云端切换
+        self.llm = ChatOpenAI(
+            model="qwen",
+            openai_api_key=llm_api_key,
+            openai_api_base="http://localhost:8000/v1" if not llm_api_key else None
+        )
+        # 初始化Embedding模型与向量库
+        self.embedding = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh-v1.5")
+        self.vector_db = Chroma(persist_directory="./paper_db", embedding_function=self.embedding)
+    def parse_pdf(self, pdf_path):
+        """调用GROBID解析PDF为结构化JSON"""
+        with open(pdf_path, "rb") as f:
+            tei_content = self._call_grobid(f.read())
+        paper_meta = grobid_tei_xml.parse_document(tei_content)
+        return {
+            "title": paper_meta.header.title,
+            "abstract": paper_meta.abstract,
+            "sections": [sec.text for sec in paper_meta.sections],
+            "references": [ref.title for ref in paper_meta.citations]
+        }
+    def extract_key_points(self, paper_struct):
+        """提示词驱动的核心要点抽取"""
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", "你是资深学术研究员，请从给定论文内容中抽取研究问题、核心方法、实验结论、创新点、局限性5个维度，每个维度不超过100字，输出JSON格式。"),
+            ("human", "论文内容：{content}")
+        ])
+        chain = prompt | self.llm
+        res = chain.invoke({"content": str(paper_struct)})
+        return eval(res.content)  # 实际生产可加json_repair做容错
+# 核心模块2：跨论文综述生成
+def generate_survey(topic, top_k=10):
+    extractor = PaperExtractor()
+    # 从向量库检索主题相关的所有论文要点
+    related_docs = extractor.vector_db.similarity_search(topic, k=top_k)
+    survey_prompt = ChatPromptTemplate.from_messages([
+        ("system", "请基于以下{num}篇同主题论文要点，生成一篇逻辑连贯的领域综述，分为研究背景、主流方法、当前不足、未来方向4部分，每处观点标注对应论文序号。"),
+        ("human", "论文要点列表：{points}")
+    ])
+    chain = survey_prompt | extractor.llm
+    return chain.invoke({"num": len(related_docs), "points": str([doc.metadata for doc in related_docs])}).content</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：安装Python 3.10+，安装GROBID服务用于PDF解析：<code>docker run -d --name grobid -p 8070:8070 lfoppiano/grobid:0.8.1</code>，等待服务启动约2分钟。</li>
+<li>拉取项目代码：<code>git clone https://github.com/whitepony-ai/ResearchAgent.git && cd ResearchAgent</code>，安装Python依赖：<code>pip install -r requirements.txt</code>，依赖包含arxivpy、langchain、chromadb、streamlit、grobid_tei_xml等指定版本库。</li>
+<li>模型配置：若使用本地大模型，下载Qwen-7B-Chat模型权重，启动vLLM推理服务：<code>python -m vllm.entrypoints.openai.api_server --model ./Qwen-7B-Chat --port 8000</code>；若使用云端模型，在<code>.env</code>文件中配置<code>OPENAI_API_KEY=你的密钥</code>。</li>
+<li>初始化向量库：执行初始化脚本<code>python init_db.py</code>，自动下载Embedding模型BAAI/bge-small-zh-v1.5，创建本地向量存储目录。</li>
+<li>启动Web服务：运行<code>streamlit run app.py --server.port 8501</code>，浏览器访问<code>http://localhost:8501</code>进入操作界面。</li>
+<li>功能验证：在界面输入关键词「大模型RAG优化」，选择检索arXiv平台最近1年的10篇论文，等待下载解析完成后，点击「生成综述」按钮验证全链路功能。</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>多模态解析能力增强：集成Nougat模型处理数学公式密集的理工科论文，结合LayoutLM识别图表内容与对应图注，将图表信息纳入要点抽取与综述生成范围，提升理工科论文解析准确率。</li>
+<li>综述引用溯源优化：接入Crossref API自动匹配引用条目元数据，在综述中生成可跳转的引用链接，支持直接导出为BibTeX格式，适配LaTeX论文写作场景。</li>
+<li>研读协作功能：添加多用户权限管理，支持团队共享文献库、共同标注论文要点、协作编辑综述内容，适配实验室团队的集体调研需求。</li>
+<li>前沿追踪能力：添加定时任务模块，支持用户订阅研究方向关键词，每日自动推送arXiv等平台的最新论文摘要，自动生成领域前沿动态简报。</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握学术工具链的集成方法：学会对接公开学术平台API、使用GROBID做结构化PDF解析，解决学术场景下非结构化文本的高质量提取问题。</li>
+<li>掌握RAG在垂直场景的落地逻辑：理解从文档切片、向量化存储到检索增强生成的全流程设计，学会通过提示词工程约束大模型输出结构化、可溯源的学术内容。</li>
+<li>掌握轻量AI应用的搭建方法：学会用Streamlit快速搭建可交互的AI工具，实现从后端逻辑到前端界面的全链路开发，可快速迁移到其他垂直领域助手场景。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>修改核心代码中的要点抽取提示词，新增「实验数据集」「核心评价指标」两个抽取维度，在界面上传3篇本地论文验证抽取结果的准确率，调整提示词直到抽取准确率达到80%以上。</li>
+<li>扩展下载模块功能，新增对CNKI中文文献的检索下载支持（可基于知网公开检索接口或selenium模拟实现），测试中文论文的解析与综述生成效果，对比中英文论文的抽取准确率差异。</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 自学路线「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

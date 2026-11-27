@@ -1,0 +1,68 @@
+{
+  "asOf": "2026-10-27",
+  "note": "全站书稿与教程的硬事实基线。任何页面写到模型版本、API 定价、上下文长度时，一律以本文件为准，避免各页自相矛盾。价格单位一律为「美元 / 百万 tokens」，取各厂官方定价页的标价档（非促销、非批量折扣）。厂商随时调价，页面引用时必须带上 asOf 日期。",
+
+  "apiPricing": [
+    { "vendor": "OpenAI", "model": "GPT-6 Astra", "input": 10, "output": 50, "tier": "旗舰", "note": "输入超 272K tokens 时按 2 倍输入 / 1.5 倍输出计", "source": "https://openai.com/api/pricing/" },
+    { "vendor": "OpenAI", "model": "GPT-6.1 Sol", "input": 2, "output": 10, "tier": "主力", "note": "付费档性价比核心", "source": "https://openai.com/api/pricing/" },
+    { "vendor": "OpenAI", "model": "GPT-6 Luna", "input": 0.1, "output": 0.5, "tier": "轻量", "note": "同代最便宜档", "source": "https://openai.com/api/pricing/" },
+    { "vendor": "Anthropic", "model": "Claude Fable 5.1", "input": 10, "output": 50, "tier": "旗舰", "note": "限量供应，以 API 为主", "source": "https://www.anthropic.com/pricing" },
+    { "vendor": "Anthropic", "model": "Claude Opus 5.5", "input": 4, "output": 20, "tier": "旗舰", "note": "编程与 Agent 默认旗舰", "source": "https://www.anthropic.com/pricing" },
+    { "vendor": "Anthropic", "model": "Claude Sonnet 5.5", "input": 2, "output": 10, "tier": "主力", "note": "Anthropic 主力档", "source": "https://www.anthropic.com/pricing" },
+    { "vendor": "Anthropic", "model": "Claude Haiku 5.5", "input": 0.1, "output": 0.5, "tier": "轻量", "note": "提示超 100K tokens 时升至 0.5 / 2.5", "source": "https://www.anthropic.com/pricing" },
+    { "vendor": "Google", "model": "Gemini 3.1 Pro", "input": 2, "output": 12, "tier": "主力", "note": "输入超 200K tokens 时为 4 / 18", "source": "https://deepmind.google/models/gemini/" },
+    { "vendor": "Google", "model": "Gemini 3.8 Flash", "input": 0.75, "output": 3.75, "tier": "轻量", "note": "优惠价至 2026-12-31，2027-01-01 起 1.50 / 7.50", "source": "https://deepmind.google/models/gemini/" },
+    { "vendor": "DeepSeek", "model": "DeepSeek V4.1 Flash", "input": 0.3, "output": 1.2, "tier": "主力", "note": "峰时价；谷时减半（0.15 / 0.60）。缓存命中输入低至 0.006", "source": "https://api-docs.deepseek.com/quick_start/pricing" },
+    { "vendor": "DeepSeek", "model": "DeepSeek V4-Pro", "input": 1.32, "output": 3.96, "tier": "旗舰", "note": "峰时价；谷时减半（0.66 / 1.98）", "source": "https://api-docs.deepseek.com/quick_start/pricing" },
+    { "vendor": "智谱", "model": "GLM-5.3", "input": 1.4, "output": 4.4, "tier": "主力", "note": "国内刊例价另有人民币档", "source": "https://open.bigmodel.cn/pricing" },
+    { "vendor": "月之暗面", "model": "Kimi K3", "input": 3, "output": 15, "tier": "旗舰", "note": "开放权重", "source": "https://platform.moonshot.cn/docs/pricing" }
+  ],
+
+  "consumerPlans": [
+    { "product": "ChatGPT", "free": true, "main": "Go $8/月", "top": "Plus $20/月 · Pro 起 $100/月" },
+    { "product": "Claude", "free": true, "main": "Pro $20/月（年付 $17/月）", "top": "Max 起 $100/月" },
+    { "product": "Gemini", "free": true, "main": "Google AI Plus $4.99/月", "top": "AI Pro $19.99/月 · Ultra 起 $99.99/月" },
+    { "product": "DeepSeek", "free": true, "main": "网页/App 免费", "top": "无消费者订阅，仅按 API 计费" },
+    { "product": "Grok", "free": true, "main": "X 订阅 Plus $8/月", "top": "Premium $30/月 · Super $100 · Ultra $200" }
+  ],
+
+  "deepseekCNY": {
+    "asOf": "2026-10-27",
+    "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+    "unit": "人民币 / 百万 tokens",
+    "models": [
+      { "name": "deepseek-flash", "version": "DeepSeek-V4.1-Flash-1017", "ctx": "1M", "maxOut": "384K",
+        "cacheHit": { "idle": 0.02, "peak": 0.04 },
+        "input": { "idle": 1, "peak": 2 },
+        "output": { "idle": 4, "peak": 8 } },
+      { "name": "deepseek-v4-pro", "version": "DeepSeek-V4-Pro-0813", "ctx": "1M", "maxOut": "384K",
+        "cacheHit": { "idle": 0.15, "peak": 0.30 },
+        "input": { "idle": 4.5, "peak": 9.0 },
+        "output": { "idle": 13.5, "peak": 27.0 } }
+    ],
+    "tools": [
+      { "name": "Search", "unit": "每 1000 次成功请求", "price": 5 },
+      { "name": "Fetch", "unit": "每 1000 次成功请求", "price": 5 }
+    ],
+    "peakHours": "工作日 9:00–12:00、14:00–18:00（北京时间）",
+    "retired": ["deepseek-v4-flash", "deepseek-v4-flash-vision-exp"]
+  },
+
+  "keyFacts": [
+    { "k": "DeepSeek 主力模型", "v": "V4.1 Flash（API 名 deepseek-flash）为当前调用主力；V4-Pro 仍在线，但发布公告说明 Pro 请求会被重路由到 Flash。写代码/教程时默认按 Flash 举例。", "source": "https://api-docs.deepseek.com/quick_start/pricing" },
+    { "k": "DeepSeek 计费特点", "v": "默认开启前缀缓存，缓存命中输入价极低（V4.1 Flash 峰时 $0.006/百万 tokens）；峰谷计价，谷时价格减半。Agent 场景因反复回传上下文，缓存命中率往往决定真实成本。", "source": "https://api-docs.deepseek.com/quick_start/pricing" },
+    { "k": "长上下文计价陷阱", "v": "OpenAI 在 272K 输入 tokens 以上、Google 在 200K 以上会跳档加价；Anthropic 的 1M 窗口按标准价。做长文档处理前必须先算清档位。", "source": "https://www.anthropic.com/pricing" },
+    { "k": "推理 token 计费", "v": "推理模型的隐藏思考过程按输出 token 计费，且占用上下文。提高 reasoning effort 会直接抬高成本，但不改变最终可见答案长度。", "source": "https://openai.com/api/pricing/" },
+    { "k": "Transformer 原始论文", "v": "Vaswani et al., Attention Is All You Need, 2017。所有现代大模型的架构源头，读大模型必读第一篇。", "source": "https://arxiv.org/abs/1706.03762" },
+    { "k": "AI 标准教材", "v": "Russell & Norvig《Artificial Intelligence: A Modern Approach》第 4 版，Pearson 2021，ISBN 978-0134610993，全球 1500+ 高校采用。", "source": "https://aima.cs.berkeley.edu/" }
+  ],
+
+  "pricingRules": [
+    "输入与输出分开计价，输出通常是输入的 5 倍（各家旗舰档一致）",
+    "缓存命中输入大幅打折，写缓存本身可能溢价（Anthropic 5 分钟缓存 1.25 倍、1 小时 2 倍）",
+    "批量（Batch）异步处理普遍有约 50% 折扣，适合离线评测，不适合交互式 Agent",
+    "长 prompt 跳档加价：OpenAI 272K、Google 200K 是常见分界",
+    "推理 token 按输出计费，思考越长账单越高",
+    "不同厂 tokenizer 不同，同样文字切出的 token 数可差 30%，横向比价不能只看单价"
+  ]
+}

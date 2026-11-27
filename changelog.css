@@ -1,0 +1,242 @@
+/* ============================================================
+   更新日志页 · /about/changelog.html
+   目的：让「这个站每天都在更新」变得可见
+   变量沿用站点引擎：--card --text --muted --line --grad
+   ============================================================ */
+
+.cl-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 34px 24px 60px;
+}
+
+/* ---------- 顶部：最后更新时间 ---------- */
+.cl-top {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 26px 28px;
+  margin-bottom: 26px;
+  color: #fff;
+  background: var(--grad, linear-gradient(120deg, #4f8cff, #38b6ff 52%, #8b5cf6));
+  box-shadow: 0 14px 34px rgba(79, 140, 255, .22);
+}
+.cl-top::after {
+  content: "";
+  position: absolute;
+  right: -46px;
+  top: -56px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+}
+.cl-top h1 {
+  margin: 0 0 8px;
+  font-size: 25px;
+  font-weight: 850;
+  letter-spacing: -.4px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.cl-top p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, .92);
+  position: relative;
+  z-index: 1;
+}
+.cl-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  background: rgba(255, 255, 255, .2);
+  border: 1px solid rgba(255, 255, 255, .34);
+}
+.cl-live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7bf1a8;
+  box-shadow: 0 0 0 0 rgba(123, 241, 168, .7);
+  animation: cl-pulse 2s infinite;
+}
+@keyframes cl-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(123, 241, 168, .65); }
+  70%  { box-shadow: 0 0 0 9px rgba(123, 241, 168, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(123, 241, 168, 0); }
+}
+.cl-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+.cl-stat {
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .16);
+  border: 1px solid rgba(255, 255, 255, .22);
+  font-size: 12.5px;
+  color: #fff;
+}
+.cl-stat b {
+  font-size: 16px;
+  font-weight: 850;
+  margin-right: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 时间轴 ---------- */
+.cl-tl {
+  position: relative;
+  padding-left: 30px;
+}
+.cl-tl::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--grad, #4f8cff), rgba(139, 92, 246, .28) 55%, transparent);
+}
+
+.cl-day { position: relative; margin-bottom: 18px; }
+.cl-day::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--card, #fff);
+  border: 3px solid #4f8cff;
+  box-shadow: 0 0 0 4px rgba(79, 140, 255, .12);
+}
+.cl-day.is-today::before {
+  border-color: #38b6ff;
+  box-shadow: 0 0 0 5px rgba(56, 182, 255, .2);
+}
+.cl-card {
+  border-radius: 16px;
+  padding: 16px 18px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .22));
+  transition: transform .16s ease, border-color .16s ease;
+}
+.cl-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(79, 140, 255, .42);
+}
+.cl-h {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 9px;
+}
+.cl-h b {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text, #1E293B);
+  font-variant-numeric: tabular-nums;
+}
+.cl-h .cl-time {
+  font: 600 11.5px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--muted, #64748B);
+}
+.cl-h .cl-today {
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .3px;
+  color: #fff;
+  background: var(--grad, linear-gradient(120deg, #4f8cff, #38b6ff));
+}
+.cl-h .cl-tag {
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6d28d9;
+  background: rgba(139, 92, 246, .12);
+  border: 1px solid rgba(139, 92, 246, .3);
+}
+.cl-num {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 9px;
+}
+.cl-n {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted, #64748B);
+  background: rgba(120, 160, 220, .12);
+  font-variant-numeric: tabular-nums;
+}
+.cl-note {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text, #1E293B);
+  opacity: .88;
+}
+
+/* ---------- 空态 ---------- */
+.cl-empty {
+  border-radius: 16px;
+  padding: 34px 24px;
+  text-align: center;
+  color: var(--muted, #64748B);
+  font-size: 13.5px;
+  background: var(--card, #fff);
+  border: 1px dashed var(--line, rgba(148, 163, 184, .3));
+}
+
+/* ---------- 深色主题 ---------- */
+body[data-theme="deep"] .cl-top {
+  background: linear-gradient(120deg, #38e1ff, #5b8cff 48%, #8b5cf6);
+  box-shadow: 0 14px 34px rgba(56, 225, 255, .16);
+}
+body[data-theme="deep"] .cl-day::before {
+  border-color: #5b8cff;
+  box-shadow: 0 0 0 4px rgba(91, 140, 255, .16);
+}
+body[data-theme="deep"] .cl-day.is-today::before {
+  border-color: #38e1ff;
+  box-shadow: 0 0 0 5px rgba(56, 225, 255, .2);
+}
+body[data-theme="deep"] .cl-h .cl-tag {
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, .2);
+  border-color: rgba(139, 92, 246, .42);
+}
+body[data-theme="deep"] .cl-n {
+  color: #8fa3bd;
+  background: rgba(120, 160, 220, .16);
+}
+
+/* ---------- 窄屏 ---------- */
+@media (max-width: 640px) {
+  .cl-wrap { padding: 22px 16px 48px; }
+  .cl-top { padding: 20px 20px; border-radius: 16px; }
+  .cl-top h1 { font-size: 21px; }
+  .cl-tl { padding-left: 24px; }
+  .cl-day::before { left: -21px; }
+}

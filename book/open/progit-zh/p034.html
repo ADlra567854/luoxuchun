@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5.1 分布式 Git · 分布式工作流程 · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：5.1 分布式 Git - 分布式工作流程。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p034.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html" class="on">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html">10.5 Git 内部原理 - 引用规范</a><a href="p072.html">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 34 / 100 节
+    </div>
+    <h1>5.1 分布式 Git - 分布式工作流程</h1>
+            <div>
+              <p>
+你现在拥有了一个远程 Git 版本库，能为所有开发者共享代码提供服务，在一个本地工作流程下，你也已经熟悉了基本 Git 命令。你现在可以学习如何利用 Git 提供的一些分布式工作流程了。</p><p>这一章中，你将会学习如何作为贡献者或整合者，在一个分布式协作的环境中使用 Git。
+你会学习为一个项目成功地贡献代码，并接触一些最佳实践方式，让你和项目的维护者能轻松地完成这个过程。另外，你也会学到如何管理有很多开发者提交贡献的项目。</p>
+<h2 id="_分布式工作流程">分布式工作流程</h2>
+<div class="paragraph">
+<p>
+与传统的集中式版本控制系统（CVCS）相反，Git 的分布式特性使得开发者间的协作变得更加灵活多样。
+在集中式系统中，每个开发者就像是连接在集线器上的节点，彼此的工作方式大体相像。
+而在 Git 中，每个开发者同时扮演着节点和集线器的角色——也就是说，
+每个开发者既可以将自己的代码贡献到其他的仓库中，同时也能维护自己的公开仓库，
+让其他人可以在其基础上工作并贡献代码。
+由此，Git 的分布式协作可以为你的项目和团队衍生出种种不同的工作流程，
+接下来的章节会介绍几种利用了 Git 的这种灵活性的常见应用方式。
+我们将讨论每种方式的优点以及可能的缺点；你可以选择使用其中的某一种，或者将它们的特性混合搭配使用。</p>
+</div>
+<div class="sect3">
+<h3 id="_集中式工作流">集中式工作流</h3>
+<div class="paragraph">
+<p>
+集中式系统中通常使用的是单点协作模型——集中式工作流。
+一个中心集线器，或者说 <strong>仓库</strong>，可以接受代码，所有人将自己的工作与之同步。
+若干个开发者则作为节点，即中心仓库的消费者与中心仓库同步。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/centralized_workflow.png" alt="集中式工作流。">
+</div>
+<div class="title">Figure 54. 集中式工作流。</div>
+</div>
+<div class="paragraph">
+<p>这意味着如果两个开发者从中心仓库克隆代码下来，同时作了一些修改，那么只有第一个开发者可以顺利地把数据推送回共享服务器。
+第二个开发者在推送修改之前，必须先将第一个人的工作合并进来，这样才不会覆盖第一个人的修改。
+这和 Subversion （或任何 CVCS）中的概念一样，而且这个模式也可以很好地运用到 Git 中。</p>
+</div>
+<div class="paragraph">
+<p>如果在公司或者团队中，你已经习惯了使用这种集中式工作流程，完全可以继续采用这种简单的模式。
+只需要搭建好一个中心仓库，并给开发团队中的每个人推送数据的权限，就可以开展工作了。Git 不会让用户覆盖彼此的修改。</p>
+</div>
+<div class="paragraph">
+<p>例如 John 和 Jessica 同时开始工作。
+John 完成了他的修改并推送到服务器。
+接着 Jessica 尝试提交她自己的修改，却遭到服务器拒绝。
+她被告知她的修改正通过非快进式（non-fast-forward）的方式推送，只有将数据抓取下来并且合并后方能推送。
+这种模式的工作流程的使用非常广泛，因为大多数人对其很熟悉也很习惯。</p>
+</div>
+<div class="paragraph">
+<p>当然这并不局限于小团队。
+利用 Git 的分支模型，通过同时在多个分支上工作的方式，即使是上百人的开发团队也可以很好地在单个项目上协作。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_integration_manager">集成管理者工作流</h3>
+<div class="paragraph">
+<p>
+Git 允许多个远程仓库存在，使得这样一种工作流成为可能：每个开发者拥有自己仓库的写权限和其他所有人仓库的读权限。
+这种情形下通常会有个代表“官方”项目的权威的仓库。
+要为这个项目做贡献，你需要从该项目克隆出一个自己的公开仓库，然后将自己的修改推送上去。
+接着你可以请求官方仓库的维护者拉取更新合并到主项目。
+维护者可以将你的仓库作为远程仓库添加进来，在本地测试你的变更，将其合并入他们的分支并推送回官方仓库。
+这一流程的工作方式如下所示（见 <a href="https://git-scm.com/book/zh/v2/ch00/wfdiag_b">集成管理者工作流。</a>）：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>项目维护者推送到主仓库。</p>
+</li>
+<li>
+<p>贡献者克隆此仓库，做出修改。</p>
+</li>
+<li>
+<p>贡献者将数据推送到自己的公开仓库。</p>
+</li>
+<li>
+<p>贡献者给维护者发送邮件，请求拉取自己的更新。</p>
+</li>
+<li>
+<p>维护者在自己本地的仓库中，将贡献者的仓库加为远程仓库并合并修改。</p>
+</li>
+<li>
+<p>维护者将合并后的修改推送到主仓库。</p>
+</li>
+</ol>
+</div>
+<div id="wfdiag_b" class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/integration-manager.png" alt="集成管理者工作流。">
+</div>
+<div class="title">Figure 55. 集成管理者工作流。</div>
+</div>
+<div class="paragraph">
+<p>
+这是 GitHub 和 GitLab 等集线器式（hub-based）工具最常用的工作流程。人们可以容易地将某个项目分叉成为自己的公开仓库，向这个仓库推送自己的修改，并为每个人所见。
+这么做最主要的优点之一是你可以持续地工作，而主仓库的维护者可以随时拉取你的修改。
+贡献者不必等待维护者处理完提交的更新——每一方都可以按照自己的节奏工作。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_主管与副主管工作流">主管与副主管工作流</h3>
+<div class="paragraph">
+<p>
+这其实是多仓库工作流程的变种。
+一般拥有数百位协作开发者的超大型项目才会用到这样的工作方式，例如著名的 Linux 内核项目。
+被称为 <strong>副主管（lieutenant）</strong> 的各个集成管理者分别负责集成项目中的特定部分。
+所有这些副主管头上还有一位称为 <strong>主管（dictator）</strong> 的总集成管理者负责统筹。
+主管维护的仓库作为参考仓库，为所有协作者提供他们需要拉取的项目代码。
+整个流程看起来是这样的（见 <a href="https://git-scm.com/book/zh/v2/ch00/wfdiag_c">主管与副主管工作流。</a> ）：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>普通开发者在自己的主题分支上工作，并根据 <code>master</code> 分支进行变基。
+这里是主管推送的参考仓库的 <code>master</code> 分支。</p>
+</li>
+<li>
+<p>副主管将普通开发者的主题分支合并到自己的 <code>master</code> 分支中。</p>
+</li>
+<li>
+<p>主管将所有副主管的 <code>master</code> 分支并入自己的 <code>master</code> 分支中。</p>
+</li>
+<li>
+<p>最后，主管将集成后的 <code>master</code> 分支推送到参考仓库中，以便所有其他开发者以此为基础进行变基。</p>
+</li>
+</ol>
+</div>
+<div id="wfdiag_c" class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/benevolent-dictator.png" alt="主管与副主管工作流。">
+</div>
+<div class="title">Figure 56. 主管与副主管工作流。</div>
+</div>
+<div class="paragraph">
+<p>这种工作流程并不常用，只有当项目极为庞杂，或者需要多级别管理时，才会体现出优势。
+利用这种方式，项目总负责人（即主管）可以把大量分散的集成工作委托给不同的小组负责人分别处理，然后在不同时刻将大块的代码子集统筹起来，用于之后的整合。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_工作流程总结">工作流程总结</h3>
+<div class="paragraph">
+<p>上面介绍了在 Git 等分布式系统中经常使用的工作流程，但是在实际的开发中，你会遇到许多可能适合你的特定工作流程的变种。
+现在你应该已经清楚哪种工作流程组合可能比较适合你了，我们会给出一些如何扮演不同工作流程中主要角色的更具体的例子。
+下一节我们将会学习为项目做贡献的一些常用模式。</p>
+</div>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E6%80%BB%E7%BB%93">prev</a> | <a href="https://git-scm.com/book/zh/v2/%E5%88%86%E5%B8%83%E5%BC%8F-Git-%E5%90%91%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E8%B4%A1%E7%8C%AE">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p033.html">← 4.10 服务器上的 Git - 总结</a><a href="index.html">目录</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

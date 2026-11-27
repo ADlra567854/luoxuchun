@@ -1,0 +1,598 @@
+{
+ "meta": {
+  "extractedAt": "2026-10-07T08:34:09.818Z",
+  "source": "call_01a114344c5477389d5ec69e.txt",
+  "method": "子代理并发调研产出，每条均实际 WebFetch 验证，失效 URL 已由子代理剔除",
+  "note": "原文含 LaTeX 反斜杠，已做转义修复后解析"
+ },
+ "topics": [
+  {
+   "chapter": "ch19",
+   "topic": "RAG 的原始论文",
+   "findings": [
+    {
+     "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (arXiv:2005.11401)",
+     "url": "https://arxiv.org/abs/2005.11401",
+     "sourceType": "学术论文",
+     "publisher": "arXiv（已被 NeurIPS 2020 接收）",
+     "date": "2020-05-22 (v1)，最新修订 2021-04-12 (v4)",
+     "summary": "RAG 概念的原始论文。v1 于 2020 年 5 月 22 日提交，comments 字段明确标注 \"Accepted at NeurIPS 2020\"，DOI 为 10.48550/arXiv.2005.11401。作者共 12 人，包括 Patrick Lewis、Ethan Perez、Aleksandra Piktus、Fabio Petroni、Vladimir Karpukhin、Naman Goyal、Heinrich Küttler、Mike Lewis、Wen-tau Yih、Tim Rocktäschel、Sebastian Riedel、Douwe Kiela，来自 Facebook AI Research、University College London 与 New York University。摘要开篇即指出大型预训练语言模型把事实知识存储在参数中，但\"访问和精确操作知识的能力仍然受限\"，因此在知识密集型任务上落后于任务专用架构，且\"为决策提供来源依据（provenance）和更新世界知识仍是开放研究问题\"。"
+    },
+    {
+     "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (NeurIPS 2020 会议版 PDF)",
+     "url": "https://proceedings.neurips.cc/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+     "sourceType": "学术论文",
+     "publisher": "Advances in Neural Information Processing Systems 33 (NeurIPS 2020)",
+     "date": "2020",
+     "summary": "经同行评审的正式会议论文版本，页码 9459-9474。论文正文第 1 页即给出完整方法图（Figure 1）：预训练检索器（Query Encoder + Document Index）与预训练 seq2seq 生成器（Generator）端到端联合微调。对查询 x 用 Maximum Inner Product Search (MIPS) 找出 top-K 文档 z，把 z 视为隐变量并对不同文档下的 seq2seq 预测做边缘化。明确区分两种形式：RAG-Sequence（整个生成序列条件于同一批检索段落）与 RAG-Token（每个 token 可条件于不同段落）。检索器用 Dense Passage Retriever (DPR, 双编码器 BERT)，生成器用 BART。"
+    },
+    {
+     "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (UCL Discovery 机构库收录版)",
+     "url": "https://discovery.ucl.ac.uk/id/eprint/10100504/",
+     "sourceType": "学术论文",
+     "publisher": "UCL Discovery（伦敦大学学院机构知识库）",
+     "date": "2020",
+     "summary": "作者接受稿（author accepted manuscript）的机构库存档版本，标注为 NeurIPS 2020 会议论文，开放获取。可用于交叉验证论文的正式出版信息、作者列表与出版商版本链接。页面同时提供2005.11401v1.pdf 的下载入口，并显示该论文的国际下载统计（如来自中国的下载量 49 次），侧面反映该文在中文技术社区的传播度。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "为什么需要 RAG（问题定义与结论）",
+   "findings": [
+    {
+     "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks — 论文正文 PDF",
+     "url": "https://proceedings.neurips.cc/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+     "sourceType": "学术论文",
+     "publisher": "NeurIPS 2020",
+     "date": "2020",
+     "summary": "论文正文第 1 页\"Introduction\"直接给出 RAG 的问题动机：预训练神经语言模型虽能从数据中学到大量知识，但其缺点是\"cannot easily expand or revise their memory, can't straightforwardly provide insight into their predictions, and may produce 'hallucinations'\"（难以扩展或修正记忆、难以直接提供预测依据、可能产生幻觉）。论文把\"知识密集型任务\"明确定义为\"tasks that humans could not reasonably be expected to perform without access to an external knowledge source\"（人类在没有外部知识源时无法合理完成的任务）。结论部分：在三个开放域问答任务上达到 SOTA，优于纯参数化 seq2seq 模型和任务专用的 retrieve-and-extract 架构；在语言生成任务上，RAG 模型生成的语言\"more specific, diverse and factual\"（更具体、更多样、更事实性）。"
+    },
+    {
+     "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks — arXiv 摘要",
+     "url": "https://arxiv.org/abs/2005.11401",
+     "sourceType": "学术论文",
+     "publisher": "arXiv",
+     "date": "2020-05-22",
+     "summary": "摘要给出核心论断：预训练模型若拥有\"a differentiable access mechanism to explicit non-parametric memory\"（对显式非参数化记忆的可微分访问机制）即可克服上述缺陷，但此前这类机制\"have so far been only investigated for extractive downstream tasks\"（此前仅限于抽取式下游任务）。RAG 的贡献正是把这个机制带到语言生成上。论文还说明检索器（DPR）在 TriviaQA 与 Natural Questions 上预训练，文档编码器在训练中被冻结（frozen document encoder），只微调查询编码器与生成器。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "分块（chunking）策略",
+   "findings": [
+    {
+     "title": "Chunking Strategies to Improve LLM RAG Pipeline Performance（Weaviate 官方技术博客）",
+     "url": "https://weaviate.io/blog/chunking-strategies-for-rag",
+     "sourceType": "技术博客",
+     "publisher": "Weaviate（向量数据库厂商官方博客）",
+     "date": null,
+     "summary": "Weaviate 官方博客，系统讲解分块对 RAG 的四项影响：提升检索质量、管理 LLM 上下文窗口、减少幻觉、提升效率并降低成本。提出 Pre-Chunking 与 Post-Chunking 的策略分野：前者（最常见）在嵌入前异步切块，查询时检索快，但需预先决定块大小与边界；后者先嵌入整篇文档，只对实际被检索到的文档在查询时切分，可缓存，因此随时间加速，但首次访问有延迟。简单技术部分给出 Fixed-Size Chunking 的明确参数建议：块大小\"a common starting point is a chunk size that aligns with the context window of the embedding model\"，重叠\"a typical overlap is between 10% and 20% of the chunk size\"，适用场景是\"Quick prototyping and getting a baseline\"。文中还给出配套的 Weaviate Academy 免费 Python 教程链接：https://docs.weaviate.io/academy/py/standalone/chunking"
+    },
+    {
+     "title": "Advanced RAG Techniques（Weaviate 官方技术博客）",
+     "url": "https://weaviate.io/blog/advanced-rag",
+     "sourceType": "技术博客",
+     "publisher": "Weaviate",
+     "date": null,
+     "summary": "从索引、检索、生成三阶段拆解 RAG 栈并逐段给出优化手段。分块部分把策略分为三类并说明各自取舍：Simple Chunking（固定大小加重叠，实现简单但可能破坏语义单元导致块不连贯、检索质量下降）；Semantic Chunking（按语义切分，计算相邻句子嵌入的余弦距离，低于阈值则归入同一块，产生变长块，提升检索准确性但需对 BERT 类编码器做前向计算，计算开销更大）；Language Model-Based Chunking（用语言模型生成可独立成立的命题 proposition 再合并成块，质量最高但计算密集）。此外强调 Leveraging Metadata：把日期、患者年龄等元数据与向量一同存储，在检索前过滤以缩小搜索空间、降低噪声。"
+    },
+    {
+     "title": "Best Chunking Strategies for RAG (and LLMs) in 2026（Firecrawl 技术博客）",
+     "url": "https://www.firecrawl.dev/blog/best-chunking-strategies-rag",
+     "sourceType": "技术博客",
+     "publisher": "Firecrawl",
+     "date": null,
+     "summary": "对比七种分块策略：递归字符分割、语义分块、页面级分块、LLM 分块、基于大小、基于句子、late chunking。给出的核心量化结论：递归字符分割在 400-512 token、10-20% 重叠时是多数场景的最佳默认值；页面级分块在 NVIDIA 2024 基准中胜出（accuracy 0.648，方差最低），但只适用于分页文档；语义分块召回率相比简单方法最多可提升约 9%，代价是要对每个句子做嵌入。文章明确指出没有通用赢家，因为三个因素决定最佳选择：嵌入模型的特性、文档类型（PDF 表格 vs 博客 vs 代码）、查询模式（事实型查询与分析型问题需要不同块大小）。附带完整的 Pinecone / Qdrant / Weaviate / ChromaDB / pgvector 端到端代码示例。"
+    },
+    {
+     "title": "Weaviate Knowledge Cards（Weaviate 官方学习卡片）",
+     "url": "https://weaviate.io/learn/knowledgecards",
+     "sourceType": "官方文档",
+     "publisher": "Weaviate",
+     "date": null,
+     "summary": "Weaviate 官方知识卡集合，把分块技术作为独立分类（Chunking Techniques）梳理三种：Semantic Chunking（文本先切成句子或段落等有意义单元，再向量化）、Recursive Chunking（先用主分隔符如段落切分，若块仍过大则改用次级分隔符）、LLM-Based Chunking（用 LLM 生成语义上隔离的句子作为块）。同一卡片集合还覆盖 Embedding Types（sparse embeddings 由 BM25 与 SPLADE 算法生成、quantized embeddings 用低精度数据类型压缩稠密向量如 float32→int8、variable dimensions 如 Matryoshka embeddings），以及 RAG、Contextual Retrieval/Search、ReAct、Tree of Thoughts 等进阶检索增强概念。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "向量数据库（官方文档）",
+   "findings": [
+    {
+     "title": "Pinecone Database — Pinecone Docs（官方概览）",
+     "url": "https://docs.pinecone.io/guides/get-started/overview",
+     "sourceType": "官方文档",
+     "publisher": "Pinecone",
+     "date": null,
+     "summary": "Pinecone 官方文档的数据库概览页。核心定位是\"the retrieval foundation of Pinecone's trusted AI knowledge platform, bringing full-text and semantic search into one managed database\"。关键设计是每个 index 有 schema，可声明 full-text-search 字段、稠密向量与稀疏向量，因此同一个索引可服务多种检索方式。文档明确列出可用的四种检索：full-text search、semantic search、sparse-vector search、hybrid search。此外支持 integrated embedding（直接 upsert 文本，Pinecone 服务端生成向量）、metadata filters 后再 rerank、namespaces 做单索引内多租户隔离、dedicated read nodes 扩展读吞吐，以及 BYOC（Bring Your Own Cloud）部署到自有云账号。"
+    },
+    {
+     "title": "Weaviate Database | Weaviate Documentation（官方文档首页）",
+     "url": "https://docs.weaviate.io/weaviate",
+     "sourceType": "官方文档",
+     "publisher": "Weaviate",
+     "date": null,
+     "summary": "Weaviate 官方文档。定义 Weaviate 为\"an open-source vector database\"，用于同时存储和索引数据对象及其向量嵌入，通过比较向量编码的语义而非仅靠关键词匹配来实现高级语义搜索。三项关键能力：Semantic and hybrid search（支持基于语义相似度和关键词的搜索，查询词与存储数据不精确匹配时仍可返回相关结果）；Retrieval augmented generation (RAG)（可作为 RAG 工作流的稳健后端，用向量检索提供上下文增强生成模型输出）；Agent-driven workflows。部署方式提供 Docker、Kubernetes、Embedded Weaviate（可从 Python/JS 直接启动）与 Weaviate Cloud 四档。"
+    },
+    {
+     "title": "What is a Vector Database?（Qdrant 官方技术文章）",
+     "url": "https://qdrant.tech/articles/what-is-a-vector-database/",
+     "sourceType": "官方文档",
+     "publisher": "Qdrant",
+     "date": null,
+     "summary": "Qdrant 官方技术文章，概念界定清晰且有一处值得引用的行业观察：作者指出\"vector database\"这个名称略有误导，传统数据库（Postgres、MySQL）建立在 ACID 原则之上，而多数向量数据库并非该意义上的数据库，\"They're really vector search engines, designed for horizontal scalability, low-latency queries, and high availability\"，因此\"vector search engine\"是更准确的描述。文章给出核心数据结构 Point 的三个要素：ID（唯一标识符，不参与相似度计算但用于关联真实世界数据）、Vector(s)（支持 named vectors，一个 point 可挂多个向量，如同一段文本同时存稠密向量与稀疏向量以支持混合检索）、Payload（JSON 元数据，支持文本、标签、类别等结构化信息以及数值，用于过滤和排序）。Collections 内同名向量必须共享维度并使用同一距离度量。应用场景表列出相似性搜索、异常检测、推荐系统、RAG、多模态搜索、语音识别、知识图谱增强。"
+    },
+    {
+     "title": "Milvus vector database documentation（官方文档）",
+     "url": "https://milvus.io/en/docs",
+     "sourceType": "官方文档",
+     "publisher": "Milvus / Zilliz",
+     "date": null,
+     "summary": "Milvus 官方文档入口。导航结构显示其能力分层：Install（Docker Compose 或 Kubernetes 安装）、Quick Start（示例代码快速上手）、Bootcamp（构建向量相似度搜索应用）、Manage Collections（Insert/Upsert/Delete、Single-Vector Search、Hybrid Search、Get & Scalar Query）、Milvus for AI Agents、Deploy、Scale（扩缩集群）、Monitor and Alert、System Configuration、Architecture Overview、Index、Similarity Metrics、Glossary。文档 What's new 栏显示 Milvus 3.0.x 更新，引入 External Collection（可在数据留在数据湖时就地建索引并提供检索，无需搬移数据）、Snapshot、Storage V3 以及湖生态集成。"
+    },
+    {
+     "title": "Introduction - Chroma Docs（官方文档）",
+     "url": "https://docs.trychroma.com/docs/overview/introduction",
+     "sourceType": "官方文档",
+     "publisher": "Chroma",
+     "date": null,
+     "summary": "Chroma 官方文档介绍页。定位为\"the open-source data infrastructure for AI\"。核心能力表述为\"store embeddings with metadata, search with dense and sparse vectors, filter by metadata, and retrieve across text, images, and more\"——即带元数据存储嵌入、用稠密与稀疏向量检索、按元数据过滤，并支持跨文本、图像等多模态。许可证为 Apache 2.0，可本地运行、自托管，或使用 Chroma Cloud 的托管 serverless 形态。文档结构包含 Quickstart 与 Example Projects 两块。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "嵌入模型（官方模型卡与文档）",
+   "findings": [
+    {
+     "title": "Vector embeddings — OpenAI Platform官方文档",
+     "url": "https://platform.openai.com/docs/guides/embeddings",
+     "sourceType": "官方文档",
+     "publisher": "OpenAI",
+     "date": null,
+     "summary": "OpenAI 官方嵌入文档。定义\"OpenAI's text embeddings measure the relatedness of text strings\"，列出六类用例：Search、Clustering、Recommendations、Anomaly detection、Diversity measurement、Classification。关键参数细节：默认向量长度 text-embedding-3-small 为 1536 维，text-embedding-3-large 为 3072 维，且可通过 dimensions 参数在\"without losing its concept-representing properties\"的前提下缩短维度。官方给出的性价比对照表（按每美元可处理的页数、MTEB 表现、最大输入 token）：text-embedding-3-small 约 62,500 页 / 62.3% / 8192；text-embedding-3-large 约 9,615 页 / 64.6% / 8192；text-embedding-ada-002 约 12,500 页 / 61.0% / 8192。计费按输入 token 计。"
+    },
+    {
+     "title": "New embedding models with lower pricing（OpenAI 官方发布博客）",
+     "url": "https://openai.com/index/new-embedding-models-and-api-updates/",
+     "sourceType": "权威媒体",
+     "publisher": "OpenAI 官方博客",
+     "date": "2024-01-25（text-embedding-3 系列发布）",
+     "summary": "OpenAI 官方发布公告，提供完整的基准对照数据。三代模型对比：text-embedding-ada-002 的 MIRACL 平均分 31.4、MTEB 61.0；text-embedding-3-small 提升到 MIRACL 44.0、MTEB 62.3；text-embedding-3-large 达到 MIRACL 54.9、MTEB 64.6。价格方面 text-embedding-3-small 相比 ada-002 降价 5 倍（从每 1k token \\$0.0001 降到 \\$0.00002），text-embedding-3-large 定价每 1k token \\$0.00013。最有价值的技术细节是\"Native support for shortening embeddings\"：通过 dimensions 参数截短向量，在 MTEB 上256 维的 text-embedding-3-large 嵌入仍优于未截短的 1536 维 ada-002（64.1 vs 61.0）。文中明确说明嵌入\"power applications like knowledge retrieval in both ChatGPT and the Assistants API, and many retrieval augmented generation (RAG) developer tools\"。"
+    },
+    {
+     "title": "BAAI/bge-m3 — Hugging Face 官方模型卡",
+     "url": "https://huggingface.co/BAAI/bge-m3",
+     "sourceType": "官方文档",
+     "publisher": "BAAI（北京智源人工智能研究院）/ Hugging Face",
+     "date": "2024-02-06（BGE-M3 发布）",
+     "summary": "智源 BGE-M3 官方模型卡。核心特性用三个 M命名：Multi-Functionality（单一模型同时支持 dense、multi-vector、sparse 三种检索）、Multi-Linguality（支持超过 100 种语言）、Multi-Granularity（可处理从短句到最长 8192 token 的长文档）。规格为1024 维、8192 序列长度。模型卡直接给出 RAG 检索管线建议：推荐\"hybrid retrieval + re-ranking\"组合，混合检索的经典做法是同时用 embedding 检索与 BM25，而 BGE-M3 在生成稠密嵌入的同时可零额外成本产出 token 权重（类 BM25）；并指出\"As cross-encoder models, re-ranker demonstrates higher accuracy than bi-encoder embedding model\"，建议检索后接 bge-reranker 或 cohere-reranker 进一步过滤。FAQ 说明三种检索范式的区别：dense retrieval 映射为单一嵌入（如 DPR、BGE-v1.5）；sparse retrieval 为词表等长向量、多数位置为 0、仅对出现的 token 计算权重（如 BM25、unicool、splade）；multi-vector retrieval 用多个向量表示一段文本（如 ColBERT）。另一实用细节：BGE-M3 不再需要在查询上添加 instruction 前缀。"
+    },
+    {
+     "title": "An Overview of Cohere's Models（官方模型总览文档）",
+     "url": "https://docs.cohere.com/docs/models",
+     "sourceType": "官方文档",
+     "publisher": "Cohere",
+     "date": null,
+     "summary": "Cohere 官方模型总览，给出 Embed 与 Rerank 两类模型的完整参数表。Embed 系列：embed-v4.0 支持文本与图像（含 PDF 这类混合内容），维度可选 [256, 512, 1024, 1536（默认）]，上下文 128k，支持 Cosine/Dot Product/Euclidean 三种相似度度量；embed-english-v3.0（1024 维、512 上下文、仅英文）；embed-english-light-v3.0（384 维、更小更快）；embed-multilingual-v3.0（1024 维、支持100+ 语言）；embed-multilingual-light-v3.0（384 维）。文档还提供各模型在 Amazon Bedrock、Amazon SageMaker、Azure AI Foundry、Oracle OCI 上的对应模型 ID 映射表。Rerank 系列：rerank-v4.0-pro 与 rerank-v4.0-fast（均为多语言、32k 上下文、支持 JSON 半结构化数据，pro 面向高质量复杂场景、fast 面向低延迟高吞吐）、rerank-v3.5、rerank-english-v3.0、rerank-multilingual-v3.0（后三者 4k 上下文）。"
+    },
+    {
+     "title": "Introducing Embed v3（Cohere 官方发布博客）",
+     "url": "https://cohere.com/blog/introducing-embed-v3",
+     "sourceType": "技术博客",
+     "publisher": "Cohere 官方博客",
+     "date": "2023-11（Embed v3 发布）",
+     "summary": "Cohere Embed v3 发布公告，含完整基准表。MTEB / BEIR 成绩：embed-english-v3.0 为 64.5 / 55.9，embed-english-light-3.0 为 62.0 / 52.0，embed-multilingual-v3.0 为 64.0 / 54.6，embed-multilingual-light-3.0 为 60.1 / 50.9，前代 embed-multilingual-v2.0 为 58.5 / 47.1。截至 2023 年 10 月，这些模型在 MTEB（56 个数据集）与 BEIR（14 个域外检索数据集）上达到 SOTA。技术要点：实现了 compression-aware 训练方法，显著降低向量数据库运行成本，可高效处理数十亿嵌入而不显著增加云基础设施开支；所有模型返回归一化嵌入，支持 dot product、cosine similarity、Euclidean distance 且三者排序结果完全一致。多语言模型支持 100+ 语言，可跨语言检索（如用中文查询检索芬兰语文档）。最重要的实践细节是 v3 起新增必填参数 input_type，取值包括 search_document（存入向量库的文档）、search_query（检索查询）、classification、clustering，官方说明\"Using these input types ensures the highest possible quality for the respective tasks\"。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "重排序（rerank）",
+   "findings": [
+    {
+     "title": "An Overview of Cohere's Rerank Model（官方文档）",
+     "url": "https://docs.cohere.com/docs/rerank-overview",
+     "sourceType": "官方文档",
+     "publisher": "Cohere",
+     "date": null,
+     "summary": "Cohere Rerank 官方说明。定义 Rerank API 是一个\"simple and very powerful tool for semantic search\"，给定 query 和 documents 列表，Rerank 按与 query 的语义相关度从高到低对文档排序。代码示例用 co.rerank(model=\"rerank-v4.0-pro\", query=..., documents=docs, top_n=5)，返回 V2RerankResponse，每项含 index 与 relevance_score——官方示例中正确答案 Washington, D.C. 得分 0.943264 而无关文档仅 0.4664567，说明区分度。对结构化数据的官方建议很有实用价值：\"If your documents contain structured data, for best performance we recommend formatting them as YAML strings\"，示例中同样的文档改为 YAML 字符串后目标文档得分升至 0.9497813 且排序列发生了重排。语言支持说明：Rerank 4.0（fast 与 pro）为单一多语言模型，Rerank 3.5 也是单一多语言模型，而 Rerank 3.0 分为 rerank-english-v3.0 与 rerank-multilingual-v3.0 两个独立模型。文中附完整语言支持列表（覆盖中文 zh、日语 ja、韩语 ko、德语 de、法语 fr 等 100+ 语言），并提醒\"performance may vary across languages\"。"
+    },
+    {
+     "title": "BAAI/bge-m3 — 模型卡中的 rerank 管线建议",
+     "url": "https://huggingface.co/BAAI/bge-m3",
+     "sourceType": "官方文档",
+     "publisher": "BAAI / Hugging Face",
+     "date": "2024-02-06",
+     "summary": "BGE-M3 模型卡在\"Some suggestions for retrieval pipeline in RAG\"一节给出明确的 rerank 定位说明：\"As cross-encoder models, re-ranker demonstrates higher accuracy than bi-encoder embedding model. Utilizing the re-ranking model (e.g., bge-reranker, bge-reranker-v2) after retrieval can further filter the selected text.\" 这句话可用于解释 cross-encoder（重排）相比 bi-encoder（嵌入）精度更高的根本原因：cross-encoder 同时看到 query 与 document 可充分交互，而 bi-encoder 需先把文档独立编码成向量。模型卡更新日志显示 2024-07-01 修正了 MIRACL 评测结果——此前误将 id 与 query 相同的段落从搜索结果中移除，修正后 BGE-M3 在 MIRACL 上成绩更高但\"the experimental conclusion remains unchanged\"，其他结果不受影响；如需复现旧的较低结果需加 --remove-query 参数。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "RAG 的评估（RAGAS 与检索质量评估）",
+   "findings": [
+    {
+     "title": "RAGAs: Automated Evaluation of Retrieval Augmented Generation（EACL 2024 论文）",
+     "url": "https://aclanthology.org/2024.eacl-demo.16/",
+     "sourceType": "学术论文",
+     "publisher": "Association for Computational Linguistics（EACL 2024 System Demonstrations, pp. 150–158）",
+     "date": "2024-03",
+     "summary": "RAGAS 框架的正式论文，作者为 Shahul Es、Jithin James、Luis Espinosa Anke、Steven Schockaert，Anthology ID2024.eacl-demo.16，DOI 10.18653/v1/2024.eacl-demo.16。核心贡献是提出\"reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines\"——不依赖人工标注的参考答案即可评估。论文明确指出评估 RAG 的难点在于\"several dimensions to consider\"：检索系统识别相关且聚焦的上下文段落的能力、LLM 忠实利用这些段落的能力、以及生成本身的质量。作者列出 RAG 系统的目的为：降低幻觉、把来源/参考链接到生成的响应、以及免除对文档做元数据标注。开源地址 https://github.com/explodinggradients/ragas"
+    },
+    {
+     "title": "List of available metrics — Ragas 官方文档",
+     "url": "https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/",
+     "sourceType": "官方文档",
+     "publisher": "Ragas（Vibrant Labs）",
+     "date": "2025-12-09（页面标注日期）",
+     "summary": "Ragas 官方指标总览页，说明其设计理念：\"Each metric are essentially paradigms that are designed to evaluate a particular aspect of the application\"，LLM-based 指标可能用一次或多次 LLM 调用得出分数，用户也可自行修改或编写指标。RAG 类指标共 8 个：Context Precision、Context Recall、Context Entities Recall、Noise Sensitivity、Response Relevancy、Faithfulness、Multimodal Faithfulness、Multimodal Relevance。此外还有 Nvidia Metrics（Answer Accuracy、Context Relevance、Response Groundedness）、Agent/Tool 类（Topic adherence、Tool call Accuracy、Tool Call F1、Agent Goal Accuracy）、自然语言比较类（Factual Correctness、Semantic Similarity、Non LLM String Similarity、BLEU、CHRF、ROUGE、String Presence、Exact Match）、SQL 类（Execution based Datacompy Score、SQL query Equivalence）、通用类（Aspect critic、Simple Criteria Scoring、Rubrics based scoring、Instance specific rubrics scoring）与 Summarization。"
+    },
+    {
+     "title": "RAGAS | MLflow 官方文档（第三方集成与指标释义）",
+     "url": "https://mlflow.github.io/mlflow-website/docs/latest/genai/eval-monitor/scorers/third-party/ragas",
+     "sourceType": "官方文档",
+     "publisher": "MLflow（Databricks）",
+     "date": null,
+     "summary": "MLflow 官方文档中 RAGAS 集成页，提供了每个 RAGAS 指标的一句话功能定义，适合作为指标中文解释的对照参考：ContextPrecision—\"Are relevant retrieved documents ranked higher than irrelevant ones?\"；ContextUtilization—检索上下文被答案利用的充分程度；ContextRecall—\"Does retrieval context contain all information needed to answer the query?\"；ContextEntityRecall—期望答案中的实体是否出现在检索上下文中；NoiseSensitivity—模型对上下文中无关信息的敏感度；AnswerRelevancy—生成答案与输入查询的相关性；Faithfulness—\"Is the output factually consistent with the retrieval context?\"；AnswerAccuracy—与ground truth 相比的准确度；ContextRelevance—检索上下文与查询的相关性；ResponseGroundedness—响应是否基于给定上下文。同时给出安装（pip install ragas）与以 judge 形式调用的代码示例，评分为 0.0 到 1.0。"
+    },
+    {
+     "title": "MLflow 官方文档：Evaluate Retrieval（RAG 检索评估方法）",
+     "url": "https://mlflow.github.io/mlflow-website/docs/latest/genai/eval-monitor/evaluate-retrieval",
+     "sourceType": "官方文档",
+     "publisher": "MLflow（Databricks）",
+     "date": null,
+     "summary": "MLflow GenAI 评估文档体系中关于检索评估的部分（从 RAGAS 集成页的\"Next Steps\"导航可达：Evaluate Agents、Evaluate Traces、Built-in Judges）。可作为检索质量评估方法的官方补充来源，尤其用于说明\"Evaluate Traces — Evaluate production traces to understand application behavior\"这一从生产链路反推检索质量的实践路径。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "GraphRAG（微软 2024）",
+   "findings": [
+    {
+     "title": "From Local to Global: A GraphRAG Approach to Query-Focused Summarization（arXiv:2404.16130）",
+     "url": "https://arxiv.org/abs/2404.16130",
+     "sourceType": "学术论文",
+     "publisher": "arXiv（Microsoft Research）",
+     "date": "2024-04-25（发布，v2 更新 2025-02-19）",
+     "summary": "微软 GraphRAG 原始论文。问题定义极为清晰：传统 RAG（论文中称 vector RAG）\"fails on global questions directed at an entire text corpus, such as 'What are the main themes in the dataset?'\"，因为这类问题本质是 query-focused summarization (QFS) 而非显式检索任务；而以往 QFS 方法\"do not scale to the quantities of text indexed by typical RAG systems\"。方法为两阶段图索引：先用 LLM 从源文档抽取实体知识图谱（节点为实体，边为关系），再用 Leiden 算法做社区检测将图划分为层次化的紧密相关实体群组，为每组预生成社区摘要；查询时对各社区摘要做 map-reduce——map 阶段各社区摘要独立并行生成部分答案，reduce 阶段把所有部分答案再次摘要成最终全局答案。v2 版将方法正式命名为 GraphRAG，作者阵容为 Darren Edge、Ha Trinh、Newman Cheng、Joshua Bradley、Alex Chao、Apurva Mody、Steven Truitt、Dasha Metropolitansky、Robert Osazuwa Ness、Jonathan Larson（Microsoft Research / Strategic Missions and Technologies / Office of the CTO）。实验结论：在百万 token 量级数据集的全局 sensemaking问题上，相比 vector RAG 基线在 comprehensiveness（全面性）与 diversity（多样性）两方面均有显著提升。"
+    },
+    {
+     "title": "From Local to Global: A Graph RAG Approach to Query-Focused Summarization（arXiv HTML 全文 v1）",
+     "url": "https://arxiv.org/html/2404.16130v1",
+     "sourceType": "学术论文",
+     "publisher": "arXiv",
+     "date": "2024-04",
+     "summary": "论文 v1 全文，包含 Figure 1 的完整 GraphRAG 流水线图，清楚标出索引时（Indexing Time）与查询时（Query Time）两个阶段的分工。索引时链路为：Source Documents →（text extraction and chunking）→ Text Chunks →（domain-tailored summarization）→ Element Instances →（domain-tailored summarization）→ Element Summaries →（community detection，如 Leiden）→ Graph Communities →（community detection）→ Community Summaries →（domain-tailored summarization）→ Community Answers。查询时链路为 Community Summaries →（query-focused summarization）→ Community Answers →（query-focused summarization）→ Global Answer。索引横跨 nodes（实体）、edges（关系）、covariates（如 claims）三类元素，全部由针对该数据集领域定制的 LLM prompt抽取与摘要。论文还给出社区层级共四个粒度级别（C0–C3），根级摘要相比直接处理源文本节省约 97% token；测试语料为播客转录（约 100 万 token，8564 个实体、20691 条关系边）与新闻文章（约 170 万 token，15754 个实体、19520 条边）。论文声明开源实现地址 https://aka.ms/graphrag"
+    },
+    {
+     "title": "GraphRAG 官方文档（Microsoft Research 项目页）",
+     "url": "https://www.microsoft.com/en-us/research/project/graphrag/",
+     "sourceType": "官方文档",
+     "publisher": "Microsoft Research",
+     "date": null,
+     "summary": "微软研究院 GraphRAG 项目官方页面，是论文配套的官方说明与代码获取入口（对应论文中的 aka.ms/graphrag 短链接）。论文 v2 引用了该实现作为 GraphRAG 全局与局部方法的开源 Python 参考实现。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "RAG 的常见失败模式",
+   "findings": [
+    {
+     "title": "Seven Failure Points When Engineering a Retrieval Augmented Generation System（arXiv:2401.05856）",
+     "url": "https://arxiv.org/abs/2401.05856",
+     "sourceType": "学术论文",
+     "publisher": "arXiv（已被 2024 IEEE/ACM 3rd International Conference on AI Engineering – Software Engineering for AI (CAIN) 接收，pp. 194-199）",
+     "date": "2024-01-11",
+     "summary": "系统列出 RAG 工程实践中的七个失败点的经典论文，作者为 Scott Barnett、Stefanus Kurniawan、Srikanth Thudumu、Zach Brannelly、Mohamed Abdelrazek，基于研究、教育、生物医学三个独立领域的案例研究。论文明确给出 RAG 系统的三大目标：(a) 减少 LLM 幻觉响应，(b) 把来源/参考链接到生成响应，(c) 免除对文档做元数据标注。两条核心结论极有工程价值：\"1) validation of a RAG system is only feasible during operation, and 2) the robustness of a RAG system evolves rather than designed in at the start\"——即 RAG 只能上线后验证，健壮性是演化出来的而非设计出来的。实验规模为 BioASQ 数据集 15,000 篇文档与 1,000 组问答，用 GPT-4 生成响应并通过 OpenAI evals 校验，人工检查所有不一致项与被标记为错误的项及正确标签样本以识别模式。七个失败点依次为：FP1 缺失内容、FP2 错过 top-ranked 文档、FP3 不在上下文中（consolidation 策略限制）、FP4 未被抽取、FP5 格式错误、FP6 不正确的具体性、FP7 不完整的答案。"
+    },
+    {
+     "title": "Seven Failure Points When Engineering a Retrieval Augmented Generation System（arXiv HTML 全文）",
+     "url": "https://arxiv.org/html/2401.05856v1",
+     "sourceType": "学术论文",
+     "publisher": "arXiv",
+     "date": "2024-01",
+     "summary": "论文全文，除七个失败点外还给出完整的问题陈述与研究问题。文中把 RAG 拆为两个过程：Index 过程（文档分块 chunking、生成嵌入、创建向量索引）与 Query 过程（查询嵌入、检索相关文档、调用 LLM 生成答案）。作者自陈这是\"To the best of our knowledge, we present the first empirical insight into the challenges with creating robust RAG systems\"。论文提出未来研究方向：探索分块与嵌入策略、把 RAG 与 fine-tuning 做对比、为 RAG 系统建立软件工程最佳实践（尤其是测试与监控）。三个案例研究分别为 Cognitive Reviewer、AI Tutor 与一个生物医学问答系统。"
+    },
+    {
+     "title": "Lost in the Middle: How Language Models Use Long Contexts（TACL 2024）",
+     "url": "https://aclanthology.org/2024.tacl-1.9/",
+     "sourceType": "学术论文",
+     "publisher": "Transactions of the ACL (TACL), Vol. 12, pp. 157–173, MIT Press",
+     "date": "2024-02-23",
+     "summary": "解释 RAG 生成阶段失败（FP4 未被抽取、FP7 不完整答案）的关键机制性证据。作者 Nelson F. Liu、Kevin Lin、John Hewitt、Ashwin Paranjape、Michele Bevilacqua、Fabio Petroni、Percy Liang 在两个需要从输入上下文中定位相关信息的任务（多文档问答、键值检索）上分析模型表现，发现\"performance can degrade significantly when changing the position of relevant information\"，且\"performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models\"（即使对显式长上下文模型也是如此）。DOI 为 10.1162/tacl_a_00638。这一\"中间迷失\"效应正是 GraphRAG 论文引用它来论证\"扩展上下文窗口也不够，信息会在长上下文中丢失\"的依据。"
+    },
+    {
+     "title": "Evaluating RAG Pipelines — The Metrics That Matter（技术博客）",
+     "url": "https://akashtalole.github.io/posts/evaluating-rag-pipelines-the-metrics-that-matter",
+     "sourceType": "技术博客",
+     "publisher": "Akash Talole（个人技术博客）",
+     "date": null,
+     "summary": "工程视角的 RAG 评估文章，核心论点是\"The most common RAG failure mode in production is not a technical failure — it's a quality failure that nobody noticed during development because there was no evaluation framework\"。提出 RAG 质量的三层分解：Retrieval quality（检索质量，找对文档了吗）、Generation quality（生成质量，给定正确文档时是否生成准确完整的答案）、End-to-end quality（端到端质量），三层会独立失败，必须分别评估才能定位问题在哪一层。引用 RAGAS 作为最广泛使用的评估框架，给出可直接运行的 ragas.evaluate 代码示例，测试数据为包含 question / context retrieved / answer generated / ground truth 四元组的 Dataset。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch19",
+   "topic": "引用溯源（citation）",
+   "findings": [
+    {
+     "title": "How to handle file citations with the new Responses API?（OpenAI 官方社区论坛）",
+     "url": "https://community.openai.com/t/how-to-handle-file-citations-with-the-new-responses-api/1146454",
+     "sourceType": "权威媒体",
+     "publisher": "OpenAI 官方社区论坛（community.openai.com）",
+     "date": "2025-03-24 至 2025-04-04",
+     "summary": "OpenAI 工程师 Steve Coffey 在官方社区给出的权威实现说明，是当前 citation 机制的第一手依据。他说明从 Assistants API 迁移到 Responses API 后，citations 不再需要从文本中移除或解析占位符，而是改为\"you now have the option of inserting them\"，并明确确认 index 参数\"is the place in text where the citation should go\"。实际返回结构示例为 AnnotationFileCitation(file_id='file-GXzGKn4oNrRLmA372x4haU', index=343, type='file_citation', filename='cancers-13-03501-v3.pdf')，多个 index（如 343、614、722）对应同一文件中不同引用位置。线程中还给出了一个具体的工程问题——如何把 index 映射回 search results 中的具体片段，并附上了真实检索结果示例（含 score=0.256540214459889 与片段全文）。"
+    },
+    {
+     "title": "检索增强生成 (RAG) — Weaviate 官方文档（generative 指南）",
+     "url": "https://docs.weaviate.io/weaviate/starter-guides/generative",
+     "sourceType": "官方文档",
+     "publisher": "Weaviate",
+     "date": null,
+     "summary": "Weaviate 官方 RAG 入门指南，其中\"数据结构\"一节直接给出实现引用溯源的具体做法：块对象可包含额外的源级数据，如书名、所在章节与块编号（chunk number），\"This will allow you to search chunks as well as filter it\"，进而\"use this information to control the generation process\"。指南还说明可以将块链接回源文档（link chunks back to the source document），从而允许检索到整篇源文档。同页的\"分块\"小节给出官方分块建议：官方明确表示\"we cannot recommend a universal chunking strategy\"，但给出稳健基线——按文本长度分块用 100-150 个词，或用滑动窗口做 100-200 词的块加 50 个词的重叠；并指出块可携带元数据以支持后续过滤与生成控制。"
+    },
+    {
+     "title": "RAG 论文中的 provenance 论断（Lewis et al. 2020 摘要与正文）",
+     "url": "https://arxiv.org/abs/2005.11401",
+     "sourceType": "学术论文",
+     "publisher": "arXiv / NeurIPS 2020",
+     "date": "2020-05-22",
+     "summary": "引用溯源的理论依据来自 RAG 原论文本身。论文摘要指出\"providing provenance for their decisions\"（为决策提供来源依据）是开放研究问题之一，而这正是 RAG 混合架构要解决的核心痛点之一。正文进一步论证混合模型的价值在于\"knowledge can be directly revised and expanded, and accessed knowledge can be inspected and interpreted\"（知识可直接修正与扩展，且被访问的知识可被检查与解释）。这为\"RAG 输出必须带出处\"提供了原始文献层面的论证——非参数化记忆天然可溯源，而纯参数化记忆不可溯源。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch22",
+   "topic": "机器学习基本概念（监督/无监督/强化学习）",
+   "findings": [
+    {
+     "title": "Machine Learning Crash Course（Google 官方课程）",
+     "url": "https://developers.google.com/machine-learning/crash-course",
+     "sourceType": "官方文档",
+     "publisher": "Google for Developers",
+     "date": "2018 年首发，2024 年发布全新改版",
+     "summary": "Google 官方机器学习入门课程，是目前最权威的免费机器学习体系化课程之一。课程分四大板块：ML Models（Linear Regression 涵盖线性模型、损失、梯度下降与超参数调优；Logistic Regression；Classification 涵盖阈值、混淆矩阵与 accuracy/precision/recall/AUC 指标）、Data（Working with Numerical Data、Working with Categorical Data 涵盖 one-hot encoding、feature hashing、mean encoding 与 feature crosses、Datasets/Generalization/Overfitting）、Advanced ML models（Neural Networks 涵盖 perceptrons、hidden layers、activation functions；Embeddings；新增 Intro to Large Language Models 从 token 到 Transformer）、Real-world ML（Production ML Systems、AutoML、ML Fairness）。课程强调每个模块自包含，可按需跳读；自2018 年以来全球已有数百万人使用。官方说明它由 Google 内部课程演化而来，最初用于帮助 Google 员工建立 AI/ML 实践认知。"
+    },
+    {
+     "title": "Machine Learning Crash Course 发布公告（Google Developers Blog）",
+     "url": "https://developers.googleblog.com/machine-learning-crash-course/",
+     "sourceType": "权威媒体",
+     "publisher": "Google Developers Blog（作者 Barry Rosenberg, Google Engineering Education Team）",
+     "date": "2018-03-02（左右）",
+     "summary": "MLCC 的官方发布公告，提供课程设计背后的定位说明。是 Google 最受欢迎的课程之一，\"Our engineering education team has delivered this course to more than 18,000 Googlers\"。课程覆盖路径为\"starting with loss and gradient descent, then building through classification models and neural nets\"，编程练习引入 TensorFlow。数学前置要求说明得很具体：\"Understanding a little algebra and a little elementary statistics (mean and standard deviation) is helpful. If you understand calculus, you'll get a bit more out of the course, but calculus is not a requirement\"。课程完全免费，提供英、西、韩、中、法五种语言版本。公告还说明课程包含 Google 专家讲解的短视频、文字短课与交互式教学工具，并特别指出课程包含\"sections enabling you to learn from the mistakes that our experts have made\"。"
+    },
+    {
+     "title": "User Guide — scikit-learn 官方用户指南",
+     "url": "https://scikit-learn.org/stable/user_guide.html",
+     "sourceType": "官方文档",
+     "publisher": "scikit-learn",
+     "date": "当前稳定版 1.9.1 文档",
+     "summary": "scikit-learn 官方用户指南（当前版本 1.9.1），是 ML 基础概念的教科书级官方出处。指南按学习范式组织顶层章节：1. Supervised learning（含1.1 Linear Models 到 1.17 Neural network models (supervised)）、2. Unsupervised learning（含 Gaussian mixture models、Manifold learning、Clustering、Decomposing signals in components、Novelty and Outlier Detection、Density Estimation、Neural network models (unsupervised)）、3. Model selection and evaluation、4. Metadata Routing、5. Inspection、6. Visualizations、7. Callbacks、8. Dataset transformations、9. Dataset loading utilities、10. Computing with scikit-learn、11. Model persistence、12. Common pitfalls and subtleties、13. Data Interoperability、14. Choosing the right estimator、15. External Resources。该文档正是 scikit-learn 对监督学习与无监督学习做官方分类界定的权威出处。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch22",
+   "topic": "常用算法（线性回归、决策树、随机森林、SVM、K-Means）",
+   "findings": [
+    {
+     "title": "User Guide — scikit-learn 官方用户指南（算法定义与适用场景）",
+     "url": "https://scikit-learn.org/stable/user_guide.html",
+     "sourceType": "官方文档",
+     "publisher": "scikit-learn",
+     "date": "1.9.1",
+     "summary": "scikit-learn 用户指南中每个算法都有独立的官方章节，可直接作为算法定义与适用场景的引用来源。线性回归：1.1 Linear Models 下的 1.1.1 Ordinary Least Squares（含 OLS 复杂度）、1.1.2 Ridge regression and classification、1.1.3 Lasso、1.1.5 Elastic-Net、1.1.11 Logistic regression。决策树：1.10 Decision Trees，含 1.10.1 Classification、1.10.2 Regression、1.10.4 Complexity、1.10.5 Tips on practical use、1.10.6 Tree algorithms: ID3, C4.5, C5.0 and CART、1.10.7 Mathematical formulation、1.10.9 Minimal Cost-Complexity Pruning。随机森林：1.11 Ensembles: Gradient boosting, random forests, bagging, voting, stacking，其中 1.11.1 Gradient-boosted trees、1.11.2 Random forests and other randomized tree ensembles、1.11.3 Bagging meta-estimator、1.11.4 Voting Classifier、1.11.6 Stacked generalization、1.11.7 AdaBoost。SVM：1.4 Support Vector Machines，含 Classification、Regression、Density estimation/novelty detection、Complexity、Tips on Practical Use、Kernel functions（含 RBF kernel 参数讨论）、Mathematical formulation。K-Means 属 2. Unsupervised learning 下的 2.3 Clustering（与 DBSCAN、HDBSCAN、OPTICS、BIRCH、层次聚类、谱聚类、Affinity Propagation、Mean Shift 并列），并配有 2.3.11 Clustering performance evaluation 评估章节。每个算法章节都配有 Tips on practical use 小节，是官方给出的适用场景建议。"
+    },
+    {
+     "title": "A Gentle Introduction to torch.autograd（PyTorch 官方教程）",
+     "url": "https://docs.pytorch.org/tutorials/beginner/autograd_tutorial.html",
+     "sourceType": "官方文档",
+     "publisher": "PyTorch / Meta",
+     "date": null,
+     "summary": "PyTorch 官方入门教程中讲 autograd（自动微分）的一节，是理解反向传播机制最合适的官方起点。该教程属于 60 分钟 Blitz 系列，PyTorch 官网对其定位是\"an automatic differentiation library that is useful to implement neural networks\"。教程通过 requires_grad 属性演示前向计算图与反向传播，说明如何对张量调用 .backward() 累积梯度、grad 属性如何取回梯度，以及叶子张量与非叶子张量在梯度上的差异。这个页面是官方解释\"PyTorch 如何实现反向传播\"的直接来源。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch22",
+   "topic": "神经网络基础（反向传播、激活函数、梯度下降）",
+   "findings": [
+    {
+     "title": "Deep Learning with PyTorch: A 60 Minute Blitz（PyTorch 官方入门教程）",
+     "url": "https://docs.pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html",
+     "sourceType": "官方文档",
+     "publisher": "PyTorch / Meta",
+     "date": "页面创建 2017-03-24，最近更新 2023-05-31，最近验证 2024-11-05",
+     "summary": "PyTorch 最常被推荐的入门起点，官方页面标注为 beginner级别。教程目标明确为三项：在高层理解 PyTorch 的 Tensor 库与神经网络；理解 torch.autograd；训练一个小型神经网络做图像分类。教程分为四部分：Tensors（张量基础）、A Gentle Introduction to torch.autograd（自动微分）、Neural Networks（含 nn.Module 与前向传播的完整讲解，使用 Sequential容器）、Training a Classifier（用 CIFAR10 数据集训练图像分类器）。可直接在 Google Colab 运行，也可下载 Notebook。每个子教程都有独立的代码页面（如 blitz/tensor_tutorial.html、blitz/autograd_tutorial.html、blitz/neural_networks_tutorial.html、blitz/cifar10_tutorial.html）。"
+    },
+    {
+     "title": "TensorFlow Core 官方教程总览",
+     "url": "https://www.tensorflow.org/tutorials",
+     "sourceType": "官方文档",
+     "publisher": "TensorFlow / Google",
+     "date": null,
+     "summary": "TensorFlow 官方教程总览页，按学习路径明确分层。官方建议\"For beginners The best place to start is with the user-friendly Keras sequential API. Build models by plugging together building blocks. After these tutorials, read the Keras guide.\" 分为 Beginner quickstart（展示 Keras Sequential API 与 model.fit 的 \"Hello, World!\" notebook）、Keras basics（用 Keras 演示基础 ML 任务）、Load data（用 tf.data 加载各种数据格式与构建输入流水线）；For experts 部分为 Advanced quickstart（Keras subclassing API 与自定义训练循环）、Customization（自定义层与训练循环）、Distributed training（多 GPU/多机/TPU 分布式训练），并明确指出这部分\"Build your model, then write the forward and backward pass. Create custom layers, activations, and training loops.\"（构建模型后编写前向与反向传播，创建自定义层、激活函数与训练循环）。这正是反向传播与激活函数的官方实现路径说明。"
+    },
+    {
+     "title": "初学者的 TensorFlow 2.0 教程（Keras 快速上手）",
+     "url": "https://www.tensorflow.org/tutorials/quickstart/beginner",
+     "sourceType": "官方文档",
+     "publisher": "TensorFlow / Google",
+     "date": null,
+     "summary": "TensorFlow 官方快速上手教程（官方提供中文版 https://www.tensorflow.org/tutorials/quickstart/beginner?hl=zh-cn），是入门神经网络最佳实践的最小完整示例。教程明确列出四个动作：加载预构建数据集、构建神经网络模型、训练该网络、评估模型准确率。完整代码为 tf.keras.datasets.mnist 加载 MNIST 并归一化到 0-1，然后用 tf.keras.models.Sequential 堆叠 Flatten(input_shape=(28,28)) → Dense(128, activation='relu') → Dropout(0.2) → Dense(10)，编译时用 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])，最后 model.fit(x_train, y_train, epochs=5) 与 model.evaluate(x_test, y_test)。这段代码同时演示了激活函数（relu）、优化器（adam）、损失函数（交叉熵）、Dropout 正则化与训练/评估流程的完整写法。页面为 Google Colaboratory 笔记本，可直接在浏览器运行。"
+    },
+    {
+     "title": "TensorFlow、Keras 和深度学习（无需拥有博士学位）— Google Codelab",
+     "url": "https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist",
+     "sourceType": "官方文档",
+     "publisher": "Google Developers Codelabs",
+     "date": "页面标注最近更新 2026-03-21",
+     "summary": "Google 官方 Codelab，对神经网络原理的解释最为透彻，适合直接引用为教学材料。覆盖内容包括：什么是过拟合（overfitting）、单层神经网络的权重与偏置计算、张量与形状（shape）概念、矩阵乘法表示层运算、广播（broadcasting）技巧、交叉熵损失、梯度下降、学习速率、小批量与动量。关键解释有几处可直接引用：\"the gradient points 'uphill'... we go in the opposite direction... by a small fraction of the gradient\"（梯度指向上坡，故沿反方向按梯度一小部分更新）；学习速率的比喻是\"this is like trying to walk to the bottom of a valley in seven-league boots. You will bounce from one side to the other. To reach the bottom you need smaller steps\"（像穿七里靴下山会从一侧弹到另一侧，需要更小步长）。激活函数部分说明\"The most used activation function is 'RELU'... traditional activation function is 'sigmoid', but 'relu' shows better convergence properties in almost all cases\"。softmax 部分解释其命名原理：指数函数放大输出间的差异，归一化后最大元素趋近 1 而其余趋近 0，但保留相对顺序，故称\"软\"max。学习内容清单还包含 dropout 与批归一化两种正则化技术。数据集为 MNIST（60,000 训练 + 10,000 验证），教程用不到 100 行 Python/TensorFlow 代码。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch22",
+   "topic": "深度学习框架（PyTorch / TensorFlow 官方入门教程）",
+   "findings": [
+    {
+     "title": "Intro - PyTorch Tutorials（官方教程总览）",
+     "url": "https://www.pytorch.org/tutorials/intro.html",
+     "sourceType": "官方文档",
+     "publisher": "PyTorch / Meta",
+     "date": "文档版本 2.14.0+cu130",
+     "summary": "PyTorch 官方教程入口页，官方描述为\"a collection of beginner-friendly resources to help you get started with PyTorch\"，覆盖 fundamental concepts、basic operations 与 essential workflows。推荐学习路径为三层：Learn the Basics（step-by-step 交互式系列，https://pytorch.org/tutorials/beginner/basics/intro.html）、Introduction to PyTorch - YouTube Series（视频系列）、Learning PyTorch Quickly（bite-sized基础配方，即 60 分钟 Blitz）。是引用 PyTorch 官方教程真实 URL 时最可靠的入口。"
+    },
+    {
+     "title": "TensorFlow Core Tutorials（官方教程总览）",
+     "url": "https://www.tensorflow.org/tutorials",
+     "sourceType": "官方文档",
+     "publisher": "TensorFlow / Google",
+     "date": null,
+     "summary": "TensorFlow 官方教程总览。执行方式说明为\"written as Jupyter notebooks and run directly in Google Colab—a hosted notebook environment that requires no setup\"，点击 \"Run in Google Colab\" 即可运行。学习路径建议明确：新手从 Keras Sequential API 起步，模块化拼装构建模型，学完后读 Keras guide；进阶者用函数式 API 与 subclassing API 获得 define-by-run 的自定义能力，可\"write the forward and backward pass\"并创建自定义层、激活函数与训练循环。文档另注明许可：除特别说明外页面内容采用 CC BY 4.0，代码示例采用 Apache 2.0。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch22",
+   "topic": "过拟合与正则化（偏差方差权衡）",
+   "findings": [
+    {
+     "title": "Cross-validation: evaluating estimator performance（scikit-learn 官方文档 3.1）",
+     "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+     "sourceType": "官方文档",
+     "publisher": "scikit-learn",
+     "date": "1.9.1 文档",
+     "summary": "scikit-learn 对过拟合最权威的定义出处。开篇即给出\"overfitting\"的精确含义：\"Learning the parameters of a prediction function and testing it on the same data is a methodological mistake: a model that would just repeat the labels of the samples that it has just seen would have a perfect score but would fail to predict anything useful on yet-unseen data. This situation is called overfitting.\"（在同一数据上学习参数又做测试是方法论错误——只复述刚见过的标签的模型会得到满分，却无法对未见数据做出有用预测。）文档同时给出 train/validation/test 三划分的官方理由：留出 test set 用于最终评估，再留出 validation set 用于超参数调优；并指出当评估不同超参数设置时\"there is still a risk of overfitting on the test set because the parameters can be tweaked until the estimator performs optimally\"，导致测试集知识\"leak\"进模型、评估指标不再反映泛化性能。同时说明交叉验证为何必要：把数据切成三份\"drastically reduce the number of samples which can be used for learning\"且结果依赖具体的随机划分。文中还给出防数据泄露的关键实践：预处理器（标准化、特征选择等）必须只在训练集上 fit，再 transform 到留出集，并用 Pipeline 把这个行为固化下来以适配交叉验证。"
+    },
+    {
+     "title": "Validation curves: plotting scores to evaluate models（scikit-learn 官方文档 3.5）",
+     "url": "https://scikit-learn.org/stable/modules/learning_curve.html",
+     "sourceType": "官方文档",
+     "publisher": "scikit-learn",
+     "date": "1.9.1 文档",
+     "summary": "scikit-learn 官方关于 validation curve 与 learning curve 的文档章节（用户指南3.5 节，含 3.5.1 Validation curve 与 3.5.2 Learning curve）。这是偏差方差权衡诊断方法的官方出处：通过绘制训练集与交叉验证集分数随超参数或样本数变化的曲线，观察欠拟合区、 sweet spot 与过拟合区。配套 API 为 validation_curve 与 learning_curve 函数。"
+    },
+    {
+     "title": "Machine Learning Crash Course — Datasets, Generalization, and Overfitting（Google 官方课程模块）",
+     "url": "https://developers.google.com/machine-learning/crash-course",
+     "sourceType": "官方文档",
+     "publisher": "Google for Developers",
+     "date": "2018 首发 / 2024 改版",
+     "summary": "Google MLCC 中专门讲过拟合与泛化的模块，官方描述为\"An introduction to the characteristics of machine learning datasets, and how to prepare your data to ensure high-quality results when training and evaluating your model\"。该模块与课程中的 Training/validation/test set、Regularization: Simplicity、Regularization: Sparsity 等条目构成完整的偏差方差与正则化教学序列（据 2018 版课程目录：泛化 15 分钟、训练集和测试集 25 分钟、验证 40 分钟、正则化：简单性 40 分钟、正则化：稀疏性 40 分钟）。适合作为\"过拟合与正则化\"主题的课程级权威出处。"
+    },
+    {
+     "title": "Pipeline: chaining estimators（scikit-learn 官方文档 8.1.1）",
+     "url": "https://scikit-learn.org/stable/modules/pipeline.html",
+     "sourceType": "官方文档",
+     "publisher": "scikit-learn",
+     "date": "1.9.1 文档",
+     "summary": "scikit-learn 官方 Pipeline 文档（用户指南 8.1.1 节）。用于在交叉验证场景下正确实现正则化相关的预处理流程——文档在交叉验证章节明确指出\"A Pipeline makes it easier to compose estimators, providing this behavior under cross-validation\"，并给出 make_pipeline(preprocessing.StandardScaler(), svm.SVC(C=1)) 的官方示例，避免因在交叉验证外单独 fit 预处理而造成信息泄露导致评估偏差。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch22",
+   "topic": "训练集/验证集/测试集划分",
+   "findings": [
+    {
+     "title": "Cross-validation: evaluating estimator performance（scikit-learn 官方文档 3.1）",
+     "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+     "sourceType": "官方文档",
+     "publisher": "scikit-learn",
+     "date": "1.9.1 文档",
+     "summary": "数据划分最权威的官方出处，给出完整 API 与可运行示例。划分函数为 train_test_split，示例为 train_test_split(X, y, test_size=0.4, random_state=0)，在 iris 数据集上得到 90 训练 / 60 测试。三划分逻辑：训练集用于学习参数；验证集用于评估不同超参数设置（如 SVM 的 C），成功后再在测试集上做最终评估。交叉验证作为替代方案：k-fold CV 把训练集分成 k 个 fold，每次用 k-1 个训练、在剩下 1 个上验证，报告的性能是循环中各值的平均；文档说明其代价是\"computationally expensive\"，但\"does not waste too much data\"，在样本量极小的逆问题中是重大优势。文档还详列各类交叉验证迭代器：KFold、ShuffleSplit、StratifiedShuffleSplit（保持各类别占比与全集一致）、PredefinedSplit（用于已有预定义划分的数据集，如训练/验证 fold）、GroupShuffleSplit（分组数据场景），并说明 train_test_split 实为 ShuffleSplit 的包装、只支持分层划分、不支持分组。最后给出实用注意事项：默认不打乱（包括通过整数 cv 触发的 StratifiedKFold）、random_state 默认为 None 导致每次迭代打乱结果不同，需设整数以获得可复现结果。"
+    },
+    {
+     "title": "TensorFlow 官方快速上手教程（train/validate/test 实践）",
+     "url": "https://www.tensorflow.org/tutorials/quickstart/beginner",
+     "sourceType": "官方文档",
+     "publisher": "TensorFlow / Google",
+     "date": null,
+     "summary": "TensorFlow 官方教程给出的实际划分写法：mnist = tf.keras.datasets.mnist 得到 (x_train, y_train) 与 (x_test, y_test)，随后 x_train, x_test = x_train / 255.0, x_test / 255.0 做归一化，并用 model.evaluate(x_test, y_test) 在测试集上评估。是划分概念在深度学习框架中的官方代码对应。"
+    },
+    {
+     "title": "TensorFlow、Keras 和深度学习 Codelab — 验证数据集的作用",
+     "url": "https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist",
+     "sourceType": "官方文档",
+     "publisher": "Google Developers Codelabs",
+     "date": "2026-03-21 更新",
+     "summary": "Google官方 Codelab 中对\"为什么需要独立数据集\"给出了最直白的官方解释：\"使用训练数据集来测试网络属于作弊行为。在训练期间，模型已经多次看到该数据集，因此在该数据集上的表现肯定非常出色。我们需要另一个在训练期间从未见过的带标签数据集，以评估网络的'实际'性能。它被称为'验证数据集'\"（Using the training dataset to test the network is cheating... We need another labeled dataset the network has never seen during training to assess the network's \"actual\" performance. It is called the \"validation dataset\"）。具体设置为训练集 50,000 个数字（每次迭代喂入128 个样本的 batch，391 次迭代后遍历完一次，称为一个 epoch），另有 10,000 个独立的\"验证\"数字用于测试模型性能。文中还解释模型训练好坏的判据：查看训练图表中\"准确率\"（正确识别数字的百分比，随训练上升是好事）与\"损失\"（训练数据与验证数据的损失都在下降说明网络在学习）。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch22",
+   "topic": "评估指标（准确率、精确率、召回率、F1）",
+   "findings": [
+    {
+     "title": "Metrics and scoring: quantifying the quality of predictions（scikit-learn 官方文档 3.4）",
+     "url": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+     "sourceType": "官方文档",
+     "publisher": "scikit-learn",
+     "date": "1.9.1 文档",
+     "summary": "scikit-learn 对评估指标的官方权威定义出处，也是 precision/recall/F1 精确公式的来源。文档先明确术语约定：\"In a binary classification task, the terms 'positive' and 'negative' refer to the classifier's prediction, and the terms 'true' and 'false' refer to whether that prediction corresponds to the external judgment (sometimes known as the 'observation')\"，并给出 tp/fp/fn/tn 四格表（tp正确结果、fp 意外结果、fn 缺失结果、tn 正确地没有结果）。公式为 precision = tp/(tp+fp)，recall = tp/(tp+fn)（文档注明 recall 也叫 sensitivity）。F-measure 是 precision 与 recall 的加权调和平均，F_β = (1+β²)·(precision × recall)/(β²·precision + recall)；文档特别说明 scikit-learn 实现时改用等价公式 F_β = (1+β²)·tp / ((1+β²)·tp + fp + β²·fn)，以避免 precision 与 recall 均为 0 时除零。示例代码与结果：y_pred=[0,1,0,0]、y_true=[0,1,0,1] 时 precision_score=1.0、recall_score=0.5、f1_score=0.66、fbeta_score(beta=0.5)=0.83、fbeta_score(beta=2)=0.55。多类扩展部分给出四种 average 策略的完整数学定义（micro、samples、macro、weighted），以及用于解决除零的 zero_division 参数（默认全负例时 F1 记为 0）。文档还涵盖 confusion_matrix（含 normalize='pred'/'true'/'all' 三种归一化方式）、classification_report（输出 precision/recall/f1-score/support 及 accuracy、macro avg、weighted avg）、hamming_loss、average_precision_score、precision_recall_curve 与 Jaccard 相似度等。"
+    },
+    {
+     "title": "Machine Learning Crash Course — Classification 模块（准确率、精确率、召回率、AUC）",
+     "url": "https://developers.google.com/machine-learning/crash-course",
+     "sourceType": "官方文档",
+     "publisher": "Google for Developers",
+     "date": "2018 首发 / 2024 改版",
+     "summary": "Google MLCC 的 Classification 模块官方描述为\"An introduction to binary classification models, covering thresholding, confusion matrices, and metrics like accuracy, precision, recall, and AUC\"。把四个核心指标与阈值（thresholding）、混淆矩阵放在同一模块中讲授，是理解指标之间关系（尤其是阈值移动如何改变精确率与召回率的取舍）的推荐课程来源。配套的 Linear Regression 与 Logistic Regression 模块分别覆盖线性模型、损失、梯度下降、超参数调优，以及预测概率。"
+    },
+    {
+     "title": "Metrics and scoring（scikit-learn 用户指南 3.4 节）",
+     "url": "https://scikit-learn.org/stable/user_guide.html",
+     "sourceType": "官方文档",
+     "publisher": "scikit-learn",
+     "date": "1.9.1 文档",
+     "summary": "用户指南中 3.4 节的完整子目录，可用于定位指标选择的决策路径：3.4.1 Which scoring function should I use?；3.4.2 Scoring API overview；3.4.3 The scoring parameter: defining model evaluation rules；3.4.4 Classification metrics（含 3.4.4.9精度-召回与 F 度量、3.4.4.10 Jaccard 相似度系数）；3.4.5 Multilabel ranking metrics；3.4.6 Regression metrics；3.4.7 Clustering metrics；3.4.8 Dummy estimators。同时第 14 章 \"Choosing the right estimator\" 与12.3.2 Common pitfalls and subtleties 也是官方给出的算法选择与常见陷阱出处。"
+    }
+   ]
+  },
+  {
+   "chapter": "ch22",
+   "topic": "AI 工程师实际需要掌握到什么程度（岗位能力框架）",
+   "findings": [
+    {
+     "title": "Machine Learning Crash Course（Google 官方能力框架）",
+     "url": "https://developers.google.com/machine-learning/crash-course",
+     "sourceType": "官方文档",
+     "publisher": "Google for Developers",
+     "date": "2018 首发 / 2024 改版",
+     "summary": "最权威的免费岗位能力框架之一，其模块划分本身即是能力清单。官方对适用性的表述为\"Each Machine Learning Crash Course module is self-contained, so if you have prior experience in machine learning, you can skip directly to the topics you want to learn\"——即把能力分为四档：ML Models（能构建回归与分类模型）、Data（能处理数值与类别数据、准备高质量数据集）、Advanced ML models（能搭建神经网络、嵌入与了解 LLM）、Real-world ML（Production ML Systems、AutoML、ML Fairness，即生产化、自动化与负责任工程）。官方强调这是\"fast-paced, practical introduction\"，并提供\"View prerequisites\"入口明确前置要求。据2018 版目录，课程约 15 小时、含 40 多个练习，为零机器学习经验者设计，建议掌握入门级代数与基础编程能力。"
+    },
+    {
+     "title": "Machine Learning Crash Course 发布公告 — 课程难度与定位的官方说明",
+     "url": "https://developers.googleblog.com/machine-learning-crash-course/",
+     "sourceType": "权威媒体",
+     "publisher": "Google Developers Blog",
+     "date": "2018",
+     "summary": "官方公告给出了关于\"需要掌握到什么程度\"的关键信息。编程门槛说明：\"MLCC contains some Python programming exercises. However, those exercises comprise only a small percentage of the course, which non-programmers may safely skip.\"并补充\"many of the Google engineers who took MLCC didn't know any Python but still completed the exercises\"，因为\"you'll write only a few lines of code... Instead of writing code from scratch, you'll primarily manipulate the values of existing variables\"。数学门槛：\"Understanding a little algebra and a little elementary statistics (mean and standard deviation) is helpful. If you understand calculus, you'll get a bit more out of the course, but calculus is not a requirement.\"目标人群判断：\"We believe that the potential of machine learning is so vast that every technical person should learn machine learning fundamentals.\"另有观点指出该课程\"develops intuition around fundamental machine learning concepts\"，重点是建立直觉而非推导。"
+    },
+    {
+     "title": "Google Machine Learning Rules（官方规则文档）",
+     "url": "https://developers.google.com/machine-learning/guides/rules-of-ml",
+     "sourceType": "官方文档",
+     "publisher": "Google for Developers",
+     "date": null,
+     "summary": "Google 官方 ML 工程规则文档（与 MLCC 并列的官方 AI工程师实践指南）。核心论点是把机器学习视为工程学科而非神秘技艺，规则按\"Rule #1: Don't be afraid to launch a product without machine learning\"、\"Rule #2: First, design and implement metrics\"、\"Rule #3: Choose machine learning over a complex heuristic\"、\"Rule #4: Keep the feature pipeline and serving pipeline consistent\"、\"Rule #5: Carefully consider the implications of launching an experimentation system\"、\"Rule #6: Be aware of the pitfalls in measuring machine learning model quality\"等展开。是回答\"AI 工程师需要掌握到什么程度\"这一问题的官方工程实践依据，尤其在指标设计、训练与服务一致性、模型质量度量陷阱等工程维度上。"
+    },
+    {
+     "title": "Intro to PyTorch Tutorials / PyTorch 官方学习路径",
+     "url": "https://www.pytorch.org/tutorials/intro.html",
+     "sourceType": "官方文档",
+     "publisher": "PyTorch / Meta",
+     "date": "文档版本 2.14.0+cu130",
+     "summary": "PyTorch 官方给出的三档学习路径可作为深度学习能力分级的参考：Learn the Basics（step-by-step 交互式系列，面向初学者）、Introduction to PyTorch - YouTube Series（视频系列，面向需要先建立概念框架者）、Learning PyTorch Quickly（bite-sized 基础配方，面向已有其他框架经验者）。官方定位这些资源为\"fundamental concepts, basic operations, and essential workflows\"，即所谓\"essential workflows\"正是工程上必需的最小集合。"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G · Rust 是如何开发的与 “Nightly Rust” · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：G - Rust 是如何开发的与 “Nightly Rust”。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p086.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html" class="on">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 86 / 86 节
+    </div>
+    <h1>G - Rust 是如何开发的与 “Nightly Rust”</h1>
+    <h2 id="附录-grust-是如何开发的与-nightly-rust"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/af415fc6c8a6823dfb4595074f27d5a3e9e2fe49/src/appendix-07-nightly-rust.md">appendix-07-nightly-rust.md</a></p>
+<p>本附录介绍 Rust 是如何开发的以及这对你作为 Rust 开发者的影响。</p>
+<h3 id="无停滞稳定"></h3>
+<p>作为一门语言，Rust <strong>十分</strong>注重代码的稳定性。我们希望 Rust 成为你可依赖的坚实基础，假如事务持续地在变化，这个希望就实现不了。但与此同时，如果不能实验新功能的话，在发布之前我们又无法发现其中重大的缺陷，而一旦发布便再也没有修改的机会了。</p>
+<p>对于这个问题我们的解决方案被称为 “无停滞稳定”（“stability without stagnation”），其指导性原则是：无需担心升级到最新的稳定版 Rust。每次升级应该是无痛的，并应带来新功能，更少的 bug 和更快的编译速度。</p>
+<h3 id="choo-choo-发布通道和发布时刻表riding-the-trains"></h3>
+<p>Rust 开发运行于一个<strong>发布时刻表</strong>（<em>train schedule</em>）之上。也就是说，所有的开发工作都发生在 Rust 仓库的主分支上。发布采用 software release train 模型，它曾被 Cisco IOS 及其他软件项目采用。Rust 有三个<strong>发布通道</strong>（<em>release channel</em>）：</p>
+<ul>
+<li>Nightly</li>
+<li>Beta</li>
+<li>Stable（稳定版）</li>
+</ul>
+<p>大部分 Rust 开发者主要采用稳定版通道，不过希望实验新功能的开发者可能会使用 nightly 或 beta 版。</p>
+<p>如下是一个开发和发布过程如何运转的例子：假设 Rust 团队正在进行 Rust 1.5 的发布工作。该版本发布于 2015 年 12 月，不过这里只是为了提供一个真实的版本号。Rust 新增了一项功能：一个新提交进入了主分支。每天晚上，都会产生一个新的 nightly 版本。每天都是发布日，而这些发布由发布基础设施自动完成。所以随着时间推移，发布轨迹看起来像这样，版本每晚一发：</p>
+<pre><code class="language-text">nightly: * - - * - - *
+</code></pre>
+<p>每六周时间，是准备发布新版本的时候了！Rust 仓库的 <code>beta</code> 分支会从 nightly 所使用的主分支分出。现在，有了两个发布渠道：</p>
+<pre><code class="language-text">nightly: * - - * - - *
+                     |
+beta:                *
+</code></pre>
+<p>大部分 Rust 用户不会主要使用 beta 版本，不过在 CI 系统中对 beta 版本进行测试能够帮助 Rust 发现可能的回归缺陷（regression）。同时，每晚仍产生 nightly 发布：</p>
+<pre><code class="language-text">nightly: * - - * - - * - - * - - *
+                     |
+beta:                *
+</code></pre>
+<p>比如我们发现了一个回归缺陷。好消息是，在这些回归缺陷流入稳定发布之前，我们还有一些时间来测试 beta 版本！修复会先应用到主分支，因此 nightly 版本先得到修复；然后再把修复回移植到 <code>beta</code> 分支，于是新的 beta 发布就产生了：</p>
+<pre><code class="language-text">nightly: * - - * - - * - - * - - * - - *
+                     |
+beta:                * - - - - - - - - *
+</code></pre>
+<p>第一个 beta 版的六周后，是发布稳定版的时候了！<code>stable</code> 分支从 <code>beta</code> 分支生成：</p>
+<pre><code class="language-text">nightly: * - - * - - * - - * - - * - - * - * - *
+                     |
+beta:                * - - - - - - - - *
+                                       |
+stable:                                *
+</code></pre>
+<p>好的！Rust 1.5 发布了！然而，我们忘了些东西：因为又过了六周，我们还需发布<strong>下一个</strong> Rust 的 beta 版，Rust 1.6。所以从 <code>beta</code> 生成 <code>stable</code> 分支后，新版的 <code>beta</code> 分支也再次从 <code>nightly</code> 生成：</p>
+<pre><code class="language-text">nightly: * - - * - - * - - * - - * - - * - * - *
+                     |                         |
+beta:                * - - - - - - - - *       *
+                                       |
+stable:                                *
+</code></pre>
+<p>这被称为 “train model”，因为每六周，一个版本 “离开车站”（“leaves the station”），不过从 beta 通道到达稳定通道还需历经一段旅程。</p>
+<p>Rust 每六周发布一个版本，如时钟般准确。如果你知道了某个 Rust 版本的发布时间，就可以知道下个版本的时间：六周后。每六周发布版本的一个好的方面是下一班车会来得更快。如果特定版本碰巧缺失某个功能也无需担心：另一个版本很快就会到来！这有助于减少因临近发版时间而偷偷释出未经完善的功能的压力。</p>
+<p>多亏了这个过程，你总是可以切换到下一版本的 Rust 并验证是否可以轻易的升级：如果 beta 版不能如期工作，你可以向 Rust 团队报告并在发布稳定版之前得到修复！beta 版造成的破坏是非常少见的，不过 <code>rustc</code> 也不过是一个软件，难免会有 bug。</p>
+<h3 id="维护时间"></h3>
+<p>Rust 项目仅对最近的稳定版本提供支持。当发布新稳定版本时，旧版本即达到生命周期终止（EOL, end of life），这意味着每个版本的支持期为六周。</p>
+<h3 id="不稳定功能"></h3>
+<p>这个发布模型中另一个值得注意的地方：不稳定功能（unstable features）。Rust 使用一种叫做 <strong>feature flags</strong> 的技术来决定某个发布中启用了哪些功能。如果一个新功能仍在积极开发中，它会进入主分支，因此也会出现在 nightly 版本里，但会被放在某个 <strong>功能标记</strong> 之后。作为用户，如果你想尝试这个仍在开发中的功能，可以这么做，但你必须使用 nightly 版 Rust，并在源码中添加相应的标记来显式启用它。</p>
+<p>如果使用的是 beta 或稳定版 Rust，则不能使用任何功能标记。这是在新功能被宣布为永久稳定之前让大家提前实际使用它们的关键。这既满足了希望使用最尖端技术的同学，那些坚持稳定版的同学也知道其代码不会被破坏。这就是无停滞稳定。</p>
+<p>本书只包含稳定的功能，因为还在开发中的功能仍可能改变，当其进入稳定版时肯定会与编写本书的时候有所不同。你可以在网上获取只存在 nightly 版中功能的文档。</p>
+<h3 id="rustup-和-rust-nightly-的职责"></h3>
+<p>Rustup 使得在不同 Rust 发布通道之间切换变得很容易，无论是全局还是按项目都可以。默认情况下，你安装的是稳定版 Rust。例如，要安装 nightly：</p>
+<pre><code class="language-console">$ rustup toolchain install nightly
+</code></pre>
+<p>你也可以用 <code>rustup</code> 查看已经安装的所有<strong>工具链</strong>（<em>toolchains</em>，也就是 Rust 发布版本及其相关组件）。下面是一位作者的 Windows 电脑上的例子：</p>
+<pre><code class="language-powershell">&gt; rustup toolchain list
+stable-x86_64-pc-windows-msvc (default)
+beta-x86_64-pc-windows-msvc
+nightly-x86_64-pc-windows-msvc
+</code></pre>
+<p>如你所见，默认是稳定版。大部分 Rust 用户在大部分时间使用稳定版。你可能也会这么做，不过如果你关心最新的功能，可以为特定项目使用 nightly 版。为此，可以在项目目录使用 <code>rustup override</code> 来设置当前目录 <code>rustup</code> 使用 nightly 工具链：</p>
+<pre><code class="language-console">$ cd ~/projects/needs-nightly
+$ rustup override set nightly
+</code></pre>
+<p>现在，每次在 <em>~/projects/needs-nightly</em> 中调用 <code>rustc</code> 或 <code>cargo</code>，<code>rustup</code> 会确保使用 nightly 版 Rust 而非默认的稳定版。在你有很多 Rust 项目时大有裨益！</p>
+<h3 id="rfc-流程和团队"></h3>
+<p>那么你如何了解这些新功能呢？Rust 开发模式遵循一个 <strong>Request For Comments (RFC) 流程</strong>。如果你希望改进 Rust，可以编写一个提案，也就是 RFC。</p>
+<p>任何人都可以编写 RFC 来改进 Rust，同时这些 RFC 会被 Rust 团队评审和讨论，他们由很多不同分工的子团队组成。这里是 <a href="https://www.rust-lang.org/governance">Rust 官网上</a> 所有团队的总列表，其包含了项目中每个领域的团队：语言设计、编译器实现、基础设施、文档等。各个团队会阅读相应的提议和评论，发表自己的意见，并最终达成接受或回绝功能的一致。</p>
+<p>如果功能被接受了，Rust 仓库里就会开一个 issue，然后就会有人去实现它。最终完成实现的人，很可能并不是最初提出这个功能的人！当实现准备好之后，它会合并到主分支，并被放在一个 feature gate 之后，正如 <a href="#不稳定功能">“不稳定功能”</a> 一节所讨论的那样。</p>
+<p>在稍后的某个时间，一旦使用 nightly 版的 Rust 团队能够尝试这个功能了，团队成员会讨论这个功能，它如何在 nightly 中工作，并决定是否应该进入稳定版。如果决定继续推进，功能开关会移除，然后这个功能就被认为是稳定的了！乘着“发布列车”，最终在新的稳定版 Rust 中出现。</p>
+    <div class="bk-pager"><a href="p085.html">← F - 本书译本</a><a href="index.html">目录</a><span class="sp"></span></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

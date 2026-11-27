@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="Skills over MCP、Tasks、Elicitation 与 File Uploads 有什么区别？本文按公测、正式发布、即将上线拆分四项能力，说明 Skills 与 MCP 的关系、客户端支持边界和开发者行动清单。">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>别再只堆工具！4 个能力看懂 Skills over MCP · 白驹 ccowork</title>
+<meta name="description" content="Skills over MCP、Tasks、Elicitation 与 File Uploads 有什么区别？本文按公测、正式发布、即将上线拆分四项能力，说明 Skills 与 MCP 的关系、客户端支持边界和开发者行动清单。">
+<style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article p{color:#c6d2ea;font-size:15.5px;margin-bottom:15px}
+article b{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:13.5px}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:16px;overflow-x:auto;margin:18px 0}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article hr{border:none;border-top:1px dashed var(--line);margin:30px 0}
+</style><meta name="twitter:description" content="Skills over MCP、Tasks、Elicitation 与 File Uploads 有什么区别？本文按公测、正式发布、即将上线拆分四项能力，说明 Skills 与 MCP 的关系、客户端支持边界和开发者行动清单。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/blog/2026-11-26-%E7%88%86%E6%AC%BE-3%E4%B8%AA%E6%96%B0%E5%8A%9F%E8%83%BD1%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%8F%8D%E8%BD%AC%EF%BC%81Anthropic%E5%88%9A%E6%9B%B4%E7%9A%84Skills%20over%20MCP%EF%BC%8C.html">
+<meta property="og:title" content="别再只堆工具！4 个能力看懂 Skills over MCP · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/blog/2026-11-26-%E7%88%86%E6%AC%BE-3%E4%B8%AA%E6%96%B0%E5%8A%9F%E8%83%BD1%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%8F%8D%E8%BD%AC%EF%BC%81Anthropic%E5%88%9A%E6%9B%B4%E7%9A%84Skills%20over%20MCP%EF%BC%8C.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="别再只堆工具！4 个能力看懂 Skills over MCP · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"别再只堆工具！4 个能力看懂 Skills over MCP · 白驹 ccowork","description":"Skills over MCP、Tasks、Elicitation 与 File Uploads 有什么区别？本文按公测、正式发布、即将上线拆分四项能力，说明 Skills 与 MCP 的关系、客户端支持边界和开发者行动清单。","url":"https://ccoworkbaiju.cn/blog/2026-11-26-%E7%88%86%E6%AC%BE-3%E4%B8%AA%E6%96%B0%E5%8A%9F%E8%83%BD1%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%8F%8D%E8%BD%AC%EF%BC%81Anthropic%E5%88%9A%E6%9B%B4%E7%9A%84Skills%20over%20MCP%EF%BC%8C.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ccoworkbaiju.cn/blog/2026-11-26-%E7%88%86%E6%AC%BE-3%E4%B8%AA%E6%96%B0%E5%8A%9F%E8%83%BD1%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%8F%8D%E8%BD%AC%EF%BC%81Anthropic%E5%88%9A%E6%9B%B4%E7%9A%84Skills%20over%20MCP%EF%BC%8C.html"},"image":"https://ccoworkbaiju.cn/assets/img/og-cover.png","datePublished":"2026-11-26","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"}}</script>
+</head>
+<body>
+<nav><div class="logo">白驹 ccowork</div><a href="index.html"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i> 博客目录</a></nav>
+<article>
+<h1>别再只堆工具！4个能力看懂Skills over MCP，智能体开始交付完整工作流</h1>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="别再只堆工具！4个能力看懂Skills over MCP，智能体开始交付完整工作流" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+  <rect width="1200" height="240" rx="18" fill="url(#vg)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <text x="56" y="82" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · MCP 智能体工作流</text>
+  <text x="56" y="146" font-size="40" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">Skills over MCP：从工具到完整工作流</text>
+  <text x="56" y="186" font-size="17" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">AI 生成 · 信息以官方为准 · 每日爆款引擎</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">🔥</text>
+</svg>
+<p>工具越接越多，操作说明却散落在提示词和文档里；长任务耗时等待，关键步骤又缺少中途确认。2026 年 11 月 24 日，Anthropic 发布 Skills over MCP，并同步更新 Tasks、Elicitation 与 File Uploads 的进展，试图补上智能体工作流中的这几块拼图。</p>
+<p><strong>说明：</strong>本文产品事实来自 Anthropic 官方公告与 MCP 官方规范；假设场景和作者建议均已标注，功能可用性以官方最新文档为准。</p>
+<h2>先搞懂核心变化：Skills over MCP 到底改了什么？</h2>
+<p>工具名称和描述能说明服务器“能做什么”，却未必包含特定场景下“怎样组合工具、遵循哪些步骤”。Skills over MCP 要补上的正是这层可复用的工作流知识；它不是替代 MCP 工具，而是让工具与操作指引一起分发。</p>
+<p>它是在现有工具、资源等能力之外，增加技能发现与读取方式：</p>
+<p><strong>【官方事实】</strong>MCP 服务器可以把技能作为包含 <code>SKILL.md</code> 和可选支持文件的目录发布；客户端可发现技能元数据，并在需要时读取说明和支持文件。Anthropic 公告称，Claude 会按需加载技能，技能随服务器更新，用户无需另行安装。</p>
+<p>可以把工具理解为厨具，把技能理解为菜谱：厨具说明介绍单个工具能做什么，菜谱则规定做一道菜的步骤与参考材料。两者配合，才能把一个服务能力变成可重复执行的工作流。</p>
+<p>Skills over MCP 的账号与客户端范围如下（以官方公告为准）：</p>
+<table style="width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:14px;line-height:1.6;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)"><thead><tr><th style="padding:9px 12px;border-bottom:1px solid var(--line);background:rgba(255,140,90,.13);color:var(--gold);text-align:left;font-weight:700">范围</th><th style="padding:9px 12px;border-bottom:1px solid var(--line);background:rgba(255,140,90,.13);color:var(--gold);text-align:left;font-weight:700">公告所述状态</th></tr></thead><tbody><tr><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--cyan);font-weight:700">Pro / Max / Ultra</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text)">公测，默认开启</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--cyan);font-weight:700">Team</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text)">管理员开启后可用</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--cyan);font-weight:700">Enterprise</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text)">官方表述为即将支持</td></tr><tr><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--cyan);font-weight:700">公告所述客户端</td><td style="padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text)">Claude 与 Claude Code；其他客户端以支持矩阵为准</td></tr></tbody></table>
+<h2>四个核心能力，把智能体工作流拆明白</h2>
+<p>这次公告涉及四项能力，但“公测”“正式发布”和“即将推出”不能混为一谈：</p>
+<ol>
+<li><strong>Skills over MCP（公测）</strong>：服务器向客户端提供工作流说明和支持文件。MCP 规范中的 SEP-2640 已为 Final，但 SDK 与宿主支持仍在推进，实际覆盖需查看客户端支持矩阵。</li>
+<li><strong>Tasks（已正式发布）</strong>：服务器可把耗时操作乃至完整的 agent loop 作为后台任务运行，Claude 继续处理其他工作，并在结果就绪后取回结果。</li>
+<li><strong>Elicitation（已正式发布）</strong>：服务器可在调用过程中暂停，通过表单或链接向用户请求输入，再从中断处继续；官方举例包括付费操作和删除数据前的确认。</li>
+<li><strong>File Uploads（尚未上线）</strong>：该扩展用于让 Claude 把 PDF、电子表格和图片等文件传给 MCP 服务器，而无需把文件内容放入上下文窗口；官方表述为 rolling out soon，不能写成当前已可用。</li>
+</ol>
+<p>四项能力各有分工：Skills 提供流程说明，Tasks 承接耗时操作，Elicitation 补充中途输入，File Uploads 未来面向文件传输。它们彼此互补，但不代表所有客户端已经支持，也不意味着可以取消用户确认和权限控制。</p>
+<h2>对开发者和普通用户，有什么实际影响？</h2>
+<p>对普通用户而言，变化在于工作流说明可以随服务一起交付，减少手工整理提示词的负担。<strong>【假设场景，非官方客户案例】</strong>一个报销 MCP 服务器可以把发票核验、规则匹配和提交前确认整理成技能；用户是否能使用，仍取决于服务器实现、客户端支持和账号权限。</p>
+<p><strong>【作者建议】</strong>公测阶段先选择来源可信、权限边界清晰的 MCP 服务，验证技能是否按预期加载，不要向陌生服务器授予过高权限。File Uploads 与 Skills 是不同扩展，前者不是后者生效的前提。</p>
+<p>对 MCP 服务器开发者而言，交付物可以从“工具集合”扩展为“工具 + 场景化工作流”。按照 MCP 官方规范，一个技能是包含 <code>SKILL.md</code> 的目录，并可附带支持文件；下面代码依据官方 <code>code-review</code> 示例简化：</p>
+<pre><code>---
+name: code-review
+description: Review code using the team's checklist.
+---
+
+# Code review
+Read `references/checklist.md`, then review the diff.</code></pre>
+<p><strong>【作者建议】</strong>开发者可以先梳理现有工具的高频流程，再依照规范制作技能，并在发布前检查 SDK 与客户端支持矩阵。规范要求宿主把技能内容视为不可信输入；代码执行和权限授予需要明确的逐技能用户批准，文件变更也会使既有批准失效并需要重新批准。</p>
+<h2>别踩坑：这三个误区要分清</h2>
+<p>第一，Skills over MCP 不是封闭私有协议。公告明确说明，这些功能属于开放 MCP 规范及其扩展，兼容客户端并非仅限 Claude；但规范开放不等于所有客户端已经支持，实际覆盖仍以支持矩阵为准。</p>
+<p>第二，Skills 不是系统提示词的替代品。系统提示词管理对话的全局规则，Skills 提供服务器针对具体场景的工作流说明，两者可以同时存在。</p>
+<p>第三，公告中的四项能力并非同一时间全量开放。Skills over MCP 处于公测；Tasks 和 Elicitation 在公告所列的 Pro、Max、Ultra 套餐上正式发布，并向 Team 和 Enterprise 组织逐步推出；File Uploads 仍是即将推出。</p>
+<p><strong>【作者建议】</strong>不要把“规范已发布”理解为“所有客户端已兼容”，也不要在生产工作流里直接假设某项能力可用；先核对账号、客户端和服务器支持，再做迁移。</p>
+<h2>行动清单</h2>
+<ol>
+<li>查看官方公告和实际设置，确认 Skills over MCP 是否已对自己的客户端与套餐开放；Team 用户联系管理员，Enterprise 用户等待官方支持。</li>
+<li>MCP 服务器开发者阅读 Skills 官方规范，把现有工具的高频流程整理为 <code>SKILL.md</code> 与必要支持文件，并核对 SDK 和客户端支持矩阵。</li>
+<li>只从可信来源启用 MCP 服务，逐项检查权限请求；技能内容不等于可信指令，代码执行和额外授权必须经过明确确认。</li>
+<li>已具备相应套餐与服务器支持的用户，可在低风险任务中评估 Tasks 和 Elicitation：前者承接耗时操作，后者用于中途请求输入。</li>
+<li>持续关注 File Uploads 的官方文档与实际上线状态，在可用前不要把它写入当前能力清单或交付承诺。</li>
+</ol>
+<hr>
+<h3>参考来源</h3>
+<ol>
+<li><a href="https://claude.com/resources/articles/skills-over-mcp-tasks-and-more">Anthropic 官方公告：MCP servers can now ship skills, run tasks, and more with Claude（2026-11-24）</a></li>
+<li><a href="https://modelcontextprotocol.io/extensions/skills/overview">MCP 官方规范：Skills 扩展概述</a></li>
+</ol>
+<p><strong>继续学习：</strong><a href="/website/ai-academy/chapter-27.html">自学路线第 27 章《MCP 智能体应用开发：连接万物的标准协议》</a>，先掌握工具连接，再评估 Skills 如何交付场景化工作流。</p>
+<p><strong>AI 生成声明：</strong>本文由 AI 生成并经资料核对；产品事实以上述官方来源为准，假设场景与作者建议不代表官方承诺。</p>
+<hr>
+<p style="color:var(--muted);font-size:12.5px">📌 出处声明：本页内容为白驹 ccowork AI 生成整理，信息以官方为准；引用遵循原始许可，不侵犯原作者权益。发布时间 2026-11-26。</p>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="2026-11-26-账和闸门互相卡死：一次自建流水线的死锁排查.html" style="color:var(--gold);font-weight:700;text-decoration:none">自建内容流水线死锁复盘：账本和闸门为</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px">📚 博客目录</a>
+  <span style="font-size:13px"><a href="2026-11-26-20个RSS源实测下来只剩1个能修：我删掉了5个死源.html" style="color:var(--gold);font-weight:700;text-decoration:none">38 个 RSS 源实测：4 个死源</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8">📌 出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+</body></html>

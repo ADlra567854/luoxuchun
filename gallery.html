@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · AI 画廊,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · AI 画廊 · 白驹 ccowork">
+<meta name="description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta property="og:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · AI 画廊 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"ccowork · AI 画廊 · 白驹 ccowork","description":"个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c; --purple:#8b5cf6;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:10px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:22px;font-size:14px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+.wrap{position:relative;z-index:5;max-width:1200px;margin:0 auto;padding:104px 24px 70px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,48px);letter-spacing:3px;animation:rise .8s ease-out}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:680px;margin-top:12px;animation:rise .9s .1s ease-out both}
+.hero .kicker{font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--ice);display:inline-block;border:1px solid rgba(94,234,212,.3);padding:6px 16px;border-radius:999px;margin-bottom:16px;background:rgba(94,234,212,.05)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:30px}
+/* 绘画工作台 */
+.paint{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;backdrop-filter:blur(10px)}
+.paint-row{display:flex;gap:10px;flex-wrap:wrap}
+.paint-row input{flex:1;min-width:220px;background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:12px 15px;font-size:14px;outline:none;font-family:inherit}
+.paint-row input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(94,234,212,.12)}
+.paint-row select{background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:12px;font-size:13px;outline:none;font-family:inherit;cursor:pointer}
+.paint-row button{background:var(--grad);color:#03121a;border:none;border-radius:10px;padding:12px 26px;font-size:14px;font-weight:700;cursor:pointer;transition:.25s;font-family:inherit}
+.paint-row button:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,140,255,.4)}
+.paint-row button:disabled{opacity:.6;cursor:wait}
+.paint-hint{font-size:12px;color:var(--dim);margin-top:10px}
+.paint-result{margin-top:14px}
+.paint-result img{max-width:100%;max-height:420px;border-radius:14px;border:1px solid var(--line);display:block;margin:0 auto;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.paint-acts{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.paint-acts button{background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:8px 18px;font-size:13px;cursor:pointer;transition:.2s;font-family:inherit}
+.paint-acts button:hover{color:var(--cyan);border-color:var(--cyan)}
+.gitem{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:var(--panel);transition:.3s;animation:rise .5s ease-out both}
+.gitem:hover{transform:translateY(-5px) scale(1.01);border-color:rgba(94,234,212,.4);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.gitem img{width:100%;height:190px;object-fit:cover;display:block;transition:.4s}
+.gitem:hover img{transform:scale(1.06)}
+.gitem .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(transparent,rgba(4,6,12,.92));font-size:13px;color:var(--text)}
+.gitem .cap small{display:block;color:var(--dim);font-size:11px;font-family:var(--mono);margin-top:2px}
+#lightbox{position:fixed;inset:0;z-index:300;background:rgba(4,6,12,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;backdrop-filter:blur(8px)}
+#lightbox.show{display:flex}
+#lightbox img{max-width:92vw;max-height:78vh;border-radius:14px;border:1px solid var(--line);box-shadow:0 30px 90px rgba(0,0,0,.7)}
+#lightbox .lb-cap{margin-top:14px;color:var(--muted);font-size:14px}
+#lightbox .lb-close{position:absolute;top:22px;right:26px;font-size:26px;color:var(--muted);cursor:pointer;background:none;border:none}
+#lightbox .lb-close:hover{color:#fff}
+footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;color:var(--dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+/* 生图/生视频 tab */
+.gtabs{display:flex;gap:10px;margin-bottom:14px}
+.gtab{background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:.25s;font-family:inherit}
+.gtab.on{background:var(--grad);color:#03121a;border-color:transparent}
+.paint textarea{width:100%;min-height:84px;background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:12px 15px;font-size:14px;outline:none;font-family:inherit;resize:vertical;margin-bottom:10px}
+.paint textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(94,234,212,.12)}
+#vidEl{width:100%;max-height:420px;border-radius:14px;border:1px solid var(--line)}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+  <script src="/ai-client.js"></script>
+  <script src="/media-gen.js"></script>
+<link rel="canonical" href="https://ccoworkbaiju.cn/gallery.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/gallery.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · AI 画廊 · 白驹 ccowork">
+<meta name="twitter:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-theme="cloud" data-skeleton="cards"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-gallery.png" alt="ccowork · AI 画廊 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<canvas id="stars"></canvas>
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="../index.html">首页</a>
+    <a href="./agent.html">智能体</a>
+    <a href="./ecosystem.html">全生态知识库</a>
+    <a href="./gallery.html" class="active">AI 画廊</a>
+    <a href="./chat.html">AI 对话</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <span class="kicker">AI GENERATED · DOUBAO SEEDREAM</span>
+    <h1>AI <span>绘画工作台</span></h1>
+    <p>输入一句中文提示词，直接生成 AI 绘画；站内封面图全部出自这里。云端直连受限时请本地运行 node server.mjs 访问 8787。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  </div>
+  <div class="gtabs">
+    <button class="gtab on" data-tab="image" type="button"><i class="cc-ic" data-ic="image" aria-hidden="true"></i>生图</button>
+    <button class="gtab" data-tab="video" type="button"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>生视频</button>
+  </div>
+  <div class="paint" id="panelImage">
+    <div class="paint-row">
+      <input id="promptInput" type="text" placeholder=" 输入提示词，如：赛博朋克风格的雨中猫娘，霓虹灯光…" autocomplete="off">
+      <select id="sizeSel">
+        <option value="2k" selected>2K 标清</option>
+        <option value="3k">3K 高清</option>
+        <option value="4k">4K 超清</option>
+      </select>
+      <button id="paintBtn" type="button"><i class="cc-ic" data-ic="palette" aria-hidden="true"></i>生成</button>
+    </div>
+    <div class="paint-hint" id="paintHint">支持中文 · 豆包 Seedream 5.0 · 约 10-25 秒</div>
+    <div class="paint-result" id="paintResult">
+      <img id="paintImg" alt="生成结果" style="display:none">
+      <div class="paint-acts" id="paintActs" style="display:none">
+        <button id="dlBtn" type="button"><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载</button>
+        <button id="saveBtn" type="button"><i class="cc-ic" data-ic="pin" aria-hidden="true"></i>存入画廊</button>
+      </div>
+    </div>
+  </div>
+  <div class="paint" id="panelVideo" style="display:none">
+    <textarea id="vidPrompt" placeholder="描述要生成的视频，如：一只赛博朋克机械猫在霓虹雨夜的街道行走，电影感，轻微运镜"></textarea>
+    <div class="paint-row">
+      <select id="vidRatio">
+        <option value="16:9">16:9 横屏</option>
+        <option value="9:16" selected>9:16 竖屏</option>
+        <option value="1:1">1:1 方形</option>
+      </select>
+      <select id="vidDur">
+        <option value="5">5 秒</option>
+        <option value="10">10 秒</option>
+      </select>
+      <select id="vidModel">
+        <option value="doubao-seedance-1-0-pro-250528" selected>Seedance 1.0 Pro（已开通·推荐）</option>
+        <option value="doubao-seedance-2-0-260128">Seedance 2.0 标准（需先开通）</option>
+        <option value="doubao-seedance-2-0-fast-260128">Seedance 2.0 快速（需先开通）</option>
+      </select>
+      <button id="vidBtn" type="button"><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>生成视频</button>
+    </div>
+    <div class="paint-hint" id="vidHint">支持中文 · 豆包 Seedance · 异步生成约 30-120 秒 · <i class="cc-ic" data-ic="alert-circle" aria-hidden="true"></i> 需先在方舟控制台开通所选视频模型，否则会提示「未开通」</div>
+    <div class="paint-result" id="vidResult" style="display:none">
+      <video id="vidEl" controls></video>
+      <div class="paint-acts" id="vidActs" style="display:none">
+        <button id="vidDl" type="button"><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载</button>
+      </div>
+    </div>
+  </div>
+  <div class="ggrid" id="grid"></div>
+</div>
+<footer>
+  <div style="font-family:var(--serif);letter-spacing:3px;font-size:15px">白驹 ccowork</div>
+  <p style="margin-top:6px"><a href="/"><i class="cc-ic cc-back" data-ic="arrow-left"></i>← 回总站</a> · 豆包 Seedream 生成 · 2026</p>
+</footer>
+<div id="lightbox"><button class="lb-close" id="lbClose" type="button"><i class="cc-ic" data-ic="x" aria-hidden="true"></i></button><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
+<script>
+(function(){
+  'use strict';
+  var IMGS = [
+    ['hero-epoch.webp','深空图书馆','门户 Hero · 宇宙书殿与星光数据流'],
+    ['cover-deepseek.jpg','深海黑鲸','DeepSeek 章节 · 品牌意象与数据流'],
+    ['cover-ai70.jpg','AI 七十年','第1章 · 真空管与电路的时间年轮'],
+    ['cover-chatgpt.jpg','对话星球','第3章 · 气泡星球与对话火花'],
+    ['cover-imagegen.jpg','像素画布','第4章 · 调色板与彩色光带'],
+    ['cover-videogen.jpg','电影胶片','第5章 · 胶片环绕与镜头光晕'],
+    ['cover-prompts.jpg','提示词魔法书','第11章 · 书页飘出金色咒语'],
+    ['cover-industry.jpg','智能工厂','行业实战 · 机械臂与数字孪生'],
+    ['cover-future.jpg','量子与太空','未来产业 · 量子芯片与星云'],
+    ['cover-engineering.jpg','数字孪生机械','工科实训 · 透明机甲与蓝图网格'],
+    ['cover-research.jpg','科研实验室','科研学术 · 玻璃仪器与数据光幕'],
+    ['cover-growth.jpg','知识之光','个人成长 · 发光书塔与剪影'],
+    ['cover-global.jpg','地球村','国际视野 · 发光地球仪与连接网'],
+    ['cover-design.jpg','设计工具','创意设计 · 悬浮画布与色板'],
+    ['cover-data.jpg','数据光幕','数据分析 · 光之森林图表'],
+    ['cover-book.jpg','悬浮之书','《AI 实战全书》封面 · 书页化星光'],
+    ['cloud-hero.jpg','云顶天空城','云顶主题 · 阳光云海浮岛神殿'],
+    ['cloud-library.jpg','云顶图书馆','云顶主题 · 云海玻璃穹顶书殿'],
+    ['cloud-morning.jpg','日出云海','云顶主题 · 粉金霞光晨雾'],
+    ['cloud-night.jpg','银河云海','云顶主题 · 星空倒映云海'],
+    ['space-nebula.jpg','深空星云','深空补充 · 紫蓝星云恒星诞生'],
+    ['space-city.jpg','赛博都市','深空补充 · 霓虹雨夜未来城']
+  ];
+  var grid = document.getElementById('grid');
+  grid.innerHTML = IMGS.map(function(it, i){
+    return '<div class="gitem" data-i="'+i+'" style="animation-delay:'+(i*0.04)+'s"><img src="/assets/img/'+it[0]+'" alt="'+it[1]+'" loading="lazy"><div class="cap">'+it[1]+'<small>'+it[2]+'</small></div></div>';
+  }).join('');
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  grid.addEventListener('click', function(e){
+    var g = e.target.closest('.gitem');
+    if(!g) return;
+    var it = IMGS[Number(g.dataset.i)];
+    lbImg.src = '/assets/img/' + it[0];
+    lbCap.textContent = it[1] + ' · ' + it[2];
+    lb.classList.add('show');
+  });
+  document.getElementById('lbClose').addEventListener('click', function(){ lb.classList.remove('show'); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) lb.classList.remove('show'); });
+  addEventListener('keydown', function(e){ if(e.key === 'Escape') lb.classList.remove('show'); });
+  // ---------- AI 绘画 / 视频工作台（统一走 media-gen.js） ----------
+  var promptInput = document.getElementById('promptInput');
+  var sizeSel = document.getElementById('sizeSel');
+  var paintBtn = document.getElementById('paintBtn');
+  var paintHint = document.getElementById('paintHint');
+  var paintImg = document.getElementById('paintImg');
+  var lastUrl = '', lastPrompt = '';
+  paintBtn.addEventListener('click', function(){
+    var p = promptInput.value.trim();
+    if(!p){ paintHint.textContent = ' 请先输入提示词'; return; }
+    if(paintBtn.disabled) return;
+    paintBtn.disabled = true;
+    paintHint.textContent = ' 正在生成…（约 10-25 秒）';
+    paintImg.style.display = 'none';
+    document.getElementById('paintActs').style.display = 'none';
+    window.MediaGen.genImage(p, { size: sizeSel.value }).then(function(u){
+      lastUrl = u; lastPrompt = p;
+      paintImg.src = u; paintImg.style.display = 'block';
+      document.getElementById('paintActs').style.display = 'flex';
+      paintHint.textContent = ' 生成完成';
+    }).catch(function(err){
+      paintHint.innerHTML = ' 生图失败：' + (err && err.message || err) + '<br><small>若云端直连被浏览器拦截：本地运行 node server.mjs 后访问 http://localhost:8787 即可生图。</small>';
+    }).then(function(){ paintBtn.disabled = false; });
+  });
+  document.getElementById('dlBtn').addEventListener('click', function(){
+    if(!lastUrl) return;
+    var a = document.createElement('a'); a.href = lastUrl; a.download = 'ccowork-' + Date.now() + '.jpg'; a.click();
+  });
+  document.getElementById('saveBtn').addEventListener('click', function(){
+    if(!lastUrl) return;
+    var name = (lastPrompt || 'AI 新作').slice(0, 18);
+    var div = document.createElement('div');
+    div.className = 'gitem';
+    div.innerHTML = '<img src="'+lastUrl+'" alt="'+name+'" loading="lazy"><div class="cap">'+name+'<small>'+(lastPrompt||'').slice(0,30)+'</small></div>';
+    div.style.animationDelay = '0s';
+    grid.insertBefore(div, grid.firstChild);
+    div.addEventListener('click', function(){ lbImg.src = lastUrl; lbCap.textContent = name + ' · ' + (lastPrompt||''); lb.classList.add('show'); });
+    paintHint.textContent = ' 已置顶存入画廊';
+  });
+  // ---------- 生视频（Seedance 异步任务） ----------
+  var vidPrompt = document.getElementById('vidPrompt');
+  var vidBtn = document.getElementById('vidBtn');
+  var vidHint = document.getElementById('vidHint');
+  var vidEl = document.getElementById('vidEl');
+  var lastVid = '';
+  vidBtn.addEventListener('click', function(){
+    var p = vidPrompt.value.trim();
+    if(!p){ vidHint.textContent = ' 请先描述要生成的视频'; return; }
+    if(vidBtn.disabled) return;
+    vidBtn.disabled = true;
+    document.getElementById('vidResult').style.display = 'none';
+    document.getElementById('vidActs').style.display = 'none';
+    window.MediaGen.genVideo(p, {
+      ratio: document.getElementById('vidRatio').value,
+      duration: Number(document.getElementById('vidDur').value),
+      model: document.getElementById('vidModel').value
+    }, function(s){ vidHint.textContent = s; }).then(function(u){
+      lastVid = u;
+      vidEl.src = u;
+      document.getElementById('vidResult').style.display = 'block';
+      document.getElementById('vidActs').style.display = 'flex';
+      vidHint.textContent = ' 视频生成完成';
+    }).catch(function(err){
+      vidHint.innerHTML = ' 视频失败：' + (err && err.message || err) + '<br><small>Seedance 需账户余额≥200元或资源包；若云端直连被拦截，本地 node server.mjs 后访问 localhost:8787 再试。</small>';
+    }).then(function(){ vidBtn.disabled = false; });
+  });
+  document.getElementById('vidDl').addEventListener('click', function(){
+    if(!lastVid) return;
+    var a = document.createElement('a'); a.href = lastVid; a.download = 'ccowork-video-' + Date.now() + '.mp4'; a.click();
+  });
+  // ---------- tab 切换 ----------
+  var gtabs = document.querySelectorAll('.gtab');
+  gtabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      gtabs.forEach(function(x){ x.classList.remove('on'); });
+      t.classList.add('on');
+      var tab = t.dataset.tab;
+      document.getElementById('panelImage').style.display = (tab === 'image') ? 'block' : 'none';
+      document.getElementById('panelVideo').style.display = (tab === 'video') ? 'block' : 'none';
+    });
+  });
+  // 粒子星空
+  var cv = document.getElementById('stars'), ctx = cv.getContext('2d');
+  var W, H, pts = [];
+  function resize(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
+  resize(); addEventListener('resize', resize);
+  var COLORS = ['94,234,212','56,225,255','91,140,255','240,185,92'];
+  var n = Math.min(100, Math.floor(W*H/18000));
+  for(var i=0;i<n;i++) pts.push({ x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.5+.4, vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3, c:COLORS[Math.random()*4|0] });
+  (function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i]; p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fillStyle='rgba('+p.c+',.5)'; ctx.fill();
+      for(var j=i+1;j<pts.length;j++){
+        var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<12000){ ctx.strokeStyle='rgba('+p.c+','+(0.12*(1-d2/12000))+')'; ctx.lineWidth=.6; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
+      }
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["AI绘画","ComfyUI","StableDiffusion"], title: 'AI 绘画 · 生图实操视频' });</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

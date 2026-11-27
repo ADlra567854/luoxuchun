@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI 好书 · 55 本可按 ISBN 反查的书单 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI 好书 · 55 本可按 ISBN 反查的书单 | 白驹 ccowork","description":"这份书单只做一件事：把「这本书真的存在」变成可验证的。每本书都给齐书名、作者、出版社、出版年、ISBN 五要素—— ISBN 是全球唯一书目标识，复制到任一图书馆或书商系统即可反查真伪，不依赖任何单一网站长期存活。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<meta property="og:title" content="AI 好书 · 55 本可按 ISBN 反查的书单 · 白驹 ccowork">
+<meta name="description" content="这份书单只做一件事：把「这本书真的存在」变成可验证的。每本书都给齐书名、作者、出版社、出版年、ISBN 五要素—— ISBN 是全球唯一书目标识，复制到任一图书馆或书商系统即可反查真伪，不依赖任何单一网站长期存活。">
+<meta property="og:description" content="这份书单只做一件事：把「这本书真的存在」变成可验证的。每本书都给齐书名、作者、出版社、出版年、ISBN 五要素—— ISBN 是全球唯一书目标识，复制到任一图书馆或书商系统即可反查真伪，不依赖任何单一网站长期存活。">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://ccoworkbaiju.cn/learn/books/index.html">
+<style>
+:root{
+  --bg:#F6F8FF;--card:#FFFFFF;--text:#0B1230;--muted:#5A6B8C;--line:#E3EBF5;
+  --grad:linear-gradient(120deg,#4F8CFF,#38B6FF 50%,#8B5CF6);
+  --blue:#4F8CFF;--cyan:#38B6FF;--purple:#8B5CF6;
+  --sh:0 2px 10px rgba(20,40,80,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{font-size:13px;font-weight:600}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+/* 注入层会给 article 补 margin-top 以避开 fixed 导航，
+   本页自己控制间距，否则会和 padding-top 叠成双重留白 */
+body>article{max-width:1080px;margin:0 auto;padding:8px 16px 40px}
+.meta{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;margin-bottom:8px}
+h1{font-size:clamp(23px,5vw,33px);font-weight:850;line-height:1.32;margin:0 0 14px}
+h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:15px;max-width:760px;margin-bottom:18px}
+.lead b{color:var(--text)}
+.statbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:var(--sh)}
+.stat b{display:block;font-size:20px;font-weight:850;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.stat span{font-size:12px;color:var(--muted);font-weight:600}
+.bar{position:sticky;top:53px;z-index:50;background:rgba(246,248,255,.94);backdrop-filter:blur(12px);padding:10px 0 12px;margin-bottom:4px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);
+  font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;transition:.18s;white-space:nowrap}
+.chip:hover{border-color:#c3d5f5;color:var(--text)}
+.chip.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 4px 14px rgba(79,140,255,.3)}
+.chip .n{opacity:.72;font-weight:600;margin-left:3px;font-size:12px}
+.searchrow{display:flex;align-items:center;gap:8px;margin-top:2px}
+.search{flex:1;min-width:0;padding:9px 13px;border-radius:10px;border:1px solid var(--line);background:var(--card);
+  font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:.18s}
+.search:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,140,255,.13)}
+.hit{font-size:13px;color:var(--muted);font-weight:700;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:12px;margin-top:12px}
+.bk{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px 16px;box-shadow:var(--sh);
+  display:flex;flex-direction:column;gap:7px;transition:transform .22s cubic-bezier(.2,.8,.3,1),box-shadow .22s,border-color .22s}
+.bk:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(20,40,80,.11);border-color:#cfe0fa}
+.bk h3{font-size:16px;font-weight:800;line-height:1.45;margin:0}
+.bk .au{font-size:13px;color:var(--muted);font-weight:600}
+.bk .pub{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.bk .for{font-size:13px;color:#41536f;line-height:1.65;flex:1}
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tg{font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;letter-spacing:.2px}
+.tg.y2026{background:rgba(79,140,255,.12);color:#3168d6}
+.tg.y2025{background:rgba(56,182,255,.14);color:#127ba8}
+.tg.en{background:rgba(139,92,246,.13);color:#6d3bd6}
+.tg.k{background:rgba(90,107,140,.1);color:#5A6B8C}
+.isbn{display:flex;align-items:center;gap:6px;margin-top:2px}
+.isbn code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.4px;
+  background:rgba(79,140,255,.08);color:#3168d6;padding:3px 8px;border-radius:10px;font-weight:700}
+.copy{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:10px;
+  font-size:12px;font-weight:700;padding:3px 9px;cursor:pointer;transition:.16s;font-family:inherit}
+.copy:hover{border-color:var(--blue);color:var(--blue)}
+.copy.ok{background:#e8f7ee;border-color:#9ad8b0;color:#1a8a45}
+.bk .lnk{font-size:12px;font-weight:800}
+.empty{padding:44px 18px;text-align:center;color:var(--muted);font-size:14px;grid-column:1/-1}
+.sec{margin-top:34px}
+.sec h2{font-size:19px;font-weight:850;margin:0 0 10px}
+.note{margin:14px 0;padding:13px 16px;background:rgba(79,140,255,.07);border-left:3px solid var(--blue);border-radius:10px;font-size:14px;line-height:1.8}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;box-shadow:var(--sh)}
+.step b{display:block;font-size:13px;font-weight:800;margin-bottom:4px;color:#3168d6}
+.step span{font-size:13px;color:var(--muted);line-height:1.7}
+footer{max-width:1080px;margin:34px auto 0;padding:18px 16px 44px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.8}
+@media(max-width:640px){
+  body>article{padding:4px 13px 34px}
+  .statbar{grid-template-columns:1fr;gap:8px}
+  .stat{display:flex;align-items:baseline;gap:9px;padding:10px 13px}
+  .stat b{font-size:17px}
+  .grid{grid-template-columns:1fr;gap:10px}
+  .bar{top:50px}
+}
+</style>
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:description" content="这份书单只做一件事：把「这本书真的存在」变成可验证的。每本书都给齐书名、作者、出版社、出版年、ISBN 五要素—— ISBN 是全球唯一书目标识，复制到任一图书馆或书商系统即可反查真伪，不依赖任何单一网站长期存活。">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/learn/books/index.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 好书 · 55 本可按 ISBN 反查的书单 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav>
+  <span class="logo">白驹 ccowork</span>
+  <a href="/learn/academy/resources.html">权威资源馆 →</a>
+</nav>
+<article>
+  <p class="meta">2026-10-27 逐条核验 · 书目标识以 ISBN 为准</p>
+  <h1>AI 好书：<em>55 本</em>，每本都能按 ISBN 反查</h1>
+  <p class="lead">
+    这份书单只做一件事：<b>把「这本书真的存在」变成可验证的</b>。每本书都给齐书名、作者、出版社、出版年、ISBN 五要素——
+    ISBN 是全球唯一书目标识，复制到任一图书馆或书商系统即可反查真伪，不依赖任何单一网站长期存活。
+    编号来自出版社公开书目与图书馆公开编目，<b>51 个 ISBN 全部通过校验位检测</b>（第 13 位由前 12 位按模 10 加权算出，抄错一位就会被抓出来）。
+  </p>
+  <div class="statbar">
+    <div class="stat"><b id="sTotal">—</b><span>本在列</span></div>
+    <div class="stat"><b id="sIsbn">—</b><span>个可反查 ISBN</span></div>
+    <div class="stat"><b id="sTier">—</b><span>个阅读档次</span></div>
+  </div>
+  <div class="bar">
+    <div class="chips" id="chips"></div>
+    <div class="searchrow">
+      <input class="search" id="q" type="search" placeholder="搜书名 / 作者 / 出版社 / 标签 / ISBN" autocomplete="off">
+      <span class="hit" id="hit"></span>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <section class="sec">
+    <h2>ISBN 怎么用（三步，任选一个系统）</h2>
+    <div class="howto">
+      <div class="step"><b>① 复制</b><span>点卡片上的「复制」，把 13 位数字拿到手。</span></div>
+      <div class="step"><b>② 粘贴到任意书目系统</b><span>国家图书馆联机目录、所在高校图书馆 OPAC、豆瓣读书、任一电商图书搜索，都支持按 ISBN 精确查。</span></div>
+      <div class="step"><b>③ 核对五要素</b><span>查到的书名、作者、出版社、出版年要与本页一致。ISBN 唯一，对不上就是本页录错了，请直接反馈。</span></div>
+    </div>
+  </section>
+  <section class="sec">
+    <h2>这份书单的口径</h2>
+    <div class="note">
+      📌 <b>只收有正式出版物的</b>：能查到 ISBN 的书，或者有官方长期地址的经典（如 AIMA 官方站、Deep Learning 免费在线全文、Transformer 原始论文）。
+      自行出版、无 ISBN、只有网盘流传的电子书<b>一律不收</b>——无法核验的东西不该出现在书单里。<br>
+      📌 <b>不收推广位</b>：排序按出版时间与主题档位，没有赞助、没有返佣链接，卡片上的链接只指向出版社官方页或论文原文。
+    </div>
+  </section>
+</article>
+<footer>
+  白驹 ccowork · AI 好书 · 数据文件 <code>data/ai-books.json</code> · 页面核验至 2026-10-27
+</footer>
+<script>
+(function () {
+  var DATA = null, TIER = 'all', Q = '';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function render() {
+    if (!DATA) return;
+    var q = Q.trim().toLowerCase();
+    var list = DATA.books.filter(function (b) {
+      if (TIER !== 'all' && b.tier !== TIER) return false;
+      if (!q) return true;
+      var hay = [b.title, b.author, b.press, b.tag, b.for, b.isbn, b.year].join(' ').toLowerCase();
+      return hay.indexOf(q) > -1;
+    });
+    $('hit').textContent = list.length + ' / ' + DATA.books.length;
+    var grid = $('grid');
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty">没有匹配的书 —— 换个关键词，或点「全部」重置筛选。</div>';
+      return;
+    }
+    grid.innerHTML = list.map(function (b) {
+      var tname = { y2026: '2026 新书', y2025: '2025 精选', en: '英文经典' }[b.tier] || b.tier;
+      return '<div class="bk">' +
+        '<div class="tags"><span class="tg ' + esc(b.tier) + '">' + esc(tname) + '</span>' +
+          (b.tag ? '<span class="tg k">' + esc(b.tag) + '</span>' : '') + '</div>' +
+        '<h3>' + esc(b.title) + '</h3>' +
+        (b.author && b.author !== '—' ? '<div class="au">' + esc(b.author) + '</div>' : '') +
+        '<div class="pub">' + esc(b.press) + ' · ' + esc(b.year) + '</div>' +
+        (b.for ? '<div class="for">' + esc(b.for) + '</div>' : '') +
+        (b.isbn
+          ? '<div class="isbn"><code>' + esc(b.isbn) + '</code>' +
+            '<button class="copy" data-isbn="' + esc(b.isbn) + '" type="button">复制</button></div>'
+          : '<div class="isbn"><span class="tg k">官方在线免费</span></div>') +
+        (b.link ? '<a class="lnk" href="' + esc(b.link) + '" target="_blank" rel="noopener">查看官方页 →</a>' : '') +
+        '</div>';
+    }).join('');
+  }
+  function buildChips() {
+    var counts = { all: DATA.books.length };
+    DATA.books.forEach(function (b) { counts[b.tier] = (counts[b.tier] || 0) + 1; });
+    var html = '<button class="chip on" data-t="all" type="button">全部<span class="n">' + counts.all + '</span></button>';
+    DATA.tiers.forEach(function (t) {
+      html += '<button class="chip" data-t="' + esc(t.key) + '" type="button" title="' + esc(t.desc) + '">' +
+        esc(t.name) + '<span class="n">' + (counts[t.key] || 0) + '</span></button>';
+    });
+    $('chips').innerHTML = html;
+  }
+  document.addEventListener('click', function (e) {
+    var chip = e.target.closest && e.target.closest('.chip');
+    if (chip) {
+      var all = document.querySelectorAll('.chip');
+      for (var i = 0; i < all.length; i++) all[i].classList.remove('on');
+      chip.classList.add('on');
+      TIER = chip.getAttribute('data-t');
+      render();
+      return;
+    }
+    var cp = e.target.closest && e.target.closest('.copy');
+    if (cp) {
+      var isbn = cp.getAttribute('data-isbn');
+      var done = function () {
+        cp.textContent = '已复制';
+        cp.classList.add('ok');
+        setTimeout(function () { cp.textContent = '复制'; cp.classList.remove('ok'); }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(isbn).then(done, function () { fallback(isbn, done); });
+      } else fallback(isbn, done);
+    }
+  });
+  function fallback(text, cb) {
+    try {
+      var t = document.createElement('textarea');
+      t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+      document.body.appendChild(t); t.select();
+      document.execCommand('copy'); document.body.removeChild(t); cb();
+    } catch (e) {}
+  }
+  /* 开始搜索时把档位放回「全部」：
+     否则用户在某档里搜不到别档的书，会误以为书单没收录 */
+  function resetTier() {
+    if (TIER === 'all') return;
+    TIER = 'all';
+    var all = document.querySelectorAll('.chip');
+    for (var i = 0; i < all.length; i++) {
+      all[i].classList.toggle('on', all[i].getAttribute('data-t') === 'all');
+    }
+  }
+  $('q').addEventListener('input', function (e) {
+    Q = e.target.value;
+    if (Q.trim()) resetTier();
+    render();
+  });
+  fetch('/data/ai-books.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (d) {
+      DATA = d;
+      $('sTotal').textContent = d.books.length;
+      $('sIsbn').textContent = d.books.filter(function (b) { return b.isbn; }).length;
+      $('sTier').textContent = d.tiers.length;
+      buildChips();
+      render();
+    })
+    .catch(function (e) {
+      $('grid').innerHTML = '<div class="empty">书目数据加载失败：' + esc(e.message) +
+        '<br>请通过站点根地址访问（而非直接双击打开文件）。</div>';
+      if (window.console) console.error('[ai-books]', e);
+    });
+})();
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="全部开源仓库 Open WebUI 112,000 星 Python 自定义(BSD-3 变体) 客户端 / 前端 自建 ChatGPT 的首选前端，接什么后端都行 112,000 GitHub 星数 Python 主语…">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open WebUI · 开源项目 · 白驹 ccowork</title>
+<meta name="description" content="全部开源仓库 Open WebUI 112,000 星 Python 自定义(BSD-3 变体) 客户端 / 前端 自建 ChatGPT 的首选前端，接什么后端都行 112,000 GitHub 星数 Python 主语…">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/page-ext.css">
+<link rel="stylesheet" href="/repo-page.css">
+<meta name="twitter:description" content="全部开源仓库 Open WebUI 112,000 星 Python 自定义(BSD-3 变体) 客户端 / 前端 自建 ChatGPT 的首选前端，接什么后端都行 112,000 GitHub 星数 Python 主语…">
+<link rel="canonical" href="https://ccoworkbaiju.cn/toolbox/p/open-webui.html">
+<meta property="og:title" content="Open WebUI · 开源项目 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/toolbox/p/open-webui.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Open WebUI · 开源项目 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="toolbox" data-cctitle="Open WebUI">
+<main class="pg-wrap">
+
+  <div class="pg-hero">
+    <div data-cccrumb="开源仓库"></div>
+    <a class="rp-back" href="/toolbox/repos.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>全部开源仓库</a>
+    <h1>Open WebUI</h1>
+    <div class="rp-meta"><span class="rp-pill star"><i class="cc-ic" data-ic="star" aria-hidden="true"></i>112,000 星</span><span class="rp-pill"><i class="cc-ic" data-ic="code" aria-hidden="true"></i>Python</span><span class="rp-pill"><i class="cc-ic" data-ic="scale" aria-hidden="true"></i>自定义(BSD-3 变体)</span><span class="rp-pill"><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>客户端 / 前端</span></div>
+    <p class="lede">自建 ChatGPT 的首选前端，接什么后端都行</p>
+  </div>
+
+  <div class="rp-cover"><img src="/assets/covers/repos/open-webui__open-webui.png" alt="Open WebUI 项目封面" loading="eager" width="1200" height="600"></div>
+
+  <div class="rp-stats">
+    <div class="st"><b>112,000</b><span>GitHub 星数</span></div>
+    <div class="st"><b>Python</b><span>主语言</span></div>
+    <div class="st"><b>自定义(BSD-3 变体)</b><span>许可</span></div>
+    <div class="st"><b>客户端 / 前端</b><span>分类</span></div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="target" aria-hidden="true"></i>它解决的是哪一步</h2><span class="sub">先把定位说清楚，再决定要不要装</span></div>
+    <div class="rp-lead">多用户、权限分组、知识库、工具调用、模型切换这些「一个聊天产品该有的东西」它全内置了。后端可以指 Ollama，也可以指任何 OpenAI 兼容端点，所以你换模型供应商的时候前端不用动。对团队来说，这是最省事的内部 AI 入口。</div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="terminal" aria-hidden="true"></i>上手三步</h2><span class="sub">按顺序走，卡住基本都在第一步</span></div>
+    <div class="rp-steps">
+      <div class="rp-step"><div class="no">1</div><div class="tx"><b>一条命令起容器</b><p>docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main，数据卷一定要挂，不然重建容器账号全没。</p></div></div>
+      <div class="rp-step"><div class="no">2</div><div class="tx"><b>接上你的模型</b><p>设 OLLAMA_BASE_URL 指向 Ollama；或者进管理后台填 OpenAI 兼容的 base_url 和 key。</p></div></div>
+      <div class="rp-step"><div class="no">3</div><div class="tx"><b>开账号与权限</b><p>第一个注册的账号自动成为管理员。之后在管理面板里建用户组、限制可用模型，别让所有人共用管理员。</p></div></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="shield" aria-hidden="true"></i>适合与不适合</h2><span class="sub">不适合的部分比适合更值得看</span></div>
+    <div class="rp-fit">
+      <div class="rp-col yes"><h3><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>适合你，如果</h3><ul>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>团队内部共用一个聊天前端，要账号和权限</li>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>本地模型 + 云模型混着用，想统一入口</li>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>需要把文档喂进去做问答，但不想自己写 RAG</li>
+      </ul></div>
+      <div class="rp-col no"><h3><i class="cc-ic" data-ic="circle-x" aria-hidden="true"></i>换别的，如果</h3><ul>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>要把 UI 深度定制成自己产品的一部分——fork 改造成本高</li>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>只需要单人用，不值得起一套服务</li>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>对前端性能有极致要求的大流量 C 端产品</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>客户端 / 前端里的其他选择</h2><span class="sub">同类不必只看一个</span></div>
+    <div class="rp-sib">
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/pbakaus__impeccable.png" alt="" loading="lazy"><span class="tx"><b>Impeccable</b><span>91,100 星 · Rust</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/ChatGPTNextWeb__NextChat.png" alt="" loading="lazy"><span class="tx"><b>NextChat</b><span>88,900 星 · TypeScript</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/nomic-ai__gpt4all.png" alt="" loading="lazy"><span class="tx"><b>GPT4All</b><span>77,400 星 · C++</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <div class="rp-src">
+    <a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener"><i class="cc-ic" data-ic="github" aria-hidden="true"></i>去 GitHub 看源码</a>
+    <a class="alt" href="/toolbox/repos.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>回到开源仓库列表</a>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

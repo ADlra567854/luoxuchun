@@ -1,0 +1,328 @@
+{
+  "title": "大学各专业×AI地图",
+  "description": "6大类30+专业AI应用指南",
+  "lastUpdated": "2026-08-16",
+  "categories": [
+    {
+      "id": "engineering",
+      "number": "01",
+      "name": "工科",
+      "englishName": "Engineering",
+      "description": "工科的核心是「建模 + 算 + 做」。用 AI 当即时答疑导师与仿真助手：啃不懂的公式让 AI 讲人话、做数值仿真与数据分析时让 AI 写脚本，再用真实实验/项目去验证 AI 给的结论——AI 算得快，但工程必须落地。",
+      "majors": [
+        {
+          "id": "computer-science",
+          "icon": "🖥️",
+          "name": "计算机科学与技术",
+          "description": "研究「怎么让机器会计算、会思考」，是软件与智能的底座。",
+          "aiApplications": "写代码、补全、Debug、AI 结对编程、算法/论文辅助",
+          "toLearn": "数据结构与算法 + Python；主力工具 GitHub Copilot / Cursor",
+          "careers": "软件工程师、算法工程师、AI 工程师、架构师"
+        },
+        {
+          "id": "software-engineering",
+          "icon": "🧩",
+          "name": "软件工程",
+          "description": "把「写代码」变成「做产品」，研究如何高质量、成规模地交付软件。",
+          "aiApplications": "需求分析、自动生成测试用例、代码评审、CI/CD 智能化",
+          "toLearn": "软件工程方法 + 一门后端语言（Java/Go）；Git / 云平台",
+          "careers": "后端/全栈工程师、测试开发、DevOps、技术管理"
+        },
+        {
+          "id": "electronic-engineering",
+          "icon": "📡",
+          "name": "电子信息工程",
+          "description": "研究「信号怎么来、怎么传、怎么处理」，覆盖芯片、通信、雷达、嵌入式。",
+          "aiApplications": "信号去噪、频谱分析、芯片 EDA 辅助设计、智能硬件调试",
+          "toLearn": "信号与系统 + C 语言；MATLAB / 单片机 / FPGA",
+          "careers": "芯片设计、通信工程师、嵌入式、硬件工程师"
+        },
+        {
+          "id": "electrical-automation",
+          "icon": "⚙️",
+          "name": "电气 / 自动化",
+          "description": "研究「电从哪来、怎么控制」，让机器和系统自己跑起来。",
+          "aiApplications": "电力负荷预测、智能电网调度、机器人控制、工业视觉检测",
+          "toLearn": "自动控制原理 + 电路；PLC / Python + 仿真工具",
+          "careers": "电网、新能源、自动化工程师、机器人/智能制造"
+        },
+        {
+          "id": "mechanical-engineering",
+          "icon": "🔩",
+          "name": "机械工程",
+          "description": "研究「怎么设计、制造出能动的东西」，是制造业的母学科。",
+          "aiApplications": "生成式结构设计、有限元仿真加速、预测性维护、智能质检",
+          "toLearn": "机械设计 + 材料力学；SolidWorks / ANSYS + Python",
+          "careers": "汽车/装备制造、结构设计、仿真工程师、智能制造"
+        },
+        {
+          "id": "civil-engineering",
+          "icon": "🏗️",
+          "name": "土木工程",
+          "description": "研究「怎么把楼、桥、路安全地建起来、用起来」。",
+          "aiApplications": "BIM 智能建模、结构优化、施工进度预测、无人机巡检",
+          "toLearn": "结构力学 + 混凝土/钢结构；AutoCAD / BIM（Revit）",
+          "careers": "设计院、施工管理、工程咨询、智慧建造"
+        },
+        {
+          "id": "chemical-materials",
+          "icon": "🧪",
+          "name": "化工 / 材料",
+          "description": "研究「物质怎么变、材料怎么造」，从炼油到电池到芯片材料。",
+          "aiApplications": "新材料逆向设计、反应条件优化、分子筛选、工艺预测",
+          "toLearn": "物理化学 + 化工原理/材料科学基础；Python + 分子模拟",
+          "careers": "化工/材料企业、新能源、半导体材料、研发工程师"
+        },
+        {
+          "id": "aerospace",
+          "icon": "🚀",
+          "name": "航空航天",
+          "description": "研究「怎么让飞行器飞得更高、更远、更稳」。",
+          "aiApplications": "气动外形优化、飞行控制、轨道规划、遥感图像解译",
+          "toLearn": "空气动力学 + 飞行动力学；MATLAB / 计算流体力学",
+          "careers": "航空航天院所、无人机、卫星、控制/仿真工程师"
+        },
+        {
+          "id": "energy",
+          "icon": "☀️",
+          "name": "能源 / 新能源",
+          "description": "研究「怎么更高效地生产、存储、输送能量」，从传统能源到风光锂氢。",
+          "aiApplications": "发电预测、电池健康管理、储能调度、电网优化",
+          "toLearn": "能源动力基础 + 电工电子；Python 数据分析 + 仿真",
+          "careers": "新能源企业、电力系统、储能/电池、能源管理"
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "number": "02",
+      "name": "理科",
+      "englishName": "Science",
+      "description": "理科拼的是「底层规律 + 抽象思维」。把 AI 当数学/符号推理助手：用它推演证明思路、做符号计算、可视化复杂函数与数据；但要警惕 AI 一本正经地算错——每一行推导都要自己亲手验算一遍，理解大于结论。",
+      "majors": [
+        {
+          "id": "mathematics",
+          "icon": "📐",
+          "name": "数学",
+          "description": "研究数量、结构、变化与空间，是所有硬科技的通用语言。",
+          "aiApplications": "定理证明辅助、符号计算、优化建模、数据背后的数学建模",
+          "toLearn": "数学分析 + 线性代数；Python（NumPy/符号计算）+ LaTeX",
+          "careers": "量化、数据科学、算法、精算、科研/教育"
+        },
+        {
+          "id": "physics",
+          "icon": "⚛️",
+          "name": "物理学",
+          "description": "研究物质与能量的基本规律，从量子到宇宙。",
+          "aiApplications": "物理仿真加速、实验数据分析、偏微分方程求解、AI4Science",
+          "toLearn": "理论力学/电动力学 + 数学物理方法；Python 数值计算",
+          "careers": "半导体、光电、科研、量化、中学/高校教师"
+        },
+        {
+          "id": "chemistry",
+          "icon": "🧬",
+          "name": "化学",
+          "description": "研究物质的组成、结构与反应，是材料、医药、能源的源头。",
+          "aiApplications": "分子结构预测、反应路径设计、谱图解析、高通量筛选",
+          "toLearn": "有机化学 + 物理化学；Python + 分子模拟/谱图软件",
+          "careers": "医药、材料、化工研发、检测、科研/教育"
+        },
+        {
+          "id": "biology",
+          "icon": "🦠",
+          "name": "生物学",
+          "description": "研究生命现象与规律，从基因到生态系统。",
+          "aiApplications": "基因组学分析、蛋白质结构预测（AlphaFold）、序列比对、生信挖掘",
+          "toLearn": "生物化学 + 分子生物学；Python / R（生信）",
+          "careers": "生物医药、生信分析、检测机构、科研/教育"
+        }
+      ]
+    },
+    {
+      "id": "medicine",
+      "number": "03",
+      "name": "医学",
+      "englishName": "Medicine",
+      "description": "医学是「知识量大 + 记忆强度高 + 终身更新」的学科。把 AI 当 24 小时带教与记忆引擎：用它生成病例题、做诊断思路推演、把海量知识点整理成复习卡片；但临床决策永远以教材、指南与带教老师为准，AI 只做辅助不替代判断。",
+      "majors": [
+        {
+          "id": "clinical-medicine",
+          "icon": "💉",
+          "name": "临床医学",
+          "description": "直接面对病人，诊断、治疗、预防疾病。",
+          "aiApplications": "影像辅助读片、病历摘要、鉴别诊断提示、文献速读",
+          "toLearn": "系统解剖学 + 病理生理学；医学影像 / 病历系统",
+          "careers": "医院各科室、公共卫生、药企医学部、医学教育"
+        },
+        {
+          "id": "pharmacy",
+          "icon": "💊",
+          "name": "药学",
+          "description": "研究药物的发现、制造、作用与安全。",
+          "aiApplications": "药物靶点发现、分子筛选、ADMET 预测、临床试验设计",
+          "toLearn": "药理学 + 药物化学；分子模拟 + 数据分析",
+          "careers": "药企研发、医院药剂科、CRO、药品监管"
+        },
+        {
+          "id": "biomedical-engineering",
+          "icon": "🦾",
+          "name": "生物医学工程",
+          "description": "用工程技术解决医学问题：医疗设备、影像、假肢、信号处理。",
+          "aiApplications": "医学影像 AI、心电/脑电信号分析、可穿戴健康监测、手术机器人",
+          "toLearn": "人体生理学 + 信号与系统；Python + 医学图像处理",
+          "careers": "医疗器械、影像算法、医院设备科、健康科技公司"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "number": "04",
+      "name": "经管",
+      "englishName": "Business & Economics",
+      "description": "经管拼的是「判断力 + 数据敏感度 + 表达」。把 AI 当商业分析师与写作合伙人：让它拉数据、做图表、写报告初稿、模拟案例讨论；但结论与判断必须你自己下——AI 给的是参考与素材，不是替你决策。",
+      "majors": [
+        {
+          "id": "finance",
+          "icon": "📈",
+          "name": "金融",
+          "description": "研究资金怎么配置、风险怎么定价、市场怎么运转。",
+          "aiApplications": "量化策略、风险建模、研报生成、舆情/行情预测辅助",
+          "toLearn": "公司金融 + 计量经济学；Python（Pandas）+ Excel/金融终端",
+          "careers": "投行、券商、基金、银行、量化、风控"
+        },
+        {
+          "id": "accounting",
+          "icon": "🧾",
+          "name": "会计学",
+          "description": "用一套规则记录、报告企业的经济活动，是商业的语言。",
+          "aiApplications": "自动记账、发票识别、报表生成、审计异常检测",
+          "toLearn": "财务会计 + 管理会计；财务软件 + Excel/Power BI",
+          "careers": "会计师事务所、企业财务、审计、税务、财务分析"
+        },
+        {
+          "id": "business-administration",
+          "icon": "🏢",
+          "name": "工商管理",
+          "description": "研究怎么组织人、财、物把事情做成，是通用管理能力。",
+          "aiApplications": "商业计划、市场调研、运营分析、组织决策支持",
+          "toLearn": "管理学原理 + 市场营销；数据分析 + 项目管理工具",
+          "careers": "咨询、市场、运营、HR、创业/综合管理"
+        },
+        {
+          "id": "economics",
+          "icon": "🌐",
+          "name": "经济学",
+          "description": "研究资源怎么配置、人的选择怎么影响整体，是「社会如何运转」的学问。",
+          "aiApplications": "计量建模、政策模拟、宏观数据预测、文献综述",
+          "toLearn": "微观/宏观经济学 + 计量经济学；Stata / Python / R",
+          "careers": "政策研究、金融、咨询、数据经济分析、科研"
+        }
+      ]
+    },
+    {
+      "id": "humanities",
+      "number": "05",
+      "name": "人文社科",
+      "englishName": "Humanities & Social Science",
+      "description": "人文社科拼的是「批判性思维 + 共情 + 表达」。把 AI 当阅读外挂与思辨陪练：让它速读海量文献、提炼观点、从对立立场跟你辩论；但思想、立场与文风必须是你自己的——AI 能帮你收集砖瓦，盖成什么房子由你决定。",
+      "majors": [
+        {
+          "id": "law",
+          "icon": "⚖️",
+          "name": "法学",
+          "description": "研究规则、权利与正义，用条文和逻辑定纷止争。",
+          "aiApplications": "类案检索、合同审查、法律文书起草、法规速查",
+          "toLearn": "法理学 + 民法/刑法；法律数据库 + 检索工具",
+          "careers": "律师、法务、公务员、司法、企业合规"
+        },
+        {
+          "id": "journalism",
+          "icon": "📰",
+          "name": "新闻传播",
+          "description": "研究信息怎么采集、生产、传播，以及它对公众的影响。",
+          "aiApplications": "选题挖掘、自动摘要、多平台改写、数据新闻、事实核查",
+          "toLearn": "新闻采访与写作 + 传播学；剪辑/排版 + 数据分析",
+          "careers": "媒体、自媒体、公关、品牌、内容运营"
+        },
+        {
+          "id": "foreign-languages",
+          "icon": "🗣️",
+          "name": "外语",
+          "description": "精通一门语言，跨越文化与信息的边界。",
+          "aiApplications": "即时翻译润色、口语陪练、跨文化语境校对、语料分析",
+          "toLearn": "精读 + 口笔译；翻译记忆库 / 语料库工具",
+          "careers": "翻译、外贸、教育、国际组织、本地化"
+        }
+      ]
+    },
+    {
+      "id": "art-design",
+      "number": "06",
+      "name": "艺术设计",
+      "englishName": "Art & Design",
+      "description": "艺术设计拼的是「审美 + 创意 + 表达」。把 AI 当灵感引擎与执行助手：让它生成概念图、配色方案、排版参考；但审美判断与创意灵魂必须是你自己的——AI 能帮你执行，但创意由你主导。",
+      "majors": [
+        {
+          "id": "visual-design",
+          "icon": "🎨",
+          "name": "视觉传达设计",
+          "description": "用视觉元素传达信息与情感，从平面到动态。",
+          "aiApplications": "AI 生成概念图、配色方案、排版参考、风格迁移",
+          "toLearn": "设计原理 + 字体排版；Adobe 系列 / Figma / AI 工具",
+          "careers": "设计师、创意总监、品牌设计、UI/UX"
+        },
+        {
+          "id": "digital-media",
+          "icon": "🎬",
+          "name": "数字媒体艺术",
+          "description": "用数字技术创造艺术体验，从动画到交互装置。",
+          "aiApplications": "AI 生成动画、视频特效、交互原型、虚拟场景",
+          "toLearn": "动画原理 + 交互设计；Blender / Unity / After Effects",
+          "careers": "动画师、游戏美术、交互设计师、新媒体艺术"
+        },
+        {
+          "id": "product-design",
+          "icon": "📦",
+          "name": "产品设计",
+          "description": "设计人们日常使用的产品，从功能到体验。",
+          "aiApplications": "AI 生成概念草图、3D 建模辅助、用户研究分析",
+          "toLearn": "设计思维 + 人机工程学；Rhino / SolidWorks / Keyshot",
+          "careers": "产品设计师、工业设计师、用户体验设计师"
+        }
+      ]
+    }
+  ],
+  "generalAdvice": [
+    {
+      "number": 1,
+      "title": "学 AI 不是转行，是给本专业加杠杆",
+      "description": "不管学什么专业，AI 都是你的「效率外挂」和「能力放大器」。先用 AI 提升本专业能力，再跨界探索。"
+    },
+    {
+      "number": 2,
+      "title": "先会用工具，再学原理",
+      "description": "先上手 ChatGPT / DeepSeek 等工具，体验 AI 能做什么，再根据兴趣深入学习机器学习、深度学习等原理。"
+    },
+    {
+      "number": 3,
+      "title": "做项目比看教程重要 100 倍",
+      "description": "学完基础后，立刻做一个小项目：用 AI 分析专业数据、生成专业内容、解决专业问题。实战中学得最快。"
+    },
+    {
+      "number": 4,
+      "title": "加入社区，和同行交流",
+      "description": "加入 GitHub、知乎、B站等社区，关注本专业 + AI 的交叉领域，和同行交流学习心得和项目经验。"
+    },
+    {
+      "number": 5,
+      "title": "保持好奇心，持续学习",
+      "description": "AI 技术发展极快，保持好奇心，每周花 2-3 小时学习新工具、新方法，才能不被时代淘汰。"
+    }
+  ],
+  "stats": {
+    "totalCategories": 6,
+    "totalMajors": 30,
+    "aiApplications": 90,
+    "learningPaths": 30
+  }
+}

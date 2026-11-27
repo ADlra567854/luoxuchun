@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="从零开始构建智能体：43 章教程、4 条学习路径、24 个可复现毕业设计，按身份选择路线并记录本机学习进度。">
+<meta name="keywords" content="自学路线,43 章智能体教程与 24 个实战项目,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>自学路线：43 章智能体教程与 24 个实战项目 · 白驹 ccowork</title>
+<meta name="description" content="从零开始构建智能体：43 章教程、4 条学习路径、24 个可复现毕业设计，按身份选择路线并记录本机学习进度。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/learn/academy.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --green:#22b07d; --amber:#f0a93c;
+  --grad2:linear-gradient(120deg,#22b07d,#38b6ff);
+  --nav-bg:rgba(255,255,255,.82); --nav-line:rgba(227,235,245,.95);
+  --nav-shadow:0 2px 16px rgba(31,45,77,.07);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+}
+body[data-theme="deep"]{
+  --green:#2ed3a0; --amber:#f6b45c;
+  --grad2:linear-gradient(120deg,#2ed3a0,#4dd6ff);
+  --nav-bg:rgba(8,5,28,.70); --nav-line:rgba(255,255,255,.08);
+  --nav-shadow:0 2px 16px rgba(0,0,0,.35);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#8b5cf6,#38e1ff 55%,#e879fa);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+/* 导航 */
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+nav.top .cta{padding:10px 20px;border:none;border-radius:999px;background:var(--grad);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.30);transition:.2s;white-space:nowrap}
+nav.top .cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.42)}
+.burger{display:none}
+/* Hero */
+#gate{position:relative;overflow:hidden;background:var(--hero-grad);transition:background .35s ease}
+#gate::before,#gate::after{content:"";position:absolute;border-radius:50%;pointer-events:none;filter:blur(2px)}
+#gate::before{width:320px;height:320px;top:-60px;right:-40px;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%)}
+#gate::after{width:260px;height:260px;bottom:-80px;left:-60px;background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%)}
+body[data-theme="deep"] #gate::before{background:radial-gradient(circle,rgba(34,225,255,.5),transparent 70%)}
+body[data-theme="deep"] #gate::after{background:radial-gradient(circle,rgba(139,92,246,.55),transparent 70%)}
+#gate .orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(1px)}
+#gate .orb.o1{width:260px;height:260px;bottom:-60px;right:12%;background:radial-gradient(circle,rgba(232,121,250,.40),transparent 70%)}
+#gate .orb.o2{width:180px;height:180px;top:8%;left:6%;background:radial-gradient(circle,rgba(94,234,212,.35),transparent 70%)}
+body[data-theme="cloud"] #gate .orb{opacity:.55}
+#gate .inner{position:relative;max-width:1080px;margin:0 auto;padding:64px 20px 48px;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+  background:var(--chip-bg,rgba(255,255,255,.16));border:1px solid var(--chip-line,rgba(255,255,255,.38));
+  color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px);letter-spacing:.5px}
+#gate h1{font-size:clamp(34px,5.2vw,60px);font-weight:900;letter-spacing:1px;color:#fff;line-height:1.25;margin-top:16px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+#gate h1 .g{background:linear-gradient(120deg,#ffffff,#d6e9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+#gate .sub{color:rgba(255,255,255,.95);font-size:15px;margin:16px auto 0;max-width:760px;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.gate-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:22px auto 4px;max-width:800px}
+.gate-chips .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;
+  background:var(--chip-bg,rgba(255,255,255,.16));border:1px solid var(--chip-line,rgba(255,255,255,.38));
+  color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px);transition:.2s;cursor:pointer;text-shadow:0 1px 4px rgba(16,48,120,.30)}
+.gate-chips .chip:hover{background:rgba(255,255,255,.30);transform:translateY(-2px)}
+.trust{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.trust .t{display:flex;align-items:baseline;gap:8px}
+.trust .t b{font-size:26px;font-weight:800;color:#fff;text-shadow:0 2px 12px rgba(16,48,120,.3)}
+.trust .t span{font-size:13px;font-weight:600;color:rgba(220,235,255,.92)}
+/* 区段 */
+section.block{max-width:1180px;margin:36px auto;padding:0 20px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:24px;font-weight:900}
+.sec-head h2 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head .tag{font-size:12px;color:var(--muted);background:rgba(120,160,220,.12);padding:4px 11px;border-radius:999px}
+.sec-head .more{margin-left:auto;font-size:13px;color:var(--blue);font-weight:600}
+/* 五大部分 */
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.part{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;transition:.2s;box-shadow:var(--card-shadow);position:relative;overflow:hidden}
+.part:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(56,225,255,.35)}
+.part::before{content:"";position:absolute;inset:0;background:radial-gradient(300px 150px at 10% 0%,rgba(79,140,255,.10),transparent 60%);opacity:0;transition:.3s}
+.part:hover::before{opacity:1}
+.part .pno{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:2px;margin-bottom:8px}
+body[data-theme="deep"] .part .pno{color:var(--cyan)}
+.part h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.part p{font-size:13px;color:var(--muted);line-height:1.7}
+.part .chs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.part .chs span{font-size:11px;color:var(--blue);background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600}
+body[data-theme="deep"] .part .chs span{color:var(--cyan)}
+/* 共创项目网格 */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;transition:.2s;box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:8px}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(79,140,255,.4)}
+.pcard .pico{width:38px;height:38px;border-radius:10px;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.22)}
+body[data-theme="deep"] .pcard .pico{background:linear-gradient(120deg,#38e1ff,#5b8cff 50%,#8b5cf6)}
+.pcard h4{font-size:15px;font-weight:800}
+.pcard p{font-size:12px;color:var(--muted);flex:1;line-height:1.6}
+.pcard .go{font-size:12px;font-weight:700;color:var(--blue)}
+body[data-theme="deep"] .pcard .go{color:var(--cyan)}
+/* DSH 专区 */
+.dsh-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.dsh-card{background:linear-gradient(120deg,rgba(79,140,255,.06),rgba(139,92,246,.06));border:1px solid var(--line);border-radius:18px;padding:20px;transition:.2s}
+.dsh-card:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:rgba(56,225,255,.4)}
+.dsh-card h4{font-size:15px;font-weight:800;margin-bottom:8px}
+.dsh-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.dsh-card .pill{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--blue);background:rgba(120,160,220,.12);border:1px solid rgba(120,160,220,.22);border-radius:999px;padding:4px 12px}
+body[data-theme="deep"] .dsh-card .pill{color:var(--cyan)}
+/* ---------- 学习路径板块（原子×维度） ---------- */
+.ptabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.ptab{
+  appearance:none;cursor:pointer;font:inherit;font-size:14px;font-weight:700;
+  padding:9px 18px;border-radius:999px;color:var(--muted);
+  background:rgba(120,160,220,.08);border:1px solid rgba(120,160,220,.22);
+  transition:color .16s,border-color .16s,background .16s,transform .16s;
+}
+.ptab:hover{color:var(--text);border-color:rgba(120,160,220,.42);transform:translateY(-1px)}
+.ptab.is-on{
+  color:#fff;border-color:transparent;
+  background:linear-gradient(120deg,#4f8cff,#38b6ff 52%,#8b5cf6);
+  box-shadow:0 6px 18px -8px rgba(79,140,255,.7);
+}
+.pout:empty{display:none}
+.pnote{opacity:.6;font-size:14px;padding:18px 0}
+.ppath{margin:0 0 14px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.ppath>summary{
+  cursor:pointer;list-style:none;padding:14px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  font-weight:800;font-size:15px;transition:background .16s;
+}
+.ppath>summary::-webkit-details-marker{display:none}
+.ppath>summary:hover{background:var(--card2)}
+.ppath[open]>summary{border-bottom:1px solid var(--line)}
+.ppath .pnum{
+  flex:none;width:26px;height:26px;border-radius:10px;display:grid;place-items:center;
+  font-size:13px;font-weight:900;color:#fff;background:linear-gradient(135deg,#4f8cff,#8b5cf6);
+}
+.ppath .pwhy{flex:1 1 260px;font-weight:500;font-size:13px;color:var(--muted);min-width:0}
+.pstat{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.pstat span{
+  font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;
+  background:rgba(56,225,255,.10);border:1px solid rgba(56,225,255,.28);color:#0e7490;
+}
+.pbody{padding:4px 18px 18px}
+.pbody .plabel{font-size:12px;font-weight:800;color:var(--muted);margin:14px 0 8px;letter-spacing:.02em}
+.pchips{display:flex;gap:7px;flex-wrap:wrap}
+.pchip{
+  font-size:12px;font-weight:700;text-decoration:none;padding:5px 12px;border-radius:999px;
+  color:var(--text);background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.20);
+  transition:border-color .16s,transform .16s,background .16s;
+}
+.pchip:hover{border-color:#4f8cff;transform:translateY(-1px);background:rgba(79,140,255,.14)}
+.pchip i{font-style:normal;opacity:.55;margin-left:5px;font-weight:600}
+.ptopic{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;
+}
+.ptopiccard{
+  border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--card2);
+  transition:border-color .16s,transform .16s;
+}
+.ptopiccard:hover{border-color:#4f8cff;transform:translateY(-2px)}
+.ptopiccard b{display:block;font-size:14px;margin-bottom:5px}
+.ptopiccard .pmeta{font-size:12px;color:var(--muted);line-height:1.6}
+.pbar{height:5px;border-radius:999px;background:rgba(120,160,220,.16);overflow:hidden;margin-top:8px}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,#4f8cff,#8b5cf6)}
+.ptime{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.ptimecard{
+  border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--card2);
+  text-align:center;transition:border-color .16s,transform .16s;
+}
+.ptimecard:hover{border-color:#38b6ff;transform:translateY(-2px)}
+.ptimecard b{display:block;font-size:22px;font-weight:900;line-height:1.2;
+  background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.ptimecard span{display:block;font-size:12px;color:var(--muted);margin-top:6px}
+@media(max-width:640px){.ptab{flex:1 1 auto;text-align:center}}
+/* ---------- 层级修复（仅本页生效，不动全局 CSS） ----------
+   module.js 注入的 #modTocBar 是 fixed / z-index:9990，横跨全宽铺在导航栏正下方。
+   而 nav.top 是 sticky / z-index:50 且带 backdrop-filter —— backdrop-filter 会创建
+   层叠上下文，导致 nav 内部子元素的 z-index 再大也只在 nav 上下文内比较，
+   对外依然输给 9990，于是角色下拉菜单被目录条吃掉点击（Playwright 报
+   "subtree intercepts pointer events"）。导航是主入口，层级必须高于内容目录条。 */
+nav.top{z-index:10010}
+/* ---------- 角色视角层 ---------- */
+.rolesw{position:relative;flex:none;z-index:9996}
+.rolebtn{
+  display:inline-flex;align-items:center;gap:7px;cursor:pointer;font:inherit;
+  font-size:14px;font-weight:800;padding:7px 13px;border-radius:999px;
+  color:#0e7490;background:rgba(56,225,255,.12);border:1px solid rgba(56,225,255,.34);
+  transition:border-color .16s,background .16s,transform .16s;white-space:nowrap;
+}
+.rolebtn:hover{border-color:#38b6ff;transform:translateY(-1px)}
+.rolebtn .caret{width:13px;height:13px;opacity:.6}
+.rolemenu{
+  /* 层级必须高于 module.js 注入的 #modTocBar（position:fixed; top:56px; z-index:9990）
+     —— 它横跨全宽铺在导航栏正下方，下拉菜单展开到 56px 以下就会被它吃掉点击。 */
+  position:absolute;top:calc(100% + 9px);left:0;z-index:9995;min-width:288px;
+  background:var(--card);border:1px solid var(--line2);border-radius:14px;
+  box-shadow:0 18px 44px -18px rgba(0,0,0,.45);padding:7px;
+}
+.rolemenu[hidden]{display:none}
+.roleitem{
+  display:block;width:100%;text-align:left;cursor:pointer;font:inherit;
+  padding:10px 12px;border:0;border-radius:10px;background:none;color:inherit;transition:background .14s;
+}
+.roleitem:hover{background:var(--card2)}
+.roleitem[aria-selected="true"]{background:rgba(79,140,255,.12)}
+.roleitem b{display:block;font-size:14px;font-weight:800;margin-bottom:2px}
+.roleitem span{display:block;font-size:12px;color:var(--muted);line-height:1.5}
+.as-wrap{margin-top:4px}
+.aswho{
+  display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;
+  padding:16px 18px;border-radius:14px;border:1px solid var(--line);
+  background:linear-gradient(120deg,rgba(79,140,255,.08),rgba(139,92,246,.08));
+}
+.aswho .asico{
+  flex:none;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,#4f8cff,#8b5cf6);
+}
+.aswho .asico .cc-ic{width:22px;height:22px}
+.aswho h3{margin:0 0 4px;font-size:17px;font-weight:900}
+.aswho p{margin:0;font-size:13px;color:var(--muted)}
+.asgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}
+.aspromise{
+  border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:var(--card2);
+}
+.aspromise h4{margin:0 0 8px;font-size:13px;font-weight:900;color:#0e7490;letter-spacing:.02em}
+.aspromise ul{margin:0;padding-left:18px;font-size:13px;line-height:1.75}
+.aspath{margin-top:16px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.aspath>summary{
+  cursor:pointer;list-style:none;padding:13px 18px;font-weight:800;font-size:15px;
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+}
+.aspath>summary::-webkit-details-marker{display:none}
+.aspath>summary:hover{background:var(--card2)}
+.assteps{padding:4px 18px 18px}
+.asstep{
+  display:flex;gap:13px;align-items:flex-start;padding:11px 0;
+  border-bottom:1px dashed var(--line);text-decoration:none;color:inherit;
+}
+.asstep:last-child{border-bottom:0}
+.asstep .n{
+  flex:none;width:26px;height:26px;border-radius:10px;display:grid;place-items:center;
+  font-size:13px;font-weight:900;color:#fff;background:linear-gradient(135deg,#4f8cff,#8b5cf6);
+}
+.asstep .tx b{display:block;font-size:14px}
+.asstep .tx span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.asstep .tx em{font-style:normal;opacity:.55;margin-left:6px;font-size:12px}
+.asfoot{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.asbtn{
+  display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:800;
+  padding:9px 17px;border-radius:999px;text-decoration:none;color:#fff;
+  background:linear-gradient(120deg,#4f8cff,#38b6ff 52%,#8b5cf6);
+}
+.asbtn.ghost{color:var(--text);background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.24)}
+.asmode{
+  font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:999px;background:rgba(56,225,255,.10);border:1px solid rgba(56,225,255,.26);
+}
+.asterms{margin-top:14px}
+.asterms summary{cursor:pointer;font-size:13px;font-weight:800;padding:8px 0}
+.asterms summary::-webkit-details-marker{display:none}
+.astermgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:9px;margin-top:8px}
+.asterm{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card2)}
+.asterm b{display:block;font-size:14px;margin-bottom:3px}
+.asterm span{display:block;font-size:13px;color:var(--muted);line-height:1.6}
+@media(max-width:900px){.rolebtn span{display:none}.rolemenu{right:0;left:auto}}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+<meta name="twitter:description" content="从零开始构建智能体：43 章教程、4 条学习路径、24 个可复现毕业设计，按身份选择路线并记录本机学习进度。">
+<meta property="og:title" content="自学路线：43 章智能体教程与 24 个实战项目 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/learn/academy.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="自学路线：43 章智能体教程与 24 个实战项目 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<!-- ====== Hero：自学路线门区 ====== -->
+<section id="gate">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="inner">
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 自学路线</div>
+    <h1>从零开始<span class="g">构建智能体</span></h1>
+    <p class="sub">智能体系统教程 每日新增 · MCP 协议 · 提示词工程 · RAG 检索增强 · 微调与私有化部署 · 多模态 AIGC · AI 职场实战 · 24 个毕业设计项目 · 成长故事曲线 —— 从 LLM「使用者」蜕变为 AI 系统「构建者」。<b style="color:var(--cyan)">独立分站 · 权威资源馆 / 国家 AI 教育馆 / AI 大事记馆 / AI 概念库 / AI 发展史 五馆齐开。</b></p>
+    <div class="gate-chips">
+      <a class="chip" href="/learn/academy/journey.html"><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>成长故事曲线</a>
+      <a class="chip" href="#parts"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>九大部分课程</a>
+      <a class="chip" href="/learn/roadmap.html"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>学习路线图</a>
+      <a class="chip" href="/learn/academy/cert.html"><i class="cc-ic" data-ic="award" aria-hidden="true"></i>认证体系</a>
+      <a class="chip" href="/learn/academy/quiz.html" style="border-color:rgba(74,222,128,.5);color:#16a34a;font-weight:700"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>章节测验 · 认证考试</a>
+      <a class="chip" href="/lab/simlab.html" style="border-color:rgba(56,182,255,.5);color:#0891b2;font-weight:700"><i class="cc-ic" data-ic="flask-conical" aria-hidden="true"></i>lab 仿真实验室</a>
+      <a class="chip" href="/website/ai-academy/chapter-01.html" style="border-color:rgba(56,225,255,.6);color:#0e7490;font-weight:700"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI 助教 · 随章答疑</a>
+      <a class="chip" href="/learn/academy/jobs.html"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>岗位地图</a>
+      <a class="chip" href="/learn/academy/projects.html"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>毕业设计项目库</a>
+      
+      <a class="chip" href="#dsh"><i class="cc-ic" data-ic="puzzle" aria-hidden="true"></i>DSH 插件</a>
+      <a class="chip" href="/learn/academy/interview.html"><i class="cc-ic" data-ic="briefcase" aria-hidden="true"></i>面试题库</a>
+      <a class="chip" href="https://datawhalechina.github.io/hello-agents/" target="_blank"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i>在线阅读</a>
+    </div>
+    <div class="gate-chips" style="margin-top:10px;opacity:.95">
+      <a class="chip" href="/learn/academy/resources.html" style="border-color:rgba(139,92,246,.5);color:#8b5cf6;font-weight:700"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>权威资源馆（国际）</a>
+      <a class="chip" href="/learn/academy/national.html" style="border-color:rgba(217,119,6,.5);color:#d97706;font-weight:700"><i class="cc-ic" data-ic="landmark" aria-hidden="true"></i>国家 AI 教育馆</a>
+      <a class="chip" href="/learn/academy/newsroom.html" style="border-color:rgba(56,182,255,.5);color:#0891b2;font-weight:700"><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>AI 大事记馆</a>
+      <a class="chip" href="/learn/academy/glossary.html" style="border-color:rgba(139,92,246,.5);color:#7c3aed;font-weight:700"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>AI 概念库（92 词）</a>
+      <a class="chip" href="/learn/books/index.html" style="border-color:rgba(16,185,129,.5);color:#059669;font-weight:700"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>AI 好书（55 本 · 可查 ISBN）</a>
+      <a class="chip" href="/learn/academy/history.html" style="border-color:rgba(245,158,11,.5);color:#b45309;font-weight:700"><i class="cc-ic" data-ic="clock" aria-hidden="true"></i>AI 发展史</a>
+    </div>
+    <div class="trust">
+      <div class="t"><b>43</b><span>章教程</span></div>
+      <div class="t"><b>24</b><span>毕业设计</span></div>
+      <div class="t"><b>60+</b><span>权威资源</span></div>
+      <div class="t"><b>92+12</b><span>词条·课程</span></div>
+      <div class="t"><b>每日</b><span>自动新增</span></div>
+    </div>
+    <img src="/website/ai-academy/assets/hero.png" alt="自学路线主视觉" style="width:min(820px,92%);border-radius:18px;margin:30px auto 0;box-shadow:0 16px 44px rgba(16,48,120,.35);display:block">
+  </div>
+</section>
+<!-- ====== 我的学习进度（C2） ====== -->
+<section class="block" id="myProgress" style="display:none">
+  <div class="sec-head"><h2><span class="em"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>我的学习进度</span></h2><span class="tag">本机记录 · 持续追踪</span></div>
+  <div id="progressCard" style="background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--card-shadow)">
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:18px">
+      <div style="flex:1;min-width:240px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+          <span style="font-size:14px;font-weight:700;color:var(--text)">总体进度</span>
+          <span id="progPct" style="font-size:14px;font-weight:800;color:var(--blue)">0%</span>
+        </div>
+        <div style="height:10px;border-radius:999px;background:rgba(120,160,220,.12);overflow:hidden">
+          <div id="progBar" style="height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#4ade80);transition:width .8s ease"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:12px;color:var(--muted)">
+          <span id="progCount">0 / 43 章</span>
+          <span id="progStreak"><i class="cc-ic" data-ic="flame" aria-hidden="true"></i>连续 0 天</span>
+          <span id="progTutor" style="display:none"></span>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a id="continueBtn" href="/learn/roadmap.html" class="btn" style="margin:0"><i class="cc-ic" data-ic="map" aria-hidden="true"></i>查看路线图</a>
+        <a href="/learn/academy/quiz.html" class="btn ghost" style="margin:0"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>去测验</a>
+      </div>
+    </div>
+    <div id="nextChapter" style="padding-top:16px;border-top:1px solid var(--line);display:none">
+      <div style="font-size:13px;color:var(--muted);margin-bottom:8px"><i class="cc-ic" data-ic="pin" aria-hidden="true"></i>推荐继续学习：</div>
+      <a id="nextChapterLink" href="#" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:14px;background:rgba(79,140,255,.08);border:1px solid rgba(79,140,255,.2);color:var(--blue);font-weight:700;font-size:14px;text-decoration:none;transition:.2s" onmouseover="this.style.background='rgba(79,140,255,.15)'" onmouseout="this.style.background='rgba(79,140,255,.08)'">
+        开始下一章 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ====== 爆款推荐 ====== -->
+<section class="block" id="viral">
+  <div class="sec-head"><h2><span class="em"><i class="cc-ic" data-ic="flame" aria-hidden="true"></i>爆款推荐</span></h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-ai-academy.png" alt="自学路线 · 白驹 ccowork · 从零开始构建智能体 · " loading="lazy"></figure>
+<span class="tag">热度最高 · 学了马上能用</span></div>
+  <div class="dsh-row">
+    <a class="dsh-card" href="/website/ai-academy/chapter-26.html" style="text-decoration:none;color:inherit">
+      <h4><i class="cc-ic" data-ic="flame" aria-hidden="true"></i>ch26 AI 编程助手与代码智能体</h4>
+      <p>Copilot/Cursor/通义灵码原理 + 从零用 AI 写一个可运行的待办工具，真实命令直接跑。</p>
+      <span class="pill">本周最热 · 实战型</span>
+    </a>
+    <a class="dsh-card" href="/website/ai-academy/chapter-25.html" style="text-decoration:none;color:inherit">
+      <h4><i class="cc-ic" data-ic="flame" aria-hidden="true"></i>ch25 多智能体系统架构与编排</h4>
+      <p>LangGraph 手把手编排三智能体内容工厂——Agent 岗面试加分项。</p>
+      <span class="pill">进阶爆款 · 面试向</span>
+    </a>
+    <a class="dsh-card" href="/website/ai-academy/chapter-19.html" style="text-decoration:none;color:inherit">
+      <h4><i class="cc-ic" data-ic="flame" aria-hidden="true"></i>ch19 RAG 检索增强生成实战</h4>
+      <p>10 分钟用 LangChain 搭企业知识库问答，企业最常问的能力。</p>
+      <span class="pill">企业刚需 · 高薪向</span>
+    </a>
+    <a class="dsh-card" href="/learn/academy/projects.html" style="text-decoration:none;color:inherit">
+      <h4><i class="cc-ic" data-ic="flame" aria-hidden="true"></i>毕业设计：StockInsight / 会议纪要官</h4>
+      <p>24 个可复现项目里最值得动手的两个，做完就是简历作品。</p>
+      <span class="pill">作品集 · 求职向</span>
+    </a>
+  </div>
+</section>
+<!-- ====== 五大部分课程地图 ====== -->
+<section class="block" id="parts">
+  <div class="sec-head"><h2><span class="em">九大部分</span> · 课程地图</h2><span class="tag">43 章 · 每日新增</span></div>
+  <div class="parts">
+    <div class="part">
+      <div class="pno">PART 01</div>
+      <h3>智能体与语言模型基础</h3>
+      <p>智能体定义、类型与发展史，LLM 核心知识奠基。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-01.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">01 初识智能体</a><a href="/website/ai-academy/chapter-02.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">02 发展史</a><a href="/website/ai-academy/chapter-03.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">03 LLM 基础</a></div>
+    </div>
+    <div class="part">
+      <div class="pno">PART 02</div>
+      <h3>构建你的 LLM 智能体</h3>
+      <p>手把手实现 ReAct、Plan-Solve、Reflection 经典范式，从用轮子到造轮子。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-04.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">04 经典范式</a><a href="/website/ai-academy/chapter-05.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">05 低代码平台</a><a href="/website/ai-academy/chapter-06.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">06 框架实践</a><a href="/website/ai-academy/chapter-07.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">07 自研框架</a></div>
+    </div>
+    <div class="part">
+      <div class="pno">PART 03</div>
+      <h3>高级知识扩展</h3>
+      <p>记忆、上下文工程、通信协议、Agentic-RL、性能评估、多智能体编排、Agent 运行时框架、Agent 训练基础设施、Agent 执行层开源模型与 System One 决策模型新范式。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-08.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">08 记忆检索</a><a href="/website/ai-academy/chapter-09.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">09 上下文工程</a><a href="/website/ai-academy/chapter-10.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">10 通信协议</a><a href="/website/ai-academy/chapter-11.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">11 Agentic-RL</a><a href="/website/ai-academy/chapter-12.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">12 评估</a><a href="/website/ai-academy/chapter-25.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">25 多智能体编排</a><a href="/website/ai-academy/chapter-27.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">27 MCP 协议</a><a href="/website/ai-academy/chapter-28.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">28 Harness 运行时</a><a href="/website/ai-academy/chapter-34.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">34 NOOA 对象导向 Agent</a><a href="/website/ai-academy/chapter-36.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">36 Orchard 训练基础设施</a><a href="/website/ai-academy/chapter-37.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">37 Nemotron 3.5 Lightning</a><a href="/website/ai-academy/chapter-43.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">43 System One 决策模型</a></div>
+    </div>
+    <div class="part">
+      <div class="pno">PART 04</div>
+      <h3>综合案例进阶</h3>
+      <p>智能旅行助手、深度研究智能体、赛博小镇与 AI 编程实战项目。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-13.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">13 旅行助手</a><a href="/website/ai-academy/chapter-14.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">14 深度研究</a><a href="/website/ai-academy/chapter-15.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">15 赛博小镇</a><a href="/website/ai-academy/chapter-26.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">26 AI 编程实战</a></div>
+    </div>
+    <div class="part">
+      <div class="pno">PART 05</div>
+      <h3>毕业设计</h3>
+      <p>构建属于你的完整多智能体应用，社区共创项目展示。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-16.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">16 毕业设计</a><a href="/learn/academy/projects.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>24 毕业设计项目</a></div>
+    </div>
+    <div class="part">
+      <div class="pno">PART 06</div>
+      <h3>提示词与 LLM 应用</h3>
+      <p>从「会提问」到「会指挥」：提示词工程入门与进阶，掌控大模型输出质量。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-17.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">17 提示词入门</a><a href="/website/ai-academy/chapter-18.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">18 提示词进阶</a></div>
+    </div>
+    <div class="part">
+      <div class="pno">PART 07</div>
+      <h3>知识增强与模型定制</h3>
+      <p>RAG 检索增强生成 + 微调与私有化部署 + 开源旗舰接入（腾讯混元 Hy4 preview 770B/1M 上下文）+ 主权 AI 区域化后训练（MiniMax M3 → 沙特 HUMAIN M3）+ 端侧推理部署（LiteRT-LM / 星火 X2.5 百万上下文）+ 端侧 Agent 全栈开源（MiniCPM5-2B 权重·数据·RL 框架·训练配方）+ 全开放模型家族（K2 Horizon 0.9B-375B 一族六模型），让大模型拥有企业私有知识与专属能力。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-19.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">19 RAG 实战</a><a href="/website/ai-academy/chapter-20.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">20 微调与部署</a><a href="/website/ai-academy/chapter-30.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">30 开源旗舰与长上下文</a><a href="/website/ai-academy/chapter-32.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">32 端侧推理实战</a><a href="/website/ai-academy/chapter-33.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">33 端侧百万上下文</a><a href="/website/ai-academy/chapter-38.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">38 全开放家族 K2 Horizon</a><a href="/website/ai-academy/chapter-39.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">39 腾讯混元 Hy4 接入</a><a href="/website/ai-academy/chapter-40.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">40 主权 AI 后训练</a><a href="/website/ai-academy/chapter-42.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">42 端侧 Agent 全栈开源</a></div>
+    </div>
+    <div class="part">
+      <div class="pno">PART 08</div>
+      <h3>多模态与 AI 基础</h3>
+      <p>多模态理解（VLM 图文问答/OCR）+ 开源多模态权重部署（DeepSeek-V4-Flash-Vision-Exp）+ 自动驾驶视觉语言基础模型（Qwen-Drive-1.0-4B 统一 3D 感知/问答/规划）+ 多模态 AIGC（文生图/视频）+ 机器学习与深度学习基础，补齐技术纵深。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-29.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">29 多模态理解</a><a href="/website/ai-academy/chapter-21.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">21 多模态 AIGC</a><a href="/website/ai-academy/chapter-22.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">22 机器学习与深度学习</a><a href="/website/ai-academy/chapter-31.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">31 开源视频生成实战</a><a href="/website/ai-academy/chapter-35.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">35 开源多模态部署</a><a href="/website/ai-academy/chapter-41.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">41 自动驾驶 VLA</a></div>
+    </div>
+    <div class="part">
+      <div class="pno">PART 09</div>
+      <h3>职场与行业应用</h3>
+      <p>AI 职场实战（写作/PPT/数据分析/简历面试）+ AI+X 行业图谱与职业发展。</p>
+      <div class="chs"><a href="/website/ai-academy/chapter-23.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">23 AI 职场实战</a><a href="/website/ai-academy/chapter-24.html" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:3px 10px;font-weight:600;text-decoration:none">24 行业与职业</a></div>
+    </div>
+  </div>
+</section>
+<!-- ====== 共创项目库 ====== -->
+<section class="block" id="projects">
+  <div class="sec-head"><h2><span class="em">毕业设计项目库</span></h2><span class="tag">24 个可复现项目 · 含核心代码与运行步骤</span><a class="more" href="/learn/academy/projects.html">全部项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div>
+  <div class="proj-grid">
+    <a class="pcard" href="/learn/academy/projects.html"><span class="pico"><i class="cc-ic" data-ic="trending-up" aria-hidden="true"></i></span><h4>StockInsight 股票分析</h4><p>股票数据查询、K 线分析与投资洞察智能体</p><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" href="/learn/academy/projects.html"><span class="pico"><i class="cc-ic" data-ic="archive" aria-hidden="true"></i></span><h4>Database Agent</h4><p>自然语言 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> SQL 查询，对话式数据库操作</p><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" href="/learn/academy/projects.html"><span class="pico"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i></span><h4>ColumnWriter 专栏写手</h4><p>多智能体协作的专栏内容创作流水线</p><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" href="/learn/academy/projects.html"><span class="pico"><i class="cc-ic" data-ic="heart" aria-hidden="true"></i></span><h4>HealthRecord 健康助手</h4><p>健康记录管理、趋势洞察与建议生成</p><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" href="/learn/academy/projects.html"><span class="pico"><i class="cc-ic" data-ic="mail" aria-hidden="true"></i></span><h4>EmailSmartAssistant</h4><p>邮件分类、摘要与智能回复助手</p><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" href="/learn/academy/projects.html"><span class="pico"><i class="cc-ic" data-ic="satellite" aria-hidden="true"></i></span><h4>NetworkHealthReport</h4><p>网络健康监测与自动诊断报告</p><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" href="/learn/academy/projects.html"><span class="pico"><i class="cc-ic" data-ic="message-square" aria-hidden="true"></i></span><h4>MindEcho 心声回响</h4><p>基于记忆的心理陪伴与情绪记录 Agent</p><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+    <a class="pcard" href="/learn/academy/projects.html"><span class="pico"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i></span><h4>DataAnalysisAgent</h4><p>数据探索、清洗与可视化分析智能体</p><span class="go">查看项目 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span></a>
+  </div>
+</section>
+<!-- ====== DSH 插件专区 ====== -->
+<section class="block" id="dsh">
+  <div class="sec-head"><h2><span class="em">DSH 插件市场</span></h2><span class="tag">DeepSeek Harness · 插件化 Agent 平台</span></div>
+  <div class="dsh-row">
+    <div class="dsh-card">
+      <h4><i class="cc-ic" data-ic="puzzle" aria-hidden="true"></i>插件化 Skill 规范</h4>
+      <p>每个共创项目可转化为 DSH Skill（<code>name/SKILL.md</code>），含 frontmatter + 工具指令 + 编排逻辑，即插即用。</p>
+      <span class="pill">SKILL.md · frontmatter · tools</span>
+    </div>
+    <div class="dsh-card">
+      <h4><i class="cc-ic" data-ic="plug" aria-hidden="true"></i>MCP 协议层</h4>
+      <p>Hello-Agents 第十章解析 MCP / A2A / ANP 协议，正好补 DSH 的协议层设计，让插件可互操作。</p>
+      <span class="pill">MCP · A2A · ANP</span>
+    </div>
+    <div class="dsh-card">
+      <h4><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>Agent Skills 最佳实践</h4>
+      <p>Extra08「如何写出好的 Skill」+ Extra05「Agent Skills 与 MCP 对比」，为 DSH 插件开发者提供规范指引。</p>
+      <span class="pill">Skill 写作 · 最佳实践</span>
+    </div>
+  </div>
+</section>
+<!-- ====== 面试题 ====== -->
+<section class="block" id="interview">
+  <div class="sec-head"><h2><span class="em">求职面试</span></h2><span class="tag">Agent 岗位面试题 + 参考答案</span><a class="more" href="/learn/academy/interview.html">查看面试题 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div>
+  <p style="color:var(--muted);font-size:14px;max-width:720px">涵盖 Agent 概念、ReAct 范式、RAG、MCP 协议、多智能体协作等高频面试问题与参考答案，来自 Hello-Agents Extra01 章节。</p>
+</section>
+<!-- ====== 学习路线图 ====== -->
+<!-- ====== 学习路径 · 原子×维度矩阵（替代：学习路线图 / 认证体系 / 岗位地图 三块重叠） ====== -->
+<section class="block" id="paths">
+  <div class="sec-head">
+    <h2><span class="em">学习路径</span></h2>
+    <span class="tag" id="pathMeta">43 章 · 600 个知识原子 · 4 条路径</span>
+    <a class="more" href="/learn/roadmap.html">完整 14 周计划<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <div class="ptabs" role="tablist" aria-label="学习路径选择方式">
+    <button class="ptab is-on" data-p="goal" role="tab" aria-selected="true">按目标</button>
+    <button class="ptab" data-p="depth" role="tab" aria-selected="false">按深度</button>
+    <button class="ptab" data-p="topic" role="tab" aria-selected="false">按主题</button>
+    <button class="ptab" data-p="time" role="tab" aria-selected="false">按时间</button>
+  </div>
+  <div class="pout" id="pathOut" role="tabpanel" aria-live="polite">
+    <p class="pnote">正在载入学习路径…</p>
+  </div>
+</section>
+<!-- ====== 角色视角：同一套知识，按你的身份重组入口 ====== -->
+<section class="block" id="as">
+  <div class="sec-head">
+    <h2><span class="em">你是什么身份</span></h2>
+    <span class="tag" id="asAsk">选一个，我们把 43 章重排成你走得通的顺序</span>
+  </div>
+  <div class="as-wrap" id="asWrap">
+    <p class="pnote">正在载入角色配方…</p>
+  </div>
+</section>
+<!-- ====== 权威资源库（真实出处 · 国际组织/论坛/大赛/期刊/论文/课程 + 国家 AI 教育） ====== -->
+<section class="block" id="resources">
+  <div class="sec-head"><h2><span class="em">权威资源库</span></h2><span class="tag">全部带官方出处 · 逐条核验</span><a class="more" href="/learn/academy/resources.html"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>进入权威资源馆 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a></div>
+  <p style="color:var(--muted);font-size:14px;max-width:760px;margin-bottom:16px">这里汇集国际 AI 组织下发的文件、国际 AI 论坛、各级 AI 大赛、AI 交流协会期刊、主流平台 AI 爆款话题、<b>18 篇经典论文、12 门顶级课程</b>，以及国家 AI 教育公开内容——<b>每条均来自官方/权威渠道并标注出处</b>，供你追根溯源、按图索骥。三大分馆：<a href="/learn/academy/resources.html" style="color:var(--blue);font-weight:600">权威资源馆</a> · <a href="/learn/academy/national.html" style="color:#d97706;font-weight:600">国家 AI 教育馆</a> · <a href="/learn/academy/newsroom.html" style="color:#0891b2;font-weight:600">AI 大事记馆</a>。</p>
+  <div id="intl-resources" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px">
+    <div class="part" style="opacity:.55;pointer-events:none"><div class="pno">加载中</div><h3>资源加载中…</h3></div>
+  </div>
+  <div class="note" style="margin-top:14px"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i><b>用途</b>：权威文件当「参考文献」、论坛/大赛当「练兵场」、期刊当「进阶阅读」、论文当「溯源」、课程当「教材」——与 <a href="/learn/roadmap.html" style="color:var(--blue);font-weight:600">学习路线图</a> 配套使用效果更佳。</div>
+</section>
+
+
+
+
+<script>
+/* 数据内联（自动生���，勿手改；源文件 data/intl-ai-resources.js） */
+// 国际与权威 AI 资源库 · 数据由子代理采集（2026-08-28）· 全部真实可核验，带官方出处
+// 采集方式：逐条 WebSearch 检索核实；未核实到官网的条目不写 url 或标注来源页面
+window.INTL_AI_RESOURCES = {
+  "updated": "2026-08-28",
+  "orgs": [
+    {
+      "name": "UNESCO《人工智能伦理问题建议书》",
+      "org": "联合国教科文组织（UNESCO）",
+      "year": "2021",
+      "type": "组织文件",
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000380455_chi",
+      "summary": "193个成员国于2021年11月通过的首个全球性AI伦理框架，确立不损害、安全、隐私等10项核心原则，明确禁止AI用于社会评分和大规模监控，为各国AI政策提供伦理基准。"
+    },
+    {
+      "name": "OECD《人工智能原则》",
+      "org": "经济合作与发展组织（OECD）",
+      "year": "2019（2024年更新）",
+      "type": "组织文件",
+      "url": "https://oecd.ai/en/ai-principles",
+      "summary": "首个政府间AI标准，2019年5月通过、2024年更新，提出包容性增长、尊重人权与民主价值、透明可解释、稳健安全、问责等五项价值原则，是全球AI政策的重要参照。"
+    },
+    {
+      "name": "欧盟《人工智能法案》（EU AI Act）",
+      "org": "欧盟委员会",
+      "year": "2024",
+      "type": "组织文件",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+      "summary": "2024年8月1日正式生效的全球首部全面AI监管法律，按不可接受、高风险、透明度与最低风险四级分类监管，禁止社会评分等八类做法，并分阶段实施各项义务。"
+    },
+    {
+      "name": "全球人工智能伙伴关系（GPAI）",
+      "org": "政府间倡议，秘书处由OECD托管",
+      "year": "2020",
+      "type": "国际组织",
+      "url": "https://gpai.ai",
+      "summary": "2020年6月成立的政府间多利益攸关方AI合作倡议，由OECD托管秘书处，设负责任AI、数据治理、未来工作等工作组，推动以人为本的可信AI研究与落地。"
+    },
+    {
+      "name": "世界互联网大会国际组织",
+      "org": "国际组织",
+      "year": "2022",
+      "type": "国际组织",
+      "url": "https://cn.wicinternet.org",
+      "summary": "2022年7月在北京成立，由互联网领域国际盛会发展为国际组织，每年举办乌镇峰会，搭建全球互联网共商共建共享平台，聚焦数字治理与人工智能前沿议题。"
+    }
+  ],
+  "forums": [
+    {
+      "name": "WAIC 世界人工智能大会",
+      "org": "国家发展改革委、工信部、网信办、上海市人民政府等共同举办",
+      "year": "2025（第八届，上海）",
+      "type": "国际论坛",
+      "url": "https://worldaic.com.cn",
+      "summary": "自2018年起每年在上海举办的世界级AI盛会，2025年以“智能时代 同球共济”为主题，吸引30余国1200余位嘉宾与会，800余家企业展示3000余项前沿展品。"
+    },
+    {
+      "name": "NeurIPS 神经信息处理系统大会",
+      "org": "NeurIPS Foundation",
+      "year": "2025（第39届，圣迭戈）",
+      "type": "国际学术会议",
+      "url": "https://neurips.cc",
+      "summary": "创办于1987年的AI与机器学习顶级学术会议，2025年举办第39届（圣迭戈），2026年将移师悉尼举行，涵盖论文、教程、研讨会与竞赛，是AI研究风向标。"
+    },
+    {
+      "name": "IJCAI 国际人工智能联合会议",
+      "org": "International Joint Conferences on Artificial Intelligence",
+      "year": "2025（第34届，蒙特利尔+广州）",
+      "type": "国际学术会议",
+      "url": "https://www.ijcai.org",
+      "summary": "1969年创办的AI领域最权威综合学术会议之一，2025年第34届在蒙特利尔举行并设广州卫星会场，设AI为社会公益、AI与艺术、人本AI等专题轨道。"
+    },
+    {
+      "name": "ICML 国际机器学习大会",
+      "org": "ICML Foundation",
+      "year": "2025（温哥华）",
+      "type": "国际学术会议",
+      "url": "https://icml.cc",
+      "summary": "机器学习领域历史最悠久的旗舰会议，2025年7月在温哥华举行，聚焦算法理论、优化与应用落地，与NeurIPS并称ML两大顶会，每年吸引全球研究者。"
+    },
+    {
+      "name": "AAAI 人工智能大会",
+      "org": "美国人工智能促进协会（AAAI）",
+      "year": "2026（第40届，新加坡）",
+      "type": "国际学术会议",
+      "url": "https://aaai.org",
+      "summary": "美国人工智能促进协会主办的全球AI学术年会，AAAI-26（第40届）于2026年1月在新加坡举行，涵盖论文、讲习班、竞赛与展览，促进AI全领域交流。"
+    },
+    {
+      "name": "世界互联网大会乌镇峰会",
+      "org": "世界互联网大会国际组织",
+      "year": "2025（乌镇）",
+      "type": "国际论坛",
+      "url": "https://cn.wicinternet.org",
+      "summary": "世界互联网大会主办的年度峰会，2025年11月6-9日在乌镇举行，主题“共筑开放合作、安全普惠的数智未来”，设24场分论坛，130多国1600余名嘉宾参会。"
+    }
+  ],
+  "contests": [
+    {
+      "name": "全国大学生智能汽车竞赛",
+      "org": "中国自动化学会（2020年起主办），教育部高等学校自动化类专业教学指导委员会创办",
+      "year": "2025（第二十届）",
+      "type": "全国学科竞赛",
+      "url": "https://ccoworkbaiju.cn/",
+      "note": "官网域名多变，建议搜索引擎检索「全国大学生智能汽车竞赛」获取当年官网",
+      "summary": "2005年受教育部高等教育司委托创办，入选教育部A类赛事，设竞速、创意、室外等赛别，第二十届（2025）共有3287支队伍参赛，覆盖全国数百所高校。"
+    },
+    {
+      "name": "蓝桥杯全国大学生软件和信息技术大赛",
+      "org": "蓝桥杯大赛组委会，工信部人才交流中心支持",
+      "year": "2026（第十七届）",
+      "type": "全国学科竞赛",
+      "url": "https://dasai.lanqiao.cn",
+      "summary": "2010年创办的全国性大学生IT学科竞赛，设软件、电子、人工智能、数字科技创新、视觉艺术设计等赛类，采用校赛、省赛、全国总决赛三级赛制。"
+    },
+    {
+      "name": "Kaggle 数据科学竞赛平台",
+      "org": "Google（2017年收购）",
+      "year": "2010年成立",
+      "type": "国际竞赛平台",
+      "url": "https://www.kaggle.com",
+      "summary": "2010年成立、2017年被Google收购，是全球最大的数据科学与机器学习竞赛平台，汇聚数据集、代码、课程与社区，承办Titanic、NCAA篮球预测等经典赛事。"
+    },
+    {
+      "name": "阿里云天池大数据竞赛",
+      "org": "阿里巴巴",
+      "year": "2014年推出",
+      "type": "国内竞赛平台",
+      "url": "https://tianchi.aliyun.com",
+      "summary": "2014年由阿里巴巴推出的数据竞赛平台，是中国最大的AI开发者社区之一，已举办400余场全球数据类竞赛，覆盖电商、金融、医疗、工业等产业场景。"
+    },
+    {
+      "name": "百度之星程序设计大赛",
+      "org": "百度公司",
+      "year": "2025（第二十一届）",
+      "type": "全国程序设计竞赛",
+      "url": "https://star.baidu.com",
+      "summary": "百度主办的全国性程序设计大赛，2005年开赛，是国内唯一连续举办20年的企业级编程赛事，2023年入选全国普通高校大学生竞赛目录，参赛累计超30万人。"
+    }
+  ],
+  "journals": [
+    {
+      "name": "《智能系统学报》（CAAI Transactions on Intelligent Systems）",
+      "org": "中国人工智能学会、哈尔滨工程大学",
+      "year": "2006年创刊",
+      "type": "中文核心期刊",
+      "url": "https://tis.hrbeu.edu.cn",
+      "summary": "中国人工智能学会会刊，2006年创刊，收录于CSCD、中文核心期刊、Scopus等数据库，刊载机器学习、机器感知、智能系统等领域的研究成果。"
+    },
+    {
+      "name": "《中国计算机学会通讯》（CCCF）",
+      "org": "中国计算机学会（CCF）",
+      "year": "2005年创刊",
+      "type": "学会会刊",
+      "url": "https://www.ccf.org.cn",
+      "summary": "中国计算机学会旗舰刊物，2005年创刊，每月发行，设专题、专栏、动态等栏目，为计算领域提供学术交流与思想碰撞平台，定期赠阅CCF会员。"
+    },
+    {
+      "name": "《Artificial Intelligence》（AIJ）",
+      "org": "Elsevier",
+      "year": "1970年创刊",
+      "type": "国际权威期刊",
+      "url": "https://www.sciencedirect.com/journal/artificial-intelligence",
+      "summary": "Elsevier出版的AI领域历史最悠久权威期刊之一，1970年创刊，涵盖认知AI、自动推理、机器学习、多智能体等方向，2024年影响因子4.6。"
+    },
+    {
+      "name": "《Nature Machine Intelligence》",
+      "org": "Springer Nature（Nature Portfolio）",
+      "year": "2019年创刊",
+      "type": "国际顶刊",
+      "url": "https://www.nature.com/natmachintell",
+      "summary": "Nature子刊，2019年创刊，聚焦机器学习、机器人与AI的跨学科研究与社会影响，2021年影响因子25.9，注重严谨同行评审与交叉学科对话。"
+    },
+    {
+      "name": "《Transactions of the ACL》（TACL）",
+      "org": "计算语言学协会（ACL）主办，MIT Press出版",
+      "year": "ACL创办于1962年",
+      "type": "国际权威期刊",
+      "url": "https://transacl.org",
+      "summary": "ACL学会主办、MIT Press出版的计算语言学与NLP旗舰期刊，采取期刊式评审加会议宣讲模式，全年开放投稿，开放获取且不收取投稿费用。"
+    }
+  ],
+  "platforms": [
+    {
+      "name": "小红书 AI 爆款内容",
+      "org": "小红书",
+      "url": "https://www.xiaohongshu.com",
+      "type": "图文笔记/短视频平台",
+      "summary": "AI工具测评、Prompt教程、AI副业变现类笔记高热，平台月活约3.12亿（2025年），科技数码内容增长迅速，“AI写的小红书笔记”等话题引发广泛讨论。"
+    },
+    {
+      "name": "抖音 AI 爆款内容",
+      "org": "抖音",
+      "url": "https://www.douyin.com",
+      "type": "短视频平台",
+      "summary": "#AI宠物话题累计播放量超16.8亿次（截至2025年6月），AI宠物短剧、AI视频抽象文化、AI绘画为爆款类型，“万物皆可圣诞树”等AI话题常登热榜。"
+    },
+    {
+      "name": "快手 AI 爆款内容",
+      "org": "快手",
+      "url": "https://www.kuaishou.com",
+      "type": "短视频平台",
+      "summary": "依托可灵AI大模型，2025年7月AI内容播放量较1月增长321%，AI短剧《山海奇镜之劈波斩浪》全网曝光超4.3亿，《新世界加载中》全球播放近2亿。"
+    },
+    {
+      "name": "知乎 AI 讨论",
+      "org": "知乎",
+      "url": "https://www.zhihu.com",
+      "type": "问答社区",
+      "summary": "已沉淀858万个AI相关问题、2088万个AI专业回答（截至2025年），DeepSeek等团队在知乎首发技术文章，“AI中场时刻”年度策划吸引数千从业者热议。"
+    },
+    {
+      "name": "B站（bilibili）AI 爆款内容",
+      "org": "哔哩哔哩",
+      "url": "https://www.bilibili.com",
+      "type": "中长视频平台",
+      "summary": "AIGC科普与AI视频创作热，如“大圆镜科普”五次登顶知识区热门第一、全网播放超1.8亿；AI翻拍影视等Reaction视频单条播放超220万。"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-07-17",
+      "name": "2026世界人工智能大会暨人工智能全球治理高级别会议在上海举行",
+      "source": "中国政府网",
+      "url": "https://www.gov.cn/yaowen/liebiao/202607/content_7076004.htm",
+      "summary": "习近平出席开幕式并发表主旨讲话，29国签署《关于成立世界人工智能合作组织的协定》，总部设于上海，为AI发展史上重要里程碑。"
+    },
+    {
+      "date": "2026-07-17",
+      "name": "《人工智能合作发展行动计划》等成果文件发布",
+      "source": "央视网",
+      "url": "https://news.cctv.com/2026/07/18/ARTIY7Fn0GQKhdmqdGDjB4mf260718.shtml",
+      "summary": "国家发展改革委等发布《人工智能合作发展行动计划》《国际人工智能伦理治理行动计划》《智能体互信互联互操作全球合作倡议》等成果文件。"
+    },
+    {
+      "date": "2026-07-06",
+      "name": "联合国人工智能治理问题全球对话在日内瓦举行",
+      "source": "联合国教科文组织官网",
+      "url": "https://www.unesco.org/zh",
+      "summary": "联合国教科文组织于2026年7月6-7日在日内瓦举行“联合国人工智能治理问题全球对话”，汇聚各会员国与利益攸关方共议AI全球治理与普惠发展。"
+    },
+    {
+      "date": "2026-12-06",
+      "name": "NeurIPS 2026将在澳大利亚悉尼举行",
+      "source": "NeurIPS 官网",
+      "url": "https://neurips.cc",
+      "summary": "第40届神经信息处理系统大会（NeurIPS 2026）将于12月6-12日在悉尼举行，是AI与机器学习领域的年度旗舰学术会议。"
+    },
+    {
+      "date": "2026-07-17",
+      "name": "Kimi K3与曙光8000在2026世界人工智能大会亮相",
+      "source": "人民日报",
+      "url": "https://peoplesdaily.pdnews.cn/china/er/30052710008",
+      "summary": "大会期间，月之暗面发布Kimi K3开源大模型（2.8万亿参数），中科曙光“曙光8000”10万卡AI超算集群首次公开亮相，超300款AI产品全球首发。"
+    }
+  ]
+};
+</script>
+<script>
+/* 数据内联（自动生���，勿手改；源文件 data/national-ai-education.js） */
+// 国家 AI 教育公开内容精华 · 供「自学路线」分站与书稿引用
+// 全部为官方公开材料（政策文件/课程标准/公开课/官方赛事），条目名称、文号、链接均经公开检索核实
+// 更新日期：2026-08-28
+window.NATIONAL_AI_EDU = {
+  "updated": "2026-08-28",
+  "policies": [
+    {
+      "name": "《新一代人工智能发展规划》",
+      "issuer": "国务院",
+      "year": "2017",
+      "docNo": "国发〔2017〕35号",
+      "url": "http://www.gov.cn/zhengce/content/2017-07/20/content_5211996.htm",
+      "essence": "我国首个AI国家级规划，确立三步走：2020年技术与应用与世界先进水平同步，2025年基础理论重大突破，2030年总体世界领先、成为主要AI创新中心。"
+    },
+    {
+      "name": "《义务教育信息科技课程标准（2022年版）》",
+      "issuer": "教育部",
+      "year": "2022",
+      "docNo": "2022年4月发布",
+      "url": "https://www.moe.gov.cn/srcsite/A26/s8001/202204/W020220420582361024968.pdf",
+      "essence": "将人工智能列为信息科技课程六条逻辑主线之一，第四学段设「人工智能与智慧社会」模块，按体验、认识、理解到创新设计螺旋推进，重在提升学生数字素养与技能。"
+    },
+    {
+      "name": "《高等学校人工智能创新行动计划》",
+      "issuer": "教育部",
+      "year": "2018",
+      "docNo": "教技〔2018〕3号",
+      "url": "https://www.moe.gov.cn/jyb_xwfb/xw_fbh/moe_2069/xwfbh_2018n/xwfb_20180608/sfcl/201806/t20180607_338726.html",
+      "essence": "部署高校AI人才培养与学科建设，探索「人工智能+X」复合培养模式，中小学引入AI普及教育，AI纳入大学计算机基础教学，分三步建成AI创新人才高地。"
+    },
+    {
+      "name": "《关于“双一流”建设高校促进学科融合 加快人工智能领域研究生培养的若干意见》",
+      "issuer": "教育部 国家发展改革委 财政部",
+      "year": "2020",
+      "docNo": "三部委联合印发（2020年3月）",
+      "url": "https://www.moe.gov.cn/srcsite/A22/moe_826/202003/t20200303_426801.html",
+      "essence": "依托「双一流」建设，构建基础理论人才与「人工智能+X」复合型人才并重的培养体系，设立国家人工智能产教融合创新平台，深化产教融合，加快AI领域高层次研究生培养。"
+    }
+  ],
+  "courses": [
+    {
+      "name": "《人工智能基础》",
+      "university": "北京理工大学",
+      "platform": "中国大学MOOC",
+      "url": "https://www.icourse163.org/course/BIT-1473162171",
+      "essence": "面向非计算机专业学生的通识必修课，讲授人工智能概念与发展、常用大模型工具及基本原理，结合各专业领域创新应用与实践，培养学生运用AI解决问题的能力与AI思维。"
+    },
+    {
+      "name": "《人工智能基础》",
+      "university": "武汉大学（朱福喜主讲）",
+      "platform": "国家高等教育智慧教育平台",
+      "url": "https://higher.smartedu.cn/course/671c1d0e16d8a05eedd0784d",
+      "essence": "从搜索与问题求解、知识表示和推理、学习与发现、工具与应用四方面展开，通过大量智力游戏问题求解与推理系统实例，帮助学习者理解并掌握运用人工智能技术求解问题的方法。"
+    },
+    {
+      "name": "《人工智能：模型与算法》",
+      "university": "浙江大学（吴飞）",
+      "platform": "国家高等教育智慧教育平台（国家一流课程）",
+      "url": "https://higher.smartedu.cn/ai/general-courses-study-guide",
+      "essence": "国家一流课程，入选教育部国家高等教育智慧教育平台「人工智能通识课进阶学习导引」，累计选课30万余人次，系统讲解人工智能的核心模型与算法基础。"
+    }
+  ],
+  "platforms": [
+    {
+      "name": "自动驾驶国家新一代人工智能开放创新平台",
+      "company": "百度",
+      "year": "2017年11月（首批）",
+      "url": "https://news.cctv.com/2019/10/15/ARTIIheUmBld3KrmhJWUCK3R191015.shtml",
+      "essence": "首批5个国家级平台之一，聚焦自动驾驶领域，面向行业开放核心能力，推动自动驾驶技术研发与规模化落地，是「国家新一代人工智能开放创新平台」在交通领域的代表。"
+    },
+    {
+      "name": "智能语音国家新一代人工智能开放创新平台",
+      "company": "科大讯飞",
+      "year": "2017年11月（首批）",
+      "url": "https://news.cctv.com/2019/10/15/ARTIIheUmBld3KrmhJWUCK3R191015.shtml",
+      "essence": "首批5个国家级平台之一，聚焦智能语音与人机交互，开放语音识别等能力，是我国AI产业转型升级的重要基础设施。"
+    },
+    {
+      "name": "基础软硬件国家新一代人工智能开放创新平台",
+      "company": "华为",
+      "year": "2019年8月（第二批）",
+      "url": "https://news.cctv.com/2019/10/15/ARTIIheUmBld3KrmhJWUCK3R191015.shtml",
+      "essence": "第二批10个国家级平台之一，依托自研芯片、板卡、算子库与基础框架软件，构建全栈全场景的AI基础软硬件开放生态，支撑自主可控的AI基础设施。"
+    }
+  ],
+  "ethics": [
+    {
+      "name": "《新一代人工智能治理原则——发展负责任的人工智能》",
+      "issuer": "国家新一代人工智能治理专业委员会",
+      "year": "2019",
+      "url": "https://www.cac.gov.cn/2019-06/19/c_1124641487.htm",
+      "essence": "我国首次发布AI治理原则，提出和谐友好、公平公正、包容共享、尊重隐私、安全可控、共担责任、开放协作、敏捷治理八项原则，为AI发展与教育划定伦理框架。"
+    }
+  ],
+  "contests": [
+    {
+      "name": "全国青少年人工智能创新挑战赛",
+      "issuer": "中国少年儿童发展服务中心",
+      "year": "2016年创办（已办8届）",
+      "url": "http://aiic.china61.org.cn",
+      "essence": "面向全国中小学生与中职学生的国家级AI赛事，设机器人、场景设计、智能芯片、虚拟仿真等方向，累计40余万青少年参与，入选教育部2025-2028学年竞赛白名单。"
+    },
+    {
+      "name": "中国青少年机器人竞赛",
+      "issuer": "中国科协",
+      "year": "2001年创办",
+      "url": "https://xiaoxiaotong.org/Acvitity/AcvitityIntro.aspx?colid=101303&icolID=1013000004&igcolID=1013000900&ncolID=10130002",
+      "essence": "中国科协主办的全国性青少年科普竞赛，设综合技能、创意、FLL、VEX等赛项，覆盖全国各省区市，是教育部公布的面向中小学生的全国性竞赛活动。"
+    }
+  ],
+  "digest": "国家AI教育以《新一代人工智能发展规划》为总纲，沿政策、课程、平台、伦理、赛事五线展开：教育部以课标普及中小学AI，以行动计划与双一流意见建「人工智能+X」复合人才培养；科技部依托15家龙头建国家开放创新平台；治理原则确立负责任基调；白名单赛事激发青少年科学兴趣，形成基础普及到高端人才的完整链条。"
+};
+</script>
+<script>
+/* 数据内联（自动生���，勿手改；源文件 data/ai-papers.js） */
+/* 自学路线 · AI 经典论文必读清单（数据文件）
+ * 所有条目均经 WebSearch 逐条核实，url 为 arxiv.org/abs/xxx 或官方出版社链接。
+ * 更新日期：2026-08-28
+ */
+window.AI_PAPERS = {
+  updated: "2026-08-28",
+  papers: [
+    {
+      title: "Attention Is All You Need",
+      authors: "Vaswani 等",
+      year: "2017",
+      venue: "NeurIPS",
+      url: "https://arxiv.org/abs/1706.03762",
+      why: "提出自注意力机制的 Transformer 架构，完全摒弃循环与卷积，奠定现代大语言模型的基础，是当今几乎所有大模型的始祖。"
+    },
+    {
+      title: "Deep Residual Learning for Image Recognition",
+      authors: "He（何恺明）等",
+      year: "2015",
+      venue: "CVPR",
+      url: "https://arxiv.org/abs/1512.03385",
+      why: "提出残差连接与跳层捷径，解决深层网络退化与梯度消失问题，使训练百层以上网络成为可能，是计算机视觉最常用的骨干架构。"
+    },
+    {
+      title: "ImageNet Classification with Deep Convolutional Neural Networks",
+      authors: "Krizhevsky, Sutskever, Hinton",
+      year: "2012",
+      venue: "NeurIPS",
+      url: "https://proceedings.neurips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks",
+      why: "首个在大规模图像识别上碾压传统方法的深度卷积网络，引入 ReLU、Dropout 与 GPU 训练，点燃 2012 年深度学习革命。"
+    },
+    {
+      title: "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      authors: "Devlin 等",
+      year: "2018",
+      venue: "NAACL",
+      url: "https://arxiv.org/abs/1810.04805",
+      why: "提出掩码语言模型的深度双向预训练，确立『预训练+微调』范式，刷新 11 项 NLP 任务纪录，深刻影响后续所有语言模型。"
+    },
+    {
+      title: "Improving Language Understanding by Generative Pre-Training",
+      authors: "Radford 等",
+      year: "2018",
+      venue: "OpenAI（GPT-1）",
+      url: "https://openai.com/research/language-unsupervised",
+      why: "首次证明用 Transformer 在无标注文本上生成式预训练、再微调即可通吃多任务，开创生成式预训练路线，是 GPT 系列的起点。"
+    },
+    {
+      title: "Language Models are Few-Shot Learners",
+      authors: "Brown 等",
+      year: "2020",
+      venue: "NeurIPS",
+      url: "https://arxiv.org/abs/2005.14165",
+      why: "1750 亿参数规模实验揭示涌现式少样本学习，仅靠提示即可完成多种任务，开启大模型与 in-context learning 时代。"
+    },
+    {
+      title: "LoRA: Low-Rank Adaptation of Large Language Models",
+      authors: "Hu 等",
+      year: "2021",
+      venue: "ICLR",
+      url: "https://arxiv.org/abs/2106.09685",
+      why: "冻结预训练权重、注入低秩矩阵实现参数高效微调，训练参数量降低约万倍，成为大模型微调与部署的行业标配。"
+    },
+    {
+      title: "Training language models to follow instructions with human feedback",
+      authors: "Ouyang 等",
+      year: "2022",
+      venue: "NeurIPS（InstructGPT/RLHF）",
+      url: "https://arxiv.org/abs/2203.02155",
+      why: "用人类反馈强化学习（RLHF）让模型对齐人类意图，训练出更听话、更真实的对话模型，是 ChatGPT 的技术源头。"
+    },
+    {
+      title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      authors: "Lewis 等",
+      year: "2020",
+      venue: "NeurIPS",
+      url: "https://arxiv.org/abs/2005.11401",
+      why: "将检索与生成结合，让模型在生成时引用外部知识库，缓解幻觉并支持知识更新，是知识密集型应用的经典范式。"
+    },
+    {
+      title: "ReAct: Synergizing Reasoning and Acting in Language Models",
+      authors: "Yao 等",
+      year: "2022",
+      venue: "ICLR",
+      url: "https://arxiv.org/abs/2210.03629",
+      why: "让大模型在推理与调用外部工具之间交替，形成『思考-行动-观察』循环，是当前 Agent 智能体架构的理论基石。"
+    },
+    {
+      title: "High-Resolution Image Synthesis with Latent Diffusion Models",
+      authors: "Rombach 等",
+      year: "2022",
+      venue: "CVPR",
+      url: "https://arxiv.org/abs/2112.10752",
+      why: "把扩散模型搬到潜空间并用交叉注意力做文本条件，大幅降低算力需求，成就开源文生图模型 Stable Diffusion。"
+    },
+    {
+      title: "Denoising Diffusion Probabilistic Models",
+      authors: "Ho 等",
+      year: "2020",
+      venue: "NeurIPS",
+      url: "https://arxiv.org/abs/2006.11239",
+      why: "系统化去噪扩散概率模型，用加噪-去噪的马尔可夫链生成高质量图像，是所有主流图像、视频扩散模型的基石。"
+    },
+    {
+      title: "You Only Look Once: Unified, Real-Time Object Detection",
+      authors: "Redmon 等",
+      year: "2016",
+      venue: "CVPR",
+      url: "https://arxiv.org/abs/1506.02640",
+      why: "把目标检测重构为单网络回归问题，整图一次前向即输出框与类别，实现 45fps 实时检测，开启 YOLO 系列。"
+    },
+    {
+      title: "Mastering the game of Go with deep neural networks and tree search",
+      authors: "Silver 等",
+      year: "2016",
+      venue: "Nature",
+      url: "https://www.nature.com/articles/nature16961",
+      why: "将深度神经网络与蒙特卡洛树搜索结合，首次击败人类职业棋手，向世界展示深度学习与强化学习的威力。"
+    },
+    {
+      title: "Highly accurate protein structure prediction with AlphaFold",
+      authors: "Jumper 等",
+      year: "2021",
+      venue: "Nature",
+      url: "https://www.nature.com/articles/s41586-021-03819-2",
+      why: "以深度学习端到端预测蛋白质三维结构，精度接近实验水平，攻克困扰生物学 50 年的蛋白质折叠问题。"
+    },
+    {
+      title: "Efficient Estimation of Word Representations in Vector Space",
+      authors: "Mikolov 等",
+      year: "2013",
+      venue: "ICLR Workshop",
+      url: "https://arxiv.org/abs/1301.3781",
+      why: "提出 CBOW 与 Skip-gram 高效词向量训练法，让词成为可运算的向量（王-男+女≈女王），奠定词嵌入研究。"
+    },
+    {
+      title: "Learning Transferable Visual Models From Natural Language Supervision",
+      authors: "Radford 等",
+      year: "2021",
+      venue: "ICML",
+      url: "https://arxiv.org/abs/2103.00020",
+      why: "用 4 亿图文对做对比预训练，让视觉模型可用自然语言描述做零样本分类，成为多模态与文生图的基础。"
+    },
+    {
+      title: "Generative Adversarial Networks",
+      authors: "Goodfellow 等",
+      year: "2014",
+      venue: "NeurIPS",
+      url: "https://arxiv.org/abs/1406.2661",
+      why: "提出生成器与判别器对抗博弈的训练框架，无需显式密度即可生成逼真数据，开启生成式模型研究浪潮。"
+    }
+  ]
+};
+</script>
+<script>
+/* 数据内联（自动生���，勿手改；源文件 data/ai-courses.js） */
+/* 自学路线 · 顶级 AI 学习课程库（数据文件）
+ * 所有条目均经 WebSearch 逐条核实，url 为课程官网真实链接。
+ * 更新日期：2026-08-28
+ */
+window.AI_COURSES = {
+  updated: "2026-08-28",
+  courses: [
+    {
+      name: "《动手学深度学习》",
+      provider: "李沐、阿斯顿·张等（亚马逊/伯克利）",
+      lang: "中文",
+      level: "入门-进阶",
+      url: "https://zh.d2l.ai/",
+      why: "李沐等的免费开源教科书，公式、图示与可运行代码一体，覆盖机器学习、深度学习到 Transformer，中英双语持续更新。"
+    },
+    {
+      name: "《机器学习专项课程》Machine Learning Specialization",
+      provider: "吴恩达（DeepLearning.AI）",
+      lang: "英文（含中文字幕）",
+      level: "入门",
+      url: "https://www.coursera.org/specializations/machine-learning-introduction",
+      why: "吴恩达经典课程 2022 重制版，零基础入门机器学习，涵盖监督、无监督学习与最佳实践，配 Python 代码实验。"
+    },
+    {
+      name: "《深度学习专项课程》Deep Learning Specialization",
+      provider: "吴恩达（DeepLearning.AI）",
+      lang: "英文（含中文字幕）",
+      level: "入门-进阶",
+      url: "https://www.coursera.org/specializations/deep-learning",
+      why: "吴恩达五门课系列，从神经网络、CNN、RNN 讲到 Transformer，系统搭建深度学习知识体系，配实战代码。"
+    },
+    {
+      name: "《AI For Everyone》",
+      provider: "吴恩达（DeepLearning.AI）",
+      lang: "英文（含中文字幕）",
+      level: "零基础",
+      url: "https://www.coursera.org/learn/ai-for-everyone",
+      why: "面向非技术人群的 AI 扫盲课，讲清 AI 能做什么、项目流程与公司转型策略，管理者与新手都适合。"
+    },
+    {
+      name: "《CS229：机器学习》",
+      provider: "斯坦福大学（Andrew Ng 等）",
+      lang: "英文",
+      level: "进阶",
+      url: "https://cs229.stanford.edu/",
+      why: "斯坦福机器学习经典课程，系统讲授监督学习、学习理论与强化学习，讲义公开可自由学习，数理要求较高。"
+    },
+    {
+      name: "《CS224n：自然语言处理与深度学习》",
+      provider: "斯坦福大学",
+      lang: "英文",
+      level: "进阶",
+      url: "https://web.stanford.edu/class/cs224n/",
+      why: "斯坦福深度自然语言处理课，从词向量讲到 Transformer 与大模型，公开课件与作业，覆盖当前 LLM 前沿。"
+    },
+    {
+      name: "《CS231n：计算机视觉深度学习》",
+      provider: "斯坦福大学",
+      lang: "英文",
+      level: "进阶",
+      url: "https://cs231n.stanford.edu/",
+      why: "斯坦福计算机视觉深度课，从零实现反向传播到 CNN 架构，经典笔记广受好评，是进入视觉方向的必由之路。"
+    },
+    {
+      name: "Hugging Face 官方课程",
+      provider: "Hugging Face",
+      lang: "多语（含中文）",
+      level: "入门-进阶",
+      url: "https://huggingface.co/learn",
+      why: "Hugging Face 官方免费课程，覆盖 NLP、音频、扩散模型等，含中文版，用 Transformers 库实战。"
+    },
+    {
+      name: "《Practical Deep Learning for Coders》",
+      provider: "Fast.ai（Jeremy Howard）",
+      lang: "英文",
+      level: "入门",
+      url: "https://course.fast.ai/",
+      why: "面向程序员的深度学习课，自上而下、实战导向，免费视频配套教材，学完即可独立训练并部署真实模型。"
+    },
+    {
+      name: "《机器学习》（李宏毅）",
+      provider: "台湾大学 李宏毅",
+      lang: "中文",
+      level: "入门-进阶",
+      url: "https://speech.ee.ntu.edu.tw/~hylee/ml/2023-spring.php",
+      why: "台大李宏毅的中文公开课，讲解生动、覆盖机器学习、深度学习到大模型前沿，附实战作业，华语学习者首选。"
+    },
+    {
+      name: "《CS50's Introduction to AI with Python》",
+      provider: "哈佛大学（David Malan）",
+      lang: "英文",
+      level: "入门",
+      url: "https://cs50.harvard.edu/ai/",
+      why: "哈佛 CS50 系列人工智能课，用 Python 实现搜索、贝叶斯、神经网络与 NLP，免费开源，项目导向。"
+    },
+    {
+      name: "Kaggle Learn 免费微课程",
+      provider: "Kaggle",
+      lang: "英文",
+      level: "零基础-入门",
+      url: "https://www.kaggle.com/learn",
+      why: "Kaggle 官方免费微课程，几小时掌握 Python、Pandas、机器学习等技能，浏览器内直接练习并可获取证书。"
+    }
+  ]
+};
+</script>
+<script>
+// ---------- 权威资源库渲染 ----------
+(function(){
+  var box = document.getElementById('intl-resources')
+  if (!box) return
+  function card(tag, name, org, url, summary){
+    var a = url ? '<a href="' + url + '" target="_blank" rel="noopener" style="font-size:11px;color:#2563eb;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.18);border-radius:999px;padding:2px 9px;font-weight:600;text-decoration:none;white-space:nowrap"> 官方出处</a>' : ''
+    return '<div class="part" style="display:flex;flex-direction:column;gap:4px">' +
+      '<div class="pno" style="font-size:11px">' + tag + '</div>' +
+      '<h3 style="font-size:15px;margin:2px 0 0">' + name + '</h3>' +
+      '<p style="font-size:12px;color:var(--muted);margin:4px 0">' + (org || '') + '</p>' +
+      '<p style="font-size:12px;color:var(--text);opacity:.85;line-height:1.6;flex:1">' + (summary || '') + '</p>' +
+      '<div style="margin-top:6px">' + a + '</div>' +
+      '</div>'
+  }
+  function render(list, tagPrefix){
+    var html = ''
+    ;(list || []).forEach(function(it){
+      html += card(tagPrefix, it.name, it.org || it.issuer || '', it.url, it.summary || it.essence || '')
+    })
+    return html
+  }
+  try {
+    var R = window.INTL_AI_RESOURCES || {}
+    var N = window.NATIONAL_AI_EDU || {}
+    var P = window.AI_PAPERS || {}
+    var C = window.AI_COURSES || {}
+    var all = []
+    ;(R.orgs || []).forEach(function(i){ all.push(card(' 组织文件', i.name, i.org, i.url, i.summary)) })
+    ;(R.forums || []).forEach(function(i){ all.push(card(' 国际论坛', i.name, i.org, i.url, i.summary)) })
+    ;(R.contests || []).forEach(function(i){ all.push(card(' 各级大赛', i.name, i.org, i.url, i.summary)) })
+    ;(R.journals || []).forEach(function(i){ all.push(card(' AI 期刊', i.name, i.org, i.url, i.summary)) })
+    ;(R.platforms || []).forEach(function(i){ all.push(card(' 主流平台', i.name, i.org, i.url, i.summary)) })
+    ;(P.papers || []).slice(0,6).forEach(function(i){ all.push(card(' 经典论文', i.title, i.authors + ' · ' + (i.year||''), i.url, i.why)) })
+    ;(C.courses || []).slice(0,4).forEach(function(i){ all.push(card(' 顶级课程', i.name, i.provider, i.url, i.why)) })
+    ;(N.policies || []).forEach(function(i){ all.push(card(' 国家文件', i.name, i.issuer, i.url, i.essence)) })
+    ;(N.courses || []).forEach(function(i){ all.push(card(' 国家课程', i.name, i.org || i.issuer, i.url, i.essence)) })
+    ;(N.platforms || []).forEach(function(i){ all.push(card(' 国家平台', i.name, i.org || i.issuer, i.url, i.essence)) })
+    ;(N.contests || []).forEach(function(i){ all.push(card(' 国家赛事', i.name, i.org || i.issuer, i.url, i.essence)) })
+    if (N.ethics && N.ethics.length) all.push(card(' AI 治理', N.ethics[0].name, N.ethics[0].issuer, N.ethics[0].url, N.ethics[0].essence))
+    box.innerHTML = all.length ? all.join('') : '<div class="part"><h3>资源加载中…</h3><p>请刷新重试</p></div>'
+  } catch (e) {
+    box.innerHTML = '<div class="part"><h3>资源加载失败</h3><p>' + e.message + '</p></div>'
+  }
+})();
+</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script>
+// C2：学习进度卡片渲染（module.js 加载后执行）
+function renderAcademyProgress() {
+  try {
+    var API = window.CCOWorkProgress
+    if (!API) { setTimeout(renderAcademyProgress, 200); return }
+    var p = API.get()
+    var count = API.getCompletedCount()
+    var total = API.TOTAL_CHAPTERS
+    var pct = Math.round(count / total * 100)
+    var sec = document.getElementById('myProgress')
+    if (!sec) return
+    // 有进度数据才显示（新用户不显示空状态，避免干扰）
+    if (count > 0 || p.streak > 0) {
+      sec.style.display = 'block'
+      var pctEl = document.getElementById('progPct')
+      var barEl = document.getElementById('progBar')
+      var cntEl = document.getElementById('progCount')
+      var skEl = document.getElementById('progStreak')
+      if (pctEl) pctEl.textContent = pct + '%'
+      if (barEl) setTimeout(function(){ barEl.style.width = pct + '%' }, 100)
+      if (cntEl) cntEl.textContent = count + ' / ' + total + ' 章'
+      if (skEl) skEl.textContent = ' 连续 ' + p.streak + ' 天'
+      // C4：AI 助教互动统计（有互动才显示）
+      try {
+        var tut = API.getTutor()
+        var tutEl = document.getElementById('progTutor')
+        if (tutEl && tut && tut.asked > 0) {
+          tutEl.style.display = 'inline'
+          tutEl.textContent = ' 助教互动 ' + tut.asked + ' 次'
+        }
+      } catch (e) {}
+      // 找出下一个未完成的章节
+      var nextCh = null
+      for (var i = 1; i <= total; i++) {
+        var chId = 'chapter-' + (i < 10 ? '0' + i : i)
+        if (!API.isChapterCompleted(chId)) { nextCh = i; break }
+      }
+      if (nextCh) {
+        var nextBox = document.getElementById('nextChapter')
+        var nextLink = document.getElementById('nextChapterLink')
+        if (nextBox && nextLink) {
+          nextBox.style.display = 'block'
+          var chNo = nextCh < 10 ? '0' + nextCh : nextCh
+          nextLink.href='/learn/tutorials/chapter-' + chNo + '.html'
+          nextLink.innerHTML = ' 第' + nextCh + '章 · 继续学习 '
+        }
+      }
+    }
+  } catch (e) {}
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(renderAcademyProgress, 300) })
+} else {
+  setTimeout(renderAcademyProgress, 300)
+}
+/* ---------- 学习路径：4 条路径，全部由 data/ai-academy-atoms.json 驱动 ---------- */
+(function () {
+  var box = document.getElementById('pathOut');
+  if (!box) return;
+  var tabs = [].slice.call(document.querySelectorAll('.ptab'));
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
+  function chip(c) {
+    var mn = c.minutes ? c.minutes + ' 分钟' : '—';
+    var tag = c.minutesEstimated ? '≈' : '';
+    return '<a class="pchip" href="/website/ai-academy/' + esc(c.file) + '" title="' + esc(c.title) + '（' +
+      c.chars + ' 字）">' + esc(c.title.length > 22 ? c.title.slice(0, 22) + '…' : c.title) +
+      '<i>' + tag + esc(mn) + '</i></a>';
+  }
+  function panel(title, why, inner) {
+    return '<details class="ppath" open><summary><span class="pnum">' + title.n + '</span><span>' + esc(title.t) + '</span>' +
+      '<span class="pwhy">' + esc(why) + '</span></summary><div class="pbody">' + inner + '</div></details>';
+  }
+  var GOALS = [
+    { t: 'AI 应用开发工程师', w: '最主流的岗位，目标是把模型接进真实业务', sub: ['智能体架构', '工具与协议', '知识增强'], must: ['评估与观测'] },
+    { t: 'RAG / 知识库工程师', w: '专做检索增强，检索质量决定产品上限', sub: ['知识增强'], must: ['评估与观测'] },
+    { t: '多模态工程师', w: '图像、视频、语音与 VLA 落地', sub: ['多模态'], must: ['部署与推理'] },
+    { t: '模型部署 / 推理工程师', w: '把模型跑起来、跑得快、跑得省', sub: ['部署与推理', '开源实战'], must: ['基础认知'] },
+    { t: 'AI 产品 / 运营', w: '不需要写模型，但必须懂边界与成本', sub: ['基础认知', '行业与职场'], must: ['提示词工程'] }
+  ];
+  var DEPTHS = [
+    { k: '入门基础', w: '零基础起点，先建立概念与直觉' },
+    { k: '工程进阶', w: '开始动手写代码，接真实 API' },
+    { k: '专项进阶', w: '选定一个方向做深：RAG / 多智能体 / 协议' },
+    { k: '专家实战', w: '开源底座、端侧、VLA 等前沿落地' }
+  ];
+  var TIMEs = [
+    { t: '每天 30 分钟', m: 30, w: '碎片时间' },
+    { t: '每天 1 小时', m: 60, w: '下班后' },
+    { t: '每天 2 小时', m: 120, w: '周末集中' }
+  ];
+  function render(D, key) {
+    var chs = D.chapters || [], atoms = D.atoms || [];
+    var totalMin = D.meta && D.meta.totalMinutes || 0;
+    var byCh = {}, subOf = {};
+    atoms.forEach(function (a) { byCh[a.ch] = (byCh[a.ch] || 0) + 1; });
+    /* 学科归属一律用「章级主学科」，不用原子累加 ——
+       原子累加会让「智能体架构」一类吃掉六成原子，五个岗位路径全都匹配到 38 章，毫无区分度。 */
+    chs.forEach(function (c) { (subOf[c.subject] = subOf[c.subject] || {})[c.n] = 1; });
+    var pickBySubject = function (list) {
+      return chs.filter(function (c) { return list.indexOf(c.subject) >= 0; });
+    };
+    var out = '', stats = '';
+    if (key === 'goal') {
+      GOALS.forEach(function (g, i) {
+        var list = pickBySubject(g.sub.concat(g.must));
+        var mins = list.reduce(function (a, c) { return a + (c.minutes || 0); }, 0);
+        out += panel({ n: i + 1, t: g.t }, g.w,
+          '<p class="plabel">主线 ' + g.sub.join(' · ') + '　必修 ' + g.must.join(' · ') + '</p>' +
+          '<div class="pchips">' + list.map(chip).join('') + '</div>' +
+          '<p class="plabel">合计 ' + list.length + ' 章 · 约 ' + (mins / 60).toFixed(1) + ' 小时 · ' +
+          list.reduce(function (a, c) { return a + (byCh[c.n] || 0); }, 0) + ' 个知识原子</p>');
+      });
+      stats = '5 个岗位方向';
+    } else if (key === 'depth') {
+      DEPTHS.forEach(function (d, i) {
+        var list = chs.filter(function (c) {
+          var lv = c.n <= 16 ? '入门基础' : c.n <= 22 ? '工程进阶' : c.n <= 30 ? '专项进阶' : '专家实战';
+          return lv === d.k;
+        });
+        var mins = list.reduce(function (a, c) { return a + (c.minutes || 0); }, 0);
+        var ac = list.reduce(function (a, c) { return a + (byCh[c.n] || 0); }, 0);
+        out += panel({ n: i + 1, t: d.k }, d.w,
+          '<div class="pchips">' + list.map(chip).join('') + '</div>' +
+          '<p class="plabel">' + list.length + ' 章 · ' + ac + ' 个原子 · 约 ' + (mins / 60).toFixed(1) + ' 小时</p>');
+      });
+      stats = '4 个深度档位';
+    } else if (key === 'topic') {
+      var subs = (D.dimensions && D.dimensions.subject) || [];
+      var max = Math.max.apply(null, subs.map(function (s) { return Object.keys(subOf[s] || {}).length; }).concat([1]));
+      out = '<div class="ptopic">' + subs.map(function (s) {
+        var chList = Object.keys(subOf[s] || {}).map(Number);
+        var mins = chs.filter(function (c) { return chList.indexOf(c.n) >= 0; })
+          .reduce(function (a, c) { return a + (c.minutes || 0); }, 0);
+        return '<div class="ptopiccard"><b>' + esc(s) + '</b>' +
+          '<div class="pmeta">' + chList.length + ' 章 · ' + mins + ' 分钟</div>' +
+          '<div class="pbar"><i style="width:' + Math.round(chList.length / max * 100) + '%"></i></div></div>';
+      }).join('') + '</div>' +
+      '<p class="pnote" style="padding-top:14px">共 ' + subs.length + ' 个学科方向，每个方向都已拆成可独立跳转的知识原子 —— 点进任一章，标题都可直达。</p>';
+      stats = subs.length + ' 个学科';
+    } else {
+      out = '<div class="ptime">' + TIMEs.map(function (t) {
+        var days = Math.ceil(totalMin / t.m);
+        return '<div class="ptimecard"><b>' + days + ' 天</b><span>' + esc(t.t) + '读完 ' +
+          (totalMin / 60).toFixed(0) + ' 小时全部内容</span><span style="opacity:.7">' + esc(t.w) + '</span></div>';
+      }).join('') + '</div>' +
+        '<p class="pnote" style="padding-top:14px">按 43 章标注的真实阅读时长合计 ' + totalMin +
+        ' 分钟（约 ' + (totalMin / 60).toFixed(1) + ' 小时）计算。<br>其中 ' +
+        ((D.meta.estimatedChapters) || 0) + ' 章原缺时长标注，按正文体量折算（≈ 号），已取较大值。</p>';
+      stats = '真实时长 ' + (totalMin / 60).toFixed(1) + ' 小时';
+    }
+    box.innerHTML = '<div class="pstat"><span>' + esc(stats) + '</span><span>' +
+      (D.meta.atoms || 0) + ' 个知识原子</span><span>可直达任意知识点</span></div>' + out;
+  }
+  var D = null;
+  function show(k) {
+    if (!D) return;
+    render(D, k);
+    var m = document.getElementById('pathMeta');
+    if (m) m.textContent = D.meta.chapters + ' 章 · ' + D.meta.atoms + ' 个知识原子 · ' +
+      (D.dimensions.subject.length) + ' 个学科方向';
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.classList.remove('is-on'); x.setAttribute('aria-selected', 'false'); });
+      t.classList.add('is-on'); t.setAttribute('aria-selected', 'true');
+      show(t.getAttribute('data-p'));
+    });
+  });
+  fetch('/data/ai-academy-atoms.json')
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (d) { D = d; show('goal'); })
+    .catch(function (e) {
+      box.innerHTML = '<p class="pnote">学习路径数据载入失败（' + esc(e.message) +
+        '）。可先<a href="/learn/roadmap.html">看 14 周学习路线图</a>，或<a href="/learn/academy.html">回到课程地图</a>。</p>';
+    });
+})();
+/* ---------- 角色视角：切换身份 = 同一套知识的不同切面 ---------- */
+(function () {
+  var wrap = document.getElementById('asWrap');
+  if (!wrap) return;
+  var btn = document.getElementById('roleBtn'),
+      now = document.getElementById('roleNow'),
+      menu = document.getElementById('roleMenu'),
+      askEl = document.getElementById('asAsk');
+  /* 守卫要覆盖真正会被调方法的三个元素，不能只判 wrap。
+     本页 #roleBtn 在导航区里；生成器抽正文时会砍掉外层导航，
+     于是学域落地页（/learn/academy.html）上 btn 为 null ——
+     原来只判 wrap，line 1518 的 btn.addEventListener 直接抛
+     TypeError，把后面整段（数据拉取 + 角色面板）全带走。
+     源页有这三个元素，守卫对它无副作用；生成的页面则安静退出。 */
+  if (!btn || !now || !menu) return;
+  var KEY = 'baiju.role';
+  var D = null, ATOMS = null, cur = null;
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
+  var chOf = function (n) { return (ATOMS && ATOMS.chapters || []).filter(function (c) { return c.n === n; })[0]; };
+  function renderMenu() {
+    if (!D) return;
+    menu.innerHTML = D.roles.map(function (r) {
+      return '<button class="roleitem" role="option" data-id="' + esc(r.id) + '" aria-selected="' + (r.id === cur) + '">' +
+        '<b>' + esc(r.name) + '</b><span>' + esc(r.sub) + '</span></button>';
+    }).join('');
+    menu.querySelectorAll('.roleitem').forEach(function (b) {
+      b.addEventListener('click', function () { pick(b.getAttribute('data-id')); close(); });
+    });
+  }
+  function renderPanel(r) {
+    if (!ATOMS) return;
+    if (askEl) askEl.textContent = r.ask;
+    var chips = r.termMode === 'zero'
+      ? '零门槛术语：专业名词自动配大白话解释'
+      : r.termMode === 'standard' ? '术语可点开：不影响阅读节奏' : '完整技术术语，不做简化';
+    var terms = Object.keys(D.terms || {}).filter(function (t) {
+      return r.termMode === 'zero' ? true : r.termMode === 'standard'
+        ? ['RAG', 'Agent', 'MCP', '微调', '蒸馏', '量化', '向量', '幻觉', '开源'].indexOf(t) >= 0
+        : false;
+    });
+    var steps = r.path.map(function (p, i) {
+      var c = chOf(p.ch);
+      var label = c ? (c.title.length > 26 ? c.title.slice(0, 26) + '…' : c.title) : ('第 ' + p.ch + ' 章');
+      var min = c ? (c.minutesEstimated ? '≈' : '') + c.minutes + ' 分钟' : '';
+      var chars = c ? c.chars.toLocaleString() + ' 字' : '';
+      return '<a class="asstep" href="/learn/tutorials/chapter-' + String(p.ch).padStart(2, '0') + '.html">' +
+        '<span class="n">' + (i + 1) + '</span><span class="tx"><b>' + esc(label) + '<em>' + esc(min) + '</em></b>' +
+        '<span>' + esc(p.why) + ' · ' + esc(chars) + '</span></span></a>';
+    }).join('');
+    wrap.innerHTML =
+      '<div class="aswho"><span class="asico"><i class="cc-ic" data-ic="' + esc(r.icon) + '"></i></span>' +
+      '<div><h3>你现在是：' + esc(r.name) + '</h3><p>' + esc(r.sub) + '　·　你的诉求：' + esc(r.ask) + '</p></div></div>' +
+      '<div class="asgrid"><div class="aspromise"><h4>跟着这条路走，你能拿到</h4><ul>' +
+      r.promise.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
+      '<details class="aspath" open><summary>为你排的课表（' + r.path.length + ' 步）</summary>' +
+      '<div class="assteps">' + steps + '</div></details></div>' +
+      (terms.length ? '<details class="asterms"><summary>术语速查（' + terms.length + ' 条）—— ' + esc(r.termNote) + '</summary>' +
+        '<div class="astermgrid">' + terms.map(function (t) {
+          return '<div class="asterm"><b>' + esc(t) + '</b><span>' + esc(D.terms[t]) + '</span></div>';
+        }).join('') + '</div></details>' : '') +
+      '<div class="asfoot"><span class="asmode"><i class="cc-ic" data-ic="eye"></i>' + esc(chips) + '</span>' +
+      (r.entry ? '<a class="asbtn" href="' + esc(r.entry.href) + '">' + esc(r.entry.label) + '</a>' : '') +
+      '<a class="asbtn ghost" href="/learn/tutorials/chapter-' + String(r.path[0].ch).padStart(2, '0') + '.html">从第 ' +
+      r.path[0].ch + ' 章开始</a></div>';
+  }
+  function pick(id, quiet) {
+    if (!D) return;
+    var r = D.roles.filter(function (x) { return x.id === id; })[0] || D.roles[0];
+    cur = r.id;
+    try { localStorage.setItem(KEY, r.id); } catch (e) {}
+    if (now) now.textContent = r.name;
+    renderMenu();
+    if (ATOMS) renderPanel(r);
+    if (!quiet) { var w = document.getElementById('as'); if (w) w.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  }
+  function open() { renderMenu(); menu.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
+  function close() { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menu.hidden ? open() : close();
+  });
+  document.addEventListener('click', function (e) {
+    /* 原写法直接 getElementById('roleSw').contains(...)：生成后的页面没有 #roleSw，
+       一旦触发就是 null.contains 抛错。回退到 wrap（一定在）兜底。 */
+    var sw = document.getElementById('roleSw') || wrap;
+    if (!menu.hidden && sw && !sw.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  Promise.all([
+    fetch('/data/role-recipes.json').then(function (r) { return r.json(); }),
+    fetch('/data/ai-academy-atoms.json').then(function (r) { return r.json(); })
+  ]).then(function (res) {
+    D = res[0]; ATOMS = res[1];
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    pick(saved && D.roles.some(function (r) { return r.id === saved; }) ? saved : D.roles[1].id, true);
+  }).catch(function (e) {
+    wrap.innerHTML = '<p class="pnote">角色配方载入失败（' + esc(e.message) + '）。' +
+      '可直接 <a href="/website/ai-academy/chapter-17.html">从提示词入门开始</a>，或 <a href="#paths">看全部学习路径</a>。</p>';
+    if (now) now.textContent = '暂不可用';
+  });
+})();
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261116a">
+<script src="/assets/baiju-gate.js?v=20261116a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261116a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+/* ============================================================================
+   白驹 ccowork · 全站统一层（2026-11-10）
+   ----------------------------------------------------------------------------
+   单一真源：全站「品牌标识 / AI 助手 / 设置」只认这一份。
+   - 唯一助手 = 白驹 ccowork 助手（悬浮态 bja；首页 #chatbox 是它的展开态）
+   - 旧的三套面板 / 悬浮球只保留脚本能力，不再出现第二套 UI
+   - 品牌标识统一使用 assets/brand/mark.svg（图形标「隙」）—— 一枚，零文字
+   - 字标一律实时文本（改名只改 brand-one.js / site-nav.js / site.config.json），
+     不再用烧了名字的 lockup-h*.png 位图；亮 / 深由 currentColor 自动适配
+   由 ccowork.js 注入，覆盖全站；与 site-nav.css / baiju-assistant.css 叠加。
+   ============================================================================ */
+
+/* ---------- 1) 收编：旧组件不再出现第二套 UI ----------
+   注意是「隐藏」不是「删除」——旧脚本仍要读这些 DOM 的值，删了会报错。 */
+#setBtn, #setPanel,
+#modSettings, #modGear, #modTop, #modReadBtn,
+#ccowork-pet, #ccowork-panel,
+#bj-fab, #bj-panel,
+#ccowSearchBtn, .fdock { display: none !important; }
+
+/* ---------- 2) 品牌标识：唯一一套组件 ---------- */
+.bj-brand {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-width: 0; text-decoration: none; color: inherit; vertical-align: middle;
+}
+.bj-brand .bj-mark-img {
+  display: block; flex: none; width: 30px; height: 30px;
+  border-radius: 26%; box-shadow: 0 2px 8px rgba(79, 140, 255, .28);
+}
+/* 横版组合（页脚 / CTA）：图形标 + 实时文本。
+   2026-11-12 与名字解耦：不再用两张 lockup-h*.png 反色位图，
+   因此也不再需要「亮/深只显示一套」那套切换逻辑 —— 文本天然跟随主题。 */
+.bj-brand--lockup { gap: 9px; }
+.bj-brand .bj-lockup-mark {
+  display: block; flex: none; width: 34px; height: 34px; border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(79, 140, 255, .26);
+}
+.bj-brand .bj-lockup-txt { display: flex; flex-direction: column; min-width: 0; }
+.bj-brand .bj-lockup-txt b {
+  font-weight: 900; font-size: 15px; letter-spacing: .3px; line-height: 1.15;
+  white-space: nowrap;
+}
+.bj-brand .bj-lockup-txt em {
+  font-style: normal; font-size: 8.5px; font-weight: 700; letter-spacing: .16em;
+  color: var(--muted, #64748b); white-space: nowrap; margin-top: 3px;
+}
+.bj-brand .bj-name {
+  font-weight: 800; font-size: 15px; letter-spacing: .2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bj-brand .bj-sub {
+  font-size: 10px; letter-spacing: .12em; color: var(--muted, #64748b);
+  white-space: nowrap;
+}
+/* 兼容旧版本里残留的 .lk-light / .lk-dark 位图节点（若某页仍注入了旧 HTML）：
+   一律不再显示，避免「新文本字标 + 旧位图字标」同时出现。 */
+.bj-brand .lk-light, .bj-brand .lk-dark,
+.bja-home .hm-hero .lk-light, .bja-home .hm-hero .lk-dark { display: none !important; }
+
+/* 标识位：导航 / 页脚 / 首页 nav.top / 设置头 / 对话卡头 */
+nav.top .brand .logo,
+header.ccnav .ccnav-brand .lg,
+footer.ccfoot .cf-brand .cc-mark,
+.cc-brand-slot > i.cc-mark { display: none !important; }
+nav.top .brand .nm { font-weight: 800; }
+/* 统一导航里的品牌文字只保留规范写法，不再出现旧名 */
+header.ccnav .ccnav-brand .tx { font-weight: 800; }
+
+/* ---------- 3) 唯一助手：正式商标 + 统一皮肤 ---------- */
+/* 悬浮球本身就是正式图形标「隙」（渐变方块 + 开放圆环 + 斜光 + 中心点），
+   整个按钮铺满 mark.svg —— 导航、悬浮球、面板头、favicon 全部同一枚，
+   不再是自绘卡通马 / 几何「白」字 / emoji。 */
+.bja-fab {
+  background: transparent !important;
+  box-shadow: 0 8px 24px -6px rgba(79, 140, 255, .55) !important;
+  overflow: hidden;
+}
+.bja-fab .bj-fab-mark {
+  display: block; width: 100%; height: 100%; border-radius: 19px;
+}
+/* 呼吸光环已下线（用户反馈「有点闪闪的」），品牌层同步兜底隐藏 */
+.bja-fab .halo { display: none !important; }
+.bja-fab .horse, .bja-fab .bja-mark { display: none !important; }
+
+/* 面板头：正式方块标 + 规范品牌名 */
+.bja-hd .tt-mk { width: 24px; height: 24px; }
+.bja-hd .tt-mk .bj-hd-mark { width: 100%; height: 100%; display: block; border-radius: 26%; }
+.bja-hd .tt .bj-name { font-weight: 800; font-size: 13.5px; }
+
+/* 面板首页主视觉：正式图形标（单枚，不再叠亮/深两张反色位图） */
+.bja-home .hm-hero .hm-mk {
+  width: 52px; height: 52px; margin-bottom: 6px;
+  filter: drop-shadow(0 8px 18px rgba(79, 140, 255, .22));
+}
+.bja-home .hm-hero .hm-mk img.bj-hero-mark {
+  display: block; width: 52px; height: 52px; border-radius: 14px;
+}
+/* 2026-11-12：新图形标零文字，品牌名必须由实时文本补回来。
+   旧位图字标时代靠 hide <b> 避免名字重复，现在隐藏只会让助手首页没有名字。 */
+.bja-home .hm-hero b {
+  display: block; font-size: 15px; font-weight: 900; letter-spacing: .3px;
+  margin-top: 2px; color: var(--text, #1e293b);
+}
+body[data-theme="deep"] .bja-home .hm-hero b { color: #e9f0fb; }
+
+/* 深色主题下把助手白面板收回品牌深空色，避免一块刺眼纯白 */
+body[data-theme="deep"] .bja-panel {
+  background: rgba(16, 23, 40, .96) !important;
+  color: #e9f0fb !important;
+  border-color: rgba(56, 225, 255, .18) !important;
+}
+body[data-theme="deep"] .bja-hd { border-bottom-color: rgba(56, 225, 255, .14) !important; }
+body[data-theme="deep"] .hm-acts button {
+  background: rgba(255, 255, 255, .05) !important;
+  border-color: rgba(56, 225, 255, .16) !important;
+  color: #e9f0fb !important;
+}
+body[data-theme="deep"] .bja-in textarea {
+  background: rgba(255, 255, 255, .06) !important;
+  color: #e9f0fb !important;
+  border-color: rgba(56, 225, 255, .16) !important;
+}
+
+/* ---------- 4) 站点设置（并入唯一助手的「功能与设置」抽屉） ---------- */
+.bj-site-set { margin-top: 4px; }
+.bj-site-set .sh-t {
+  margin: 14px 0 6px; font-size: 11px; font-weight: 800; letter-spacing: .08em;
+  color: var(--muted, #64748b); text-transform: uppercase;
+}
+.bj-site-set .bj-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 7px 0; font-size: 12.5px;
+}
+.bj-site-set .bj-row > span { min-width: 0; }
+.bj-site-set .bj-row small { display: block; color: var(--dim, #94a3b8); font-size: 10.5px; line-height: 1.4; }
+.bj-site-set select,
+.bj-site-set input[type="password"] {
+  flex: 1; min-width: 0; max-width: 168px; padding: 6px 8px; font-size: 11.5px;
+  font-family: inherit; color: inherit; border-radius: 9px;
+  border: 1px solid rgba(148, 163, 184, .32); background: rgba(255, 255, 255, .7);
+  outline: none;
+}
+body[data-theme="deep"] .bj-site-set select,
+body[data-theme="deep"] .bj-site-set input[type="password"] {
+  background: rgba(255, 255, 255, .06); border-color: rgba(56, 225, 255, .2); color: #e9f0fb;
+}
+.bj-site-set .bj-sw { width: 34px; height: 19px; flex: none; accent-color: #4f8cff; }
+.bj-site-set .bj-save {
+  width: 100%; margin-top: 10px; padding: 9px 12px; border: 0; border-radius: 11px;
+  background: linear-gradient(120deg, #4f8cff, #38b6ff 50%, #8b5cf6);
+  color: #fff; font: 700 12.5px/1 inherit; cursor: pointer;
+}
+.bj-site-set .bj-save:hover { filter: brightness(1.06); }
+.bj-site-set .bj-tip { margin: 8px 0 2px; font-size: 10.5px; line-height: 1.5; color: var(--dim, #94a3b8); }
+
+/* ---------- 5) 主页展开态：#chatbox 收编为同一个助手的首页形态 ---------- */
+#chatbox {
+  border-radius: 18px !important;
+  border: 1px solid rgba(79, 140, 255, .22) !important;
+  box-shadow: 0 18px 48px rgba(31, 45, 77, .10) !important;
+}
+#chatbox .chat-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid rgba(148, 163, 184, .18);
+}
+#chatbox .chat-head .bj-brand .bj-lockup-mark { width: 26px; height: 26px; }
+#chatbox .chat-head .bj-brand .bj-mark-img { width: 26px; height: 26px; }
+#chatbox .chat-head .t { font-size: 13px; font-weight: 800; }
+#chatbox .chat-head .st { margin-left: auto; }
+#chatbox #bar #send,
+#chatbox .minibtn:not(.ghost) {
+  background: linear-gradient(120deg, #4f8cff, #38b6ff 50%, #8b5cf6) !important;
+  color: #fff !important; border: 0 !important; border-radius: 11px !important;
+}
+body[data-theme="deep"] #chatbox {
+  background: rgba(16, 23, 40, .92) !important;
+  border-color: rgba(56, 225, 255, .18) !important;
+  color: #e9f0fb !important;
+}
+/* 模型 / Key / 开关这些设置项只在唯一助手里出现，主页不再放第二套 */
+#chatbox #brain { display: none !important; }
+
+/* ---------- 6) 统一设置入口 · 小尖角（2026-11-12） ----------
+   旧形态是 70px 常显胶囊，和右侧「开始对话 / 选身份 / 铃铛 / 外观齿轮」
+   挤成一排，设置反而最抢眼。现在收成 26px 的小尖角：
+   默认只露一枚齿轮（右上角带一个折角尖），hover / focus 才横向展开成胶囊。
+   ⚠️ DOM 位置与 class 保持不变 —— 全站验收要求
+   「.bj-nav-settings 恰好 1 个，且 header.ccnav 里的入口可点击打开唯一抽屉」。
+   所以这里只做视觉收缩，绝不 display:none、绝不新增第二个入口。 */
+.bj-nav-settings {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0;
+  width: 26px; height: 26px; margin-left: 2px; padding: 0;
+  border: 1px solid rgba(79, 140, 255, .3); border-radius: 9px 9px 3px 9px;
+  background: rgba(79, 140, 255, .08); color: var(--blue, #2563eb);
+  cursor: pointer; white-space: nowrap; overflow: hidden;
+  font: 700 12px/1 inherit; text-decoration: none;
+  transition: width .24s cubic-bezier(.22,.68,.32,1), background .2s, border-color .2s, box-shadow .2s;
+}
+/* 右上角折角：这就是平时能看到的那个「小尖角」 */
+.bj-nav-settings::before {
+  content: ""; position: absolute; right: 0; top: 0;
+  width: 0; height: 0; border-style: solid;
+  border-width: 0 9px 9px 0;
+  border-color: transparent rgba(79, 140, 255, .55) transparent transparent;
+  pointer-events: none;
+}
+.bj-nav-settings .bj-mark-img {
+  width: 15px; height: 15px; border-radius: 26%; flex: none;
+  /* 图形标本身是渐变方块，缩小后当齿轮用偏花；换成单色齿轮更轻 */
+}
+.bj-nav-settings > span {
+  max-width: 0; opacity: 0; overflow: hidden;
+  transition: max-width .24s cubic-bezier(.22,.68,.32,1), opacity .18s, margin .24s;
+  margin-left: 0;
+}
+.bj-nav-settings:hover,
+.bj-nav-settings:focus-visible,
+.bj-nav-settings[aria-expanded="true"] {
+  width: 84px; background: rgba(79, 140, 255, .14);
+  border-color: rgba(79, 140, 255, .5);
+  box-shadow: 0 4px 14px -6px rgba(79, 140, 255, .6);
+  outline: none;
+}
+.bj-nav-settings:hover > span,
+.bj-nav-settings:focus-visible > span,
+.bj-nav-settings[aria-expanded="true"] > span {
+  max-width: 52px; opacity: 1; margin-left: 6px;
+}
+.bj-nav-settings:hover::before,
+.bj-nav-settings:focus-visible::before,
+.bj-nav-settings[aria-expanded="true"]::before { opacity: 0; }
+body[data-theme="deep"] .bj-nav-settings {
+  border-color: rgba(56, 225, 255, .36); background: rgba(56, 225, 255, .1); color: #9dc0ff;
+}
+body[data-theme="deep"] .bj-nav-settings::before { border-color: transparent rgba(56, 225, 255, .6) transparent transparent; }
+body[data-theme="deep"] .bj-nav-settings:hover { background: rgba(56, 225, 255, .18); border-color: rgba(56, 225, 255, .6); }
+
+/* 旧「外观设置」齿轮：功能已被唯一设置抽屉完整覆盖，视觉上不再叠第二个入口。
+   保留 DOM（module.js 仍会读它），只做隐藏，避免脚本报错。 */
+#modNavGear, .nav-gear { display: none !important; }
+
+/* 2026-11-12：「讨论 / 对话」收成和设置并排的同一枚小尖角。
+   只留一个入口，点了唤起全站唯一悬浮助手；hover 才露出文字。 */
+header.ccnav .ccnav-act .cta.cta-tip,
+nav.top .cta.cta-tip {
+  position: relative; display: inline-flex !important; align-items: center; justify-content: center;
+  width: 26px !important; height: 26px !important; padding: 0 !important; margin-left: 2px;
+  border: 1px solid rgba(79, 140, 255, .3) !important; border-radius: 9px 9px 3px 9px;
+  background: rgba(79, 140, 255, .08) !important; color: var(--blue, #2563eb) !important;
+  box-shadow: none !important; cursor: pointer; white-space: nowrap; overflow: hidden;
+  transition: width .24s cubic-bezier(.22,.68,.32,1), background .2s, border-color .2s;
+}
+header.ccnav .ccnav-act .cta.cta-tip::before,
+nav.top .cta.cta-tip::before {
+  content: ""; position: absolute; right: 0; top: 0;
+  border-width: 0 9px 9px 0;
+  border-color: transparent rgba(79, 140, 255, .55) transparent transparent;
+}
+header.ccnav .ccnav-act .cta.cta-tip > .cc-ic,
+nav.top .cta.cta-tip > .cc-ic { flex: none; width: 15px; height: 15px; font-size: 15px; }
+header.ccnav .ccnav-act .cta.cta-tip > .tx,
+nav.top .cta.cta-tip > .tx {
+  display: inline-block !important; max-width: 0; opacity: 0; margin-left: 0;
+  overflow: hidden; transition: max-width .2s, opacity .2s, margin .2s;
+}
+header.ccnav .ccnav-act .cta.cta-tip:hover,
+header.ccnav .ccnav-act .cta.cta-tip:focus-visible,
+nav.top .cta.cta-tip:hover,
+nav.top .cta.cta-tip:focus-visible { width: 88px !important; background: rgba(79, 140, 255, .14) !important; }
+header.ccnav .ccnav-act .cta.cta-tip:hover > .tx,
+header.ccnav .ccnav-act .cta.cta-tip:focus-visible > .tx,
+nav.top .cta.cta-tip:hover > .tx,
+nav.top .cta.cta-tip:focus-visible > .tx { max-width: 70px; opacity: 1; margin-left: 5px; }
+@media (max-width: 720px) {
+  header.ccnav .ccnav-act .cta.cta-tip:hover,
+  header.ccnav .ccnav-act .cta.cta-tip:focus-visible,
+  nav.top .cta.cta-tip:hover,
+  nav.top .cta.cta-tip:focus-visible { width: 26px !important; }
+  header.ccnav .ccnav-act .cta.cta-tip:hover > .tx,
+  nav.top .cta.cta-tip:hover > .tx { max-width: 0; opacity: 0; margin-left: 0; }
+}
+
+@media (max-width: 720px) {
+  /* 手机上不展开文字，避免顶栏横向挤压；点一下直接进设置 */
+  .bj-nav-settings:hover, .bj-nav-settings:focus-visible { width: 26px; }
+  .bj-nav-settings:hover > span, .bj-nav-settings:focus-visible > span { max-width: 0; opacity: 0; margin-left: 0; }
+}
+
+/* ---------- 7) 首访「选身份」弹窗：收进唯一助手，不再自动遮挡整页 ----------
+   功能不丢：助手「功能与设置 → 切换身份」调用 window.Baiju.openRolePicker()，
+   弹的是 bjRoleDlg，与这条隐藏规则无关。 */
+#bjOnboardDlg { display: none !important; }
+#bjOnboardDlg .bj-dlg-head { display: flex; align-items: center; gap: 9px; }
+#bjOnboardDlg .bj-dlg-head .bj-hd-mark { width: 22px; height: 22px; border-radius: 26%; flex: none; }
+#bjOnboardDlg.bj-onboard-branded {
+  border: 1px solid rgba(79, 140, 255, .24) !important;
+  box-shadow: 0 22px 60px rgba(31, 45, 77, .22) !important;
+}
+body[data-theme="deep"] #bjOnboardDlg.bj-onboard-branded {
+  background: rgba(16, 23, 40, .96) !important; color: #e9f0fb !important;
+  border-color: rgba(56, 225, 255, .2) !important;
+}
+
+/* ---------- 8) 账号 / 身份悬浮坞：收进唯一助手，不再有第二个悬浮块 ---------- */
+.bj-dock { display: none !important; }
+.bj-acct-row { display: flex; gap: 8px; margin-top: 8px; }
+.bj-acct-row button {
+  flex: 1; padding: 8px 6px; border-radius: 9px; cursor: pointer;
+  border: 1px solid rgba(148, 163, 184, .32); background: transparent;
+  color: inherit; font: 600 11.5px/1 inherit;
+}
+.bj-acct-row button:hover { background: rgba(79, 140, 255, .10); }
+/* 独立分站（如 linguavista）没有统一导航，老框架条上挂同一个品牌标 */
+.ccbar .bj-brand { margin-right: 10px; }
+.ccbar .bj-brand .bj-mark-img { width: 20px; height: 20px; }
+.ccbar .bj-brand .bj-name { font-size: 12px; }
+
+/* ---------- 9) 窄屏 ---------- */
+@media (max-width: 480px) {
+  .bj-brand .bj-mark-img { width: 26px; height: 26px; }
+  .bj-brand .bj-lockup-mark { width: 26px; height: 26px; }
+  .bj-brand .bj-lockup-txt b { font-size: 13px; }
+  .bj-brand .bj-lockup-txt em { display: none; }
+  .bj-brand .bj-name { font-size: 13px; }
+  .bj-brand .bj-sub { display: none; }
+  .bj-nav-settings { width: 26px; height: 26px; }
+  #chatbox .chat-head { padding: 10px 12px !important; }
+  .bja-home .hm-hero .hm-mk,
+  .bja-home .hm-hero .hm-mk img.bj-hero-mark { width: 42px; height: 42px; }
+}

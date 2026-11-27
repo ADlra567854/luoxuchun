@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="我的,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的 · / ccowork · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"我的 · 白驹 ccowork ccowork","description":"白驹 ccowork · 我的页面：查看你的角色、阅读偏好、学习进度与收藏书单。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<meta name="description" content="白驹 ccowork · 我的页面：查看你的角色、阅读偏好、学习进度与收藏书单。">
+<meta property="og:description" content="白驹 ccowork · 我的页面：查看你的角色、阅读偏好、学习进度与收藏书单。">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<style>
+:root{
+  --grad:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{max-width:100%;overflow-x:hidden;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.75;
+  background:var(--bg);color:var(--text)}
+a{color:inherit;text-decoration:none}
+/* ---------- 顶部导航 ---------- */
+nav{position:sticky;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  gap:14px;padding:11px 22px;
+  background:var(--nav-bg,rgba(255,255,255,.82));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line,rgba(227,235,245,.95));box-shadow:var(--nav-shadow,0 2px 16px rgba(31,45,77,.07))}
+nav .logo{font-size:18px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  color:transparent!important;letter-spacing:.5px;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:7px}
+nav .logo .hm{font-size:19px;-webkit-background-clip:border-box;background:none}
+nav .nav-links{display:flex;gap:8px;align-items:center;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+nav .nav-links::-webkit-scrollbar{display:none}
+nav .nav-links a{border-radius:10px;padding:8px 13px;color:var(--muted,#475569);font-weight:600;white-space:nowrap;
+  transition:.18s;font-size:14px;flex-shrink:0}
+nav .nav-links a:hover{background:rgba(120,160,220,.12);color:var(--blue,#2563eb)}
+nav .nav-links a.active{background:var(--grad);color:#fff!important;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+@media(max-width:760px){
+  nav{padding:0 12px;height:54px;gap:8px}
+  nav .logo{font-size:15px;gap:6px}
+  nav .nav-links a{padding:7px 10px;font-size:13px}
+}
+/* ---------- 主体容器 ---------- */
+main{max-width:1080px;margin:0 auto;padding:30px 20px 60px}
+.sec{margin-bottom:38px}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-head .ic{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;
+  background:var(--grad);color:#fff;font-size:17px;flex:none;box-shadow:0 4px 12px rgba(79,140,255,.22)}
+.sec-head h2{font-size:23px;font-weight:900}
+.sec-head .sub{margin-left:auto;font-size:13px;color:var(--muted);font-weight:600}
+/* ---------- 账户概览卡 ---------- */
+.overview{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:760px){.overview{grid-template-columns:1fr}}
+.ov-tile{display:flex;gap:13px;align-items:flex-start;padding:16px 18px;border-radius:18px;
+  background:var(--card);border:1px solid var(--line);box-shadow:0 8px 24px rgba(31,45,77,.05)}
+.ov-tile .oic{width:40px;height:40px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;
+  font-size:19px;background:rgba(120,160,220,.12);color:var(--blue)}
+body[data-theme="deep"] .ov-tile .oic{background:rgba(56,225,255,.10);color:var(--cyan)}
+.ov-tile .ot-k{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:3px}
+.ov-tile .ot-v{font-size:16px;font-weight:800;color:var(--text);line-height:1.4}
+.ov-tile .ot-hint{font-size:12px;color:var(--dim);margin-top:4px;line-height:1.6}
+.ov-tile .ot-hint b{color:var(--gold)}
+/* ---------- 书卡网格 ---------- */
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.book-card{border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line);
+  box-shadow:0 8px 24px rgba(31,45,77,.05);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s}
+.book-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(31,45,77,.12);border-color:rgba(56,225,255,.35)}
+.book-card .cover{position:relative;height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.book-card .cover .c-ic{font-size:46px;color:#fff;opacity:.92;filter:drop-shadow(0 3px 8px rgba(0,0,0,.22))}
+.book-card .cover .cat-tag{position:absolute;right:10px;bottom:10px;font-size:12px;font-weight:800;color:#fff;
+  background:rgba(0,0,0,.28);padding:3px 10px;border-radius:999px;backdrop-filter:blur(4px)}
+.book-card .b-body{padding:13px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.book-card .b-title{font-size:15px;font-weight:800;color:var(--text);line-height:1.4}
+.book-card .b-author{font-size:13px;color:var(--muted);line-height:1.5}
+.book-card .b-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:8px}
+.book-card .b-pub{font-size:12px;color:var(--dim)}
+.fav-btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:transparent;
+  color:var(--muted);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer;
+  transition:.18s;font-family:inherit}
+.fav-btn:hover{border-color:var(--err,#e11d48);color:var(--err,#e11d48)}
+.fav-btn.on{background:rgba(225,29,72,.10);border-color:rgba(225,29,72,.4);color:var(--err,#e11d48)}
+body[data-theme="deep"] .fav-btn.on{background:rgba(248,113,113,.14);color:#f87171}
+/* ---------- 空状态 ---------- */
+.empty{text-align:center;padding:42px 20px;border-radius:18px;background:var(--card);border:1px dashed var(--line)}
+.empty .e-ic{width:64px;height:64px;border-radius:18px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;
+  font-size:30px;background:var(--grad);color:#fff;box-shadow:0 6px 18px rgba(79,140,255,.25)}
+.empty h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.empty p{font-size:14px;color:var(--muted);line-height:1.8;max-width:420px;margin:0 auto 18px}
+.empty .e-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-go{display:inline-flex;align-items:center;gap:7px;background:var(--grad);color:#fff;border:none;border-radius:14px;
+  padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:transform .18s,box-shadow .18s;font-family:inherit;
+  text-decoration:none}
+.btn-go:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.40)}
+.btn-go.ghost{background:rgba(120,160,220,.12);color:var(--blue);border:1px solid rgba(120,160,220,.3)}
+body[data-theme="deep"] .btn-go.ghost{color:var(--cyan)}
+.btn-go .ic-r{transition:transform .18s}
+.btn-go:hover .ic-r{transform:translateX(3px)}
+/* ---------- 推荐提示条 ---------- */
+.role-tip{display:flex;align-items:center;gap:10px;padding:13px 16px;border-radius:14px;margin-bottom:16px;
+  background:rgba(120,160,220,.08);border:1px solid var(--line);font-size:14px;color:var(--muted);line-height:1.7}
+.role-tip .rt-ic{font-size:18px;color:var(--blue);flex:none}
+body[data-theme="deep"] .role-tip .rt-ic{color:var(--cyan)}
+.role-tip b{color:var(--gold)}
+/* ---------- 快捷入口 ---------- */
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.quick{grid-template-columns:1fr}}
+.quick a{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:18px;text-decoration:none;
+  background:var(--card);border:1px solid var(--line);box-shadow:0 8px 24px rgba(31,45,77,.05);transition:.18s;color:var(--text)}
+.quick a:hover{transform:translateY(-3px);border-color:rgba(56,225,255,.35);box-shadow:0 14px 30px rgba(31,45,77,.12)}
+.quick .q-ic{width:48px;height:48px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;
+  font-size:23px;background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.22)}
+.quick .q-t{font-size:16px;font-weight:800}
+.quick .q-d{font-size:13px;color:var(--muted);margin-top:2px}
+.quick .q-arrow{margin-left:auto;font-size:20px;color:var(--blue)}
+body[data-theme="deep"] .quick .q-arrow{color:var(--cyan)}
+/* 阅读模式：正文居中收窄 */
+body[data-read="on"] main{max-width:760px}
+</style>
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:description" content="白驹 ccowork · 我的页面：查看你的角色、阅读偏好、学习进度与收藏书单。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/website/mine.html">
+<meta property="og:title" content="我的 · / ccowork · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/website/mine.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="我的 · / ccowork · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<!-- ===== 顶部导航（module.js 会自动注入 ⚙️ 设置齿轮） ===== -->
+<nav>
+  <a class="logo" href="/index.html"><span class="hm"></span> 白驹 ccowork</a>
+  <div class="nav-links">
+    <a href="/index.html">首页</a>
+    <a href="/toolbox/quiz.html">答题宝库</a>
+    <a href="/website/book.html">阅读书库</a>
+    <a href="/toolbox/library.html">AI 工具真库</a>
+    <a href="/website/mine.html" class="active">我的</a>
+  </div>
+</nav>
+<main>
+  <!-- ===== a. 账户概览卡 ===== -->
+  <section class="sec" id="overviewSec">
+    <div class="sec-head">
+      <span class="ic"><i class="cc-ic" data-ic="user" aria-hidden="true"></i></span>
+      <h2>账户概览</h2>
+      <span class="sub">你的偏好与进度一览</span>
+    </div>
+    <div class="overview" id="overview"><!-- JS 渲染 --></div>
+  </section>
+  <!-- ===== b. 我的收藏 ===== -->
+  <section class="sec" id="favSec">
+    <div class="sec-head">
+      <span class="ic"><i class="cc-ic" data-ic="heart" aria-hidden="true"></i></span>
+      <h2>我的收藏</h2>
+      <span class="sub" id="favCount"></span>
+    </div>
+    <div id="favWrap"><!-- JS 渲染 --></div>
+  </section>
+  <!-- ===== c. 为你推荐（按角色） ===== -->
+  <section class="sec" id="recSec">
+    <div class="sec-head">
+      <span class="ic"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i></span>
+      <h2>为你推荐</h2>
+      <span class="sub" id="recSub"></span>
+    </div>
+    <div id="recWrap"><!-- JS 渲染 --></div>
+  </section>
+  <!-- ===== d. 快捷入口 ===== -->
+  <section class="sec" id="quickSec">
+    <div class="sec-head">
+      <span class="ic"><i class="cc-ic" data-ic="compass" aria-hidden="true"></i></span>
+      <h2>继续探索</h2>
+    </div>
+    <div class="quick">
+      <a href="/website/book.html">
+        <span class="q-ic"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i></span>
+        <span><span class="q-t">前往阅读书库</span><span class="q-d">36 本经核实的 AI / 编程好书</span></span>
+        <span class="q-arrow"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </a>
+      <a href="/toolbox/library.html">
+        <span class="q-ic"><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i></span>
+        <span><span class="q-t">打开 AI 工具真库</span><span class="q-d">按场景挑选趁手的 AI 工具</span></span>
+        <span class="q-arrow"><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></span>
+      </a>
+    </div>
+  </section>
+</main>
+<!-- 书库数据源 + 增强层（module.js 提供 CCOWork / CCOWorkProgress / 设置齿轮） -->
+<script src="/data/books.js"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+(function(){
+  'use strict';
+  // 分类 → 封面渐变（主题无关装饰，允许硬编码）
+  var CAT_GRAD = {
+    '通识': 'linear-gradient(135deg,#4f8cff,#38b6ff)',
+    'ML':   'linear-gradient(135deg,#8b5cf6,#a78bfa)',
+    '编程': 'linear-gradient(135deg,#16a34a,#22c55e)',
+    '伦理': 'linear-gradient(135deg,#d97706,#f59e0b)',
+    'LLM':  'linear-gradient(135deg,#38e1ff,#8b5cf6)',
+    '行业': 'linear-gradient(135deg,#0284c7,#0ea5e9)'
+  };
+  // 分类 → 封面图标（仅用站点可用 cc-ic 名）
+  var CAT_ICON = {
+    '通识': 'book-open', 'ML': 'brain', '编程': 'code',
+    '伦理': 'info', 'LLM': 'sparkles', '行业': 'compass'
+  };
+  var WALL_NAME = {
+    '': '默认', 'cloud-hero': '天空城', 'garden': '空中花园', 'train': '云轨列车',
+    'island': '天空岛屿', 'cafe': '云顶咖啡', 'epoch': '深空图书馆',
+    'nebula': '星云', 'city': '赛博都市'
+  };
+  var THEME_NAME = { 'deep': '深空', 'cloud': '云顶', '': '云顶' };
+  function $(s){ return document.querySelector(s); }
+  function bookById(id){
+    var list = (window.BOOKS || []);
+    for (var i=0;i<list.length;i++){ if (String(list[i].id)===String(id)) return list[i]; }
+    return null;
+  }
+  // --------- 渲染单张书卡（收藏/推荐复用） ---------
+  function bookCardHTML(b, opts){
+    if (!b) return '';
+    var grad = CAT_GRAD[b.cat] || 'linear-gradient(135deg,#4f8cff,#8b5cf6)';
+    var ic = CAT_ICON[b.cat] || 'book-open';
+    var favOn = window.CCOWork.fav.has(b.id);
+    var favTxt = favOn ? '<i class="cc-ic" data-ic="heart" aria-hidden="true"></i> 已收藏' : '<i class="cc-ic" data-ic="heart" aria-hidden="true"></i> 收藏';
+    return '' +
+      '<article class="book-card" data-id="'+b.id+'">' +
+        '<div class="cover" style="background:'+grad+'">' +
+          '<i class="cc-ic c-ic" data-ic="'+ic+'" aria-hidden="true"></i>' +
+          '<span class="cat-tag">'+b.cat+'</span>' +
+        '</div>' +
+        '<div class="b-body">' +
+          '<div class="b-title">'+ (b.title||'未命名') +'</div>' +
+          '<div class="b-author">'+ (b.author||'') + (b.pub ? ' · '+b.pub : '') +'</div>' +
+          '<div class="b-foot">' +
+            '<span class="b-pub">'+(b.year||'')+'</span>' +
+            '<button type="button" class="fav-btn'+(favOn?' on':'')+'" data-fav="'+b.id+'">'+favTxt+'</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+  }
+  // 收藏按钮统一事件（事件委托）
+  function bindFav(root){
+    root.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-fav]');
+      if (!btn) return;
+      var id = btn.getAttribute('data-fav');
+      var added = window.CCOWork.fav.toggle(id); // true=加入, false=移除
+      if (added){
+        btn.classList.add('on');
+        btn.innerHTML = '<i class="cc-ic" data-ic="heart" aria-hidden="true"></i> 已收藏';
+      } else {
+        btn.classList.remove('on');
+        btn.innerHTML = '<i class="cc-ic" data-ic="heart" aria-hidden="true"></i> 收藏';
+        // 在「我的收藏」区移除卡片本身
+        if (root.id === 'favGrid'){
+          var card = btn.closest('.book-card');
+          if (card) card.remove();
+          refreshFavEmpty();
+          updateFavCount();
+        }
+      }
+    });
+  }
+  // --------- a. 账户概览 ---------
+  function renderOverview(){
+    var role = window.CCOWork.getRole();
+    var roleName = window.CCOWork.roleName(role);
+    var reading = window.CCOWork.isReading();
+    var theme = document.body.getAttribute('data-theme') || 'cloud';
+    var wall = document.body.getAttribute('data-wall') || '';
+    var themeTxt = THEME_NAME[theme] || '云顶';
+    var wallTxt = WALL_NAME[wall] !== undefined ? WALL_NAME[wall] : '默认';
+    // 学习进度
+    var prog = (window.CCOWorkProgress && window.CCOWorkProgress.get) ? window.CCOWorkProgress.get() : null;
+    var hasData = !!(prog && (prog.totalCompleted>0 || prog.streak>0 ||
+                  (prog.labs && Object.keys(prog.labs).length>0) || prog.startedAt));
+    var progTxt, progHint='';
+    if (hasData){
+      var labs = prog.labs ? Object.keys(prog.labs).length : 0;
+      progTxt = (prog.totalCompleted||0) + ' 章 · 连续 ' + (prog.streak||0) + ' 天 · 实验 ' + labs + ' 个';
+      progHint = '已开启学院学习之路';
+    } else {
+      progTxt = '尚未开始学院学习';
+      progHint = '在 自学路线完成章节会自动累计到这里';
+    }
+    var roleTxt, roleHint;
+    if (role){
+      roleTxt = roleName;
+      roleHint = '已为你开启个性化推荐';
+    } else {
+      roleTxt = '未设置';
+      roleHint = '点右上角 <b>⚙️ 设置</b> 选择你的角色（教师 / 学生 / 开发者 / 爱好者）';
+    }
+    var tiles = [
+      { ic:'user', k:'当前角色', v:roleTxt, hint:roleHint },
+      { ic:'book-open', k:'阅读模式', v: reading ? '已开启' : '未开启', hint: reading ? '长文排版更专注' : '可在设置里一键开启' },
+      { ic:'palette', k:'主题 / 壁纸', v: themeTxt + ' · ' + wallTxt, hint: '全站自动记忆你的偏好' },
+      { ic:'graduation-cap', k:'学习进度', v: progTxt, hint: progHint }
+    ];
+    $('#overview').innerHTML = tiles.map(function(t){
+      return '' +
+        '<div class="ov-tile">' +
+          '<span class="oic"><i class="cc-ic" data-ic="'+t.ic+'" aria-hidden="true"></i></span>' +
+          '<div><div class="ot-k">'+t.k+'</div><div class="ot-v">'+t.v+'</div>' +
+          '<div class="ot-hint">'+t.hint+'</div></div>' +
+        '</div>';
+    }).join('');
+  }
+  // --------- b. 我的收藏 ---------
+  function updateFavCount(){
+    var ids = window.CCOWork.fav.list();
+    var el = $('#favCount');
+    if (el) el.textContent = ids.length ? ('共 ' + ids.length + ' 本') : '';
+  }
+  function refreshFavEmpty(){
+    var grid = $('#favGrid');
+    if (grid && grid.children.length === 0){
+      $('#favWrap').innerHTML = emptyHTML('book-open', '收藏夹还是空的',
+        '把在书库里读到的好书收进这里，随时回来温习。', '/website/book.html', '去阅读书库逛逛');
+    }
+  }
+  function renderFav(){
+    var ids = window.CCOWork.fav.list();
+    var books = ids.map(bookById).filter(Boolean);
+    updateFavCount();
+    if (books.length === 0){
+      $('#favWrap').innerHTML = emptyHTML('book-open', '收藏夹还是空的',
+        '把在书库里读到的好书收进这里，随时回来温习。', '/website/book.html', '去阅读书库逛逛');
+      return;
+    }
+    $('#favWrap').innerHTML = '<div class="book-grid" id="favGrid">'+ books.map(function(b){return bookCardHTML(b);}).join('') +'</div>';
+    bindFav($('#favGrid'));
+  }
+  // --------- c. 为你推荐（按角色） ---------
+  function renderRec(){
+    var role = window.CCOWork.getRole();
+    var sub = $('#recSub');
+    if (!role){
+      $('#recWrap').innerHTML =
+        '<div class="role-tip"><span class="rt-ic"><i class="cc-ic" data-ic="user" aria-hidden="true"></i></span>' +
+        '<div>设置角色后，这里会按你的身份（教师 / 学生 / 开发者 / 爱好者）为你精准推荐书目。点右上角 <b>⚙️ 设置</b> 选择即可。</div></div>' +
+        emptyHTML('compass', '设置角色后为你精准推荐',
+          '不同角色关注的重点不同：教师看重教学视角，开发者偏爱动手实践，爱好者更适合通识科普。', null, null);
+      if (sub) sub.textContent = '';
+      return;
+    }
+    var recs = (window.BOOKS || []).filter(function(b){
+      return b.tags && b.tags.indexOf(role) >= 0;
+    }).slice(0, 6);
+    if (sub) sub.textContent = '基于「' + window.CCOWork.roleName(role) + '」身份';
+    if (recs.length === 0){
+      $('#recWrap').innerHTML = emptyHTML('sparkles', '暂无匹配的推荐',
+        '这个角色暂时还没有专属推荐，先去书库看看吧。', '/website/book.html', '浏览全部书库');
+      return;
+    }
+    $('#recWrap').innerHTML = '<div class="book-grid" id="recGrid">'+ recs.map(function(b){return bookCardHTML(b);}).join('') +'</div>';
+    bindFav($('#recGrid'));
+  }
+  // --------- 空状态模板 ---------
+  function emptyHTML(icon, title, desc, link, linkText){
+    var btn = (link && linkText) ?
+      '<div class="e-actions"><a class="btn-go" href="'+link+'">'+linkText+' <i class="cc-ic ic-r" data-ic="arrow-right" aria-hidden="true"></i></a></div>' : '';
+    return '' +
+      '<div class="empty">' +
+        '<div class="e-ic"><i class="cc-ic" data-ic="'+icon+'" aria-hidden="true"></i></div>' +
+        '<h3>'+title+'</h3>' +
+        '<p>'+desc+'</p>' + btn +
+      '</div>';
+  }
+  // --------- 初始化 ---------
+  function init(){
+    renderOverview();
+    renderFav();
+    renderRec();
+    // 角色 / 主题变化后，让概览与推荐保持同步
+    var _setRole = window.CCOWork.setRole;
+    window.CCOWork.setRole = function(r){
+      var out = _setRole.apply(window.CCOWork, arguments);
+      renderOverview(); renderRec();
+      return out;
+    };
+    // 云同步回填后重渲染（cloud-sync.js 拉到云端收藏/偏好时触发）
+    window.addEventListener('ccowork:cloudsynced', function(){ renderOverview(); renderFav(); renderRec(); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

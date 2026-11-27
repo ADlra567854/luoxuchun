@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>高级函数与闭包 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：高级函数与闭包。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p075.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html" class="on">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 75 / 86 节
+    </div>
+    <h1>高级函数与闭包</h1>
+    <h2 id="高级函数与闭包"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/1500248d8f230566e4ec9f27fcbb8fe9e2898ab1/src/ch20-04-advanced-functions-and-closures.md">ch20-04-advanced-functions-and-closures.md</a></p>
+<p>本部分将探索一些有关函数和闭包的高级特性，这包括函数指针以及返回闭包。</p>
+<h3 id="函数指针"></h3>
+<p>我们讨论过了如何向函数传递闭包；也可以将普通函数传递给函数！这个技术在我们希望传递已经定义的函数而不是重新定义闭包作为参数时很有用。函数会被强制转换为 <code>fn</code> 类型（小写的 f），不要与闭包 trait 的 <code>Fn</code> 相混淆。<code>fn</code> 被称为 <strong>函数指针</strong>（<em>function pointer</em>）。通过函数指针允许我们使用函数作为其它函数的参数。</p>
+<p>指定参数为函数指针的语法类似于闭包，如示例 20-28 所示，这里定义了一个 <code>add_one</code> 函数用于将其参数加一。<code>do_twice</code> 函数获取两个参数：一个指向任何获取一个 <code>i32</code> 参数并返回一个 <code>i32</code> 的函数指针，和一个 <code>i32</code> 值。<code>do_twice</code> 函数传入 <code>arg</code> 参数调用 <code>f</code> 函数两次，接着将两次函数调用的结果相加。<code>main</code> 函数使用 <code>add_one</code> 和 <code>5</code> 作为参数调用 <code>do_twice</code>。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn add_one(x: i32) -&gt; i32 {
+    x + 1
+}
+
+fn do_twice(f: fn(i32) -&gt; i32, arg: i32) -&gt; i32 {
+    f(arg) + f(arg)
+}
+
+fn main() {
+    let answer = do_twice(add_one, 5);
+
+    println!("The answer is: {answer}");
+}</code></pre>
+<p><span class="caption">示例 20-28: 使用 <code>fn</code> 类型接受函数指针作为参数</span></p>
+<p>这段代码会打印出 <code>The answer is: 12</code>。<code>do_twice</code> 中的 <code>f</code> 被指定为一个接受一个 <code>i32</code> 参数并返回 <code>i32</code> 的 <code>fn</code>。接着就可以在 <code>do_twice</code> 函数体中调用 <code>f</code>。在 <code>main</code> 中，可以将函数名 <code>add_one</code> 作为第一个参数传递给 <code>do_twice</code>。</p>
+<p>不同于闭包，<code>fn</code> 是一个类型而不是一个 trait，所以直接指定 <code>fn</code> 作为参数而不是声明一个带有 <code>Fn</code> 作为 trait 约束的泛型参数。</p>
+<p>函数指针实现了所有三个闭包 trait（<code>Fn</code>、<code>FnMut</code> 和 <code>FnOnce</code>），所以总是可以在调用期望闭包的函数时传递函数指针作为参数。倾向于编写使用泛型和闭包 trait 的函数，这样它就能接受函数或闭包作为参数。</p>
+<p>尽管如此，一个只期望接受 <code>fn</code> 而不接受闭包的情况的例子是与不存在闭包的外部代码交互时：C 语言的函数可以接受函数作为参数，但 C 语言没有闭包。</p>
+<p>作为一个既可以使用内联定义的闭包又可以使用命名函数的例子，让我们看看一个标准库中 <code>Iterator</code> trait 提供的 <code>map</code> 方法的应用。使用 <code>map</code> 函数将一个数字 vector 转换为一个字符串 vector，就可以使用闭包，如示例 20-29 所示：</p>
+<figure class="listing">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let list_of_numbers = vec![1, 2, 3];
+    let list_of_strings: Vec&lt;String&gt; =
+        list_of_numbers.iter().map(|i| i.to_string()).collect();
+<span class="boring">}</span></code></pre>
+<figcaption>示例 20-29：使用闭包和 `map` 方法将数字转换为字符串</figcaption>
+</figure>
+<p>或者，也可以把一个函数作为 <code>map</code> 的参数来代替闭包。示例 20-30 展示了这种写法。</p>
+<figure class="listing">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let list_of_numbers = vec![1, 2, 3];
+    let list_of_strings: Vec&lt;String&gt; =
+        list_of_numbers.iter().map(ToString::to_string).collect();
+<span class="boring">}</span></code></pre>
+<figcaption>示例 20-30：使用 `String::to_string` 函数配合 `map` 方法将数字转换为字符串</figcaption>
+</figure>
+<p>注意这里必须使用 <a href="#高级-trait">“高级 trait”</a> 部分讲到的完全限定语法，因为存在多个叫做 <code>to_string</code> 的函数。</p>
+<p>这里使用了定义于 <code>ToString</code> trait 的 <code>to_string</code> 函数，标准库为所有实现了 <code>Display</code> 的类型实现了这个 trait。</p>
+<p>回忆一下第六章 <a href="#枚举值">“枚举值”</a> 部分中定义的每一个枚举成员也变成了一个构造函数。我们可以使用这些构造函数作为实现了闭包 trait 的函数指针，这意味着可以指定构造函数作为接受闭包的方法的参数，如示例 20-31 所示：</p>
+<figure class="listing">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    enum Status {
+        Value(u32),
+        Stop,
+    }
+
+    let list_of_statuses: Vec&lt;Status&gt; = (0u32..20).map(Status::Value).collect();
+<span class="boring">}</span></code></pre>
+<figcaption>示例 20-31：使用枚举构造函数和 `map` 方法从数字创建 `Status` 实例</figcaption>
+</figure>
+<p>这里，我们通过 <code>Status::Value</code> 的初始化函数，对 <code>map</code> 所作用的范围内每个 <code>u32</code> 值创建 <code>Status::Value</code> 实例。一些人倾向于函数式风格，一些人喜欢闭包。它们会编译成相同的代码，因此请选择对你来说更清晰的那一种。</p>
+<h3 id="返回闭包"></h3>
+<p>闭包表现为 trait，这意味着不能直接返回闭包。对于大部分需要返回 trait 的场景中，可以使用实现了期望返回的 trait 的具体类型来替代函数的返回值。但是这不能用于闭包，因为它们没有一个可返回的具体类型；例如，当闭包从其作用域捕获任何值时，就不允许使用函数指针 <code>fn</code> 作为返回类型。</p>
+<p>相反，可以正常地使用第十章所学的 <code>impl Trait</code> 语法。可以使用 <code>Fn</code>、<code>FnOnce</code> 和 <code>FnMut</code> 返回任何函数类型。例如，示例 20-32 中的代码就可以正常工作。</p>
+<figure class="listing">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn returns_closure() -&gt; impl Fn(i32) -&gt; i32 {
+    |x| x + 1
+}
+<span class="boring">}</span></code></pre>
+<figcaption>示例 20-32：使用 `impl Trait` 语法从函数返回闭包</figcaption>
+</figure>
+<p>然而，正如我们在第十三章 <a href="#推断和注解闭包类型">“推断和注解闭包类型”</a> 一节中提到的，每个闭包也都有自己独特的类型。如果你需要处理多个签名相同但实现不同的函数，就需要为它们使用 trait 对象。来看一下，如果写出类似示例 20-33 的代码，会发生什么。</p>
+<figure class="listing">
+<pre><code class="language-rust ignore does_not_compile">fn main() {
+    let handlers = vec![returns_closure(), returns_initialized_closure(123)];
+    for handler in handlers {
+        let output = handler(5);
+        println!("{output}");
+    }
+}
+
+fn returns_closure() -&gt; impl Fn(i32) -&gt; i32 {
+    |x| x + 1
+}
+
+fn returns_initialized_closure(init: i32) -&gt; impl Fn(i32) -&gt; i32 {
+    move |x| x + init
+}</code></pre>
+<figcaption>示例 20-33：创建一个由返回 <code>impl Fn</code> 的函数定义的闭包的 <code>Vec&lt;T&gt;</code></figcaption>
+</figure>
+<p>这里有两个函数，<code>returns_closure</code> 和 <code>returns_initialized_closure</code>，它们都返回 <code>impl Fn(i32) -&gt; i32</code>。注意它们返回的闭包是不同的，即使它们实现了相同的类型。如果尝试编译这段代码，Rust 会告诉我们这不可行：</p>
+<pre><code class="language-text">$ cargo build
+   Compiling functions-example v0.1.0 (file:///projects/functions-example)
+error[E0308]: mismatched types
+  --&gt; src/main.rs:2:44
+   |
+ 2 |     let handlers = vec![returns_closure(), returns_initialized_closure(123)];
+   |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected opaque type, found a different opaque type
+...
+ 9 | fn returns_closure() -&gt; impl Fn(i32) -&gt; i32 {
+   |                         ------------------- the expected opaque type
+...
+13 | fn returns_initialized_closure(init: i32) -&gt; impl Fn(i32) -&gt; i32 {
+   |                                              ------------------- the found opaque type
+   |
+   = note: expected opaque type `impl Fn(i32) -&gt; i32`
+              found opaque type `impl Fn(i32) -&gt; i32`
+   = note: distinct uses of `impl Trait` result in different opaque types
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `functions-example` (bin "functions-example") due to 1 previous error
+</code></pre>
+<p>错误信息告诉我们每当返回一个 <code>impl Trait</code> Rust 会创建一个独特的<strong>不透明类型</strong>（<em>opaque type</em>），这是一个无法看清 Rust 为我们构建了什么细节的类型。所以即使这些函数都返回了实现了相同 trait（ <code>Fn(i32) -&gt; i32</code>）的闭包，Rust 为我们生成的不透明类型也是不同的。这类似于 Rust 如何为不同的异步代码块生成不同的具体类型，即使它们有着相同的输出类型，如第十七章 <a href="#pin-类型与-unpin-trait">“<code>Pin</code> 类型与 <code>Unpin</code> trait”</a> 所示。我们已经多次看到这个问题的解决方案：我们可以使用 trait 对象，如示例 20-34 所示。</p>
+<figure class="listing">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span><span class="boring">    let handlers = vec![returns_closure(), returns_initialized_closure(123)];
+</span><span class="boring">    for handler in handlers {
+</span><span class="boring">        let output = handler(5);
+</span><span class="boring">        println!("{output}");
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn returns_closure() -&gt; Box&lt;dyn Fn(i32) -&gt; i32&gt; {
+    Box::new(|x| x + 1)
+}
+
+fn returns_initialized_closure(init: i32) -&gt; Box&lt;dyn Fn(i32) -&gt; i32&gt; {
+    Box::new(move |x| x + init)
+}</code></pre>
+<figcaption>示例 20-34：创建一个由返回 <code>Box&lt;dyn Fn&gt;</code> 的函数定义的闭包的 <code>Vec&lt;T&gt;</code> 以便它们有相同的类型</figcaption>
+</figure>
+<p>这段代码可以顺利编译。关于 trait 对象的更多内容，请回顾第十八章 <a href="#使用-trait-object-来抽象出共享行为">“使用 trait 对象抽象出共享行为”</a> 一节。</p>
+<p>接下来让我们学习宏！</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p074.html">← 高级类型</a><a href="index.html">目录</a><a href="p076.html">宏 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

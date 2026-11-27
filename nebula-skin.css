@@ -1,0 +1,1154 @@
+/* ============================================================
+   星云视觉皮肤层 nebula-skin.css
+   ------------------------------------------------------------
+   为什么单独一层：全站 789 个页面共用 theme-cloud.css /
+   site-redesign.css，直接改那两个文件风险太大（任何一个
+   selector 都可能被别的页面依赖）。这一层最后加载、只做
+   覆盖，出问题可以直接撤掉这一行 link，回滚成本为零。
+
+   解决的四个实测问题：
+   ① 顶部固定层叠加 320px（公告条 66 + 注入导航 203 + 目录条 51），
+      视口 900px 时 36% 被吃掉。
+   ② 注入导航的 30 个链接没有 nowrap，撑成 3 行。
+   ③ 首页顶部 340px 封面图把 hero 推到首屏之外。
+   ④ hero 是整块高饱和蓝渐变，白字压在上面，像十年前的官网。
+
+   目录：
+   1. 设计变量
+   2. 顶部导航瘦身
+   3. Hero 星云重制
+   4. 卡片与按钮统一
+   5. 粒子画布与光标光晕
+   6. 滚动进入动画
+   7. 深色主题适配
+   8. 响应式
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. 设计变量
+   ------------------------------------------------------------ */
+:root {
+  --nb-blue: #3B6EF6;
+  --nb-blue-deep: #2E5BFF;
+  --nb-violet: #8B5CF6;
+  --nb-violet-soft: #A78BFA;
+  --nb-cyan: #22D3EE;
+
+  --nb-ink: #0B1230;
+  --nb-ink-2: #26304F;
+  --nb-ink-3: #4A5673;
+  --nb-ink-4: #6B7796;
+
+  --nb-bg: #F6F8FF;
+  --nb-bg-2: #EEF2FF;
+  --nb-card: #FFFFFF;
+
+  --nb-grad-text: linear-gradient(112deg, #1B3FC9 0%, #2E5BFF 26%, #7C5BF6 62%, #B81FC9 100%);
+  --nb-grad-btn: linear-gradient(135deg, #3B6EF6 0%, #7C5BF6 100%);
+
+  --nb-r-sm: 10px;
+  --nb-r-md: 16px;
+  --nb-r-lg: 22px;
+  --nb-r-xl: 30px;
+
+  --nb-sh-sm: 0 2px 10px rgba(46, 91, 255, .07), 0 1px 2px rgba(11, 18, 48, .04);
+  --nb-sh-md: 0 10px 28px -8px rgba(46, 91, 255, .16), 0 2px 8px rgba(11, 18, 48, .04);
+  --nb-sh-lg: 0 24px 56px -16px rgba(46, 91, 255, .22), 0 8px 20px -10px rgba(11, 18, 48, .06);
+  --nb-sh-glow: 0 0 0 1px rgba(255, 255, 255, .7) inset, 0 20px 50px -14px rgba(139, 92, 246, .26);
+
+  --nb-ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* 统一的顶部高度，后面所有锚点/吸顶都引用它，避免各处写死 64/56 打架。
+     2026-11-20：62px → 60px，与内页 header.ccnav 主行（.ccnav-in 60px）对齐。
+     此前首页 62 / 内页 60，两页之间跳转会看到导航高度抖 2px、吸顶锚点错位。 */
+  --nb-nav-h: 60px;
+}
+
+/* ------------------------------------------------------------
+   2. 顶部导航瘦身
+   ------------------------------------------------------------ */
+
+/* 2.1 公告条：原本 position:fixed 压在页面最上层，占 66px。
+   改成跟随文档流 —— 信息还在，但不再遮挡首屏。 */
+#ccMergeBar {
+  position: relative !important;
+  top: auto !important;
+  z-index: 20 !important;
+  padding: 9px 16px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  background: linear-gradient(100deg, #101A3A 0%, #1B2A5C 55%, #24306E 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .08) !important;
+}
+#ccMergeBar a,
+#ccMergeBar button {
+  font-size: 12px !important;
+  padding: 5px 12px !important;
+  line-height: 1.2 !important;
+}
+
+/* 2.2 顶部封面横幅：340px 高的大图把 hero 顶到 420px 之下。
+   首页第一眼应该是 slogan，不是一张被裁切的图。 */
+figure.cc-pg-cover {
+  display: none !important;
+}
+
+/* 2.3 注入的白驹导航：30 个链接默认折成 3 行共 203px。
+   这里强制单行 + 横向滚动 + 右侧渐隐提示，高度锁到 --nb-nav-h。
+   2026-11-20 修「有宽有窄」：左右内距原先固定 18px，而内页 header.ccnav 的
+   .ccnav-in 是 max-width:1240px + 16px 内距（1440 屏下内容从 x=116 起）。
+   于是从首页点进任何内页，Logo 会横跳 82px，导航看起来一会儿宽一会儿窄。
+   这里用与内页同一套公式算内距，宽屏对齐到 1240 基线，窄屏自然退化为 18px；
+   毛玻璃背景条仍占满整宽，只有内容对齐，不通栏裁切。 */
+body > nav:not([id]) {
+  height: var(--nb-nav-h) !important;
+  min-height: var(--nb-nav-h) !important;
+  max-height: var(--nb-nav-h) !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding-left: max(16px, calc((100% - 1240px) / 2 + 16px)) !important;
+  padding-right: max(16px, calc((100% - 1240px) / 2 + 16px)) !important;
+  background: rgba(255, 255, 255, .80) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(203, 213, 235, .7) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 4px 20px -12px rgba(46, 91, 255, .22) !important;
+}
+
+body > nav:not([id]) .logo {
+  flex: none !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  letter-spacing: .2px !important;
+  white-space: nowrap !important;
+  background: var(--nb-grad-text) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  padding-right: 10px !important;
+  border-right: 1px solid rgba(203, 213, 235, .8) !important;
+  margin-right: 2px !important;
+}
+
+body > nav:not([id]) .nav-links {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 1px !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  /* 右缘渐隐，暗示还有更多，不用画滚动条 */
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 95%, transparent 100%) !important;
+  mask-image: linear-gradient(90deg, #000 0, #000 95%, transparent 100%) !important;
+}
+body > nav:not([id]) .nav-links::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+}
+
+body > nav:not([id]) .nav-links a {
+  flex: none !important;
+  white-space: nowrap !important;
+  padding: 7px 11px !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  color: var(--nb-ink-3) !important;
+  transition: background .16s var(--nb-ease), color .16s var(--nb-ease) !important;
+}
+body > nav:not([id]) .nav-links a:hover {
+  background: rgba(59, 110, 246, .09) !important;
+  color: var(--nb-blue-deep) !important;
+}
+/* 第一个链接是「← 白驹总站」，用金色标出来但收窄，别抢主视觉 */
+body > nav:not([id]) .nav-links a:first-child {
+  background: rgba(59, 110, 246, .07) !important;
+  color: #7C3AED !important;
+  margin-right: 6px !important;
+}
+
+/* 2.4 二级目录条：原本 top:203（跟着旧导航走），现在贴到 62px */
+#modTocBar {
+  top: var(--nb-nav-h) !important;
+  height: 44px !important;
+  background: rgba(255, 255, 255, .86) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(170%) !important;
+  backdrop-filter: blur(16px) saturate(170%) !important;
+  border-bottom: 1px solid rgba(203, 213, 235, .6) !important;
+  box-shadow: 0 6px 18px -14px rgba(46, 91, 255, .3) !important;
+}
+
+/* ------------------------------------------------------------
+   3. Hero 星云重制
+   ------------------------------------------------------------ */
+
+body[data-theme] .nb-hero {
+  position: relative !important;
+  overflow: hidden !important;
+  /* 两版都试过，这里是第三版：
+     ① 整块蓝紫渐变（#EFF3FF 中段）→ hero 只有 880px 宽，盒内外差一个色阶，
+        1440px 下有两条明显的竖向接缝
+     ② 纯透明 → 接缝没了，但把页面自带的背景暴露出来：
+        /website/index.html 立刻变成一整片高饱和亮蓝 + 深色标题，对比度崩坏
+     最终解法：不透明，但**底色取与 body 完全相同的 #F6F8FF**，
+     只让白色柔光落在盒内。这样左右边缘内外同色 → 无接缝，
+     同时仍然是一块实底，能压住页面原本的花背景。 */
+  background:
+    radial-gradient(72% 62% at 50% -14%, rgba(255, 255, 255, .96) 0%, rgba(255, 255, 255, 0) 68%),
+    #F6F8FF !important;
+  isolation: isolate;
+}
+
+/* 三层柔光斑：蓝（左上）/ 紫（右中）/ 青（左下），大半径低透明度，
+   滚动时由 JS 做轻微反向位移，形成视差 */
+body[data-theme] .nb-hero::before,
+body[data-theme] .nb-hero::after {
+  content: "" !important;
+  position: absolute !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  filter: blur(70px) !important;
+  z-index: 0 !important;
+  opacity: .85 !important;
+}
+body[data-theme] .nb-hero::before {
+  width: 720px !important;
+  height: 720px !important;
+  top: -320px !important;
+  left: 50% !important;
+  margin-left: -360px !important;
+  background: radial-gradient(circle, rgba(96, 145, 255, .34) 0%, rgba(96, 145, 255, 0) 68%) !important;
+}
+body[data-theme] .nb-hero::after {
+  width: 560px !important;
+  height: 560px !important;
+  top: 120px !important;
+  right: -180px !important;
+  background: radial-gradient(circle, rgba(167, 139, 250, .32) 0%, rgba(167, 139, 250, 0) 68%) !important;
+}
+
+/* 第三块青光斑靠 JS 注入的 .nb-orb 承担（伪元素只有两个名额） */
+body[data-theme] .nb-hero .nb-orb {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  left: -160px;
+  bottom: -220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, .26) 0%, rgba(34, 211, 238, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 顶部一条极细的渐变光线，给 hero 一个"起点" */
+body[data-theme] .nb-hero .nb-hairline {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 110, 246, .35) 30%, rgba(139, 92, 246, .35) 70%, transparent);
+  z-index: 2;
+}
+
+/* 粒子画布铺在光斑之上、内容之下 */
+body[data-theme] .nb-hero canvas.nb-particles {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  opacity: .9;
+}
+
+/* hero 内的所有内容提升到画布之上 */
+body[data-theme] .nb-hero > *:not(canvas):not(.nb-orb):not(.nb-hairline) {
+  position: relative;
+  z-index: 2;
+}
+
+/* 3.1 标题：从纯白改成蓝紫渐变字，落在浅色底上层次通透 */
+body[data-theme] .nb-hero h1 {
+  color: var(--nb-ink) !important;
+  text-shadow: none !important;
+  letter-spacing: -.5px !important;
+  line-height: 1.18 !important;
+  font-weight: 900 !important;
+}
+body[data-theme] .nb-hero h1 .g,
+body[data-theme] .nb-hero h1 span {
+  background: var(--nb-grad-text) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* 3.2 副标题：原来 rgba(255,255,255,.95)，浅底上会消失 */
+body[data-theme] .nb-hero .sub,
+body[data-theme] .nb-hero p {
+  color: var(--nb-ink-3) !important;
+  text-shadow: none !important;
+}
+
+/* 3.3 徽章与 chip：白玻璃 + 细边框，取代半透明白块 */
+body[data-theme] .nb-hero .badge,
+body[data-theme] .nb-hero .chip,
+body[data-theme] .nb-hero .gate-chips .chip {
+  background: rgba(255, 255, 255, .78) !important;
+  border: 1px solid rgba(203, 213, 235, .9) !important;
+  color: var(--nb-ink-2) !important;
+  text-shadow: none !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 10px rgba(46, 91, 255, .06) !important;
+  transition: transform .18s var(--nb-ease), box-shadow .18s var(--nb-ease), border-color .18s var(--nb-ease) !important;
+}
+body[data-theme] .nb-hero .chip:hover,
+body[data-theme] .nb-hero .gate-chips .chip:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(139, 92, 246, .55) !important;
+  box-shadow: 0 10px 24px -10px rgba(139, 92, 246, .4) !important;
+}
+body[data-theme] .nb-hero .gate-chips .chip-role {
+  background: var(--nb-grad-btn) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  box-shadow: 0 8px 22px -10px rgba(59, 110, 246, .6) !important;
+}
+
+/* 3.4 声波条：原来白色半透明，浅底上看不见 */
+#wave {
+  background: rgba(255, 255, 255, .62) !important;
+  border: 1px solid rgba(203, 213, 235, .9) !important;
+}
+#wave-label {
+  color: var(--nb-ink-4) !important;
+  text-shadow: none !important;
+}
+
+/* 3.5 对话卡片：给它更干净的玻璃质感和一点上浮 */
+#chatbox {
+  background: rgba(255, 255, 255, .86) !important;
+  border: 1px solid rgba(213, 222, 240, .95) !important;
+  box-shadow: var(--nb-sh-lg) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+  backdrop-filter: blur(18px) saturate(150%) !important;
+  border-radius: var(--nb-r-lg) !important;
+  transition: box-shadow .3s var(--nb-ease), transform .3s var(--nb-ease) !important;
+}
+#chatbox:hover {
+  box-shadow: 0 34px 70px -22px rgba(46, 91, 255, .28), 0 10px 24px -12px rgba(11, 18, 48, .07) !important;
+}
+
+/* 3.6 首页「知识网络 · 统一入口」的四个快捷入口：
+   内联样式写死了 background:#101728（近黑）+ 金色字，跟浅色星云主调正面冲突。
+   用属性选择器精准命中这一组，不影响其它链接。 */
+a[style*="background:#101728"],
+a[style*="background: rgb(16, 23, 40)"] {
+  background: rgba(255, 255, 255, .9) !important;
+  border: 1px solid rgba(209, 220, 240, .95) !important;
+  color: var(--nb-ink-2) !important;
+  box-shadow: var(--nb-sh-sm) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  transition: transform .22s var(--nb-ease), box-shadow .22s var(--nb-ease),
+              border-color .22s var(--nb-ease), color .22s var(--nb-ease) !important;
+}
+a[style*="background:#101728"]:hover,
+a[style*="background: rgb(16, 23, 40)"]:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(139, 92, 246, .5) !important;
+  box-shadow: 0 12px 28px -12px rgba(139, 92, 246, .42) !important;
+  color: var(--nb-blue-deep) !important;
+}
+/* 图标原本跟文字同色（金），改成品牌蓝，与白卡更搭 */
+a[style*="background:#101728"] .cc-ic {
+  color: var(--nb-blue) !important;
+}
+
+/* 3.7 身份胶囊：它本来就在 hero 容器里（不是定位 bug），
+   但居中显示又压在标题上方，抢了视觉。移到右上角并收小。 */
+body[data-theme] .nb-hero .bj-idbox {
+  position: absolute !important;
+  top: 12px !important;
+  right: 16px !important;
+  z-index: 6 !important;
+  padding: 4px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .62) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 2px 10px rgba(46, 91, 255, .07) !important;
+}
+body[data-theme] .nb-hero .bj-idbox .bj-role-chip,
+body[data-theme] .nb-hero .bj-idbox .bj-login,
+body[data-theme] .nb-hero .bj-idbox .bj-me,
+body[data-theme] .nb-hero .bj-idbox .bj-bell {
+  height: 28px !important;
+  padding: 0 10px !important;
+  font-size: 12px !important;
+}
+
+/* ------------------------------------------------------------
+   4. 卡片与按钮统一
+   ------------------------------------------------------------ */
+
+/* 4.1 内容区背景：不铺死板纯白，给一点蓝紫倾向 */
+body {
+  background-color: var(--nb-bg) !important;
+}
+
+/* 4.2 深色胶囊按钮（原样是 #0f172a 底 + 彩色字，和浅色主调打架）
+   统一改成白卡 + 渐变图标，hover 时描边染色 */
+section .block-head .pill,
+section .gate-links a,
+a.pill-dark {
+  background: #fff !important;
+  border: 1px solid rgba(213, 222, 240, .95) !important;
+  color: var(--nb-ink-2) !important;
+  box-shadow: var(--nb-sh-sm) !important;
+}
+
+/* 4.3 区块标题节奏：紧一点的字距更显现代（真实结构是 section > .sec-head > h2） */
+section > .sec-head h2,
+section h2 {
+  letter-spacing: -.3px !important;
+}
+
+/* 4.4 通用卡片：统一圆角/阴影/hover 上浮 */
+.card,
+.work-card,
+.news-card,
+.mod-card,
+section .grid > a,
+section .grid > div {
+  border-radius: var(--nb-r-md) !important;
+  border: 1px solid rgba(219, 226, 242, .9) !important;
+  background: #fff !important;
+  box-shadow: var(--nb-sh-sm) !important;
+  transition: transform .28s var(--nb-ease), box-shadow .28s var(--nb-ease), border-color .28s var(--nb-ease) !important;
+}
+/* 2026-10-28 修：这组通用 hover 抬升带 !important，且 "section .grid > a:hover" 的
+   特异性(0,2,2)高于 .nb3d-card 的(0,1,0)，会把 nebula-3d.css 里的
+   transform: translate3d(...) rotateX(var(--nb3-rx)) rotateY(var(--nb3-ry)) 整条顶掉。
+   结果就是 JS 明明写好了 --nb3-rx/--nb3-ry，卡片却只平移 4px、不做 3D 倾斜。
+   用 :not(.nb3d-card) 把 3D 卡片排除，让它们走自己的变换。 */
+.card:hover:not(.nb3d-card),
+.work-card:hover:not(.nb3d-card),
+.news-card:hover:not(.nb3d-card),
+.mod-card:hover:not(.nb3d-card),
+section .grid > a:hover:not(.nb3d-card),
+section .grid > div:hover:not(.nb3d-card) {
+  transform: translateY(-4px) !important;
+  border-color: rgba(139, 92, 246, .42) !important;
+  box-shadow: var(--nb-sh-md) !important;
+}
+
+/* 4.5 章节配图：assets/body/bb-index.png 是 AI 生成的"工具全景"图，
+   画面上方有一条生成畸变的无意义英文（"QND HIFTRDG..."），放大会非常露怯。
+   这里压掉上部只留工作区主体，并统一圆角与柔和投影。 */
+img[src*="bb-index.png"],
+img[src*="bb-ai-tools"],
+img[src*="pg-index"] {
+  border-radius: var(--nb-r-lg) !important;
+  object-fit: cover !important;
+  object-position: center bottom !important;
+  box-shadow: var(--nb-sh-md) !important;
+}
+/* 原图 1132x647，比例 1.75:1。用 aspect-ratio 把展示区锁到 2.6:1，
+   cover 就会按宽度铺满、从顶部裁掉约 33% —— 正好是那条乱码英文的位置。
+   用比例而不是固定高度：容器宽度随响应式变化时，裁切量才不会忽有忽无。 */
+img[src*="bb-index.png"] {
+  aspect-ratio: 2.6 / 1 !important;
+  height: auto !important;
+  width: 100% !important;
+}
+
+/* 4.6 正文内嵌图统一处理，避免直角图突兀地切在圆角卡片之间 */
+section img:not([class]),
+article img:not([class]) {
+  border-radius: var(--nb-r-md);
+}
+
+/* ------------------------------------------------------------
+   5. 粒子画布与光标光晕
+   ------------------------------------------------------------ */
+
+/* 跟随鼠标的光晕：只在支持 hover 的设备上出现，触屏不加载 */
+.nb-cursor-glow {
+  position: fixed;
+  width: 520px;
+  height: 520px;
+  margin: -260px 0 0 -260px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(139, 92, 246, .13) 0%, rgba(59, 110, 246, .07) 38%, transparent 68%);
+  transition: opacity .5s var(--nb-ease);
+  will-change: transform;
+}
+.nb-cursor-glow.on {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   6. 滚动进入动画
+   ------------------------------------------------------------ */
+.nb-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s var(--nb-ease), transform .7s var(--nb-ease);
+  will-change: opacity, transform;
+}
+.nb-reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------
+   7. 深色主题适配
+   ------------------------------------------------------------ */
+body[data-theme="deep"] {
+  --nb-bg: #05081A;
+  --nb-bg-2: #0B1030;
+  --nb-ink: #E9F0FB;
+  --nb-ink-2: #C8D4EA;
+  --nb-ink-3: #9BAAC6;
+  --nb-ink-4: #7E8DA8;
+  --nb-card: #0E1430;
+  --nb-grad-text: linear-gradient(118deg, #7FA6FF 0%, #A78BFA 55%, #F472B6 100%);
+  --nb-sh-sm: 0 2px 10px rgba(0, 0, 0, .4);
+  --nb-sh-md: 0 10px 30px -8px rgba(0, 0, 0, .55);
+  --nb-sh-lg: 0 26px 60px -18px rgba(0, 0, 0, .65);
+}
+
+body[data-theme="deep"] > nav:not([id]) {
+  background: rgba(9, 13, 34, .78) !important;
+  border-bottom-color: rgba(64, 82, 130, .5) !important;
+}
+body[data-theme="deep"] > nav:not([id]) .logo {
+  border-right-color: rgba(64, 82, 130, .6) !important;
+}
+body[data-theme="deep"] > nav:not([id]) .nav-links a {
+  color: #9BAAC6 !important;
+}
+body[data-theme="deep"] > nav:not([id]) .nav-links a:hover {
+  background: rgba(127, 166, 255, .12) !important;
+  color: #AFC6FF !important;
+}
+
+body[data-theme="deep"] .nb-hero {
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(90, 130, 255, .16) 0%, rgba(90, 130, 255, 0) 62%),
+    linear-gradient(180deg, #060A1E 0%, #0A1030 45%, #120B2E 78%, #05081A 100%) !important;
+}
+body[data-theme="deep"] .nb-hero::before {
+  background: radial-gradient(circle, rgba(56, 225, 255, .22) 0%, rgba(56, 225, 255, 0) 68%) !important;
+}
+body[data-theme="deep"] .nb-hero::after {
+  background: radial-gradient(circle, rgba(139, 92, 246, .30) 0%, rgba(139, 92, 246, 0) 68%) !important;
+}
+body[data-theme="deep"] .nb-hero .nb-orb {
+  background: radial-gradient(circle, rgba(232, 121, 250, .20) 0%, rgba(232, 121, 250, 0) 70%);
+}
+body[data-theme="deep"] .nb-hero h1 {
+  color: #F2F7FF !important;
+}
+body[data-theme="deep"] .nb-hero .sub,
+body[data-theme="deep"] .nb-hero p {
+  color: #A9B8D2 !important;
+}
+body[data-theme="deep"] .nb-hero .badge,
+body[data-theme="deep"] .nb-hero .chip {
+  background: rgba(255, 255, 255, .07) !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+  color: #D6E2F5 !important;
+}
+body[data-theme="deep"] #chatbox {
+  background: rgba(14, 20, 48, .92) !important;
+  border-color: rgba(64, 82, 130, .7) !important;
+}
+body[data-theme="deep"] #modTocBar {
+  background: rgba(9, 13, 34, .9) !important;
+  border-bottom-color: rgba(64, 82, 130, .45) !important;
+}
+body[data-theme="deep"] .nb-cursor-glow {
+  background: radial-gradient(circle, rgba(139, 92, 246, .18) 0%, rgba(56, 225, 255, .07) 40%, transparent 68%);
+}
+
+/* ------------------------------------------------------------
+   8. 响应式
+   ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  /* 2026-11-20：原先这里把高度降到 58px，但内页 .ccnav-in 在 1024–901 之间仍是 60px，
+     平板竖屏跨页会抖 2px。内页没有这一档，首页也取消，统一 60 到 900 再降。
+     左右内距也不在这一档收：内页 901–1024 仍是 16px，这里收成 12px 会让 Logo 错位 4px。 */
+  :root { --nb-nav-h: 60px; }
+  body > nav:not([id]) { gap: 8px !important; }
+  body > nav:not([id]) .logo { font-size: 14px !important; }
+  body > nav:not([id]) .nav-links a { padding: 6px 9px !important; font-size: 13px !important; }
+}
+
+/* 2026-11-20：900px 是内页主行 60→54、内距 16→12 的断点，首页跟进同一档，
+   否则 900–641 之间首页 56/58、内页 54，还是会对不上。 */
+@media (max-width: 900px) {
+  :root { --nb-nav-h: 54px; }
+  body > nav:not([id]) { padding: 0 12px !important; }
+}
+
+@media (max-width: 640px) {
+  :root { --nb-nav-h: 54px; }
+  body > nav:not([id]) { padding: 0 12px !important; }
+  /* 小屏只留品牌，链接交给汉堡菜单（responsive.js 已生成） */
+  body > nav:not([id]) .nav-links { display: none !important; }
+  body[data-theme] .nb-hero::before { width: 480px !important; height: 480px !important; margin-left: -240px !important; }
+  body[data-theme] .nb-hero::after { width: 360px !important; height: 360px !important; }
+  body[data-theme] .nb-hero .nb-orb { width: 320px; height: 320px; }
+  .nb-cursor-glow { display: none !important; }
+  #modTocBar { height: 40px !important; }
+}
+
+/* 2026-11-20 窄屏导航溢出修：
+   390px 视口下最右侧设置按钮被切掉一半（.nav-actions 右边缘 397 > 390），
+   360px / 320px 分别溢出 37 / 77px，页面还被撑出横向滚动。
+   成因是右侧控件太多：主题 44 + 身份芯片 105（图标 + "选身份" 文字）+ 设置 44 + 三道 6px 间距。
+   做法：窄屏下身份芯片只留图标，控件收到 34px、间距收到 4–5px，省出约 50px。 */
+@media (max-width: 480px) {
+  body > nav:not([id]) { gap: 6px !important; }
+  body > nav:not([id]) .nav-actions { gap: 5px !important; }
+  body > nav:not([id]) .bj-idbox { gap: 4px !important; }
+  body > nav:not([id]) .bj-idbox .bj-role-nm { display: none !important; }
+  body > nav:not([id]) .bj-idbox .bj-role-chip,
+  body > nav:not([id]) .bj-idbox .bj-login { padding-left: 10px !important; padding-right: 10px !important; }
+  body > nav:not([id]) .theme-btn,
+  body > nav:not([id]) .nav-gear,
+  body > nav:not([id]) .bj-nav-settings { width: 34px !important; height: 34px !important; min-width: 34px !important; }
+  body > nav:not([id]) .burger { width: 38px !important; font-size: 20px !important; }
+  /* 品牌允许收缩，极端情况下先让品牌名省略号而不是把右侧控件挤出屏幕 */
+  body > nav:not([id]) .brand { min-width: 0 !important; flex: 0 1 auto !important; }
+  body > nav:not([id]) .bj-brand { min-width: 0 !important; }
+  body > nav:not([id]) .bj-brand .bj-name { min-width: 0 !important; }
+}
+
+/* 2026-11-20：≤420 只保留图形标。
+   注入样式里原本就有这条意图（@media(max-width:420px){ nav .brand .nm{display:none} }），
+   但品牌归一化把 .nm 换成了 .bj-name，规则变成空转，窄屏才会溢出。
+   这里按新结构补回来：360 / 320 宽下省出约 90px，横向滚动彻底消失。 */
+@media (max-width: 420px) {
+  body > nav:not([id]) .bj-brand .bj-name { display: none !important; }
+}
+
+/* 尊重系统的"减少动效"设置 */
+@media (prefers-reduced-motion: reduce) {
+  .nb-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  body[data-theme] .nb-hero canvas.nb-particles { display: none !important; }
+  .nb-cursor-glow { display: none !important; }
+}
+
+/* ============================================================
+   9. 门户首页 section#gate · 星云夜景重制
+   ------------------------------------------------------------
+   本站有两张首页，第 3 节只处理了其中一张：
+     · /website/index.html —— 内容落地页，首屏是 .nb-hero（浅色）
+     · /                  —— 白驹总站门户，首屏是 section#gate（白字 + 对话工作台）
+   从总站进入时，原首屏是一整块高饱和蓝底叠 14% 白色网格，
+   与全站星云语言脱节，且蓝色纯度太高显得硬。
+   这里把 #gate 换成「深空底 + 三层极光 + 极淡网格」，
+   白字对比度反而更高，工作台白卡也浮得起来。
+   前缀 body[data-theme] 是用来压过 #gate 自带的 (0,1,0) 优先级。
+   ============================================================ */
+
+body[data-theme] #gate {
+  background:
+    /* 网格压在最上，但透明度压到 3.5%，只留"有结构"的暗示 */
+    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px) 0 0 / 100% 44px,
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px) 0 0 / 44px 100%,
+    /* 三层极光：左上青、右上紫、底部品红 */
+    radial-gradient(78% 62% at 16% -6%, rgba(34, 211, 238, .30) 0%, rgba(34, 211, 238, 0) 62%),
+    radial-gradient(70% 58% at 86% 4%, rgba(139, 92, 246, .44) 0%, rgba(139, 92, 246, 0) 66%),
+    radial-gradient(64% 54% at 52% 96%, rgba(184, 31, 201, .22) 0%, rgba(184, 31, 201, 0) 70%),
+    linear-gradient(160deg, #060C26 0%, #0B1740 38%, #12102F 72%, #0A0B22 100%) !important;
+  transition: background .35s ease;
+}
+
+/* 标题右侧补一层柔光，避免深底上白字发飘 */
+body[data-theme] #gate h1 {
+  text-shadow: 0 2px 28px rgba(90, 140, 255, .45), 0 1px 2px rgba(6, 12, 38, .6);
+}
+body[data-theme] #gate h1 .g {
+  /* 深底上用中间调渐变：过浅会和白字糊在一起，看不出品牌色 */
+  background: linear-gradient(112deg, #7FB2FF 0%, #6FE3FF 40%, #B49BFF 74%, #F58AF5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 消息区是滚动容器，首屏会停在欢迎语中段，第一行被硬切一半很难看。
+   顶部加 16px 渐隐遮罩，切边变成"渐出"，读起来自然。 */
+body[data-theme] #gate #msgs {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16px);
+  mask-image: linear-gradient(180deg, transparent 0, #000 16px);
+}
+
+/* 工作台欢迎语里的有序列表：原来继承了容器的居中，1.2.3. 顶在左边、正文居中，看着像排坏了 */
+body[data-theme] #gate #msgs ol {
+  padding-left: 1.5em;
+  margin: 10px 0;
+  text-align: left;
+}
+body[data-theme] #gate #msgs ol > li {
+  text-align: left;
+  list-style-position: outside;
+  line-height: 1.75;
+}
+
+/* 徽章 / 胶囊：深底上提高玻璃感与边界清晰度 */
+body[data-theme] #gate .badge,
+body[data-theme] #gate .gate-chips .chip {
+  background: rgba(255, 255, 255, .10) !important;
+  border: 1px solid rgba(255, 255, 255, .22) !important;
+  color: #F2F6FF !important;
+  text-shadow: none !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .10) inset;
+}
+body[data-theme] #gate .gate-chips .chip:hover {
+  background: rgba(255, 255, 255, .18) !important;
+  border-color: rgba(158, 232, 255, .55) !important;
+  transform: translateY(-1px);
+}
+body[data-theme] #gate .sub {
+  color: rgba(226, 236, 255, .82) !important;
+  text-shadow: none !important;
+}
+
+/* 粒子画布：只铺满首屏高度，铺整个 #gate（1600+px）会让粒子稀到看不见 */
+body[data-theme] #gate canvas.nb-particles {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100vh !important;
+  max-height: 100%;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  opacity: .85;
+}
+
+/* 第三青色光斑：落在右下方，与左上青 / 右上紫错开 */
+body[data-theme] #gate .nb-orb {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -180px;
+  bottom: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, .26) 0%, rgba(34, 211, 238, 0) 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 顶部渐变光线：深底上换成青色，作为「起点」 */
+body[data-theme] #gate .nb-hairline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, .55) 28%, rgba(139, 92, 246, .55) 72%, transparent);
+  z-index: 2;
+}
+
+/* 内容整体提到粒子与光斑之上 */
+body[data-theme] #gate .inner {
+  position: relative;
+  z-index: 3;
+}
+
+/* 收紧标题到工作台之间的空档：原来是 chips 22px + wavewrap 16px 叠加 */
+body[data-theme] #gate .gate-chips {
+  margin: 18px auto 0;
+}
+body[data-theme] #gate #wavewrap {
+  margin: 10px 0 4px;
+}
+
+/* 深色主题下再压暗一档，保持与全站 deep 主题一致。
+   底部不要收到纯黑（#030014）：深空底太黑会把极光吃掉，
+   整块看起来像没画完，留一点蓝紫余温更有层次。 */
+body[data-theme="deep"] #gate {
+  background:
+    linear-gradient(rgba(255, 255, 255, .028) 1px, transparent 1px) 0 0 / 100% 44px,
+    linear-gradient(90deg, rgba(255, 255, 255, .028) 1px, transparent 1px) 0 0 / 44px 100%,
+    radial-gradient(78% 62% at 16% -6%, rgba(56, 225, 255, .30) 0%, rgba(56, 225, 255, 0) 62%),
+    radial-gradient(70% 58% at 86% 4%, rgba(139, 92, 246, .46) 0%, rgba(139, 92, 246, 0) 66%),
+    radial-gradient(64% 54% at 52% 96%, rgba(232, 121, 250, .22) 0%, rgba(232, 121, 250, 0) 70%),
+    linear-gradient(160deg, #050620 0%, #091033 42%, #0D0A2A 78%, #070718 100%) !important;
+}
+
+/* 移动端：光斑收小，避免糊住文字 */
+@media (max-width: 720px) {
+  body[data-theme] #gate .nb-orb { width: 300px; height: 300px; right: -140px; }
+  body[data-theme] #gate canvas.nb-particles { height: 100vh !important; }
+}
+
+/* ------------------------------------------------------------
+   9.1 导航右侧动作区收口（768px 实测溢出 53px）
+   动作区在 768 时仍有 6 个控件、宽 516px：主题 38 + 开始对话 119
+   + 齿轮 34 + 身份 152 + 铃铛 43 + 搜索 65。加上品牌与汉堡后
+   撑到 821px，整页被顶出一条横向滚动。
+   按信息重要性逐级隐藏：先砍可替代的（齿轮/铃铛/搜索），
+   再砍文字（身份名），最后才动"开始对话"这个主 CTA。
+   ------------------------------------------------------------ */
+@media (max-width: 900px) {
+  body[data-theme] nav #modNavGear,
+  body[data-theme] nav .bj-bell,
+  body[data-theme] nav #ccowSearchBtn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-theme] nav .nav-actions {
+    gap: 6px !important;
+  }
+  body[data-theme] nav .nav-actions .cta {
+    padding: 7px 13px !important;
+    font-size: 13px !important;
+  }
+  /* 身份胶囊只留头像，名字省掉；点开才是完整选择器 */
+  body[data-theme] nav .bj-idbox .bj-role-nm {
+    display: none !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   9.2 #gate 类枢纽页首屏的可读性收口
+   除门户总站外，另有 6 个枢纽页复用 #gate 容器：
+   ai-academy / ai-build-hall / biz-center / map-guide / skill-hub / tech-museum。
+   它们走同一套深空底 + 白字（视觉上是对的：入口页比内容页更"舞台化"），
+   但内容密度失控，必须按排版规则收一收：
+     ① 副标题把三四个句子塞成一段，实测 1080px 宽下 3 行满幅，读不动
+     ② 胶囊入口 18 个、宽度参差，折成 4 行锯齿
+     ③ 标题后半段渐变过浅，深底上和白字糊在一起
+   ------------------------------------------------------------ */
+
+/* ① 副标题：收窄成"导语"，行高放开，去掉满幅压迫感 */
+body[data-theme] #gate .inner > .sub,
+body[data-theme] #gate .inner > p.sub {
+  max-width: 620px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-size: 14px !important;
+  line-height: 1.95 !important;
+  color: rgba(214, 226, 250, .78) !important;
+  letter-spacing: .01em;
+  text-wrap: pretty;
+}
+body[data-theme] #gate .inner > .sub b {
+  color: #8FE8FF !important;
+  font-weight: 600;
+}
+
+/* ② 胶囊入口：改成等宽网格，行宽对齐后不再锯齿。
+      用 auto-fit 而不是固定列数，窄屏自动降列。 */
+body[data-theme] #gate .gate-chips {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(146px, 1fr)) !important;
+  gap: 8px 9px !important;
+  max-width: 780px !important;
+  margin: 20px auto 0 !important;
+}
+body[data-theme] #gate .gate-chips .chip {
+  justify-content: center !important;
+  padding: 9px 12px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ③ 标题渐变：深底上用高亮中间调，保住"AI 工具"那种彩色识别度 */
+body[data-theme] #gate h1 .g {
+  /* 之前两版都太浅：深底上白字旁边的浅渐变读起来仍是"白"，
+     拿不到品牌色识别度。这里换成高饱和中间调，
+     同时保留足够亮度保证深底对比度（WCAG AA 反白 ≈ 4.5:1）。 */
+  background: linear-gradient(112deg, #7CC6FF 0%, #5FE3FF 38%, #A98BFF 72%, #F58AF5 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* ④ 信任数字条：数字与标签的层级拉开，项间距统一 */
+body[data-theme] #gate .trust {
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 26px;
+}
+body[data-theme] #gate .trust .t b {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+body[data-theme] #gate .trust .t span {
+  font-size: 12px;
+  color: rgba(200, 214, 240, .62);
+  margin-top: 2px;
+}
+
+/* ⑤ 首屏配图：AI 生图带明显块状伪影，再放大满幅会更明显。
+      收窄 + 圆角 + 轻微压暗，让它是"配图"而不是"主视觉"。 */
+body[data-theme] #gate .inner > img {
+  max-width: 720px !important;
+  width: 100%;
+  border-radius: 18px;
+  margin-top: 34px !important;
+  box-shadow: 0 24px 60px -24px rgba(4, 10, 34, .8);
+}
+
+/* ------------------------------------------------------------
+   10. 移动端导航修复（390px 实测崩坏）
+   现象：nav 本身 56px 高且 nowrap，但里面的 .links 只有 94px 宽，
+   被压成 249px 高的一列竖排胶囊，向上 -97px 溢出、向下盖住页面。
+   截图里看到的就是"胶囊被裁 + 文字叠在首屏上"。
+   修法：让 .links 在窄屏变成一行横向滚动，所有链接仍然可达，
+   不需要额外汉堡菜单（全站现在只有门户首页有 .burger）。
+   注意 :not(.open)：门户首页的 .links 是下拉菜单，不能被压成 56px。
+   ------------------------------------------------------------ */
+@media (max-width: 900px) {
+  body[data-theme] nav .links:not(.open) {
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    height: var(--nb-nav-h) !important;
+    max-height: var(--nb-nav-h) !important;
+    align-items: center;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 93%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 93%, transparent 100%);
+  }
+  body[data-theme] nav .links:not(.open)::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  body[data-theme] nav .links:not(.open) > * {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  /* 身份胶囊让位给链接：窄屏只留图标 */
+  body[data-theme] nav .rolesw .nm,
+  body[data-theme] nav .rolesw small {
+    display: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  /* 装饰性宠物在手机上是纯噪音，且会压住右下角的主 CTA */
+  #ccowork-pet,
+  .ccowork-panel {
+    display: none !important;
+  }
+  /* 二级目录条与导航同高对齐，避免两层叠在一起 */
+  #modTocBar {
+    top: var(--nb-nav-h) !important;
+  }
+}
+
+/* 10.1 窄屏把链接行真正撑开
+   flex:1 1 auto 只解决了"不被压缩"，实测仍停在 94px（约一个胶囊宽），
+   因为 .links 上有页面自带的 max-width/flex-basis。
+   这里显式给满剩余空间，并把重复的 role 切换器整体隐藏
+   （身份入口在 nav-actions 的胶囊里已经有了，两个入口是冗余）。 */
+@media (max-width: 720px) {
+  body[data-theme] nav .links:not(.open) {
+    flex: 1 1 0% !important;
+    width: auto !important;
+    max-width: none !important;
+    margin-right: 6px;
+  }
+  body[data-theme] nav .rolesw {
+    display: none !important;
+  }
+}
+
+/* 10.2 "更多入口"折叠按钮 + 窄屏导语收口 */
+.nb-chips-toggle {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .nb-chips-toggle {
+    display: block;
+    margin: 12px auto 0;
+    padding: 9px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(158, 232, 255, .42);
+    background: rgba(255, 255, 255, .08);
+    color: #DCE8FF;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    cursor: pointer;
+    transition: background .18s var(--nb-ease), border-color .18s var(--nb-ease);
+  }
+  .nb-chips-toggle:hover {
+    background: rgba(255, 255, 255, .16);
+    border-color: rgba(158, 232, 255, .7);
+  }
+
+  /* 导语在 390px 下会摊成 5–6 行关键词墙。
+     限 3 行 + 渐隐，保留"讲了什么"的信息，不再占满一屏。 */
+  body[data-theme] #gate .inner > .sub,
+  body[data-theme] #gate .inner > p.sub {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 13px !important;
+    line-height: 1.85 !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   10.3 全站导航归一 + 窄屏溢出兜底
+   两页实测异常：
+     · book/index.html 的 .nav-actions 是 display:block，4 个控件竖排
+       堆成 98px，把导航从 62px 撑到 185px（3 倍）
+     · ai-projects.html 390px 下有 461px 宽的评论区子块，整页横向溢出 114px
+   ------------------------------------------------------------ */
+
+/* 导航动作区一律横排，不允许竖排堆叠 */
+body[data-theme] nav .nav-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 导航链接一律单行（窄屏由 §10 接管为横向滚动） */
+body[data-theme] nav .links {
+  flex-wrap: nowrap !important;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  /* 用 clip 而不是 hidden：hidden 会让 body 变成滚动容器，
+     内部 position:sticky 的目录条会失效；clip 不创建滚动容器。 */
+  body[data-theme] {
+    overflow-x: clip;
+  }
+  /* 评论区子块在窄屏要能换行，否则单行长文本撑破视口 */
+  .who,
+  .who * ,
+  .bj-comments .who {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ------------------------------------------------------------
+   11. 首访引导弹窗定位
+   实测：同样的 #bjOnboardDlg，在 chapter-01 上是 margin 232.95/459px
+   （JS 按视口算过居中），在 ai-projects 和门户首页上是 left:0/top:0/margin:0，
+   直接怼在左上角。首访第一眼就是这个错位弹窗，必须兜住。
+   用 50% + translate 做居中，与 JS 算不算 margin 无关；
+   margin 强制归零，避免和 translate 双重偏移。 */
+body[data-theme] #bjOnboardDlg {
+  left: 50% !important;
+  top: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) !important;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+/* 窄屏上弹窗铺满宽度，圆角留一点呼吸 */
+@media (max-width: 720px) {
+  body[data-theme] #bjOnboardDlg {
+    width: calc(100vw - 32px) !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   11.1 书稿页导航（.wrap > nav）高度异常
+   book/index.html 的 nav 实测 120px：三个子元素最高 41px、上下 padding 28px，
+   合计只有 69px，多出来的 51px 来自页面自带的 min-height。
+   统一收口到与全站一致的 62px，并允许内容在极窄屏自然换行。 */
+body[data-theme] .wrap > nav {
+  min-height: 0 !important;
+  align-content: center;
+}
+@media (min-width: 901px) {
+  body[data-theme] .wrap > nav {
+    height: var(--nb-nav-h) !important;
+    max-height: var(--nb-nav-h) !important;
+  }
+}
+/* 书稿页容器在 390px 下多出 1px，导致可以横向挪动一格 */
+@media (max-width: 900px) {
+  body[data-theme] .wrap {
+    max-width: 100% !important;
+  }
+}
+
+/* 11.2 亚像素兜底：极少数页面（实测 book/index 390px）残留 1px 可横移。
+   给 html 也加 clip；body 已经是 clip，双保险且不改变纵向滚动。 */
+@media (max-width: 900px) {
+  html:has(body[data-theme]) {
+    overflow-x: clip;
+  }
+}
+
+/* ------------------------------------------------------------
+   12. 特异性补丁：把 hero 皮肤层提到 (0,3,1)
+   坑：把选择器从 header.hero 改成统一的 .nb-hero 后，特异性从 (0,2,2)
+   掉到 (0,2,1)，被 site-redesign.css 里 body[data-theme] header.hero
+   的规则反压 —— 表现是文案层全部生效（标题变深色），
+   但**背景仍是原来那块高饱和蓝**，看起来像"改了一半"。
+   解法：用 .nb-hero.nb-hero 双写把权重提到 (0,3,1)，稳定压过页面自带规则。
+   只补真正会被压的属性，避免把 39 处规则都写一遍。
+   ------------------------------------------------------------ */
+body[data-theme] .nb-hero.nb-hero {
+  background:
+    radial-gradient(72% 62% at 50% -14%, rgba(255, 255, 255, .96) 0%, rgba(255, 255, 255, 0) 68%),
+    #F6F8FF !important;
+}
+
+body[data-theme="deep"] .nb-hero.nb-hero {
+  background:
+    radial-gradient(70% 60% at 50% -12%, rgba(59, 110, 246, .22) 0%, rgba(59, 110, 246, 0) 62%),
+    radial-gradient(60% 50% at 88% 6%, rgba(139, 92, 246, .24) 0%, rgba(139, 92, 246, 0) 66%),
+    #0B1020 !important;
+}
+
+body[data-theme] .nb-hero.nb-hero h1 {
+  color: var(--nb-ink) !important;
+}
+body[data-theme="deep"] .nb-hero.nb-hero h1 {
+  color: #F2F7FF !important;
+}
+body[data-theme] .nb-hero.nb-hero .sub {
+  color: var(--nb-ink-3) !important;
+}
+body[data-theme="deep"] .nb-hero.nb-hero .sub {
+  color: rgba(200, 214, 240, .78) !important;
+}

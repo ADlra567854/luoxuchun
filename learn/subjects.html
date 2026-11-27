@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>自学路线 · 场景实战 · 办公/写作/编程/创作/生活怎么用 AI · 白驹 ccowork</title>
+<meta name="description" content="自学路线的场景实战页：按真实使用场景（办公、写作、编程、内容创作、学习研究、生活）组织，每个场景给能直接试的官方工具与能跑的例子。不局限学科，重点是拿 AI 解决眼前的问题。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/learn/subjects.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+.sj-wrap{max-width:1180px;margin:0 auto;padding:26px 20px 60px}
+.sj-hero{background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(56,182,255,.12));border:1px solid rgba(139,92,246,.24);border-radius:20px;padding:30px 28px;margin-bottom:22px}
+.sj-hero h1{font-size:clamp(24px,3.4vw,34px);font-weight:900;line-height:1.3;margin:0 0 12px}
+.sj-hero .lead{font-size:15px;line-height:1.9;color:var(--muted);max-width:850px;margin:0}
+.sj-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 6px}
+.sj-kpi .k{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:14px;padding:14px 16px}
+.sj-kpi .k b{display:block;font-size:23px;font-weight:900;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.sj-kpi .k i{display:block;font-size:12px;color:var(--muted);font-style:normal;margin-top:4px}
+.sj-guide{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:18px;padding:22px 24px;margin-bottom:22px}
+.sj-guide h2{font-size:17px;font-weight:800;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.sj-guide h2::before{content:"";width:4px;height:17px;border-radius:2px;background:linear-gradient(#4f8cff,#8b5cf6)}
+.sj-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;list-style:none;padding:0;margin:0}
+.sj-steps li{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.16);border-radius:12px;padding:13px 15px;font-size:13.5px;line-height:1.75}
+.sj-steps li b{display:block;font-size:13px;color:#7048d0;margin-bottom:4px;font-weight:800}
+[data-theme="deep"] .sj-steps li b{color:#c4a6ff}
+.sj-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 20px}
+.sj-tab{border:1px solid rgba(120,150,200,.28);background:transparent;color:var(--muted);font-size:13.5px;font-weight:700;padding:8px 18px;border-radius:999px;cursor:pointer;transition:.16s}
+.sj-tab:hover{border-color:rgba(79,140,255,.5);color:#2f5fd0}
+.sj-tab.on{background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);color:#fff;border-color:transparent}
+[data-theme="deep"] .sj-tab:hover{color:#7fe4ff}
+.sj-sec{margin:0}
+.sj-sec[hidden]{display:none}
+.sj-sec>h2{font-size:19px;font-weight:900;margin:0 0 6px;display:flex;align-items:center;gap:9px}
+.sj-sec>h2::before{content:"";width:5px;height:19px;border-radius:3px;background:linear-gradient(#4f8cff,#38b6ff 50%,#8b5cf6)}
+.sj-sec>.sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;line-height:1.8}
+.sj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.sj-card{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:16px;padding:17px 18px;transition:.18s;display:flex;flex-direction:column}
+.sj-card:hover{transform:translateY(-2px);border-color:rgba(139,92,246,.45);box-shadow:0 10px 24px rgba(139,92,246,.13)}
+.sj-card .top{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.sj-card .ico{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:16px;background:linear-gradient(135deg,rgba(79,140,255,.18),rgba(139,92,246,.16));flex:0 0 auto}
+.sj-card h3{font-size:15px;font-weight:800;margin:0;line-height:1.4}
+.sj-card .meta{font-size:12px;color:var(--muted);margin:0 0 10px;line-height:1.7}
+.sj-card .why{font-size:13px;line-height:1.8;color:var(--text);opacity:.9;margin:0 0 12px;flex:1}
+.sj-card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.sj-tag{font-size:11.5px;padding:3px 9px;border-radius:999px;background:rgba(139,92,246,.1);color:#7048d0;border:1px solid rgba(139,92,246,.25)}
+[data-theme="deep"] .sj-tag{background:rgba(196,166,255,.1);color:#c4a6ff;border-color:rgba(196,166,255,.28)}
+.sj-tag.ok{background:rgba(34,180,120,.12);color:#177a52;border-color:rgba(34,180,120,.3)}
+.sj-card .go{display:inline-block;font-size:13px;font-weight:700;color:#7048d0;text-decoration:none;border:none!important;padding:7px 15px;border-radius:9px;background:rgba(139,92,246,.1);align-self:flex-start;transition:.16s}
+.sj-card .go:hover{background:rgba(139,92,246,.2)}
+[data-theme="deep"] .sj-card .go{color:#c4a6ff;background:rgba(196,166,255,.1)}
+.sj-note{margin-top:26px;padding:16px 18px;border-radius:14px;background:rgba(120,150,200,.07);border:1px solid rgba(120,150,200,.16);font-size:12.5px;line-height:1.9;color:var(--muted)}
+.sj-note b{color:var(--text)}
+@media(max-width:900px){.sj-kpi{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .sj-wrap{padding:16px 14px 48px}
+  .sj-hero{padding:22px 18px;border-radius:16px}
+  .sj-grid{grid-template-columns:1fr;gap:12px}
+  .sj-kpi .k b{font-size:20px}
+  .sj-tabs{gap:6px}
+  .sj-tab{font-size:12.5px;padding:7px 14px}
+}
+</style>
+</head>
+<body data-ccnav="learn" data-cctitle="自学路线 · 场景实战">
+
+<div class="sj-wrap">
+
+  <div class="sj-hero">
+    <h1>自学路线 · 别按学科学，按你要解决的事学</h1>
+    <p class="lead">AI 不止用在某一门学科——它已经渗进<b>办公、写作、编程、创作、研究、生活</b>的每一步。真正有效的学法不是啃完《人工智能导论》，而是<b>从你眼前那件事出发</b>：要写周报就学办公场景，要处理表格就学效率场景，要做小工具就学编程场景。这里按场景组织，每个都给了能直接试的官方工具和能跑的例子，先做出一个东西，再回头补原理。</p>
+    <div class="sj-kpi">
+      <div class="k"><b>7</b><i>类真实场景</i></div>
+      <div class="k"><b>24</b><i>个官方可试资源</i></div>
+      <div class="k"><b>3</b><i>条重点深做路线</i></div>
+      <div class="k"><b>0</b><i>付费门槛</i></div>
+    </div>
+  </div>
+
+  <div class="sj-guide">
+    <h2>新人指引 · 先想清楚你是哪一类</h2>
+    <ul class="sj-steps">
+      <li><b>① 天天和文档表格打交道</b>从「办公效率」进——写作、表格、会议纪要，是最快见效的场景。</li>
+      <li><b>② 想自己做个小工具/小游戏</b>从「编程与项目」进——先看能跑的例子，再学提示词和代码。</li>
+      <li><b>③ 做内容/短视频/漫剧</b>从「内容创作」进——选题、脚本、分镜、配图一条链。</li>
+      <li><b>④ 还在读书 / 想打基础</b>从「数理化学习」进——用官方仿真平台把抽象概念玩明白，再谈 AI。</li>
+    </ul>
+  </div>
+
+  <div class="sj-tabs" role="tablist">
+    <button class="sj-tab on" data-t="office" type="button" role="tab" aria-selected="true">办公效率</button>
+    <button class="sj-tab" data-t="writing" type="button" role="tab" aria-selected="false">写作表达</button>
+    <button class="sj-tab" data-t="code" type="button" role="tab" aria-selected="false">编程与项目</button>
+    <button class="sj-tab" data-t="create" type="button" role="tab" aria-selected="false">内容创作 · 漫剧</button>
+    <button class="sj-tab" data-t="study" type="button" role="tab" aria-selected="false">数理化学习</button>
+    <button class="sj-tab" data-t="agent" type="button" role="tab" aria-selected="false">智能体入门</button>
+    <button class="sj-tab" data-t="life" type="button" role="tab" aria-selected="false">生活日常</button>
+  </div>
+
+  <!-- ========== 办公效率（重点场景） ========== -->
+  <section class="sj-sec" id="sj-office">
+    <h2>办公效率 · 把重复的活交出去</h2>
+    <p class="sub">这是见效最快的场景：周报、会议纪要、表格清洗、PPT 大纲——这些每天占掉大量时间的事，AI 能直接接手第一步。下面每个都能今天就试。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">📝</span><h3>会议纪要：从录音到待办清单</h3></div>
+        <p class="meta">适合：所有人 · 浏览器就能做</p>
+        <p class="why">真实用法：把会议录音转写文本丢给模型，让它按「结论 / 待办 / 负责人 / 截止日」四栏整理。关键是把输出格式写进提示词，而不是等到会后再手工归类。本站「提示词」分区有可直接抄的模板。</p>
+        <div class="tags"><span class="sj-tag ok">今天就能用</span><span class="sj-tag">提示词模板</span></div>
+        <a class="go" href="/learn/prompts.html">抄提示词模板 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">📊</span><h3>表格清洗：不用记函数</h3></div>
+        <p class="meta">适合：Excel / WPS 用户</p>
+        <p class="why">真实用法：描述你要的清洗规则（去重、补齐空值、按列拆分），让模型直接写出公式或 Python 代码，贴回去跑。本站「实验室」有能跑的数据处理脚本可对照。</p>
+        <div class="tags"><span class="sj-tag ok">零基础</span><span class="sj-tag">能跑的代码</span></div>
+        <a class="go" href="/lab/index.html">看能跑的脚本 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🗂️</span><h3>文档归档：让 AI 帮你找</h3></div>
+        <p class="meta">适合：资料多、找不到的人</p>
+        <p class="why">真实用法：把散落的笔记喂给本地知识库工具（如 AnythingLLM、Dify），问它「上次那份报价单在哪」。本站「工具」域逐个讲了怎么搭，全部是官方来源。</p>
+        <div class="tags"><span class="sj-tag ok">本地优先</span><span class="sj-tag">官方教程</span></div>
+        <a class="go" href="/toolbox/library.html">看工具怎么用 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 写作表达 ========== -->
+  <section class="sj-sec" id="sj-writing" hidden>
+    <h2>写作表达 · 从想法到成稿</h2>
+    <p class="sub">写作是 AI 最成熟的应用之一，但大多数人只用它「续写」，效果一般。真正好用的方式是把 AI 放在结构、改写和校对环节，而不是代笔。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">✍️</span><h3>先搭结构，再填内容</h3></div>
+        <p class="meta">适合：写文章、报告、方案</p>
+        <p class="why">真实用法：先让模型只输出三级标题大纲，你确认结构后再逐节写。直接让它写全文容易跑偏，先定结构再填内容质量高得多。本站博文都是这么写的，可点开对照。</p>
+        <div class="tags"><span class="sj-tag ok">有真实范例</span><span class="sj-tag">博文</span></div>
+        <a class="go" href="/blog/">看真实成稿 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🔁</span><h3>改写：同一件事说给三种人</h3></div>
+        <p class="meta">适合：需要多版本表达</p>
+        <p class="why">真实用法：把一段专业说明分别改写成「给老板的一句话结论」「给同事的操作步骤」「给客户的通俗解释」。这个训练比单纯润色更能提升表达力。</p>
+        <div class="tags"><span class="sj-tag ok">提示词在站内</span></div>
+        <a class="go" href="/learn/prompts.html">看改写提示词 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🌏</span><h3>翻译与校对：逐句对照</h3></div>
+        <p class="meta">适合：中英互译、论文摘要</p>
+        <p class="why">真实用法：要求逐句对照输出，并指出不确定的术语。别让它一次翻整篇——分段校对才能发现它编造的地方。本站「环球语堂」分站有语言学习的官方资源。</p>
+        <div class="tags"><span class="sj-tag ok">官方资源</span></div>
+        <a class="go" href="/linguavista/">去语言学习分站 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 编程与项目（重点场景） ========== -->
+  <section class="sj-sec" id="sj-code" hidden>
+    <h2>编程与项目 · 从能跑到能改</h2>
+    <p class="sub">这是本站的重心之一。学编程最快的路不是从语法开始，而是先拿一个能跑的小项目，改一个参数、加一个功能，再回头看它为什么这么写。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">🎮</span><h3>游戏源码：5 个能跑的引擎示例</h3></div>
+        <p class="meta">适合：想做游戏的人 · 官方仓库</p>
+        <p class="why">真实案例：Godot 官方 demo、LÖVE、raylib、libGDX、Hextris——每个都给官方仓库直链和技术栈，Clone 下来就能跑。本站开源项目域把代码和作品收在一处。</p>
+        <div class="tags"><span class="sj-tag ok">官方仓库</span><span class="sj-tag">能直接跑</span></div>
+        <a class="go" href="/works/games.html">看游戏源码 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🤖</span><h3>AI 辅助编程：结对而不是代写</h3></div>
+        <p class="meta">适合：有基础、想提速</p>
+        <p class="why">真实用法：让 AI 解释报错、写测试用例、补注释，但核心逻辑自己写。本站逐个讲了 8 款编程助手与 22 款开源工具，含官方链接和上手命令。</p>
+        <div class="tags"><span class="sj-tag ok">31 款工具</span><span class="sj-tag">官方链接</span></div>
+        <a class="go" href="/learn/ai-coding-tools.html">看工具对比 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">📱</span><h3>小程序制作：从零搭一个</h3></div>
+        <p class="meta">适合：想做简单网页/小程序</p>
+        <p class="why">真实案例：本站「网页小程序制作」专题讲了从页面结构到部署的完整步骤，配套代码能直接抄。先把一个页面跑起来，再逐步加功能。</p>
+        <div class="tags"><span class="sj-tag ok">有配套代码</span><span class="sj-tag">网页版</span></div>
+        <a class="go" href="/learn/webapp.html">看制作教程 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 内容创作 · 漫剧（重点场景） ========== -->
+  <section class="sj-sec" id="sj-create" hidden>
+    <h2>内容创作 · 选题到成片</h2>
+    <p class="sub">AI 漫剧、短视频、图文——创作场景的核心是把流程拆开：选题、脚本、分镜、配图、配音，每一步都有专门的工具，别指望一个按钮全做完。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">🎬</span><h3>AI 漫剧：分镜脚本怎么拆</h3></div>
+        <p class="meta">适合：想做短剧的人 · 有真实分镜</p>
+        <p class="why">真实案例：本站漫剧区有完整的分镜脚本样例（场景、镜头、台词、时长），照着拆一集就知道流程。工具只解决画面，叙事还得靠你。</p>
+        <div class="tags"><span class="sj-tag ok">真实分镜</span><span class="sj-tag">流程拆解</span></div>
+        <a class="go" href="/works/manju.html">看漫剧案例 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🖼️</span><h3>配图与封面：风格统一</h3></div>
+        <p class="meta">适合：图文创作者</p>
+        <p class="why">真实用法：先定一个风格描述固定下来，所有图都带这段前缀，避免每张图风格漂移。本站工具域讲了主流图像工具的官方入口与许可。</p>
+        <div class="tags"><span class="sj-tag ok">官方入口</span></div>
+        <a class="go" href="/toolbox/library.html">看图像工具 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">📅</span><h3>选题库：每天写什么</h3></div>
+        <p class="meta">适合：日更创作者</p>
+        <p class="why">真实做法：让 AI 基于你的定位批量出选题，再人工筛掉没把握的。本站每日观察记录了选题怎么来的，可当样例。</p>
+        <div class="tags"><span class="sj-tag ok">每天更新</span></div>
+        <a class="go" href="/feed/">看每日选题 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 生活日常 ========== -->
+  <section class="sj-sec" id="sj-life" hidden>
+    <h2>生活日常 · 小事也能用</h2>
+    <p class="sub">AI 不只是生产力工具。生活里那些琐碎决定——旅行规划、菜谱、学习安排、账单整理——同样能帮上忙，前提是别把涉及隐私和医疗的事交给它。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">🧭</span><h3>旅行规划：给约束，别给愿望</h3></div>
+        <p class="meta">适合：出行前</p>
+        <p class="why">真实用法：写清预算、天数、同行人、交通偏好，让它输出按天的时间表，再自己去官方渠道核对开放时间和票价。AI 给的是草案，不是事实。</p>
+        <div class="tags"><span class="sj-tag ok">提示词模板</span></div>
+        <a class="go" href="/learn/prompts.html">看规划模板 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🍳</span><h3>冰箱剩菜：反向找菜谱</h3></div>
+        <p class="meta">适合：日常做饭</p>
+        <p class="why">真实用法：列出现有食材和调料，让它给三个能做的菜，标注缺什么。这类小场景最能建立对 AI 的手感。</p>
+        <div class="tags"><span class="sj-tag ok">零门槛</span></div>
+        <a class="go" href="/learn/study.html">回自学路线起点 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">⚠️</span><h3>哪些事别交给 AI</h3></div>
+        <p class="meta">重要 · 必读</p>
+        <p class="why">涉及医疗诊断、法律结论、财务决策、个人隐私的事，AI 只能做信息整理，不能替你下判断。本站每篇相关教程都标了这条线，别越过。</p>
+        <div class="tags"><span class="sj-tag ok">安全边界</span></div>
+        <a class="go" href="/about/security.html">看安全说明 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 物理 ========== -->
+  <section class="sj-sec" id="sj-physics">
+    <h2>物理 × AI：从仿真到反演</h2>
+    <p class="sub">物理和 AI 的结合点最实：一是用 AI 加速仿真，二是从观测数据反推物理参数（反问题）。下面从能用鼠标玩的开始。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">🔬</span><h3>PhET 互动仿真（科罗拉多大学）</h3></div>
+        <p class="meta">适合：高中 · 不用注册 · 中文界面</p>
+        <p class="why">把抛体运动、单摆、电路、波动这些做成可拖拽的动画。改一个参数立刻看到结果，比看公式直观得多。是理解"物理量之间什么关系"最快的入口，而且完全免费。</p>
+        <div class="tags"><span class="sj-tag ok">免费·无需登录</span><span class="sj-tag">中文</span><span class="sj-tag">高中可用</span></div>
+        <a class="go" href="https://phet.colorado.edu/zh_CN/" target="_blank" rel="noopener">打开仿真平台 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">📐</span><h3>抛体运动：从公式到数值模拟</h3></div>
+        <p class="meta">适合：高中到大学 · 需要一点 Python</p>
+        <p class="why">同一件事用两种方式做一遍：先用公式算落点，再写十行代码按时间步长积分。加上空气阻力后公式解不出来了，但数值模拟照跑——这就是为什么工程上要用计算而不是解析解。</p>
+        <div class="tags"><span class="sj-tag">数值积分</span><span class="sj-tag">十行代码</span></div>
+        <a class="go" href="https://docs.python.org/zh-cn/3/tutorial/" target="_blank" rel="noopener">Python 官方教程 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🌊</span><h3>波动与振动：看见驻波</h3></div>
+        <p class="meta">适合：高中 · 站内可直接跑</p>
+        <p class="why">本站仿真实验室里有现成的波动脚本，能调频率、阻尼、边界条件，实时画出波形。先看现象再回去看课本上的公式，会顺很多。</p>
+        <div class="tags"><span class="sj-tag ok">站内可跑</span><span class="sj-tag">可调参数</span></div>
+        <a class="go" href="/lab/simlab.html" target="_blank" rel="noopener">打开仿真实验室 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🤖</span><h3>AI 做物理：神经网络求解 PDE</h3></div>
+        <p class="meta">适合：大三以上 · 需要微积分与神经网络基础</p>
+        <p class="why">近年最热的方向之一：用神经网络近似偏微分方程的解（PINN）。它的价值在于——方程写得出但网格划不动的场景，它能给近似解。入门门槛不低，别当第一站。</p>
+        <div class="tags"><span class="sj-tag warn">进阶</span><span class="sj-tag">需数学基础</span></div>
+        <a class="go" href="https://zh.d2l.ai/" target="_blank" rel="noopener">先在站内读《动手学深度学习》→</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 化学 ========== -->
+  <section class="sj-sec" id="sj-chem" hidden>
+    <h2>化学 × AI：结构决定性质，AI 在猜结构</h2>
+    <p class="sub">化学里 AI 最成熟的两个方向是「分子性质预测」和「反应路径预测」。高中阶段可以先从可视化入手。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">⚛️</span><h3>分子结构 3D 可视化</h3></div>
+        <p class="meta">适合：高中 · 浏览器直接打开</p>
+        <p class="why">把分子式变成能转动的 3D 模型，看键角、看空间构型。有机化学里"同分异构"这种抽象概念，转两圈就明白了。免费工具，不用装软件。</p>
+        <div class="tags"><span class="sj-tag ok">免费</span><span class="sj-tag">浏览器可用</span></div>
+        <a class="go" href="https://molview.org/" target="_blank" rel="noopener">打开 MolView →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🧪</span><h3>PhET 化学仿真</h3></div>
+        <p class="meta">适合：高中 · 中文</p>
+        <p class="why">酸碱中和、气体性质、浓度与反应速率，都能拖滑块看变化。做不了真实实验的时候（学校没条件、或者有危险），这是最接近动手的替代。</p>
+        <div class="tags"><span class="sj-tag ok">免费·中文</span><span class="sj-tag">可替代实验课</span></div>
+        <a class="go" href="https://phet.colorado.edu/zh_CN/simulations/filter?subjects=chemistry" target="_blank" rel="noopener">化学仿真列表 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🔗</span><h3>分子性质预测：AI 到底在预测什么</h3></div>
+        <p class="meta">适合：大学 · 概念为主</p>
+        <p class="why">给 AI 一个分子结构（图），让它预测沸点、溶解度、毒性。核心思路是把分子当成"图的节点和边"，然后用图神经网络。这是 AI for Science 里落地最实的应用之一。</p>
+        <div class="tags"><span class="sj-tag">图神经网络</span><span class="sj-tag">AI for Science</span></div>
+        <a class="go" href="https://zh.d2l.ai/" target="_blank" rel="noopener">从深度学习基础开始 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">📊</span><h3>实验数据处理：拟合与误差</h3></div>
+        <p class="meta">适合：高中到大学 · 立刻能用</p>
+        <p class="why">化学实验的数据处理（线性拟合、求斜率、算误差）用表格软件或 Python 十行代码就能做，比手算快且不易错。这是最"低门槛高回报"的一项，建议优先学。</p>
+        <div class="tags"><span class="sj-tag ok">立刻可用</span><span class="sj-tag">替代手算</span></div>
+        <a class="go" href="https://numpy.org/doc/stable/user/absolute_beginners.html" target="_blank" rel="noopener">NumPy 官方入门 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 数学 ========== -->
+  <section class="sj-sec" id="sj-math" hidden>
+    <h2>数学 × AI：函数图像是所有直觉的起点</h2>
+    <p class="sub">AI 的数学基础是线代、概率、微积分三件套。但在那之前，先把"函数长什么样"这件事看够。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">📈</span><h3>Desmos 函数绘图</h3></div>
+        <p class="meta">适合：高中 · 免费 · 无需注册</p>
+        <p class="why">输入公式立刻出图像，可以拖滑块看参数怎么改变形状。理解"学习率""激活函数""损失曲线"这些概念时，本质都是在看函数形状——先在 Desmos 里看够，后面看论文会轻松很多。</p>
+        <div class="tags"><span class="sj-tag ok">免费</span><span class="sj-tag">滑块调参</span><span class="sj-tag">高中可用</span></div>
+        <a class="go" href="https://www.desmos.com/calculator?lang=zh-CN" target="_blank" rel="noopener">打开 Desmos →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🔷</span><h3>GeoGebra 几何与代数</h3></div>
+        <p class="meta">适合：高中 · 中文 · 教材配套</p>
+        <p class="why">比 Desmos 覆盖更广：几何作图、立体几何、概率分布、微积分都能做。国内很多教材的配套资源就是基于它，跟着课本进度用最顺。</p>
+        <div class="tags"><span class="sj-tag ok">免费·中文</span><span class="sj-tag">教材配套</span></div>
+        <a class="go" href="https://www.geogebra.org/?lang=zh" target="_blank" rel="noopener">打开 GeoGebra →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🎬</span><h3>3Blue1Brown：看见线性代数</h3></div>
+        <p class="meta">适合：大学 · 有中文字幕</p>
+        <p class="why">把矩阵乘法、特征向量、神经网络反向传播做成动画。很多人学线代卡在"这些符号到底在干什么"，这个系列专门解决这件事。看完再看教材会顺很多。</p>
+        <div class="tags"><span class="sj-tag ok">免费</span><span class="sj-tag">动画讲解</span></div>
+        <a class="go" href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">线性代数系列 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">📚</span><h3>机器学习的数学基础</h3></div>
+        <p class="meta">适合：大学 · 需要线代与概率基础</p>
+        <p class="why">专门讲"学机器学习到底需要哪些数学"的书，不追求完整，只讲用得到的部分。注意：这本书是 CC BY-NC-ND 许可，本站只做官方外链，不托管全文。</p>
+        <div class="tags"><span class="sj-tag warn">NC-ND 仅外链</span><span class="sj-tag">官方免费 PDF</span></div>
+        <a class="go" href="https://mml-book.github.io/" target="_blank" rel="noopener">官方主页 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 智能体 ========== -->
+  <section class="sj-sec" id="sj-agent" hidden>
+    <h2>智能体入门：先分清强弱，再谈落地</h2>
+    <p class="sub">「智能体」这个词现在被用得很泛。这一组按从概念到动手的顺序排，看完至少能判断别人说的智能体是哪一类。</p>
+    <div class="sj-grid">
+      <div class="sj-card">
+        <div class="top"><span class="ico">🧠</span><h3>弱智能体 vs 强智能体</h3></div>
+        <p class="meta">最该先搞清的一组概念</p>
+        <p class="why"><b>弱智能体</b>（Narrow AI）：只在特定任务上强，比如只能下棋、只能识别图片、只能回答问题。现在所有商用 AI 都属于这一类。<br><b>强智能体</b>（AGI）：能跨领域迁移、自己定目标、有通用推理能力。目前<b>不存在</b>，属于研究方向。看到有人把"能调用工具"说成强智能体，那是概念混用。</p>
+        <div class="tags"><span class="sj-tag">概念澄清</span><span class="sj-tag">必读</span></div>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🔧</span><h3>什么是 AI Agent（工程视角）</h3></div>
+        <p class="meta">适合：想动手做的人</p>
+        <p class="why">工程上说的 Agent = 大模型 + 工具调用 + 循环 + 记忆。它不改模型本身，只是让模型能"查资料、跑代码、看结果、再来一轮"。理解了这四件套，你就知道为什么它有时会绕圈。</p>
+        <div class="tags"><span class="sj-tag">工具调用</span><span class="sj-tag">循环与记忆</span></div>
+        <a class="go" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic 官方指南 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">📝</span><h3>从零写第一个 Agent</h3></div>
+        <p class="meta">适合：会 Python 的人</p>
+        <p class="why">不用框架，直接调 API + 自己写 while 循环。写一遍就明白框架帮你做了什么、以及为什么容易死循环。这是最推荐的第一步——先手写，再用框架。</p>
+        <div class="tags"><span class="sj-tag ok">可动手</span><span class="sj-tag">无需框架</span></div>
+        <a class="go" href="/learn/tutorials/" target="_blank" rel="noopener">站内教程 43 章 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🗺️</span><h3>智能体的历史：从规则到学习</h3></div>
+        <p class="meta">适合：想搞清来龙去脉的人</p>
+        <p class="why">专家系统（1980s，手写规则）→ 统计学习（2000s，特征工程）→ 深度学习（2012 后，自动提特征）→ 大模型 Agent（2023 后，工具调用）。每一代都解决上一代的一个具体瓶颈，不是纯替换。</p>
+        <div class="tags"><span class="sj-tag">发展脉络</span><span class="sj-tag">不吹不黑</span></div>
+        <a class="go" href="/works/museum.html" target="_blank" rel="noopener">站内 AI 博物馆 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🏫</span><h3>高中：国家中小学智慧教育平台</h3></div>
+        <p class="meta">适合：高中师生 · 官方 · 免费</p>
+        <p class="why">教育部官方平台，信息科技、人工智能相关课程与教材资源都在这里。注意：教材有版权，本站只做官方外链，不搬全文——要看就在官方看。</p>
+        <div class="tags"><span class="sj-tag ok">官方·免费</span><span class="sj-tag">仅外链</span></div>
+        <a class="go" href="https://basic.smartedu.cn/" target="_blank" rel="noopener">打开官方平台 →</a>
+      </div>
+      <div class="sj-card">
+        <div class="top"><span class="ico">🎓</span><h3>大学：李宏毅机器学习</h3></div>
+        <p class="meta">适合：大学 · 中文授课 · 公开</p>
+        <p class="why">中文圈最完整的机器学习公开课之一，每年更新，讲得比多数教材口语化。适合作为"第一门系统课"，比直接啃英文教材容易坚持。</p>
+        <div class="tags"><span class="sj-tag ok">公开课</span><span class="sj-tag">中文</span></div>
+        <a class="go" href="https://speech.ee.ntu.edu.tw/~hylee/ml/2023-spring.php" target="_blank" rel="noopener">课程主页 →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="sj-note">
+    <b>收录原则</b>：只收官方平台、官方文档、开放许可的公开课。有版权的教材（人教版等）只做官方外链，本站不托管全文。<br>
+    <b>不收录什么</b>：需要付费墙的资源、来源不明的"AI 课程大礼包"、以及编造的论文与链接。<br>
+    <b>和别的板块怎么分工</b>：这个页面讲「各场景下怎么把 AI 用起来」；<a href="/learn/study.html">自学路线</a>讲「按什么顺序学」；<a href="/learn/tutorials/">教程</a>是具体动手章节；<a href="/learn/prompts.html">提示词库</a>是拿来就用的句子。四者不重复。
+  </div>
+
+</div>
+
+<script src="/site-nav.js"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+(function(){
+  try{
+    var tabs = document.querySelectorAll('.sj-tab');
+    var map = {
+      office:'sj-office', writing:'sj-writing', code:'sj-code', create:'sj-create',
+      study:'sj-physics', agent:'sj-agent', life:'sj-life'
+    };
+    var all=['sj-office','sj-writing','sj-code','sj-create','sj-life','sj-physics','sj-chem','sj-math','sj-agent'];
+    function show(k){
+      all.forEach(function(id){ var el=document.getElementById(id); if(el) el.hidden=true; });
+      var t=document.getElementById(map[k]); if(t) t.hidden=false;
+      if(k==='study') ['sj-chem','sj-math'].forEach(function(id){var el=document.getElementById(id); if(el) el.hidden=false;});
+    }
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        var k=tab.getAttribute('data-t');
+        tabs.forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false');});
+        tab.classList.add('on');tab.setAttribute('aria-selected','true');
+        show(k);
+        try{history.replaceState(null,'','#'+k);}catch(e){}
+      });
+    });
+    var h=(location.hash||'').replace('#','');
+    if(h && document.querySelector('.sj-tab[data-t="'+h+'"]')) document.querySelector('.sj-tab[data-t="'+h+'"]').click();
+    else show('office');
+  }catch(e){}
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

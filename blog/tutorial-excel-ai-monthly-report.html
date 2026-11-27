@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel + AI 做月度报表：不会函数也能交差 · 白驹 ccowork</title>
+<meta name="description" content="月度报表的完整流程：把明细整理成一维表、脱敏、用数据透视表算核心指标、让 AI 写 SUMIFS 公式并交叉验证、出图、起草文字说明。含耗时成本与三个常见坑。">
+<meta name="keywords" content="Excel + AI 做月度报表：不会函数也能交差,普通人教程,ccowork,白驹 ccowork,AI 工具">
+<link rel="canonical" href="https://ccoworkbaiju.cn/blog/tutorial-excel-ai-monthly-report.html">
+<meta property="og:title" content="Excel + AI 做月度报表：不会函数也能交差 · 白驹 ccowork">
+<meta property="og:description" content="月度报表的完整流程：把明细整理成一维表、脱敏、用数据透视表算核心指标、让 AI 写 SUMIFS 公式并交叉验证、出图、起草文字说明。含耗时成本与三个常见坑。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ccoworkbaiju.cn/blog/tutorial-excel-ai-monthly-report.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Excel + AI 做月度报表：不会函数也能交差 · 白驹 ccowork">
+<meta name="twitter:description" content="月度报表的完整流程：把明细整理成一维表、脱敏、用数据透视表算核心指标、让 AI 写 SUMIFS 公式并交叉验证、出图、起草文字说明。含耗时成本与三个常见坑。">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Excel + AI 做月度报表：不会函数也能交差","description":"月度报表的完整流程：把明细整理成一维表、脱敏、用数据透视表算核心指标、让 AI 写 SUMIFS 公式并交叉验证、出图、起草文字说明。含耗时成本与三个常见坑。","url":"https://ccoworkbaiju.cn/blog/tutorial-excel-ai-monthly-report.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ccoworkbaiju.cn/blog/tutorial-excel-ai-monthly-report.html"},"datePublished":"2026-10-27","dateModified":"2026-10-27","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"inLanguage":"zh-CN"}</script>
+<style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="works" data-theme="cloud"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/sec/toolbox.jpg" alt="Excel + AI 做月度报表：不会函数也能交差" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy" decoding="async"></div>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Excel + AI 做月度报表：不会函数也能交差" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">Excel + AI 做月度报表：不会函数也</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">🤖</text>
+</svg>
+<div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>6 分钟</span><span class="blog-tag">教程 · 办公</span></div>
+<div class="blog-divider"></div>
+<h1>Excel + AI 做月度报表：不会函数也能交差</h1>
+<p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">月底加班做报表，通常不是不会函数，是数据没整理成能算的样子。这篇把流程拆成三段：整理、算指标、写成人话，第一次 90 分钟，之后每月 30 分钟。</p>
+<h2>一 · 月度报表为什么每次都加班</h2>
+<p>月底最典型的场景：明细表有几千行，领导要「本月卖了多少钱、跟上月比怎么样、哪些客户掉了、下个月怎么办」。你打开表格，函数忘得差不多，透视表只会拖一下，图表配色又调半小时。等做完已经晚上十点，第二天还被问「这个数和上周那份对不上」。</p>
+<p>这件事拆开其实只有三段：<strong>把数据整理成能算的样子</strong>、<strong>算出四五个关键指标</strong>、<strong>写成一段人话</strong>。三段里 AI 能接的是第二段和第三段的一部分：写公式、起草文字。第一段必须自己动手，因为数据脏不脏只有你知道。</p>
+<p>下面这套流程，第一次做大约 90 分钟，之后每月 30 分钟以内。</p>
+
+<h2>二 · 你需要准备什么</h2>
+<table><thead><tr><th style="white-space:nowrap">角色</th><th>工具</th><th style="white-space:nowrap">成本</th></tr></thead><tbody>
+<tr><td style="white-space:nowrap">表格软件</td><td><a href="https://www.wps.cn/" target="_blank" rel="noopener">WPS Office</a>（表格）、<a href="https://www.microsoft.com/zh-cn/microsoft-365/excel" target="_blank" rel="noopener">微软 Excel</a>、<a href="https://docs.qq.com/" target="_blank" rel="noopener">腾讯文档</a>、<a href="https://www.feishu.cn/" target="_blank" rel="noopener">飞书多维表格</a>，任选一个熟悉的</td><td>WPS 与腾讯文档有免费版；Microsoft 365 为订阅制，价格以<a href="https://www.microsoft.com/zh-cn/microsoft-365/buy/compare-all-microsoft-365-products" target="_blank" rel="noopener">官方定价页</a>为准</td></tr>
+<tr><td style="white-space:nowrap">AI 助手</td><td><a href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a>、<a href="https://www.doubao.com/" target="_blank" rel="noopener">豆包</a>、<a href="https://tongyi.aliyun.com/" target="_blank" rel="noopener">通义千问</a>，网页版即可</td><td>免费</td></tr>
+<tr><td style="white-space:nowrap">原始数据</td><td>本月订单明细、客户名单、上月报表（用来对比）</td><td>—</td></tr>
+<tr><td style="white-space:nowrap">脱敏后的副本</td><td>删掉姓名、手机号、身份证、地址的版本</td><td>—</td></tr>
+</tbody></table>
+<p>预算可以是 0 元：WPS 免费版和腾讯文档就够做透视表和图表。付费的 Office 优势在于函数和 Power Query 更完整，但不是必需品。</p>
+
+<h2>三 · 一步一步做</h2>
+
+<h3>第 1 步 · 把明细整理成「一维表」（20 分钟）</h3>
+<p>这是整件事的地基，AI 帮不了你。合格的一维表要满足四条：</p>
+<ol>
+<li><strong>一行一条记录</strong>，不要出现「小计」「合计」混在数据行里。</li>
+<li><strong>第一行是列名</strong>，且只有一行；不要两行表头、不要合并单元格。</li>
+<li><strong>日期写成一个格式</strong>，推荐 <code>2026-10-01</code>，不要混用「10月1日」「10/1」。</li>
+<li><strong>金额只写数字</strong>，不要带「元」「¥」，单位统一后写在列名里（例如「金额（元）」）。</li>
+</ol>
+<p>WPS 里的具体操作：选中日期列 → 顶部「数据」→「分列」，按分隔符或固定宽度拆开；选中整列 → 右键「设置单元格格式」→「自定义」→ 输入 <code>yyyy-mm-dd</code> 统一显示；清理重复行用「数据」→「删除重复项」；查找替换用 Ctrl+H。</p>
+
+<h3>第 2 步 · 先脱敏，再给 AI（5 分钟）</h3>
+<p>把姓名替换成「客户 A、客户 B」或编号，删掉手机号、身份证号、详细地址，再复制数据。这不是形式主义：客户名单属于个人信息，能不传就不传。需要 AI 分析时，<strong>只给它数字和结构，不给身份信息</strong>。</p>
+
+<h3>第 3 步 · 用数据透视表算核心指标（15 分钟）</h3>
+<p>选中数据区域任意单元格 →「插入」→「数据透视表」→ 选「新工作表」。右侧字段面板里：</p>
+<ul>
+<li>把「日期」拖到<strong>行</strong>区域，右键日期 →「组合」→ 按月；</li>
+<li>把「金额」拖到<strong>值</strong>区域，默认是求和，若不是就右键值字段 →「值字段设置」→ 选「求和」；</li>
+<li>把「客户」拖到<strong>行</strong>区域下方，就能看每个客户每月贡献；</li>
+<li>把「订单号」拖到<strong>值</strong>区域并改成「计数」，得到订单量。</li>
+</ul>
+<p>这样一次能得到四个数：本月总额、上月总额、订单数、客户数。它们是月报的骨架，其余指标都从这四个数推。</p>
+
+<h3>第 4 步 · 让 AI 写公式，你负责验证（20 分钟）</h3>
+<p>函数记不住没关系，把需求描述清楚让 AI 写，然后自己验证。示例提示词：</p>
+<pre><code>我的表格结构：A 列是日期（yyyy-mm-dd），B 列是客户名，C 列是金额（数字）。
+请在 E2 单元格写一个公式，计算 2026 年 10 月的金额合计。
+要求：
+1. 用 SUMIFS 函数；
+2. 不要用数组公式，我要能直接粘贴；
+3. 给出公式后，用一句话解释每个参数；
+4. 再给一个算「9 月合计」的版本，方便我算环比。</code></pre>
+<p>拿到公式后做两件事验证：<strong>先手动加总三五行核对</strong>，再用数据透视表的合计交叉验证。两个结果一致，公式才可信。环比算法是 <code>（本月 - 上月）/ 上月</code>，把结果单元格格式设成百分比。</p>
+<p>同一套提示词可以问出更多：按客户算 Top 5、算复购客户数、算平均客单价、找出连续两个月下滑的客户。每次都要求「给公式 + 解释 + 让我验证的方法」。</p>
+
+<h3>第 5 步 · 出一张图（10 分钟）</h3>
+<p>选中透视表的数据区域 →「插入」→「图表」→ 选「簇状柱形图」，把月份放横轴、金额放纵轴。一张图就够，不要做五张。图的作用是让领导三秒看懂趋势，标题直接写成结论，例如「10 月销售额环比下降，主要来自 A 类客户」。X 轴标签、单位、数据来源备注都要写清楚。</p>
+
+<h3>第 6 步 · 让 AI 起草文字，你改数字（15 分钟）</h3>
+<p>把脱敏后的汇总数字（不是明细）贴给 AI，用这个提示词：</p>
+<pre><code>下面是本月汇总数据：____（贴数字）。
+请写一段 300 字左右的月度说明，分三段：
+1. 本月整体情况（只说数字，不评价）；
+2. 异常项（哪一项变化最大，可能是哪个客户/品类）；
+3. 下月建议（给 2 条可执行动作）。
+要求：数字必须来自我给你的数据，不许补充任何我没提供的数字或原因；
+看不清的地方写「需核实」，不要猜。</code></pre>
+<p>拿到稿子后，<strong>逐个数字对照你的表</strong>。AI 最常见的错误是把「下降 12%」写成「下降 21%」，因为它会把数字重新组织。凡是你没给的原因，它写出来的都要删掉。</p>
+
+<h3>第 7 步 · 存档与复用（5 分钟）</h3>
+<p>文件命名统一成「2026-10-月度报表.xlsx」，同目录放导出的 PDF。把这次的透视表和数据清洗步骤录成一个小模板文件，下个月只替换原始数据，透视表刷新一下（右键透视表 →「刷新」）就出结果。这就是「第二次只要 30 分钟」的原因。</p>
+
+<h2>四 · 耗时与成本</h2>
+<table><thead><tr><th style="white-space:nowrap">环节</th><th style="white-space:nowrap">第一次</th><th style="white-space:nowrap">之后每月</th><th>花费</th></tr></thead><tbody>
+<tr><td style="white-space:nowrap">数据整理</td><td>20 分钟</td><td>10 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">脱敏</td><td>5 分钟</td><td>5 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">透视表与指标</td><td>15 分钟</td><td>5 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">公式与验证</td><td>20 分钟</td><td>5 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">图表</td><td>10 分钟</td><td>3 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">文字说明</td><td>15 分钟</td><td>5 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">存档</td><td>5 分钟</td><td>2 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">合计</td><td>约 90 分钟</td><td>约 30–35 分钟</td><td>0 元起</td></tr>
+</tbody></table>
+
+<h2>五 · 三个常见坑</h2>
+
+<h3>坑一 · 把带合并单元格的表直接做透视表</h3>
+<p>合并单元格会让透视表只认第一行的值，后面全变空白。做之前先「取消合并单元格」（WPS：开始 → 合并居中 → 取消合并），再补全空值。多行表头也要合并成一行。</p>
+
+<h3>坑二 · 把真实客户信息整段贴给 AI</h3>
+<p>很多公司对客户数据外传有明确限制。稳妥做法是<strong>先脱敏再提问</strong>：姓名换编号、手机号删掉、地址只保留到城市。只给 AI 结构和数字，能完成 90% 的分析需求。</p>
+
+<h3>坑三 · 不核对 AI 写的数字</h3>
+<p>AI 会把「本月 128 万，上月 143 万」写成「环比增长 12%」。这类错误在报表里是硬伤。<strong>规则很简单：AI 只负责组织语言，所有数字由你从表里抄，抄完再自加一遍</strong>。</p>
+
+<h2>六 · 自检清单</h2>
+<ul>
+<li>明细表是一维表：一行一条、单行表头、无合并单元格</li>
+<li>日期格式统一，金额是纯数字且单位写在列名里</li>
+<li>数据已脱敏：没有姓名、手机号、身份证、详细地址</li>
+<li>透视表刷新后总额与手动加总一致</li>
+<li>AI 写的公式已在表里实际验证过，且与透视表交叉核对</li>
+<li>环比、同比计算口径写在表里，别人能看懂</li>
+<li>图表标题是结论，不是「图表 1」</li>
+<li>文字说明里每个数字都能在表中定位到</li>
+<li>文件按「年-月-月度报表」命名，同时留了 PDF 版本</li>
+</ul>
+
+<h2>七 · 延伸阅读</h2>
+<ul>
+<li><a href="tutorial-remove-ai-tone.html">AI 写作怎么去掉「AI 味」</a>：月报文字最容易被看出是 AI 写的。</li>
+<li><a href="tutorial-ai-resume.html">用 AI 做一份能投的简历</a>：会做报表是可以写进简历的硬技能。</li>
+<li><a href="https://support.microsoft.com/zh-cn/excel" target="_blank" rel="noopener">微软 Excel 帮助中心</a>、<a href="https://www.wps.cn/" target="_blank" rel="noopener">WPS 官网</a>：函数和功能说明的官方来源，2026-10-27 实测可打开。</li>
+</ul>
+
+<hr>
+<p style="font-size:13px;color:var(--muted)">本页为原创教程，工具信息核验于 2026-10-27。</p>
+
+<section class="blog-attribution" style="margin-top:28px;padding:16px 18px;border:1px solid var(--line);border-radius:12px"><h3>出处声明</h3><p>本页由 AI 辅助生成或整理，未逐条人工核验，仅供学习参考；涉及第三方工具、模型、价格、政策及数据的信息以官方发布为准，引用内容请以原始来源及其许可条款为准。</p></section>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="tutorial-ai-resume.html" style="color:var(--gold);font-weight:700;text-decoration:none">用 AI 做一份能投的简历：从空白到</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px">📚 博客目录</a>
+  <span style="font-size:13px"><a href="tutorial-free-personal-homepage.html" style="color:var(--gold);font-weight:700;text-decoration:none">用免费工具搭一个个人主页：一晚上上线</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8">📌 出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/responsive.js?v=20261028e"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261125a"></script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+<hr>
+<p class="content-attribution" style="color:var(--muted);font-size:12.5px;line-height:1.8">出处声明：本页内容为白驹 ccowork原创或整理；涉及第三方工具、产品、政策与数据的信息请以相关官方发布为准，引用内容遵循原始许可。</p>
+</body></html>

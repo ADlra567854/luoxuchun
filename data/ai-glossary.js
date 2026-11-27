@@ -1,0 +1,123 @@
+/* 自学路线 · AI 概念库（术语词典）
+ * 更新日期：2026-08-30
+ * 定义基于公开权威资料（Wikipedia / arXiv / 官方技术文档）的通用共识表述。
+ * 说明：本词典为学习导向的通俗解释，非严格学术定义；深入请以官方文献为准。
+ * url 仅收录已核实的权威链接，无把握的一律留空，不编造。
+ */
+window.AI_GLOSSARY = {
+  updated: "2026-08-30",
+  note: "共 100 条 · 覆盖 10 大分类 · 标注「AI 生成整理 · 以官方为准」",
+  terms: [
+    // ① 基础概念
+    { term: "人工智能", alias: "AI / Artificial Intelligence", cat: "基础概念", level: "入门", def: "让机器模拟人类智能行为的学科，包括感知、推理、学习、规划与创造。1956 年达特茅斯会议确立名称，如今以机器学习与大模型为主要实现路径。" },
+    { term: "机器学习", alias: "ML / Machine Learning", cat: "基础概念", level: "入门", def: "让计算机从数据中自动总结规律、无需显式编程即可完成任务的方法。核心是「用数据拟合函数」，典型任务包括分类、回归、聚类。" },
+    { term: "深度学习", alias: "DL / Deep Learning", cat: "基础概念", level: "入门", def: "基于多层神经网络的机器学习方法，能自动学习数据的分层特征表达。2012 年 AlexNet 夺冠后成为主流，是今天大模型的技术底座。" },
+    { term: "神经网络", alias: "Neural Network", cat: "基础概念", level: "入门", def: "由大量人工神经元按层连接而成的计算模型，模拟生物神经系统。每层对输入做加权求和与非线性变换，多层叠加可拟合复杂函数。" },
+    { term: "监督学习", alias: "Supervised Learning", cat: "基础概念", level: "入门", def: "用「输入-标注答案」成对数据训练模型的方法，如用已标注的猫狗图片训练分类器。目标是从标注样本中学会泛化到新数据。" },
+    { term: "无监督学习", alias: "Unsupervised Learning", cat: "基础概念", level: "入门", def: "数据没有标注答案，让模型自行发现内在结构的方法，典型如聚类、降维、密度估计。大模型的预训练本质上属于自监督学习。" },
+    { term: "自监督学习", alias: "Self-supervised Learning", cat: "基础概念", level: "进阶", def: "从数据自身构造监督信号来学习，如遮住句子里的词让模型预测。无需人工标注即可利用海量数据，是现代大模型预训练的核心范式。" },
+    { term: "强化学习", alias: "RL / Reinforcement Learning", cat: "基础概念", level: "进阶", def: "智能体在环境中试错，根据奖励信号优化策略的学习方法。AlphaGo 与 RLHF（人类反馈强化学习）都基于它，适合序列决策任务。" },
+    { term: "训练集 / 验证集 / 测试集", alias: "Train/Val/Test Split", cat: "基础概念", level: "入门", def: "数据划分三件套：训练集用于学习参数，验证集用于调超参与早停，测试集用于最终评估泛化能力。三者必须严格隔离，否则评估失真。" },
+    { term: "过拟合", alias: "Overfitting", cat: "基础概念", level: "入门", def: "模型把训练数据的噪声也当成规律记住，导致训练集表现极好、新数据表现很差。常用缓解手段：增加数据、正则化、Dropout、早停。" },
+    { term: "梯度下降", alias: "Gradient Descent", cat: "基础概念", level: "进阶", def: "沿损失函数梯度的反方向迭代更新参数以最小化误差的优化算法。实际常用其变体 Adam、AdamW，配合小批量训练提升效率与稳定性。" },
+    { term: "损失函数", alias: "Loss Function", cat: "基础概念", level: "进阶", def: "衡量模型预测与真实答案差距的函数，是训练的「指挥棒」。分类常用交叉熵，回归常用均方误差，生成模型常用负对数似然。" },
+    { term: "反向传播", alias: "Backpropagation", cat: "基础概念", level: "进阶", def: "利用链式法则从输出层往输入层逐层计算梯度，再据此更新各层参数的算法。1986 年普及，是神经网络能够训练起来的关键。" },
+    { term: "超参数", alias: "Hyperparameter", cat: "基础概念", level: "入门", def: "训练前由人设定的参数（如学习率、批量大小、层数），不是模型自己学出来的。调超参是深度学习工程中的核心脏活之一。" },
+
+    // ② 模型架构
+    { term: "Transformer", alias: "变换器架构", cat: "模型架构", level: "进阶", def: "2017 年提出的基于自注意力的神经网络架构，完全摒弃循环与卷积，可高度并行处理序列，成为 GPT、BERT、Claude 等几乎所有大模型的共同底座。", relate: "关联论文：Attention Is All You Need", url: "https://arxiv.org/abs/1706.03762" },
+    { term: "注意力机制", alias: "Attention", cat: "模型架构", level: "进阶", def: "让模型在处理某个位置时动态关注输入中其它相关位置的机制，用查询-键-值（QKV）计算权重。是 Transformer 的核心，也是「上下文理解」的来源。" },
+    { term: "自注意力", alias: "Self-Attention", cat: "模型架构", level: "进阶", def: "序列内部各位置相互计算注意力的机制，使每个词的表示都能融合全局上下文。复杂度随长度平方增长，是长上下文优化的主要瓶颈。" },
+    { term: "CNN", alias: "卷积神经网络", cat: "模型架构", level: "入门", def: "用卷积核提取局部特征并逐层抽象的神经网络，天然适合图像。具有参数共享与平移不变性，是计算机视觉的经典主力架构。" },
+    { term: "RNN / LSTM", alias: "循环神经网络 / 长短期记忆", cat: "模型架构", level: "入门", def: "按时间步递归处理序列的网络，LSTM 通过门控机制缓解长程遗忘问题。曾在 NLP 时代占主导，后被 Transformer 大规模取代。" },
+    { term: "GAN", alias: "生成对抗网络", cat: "模型架构", level: "进阶", def: "由生成器与判别器相互对抗训练，生成器努力造假、判别器努力识破，最终生成逼真样本。2014 年提出，开启了深度学习生成时代。", url: "https://arxiv.org/abs/1406.2661" },
+    { term: "Diffusion", alias: "扩散模型", cat: "模型架构", level: "进阶", def: "先逐步向数据加噪声再学习逆向去噪的生成方法，训练稳定、生成质量高，是 Stable Diffusion、Midjourney 等文生图工具的底层原理。", url: "https://arxiv.org/abs/2006.11239" },
+    { term: "MoE", alias: "混合专家", cat: "模型架构", level: "专家", def: "把大模型拆成多个「专家」子网络，每次推理只激活少数几个，从而在参数量巨大的同时控制计算量。DeepSeek、Mixtral 等均采用此架构。" },
+    { term: "Encoder-Decoder", alias: "编码器-解码器", cat: "模型架构", level: "进阶", def: "先把输入压缩为中间表示、再据此生成输出的两段式结构。机器翻译的经典范式，BERT 只用编码器、GPT 只用解码器。" },
+    { term: "Embedding", alias: "嵌入 / 向量表示", cat: "模型架构", level: "入门", def: "把词、句子、图片等映射为稠密实数向量的表示方式，语义相近的对象在向量空间中距离也更近，是检索与相似度计算的基石。" },
+    { term: "归一化", alias: "Normalization", cat: "模型架构", level: "专家", def: "对层输入做标准化以稳定训练、加速收敛的技术。LayerNorm 是 Transformer 标配，RMSNorm 因更简洁被 LLaMA 等模型采用。" },
+
+    // ③ 大模型
+    { term: "LLM", alias: "大语言模型", cat: "大模型", level: "入门", def: "在海量文本上预训练的巨型语言模型，通过预测下一个词来学习语言与世界知识，具备理解、推理、生成与遵循指令的能力。" },
+    { term: "预训练", alias: "Pre-training", cat: "大模型", level: "入门", def: "在大规模通用语料上先做自监督学习，让模型掌握语言规律与常识，形成可迁移的基础能力。算力与数据消耗最大的阶段。" },
+    { term: "微调", alias: "Fine-tuning", cat: "大模型", level: "入门", def: "在预训练模型基础上用特定领域或任务数据继续训练，使其适配具体场景。全参微调效果好但成本高，故常改用参数高效方法。" },
+    { term: "LoRA", alias: "低秩适配", cat: "大模型", level: "进阶", def: "冻结原模型权重、仅训练低秩分解小矩阵的微调方法，可将可训练参数量降低万倍、显存需求大减，是个人微调大模型的首选方案。", url: "https://arxiv.org/abs/2106.09685" },
+    { term: "量化", alias: "Quantization", cat: "大模型", level: "进阶", def: "把模型权重从 16/32 位浮点压缩为 8 位甚至 4 位整数，大幅降低显存与推理成本，代价是轻微的精度损失。是端侧部署的关键技术。" },
+    { term: "知识蒸馏", alias: "Knowledge Distillation", cat: "大模型", level: "进阶", def: "用大模型（教师）的输出去训练小模型（学生），让小模型以更低成本逼近大模型能力，常用于模型压缩与端侧部署。" },
+    { term: "RLHF", alias: "人类反馈强化学习", cat: "大模型", level: "进阶", def: "用人类偏好数据训练奖励模型，再用强化学习优化语言模型输出，使回答更符合人类期望。是 ChatGPT 类助手变得「好用」的关键。", url: "https://arxiv.org/abs/2203.02155" },
+    { term: "涌现能力", alias: "Emergent Abilities", cat: "大模型", level: "进阶", def: "模型规模增大到某一阈值后突然出现、小模型不具备的能力（如多步推理、指令遵循）。学界对其是否为评测假象仍有讨论。" },
+    { term: "上下文窗口", alias: "Context Window", cat: "大模型", level: "入门", def: "模型单次能处理的最大 token 数，决定了能塞进多少文档与对话历史。从早期 2K 已扩展到百万级，长上下文是近年核心竞争点。" },
+    { term: "幻觉", alias: "Hallucination", cat: "大模型", level: "入门", def: "模型生成看似合理但事实上错误或编造的内容。源于概率生成本质与知识缺失，是 AI 落地最大风险，需用 RAG、引用溯源等手段缓解。" },
+    { term: "对齐", alias: "Alignment", cat: "大模型", level: "进阶", def: "让模型的目标与行为符合人类价值观与意图的研究方向，包括有用性、诚实性、无害性（HHH）。是 AI 安全的核心议题。" },
+    { term: "思维链", alias: "Chain of Thought / CoT", cat: "大模型", level: "入门", def: "提示模型「一步步思考」再给出答案，显著提升复杂推理题正确率的技巧。已成为提示工程的标准手段之一。" },
+    { term: "Temperature", alias: "温度参数", cat: "大模型", level: "入门", def: "控制生成随机性的采样参数：值越低输出越确定保守，越高越发散有创意。通常 factual 任务设低、创意写作设高。" },
+    { term: "Token", alias: "词元", cat: "大模型", level: "入门", def: "模型处理文本的最小单位，可能是单词、词根或字符。中文通常 1 字约 1-2 token。API 计费与上下文长度均以 token 计。" },
+
+    // ④ 智能体
+    { term: "AI Agent", alias: "智能体", cat: "智能体", level: "入门", def: "能自主感知环境、规划步骤、调用工具并完成目标的 AI 系统。区别于「一问一答」的聊天，Agent 强调闭环执行与多步推理。" },
+    { term: "ReAct", alias: "推理-行动交替", cat: "智能体", level: "进阶", def: "让模型交替生成「思考」与「行动（调用工具）」，并根据观察结果继续推理的范式，是当代 Agent 框架的基础设计。", url: "https://arxiv.org/abs/2210.03629" },
+    { term: "工具调用", alias: "Tool Calling / Function Calling", cat: "智能体", level: "入门", def: "模型输出结构化的函数调用请求，由外部程序真正执行（查天气、查数据库、发邮件），再把结果回填给模型。是 Agent 能力的分水岭。" },
+    { term: "MCP", alias: "模型上下文协议", cat: "智能体", level: "进阶", def: "Anthropic 2024 年开源的开放标准，统一大模型与外部工具、数据的连接方式，被形象地称为 AI 应用的「USB-C 接口」。", url: "https://modelcontextprotocol.io" },
+    { term: "多智能体系统", alias: "Multi-Agent System", cat: "智能体", level: "进阶", def: "多个专职 Agent 分工协作完成复杂任务，如流水线式、层级式、辩论式组织。能突破单体的上下文与能力上限，但成本与调试难度更高。" },
+    { term: "规划", alias: "Planning", cat: "智能体", level: "进阶", def: "Agent 把复杂目标拆解为可执行子步骤并动态调整的能力。常见方法包括任务分解树、自我反思、失败重试与回溯。" },
+    { term: "记忆机制", alias: "Memory", cat: "智能体", level: "进阶", def: "Agent 保存与检索历史信息的机制，分短期（上下文内）与长期（向量库/数据库）。决定 Agent 能否跨会话记住用户偏好与任务状态。" },
+    { term: "A2A", alias: "Agent 间通信协议", cat: "智能体", level: "专家", def: "让不同厂商、不同框架的 Agent 互相发现与协作的通信协议，是智能体生态走向互联互通的基础设施方向之一。" },
+    { term: "沙箱", alias: "Sandbox", cat: "智能体", level: "进阶", def: "隔离执行 Agent 生成代码或命令的安全环境，限制文件、网络与系统权限，防止越权操作。是 Agent 工程化落地的必备安全措施。" },
+
+    // ⑤ RAG 与数据
+    { term: "RAG", alias: "检索增强生成", cat: "RAG与数据", level: "入门", def: "先从外部知识库检索相关片段，再连同问题一起交给模型生成答案。能显著降低幻觉、支持私有知识与实时信息，是企业落地首选方案。", url: "https://arxiv.org/abs/2005.11401" },
+    { term: "向量数据库", alias: "Vector Database", cat: "RAG与数据", level: "入门", def: "专门存储和检索高维向量的数据库，支持近似最近邻搜索。是 RAG 的基础设施，代表产品有 Milvus、Pinecone、Chroma、Qdrant 等。" },
+    { term: "重排序", alias: "Reranking", cat: "RAG与数据", level: "进阶", def: "对初检索结果用更强的模型重新打分排序，把最相关的片段放到前面。是提升 RAG 准确率性价比最高的一步。" },
+    { term: "分块", alias: "Chunking", cat: "RAG与数据", level: "入门", def: "把长文档切成适合检索与塞入上下文的小片段。分块策略（固定长度、按语义、按结构）直接决定 RAG 效果上限。" },
+    { term: "知识库", alias: "Knowledge Base", cat: "RAG与数据", level: "入门", def: "结构化或非结构化组织起来的领域知识集合，供检索与问答使用。企业知识库是 RAG 最常见的落地形态。" },
+    { term: "数据清洗", alias: "Data Cleaning", cat: "RAG与数据", level: "入门", def: "去除噪声、重复与错误数据，统一格式的过程。数据质量决定模型上限，实践中清洗往往占据项目大部分时间。" },
+    { term: "语料", alias: "Corpus", cat: "RAG与数据", level: "入门", def: "用于训练或检索的大规模文本集合。语料的规模、质量与分布，直接塑造模型的能力边界与偏见。" },
+
+    // ⑥ 提示工程
+    { term: "Prompt", alias: "提示词", cat: "提示工程", level: "入门", def: "用户输入给模型的指令文本。提示的清晰度、结构与约束条件，直接决定输出质量，是人机交互的核心界面。" },
+    { term: "零样本 / 少样本", alias: "Zero-shot / Few-shot", cat: "提示工程", level: "入门", def: "零样本指不给示例直接让模型做；少样本指先给几个输入输出示例再让它做。示例能显著提升格式一致性与准确率。" },
+    { term: "系统提示", alias: "System Prompt", cat: "提示工程", level: "入门", def: "在对话开始设定的角色与规则指令，优先级高于用户消息，用于定义助手的身份、风格、边界与输出格式。" },
+    { term: "提示注入", alias: "Prompt Injection", cat: "提示工程", level: "进阶", def: "攻击者在输入中夹带恶意指令，诱导模型忽略原有规则或泄露信息。是 LLM 应用最主要的安全威胁之一，需输入过滤与权限隔离防御。" },
+    { term: "思维树", alias: "Tree of Thoughts", cat: "提示工程", level: "专家", def: "让模型同时展开多条推理路径并自我评估择优，比线性思维链更适合需要探索与回溯的复杂问题。" },
+    { term: "结构化输出", alias: "Structured Output", cat: "提示工程", level: "入门", def: "要求模型按 JSON、表格等固定格式输出，便于程序解析。现代模型普遍提供 JSON Schema 约束模式，是工程化的基本功。" },
+
+    // ⑦ 多模态
+    { term: "多模态模型", alias: "Multimodal Model", cat: "多模态", level: "入门", def: "能同时理解与生成文本、图像、音频、视频等多种信息形态的模型。GPT-4V、Gemini、豆包视觉版等均属此类。" },
+    { term: "文生图", alias: "Text-to-Image", cat: "多模态", level: "入门", def: "根据文字描述生成图片的技术，主流基于扩散模型。提示词的质量与风格控制词决定出图效果，代表工具有 Midjourney、即梦、可灵等。" },
+    { term: "文生视频", alias: "Text-to-Video", cat: "多模态", level: "入门", def: "根据文字或图片生成视频片段的技术，难点在时间一致性与物理合理性。2024 年后进入快速发展期，代表有 Sora、可灵、即梦等。" },
+    { term: "CLIP", alias: "图文对比预训练", cat: "多模态", level: "进阶", def: "OpenAI 提出的图文对齐模型，把图像与文本映射到同一向量空间，实现以文搜图与零样本分类，是多模态的奠基工作。", url: "https://arxiv.org/abs/2103.00020" },
+    { term: "TTS / ASR", alias: "语音合成 / 语音识别", cat: "多模态", level: "入门", def: "TTS 把文字转为自然语音，ASR 把语音转为文字。两者构成语音交互的闭环，是数字人、会议纪要、无障碍应用的基础。" },
+    { term: "数字人", alias: "Digital Human", cat: "多模态", level: "入门", def: "由 AI 驱动的虚拟人物形象，结合形象生成、语音合成、口型同步与对话能力，用于直播、客服、讲解等场景。" },
+
+    // ⑧ 训练与工程
+    { term: "分布式训练", alias: "Distributed Training", cat: "训练与工程", level: "专家", def: "把训练任务拆分到多张 GPU、多台机器并行执行，常用数据并行、张量并行、流水线并行三种策略组合，是训练大模型的前提。" },
+    { term: "混合精度", alias: "Mixed Precision", cat: "训练与工程", level: "专家", def: "训练中同时使用 FP16/BF16 与 FP32，在保持数值稳定的前提下减少显存占用并加速计算。现代训练框架的默认选择。" },
+    { term: "Checkpoint", alias: "检查点", cat: "训练与工程", level: "入门", def: "训练过程中定期保存的模型权重快照，用于断点续训、回滚与后续分发。大模型 checkpoint 体积通常达几十 GB。" },
+    { term: "推理", alias: "Inference", cat: "训练与工程", level: "入门", def: "用训练好的模型对新输入做预测的过程。与训练相对，推理更关注延迟、吞吐与成本，是线上服务的核心指标。" },
+    { term: "GPU / TPU", alias: "图形处理器 / 张量处理器", cat: "训练与工程", level: "入门", def: "AI 计算的核心硬件。GPU 通用性强、生态成熟（NVIDIA CUDA）；TPU 是谷歌专为张量运算设计的加速器，在自家云上性价比突出。" },
+    { term: "CUDA", alias: "统一计算设备架构", cat: "训练与工程", level: "专家", def: "NVIDIA 提供的 GPU 通用计算平台与编程模型，是深度学习框架底层的算力支撑，也是英伟达生态护城河的核心。" },
+    { term: "KV Cache", alias: "键值缓存", cat: "训练与工程", level: "专家", def: "推理时缓存注意力已计算的键值，避免重复计算，大幅提升生成速度。代价是显存占用随上下文长度线性增长。" },
+    { term: "批处理", alias: "Batching", cat: "训练与工程", level: "入门", def: "把多个请求合并一起处理以提升 GPU 利用率与吞吐。连续批处理（Continuous Batching）是推理服务提效的关键技术。" },
+
+    // ⑨ 评估与安全
+    { term: "基准测试", alias: "Benchmark", cat: "评估与安全", level: "入门", def: "用标准化数据集与指标衡量模型能力的评测集，如 MMLU（知识）、HumanEval（代码）、GSM8K（数学）。需警惕刷榜与数据污染。" },
+    { term: "困惑度", alias: "Perplexity", cat: "评估与安全", level: "进阶", def: "衡量语言模型对样本预测不确定性的指标，值越低说明模型对数据越「不意外」。常用于评估语言建模质量，但不完全等价于生成质量。" },
+    { term: "BLEU / ROUGE", alias: "自动评测指标", cat: "评估与安全", level: "进阶", def: "BLEU 常用于机器翻译、ROUGE 常用于摘要，通过 n-gram 重合度打分。优点是自动快速，缺点是与人类判断相关性有限。" },
+    { term: "红队测试", alias: "Red Teaming", cat: "评估与安全", level: "进阶", def: "模拟攻击者主动寻找模型漏洞与有害输出的安全评估方法。主流模型发布前均需经过红队测试与安全缓解。" },
+    { term: "AI 对齐", alias: "AI Alignment", cat: "评估与安全", level: "进阶", def: "确保 AI 系统的目标与行为符合人类意图与价值观的研究领域，涵盖价值对齐、可控性、可解释性与防止目标漂移。" },
+    { term: "深度伪造", alias: "Deepfake", cat: "评估与安全", level: "入门", def: "用 AI 生成高度逼真的虚假音视频内容。带来诈骗、造谣等风险，需靠内容标识、检测技术与法规共同治理。" },
+    { term: "内容标识", alias: "AI Watermarking", cat: "评估与安全", level: "入门", def: "在 AI 生成内容中嵌入可见或不可见标识以便溯源。多国已出台要求，是治理深度伪造的基础设施。" },
+
+    // ⑩ 应用与产业
+    { term: "AIGC", alias: "AI 生成内容", cat: "应用与产业", level: "入门", def: "由 AI 自动生成文本、图片、音频、视频、代码等内容。2022 年后爆发，重塑内容生产流程与创作者工作方式。" },
+    { term: "Copilot", alias: "AI 副驾", cat: "应用与产业", level: "入门", def: "嵌入现有软件、辅助人完成工作的 AI 助手形态，如 GitHub Copilot、Microsoft 365 Copilot。强调「人机协同」而非替代。" },
+    { term: "自动驾驶", alias: "Autonomous Driving", cat: "应用与产业", level: "入门", def: "让车辆在无人干预下感知环境并安全行驶的技术，分 L0-L5 六级。是 AI 感知、决策与控制能力的综合试验场。" },
+    { term: "AI 原生应用", alias: "AI-Native App", cat: "应用与产业", level: "入门", def: "以大模型为核心能力而非附加功能构建的应用，从产品架构就围绕模型的不确定性、交互与成本来设计。" },
+    { term: "SaaS + AI", alias: "软件即服务智能化", cat: "应用与产业", level: "入门", def: "传统 SaaS 产品嵌入 AI 能力以提升体验与定价空间，是当前 AI 商业化最稳健的路径之一。" },
+    { term: "智能客服", alias: "AI Customer Service", cat: "应用与产业", level: "入门", def: "用大模型驱动的客服系统，结合知识库与工单系统自动应答，可覆盖大部分常见问题并转交人工处理复杂case。" },
+    { term: "AI 工作流", alias: "AI Workflow", cat: "应用与产业", level: "入门", def: "把多个 AI 步骤与业务节点编排成自动化流程，如「抓取→摘要→审核→发布」。是 AI 从玩具走向生产力的关键形态。" },
+    { term: "私有化部署", alias: "On-Premise Deployment", cat: "应用与产业", level: "进阶", def: "把模型部署在企业自有服务器或专有云中，数据不出内网。金融、政务、医疗等强合规场景的刚需。" },
+    { term: "模型即服务", alias: "MaaS", cat: "应用与产业", level: "入门", def: "通过 API 按需调用云端大模型，无需自建算力。降低使用门槛，是当前绝大多数 AI 应用的接入方式。" },
+    { term: "AI 伦理", alias: "AI Ethics", cat: "应用与产业", level: "入门", def: "研究 AI 开发与使用中的公平、透明、隐私、责任与环境影响等议题，是技术可持续发展与社会信任的基础。" }
+  ]
+};

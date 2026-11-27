@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud">
+<head>
+<meta property="og:description" content="实测 38 个 RSS 候选源：4 个死源没有找到可用备用路径，5 个源退役留痕，最终保留 20 个可用源。附 HTTP 200 假活判据、单源限流与每日 15 条上版规则。">
+<meta name="keywords" content="38 个 RSS 源实测,4 个死源没救回,我把可用源补到 20 个,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>38 个 RSS 源实测：4 个死源没救回，我把可用源补到 20 个 · 白驹 ccowork</title>
+<meta name="description" content="实测 38 个 RSS 候选源：4 个死源没有找到可用备用路径，5 个源退役留痕，最终保留 20 个可用源。附 HTTP 200 假活判据、单源限流与每日 15 条上版规则。">
+
+
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+  .post{max-width:760px;margin:0 auto;padding:32px 20px 64px}
+  .post h1{font-size:clamp(26px,4vw,38px);line-height:1.3;margin:0 0 16px}
+  .post .meta{color:var(--muted);font-size:14px;margin:0 0 28px;padding-bottom:16px;border-bottom:1px solid rgba(148,163,184,.25)}
+  .post article p{font-size:17px;line-height:1.85;margin:0 0 18px}
+  .post h2{font-size:22px;margin:36px 0 14px}
+  .post ul,.post ol{font-size:16px;line-height:1.85;padding-left:22px;margin:0 0 18px}
+  .post li{margin:0 0 8px}
+  .post code{background:rgba(79,140,255,.1);padding:2px 6px;border-radius:6px;font-size:15px}
+  .post table{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 20px}
+  .post th,.post td{border:1px solid rgba(148,163,184,.3);padding:8px 10px;text-align:left;line-height:1.6}
+  .post th{background:rgba(79,140,255,.1)}
+  .post blockquote{border-left:3px solid #4F8CFF;margin:0 0 20px;padding:4px 0 4px 16px;color:var(--muted)}
+  .post .end{margin-top:36px;padding-top:18px;border-top:1px solid rgba(148,163,184,.25);font-size:15px;color:var(--muted);line-height:1.8}
+</style>
+<meta name="twitter:description" content="实测 38 个 RSS 候选源：4 个死源没有找到可用备用路径，5 个源退役留痕，最终保留 20 个可用源。附 HTTP 200 假活判据、单源限流与每日 15 条上版规则。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/blog/2026-11-26-20%E4%B8%AARSS%E6%BA%90%E5%AE%9E%E6%B5%8B%E4%B8%8B%E6%9D%A5%E5%8F%AA%E5%89%A91%E4%B8%AA%E8%83%BD%E4%BF%AE%EF%BC%9A%E6%88%91%E5%88%A0%E6%8E%89%E4%BA%865%E4%B8%AA%E6%AD%BB%E6%BA%90.html">
+<meta property="og:title" content="38 个 RSS 源实测：4 个死源没救回，我把可用源补到 20 个 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/blog/2026-11-26-20%E4%B8%AARSS%E6%BA%90%E5%AE%9E%E6%B5%8B%E4%B8%8B%E6%9D%A5%E5%8F%AA%E5%89%A91%E4%B8%AA%E8%83%BD%E4%BF%AE%EF%BC%9A%E6%88%91%E5%88%A0%E6%8E%89%E4%BA%865%E4%B8%AA%E6%AD%BB%E6%BA%90.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="38 个 RSS 源实测：4 个死源没救回，我把可用源补到 20 个 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"38 个 RSS 源实测：4 个死源没救回，我把可用源补到 20 个 · 白驹 ccowork","description":"实测 38 个 RSS 候选源：4 个死源没有找到可用备用路径，5 个源退役留痕，最终保留 20 个可用源。附 HTTP 200 假活判据、单源限流与每日 15 条上版规则。","url":"https://ccoworkbaiju.cn/blog/2026-11-26-20%E4%B8%AARSS%E6%BA%90%E5%AE%9E%E6%B5%8B%E4%B8%8B%E6%9D%A5%E5%8F%AA%E5%89%A91%E4%B8%AA%E8%83%BD%E4%BF%AE%EF%BC%9A%E6%88%91%E5%88%A0%E6%8E%89%E4%BA%865%E4%B8%AA%E6%AD%BB%E6%BA%90.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ccoworkbaiju.cn/blog/2026-11-26-20%E4%B8%AARSS%E6%BA%90%E5%AE%9E%E6%B5%8B%E4%B8%8B%E6%9D%A5%E5%8F%AA%E5%89%A91%E4%B8%AA%E8%83%BD%E4%BF%AE%EF%BC%9A%E6%88%91%E5%88%A0%E6%8E%89%E4%BA%865%E4%B8%AA%E6%AD%BB%E6%BA%90.html"},"image":"https://ccoworkbaiju.cn/assets/img/og-cover.png","datePublished":"2026-11-26","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"}}</script>
+</head>
+<body>
+<main class="post">
+<h1>38 个 RSS 源实测：4 个死源没救回，我把可用源补到 20 个</h1>
+<p class="meta">2026-11-26 · 约 1900 字</p>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="38 个 RSS 源实测：4 个死源没救回，我把可用源补到 20 个" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">38 个 RSS 源实测：4 个死源没救回，</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">📘</text>
+</svg>
+<p>今天中午 12:37，我盯着一个数字看了十几秒：<code>可用源 8 / 已登记 12</code>。也就是说，我每天依赖的 12 个资讯源里，有 4 个是死的。更难看的是，其中两个「死源」返回的是 HTTP 200。</p>
+<p>返回 200 你没法说它坏了。机器之心和 36 氪都是这样：状态码漂亮，内容是一整页 HTML，你按 RSS 去解析，一条 <code>&lt;item&gt;</code> 都拿不到。这个问题藏了多久我不确定，但那 4 个源之前一直挂在「已登记」名单里，像还活着一样占着位置。</p>
+
+<h2>先承认一件事：之前那个「可用源」数字是假的</h2>
+<p>原来的判据只有一条：HTTP 状态码 200 就算活。这条判据太好过了。一个博客首页、一个登录墙、一个「本站已迁移」的提示页，都能返回 200。真正该问的是：<strong>它吐出来的东西，能不能解析成条目？</strong></p>
+<p>所以我把判据改成三档，缺一不可：</p>
+<ol>
+<li>HTTP 200；</li>
+<li>内容确实是 xml / rss / atom 特征（不是「看起来像」，是首 600 字节或 Content-Type 里能找到）；</li>
+<li>能解析出 <code>&lt;item&gt;</code> 或 <code>&lt;entry&gt;</code>，且条数 ≥ 1。</li>
+</ol>
+<p>只满足前两条的，一律判为「HTML 文档」，不算可用源。这一条改完，之前那个 8/12 立刻变成了 7/12 —— Google AI 的博客当天两轮实测都 12 秒超时。它昨天还是活的。</p>
+
+<blockquote>一条判据如果允许「状态码对了就算活」，那它测的不是源的健康，测的是服务器有没有挂。</blockquote>
+
+<h2>38 个候选逐个跑：22 个能用，其中 15 个是补源</h2>
+<p>我不信「换个域名就好了」，所以写了探针，把 38 个候选源全测一遍，包括 4 个死源的全部已知备用路径。结果分三层：7 个现役源存活、4 个待修源零修复、15 个补源可用。</p>
+<table>
+<tr><th>源</th><th>尝试的路径</th><th>结果</th></tr>
+<tr><td>机器之心</td><td>/rss、/rss/articles</td><td>前者 200 返 HTML，后者 404</td></tr>
+<tr><td>36 氪</td><td>/feed、/feed-newsflash</td><td>两条都是 200 返 HTML</td></tr>
+<tr><td>Hugging Face</td><td>/blog/feed.xml</td><td>直连 fetch failed</td></tr>
+<tr><td>Anthropic</td><td>/news/rss.xml、/rss.xml</td><td>都是 404，官方没提供 feed</td></tr>
+</table>
+<p>四个里<strong>零个能修</strong>。这就是今天最实在的一个结论：不是所有坏掉的东西都有备用路径。我原本以为至少能救回一两个，实际一个都救不动。</p>
+<p>救不动就退役。但我没有直接删文件 —— 删掉等于抹掉「我们试过、它坏了、什么时候坏的」这段证据，下次有人想加回来还得从头再测一遍。所以我建了一张退役表，每条写清退役日期、原 URL、以及为什么不能用。<strong>哪天站点恢复了，从表里捞回来改一个字段就能复活。</strong></p>
+
+<h2>补源补出 15 个能用的，但我只留了 13 个</h2>
+<p>实测活的补源有 15 个：开源中国、钛媒体、雷峰网、掘金、阮一峰、DeepMind、微软研究院、AWS ML、TechCrunch、MIT 科技评论、MarkTechPost、Simon Willison、arXiv cs.AI、Hacker News、Ars Technica。</p>
+<p>活的就该全用上吗？不是。我留了 13 个，砍掉 2 个，理由各不一样：</p>
+<ul>
+<li><strong>Hacker News 砍掉</strong>：它是聚合器，转的多数是别家原文，用它会和已有源大量重复，去重后剩下的价值很低。</li>
+<li><strong>Ars Technica 砍掉</strong>：综合科技媒体，AI 相关比例低，混进来会稀释选题池。</li>
+<li><strong>arXiv 留着但限流 15 条</strong>：它一次吐 447 条，不限流会把其他源整段挤出窗口。</li>
+</ul>
+<p>限流这件事是我今天才意识到的。OpenAI 的官方 feed 会吐全站历史，实测 <strong>1430 条</strong>。7 天窗口的容量是有限的，一个源吃掉 1400 条，等于让其他 19 个源没地方站。所以每个源都有了单次入库上限，超了只取前 N 条，并在日志里明确写出「源吐了多少、我取了多少」。</p>
+
+<h2>顺手把「十多条」落成了代码</h2>
+<p>源修好之后，今天当天抓进来 161 条。这个数字看着漂亮，打开页面就是灾难：IT 之家一家占了 61 条，一条真正重要的事被十条边角料盖住。</p>
+<p>所以抓取量和上版量必须分开管。<strong>抓得多是选题池的事，上版多少是编辑的事。</strong>规则写成三条，可解释、不需要人工挑：</p>
+<ol>
+<li>每源每天最多 2 条，防单源霸屏；</li>
+<li>有摘要的优先，只有标题没一句话说明的排后面；</li>
+<li>每天上限 15 条，选不满就逐级放宽每源上限，但不为了凑数放低到没摘要的条目。</li>
+</ol>
+<p>跑完的结果：当天 161 条的池子，上版 15 条；7 天窗口从 613 条收敛到 89 条，数据文件从 414KB 掉到 57KB。页面打开终于像一份简报，不像一份爬虫日志。</p>
+<p>而且这个收敛是<strong>按天</strong>做的，不只管今天。原来窗口里 11-24 那天还压着 193 条，只收敛今天的话，翻到那天照样糊。</p>
+
+<h2>三件值得记下来的事</h2>
+<p>第一，<strong>「返回 200」是一种最常见的假活</strong>。不管是监控、接口健康检查还是数据源，只看状态码就会把「能连上但没内容」当成正常。要判活，得看它吐出来的东西能不能用。</p>
+<p>第二，<strong>修不动比修得动更常见</strong>。四个死源里我一个都没救活。这不可怕，可怕的是不知道它们死了还继续假装在更新 —— 那才是真的断更。</p>
+<p>第三，<strong>产能和版面是两件事</strong>。一天能抓多少条，和读者该看到多少条，中间隔着一层编辑判断。把这两件事混成一件，结果就是内容越多，可读性越差 —— 今天那个 161 条变 15 条就是活例子。</p>
+
+<p>所以我的判断是：判断一个数据源死没死，不要看它回你什么状态码，要看它吐出来的东西能不能用。这条对 RSS 成立，对接口、对爬虫、对监控告警一样成立。下一步我会把「解析出条目数」做成巡检的固定项，源一旦连续两天吐 0 条就自动进退役候选，不再等人发现。</p>
+
+<p><strong>查看实际结果：</strong><a href="/feed/daily.html">打开每日简报</a>，可以看到这套信源判据、单源限流和每日 15 条上版规则筛选后的真实条目。</p>
+<p class="end">这篇写完后我重新跑了一遍配额账：可用源从 7 个升到 20 个（另有 5 个退役源留痕，不计入活源），断更判定通过，快讯当日 15 条。四个死源一个没救活，但至少账面上不再有假装活着的源了 —— 一句话，宁可承认它死了，也不要让它占着「可用」的位子骗自己还在更新。</p>
+<section class="blog-attribution" style="margin-top:28px;padding:16px 18px;border:1px solid var(--line);border-radius:12px"><h3>出处声明</h3><p>本页由 AI 辅助生成或整理，未逐条人工核验，仅供学习参考；涉及第三方工具、模型、价格、政策及数据的信息以官方发布为准，引用内容请以原始来源及其许可条款为准。</p></section>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="2026-11-26-爆款-3个新功能1个核心反转！Anthropic刚更的Skills over MCP，.html" style="color:var(--gold);font-weight:700;text-decoration:none">别再只堆工具！4个能力看懂Skill</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px">📚 博客目录</a>
+  <span style="font-size:13px"><span style="color:var(--muted)">已是最新一篇</span></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8">📌 出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+</main>
+<script src="/site-nav.js"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<hr>
+<p class="content-attribution" style="color:var(--muted);font-size:12.5px;line-height:1.8">出处声明：本页内容为白驹 ccowork原创或整理；涉及第三方工具、产品、政策与数据的信息请以相关官方发布为准，引用内容遵循原始许可。</p>
+</body>
+</html>

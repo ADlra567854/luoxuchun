@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>7.13 Git 工具 · 替换 · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：7.13 Git 工具 - 替换。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p056.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html" class="on">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html">10.5 Git 内部原理 - 引用规范</a><a href="p072.html">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 56 / 100 节
+    </div>
+    <h1>7.13 Git 工具 - 替换</h1>
+            <div>
+              <h2 id="_replace">替换</h2>
+<div class="paragraph">
+<p>我们之前强调过，Git 对象数据库中的对象是不可改变的，
+然而 Git 提供了一种有趣的方式来用其他对象 <strong>假装</strong> 替换数据库中的 Git 对象。</p>
+</div>
+<div class="paragraph">
+<p><code>replace</code> 命令可以让你在 Git 中指定 <strong>某个对象</strong> 并告诉 Git：“每次遇到这个 Git 对象时，假装它是 <strong>其它对象</strong>”。
+在你用一个不同的提交替换历史中的一个提交而不想以 <code>git filter-branch</code> 之类的方式重建完整的历史时，这会非常有用。</p>
+</div>
+<div class="paragraph">
+<p>例如，你有一个大型的代码历史并想把自己的仓库分成一个短的历史和一个更大更长久的历史，
+短历史供新的开发者使用，后者给喜欢数据挖掘的人使用。
+你可以通过用新仓库中最早的提交“替换”老仓库中最新的提交来连接历史，这种方式可以把一条历史移植到其他历史上。
+这意味着你不用在新历史中真正替换每一个提交（因为历史来源会影响 SHA-1 值），你可以加入他们。</p>
+</div>
+<div class="paragraph">
+<p>让我们来试试吧。
+首先获取一个已经存在的仓库，并将其分成两个仓库，一个是最近的仓库，一个是历史版本的仓库，
+然后我们将看到如何在不更改仓库 SHA-1 值的情况下通过 <code>replace</code> 命令来合并他们。</p>
+</div>
+<div class="paragraph">
+<p>我们将使用一个拥有 5 个提交的简单仓库：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git log --oneline
+ef989d8 fifth commit
+c6e1e95 fourth commit
+9c68fdc third commit
+945704c second commit
+c1822cf first commit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>我们想将其分成拆分成两条历史。
+第一个到第四个提交的作为第一个历史版本。
+第四、第五个提交的作为最近的第二个历史版本。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/replace1.png" alt="replace1">
+</div>
+</div>
+<div class="paragraph">
+<p>创建历史版本的历史很容易，我们可以只将一个历史中的分支推送到一个新的远程仓库的 <code>master</code> 分支。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git branch history c6e1e95
+$ git log --oneline --decorate
+ef989d8 (HEAD, master) fifth commit
+c6e1e95 (history) fourth commit
+9c68fdc third commit
+945704c second commit
+c1822cf first commit</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/replace2.png" alt="replace2">
+</div>
+</div>
+<div class="paragraph">
+<p>现在我们可以把这个新的 <code>history</code> 分支推送到我们新仓库的 <code>master</code> 分支：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git remote add project-history https://github.com/schacon/project-history
+$ git push project-history history:master
+Counting objects: 12, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (12/12), 907 bytes, done.
+Total 12 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (12/12), done.
+To git@github.com:schacon/project-history.git
+ * [new branch]      history -&gt; master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这样一来，我们的历史版本就发布了。
+稍难的部分则是删减我们最近的历史来让它变得更小。
+我们需要一个重叠以便于用一个相等的提交来替换另一个提交，这样一来，我们将截断到第四、五个提交。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git log --oneline --decorate
+ef989d8 (HEAD, master) fifth commit
+c6e1e95 (history) fourth commit
+9c68fdc third commit
+945704c second commit
+c1822cf first commit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在这种情况下，创建一个能够指导扩展历史的基础提交是很有用的。
+这样一来，如果其他的开发者想要修改第一次提交或者其他操作时就知道要做些什么，因此，接下来我们要做的是用命令创建一个最初的提交对象，然后将剩下的提交（第四、第五个提交）变基到它的上面。</p>
+</div>
+<div class="paragraph">
+<p>为了这么做，我们需要选择一个点去拆分，对于我们而言是第三个提交（SHA 是 <code>9c68fdc</code>）。
+因此我们的提交将基于此提交树。我们可以使用 <code>commit-tree</code> 命令来创建基础提交，
+这样我们就有了一个树，并返回一个全新的、无父节点的 SHA-1 提交对象。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ echo 'get history from blah blah blah' | git commit-tree 9c68fdc^{tree}
+622e88e9cbfbacfb75b5279245b9fb38dfea10cf</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>commit-tree</code> 命令属于底层指令。有许多指令并非直接使用，而是被 <strong>其他的</strong> Git 命令用来做更小一些的工作。
+有时当我们做一些像这样的奇怪事情时，它们允许我们做一些不适用于日常使用但真正底层的东西。
+更多关于底层命令的内容请参见 <a href="https://git-scm.com/book/zh/v2/ch00/_plumbing_porcelain">底层命令与上层命令</a>。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/replace3.png" alt="replace3">
+</div>
+</div>
+<div class="paragraph">
+<p>现在我们已经有一个基础提交了，我们可以通过 <code>git rebase --onto</code> 命令来将剩余的历史变基到基础提交之上。
+<code>--onto</code> 参数是刚才 <code>commit-tree</code> 命令返回的 SHA-1 值，变基点会成为第三个提交（我们想留下的第一个提交的父提交，<code>9c68fdc</code>）：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git rebase --onto 622e88 9c68fdc
+First, rewinding head to replay your work on top of it...
+Applying: fourth commit
+Applying: fifth commit</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/replace4.png" alt="replace4">
+</div>
+</div>
+<div class="paragraph">
+<p>我们已经用基础提交重写了最近的历史，基础提交包括如何重新组成整个历史的说明。
+我们可以将新历史推送到新项目中，当其他人克隆这个仓库时，他们仅能看到最近两次提交以及一个包含上述说明的基础提交。</p>
+</div>
+<div class="paragraph">
+<p>现在我们将以想获得整个历史的人的身份来初次克隆这个项目。
+在克隆这个截断后的仓库后为了得到历史数据，需要添加第二个远程的历史版本库并对其做获取操作：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://github.com/schacon/project
+$ cd project
+
+$ git log --oneline master
+e146b5f fifth commit
+81a708d fourth commit
+622e88e get history from blah blah blah
+
+$ git remote add project-history https://github.com/schacon/project-history
+$ git fetch project-history
+From https://github.com/schacon/project-history
+ * [new branch]      master     -&gt; project-history/master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>现在，协作者在 <code>master</code> 分支中拥有他们最近的提交并且在 <code>project-history/master</code> 分支中拥有过去的提交。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git log --oneline master
+e146b5f fifth commit
+81a708d fourth commit
+622e88e get history from blah blah blah
+
+$ git log --oneline project-history/master
+c6e1e95 fourth commit
+9c68fdc third commit
+945704c second commit
+c1822cf first commit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>为了合并它们，你可以使用 <code>git replace</code> 命令加上你想替换的提交信息来进行替换。
+这样一来，我们就可以将 <code>master</code> 分支中的第四个提交替换为 <code>project-history/master</code> 分支中的“第四个”提交。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git replace 81a708d c6e1e95</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>现在，查看 <code>master</code> 分支中的历史信息，显示如下：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git log --oneline master
+e146b5f fifth commit
+81a708d fourth commit
+9c68fdc third commit
+945704c second commit
+c1822cf first commit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>很酷，是不是？不用改变上游的 SHA-1 我们就能用一个提交来替换历史中的所有不同的提交，
+并且所有的工具（<code>bisect</code>，<code>blame</code> 等）也都奏效。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/replace5.png" alt="replace5">
+</div>
+</div>
+<div class="paragraph">
+<p>有趣的是，即使是使用了 <code>c6e1e95</code> 提交数据来进行替换，它的 SHA-1 仍显示为 <code>81a708d</code>。
+即使你运行了 <code>cat-file</code> 命令，它仍会显示你替换的数据：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git cat-file -p 81a708d
+tree 7bc544cf438903b65ca9104a1e30345eee6c083d
+parent 9c68fdceee073230f19ebb8b5e7fc71b479c0252
+author Scott Chacon &lt;schacon@gmail.com&gt; 1268712581 -0700
+committer Scott Chacon &lt;schacon@gmail.com&gt; 1268712581 -0700
+
+fourth commit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>请记住，<code>81a708d</code> 真正的父提交是 <code>622e882</code> 占位提交，而非呈现的 <code>9c68fdce</code> 提交。</p>
+</div>
+<div class="paragraph">
+<p>另一个有趣的事情是数据将会以以下引用显示：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git for-each-ref
+e146b5f14e79d4935160c0e83fb9ebe526b8da0d commit	refs/heads/master
+c6e1e95051d41771a649f3145423f8809d1a74d4 commit	refs/remotes/history/master
+e146b5f14e79d4935160c0e83fb9ebe526b8da0d commit	refs/remotes/origin/HEAD
+e146b5f14e79d4935160c0e83fb9ebe526b8da0d commit	refs/remotes/origin/master
+c6e1e95051d41771a649f3145423f8809d1a74d4 commit	refs/replace/81a708dd0e167a3f691541c7a6463343bc457040</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这意味着我们可以轻而易举的和其他人分享替换，因为我们可以将替换推送到服务器中并且其他人可以轻松地下载。
+也许在历史移植情况下不是很有用（既然每个人都乐意下载最新版本和历史版本，为何还要拆分他们呢？），但在其他情况下仍然很有用。</p>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E6%89%93%E5%8C%85">prev</a> | <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p055.html">← 7.12 Git 工具 - 打包</a><a href="index.html">目录</a><a href="p057.html">7.14 Git 工具 - 凭证存储 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

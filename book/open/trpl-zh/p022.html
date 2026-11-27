@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>将模块拆分成多个文件 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：将模块拆分成多个文件。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p022.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html" class="on">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 22 / 86 节
+    </div>
+    <h1>将模块拆分成多个文件</h1>
+    <h2 id="将模块拆分成多个文件"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/79b9d15410a7b15a65cb86bcb40cbea99198a9e4/src/ch07-05-separating-modules-into-different-files.md">ch07-05-separating-modules-into-different-files.md</a></p>
+<p>到目前为止，本章的所有示例都在一个文件中定义了多个模块。当模块变大时，你可能想把它们的定义移到单独的文件中，以便让代码更容易浏览。</p>
+<p>例如，我们从示例 7-17 中包含多个餐厅模块的代码开始。我们会将模块提取到各自的文件中，而不是将所有模块都定义到 crate 根文件中。在这里，crate 根文件是 <em>src/lib.rs</em>，不过这个过程也适用于 crate 根文件是 <em>src/main.rs</em> 的二进制 crate。</p>
+<p>首先把 <code>front_of_house</code> 模块提取到它自己的文件中。删除 <code>front_of_house</code> 模块花括号内的代码，只保留 <code>mod front_of_house;</code> 声明，这样 <em>src/lib.rs</em> 就会只剩下示例 7-21 所示的代码。注意，在创建出示例 7-22 中的 <em>src/front_of_house.rs</em> 文件之前，这段代码都无法编译。</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">mod front_of_house;
+
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+}</code></pre>
+<p><span class="caption">示例 7-21: 声明 <code>front_of_house</code> 模块，其内容将位于 <em>src/front_of_house.rs</em></span></p>
+<p>接下来，把刚才花括号中的代码放进一个名为 <em>src/front_of_house.rs</em> 的新文件中，如示例 7-22 所示。编译器之所以知道要去这个文件里查找，是因为它在 crate 根中看到了名为 <code>front_of_house</code> 的模块声明。</p>
+<p><span class="filename">文件名：src/front_of_house.rs</span></p>
+<pre><code class="language-rust ignore">pub mod hosting {
+    pub fn add_to_waitlist() {}
+}</code></pre>
+<p><span class="caption">示例 7-22: 在 <em>src/front_of_house.rs</em> 中定义 <code>front_of_house</code> 模块</span></p>
+<p>注意，在模块树中，你只需要用 <code>mod</code> 声明加载某个文件一次。一旦编译器知道这个文件是项目的一部分了，并且因为 <code>mod</code> 语句所在的位置而知道这段代码位于模块树的什么位置，那么项目中的其他文件就应该用它声明位置对应的路径来引用这段代码，这一点会在<a href="#引用模块树中项的路径-1">“引用模块树中项的路径”</a>部分讲到。换句话说，<code>mod</code> <strong>不是</strong>某些其他编程语言里那种 “include” 操作。</p>
+<p>接下来，我们也把 <code>hosting</code> 模块提取到它自己的文件中。这个过程稍有不同，因为 <code>hosting</code> 是 <code>front_of_house</code> 的子模块，而不是根模块。我们会把 <code>hosting</code> 对应的文件放进一个以其在模块树中的祖先模块命名的新目录中，这里就是 <em>src/front_of_house</em>。</p>
+<p>要开始移动 <code>hosting</code>，先把 <em>src/front_of_house.rs</em> 改成只包含 <code>hosting</code> 模块的声明：</p>
+<p><span class="filename">文件名：src/front_of_house.rs</span></p>
+<pre><code class="language-rust ignore">pub mod hosting;</code></pre>
+<p>然后，创建一个 <em>src/front_of_house</em> 目录和一个 <em>hosting.rs</em> 文件，用来放置 <code>hosting</code> 模块中的定义：</p>
+<p><span class="filename">文件名：src/front_of_house/hosting.rs</span></p>
+<pre><code class="language-rust ignore">pub fn add_to_waitlist() {}</code></pre>
+<p>如果我们反而把 <em>hosting.rs</em> 放在 <em>src</em> 目录中，编译器就会认为 <em>hosting.rs</em> 里的代码属于在 crate 根中声明的 <code>hosting</code> 模块，而不是 <code>front_of_house</code> 的子模块。编译器关于“要去哪些文件中查找哪些模块代码”的规则，使得目录和文件结构会更贴近模块树本身。</p>
+<blockquote>
+<h3 id="替代文件路径"></h3>
+<p>到目前为止，我们介绍的是 Rust 编译器最惯用的文件路径，不过 Rust 也支持一种较旧的文件路径风格。</p>
+<p>对于在 crate 根中声明的 <code>front_of_house</code> 模块，编译器会在以下位置查找模块代码：</p>
+<ul>
+<li><em>src/front_of_house.rs</em>（前面介绍的方式）</li>
+<li><em>src/front_of_house/mod.rs</em>（较旧的风格，但仍然受支持）</li>
+</ul>
+<p>对于 <code>front_of_house</code> 的子模块 <code>hosting</code>，编译器会在以下位置查找模块代码：</p>
+<ul>
+<li><em>src/front_of_house/hosting.rs</em>（前面介绍的方式）</li>
+<li><em>src/front_of_house/hosting/mod.rs</em>（较旧的风格，但仍然受支持）</li>
+</ul>
+<p>如果你对同一个模块同时使用这两种风格，编译器就会报错。在同一个项目里为不同模块混用两种风格是允许的，不过这可能会让浏览项目的人感到困惑。</p>
+<p>使用 <em>mod.rs</em> 这种文件名风格的主要缺点是，项目里最后可能会有很多都叫 <em>mod.rs</em> 的文件；当你在编辑器里同时打开它们时，就会变得很混乱。</p>
+</blockquote>
+<p>现在，我们已经把每个模块的代码都移动到了独立文件中，而模块树保持不变。<code>eat_at_restaurant</code> 中的函数调用也完全不需要修改，即使这些定义现在位于不同的文件中也一样能工作。这个技巧让你可以在模块逐渐变大时，再把它们迁移到新文件里。</p>
+<p>注意，<em>src/lib.rs</em> 中的 <code>pub use crate::front_of_house::hosting</code> 语句也完全没有变化，而且 <code>use</code> 也不会影响 crate 会编译哪些文件。<code>mod</code> 关键字用来声明模块，而 Rust 会在与模块同名的文件中查找应放进该模块的代码。</p>
+<h2 id="总结-6"></h2>
+<p>Rust 允许你把一个包拆分成多个 crate，再把一个 crate 拆分成多个模块，这样你就能在一个模块中引用另一个模块里定义的项。你既可以使用绝对路径，也可以使用相对路径。还可以用 <code>use</code> 语句把路径引入作用域，这样在同一作用域内多次使用该项时就能写更短的路径。模块代码默认是私有的，不过你可以加上 <code>pub</code> 关键字，把定义公开出去。</p>
+<p>下一章，我们将看看标准库中的一些集合数据结构，你可以在组织良好的代码中使用它们。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="常见集合"></h1>
+<p><a href="https://github.com/rust-lang/book/blob/2581c23b669eff30c26e036a13475ec5cf70c1b8/src/ch08-00-common-collections.md">ch08-00-common-collections.md</a></p>
+<p>Rust 标准库中包含一些非常有用的数据结构，它们被称为 <strong>集合</strong>（<em>collections</em>）。大多数其他数据类型表示的是一个特定的值，而集合可以包含多个值。与内建的数组和元组类型不同，这些集合指向的数据存储在堆上，这意味着数据量不需要在编译时已知，并且可以随着程序运行而增长或缩小。每一种集合都有不同的能力和开销，而根据当前场景选择合适的集合，是一项你会随着时间逐渐掌握的技能。本章将讨论 Rust 程序中非常常用的三种集合：</p>
+<ul>
+<li><strong>向量</strong>（<em>vector</em>）允许你把数量可变的值一个挨一个地存放起来。</li>
+<li><strong>字符串</strong>（<em>string</em>）是字符的集合。此前我们已经提到过 <code>String</code> 类型，不过本章会更深入地讨论它。</li>
+<li><strong>哈希映射</strong>（<em>hash map</em>）允许你把某个值与特定的键关联起来。它是更通用的数据结构 <em>map</em> 的一种具体实现。</li>
+</ul>
+<p>要了解标准库提供的其他集合类型，请参阅<a href="https://doc.rust-lang.org/std/collections/index.html">文档</a>。</p>
+<p>我们将讨论如何创建和更新 vector、字符串和哈希映射，以及它们各自的特别之处。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p021.html">← 使用 use 关键字将路径引入作用域</a><a href="index.html">目录</a><a href="p023.html">使用 Vector 储存列表 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

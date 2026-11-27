@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>漫剧脚本库 · 白驹 ccowork</title>
+<meta name="description" content="可直接开机的漫剧与短视频分镜脚本：时长、分镜、台词、钩子与收尾。">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+  .board{max-width:1080px;margin:0 auto;padding:32px 20px 64px}
+  .board-head h1{font-size:clamp(26px,4vw,40px);line-height:1.25;margin:0 0 12px}
+  .board-head .lead{color:var(--muted);font-size:16px;line-height:1.75;margin:0 0 8px;max-width:760px}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  .item{background:var(--card);border:1px solid rgba(148,163,184,.22);border-radius:16px;padding:20px;display:flex;flex-direction:column}
+  .item h3{margin:0 0 8px;font-size:18px;line-height:1.4}
+  .item .hook{margin:0 0 12px;color:var(--muted);line-height:1.7;font-size:14px}
+  .item .meta{font-size:12px;color:var(--muted);margin:0 0 12px;display:flex;gap:8px;flex-wrap:wrap}
+  .item .meta span{padding:2px 8px;border-radius:999px;background:rgba(79,140,255,.12);color:#4F8CFF}
+  .item .body{font-size:14px;line-height:1.8;margin:0}
+  .item .body p{margin:0 0 10px}
+  .item .pit{margin:12px 0 0;padding:12px;border-radius:12px;background:rgba(239,68,68,.07);font-size:13px;line-height:1.7}
+  .item .pit b{color:#ef4444}
+  .item .shots{list-style:none;padding:0;margin:12px 0 0;font-size:13px;line-height:1.8}
+  .item .shots li{padding-left:14px;position:relative}
+  .item .shots li::before{content:"▸";position:absolute;left:0;color:#4F8CFF}
+  .free{font-size:12px;color:var(--muted);margin:12px 0 0;padding-top:10px;border-top:1px dashed rgba(148,163,184,.28)}
+  .cnt{color:var(--muted);font-size:14px;margin:0 0 20px}
+  .srcnote{margin:40px 0 0;padding:18px;border-radius:14px;background:rgba(79,140,255,.06);border:1px solid rgba(148,163,184,.22)}
+  .srcnote p{margin:0 0 10px;font-size:13px;line-height:1.8;color:var(--muted)}
+  .srcnote p:last-child{margin:0}
+  .srcnote b{color:var(--text)}
+  .srcnote a{color:#4F8CFF;text-decoration:none}
+  .srcnote a:hover{text-decoration:underline}
+  @media(max-width:640px){.board{padding:20px 14px 48px}.grid{grid-template-columns:1fr}}
+</style>
+
+</head>
+<body>
+<main class="board">
+  <header class="board-head">
+    <h1>漫剧脚本库</h1>
+    <p class="lead">这里放的是能直接开机的脚本，不是灵感清单。每条都写清几秒、几个镜头、每镜画面里发生什么、最后一句怎么收。</p>
+  </header>
+  <p class="cnt">共 2 条可拍脚本，按日期倒序。每条写清时长、分镜与收尾，拿到就能开机。</p>
+       <section class="grid">
+    <article class="item">
+      <h3>我用 AI 把周五的周报压到 8 分钟：这 3 步谁都能抄</h3>
+      <p class="hook">周五下午 5 点 40，同事还在翻聊天记录找这周干了啥。我把周报发出去用了 8 分钟，而且领导回了个赞。</p>
+      <p class="meta">
+        <span>2026-11-26</span>
+        <span>52 秒</span>
+        <span>AI 把周报自动化</span>
+        <span>音乐：轻快 lo-fi，音量压到 -18dB，人声为主</span>
+      </p>
+      <ul class="shots"><li>镜 1 · 3s · 特写：手机屏幕 17:40，微信工作群 99+ 未读 · 「周五 5 点 40，群里 99 条未读。」 · 镜头 手持微晃，增强焦虑感</li><li>镜 2 · 6s · 中景：主角合上笔记本，同事抬头问「你周报写完啦？」 · 「同事问我：你周报写完了？我写完 8 分钟了。」 · 镜头 固定机位，两人对坐</li><li>镜 3 · 8s · 屏幕录制：翻出本周日历与提交记录，圈出 4 件事 · 「第一步，别回忆。翻日历和提交记录，只挑出 4 件真正有结果的事。」 · 镜头 录屏 + 局部高亮圈选</li><li>镜 4 · 10s · 屏幕录制：把 4 件事丢给 AI，提示词只有一句「按结果写，别写过程」 · 「第二步，交给 AI。提示词只有一句：按结果写，别写过程。」 · 镜头 录屏，光标停留在提示词上</li><li>镜 5 · 9s · 分屏对比：左边「推进了项目」右边「把导出耗时从 40 秒降到 6 秒」 · 「第三步最要命。删掉「推进了项目」这种话，换成能验证的数。」 · 镜头 左右分屏，右侧数字放大</li><li>镜 6 · 9s · 特写：领导回复「这个数很好」，配一个赞 · 「领导回的不是「辛苦了」，是「这个数很好」。」 · 镜头 手机特写，消息气泡上浮</li><li>镜 7 · 7s · 中景：主角关电脑起身，画面留 2 秒空镜 · 「周报不是写给流程的，是写给看得见的成果的。」 · 镜头 跟拍背影，逐渐失焦</li></ul>
+      <p class="free">收尾：评论区扣「周报」，我把那句提示词发你。</p>
+    </article>
+    <article class="item">
+      <h3>人形机器人真的量产了！你的饭碗还稳吗？</h3>
+      <p class="hook">别觉得人形机器人还在实验室里！今天它正式开进量产线了！</p>
+      <p class="meta">
+        <span>2026-08-29</span>
+        <span>60 秒</span>
+        <span>人形机器人量产时代到来</span>
+        <span>音乐：开头用带科技感的急促电子鼓点，中段转沉稳的叙事感合成器音效，结尾上扬带积极感的轻电音，整体音量压过旁白不超过30%</span>
+      </p>
+      <p class="hook">这一条的分镜数据正在补录中，暂时只保留时长信息。完整可拍版本见下方从脚本库读入的条目。</p>
+      <p class="free">收尾：你觉得你的工作，机器人多久能学会？评论区聊聊，关注我第一时间看懂科技改变的真实生活！</p>
+    </article></section>
+    <section class="grid" id="data-scripts"></section>
+</main>
+<script src="/site-nav.js?v=20261125a" defer></script>
+<script src="/module.js?v=20261125a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/baiju-assistant.js" defer></script>
+<script src="/data/viral-scripts.js"></script>
+<script>
+(function(){
+  try{
+    var box=document.getElementById('data-scripts');
+    var list=window.VIRAL_SCRIPTS||[];
+    if(!box||!list.length) return;
+    var cnt=document.querySelector('.cnt');
+    if(cnt) cnt.textContent='共 '+(2+list.length)+' 条可拍分镜，按数据来源标注。直接开机的脚本已展开在下方。';
+    list.forEach(function(x){
+      var art=document.createElement('article'); art.className='item';
+      var h=document.createElement('h3'); h.textContent=x.title||x.topic||'未命名脚本'; art.appendChild(h);
+      var hook=document.createElement('p'); hook.className='hook'; hook.textContent=x.hook||''; art.appendChild(hook);
+      var meta=document.createElement('p'); meta.className='meta';
+      [x.date, (x.seconds||0)+' 秒', x.topic||''].forEach(function(t){var sp=document.createElement('span');sp.textContent=t;meta.appendChild(sp);});
+      art.appendChild(meta);
+      var ul=document.createElement('ul'); ul.className='shots';
+      (x.shots||[]).forEach(function(sh){
+        var li=document.createElement('li');
+        li.textContent='镜 '+sh.n+' · '+sh.sec+' · '+sh.scene+'：'+sh.desc+' · 「'+(sh.narration||'')+'」';
+        ul.appendChild(li);
+      });
+      art.appendChild(ul);
+      if(x.cta){var f=document.createElement('p');f.className='free';f.textContent='收尾：'+x.cta;art.appendChild(f);}
+      box.appendChild(art);
+    });
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

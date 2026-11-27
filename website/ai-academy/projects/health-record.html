@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="自学路线,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="HealthRecord 健康助手 · 自学路线毕业设计 · 白驹 ccowork">
+<meta name="description" content="日常健康数据零散在手环、体检报告、备忘录中，缺乏统一管理与量化分析，难以及时发现健康风险。本项目从零搭建个人健康记录助手，你将掌握结构化健康数据建模、时序趋势分析、大模型生成个性化健康建议的全栈落地能力。">
+<meta property="og:description" content="日常健康数据零散在手环、体检报告、备忘录中，缺乏统一管理与量化分析，难以及时发现健康风险。本项目从零搭建个人健康记录助手，你将掌握结构化健康数据建模、时序趋势分析、大模型生成个性化健康建议的全栈落地能力。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>HealthRecord 健康助手 · 自学路线 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"HealthRecord 健康助手 · 自学路线 · 白驹 ccowork","description":"日常健康数据零散在手环、体检报告、备忘录中，缺乏统一管理与量化分析，难以及时发现健康风险。本项目从零搭建个人健康记录助手，你将掌握结构化健康数据建模、时序趋势分析、大模型生成个性化健康建议的全栈落地能力。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="canonical" href="https://ccoworkbaiju.cn/website/ai-academy/projects/health-record.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/ai-academy/projects/health-record.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HealthRecord 健康助手 · 自学路线 · 白驹 ccowork">
+<meta name="twitter:description" content="日常健康数据零散在手环、体检报告、备忘录中，缺乏统一管理与量化分析，难以及时发现健康风险。本项目从零搭建个人健康记录助手，你将掌握结构化健康数据建模、时序趋势分析、大模型生成个性化健康建议的全栈落地能力。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-theme="cloud"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav><div class="logo">白驹 ccowork · 离线版</div><a href="../../ai-academy-projects.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 项目库</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../../assets/pg/pg-website-ai-academy-projects-health-record.png" alt="HealthRecord 健康助手 · 自学路线 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1><i class="cc-ic" data-ic="heart" aria-hidden="true"></i> HealthRecord 健康助手</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 自学路线 毕业设计 04 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">健康</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>04 号毕业设计：HealthRecord 健康助手</h2>
+<p>日常健康数据零散在手环、体检报告、备忘录中，缺乏统一管理与量化分析，难以及时发现健康风险。本项目从零搭建个人健康记录助手，你将掌握结构化健康数据建模、时序趋势分析、大模型生成个性化健康建议的全栈落地能力。</p>
+<h2>项目简介</h2>
+<p>《HealthRecord 健康助手》是一款面向个人用户的轻量健康管理工具，支持多维度健康数据的手动录入与智能导入，自动生成可视化健康趋势，结合大模型输出可执行的健康改善建议，所有数据本地存储保障隐私。项目定位为入门级 AI 应用型全栈项目，无需复杂医疗专业背景，适合 Python 基础的学习者复现，最终可打包为桌面端或本地 Web 应用日常使用。项目核心聚焦「数据沉淀-分析洞察-建议落地」的健康管理闭环，不涉及医疗诊断，所有输出仅作生活方式参考。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="../../../assets/body/bb-health-record.png" alt="HealthRecord 健康助手 · 自学路线 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>多维度健康数据录入：支持血压、血糖、体重、睡眠时长、运动消耗、不适症状6类核心健康指标的手动录入，支持导入小米运动、Apple Health导出的CSV格式历史数据</li>
+<li>健康档案管理：支持按家庭成员创建独立健康档案，自动关联历史就诊记录、过敏史、长期用药等基础信息</li>
+<li>时序趋势可视化：自动生成近7天/30天/90天的指标趋势折线图，对超出正常阈值的指标自动标红预警</li>
+<li>异常指标关联分析：自动识别连续3次以上超标的异常指标，关联同期作息、运动、饮食记录做相关性提示</li>
+<li>AI 个性化健康建议：调用通义千问/文心一言API，结合用户近期健康数据、基础档案生成周度健康报告与可落地的改善建议</li>
+<li>数据导出备份：支持全量健康数据导出为加密Excel文件，支持本地定期自动备份，避免数据丢失</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>后端框架</td><td>FastAPI 0.104.1</td><td>提供RESTful API接口，处理数据增删改查、分析逻辑调度</td></tr>
+<tr><td>数据存储</td><td>SQLite + SQLAlchemy 2.0</td><td>本地结构化存储健康档案、指标记录、报告数据，无需额外部署数据库</td></tr>
+<tr><td>数据处理</td><td>Pandas 2.1.4 + NumPy 1.26.2</td><td>处理时序健康数据清洗、阈值校验、相关性计算</td></tr>
+<tr><td>可视化</td><td>Pyecharts 2.0.4</td><td>生成可交互的健康趋势图表，直接嵌入前端页面</td></tr>
+<tr><td>AI能力层</td><td>阿里通义千问DashScope SDK</td><td>传入结构化健康数据，生成自然语言健康建议与周度报告</td></tr>
+<tr><td>前端页面</td><td>Jinja2 + Bootstrap 5.3</td><td>渲染后端模板，实现响应式交互页面，无需单独搭建前端工程</td></tr>
+</tbody>
+</table>
+<p>架构说明：项目采用前后端不分离的单体架构，所有服务本地启动即可运行，无云端强依赖。数据层通过SQLAlchemy做ORM映射，避免手写SQL；业务层拆分数据管理、分析计算、AI生成三个独立模块，降低耦合；展示层通过Jinja2模板直接渲染后端返回的图表与报告，用户通过浏览器访问本地端口即可使用，数据全部存储在本地SQLite文件中，隐私性强。</p>
+<h2>核心代码骨架</h2>
+<pre><code># 模型层：models.py 定义核心数据表结构
+from sqlalchemy import create_engine, Column, Integer, String, Float, Date, ForeignKey, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, relationship
+Base = declarative_base()
+engine = create_engine('sqlite:///health_record.db')  # 本地数据库文件
+SessionLocal = sessionmaker(bind=engine)
+# 家庭成员档案表
+class UserProfile(Base):
+    __tablename__ = "user_profile"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(20), nullable=False)  # 姓名
+    age = Column(Integer, nullable=False)  # 年龄
+    gender = Column(String(10), nullable=False)  # 性别
+    allergy = Column(Text)  # 过敏史
+    chronic_disease = Column(Text)  # 慢性病史
+    records = relationship("HealthMetric", back_populates="owner")  # 关联健康指标记录
+# 健康指标记录表
+class HealthMetric(Base):
+    __tablename__ = "health_metric"
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("user_profile.id"))
+    record_date = Column(Date, nullable=False)  # 记录日期
+    systolic_bp = Column(Float)  # 收缩压
+    diastolic_bp = Column(Float)  # 舒张压
+    weight = Column(Float)  # 体重kg
+    sleep_hour = Column(Float)  # 睡眠时长h
+    sport_calorie = Column(Float)  # 运动消耗大卡
+    symptom = Column(Text)  # 当日不适症状
+    owner = relationship("UserProfile", back_populates="records")
+Base.metadata.create_all(bind=engine)  # 首次启动自动建表</code></pre>
+<pre><code># 服务层：ai_service.py AI健康建议生成逻辑
+import dashscope
+from dashscope import Generation
+import pandas as pd
+dashscope.api_key = "替换为你的DashScope API Key"  # 阿里云百炼平台可免费申请
+def generate_weekly_advice(user_id: int, db_session):
+    # 1. 拉取用户近30天健康数据
+    metrics = db_session.query(HealthMetric).filter(
+        HealthMetric.user_id == user_id,
+        HealthMetric.record_date &gt;= pd.Timestamp.now() - pd.Timedelta(days=30)
+    ).all()
+    df = pd.DataFrame([{
+        "日期": m.record_date, "收缩压": m.systolic_bp, "舒张压": m.diastolic_bp,
+        "体重": m.weight, "睡眠时长": m.sleep_hour, "运动消耗": m.sport_calorie,
+        "不适症状": m.symptom
+    } for m in metrics])
+    # 2. 构造提示词传入大模型
+    prompt = f"""你是专业的健康管理师，请基于用户近30天的健康数据：{df.to_csv(index=False)}，
+    生成300字以内的周度健康建议，要求包含：1.异常指标提示 2.作息/饮食/运动三个维度的可落地建议，
+    注意不要给出医疗诊断结论，仅做生活方式指导。"""
+    response = Generation.call(model="qwen-turbo", prompt=prompt, temperature=0.3)
+    return response.output.text</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：安装Python 3.10+版本，打开终端执行<code>pip install fastapi==0.104.1 uvicorn==0.24.0 sqlalchemy==2.0.23 pandas==2.1.4 pyecharts==2.0.4 dashscope==1.14.1 jinja2==3.1.2 python-multipart==0.0.6</code>安装所有依赖</li>
+<li>申请API Key：登录阿里云百炼平台（https://bailian.console.aliyun.com/），开通通义千问Turbo服务，复制API Key替换<code>ai_service.py</code>中的占位符</li>
+<li>初始化数据库：在项目根目录执行<code>python -c "from models import Base, engine; Base.metadata.create_all(engine)"</code>，自动生成<code>health_record.db</code>本地数据库文件</li>
+<li>启动后端服务：在项目根目录执行<code>uvicorn main:app --host 127.0.0.1 --port 8000</code>，看到Uvicorn running提示即为启动成功</li>
+<li>访问应用：打开浏览器输入<code>http://127.0.0.1:8000</code>，首先创建个人健康档案，即可开始录入健康数据</li>
+<li>验证功能：录入3天以上的健康指标后，进入「趋势分析」页面查看可视化图表，进入「健康建议」页面生成AI分析报告</li>
+<li>（可选）导入历史数据：将小米运动/Apple Health导出的CSV文件按示例模板调整字段后，在「数据管理」页面上传即可批量导入。</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>接入智能穿戴设备API：对接华为运动健康、小米运动开放平台的OAuth授权，实现健康数据自动同步，无需手动录入</li>
+<li>增加饮食记录模块：新增饮食拍照识别功能，调用通义千问VL多模态模型识别餐食热量、营养成分，自动关联健康指标做饮食影响分析</li>
+<li>增加健康提醒功能：接入本地桌面通知/微信推送，根据用户设定的测量计划（如每日早8点测血压）定时提醒，对连续异常指标自动推送预警</li>
+<li>部署为移动端应用：使用Flet框架重构前端，打包为安卓/iOS安装包，实现手机端随时记录、查看报告，数据通过SQLite加密存储在本地。</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握了FastAPI+SQLAlchemy的轻量后端开发流程，能够独立搭建本地优先的隐私友好型应用，理解了ORM映射、数据库建模的核心逻辑</li>
+<li>掌握了Pandas处理时序健康数据的常用方法，包括阈值校验、趋势计算、异常值识别，能够将原始数据转化为可解读的分析结论</li>
+<li>掌握了大模型应用开发的提示词工程方法，学会将结构化业务数据转化为大模型可理解的输入，生成符合场景要求的自然语言输出，避免大模型幻觉。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>基础练习：在现有健康指标基础上新增「空腹血糖」字段，修改数据库模型、录入页面与阈值校验逻辑，实现血糖指标的趋势展示与异常提示（正常阈值3.9-6.1mmol/L）</li>
+<li>进阶练习：优化AI建议生成逻辑，在提示词中加入用户的慢性病史、过敏史信息，让生成的建议更贴合用户个体情况，同时增加建议的可执行性校验，避免出现模糊表述。</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 自学路线「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud">
+<head>
+<meta property="og:description" content="一次自建内容流水线死锁复盘：落位账阻止打包，打包又是新页面落地的前提。通过拆分草稿与发布物证据、修复 JS 数据解析和“判不了也算过”，将弱落地从 17 降到 0。">
+<meta name="keywords" content="自建内容流水线死锁复盘,账本和闸门为什么互相卡死？,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自建内容流水线死锁复盘：账本和闸门为什么互相卡死？ · 白驹 ccowork</title>
+<meta name="description" content="一次自建内容流水线死锁复盘：落位账阻止打包，打包又是新页面落地的前提。通过拆分草稿与发布物证据、修复 JS 数据解析和“判不了也算过”，将弱落地从 17 降到 0。">
+
+
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+  .post{max-width:760px;margin:0 auto;padding:32px 20px 64px}
+  .post h1{font-size:clamp(26px,4vw,38px);line-height:1.3;margin:0 0 16px}
+  .post .meta{color:var(--muted);font-size:14px;margin:0 0 28px;padding-bottom:16px;border-bottom:1px solid rgba(148,163,184,.25)}
+  .post article p{font-size:17px;line-height:1.85;margin:0 0 18px}
+  .post h2{font-size:22px;margin:36px 0 14px}
+  .post ul,.post ol{font-size:16px;line-height:1.85;padding-left:22px;margin:0 0 18px}
+  .post li{margin:0 0 8px}
+  .post code{background:rgba(79,140,255,.1);padding:2px 6px;border-radius:6px;font-size:15px}
+  .post pre{background:#101728;color:#E9F0FB;padding:16px;border-radius:14px;overflow:auto;font-size:14px;line-height:1.7;margin:0 0 20px}
+  .post blockquote{border-left:3px solid #4F8CFF;margin:0 0 20px;padding:4px 0 4px 16px;color:var(--muted)}
+  .post .end{margin-top:36px;padding-top:18px;border-top:1px solid rgba(148,163,184,.25);font-size:15px;color:var(--muted);line-height:1.8}
+</style>
+<meta name="twitter:description" content="一次自建内容流水线死锁复盘：落位账阻止打包，打包又是新页面落地的前提。通过拆分草稿与发布物证据、修复 JS 数据解析和“判不了也算过”，将弱落地从 17 降到 0。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/blog/2026-11-26-%E8%B4%A6%E5%92%8C%E9%97%B8%E9%97%A8%E4%BA%92%E7%9B%B8%E5%8D%A1%E6%AD%BB%EF%BC%9A%E4%B8%80%E6%AC%A1%E8%87%AA%E5%BB%BA%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E6%AD%BB%E9%94%81%E6%8E%92%E6%9F%A5.html">
+<meta property="og:title" content="自建内容流水线死锁复盘：账本和闸门为什么互相卡死？ · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/blog/2026-11-26-%E8%B4%A6%E5%92%8C%E9%97%B8%E9%97%A8%E4%BA%92%E7%9B%B8%E5%8D%A1%E6%AD%BB%EF%BC%9A%E4%B8%80%E6%AC%A1%E8%87%AA%E5%BB%BA%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E6%AD%BB%E9%94%81%E6%8E%92%E6%9F%A5.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="自建内容流水线死锁复盘：账本和闸门为什么互相卡死？ · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"自建内容流水线死锁复盘：账本和闸门为什么互相卡死？ · 白驹 ccowork","description":"一次自建内容流水线死锁复盘：落位账阻止打包，打包又是新页面落地的前提。通过拆分草稿与发布物证据、修复 JS 数据解析和“判不了也算过”，将弱落地从 17 降到 0。","url":"https://ccoworkbaiju.cn/blog/2026-11-26-%E8%B4%A6%E5%92%8C%E9%97%B8%E9%97%A8%E4%BA%92%E7%9B%B8%E5%8D%A1%E6%AD%BB%EF%BC%9A%E4%B8%80%E6%AC%A1%E8%87%AA%E5%BB%BA%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E6%AD%BB%E9%94%81%E6%8E%92%E6%9F%A5.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ccoworkbaiju.cn/blog/2026-11-26-%E8%B4%A6%E5%92%8C%E9%97%B8%E9%97%A8%E4%BA%92%E7%9B%B8%E5%8D%A1%E6%AD%BB%EF%BC%9A%E4%B8%80%E6%AC%A1%E8%87%AA%E5%BB%BA%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E6%AD%BB%E9%94%81%E6%8E%92%E6%9F%A5.html"},"image":"https://ccoworkbaiju.cn/assets/img/og-cover.png","datePublished":"2026-11-26","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"}}</script>
+</head>
+<body>
+<main class="post">
+<h1>自建内容流水线死锁复盘：账本和闸门为什么互相卡死？</h1>
+<p class="meta">2026-11-26 · 约 1700 字</p>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="自建内容流水线死锁复盘：账本和闸门为什么互相卡死？" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">自建内容流水线死锁复盘：账本和闸门为什么互相</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">📘</text>
+</svg>
+<p>下午 1 点 07 分，我的流水线第三次吐出同一行结果：<code>❌ 落位账不合格：弱落地 17 个</code>，紧接着是 <code>已跳过打包 —— 总审查未通过</code>。两个红叉挨在一起，看着像两个问题，其实是同一个问题的两个面，而且已经互相咬死了。</p>
+<p>更具体一点：落位账说「这 17 个数据文件没有页面渲染它们」，而被打包跳过的那一步，恰恰是把新页面同步到发布目录的那一步。也就是说 —— <strong>不打包，那些页面就永远不会出现在发布目录里；不出现，账就永远判它们没落地；账不绿，就永远不许打包。</strong></p>
+
+<h2>先把症状说清楚</h2>
+<p>我做的是一个静态站点，内容从数据文件渲染成页面。三条产物链路：数据在 <code>data/</code>，渲染出的页面在站点根，发布副本在 <code>site-official/</code>。</p>
+<p>落位账的设计目标是「双向对账」：每个数据文件必须有页面渲染它（否则是死账），每个页面引用的数据必须真实存在（否则是断链）。为了抓「草稿上线了、正式版掉队」这种事故，我让它扫的是<strong>发布目录</strong>。</p>
+<p>这个决定在当时是对的。上一轮真出过事故：一个页面的草稿版有 50 条内容、75KB，正式发布目录里只有 25KB、0 条。只扫草稿就会把这种掉队判成绿。</p>
+<p>但今天它变成了死锁。因为我把「打包」这道闸门加到了「总审查」后面，而总审查里包含落位账。</p>
+
+<pre>更新板块 → 跑总量（含落位账）
+              ↓  扫 site-official
+         数据没渲染？→ 红
+              ↓
+         总审查不通过 → 不打包
+              ↓
+     site-official 没有新页面 → 回到第一行</pre>
+
+<h2>第一反应是错的：我想放宽闸门</h2>
+<p>看到死锁，最省事的解法是「打包放到审查前面」。但那样就回到了老问题：带着问题打包，等于把问题直接推上线。这个口子不能开。</p>
+<p>第二个想法是「落位账改成扫草稿」。这也不对 —— 那正是当初要修的那个漏洞。</p>
+<p>真正的问题在第三层：<strong>我把两件不同的事塞进了一条判据。</strong></p>
+<ul>
+<li>「数据有没有页面渲染它」——答案是草稿里就能确定的，跟发布没关系；</li>
+<li>「草稿改了，发布物有没有跟上」——这是同步问题，发生在打包之后。</li>
+</ul>
+<p>把这两个问题混在一个绿/红里，就必然出现「同步没做 → 判成渲染没做 → 禁止同步」的循环。</p>
+
+<h2>改法：证据分两层，判据各管一件事</h2>
+<p>第一步，让落位账同时采信<strong>草稿和发布物</strong>两份证据。真源里渲染了就算落地 —— 站点在开工阶段本来就该是「草稿已更新、发布物还是旧版」的状态，这是正常中间态，不是错误。</p>
+<p>第二步，「发布物掉队」由另一个检查独立负责：逐文件比对草稿与发布物、以及两套发布物之间的一致性。这件事在打包之后才该被要求，放在打包之前要求它，就是在要求一件还没发生的事。</p>
+<p>改完之后，数字立刻变了：弱落地从 17 降到 9，再降到 3，最后 0。</p>
+
+<h2>改的过程中又抓到两个判据错误</h2>
+<p>剩余那 9 个里，有 6 个根本不是数据问题，是我的判据在瞎判。这两个错误值得单独记下来，因为它们都属于「判据本身错了，而不是数据坏了」。</p>
+<p><strong>错误一：只扫 HTML，不扫 JS。</strong>我的对账拿「文件名是否出现在页面里」当运行时证据。但有一类页面是 JS 去加载数据的 —— 比如站内搜索，页面里只有 <code>search.js</code>，数据文件在脚本里被 fetch。只扫 HTML 会把这类正常页统统判成孤儿。改成扫「发布物里的可执行文本」之后，一批误报消失。</p>
+<p><strong>错误二：对 .js 全局变量根本不解析。</strong>有些数据是 <code>window.XXX = [...]</code> 的形式，前端 script 标签直接引。我的解析器只处理 <code>.json</code>，遇到 <code>.js</code> 就把探针列表置空 —— 探针为空，无论页面渲染得多完整，都会判「0 条命中」。这不是数据没落地，是尺子根本没量。</p>
+<blockquote>判据瞎了比漏判更危险。漏判你至少知道自己没查；瞎判会给你一个看起来很权威的红色数字，然后你花一整天去修一个根本不存在的问题。</blockquote>
+
+<h2>还有一个「判不了也算通过」的坑</h2>
+<p>配额账里我新加了一个板块，数据文件还没建。跑出来的结果是 ✅ 通过。理由很荒谬：文件不存在 → 拿不到当日量 → 当日量是 <code>null</code> → 没触发「小于下限」的比较 → 通过。</p>
+<p><strong>「判不了」被当成了「没问题」。</strong>这是所有自建审计系统里最容易自欺的一档。我把它改成三档硬判：数据文件缺失 = 失败；设了下限但判不出当日量 = 失败；当日量低于下限 = 失败。改完之后，同一份数据从「全绿」变成 5 项红 —— 那才是真实的完成度。</p>
+
+<h2>三件可以搬走的经验</h2>
+<p>第一，<strong>闸门和账本不能共享同一个证据源</strong>。如果一个检查的结论决定了「能不能做某件事」，而这件事本身又是那个检查的前提，就一定死锁。要么分开证据，要么分开时机。</p>
+<p>第二，<strong>「判不了」必须是失败，不能是跳过</strong>。任何允许 null 静默通过的比较，都会在数据缺失时给你一个假绿灯，而数据缺失恰恰是最该报警的时候。</p>
+<p>第三，<strong>审查加严，先修尺子</strong>。我今天加严了三条判据，但真正让账面变好看的，是修掉了两个判据错误。加严不等于把阈值调高，前者要求判据更准，后者只是让红灯更多。</p>
+
+<p>所以我的判断是：自建审计系统最容易坏的地方不是判据太松，是判据偷偷在看错的地方。松了你还能靠人兜一层，看错了你会拿着一个权威的红色数字去修一个不存在的问题，修一整天，越修越远。下一步我要做的是给每条判据标清它的证据来源 —— 扫真源还是扫发布物，必须先写清楚再写代码，而不是事后从报错里猜。</p>
+
+<p><strong>相关阅读：</strong><a href="/blog/2026-11-26-20个RSS源实测下来只剩1个能修：我删掉了5个死源.html">38 个 RSS 源实测：4 个死源没救回，我把可用源补到 20 个</a>，看同一条内容管线如何把“返回 200”从可用判据中剔除。</p>
+<p class="end">最终结果：孤儿 0、弱落地 0、落地率 100%、未登记引用 0、断链 0、两套发布物内容差异 0。五项异常全部归零、落地率达到 100% 时，我才敢说数据跟位置对得上了。一句话总结今天这半天的教训 —— 账本和闸门要用不同的证据，否则它们会互相判对方死刑。</p>
+<section class="blog-attribution" style="margin-top:28px;padding:16px 18px;border:1px solid var(--line);border-radius:12px"><h3>出处声明</h3><p>本页由 AI 辅助生成或整理，未逐条人工核验，仅供学习参考；涉及第三方工具、模型、价格、政策及数据的信息以官方发布为准，引用内容请以原始来源及其许可条款为准。</p></section>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="制造业AI应用实战.html" style="color:var(--gold);font-weight:700;text-decoration:none">制造业上 AI：六个场景的数据前提与</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px">📚 博客目录</a>
+  <span style="font-size:13px"><a href="2026-11-26-爆款-3个新功能1个核心反转！Anthropic刚更的Skills over MCP，.html" style="color:var(--gold);font-weight:700;text-decoration:none">别再只堆工具！4个能力看懂Skill</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8">📌 出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+</main>
+<script src="/site-nav.js"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<hr>
+<p class="content-attribution" style="color:var(--muted);font-size:12.5px;line-height:1.8">出处声明：本页内容为白驹 ccowork原创或整理；涉及第三方工具、产品、政策与数据的信息请以相关官方发布为准，引用内容遵循原始许可。</p>
+</body>
+</html>

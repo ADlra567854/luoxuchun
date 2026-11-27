@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="43 家 AI 厂商的模型系列、主力型号、定位与开源策略对照，中国 23 家、美国 17 家、其他 3 家。">
+<meta name="keywords" content="厂商阵列 · 43 家,产线怎么排的 · 白驹 ccowork,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>厂商阵列 · 43 家，产线怎么排的 · 白驹 ccowork</title>
+<meta name="description" content="43 家 AI 厂商的模型系列、主力型号、定位与开源策略对照，中国 23 家、美国 17 家、其他 3 家。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/cover.css">
+<meta name="twitter:description" content="43 家 AI 厂商的模型系列、主力型号、定位与开源策略对照，中国 23 家、美国 17 家、其他 3 家。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/models/vendors.html">
+<meta property="og:title" content="厂商阵列 · 43 家，产线怎么排的 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/models/vendors.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="厂商阵列 · 43 家，产线怎么排的 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="models" data-cctitle="厂商阵列">
+
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/vendors.jpg" alt="" loading="eager" decoding="async"></div>
+
+  <div class="pg-hero">
+    <div data-cccrumb="厂商阵列"></div>
+    <h1>厂商阵列 · <em>43 家</em></h1>
+    <p class="lede">
+      同一家厂商往往有多条系列，定位互不相同——旗舰、轻量、多模态、垂直各占一条。
+      看清<b>系列划分</b>比记住型号名更有用：型号半年一换，系列定位能管三年。
+    </p>
+    <div class="pg-stats">
+      <div class="st"><b data-cnt="43">0</b><span>厂商</span></div>
+      <div class="st"><b data-cnt="23">0</b><span>中国</span></div>
+      <div class="st"><b data-cnt="17">0</b><span>美国</span></div>
+      <div class="st"><b data-cnt="3">0</b><span>其他地区</span></div>
+    </div>
+  </div>
+
+  <div class="pg-note">
+    <i class="cc-ic" data-ic="info" aria-hidden="true"></i>
+    <div>
+      <b>「开源度」只看主力模型：</b>高 = 旗舰开源且许可宽松；中 = 部分开放或开放权重受限；低 = 主力闭源仅 API。
+      一家厂商完全可能"旗舰闭源、小模型开源"，用单一标签概括会失真，所以这里标的只是<b>主力线</b>。
+    </div>
+  </div>
+
+  <div class="pg-toolbar">
+    <label class="q">
+      <i class="cc-ic" data-ic="search" aria-hidden="true"></i>
+      <input id="q" type="search" placeholder="搜厂商、系列或定位…" autocomplete="off">
+    </label>
+    <div class="pg-chips" id="cq">
+      <button class="pg-chip on" data-c="">全部</button>
+      <button class="pg-chip" data-c="CN">中国</button>
+      <button class="pg-chip" data-c="US">美国</button>
+      <button class="pg-chip" data-c="other">其他</button>
+    </div>
+    <span class="rc">命中 <b id="rc">0</b> 家</span>
+  </div>
+
+  <div id="board"></div>
+
+</main>
+
+<script src="/site-nav.js?v=20261125a"></script>
+<script src="/models/hub.js"></script>
+<script>
+(function () {
+  var MH = window.MH, esc = MH.esc, ic = MH.ic;
+  var board = MH.$('#board'), qIn = MH.$('#q'), rc = MH.$('#rc'), cq = MH.$('#cq');
+  var ROWS = [], pick = '';
+
+  var OPCLS = { '高': 'live', '中': 'slow', '低': 'dead' };
+
+  function card(v) {
+    // 品牌字母标：品牌色 + 英文缩写（原来 43 张卡全是同一个 building-2 图标，
+    // 一眼看不出哪家是哪家；现在数据里有 ab/bc 字段，由 add-vendor-brands.py 维护）
+    /* 2026-11-12 品牌统一：厂商卡标识位一律用同一枚「隙」；厂商名由下方 h3 实时文本给出 */
+    var mark = '<span class="vb brand"><img src="/assets/brand/mark.svg" alt="" loading="lazy"></span>';
+    return '<div class="pg-card" data-c="' + esc(v.c) + '">' +
+      '<div class="ch">' + mark +
+      '<div><h3>' + esc(v.n) + '</h3><div class="tag">' +
+      esc(MH.cn(v.c)) + ' · 成立 ' + v.y + ' · 主力开源度 ' +
+      '<span class="dot ' + (OPCLS[v.o] || 'slow') + '"></span>' + esc(v.o) + '</div></div></div>' +
+      '<p class="desc">' + esc(v.note) + '</p>' +
+      '<div class="reps"><div class="rp"><span class="rl">系列</span>' +
+        v.s.map(function (x) { return '<span class="pg-chip s">' + esc(x) + '</span>'; }).join('') +
+      '</div></div>' +
+      '<div class="foot"><span class="lbl">主力</span><code>' + esc(v.f) + '</code>' +
+        '<span style="margin-left:auto">' + esc(v.p) + '</span></div>' +
+      '</div>';
+  }
+
+  function render() {
+    var q = (qIn.value || '').trim().toLowerCase();
+    var rows = ROWS.filter(function (v) {
+      if (pick === 'other') { if (v.c === 'CN' || v.c === 'US') return false; }
+      else if (pick && v.c !== pick) return false;
+      if (q) {
+        var hay = (v.n + ' ' + v.s.join(' ') + ' ' + v.p + ' ' + v.f + ' ' + v.note).toLowerCase();
+        if (hay.indexOf(q) < 0) return false;
+      }
+      return true;
+    });
+    rc.textContent = rows.length;
+    var html = '';
+    [['CN', '中国'], ['US', '美国'], ['other', '其他地区']].forEach(function (grp) {
+      var k = grp[0];
+      var items = rows.filter(function (v) {
+        return k === 'other' ? (v.c !== 'CN' && v.c !== 'US') : v.c === k;
+      });
+      if (!items.length) return;
+      html += '<section class="pg-sec" id="v-' + k + '">' +
+        '<div class="sh"><h2>' + ic('building') + esc(grp[1]) + '</h2>' +
+        '<span class="cnt">' + items.length + ' 家</span></div>' +
+        '<div class="pg-grid">' + items.map(card).join('') + '</div></section>';
+    });
+    board.innerHTML = html || MH.empty('没有匹配的厂商', '换个关键词，或点「全部」');
+  }
+
+  MH.getJSON('/data/vendors.json', function (d) {
+    ROWS = d.rows;
+    render();
+    MH.fillCounts();
+  }, function () {
+    board.innerHTML = MH.empty('厂商数据加载失败', '请刷新重试');
+  });
+
+  var t = null;
+  qIn.addEventListener('input', function () { clearTimeout(t); t = setTimeout(render, 130); });
+  cq.addEventListener('click', function (e) {
+    var b = e.target.closest('.pg-chip');
+    if (!b) return;
+    MH.$$('.pg-chip', cq).forEach(function (x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    pick = b.getAttribute('data-c');
+    render();
+  });
+})();
+</script>
+  <script src="/baiju-assistant.js?v=20261125a" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261116a">
+<script src="/assets/baiju-gate.js?v=20261116a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261116a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

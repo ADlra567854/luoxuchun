@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="AI 视频的门槛已经从「能不能生成」转到「能不能稳定复现」。这篇讲素材驱动的工作流、合规要求，以及普通从业者真正能切入的位置。">
+<meta name="keywords" content="2026.9.9 实测,现在用AI做视频,已经不用拼提示词了,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta name="description" content="AI 视频的门槛已经从「能不能生成」转到「能不能稳定复现」。这篇讲素材驱动的工作流、合规要求，以及普通从业者真正能切入的位置。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 做视频：现在拼的不是提示词，是可控性 · 白驹 ccowork</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+.blog-honest{display:inline-block;margin-top:12px;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;color:#07090f;background:linear-gradient(120deg,#38e1ff,#8b5cf6)}
+.blog-attribution{margin-top:34px;padding:16px 18px;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:14px;background:rgba(245,194,107,.06)}
+.blog-attribution h3{color:var(--gold);font-size:15px;margin:0 0 8px}
+.blog-attribution p{color:var(--muted);font-size:14px;margin:0}
+</style><meta name="twitter:description" content="AI 视频的门槛已经从「能不能生成」转到「能不能稳定复现」。这篇讲素材驱动的工作流、合规要求，以及普通从业者真正能切入的位置。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/blog/2026.9.9-%E5%AE%9E%E6%B5%8B%EF%BC%9A%E7%8E%B0%E5%9C%A8%E7%94%A8AI%E5%81%9A%E8%A7%86%E9%A2%91%EF%BC%8C%E5%B7%B2%E7%BB%8F%E4%B8%8D%E7%94%A8%E6%8B%BC%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%BA%86.html">
+<meta property="og:title" content="AI 做视频：现在拼的不是提示词，是可控性 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/blog/2026.9.9-%E5%AE%9E%E6%B5%8B%EF%BC%9A%E7%8E%B0%E5%9C%A8%E7%94%A8AI%E5%81%9A%E8%A7%86%E9%A2%91%EF%BC%8C%E5%B7%B2%E7%BB%8F%E4%B8%8D%E7%94%A8%E6%8B%BC%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%BA%86.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 做视频：现在拼的不是提示词，是可控性 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI 做视频：现在拼的不是提示词，是可控性","description":"AI 视频的门槛已经从「能不能生成」转到「能不能稳定复现」。这篇讲素材驱动的工作流、合规要求，以及普通从业者真正能切入的位置。","url":"https://ccoworkbaiju.cn/blog/2026.9.9-%E5%AE%9E%E6%B5%8B%EF%BC%9A%E7%8E%B0%E5%9C%A8%E7%94%A8AI%E5%81%9A%E8%A7%86%E9%A2%91%EF%BC%8C%E5%B7%B2%E7%BB%8F%E4%B8%8D%E7%94%A8%E6%8B%BC%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%BA%86.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ccoworkbaiju.cn/blog/2026.9.9-%E5%AE%9E%E6%B5%8B%EF%BC%9A%E7%8E%B0%E5%9C%A8%E7%94%A8AI%E5%81%9A%E8%A7%86%E9%A2%91%EF%BC%8C%E5%B7%B2%E7%BB%8F%E4%B8%8D%E7%94%A8%E6%8B%BC%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%BA%86.html"},"image":"https://ccoworkbaiju.cn/assets/img/og-cover.png","datePublished":"2026-09-09","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"dateModified":"2026-10-27","inLanguage":"zh-CN"}</script>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="works"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/sec/chat.jpg" alt="AI 做视频：现在拼的不是提示词，是可控性" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy" decoding="async"></div>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI 做视频：现在拼的不是提示词，是可控性" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">AI 做视频：现在拼的不是提示词，是可控性</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">🎬</text>
+</svg>
+<h1>AI 做视频：现在拼的不是提示词，是可控性</h1>
+<p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">工具对比与商用占比的数字无从复核，这里不引用。留下的是方法层面的判断：素材驱动、可控性校准、合规要求。具体工具与价格请查各厂官方页面，这一支每季度都在变。</p><p>一年前大家比的是"哪家生成的画面更像真的"，现在这个问题基本不成立了——主流工具在标准场景下都能给出可用画面。当下真正拉开差距的是<strong>能不能稳定复现同一个角色、同一个场景、同一套风格</strong>。</p><h2>素材驱动比纯文生更实用</h2><p>商用场景里，纯靠文字描述生成整条片子的成功率很低，因为每一帧都是重新"想象"的，前后不一致几乎是必然。现在更常见的做法是<strong>先给素材，再让模型在素材上做变换</strong>：</p><ul><li>给角色定妆图，锁住人物形象，后续镜头都基于它生成</li><li>给场景参考图，锁住光影与空间关系</li><li>给运镜参考视频，锁住镜头语言</li><li>给配乐，让剪辑点跟着节拍走，而不是先剪再配乐</li></ul><p>这套流程的产出稳定性远高于纯文生，代价是需要<strong>前期准备素材</strong>。这也解释了为什么"提示词写得再好也做不出稳定人物"——不是提示词的问题，是缺少约束。</p><h2>可控性的三个关键点</h2><h3>一、前置控制：先把人物和场景钉死</h3><p>同一个角色跨镜头要保持同一张脸，现在最可靠的做法是角色参考（character reference）而不是反复描述外貌。描述会漂，参考图不会。</p><h3>二、过程控制：分段生成，别写一条长提示词</h3><p>把一条 30 秒的片子拆成 5-6 个镜头分别生成，每个镜头的提示词只描述这一镜。长提示词的问题不是模型读不懂，是<strong>你没法定位是哪一句导致了偏差</strong>，改起来全靠碰运气。</p><h3>三、后期校准：一致性靠修，不靠重生成</h3><p>重生成的期望收益很低（每条都有概率问题，总有一两条不对）。现在的做法是生成足够多的候选，挑出可用的，再用局部重绘 / 补帧把瑕疵修掉。<strong>把"一次生成成功"的期待换成"批量生成 + 挑选 + 局部修"</strong>，实际效率更高。</p><h2>合规这件事不能事后补</h2><p>AI 生成的视频现在已经进入强监管范围，而且监管抓手在<strong>平台侧</strong>——平台不标识就违规，创作者不标识就被限流。要做的一共三件事：</p><ul><li><strong>显著标识 AI 生成</strong>：平台提供的标识功能要开，不要试图隐藏。各主要平台对 AI 生成内容的标识已是通行要求。</li><li><strong>素材版权来源清楚</strong>：训练数据里的东西不等于你能用，商用前确认素材授权范围（尤其是人物肖像与音乐）。</li><li><strong>不碰真人换脸、不伪造新闻场景</strong>：这两类触发的是法律风险，不是流量风险。</li></ul><p>国内相关要求可查《互联网信息服务深度合成管理规定》（2023-01-10 施行）与《生成式人工智能服务管理暂行办法》（2023-08-15 施行），原文见文末参考来源。</p><h2>普通从业者该站的位置</h2><p>"做 AI 视频创作者"这条路现在很挤，而且平台分成在降。更容易活下来的是<strong>给具体行业做视频产能</strong>：</p><ul><li>本地商家：门店探店、产品展示、活动预热，一次拍素材，长期复用</li><li>电商：同一个产品的多版本主图视频、多语种口播</li><li>教培 / 知识付费：把长课程拆成短视频切片，带字幕与章节</li></ul><p>这些活的共同点是<strong>需求稳定、验收标准明确、不依赖爆款</strong>。做创作者要赌流量，做产能不用赌。</p>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少.html" style="color:var(--gold);font-weight:700;text-decoration:none">AI 变现的三条低门槛路径：实际能赚</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px">📚 博客目录</a>
+  <span style="font-size:13px"><a href="2026年8月AI工具横评：别追概念，这4款工具真能帮你每天省2小时.html" style="color:var(--gold);font-weight:700;text-decoration:none">工具选型怎么验收：把「每天省两小时」</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8">📌 出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

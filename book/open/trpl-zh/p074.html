@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>高级类型 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：高级类型。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p074.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html" class="on">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 74 / 86 节
+    </div>
+    <h1>高级类型</h1>
+    <h2 id="高级类型"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/57ff62db22b006e6b319e2e35c9364d932a8b4e5/src/ch20-03-advanced-types.md">ch20-03-advanced-types.md</a></p>
+<p>Rust 的类型系统有一些我们曾经提到但尚未讨论过的特性。首先我们将从一般意义上讨论 newtype 并探讨它们作为类型为何有用。接着会转向类型别名（type aliases），一个类似于 newtype 但有着稍微不同的语义的功能。我们还会讨论 <code>!</code> 类型和动态大小类型。</p>
+<h3 id="使用-newtype-模式实现类型安全与抽象"></h3>
+<p>本小节假设你已经阅读了之前的 <a href="#使用-newtype-模式在外部类型上实现外部-trait">“使用 newtype 模式在外部类型上实现外部 trait”</a> 部分。</p>
+<p>newtype 模式还可用于我们到目前为止尚未讨论的其他任务，包括静态地确保值不会混淆以及标注值的单位。你在示例 20-16 中已经看到了一个使用 newtype 来表示单位的例子：<code>Millimeters</code> 和 <code>Meters</code> 结构体都在 newtype 中封装了 <code>u32</code> 值。如果编写了一个有 <code>Millimeters</code> 类型参数的函数，不小心使用 <code>Meters</code> 或普通的 <code>u32</code> 值来调用该函数的程序是不能编译的。</p>
+<p>newtype 模式也可以用于抽象掉某个类型的部分实现细节：新的类型可以暴露与其私有内部类型不同的共有 API。</p>
+<p>newtype 模式还可以隐藏内部实现。例如，可以提供一个封装了 <code>HashMap&lt;i32, String&gt;</code> 的 <code>People</code> 类型，用来储存人名以及相应的 ID。使用 <code>People</code> 的代码只需与我们提供的公有 API 交互即可，比如向 <code>People</code> 集合增加名字字符串的方法；这样这些代码就无需知道在内部我们将一个 <code>i32</code> ID 赋予了这个名字了。newtype 模式是一种实现第十八章 <a href="#封装隐藏了实现细节">“封装隐藏了实现细节”</a> 中讨论的隐藏实现细节的轻量级封装方法。</p>
+<h3 id="类型同义词与类型别名"></h3>
+<p>Rust 提供了声明 <strong>类型别名</strong>（<em>type alias</em>）的能力，使用 <code>type</code> 关键字为现有类型赋予另一个名字。例如，可以像这样创建 <code>i32</code> 的别名 <code>Kilometers</code>：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    type Kilometers = i32;
+<span class="boring">
+</span><span class="boring">    let x: i32 = 5;
+</span><span class="boring">    let y: Kilometers = 5;
+</span><span class="boring">
+</span><span class="boring">    println!("x + y = {}", x + y);
+</span><span class="boring">}</span></code></pre>
+<p>这意味着 <code>Kilometers</code> 是 <code>i32</code> 的 <strong>同义词</strong>（<em>synonym</em>）；不同于示例 20-16 中创建的 <code>Millimeters</code> 和 <code>Meters</code> 类型。<code>Kilometers</code> 并不是一个新的、单独的类型。<code>Kilometers</code> 类型的值将被完全当作 <code>i32</code> 类型值来对待：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    type Kilometers = i32;
+
+    let x: i32 = 5;
+    let y: Kilometers = 5;
+
+    println!("x + y = {}", x + y);
+<span class="boring">}</span></code></pre>
+<p>因为 <code>Kilometers</code> 是 <code>i32</code> 的别名，它们是同一类型，可以将 <code>i32</code> 与 <code>Kilometers</code> 相加，也可以将 <code>Kilometers</code> 传递给获取 <code>i32</code> 参数的函数。但通过这种手段无法获得上一部分讨论的 newtype 模式所提供的类型检查的好处。换句话说，如果在某处混用 <code>Kilometers</code> 和 <code>i32</code> 的值，编译器也不会给出一个错误。</p>
+<p>类型别名的主要用途是减少重复。例如，可能会有这样很长的类型：</p>
+<pre><code class="language-rust ignore">Box&lt;dyn Fn() + Send + 'static&gt;</code></pre>
+<p>在函数签名和类型注解中到处书写这个冗长的类型既乏味又容易出错。想象一下有一个项目，到处都是像 Listing 20-25 那样的代码。</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let f: Box&lt;dyn Fn() + Send + 'static&gt; = Box::new(|| println!("hi"));
+
+    fn takes_long_type(f: Box&lt;dyn Fn() + Send + 'static&gt;) {
+        // --snip--
+    }
+
+    fn returns_long_type() -&gt; Box&lt;dyn Fn() + Send + 'static&gt; {
+        // --snip--
+<span class="boring">        Box::new(|| ())
+</span>    }
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 20-25: 在很多地方使用名称很长的类型</span></p>
+<p>类型别名通过减少重复使代码更易于管理。在示例 20-26 中，我们为这个冗长的类型引入了名为 <code>Thunk</code> 的别名，并可以使用更简洁的 <code>Thunk</code> 来替换所有使用该类型的地方。</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    type Thunk = Box&lt;dyn Fn() + Send + 'static&gt;;
+
+    let f: Thunk = Box::new(|| println!("hi"));
+
+    fn takes_long_type(f: Thunk) {
+        // --snip--
+    }
+
+    fn returns_long_type() -&gt; Thunk {
+        // --snip--
+<span class="boring">        Box::new(|| ())
+</span>    }
+<span class="boring">}</span></code></pre>
+<p><span class="caption">示例 20-26: 引入类型别名 <code>Thunk</code> 来减少重复</span></p>
+<p>这样阅读和编写代码都容易多了！为类型别名选择一个好名字也可以帮助你表达意图（单词 <em>thunk</em> 表示会在之后被计算的代码，所以这是一个存放闭包的合适的名字）。</p>
+<p>类型别名也经常与 <code>Result&lt;T, E&gt;</code> 结合使用来减少重复。考虑一下标准库中的 <code>std::io</code> 模块。I/O 操作通常会返回一个 <code>Result&lt;T, E&gt;</code> 来处理操作失败的情况。标准库中的 <code>std::io::Error</code> 结构体代表了所有可能的 I/O 错误。<code>std::io</code> 中的许多函数都会返回 <code>Result&lt;T, E&gt;</code>，其中 <code>E</code> 是 <code>std::io::Error</code>，比如 <code>Write</code> trait 中的这些函数：</p>
+<pre><code class="language-rust noplayground">use std::fmt;
+use std::io::Error;
+
+pub trait Write {
+    fn write(&amp;mut self, buf: &amp;[u8]) -&gt; Result&lt;usize, Error&gt;;
+    fn flush(&amp;mut self) -&gt; Result&lt;(), Error&gt;;
+
+    fn write_all(&amp;mut self, buf: &amp;[u8]) -&gt; Result&lt;(), Error&gt;;
+    fn write_fmt(&amp;mut self, fmt: fmt::Arguments) -&gt; Result&lt;(), Error&gt;;
+}</code></pre>
+<p>这里重复出现了很多次 <code>Result&lt;..., Error&gt;</code>。为此，<code>std::io</code> 有这个类型别名声明：</p>
+<pre><code class="language-rust noplayground"><span class="boring">use std::fmt;
+</span><span class="boring">
+</span>type Result&lt;T&gt; = std::result::Result&lt;T, std::io::Error&gt;;
+<span class="boring">
+</span><span class="boring">pub trait Write {
+</span><span class="boring">    fn write(&amp;mut self, buf: &amp;[u8]) -&gt; Result&lt;usize&gt;;
+</span><span class="boring">    fn flush(&amp;mut self) -&gt; Result&lt;()&gt;;
+</span><span class="boring">
+</span><span class="boring">    fn write_all(&amp;mut self, buf: &amp;[u8]) -&gt; Result&lt;()&gt;;
+</span><span class="boring">    fn write_fmt(&amp;mut self, fmt: fmt::Arguments) -&gt; Result&lt;()&gt;;
+</span><span class="boring">}</span></code></pre>
+<p>该声明位于 <code>std::io</code> 模块中，因此我们可以使用完全限定的别名 <code>std::io::Result&lt;T&gt;</code>；也就是说，<code>Result&lt;T, E&gt;</code> 中 <code>E</code> 放入了 <code>std::io::Error</code>。<code>Write</code> trait 中的函数最终看起来像这样：</p>
+<pre><code class="language-rust noplayground"><span class="boring">use std::fmt;
+</span><span class="boring">
+</span><span class="boring">type Result&lt;T&gt; = std::result::Result&lt;T, std::io::Error&gt;;
+</span><span class="boring">
+</span>pub trait Write {
+    fn write(&amp;mut self, buf: &amp;[u8]) -&gt; Result&lt;usize&gt;;
+    fn flush(&amp;mut self) -&gt; Result&lt;()&gt;;
+
+    fn write_all(&amp;mut self, buf: &amp;[u8]) -&gt; Result&lt;()&gt;;
+    fn write_fmt(&amp;mut self, fmt: fmt::Arguments) -&gt; Result&lt;()&gt;;
+}</code></pre>
+<p>类型别名在两个方面有帮助：易于编写<strong>并</strong>在整个 <code>std::io</code> 中提供了一致的接口。因为这是一个别名，它只是另一个 <code>Result&lt;T, E&gt;</code>，这意味着可以在其上使用 <code>Result&lt;T, E&gt;</code> 的任何方法，以及像 <code>?</code> 这样的特殊语法。</p>
+<h3 id="从不返回的-never-type"></h3>
+<p>Rust 有一个叫做 <code>!</code> 的特殊类型。在类型理论术语中被称为 <em>empty type</em>，因为它没有值。我们更倾向于称之为 <em>never type</em>。这个名字描述了它的作用：在函数从不返回的时候充当返回值。下面是一个示例：</p>
+<pre><code class="language-rust noplayground">fn bar() -&gt; ! {
+    // --snip--
+<span class="boring">    panic!();
+</span>}</code></pre>
+<p>这段代码可以读作 “函数 <code>bar</code> 从不返回”，而从不返回的函数被称为 <strong>发散函数</strong>（<em>diverging functions</em>）。不能创建 <code>!</code> 类型的值，所以 <code>bar</code> 也不可能返回值。</p>
+<p>不过一个不能创建值的类型有什么用呢？回想一下示例 2-5 中猜数字游戏的代码；我们在示例 20-27 中重现了其中的一小部分：</p>
+<pre><code class="language-rust ignore"><span class="boring">use std::cmp::Ordering;
+</span><span class="boring">use std::io;
+</span><span class="boring">
+</span><span class="boring">use rand::prelude::*;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    println!("Guess the number!");
+</span><span class="boring">
+</span><span class="boring">    let secret_number = rand::rng().random_range(1..=100);
+</span><span class="boring">
+</span><span class="boring">    println!("The secret number is: {secret_number}");
+</span><span class="boring">
+</span><span class="boring">    loop {
+</span><span class="boring">        println!("Please input your guess.");
+</span><span class="boring">
+</span><span class="boring">        let mut guess = String::new();
+</span><span class="boring">
+</span><span class="boring">        // --snip--
+</span><span class="boring">
+</span><span class="boring">        io::stdin()
+</span><span class="boring">            .read_line(&amp;mut guess)
+</span><span class="boring">            .expect("Failed to read line");
+</span><span class="boring">
+</span>        let guess: u32 = match guess.trim().parse() {
+            Ok(num) =&gt; num,
+            Err(_) =&gt; continue,
+        };
+<span class="boring">
+</span><span class="boring">        println!("You guessed: {guess}");
+</span><span class="boring">
+</span><span class="boring">        // --snip--
+</span><span class="boring">
+</span><span class="boring">        match guess.cmp(&amp;secret_number) {
+</span><span class="boring">            Ordering::Less =&gt; println!("Too small!"),
+</span><span class="boring">            Ordering::Greater =&gt; println!("Too big!"),
+</span><span class="boring">            Ordering::Equal =&gt; {
+</span><span class="boring">                println!("You win!");
+</span><span class="boring">                break;
+</span><span class="boring">            }
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">}</span></code></pre>
+<p><span class="caption">示例 20-27: <code>match</code> 语句和一个以 <code>continue</code> 结束的分支</span></p>
+<p>当时我们略过了这段代码中的一些细节。在第六章 <a href="#match-控制流结构">“<code>match</code> 控制流结构”</a> 部分，我们讨论过：<code>match</code> 的各个分支必须返回相同的类型。所以下面的代码是行不通的：</p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
+</span><span class="boring">    let guess = "3";
+</span>    let guess = match guess.trim().parse() {
+        Ok(_) =&gt; 5,
+        Err(_) =&gt; "hello",
+    };
+<span class="boring">}</span></code></pre>
+<p>这里的 <code>guess</code> 必须既是整型 <strong>也是</strong> 字符串，而 Rust 要求 <code>guess</code> 只能是一个类型。那么 <code>continue</code> 返回了什么呢？为什么在示例 20-27 中，一个分支返回 <code>u32</code>，而另一个分支却以 <code>continue</code> 结束呢？</p>
+<p>正如你可能猜到的，<code>continue</code> 的值是 <code>!</code>。也就是说，当 Rust 要计算 <code>guess</code> 的类型时，它会查看这两个分支。前者是 <code>u32</code> 值，而后者是 <code>!</code> 值。因为 <code>!</code> 类型永远不会有值，Rust 决定 <code>guess</code> 的类型是 <code>u32</code>。</p>
+<p>描述这种行为的正式方式是，类型为 <code>!</code> 的表达式可以被强制转换为任意其他类型。之所以允许 <code>match</code> 分支以 <code>continue</code> 结束是因为 <code>continue</code> 并不真正返回值；相反它把控制权交回上层循环，所以在 <code>Err</code> 的情况，事实上并未对 <code>guess</code> 进行赋值。</p>
+<p>never type 在 <code>panic!</code> 宏中也很有用。还记得 <code>Option&lt;T&gt;</code> 上的 <code>unwrap</code> 函数吗？它产生一个值或 panic。这里是它的定义：</p>
+<pre><code class="language-rust ignore"><span class="boring">enum Option&lt;T&gt; {
+</span><span class="boring">    Some(T),
+</span><span class="boring">    None,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">use crate::Option::*;
+</span><span class="boring">
+</span>impl&lt;T&gt; Option&lt;T&gt; {
+    pub fn unwrap(self) -&gt; T {
+        match self {
+            Some(val) =&gt; val,
+            None =&gt; panic!("called `Option::unwrap()` on a `None` value"),
+        }
+    }
+}</code></pre>
+<p>这里与示例 20-27 中的 <code>match</code> 发生了相同的情况：Rust 知道 <code>val</code> 是 <code>T</code> 类型，<code>panic!</code> 是 <code>!</code> 类型，所以整个 <code>match</code> 表达式的结果是 <code>T</code> 类型。这能工作是因为 <code>panic!</code> 并不产生一个值；它会终止程序。对于 <code>None</code> 的情况，<code>unwrap</code> 并不返回一个值，所以这些代码是有效的。</p>
+<p>最后一个有着 <code>!</code> 类型的表达式是 <code>loop</code>：</p>
+<pre><code class="language-rust ignore"><span class="boring">fn main() {
+</span>    print!("forever ");
+
+    loop {
+        print!("and ever ");
+    }
+<span class="boring">}</span></code></pre>
+<p>这里，循环永远也不结束，所以此表达式的值是 <code>!</code>。但是如果引入 <code>break</code> 这就不为真了，因为循环在执行到 <code>break</code> 后就会终止。</p>
+<h3 id="动态大小类型和-sized-trait"></h3>
+<p>Rust 需要知道有关类型的某些细节，例如为特定类型的值需要分配多少空间。这便是起初留下的一个类型系统中令人迷惑的角落：即 <strong>动态大小类型</strong>（<em>dynamically sized types</em>）的概念。这有时被称为 “DST” 或 “unsized types”，它们让我们能够编写使用那些只有在运行时才能知道大小的值的代码。</p>
+<p>让我们深入研究我们在整本书中一直在使用的动态大小类型 <code>str</code> 的细节。没错，不是 <code>&amp;str</code>，而是单独的 <code>str</code> 就是一个 DST。直到运行时我们都不知道字符串有多长。我们无法在编译时知道字符串的长度，这意味着我们无法创建 <code>str</code> 类型的变量，也不能获取 <code>str</code> 类型的参数。考虑一下这些代码，它们不能工作：</p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
+</span>    let s1: str = "Hello there!";
+    let s2: str = "How's it going?";
+<span class="boring">}</span></code></pre>
+<p>Rust 需要知道应该为特定类型的值分配多少内存，同时所有同一类型的值必须使用相同数量的内存。如果允许编写这样的代码，也就意味着这两个 <code>str</code> 需要占用完全相同大小的空间。不过它们有着不同的长度：<code>s1</code> 需要 12 字节存储，而 <code>s2</code> 需要 15 字节。这也就是为什么不可能创建一个存放动态大小类型的变量的原因。</p>
+<p>那么该怎么办呢？在这种情况下，你已经知道答案：<code>s1</code> 和 <code>s2</code> 的类型是 <code>&amp;str</code> 而不是 <code>str</code>。如果你回想第四章 <a href="#字符串-slice">“字符串 slice”</a> 中提到，slice 数据结构仅仅储存了开始位置和 slice 的长度。所以虽然 <code>&amp;T</code> 是一个储存了 <code>T</code> 所在的内存位置的单个值，<code>&amp;str</code> 则是<strong>两个</strong>值：<code>str</code> 的地址和其长度。这样，<code>&amp;str</code> 就有了一个在编译时可以知道的大小：它是 <code>usize</code> 长度的两倍。也就是说，无论所引用的字符串多长，我们总是知道 <code>&amp;str</code> 的大小。一般来说，这就是 Rust 使用动态大小类型的方式：它们有一些额外的元信息来储存动态信息的大小。这引出了动态大小类型的黄金法则：必须将动态大小类型的值置于某种指针之后。</p>
+<p>可以将 <code>str</code> 与各种指针类型组合使用：例如 <code>Box&lt;str&gt;</code> 或 <code>Rc&lt;str&gt;</code>。事实上，你以前已经见过这种做法，不过对象换成了另一种动态大小类型：trait。每个 trait 本身也是一种动态大小类型，我们可以通过 trait 的名字来引用它。在第十八章 <a href="#使用-trait-object-来抽象出共享行为">“使用 trait object 来抽象出共享行为”</a> 一节中，我们提到过：为了把 trait 用作 trait 对象，必须把它放在某种指针之后，比如 <code>&amp;dyn Trait</code> 或 <code>Box&lt;dyn Trait&gt;</code>（<code>Rc&lt;dyn Trait&gt;</code> 也可以）。</p>
+<p>为了处理 DST，Rust 提供了 <code>Sized</code> trait 来决定一个类型的大小是否在编译时可知。该 trait 会自动为所有在编译时大小已知的类型实现。此外，Rust 隐式地为每一个泛型函数增加了 <code>Sized</code> 约束。也就是说，对于如下泛型函数定义：</p>
+<pre><code class="language-rust ignore">fn generic&lt;T&gt;(t: T) {
+    // --snip--
+}</code></pre>
+<p>实际上，这会被当作我们写了如下内容来处理：</p>
+<pre><code class="language-rust ignore">fn generic&lt;T: Sized&gt;(t: T) {
+    // --snip--
+}</code></pre>
+<p>默认情况下，泛型函数只能作用于在编译时大小已知的类型。然而，你可以使用如下特殊语法来放宽这一限制：</p>
+<pre><code class="language-rust ignore">fn generic&lt;T: ?Sized&gt;(t: &amp;T) {
+    // --snip--
+}</code></pre>
+<p><code>?Sized</code> 这个 trait 约束表示 “<code>T</code> 可以是 <code>Sized</code>，也可以不是 <code>Sized</code>” 同时这个注解会覆盖泛型类型必须在编译时拥有固定大小的默认规则。具有该含义的 <code>?Trait</code> 语法仅适用于 <code>Sized</code>，而不适用于其他任何 trait。</p>
+<p>另外注意我们将 <code>t</code> 参数的类型从 <code>T</code> 变为了 <code>&amp;T</code>：因为其类型可能不是 <code>Sized</code> 的，所以需要将其置于某种指针之后。在这个例子中选择了引用。</p>
+<p>接下来，我们将讨论函数和闭包！</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p073.html">← 高级 trait</a><a href="index.html">目录</a><a href="p075.html">高级函数与闭包 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

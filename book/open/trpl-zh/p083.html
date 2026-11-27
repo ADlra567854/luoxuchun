@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>D · 实用开发工具 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：D - 实用开发工具。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p083.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html" class="on">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 83 / 86 节
+    </div>
+    <h1>D - 实用开发工具</h1>
+    <h2 id="附录-d实用开发工具"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/7b2b4804c0bd9442805441d21a945e4dd37092b2/src/appendix-04-useful-development-tools.md">appendix-04-useful-development-tools.md</a></p>
+<p>在本附录中，我们将讨论 Rust 项目提供的一些有助于开发 Rust 代码的工具。我们将介绍自动格式化、快速应用警告修复、linter 以及与 IDE 的集成。</p>
+<h3 id="通过-rustfmt-自动格式化"></h3>
+<p><code>rustfmt</code> 工具根据社区代码风格格式化代码。很多项目使用 <code>rustfmt</code> 来避免编写 Rust 代码风格的争论：所有人都用这个工具格式化代码！</p>
+<p>Rust 安装默认已包含 <code>rustfmt</code>，因此你的系统上应该已经有 <code>rustfmt</code> 和 <code>cargo-fmt</code> 这两个程序了。它们类似于 <code>rustc</code> 和 <code>cargo</code> 的关系：<code>rustfmt</code> 提供更细粒度的控制，而 <code>cargo-fmt</code> 则理解使用 Cargo 的项目约定。要格式化任意 Cargo 项目，请运行以下命令：</p>
+<pre><code class="language-console">$ cargo fmt
+</code></pre>
+<p>运行此命令会格式化当前 crate 中所有的 Rust 代码。这应该只会改变代码风格，而不是代码语义。有关 <code>rustfmt</code> 的更多信息，请参阅 <a href="https://github.com/rust-lang/rustfmt">该文档</a>。</p>
+<h3 id="通过-rustfix-修复代码"></h3>
+<p><code>rustfix</code> 工具已随 Rust 安装一并提供，可以自动修复那些具有明确修复方式的编译器警告，这通常正是你所需要的。你可能已经见过类似的编译器警告。例如，考虑如下代码：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let mut x = 42;
+    println!("{x}");
+}</code></pre>
+<p>这里定义变量 <code>x</code> 为可变，但我们实际上从未修改它。Rust 会对此发出警告：</p>
+<pre><code class="language-console">$ cargo build
+   Compiling myprogram v0.1.0 (file:///projects/myprogram)
+warning: variable does not need to be mutable
+ --&gt; src/main.rs:2:9
+  |
+2 |     let mut x = 0;
+  |         ----^
+  |         |
+  |         help: remove this `mut`
+  |
+  = note: `#[warn(unused_mut)]` on by default
+</code></pre>
+<p>警告中建议移除 <code>mut</code> 关键字。我们可以通过运行 <code>cargo fix</code> 命令使用 <code>rustfix</code> 工具来自动采用该建议：</p>
+<pre><code class="language-console">$ cargo fix
+    Checking myprogram v0.1.0 (file:///projects/myprogram)
+      Fixing src/main.rs (1 fix)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.59s
+</code></pre>
+<p>如果再次查看 <em>src/main.rs</em>，会发现 <code>cargo fix</code> 修改了代码：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let x = 42;
+    println!("{x}");
+}</code></pre>
+<p>变量 <code>x</code> 现在是不可变的了，警告也不再出现。</p>
+<p>你也可以用 <code>cargo fix</code> 在不同 Rust edition 之间迁移代码。edition 在<a href="#e---版本">附录 E</a>中介绍。</p>
+<h3 id="使用-clippy-获取更多-lint"></h3>
+<p>Clippy 工具是一组 lints 的集合，用于分析你的代码，帮助你捕捉常见错误并改进 Rust 代码。Clippy 已包含在 Rust 的标准安装中。</p>
+<p>要对任何 Cargo 项目运行 Clippy 的 lint，请输入以下命令：</p>
+<pre><code class="language-console">$ cargo clippy
+</code></pre>
+<p>例如，假设你写了一个程序，像下面这样使用某个数学常量的近似值，例如 pi：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let x = 3.1415;
+    let r = 8.0;
+    println!("the area of the circle is {}", x * r * r);
+}</code></pre>
+<p>在此项目上运行 <code>cargo clippy</code> 会导致这个错误：</p>
+<pre><code class="language-text">error: approximate value of `f{32, 64}::consts::PI` found
+ --&gt; src/main.rs:2:13
+  |
+2 |     let x = 3.1415;
+  |             ^^^^^^
+  |
+  = note: `#[deny(clippy::approx_constant)]` on by default
+  = help: consider using the constant directly
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#approx_constant
+</code></pre>
+<p>该错误提示你 Rust 已经定义了一个更精确的 <code>PI</code> 常量，如果使用该常量，你的程序会更为正确。你可以将代码改为使用 <code>PI</code> 常量。如下代码就不会引发 Clippy 的任何错误或警告：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let x = std::f64::consts::PI;
+    let r = 8.0;
+    println!("the area of the circle is {}", x * r * r);
+}</code></pre>
+<p>有关 Clippy 的更多信息，请参阅 <a href="https://github.com/rust-lang/rust-clippy">其文档</a>。</p>
+<h3 id="使用-rust-analyzer-的-ide-集成"></h3>
+<p>为了帮助 IDE 集成，Rust 社区建议使用 <a href="https://rust-analyzer.github.io"><code>rust-analyzer</code></a>。这个工具是一组以编译器为中心的实用程序，它实现了 <a href="http://langserver.org/">Language Server Protocol</a>，这是 IDE 与编程语言之间通信的一项规范。不同的客户端都可以使用 <code>rust-analyzer</code>，例如 <a href="https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer">Visual Studio Code 的 Rust analyzer 插件</a>。</p>
+<p>访问 <code>rust-analyzer</code> 项目的<a href="https://rust-analyzer.github.io">主页</a>获取安装说明，然后为你所使用的 IDE 安装相应的 language server 支持。这样一来，你的 IDE 就会获得自动补全、跳转到定义以及内联错误等能力。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p082.html">← C - 可派生的 trait</a><a href="index.html">目录</a><a href="p084.html">E - 版本 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

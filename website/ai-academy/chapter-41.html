@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="自动驾驶 VLA 实战,自学路线,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="自动驾驶 VLA 实战：Qwen-Drive-1.0-4B 统一 3D 感知 · 问答 · 规划 · 自学路线 · 白驹 ccowork">
+<meta name="description" content="模型发布背景与开源合规信息 2026年9月6日，阿里巴巴Qwen团队联合华中科技大学正式开源Qwen-Drive-1.0-4B，官方定位为业界首个面向自动驾驶场景的视觉语言动作（VLA）基础模型，相关技术报告发布于arX…">
+<meta property="og:description" content="模型发布背景与开源合规信息 2026年9月6日，阿里巴巴Qwen团队联合华中科技大学正式开源Qwen-Drive-1.0-4B，官方定位为业界首个面向自动驾驶场景的视觉语言动作（VLA）基础模型，相关技术报告发布于arX…">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>自动驾驶 VLA 实战：Qwen-Drive-1.0-4B 统一 3D 感知 · 问答 · 规划 · 自学路线 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"自动驾驶 VLA 实战：Qwen-Drive-1.0-4B 统一 3D 感知·问答·规划 · 自学路线 · 白驹 ccowork","description":"模型发布背景与开源合规信息 2026年9月6日，阿里巴巴Qwen团队联合华中科技大学正式开源Qwen-Drive-1.0-4B，官方定位为业界首个面向自动驾驶场景的视觉语言动作（VLA）基础模型，相关技术报告发布于arX…","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<meta name="twitter:description" content="模型发布背景与开源合规信息 2026年9月6日，阿里巴巴Qwen团队联合华中科技大学正式开源Qwen-Drive-1.0-4B，官方定位为业界首个面向自动驾驶场景的视觉语言动作（VLA）基础模型，相关技术报告发布于arX…">
+<link rel="canonical" href="https://ccoworkbaiju.cn/website/ai-academy/chapter-41.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/ai-academy/chapter-41.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="自动驾驶 VLA 实战：Qwen-Drive-1.0-4B 统一 3D 感知 · 问答 · 规划 · 自学路线 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<h1>自动驾驶 VLA 实战：Qwen-Drive-1.0-4B 统一 3D 感知·问答·规划</h1>
+<div class="blog-open">
+  <div class="blog-badge">白驹 ccowork · 自学路线 第41章</div>
+  <div class="blog-meta"><span>📅 2026-10-27</span><span>⏱ 65 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)">🤖 AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<p>本章带你吃透2026年9月阿里通义千问联合华中科技大学开源的业界首个自动驾驶统一VLA模型Qwen-Drive-1.0-4B，学完你可以独立完成模型部署、驾驶问答Demo复现、轨迹规划结果验证，掌握垂直领域VLM/VLA改造的可迁移工程方法论，避开端到端自动驾驶基础模型化的常见坑。</p>
+<h2 id="ch41-模型发布背景与开源合规信息">模型发布背景与开源合规信息</h2>
+<p>2026年9月6日，阿里巴巴Qwen团队联合华中科技大学正式开源Qwen-Drive-1.0-4B，官方定位为业界首个面向自动驾驶场景的视觉语言动作（VLA）基础模型，相关技术报告发布于arXiv（编号2609.00111），官方说明文档见qwen.ai/blog?id=qwen-drive-1.0，发布当日获IT之家、凤凰网科技等主流科技媒体报道，所有信息请以官方公开渠道为准。</p>
+<p>模型采用商业友好的Apache-2.0许可证，允许个人学习、商业二次开发，代码、权重、评测工具、Waymo演示场景在三大主流开源平台同步开放，仓库内容以官方最新提交为准：</p>
+<ul>
+<li>GitHub：QwenLM/Qwen-Drive-1.0，包含训练代码、数据处理脚本、评测管线</li>
+<li>HuggingFace：Qwen/Qwen-Drive-1.0-4B，提供SFT、RL两个版本的权重与在线Demo</li>
+<li>ModelScope：Qwen/Qwen-Drive-1.0-4B，国内用户可高速下载权重</li>
+</ul>
+<p>你可以通过执行<code>pip show transformers && huggingface-cli download Qwen/Qwen-Drive-1.0-4B --local-dir ./qwen-drive-4b</code>验证权重下载链路可用性，官方最低硬件要求为24GB显存GPU（如RTX 3090/4090、A10）。</p>
+<h2 id="ch41-本章学习价值与前置知识衔接">本章学习价值与前置知识衔接</h2>
+<p>此前我们在第35章DeepSeek-V4-Flash-Vision-Exp视觉部署、第38章K2 Horizon多模态家族、第39章混元Hy4部署章节中，已经掌握了通用开源多模态大模型的权重拉取、量化部署、推理加速全流程，本章是课程首次进入「行业垂直VLM×VLA」的实战内容，核心价值在于它是当前舱驾一体、端到端自动驾驶「基础模型化」的最小可复现范本：无需修改通用多模态底座的原生架构，仅通过外挂模块就把3D感知、驾驶问答、运动规划三类核心任务收进同一模型，整套工程方法（灾难性遗忘防控、跨数据集标签统一、生成式轨迹规划、RL奖励工程）可以直接迁移到机器人、具身智能等其他垂直VLA场景。</p>
+<p>Qwen-Drive-1.0的设计哲学精准命中了此前自动驾驶VLM的两个行业公认痛点：一是纯文本VQA监督无法约束三维空间几何，很多模型能流畅描述车流场景，却输出不了可量化打分的3D目标框、占用网格、深度估计结果；二是大量灌入驾驶领域数据会导致模型灾难性遗忘通用预训练知识，而真实路况的长尾场景（如道路散落物、非常规交通参与者）恰恰需要通用世界知识才能正确处理。你可以通过对比原生Qwen3.5-4B与Qwen-Drive-1.0在通用VQA数据集（如MMBench）上的得分，验证其通用能力保留效果。</p>
+<h2 id="ch41-模型底座与外挂模块架构">模型底座与外挂模块架构</h2>
+<p>Qwen-Drive-1.0以原生多模态模型Qwen3.5-4B为共享骨干，整体权重约9.1GB，完全保留原生模型结构不做重训，仅外挂两个轻量模块实现驾驶能力扩展，所有结构细节以官方论文与README为准：</p>
+<p>第一个模块是BEV（鸟瞰图）感知头，权重约0.5GB，走「几何+语义」双路融合路线：几何路径通过深度估计把2D图像特征抬升为3D体素，语义路径通过BEV Transformer把VLM输出的语义特征投影到同一俯视平面，两类特征合流后分三路输出：3D目标检测结果、语义占用网格预测、BEV地图分割结果。</p>
+<p>第二个模块是规划专家（Planning Expert），为约11亿参数的扩散Transformer（采用AdaLN+GDN层结构，权重约2.1GB），它不需要重新处理图像输入，而是直接把带噪轨迹token与语言模型每层的KV cache做联合注意力，复用底座已经计算好的场景表示，通过流匹配（flow matching）逐步去噪，最终输出未来5秒、10Hz采样频率共50个点的自车运动轨迹，支持「直接输出轨迹」「先输出因果推理文本再输出轨迹」两种推理模式。你可以通过执行<code>python -c "from transformers import AutoModelForCausalLM; model = AutoModelForCausalLM.from_pretrained('./qwen-drive-4b', trust_remote_code=True); print([k for k in model.state_dict().keys() if 'bev_head' in k or 'planning_expert' in k][:10])"</code>验证两个外挂模块的权重存在。</p>
+<h2 id="ch41-四阶段训练配方与RL工程技巧">四阶段训练配方与RL工程技巧</h2>
+<p>Qwen-Drive-1.0采用四阶段渐进式训练流程，所有训练超参数以官方技术报告为准：阶段一冻结VLM全部参数，仅预热BEV感知头；阶段二放开视觉编码器与VLM参数，做感知任务与驾驶问答的联合训练，其中感知头学习率设置为语言模型的20倍，同一训练批次内混合感知样本、驾驶问答样本、通用图文样本，从数据层面避免灾难性遗忘；阶段三冻结VLM参数，仅用流匹配目标专训规划专家，得到Qwen-Drive-1.0-SFT版本，同时支持直接规划与先推理后规划两种模式；阶段四通过奖励优化得到Qwen-Drive-1.0-RL版本，针对带推理过程的规划任务做进一步性能提升。</p>
+<p>其中RL阶段的工程设计是最值得复用的技巧：由于自动驾驶轨迹采样近乎确定性，常规RL方法没有足够试错空间，团队仅在轨迹去噪的最后几步加入可控噪声随机步，产生低风险的轨迹多样性；每个场景采样8条候选轨迹，由语言模型先生成8段不同的推理理由作为条件，用组内相对比较作为参数更新信号，不需要额外训练专门的裁判打分模型。奖励函数由三部分加权相加：一是NAVSIM官方PDMS（预测驾驶模型评分），二是Waymo RFS（人类对候选轨迹的偏好评分），三是共享位移误差项，防止模型为了讨好评分规则输出偏离真实合理范围的轨迹。你可以通过官方GitHub仓库的<code>train/rl_config.yaml</code>文件验证上述超参数设置。</p>
+<h2 id="ch41-数据工程与官方评测结果">数据工程与官方评测结果</h2>
+<p>数据层面Qwen-Drive-1.0做了大量跨数据集统一工作：感知任务统一nuScenes（6相机配置）与OpenScene（8相机配置）两个公开数据集，把类别映射到共享标签空间、统一坐标系，实现单个感知头跨不同相机布置的训练与评估；驾驶问答任务汇总24个公开驾驶VQA数据集，先用强模型改写为统一对话格式，再用另一个模型做逐条一致性校验，把原始553万条样本过滤到309万条（保留率约55.9%）。此外团队自建了三类核心数据：一是因果链推理数据CoC（Chain-of-Causation），用规则分类器从真实轨迹提炼「纵向加减速/横向直行变道」的运动先验，再让强模型结合多路图像、历史轨迹、运动先验、导航指令生成决策因果链，并经过两阶审核；二是打乱环视相机顺序的预训练任务，让模型学习跨视角空间对应关系；三是3万条中国道路采集的感知问答数据，覆盖信号灯定位与3D检测场景。受训练预算限制，阶段二训练并未用完309万条问答样本，而是按任务与题型分层从各公开源抽取约20%，混入自建数据与通用图文数据共154万条，其中驾驶问答约占62%、通用图文约占25%、感知样本不足10%，感知样本设置了更大的重复系数多轮训练。</p>
+<p>官方在统一协议下的评测结果如下（多数为官方复现，需第三方独立团队复核）：</p>
+<table>
+<thead><tr><th>任务类型</th><th>评测基准</th><th>Qwen-Drive-1.0-4B得分</th><th>对比基线</th></tr></thead>
+<tbody>
+<tr><td>3D检测</td><td>nuScenes mAP</td><td>43.95</td><td>比同协议BEVFormerV2高2.01</td></tr>
+<tr><td>地图分割</td><td>nuScenes mIoU</td><td>60.99</td><td>比PETRv2高3.37</td></tr>
+<tr><td>驾驶问答</td><td>五基准平均分</td><td>69.43</td><td>比底座Qwen3.5-4B高5.91</td></tr>
+<tr><td>运动规划</td><td>NAVSIM v1.1 PDMS</td><td>90.7</td><td>同量级模型SOTA</td></tr>
+<tr><td>因果推理</td><td>PAI-AV-CoC准确率</td><td>41.26</td><td>比底座Qwen3.5-4B高38.68</td></tr>
+</tbody>
+</table>
+<p>官方同时诚实披露了当前版本的局限：LingoQA部分评测项使用Qwen-Plus作为裁判模型，裁判模型更换会导致分数波动；模型输出的推理理由不一定真实驱动轨迹决策，建议用因果干预（遮挡某目标/改变信号灯状态）验证解释与轨迹的同步性；无匹配训练数据的相机布局下性能大跌；nuScenes混合训练后占用预测mIoU下降约26.6%，受标注噪声与负迁移影响明显。你可以通过官方仓库的<code>evaluation.md</code>文档复现上述评测结果。</p>
+<h2 id="ch41-可落地实战路径">可落地实战路径</h2>
+<p>你可以按照由轻到重的顺序完成实战，所有命令与依赖以官方文档为准：</p>
+<p>第一类轻量实战（单卡24GB即可完成）：从HuggingFace/ModelScope下载权重，用transformers加载运行驾驶场景视觉问答Demo，核心代码如下：</p>
+<pre><code>from transformers import AutoModelForCausalLM, AutoProcessor
+import torch
+# 加载本地权重， trust_remote_code=True加载官方自定义感知/规划头
+model = AutoModelForCausalLM.from_pretrained("./qwen-drive-4b", torch_dtype=torch.bfloat16, device_map="auto", trust_remote_code=True)
+processor = AutoProcessor.from_pretrained("./qwen-drive-4b", trust_remote_code=True)
+# 输入为环视6张图+问题：前方路口信号灯是什么状态？
+query = "&lt;image&gt; 请描述当前场景下前方车辆的位置、速度，以及我车应该采取的动作"
+inputs = processor(text=query, images=["./cam_front.jpg", "./cam_front_left.jpg", "./cam_front_right.jpg", "./cam_back.jpg", "./cam_back_left.jpg", "./cam_back_right.jpg"], return_tensors="pt").to("cuda")
+outputs = model.generate(**inputs, max_new_tokens=512)
+print(processor.decode(outputs[0], skip_special_tokens=True))</code></pre>
+<p>第二类中阶实战：跑通官方提供的四个规划演示场景（夜间路口、无保护左转、右转、绕停靠卡车减速），先复现官方输出的轨迹与推理文本，再手动修改一个变量（比如把前方卡车位置挪近10米、把红灯改成绿灯），观察轨迹与解释的变化，直观体会「模型说出的理由不一定等于真实决策逻辑」。</p>
+<p>第三类进阶实战：用vLLM做服务化部署，同时加载SFT与RL两个版本，对比相同输入下的轨迹激进程度、推理文本差异；在小规模公开数据上复现「跨数据集标签统一+CoC数据生成」的最小管线；用NAVSIM公开模拟器对模型输出的轨迹做开环评估。需要特别注意官方的定位声明：该模型仅为研究起点，不是量产自动驾驶栈，严禁连接真实车辆控制、严禁在公共道路开展未获批的测试。你可以通过执行<code>python demo/planning_demo.py --scene night_intersection</code>验证官方演示场景的运行效果。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>垂直领域VLA不需要重做通用底座，通过外挂任务头+联合微调+混合数据防遗忘的路线，可以用小成本实现感知、问答、规划三类任务的统一，同时保留通用世界知识应对长尾场景。</li>
+<li>生成式轨迹规划可以通过复用VLM的KV cache降低计算量，流匹配+低风险随机步+组内相对奖励的RL方案，不需要额外训练裁判模型就能有效提升规划安全性。</li>
+<li>自动驾驶VLM的因果解释可靠性需要通过因果干预验证，不能仅通过文本流畅度判断模型是否真的理解了场景，评测结果需要第三方独立复核，研究模型严禁直接上车。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>下载Qwen-Drive-1.0-4B权重，在单卡24GB GPU上跑通视觉问答Demo，输入三张不同场景的驾驶图，记录模型对交通参与者位置、信号灯状态的回答准确率。</li>
+<li>运行官方夜间路口规划Demo，手动把输入图像中的红灯修改为绿灯，对比修改前后模型输出的轨迹速度、推理文本差异，验证解释与决策的一致性。</li>
+<li>用vLLM部署SFT与RL两个版本，用同一段场景输入做推理，统计两个版本输出轨迹的平均速度、最小跟车距离差异，观察RL优化带来的保守性变化。</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>阅读arXiv技术报告中关于跨相机泛化、占用预测负迁移的章节，思考如何通过数据增强、标签平滑、适配器设计等方法，缓解当前模型在非训练相机布局下的性能下降问题，所有改进建议请先在NAVSIM模拟器中验证再做实车测试。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');});
+</script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

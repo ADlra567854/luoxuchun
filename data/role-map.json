@@ -1,0 +1,3696 @@
+{
+ "meta": {
+  "version": 2,
+  "generated": "2026-10-08",
+  "totalPages": 294,
+  "note": "按人群分的老罗版信息架构。同一份内容本体（294 页），角色只是切面——每个角色有自己的首站、核心内容线、明确跳过的内容与能拿到的成果。与 data/role-recipes.json 的旧角色层同源，但数据基于全量普查而非预设目录。",
+  "principle": "不给每个角色重写一套内容；只重组入口与顺序。跳过也是设计——明确告诉用户哪些不用学。"
+ },
+ "lines": {
+  "academy-chapter": {
+   "name": "自学路线 · 43 章正文",
+   "desc": "从初识智能体到开源模型实战，11 个学科"
+  },
+  "academy-project": {
+   "name": "自学路线 · 24 个毕业设计",
+   "desc": "CodeReviewer / TutorAgent 等可运行项目"
+  },
+  "academy-page": {
+   "name": "自学路线 · 附属页",
+   "desc": "概念库 / 发展史 / 岗位 / 面试题 / 测验"
+  },
+  "book-draft": {
+   "name": "书稿 · 32 章",
+   "desc": "从个人 IP 蓝图到 AI 与国家安全"
+  },
+  "book-main": {
+   "name": "书 · 单本",
+   "desc": "AI 实战全书 / 个人实战全书"
+  },
+  "book-china": {
+   "name": "书 · 中国科技故事",
+   "desc": "DeepSeek 逆袭 / 两弹一星 / 高铁 / 北斗"
+  },
+  "book-volumes": {
+   "name": "书 · 五卷全书",
+   "desc": "总序 + 五卷正文（含 22 个孤儿页）"
+  },
+  "blog": {
+   "name": "博客 · 48 篇",
+   "desc": "实战长文与趋势观察"
+  },
+  "lab-devops": {
+   "name": "实验室 · 自动部署",
+   "desc": "CI/CD 与工程实践"
+  },
+  "lab-tech": {
+   "name": "实验室 · 理工算法",
+   "desc": "编程 / 算法 / 机器学习 / 数值 / 建模 / CNC"
+  },
+  "lab-sim": {
+   "name": "实验室 · 仿真",
+   "desc": "10 个物理仿真脚本与图表"
+  },
+  "lab-main": {
+   "name": "实验室 · 主入口",
+   "desc": "从代码到实物"
+  },
+  "lingua-lang": {
+   "name": "外语系",
+   "desc": "语言学习页面"
+  },
+  "lingua": {
+   "name": "LinguaVista",
+   "desc": "语言学习工作台"
+  },
+  "novel": {
+   "name": "小说",
+   "desc": "白驹 ccowork（作品名，不改）"
+  },
+  "brand-misc": {
+   "name": "品牌资产页",
+   "desc": "图标预览 / 候选方案 / 海报"
+  },
+  "site": {
+   "name": "主站页面",
+   "desc": "83 个功能与内容页"
+  },
+  "root": {
+   "name": "根目录",
+   "desc": "index / 404"
+  }
+ },
+ "roles": [
+  {
+   "id": "teacher",
+   "name": "老师",
+   "icon": "graduation-cap",
+   "sub": "语文 / 数学 / 英语教师，教研与班主任",
+   "ask": "我明天上课能不能直接用上",
+   "termMode": "zero",
+   "termNote": "所有专业名词自动配大白话解释",
+   "promise": [
+    "写得出明天就能用的课堂提示词（备课 / 提问 / 总结三套）",
+    "会用 AI 批改并给出可追溯的修改理由，而不是直接给答案",
+    "出一套分层卷子，并知道哪一步必须自己把关"
+   ],
+   "firstStop": {
+    "file": "ai-edu.html",
+    "label": "AI 进校园",
+    "why": "先知道边界在哪，再谈怎么用"
+   },
+   "output": [
+    "一套明天能用的课堂提示词",
+    "一份 AI 批改流程与边界说明",
+    "AI 课堂案例（含效果数据与出处）"
+   ],
+   "core": [
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "先看清 AI 在学校能用到哪一步",
+     "pages": [
+      {
+       "f": "website/ai-edu.html",
+       "title": "AI 进校园，不是将来，是现在",
+       "cn": 1866,
+       "bytes": 22872
+      },
+      {
+       "f": "website/ai-jobs.html",
+       "title": "岗位在变，你也在变",
+       "cn": 1902,
+       "bytes": 24095
+      },
+      {
+       "f": "website/majors.html",
+       "title": "选对专业，用 AI 把路走宽",
+       "cn": 3193,
+       "bytes": 37579
+      },
+      {
+       "f": "website/study.html",
+       "title": "不会？那就自学。这里全是真有人做到过的路。",
+       "cn": 299,
+       "bytes": 13027
+      }
+     ]
+    },
+    {
+     "line": "academy-chapter",
+     "lineName": "自学路线 · 43 章正文",
+     "why": "提示词地基 → 职场实战 → 行业应用 → 建立概念",
+     "pages": [
+      {
+       "f": "website/ai-academy/chapter-17.html",
+       "title": "提示词工程入门：从提问到指挥",
+       "cn": 3249,
+       "bytes": 17735
+      },
+      {
+       "f": "website/ai-academy/chapter-23.html",
+       "title": "AI 职场应用实战",
+       "cn": 3691,
+       "bytes": 19984
+      },
+      {
+       "f": "website/ai-academy/chapter-24.html",
+       "title": "AI 行业应用与职业发展",
+       "cn": 3406,
+       "bytes": 19970
+      },
+      {
+       "f": "website/ai-academy/chapter-01.html",
+       "title": "初识智能体",
+       "cn": 13123,
+       "bytes": 64561
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "工具真库 + 真实来源调研（要能溯源才敢用）",
+     "pages": [
+      {
+       "f": "website/ai-tools.html",
+       "title": "AI 工具真库",
+       "cn": 3258,
+       "bytes": 61320
+      },
+      {
+       "f": "website/academy-research.html",
+       "title": "自学路线深度补强 · 调研资料库",
+       "cn": 27110,
+       "bytes": 246827
+      }
+     ]
+    },
+    {
+     "line": "academy-project",
+     "lineName": "自学路线 · 24 个毕业设计",
+     "why": "看别人怎么做家教助手、研读助手、备课系统",
+     "pages": [
+      {
+       "f": "website/ai-academy/projects/tutor-agent.html",
+       "title": "TutorAgent 家教辅导",
+       "cn": 2243,
+       "bytes": 15274
+      },
+      {
+       "f": "website/ai-academy/projects/research-agent.html",
+       "title": "ResearchAgent 论文研读助手",
+       "cn": 1991,
+       "bytes": 14874
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "教育与职场类长文",
+     "pages": [
+      {
+       "f": "blog/2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html",
+       "title": "2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径",
+       "cn": 1707,
+       "bytes": 17567
+      },
+      {
+       "f": "blog/2026年9月AI学习避坑指南：别再被3年前的旧教程坑了.html",
+       "title": "2026年9月AI学习避坑指南：别再被3年前的旧教程坑了",
+       "cn": 2860,
+       "bytes": 20188
+      },
+      {
+       "f": "blog/2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到落地路线.html",
+       "title": "2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到",
+       "cn": 2834,
+       "bytes": 21008
+      },
+      {
+       "f": "blog/AI教育应用实战.html",
+       "title": "AI教育应用实战",
+       "cn": 975,
+       "bytes": 13950
+      },
+      {
+       "f": "blog/AI时代工科学习-编程计算机数控仿真实战.html",
+       "title": "AI 时代工科学习全景 · 编程 / 计算机 / 数控 / 仿真（实战篇）",
+       "cn": 2100,
+       "bytes": 23930
+      }
+     ]
+    },
+    {
+     "line": "book-china",
+     "lineName": "书 · 中国科技故事",
+     "why": "中国科技故事全集（19 章）：讲给孩子听的科技史，可直接做课堂素材",
+     "pages": [
+      {
+       "f": "book/五卷全书/中国科技故事/01-DeepSeek的逆袭.html",
+       "title": "中国科技故事 · 01 · DeepSeek 的逆袭",
+       "cn": 1277,
+       "bytes": 12474
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/02-两弹一星.html",
+       "title": "中国科技故事 · 02 · 两弹一星：从「一穷二白」到「镇国重器」",
+       "cn": 1100,
+       "bytes": 11378
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/03-中国高铁.html",
+       "title": "中国科技故事 · 03 · 中国高铁：从「引进」到「领跑」",
+       "cn": 893,
+       "bytes": 10436
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/04-北斗导航.html",
+       "title": "中国科技故事 · 04 · 北斗导航：我们为什么要造自己的「北斗」",
+       "cn": 872,
+       "bytes": 10118
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/05-中国航天.html",
+       "title": "中国科技故事 · 05 · 中国航天：从东方红一号到空间站",
+       "cn": 952,
+       "bytes": 10286
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/06-嫦娥探月.html",
+       "title": "中国科技故事 · 06 · 嫦娥探月与天问探火：中国人的星辰大海",
+       "cn": 777,
+       "bytes": 9326
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/07-超级计算机.html",
+       "title": "中国科技故事 · 07 · 超级计算机：神威·太湖之光背后的故事",
+       "cn": 735,
+       "bytes": 9677
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/08-量子科技.html",
+       "title": "中国科技故事 · 08 · 量子科技：墨子号与九章",
+       "cn": 866,
+       "bytes": 9932
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/09-华为.html",
+       "title": "中国科技故事 · 09 · 华为：一家公司的长征",
+       "cn": 787,
+       "bytes": 9734
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/10-5G通信.html",
+       "title": "中国科技故事 · 10 · 5G：中国如何站上通信之巅",
+       "cn": 751,
+       "bytes": 9726
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/11-移动支付.html",
+       "title": "中国科技故事 · 11 · 移动支付与数字生活：一部手机走天下",
+       "cn": 879,
+       "bytes": 10178
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/12-大疆.html",
+       "title": "中国科技故事 · 12 · 大疆：从车库到全球无人机之王",
+       "cn": 907,
+       "bytes": 9982
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/13-比亚迪.html",
+       "title": "中国科技故事 · 13 · 比亚迪与新能源车：换道超车",
+       "cn": 889,
+       "bytes": 10149
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/14-国产大模型群像.html",
+       "title": "中国科技故事 · 14 · 国产大模型群像：文心、通义、豆包、Kimi的突围",
+       "cn": 831,
+       "bytes": 10414
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/15-光刻机与芯片.html",
+       "title": "中国科技故事 · 15 · 光刻机与芯片：卡脖子与突围战",
+       "cn": 836,
+       "bytes": 10455
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/16-钱学森.html",
+       "title": "中国科技故事 · 16 · 钱学森：五年归国路，十年两弹成",
+       "cn": 906,
+       "bytes": 10155
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/17-袁隆平.html",
+       "title": "中国科技故事 · 17 · 袁隆平：一粒种子改变世界",
+       "cn": 950,
+       "bytes": 10338
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/18-科技创业者群像.html",
+       "title": "中国科技故事 · 18 · 任正非、王传福、梁文锋：科技创业者群像",
+       "cn": 977,
+       "bytes": 10925
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/README-目录.html",
+       "title": "中国科技故事 · 系列总目录",
+       "cn": 539,
+       "bytes": 11977
+      }
+     ]
+    },
+    {
+     "line": "book-volumes",
+     "lineName": "书 · 五卷全书",
+     "why": "工具百科：查工具时用得上",
+     "pages": [
+      {
+       "f": "book/五卷全书/AI工具大全-百科全书.html",
+       "title": "AI 工具大全 · 百科全书",
+       "cn": 1144,
+       "bytes": 15549
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "体制内与医疗场景的 AI 用法（与教师同类：公共服务）",
+     "pages": [
+      {
+       "f": "blog/公务员AI应用指南.html",
+       "title": "公务员AI应用指南",
+       "cn": 1105,
+       "bytes": 14516
+      },
+      {
+       "f": "blog/AI医疗应用指南.html",
+       "title": "AI医疗应用指南",
+       "cn": 999,
+       "bytes": 14219
+      }
+     ]
+    },
+    {
+     "line": "academy-page",
+     "lineName": "自学路线 · 附属页",
+     "why": "发展史 / 大事记 / 国家教育馆",
+     "pages": [
+      {
+       "f": "website/ai-academy-history.html",
+       "title": "AI 发展史",
+       "cn": 2139,
+       "bytes": 24327
+      },
+      {
+       "f": "website/ai-academy-newsroom.html",
+       "title": "AI 大事记馆",
+       "cn": 291,
+       "bytes": 29515
+      },
+      {
+       "f": "website/ai-academy-national.html",
+       "title": "国家 AI 教育馆",
+       "cn": 426,
+       "bytes": 18265
+      }
+     ]
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "AI 七十年 / ChatGPT 起点 / 政策与未来 / 教育变革 / 医疗 / 伦理 / 就业（做历史与素养课直接用）",
+     "pages": [
+      {
+       "f": "website/book/pages/07-书稿-第1章-AI七十年.html",
+       "title": "第 1 章 · AI 七十年：一条能看懂的时间线",
+       "cn": 1608,
+       "bytes": 14190
+      },
+      {
+       "f": "website/book/pages/08-书稿-第3章-ChatGPT点燃全民AI时代.html",
+       "title": "第 3 章 · ChatGPT 如何点燃全民 AI 时代",
+       "cn": 1604,
+       "bytes": 13964
+      },
+      {
+       "f": "website/book/pages/15-中国AI政策与国外重视.html",
+       "title": "中国 AI 政策 与 国外对 AI 的重视（2026）",
+       "cn": 1335,
+       "bytes": 12875
+      },
+      {
+       "f": "website/book/pages/16-GitHub最新开源项目盘点与一键上手.html",
+       "title": "GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端",
+       "cn": 1642,
+       "bytes": 17124
+      },
+      {
+       "f": "website/book/pages/20-AI学习总纲-从零到会用.html",
+       "title": "AI 学习总纲：从零到会用（统一路线图）",
+       "cn": 765,
+       "bytes": 11546
+      },
+      {
+       "f": "website/book/pages/22-书稿-第6章-AI编程革命.html",
+       "title": "第 6 章 · AI编程革命：从Copilot到自主Agent",
+       "cn": 651,
+       "bytes": 11096
+      },
+      {
+       "f": "website/book/pages/23-书稿-第7章-AI办公自动化.html",
+       "title": "第 7 章 · AI办公自动化：从Excel到全流程",
+       "cn": 665,
+       "bytes": 11399
+      },
+      {
+       "f": "website/book/pages/24-书稿-第8章-AI教育变革.html",
+       "title": "第 8 章 · AI教育变革：从标准化到个性化",
+       "cn": 713,
+       "bytes": 10897
+      },
+      {
+       "f": "website/book/pages/25-书稿-第9章-AI医疗应用.html",
+       "title": "第 9 章 · AI医疗应用：从辅助诊断到新药研发",
+       "cn": 822,
+       "bytes": 11238
+      },
+      {
+       "f": "website/book/pages/26-书稿-第11章-AI伦理与安全.html",
+       "title": "第 11 章 · AI伦理与安全：技术狂奔时代的护栏",
+       "cn": 801,
+       "bytes": 11099
+      },
+      {
+       "f": "website/book/pages/27-书稿-第12章-AI与就业.html",
+       "title": "第 12 章 · AI与就业：谁会被取代，谁会更值钱",
+       "cn": 825,
+       "bytes": 11411
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "发展史 / 大事记 / 国家教育馆 / 案例库 / 工业4.0（做课件与讲座的素材）",
+     "pages": [
+      {
+       "f": "website/cases.html",
+       "title": "AI实战案例库",
+       "cn": 1265,
+       "bytes": 14546
+      },
+      {
+       "f": "website/ai-build-hall.html",
+       "title": "工业4.0 · 数字孪生 · 智能工厂AI 如何建造未来",
+       "cn": 243,
+       "bytes": 16793
+      }
+     ]
+    }
+   ],
+   "skip": [
+    {
+     "line": "lab-tech",
+     "lineName": "实验室 · 理工算法",
+     "why": "算法与数值实验：老师用不上，且内容偏 CS 课程"
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "AI编程/深度学习革命/办公自动化/医疗/国家安全：与教学无直接关系"
+    }
+   ],
+   "stats": {
+    "corePages": 55,
+    "skipPages": 11
+   }
+  },
+  {
+   "id": "student",
+   "name": "学生",
+   "icon": "book-open",
+   "sub": "中学 / 大学 / 考研 / 想转行",
+   "ask": "我能不能学会，靠什么能找到工作",
+   "termMode": "standard",
+   "termNote": "术语可点开查看解释",
+   "promise": [
+    "按依赖关系排出学习顺序，不浪费半年在无关内容上",
+    "手里有 24 个可运行的毕业设计项目，不是只有笔记",
+    "知道 AI 岗位要什么能力，也知道自己缺哪一块"
+   ],
+   "firstStop": {
+    "file": "ai-academy/roadmap.html",
+    "label": "从零基础到职业实战",
+    "why": "先看路径，再决定从哪一章进"
+   },
+   "output": [
+    "一份能照着走的学习顺序表",
+    "一个能写进简历的已运行项目",
+    "一次模拟面试与错题复盘"
+   ],
+   "core": [
+    {
+     "line": "academy-chapter",
+     "lineName": "自学路线 · 43 章正文",
+     "why": "概念 → 提示词 → 进阶 → RAG → ML 基础 → 职场 → 行业",
+     "pages": [
+      {
+       "f": "website/ai-academy/chapter-01.html",
+       "title": "初识智能体",
+       "cn": 13123,
+       "bytes": 64561
+      },
+      {
+       "f": "website/ai-academy/chapter-17.html",
+       "title": "提示词工程入门：从提问到指挥",
+       "cn": 3249,
+       "bytes": 17735
+      },
+      {
+       "f": "website/ai-academy/chapter-18.html",
+       "title": "提示词工程进阶：结构化与迭代",
+       "cn": 3378,
+       "bytes": 18834
+      },
+      {
+       "f": "website/ai-academy/chapter-19.html",
+       "title": "RAG 检索增强生成实战",
+       "cn": 3643,
+       "bytes": 20646
+      },
+      {
+       "f": "website/ai-academy/chapter-22.html",
+       "title": "机器学习与深度学习基础",
+       "cn": 3292,
+       "bytes": 19970
+      },
+      {
+       "f": "website/ai-academy/chapter-23.html",
+       "title": "AI 职场应用实战",
+       "cn": 3691,
+       "bytes": 19984
+      },
+      {
+       "f": "website/ai-academy/chapter-24.html",
+       "title": "AI 行业应用与职业发展",
+       "cn": 3406,
+       "bytes": 19970
+      }
+     ]
+    },
+    {
+     "line": "academy-page",
+     "lineName": "自学路线 · 附属页",
+     "why": "路径 / 从业路线 / 项目 / 岗位 / 面试 / 测验 / 认证 / 概念 / 资源",
+     "pages": [
+      {
+       "f": "website/ai-academy-roadmap.html",
+       "title": "从零基础到职业实战",
+       "cn": 873,
+       "bytes": 20965
+      },
+      {
+       "f": "website/ai-academy-journey.html",
+       "title": "从 AI 小白到从业者",
+       "cn": 715,
+       "bytes": 20080
+      },
+      {
+       "f": "website/ai-academy-projects.html",
+       "title": "24 个可复现毕业设计",
+       "cn": 918,
+       "bytes": 21859
+      },
+      {
+       "f": "website/ai-academy-jobs.html",
+       "title": "AI 时代岗位全景",
+       "cn": 644,
+       "bytes": 13758
+      },
+      {
+       "f": "website/ai-academy-interview.html",
+       "title": "高频面试题 + 参考答案",
+       "cn": 2296,
+       "bytes": 21495
+      },
+      {
+       "f": "website/ai-academy-quiz.html",
+       "title": "章节测验 · 认证考试",
+       "cn": 282,
+       "bytes": 35253
+      },
+      {
+       "f": "website/ai-academy-cert.html",
+       "title": "四大能力认证",
+       "cn": 1456,
+       "bytes": 51045
+      },
+      {
+       "f": "website/ai-academy-glossary.html",
+       "title": "AI 概念库",
+       "cn": 228,
+       "bytes": 35411
+      },
+      {
+       "f": "website/ai-academy-resources.html",
+       "title": "权威资源馆",
+       "cn": 456,
+       "bytes": 44614
+      }
+     ]
+    },
+    {
+     "line": "academy-project",
+     "lineName": "自学路线 · 24 个毕业设计",
+     "why": "24 个毕业设计，按难度自选",
+     "pages": [
+      {
+       "f": "website/ai-academy/projects/data-analysis.html",
+       "title": "DataAnalysisAgent",
+       "cn": 2488,
+       "bytes": 17718
+      },
+      {
+       "f": "website/ai-academy/projects/network-health.html",
+       "title": "NetworkHealthReport",
+       "cn": 2419,
+       "bytes": 16573
+      },
+      {
+       "f": "website/ai-academy/projects/news-digest.html",
+       "title": "NewsDigest 新闻摘要官",
+       "cn": 2386,
+       "bytes": 15854
+      },
+      {
+       "f": "website/ai-academy/projects/mind-echo.html",
+       "title": "MindEcho 心声回响",
+       "cn": 2310,
+       "bytes": 16162
+      },
+      {
+       "f": "website/ai-academy/projects/database-agent.html",
+       "title": "Database Agent",
+       "cn": 2270,
+       "bytes": 16938
+      },
+      {
+       "f": "website/ai-academy/projects/data-cleaner.html",
+       "title": "DataCleaner 数据清洗工",
+       "cn": 2259,
+       "bytes": 17553
+      },
+      {
+       "f": "website/ai-academy/projects/tutor-agent.html",
+       "title": "TutorAgent 家教辅导",
+       "cn": 2243,
+       "bytes": 15274
+      },
+      {
+       "f": "website/ai-academy/projects/code-reviewer.html",
+       "title": "CodeReviewer 代码评审助手",
+       "cn": 2225,
+       "bytes": 15152
+      },
+      {
+       "f": "website/ai-academy/projects/marketing-writer.html",
+       "title": "MarketingWriter 营销文案机",
+       "cn": 2221,
+       "bytes": 15821
+      },
+      {
+       "f": "website/ai-academy/projects/health-coach.html",
+       "title": "HealthCoach 健身教练",
+       "cn": 2198,
+       "bytes": 15234
+      },
+      {
+       "f": "website/ai-academy/projects/column-writer.html",
+       "title": "ColumnWriter 专栏写手",
+       "cn": 2192,
+       "bytes": 14955
+      },
+      {
+       "f": "website/ai-academy/projects/meeting-minutes.html",
+       "title": "MeetingMinutes 会议纪要官",
+       "cn": 2192,
+       "bytes": 15667
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "提示词库 / 场景模板 / 题库 / 简历 / 专业选择",
+     "pages": [
+      {
+       "f": "website/prompts100.html",
+       "title": "提示词百宝库",
+       "cn": 4886,
+       "bytes": 37806
+      },
+      {
+       "f": "website/prompts-guide.html",
+       "title": "40+ 条可复制提示词，全场景覆盖",
+       "cn": 560,
+       "bytes": 33124
+      },
+      {
+       "f": "website/quiz.html",
+       "title": "刷题 · 题库",
+       "cn": 197,
+       "bytes": 20222
+      },
+      {
+       "f": "website/resume.html",
+       "title": "简历 生成器",
+       "cn": 162,
+       "bytes": 17997
+      },
+      {
+       "f": "website/majors.html",
+       "title": "选对专业，用 AI 把路走宽",
+       "cn": 3193,
+       "bytes": 37579
+      }
+     ]
+    },
+    {
+     "line": "lab-tech",
+     "lineName": "实验室 · 理工算法",
+     "why": "理工算法与编程实战",
+     "pages": [
+      {
+       "f": "lab/algorithms/算法与数据结构入门.html",
+       "title": "算法与数据结构入门",
+       "cn": 332,
+       "bytes": 8555
+      },
+      {
+       "f": "lab/cnc/数控编程与开源工具.html",
+       "title": "数控（CNC）编程与开源工具指南",
+       "cn": 446,
+       "bytes": 9569
+      },
+      {
+       "f": "lab/ml/机器学习入门.html",
+       "title": "机器学习入门（从零到能跑）",
+       "cn": 371,
+       "bytes": 8957
+      },
+      {
+       "f": "lab/modeling/数学建模入门.html",
+       "title": "数学建模入门",
+       "cn": 1980,
+       "bytes": 20692
+      },
+      {
+       "f": "lab/numerical/数值计算入门.html",
+       "title": "数值计算入门",
+       "cn": 1505,
+       "bytes": 15748
+      },
+      {
+       "f": "lab/programming/编程与计算机学习路线.html",
+       "title": "编程与计算机学习路线（AI 时代版）",
+       "cn": 485,
+       "bytes": 9963
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "全部博客 48 篇：工具选择、学习方法、避坑、大事记",
+     "pages": [
+      {
+       "f": "blog/2026-08-28-爆款-每天加班3小时到准点走：我用3个AI工具把周工作量压到16小时，老板还以为我招了.html",
+       "title": "每天加班3小时到准点走：我用3个AI工具把周工作量压到16小时，老板还以为我招了",
+       "cn": 2518,
+       "bytes": 19559
+      },
+      {
+       "f": "blog/2026-08-30-爆款-17个AI工具按场景怎么选：别再乱花钱了，真正每天用的是这6个.html",
+       "title": "17个AI工具按场景怎么选：别再乱花钱了，真正每天用的是这6个",
+       "cn": 2575,
+       "bytes": 19979
+      },
+      {
+       "f": "blog/2026-08-30-爆款-5个免费AI工具救了我大学4年：从期末3天突击80+到本科发2篇普刊，绩点从2..html",
+       "title": "5个免费AI工具救了我大学4年：从期末3天突击80+到本科发2篇普刊，绩点从2.",
+       "cn": 2706,
+       "bytes": 20256
+      },
+      {
+       "f": "blog/2026-08-31-本周AI大事记-2026年8月第5周.html",
+       "title": "本周 AI 大事记 · 2026年8月第5周",
+       "cn": 2280,
+       "bytes": 19858
+      },
+      {
+       "f": "blog/2026-09-01-爆款-3个Agent协作开源AI助手实测.html",
+       "title": "3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费G",
+       "cn": 3023,
+       "bytes": 24323
+      },
+      {
+       "f": "blog/2026-09-03-爆款-100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型.html",
+       "title": "100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型",
+       "cn": 2537,
+       "bytes": 20854
+      },
+      {
+       "f": "blog/2026-09-03-爆款-3个新能力反超GPT-4o？OpenAI Astra突袭上线：普通用户零成本上手.html",
+       "title": "3个新能力反超GPT-4o？OpenAI Astra突袭上线：普通用户零成本上手",
+       "cn": 2630,
+       "bytes": 20006
+      },
+      {
+       "f": "blog/2026-09-07-本周AI大事记-2026年9月第1周.html",
+       "title": "本周 AI 大事记 · 2026年9月第1周",
+       "cn": 1737,
+       "bytes": 16523
+      },
+      {
+       "f": "blog/2026-09-08-爆款-2B参数打平12B模型！端侧Agent零成本商用，你的手机、嵌入式设备下周就能跑.html",
+       "title": "2B参数打平12B模型！端侧Agent零成本商用，你的手机/嵌入式设备下周就能跑",
+       "cn": 2182,
+       "bytes": 19095
+      },
+      {
+       "f": "blog/2026-AI-创业生存指南：告别“套壳”，死磕垂直代理.html",
+       "title": "2026 AI 创业生存指南：告别“套壳”，死磕垂直代理",
+       "cn": 2726,
+       "bytes": 19478
+      },
+      {
+       "f": "blog/2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html",
+       "title": "2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径",
+       "cn": 1707,
+       "bytes": 17567
+      },
+      {
+       "f": "blog/2026-年-AI-视频创作实战：从提示词到导演的完整工作流.html",
+       "title": "2026 年 AI 视频创作实战：从提示词到导演的完整工作流",
+       "cn": 2012,
+       "bytes": 18268
+      },
+      {
+       "f": "blog/2026.08.25-AI智能体现状：别再做Demo了，这3个可落地方案我跑了3个月ROI超300百分之.html",
+       "title": "2026.08.25 AI智能体现状：别再做Demo了，这3个可落地方案我跑了3",
+       "cn": 2916,
+       "bytes": 20138
+      },
+      {
+       "f": "blog/2026.9.1-大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI.html",
+       "title": "2026.9.1 大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI",
+       "cn": 2540,
+       "bytes": 18508
+      },
+      {
+       "f": "blog/2026.9.9-实测：现在用AI做视频，已经不用拼提示词了.html",
+       "title": "2026.9.9 实测：现在用AI做视频，已经不用拼提示词了",
+       "cn": 2795,
+       "bytes": 19576
+      },
+      {
+       "f": "blog/2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流.html",
+       "title": "2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流",
+       "cn": 2309,
+       "bytes": 18095
+      },
+      {
+       "f": "blog/2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少.html",
+       "title": "2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少",
+       "cn": 3102,
+       "bytes": 20511
+      },
+      {
+       "f": "blog/2026年8月AI工具横评：3类高频场景实测，避开90百分之的功能宣传陷阱.html",
+       "title": "2026年8月AI工具横评：3类高频场景实测，避开90%的功能宣传陷阱",
+       "cn": 2640,
+       "bytes": 19805
+      },
+      {
+       "f": "blog/2026年8月AI工具横评：别追概念，这4款工具真能帮你每天省2小时.html",
+       "title": "2026年8月AI工具横评：别追概念，这4款工具真能帮你每天省2小时",
+       "cn": 2388,
+       "bytes": 19708
+      },
+      {
+       "f": "blog/2026年8月实测：别迷信“全AI办公”，这4个落地场景才是真的省时间.html",
+       "title": "2026年8月实测：别迷信“全AI办公”，这4个落地场景才是真的省时间",
+       "cn": 2792,
+       "bytes": 20363
+      },
+      {
+       "f": "blog/2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开.html",
+       "title": "2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开",
+       "cn": 3096,
+       "bytes": 20745
+      },
+      {
+       "f": "blog/2026年9月AI变现观察：别追概念，这3个低门槛赛道普通人当月就能见现金流.html",
+       "title": "2026年9月AI变现观察：别追概念，这3个低门槛赛道普通人当月就能见现金流",
+       "cn": 2692,
+       "bytes": 19150
+      },
+      {
+       "f": "blog/2026年9月AI学习避坑指南：别再被3年前的旧教程坑了.html",
+       "title": "2026年9月AI学习避坑指南：别再被3年前的旧教程坑了",
+       "cn": 2860,
+       "bytes": 20188
+      },
+      {
+       "f": "blog/2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心.html",
+       "title": "2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心",
+       "cn": 2690,
+       "bytes": 20168
+      },
+      {
+       "f": "blog/2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到落地路线.html",
+       "title": "2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到",
+       "cn": 2834,
+       "bytes": 21008
+      },
+      {
+       "f": "blog/2026年中AI视频创作落地观察：别卷参数了，这3个实操方向才是普通人的变现路径.html",
+       "title": "2026年中AI视频创作落地观察：别卷参数了，这3个实操方向才是普通人的变现路径",
+       "cn": 2410,
+       "bytes": 20300
+      },
+      {
+       "f": "blog/2026年中AI视频创作落地观察：别追参数了，这3个方法能把变现效率拉满.html",
+       "title": "2026年中AI视频创作落地观察：别追参数了，这3个方法能把变现效率拉满",
+       "cn": 2151,
+       "bytes": 18203
+      },
+      {
+       "f": "blog/Agent智能体实战.html",
+       "title": "Agent 智能体实战：从概念到亲手搭建",
+       "cn": 3036,
+       "bytes": 32018
+      },
+      {
+       "f": "blog/AI写作完全指南.html",
+       "title": "AI写作完全指南：从入门到精通",
+       "cn": 1321,
+       "bytes": 15457
+      },
+      {
+       "f": "blog/AI创业实战指南.html",
+       "title": "AI创业实战指南",
+       "cn": 1093,
+       "bytes": 16098
+      },
+      {
+       "f": "blog/AI医疗应用指南.html",
+       "title": "AI医疗应用指南",
+       "cn": 999,
+       "bytes": 14219
+      },
+      {
+       "f": "blog/AI变现实操手册.html",
+       "title": "AI变现实操手册",
+       "cn": 1014,
+       "bytes": 15069
+      },
+      {
+       "f": "blog/AI实战全书.html",
+       "title": "AI 实战全书：一个人就是一支创作军团",
+       "cn": 5791,
+       "bytes": 38990
+      },
+      {
+       "f": "blog/AI教育应用实战.html",
+       "title": "AI教育应用实战",
+       "cn": 975,
+       "bytes": 13950
+      },
+      {
+       "f": "blog/AI时代工科学习-编程计算机数控仿真实战.html",
+       "title": "AI 时代工科学习全景 · 编程 / 计算机 / 数控 / 仿真（实战篇）",
+       "cn": 2100,
+       "bytes": 23930
+      },
+      {
+       "f": "blog/AI未来趋势-数字物理量子新质材料.html",
+       "title": "AI 未来趋势：数字智能 × 物理智能 × 量子算力 × 新质材料",
+       "cn": 1944,
+       "bytes": 17798
+      },
+      {
+       "f": "blog/AI绘画从入门到精通.html",
+       "title": "AI绘画从入门到精通",
+       "cn": 767,
+       "bytes": 14099
+      },
+      {
+       "f": "blog/AI编程进阶实战.html",
+       "title": "AI编程进阶实战",
+       "cn": 967,
+       "bytes": 14926
+      },
+      {
+       "f": "blog/AI视频制作实战.html",
+       "title": "AI 视频制作实战：一个人做出一条视频",
+       "cn": 3122,
+       "bytes": 30221
+      },
+      {
+       "f": "blog/index.html",
+       "title": "47 篇深度长文",
+       "cn": 1732,
+       "bytes": 21881
+      },
+      {
+       "f": "blog/中国AI发展史.html",
+       "title": "从跟跑到并跑：中国 AI 发展史（附 DeepSeek 时刻复盘）",
+       "cn": 3658,
+       "bytes": 25029
+      },
+      {
+       "f": "blog/公务员AI应用指南.html",
+       "title": "公务员AI应用指南",
+       "cn": 1105,
+       "bytes": 14516
+      },
+      {
+       "f": "blog/制造业AI应用实战.html",
+       "title": "制造业AI应用实战",
+       "cn": 1031,
+       "bytes": 14959
+      },
+      {
+       "f": "blog/大模型原理与Transformer.html",
+       "title": "大模型原理与Transformer：一次看懂 AI 的大脑",
+       "cn": 3004,
+       "bytes": 30892
+      },
+      {
+       "f": "blog/开源AI进阶-网络安全一人公司与手机操作.html",
+       "title": "开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作",
+       "cn": 1617,
+       "bytes": 19789
+      },
+      {
+       "f": "blog/提示词工程实战.html",
+       "title": "提示词工程实战：把 AI 用出十倍效果",
+       "cn": 3233,
+       "bytes": 31143
+      },
+      {
+       "f": "blog/最新开源对话式AI项目全景与一键使用指南.html",
+       "title": "最新开源对话式 AI 项目全景 · 一键使用指南",
+       "cn": 1604,
+       "bytes": 22113
+      },
+      {
+       "f": "blog/深度长文.html",
+       "title": "我用 DeepSeek 重构了整个创作流程：一篇万字长文的完整实操记录",
+       "cn": 3098,
+       "bytes": 23491
+      }
+     ]
+    },
+    {
+     "line": "book-volumes",
+     "lineName": "书 · 五卷全书",
+     "why": "五卷全书里的实战册",
+     "pages": [
+      {
+       "f": "book/五卷全书/AI工具大全-百科全书.html",
+       "title": "AI 工具大全 · 百科全书",
+       "cn": 1144,
+       "bytes": 15549
+      },
+      {
+       "f": "book/五卷全书/AI绘画实战-从文字到画面.html",
+       "title": "AI 实战 · AI 绘画：从文字到画面（完整教程）",
+       "cn": 1015,
+       "bytes": 12335
+      },
+      {
+       "f": "book/五卷全书/AI视频制作实战-一个人做出一条视频.html",
+       "title": "AI 实战 · 一个人做出一条视频（完整教程）",
+       "cn": 1037,
+       "bytes": 12402
+      }
+     ]
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "总蓝图 / 小白入门 / 工具全景 / 变现路线 / 学习总纲",
+     "pages": [
+      {
+       "f": "website/book/pages/00-AI个人IP超级内容矩阵总蓝图.html",
+       "title": "AI 个人 IP 超级内容矩阵 · 总蓝图",
+       "cn": 2010,
+       "bytes": 17049
+      },
+      {
+       "f": "website/book/pages/01-DeepSeek-V4-Pro-小白入门.html",
+       "title": "DeepSeek V4-Pro 小白入门（2026-08 最新）",
+       "cn": 1534,
+       "bytes": 15361
+      },
+      {
+       "f": "website/book/pages/02-AI工具全景图-国内国外.html",
+       "title": "AI 工具全景图（国内 + 国外，2026 版）",
+       "cn": 1404,
+       "bytes": 14013
+      },
+      {
+       "f": "website/book/pages/03-AI变现路线图-小白版.html",
+       "title": "AI 变现路线图（小白版）",
+       "cn": 1422,
+       "bytes": 13174
+      },
+      {
+       "f": "website/book/pages/20-AI学习总纲-从零到会用.html",
+       "title": "AI 学习总纲：从零到会用（统一路线图）",
+       "cn": 765,
+       "bytes": 11546
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "学院主页 / 生态 / 开源作品 / 行业手册 / 案例库 / 项目线（选方向用）",
+     "pages": [
+      {
+       "f": "website/ai-academy.html",
+       "title": "从零开始构建智能体",
+       "cn": 1737,
+       "bytes": 106318
+      },
+      {
+       "f": "website/ecosystem.html",
+       "title": "全生态知识库",
+       "cn": 217,
+       "bytes": 39838
+      },
+      {
+       "f": "website/ai-projects.html",
+       "title": "100 个真实开源作品，作者都注明",
+       "cn": 724,
+       "bytes": 19880
+      },
+      {
+       "f": "website/industry.html",
+       "title": "行业实战手册",
+       "cn": 815,
+       "bytes": 11863
+      },
+      {
+       "f": "website/opensource.html",
+       "title": "开源 AI 项目 · 内嵌整合",
+       "cn": 1730,
+       "bytes": 37229
+      },
+      {
+       "f": "website/cases.html",
+       "title": "AI实战案例库",
+       "cn": 1265,
+       "bytes": 14546
+      },
+      {
+       "f": "website/ai-war-room.html",
+       "title": "8 个真实项目 · 4 条产品线",
+       "cn": 284,
+       "bytes": 22694
+      }
+     ]
+    },
+    {
+     "line": "book-china",
+     "lineName": "书 · 中国科技故事",
+     "why": "中国科技故事全集（19 章）：通识 + 面试与写作素材",
+     "pages": [
+      {
+       "f": "book/五卷全书/中国科技故事/01-DeepSeek的逆袭.html",
+       "title": "中国科技故事 · 01 · DeepSeek 的逆袭",
+       "cn": 1277,
+       "bytes": 12474
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/02-两弹一星.html",
+       "title": "中国科技故事 · 02 · 两弹一星：从「一穷二白」到「镇国重器」",
+       "cn": 1100,
+       "bytes": 11378
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/03-中国高铁.html",
+       "title": "中国科技故事 · 03 · 中国高铁：从「引进」到「领跑」",
+       "cn": 893,
+       "bytes": 10436
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/04-北斗导航.html",
+       "title": "中国科技故事 · 04 · 北斗导航：我们为什么要造自己的「北斗」",
+       "cn": 872,
+       "bytes": 10118
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/05-中国航天.html",
+       "title": "中国科技故事 · 05 · 中国航天：从东方红一号到空间站",
+       "cn": 952,
+       "bytes": 10286
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/06-嫦娥探月.html",
+       "title": "中国科技故事 · 06 · 嫦娥探月与天问探火：中国人的星辰大海",
+       "cn": 777,
+       "bytes": 9326
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/07-超级计算机.html",
+       "title": "中国科技故事 · 07 · 超级计算机：神威·太湖之光背后的故事",
+       "cn": 735,
+       "bytes": 9677
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/08-量子科技.html",
+       "title": "中国科技故事 · 08 · 量子科技：墨子号与九章",
+       "cn": 866,
+       "bytes": 9932
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/09-华为.html",
+       "title": "中国科技故事 · 09 · 华为：一家公司的长征",
+       "cn": 787,
+       "bytes": 9734
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/10-5G通信.html",
+       "title": "中国科技故事 · 10 · 5G：中国如何站上通信之巅",
+       "cn": 751,
+       "bytes": 9726
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/11-移动支付.html",
+       "title": "中国科技故事 · 11 · 移动支付与数字生活：一部手机走天下",
+       "cn": 879,
+       "bytes": 10178
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/12-大疆.html",
+       "title": "中国科技故事 · 12 · 大疆：从车库到全球无人机之王",
+       "cn": 907,
+       "bytes": 9982
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/13-比亚迪.html",
+       "title": "中国科技故事 · 13 · 比亚迪与新能源车：换道超车",
+       "cn": 889,
+       "bytes": 10149
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/14-国产大模型群像.html",
+       "title": "中国科技故事 · 14 · 国产大模型群像：文心、通义、豆包、Kimi的突围",
+       "cn": 831,
+       "bytes": 10414
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/15-光刻机与芯片.html",
+       "title": "中国科技故事 · 15 · 光刻机与芯片：卡脖子与突围战",
+       "cn": 836,
+       "bytes": 10455
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/16-钱学森.html",
+       "title": "中国科技故事 · 16 · 钱学森：五年归国路，十年两弹成",
+       "cn": 906,
+       "bytes": 10155
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/17-袁隆平.html",
+       "title": "中国科技故事 · 17 · 袁隆平：一粒种子改变世界",
+       "cn": 950,
+       "bytes": 10338
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/18-科技创业者群像.html",
+       "title": "中国科技故事 · 18 · 任正非、王传福、梁文锋：科技创业者群像",
+       "cn": 977,
+       "bytes": 10925
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/README-目录.html",
+       "title": "中国科技故事 · 系列总目录",
+       "cn": 539,
+       "bytes": 11977
+      }
+     ]
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "总目录 / DeepSeek 史 / AI 七十年 / 图像视频简史 / 影响面 / 小说短剧 / 行行出状元 / 创业 / 未来社会",
+     "pages": [
+      {
+       "f": "website/book/pages/05-书稿总目录-AI工具简史与实战全书.html",
+       "title": "书稿总目录（旗舰产品）",
+       "cn": 1897,
+       "bytes": 17272
+      },
+      {
+       "f": "website/book/pages/06-书稿-第10章-DeepSeek发展史.html",
+       "title": "第 10 章 · DeepSeek 发展史：从量化基金到国产大模型旗帜",
+       "cn": 1931,
+       "bytes": 16075
+      },
+      {
+       "f": "website/book/pages/07-书稿-第1章-AI七十年.html",
+       "title": "第 1 章 · AI 七十年：一条能看懂的时间线",
+       "cn": 1608,
+       "bytes": 14190
+      },
+      {
+       "f": "website/book/pages/08-书稿-第3章-ChatGPT点燃全民AI时代.html",
+       "title": "第 3 章 · ChatGPT 如何点燃全民 AI 时代",
+       "cn": 1604,
+       "bytes": 13964
+      },
+      {
+       "f": "website/book/pages/09-书稿-第4章-图像生成简史.html",
+       "title": "第 4 章 · 图像生成简史：从「不像」到「以假乱真」",
+       "cn": 1300,
+       "bytes": 13117
+      },
+      {
+       "f": "website/book/pages/10-书稿-第5章-视频生成简史.html",
+       "title": "第 5 章 · 视频生成简史：从几秒到完整叙事",
+       "cn": 1215,
+       "bytes": 12649
+      },
+      {
+       "f": "website/book/pages/12-AI影响面-从短视频到天气再到每一个人.html",
+       "title": "AI 影响面：从短视频、赚钱、博文到天气，再到每一个人",
+       "cn": 2089,
+       "bytes": 16013
+      },
+      {
+       "f": "website/book/pages/14-AI小说与短剧的影响.html",
+       "title": "AI 写小说、短剧带来的影响（2026 最新数据）",
+       "cn": 1299,
+       "bytes": 12734
+      },
+      {
+       "f": "website/book/pages/19-行行出状元-各行各业如何看AI如何学AI.html",
+       "title": "行行出状元：各行各业如何看 AI、如何学 AI",
+       "cn": 2880,
+       "bytes": 19428
+      },
+      {
+       "f": "website/book/pages/28-书稿-第13章-AI创业指南.html",
+       "title": "第 13 章 · AI创业指南：从想法到产品",
+       "cn": 772,
+       "bytes": 11280
+      },
+      {
+       "f": "website/book/pages/29-书稿-第14章-AI与未来社会.html",
+       "title": "第 14 章 · AI与未来社会：2035年的世界",
+       "cn": 755,
+       "bytes": 10956
+      }
+     ]
+    }
+   ],
+   "skip": [
+    {
+     "line": "book-china",
+     "lineName": "书 · 中国科技故事",
+     "why": "中国科技故事是叙事读物，不解决就业问题，可课后读"
+    }
+   ],
+   "stats": {
+    "corePages": 132,
+    "skipPages": 19
+   }
+  },
+  {
+   "id": "developer",
+   "name": "开发者",
+   "icon": "code",
+   "sub": "想用 AI 提效 / 想做 Agent 产品",
+   "ask": "这套东西能不能直接用在工程里",
+   "termMode": "full",
+   "termNote": "不做术语简化，直接给文档与源码",
+   "promise": [
+    "能搭出带工具调用与记忆的 Agent，而不是只会调 API",
+    "知道 RAG 什么时候会失败、该怎么评估",
+    "理解多智能体不是越多越好，以及协议（MCP）该怎么接"
+   ],
+   "firstStop": {
+    "file": "ai-academy/chapter-01.html",
+    "label": "初识智能体",
+    "why": "从原理开始，后面每章都依赖它"
+   },
+   "output": [
+    "一个能跑的 Agent（含工具调用与记忆）",
+    "一套 RAG 评估基线",
+    "一份技术选型对照（含实测数据与出处）"
+   ],
+   "core": [
+    {
+     "line": "academy-chapter",
+     "lineName": "自学路线 · 43 章正文",
+     "why": "基础→原理→范式→框架→记忆→检索→上下文→协议→评估→工具链",
+     "pages": [
+      {
+       "f": "website/ai-academy/chapter-01.html",
+       "title": "初识智能体",
+       "cn": 13123,
+       "bytes": 64561
+      },
+      {
+       "f": "website/ai-academy/chapter-02.html",
+       "title": "智能体发展史",
+       "cn": 13030,
+       "bytes": 64811
+      },
+      {
+       "f": "website/ai-academy/chapter-03.html",
+       "title": "3.1 语言模型与 Transformer 架构",
+       "cn": 16688,
+       "bytes": 90081
+      },
+      {
+       "f": "website/ai-academy/chapter-04.html",
+       "title": "智能体经典范式构建",
+       "cn": 15324,
+       "bytes": 89577
+      },
+      {
+       "f": "website/ai-academy/chapter-05.html",
+       "title": "基于低代码平台的智能体搭建",
+       "cn": 21448,
+       "bytes": 104782
+      },
+      {
+       "f": "website/ai-academy/chapter-06.html",
+       "title": "框架开发实践",
+       "cn": 19323,
+       "bytes": 99581
+      },
+      {
+       "f": "website/ai-academy/chapter-07.html",
+       "title": "构建你的智能体框架",
+       "cn": 14206,
+       "bytes": 113943
+      },
+      {
+       "f": "website/ai-academy/chapter-08.html",
+       "title": "记忆与检索",
+       "cn": 14363,
+       "bytes": 114059
+      },
+      {
+       "f": "website/ai-academy/chapter-09.html",
+       "title": "上下文工程",
+       "cn": 15162,
+       "bytes": 128004
+      },
+      {
+       "f": "website/ai-academy/chapter-10.html",
+       "title": "智能体通信协议",
+       "cn": 12876,
+       "bytes": 112815
+      },
+      {
+       "f": "website/ai-academy/chapter-12.html",
+       "title": "智能体性能评估",
+       "cn": 15456,
+       "bytes": 136103
+      },
+      {
+       "f": "website/ai-academy/chapter-17.html",
+       "title": "提示词工程入门：从提问到指挥",
+       "cn": 3249,
+       "bytes": 17735
+      },
+      {
+       "f": "website/ai-academy/chapter-18.html",
+       "title": "提示词工程进阶：结构化与迭代",
+       "cn": 3378,
+       "bytes": 18834
+      },
+      {
+       "f": "website/ai-academy/chapter-19.html",
+       "title": "RAG 检索增强生成实战",
+       "cn": 3643,
+       "bytes": 20646
+      },
+      {
+       "f": "website/ai-academy/chapter-25.html",
+       "title": "多智能体系统架构与编排",
+       "cn": 3500,
+       "bytes": 20977
+      },
+      {
+       "f": "website/ai-academy/chapter-27.html",
+       "title": "MCP 智能体应用开发：连接万物的标准协议",
+       "cn": 2572,
+       "bytes": 17007
+      },
+      {
+       "f": "website/ai-academy/chapter-28.html",
+       "title": "DeepSeek Harness：插件化智能体运行时实战",
+       "cn": 3170,
+       "bytes": 18729
+      }
+     ]
+    },
+    {
+     "line": "academy-project",
+     "lineName": "自学路线 · 24 个毕业设计",
+     "why": "可运行项目",
+     "pages": [
+      {
+       "f": "website/ai-academy/projects/code-reviewer.html",
+       "title": "CodeReviewer 代码评审助手",
+       "cn": 2225,
+       "bytes": 15152
+      },
+      {
+       "f": "website/ai-academy/projects/data-analysis.html",
+       "title": "DataAnalysisAgent",
+       "cn": 2488,
+       "bytes": 17718
+      },
+      {
+       "f": "website/ai-academy/projects/data-cleaner.html",
+       "title": "DataCleaner 数据清洗工",
+       "cn": 2259,
+       "bytes": 17553
+      },
+      {
+       "f": "website/ai-academy/projects/database-agent.html",
+       "title": "Database Agent",
+       "cn": 2270,
+       "bytes": 16938
+      },
+      {
+       "f": "website/ai-academy/projects/email-assistant.html",
+       "title": "EmailSmartAssistant",
+       "cn": 1968,
+       "bytes": 15179
+      },
+      {
+       "f": "website/ai-academy/projects/legal-assistant.html",
+       "title": "LegalAssistant 法律咨询助手",
+       "cn": 2173,
+       "bytes": 15503
+      },
+      {
+       "f": "website/ai-academy/projects/research-agent.html",
+       "title": "ResearchAgent 论文研读助手",
+       "cn": 1991,
+       "bytes": 14874
+      },
+      {
+       "f": "website/ai-academy/projects/tutor-agent.html",
+       "title": "TutorAgent 家教辅导",
+       "cn": 2243,
+       "bytes": 15274
+      }
+     ]
+    },
+    {
+     "line": "lab-devops",
+     "lineName": "实验室 · 自动部署",
+     "why": "CI/CD 与工程实践",
+     "pages": [
+      {
+       "f": "lab/cicd/持续集成与部署指南.html",
+       "title": "持续集成与持续部署（CI/CD）指南",
+       "cn": 2162,
+       "bytes": 24645
+      },
+      {
+       "f": "lab/cicd/自动部署指南.html",
+       "title": "自动部署指南：从「本地文件夹」到「手机上能访问的网址」",
+       "cn": 1707,
+       "bytes": 21794
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "概念库 / 调研库 / 生态 / 开源 / 工具 / 开发者基地 / 部署",
+     "pages": [
+      {
+       "f": "website/academy-research.html",
+       "title": "自学路线深度补强 · 调研资料库",
+       "cn": 27110,
+       "bytes": 246827
+      },
+      {
+       "f": "website/ai-ecosystem.html",
+       "title": "全球 AI 生态，一张地图看完",
+       "cn": 618,
+       "bytes": 63686
+      },
+      {
+       "f": "website/opensource.html",
+       "title": "开源 AI 项目 · 内嵌整合",
+       "cn": 1730,
+       "bytes": 37229
+      },
+      {
+       "f": "website/ai-tools.html",
+       "title": "AI 工具真库",
+       "cn": 3258,
+       "bytes": 61320
+      },
+      {
+       "f": "website/devbase.html",
+       "title": "开发者基地从第一条命令，到第一件成品",
+       "cn": 5758,
+       "bytes": 57534
+      },
+      {
+       "f": "website/local-ai.html",
+       "title": "内嵌另一个你本地 AI 部署",
+       "cn": 797,
+       "bytes": 19789
+      },
+      {
+       "f": "website/local-deploy.html",
+       "title": "本地部署手册",
+       "cn": 557,
+       "bytes": 11133
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "工程与开源实战长文",
+     "pages": [
+      {
+       "f": "blog/2026-09-01-爆款-3个Agent协作开源AI助手实测.html",
+       "title": "3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费G",
+       "cn": 3023,
+       "bytes": 24323
+      },
+      {
+       "f": "blog/2026-09-03-爆款-100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型.html",
+       "title": "100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型",
+       "cn": 2537,
+       "bytes": 20854
+      },
+      {
+       "f": "blog/2026-09-08-爆款-2B参数打平12B模型！端侧Agent零成本商用，你的手机、嵌入式设备下周就能跑.html",
+       "title": "2B参数打平12B模型！端侧Agent零成本商用，你的手机/嵌入式设备下周就能跑",
+       "cn": 2182,
+       "bytes": 19095
+      },
+      {
+       "f": "blog/2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html",
+       "title": "2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径",
+       "cn": 1707,
+       "bytes": 17567
+      },
+      {
+       "f": "blog/2026.08.25-AI智能体现状：别再做Demo了，这3个可落地方案我跑了3个月ROI超300百分之.html",
+       "title": "2026.08.25 AI智能体现状：别再做Demo了，这3个可落地方案我跑了3",
+       "cn": 2916,
+       "bytes": 20138
+      },
+      {
+       "f": "blog/Agent智能体实战.html",
+       "title": "Agent 智能体实战：从概念到亲手搭建",
+       "cn": 3036,
+       "bytes": 32018
+      },
+      {
+       "f": "blog/开源AI进阶-网络安全一人公司与手机操作.html",
+       "title": "开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作",
+       "cn": 1617,
+       "bytes": 19789
+      },
+      {
+       "f": "blog/提示词工程实战.html",
+       "title": "提示词工程实战：把 AI 用出十倍效果",
+       "cn": 3233,
+       "bytes": 31143
+      },
+      {
+       "f": "blog/最新开源对话式AI项目全景与一键使用指南.html",
+       "title": "最新开源对话式 AI 项目全景 · 一键使用指南",
+       "cn": 1604,
+       "bytes": 22113
+      }
+     ]
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "AI编程工具 / 开源项目 / 逐个上手 / 深度学习革命 / AI编程革命",
+     "pages": [
+      {
+       "f": "website/book/pages/04-AI编程工具-IDE编译审阅浏览.html",
+       "title": "AI 编程工具：IDE / 编译 / 审阅 / 浏览（小白版）",
+       "cn": 1496,
+       "bytes": 14883
+      },
+      {
+       "f": "website/book/pages/16-GitHub最新开源项目盘点与一键上手.html",
+       "title": "GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端",
+       "cn": 1642,
+       "bytes": 17124
+      },
+      {
+       "f": "website/book/pages/17-开源项目逐个上手手册.html",
+       "title": "开源项目逐个上手手册（安装 · 一键使用 · 打包下载 · 手机端）",
+       "cn": 1644,
+       "bytes": 18159
+      },
+      {
+       "f": "website/book/pages/21-书稿-第2章-深度学习革命.html",
+       "title": "第 2 章 · 深度学习革命：从感知机到Transformer",
+       "cn": 847,
+       "bytes": 11553
+      },
+      {
+       "f": "website/book/pages/22-书稿-第6章-AI编程革命.html",
+       "title": "第 6 章 · AI编程革命：从Copilot到自主Agent",
+       "cn": 651,
+       "bytes": 11096
+      }
+     ]
+    },
+    {
+     "line": "book-volumes",
+     "lineName": "书 · 五卷全书",
+     "why": "技术史脉络：判断技术演进的依据",
+     "pages": [
+      {
+       "f": "book/五卷全书/从古至今科技史与AI发展历程.html",
+       "title": "从古至今：科技史与 AI 发展历程（超级时间轴）",
+       "cn": 2266,
+       "bytes": 19126
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "编程进阶 + 多模态内容生产",
+     "pages": [
+      {
+       "f": "blog/AI编程进阶实战.html",
+       "title": "AI编程进阶实战",
+       "cn": 967,
+       "bytes": 14926
+      },
+      {
+       "f": "blog/AI绘画从入门到精通.html",
+       "title": "AI绘画从入门到精通",
+       "cn": 767,
+       "bytes": 14099
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "编年史 / 前沿 / 生态 / 大事记（判断技术走向）",
+     "pages": [
+      {
+       "f": "website/chronicle.html",
+       "title": "AI 全景编年史",
+       "cn": 6988,
+       "bytes": 46688
+      },
+      {
+       "f": "website/frontiers.html",
+       "title": "站在巨人的肩膀上看见 AI 的下一程",
+       "cn": 2076,
+       "bytes": 26333
+      },
+      {
+       "f": "website/ecosystem.html",
+       "title": "全生态知识库",
+       "cn": 217,
+       "bytes": 39838
+      }
+     ]
+    },
+    {
+     "line": "academy-chapter",
+     "lineName": "自学路线 · 43 章正文",
+     "why": "实战项目章（旅行助手 / 深度研究 / 赛博小镇 / 毕业设计 / AI编程 / NOOA / Orchard / VLA）",
+     "pages": [
+      {
+       "f": "website/ai-academy/chapter-13.html",
+       "title": "智能旅行助手",
+       "cn": 12054,
+       "bytes": 88888
+      },
+      {
+       "f": "website/ai-academy/chapter-14.html",
+       "title": "自动化深度研究智能体",
+       "cn": 9720,
+       "bytes": 88861
+      },
+      {
+       "f": "website/ai-academy/chapter-15.html",
+       "title": "构建赛博小镇",
+       "cn": 13168,
+       "bytes": 100670
+      },
+      {
+       "f": "website/ai-academy/chapter-16.html",
+       "title": "毕业设计：构建属于你的多智能体应用",
+       "cn": 5092,
+       "bytes": 39418
+      },
+      {
+       "f": "website/ai-academy/chapter-26.html",
+       "title": "AI 编程助手与代码智能体",
+       "cn": 3622,
+       "bytes": 19336
+      },
+      {
+       "f": "website/ai-academy/chapter-34.html",
+       "title": "NVIDIA NOOA 对象导向智能体框架：让 Agent 成为 Python ",
+       "cn": 3086,
+       "bytes": 17732
+      },
+      {
+       "f": "website/ai-academy/chapter-36.html",
+       "title": "微软 Orchard 框架：Agent 训练基础设施与数据蒸馏实战",
+       "cn": 3390,
+       "bytes": 18896
+      },
+      {
+       "f": "website/ai-academy/chapter-41.html",
+       "title": "自动驾驶 VLA 实战：Qwen-Drive-1.0-4B 统一 3D 感知·问",
+       "cn": 3114,
+       "bytes": 16833
+      }
+     ]
+    },
+    {
+     "line": "academy-project",
+     "lineName": "自学路线 · 24 个毕业设计",
+     "why": "客服 / 理财 / 健康 / 看图 / 物联网 / 播客 / 股票 / 行程 / 简历（工程型项目全收）",
+     "pages": [
+      {
+       "f": "website/ai-academy/projects/customer-support.html",
+       "title": "CustomerSupport 智能客服",
+       "cn": 2183,
+       "bytes": 15054
+      },
+      {
+       "f": "website/ai-academy/projects/finance-bot.html",
+       "title": "FinanceBot 理财顾问",
+       "cn": 1977,
+       "bytes": 14817
+      },
+      {
+       "f": "website/ai-academy/projects/health-record.html",
+       "title": "HealthRecord 健康助手",
+       "cn": 1986,
+       "bytes": 14646
+      },
+      {
+       "f": "website/ai-academy/projects/image-captioner.html",
+       "title": "ImageCaptioner 看图说话",
+       "cn": 1949,
+       "bytes": 14075
+      },
+      {
+       "f": "website/ai-academy/projects/iot-monitor.html",
+       "title": "IoTMonitor 物联网监控",
+       "cn": 2175,
+       "bytes": 16536
+      },
+      {
+       "f": "website/ai-academy/projects/podcast-script.html",
+       "title": "PodcastScript 播客脚本工",
+       "cn": 2087,
+       "bytes": 15671
+      },
+      {
+       "f": "website/ai-academy/projects/stock-insight.html",
+       "title": "StockInsight 股票分析",
+       "cn": 2164,
+       "bytes": 14390
+      },
+      {
+       "f": "website/ai-academy/projects/travel-planner.html",
+       "title": "TravelPlanner 行程规划师",
+       "cn": 2191,
+       "bytes": 15472
+      },
+      {
+       "f": "website/ai-academy/projects/resume-coach.html",
+       "title": "ResumeCoach 简历优化教练",
+       "cn": 2126,
+       "bytes": 15131
+      }
+     ]
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "总目录 / 图像视频简史 / 开源工具 / 编程工具 / 逐个上手 / AI编程革命",
+     "pages": [
+      {
+       "f": "website/book/pages/05-书稿总目录-AI工具简史与实战全书.html",
+       "title": "书稿总目录（旗舰产品）",
+       "cn": 1897,
+       "bytes": 17272
+      },
+      {
+       "f": "website/book/pages/09-书稿-第4章-图像生成简史.html",
+       "title": "第 4 章 · 图像生成简史：从「不像」到「以假乱真」",
+       "cn": 1300,
+       "bytes": 13117
+      },
+      {
+       "f": "website/book/pages/10-书稿-第5章-视频生成简史.html",
+       "title": "第 5 章 · 视频生成简史：从几秒到完整叙事",
+       "cn": 1215,
+       "bytes": 12649
+      },
+      {
+       "f": "website/book/pages/13-开源AI工具-开箱即用指南.html",
+       "title": "开源 AI 工具 · 开箱即用指南（2026 最火）",
+       "cn": 1220,
+       "bytes": 13548
+      },
+      {
+       "f": "website/book/pages/16-GitHub最新开源项目盘点与一键上手.html",
+       "title": "GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端",
+       "cn": 1642,
+       "bytes": 17124
+      },
+      {
+       "f": "website/book/pages/17-开源项目逐个上手手册.html",
+       "title": "开源项目逐个上手手册（安装 · 一键使用 · 打包下载 · 手机端）",
+       "cn": 1644,
+       "bytes": 18159
+      },
+      {
+       "f": "website/book/pages/22-书稿-第6章-AI编程革命.html",
+       "title": "第 6 章 · AI编程革命：从Copilot到自主Agent",
+       "cn": 651,
+       "bytes": 11096
+      }
+     ]
+    }
+   ],
+   "skip": [
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "变现与人格测试：与工程实现无关"
+    }
+   ],
+   "stats": {
+    "corePages": 75,
+    "skipPages": 5
+   }
+  },
+  {
+   "id": "engineer",
+   "name": "技术人员",
+   "icon": "cpu",
+   "sub": "算法 / 部署 / 运维，要落地到硬件与服务",
+   "ask": "跑起来要多少资源，成本和精度怎么权衡",
+   "termMode": "standard",
+   "termNote": "术语可点开查看解释",
+   "promise": [
+    "会做微调与量化，知道显存与精度的取舍",
+    "会按场景选推理框架（vLLM / llama.cpp / Ollama / TensorRT-LLM）",
+    "能把模型接到真实业务里，并评估它"
+   ],
+   "firstStop": {
+    "file": "ai-academy/chapter-20.html",
+    "label": "大模型微调与私有化部署",
+    "why": "技术人员最直接的问题就是怎么跑起来"
+   },
+   "output": [
+    "一套微调 + 量化的可复现配置",
+    "推理框架选型对照表",
+    "模型评估基线与监控指标"
+   ],
+   "core": [
+    {
+     "line": "academy-chapter",
+     "lineName": "自学路线 · 43 章正文",
+     "why": "原理 → RL → 评估 → 微调部署 → 多模态 → 开源模型 → 端侧",
+     "pages": [
+      {
+       "f": "website/ai-academy/chapter-01.html",
+       "title": "初识智能体",
+       "cn": 13123,
+       "bytes": 64561
+      },
+      {
+       "f": "website/ai-academy/chapter-03.html",
+       "title": "3.1 语言模型与 Transformer 架构",
+       "cn": 16688,
+       "bytes": 90081
+      },
+      {
+       "f": "website/ai-academy/chapter-11.html",
+       "title": "Agentic-RL",
+       "cn": 16788,
+       "bytes": 134491
+      },
+      {
+       "f": "website/ai-academy/chapter-12.html",
+       "title": "智能体性能评估",
+       "cn": 15456,
+       "bytes": 136103
+      },
+      {
+       "f": "website/ai-academy/chapter-20.html",
+       "title": "大模型微调与私有化部署",
+       "cn": 3867,
+       "bytes": 20919
+      },
+      {
+       "f": "website/ai-academy/chapter-21.html",
+       "title": "多模态 AIGC：文生图与文生视频",
+       "cn": 4286,
+       "bytes": 21145
+      },
+      {
+       "f": "website/ai-academy/chapter-29.html",
+       "title": "多模态大模型理解实战：从视觉编码器到图文问答",
+       "cn": 3231,
+       "bytes": 18129
+      },
+      {
+       "f": "website/ai-academy/chapter-30.html",
+       "title": "开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南",
+       "cn": 3203,
+       "bytes": 17861
+      },
+      {
+       "f": "website/ai-academy/chapter-31.html",
+       "title": "开源视频生成实战：MiniMax-H3 全模态模型本地部署",
+       "cn": 2817,
+       "bytes": 14978
+      },
+      {
+       "f": "website/ai-academy/chapter-32.html",
+       "title": "端侧大模型推理实战：Google LiteRT-LM 让 AI 跑在手机上",
+       "cn": 2573,
+       "bytes": 15812
+      },
+      {
+       "f": "website/ai-academy/chapter-33.html",
+       "title": "端侧百万上下文实战：星火 X2.5 开源模型部署与 Agent 落地",
+       "cn": 3094,
+       "bytes": 16731
+      },
+      {
+       "f": "website/ai-academy/chapter-35.html",
+       "title": "开源多模态权重实战：DeepSeek-V4-Flash-Vision-Exp 本",
+       "cn": 2653,
+       "bytes": 16174
+      },
+      {
+       "f": "website/ai-academy/chapter-37.html",
+       "title": "NVIDIA Nemotron 3.5 Lightning：面向长时 Agent",
+       "cn": 2715,
+       "bytes": 15737
+      },
+      {
+       "f": "website/ai-academy/chapter-38.html",
+       "title": "全开放模型家族实战：K2 Horizon 从手表级到企业级的一族六模型",
+       "cn": 3057,
+       "bytes": 16209
+      },
+      {
+       "f": "website/ai-academy/chapter-39.html",
+       "title": "腾讯混元 Hy4 preview 实战：770B MoE 旗舰开源的接入与落地",
+       "cn": 3026,
+       "bytes": 15846
+      },
+      {
+       "f": "website/ai-academy/chapter-40.html",
+       "title": "开源底座主权化实战：从 MiniMax M3 到沙特 HUMAIN M3 的阿拉",
+       "cn": 3231,
+       "bytes": 16702
+      },
+      {
+       "f": "website/ai-academy/chapter-42.html",
+       "title": "端侧 Agent 全栈开源实战：MiniCPM5-2B 权重·数据·RL 框架·",
+       "cn": 3391,
+       "bytes": 19287
+      },
+      {
+       "f": "website/ai-academy/chapter-43.html",
+       "title": "System One 模型实战：TypeSafe Jev 让 AI 变成「函数调",
+       "cn": 3654,
+       "bytes": 17664
+      }
+     ]
+    },
+    {
+     "line": "lab-sim",
+     "lineName": "实验室 · 仿真",
+     "why": "物理仿真与数值实验",
+     "pages": [
+      {
+       "f": "lab/simulation/仿真模拟与开源工具.html",
+       "title": "仿真模拟与开源工具指南",
+       "cn": 512,
+       "bytes": 10625
+      },
+      {
+       "f": "lab/simulation/仿真脚本图文讲解.html",
+       "title": "仿真脚本图文讲解（10 篇全解）",
+       "cn": 4230,
+       "bytes": 46646
+      },
+      {
+       "f": "lab/simulation/开源仿真工具-一键安装与第一个案例.html",
+       "title": "开源仿真工具 · 一键安装 + 第一个案例",
+       "cn": 2640,
+       "bytes": 27709
+      }
+     ]
+    },
+    {
+     "line": "lab-tech",
+     "lineName": "实验室 · 理工算法",
+     "why": "算法 / 机器学习 / 建模 / 数值",
+     "pages": [
+      {
+       "f": "lab/algorithms/算法与数据结构入门.html",
+       "title": "算法与数据结构入门",
+       "cn": 332,
+       "bytes": 8555
+      },
+      {
+       "f": "lab/ml/机器学习入门.html",
+       "title": "机器学习入门（从零到能跑）",
+       "cn": 371,
+       "bytes": 8957
+      },
+      {
+       "f": "lab/modeling/数学建模入门.html",
+       "title": "数学建模入门",
+       "cn": 1980,
+       "bytes": 20692
+      },
+      {
+       "f": "lab/numerical/数值计算入门.html",
+       "title": "数值计算入门",
+       "cn": 1505,
+       "bytes": 15748
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "部署手册 / 本地部署 / 模型设置 / 工具上手 / 模型对比",
+     "pages": [
+      {
+       "f": "website/local-deploy.html",
+       "title": "本地部署手册",
+       "cn": 557,
+       "bytes": 11133
+      },
+      {
+       "f": "website/local-ai.html",
+       "title": "内嵌另一个你本地 AI 部署",
+       "cn": 797,
+       "bytes": 19789
+      },
+      {
+       "f": "website/settings.html",
+       "title": "模型 设置中心",
+       "cn": 271,
+       "bytes": 27264
+      },
+      {
+       "f": "website/software-detail.html",
+       "title": "'+esc(s.name)+'",
+       "cn": 43,
+       "bytes": 19004
+      },
+      {
+       "f": "website/models.html",
+       "title": "2025 全球大模型对比白驹 ccowork",
+       "cn": 2390,
+       "bytes": 40479
+      },
+      {
+       "f": "website/tech-museum.html",
+       "title": "AI 前沿 · 里程碑 · 中国科技故事一馆看尽",
+       "cn": 239,
+       "bytes": 15785
+      },
+      {
+       "f": "website/china-tech.html",
+       "title": "中国科技故事",
+       "cn": 2317,
+       "bytes": 18135
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "技术趋势与开源追踪",
+     "pages": [
+      {
+       "f": "blog/2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少.html",
+       "title": "2026年8月AI变现实录：别追风口了，这3条低门槛路径实际能赚多少",
+       "cn": 3102,
+       "bytes": 20511
+      },
+      {
+       "f": "blog/2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开.html",
+       "title": "2026年9月AI创业观察：别追通用大模型了，这三个垂直赛道的落地窗口刚刚打开",
+       "cn": 3096,
+       "bytes": 20745
+      },
+      {
+       "f": "blog/Agent智能体实战.html",
+       "title": "Agent 智能体实战：从概念到亲手搭建",
+       "cn": 3036,
+       "bytes": 32018
+      },
+      {
+       "f": "blog/2026-09-01-爆款-3个Agent协作开源AI助手实测.html",
+       "title": "3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费G",
+       "cn": 3023,
+       "bytes": 24323
+      },
+      {
+       "f": "blog/大模型原理与Transformer.html",
+       "title": "大模型原理与Transformer：一次看懂 AI 的大脑",
+       "cn": 3004,
+       "bytes": 30892
+      },
+      {
+       "f": "blog/2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心.html",
+       "title": "2026年中AI创业观察：别追大模型热点，赚确定的钱才是活下去的核心",
+       "cn": 2690,
+       "bytes": 20168
+      },
+      {
+       "f": "blog/2026.9.1-大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI.html",
+       "title": "2026.9.1 大模型落地观察：别追参数神话，这3个技术方向已经跑出真ROI",
+       "cn": 2540,
+       "bytes": 18508
+      },
+      {
+       "f": "blog/2026-09-03-爆款-100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型.html",
+       "title": "100万上下文塞进4B小模型！讯飞开源星火X2.5：本地跑直接干翻云端大模型",
+       "cn": 2537,
+       "bytes": 20854
+      },
+      {
+       "f": "blog/2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流.html",
+       "title": "2026年8月AI创业复盘：别追大模型热点，这3个垂直方向已经跑通正向现金流",
+       "cn": 2309,
+       "bytes": 18095
+      },
+      {
+       "f": "blog/2026-08-31-本周AI大事记-2026年8月第5周.html",
+       "title": "本周 AI 大事记 · 2026年8月第5周",
+       "cn": 2280,
+       "bytes": 19858
+      },
+      {
+       "f": "blog/2026-09-08-爆款-2B参数打平12B模型！端侧Agent零成本商用，你的手机、嵌入式设备下周就能跑.html",
+       "title": "2B参数打平12B模型！端侧Agent零成本商用，你的手机/嵌入式设备下周就能跑",
+       "cn": 2182,
+       "bytes": 19095
+      },
+      {
+       "f": "blog/AI未来趋势-数字物理量子新质材料.html",
+       "title": "AI 未来趋势：数字智能 × 物理智能 × 量子算力 × 新质材料",
+       "cn": 1944,
+       "bytes": 17798
+      },
+      {
+       "f": "blog/2026-09-07-本周AI大事记-2026年9月第1周.html",
+       "title": "本周 AI 大事记 · 2026年9月第1周",
+       "cn": 1737,
+       "bytes": 16523
+      },
+      {
+       "f": "blog/2026-AI-进阶实战：从模型原理到-Agent-部署的完整学习路径.html",
+       "title": "2026 AI 进阶实战：从模型原理到 Agent 部署的完整学习路径",
+       "cn": 1707,
+       "bytes": 17567
+      },
+      {
+       "f": "blog/开源AI进阶-网络安全一人公司与手机操作.html",
+       "title": "开源 AI 进阶篇：网络安全 · 一人公司 · 手机操作",
+       "cn": 1617,
+       "bytes": 19789
+      },
+      {
+       "f": "blog/最新开源对话式AI项目全景与一键使用指南.html",
+       "title": "最新开源对话式 AI 项目全景 · 一键使用指南",
+       "cn": 1604,
+       "bytes": 22113
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "每日简报 / 深度整理 / 新闻（比博客更新更快）",
+     "pages": [
+      {
+       "f": "website/daily.html",
+       "title": "每日简报",
+       "cn": 1189,
+       "bytes": 16881
+      },
+      {
+       "f": "website/deep-dive.html",
+       "title": "国产大模型的资本狂飙：一天之内两笔百亿级消息",
+       "cn": 2759,
+       "bytes": 20872
+      },
+      {
+       "f": "website/news.html",
+       "title": "AI·大学生·就业 新闻视频",
+       "cn": 173,
+       "bytes": 24222
+      }
+     ]
+    },
+    {
+     "line": "book-china",
+     "lineName": "书 · 中国科技故事",
+     "why": "中国科技故事全集（19 章）：算力、芯片与自主化叙事的完整背景",
+     "pages": [
+      {
+       "f": "book/五卷全书/中国科技故事/01-DeepSeek的逆袭.html",
+       "title": "中国科技故事 · 01 · DeepSeek 的逆袭",
+       "cn": 1277,
+       "bytes": 12474
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/02-两弹一星.html",
+       "title": "中国科技故事 · 02 · 两弹一星：从「一穷二白」到「镇国重器」",
+       "cn": 1100,
+       "bytes": 11378
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/03-中国高铁.html",
+       "title": "中国科技故事 · 03 · 中国高铁：从「引进」到「领跑」",
+       "cn": 893,
+       "bytes": 10436
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/04-北斗导航.html",
+       "title": "中国科技故事 · 04 · 北斗导航：我们为什么要造自己的「北斗」",
+       "cn": 872,
+       "bytes": 10118
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/05-中国航天.html",
+       "title": "中国科技故事 · 05 · 中国航天：从东方红一号到空间站",
+       "cn": 952,
+       "bytes": 10286
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/06-嫦娥探月.html",
+       "title": "中国科技故事 · 06 · 嫦娥探月与天问探火：中国人的星辰大海",
+       "cn": 777,
+       "bytes": 9326
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/07-超级计算机.html",
+       "title": "中国科技故事 · 07 · 超级计算机：神威·太湖之光背后的故事",
+       "cn": 735,
+       "bytes": 9677
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/08-量子科技.html",
+       "title": "中国科技故事 · 08 · 量子科技：墨子号与九章",
+       "cn": 866,
+       "bytes": 9932
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/09-华为.html",
+       "title": "中国科技故事 · 09 · 华为：一家公司的长征",
+       "cn": 787,
+       "bytes": 9734
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/10-5G通信.html",
+       "title": "中国科技故事 · 10 · 5G：中国如何站上通信之巅",
+       "cn": 751,
+       "bytes": 9726
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/11-移动支付.html",
+       "title": "中国科技故事 · 11 · 移动支付与数字生活：一部手机走天下",
+       "cn": 879,
+       "bytes": 10178
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/12-大疆.html",
+       "title": "中国科技故事 · 12 · 大疆：从车库到全球无人机之王",
+       "cn": 907,
+       "bytes": 9982
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/13-比亚迪.html",
+       "title": "中国科技故事 · 13 · 比亚迪与新能源车：换道超车",
+       "cn": 889,
+       "bytes": 10149
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/14-国产大模型群像.html",
+       "title": "中国科技故事 · 14 · 国产大模型群像：文心、通义、豆包、Kimi的突围",
+       "cn": 831,
+       "bytes": 10414
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/15-光刻机与芯片.html",
+       "title": "中国科技故事 · 15 · 光刻机与芯片：卡脖子与突围战",
+       "cn": 836,
+       "bytes": 10455
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/16-钱学森.html",
+       "title": "中国科技故事 · 16 · 钱学森：五年归国路，十年两弹成",
+       "cn": 906,
+       "bytes": 10155
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/17-袁隆平.html",
+       "title": "中国科技故事 · 17 · 袁隆平：一粒种子改变世界",
+       "cn": 950,
+       "bytes": 10338
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/18-科技创业者群像.html",
+       "title": "中国科技故事 · 18 · 任正非、王传福、梁文锋：科技创业者群像",
+       "cn": 977,
+       "bytes": 10925
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/README-目录.html",
+       "title": "中国科技故事 · 系列总目录",
+       "cn": 539,
+       "bytes": 11977
+      }
+     ]
+    },
+    {
+     "line": "lab-main",
+     "lineName": "实验室 · 主入口",
+     "why": "实验室主入口 / 实训项目 / 工科怎么学",
+     "pages": [
+      {
+       "f": "lab/index.html",
+       "title": "真能跑 · 真能下载 · 真能实践",
+       "cn": 667,
+       "bytes": 14113
+      },
+      {
+       "f": "lab/README.html",
+       "title": "工科实训实验室（Lab）",
+       "cn": 372,
+       "bytes": 10122
+      },
+      {
+       "f": "lab/simlab.html",
+       "title": "网页里 一键运行 仿真",
+       "cn": 368,
+       "bytes": 33539
+      },
+      {
+       "f": "lab/工科如何学.html",
+       "title": "工科如何学",
+       "cn": 1500,
+       "bytes": 14559
+      },
+      {
+       "f": "lab/工科实训项目.html",
+       "title": "工科实训项目（真动手清单）",
+       "cn": 395,
+       "bytes": 9050
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "医疗 AI 的落地约束（技术人也要懂行业边界）",
+     "pages": [
+      {
+       "f": "blog/AI医疗应用指南.html",
+       "title": "AI医疗应用指南",
+       "cn": 999,
+       "bytes": 14219
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "编年史 / 前沿 / 学院 / 行业 / 智能工厂（技术演进与产业落地）",
+     "pages": [
+      {
+       "f": "website/chronicle.html",
+       "title": "AI 全景编年史",
+       "cn": 6988,
+       "bytes": 46688
+      },
+      {
+       "f": "website/frontiers.html",
+       "title": "站在巨人的肩膀上看见 AI 的下一程",
+       "cn": 2076,
+       "bytes": 26333
+      },
+      {
+       "f": "website/ai-academy.html",
+       "title": "从零开始构建智能体",
+       "cn": 1737,
+       "bytes": 106318
+      },
+      {
+       "f": "website/industry.html",
+       "title": "行业实战手册",
+       "cn": 815,
+       "bytes": 11863
+      },
+      {
+       "f": "website/ai-build-hall.html",
+       "title": "工业4.0 · 数字孪生 · 智能工厂AI 如何建造未来",
+       "cn": 243,
+       "bytes": 16793
+      }
+     ]
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "技术史各章 / 开源项目 / 深度学习革命 / 伦理与安全 / 国家安全",
+     "pages": [
+      {
+       "f": "website/book/pages/06-书稿-第10章-DeepSeek发展史.html",
+       "title": "第 10 章 · DeepSeek 发展史：从量化基金到国产大模型旗帜",
+       "cn": 1931,
+       "bytes": 16075
+      },
+      {
+       "f": "website/book/pages/07-书稿-第1章-AI七十年.html",
+       "title": "第 1 章 · AI 七十年：一条能看懂的时间线",
+       "cn": 1608,
+       "bytes": 14190
+      },
+      {
+       "f": "website/book/pages/08-书稿-第3章-ChatGPT点燃全民AI时代.html",
+       "title": "第 3 章 · ChatGPT 如何点燃全民 AI 时代",
+       "cn": 1604,
+       "bytes": 13964
+      },
+      {
+       "f": "website/book/pages/09-书稿-第4章-图像生成简史.html",
+       "title": "第 4 章 · 图像生成简史：从「不像」到「以假乱真」",
+       "cn": 1300,
+       "bytes": 13117
+      },
+      {
+       "f": "website/book/pages/10-书稿-第5章-视频生成简史.html",
+       "title": "第 5 章 · 视频生成简史：从几秒到完整叙事",
+       "cn": 1215,
+       "bytes": 12649
+      },
+      {
+       "f": "website/book/pages/16-GitHub最新开源项目盘点与一键上手.html",
+       "title": "GitHub 最新开源项目盘点 · 一键上手 · 一人公司与手机端",
+       "cn": 1642,
+       "bytes": 17124
+      },
+      {
+       "f": "website/book/pages/17-开源项目逐个上手手册.html",
+       "title": "开源项目逐个上手手册（安装 · 一键使用 · 打包下载 · 手机端）",
+       "cn": 1644,
+       "bytes": 18159
+      },
+      {
+       "f": "website/book/pages/21-书稿-第2章-深度学习革命.html",
+       "title": "第 2 章 · 深度学习革命：从感知机到Transformer",
+       "cn": 847,
+       "bytes": 11553
+      },
+      {
+       "f": "website/book/pages/25-书稿-第9章-AI医疗应用.html",
+       "title": "第 9 章 · AI医疗应用：从辅助诊断到新药研发",
+       "cn": 822,
+       "bytes": 11238
+      },
+      {
+       "f": "website/book/pages/26-书稿-第11章-AI伦理与安全.html",
+       "title": "第 11 章 · AI伦理与安全：技术狂奔时代的护栏",
+       "cn": 801,
+       "bytes": 11099
+      },
+      {
+       "f": "website/book/pages/30-书稿-第15章-AI与国家安全.html",
+       "title": "第 15 章 · AI与国家安全：新边疆的博弈",
+       "cn": 668,
+       "bytes": 10477
+      }
+     ]
+    }
+   ],
+   "skip": [
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "变现 / 人格 / 漫剧 / 绘画 / 商业：与技术落地无关"
+    }
+   ],
+   "stats": {
+    "corePages": 92,
+    "skipPages": 5
+   }
+  },
+  {
+   "id": "toolbox",
+   "name": "工具台",
+   "icon": "layout-grid",
+   "sub": "干活的地方：对话、写作、图像、仿真、翻译、部署",
+   "ask": "我现在就要用，不想先学",
+   "termMode": "zero",
+   "termNote": "界面本身就是说明，不需要读概念",
+   "promise": [
+    "打开就能用，不用先读三章理论",
+    "所有工具集中一处，不用一个个找",
+    "每个工具都标了真实官网与实测短板"
+   ],
+   "firstStop": {
+    "file": "workstation.html",
+    "label": "工作台",
+    "why": "所有能直接用的东西都在这"
+   },
+   "output": [
+    "一个马上能用的工具",
+    "一份属于你的提示词与素材库",
+    "不用学理论也能完成一件事"
+   ],
+   "core": [
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "全部工具与工作台入口（打开就能用）",
+     "pages": [
+      {
+       "f": "website/agent.html",
+       "title": "ccowork · 全能智能体 · 白驹 ccowork",
+       "cn": 292,
+       "bytes": 69753
+      },
+      {
+       "f": "website/ai-tools.html",
+       "title": "AI 工具真库",
+       "cn": 3258,
+       "bytes": 61320
+      },
+      {
+       "f": "website/assistant.html",
+       "title": "白驹 ccowork · 已并入总站",
+       "cn": 32,
+       "bytes": 2283
+      },
+      {
+       "f": "website/chat.html",
+       "title": "ccowork · AI 对话 · 自备密钥工作台",
+       "cn": 266,
+       "bytes": 40246
+      },
+      {
+       "f": "website/comic.html",
+       "title": "AI 漫剧工坊",
+       "cn": 763,
+       "bytes": 25896
+      },
+      {
+       "f": "website/daily.html",
+       "title": "每日简报",
+       "cn": 1189,
+       "bytes": 16881
+      },
+      {
+       "f": "website/deep-dive.html",
+       "title": "国产大模型的资本狂飙：一天之内两笔百亿级消息",
+       "cn": 2759,
+       "bytes": 20872
+      },
+      {
+       "f": "website/ecosystem.html",
+       "title": "全生态知识库",
+       "cn": 217,
+       "bytes": 39838
+      },
+      {
+       "f": "website/gallery.html",
+       "title": "AI 绘画工作台",
+       "cn": 216,
+       "bytes": 22996
+      },
+      {
+       "f": "website/hub.html",
+       "title": "总站导航台",
+       "cn": 896,
+       "bytes": 32273
+      },
+      {
+       "f": "website/news.html",
+       "title": "AI·大学生·就业 新闻视频",
+       "cn": 173,
+       "bytes": 24222
+      },
+      {
+       "f": "website/personality.html",
+       "title": "你的 AI 人格 是什么？",
+       "cn": 145,
+       "bytes": 13850
+      },
+      {
+       "f": "website/portal.html",
+       "title": "把今天的 AI 全部收纳进来",
+       "cn": 194,
+       "bytes": 52234
+      },
+      {
+       "f": "website/quiz.html",
+       "title": "刷题 · 题库",
+       "cn": 197,
+       "bytes": 20222
+      },
+      {
+       "f": "website/reader.html",
+       "title": "ccowork · 《AI 实战全书》在线阅读",
+       "cn": 45,
+       "bytes": 10805
+      },
+      {
+       "f": "website/resume.html",
+       "title": "简历 生成器",
+       "cn": 162,
+       "bytes": 17997
+      },
+      {
+       "f": "website/security.html",
+       "title": "AI安全指南",
+       "cn": 649,
+       "bytes": 10508
+      },
+      {
+       "f": "website/settings.html",
+       "title": "模型 设置中心",
+       "cn": 271,
+       "bytes": 27264
+      },
+      {
+       "f": "website/software-detail.html",
+       "title": "'+esc(s.name)+'",
+       "cn": 43,
+       "bytes": 19004
+      },
+      {
+       "f": "website/start.html",
+       "title": "ccowork · 白驹",
+       "cn": 32,
+       "bytes": 3356
+      },
+      {
+       "f": "website/traffic-guide.html",
+       "title": "交警手势 vs 红绿灯：车主实操落地",
+       "cn": 4209,
+       "bytes": 38778
+      },
+      {
+       "f": "website/voice.html",
+       "title": "语音 工作台",
+       "cn": 188,
+       "bytes": 22612
+      },
+      {
+       "f": "website/weather.html",
+       "title": "天气 · 日历",
+       "cn": 113,
+       "bytes": 17376
+      },
+      {
+       "f": "website/workstation.html",
+       "title": "ccowork · 白驹工作站 · IDE × GitHub × AI",
+       "cn": 193,
+       "bytes": 28694
+      }
+     ]
+    },
+    {
+     "line": "lingua",
+     "lineName": "LinguaVista",
+     "why": "语言学习工具台",
+     "pages": [
+      {
+       "f": "linguavista/chat.html",
+       "title": "AI 对话 · 环球语堂",
+       "cn": 120,
+       "bytes": 17646
+      },
+      {
+       "f": "linguavista/flashcards.html",
+       "title": "闪卡学习 · 环球语堂",
+       "cn": 82,
+       "bytes": 19996
+      },
+      {
+       "f": "linguavista/index.html",
+       "title": "一个账号 畅学十国语言",
+       "cn": 584,
+       "bytes": 24898
+      },
+      {
+       "f": "linguavista/profile.html",
+       "title": "个人中心 · 环球语堂",
+       "cn": 214,
+       "bytes": 22740
+      }
+     ]
+    },
+    {
+     "line": "lab-main",
+     "lineName": "实验室 · 主入口",
+     "why": "网页仿真：不用装软件就能跑",
+     "pages": [
+      {
+       "f": "lab/simlab.html",
+       "title": "网页里 一键运行 仿真",
+       "cn": 368,
+       "bytes": 33539
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "免费工科工具上手 / 品牌页（软件清单与规范）",
+     "pages": [
+      {
+       "f": "website/software-detail.html",
+       "title": "'+esc(s.name)+'",
+       "cn": 43,
+       "bytes": 19004
+      },
+      {
+       "f": "website/brand-guidelines.html",
+       "title": "白驹品牌规范",
+       "cn": 522,
+       "bytes": 9288
+      }
+     ]
+    },
+    {
+     "line": "lingua-lang",
+     "lineName": "外语系",
+     "why": "语言课程页（英语 / 日语）",
+     "pages": [
+      {
+       "f": "linguavista/languages/en.html",
+       "title": "英语",
+       "cn": 357,
+       "bytes": 13045
+      },
+      {
+       "f": "linguavista/languages/ja.html",
+       "title": "日语",
+       "cn": 285,
+       "bytes": 11723
+      }
+     ]
+    }
+   ],
+   "skip": [
+    {
+     "line": "academy-chapter",
+     "lineName": "自学路线 · 43 章正文",
+     "why": "章节是学习材料，来工具台的人要先动手"
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "书稿需要连续阅读，不属于工具台"
+    }
+   ],
+   "stats": {
+    "corePages": 34,
+    "skipPages": 75
+   }
+  },
+  {
+   "id": "everyone",
+   "name": "普通人",
+   "icon": "user",
+   "sub": "想用起来，不想先学原理",
+   "ask": "这东西我能不能用得上，怎么开始",
+   "termMode": "zero",
+   "termNote": "所有专业名词自动配大白话解释",
+   "promise": [
+    "今天就能用上：一个能立刻帮你的具体场景",
+    "知道 AI 会在哪里出错，不被它带沟里",
+    "有一份自己的提示词库，越用越顺手"
+   ],
+   "firstStop": {
+    "file": "prompts-guide.html",
+    "label": "按场景抄提示词",
+    "why": "不用理解原理，今晚就能用"
+   },
+   "output": [
+    "一份自己的提示词库",
+    "一套避坑清单（法规 / 安全 / 幻觉）",
+    "一个每周省时间的工作流"
+   ],
+   "core": [
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "场景提示词 / 提示词库 / 变现 / 岗位 / 人格 / 工具 / 工作流",
+     "pages": [
+      {
+       "f": "website/prompts-guide.html",
+       "title": "40+ 条可复制提示词，全场景覆盖",
+       "cn": 560,
+       "bytes": 33124
+      },
+      {
+       "f": "website/prompts100.html",
+       "title": "提示词百宝库",
+       "cn": 4886,
+       "bytes": 37806
+      },
+      {
+       "f": "website/ai-money.html",
+       "title": "用 AI 赚钱，从提示词开始",
+       "cn": 1349,
+       "bytes": 45366
+      },
+      {
+       "f": "website/ai-jobs.html",
+       "title": "岗位在变，你也在变",
+       "cn": 1902,
+       "bytes": 24095
+      },
+      {
+       "f": "website/personality.html",
+       "title": "你的 AI 人格 是什么？",
+       "cn": 145,
+       "bytes": 13850
+      },
+      {
+       "f": "website/ai-tools.html",
+       "title": "AI 工具真库",
+       "cn": 3258,
+       "bytes": 61320
+      },
+      {
+       "f": "website/weather.html",
+       "title": "天气 · 日历",
+       "cn": 113,
+       "bytes": 17376
+      }
+     ]
+    },
+    {
+     "line": "academy-chapter",
+     "lineName": "自学路线 · 43 章正文",
+     "why": "提示词入门 + 职场实战：这两章就是为这里准备的",
+     "pages": [
+      {
+       "f": "website/ai-academy/chapter-17.html",
+       "title": "提示词工程入门：从提问到指挥",
+       "cn": 3249,
+       "bytes": 17735
+      },
+      {
+       "f": "website/ai-academy/chapter-23.html",
+       "title": "AI 职场应用实战",
+       "cn": 3691,
+       "bytes": 19984
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "法规红线 / 安全常识 / 常见问题（避坑比学技术优先）",
+     "pages": [
+      {
+       "f": "website/traffic-guide.html",
+       "title": "交警手势 vs 红绿灯：车主实操落地",
+       "cn": 4209,
+       "bytes": 38778
+      },
+      {
+       "f": "website/security.html",
+       "title": "AI安全指南",
+       "cn": 649,
+       "bytes": 10508
+      },
+      {
+       "f": "website/faq.html",
+       "title": "AI常见问题50问",
+       "cn": 2199,
+       "bytes": 20555
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "好用的技巧与真实案例",
+     "pages": [
+      {
+       "f": "blog/2026-09-01-爆款-3个Agent协作开源AI助手实测.html",
+       "title": "3个Agent协作+记了30天对话不丢失，我测了刚上线的开源AI助手，比某付费G",
+       "cn": 3023,
+       "bytes": 24323
+      },
+      {
+       "f": "blog/2026年9月AI学习避坑指南：别再被3年前的旧教程坑了.html",
+       "title": "2026年9月AI学习避坑指南：别再被3年前的旧教程坑了",
+       "cn": 2860,
+       "bytes": 20188
+      },
+      {
+       "f": "blog/2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到落地路线.html",
+       "title": "2026年中AI学习路径实测：别再啃3年前的旧教程了，这是我验证过的无水分入门到",
+       "cn": 2834,
+       "bytes": 21008
+      },
+      {
+       "f": "blog/2026.9.9-实测：现在用AI做视频，已经不用拼提示词了.html",
+       "title": "2026.9.9 实测：现在用AI做视频，已经不用拼提示词了",
+       "cn": 2795,
+       "bytes": 19576
+      }
+     ]
+    },
+    {
+     "line": "book-volumes",
+     "lineName": "书 · 五卷全书",
+     "why": "总目录（知道有什么）+ 工具百科",
+     "pages": [
+      {
+       "f": "book/五卷全书/README-全书总目录.html",
+       "title": "《AI 时代》全书总目录",
+       "cn": 769,
+       "bytes": 12077
+      },
+      {
+       "f": "book/五卷全书/AI工具大全-百科全书.html",
+       "title": "AI 工具大全 · 百科全书",
+       "cn": 1144,
+       "bytes": 15549
+      }
+     ]
+    },
+    {
+     "line": "book-china",
+     "lineName": "书 · 中国科技故事",
+     "why": "中国科技故事全集（19 章）：零门槛叙事读物，科技通识",
+     "pages": [
+      {
+       "f": "book/五卷全书/中国科技故事/01-DeepSeek的逆袭.html",
+       "title": "中国科技故事 · 01 · DeepSeek 的逆袭",
+       "cn": 1277,
+       "bytes": 12474
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/02-两弹一星.html",
+       "title": "中国科技故事 · 02 · 两弹一星：从「一穷二白」到「镇国重器」",
+       "cn": 1100,
+       "bytes": 11378
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/03-中国高铁.html",
+       "title": "中国科技故事 · 03 · 中国高铁：从「引进」到「领跑」",
+       "cn": 893,
+       "bytes": 10436
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/04-北斗导航.html",
+       "title": "中国科技故事 · 04 · 北斗导航：我们为什么要造自己的「北斗」",
+       "cn": 872,
+       "bytes": 10118
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/05-中国航天.html",
+       "title": "中国科技故事 · 05 · 中国航天：从东方红一号到空间站",
+       "cn": 952,
+       "bytes": 10286
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/06-嫦娥探月.html",
+       "title": "中国科技故事 · 06 · 嫦娥探月与天问探火：中国人的星辰大海",
+       "cn": 777,
+       "bytes": 9326
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/07-超级计算机.html",
+       "title": "中国科技故事 · 07 · 超级计算机：神威·太湖之光背后的故事",
+       "cn": 735,
+       "bytes": 9677
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/08-量子科技.html",
+       "title": "中国科技故事 · 08 · 量子科技：墨子号与九章",
+       "cn": 866,
+       "bytes": 9932
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/09-华为.html",
+       "title": "中国科技故事 · 09 · 华为：一家公司的长征",
+       "cn": 787,
+       "bytes": 9734
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/10-5G通信.html",
+       "title": "中国科技故事 · 10 · 5G：中国如何站上通信之巅",
+       "cn": 751,
+       "bytes": 9726
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/11-移动支付.html",
+       "title": "中国科技故事 · 11 · 移动支付与数字生活：一部手机走天下",
+       "cn": 879,
+       "bytes": 10178
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/12-大疆.html",
+       "title": "中国科技故事 · 12 · 大疆：从车库到全球无人机之王",
+       "cn": 907,
+       "bytes": 9982
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/13-比亚迪.html",
+       "title": "中国科技故事 · 13 · 比亚迪与新能源车：换道超车",
+       "cn": 889,
+       "bytes": 10149
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/14-国产大模型群像.html",
+       "title": "中国科技故事 · 14 · 国产大模型群像：文心、通义、豆包、Kimi的突围",
+       "cn": 831,
+       "bytes": 10414
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/15-光刻机与芯片.html",
+       "title": "中国科技故事 · 15 · 光刻机与芯片：卡脖子与突围战",
+       "cn": 836,
+       "bytes": 10455
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/16-钱学森.html",
+       "title": "中国科技故事 · 16 · 钱学森：五年归国路，十年两弹成",
+       "cn": 906,
+       "bytes": 10155
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/17-袁隆平.html",
+       "title": "中国科技故事 · 17 · 袁隆平：一粒种子改变世界",
+       "cn": 950,
+       "bytes": 10338
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/18-科技创业者群像.html",
+       "title": "中国科技故事 · 18 · 任正非、王传福、梁文锋：科技创业者群像",
+       "cn": 977,
+       "bytes": 10925
+      },
+      {
+       "f": "book/五卷全书/中国科技故事/README-目录.html",
+       "title": "中国科技故事 · 系列总目录",
+       "cn": 539,
+       "bytes": 11977
+      }
+     ]
+    },
+    {
+     "line": "book-volumes",
+     "lineName": "书 · 五卷全书",
+     "why": "总序 / 个人IP / AI 思想者 / 学习路线 / 工具速查（叙事与思想，零门槛）",
+     "pages": [
+      {
+       "f": "book/五卷全书/总序.html",
+       "title": "总序：写给每一个想在这个时代留下名字的人",
+       "cn": 774,
+       "bytes": 9810
+      },
+      {
+       "f": "book/五卷全书/第五卷-如何用AI打造个人主流IP.html",
+       "title": "第五卷 · 如何用 AI 打造你的个人主流 IP",
+       "cn": 1448,
+       "bytes": 14310
+      },
+      {
+       "f": "book/五卷全书/第六卷-AI思想者与未来图景.html",
+       "title": "第六卷 · AI 思想者：大师视野与未来图景",
+       "cn": 4950,
+       "bytes": 26913
+      },
+      {
+       "f": "book/五卷全书/附录-学习路线图.html",
+       "title": "附录 · AI 学习路线图",
+       "cn": 1251,
+       "bytes": 13919
+      },
+      {
+       "f": "book/五卷全书/附录-工具速查表.html",
+       "title": "附录 · AI 工具速查表",
+       "cn": 1015,
+       "bytes": 16354
+      }
+     ]
+    },
+    {
+     "line": "book-volumes",
+     "lineName": "书 · 五卷全书",
+     "why": "提示词模板库 / 具身智能 / 对齐之路（AI 安全）/ AI 实战全书",
+     "pages": [
+      {
+       "f": "book/五卷全书/附录-提示词模板库.html",
+       "title": "附录 · 提示词模板库（开箱即用）",
+       "cn": 1340,
+       "bytes": 12865
+      },
+      {
+       "f": "book/具身智能.html",
+       "title": "具身智能：当 AI 拥有了身体",
+       "cn": 5219,
+       "bytes": 36729
+      },
+      {
+       "f": "book/对齐之路.html",
+       "title": "《对齐之路：AI 安全与人类的抉择》",
+       "cn": 5874,
+       "bytes": 40716
+      },
+      {
+       "f": "book/AI实战全书.html",
+       "title": "AI 实战全书",
+       "cn": 11322,
+       "bytes": 60242
+      }
+     ]
+    },
+    {
+     "line": "lingua",
+     "lineName": "LinguaVista",
+     "why": "外语学习：顺手把语言学掉",
+     "pages": [
+      {
+       "f": "linguavista/index.html",
+       "title": "一个账号 畅学十国语言",
+       "cn": 584,
+       "bytes": 24898
+      },
+      {
+       "f": "linguavista/flashcards.html",
+       "title": "闪卡学习 · 环球语堂",
+       "cn": 82,
+       "bytes": 19996
+      },
+      {
+       "f": "linguavista/chat.html",
+       "title": "AI 对话 · 环球语堂",
+       "cn": 120,
+       "bytes": 17646
+      },
+      {
+       "f": "linguavista/profile.html",
+       "title": "个人中心 · 环球语堂",
+       "cn": 214,
+       "bytes": 22740
+      }
+     ]
+    },
+    {
+     "line": "lab-main",
+     "lineName": "实验室 · 主入口",
+     "why": "实验室主入口 / 网页仿真 / 实训清单",
+     "pages": [
+      {
+       "f": "lab/index.html",
+       "title": "真能跑 · 真能下载 · 真能实践",
+       "cn": 667,
+       "bytes": 14113
+      },
+      {
+       "f": "lab/simlab.html",
+       "title": "网页里 一键运行 仿真",
+       "cn": 368,
+       "bytes": 33539
+      },
+      {
+       "f": "lab/README.html",
+       "title": "工科实训实验室（Lab）",
+       "cn": 372,
+       "bytes": 10122
+      },
+      {
+       "f": "lab/工科如何学.html",
+       "title": "工科如何学",
+       "cn": 1500,
+       "bytes": 14559
+      },
+      {
+       "f": "lab/工科实训项目.html",
+       "title": "工科实训项目（真动手清单）",
+       "cn": 395,
+       "bytes": 9050
+      }
+     ]
+    },
+    {
+     "line": "blog",
+     "lineName": "博客 · 48 篇",
+     "why": "创业 / 变现 / 写作（普通人也能用的三篇）",
+     "pages": [
+      {
+       "f": "blog/AI创业实战指南.html",
+       "title": "AI创业实战指南",
+       "cn": 1093,
+       "bytes": 16098
+      },
+      {
+       "f": "blog/AI变现实操手册.html",
+       "title": "AI变现实操手册",
+       "cn": 1014,
+       "bytes": 15069
+      },
+      {
+       "f": "blog/AI写作完全指南.html",
+       "title": "AI写作完全指南：从入门到精通",
+       "cn": 1321,
+       "bytes": 15457
+      }
+     ]
+    },
+    {
+     "line": "academy-project",
+     "lineName": "自学路线 · 24 个毕业设计",
+     "why": "播客 / 行程 / 简历 / 理财 / 健康（生活里真用得上的五个）",
+     "pages": [
+      {
+       "f": "website/ai-academy/projects/podcast-script.html",
+       "title": "PodcastScript 播客脚本工",
+       "cn": 2087,
+       "bytes": 15671
+      },
+      {
+       "f": "website/ai-academy/projects/travel-planner.html",
+       "title": "TravelPlanner 行程规划师",
+       "cn": 2191,
+       "bytes": 15472
+      },
+      {
+       "f": "website/ai-academy/projects/resume-coach.html",
+       "title": "ResumeCoach 简历优化教练",
+       "cn": 2126,
+       "bytes": 15131
+      },
+      {
+       "f": "website/ai-academy/projects/finance-bot.html",
+       "title": "FinanceBot 理财顾问",
+       "cn": 1977,
+       "bytes": 14817
+      },
+      {
+       "f": "website/ai-academy/projects/health-record.html",
+       "title": "HealthRecord 健康助手",
+       "cn": 1986,
+       "bytes": 14646
+      }
+     ]
+    },
+    {
+     "line": "book-main",
+     "lineName": "书 · 单本",
+     "why": "单本书入口（AI 实战全书 / 个人实战全书 / 书库）",
+     "pages": [
+      {
+       "f": "website/book/AI实战全书.html",
+       "title": "AI 实战全书",
+       "cn": 6645,
+       "bytes": 43146
+      },
+      {
+       "f": "website/book/index.html",
+       "title": "一本书，装下 AI 工具的时代",
+       "cn": 1235,
+       "bytes": 19203
+      },
+      {
+       "f": "website/book/个人实战全书.html",
+       "title": "一本能上手干活的书",
+       "cn": 940,
+       "bytes": 11939
+      }
+     ]
+    },
+    {
+     "line": "site",
+     "lineName": "主站页面",
+     "why": "短剧机会 / 场馆地图 / 零基础路线 / 首页 / 实验室 / 品牌 / 技能变生意 / 智能工厂 / 成果墙 / 作品 / 工具上手 / 视频 / 绘画 / 漫剧 / 人格 / 提示词库 / 题库 / 简历 / 天气",
+     "pages": [
+      {
+       "f": "website/manju.html",
+       "title": "400 亿市场的机会，普通人怎么接住",
+       "cn": 2711,
+       "bytes": 49700
+      },
+      {
+       "f": "website/map-guide.html",
+       "title": "科技馆 · 图书馆 · AI 产业园比赛场馆 · 红色教育基地 —— 一键导航",
+       "cn": 472,
+       "bytes": 27544
+      },
+      {
+       "f": "website/roadmap.html",
+       "title": "零基础，也能照着走完的 AI 之路",
+       "cn": 1693,
+       "bytes": 25136
+      },
+      {
+       "f": "website/index.html",
+       "title": "一个人，就是一支创作军团",
+       "cn": 3376,
+       "bytes": 41966
+      },
+      {
+       "f": "website/lab.html",
+       "title": "从代码到实物，把 AI 与硬件焊在一起",
+       "cn": 1660,
+       "bytes": 30227
+      },
+      {
+       "f": "website/brand-guidelines.html",
+       "title": "白驹品牌规范",
+       "cn": 522,
+       "bytes": 9288
+      },
+      {
+       "f": "website/biz-center.html",
+       "title": "技能变生意 · 1008 个技能就是 10 条业务线",
+       "cn": 762,
+       "bytes": 23390
+      },
+      {
+       "f": "website/ai-build-hall.html",
+       "title": "工业4.0 · 数字孪生 · 智能工厂AI 如何建造未来",
+       "cn": 243,
+       "bytes": 16793
+      },
+      {
+       "f": "website/showcase.html",
+       "title": "前辈们做出的 AI 成果",
+       "cn": 875,
+       "bytes": 12829
+      },
+      {
+       "f": "website/works.html",
+       "title": "一页看尽全部作品",
+       "cn": 138,
+       "bytes": 16599
+      },
+      {
+       "f": "website/software-detail.html",
+       "title": "'+esc(s.name)+'",
+       "cn": 43,
+       "bytes": 19004
+      },
+      {
+       "f": "website/videos.html",
+       "title": "一看就懂，学会用",
+       "cn": 419,
+       "bytes": 18596
+      },
+      {
+       "f": "website/gallery.html",
+       "title": "AI 绘画工作台",
+       "cn": 216,
+       "bytes": 22996
+      },
+      {
+       "f": "website/comic.html",
+       "title": "AI 漫剧工坊",
+       "cn": 763,
+       "bytes": 25896
+      },
+      {
+       "f": "website/personality.html",
+       "title": "你的 AI 人格 是什么？",
+       "cn": 145,
+       "bytes": 13850
+      },
+      {
+       "f": "website/prompts100.html",
+       "title": "提示词百宝库",
+       "cn": 4886,
+       "bytes": 37806
+      },
+      {
+       "f": "website/prompts-guide.html",
+       "title": "40+ 条可复制提示词，全场景覆盖",
+       "cn": 560,
+       "bytes": 33124
+      },
+      {
+       "f": "website/quiz.html",
+       "title": "刷题 · 题库",
+       "cn": 197,
+       "bytes": 20222
+      },
+      {
+       "f": "website/resume.html",
+       "title": "简历 生成器",
+       "cn": 162,
+       "bytes": 17997
+      },
+      {
+       "f": "website/weather.html",
+       "title": "天气 · 日历",
+       "cn": 113,
+       "bytes": 17376
+      },
+      {
+       "f": "website/covers.html",
+       "title": "页面封面墙 &amp; 开源作品",
+       "cn": 266,
+       "bytes": 15140
+      }
+     ]
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "提示词完全指南 / AI 影响面 / 开源工具 / 学习总纲 / 行行出状元 / 未来社会 / 国家安全 / 文化创意",
+     "pages": [
+      {
+       "f": "website/book/pages/11-提示词完全指南-2026最新版.html",
+       "title": "提示词完全指南（2026 最新版）",
+       "cn": 1698,
+       "bytes": 14637
+      },
+      {
+       "f": "website/book/pages/12-AI影响面-从短视频到天气再到每一个人.html",
+       "title": "AI 影响面：从短视频、赚钱、博文到天气，再到每一个人",
+       "cn": 2089,
+       "bytes": 16013
+      },
+      {
+       "f": "website/book/pages/13-开源AI工具-开箱即用指南.html",
+       "title": "开源 AI 工具 · 开箱即用指南（2026 最火）",
+       "cn": 1220,
+       "bytes": 13548
+      },
+      {
+       "f": "website/book/pages/18-AI研究方向详解-知识网.html",
+       "title": "AI 研究方向详解（知识网 · 给所有人看）",
+       "cn": 2017,
+       "bytes": 18468
+      },
+      {
+       "f": "website/book/pages/19-行行出状元-各行各业如何看AI如何学AI.html",
+       "title": "行行出状元：各行各业如何看 AI、如何学 AI",
+       "cn": 2880,
+       "bytes": 19428
+      },
+      {
+       "f": "website/book/pages/29-书稿-第14章-AI与未来社会.html",
+       "title": "第 14 章 · AI与未来社会：2035年的世界",
+       "cn": 755,
+       "bytes": 10956
+      },
+      {
+       "f": "website/book/pages/30-书稿-第15章-AI与国家安全.html",
+       "title": "第 15 章 · AI与国家安全：新边疆的博弈",
+       "cn": 668,
+       "bytes": 10477
+      },
+      {
+       "f": "website/book/pages/31-书稿-第16章-AI与文化创意.html",
+       "title": "第 16 章 · AI与文化创意：从工具到伙伴",
+       "cn": 637,
+       "bytes": 10578
+      }
+     ]
+    }
+   ],
+   "skip": [
+    {
+     "line": "academy-chapter",
+     "lineName": "自学路线 · 43 章正文",
+     "why": "Transformer 原理 / 框架开发 / RL：零门槛路线不需要这些"
+    },
+    {
+     "line": "lab-tech",
+     "lineName": "实验室 · 理工算法",
+     "why": "实验室理工内容：与日常使用无关"
+    },
+    {
+     "line": "book-draft",
+     "lineName": "书稿 · 32 章",
+     "why": "书稿偏体系化理论：零门槛用户先看提示词与避坑"
+    }
+   ],
+   "stats": {
+    "corePages": 91,
+    "skipPages": 45
+   }
+  }
+ ],
+ "uncovered": [
+  "website/brand.html",
+  "website/software.html"
+ ]
+}

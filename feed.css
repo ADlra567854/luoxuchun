@@ -1,0 +1,679 @@
+/* ============================================================
+   前沿流 · /feed/ 与首页「近 7 天」条
+   变量全部沿用站点引擎：--card --text --muted --line --grad
+   ============================================================ */
+
+/* ---------- 1. 首页近 7 天条 ---------- */
+#ff-strip {
+  margin: 0 auto 8px;
+  max-width: 1180px;
+  padding: 22px 24px 6px;
+}
+#ff-strip .fh {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+#ff-strip .fh b {
+  font-size: 15px;
+  letter-spacing: -.2px;
+  color: var(--text, #1E293B);
+}
+#ff-strip .fh span {
+  font-size: 12px;
+  color: var(--muted, #64748B);
+}
+#ff-strip .fh a {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: var(--text, #1E293B);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line, rgba(148, 163, 184, .4));
+  padding-bottom: 1px;
+}
+/* 「今日新增 N 条」——让每天的更新一眼可见 */
+#ff-strip .fh .ff-today {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: #fff;
+  background: var(--grad, linear-gradient(120deg, #4f8cff, #38b6ff));
+  box-shadow: 0 4px 12px rgba(79, 140, 255, .28);
+}
+#ff-strip .fh .ff-range {
+  font-size: 11.5px;
+  opacity: .72;
+  font-variant-numeric: tabular-nums;
+}
+/* 更新日志入口：让「这站每天在动」有明确落点 */
+#ff-strip .fh a.ff-log {
+  margin-left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #4f8cff;
+  background: rgba(79, 140, 255, .1);
+  border: 1px solid rgba(79, 140, 255, .28);
+  text-decoration: none;
+  transition: background .16s ease, border-color .16s ease;
+}
+#ff-strip .fh a.ff-log:hover {
+  background: rgba(79, 140, 255, .18);
+  border-color: rgba(79, 140, 255, .5);
+}
+#ff-strip .fh a.ff-log .cc-ic { font-size: 12px; }
+body[data-theme="deep"] #ff-strip .fh a.ff-log {
+  color: #38e1ff;
+  background: rgba(56, 225, 255, .12);
+  border-color: rgba(56, 225, 255, .32);
+}
+.ff-strip-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.ff-mini {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .22));
+  text-decoration: none;
+  transition: transform .16s ease, border-color .16s ease;
+}
+.ff-mini:hover { transform: translateY(-2px); border-color: rgba(79, 140, 255, .5); }
+/* 当天新增的卡片：渐变描边 + 角标，与历史条目拉开层次 */
+.ff-mini.is-today {
+  border-color: rgba(79, 140, 255, .42);
+  background:
+    linear-gradient(180deg, rgba(79, 140, 255, .07), rgba(56, 182, 255, .02)),
+    var(--card, #fff);
+  position: relative;
+}
+.ff-mini.is-today .ff-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font: 700 10px/1.6 system-ui, -apple-system, "PingFang SC", sans-serif;
+  letter-spacing: .3px;
+  color: #fff;
+  background: var(--grad, linear-gradient(120deg, #4f8cff, #38b6ff));
+}
+.ff-mini.is-today b { padding-right: 46px; }
+body[data-theme="deep"] .ff-mini.is-today {
+  border-color: rgba(56, 225, 255, .34);
+  background:
+    linear-gradient(180deg, rgba(56, 225, 255, .09), rgba(91, 140, 255, .03)),
+    var(--card, #101728);
+}
+.ff-mini time {
+  display: block;
+  font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #4F8CFF;
+  letter-spacing: .3px;
+  margin-bottom: 7px;
+}
+.ff-mini b {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 650;
+  line-height: 1.45;
+  color: var(--text, #1E293B);
+  letter-spacing: -.15px;
+}
+.ff-mini i {
+  display: block;
+  margin-top: 6px;
+  font-size: 11.5px;
+  font-style: normal;
+  color: var(--muted, #64748B);
+}
+body[data-theme="deep"] .ff-mini time { color: #38E1FF; }
+
+/* ---------- 2. 前沿流页：近 7 天卡片 ---------- */
+.ff-hot {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.ff-card {
+  position: relative;
+  padding: 18px 18px 16px;
+  border-radius: 16px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .22));
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+.ff-card .ff-db {
+  display: inline-block;
+  font: 700 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #fff;
+  background: linear-gradient(120deg, #4F8CFF, #38B6FF 55%, #8B5CF6);
+  padding: 5px 8px;
+  border-radius: 7px;
+  letter-spacing: .4px;
+  margin-bottom: 10px;
+}
+.ff-card h3 {
+  margin: 0 0 8px;
+  font-size: 15.5px;
+  line-height: 1.45;
+  letter-spacing: -.2px;
+  color: var(--text, #1E293B);
+}
+.ff-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.72;
+  color: var(--muted, #475569);
+}
+.ff-card .ff-src { margin-top: 12px; }
+
+/* ---------- 3. 月份行式列表 ---------- */
+.ff-rows { border-top: 1px solid var(--line, rgba(148, 163, 184, .2)); }
+.ff-row {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 14px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--line, rgba(148, 163, 184, .16));
+}
+.ff-row time {
+  font: 650 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--muted, #64748B);
+  padding-top: 2px;
+}
+.ff-row h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: -.1px;
+  color: var(--text, #1E293B);
+}
+.ff-row p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted, #64748B);
+}
+a.ff-src {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--muted, #64748B);
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid var(--line, rgba(148, 163, 184, .28));
+  border-radius: 20px;
+  padding: 4px 9px;
+  transition: color .15s ease, border-color .15s ease;
+}
+a.ff-src:hover { color: var(--text, #1E293B); border-color: rgba(79, 140, 255, .55); }
+
+/* ---------- 4. 2026 月度表 ---------- */
+.ff-months { display: grid; gap: 10px; }
+.ff-m {
+  border: 1px solid var(--line, rgba(148, 163, 184, .2));
+  border-radius: 14px;
+  background: var(--card, #fff);
+  overflow: hidden;
+}
+.ff-mh {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font: 650 12.5px/1 system-ui, sans-serif;
+  color: var(--text, #1E293B);
+  background: linear-gradient(90deg, rgba(79, 140, 255, .08), rgba(139, 92, 246, .06));
+  border-bottom: 1px solid var(--line, rgba(148, 163, 184, .16));
+  letter-spacing: .2px;
+}
+.ff-mh span { font-weight: 500; color: var(--muted, #64748B); font-size: 11.5px; }
+.ff-m ul { margin: 0; padding: 4px 0; list-style: none; }
+.ff-m li {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1.1fr) minmax(0, .8fr) minmax(0, 1.4fr);
+  gap: 10px;
+  align-items: baseline;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+.ff-m li + li { border-top: 1px dashed var(--line, rgba(148, 163, 184, .14)); }
+.ff-m li time {
+  font: 600 11.5px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--muted, #64748B);
+}
+.ff-m li b { font-weight: 650; color: var(--text, #1E293B); letter-spacing: -.1px; }
+.ff-m li .v { color: #6D5BE3; font-size: 11.5px; }
+.ff-m li em { font-style: normal; color: var(--muted, #64748B); font-size: 12px; }
+body[data-theme="deep"] .ff-m li .v { color: #A78BFA; }
+
+/* ---------- 5. 域首页「本月收录」 ---------- */
+.ff-dom { margin-top: 6px; }
+.ff-dom-list { display: grid; gap: 1px; background: var(--line, rgba(148, 163, 184, .18)); border-radius: 12px; overflow: hidden; }
+.ff-dom-list a {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 12px;
+  align-items: baseline;
+  padding: 11px 14px;
+  background: var(--card, #fff);
+  text-decoration: none;
+}
+.ff-dom-list a:hover { background: rgba(79, 140, 255, .06); }
+.ff-dom-list time {
+  font: 600 11.5px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #4F8CFF;
+}
+.ff-dom-list b {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text, #1E293B);
+  letter-spacing: -.1px;
+}
+.ff-dom-list b span { font-weight: 400; color: var(--muted, #64748B); font-size: 11.5px; white-space: nowrap; }
+body[data-theme="deep"] .ff-dom-list time { color: #38E1FF; }
+
+/* ---------- 6. 响应式 ---------- */
+@media (max-width: 1180px) {
+  #ff-strip { padding: 20px 18px 4px; }
+}
+@media (max-width: 900px) {
+  .ff-strip-row { grid-template-columns: 1fr; }
+  .ff-hot { grid-template-columns: 1fr; }
+  .ff-row { grid-template-columns: 52px minmax(0, 1fr); }
+  .ff-row a.ff-src { grid-column: 2; justify-self: start; margin-top: 2px; }
+  .ff-m li { grid-template-columns: 50px minmax(0, 1fr); }
+  .ff-m li .v, .ff-m li em { grid-column: 2; }
+}
+
+/* ===== 2026-11-25 前沿流卡片改版：加分类配图 + 摘要区，解决「点进去没内容」 ===== */
+.ff-card { display: flex; gap: 14px; align-items: flex-start; }
+.ff-thumb { flex: 0 0 118px; }
+.ff-thumb img { width: 118px; height: 88px; border-radius: 12px; display: block; object-fit: cover; }
+.ff-body { flex: 1 1 auto; min-width: 0; }
+.ff-card h3 { margin: 0 0 8px; }
+.ff-card h3 a { color: inherit; text-decoration: none; }
+.ff-card h3 a:hover { color: #3f6fd8; text-decoration: underline; }
+.ff-card p { margin: 0 0 4px; line-height: 1.75; font-size: 13.5px; }
+.ff-nosum { color: var(--muted, #94a3b8); font-style: normal; font-size: 12.5px; }
+[data-theme="deep"] .ff-card h3 a:hover { color: #7fe4ff; }
+@media (max-width: 640px) {
+  .ff-card { gap: 10px; }
+  .ff-thumb { flex: 0 0 84px; }
+  .ff-thumb img { width: 84px; height: 66px; border-radius: 10px; }
+  .ff-card p { font-size: 13px; }
+}
+
+/* ============================================================
+   2026-11-25 「每日速递」改版 · 追加规则（不改动上面任何已有规则）
+   目标：按日期分组的紧凑版面 —— 醒目、密、有反馈
+   品牌渐变统一 #4f8cff → #38b6ff → #8b5cf6；卡片圆角 16px
+   ============================================================ */
+
+/* ---------- 顶部数据条 ---------- */
+.ff-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.ff-st {
+  flex: 1 1 108px;
+  min-width: 0;
+  padding: 11px 14px;
+  border-radius: 16px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .22));
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+.ff-st b {
+  display: block;
+  font: 800 22px/1.1 system-ui, -apple-system, "PingFang SC", sans-serif;
+  letter-spacing: -.6px;
+  color: var(--text, #1E293B);
+  font-variant-numeric: tabular-nums;
+}
+.ff-st span {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--muted, #64748B);
+}
+.ff-meta {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: var(--muted, #94a3b8);
+}
+
+/* ---------- 日期跳转 ---------- */
+.ff-daysnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+.ff-daysnav a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font: 700 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--muted, #64748B);
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .28));
+  text-decoration: none;
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.ff-daysnav a:hover {
+  color: #4f8cff;
+  border-color: rgba(79, 140, 255, .55);
+  background: rgba(79, 140, 255, .07);
+}
+.ff-daysnav a b {
+  font-weight: 800;
+  color: #4F8CFF;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 每天一个区块 ---------- */
+.ff-days {
+  display: grid;
+  gap: 28px;
+  margin-top: 20px;
+}
+.ff-day { scroll-margin-top: 84px; }
+.ff-dayhead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* 醒目：品牌渐变竖条 + 21px 加粗日期 */
+.ff-dayhead h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -.4px;
+  color: var(--text, #1E293B);
+}
+.ff-dayhead h2::before {
+  content: '';
+  flex: 0 0 5px;
+  width: 5px;
+  height: 20px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #4f8cff 0%, #38b6ff 52%, #8b5cf6 100%);
+}
+.ff-dayhead h2 em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #4F8CFF;
+  background: rgba(79, 140, 255, .1);
+  border: 1px solid rgba(79, 140, 255, .22);
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+.ff-dayhead .ff-daylink {
+  margin-left: auto;
+  font-size: 11.5px;
+  color: var(--muted, #94a3b8);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .15s ease;
+}
+.ff-dayhead .ff-daylink:hover { color: #4F8CFF; }
+/* 区块标题下的渐变分隔线 */
+.ff-dayrule {
+  height: 3px;
+  border-radius: 999px;
+  margin: 9px 0 12px;
+  background: linear-gradient(90deg, #4F8CFF 0%, #38B6FF 34%, #8B5CF6 62%, rgba(139, 92, 246, 0) 100%);
+}
+
+/* ---------- 卡片公共：圆角 16px + 整块可点 + hover 反馈 ---------- */
+.ff-days .ff-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 13px;
+  border-radius: 16px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, rgba(148, 163, 184, .22));
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+  transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+.ff-days .ff-card:hover {
+  border-color: rgba(79, 140, 255, .45);
+  box-shadow: 0 4px 16px rgba(79, 140, 255, .14);
+  transform: translateY(-1px);
+}
+/* 点标题 = 点整块（标题链接铺满卡片；来源链接单独浮在上层仍可点） */
+.ff-days .ff-card h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  z-index: 1;
+}
+.ff-days .ff-card .ff-src {
+  position: relative;
+  z-index: 2;
+}
+/* 缩略图圆角统一 */
+.ff-days .ff-thumb img {
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+/* 日期角标统一 */
+.ff-days .ff-db {
+  display: inline-block;
+  margin: 0 0 4px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font: 700 10px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .3px;
+  color: #fff;
+  background: linear-gradient(120deg, #4F8CFF, #38B6FF 55%, #8B5CF6);
+}
+.ff-days .ff-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.ff-days .ff-card h3 a:hover { text-decoration: underline; }
+/* 来源标签统一：一枚小胶囊 */
+.ff-days a.ff-src {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted, #64748B);
+  background: transparent;
+  border: 1px solid var(--line, rgba(148, 163, 184, .3));
+  text-decoration: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.ff-days a.ff-src:hover {
+  color: #4f8cff;
+  border-color: rgba(79, 140, 255, .55);
+  background: rgba(79, 140, 255, .07);
+}
+.ff-days a.ff-src .cc-ic { font-size: 11px; }
+
+/* ---------- 今日要闻：明显更大的一条 ---------- */
+.ff-days .ff-lead {
+  gap: 16px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(79, 140, 255, .1), rgba(139, 92, 246, .055)),
+    var(--card, #fff);
+  border: 1px solid rgba(79, 140, 255, .34);
+  box-shadow: 0 5px 20px rgba(79, 140, 255, .11);
+}
+.ff-days .ff-lead:hover { box-shadow: 0 8px 26px rgba(79, 140, 255, .18); }
+.ff-days .ff-lead .ff-thumb { flex: 0 0 176px; }
+.ff-days .ff-lead .ff-thumb img { width: 176px; height: 132px; border-radius: 12px; }
+.ff-lead-tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font: 800 10px/1.4 system-ui, -apple-system, "PingFang SC", sans-serif;
+  letter-spacing: .3px;
+  color: #fff;
+  background: linear-gradient(120deg, #4F8CFF, #8B5CF6);
+  vertical-align: 1px;
+}
+.ff-days .ff-lead h3 {
+  margin: 7px 0 6px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.36;
+  letter-spacing: -.5px;
+  color: var(--text, #1E293B);
+  overflow-wrap: anywhere;
+}
+.ff-days .ff-lead p.ff-sum {
+  display: -webkit-box;
+  /* 头条是一天最重要的一条，放 3 行；小卡仍收 2 行 */
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.68;
+  color: var(--muted, #475569);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 紧凑列表 ---------- */
+.ff-list {
+  display: grid;
+  gap: 8px;
+}
+.ff-days .ff-card-s { gap: 11px; padding: 9px 12px; }
+.ff-days .ff-card-s .ff-thumb { flex: 0 0 88px; }
+.ff-days .ff-card-s .ff-thumb img { width: 88px; height: 66px; border-radius: 12px; }
+.ff-days .ff-card-s h3 {
+  margin: 0 0 3px;
+  font-size: 14.5px;
+  font-weight: 650;
+  line-height: 1.42;
+  letter-spacing: -.2px;
+  color: var(--text, #1E293B);
+  overflow-wrap: anywhere;
+}
+.ff-days .ff-card-s p.ff-sum {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--muted, #475569);
+  overflow-wrap: anywhere;
+}
+.ff-days .ff-nosum {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted, #94a3b8);
+}
+
+/* 深色主题 */
+body[data-theme="deep"] .ff-days .ff-lead,
+[data-theme="deep"] .ff-days .ff-lead {
+  background:
+    linear-gradient(135deg, rgba(56, 225, 255, .1), rgba(139, 92, 246, .07)),
+    var(--card, #101728);
+  border-color: rgba(56, 225, 255, .3);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
+}
+body[data-theme="deep"] .ff-days .ff-card h3 a:hover,
+body[data-theme="deep"] .ff-days .ff-lead h3 a:hover { color: #7fe4ff; }
+body[data-theme="deep"] .ff-days .ff-dayhead h2 em {
+  color: #38e1ff;
+  background: rgba(56, 225, 255, .1);
+  border-color: rgba(56, 225, 255, .28);
+}
+
+/* ---------- 移动端：单列更紧 ---------- */
+@media (max-width: 640px) {
+  .ff-stats { gap: 7px; margin-top: 12px; }
+  .ff-st { flex: 1 1 calc(33.333% - 5px); padding: 9px 10px; border-radius: 14px; }
+  .ff-st b { font-size: 18px; }
+  .ff-st span { font-size: 10.5px; }
+  .ff-meta { font-size: 10.5px; line-height: 1.6; }
+  .ff-daysnav { gap: 6px; margin-top: 12px; }
+  .ff-daysnav a { padding: 4px 9px; font-size: 11px; }
+  .ff-days { gap: 22px; margin-top: 16px; }
+  .ff-dayhead { gap: 8px; }
+  .ff-dayhead h2 { font-size: 20px; gap: 8px; }
+  .ff-dayhead h2::before { height: 18px; flex-basis: 4px; width: 4px; }
+  .ff-dayhead h2 em { font-size: 11px; padding: 2px 7px; }
+  .ff-dayhead .ff-daylink { font-size: 11px; }
+  .ff-dayrule { margin: 7px 0 10px; }
+
+  /* 头条：图在上通栏，避免 390px 下挤压 */
+  .ff-days .ff-lead { flex-direction: column; gap: 10px; padding: 11px 12px; margin-bottom: 8px; }
+  .ff-days .ff-lead .ff-thumb { flex: none; width: 100%; }
+  .ff-days .ff-lead .ff-thumb img { width: 100%; height: 88px; border-radius: 12px; }
+  .ff-days .ff-lead h3 { font-size: 20px; margin: 6px 0 5px; line-height: 1.34; }
+  .ff-days .ff-lead p.ff-sum { font-size: 13px; line-height: 1.6; }
+
+  /* 小卡：缩略图 72px / 标题 15px / 摘要 13px，间距收到最紧 */
+  .ff-list { gap: 7px; }
+  .ff-days .ff-card-s { gap: 9px; padding: 8px 10px; }
+  .ff-days .ff-card-s .ff-thumb { flex: 0 0 72px; }
+  .ff-days .ff-card-s .ff-thumb img { width: 72px; height: 72px; border-radius: 10px; }
+  .ff-days .ff-card-s h3 { font-size: 15px; line-height: 1.4; margin-bottom: 2px; }
+  .ff-days .ff-card-s p.ff-sum { font-size: 13px; line-height: 1.5; }
+  .ff-days .ff-nosum { font-size: 12.5px; }
+  .ff-days a.ff-src { margin-top: 5px; font-size: 10.5px; padding: 2px 8px; }
+}
+
+/* 窄屏兜底 */
+@media (max-width: 380px) {
+  .ff-stats { gap: 6px; }
+  .ff-st { flex: 1 1 100%; }
+}

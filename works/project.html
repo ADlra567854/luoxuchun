@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>正在转到项目页 · 白驹 ccowork</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f4f7fc;color:#1e293b;
+ font:15px/1.8 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.b{max-width:520px;padding:28px 26px;background:#fff;border:1px solid rgba(120,150,200,.2);border-radius:16px;
+ box-shadow:0 10px 30px rgba(31,45,77,.06);text-align:center}
+a{color:#2f5fd0;font-weight:700}
+p{margin:8px 0 0;color:#64748b;font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="b">
+  <p style="margin:0 0 6px;font-size:16px;font-weight:800;color:#1e293b">正在转到项目页…</p>
+  <p id="m">如果 3 秒内没有跳转，<a href="/works/projects.html">回到项目库</a>。</p>
+</div>
+<script>
+/* 2026-11-25：163 个项目详情已升级为真静态页 /works/p/<slug>.html。
+   这个参数页保留只为不打断老外链与他人分享过的链接，一律转到对应的静态页。
+   查不到就回项目库，不再渲染空壳。 */
+(function(){
+  var key = new URLSearchParams(location.search).get('repo');
+  if (!key) { location.replace('/works/projects.html'); return; }
+  fetch('/data/project-pages.json', {cache:'no-store'})
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(d){
+      var u = d && d.map && d.map[key];
+      if (u) { location.replace(u); return; }
+      document.getElementById('m').innerHTML = '找不到这个项目，<a href="/works/projects.html">回到项目库</a>。';
+    })
+    .catch(function(){ location.replace('/works/projects.html'); });
+})();
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

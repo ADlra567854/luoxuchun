@@ -1,0 +1,111 @@
+{
+  "version": "2.0-精简版",
+  "updated": "2026-10-13",
+  "principle": "原来 10 条业务线 + 17 条内容线互相重叠（路线图 4 份、行业 3 份、变现 3 份），现在收敛成 5 条：一条线 = 一类人 + 一类交付物 + 一条起步动作。",
+  "lines": [
+    {
+      "id": "content",
+      "no": "01",
+      "name": "内容日更线",
+      "icon": "✍️",
+      "one": "每天从真实源挑出值得发的，排版好，直接发。",
+      "who": ["toolbox", "everyone"],
+      "deliver": [
+        "每日精选 8 条（可一键复制公众号排版）",
+        "每日简报（真实源直抓，不改写）",
+        "书稿 / 博文 / 视频脚本（站内成稿）"
+      ],
+      "firstStep": "今天先跑一次 build-wechat-pick.mjs，复制出来发出去。",
+      "entry": [
+        { "href": "/website/wechat-pick.html", "label": "每日精选" },
+        { "href": "/website/daily.html", "label": "每日简报" },
+        { "href": "/website/works.html", "label": "作品库" }
+      ]
+    },
+    {
+      "id": "teach",
+      "no": "02",
+      "name": "教学交付线",
+      "icon": "🎓",
+      "one": "给老师和学生：能上课、能出题、能练手的东西。",
+      "who": ["teacher", "student"],
+      "deliver": [
+        "课堂提示词与教案（明天能用的那种）",
+        "题库与错题本（SM-2 复习节奏）",
+        "实训项目（工科 / 仿真 / 数控）"
+      ],
+      "firstStep": "先看清 AI 在学校能用到哪一步，再谈怎么用。",
+      "entry": [
+        { "href": "/website/ai-edu.html", "label": "AI 进校园" },
+        { "href": "/website/ai-academy.html", "label": "自学路线" },
+        { "href": "/website/ai-academy-quiz.html", "label": "题库" },
+        { "href": "/website/lab.html", "label": "实训实验室" }
+      ]
+    },
+    {
+      "id": "tool",
+      "no": "03",
+      "name": "工具与工程线",
+      "icon": "🛠️",
+      "one": "只收录已发布、可验证的工具和项目，附出处。",
+      "who": ["developer", "engineer", "toolbox"],
+      "deliver": [
+        "AI 工具真库（每条带出处，不收没发布的）",
+        "提示词模板与 100 条可复制的写法",
+        "本地部署方案（不出本机也能跑）"
+      ],
+      "firstStep": "打开工具真库，挑一个今天就能接进自己流程的。",
+      "entry": [
+        { "href": "/website/ai-tools.html", "label": "AI 工具真库" },
+        { "href": "/website/prompts100.html", "label": "提示词 100 条" },
+        { "href": "/website/local-deploy.html", "label": "本地部署" },
+        { "href": "/website/ai-projects.html", "label": "开源项目库" }
+      ]
+    },
+    {
+      "id": "industry",
+      "no": "04",
+      "name": "行业落地线",
+      "icon": "🏭",
+      "one": "给现场的人：别的厂、别的行业到底怎么落地的。",
+      "who": ["engineer", "everyone"],
+      "deliver": [
+        "行业案例（含出处，可查证）",
+        "智能制造 / 数字孪生的实操路径",
+        "岗位变化与技能缺口对照"
+      ],
+      "firstStep": "挑一个跟自己行业最近的案例，照着拆一遍。",
+      "entry": [
+        { "href": "/website/industry.html", "label": "行业应用" },
+        { "href": "/website/cases.html", "label": "案例库" },
+        { "href": "/website/ai-jobs.html", "label": "岗位在变" }
+      ]
+    },
+    {
+      "id": "income",
+      "no": "05",
+      "name": "个人变现线",
+      "icon": "💰",
+      "one": "把会的东西变成别人愿意付钱的东西。",
+      "who": ["everyone", "toolbox"],
+      "deliver": [
+        "变现路径（卖时间 → 卖产品 → 卖 IP）",
+        "引流与内容分发的实操",
+        "简历 / 作品集（能拿出来给人看）"
+      ],
+      "firstStep": "先分清你在卖时间还是卖产品，再决定下一步。",
+      "entry": [
+        { "href": "/website/ai-money.html", "label": "AI 变现" },
+        { "href": "/website/traffic-guide.html", "label": "引流实操" },
+        { "href": "/website/resume.html", "label": "简历" },
+        { "href": "/website/works.html", "label": "作品集" }
+      ]
+    }
+  ],
+  "merged": [
+    { "from": ["roadmap.html", "ai-academy-roadmap.html", "ai-academy-journey.html", "content-roadmap.html"], "to": "ai-academy.html · 学习路线", "why": "四份路线图说的是同一件事，只留一份挂在学院下" },
+    { "from": ["industry.html", "cases.html", "showcase.html"], "to": "行业落地线", "why": "行业 / 案例 / 展示三份内容重叠，合并成一条线" },
+    { "from": ["ai-money.html", "traffic-guide.html"], "to": "个人变现线", "why": "变现与引流是同一条链路的两段" },
+    { "from": ["10 大业务线（文档/设计/数据/金融/开发/AI工程/多模态/腾讯生态/效率/安全）"], "to": "5 条主线", "why": "10 条里有 6 条交付物相同，只是换了个行业名" }
+  ]
+}

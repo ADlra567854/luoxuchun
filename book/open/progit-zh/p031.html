@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4.8 服务器上的 Git · GitLab · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：4.8 服务器上的 Git - GitLab。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p031.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html" class="on">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html">10.5 Git 内部原理 - 引用规范</a><a href="p072.html">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 31 / 100 节
+    </div>
+    <h1>4.8 服务器上的 Git - GitLab</h1>
+            <div>
+              <h2 id="_gitlab">GitLab</h2>
+<div class="paragraph">
+<p>
+虽然 GitWeb 相当简单。
+但如果你正在寻找一个更现代，功能更全的 Git 服务器，这里有几个开源的解决方案可供你选择安装。
+因为 GitLab 是其中最出名的一个，我们将它作为示例并讨论它的安装和使用。
+这比 GitWeb 要复杂的多并且需要更多的维护，但它的确是一个功能更全的选择。</p>
+</div>
+<div class="sect3">
+<h3 id="_安装">安装</h3>
+<div class="paragraph">
+<p>GitLab 是一个数据库支持的 web 应用，所以相比于其他 git 服务器，它的安装过程涉及到更多的东西。
+幸运的是，这个过程有非常详细的文档说明和支持。</p>
+</div>
+<div class="paragraph">
+<p>这里有一些可参考的方法帮你安装 GitLab 。
+为了更快速的启动和运行，你可以下载虚拟机镜像或者在 <a href="https://bitnami.com/stack/gitlab" class="bare">https://bitnami.com/stack/gitlab</a>
+上获取一键安装包，同时调整配置使之符合你特定的环境。
+Bitnami 的一个优点在于它的登录界面（通过 alt+→ 键进入），
+它会告诉你安装好的 GitLab 的 IP 地址以及默认的用户名和密码。</p>
+</div>
+<div id="bitnami" class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/bitnami.png" alt="Bitnami GitLab 虚拟机登录界面。">
+</div>
+<div class="title">Figure 50. Bitnami GitLab 虚拟机登录界面。</div>
+</div>
+<div class="paragraph">
+<p>无论如何，跟着 GitLab 社区版的 readme 文件一步步来，你可以在这里找到它 <a href="https://gitlab.com/gitlab-org/gitlab-ce/tree/master" class="bare">https://gitlab.com/gitlab-org/gitlab-ce/tree/master</a> 。
+在这里你将会在主菜单中找到安装 GitLab 的帮助，一个可以在 Digital Ocean 上运行的虚拟机，以及 RPM 和 DEB 包（都是测试版）。
+这里还有 “非官方” 的引导让 GitLab 运行在非标准的操作系统和数据库上，一个全手动的安装脚本，以及许多其他的话题。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_管理">管理</h3>
+<div class="paragraph">
+<p>GitLab 的管理界面是通过网络进入的。
+将你的浏览器转到已经安装 GitLab 的 主机名或 IP 地址，然后以管理员身份登录即可。
+默认的用户名是 <code>admin@local.host</code>，默认的密码是 <code>5iveL!fe</code>（你会得到类似 请登录后尽快更换密码 的提示）。
+登录后，点击主栏上方靠右位置的 “Admin area” 图标进行管理。</p>
+</div>
+<div id="gitlab_menu" class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/gitlab-menu.png" alt="GitLab 主栏的 “Admin area” 图标。">
+</div>
+<div class="title">Figure 51. GitLab 主栏的 “Admin area” 图标。</div>
+</div>
+<div class="sect4">
+<h4 id="_使用者">使用者</h4>
+<div class="paragraph">
+<p>GitLab 上的用户指的是对应协作者的帐号。
+用户帐号没有很多复杂的地方，主要是包含登录数据的用户信息集合。
+每一个用户账号都有一个 <strong>命名空间</strong> ，即该用户项目的逻辑集合。
+如果一个叫 jane 的用户拥有一个名称是 project 的项目，那么这个项目的 url 会是 <code><a href="http://server/jane/project" class="bare">http://server/jane/project</a></code> 。</p>
+</div>
+<div id="gitlab_users" class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/gitlab-users.png" alt=".GitLab 用户管理界面。">
+</div>
+<div class="title">Figure 52. GitLab 用户管理界面。</div>
+</div>
+<div class="paragraph">
+<p>移除一个用户有两种方法。
+“屏蔽（Blocking）” 一个用户阻止他登录 GitLab 实例，但是该用户命名空间下的所有数据仍然会被保存，
+并且仍可以通过该用户提交对应的登录邮箱链接回他的个人信息页。</p>
+</div>
+<div class="paragraph">
+<p>而另一方面，“销毁（Destroying）” 一个用户，会彻底的将他从数据库和文件系统中移除。
+他命名空间下的所有项目和数据都会被删除，拥有的任何组也会被移除。
+这显然是一个更永久且更具破坏力的行为，所以很少用到这种方法。</p>
+</div>
+</div>
+<div class="sect4">
+<h4 id="_gitlab_groups_section">组</h4>
+<div class="paragraph">
+<p>一个 GitLab 的组是一些项目的集合，连同关于多少用户可以访问这些项目的数据。
+每一个组都有一个项目命名空间（与用户一样），所以如果一个叫 training
+的组拥有一个名称是 materials 的项目，那么这个项目的 url 会是 <code><a href="http://server/training/materials" class="bare">http://server/training/materials</a></code>。</p>
+</div>
+<div id="gitlab_groups" class="imageblock">
+<div class="content">
+<img src="https://git-scm.com/book/zh/v2/images/gitlab-groups.png" alt="GitLab 组管理界面。">
+</div>
+<div class="title">Figure 53. GitLab 组管理界面。</div>
+</div>
+<div class="paragraph">
+<p>每一个组都有许多用户与之关联，每一个用户对组中的项目以及组本身的权限都有级别区分。
+权限的范围从 “访客”（仅能提问题和讨论） 到 “拥有者”（完全控制组、成员和项目）。
+权限的种类太多以至于难以在这里一一列举，不过在 GitLab 的管理界面上有帮助链接。</p>
+</div>
+</div>
+<div class="sect4">
+<h4 id="_项目">项目</h4>
+<div class="paragraph">
+<p>一个 GitLab 的项目相当于 git 的版本库。
+每一个项目都属于一个用户或者一个组的单个命名空间。
+如果这个项目属于一个用户，那么这个拥有者对所有可以获取这个项目的人拥有直接管理权；
+如果这个项目属于一个组，那么该组中用户级别的权限也会起作用。</p>
+</div>
+<div class="paragraph">
+<p>每一个项目都有一个可视级别，控制着谁可以看到这个项目页面和仓库。
+如果一个项目是 <em>私有</em> 的，这个项目的拥有者必须明确授权从而使特定的用户可以访问。
+一个 <em>内部</em> 的项目可以被所有登录的人看到，而一个 <em>公开</em> 的项目则是对所有人可见的。
+注意，这种控制既包括 <code>git fetch</code> 的使用也包括对项目 web 用户界面的访问。</p>
+</div>
+</div>
+<div class="sect4">
+<h4 id="_钩子">钩子</h4>
+<div class="paragraph">
+<p>GitLab 在项目和系统级别上都支持钩子程序。
+对任意级别，当有相关事件发生时，GitLab 的服务器会执行一个包含描述性 JSON 数据的 HTTP 请求。
+这是自动化连接你的 git 版本库和 GitLab 实例到其他的开发工具，比如 CI 服务器，聊天室，或者部署工具的一个极好方法。</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_基本用途">基本用途</h3>
+<div class="paragraph">
+<p>你想要在 GitLab 做的第一件事就是建立一个新项目。
+这通过点击工具栏上的 “+” 图标完成。
+你需要填写项目名称，项目所属命名空间，以及它的可视层级。
+绝大多数的设定并不是永久的，可以通过设置界面重新调整。
+点击 “Create Project”，你就完成了。</p>
+</div>
+<div class="paragraph">
+<p>项目存在后，你可能会想将它与本地的 Git 版本库连接。
+每一个项目都可以通过 HTTPS 或者 SSH 连接，任意两者都可以被用来配置远程 Git。
+在项目主页的顶栏可以看到这个项目的 URLs。
+对于一个存在的本地版本库，这个命令将会向主机位置添加一个叫 <code>gitlab</code> 的远程仓库：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git remote add gitlab https://server/namespace/project.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果你的本地没有版本库的副本，你可以这样做：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone https://server/namespace/project.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>web 用户界面提供了几个有用的获取版本库信息的网页。
+每一个项目的主页都显示了最近的活动，并且通过顶部的链接可以使你浏览项目文件以及提交日志。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_一起工作">一起工作</h3>
+<div class="paragraph">
+<p>在一个 GitLab 项目上一起工作的最简单方法就是赋予协作者对 git 版本库的直接 push 权限。
+你可以通过项目设定的 “Members（成员）” 部分向一个项目添加协作者，
+并且将这个新的协作者与一个访问级别关联（不同的访问级别在 <a href="https://git-scm.com/book/zh/v2/ch00/_gitlab_groups_section">组</a> 中已简单讨论）。
+通过赋予一个协作者 “Developer（开发者）” 或者更高的访问级别，
+这个用户就可以毫无约束地直接向版本库或者向分支进行提交。</p>
+</div>
+<div class="paragraph">
+<p>另外一个让合作更解耦的方法就是使用合并请求。
+它的优点在于让任何能够看到这个项目的协作者在被管控的情况下对这个项目作出贡献。
+可以直接访问的协作者能够简单的创建一个分支，向这个分支进行提交，也可以开启一个向 <code>master</code> 或者其他任何一个分支的合并请求。
+对版本库没有推送权限的协作者则可以 “fork” 这个版本库（即创建属于自己的这个库的副本），向 <em>那个</em> 副本进行提交，然后从那个副本开启一个到主项目的合并请求。
+这个模型使得项目拥有者完全控制着向版本库的提交，以及什么时候允许加入陌生协作者的贡献。</p>
+</div>
+<div class="paragraph">
+<p>在 GitLab 中合并请求和问题是一个长久讨论的主要部分。
+每一个合并请求都允许在提出改变的行进行讨论（它支持一个轻量级的代码审查），也允许对一个总体性话题进行讨论。
+两者都可以被分配给用户，或者组织到 milestones（里程碑） 界面。</p>
+</div>
+<div class="paragraph">
+<p>这个部分主要聚焦于在 GitLab 中与 Git 相关的特性，但是 GitLab 作为一个成熟的系统，
+它提供了许多其他产品来帮助你协同工作，例如项目 wiki 与系统维护工具。
+GitLab 的一个优点在于，服务器设置和运行以后，你将很少需要调整配置文件或通过 SSH 连接服务器。
+绝大多数的管理和日常使用都可以在浏览器界面中完成。</p>
+</div>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-GitWeb">prev</a> | <a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%AC%AC%E4%B8%89%E6%96%B9%E6%89%98%E7%AE%A1%E7%9A%84%E9%80%89%E6%8B%A9">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p030.html">← 4.7 服务器上的 Git - GitWeb</a><a href="index.html">目录</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

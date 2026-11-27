@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud">
+<head>
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>阅读书库 · 经核实的 AI / 编程好书 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"阅读书库 · 经核实的 AI / 编程好书 | 白驹 ccowork","description":"白驹 ccowork阅读书库：收录经公开来源核实的 AI / 编程 / 人工智能热门书，可按分类、角色筛选并收藏。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<meta name="description" content="白驹 ccowork阅读书库：收录经公开来源核实的 AI / 编程 / 人工智能热门书，可按分类、角色筛选并收藏。">
+<meta property="og:description" content="白驹 ccowork阅读书库：收录经公开来源核实的 AI / 编程 / 人工智能热门书，可按分类、角色筛选并收藏。">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<style>
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+/* ---------- Hero ---------- */
+.hero{padding:46px 0 22px}
+.hero h1{font-size:34px;font-weight:900;margin:0 0 12px;letter-spacing:-.02em}
+.hero .lede{font-size:15px;line-height:1.9;color:var(--muted);max-width:860px}
+.hero .lede b{color:var(--text);font-weight:800}
+.hero .readhint{margin-top:10px;font-size:13px;line-height:1.8;color:var(--dim)}
+.hero .readhint i{font-size:13px;vertical-align:-.12em}
+.search{display:flex;align-items:center;gap:10px;max-width:540px;margin-top:18px;padding:11px 16px;border-radius:999px;
+  background:var(--card);border:1px solid var(--line);box-shadow:0 6px 18px rgba(31,45,77,.06)}
+.search .cc-ic{color:var(--muted);font-size:16px;flex:none}
+.search input{flex:1;border:0;outline:none;background:transparent;color:var(--text);font:inherit;font-size:14px}
+.search input::placeholder{color:var(--dim)}
+/* ---------- 分区标题 ---------- */
+.sec{padding:28px 0 4px}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.sec-head h2{font-size:22px;font-weight:900;margin:0}
+.sec-head .sub{font-size:13px;color:var(--muted)}
+/* ---------- 分类筛选 Tab ---------- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 22px}
+.tab{appearance:none;cursor:pointer;font:inherit;font-size:14px;font-weight:800;padding:9px 18px;border-radius:999px;
+  color:var(--muted);background:rgba(120,160,220,.08);border:1px solid rgba(120,160,220,.22);transition:.16s}
+.tab:hover{color:var(--text);transform:translateY(-1px)}
+.tab.on{color:#fff;border-color:transparent;background:linear-gradient(120deg,#4f8cff,#38b6ff 52%,#8b5cf6)}
+/* ---------- 书卡网格 ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.bcard{position:relative;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .16s,border-color .16s;cursor:pointer}
+.bcard:hover{transform:translateY(-3px);border-color:var(--cyan)}
+.cover{position:relative;height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cover .fc{font-size:54px;font-weight:900;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.25);line-height:1}
+.cover .ci{position:absolute;top:10px;left:12px;font-size:18px;color:rgba(255,255,255,.92)}
+.cover .ctag{position:absolute;right:10px;bottom:10px;font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px;
+  background:rgba(255,255,255,.92);color:#15233b}
+.bcard .body{padding:14px 16px 52px;display:flex;flex-direction:column;gap:7px;flex:1}
+.bcard h3{font-size:17px;font-weight:900;line-height:1.35;margin:0}
+.bcard .orig{font-size:12px;color:var(--muted);font-style:italic;line-height:1.5}
+.bcard .meta{font-size:13px;color:var(--muted);line-height:1.6}
+.bcard .isbn{font-size:12px;color:var(--dim)}
+.bcard .why{font-size:13px;line-height:1.7;color:var(--text);
+  background:rgba(120,160,220,.08);border-left:3px solid var(--cyan);padding:8px 11px;border-radius:0 10px 10px 0}
+.bcard .why b{display:block;font-size:11px;letter-spacing:.04em;opacity:.7;margin-bottom:3px;font-weight:800}
+.bcard .chips{display:flex;gap:6px;flex-wrap:wrap}
+.bcard .chip{font-size:11px;font-weight:800;padding:2px 9px;border-radius:999px;
+  background:rgba(120,160,220,.14);border:1px solid rgba(120,160,220,.28);color:var(--blue)}
+.fav{position:absolute;right:12px;bottom:12px;width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--line);background:var(--card);color:#cbd5e1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:17px;line-height:1;transition:.18s;z-index:2}
+.fav:hover{color:#ef4444;border-color:#ef4444}
+.fav.on{color:#ef4444;border-color:#ef4444;background:rgba(239,68,68,.10)}
+.fav .ic-heart-o{display:inline-block}
+.fav.on .ic-heart-o{display:none}
+.fav .ic-heart-f{display:none}
+.fav.on .ic-heart-f{display:inline-block}
+/* 分类配色（装饰渐变，硬色值按要求） */
+[data-cat="通识"] .cover{background:linear-gradient(135deg,#4f8cff,#38b6ff)}
+[data-cat="ML"]   .cover{background:linear-gradient(135deg,#8b5cf6,#a78bfa)}
+[data-cat="编程"] .cover{background:linear-gradient(135deg,#22c55e,#16a34a)}
+[data-cat="伦理"] .cover{background:linear-gradient(135deg,#f59e0b,#fbbf24)}
+[data-cat="LLM"]  .cover{background:linear-gradient(135deg,#38e1ff,#8b5cf6)}
+[data-cat="行业"] .cover{background:linear-gradient(135deg,#0ea5e9,#06b6d4)}
+/* 为你推荐：无角色提示 */
+.rec-empty{margin:0 0 22px;padding:16px 18px;border-radius:14px;background:rgba(120,160,220,.08);
+  border:1px dashed var(--line);font-size:14px;line-height:1.8;color:var(--muted);display:flex;
+  align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between}
+.rec-empty b{color:var(--text)}
+.rec-empty .setrole{cursor:pointer;font-size:13px;font-weight:800;color:#fff;text-decoration:none;
+  padding:7px 16px;border-radius:999px;background:linear-gradient(120deg,#4f8cff,#38b6ff 60%,#8b5cf6);white-space:nowrap}
+.rec-empty .setrole:hover{transform:translateY(-1px)}
+.empty{text-align:center;color:var(--muted);font-size:14px;padding:30px 0}
+/* 阅读场景：正文舒适排版 */
+.read-zone{line-height:1.85}
+.read-zone p{line-height:1.85}
+/* ---------- 详情 modal ---------- */
+.modal{position:fixed;inset:0;z-index:9990;display:none;align-items:center;justify-content:center;padding:20px;
+  background:rgba(10,15,30,.55);backdrop-filter:blur(6px)}
+.modal.show{display:flex}
+.modal .mc{width:min(540px,100%);max-height:86vh;overflow:auto;border-radius:18px;background:var(--card);
+  border:1px solid var(--line);box-shadow:var(--float-shadow);padding:22px 24px;position:relative}
+.modal .close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;
+  border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;font-size:16px}
+.modal .close:hover{color:var(--text);border-color:var(--text)}
+.modal .m-cover{height:120px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.modal .m-cover .fc{font-size:46px;font-weight:900;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+.modal h3{font-size:20px;font-weight:900;margin:0 0 4px;line-height:1.35}
+.modal .m-orig{font-size:13px;color:var(--muted);font-style:italic;margin-bottom:10px}
+.modal .m-row{font-size:14px;line-height:1.8;color:var(--text);margin:4px 0}
+.modal .m-row b{color:var(--muted);font-weight:800;margin-right:6px}
+.modal .m-why{margin:12px 0;padding:11px 13px;font-size:13px;line-height:1.8;
+  background:rgba(120,160,220,.08);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0}
+.modal .m-foot{display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.modal .m-foot .fav{position:static;width:auto;height:auto;padding:8px 16px;border-radius:999px;gap:7px;
+  font-size:13px;font-weight:800}
+/* ---------- 页脚 ---------- */
+.site-foot{margin-top:44px;border-top:1px solid var(--line);padding:22px 0;color:var(--dim);font-size:13px;
+  text-align:center;line-height:1.8}
+.site-foot a{color:var(--muted);text-decoration:none}
+@media(max-width:640px){
+  .hero{padding:30px 0 16px}
+  .hero h1{font-size:27px}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:description" content="白驹 ccowork阅读书库：收录经公开来源核实的 AI / 编程 / 人工智能热门书，可按分类、角色筛选并收藏。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/website/book.html">
+<meta property="og:title" content="阅读书库 · 经核实的 AI / 编程好书 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/website/book.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="阅读书库 · 经核实的 AI / 编程好书 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-theme="cloud" class="no-toc"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav>
+  <div class="logo">白驹 ccowork</div>
+  <div class="nav-links">
+    <a href="/index.html">首页</a>
+    <a href="/toolbox/quiz.html">答题宝库</a>
+    <a href="/website/book.html" class="active">阅读书库</a>
+    <a href="/toolbox/library.html">AI 工具真库</a>
+    <a href="/website/mine.html">我的</a>
+  </div>
+</nav>
+<main class="read-zone">
+  <!-- Hero -->
+  <section class="wrap hero">
+    <h1>阅读书库</h1>
+    <p class="lede">这里收录 <b id="count">—</b> 本经公开来源核实的 AI / 编程 / 人工智能热门书——豆瓣评分、权威推荐、全球高校教材、文津图书奖等均可查，来源与口碑都站得住脚。想更专注地读，点左下角「<b>阅读模式</b>」即可放大字号、收起壁纸干扰。</p>
+    <div class="search">
+      <i class="cc-ic" data-ic="search" aria-hidden="true"></i>
+      <input id="q" type="search" placeholder="搜索书名、作者、推荐理由…" aria-label="搜索书库">
+    </div>
+  </section>
+  <!-- 为你推荐 -->
+  <section class="wrap" id="recWrap" hidden>
+    <div class="sec-head">
+      <h2 id="recTitle">为你推荐</h2>
+      <span class="sub" id="recSub"></span>
+    </div>
+    <div class="grid" id="recGrid"></div>
+  </section>
+  <!-- 全部书 + 筛选 -->
+  <section class="wrap sec">
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-cat="all" type="button">全部</button>
+      <button class="tab" data-cat="通识" type="button">通识</button>
+      <button class="tab" data-cat="ML" type="button">机器学习</button>
+      <button class="tab" data-cat="编程" type="button">编程</button>
+      <button class="tab" data-cat="伦理" type="button">伦理</button>
+      <button class="tab" data-cat="LLM" type="button">大模型</button>
+      <button class="tab" data-cat="行业" type="button">行业</button>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>没有匹配的书，换个关键词或分类试试。</p>
+  </section>
+</main>
+<footer class="site-foot wrap">
+  <div>白驹 ccowork · 阅读书库</div>
+  <div>数据取自公开来源，仅供参考；ISBN 标注「待核实」的以出版社最新信息为准。收藏仅保存在本机浏览器。</div>
+</footer>
+<!-- 详情 modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="书籍详情">
+  <div class="mc">
+    <button class="close" id="modalClose" type="button" aria-label="关闭"><i class="cc-ic" data-ic="x"></i></button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script src="/data/books.js"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+(function(){
+  'use strict';
+  var TAG_NAME = { teacher:'教师', student:'学生', dev:'开发者', plain:'爱好者' };
+  var CAT_ICON = { '通识':'compass', 'ML':'brain', '编程':'code', '伦理':'info', 'LLM':'sparkles', '行业':'map' };
+  var grid = document.getElementById('grid');
+  var emptyEl = document.getElementById('empty');
+  var qEl = document.getElementById('q');
+  var tabsEl = document.getElementById('tabs');
+  var countEl = document.getElementById('count');
+  var state = { cat:'all', q:'' };
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function favOn(id){ return window.CCOWork && window.CCOWork.fav.has(id); }
+  function cardHTML(b){
+    var chips = (b.tags||[]).map(function(t){ return '<span class="chip">'+esc(TAG_NAME[t]||t)+'</span>'; }).join('');
+    var orig = b.orig ? '<div class="orig">'+esc(b.orig)+'</div>' : '';
+    var isbn = b.isbn ? 'ISBN：'+esc(b.isbn) : '';
+    return ''+
+      '<article class="bcard" id="book-'+esc(b.id)+'" data-cat="'+esc(b.cat)+'" data-id="'+esc(b.id)+'">'+
+        '<div class="cover">'+
+          '<i class="cc-ic ci" data-ic="'+esc(CAT_ICON[b.cat]||'book-open')+'" aria-hidden="true"></i>'+
+          '<span class="fc">'+esc((b.title||'?').charAt(0))+'</span>'+
+          '<span class="ctag">'+esc(b.cat)+'</span>'+
+        '</div>'+
+        '<div class="body">'+
+          '<h3>'+esc(b.title)+'</h3>'+
+          orig+
+          '<div class="meta">'+esc(b.author)+' · '+esc(b.pub)+(b.year?(' · '+esc(b.year)):'')+'</div>'+
+          (isbn?'<div class="isbn">'+isbn+'</div>':'')+
+          '<div class="why"><b>为什么火 · 证据</b>'+esc(b.why)+'</div>'+
+          '<div class="chips">'+chips+'</div>'+
+        '</div>'+
+        '<button class="fav'+(favOn(b.id)?' on':'')+'" type="button" data-id="'+esc(b.id)+'" '+
+          'aria-label="收藏" title="收藏">'+
+          '<i class="cc-ic ic-heart-o" data-ic="heart" aria-hidden="true"></i>'+
+          '<i class="cc-ic ic-heart-f" data-ic="heart" aria-hidden="true"></i>'+
+        '</button>'+
+      '</article>';
+  }
+  function matches(b){
+    if(state.cat !== 'all' && b.cat !== state.cat) return false;
+    var q = state.q.trim().toLowerCase();
+    if(!q) return true;
+    var hay = [b.title,b.orig,b.author,b.pub,b.why,(b.tags||[]).map(function(t){return TAG_NAME[t]||t;}).join(' ')].join(' ').toLowerCase();
+    return hay.indexOf(q) >= 0;
+  }
+  function render(){
+    var list = (window.BOOKS||[]).filter(matches);
+    grid.innerHTML = list.map(cardHTML).join('');
+    emptyEl.hidden = list.length !== 0;
+  }
+  /* 为你推荐 */
+  function renderRec(){
+    var recWrap = document.getElementById('recWrap');
+    var recGrid = document.getElementById('recGrid');
+    var recTitle = document.getElementById('recTitle');
+    var recSub = document.getElementById('recSub');
+    var role = (window.CCOWork && window.CCOWork.getRole && window.CCOWork.getRole()) || '';
+    if(!role){
+      recWrap.hidden = false;
+      recTitle.textContent = '为你推荐';
+      recSub.textContent = '设置角色后，这里会按你的身份置顶推荐';
+      recGrid.innerHTML = ''+
+        '<div class="rec-empty" style="grid-column:1/-1">'+
+          '<span>还没有设置角色。<b>教师 / 学生 / 开发者 / 爱好者</b> 会决定这里推荐哪些书——去设置里选一个吧。</span>'+
+          '<a class="setrole" id="setRoleBtn" href="javascript:void(0)"><i class="cc-ic" data-ic="user" aria-hidden="true"></i> 去设置角色</a>'+
+        '</div>';
+      var sb = document.getElementById('setRoleBtn');
+      if(sb) sb.addEventListener('click', function(){
+        var g = document.getElementById('modGear'); if(g) g.click();
+      });
+      return;
+    }
+    var rn = (window.CCOWork.roleName && window.CCOWork.roleName(role)) || role;
+    var recs = (window.BOOKS||[]).filter(function(b){ return (b.tags||[]).indexOf(role) >= 0; });
+    recTitle.textContent = '根据你的角色（'+esc(rn)+'）推荐';
+    recSub.textContent = '共 '+recs.length+' 本与你的身份相关，已置顶';
+    recGrid.innerHTML = recs.map(cardHTML).join('');
+    recWrap.hidden = false;
+  }
+  /* 收藏切换（事件委托） */
+  function toggleFav(id, btn){
+    var added = window.CCOWork.fav.toggle(id);
+    if(btn) btn.classList.toggle('on', added);
+    // 同步详情弹窗里的收藏按钮
+    var mb = document.querySelector('#modalBody .fav[data-id="'+id+'"]');
+    if(mb) mb.classList.toggle('on', added);
+  }
+  /* modal */
+  var modal = document.getElementById('modal');
+  var modalBody = document.getElementById('modalBody');
+  function openModal(id){
+    var b = (window.BOOKS||[]).filter(function(x){ return String(x.id)===String(id); })[0];
+    if(!b) return;
+    var chips = (b.tags||[]).map(function(t){ return '<span class="chip">'+esc(TAG_NAME[t]||t)+'</span>'; }).join('');
+    var orig = b.orig ? '<div class="m-orig">'+esc(b.orig)+'</div>' : '';
+    modalBody.innerHTML = ''+
+      '<div class="m-cover" data-cat="'+esc(b.cat)+'"><span class="fc">'+esc((b.title||'?').charAt(0))+'</span></div>'+
+      '<h3>'+esc(b.title)+'</h3>'+ orig +
+      '<div class="m-row"><b>分类</b>'+esc(b.cat)+'</div>'+
+      '<div class="m-row"><b>作者</b>'+esc(b.author)+'</div>'+
+      '<div class="m-row"><b>出版</b>'+esc(b.pub)+(b.year?(' · '+esc(b.year)):'')+'</div>'+
+      (b.isbn?'<div class="m-row"><b>ISBN</b>'+esc(b.isbn)+'</div>':'')+
+      '<div class="m-why"><b>为什么火 · 证据</b><br>'+esc(b.why)+'</div>'+
+      '<div class="chips" style="margin-bottom:4px">'+chips+'</div>'+
+      '<div class="m-foot">'+
+        '<button class="fav'+(favOn(b.id)?' on':'')+'" type="button" data-id="'+esc(b.id)+'" aria-label="收藏">'+
+          '<i class="cc-ic ic-heart-o" data-ic="heart" aria-hidden="true"></i>'+
+          '<i class="cc-ic ic-heart-f" data-ic="heart" aria-hidden="true"></i>'+
+          '<span class="fav-label">'+(favOn(b.id)?'已收藏':'收藏')+'</span>'+
+        '</button>'+
+      '</div>';
+    var mb = modalBody.querySelector('.fav');
+    if(mb) mb.addEventListener('click', function(e){ e.stopPropagation();
+      var added = window.CCOWork.fav.toggle(b.id);
+      mb.classList.toggle('on', added);
+      mb.querySelector('.fav-label').textContent = added ? '已收藏' : '收藏';
+      // 同步卡片
+      var cb = document.querySelector('#grid .fav[data-id="'+b.id+'"], #recGrid .fav[data-id="'+b.id+'"]');
+      if(cb) cb.classList.toggle('on', added);
+    });
+    modal.classList.add('show');
+  }
+  function closeModal(){ modal.classList.remove('show'); }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+  /* 卡片区域点击委托 */
+  function onGridClick(e){
+    var favBtn = e.target.closest('.fav');
+    if(favBtn){
+      e.stopPropagation();
+      toggleFav(favBtn.getAttribute('data-id'), favBtn);
+      return;
+    }
+    var card = e.target.closest('.bcard');
+    if(card){ openModal(card.getAttribute('data-id')); }
+  }
+  grid.addEventListener('click', onGridClick);
+  document.getElementById('recGrid').addEventListener('click', onGridClick);
+  /* 分类 Tab */
+  tabsEl.addEventListener('click', function(e){
+    var t = e.target.closest('.tab'); if(!t) return;
+    tabsEl.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('on'); });
+    t.classList.add('on');
+    state.cat = t.getAttribute('data-cat');
+    render();
+  });
+  /* 搜索 */
+  qEl.addEventListener('input', function(){ state.q = qEl.value; render(); });
+  /* 初始化 */
+  countEl.textContent = (window.BOOKS||[]).length;
+  renderRec();
+  render();
+})();
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

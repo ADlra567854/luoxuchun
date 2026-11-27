@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="继续读 学习首页 教程 书稿 博客 查模型 模型域 模型库 榜单 厂商 本站 关于 前沿流 工具库 首页 © 2026 白驹 ccowork 内容以站内实际收录为准，外部链接归原作者所有。">
+<meta name="keywords" content="闪卡学习 · 环球语堂,白驹 ccowork,ccowork,AI 工具,智能体">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="继续读 学习首页 教程 书稿 博客 查模型 模型域 模型库 榜单 厂商 本站 关于 前沿流 工具库 首页 © 2026 白驹 ccowork 内容以站内实际收录为准，外部链接归原作者所有。">
+  <meta name="theme-color" content="#030014">
+  <title>闪卡学习 · 环球语堂 · 白驹 ccowork</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg">
+
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <style>
+    .flashcard-page {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 20px;
+    }
+
+    .flashcard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .flashcard-header h2 {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .flashcard-header h2 .grad {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .flashcard-progress-info {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .flashcard-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .flashcard-container {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .flashcard {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .flashcard.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-face {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 26px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-shadow-hover);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .flashcard-face.back {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard .card-word {
+      font-size: 40px;
+      font-weight: 900;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .flashcard .card-phonetic {
+      font-size: 16px;
+      color: var(--muted);
+      font-family: "Cascadia Code", Consolas, monospace;
+      margin-bottom: 24px;
+    }
+
+    .flashcard .card-hint {
+      position: absolute;
+      bottom: 20px;
+      font-size: 12px;
+      color: var(--dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flashcard .card-meaning {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .flashcard .card-example {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-style: italic;
+      border-left: 3px solid var(--blue);
+      padding-left: 14px;
+      text-align: left;
+      width: 100%;
+    }
+
+    .flashcard .card-pos {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .flashcard .speak-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .flashcard .speak-btn:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .flashcard-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .rate-btn {
+      flex: 1;
+      max-width: 90px;
+      padding: 14px 6px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid var(--chip-line);
+      background: var(--chip-bg);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .rate-btn:hover { transform: translateY(-2px); }
+
+    .rate-btn .rate-time {
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    .rate-btn.rate-again { border-color: rgba(255,92,138,0.3); color: var(--red); }
+    .rate-btn.rate-again:hover { background: rgba(255,92,138,0.15); box-shadow: 0 4px 14px rgba(255,92,138,0.25); }
+
+    .rate-btn.rate-hard { border-color: rgba(240,185,92,0.3); color: var(--gold); }
+    .rate-btn.rate-hard:hover { background: rgba(240,185,92,0.15); box-shadow: 0 4px 14px rgba(240,185,92,0.25); }
+
+    .rate-btn.rate-good { border-color: rgba(91,140,255,0.3); color: var(--blue); }
+    .rate-btn.rate-good:hover { background: rgba(91,140,255,0.15); box-shadow: 0 4px 14px rgba(91,140,255,0.25); }
+
+    .rate-btn.rate-easy { border-color: rgba(46,211,160,0.3); color: var(--green); }
+    .rate-btn.rate-easy:hover { background: rgba(46,211,160,0.15); box-shadow: 0 4px 14px rgba(46,211,160,0.25); }
+
+    .keyboard-hint {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--dim);
+      flex-wrap: wrap;
+    }
+
+    .keyboard-hint kbd {
+      display: inline-block;
+      padding: 2px 6px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-line);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .flashcard-page {
+        padding: 16px 16px 100px;
+      }
+
+      .flashcard {
+        height: 260px;
+      }
+
+      .flashcard .card-word {
+        font-size: 32px;
+      }
+    }
+  </style>
+<link rel="canonical" href="https://ccoworkbaiju.cn/linguavista/flashcards.html">
+<meta property="og:title" content="闪卡学习 · 环球语堂 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/linguavista/flashcards.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="闪卡学习 · 环球语堂 · 白驹 ccowork">
+<meta name="twitter:description" content="继续读 学习首页 教程 书稿 博客 查模型 模型域 模型库 榜单 厂商 本站 关于 前沿流 工具库 首页 © 2026 白驹 ccowork 内容以站内实际收录为准，外部链接归原作者所有。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">  <link rel="stylesheet" href="assets/css/cc-ic-compat.css">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-theme="deep"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-linguavista-flashcards.png" alt="闪卡学习 · 环球语堂" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div>
+      <div>
+        <div class="nav-title">环球语堂</div>
+        <div class="nav-subtitle">LinguaVista</div>
+      </div>
+    </a>
+
+    <div class="nav-links hidden-mobile">
+      <a href="index.html">首页</a>
+      <a href="languages/en.html">英语</a>
+      <a href="languages/ja.html">日语</a>
+      <a href="flashcards.html" class="active">闪卡</a>
+      <a href="chat.html">AI对话</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" data-theme-toggle><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+      <a href="profile.html" class="avatar-btn" title="个人中心"><i class="cc-ic" data-ic="graduation-cap"></i> 学</a>
+    </div>
+  </nav>
+
+  <div class="flashcard-page">
+    <div class="container-narrow" style="width:100%">
+      <div class="flashcard-header">
+        <h2><span class="grad">闪卡学习</span></h2>
+        <div class="flashcard-progress-info" id="card-progress">加载中...</div>
+      </div>
+
+      <div class="flashcard-wrapper">
+        <div class="flashcard-container">
+          <div class="flashcard" id="flashcard">
+            <button class="speak-btn" id="speak-btn" title="发音"><i class="cc-ic" data-ic="volume-2" aria-hidden="true"></i></button>
+            <div class="flashcard-face front">
+              <div class="card-word" id="card-word">Loading...</div>
+              <div class="card-phonetic" id="card-phonetic">/ˈloʊdɪŋ/</div>
+              <div class="card-hint">
+                <span><i class="cc-ic" data-ic="mouse-pointer" aria-hidden="true"></i></span> 点击卡片查看释义
+              </div>
+            </div>
+            <div class="flashcard-face back">
+              <div class="card-pos" id="card-pos">v.</div>
+              <div class="card-meaning" id="card-meaning">加载中</div>
+              <div class="card-example" id="card-example">
+                正在加载词汇数据...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard-actions" id="flashcard-actions">
+          <button class="rate-btn rate-again" data-rate="0"><i class="cc-ic" data-ic="chevron-right"></i> <span>不认识</span>
+            <span class="rate-time" id="time-again">现在</span>
+          </button>
+          <button class="rate-btn rate-hard" data-rate="1"><i class="cc-ic" data-ic="chevron-right"></i> <span>模糊</span>
+            <span class="rate-time" id="time-hard">1天</span>
+          </button>
+          <button class="rate-btn rate-good" data-rate="2"><i class="cc-ic" data-ic="chevron-right"></i> <span>认识</span>
+            <span class="rate-time" id="time-good">4天</span>
+          </button>
+          <button class="rate-btn rate-easy" data-rate="3"><i class="cc-ic" data-ic="chevron-right"></i> <span>简单</span>
+            <span class="rate-time" id="time-easy">7天</span>
+          </button>
+        </div>
+
+        <div class="keyboard-hint hidden-mobile">
+          <span><kbd>Space</kbd> 翻面</span>
+          <span><kbd>1</kbd> 不认识</span>
+          <span><kbd>2</kbd> 模糊</span>
+          <span><kbd>3</kbd> 认识</span>
+          <span><kbd>4</kbd> 简单</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <div class="tab-items">
+      <a href="index.html" class="tab-item"><div class="tab-icon"><i class="cc-ic" data-ic="house" aria-hidden="true"></i></div><div>首页</div></a>
+      <a href="languages/en.html" class="tab-item"><div class="tab-icon"><i class="cc-ic" data-ic="globe" aria-hidden="true"></i></div><div>语种</div></a>
+      <a href="flashcards.html" class="tab-item center-btn active"><div class="tab-icon"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i></div></a>
+      <a href="chat.html" class="tab-item"><div class="tab-icon"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><div>对话</div></a>
+      <a href="profile.html" class="tab-item"><div class="tab-icon"><i class="cc-ic" data-ic="user" aria-hidden="true"></i></div><div>我的</div></a>
+    </div>
+  </nav>
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/srs.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/ai-chat.js"></script>
+
+  <script>
+    // 闪卡学习逻辑
+    let state = {
+      cards: [],
+      currentIndex: 0,
+      isFlipped: false,
+    };
+
+    async function init() {
+      const lang = (window.LVStorage && LVStorage.getCurrentLang()) || 'en';
+
+      if (window.LVStorage) {
+        try {
+          await LVStorage.db.init();
+
+          // 检查是否有数据
+          const stats = await LVStorage.db.getVocabStats(lang);
+          if (stats.total === 0) {
+            // 尝试导入
+            try {
+              const res = await fetch(`assets/data/${lang}/vocab.json`);
+              if (res.ok) {
+                const words = await res.json();
+                await LVStorage.db.importVocab(lang, words);
+              }
+            } catch (e) {
+              console.warn('导入词汇失败:', e);
+            }
+          }
+
+          // 获取卡片
+          const dueCards = await LVStorage.db.getDueCards(lang, 15);
+          const newCards = await LVStorage.db.getNewCards(lang, 5);
+          state.cards = [...dueCards, ...newCards];
+        } catch (e) {
+          console.warn('IndexedDB 不可用:', e);
+        }
+      }
+
+      if (state.cards.length === 0) {
+        showEmptyState();
+        return;
+      }
+
+      displayCard();
+      setupEvents();
+    }
+
+    function displayCard() {
+      const card = state.cards[state.currentIndex];
+      if (!card) return;
+
+      const cardEl = document.getElementById('flashcard');
+      cardEl.classList.remove('flipped');
+      state.isFlipped = false;
+
+      document.getElementById('card-word').textContent = card.word || card.term || '';
+      document.getElementById('card-phonetic').textContent = card.phonetic || card.kana || card.romaji || '';
+      document.getElementById('card-pos').textContent = card.pos || 'n.';
+      document.getElementById('card-meaning').textContent = card.meaning || card.definition || '';
+      document.getElementById('card-example').textContent = card.example || card.sentence || '暂无例句';
+
+      // 更新进度
+      document.getElementById('card-progress').textContent =
+        `${state.currentIndex + 1} / ${state.cards.length}`;
+
+      // 更新评分时间
+      if (window.LVSRS) {
+        const times = [0, 1, 2, 3].map(q => LVSRS.getNextReviewText(card, q));
+        document.getElementById('time-again').textContent = times[0];
+        document.getElementById('time-hard').textContent = times[1];
+        document.getElementById('time-good').textContent = times[2];
+        document.getElementById('time-easy').textContent = times[3];
+      }
+    }
+
+    async function rateCard(quality) {
+      const card = state.cards[state.currentIndex];
+      if (!card) return;
+
+      if (window.LVSRS && window.LVStorage) {
+        const updates = LVSRS.getNextReview(card, quality);
+        await LVStorage.db.updateCard(card.id, updates);
+        await LVStorage.db.addReview({
+          cardId: card.id,
+          lang: (LVStorage && LVStorage.getCurrentLang()) || 'en',
+          quality,
+          interval: updates.interval,
+        });
+      }
+
+      state.currentIndex++;
+
+      if (state.currentIndex >= state.cards.length) {
+        finishSession();
+      } else {
+        displayCard();
+      }
+    }
+
+    function finishSession() {
+      if (window.LVStorage) {
+        LVStorage.stats.recordSession({
+          cardsStudied: state.cards.length,
+          correct: Math.round(state.cards.length * 0.7),
+          duration: 300,
+        });
+      }
+
+      const container = document.querySelector('.flashcard-wrapper');
+      container.innerHTML = `
+        <div class="empty-state" style="padding:40px">
+          <div class="empty-icon" style="font-size:64px"><i class="cc-ic" data-ic="party-popper"></i></div>
+          <h3 style="font-size:24px;margin-top:16px">本轮学习完成！</h3>
+          <p style="margin-top:8px">共学习了 ${state.cards.length} 张卡片</p>
+          <div style="margin-top:16px">
+            <span class="badge badge-level" style="font-size:14px;padding:6px 14px">+${state.cards.length * 10} XP</span>
+          </div>
+          <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <button class="btn btn-primary" onclick="location.reload()">再来一轮</button>
+            <a href="/" class="btn btn-secondary">← 回总站</a>
+          </div>
+        </div>
+      `;
+
+      if (window.LVComponents) {
+        LVComponents.toast.success('学习完成，继续加油！');
+      }
+    }
+
+    function showEmptyState() {
+      const container = document.querySelector('.flashcard-wrapper');
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon"><i class="cc-ic" data-ic="party-popper"></i></div>
+          <h3>今天的学习完成啦！</h3>
+          <p>所有待复习卡片都已完成</p>
+          <button class="btn btn-primary mt-4" onclick="location.reload()">
+            刷新获取更多
+          </button>
+        </div>
+      `;
+    }
+
+    function setupEvents() {
+      // 卡片翻转
+      document.getElementById('flashcard').addEventListener('click', (e) => {
+        if (e.target.closest('.speak-btn')) return;
+        const card = document.getElementById('flashcard');
+        card.classList.toggle('flipped');
+        state.isFlipped = !state.isFlipped;
+      });
+
+      // 发音按钮
+      document.getElementById('speak-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        speakWord();
+      });
+
+      // 评分按钮
+      document.querySelectorAll('.rate-btn').forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          const quality = parseInt(btn.getAttribute('data-rate'));
+          await rateCard(quality);
+        });
+      });
+
+      // 键盘快捷键
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        switch (e.key) {
+          case ' ':
+          case 'Enter':
+            e.preventDefault();
+            document.getElementById('flashcard').click();
+            break;
+          case '1': rateCard(0); break;
+          case '2': rateCard(1); break;
+          case '3': rateCard(2); break;
+          case '4': rateCard(3); break;
+        }
+      });
+    }
+
+    function speakWord() {
+      const card = state.cards[state.currentIndex];
+      if (!card || !card.word) return;
+
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(card.word);
+        const lang = (window.LVStorage && LVStorage.getCurrentLang()) || 'en';
+        const langMap = { en: 'en-US', ja: 'ja-JP', ko: 'ko-KR', fr: 'fr-FR', es: 'es-ES' };
+        utterance.lang = langMap[lang] || 'en-US';
+        utterance.rate = 0.9;
+        speechSynthesis.speak(utterance);
+      }
+    }
+
+    // 初始化
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+<link rel="stylesheet" href="/assets/baiju-core.css?v=20261125a">
+<script src="/assets/baiju-core.js" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div><div style="max-width:1180px;margin:0 auto;padding:10px 20px 16px;font-size:12px;line-height:1.7;color:#9fb0cd;border-top:1px dashed rgba(255,255,255,.14);letter-spacing:.2px;text-align:center">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。</div>
+  </footer>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

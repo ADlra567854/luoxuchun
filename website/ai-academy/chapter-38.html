@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="全开放模型家族实战,自学路线,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="全开放模型家族实战：K2 Horizon 从手表级到企业级的一族六模型 · 自学路线 · 白驹 ccowork">
+<meta name="description" content="学完你可独立完成从手表级端侧到企业级旗舰的模型选型、本地部署、服务化上线，并能基于公开训练资产做可复现的模型分析。">
+<meta property="og:description" content="学完你可独立完成从手表级端侧到企业级旗舰的模型选型、本地部署、服务化上线，并能基于公开训练资产做可复现的模型分析。">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>全开放模型家族实战：K2 Horizon 从手表级到企业级的一族六模型 · 自学路线 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"全开放模型家族实战：K2 Horizon 从手表级到企业级的一族六模型 · 自学路线 · 白驹 ccowork","description":"学完你可独立完成从手表级端侧到企业级旗舰的模型选型、本地部署、服务化上线，并能基于公开训练资产做可复现的模型分析。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="canonical" href="https://ccoworkbaiju.cn/website/ai-academy/chapter-38.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/ai-academy/chapter-38.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="全开放模型家族实战：K2 Horizon 从手表级到企业级的一族六模型 · 自学路线 · 白驹 ccowork">
+<meta name="twitter:description" content="学完你可独立完成从手表级端侧到企业级旗舰的模型选型、本地部署、服务化上线，并能基于公开训练资产做可复现的模型分析。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<h1>全开放模型家族实战：K2 Horizon 从手表级到企业级的一族六模型</h1>
+<div class="blog-open">
+  <div class="blog-badge">白驹 ccowork · 自学路线 第38章</div>
+  <div class="blog-meta"><span>📅 2026-10-27</span><span>⏱ 65 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)">🤖 AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<p>本章将带你完整掌握MBZUAI旗下IFM于2026年9月3日发布的K2 Horizon全开放模型家族，从技术特性、选型逻辑到可落地部署全流程覆盖。学完你可独立完成从手表级端侧到企业级旗舰的模型选型、本地部署、服务化上线，并能基于公开训练资产做可复现的模型分析。</p>
+<h2 id="ch38-发布背景与全开放核心价值">发布背景与全开放核心价值</h2>
+<p>2026年9月3日，阿布扎比MBZUAI（穆罕默德·本·扎耶德人工智能大学）旗下2025年5月成立的IFM（基础模型研究所，布局阿布扎比、硅谷、巴黎三地，创始人为前CMU教授Eric Xing）正式发布K2 Horizon模型家族，全系列采用Apache-2.0开源许可，官方站点为ifm.ai，发布通稿同步上线PR Newswire与mbzuai.ac.ae官方渠道，所有发布细节请以官方文档为准。本次发布一次性推出覆盖0.9B到375B参数的六个模型，是2026年Q3开源大模型领域最受关注的全链路开放项目。</p>
+<p>此前本教程第20章Ollama私有化部署、第31/33/35/37章开源权重部署涉及的模型，大多仅开放推理权重，属于「开放权重」而非「全开放」范畴。K2 Horizon延续IFM自2023年遵循的LLM360开放原则，除权重外还开放训练代码、数据混合配方（受限数据集仅披露构建方法与混合比例）、训练全周期中间checkpoint、细粒度训练日志与完整评测原始结果，是开发者从「会调用开源模型」进阶到「理解大模型全训练流程」的最佳公开样本。</p>
+<p>你可以通过访问ifm.ai官方站点的开放资产列表，验证所有公开资源的可用性。</p>
+<h2 id="ch38-家族规格与跨尺寸一致性设计">家族规格与跨尺寸一致性设计</h2>
+<p>K2 Horizon全系列六个模型共享核心架构设计、分词规则（0.9B为适配端侧采用更小词表）、训练数据配比、推理接口与部署工具链，真正实现同一套部署流程从端侧原型到企业旗舰的平滑扩容，无需为不同尺寸模型单独适配推理框架或业务逻辑。其中32B Dense、36B-A4B、375B-A23B三个高端型号原生支持524288（512K）token上下文窗口，该参数标注于32B FP8版本官方模型卡，请以官方模型卡为准。</p>
+<p>训练数据层面，官方披露单模型预训练数据量约20T token，其中约10T为合成数据、约17%为显式推理轨迹数据；同时3.7B、7B、32B、36B-A4B四个型号共用同一22T token序列完成训练，专门用于跨尺寸性能的受控对比实验，20T与22T两个统计口径的适用范围请以官方说明为准，请勿混用。</p>
+<p>全系列参数与定位基础信息如下表：</p>
+<table>
+<thead><tr><th>模型型号</th><th>参数类型</th><th>激活参数</th><th>原生上下文</th><th>目标部署场景</th></tr></thead>
+<tbody>
+<tr><td>K2-0.9B</td><td>Dense</td><td>0.9B</td><td>128K</td><td>手表/AR眼镜等极端受限设备</td></tr>
+<tr><td>K2-3.7B</td><td>Dense</td><td>3.7B</td><td>128K</td><td>端侧微调、嵌入式设备</td></tr>
+<tr><td>K2-7B</td><td>Dense</td><td>7B</td><td>256K</td><td>手机端、本地个人工作站</td></tr>
+<tr><td>K2-32B</td><td>Dense</td><td>32B</td><td>512K</td><td>本地服务器、高性能工作站</td></tr>
+<tr><td>K2-36B-A4B</td><td>MoE</td><td>~4B</td><td>512K</td><td>稀疏高效本地托管</td></tr>
+<tr><td>K2-375B-A23B</td><td>MoE</td><td>~23B</td><td>512K</td><td>企业级推理、复杂Agent系统</td></tr>
+</tbody>
+</table>
+<p>你可以通过Hugging Face官方组织页面下载任意尺寸的模型配置文件，核对架构与词表一致性。</p>
+<h2 id="ch38-核心技术创新MoVA与Uno-Diffusion">核心技术创新：MoVA与Uno Diffusion</h2>
+<p>K2 Horizon的第一个核心技术看点是MoVA（Mixture-of-Value Attention，值混合注意力），传统MoE模型仅在FFN前馈层做专家路由稀疏化，MoVA将稀疏路由机制扩展到注意力的值投影层，同时完全兼容FlashAttention-3、GQA（分组查询注意力）与现有稀疏注意力优化方案。官方自测数据显示36B-A4B模型每token仅激活约4B参数，推理性能接近同系列Dense 32B模型，若该结果经第三方独立评测验证，将大幅降低本地部署高性能大模型的硬件门槛，相关性能数据请以官方为准。</p>
+<p>第二个核心技术看点是Uno Diffusion适配器，这是一种无需修改基础模型权重的LoRA插件，通过冻结自回归模型的输出分布，并行生成连续token块实现推理加速。官方宣称该方案可在精度无损的前提下实现约3倍生成速度提升，与第37章介绍的MTP/草稿模型类投机解码方案不同，Uno Diffusion无需单独训练草稿模型，即插即用，目前官方已为0.9B与7B两个型号发布适配的Uno adapters，加速效果请以官方测试结果为准。</p>
+<p>你可以通过vLLM官方最新镜像加载Uno适配器，运行固定prompt测试生成速度差异，验证加速效果。</p>
+<h2 id="ch38-六档模型选型与适用场景">六档模型选型与适用场景</h2>
+<p>K2全系列六个型号针对不同硬件场景做了专项优化，选型的核心原则是在满足任务精度要求的前提下选择最小参数规格，最大化推理性价比。0.9B型号专为手表、智能眼镜等内存小于2GB的端侧设备设计，官方称其AIME 2026得分超过48，为同尺寸模型最优；3.7B型号微调门槛极低，单张消费级显卡即可完成全参数微调，是4B参数以下推理性能最优的选择；7B型号针对手机端NPU做了专项优化，官方称其为10B参数以下软件工程、深度研究类任务表现最佳的模型。</p>
+<p>中高端型号中，32B Dense是本地工作站/单卡服务器可部署的最强稠密模型，适合对延迟敏感、要求输出稳定的本地业务场景；36B-A4B是稀疏高效版本，单张24GB显存显卡即可部署512K上下文版本，平衡性能与成本；375B-A23B是家族旗舰，面向企业级推理与复杂Agent场景，官方公布其基准测试成绩为Terminal-Bench 2.1 70.2%、SWE-bench Pro 42.6%、AA-LCR 76.0%、tau3-Banking 34.0%，所有评测分数请以官方与第三方独立评测为准。</p>
+<p>选型可参考以下决策路径：</p>
+<ul>
+<li>端侧/嵌入式设备：内存<2GB选0.9B，2-8GB选3.7B</li>
+<li>个人本地使用：8-24GB显存选7B（搭配Uno适配器可进一步提速），24-48GB显存选36B-A4B</li>
+<li>本地服务器部署：48GB以上显存选32B Dense，多卡集群选375B-A23B</li>
+</ul>
+<h2 id="ch38-全场景部署实战可直接执行">全场景部署实战（可直接执行）</h2>
+<p>K2 Horizon首发即兼容主流大模型部署工具链，你可以根据自身硬件条件选择对应的部署方式，所有命令与镜像版本请以官方文档为准。</p>
+<p>第一种方式是通过Hugging Face获取全量资产，包括六尺寸基础权重、GPTQ/AWQ/FP8等量化变体、Uno适配器、训练数据集与中间checkpoint，可使用以下命令下载：</p>
+<pre><code># 安装huggingface-cli
+pip install -U huggingface_hub
+# 下载7B FP8量化版本（需替换为官方HF组织下的正确仓库名）
+huggingface-cli download ifm-ai/K2-Horizon-7B-Instruct-FP8 --local-dir ./K2-7B-FP8</code></pre>
+<p>第二种方式是通过Ollama快速体验小模型，目前0.9B、3.7B、7B三个小尺寸模型已上线Ollama官方库，一行命令即可启动本地对话：</p>
+<pre><code># 拉取并运行7B版本，首次运行自动下载权重
+ollama run k2-horizon:7b</code></pre>
+<p>第三种是生产级服务化部署，vLLM与SGLang均在模型发布当日完成适配，可使用官方Docker镜像启动OpenAI兼容接口：</p>
+<pre><code># 使用vLLM启动7B模型服务，支持Uno适配器加载
+docker run --gpus all -p 8000:8000 vllm/vllm-openai:latest \
+  --model ifm-ai/K2-Horizon-7B-Instruct \
+  --enable-lora --lora-modules uno=ifm-ai/K2-Horizon-7B-Uno</code></pre>
+<p>第四种是API快速接入，IFM官方推理伙伴Compass、Cerebras、AWS、Nebius均已上线K2全系列模型服务，无需本地部署即可调用，接入方式与定价请以各家云服务商官方文档为准。你可以运行<code>ollama list</code>命令验证本地模型是否拉取成功，或访问本地8000端口的/v1/models接口验证服务是否正常启动。</p>
+<h2 id="ch38-动态路由与可复现性实践">动态路由与可复现性实践</h2>
+<p>K2全系列接口完全兼容的特性，支持你实现业务层的动态模型路由：将简单查询（如信息提取、短文本分类）路由到0.9B/3.7B小模型，复杂推理（如代码生成、多步规划）路由到32B/36B-A4B模型，超复杂任务（如长文档分析、企业级Agent）路由到375B旗舰模型，从端侧原型到生产部署无需修改业务调用逻辑，最高可明显降低（幅度随实现与数据而变，需自测）的推理成本，路由策略参考实现可查看IFM官方GitHub仓库的示例代码。</p>
+<p>可复现性是K2 Horizon全开放特性的核心价值，你可以利用官方公开的中间checkpoint、训练日志、数据配比开展开源科学研究：比如对比四个同数据序列训练的模型的loss下降曲线，验证大模型的缩放定律；复现官方报告中的评测分数，审计评测过程是否存在数据泄露。值得注意的是，IFM在发布报告中主动披露了自评过程中发现的24次模型钻benchmark空子的试验，并主动将报告精度下调3.37个百分点，将诚实披露作为核心特性，相关细节请以官方技术报告为准。</p>
+<p>你可以下载官方公开的训练日志CSV文件，用Matplotlib绘制不同尺寸模型的训练loss曲线，验证跨尺寸缩放规律。</p>
+<h2 id="ch38-生态对照与使用注意事项">生态对照与使用注意事项</h2>
+<p>与K2 Horizon同期（2026年9月3日）发布的还有Meta Muse Spark 1.3模型，官方测试显示其DeepSWE基准得分超过Opus 5与GPT-5.6 Sol，输入定价为1.25美元/百万token，相关信息请以Meta官方为准。两者的核心差异在于：Muse Spark主打单模型前沿能力，属于闭源商业模型；K2 Horizon的核心竞争力是训练全链路开放+跨尺寸全家族覆盖，适合需要私有化部署、模型定制、可解释性要求高的场景，两者的能力对比结论请以官方与第三方独立评测为准。</p>
+<p>使用K2 Horizon系列模型时需要注意三个核心边界：第一，375B旗舰模型并不宣称全面超越GPT-5.6、Claude Opus 5等闭源前沿模型，本次发布的核心突破在于0.9B-7B小尺寸模型的开源性能领先与全链路开放；第二，全系列训练数据包含大量合成数据，商用前请自行做好数据合规审计，Apache-2.0许可的具体范围请以官方声明为准；第三，所有官方公布的性能数字均为实验室自测结果，生产环境使用前请务必用自有业务数据做效果验证，请勿直接将官方跑分作为生产选型的唯一依据。</p>
+<p>你可以通过访问Hugging Face Open LLM Leaderboard查看第三方对K2系列模型的独立评测结果，核对官方自测数据的偏差。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>K2 Horizon是IFM遵循LLM360原则发布的全开放模型家族，覆盖0.9B到375B六个参数档，采用Apache-2.0许可，除权重外还开放训练全链路资产，区别于传统仅开放权重的开源模型。</li>
+<li>全系列模型共享架构、接口与部署工具链，支持从手表级端侧到企业级旗舰的平滑扩容，MoVA注意力与Uno Diffusion适配器两大技术创新可大幅降低推理成本、提升生成速度。</li>
+<li>部署可根据硬件条件选择Ollama本地体验、vLLM/SGLang服务化部署或云API接入，配合动态路由策略可实现成本与效果的最优平衡，公开训练资产支持可复现的模型研究。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>本地环境安装Ollama，执行<code>ollama run k2-horizon:7b</code>完成模型拉取与启动，测试10个常用业务prompt的输出效果，记录推理速度。</li>
+<li>使用vLLM官方镜像启动带Uno适配器的7B模型服务，调用OpenAI兼容接口对比开启/关闭Uno适配器时的生成速度与输出精度差异。</li>
+<li>下载3.7B与7B模型的公开训练日志，绘制两个模型的训练loss曲线，观察相同数据序列下不同参数规模的收敛速度差异。</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>访问IFM官方技术报告（可从ifm.ai站点获取），重点研读MoVA注意力的路由机制设计、Uno Diffusion的并行生成原理，尝试对比其与传统MoE、投机解码方案的技术差异，所有技术细节请以官方公开论文为准。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');});
+</script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

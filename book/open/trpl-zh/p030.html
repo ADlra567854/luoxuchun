@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trait：定义共同行为 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：Trait：定义共同行为。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p030.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html" class="on">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 30 / 86 节
+    </div>
+    <h1>Trait：定义共同行为</h1>
+    <p><a id="traits-defining-shared-behavior"></a></p>
+<h2 id="trait定义共同行为"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/3986f214fd82427b4401adf4d7dc0911c917e1e8/src/ch10-02-traits.md">ch10-02-traits.md</a></p>
+<p><em>trait</em> 定义了某个特定类型拥有可能与其他类型共享的功能。可以通过 trait 以一种抽象的方式定义共同行为。可以使用 <strong>trait 约束</strong>（<em>trait bounds</em>）指定泛型是任何拥有特定行为的类型。</p>
+<blockquote>
+<p>注意：<em>trait</em> 类似于其他语言中的常被称为 <strong>接口</strong>（<em>interfaces</em>）的功能，虽然有一些不同。</p>
+</blockquote>
+<h3 id="定义-trait"></h3>
+<p>一个类型的行为由其可供调用的方法构成。如果可以对不同类型调用相同的方法的话，这些类型就可以共享相同的行为了。trait 定义是一种将方法签名组合起来的方法，目的是定义一个实现某些目的所必需的行为的集合。</p>
+<p>例如，这里有多个存放了不同类型和属性文本的结构体：结构体 <code>NewsArticle</code> 用于存放发生于世界各地的新闻故事，而结构体 <code>SocialPost</code> 最多只能存放 280 个字符的内容，以及指示该帖子是新发布的、转发的还是对另一条帖子的回复的元数据。</p>
+<p>我们想要创建一个名为 <code>aggregator</code> 的多媒体聚合库用来显示可能储存在 <code>NewsArticle</code> 或 <code>SocialPost</code> 实例中的数据摘要。为了实现功能，每个结构体都要能够获取摘要，这样的话就可以调用实例的 <code>summarize</code> 方法来请求摘要。示例 10-12 中展示了一个表现这个概念的公有 <code>Summary</code> trait 的定义：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">pub trait Summary {
+    fn summarize(&amp;self) -&gt; String;
+}</code></pre>
+<p><span class="caption">示例 10-12：<code>Summary</code> trait 定义，它包含由 <code>summarize</code> 方法提供的行为</span></p>
+<p>这里使用 <code>trait</code> 关键字来声明一个 trait，后面是 trait 的名字，在这个例子中是 <code>Summary</code>。我们也声明 <code>trait</code> 为 <code>pub</code> 以便依赖这个 crate 的其它 crate 也可以使用这个 trait，正如我们见过的一些示例一样。在大括号中声明描述实现这个 trait 的类型所需要的行为的方法签名，在这个例子中是 <code>fn summarize(&amp;self) -&gt; String</code>。</p>
+<p>在方法签名后跟分号，而不是在大括号中提供其实现。接着每一个实现这个 trait 的类型都需要提供其自定义行为的方法体，编译器也会确保任何实现 <code>Summary</code> trait 的类型都拥有与这个签名的定义完全一致的 <code>summarize</code> 方法。</p>
+<p>trait 体中可以有多个方法：一行一个方法签名且都以分号结尾。</p>
+<h3 id="为类型实现-trait"></h3>
+<p>现在我们定义了 <code>Summary</code> trait 的签名，接着就可以在多媒体聚合库中实现这个类型了。示例 10-13 中展示了 <code>NewsArticle</code> 结构体上 <code>Summary</code> trait 的一个实现，它使用标题、作者和创建的位置作为 <code>summarize</code> 的返回值。对于 <code>SocialPost</code> 结构体，我们选择将 <code>summarize</code> 定义为用户名后跟帖子全文作为返回值，并假设帖子内容已经被限制为 280 字符以内。</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground"><span class="boring">pub trait Summary {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String;
+</span><span class="boring">}
+</span><span class="boring">
+</span>pub struct NewsArticle {
+    pub headline: String,
+    pub location: String,
+    pub author: String,
+    pub content: String,
+}
+
+impl Summary for NewsArticle {
+    fn summarize(&amp;self) -&gt; String {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+
+pub struct SocialPost {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub repost: bool,
+}
+
+impl Summary for SocialPost {
+    fn summarize(&amp;self) -&gt; String {
+        format!("{}: {}", self.username, self.content)
+    }
+}</code></pre>
+<p><span class="caption">示例 10-13：在 <code>NewsArticle</code> 和 <code>SocialPost</code> 类型上实现 <code>Summary</code> trait</span></p>
+<p>在类型上实现 trait 类似于实现常规方法。区别在于 <code>impl</code> 关键字之后，我们提供需要实现 trait 的名称，接着是 <code>for</code> 和需要实现 trait 的类型的名称。在 <code>impl</code> 块中，使用 trait 定义中的方法签名，不过不再后跟分号，而是需要在大括号中编写函数体来为特定类型实现 trait 方法所拥有的行为。</p>
+<p>现在库在 <code>NewsArticle</code> 和 <code>SocialPost</code> 上实现了<code>Summary</code> trait，crate 的用户可以像调用常规方法一样调用 <code>NewsArticle</code> 和 <code>SocialPost</code> 实例的 trait 方法了。唯一的区别是 trait 必须和类型一起引入作用域以便使用额外的 trait 方法。这是一个二进制 crate 如何利用 <code>aggregator</code> 库 crate 的例子：</p>
+<pre><code class="language-rust ignore">use aggregator::{SocialPost, Summary};
+
+fn main() {
+    let post = SocialPost {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        repost: false,
+    };
+
+    println!("1 new post: {}", post.summarize());
+}</code></pre>
+<p>这会打印出 <code>1 new post: horse_ebooks: of course, as you probably already know, people</code>。</p>
+<p>其他依赖 <code>aggregator</code> crate 的 crate 也可以将 <code>Summary</code> 引入作用域以便为其自己的类型实现该 trait。需要注意的限制是，只有在 trait 或类型至少有一个属于当前 crate 时，我们才能对类型实现该 trait。例如，可以为 <code>aggregator</code> crate 的自定义类型 <code>SocialPost</code> 实现如标准库中的 <code>Display</code> trait，这是因为 <code>SocialPost</code> 类型位于 <code>aggregator</code> crate 本地的作用域中。类似地，也可以在 <code>aggregator</code> crate 中为 <code>Vec&lt;T&gt;</code> 实现 <code>Summary</code>，这是因为 <code>Summary</code> trait 位于 <code>aggregator</code> crate 本地作用域中。</p>
+<p>但是不能为外部类型实现外部 trait。例如，不能在 <code>aggregator</code> crate 中为 <code>Vec&lt;T&gt;</code> 实现 <code>Display</code> trait。这是因为 <code>Display</code> 和 <code>Vec&lt;T&gt;</code> 都定义于标准库中，它们并不位于 <code>aggregator</code> crate 本地作用域中。这个限制是被称为<strong>相干性</strong>（<em>coherence</em>）的程序属性的一部分，或者更具体的说是 <strong>孤儿规则</strong>（<em>orphan rule</em>），其得名于不存在父类型。这条规则确保了其他人编写的代码不会破坏你的代码，反之亦然。没有这条规则的话，两个 crate 可以分别对相同类型实现相同的 trait，而 Rust 将无从得知应该使用哪一个实现。</p>
+<p><a id="default-implementations"></a></p>
+<h3 id="使用默认实现"></h3>
+<p>有时为 trait 中的某些或全部方法提供默认的行为，而不是在每个类型的每个实现中都定义自己的行为是很有用的。这样当为某个特定类型实现 trait 时，可以选择保留或重载每个方法的默认行为。</p>
+<p>示例 10-14 中我们为 <code>Summary</code> trait 的 <code>summarize</code> 方法指定一个默认的字符串值，而不是像示例 10-12 中那样只是定义方法签名：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">pub trait Summary {
+    fn summarize(&amp;self) -&gt; String {
+        String::from("(Read more...)")
+    }
+}
+<span class="boring">
+</span><span class="boring">pub struct NewsArticle {
+</span><span class="boring">    pub headline: String,
+</span><span class="boring">    pub location: String,
+</span><span class="boring">    pub author: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for NewsArticle {}
+</span><span class="boring">
+</span><span class="boring">pub struct SocialPost {
+</span><span class="boring">    pub username: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">    pub reply: bool,
+</span><span class="boring">    pub repost: bool,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for SocialPost {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String {
+</span><span class="boring">        format!("{}: {}", self.username, self.content)
+</span><span class="boring">    }
+</span><span class="boring">}</span></code></pre>
+<p><span class="caption">示例 10-14：<code>Summary</code> trait 的定义，带有一个 <code>summarize</code> 方法的默认实现</span></p>
+<p>如果想要对 <code>NewsArticle</code> 实例使用这个默认实现，可以通过 <code>impl Summary for NewsArticle {}</code> 指定一个空的 <code>impl</code> 块。</p>
+<p>虽然我们不再直接为 <code>NewsArticle</code> 定义 <code>summarize</code> 方法了，但是我们提供了一个默认实现并且指定 <code>NewsArticle</code> 实现 <code>Summary</code> trait。因此，我们仍然可以对 <code>NewsArticle</code> 实例调用 <code>summarize</code> 方法，如下所示：</p>
+<pre><code class="language-rust ignore"><span class="boring">use aggregator::{self, NewsArticle, Summary};
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span>    let article = NewsArticle {
+        headline: String::from("Penguins win the Stanley Cup Championship!"),
+        location: String::from("Pittsburgh, PA, USA"),
+        author: String::from("Iceburgh"),
+        content: String::from(
+            "The Pittsburgh Penguins once again are the best \
+             hockey team in the NHL.",
+        ),
+    };
+
+    println!("New article available! {}", article.summarize());
+<span class="boring">}</span></code></pre>
+<p>这段代码会打印 <code>New article available! (Read more...)</code>。</p>
+<p>为 <code>summarize</code> 创建默认实现并不要求对示例 10-13 中 <code>SocialPost</code> 上的 <code>Summary</code> 实现做任何改变。其原因是重载一个默认实现的语法与实现没有默认实现的 trait 方法的语法一样。</p>
+<p>默认实现允许调用相同 trait 中的其他方法，哪怕这些方法没有默认实现。如此，trait 可以提供很多有用的功能而只需要实现指定一小部分内容。例如，我们可以定义 <code>Summary</code> trait，使其具有一个需要实现的 <code>summarize_author</code> 方法，然后定义一个 <code>summarize</code> 方法，此方法的默认实现调用 <code>summarize_author</code> 方法：</p>
+<pre><code class="language-rust noplayground">pub trait Summary {
+    fn summarize_author(&amp;self) -&gt; String;
+
+    fn summarize(&amp;self) -&gt; String {
+        format!("(Read more from {}...)", self.summarize_author())
+    }
+}
+<span class="boring">
+</span><span class="boring">pub struct SocialPost {
+</span><span class="boring">    pub username: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">    pub reply: bool,
+</span><span class="boring">    pub repost: bool,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for SocialPost {
+</span><span class="boring">    fn summarize_author(&amp;self) -&gt; String {
+</span><span class="boring">        format!("@{}", self.username)
+</span><span class="boring">    }
+</span><span class="boring">}</span></code></pre>
+<p>为了使用这个版本的 <code>Summary</code>，只需在为类型实现 trait 时定义 <code>summarize_author</code> 即可：</p>
+<pre><code class="language-rust ignore"><span class="boring">pub trait Summary {
+</span><span class="boring">    fn summarize_author(&amp;self) -&gt; String;
+</span><span class="boring">
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String {
+</span><span class="boring">        format!("(Read more from {}...)", self.summarize_author())
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct SocialPost {
+</span><span class="boring">    pub username: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">    pub reply: bool,
+</span><span class="boring">    pub repost: bool,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Summary for SocialPost {
+    fn summarize_author(&amp;self) -&gt; String {
+        format!("@{}", self.username)
+    }
+}</code></pre>
+<p>一旦定义了 <code>summarize_author</code>，我们就可以对 <code>SocialPost</code> 结构体的实例调用 <code>summarize</code> 了，而 <code>summarize</code> 的默认实现会调用我们提供的 <code>summarize_author</code> 定义。因为实现了 <code>summarize_author</code>，<code>Summary</code> trait 就提供了 <code>summarize</code> 方法的功能，且无需编写更多的代码。</p>
+<pre><code class="language-rust ignore"><span class="boring">use aggregator::{self, SocialPost, Summary};
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span>    let post = SocialPost {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        repost: false,
+    };
+
+    println!("1 new post: {}", post.summarize());
+<span class="boring">}</span></code></pre>
+<p>这会打印出 <code>1 new post: (Read more from @horse_ebooks...)</code>。</p>
+<p>请注意，无法从一个方法的重写实现中调用与其同名的默认实现。</p>
+<p><a id="traits-as-parameters"></a></p>
+<h3 id="使用-trait-作为参数"></h3>
+<p>知道了如何定义 trait 和在类型上实现这些 trait 之后，我们可以探索一下如何使用 trait 来接受多种不同类型的参数。示例 10-13 中为 <code>NewsArticle</code> 和 <code>SocialPost</code> 类型实现了 <code>Summary</code> trait，用其来定义了一个函数 <code>notify</code> 来调用其参数 <code>item</code> 上的 <code>summarize</code> 方法，该参数是实现了 <code>Summary</code> trait 的某种类型。为此可以使用 <code>impl Trait</code> 语法，像这样：</p>
+<pre><code class="language-rust ignore"><span class="boring">pub trait Summary {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String;
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct NewsArticle {
+</span><span class="boring">    pub headline: String,
+</span><span class="boring">    pub location: String,
+</span><span class="boring">    pub author: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for NewsArticle {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String {
+</span><span class="boring">        format!("{}, by {} ({})", self.headline, self.author, self.location)
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct SocialPost {
+</span><span class="boring">    pub username: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">    pub reply: bool,
+</span><span class="boring">    pub repost: bool,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for SocialPost {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String {
+</span><span class="boring">        format!("{}: {}", self.username, self.content)
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>pub fn notify(item: &amp;impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}</code></pre>
+<p>对于 <code>item</code> 参数，我们指定了 <code>impl</code> 关键字和 trait 名称，而不是具体的类型。该参数支持任何实现了指定 trait 的类型。在 <code>notify</code> 函数体中，可以调用任何来自 <code>Summary</code> trait 的方法，比如 <code>summarize</code>。我们可以传递任何 <code>NewsArticle</code> 或 <code>SocialPost</code> 的实例来调用 <code>notify</code>。任何用其它如 <code>String</code> 或 <code>i32</code> 的类型调用该函数的代码都不能编译，因为它们没有实现 <code>Summary</code>。</p>
+<p><a id="fixing-the-largest-function-with-trait-bounds"></a></p>
+<h4 id="trait-约束语法"></h4>
+<p><code>impl Trait</code> 语法更直观，但它实际上是更长形式的 <em>trait 约束</em> 语法的语法糖。它看起来像：</p>
+<pre><code class="language-rust ignore">pub fn notify&lt;T: Summary&gt;(item: &amp;T) {
+    println!("Breaking news! {}", item.summarize());
+}</code></pre>
+<p>这种更冗长的写法与上一节的示例等价，但更为冗长。trait 约束与泛型参数声明在一起，位于尖括号中的冒号后面。</p>
+<p><code>impl Trait</code> 很方便，适用于短小的例子。更长的 trait 约束则适用于更复杂的场景。例如，可以获取两个实现了 <code>Summary</code> 的参数。使用 <code>impl Trait</code> 的语法看起来像这样：</p>
+<pre><code class="language-rust ignore">pub fn notify(item1: &amp;impl Summary, item2: &amp;impl Summary) {</code></pre>
+<p>这适用于 <code>item1</code> 和 <code>item2</code> 可以是不同类型的情况，只要它们都实现了 <code>Summary</code>。不过，如果我们希望强制两个参数必须具有相同类型，就必须使用 trait 约束，如下所示：</p>
+<pre><code class="language-rust ignore">pub fn notify&lt;T: Summary&gt;(item1: &amp;T, item2: &amp;T) {</code></pre>
+<p>泛型 <code>T</code> 被指定为 <code>item1</code> 和 <code>item2</code> 的参数限制，如此传递给参数 <code>item1</code> 和 <code>item2</code> 值的具体类型必须一致。</p>
+<p><a id="specifying-multiple-trait-bounds-with-the--syntax"></a></p>
+<h4 id="通过--语法指定多个-trait-约束"></h4>
+<p>我们也可以指定多个 trait 约束 <code>notify</code> 在 <code>item</code> 上既能使用格式化显示，又能使用 <code>summarize</code> 方法：在 <code>notify</code> 的定义中，指定 <code>item</code> 必须同时实现 <code>Display</code> 和 <code>Summary</code> 两个 trait。这可以通过 <code>+</code> 语法实现：</p>
+<pre><code class="language-rust ignore">pub fn notify(item: &amp;(impl Summary + Display)) {</code></pre>
+<p><code>+</code> 语法也适用于泛型的 trait 约束：</p>
+<pre><code class="language-rust ignore">pub fn notify&lt;T: Summary + Display&gt;(item: &amp;T) {</code></pre>
+<p>通过指定这两个 trait 约束，<code>notify</code> 的函数体可以调用 <code>summarize</code> 并使用 <code>{}</code> 来格式化 <code>item</code>。</p>
+<h4 id="通过-where-简化-trait-约束"></h4>
+<p>然而，使用过多的 trait 约束 也有缺点。每个泛型有其自己的 trait 约束，所以有多个泛型参数的函数在名称和参数列表之间会有很长的 trait 约束 信息，这使得函数签名难以阅读。为此，Rust 有另一个在函数签名之后的 <code>where</code> 从句中指定 trait 约束的语法。所以除了这么写：</p>
+<pre><code class="language-rust ignore">fn some_function&lt;T: Display + Clone, U: Clone + Debug&gt;(t: &amp;T, u: &amp;U) -&gt; i32 {</code></pre>
+<p>还可以像这样使用 <code>where</code> 从句：</p>
+<pre><code class="language-rust ignore">fn some_function&lt;T, U&gt;(t: &amp;T, u: &amp;U) -&gt; i32
+where
+    T: Display + Clone,
+    U: Clone + Debug,
+{
+<span class="boring">    unimplemented!()
+</span><span class="boring">}</span></code></pre>
+<p>这个函数签名就显得不那么杂乱，函数名、参数列表和返回值类型都离得很近，看起来跟没有那么多 trait 约束的函数很像。</p>
+<h3 id="返回实现了-trait-的类型"></h3>
+<p>也可以在返回值中使用 <code>impl Trait</code> 语法，来返回实现了某个 trait 的类型：</p>
+<pre><code class="language-rust ignore"><span class="boring">pub trait Summary {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String;
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct NewsArticle {
+</span><span class="boring">    pub headline: String,
+</span><span class="boring">    pub location: String,
+</span><span class="boring">    pub author: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for NewsArticle {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String {
+</span><span class="boring">        format!("{}, by {} ({})", self.headline, self.author, self.location)
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct SocialPost {
+</span><span class="boring">    pub username: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">    pub reply: bool,
+</span><span class="boring">    pub repost: bool,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for SocialPost {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String {
+</span><span class="boring">        format!("{}: {}", self.username, self.content)
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn returns_summarizable() -&gt; impl Summary {
+    SocialPost {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        repost: false,
+    }
+}</code></pre>
+<p>通过使用 <code>impl Summary</code> 作为返回值类型，我们指定了 <code>returns_summarizable</code> 函数返回某个实现了 <code>Summary</code> trait 的类型，但是不确定其具体的类型。在这个例子中 <code>returns_summarizable</code> 返回了一个 <code>SocialPost</code>，不过调用方并不知情。</p>
+<p>返回一个只是指定了需要实现的 trait 的类型的能力在闭包和迭代器场景十分的有用，第十三章会介绍它们。闭包和迭代器创建只有编译器知道的类型，或者是非常非常长的类型。<code>impl Trait</code> 允许你简单的指定函数返回一个 <code>Iterator</code> 而无需写出实际的冗长的类型。</p>
+<p>不过这只适用于返回单一类型的情况。例如，这段代码的返回值类型指定为返回 <code>impl Summary</code>，但是返回了 <code>NewsArticle</code> 或 <code>SocialPost</code> 就行不通：</p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">pub trait Summary {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String;
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct NewsArticle {
+</span><span class="boring">    pub headline: String,
+</span><span class="boring">    pub location: String,
+</span><span class="boring">    pub author: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for NewsArticle {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String {
+</span><span class="boring">        format!("{}, by {} ({})", self.headline, self.author, self.location)
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">pub struct SocialPost {
+</span><span class="boring">    pub username: String,
+</span><span class="boring">    pub content: String,
+</span><span class="boring">    pub reply: bool,
+</span><span class="boring">    pub repost: bool,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Summary for SocialPost {
+</span><span class="boring">    fn summarize(&amp;self) -&gt; String {
+</span><span class="boring">        format!("{}: {}", self.username, self.content)
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn returns_summarizable(switch: bool) -&gt; impl Summary {
+    if switch {
+        NewsArticle {
+            headline: String::from(
+                "Penguins win the Stanley Cup Championship!",
+            ),
+            location: String::from("Pittsburgh, PA, USA"),
+            author: String::from("Iceburgh"),
+            content: String::from(
+                "The Pittsburgh Penguins once again are the best \
+                 hockey team in the NHL.",
+            ),
+        }
+    } else {
+        SocialPost {
+            username: String::from("horse_ebooks"),
+            content: String::from(
+                "of course, as you probably already know, people",
+            ),
+            reply: false,
+            repost: false,
+        }
+    }
+}</code></pre>
+<p>这里尝试返回 <code>NewsArticle</code> 或 <code>SocialPost</code> 是不被允许的，原因在于编译器中 <code>impl Trait</code> 语法的实现限制。第十八章的<a href="#使用-trait-object-来抽象出共享行为">“使用 trait object 来抽象出共享行为”</a>部分会介绍如何编写这样一个函数。</p>
+<h3 id="使用-trait-约束有条件地实现方法"></h3>
+<p>通过使用带有 trait 约束的泛型参数的 <code>impl</code> 块，可以有条件地只为那些实现了特定 trait 的类型实现方法。例如，示例 10-15 中的类型 <code>Pair&lt;T&gt;</code> 总是实现了 <code>new</code> 方法并返回一个 <code>Pair&lt;T&gt;</code> 的实例（回忆一下第五章的 <a href="#方法语法">“方法语法”</a> 部分，<code>Self</code> 是一个 <code>impl</code> 块类型的类型别名（type alias），在这里是 <code>Pair&lt;T&gt;</code>）。不过在下一个 <code>impl</code> 块中，只有那些为 <code>T</code> 类型实现了 <code>PartialOrd</code> trait（来允许比较） <strong>和</strong> <code>Display</code> trait（来启用打印）的 <code>Pair&lt;T&gt;</code> 才会实现 <code>cmp_display</code> 方法：</p>
+<pre><code class="language-rust noplayground">use std::fmt::Display;
+
+struct Pair&lt;T&gt; {
+    x: T,
+    y: T,
+}
+
+impl&lt;T&gt; Pair&lt;T&gt; {
+    fn new(x: T, y: T) -&gt; Self {
+        Self { x, y }
+    }
+}
+
+impl&lt;T: Display + PartialOrd&gt; Pair&lt;T&gt; {
+    fn cmp_display(&amp;self) {
+        if self.x &gt;= self.y {
+            println!("The largest member is x = {}", self.x);
+        } else {
+            println!("The largest member is y = {}", self.y);
+        }
+    }
+}</code></pre>
+<p><span class="caption">示例 10-15：根据 trait 约束在泛型上有条件的实现方法</span></p>
+<p>也可以对任何实现了特定 trait 的类型有条件地实现 trait。对任何满足特定 trait 约束的类型实现 trait 被称为 <em>blanket implementations</em>，它们被广泛的用于 Rust 标准库中。例如，标准库为任何实现了 <code>Display</code> trait 的类型实现了 <code>ToString</code> trait。这个 <code>impl</code> 块看起来像这样：</p>
+<pre><code class="language-rust ignore">impl&lt;T: Display&gt; ToString for T {
+    // --snip--
+}</code></pre>
+<p>因为标准库有了这些 blanket implementation，我们可以对任何实现了 <code>Display</code> trait 的类型调用由 <code>ToString</code> 定义的 <code>to_string</code> 方法。例如，可以将整型转换为对应的 <code>String</code> 值，因为整型实现了 <code>Display</code>：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = 3.to_string();
+<span class="boring">}</span></code></pre>
+<p>Blanket implementation 会出现在 trait 文档的 “Implementers” 部分。</p>
+<p>Trait 和 trait 约束让我们能够使用泛型类型参数来减少重复，而且能够向编译器明确指定泛型类型需要拥有哪些行为。然后编译器可以利用 trait 约束信息检查代码中所用到的具体类型是否提供了正确的行为。在动态类型语言中，如果我们调用了一个未定义的方法，会在运行时出现错误。Rust 将这些错误移动到了编译时，甚至在代码能够运行之前就强迫我们修复问题。另外，我们也无需编写运行时检查行为的代码，因为在编译时就已经检查过了。这样既提升了性能又不必放弃泛型的灵活性。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p029.html">← 泛型数据类型</a><a href="index.html">目录</a><a href="p031.html">生命周期确保引用有效 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

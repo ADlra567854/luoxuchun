@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "微信小程序个人主体能力边界 + 题库系统 + 信息架构方法论",
+    "collectedAt": "2026-10-07",
+    "method": "来自平台运营规范解读、开发者社区整理、以及 UX/IA 领域公开方法论。每条附 URL。",
+    "hardConstraint": "★ 个人主体明令禁止评论区与 UGC 互动 —— 这条直接决定评论功能只能做在网页端，小程序端必须另设方案。"
+  },
+
+  "miniprogramPersonal": {
+    "verdict": "个人主体可做纯工具 + 内容展示类，不能做交易、不能做 UGC 互动、不能加载外链 H5。",
+    "banned": [
+      { "ability": "评论区 / 论坛 / 私信 / 投稿 / 树洞 / 告白墙", "why": "个人主体禁止一切 UGC 互动功能（明文）", "impact": "评论功能不能进小程序" },
+      { "ability": "微信支付 wx.requestPayment", "why": "需商户号 + 营业执照 + 对公账户，个人无法申请", "impact": "任何付费/充值/打赏都不可能过审" },
+      { "ability": "加载外部网页 / 套壳 H5", "why": "个人主体不可用，且域名须在小程序后台加白名单", "impact": "不能把现有站点 iframe 进小程序" },
+      { "ability": "wx.getPhoneNumber", "why": "需企业认证", "impact": "手机号只能让用户手输" },
+      { "ability": "视频号 / 直播 / 卡券 / 附近的小程序 / 流量主广告", "why": "均需企业认证或 UV 门槛" }
+    ],
+    "allowed": {
+      "categories": ["工具（信息查询/计算器/便签/日历/记账/图片处理/效率）", "教育信息展示（不含视频播放与课程销售）", "资讯信息展示", "生活服务信息展示"],
+      "apis": ["wx.login 取 code 换 openid（静默，不弹授权）", "云开发数据库（免费版 2GB）", "云开发 CDN（5GB/月）", "内容安全 API msgSecCheck（若有任何 UGC 则必接）"],
+      "quota": "云开发免费版：数据库 2GB、CDN 5GB/月；超量付费"
+    },
+    "reviewTraps": [
+      "类目选择错误：以「工具查询」申报实际做社交引流 → 直接永久封禁主体",
+      "UGC 未接内容安全 API msgSecCheck → 100% 驳回",
+      "空页面 / 死链 / 无响应按钮 → 驳回",
+      "强制分享解锁、强制授权 → 驳回",
+      "个人主体不得涉及经营性活动"
+    ],
+    "avoidSuggestion": "老罗说「规避一下」，正解就是：把小程序做成纯展示 + 纯工具（题库练习/工具真库浏览/地图查看），评论与付费全部留在网页端。"
+  },
+
+  "quizSystem": {
+    "cardDesign": {
+      "rule1OneIdeaPerCard": "一张卡只考一个可提取的知识点。考多个要素会导致评分无法诚实（4 个里对 3 个算对还是错？），算法也无法区分掌握程度。",
+      "rule2PreciseQuestion": "问题必须有唯一可预测的答案。「讲讲笛卡尔」不可预测；「《方法论》1637 年的作者是谁」可预测。",
+      "rule3NoVolatileFacts": "避免考频繁变动的事实（价格/排名/统计数字），除非有更新机制",
+      "rule4AddMnemonic": "抽象概念配助记或图像 —— 算法只管「何时出现」，编码质量靠内容本身",
+      "rule5ReviewOnCreationDay": "新卡当天先过一遍，捕捉表述错误，别让它进入长期轮转"
+    },
+    "algorithms": {
+      "ebbinghaus": "1885 年艾宾浩斯：不做主动复习，24 小时内遗忘约 70%。",
+      "sm2": {
+        "year": 1987,
+        "author": "Piotr Wożniak",
+        "vars": "Ease Factor（起始 2.5）+ Interval（天）",
+        "logic": "评分 0~5；<3 则间隔重置为 1 天且 EF 下降；3 保持；4~5 间隔 ×EF，EF 上升",
+        "strength": "简单透明，无需训练数据，第一次复习就有效，40 年实战验证",
+        "weakness": "乘数是通用的 —— 所有人同一套曲线，不适配个人；无显式留存目标"
+      },
+      "fsrs": {
+        "year": 2022,
+        "author": "Jarrett Ye 与开源社区",
+        "model": "DSR：Difficulty 难度(1-10) / Stability 稳定度(记忆跌到留存目标所需天数) / Retrievability 可检索性(当前想起的概率)",
+        "efficiency": "在 5 亿+ 次 Anki 复习记录基准上，比 SM-2 少 20~30% 的复习量而达到同等留存",
+        "adoption": "Anki 从 v23.10（2023-11）起设为默认调度器",
+        "weakness": "需要约 1000 次复习才能拟合个人模型；不足 1000 次时与 SM-2 表现相当",
+        "retentionTarget": "可设定期望留存率，默认 0.85~0.90"
+      },
+      "whenItMatters": "题库量 <1000 题时，算法选择影响很小（FSRS 退化为默认参数）；题库量大、长期学习时 FSRS 优势明显。"
+    },
+    "cadence": "Ebbinghaus 节奏的现代版：第 1 天 / 第 3 天 / 第 7 天 / 第 21 天，之后月或季度复习即可基本维持。",
+    "newCardLimit": "每日新卡上限是最关键设置。10~20 张/天可持续；50+ 张/天会在三周内积压到做不完而放弃。"
+  },
+
+  "informationArchitecture": {
+    "millerLimit": {
+      "rule": "主导航 5~7 个（米勒定律 7±2）",
+      "evidence": "导航 5~7 个分类比 8 个以上，任务完成率高 40%（选择瘫痪）",
+      "current": "现状：hub 总站是 48~51 张卡片墙 —— 远超认知上限，这就是「全部堆叠到一起」的量化体现"
+    },
+    "depth": {
+      "target": "主要内容 2~3 次点击可达",
+      "evidence": "超过 3 次点击才能到达主要内容，放弃率高 67%",
+      "findability": "按内部组织架构（而非用户任务）建信息架构，可发现性降低最多 60%"
+    },
+    "progressiveDisclosure": "顶层只露 4~7 个主分类，子分类通过二级菜单或上下文导航展开。",
+    "taskBasedIA": "政府网站是经典例子：「续驾照」比「车辆管理局 → 表格 → 驾照续期」有用得多。组织原则应该是用户目标，不是内容类型。",
+    "labelRules": [
+      "用用户的语言，不用内部术语。「产品」清楚，「解决方案」不清楚",
+      "同一个词在全站必须指同一件事（Shop 与 Store 不能并存）",
+      "同一站不要出现「成果展示」和「作品库」这类同义标签",
+      "导航标签要短到能扛住翻译膨胀"
+    ],
+    "failureModes": [
+      { "name": "everything-is-important", "symptom": "主导航塞满 12 项，用户一个都记不住", "fix": "主导航限制 5~7 项，次要内容下沉到二级导航/上下文链接/搜索" },
+      { "name": "clever-label-trap", "symptom": "用「解决方案」「赋能」「资产」这类词", "fix": "用具体描述性词" },
+      { "name": "orphaned-page", "symptom": "页面存在但无任何链接指向，只能靠搜索或别人告知 URL 到达", "fix": "每个页面都要能从浏览结构到达" },
+      { "name": "deep-burial", "symptom": "重要内容埋在 5 次点击之外" },
+      { "name": "cross-link-missing", "symptom": "相关联内容之间没有横向链接，用户必须退回主菜单" }
+    ],
+    "searchFirst": "30~40% 的用户更偏好搜索而非浏览导航。搜索必须常驻可见、支持自动补全、支持分面筛选。100 页以上的站必须有好搜索。",
+    "currentSiteIA": {
+      "pages": 289,
+      "navItems": 48,
+      "problemsFound": [
+        "同义标签并存：roadmap / journey / content-roadmap 三个都自称「从零到实战」",
+        "ai-academy-* 前缀 12 个页面占满命名空间",
+        "12 个页面无 h1，标题栏空白",
+        "导航以卡片墙堆叠，无层级无深度控制",
+        "十几个不同版心宽度（1120/1160/1180/1280…），切换页面内容宽度跳变"
+      ]
+    }
+  },
+
+  "sources": [
+    "https://bjdodo.com/contents/16/2597.html",
+    "https://xcx.zx.zbj.com/wenda/55238.html",
+    "https://xiaotunqifu.com/zh/faq/wechat-mini-program-category-compliance",
+    "https://juejin.cn/post/7644878748161769522",
+    "https://studyglen.com/guides/best-spaced-repetition-apps",
+    "https://www.notelyn.com/blog/anki-and-spaced-repetition",
+    "https://memia.app/resources/blog/spaced-repetition-flashcards",
+    "https://www.designer-daily.com/information-architecture-structuring-content-for-findability-222321",
+    "https://freecardsort.com/howto/card-sorting-information-architecture",
+    "https://validatethat.io/glossary/information-architecture"
+  ]
+}

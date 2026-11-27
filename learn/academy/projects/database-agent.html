@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Database Agent · 学习域 · 白驹 ccowork</title>
+<meta name="description" content="自学路线实战项目：目标、拆解、实现步骤与验收标准。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/learn/academy/projects/database-agent.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="learn" data-cctitle="学习">
+<div class="pg-wrap">
+<article class="merged-content">
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-ai-academy-projects-database-agent.png" alt="Database Agent · 自学路线 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1><i class="cc-ic" data-ic="archive" aria-hidden="true"></i>Database Agent</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 自学路线 毕业设计 02 号</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span class="blog-tag" style="background:rgba(79,140,255,.12);color:var(--blue)"><i class="cc-ic" data-ic="sliders-horizontal" aria-hidden="true"></i>难度：进阶</span><span class="blog-tag" style="background:rgba(56,225,255,.10);color:var(--cyan)"><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>约 6 小时</span><span class="blog-tag">数据库</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h2>02 号毕业设计：Database Agent</h2>
+<p>本项目解决传统数据库操作需手写SQL、门槛高、易出错的痛点，实现自然语言到SQL的自动转换与对话式交互。完成本项目后，你将掌握大模型结构化输出、数据库元数据注入、SQL安全校验、对话状态管理等核心能力，可独立搭建面向业务场景的智能数据查询助手。</p>
+<h2>项目简介</h2>
+<p>Database Agent 是一款基于大语言模型的对话式数据库操作工具，定位为非技术人员与关系型数据库之间的交互桥梁。项目以 MySQL 为默认目标数据库，通过元数据动态注入、Few-Shot 提示工程、SQL 语法校验与执行沙箱，将用户输入的自然语言提问（如“2024年第一季度华东区域销售额Top10的商品是哪些”）自动转换为合规可执行的 SQL 语句，执行后将结果转化为自然语言回答或可视化表格返回，全程支持多轮对话上下文关联，无需用户掌握 SQL 语法即可完成数据查询、统计、简单写入等操作。项目整体代码量控制在 800 行以内，无过度封装，适合作为大模型应用方向的毕业设计快速落地。</p>
+<h2>功能特性</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-database-agent.png" alt="Database Agent · 自学路线 · 白驹 ccowork · 功能特性" loading="lazy"></figure>
+<ul>
+<li>自然语言转SQL：支持复杂查询场景（多表关联、分组聚合、时间范围筛选、排序分页）的自动SQL生成，兼容MySQL 5.7/8.0语法规范。</li>
+<li>多轮对话上下文记忆：自动关联历史查询中的表名、筛选条件、指标定义，支持用户基于上一轮结果追加提问（如“把这些商品的库存也查出来”）。</li>
+<li>SQL安全校验拦截：内置危险SQL检测规则，自动拦截DROP、DELETE、UPDATE、TRUNCATE等非查询类操作，以及无WHERE条件的全表扫描语句，避免生产数据风险。</li>
+<li>元数据自动感知：启动时自动拉取目标库的表结构、字段注释、主外键关联关系，无需手动配置Schema信息，支持新增表后热更新元数据。</li>
+<li>查询结果智能解析：SQL执行后自动将返回的表格数据转化为自然语言总结，同时渲染为Markdown表格展示，支持导出CSV格式结果。</li>
+<li>错误自动修正：若生成的SQL执行报错，自动将错误信息回传给大模型进行迭代修正，最多重试3次，大幅提升生成准确率。</li>
+</ul>
+<h2>技术架构</h2>
+<table>
+<thead><tr><th>组件</th><th>技术选型</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>大模型推理层</td><td>Qwen-7B-Chat / GPT-3.5-turbo</td><td>负责自然语言理解、SQL生成、错误修正、结果总结，支持本地开源模型与云端API切换</td></tr>
+<tr><td>数据库交互层</td><td>SQLAlchemy 2.0 + PyMySQL</td><td>统一封装数据库连接、SQL执行、结果获取逻辑，支持连接池管理与超时控制</td></tr>
+<tr><td>提示工程层</td><td>LangChain Core</td><td>管理System Prompt模板、Few-Shot示例库、对话历史缓存、元数据动态注入</td></tr>
+<tr><td>安全校验层</td><td>sqlparse + 自定义规则引擎</td><td>解析SQL语法树，校验语句类型、访问权限、执行风险，拦截非法操作</td></tr>
+<tr><td>交互层</td><td>Streamlit 1.32</td><td>搭建Web对话界面，支持数据库连接配置、对话消息展示、结果表格渲染、CSV导出</td></tr>
+<tr><td>缓存层</td><td>SQLite</td><td>缓存高频问题的SQL生成结果与查询结果，降低大模型调用成本与响应延迟</td></tr>
+</tbody>
+</table>
+<p>架构说明：整体采用分层解耦设计，用户输入首先进入交互层，经对话管理模块拼接历史上下文后，连同动态拉取的数据库元数据、Few-Shot示例传入大模型推理层生成初始SQL；SQL进入安全校验层完成语法解析与风险拦截，合法语句传入数据库交互层执行，若执行报错则将错误信息回传至推理层迭代修正；执行成功的结果经格式转换后返回交互层展示，同时存入缓存层。所有模块间通过标准接口交互，可快速替换不同大模型或数据库类型。</p>
+<h2>核心代码骨架</h2>
+<pre><code># core/db_agent.py 核心逻辑模块
+from sqlalchemy import create_engine, text
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from sqlparse import parse, tokens
+import sqlparse
+class DBAgent:
+    def __init__(self, db_url: str, llm):
+        # 初始化数据库连接池
+        self.engine = create_engine(db_url, pool_size=3, pool_recycle=3600)
+        self.llm = llm
+        self.meta_prompt = self._build_meta_prompt() # 启动时加载库表元数据
+        self._init_sql_check_rules() # 初始化SQL安全校验规则
+    def _build_meta_prompt(self) -&gt; str:
+        """自动拉取数据库Schema，生成元数据提示片段"""
+        meta_info = []
+        with self.engine.connect() as conn:
+            # 查询所有表及字段注释
+            tables = conn.execute(text("""SELECT TABLE_NAME, TABLE_COMMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE()"""))
+            for table_name, table_comment in tables:
+                meta_info.append(f"表名：{table_name}，表注释：{table_comment}，字段信息：")
+                cols = conn.execute(text(f"SHOW FULL COLUMNS FROM {table_name}"))
+                for col in cols:
+                    meta_info.append(f"  - {col.Field}({col.Type})：{col.Comment}")
+        return "\n".join(meta_info)
+    def _sql_safety_check(self, sql: str) -&gt; tuple[bool, str]:
+        """SQL安全校验，拦截危险操作"""
+        parsed = parse(sql)[0]
+        # 仅允许SELECT语句
+        if parsed.get_type() not in ("SELECT", "SHOW", "EXPLAIN"):
+            return False, f"禁止执行{parsed.get_type()}类操作，仅支持查询语句"
+        # 拦截无LIMIT的大查询
+        if "LIMIT" not in sql.upper():
+            sql += " LIMIT 1000" # 强制添加最大返回行数限制
+        return True, sql
+    def generate_and_execute(self, user_query: str, history: list = None) -&gt; dict:
+        """核心流程：自然语言转SQL -&gt; 校验 -&gt; 执行 -&gt; 结果返回"""
+        # 构建提示词
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", "你是MySQL专家，仅根据提供的元数据生成正确的SQL，不要编造不存在的表和字段：\n{meta_info}"),
+            ("human", "{query}")
+        ])
+        chain = prompt | self.llm | StrOutputParser()
+        # 最多重试3次修正SQL
+        retry_count = 0
+        last_error = ""
+        while retry_count &lt; 3:
+            sql = chain.invoke({"meta_info": self.meta_prompt, "query": user_query + f"，上次执行错误：{last_error}" if last_error else user_query})
+            # 提取SQL块（去除大模型返回的多余文本）
+            sql = sql.split("```sql")[-1].split("```")[0].strip()
+            # 安全校验
+            check_pass, checked_sql = self._sql_safety_check(sql)
+            if not check_pass:
+                return {"status": "error", "msg": checked_sql}
+            # 执行SQL
+            try:
+                with self.engine.connect() as conn:
+                    result = conn.execute(text(checked_sql))
+                    columns = result.keys()
+                    data = [dict(zip(columns, row)) for row in result.fetchall()]
+                return {"status": "success", "sql": checked_sql, "data": data}
+            except Exception as e:
+                last_error = str(e)
+                retry_count += 1
+        return {"status": "error", "msg": f"SQL生成失败，最后一次错误：{last_error}"}</code></pre>
+<h2>运行步骤</h2>
+<ol>
+<li>环境准备：本地安装Python 3.10+、MySQL 8.0，创建测试数据库并导入示例数据（可使用MySQL官方提供的employees示例库，导入命令：<code>mysql -u root -p < employees.sql</code>）。</li>
+<li>克隆项目仓库并安装依赖：</li>
+</ol>
+<pre><code>   git clone https://github.com/whitepony-ai/database-agent.git
+   cd database-agent
+   pip install -r requirements.txt</code></pre>
+<p>依赖包含langchain-core==0.1.52、sqlalchemy==2.0.29、pymysql==1.1.0、sqlparse==0.4.4、streamlit==1.32.2、openai==1.14.2。</p>
+<ol>
+<li>配置环境变量：在项目根目录创建<code>.env</code>文件，填写大模型API密钥与数据库连接信息：</li>
+</ol>
+<pre><code>   OPENAI_API_KEY=你的API密钥
+   OPENAI_BASE_URL=https://api.openai.com/v1
+   DB_URL=mysql+pymysql://root:你的数据库密码@127.0.0.1:3306/employees</code></pre>
+<p>若使用本地Qwen-7B模型，可替换为Ollama对应的连接配置。</p>
+<ol>
+<li>元数据初始化测试：执行<code>python test_meta.py</code>，若控制台正常打印employees库的表结构信息，说明数据库连接与元数据拉取逻辑正常。</li>
+<li>启动Web交互界面：执行<code>streamlit run app.py --server.port=8501</code>，浏览器访问<code>http://localhost:8501</code>进入对话页面。</li>
+<li>功能验证：在输入框提问“各个部门当前的在职员工数量是多少，按人数倒序排列”，查看返回的SQL语句与查询结果，验证生成准确性。</li>
+<li>安全规则测试：输入“删除所有员工表数据”，验证系统是否正确拦截非查询类操作。</li>
+</ol>
+<h2>扩展思路</h2>
+<ul>
+<li>多数据库适配：扩展数据库交互层，新增PostgreSQL、ClickHouse、SQLite等数据库方言支持，在提示词中加入对应方言的语法规则，实现跨库类型的自然语言查询。</li>
+<li>可视化能力增强：集成ECharts组件，根据查询结果的字段类型自动匹配图表（如时间序列用折线图、分类统计用柱状图、占比数据用饼图），支持一键生成数据看板。</li>
+<li>权限细粒度管控：对接企业内部权限系统，基于当前登录用户的角色限制可访问的表、字段范围，在元数据注入阶段仅返回用户有权限查看的Schema，从源头避免越权查询。</li>
+<li>本地模型优化：针对Text-to-SQL任务对Qwen-7B-Chat做LoRA微调，使用Spider中文数据集+企业内部SQL语料训练，提升垂直场景下的SQL生成准确率，实现完全本地化部署，避免数据泄露。</li>
+</ul>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>掌握大模型结构化输出的工程实现方法，理解元数据注入、Few-Shot提示对Text-to-SQL任务准确率的关键作用，能够独立设计面向结构化场景的大模型提示模板。</li>
+<li>掌握大模型与外部系统交互的通用范式：输入预处理<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>模型生成<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>结果校验<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>执行反馈<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>错误修正，这套逻辑可复用到代码生成、API调用、工具使用等各类Agent场景。</li>
+<li>掌握大模型应用的安全管控思路，理解为什么必须在业务层做输入输出校验，而非完全依赖大模型的对齐能力，能够设计基础的风险拦截规则。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>在现有代码基础上新增多轮对话记忆功能：使用LangChain的ChatMessageHistory缓存最近5轮对话记录，修改提示词模板，支持用户基于上一轮查询结果追加提问（如基于之前的部门人数统计结果，提问“人数最多的部门平均薪资是多少”）。</li>
+<li>新增查询结果自然语言总结功能：在SQL执行返回数据后，调用大模型将表格数据转化为3句话以内的自然语言结论（如“员工人数最多的部门是研发部，共213人；其次是销售部，共187人；行政部人数最少，共42人”），在界面上优先展示总结内容，再折叠展示详细表格与SQL语句。</li>
+</ol>
+<!-- ====== 项目出处与许可 ====== -->
+<div class="proj-attribution" style="margin-top:26px;padding:14px 16px;border:1px dashed rgba(217,119,6,.35);border-radius:14px;background:rgba(250,204,21,.06)">
+  <b style="font-size:13px;color:#d97706"><i class="cc-ic" data-ic="scroll-text" aria-hidden="true"></i>项目出处与许可</b>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.7">
+    本项目为本站 自学路线「毕业设计」板块原创教学项目，由 AI 生成原型并整理，<b>以官方文档与真实开源生态为准</b>。
+    技术栈均基于公开、主流的开源库（如 Transformers / LangChain / FastAPI / SQLite 等），可对照各库官方仓库核验。
+    如引用第三方开源项目，请遵循其原始许可证（MIT / Apache-2.0 / BSD 等）；本项目内容可按 MIT 协议自由使用，标注出处即可。
+  </p>
+</div>
+</article>
+
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

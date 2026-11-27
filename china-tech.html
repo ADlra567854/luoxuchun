@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 中国科技故事,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 中国科技故事 · , viewport-fit=cover · 白驹 ccowork">
+<meta name="description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta property="og:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ccowork · 中国科技故事 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"ccowork · 中国科技故事 · 白驹 ccowork","description":"个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#07090f; --bg2:#0c1120; --card:#111a2e; --line:#20304f;
+  --gold:#f5c26b; --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --red:#ff6b6b; --green:#4ade80;
+  --text:#edf2fc; --muted:#93a3c7; --grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85;overflow-x:hidden}
+::selection{background:var(--gold);color:#1a1206}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#2a3a5e;border-radius:6px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(7,9,15,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.nav-links{display:flex;gap:22px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover{color:var(--gold)}
+.back{color:var(--cyan)!important}
+@media(max-width:900px){.nav-links{display:none}}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:130px 24px 60px;
+  background:radial-gradient(1000px 520px at 50% -10%,rgba(245,194,107,.13),transparent 60%),
+             radial-gradient(800px 500px at 85% 80%,rgba(139,92,246,.12),transparent 60%),
+             radial-gradient(700px 500px at 10% 70%,rgba(79,140,255,.10),transparent 60%),var(--bg)}
+.hero .tag{font-size:13px;color:var(--gold);border:1px solid rgba(245,194,107,.4);padding:6px 20px;border-radius:999px;letter-spacing:3px;margin-bottom:30px}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.25;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:820px;color:var(--muted);font-size:clamp(15px,1.6vw,19px);margin:28px auto 0}
+section{max-width:900px;margin:0 auto;padding:70px 24px 10px}
+.story{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:44px 42px;margin-bottom:34px;position:relative;overflow:hidden}
+.story::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.story .no{font-size:13px;color:var(--gold);letter-spacing:3px}
+.story h2{font-size:clamp(24px,3vw,34px);font-weight:800;margin:8px 0 6px}
+.story .sub{color:var(--cyan);font-size:14px;margin-bottom:22px}
+.story h3{font-size:17px;color:var(--text);margin:26px 0 10px;padding-left:14px;border-left:3px solid var(--gold)}
+.story p{color:var(--muted);font-size:15px;margin-bottom:12px}
+.story b{color:var(--text)}
+.story .hl{border-left:4px solid var(--gold);background:rgba(245,194,107,.06);padding:16px 20px;border-radius:0 14px 14px 0;color:#d9c9a8;font-size:15px;margin:18px 0}
+.story .tagline{display:inline-block;margin-top:6px;font-size:13px;color:var(--green);border:1px solid rgba(74,222,128,.35);border-radius:999px;padding:4px 14px}
+footer{border-top:1px solid var(--line);margin-top:60px;padding:44px 24px;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--gold);text-decoration:none}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:200;width:0}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://ccoworkbaiju.cn/china-tech.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/china-tech.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 中国科技故事 · 白驹 ccowork">
+<meta name="twitter:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-china-tech.png" alt="ccowork · 中国科技故事 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<div class="progress" id="progress"></div>
+<nav>
+  <div class="logo">中国科技故事</div>
+  <div class="nav-links">
+    <a class="back" href="/"><i class="cc-ic cc-back" data-ic="arrow-left"></i>← 回总站</a>
+    <a href="#a">两弹一星</a>
+    <a href="#b">高铁</a>
+    <a href="#c">北斗</a>
+    <a href="#d">航天</a>
+    <a href="#e">华为</a>
+    <a href="#f">DeepSeek</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<header class="hero">
+  <div class="tag">从「一穷二白」到「星辰大海」</div>
+  <h1>中国科技<span>故事</span></h1>
+  <p class="sub">理解 DeepSeek 为什么诞生在中国，要先读懂中国科技的底色。
+  从两弹一星到高铁，从北斗到航天，从华为到 DeepSeek——这是一条与 AI 并行的主线，
+  也是一部「中国人如何靠自己的双手，把不可能变成可能」的历史。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+</header>
+<section id="a">
+  <div class="story reveal">
+    <div class="no">STORY 01</div>
+    <h2>两弹一星：从「一穷二白」到「镇国重器」</h2>
+    <div class="sub">这是中国科技史上最艰难、也最悲壮的一章</div>
+    <h3>为什么必须做</h3>
+    <p>1950 年代的新中国，一穷二白，工业底子几乎为零。而当时的国际环境用一句话就能概括：<b>没有大国重器，就没有资格谈安全。</b>核威胁的阴影笼罩头顶，别人有原子弹，你没有，就意味着在谈判桌上永远矮一头。1955 年，中央做出艰难而坚定的决定：我们要搞原子弹。</p>
+    <h3>一个人的归来</h3>
+    <p>故事的起点，是<b>钱学森</b>的归来。这位当时已是世界顶尖的火箭专家，坚持回国，为此经历了长达五年的软禁与刁难，直到 1955 年才踏上归途。他说：「我的事业在中国，我的成就在中国，我的归宿在中国。」紧接着，邓稼先、于敏、王淦昌、郭永怀……一批顶尖科学家隐姓埋名，走进大漠戈壁，十几年没有在公开场合露面，连家人都不知道他们在做什么。</p>
+    <h3>算盘上算出的原子弹</h3>
+    <p>造原子弹的第一道坎是「计算」。那个年代没有高性能计算机，海量数据靠的是<b>手摇计算机、计算尺，甚至是算盘</b>。科学家们趴在桌前，一颗珠子一颗珠子地拨。为了验证一个关键数据，邓稼先团队算了九遍，和国外数据始终对不上——最后发现，是国外的数据错了。</p>
+    <div class="hl">1964 年 10 月 16 日，第一颗原子弹爆炸成功；1967 年 6 月 17 日，第一颗氢弹爆炸成功（从原子弹到氢弹只用不到三年，全球最快）；1970 年 4 月 24 日，「东方红一号」卫星上天。</div>
+    <p>它带来的东西，每个人都受益至今：<b>安全、信心，以及锤炼出的科研体系与人才队伍</b>——这成了后来航天、高铁、量子、AI 等一系列成就的土壤。</p>
+    <span class="tagline">核心技术，买不来、要不来，只能靠自己拼出来</span>
+  </div>
+</section>
+<section id="b">
+  <div class="story reveal">
+    <div class="no">STORY 02</div>
+    <h2>中国高铁：从「引进」到「领跑」</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-china-tech.png" alt="ccowork · 中国科技故事 · 白驹 ccowork · 中国高铁：从「引进」到「领跑」" loading="lazy"></figure>
+    <div class="sub">用一代人的时间，从一张白纸跑成世界第一</div>
+    <h3>一张白纸</h3>
+    <p>2004 年之前，中国铁路时速普遍在 120 公里左右，别说高铁，连「提速」都是奢望。每逢春运，绿皮火车里挤满人，一票难求。而那时，日本有新干线，法国有 TGV，德国有 ICE——「高铁」是发达国家的象征。</p>
+    <h3>引进、消化、吸收、再创新</h3>
+    <p>中国的选择是一条后来被反复讨论的路：<b>引进技术，然后消化吸收，最后自己创新。</b>2004 年向全球招标，用巨大的市场规模做筹码，要求外方必须转让技术；再组织工程师一点一点吃透；最后在别人的基础上，造出自己的东西。</p>
+    <h3>从「和谐号」到「复兴号」</h3>
+    <p>2008 年京津城际开通，中国高铁正式「跑起来」；2017 年，拥有完全自主知识产权的「<b>复兴号</b>」上线——这一次，从动车组到控制系统，核心技术都是中国自己的。中国高铁从「引进者」变成了「领跑者」。</p>
+    <div class="hl">今天：运营里程超 4 万公里世界第一，占全球高铁总里程三分之二以上；最高时速 350 公里世界最快；「八纵八横」把城市距离缩短到「小时级」。</div>
+    <p>高铁的意义远不止「快」：时空被压缩、经济被盘活，它成了一张「中国名片」——而这套「先虚心学，再拼命追，最后跑在最前」的打法，与后来中国在光伏、新能源车、AI 大模型上的路径一脉相承。</p>
+    <span class="tagline">先虚心学，再拼命追，最后跑在最前面</span>
+  </div>
+</section>
+<section id="c">
+  <div class="story reveal">
+    <div class="no">STORY 03</div>
+    <h2>北斗导航：我们为什么要造自己的「北斗」</h2>
+    <div class="sub">一颗「别人的卫星」带来的觉醒</div>
+    <h3>银河号事件</h3>
+    <p>1990 年代，全球卫星导航几乎是 GPS 的天下。1993 年「银河号」事件：一艘中国货轮在海上被无理拦截，理由是怀疑运载违禁品。更憋屈的是，对方直接<b>关闭了该海域的 GPS 服务</b>，让银河号在海上失去方向，漂流了 33 天。</p>
+    <p>更深的软肋在于：卫星导航不只是「定位」，还是「授时」系统——电力、通信、金融、交通全都依赖精确的时间同步。一旦别人的卫星「掐断」信号，后果不堪设想。<b>结论只有一个：核心技术，必须握在自己手里。</b></p>
+    <h3>三步走</h3>
+    <p>1994 年北斗工程启动。北斗一号（2000）解决「有没有」；北斗二号（2012）解决「能不能用」；北斗三号（2020）<b>全球组网完成</b>，解决「好不好」。整整 26 年，中间经历了无数次技术封锁、频率之争、发射失利，方向从没变过。</p>
+    <h3>独门绝技</h3>
+    <p>北斗有几个别人没有的杀手锏：<b>短报文通信</b>——即使在没有手机信号的地方，北斗也能让你「发短信」，这在汶川地震、远洋搜救、野外探险中救过无数条命；高精度定位可达厘米级；以及最根本的一条——<b>自己的卫星，谁也关不掉。</b></p>
+    <span class="tagline">真正靠得住的东西，必须是自己造的</span>
+  </div>
+</section>
+<section id="d">
+  <div class="story reveal">
+    <div class="no">STORY 04</div>
+    <h2>中国航天：从东方红一号到空间站</h2>
+    <div class="sub">中国人的星辰大海</div>
+    <h3>从零起步</h3>
+    <p>1970 年「东方红一号」升空，中国成为世界上第五个独立发射卫星的国家。此后半个多世纪，中国航天走过了一条从「跟跑」到「并跑」再到部分「领跑」的路。</p>
+    <h3>三大里程碑</h3>
+    <p><b>载人航天</b>：2003 年杨利伟乘神舟五号进入太空，中国成为第三个掌握载人航天技术的国家。<b>空间站</b>：2021 年天和核心舱发射，中国空间站「天宫」全面建成，成为世界上仅有的两个在轨空间站之一。<b>深空探测</b>：嫦娥系列完成月球采样返回、首次实现月背软着陆；天问一号一次完成火星「绕、落、巡」三大目标。</p>
+    <div class="hl">中国是唯一一个同时独立运行空间站、开展月球采样返回、登陆火星的国家之一。航天工程锤炼出的系统能力，正源源不断输送给其他高科技领域。</div>
+    <span class="tagline">一步一个脚印，走向星辰大海</span>
+  </div>
+</section>
+<section id="e">
+  <div class="story reveal">
+    <div class="no">STORY 05</div>
+    <h2>华为与 5G：一家公司的长征</h2>
+    <div class="sub">在封锁中，用研发突围</div>
+    <h3>从代理到自研</h3>
+    <p>1987 年，任正非创立华为时，它只是一家卖交换机的小公司。三十多年后，它成为全球通信设备与 5G 标准的领导者。华为的密码只有一个：<b>把每年营收的相当一部分投入研发，年复一年，从不中断。</b></p>
+    <h3>5G 与麒麟芯片</h3>
+    <p>5G 时代，华为在标准必要专利、基站设备、终端芯片上都占据全球领先。即便在外部封锁最紧的几年，它依然靠自研的麒麟芯片与鸿蒙操作系统，硬生生走出了一条路。</p>
+    <p>华为的故事，是中国科技「自主可控」信念的最强注脚——它证明，<b>封锁可以拖延速度，但压不垮真正有技术积累的人。</b></p>
+    <span class="tagline">封锁拖延速度，但压不垮真正的积累</span>
+  </div>
+</section>
+<section id="f">
+  <div class="story reveal">
+    <div class="no">STORY 06</div>
+    <h2>DeepSeek 的逆袭：中国 AI 的「斯普特尼克时刻」</h2>
+    <div class="sub">一家「不着急」的公司，如何震动全球</div>
+    <h3>一家「不着急」的公司</h3>
+    <p>2023 年，杭州，一家公司悄悄成立。没有融资宣讲，没有铺天盖地的营销。创始团队来自量化对冲基金幻方量化，创始人梁文锋是低调到几乎不公开露面的技术派。他们的信念朴素而坚定：<b>模型本身才是最重要的，别的都是次要的。</b></p>
+    <h3>第一声惊雷</h3>
+    <p>2024 年底 V3 发布，震动全球的不是「能聊天」，而是一组数字：<b>训练成本远低于同性能级别的西方模型</b>，性能却对标甚至超越顶级闭源模型。2025 年初 R1 发布，开源、免费，同时登顶中美 App Store 免费榜第一。</p>
+    <div class="hl">2025 年 1 月 27 日，DeepSeek-R1 让英伟达单日暴跌 17%、市值蒸发约 5900 亿美元——人类股市史上最大单日跌幅。一个中国开源模型，改写全球 AI 产业的成本逻辑。</div>
+    <h3>为什么是 DeepSeek</h3>
+    <p>靠的不是运气，而是几个「反行业」的选择：<b>技术信仰高于商业叙事</b>、极致工程效率、开源与开放的底气，以及中国工程师红利。它用「开源 + 极致性价比」把 AI 从「奢侈品」变成了「水电煤」。</p>
+    <span class="tagline">限制可以逼出创新，开源可以改写格局</span>
+  </div>
+</section>
+<footer>
+  <div class="logo">中国科技故事</div>
+  <p style="margin-top:10px">资料来源：公开新闻报道与史料，经归纳整理 · 2026</p>
+  <p style="margin-top:16px"><a href="./index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回 白驹 ccowork主站</a></p>
+</footer>
+<script>
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.style.opacity=1;e.target.style.transform='translateY(0)';}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

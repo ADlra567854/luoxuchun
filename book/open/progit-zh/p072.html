@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10.6 Git 内部原理 · 传输协议 · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：10.6 Git 内部原理 - 传输协议。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p072.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html">10.5 Git 内部原理 - 引用规范</a><a href="p072.html" class="on">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 72 / 100 节
+    </div>
+    <h1>10.6 Git 内部原理 - 传输协议</h1>
+            <div>
+              <h2 id="_传输协议">传输协议</h2>
+<div class="paragraph">
+<p>Git 可以通过两种主要的方式在版本库之间传输数据：“哑（dumb）”协议和“智能（smart）”协议。
+本节将会带你快速浏览这两种协议的运作方式。</p>
+</div>
+<div class="sect3">
+<h3 id="_哑协议">哑协议</h3>
+<div class="paragraph">
+<p>如果你正在架设一个基于 HTTP 协议的只读版本库，一般而言这种情况下使用的就是哑协议。
+这个协议之所以被称为“哑”协议，是因为在传输过程中，服务端不需要有针对 Git 特有的代码；抓取过程是一系列 HTTP 的 <code>GET</code> 请求，这种情况下，客户端可以推断出服务端 Git 仓库的布局。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>现在已经很少使用哑协议了。
+使用哑协议的版本库很难保证安全性和私有化，所以大多数 Git 服务器宿主（包括云端和本地）都会拒绝使用它。
+一般情况下都建议使用智能协议，我们会在后面进行介绍。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>让我们通过 simplegit 版本库来看看 <code>http-fetch</code> 的过程：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git clone http://server/simplegit-progit.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>它做的第一件事就是拉取 <code>info/refs</code> 文件。
+这个文件是通过 <code>update-server-info</code> 命令生成的，这也解释了在使用 HTTP 传输时，必须把它设置为 <code>post-receive</code> 钩子的原因：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET info/refs
+ca82a6dff817ec66f44342007202690a93763949     refs/heads/master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>现在，你得到了一个远程引用和 SHA-1 值的列表。
+接下来，你要确定 HEAD 引用是什么，这样你就知道在完成后应该被检出到工作目录的内容：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET HEAD
+ref: refs/heads/master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这说明在完成抓取后，你需要检出 <code>master</code> 分支。
+这时，你就可以开始遍历处理了。
+因为你是从 <code>info/refs</code> 文件中所提到的 <code>ca82a6</code> 提交对象开始的，所以你的首要操作是获取它：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET objects/ca/82a6dff817ec66f44342007202690a93763949
+(179 bytes of binary data)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你取回了一个对象——这是一个在服务端以松散格式保存的对象，是你通过使用静态 HTTP GET 请求获取的。
+你可以使用 zlib 解压缩它，去除其头部，查看提交记录的内容：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git cat-file -p ca82a6dff817ec66f44342007202690a93763949
+tree cfda3bf379e4f8dba8717dee55aab78aef7f4daf
+parent 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+author Scott Chacon &lt;schacon@gmail.com&gt; 1205815931 -0700
+committer Scott Chacon &lt;schacon@gmail.com&gt; 1240030591 -0700
+
+changed the version number</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>接下来，你还要再获取两个对象，一个是树对象 <code>cfda3b</code>，它包含有我们刚刚获取的提交对象所指向的内容，另一个是它的父提交 <code>085bb3</code>：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET objects/08/5bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+(179 bytes of data)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这样就取得了你的下一个提交对象。
+再抓取树对象：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET objects/cf/da3bf379e4f8dba8717dee55aab78aef7f4daf
+(404 - Not Found)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>噢——看起来这个树对象在服务端并不以松散格式对象存在，所以你得到了一个 404 响应，代表在 HTTP 服务端没有找到该对象。
+这有好几个可能的原因——这个对象可能在替代版本库里面，或者在包文件里面。
+Git 会首先检查所有列出的替代版本库：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET objects/info/http-alternates
+(empty file)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果这返回了一个包含替代版本库 URL 的列表，那么 Git 就会去那些地址检查松散格式对象和文件——这是一种能让分叉项目共享对象以节省磁盘的好方法。
+然而，在这个例子中，没有列出可用的替代版本库。所以你所需要的对象肯定在某个包文件中。
+要检查服务端有哪些可用的包文件，你需要获取 <code>objects/info/packs</code> 文件，这里面有一个包文件列表（它也是通过执行 <code>update-server-info</code> 所生成的）：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET objects/info/packs
+P pack-816a9b2334da9953e530f27bcac22082a9f5b835.pack</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>服务端只有一个包文件，所以你要的对象显然就在里面。但是你要先检查它的索引文件以确认。
+即使服务端有多个包文件，这也是很有用的，因为这样你就可以知道你所需要的对象是在哪一个包文件里面：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET objects/pack/pack-816a9b2334da9953e530f27bcac22082a9f5b835.idx
+(4k of binary data)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>现在你有这个包文件的索引，你可以查看你要的对象是否在里面——
+因为索引文件列出了这个包文件所包含的所有对象的 SHA-1 值，和该对象存在于包文件中的偏移量。
+你的对象就在这里，接下来就是获取整个包文件：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET objects/pack/pack-816a9b2334da9953e530f27bcac22082a9f5b835.pack
+(13k of binary data)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>现在你也有了你的树对象，你可以继续在提交记录上漫游。
+它们全部都在这个你刚下载的包文件里面，所以你不用继续向服务端请求更多下载了。
+Git 会将开始时下载的 HEAD 引用所指向的 <code>master</code> 分支检出到工作目录。</p>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_智能协议">智能协议</h3>
+<div class="paragraph">
+<p>哑协议虽然很简单但效率略低，且它不能从客户端向服务端发送数据。
+智能协议是更常用的传送数据的方法，但它需要在服务端运行一个进程，而这也是 Git 的智能之处——它可以读取本地数据，理解客户端有什么和需要什么，并为它生成合适的包文件。
+总共有两组进程用于传输数据，它们分别负责上传和下载数据。</p>
+</div>
+<div class="sect4">
+<h4 id="_上传数据">上传数据</h4>
+<div class="paragraph">
+<p>
+为了上传数据至远端，Git 使用 <code>send-pack</code> 和 <code>receive-pack</code> 进程。
+运行在客户端上的 <code>send-pack</code> 进程连接到远端运行的 <code>receive-pack</code> 进程。</p>
+</div>
+<div class="sect5">
+<h6 id="_ssh">SSH</h6>
+<div class="paragraph">
+<p>举例来说，在项目中使用命令 <code>git push origin master</code> 时, <code>origin</code> 是由基于 SSH 协议的 URL 所定义的。
+Git 会运行 <code>send-pack</code> 进程，它会通过 SSH 连接你的服务器。
+它会尝试通过 SSH 在服务端执行命令，就像这样：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ssh -x git@server "git-receive-pack 'simplegit-progit.git'"
+00a5ca82a6dff817ec66f4437202690a93763949 refs/heads/master report-status \
+	delete-refs side-band-64k quiet ofs-delta \
+	agent=git/2:2.1.1+github-607-gfba4028 delete-refs
+0000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>git-receive-pack</code> 命令会立即为它所拥有的每一个引用发送一行响应——在这个例子中，就只有 <code>master</code> 分支和它的 SHA-1 值。
+第一行响应中也包含了一个服务端能力的列表（这里是 <code>report-status</code>、<code>delete-refs</code> 和一些其它的，包括客户端的识别码）。</p>
+</div>
+<div class="paragraph">
+<p>每一行以一个四位的十六进制值开始，用于指明本行的长度。
+你看到第一行以 00a5 开始，这在十六进制中表示 165，意味着第一行有 165 字节。
+下一行是 0000，表示服务端已完成了发送引用列表过程。</p>
+</div>
+<div class="paragraph">
+<p>现在它知道了服务端的状态，你的 <code>send-pack</code> 进程会判断哪些提交记录是它所拥有但服务端没有的。
+<code>send-pack</code> 会告知 <code>receive-pack</code> 这次推送将会更新的各个引用。
+举个例子，如果你正在更新 <code>master</code> 分支，并且增加 <code>experiment</code> 分支，这个 <code>send-pack</code> 的响应将会是像这样：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>0076ca82a6dff817ec66f44342007202690a93763949 15027957951b64cf874c3557a0f3547bd83b3ff6 \
+	refs/heads/master report-status
+006c0000000000000000000000000000000000000000 cdfdb42577e2506715f8cfeacdbabc092bf63e8d \
+	refs/heads/experiment
+0000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>第一行也包括了客户端的能力。
+这里的全为 '0' 的 SHA-1 值表示之前没有过这个引用——因为你正要添加新的 experiment 引用。
+删除引用时，将会看到相反的情况：右边的 SHA-1 值全为 '0'。</p>
+</div>
+<div class="paragraph">
+<p>然后，客户端会发送一个包含了所有服务端上所没有的对象的包文件。
+最终，服务端会响应一个成功（或失败）的标识。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>000eunpack ok</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_https">HTTP(S)</h6>
+<div class="paragraph">
+<p>上传过程在 HTTP 上几乎是相同的，除了握手阶段有一点小区别。
+连接是从下面这个请求开始的：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET http://server/simplegit-progit.git/info/refs?service=git-receive-pack
+001f# service=git-receive-pack
+00ab6c5f0e45abd7832bf23074a333f739977c9e8188 refs/heads/master report-status \
+	delete-refs side-band-64k quiet ofs-delta \
+	agent=git/2:2.1.1~vmg-bitmaps-bugaloo-608-g116744e
+0000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这完成了客户端和服务端的第一次数据交换。
+接下来客户端发起另一个请求，这次是一个 <code>POST</code> 请求，这个请求中包含了 <code>send-pack</code> 提供的数据。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; POST http://server/simplegit-progit.git/git-receive-pack</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这个 <code>POST</code> 请求的内容是 <code>send-pack</code> 的输出和相应的包文件。
+服务端在收到请求后相应地作出成功或失败的 HTTP 响应。</p>
+</div>
+<div class="paragraph">
+<p>请牢记，HTTP 协议有可能会进一步用分块传输编码将数据包裹起来。</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h4 id="_下载数据">下载数据</h4>
+<div class="paragraph">
+<p>
+当你在下载数据时， <code>fetch-pack</code> 和 <code>upload-pack</code> 进程就起作用了。
+客户端启动 <code>fetch-pack</code> 进程，连接至远端的 <code>upload-pack</code> 进程，以协商后续传输的数据。</p>
+</div>
+<div class="sect5">
+<h6 id="_ssh_2">SSH</h6>
+<div class="paragraph">
+<p>如果你通过 SSH 使用抓取功能，<code>fetch-pack</code> 会像这样运行：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ ssh -x git@server "git-upload-pack 'simplegit-progit.git'"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在 <code>fetch-pack</code> 连接后，<code>upload-pack</code> 会返回类似下面的内容：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>00dfca82a6dff817ec66f44342007202690a93763949 HEAD multi_ack thin-pack \
+	side-band side-band-64k ofs-delta shallow no-progress include-tag \
+	multi_ack_detailed symref=HEAD:refs/heads/master \
+	agent=git/2:2.1.1+github-607-gfba4028
+003fe2409a098dc3e53539a9028a94b6224db9d6a6b6 refs/heads/master
+0000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这与 <code>receive-pack</code> 的响应很相似，但是这里所包含的能力是不同的。
+而且它还包含 HEAD 引用所指向内容（<code>symref=HEAD:refs/heads/master</code>），这样如果客户端执行的是克隆，它就会知道要检出什么。</p>
+</div>
+<div class="paragraph">
+<p>这时候，<code>fetch-pack</code> 进程查看它自己所拥有的对象，并响应 “want” 和它需要的对象的 SHA-1 值。
+它还会发送“have”和所有它已拥有的对象的 SHA-1 值。
+在列表的最后，它还会发送“done”以通知 <code>upload-pack</code> 进程可以开始发送它所需对象的包文件：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>003cwant ca82a6dff817ec66f44342007202690a93763949 ofs-delta
+0032have 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+0009done
+0000</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_https_2">HTTP(S)</h6>
+<div class="paragraph">
+<p>抓取操作的握手需要两个 HTTP 请求。
+第一个是向和哑协议中相同的端点发送 <code>GET</code> 请求：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; GET $GIT_URL/info/refs?service=git-upload-pack
+001e# service=git-upload-pack
+00e7ca82a6dff817ec66f44342007202690a93763949 HEAD multi_ack thin-pack \
+	side-band side-band-64k ofs-delta shallow no-progress include-tag \
+	multi_ack_detailed no-done symref=HEAD:refs/heads/master \
+	agent=git/2:2.1.1+github-607-gfba4028
+003fca82a6dff817ec66f44342007202690a93763949 refs/heads/master
+0000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这和通过 SSH 使用 <code>git-upload-pack</code> 是非常相似的，但是第二个数据交换则是一个单独的请求：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>=&gt; POST $GIT_URL/git-upload-pack HTTP/1.0
+0032want 0a53e9ddeaddad63ad106860237bbf53411d11a7
+0032have 441b40d833fdfa93eb2908e52742248faf0ee993
+0000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这个输出格式还是和前面一样的。
+这个请求的响应包含了所需要的包文件，并指明成功或失败。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_协议总结">协议总结</h3>
+<div class="paragraph">
+<p>这一章节是传输协议的一个概貌。
+传输协议还有很多其它的特性，像是 <code>multi_ack</code> 或 <code>side-band</code>，但是这些内容已经超出了本书的范围。
+我们希望能给你展示客户端和服务端之间的基本交互过程；如果你需要更多的相关知识，你可以参阅 Git 的源代码。</p>
+</div>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%BC%95%E7%94%A8%E8%A7%84%E8%8C%83">prev</a> | <a href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p071.html">← 10.5 Git 内部原理 - 引用规范</a><a href="index.html">目录</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

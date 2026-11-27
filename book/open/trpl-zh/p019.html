@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>定义模块来控制作用域与私有性 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：定义模块来控制作用域与私有性。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p019.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html" class="on">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 19 / 86 节
+    </div>
+    <h1>定义模块来控制作用域与私有性</h1>
+    <p><a id="defining-modules-to-control-scope-and-privacy"></a></p>
+<h2 id="定义模块来控制作用域与私有性"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/8c0eacd5c4acbb650497454f3a58c9e8083202a4/src/ch07-02-defining-modules-to-control-scope-and-privacy.md">ch07-02-defining-modules-to-control-scope-and-privacy.md</a></p>
+<p>在本节，我们将讨论模块和其它一些关于模块系统的部分，如允许你命名项的 <em>路径</em>（<em>paths</em>）；用来将路径引入作用域的 <code>use</code> 关键字；以及使项变为公有的 <code>pub</code> 关键字。我们还将讨论 <code>as</code> 关键字、外部包（external packages）和 glob 运算符（glob operator）。</p>
+<p>首先，我们将从一系列的规则开始，在你未来组织代码的时候，这些规则可被用作简单的参考。接下来我们将会详细的解释每条规则。</p>
+<h2 id="模块小抄cheat-sheet"></h2>
+<p>在深入了解模块和路径的细节之前，这里提供一个简单的参考，用来解释模块、路径、<code>use</code>关键词和<code>pub</code>关键词如何在编译器中工作，以及大部分开发者如何组织他们的代码。我们将在本章中举例说明每条规则，但这是回顾模块工作原理的绝佳参考。</p>
+<ul>
+<li><strong>从 crate 根节点开始</strong>: 当编译一个 crate, 编译器首先在 crate 根文件（通常，对于一个库 crate 而言是 <em>src/lib.rs</em>，对于一个二进制 crate 而言是 <em>src/main.rs</em>）中寻找需要被编译的代码。</li>
+<li><strong>声明模块</strong>: 在 crate 根文件中，你可以声明一个新模块；比如，用 <code>mod garden;</code> 声明了一个叫做 <code>garden</code> 的模块。编译器会在下列路径中寻找模块代码：
+<ul>
+<li>内联，用大括号替换 <code>mod garden</code> 后跟的分号</li>
+<li>在文件 <em>src/garden.rs</em></li>
+<li>在文件 <em>src/garden/mod.rs</em></li>
+</ul>
+</li>
+<li><strong>声明子模块</strong>: 在除了 crate 根节点以外的任何文件中，你可以定义子模块。比如，你可能在 <em>src/garden.rs</em> 中声明 <code>mod vegetables;</code>。编译器会在以父模块命名的目录中寻找子模块代码：
+<ul>
+<li>内联，直接在 <code>mod vegetables</code> 后方不是一个分号而是一个大括号</li>
+<li>在文件 <em>src/garden/vegetables.rs</em></li>
+<li>在文件 <em>src/garden/vegetables/mod.rs</em></li>
+</ul>
+</li>
+<li><strong>模块中的代码路径</strong>: 一旦一个模块是你 crate 的一部分，你可以在隐私规则允许的前提下，从同一个 crate 内的任意地方，通过代码路径引用该模块的代码。举例而言，一个 garden vegetables 模块下的 <code>Asparagus</code> 类型可以通过 <code>crate::garden::vegetables::Asparagus</code> 访问。</li>
+<li><strong>私有 vs 公用</strong>: 一个模块里的代码默认对其父模块私有。为了使一个模块公用，应当在声明时使用 <code>pub mod</code> 替代 <code>mod</code>。为了使一个公用模块内部的成员公用，应当在声明前使用<code>pub</code>。</li>
+<li><strong><code>use</code> 关键字</strong>: 在一个作用域内，<code>use</code>关键字创建了一个项的快捷方式，用来减少长路径的重复。在任何可以引用 <code>crate::garden::vegetables::Asparagus</code> 的作用域，你可以通过 <code>use crate::garden::vegetables::Asparagus;</code> 创建一个快捷方式，然后你就可以在作用域中只写 <code>Asparagus</code> 来使用该类型。</li>
+</ul>
+<p>这里我们创建一个名为<code>backyard</code>的二进制 crate 来说明这些规则。该 crate 的路径同样命名为<code>backyard</code>，该路径包含了这些文件和目录：</p>
+<pre><code class="language-text">backyard
+├── Cargo.lock
+├── Cargo.toml
+└── src
+    ├── garden
+    │   └── vegetables.rs
+    ├── garden.rs
+    └── main.rs
+</code></pre>
+<p>这个例子中的 crate 根文件是 <em>src/main.rs</em>，该文件包含了：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust noplayground ignore">use crate::garden::vegetables::Asparagus;
+
+pub mod garden;
+
+fn main() {
+    let plant = Asparagus {};
+    println!("I'm growing {plant:?}!");
+}</code></pre>
+<p><code>pub mod garden;</code> 行告诉编译器将 <em>src/garden.rs</em> 中发现的代码包含进来：</p>
+<p><span class="filename">文件名：src/garden.rs</span></p>
+<pre><code class="language-rust noplayground ignore">pub mod vegetables;</code></pre>
+<p>在此处，<code>pub mod vegetables;</code> 意味着在 <em>src/garden/vegetables.rs</em> 中的代码也应该被包含。这些代码是：</p>
+<pre><code class="language-rust noplayground ignore">#[derive(Debug)]
+pub struct Asparagus {}</code></pre>
+<p>现在让我们深入了解这些规则的细节并在实践中演示它们！</p>
+<h3 id="在模块中对相关代码进行分组"></h3>
+<p><strong>模块</strong>让我们可以将一个 crate 中的代码进行分组，以提高可读性与重用性。因为一个模块中的代码默认是私有的，所以还可以利用模块控制项的<strong>私有性</strong>（<em>privacy</em>）。私有项是不可为外部使用的内在详细实现。我们也可以将模块和它其中的项标记为公开的，这样，外部代码就可以使用并依赖于它们。</p>
+<p>作为示例，让我们编写一个提供餐厅功能的库 <code>crate</code>。我们将定义函数的签名，但将其函数体留空以便将注意力集中在代码的组织结构上而不是餐厅实现的细节。</p>
+<p>在餐饮业，餐馆中会有一些地方被称之为<strong>前台</strong>（<em>front of house</em>），还有另外一些地方被称之为<strong>后台</strong>（<em>back of house</em>）。前台是招待顾客的地方；这包括接待员为顾客安排座位、服务员接受点单和付款、调酒师制作饮品的地方。后台则是厨师和烹饪人员在厨房工作、洗碗工清理餐具，以及经理处理行政事务的区域。</p>
+<p>为了以这种方式构建我们的 <code>crate</code>，我们可以将其功能组织到嵌套模块中。通过执行 <code>cargo new restaurant --lib</code> 来创建一个新的名为 <code>restaurant</code> 的库。然后将示例 7-1 中所罗列出来的代码放入 <em>src/lib.rs</em> 中，来定义一些模块和函数签名；这段代码即为前台部分。</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">mod front_of_house {
+    mod hosting {
+        fn add_to_waitlist() {}
+
+        fn seat_at_table() {}
+    }
+
+    mod serving {
+        fn take_order() {}
+
+        fn serve_order() {}
+
+        fn take_payment() {}
+    }
+}</code></pre>
+<p><span class="caption">示例 7-1：一个包含了其他内置了函数的模块的 <code>front_of_house</code> 模块</span></p>
+<p>我们使用 <code>mod</code> 关键字来定义模块，后跟模块名（本例中叫做 <code>front_of_house</code>），并且用花括号包围模块的主体。在模块内，我们还可以定义其它的模块，就像本例中的 <code>hosting</code> 和 <code>serving</code> 模块。模块还可以保存一些定义的其它项，比如结构体、枚举、常量、trait、或者如示例 7-1 所示的函数。</p>
+<p>通过使用模块，我们可以将相关的定义分组到一起，并指出它们为什么相关。程序员可以通过使用这段代码，更加容易地找到他们想要的定义，因为他们可以基于分组来对代码进行导航，而不需要阅读所有的定义。程序员向这段代码中添加一个新的功能时，他们也会知道代码应该放置在何处，可以保持程序的组织性。</p>
+<p>在前面我们提到了，<code>src/main.rs</code> 和 <code>src/lib.rs</code> 叫做 crate 根。之所以这样叫它们是因为这两个文件的内容都分别在 crate 模块结构的根组成了一个名为 <code>crate</code> 的模块，该结构被称为<strong>模块树</strong>（<em>module tree</em>）。</p>
+<p>示例 7-2 展示了示例 7-1 中模块树的结构。</p>
+<pre><code class="language-text">crate
+ └── front_of_house
+     ├── hosting
+     │   ├── add_to_waitlist
+     │   └── seat_at_table
+     └── serving
+         ├── take_order
+         ├── serve_order
+         └── take_payment
+</code></pre>
+<p><span class="caption">示例 7-2: 示例 7-1 中代码的模块树</span></p>
+<p>这个树展示了一些模块是如何被嵌入到另一个模块的（例如，<code>hosting</code> 嵌套在 <code>front_of_house</code> 中）。这个树还展示了一些模块是互为<strong>兄弟</strong>（<em>siblings</em>）的，这意味着它们定义在同一模块中；<code>hosting</code> 和 <code>serving</code> 被一起定义在 <code>front_of_house</code> 中。继续沿用家庭关系的比喻，如果一个模块 A 被包含在模块 B 中，我们将模块 A 称为模块 B 的 <strong>子</strong>（<em>child</em>）模块，模块 B 则是模块 A 的 <strong>父</strong>（<em>parent</em>）模块。注意，整个模块树都植根于名为 <code>crate</code> 的隐式模块下。</p>
+<p>这个模块树可能会令你想起电脑上文件系统的目录树；这是一个非常恰当的类比！就像文件系统的目录，你可以使用模块来组织你的代码。并且，就像目录中的文件，我们需要一种方法来找到模块。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p018.html">← 包和 Crate</a><a href="index.html">目录</a><a href="p020.html">引用模块树中项的路径 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

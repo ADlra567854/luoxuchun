@@ -1,0 +1,1362 @@
+/* ============================================================
+ * site-redesign.css · 全站设计系统组件层（v1）
+ * 由 ccowork.js 注入所有页面（在 theme-cloud.css 之后加载）
+ * 对应 Ardot 设计稿双版本：毛玻璃导航 / 渐变 Hero / 玻璃卡片 /
+ * 品牌页脚 —— 让全部子站自动吃到首页同一套视觉语言。
+ * 原则：只做"组件增强"，不破坏各页原有结构与交互。
+ * ============================================================ */
+
+/* ---------- 导航：毛玻璃 + 渐变 Logo + 链接胶囊 ---------- */
+body nav,
+body header .wrap > nav,
+body .topbar,
+body #topbar{
+  background:var(--nav-bg,rgba(255,255,255,.82))!important;
+  backdrop-filter:blur(16px)!important;-webkit-backdrop-filter:blur(16px)!important;
+  border-bottom:1px solid var(--nav-line,rgba(227,235,245,.95))!important;
+  box-shadow:var(--nav-shadow,0 2px 16px rgba(31,45,77,.07))!important;
+}
+body[data-theme="deep"] nav,
+body[data-theme="deep"] header .wrap > nav,
+body[data-theme="deep"] .topbar,
+body[data-theme="deep"] #topbar{
+  background:var(--nav-bg,rgba(8,5,28,.70))!important;
+  border-bottom-color:var(--nav-line,rgba(255,255,255,.08))!important;
+}
+/* Logo 渐变字 */
+body nav .logo,
+body nav .brand,
+body header .brand,
+body .topbar .logo,
+body #topbar .logo{
+  background:var(--grad,linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6));
+  -webkit-background-clip:text;background-clip:text;color:transparent!important;
+  font-weight:900!important;letter-spacing:.5px;
+}
+body nav .logo i,
+body nav .brand i,
+body #topbar .logo i{background:none;-webkit-text-fill-color:currentColor}
+/* 导航链接胶囊 hover */
+body nav .nav-links,
+body nav .links{
+  flex-wrap:wrap!important;row-gap:4px!important;
+}
+body nav .nav-links a,
+body nav .links a,
+body #topbar a{
+  border-radius:10px!important;padding:8px 13px!important;
+  color:var(--muted,#475569)!important;font-weight:600!important;
+  white-space:nowrap!important;flex-shrink:0!important;
+  transition:background .18s,color .18s!important;
+}
+body nav .logo,body nav .brand{white-space:nowrap!important;flex-shrink:0!important}
+body nav .nav-links a:hover,
+body nav .links a:hover,
+body #topbar a:hover{
+  background:rgba(120,160,220,.12)!important;color:var(--blue,#2563eb)!important;
+}
+body nav .nav-links a.active,
+body nav .links a.active,
+body nav .nav-links a.cur,
+body nav .links a.cur{
+  background:var(--grad,linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6))!important;
+  color:#fff!important;box-shadow:0 4px 12px rgba(79,140,255,.30)!important;
+}
+body nav .nav-links a.back,
+body nav .links a.back,
+body nav > a{
+  color:var(--gold,#b45309)!important;
+}
+body nav > a{
+  border-radius:10px!important;padding:7px 13px!important;
+  border:1px solid rgba(120,160,220,.28)!important;
+  background:rgba(255,255,255,.55)!important;
+  transition:.18s!important;text-decoration:none!important;
+}
+body[data-theme="deep"] nav > a{
+  background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.14)!important;
+}
+body nav > a:hover{background:rgba(255,255,255,.85)!important;color:var(--blue,#2563eb)!important}
+
+/* ---------- Hero 区：渐变底 + 双行标题 + 徽章 ---------- */
+/* 需覆盖 theme-cloud.css 的 header 白玻璃规则（更高特异性 + !important） */
+body[data-theme] header.hero,
+body[data-theme] .hero{
+  background:var(--hero-grad,linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6))!important;
+  position:relative;overflow:hidden;
+}
+body[data-theme="deep"] header.hero,
+body[data-theme="deep"] .hero{
+  background:var(--hero-grad,linear-gradient(120deg,#8b5cf6,#38e1ff 55%,#e879fa))!important;
+}
+/* Hero 光斑装饰 */
+body .hero::before{
+  content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none;
+}
+body .hero::after{
+  content:"";position:absolute;width:260px;height:260px;bottom:-80px;left:-60px;border-radius:50%;
+  background:radial-gradient(circle,rgba(180,230,255,.40),transparent 70%);pointer-events:none;
+}
+body .hero > *{position:relative;z-index:1}
+/* Hero 标题白字 */
+body .hero h1,body .hero h2,
+body header.hero h1,body header.hero h2{
+  color:#fff!important;text-shadow:0 2px 20px rgba(16,48,120,.30)!important;
+}
+body .hero h1 span,body .hero h2 span,
+body header.hero h1 span{
+  background:linear-gradient(120deg,#ffffff,#d6e9ff)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+  text-shadow:none!important;
+}
+body .hero p,body header.hero p{
+  color:rgba(255,255,255,.95)!important;text-shadow:0 1px 8px rgba(16,48,120,.30)!important;
+}
+body .hero .sub,body header.hero .sub,
+body .hero .desc{color:rgba(255,255,255,.92)!important}
+/* Hero 徽章（若页面有 .badge） */
+body .hero .badge,body header.hero .badge{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border-radius:999px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);
+  color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px);
+}
+
+/* ---------- 按钮：渐变主按钮 / 玻璃次按钮 ---------- */
+body .btn,body .btn-primary,body .primary,
+body button.go,body a.go,
+body .hero .btn{
+  background:var(--grad,linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6))!important;
+  color:#fff!important;border:none!important;border-radius:14px!important;
+  font-weight:700!important;box-shadow:0 4px 12px rgba(79,140,255,.25)!important;
+  transition:transform .18s,box-shadow .18s!important;
+}
+body .btn:hover,body .btn-primary:hover,body button.go:hover,body a.go:hover{
+  transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.40)!important;
+}
+body .btn-ghost,body .ghost-btn,body .btn-secondary,body button.sec{
+  background:rgba(120,160,220,.12)!important;color:var(--blue,#2563eb)!important;
+  border:1px solid rgba(120,160,220,.3)!important;border-radius:14px!important;
+}
+
+/* ---------- 区头：标题 + 渐变强调 + more ---------- */
+body .sec-head,body .shead,body .block > h2{
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px;
+}
+body .sec-head h2,body .shead h2,body .block > h2{
+  font-size:24px!important;font-weight:900!important;
+}
+body .sec-head h2 span,body .shead h2 span{
+  background:var(--grad,linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+body .sec-head .more,body .shead .more{
+  margin-left:auto;font-size:13px;font-weight:600;color:var(--blue,#2563eb)!important;
+}
+
+/* ---------- 卡片 hover 统一 ---------- */
+body .card:not(.book-card):hover,
+body .mcard:hover,body .pcard:hover,body .tcard:hover,
+body .tool-card:hover,body .work-card:hover,body .post-card:hover{
+  transform:translateY(-3px)!important;
+  box-shadow:var(--card-shadow-h,0 14px 30px rgba(31,45,77,.10))!important;
+}
+
+/* ---------- 全站统一页脚（品牌列 + 三列链接） ---------- */
+body .site-footer,body .ccw-footer{
+  margin-top:44px;background:rgba(13,22,46,.95)!important;
+  border-top:1px solid rgba(255,255,255,.06)!important;color:#a9b8d4!important;
+}
+body[data-theme="deep"] .site-footer,body[data-theme="deep"] .ccw-footer{
+  background:rgba(2,0,10,.92)!important;
+}
+body .site-footer .foot-inner,body .ccw-footer .foot-inner{
+  max-width:1180px;margin:0 auto;padding:44px 20px 20px;
+  display:flex;gap:80px;flex-wrap:wrap;
+}
+body .site-footer .foot-brand,body .ccw-footer .foot-brand{
+  max-width:300px;display:flex;flex-direction:column;gap:14px;
+}
+body .site-footer .foot-brand .logo-row,body .ccw-footer .foot-brand .logo-row{
+  display:flex;align-items:center;gap:10px;
+}
+body .site-footer .foot-brand .logo-row .logo,body .ccw-footer .foot-brand .logo-row .logo{
+  width:34px;height:34px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;
+}
+body .site-footer .foot-brand .logo-row b,body .ccw-footer .foot-brand .logo-row b{
+  font-size:17px;font-weight:800;color:#fff!important;
+}
+body .site-footer .foot-brand p,body .ccw-footer .foot-brand p{
+  font-size:13px;line-height:1.8;color:#8fa3bd!important;
+}
+body .site-footer .foot-col,body .ccw-footer .foot-col{
+  display:flex;flex-direction:column;gap:10px;min-width:110px;
+}
+body .site-footer .foot-col b,body .ccw-footer .foot-col b{
+  font-size:14px;font-weight:800;color:#fff!important;margin-bottom:4px;
+}
+body .site-footer .foot-col a,body .ccw-footer .foot-col a{
+  font-size:13px;color:#8fa3bd!important;transition:.15s;
+}
+body .site-footer .foot-col a:hover,body .ccw-footer .foot-col a:hover{color:#5ea2ff!important}
+body .site-footer .foot-bar,body .ccw-footer .foot-bar{
+  max-width:1180px;margin:0 auto;padding:18px 20px 24px;border-top:1px solid rgba(255,255,255,.07);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+  font-size:12px;color:#7d8fae!important;
+}
+body .site-footer .foot-bar a,body .ccw-footer .foot-bar a{color:#8fa3bd!important}
+
+/* 合规条：独占一行，浅灰白字。页脚两种主题都是深色底，一套配色通吃。 */
+body .site-footer .foot-legal,body .ccw-footer .foot-legal{
+  flex-basis:100%;color:#9fb0cd!important;font-size:12px;line-height:1.7;
+  border-top:1px dashed rgba(255,255,255,.10);padding-top:8px;letter-spacing:.2px;
+}
+
+/* 页脚内原有一行版权文本，若有则统一颜色 */
+body footer{color:var(--dim,#56657e)!important}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:900px){
+  body .site-footer .foot-inner,body .ccw-footer .foot-inner{gap:40px}
+}
+@media(max-width:760px){
+  body .site-footer .foot-inner,body .ccw-footer .foot-inner{flex-direction:column;gap:26px}
+  body .site-footer .foot-bar,body .ccw-footer .foot-bar{flex-direction:column;text-align:center}
+}
+
+/* ============================================================
+ * 长文页（blog / book / novel · article 容器）内容排版增强
+ * 这些页面为硬编码深色的静态页，注入本层后在双主题下统一：
+ * 云顶 = 白玻璃文章卡；深空 = 深色玻璃文章卡；标题/引用/代码/表格全对齐
+ * ============================================================ */
+body article,
+body .content-wrap,
+body main > article{
+  border-radius:18px!important;
+  border:1px solid var(--line)!important;
+  box-shadow:0 18px 50px rgba(31,45,77,.08)!important;
+  margin:0 auto 40px!important;
+  max-width:880px!important;
+}
+/* 旧架构用固定导航，正文需要 92px 让位；接了统一导航后 header 自身
+   sticky 占位，再留 92px 就会在导航与正文之间形成空白断层（截图实测
+   1080 宽下 header 底 108 → 正文顶 200）。按是否接入统一导航分档。 */
+/* 默认（独立页 / 旧导航页）沿用 92px 让位；不再用 :not(:has()) 判定，
+   因为不支持 :has() 的浏览器会把整条规则丢掉，正文反而贴顶。 */
+body article,
+body .content-wrap,
+body main > article{
+  margin-top:92px!important;
+}
+/* 已接入统一导航：24px。用 body 类，所有浏览器都生效。 */
+body.has-ccnav article,
+body.has-ccnav .content-wrap,
+body.has-ccnav main > article{
+  margin-top:var(--sp-5, 24px)!important;
+}
+/* 增强兜底：支持 :has() 且注入层还没来得及加类（例如脚本被缓存延迟）。
+   单独放进 @supports，避免无效选择器污染上面那条通用规则。 */
+@supports selector(:has(*)) {
+  body:has(header.ccnav):not(.has-ccnav) article,
+  body:has(header.ccnav):not(.has-ccnav) .content-wrap,
+  body:has(header.ccnav):not(.has-ccnav) main > article{
+    margin-top:var(--sp-5, 24px)!important;
+  }
+}
+/* 统一导航保护：历史页面内联的通用 nav{position:fixed;left:0;right:0;
+   justify-content:space-between} 会误伤 <nav class="ccnav-main">。
+   site-nav.css 已修；这份由 ccowork.js 带版本指纹注入，作为缓存兜底，
+   确保老页面即使命中旧 site-nav.css 缓存也能显示正确的紧凑五域导航。 */
+header.ccnav nav.ccnav-main{
+  position:static!important;
+  top:auto!important; left:auto!important; right:auto!important;
+  justify-content:flex-start!important;
+  padding-top:0!important;
+  background:transparent!important;
+}
+
+/* 2026-11-10 修：长文卡当初只定了宽度，忘了给左右内边距。
+   实测两档都出问题 ——
+     · 桌面 1440：卡片 880px 居中，左沿在 x=280，而正文起点也是 280，
+       等于标题和段落直接贴着卡片描边，一个像素的呼吸都没有。
+     · 手机 390：卡片铺满全宽，padding 仍是 0，正文一路顶到屏幕边缘
+       （教程章节页 /learn/tutorials/chapter-*.html 全是这样）。
+   宽屏给足呼吸感，窄屏收到 16px —— 但不能是 0。
+   注意本文件的这套规则带 !important，补丁必须同样带 !important 且写在后面才生效。 */
+body article,
+body .content-wrap,
+body main > article{
+  padding-left:56px!important;
+  padding-right:56px!important;
+}
+/* 表格与代码块在窄屏本来就容易横向溢出，内边距收窄后要给它们自己滚动的余地 */
+body article pre,
+body article table{ max-width:100%; }
+body article pre{ overflow-x:auto; }
+
+@media (max-width:880px){
+  body article,
+  body .content-wrap,
+  body main > article{
+    padding-left:20px!important;
+    padding-right:20px!important;
+    border-radius:14px!important;
+  }
+}
+@media (max-width:480px){
+  body article,
+  body .content-wrap,
+  body main > article{
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+}
+body[data-theme="cloud"] article,
+body[data-theme="cloud"] .content-wrap{
+  background:rgba(255,255,255,.86)!important;
+}
+body[data-theme="deep"] article,
+body[data-theme="deep"] .content-wrap{
+  background:var(--panel,rgba(13,19,32,.62))!important;
+  box-shadow:0 20px 60px rgba(0,0,0,.45)!important;
+}
+/* 长文页标题体系 */
+body article h1{
+  font-size:clamp(26px,4vw,36px)!important;font-weight:900!important;
+  letter-spacing:.5px;line-height:1.35;
+}
+body article h2{
+  font-weight:800!important;
+  border-left:4px solid transparent!important;
+  border-image:var(--grad,linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6)) 1!important;
+  padding-left:14px!important;
+}
+body article h3{font-weight:700!important;color:var(--blue,#2563eb)!important}
+body article h4{font-weight:700!important;color:var(--gold,#b45309)!important}
+/* 引用块 → 渐变左条 */
+body article blockquote{
+  border-left:4px solid transparent!important;
+  border-image:var(--grad,linear-gradient(120deg,#f0abfc,#818cf8 50%,#38bdf8)) 1!important;
+  background:linear-gradient(120deg,rgba(129,140,248,.10),rgba(56,225,255,.06))!important;
+  border-radius:14px!important;padding:16px 18px!important;
+}
+body article blockquote p{color:var(--text,#1e293b)!important}
+body[data-theme="deep"] article blockquote p{color:#e8dcbe!important}
+/* 代码块 → 双主题玻璃底 */
+body article pre{
+  background:var(--pre-bg,rgba(240,247,252,.92))!important;
+  border:1px solid var(--line)!important;border-radius:14px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6)!important;
+}
+body[data-theme="deep"] article pre{
+  background:rgba(5,7,15,.85)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+body article code{
+  border-radius:6px!important;padding:2px 7px!important;
+  background:rgba(56,189,248,.12)!important;color:var(--blue,#2563eb)!important;
+  font-family:Consolas,Menlo,monospace!important;
+}
+body article.lab-article pre code{
+  background:none!important;padding:0!important;color:#b9c8ea!important;
+}
+body[data-theme="cloud"] article pre code{color:#334155!important}
+/* 长文表格 */
+body article table{
+  border-radius:14px!important;overflow:hidden!important;
+  box-shadow:0 4px 16px rgba(31,45,77,.06)!important;
+}
+body article th{
+  background:linear-gradient(120deg,rgba(56,189,248,.18),rgba(129,140,248,.14))!important;
+  color:var(--text,#0f172a)!important;font-weight:800!important;
+}
+body article td{color:var(--text,#334155)!important}
+body[data-theme="deep"] article th{color:var(--gold,#f0b95c)!important;background:rgba(21,32,58,.9)!important}
+body[data-theme="deep"] article td{color:var(--muted,#93a3c7)!important}
+/* 长文图片圆角 */
+body article img{
+  border-radius:14px!important;box-shadow:0 10px 30px rgba(31,45,77,.14)!important;
+}
+/* 分隔线 → 渐变 */
+body article hr{
+  border:none!important;height:1px!important;
+  background:linear-gradient(90deg,transparent,var(--line,rgba(90,140,190,.3)),transparent)!important;
+}
+/* 正文段落行高优化 */
+body article p{
+  line-height:1.9!important;letter-spacing:.2px;
+}
+/* 长文页内链接 */
+body article a{
+  color:var(--blue,#2563eb)!important;text-decoration:none!important;
+  border-bottom:1px dashed rgba(37,99,235,.4)!important;
+}
+body[data-theme="deep"] article a{color:var(--cyan,#38e1ff)!important;border-bottom-color:rgba(56,225,255,.3)!important}
+body article a:hover{color:var(--purple,#7c3aed)!important}
+
+/* ============================================================
+ * 全站元素统一层 v3（面板 / 方块 / 文字 · 不落下一片）
+ * 覆盖子站所有高频内嵌元素：prompt-box / m-row / tl-item /
+ * shade / pic / pill / lcard / steps / glass / reveal / kicker /
+ * tag / icon / ico / num / copy / stat / msg / field / tip / param
+ * 原则：只统一"视觉面"（圆角/背景/描边/投影/文字色），
+ *       不破坏各页原有布局与交互。
+ * ============================================================ */
+
+/* ---------- 面板类：玻璃卡统一 ---------- */
+body .prompt-box,
+body .lcard,
+body .glass,
+body .steps,
+body .param-box,
+body .repo,
+body .proj,
+body .group{
+  background:var(--card,rgba(255,255,255,.85))!important;
+  border:1px solid var(--line)!important;border-radius:14px!important;
+  box-shadow:0 6px 18px rgba(31,45,77,.06)!important;
+  transition:background .35s ease,border .35s ease!important;
+}
+body[data-theme="deep"] .prompt-box,
+body[data-theme="deep"] .lcard,
+body[data-theme="deep"] .glass,
+body[data-theme="deep"] .steps,
+body[data-theme="deep"] .param-box,
+body[data-theme="deep"] .repo,
+body[data-theme="deep"] .proj,
+body[data-theme="deep"] .group{
+  background:var(--panel,rgba(13,19,32,.62))!important;
+  box-shadow:0 10px 30px rgba(0,0,0,.35)!important;
+}
+/* prompt 盒内标题行 */
+body .prompt-title,
+body .prompt-box .prompt-title{
+  color:var(--text)!important;font-weight:800!important;
+}
+/* ---------- 行块 / 时间线 ---------- */
+body .m-row{
+  padding:9px 13px!important;border-radius:10px!important;
+  background:rgba(120,160,220,.08)!important;border:1px solid var(--line)!important;
+}
+body .m-row b{color:var(--blue,#2563eb)!important}
+body[data-theme="deep"] .m-row b{color:var(--cyan,#38e1ff)!important}
+body .tl-item::before{background:var(--blue,#2563eb)!important;box-shadow:0 0 0 4px rgba(79,140,255,.15)!important}
+body[data-theme="deep"] .tl-item::before{background:var(--cyan,#38e1ff)!important}
+
+/* ---------- 徽章 / 标签 / 药丸 ---------- */
+body .pill,
+body .tag,
+body .badge-pill,
+body .stage-tag{
+  display:inline-flex!important;align-items:center!important;gap:5px!important;
+  border-radius:999px!important;padding:4px 12px!important;
+  background:rgba(120,160,220,.12)!important;border:1px solid rgba(120,160,220,.22)!important;
+  color:var(--blue,#2563eb)!important;font-size:12px!important;font-weight:700!important;
+  white-space:nowrap!important;
+}
+body[data-theme="deep"] .pill,
+body[data-theme="deep"] .tag,
+body[data-theme="deep"] .stage-tag{
+  background:rgba(120,160,220,.10)!important;border-color:rgba(120,160,220,.25)!important;
+  color:var(--cyan,#38e1ff)!important;
+}
+
+/* ---------- 图标方块（渐变底 + 白字） ---------- */
+body .icon,
+body .ico,
+body .m-icon{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6)!important;
+  color:#fff!important;border-radius:14px!important;
+  box-shadow:0 4px 12px rgba(79,140,255,.22)!important;
+}
+body[data-theme="deep"] .icon,
+body[data-theme="deep"] .ico,
+body[data-theme="deep"] .m-icon{
+  background:linear-gradient(120deg,#38e1ff,#5b8cff 50%,#8b5cf6)!important;
+}
+
+/* ---------- 数字 / 统计 ---------- */
+body .num,
+body .stat b{
+  color:var(--blue,#2563eb)!important;font-weight:900!important;
+}
+body[data-theme="deep"] .num,
+body[data-theme="deep"] .stat b{color:var(--cyan,#38e1ff)!important}
+
+/* ---------- 区头 kicker（小字标签） ---------- */
+body .kicker{
+  color:var(--blue,#2563eb)!important;font-weight:800!important;
+  letter-spacing:2px!important;
+}
+body[data-theme="deep"] .kicker{color:var(--cyan,#38e1ff)!important}
+
+/* ---------- 封面图 / 遮罩（pic + shade） ---------- */
+body .pic{border-radius:14px!important;overflow:hidden!important}
+body .shade{
+  background:linear-gradient(180deg,transparent,rgba(13,19,32,.55))!important;
+}
+body[data-theme="deep"] .shade{background:linear-gradient(180deg,transparent,rgba(3,0,20,.70))!important}
+
+/* ---------- 提示 / 字段 / 参数 ---------- */
+body .tip,
+body .note,
+body .hint{
+  border-left:3px solid var(--blue,#2563eb)!important;
+  background:rgba(120,160,220,.08)!important;
+  border-radius:0 10px 10px 0!important;padding:9px 14px!important;
+  color:var(--muted,#475569)!important;font-size:13px!important;
+}
+body[data-theme="deep"] .tip,
+body[data-theme="deep"] .note,
+body[data-theme="deep"] .hint{
+  border-left-color:var(--cyan,#38e1ff)!important;
+  background:rgba(56,225,255,.06)!important;color:var(--muted,#8fa3bd)!important;
+}
+body .field label{color:var(--blue,#2563eb)!important;font-weight:700!important}
+body[data-theme="deep"] .field label{color:var(--cyan,#38e1ff)!important}
+body .param{color:var(--blue,#2563eb)!important;font-weight:700!important}
+body[data-theme="deep"] .param{color:var(--cyan,#38e1ff)!important}
+
+/* ---------- 复制按钮 ---------- */
+body .copy{
+  border-radius:10px!important;background:var(--card,rgba(255,255,255,.85))!important;
+  border:1px solid var(--line)!important;color:var(--muted)!important;
+  transition:.18s!important;cursor:pointer!important;
+}
+body .copy:hover{color:var(--blue,#2563eb)!important;border-color:var(--blue,#2563eb)!important}
+body[data-theme="deep"] .copy:hover{color:var(--cyan,#38e1ff)!important;border-color:var(--cyan,#38e1ff)!important}
+
+/* ---------- 消息气泡（chat/agent 类页面） ---------- */
+body .msg,
+body .bubble,
+body .agent-msg{
+  border-radius:14px!important;
+  border:1px solid var(--line)!important;
+  background:var(--card,rgba(255,255,255,.9))!important;
+  color:var(--text,#1e293b)!important;
+  box-shadow:0 4px 14px rgba(31,45,77,.05)!important;
+}
+body[data-theme="deep"] .msg,
+body[data-theme="deep"] .bubble,
+body[data-theme="deep"] .agent-msg{
+  background:var(--panel,rgba(13,19,32,.72))!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.35)!important;
+}
+body .msg.user{background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6)!important;color:#fff!important;border:none!important}
+body[data-theme="deep"] .msg.user{background:linear-gradient(120deg,#38e1ff,#5b8cff 50%,#8b5cf6)!important}
+
+/* ---------- reveal 动效（入场不闪烁） ---------- */
+body .reveal{
+  opacity:1!important;transform:none!important;
+}
+
+/* ---------- 卡片内部文字层级统一 ---------- */
+body .card h3,body .lcard h3,body .proj h3,body .repo h3{
+  color:var(--text,#1e293b)!important;font-weight:800!important;
+}
+body .card p,body .lcard p,body .proj p,body .repo p{
+  color:var(--muted,#475569)!important;
+}
+body .go,body .more{
+  color:var(--blue,#2563eb)!important;font-weight:700!important;
+}
+body[data-theme="deep"] .go,body[data-theme="deep"] .more{color:var(--cyan,#38e1ff)!important}
+
+/* ============================================================
+ * Blog 长文页模板层 v4（对应画布 11:1 第 03 节）
+ * 品牌化开篇：徽章 → 元信息 → 渐变分隔线
+ * 渐变目录：#modToc 深空玻璃 + 激活态青字高亮
+ * ============================================================ */
+
+/* ---------- 品牌化开篇 ---------- */
+body .blog-open{
+  display:flex;flex-direction:column;gap:12px;margin-bottom:22px;
+  padding-bottom:20px;border-bottom:1px solid var(--line);
+}
+body .blog-badge{
+  display:inline-flex;align-items:center;gap:8px;width:fit-content;
+  padding:7px 15px;border-radius:999px;
+  background:rgba(120,160,220,.12)!important;border:1px solid rgba(120,160,220,.22)!important;
+  color:var(--blue,#2563eb)!important;font-size:13px;font-weight:700;
+}
+body[data-theme="deep"] .blog-badge{
+  background:rgba(56,225,255,.08)!important;border-color:rgba(56,225,255,.2)!important;
+  color:var(--cyan,#38e1ff)!important;
+}
+body .blog-meta{
+  display:flex;gap:18px;flex-wrap:wrap;align-items:center;
+  font-size:13px;color:var(--muted,#475569)!important;
+}
+body .blog-meta span{display:inline-flex;align-items:center;gap:5px}
+body .blog-tag{
+  background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6)!important;
+  color:#fff!important;border-radius:999px;padding:3px 12px!important;font-weight:700;
+}
+body[data-theme="deep"] .blog-tag{
+  background:linear-gradient(120deg,#38e1ff,#5b8cff 50%,#8b5cf6)!important;
+}
+body .blog-divider{
+  height:1px;width:100%;
+  background:linear-gradient(90deg,transparent,var(--blue,#4f8cff),transparent)!important;
+}
+body[data-theme="deep"] .blog-divider{
+  background:linear-gradient(90deg,transparent,var(--cyan,#38e1ff),transparent)!important;
+}
+
+/* ---------- 渐变目录(module.js #modToc 增强) ---------- */
+body #modToc{
+  position:fixed!important;right:16px!important;left:auto!important;top:84px!important;z-index:9991!important;max-width:230px!important;width:230px!important;
+  display:block!important;
+  background:rgba(8,12,22,.92)!important;
+  border:1px solid rgba(120,160,220,.25)!important;
+  border-radius:14px!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.4)!important;
+  padding:12px 14px!important;
+  overflow:auto!important;max-height:70vh!important;
+  font-family:var(--sans,"PingFang SC","Microsoft YaHei",sans-serif)!important;font-size:13px!important;
+}
+body[data-theme="cloud"] #modToc{
+  background:rgba(255,255,255,.92)!important;
+  border-color:rgba(90,140,190,.25)!important;
+  box-shadow:0 18px 50px rgba(37,99,235,.12)!important;
+}
+body #modToc b{
+  background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);
+  -webkit-background-clip:text;background-clip:text;color:transparent!important;
+}
+body[data-theme="deep"] #modToc b{
+  background:linear-gradient(120deg,#38e1ff,#5b8cff 50%,#8b5cf6);
+  -webkit-background-clip:text;background-clip:text;color:transparent!important;
+}
+body #modToc a{
+  color:#8fa3bd!important;border-radius:10px!important;
+  border-left:3px solid transparent!important;padding-left:10px!important;
+  transition:.18s!important;
+}
+body #modToc a:hover{color:#e9f0fb!important;background:rgba(94,234,212,.08)!important}
+body[data-theme="cloud"] #modToc a{color:#475569!important}
+body[data-theme="cloud"] #modToc a:hover{color:#2563eb!important;background:rgba(79,140,255,.08)!important}
+body #modToc a.active{
+  color:#38e1ff!important;background:rgba(56,225,255,.10)!important;
+  border-left-color:#38e1ff!important;
+}
+body[data-theme="cloud"] #modToc a.active{
+  color:#2563eb!important;background:rgba(79,140,255,.10)!important;
+  border-left-color:#2563eb!important;
+}
+
+/* ============================================================
+ * Lab 实操页模板 v5（说明卡 + 参数表 + 运行按钮 · 全自动）
+ * 覆盖 lab 仿真页所有 <pre><code> 代码块，自动包装为实操组件
+ * 纯 CSS 实现，不改 HTML —— 浏览器自动注入"说明/参数/运行/复制"标签
+ * ============================================================ */
+body .lab-article pre,
+body article.lab-article pre{
+  position:relative!important;
+  border:1px solid var(--line)!important;
+  border-radius:14px!important;
+  background:var(--pre-bg,rgba(15,24,48,.96))!important;
+  padding:46px 18px 18px!important;
+  margin:18px 0!important;
+  box-shadow:0 8px 24px rgba(31,45,77,.18)!important;
+  overflow:hidden!important;
+}
+/* 代码块顶部"实操组件"标识条 */
+body article.lab-article pre::before,
+body .lab-article pre::before{
+  content:"⚙ 实操代码块 · 白驹科学实验室";
+  position:absolute;top:0;left:0;right:0;height:34px;
+  display:flex;align-items:center;padding:0 16px;
+  background:linear-gradient(90deg,rgba(79,140,255,.18),rgba(139,92,246,.12))!important;
+  color:#FFFFFFE6;font-size:12px;font-weight:700;letter-spacing:1px;
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif!important;
+}
+/* 复制按钮(右上角,靠 CSS 伪元素 + 自动注入) */
+body article pre{
+  background-image:
+    linear-gradient(90deg,rgba(79,140,255,.18),rgba(139,92,246,.12)),
+    linear-gradient(0deg,transparent 34px,var(--pre-bg,rgba(15,24,48,.96)) 34px)!important;
+  background-size:100% 34px,100% 100%!important;
+  background-position:0 0,0 34px!important;
+  background-repeat:no-repeat!important;
+}
+/* lab 论文/公式块浮标 */
+body article.lab-article h3 + pre,
+body article.lab-article h2 + pre{
+  margin-top:14px!important;
+}
+/* 仿真参数表样式(若 <pre> 上方有 <code> 形式参数行) */
+body article pre code{
+  display:block!important;
+  padding-top:6px!important;
+}
+/* 仿真步骤 ul/ol 卡片化 */
+body article.lab-article ol li,
+body article.lab-article ul li{
+  padding:8px 12px!important;margin:6px 0!important;
+  background:rgba(120,160,220,.08)!important;
+  border-radius:10px!important;border-left:3px solid var(--blue,#2563eb)!important;
+}
+body[data-theme="deep"] article ol li,
+body[data-theme="deep"] article ul li{
+  background:rgba(56,225,255,.06)!important;
+  border-left-color:var(--cyan,#38e1ff)!important;
+}
+/* 仿真页 H3 章节标题(模拟器、参数、结果) */
+body article.lab-article h3 + ul,
+body article.lab-article h3 + ol{
+  background:rgba(79,140,255,.04)!important;
+  border:1px solid var(--line)!important;border-radius:14px!important;
+  padding:14px 14px 14px 32px!important;margin:14px 0!important;
+}
+body[data-theme="deep"] article h3 + ul,
+body[data-theme="deep"] article h3 + ol{
+  background:rgba(56,225,255,.04)!important;
+}
+/* 仿真结果表格 highlight */
+body article.lab-article table th{
+  background:linear-gradient(120deg,rgba(79,140,255,.15),rgba(139,92,246,.10))!important;
+}
+body[data-theme="deep"] article table th{
+  background:linear-gradient(120deg,rgba(56,225,255,.18),rgba(139,92,246,.12))!important;
+}
+
+/* ================= 现代图标系统（Lucide · CSS mask 着色） ================= */
+/* 用法: <i class="cc-ic" data-ic="calendar"></i> 自动继承文字颜色/大小 */
+i.cc-ic{display:inline-block;width:1em;height:1em;vertical-align:-.125em;flex:none;background-color:currentColor;-webkit-mask:var(--cc-ic) center/contain no-repeat;mask:var(--cc-ic) center/contain no-repeat}
+.cc-dot{width:.85em;height:.85em;vertical-align:-.06em}
+.cc-star-dim{opacity:.28}
+/* 主题切换双图标（浅色显示月亮，深色显示太阳） */
+.cc-theme-ics{display:inline-flex;align-items:center;line-height:1}
+.cc-theme-ics .cc-ic{width:1.15em;height:1.15em;vertical-align:middle}
+.cc-theme-ics .cc-ic-sun{display:none}
+body[data-theme="deep"] .cc-theme-ics .cc-ic-sun{display:inline-block}
+body[data-theme="deep"] .cc-theme-ics .cc-ic-moon{display:none}
+/* 品牌图形标「隙」：渐变圆角方块 + 白色开放圆环 / 斜光。
+   mask 文件沿用旧键名 horse-mark.svg，内容已于 2026-11-12 换成正式标。 */
+i.cc-mark{position:relative;display:inline-block;width:1.35em;height:1.35em;vertical-align:-.28em;flex:none;border-radius:.34em;background:linear-gradient(135deg,#4f8cff,#38b6ff 55%,#8b5cf6);box-shadow:0 1px 4px rgba(79,140,255,.35)}
+i.cc-mark::after{content:"";position:absolute;inset:14%;background:#fff;-webkit-mask:url("assets/icons/horse-mark.svg") center/contain no-repeat;mask:url("assets/icons/horse-mark.svg") center/contain no-repeat}
+[data-theme="deep"] i.cc-mark{background:linear-gradient(135deg,#38e1ff,#5b8cff 50%,#8b5cf6)}
+/* 图标注册表 */
+/* 语义别名：JS 图标表里的下划线命名，映射到同名形状的 lucide 文件，
+   避免页面只做了 CSS mask 时落成空白 */
+.cc-ic[data-ic="arrow_up"]{--cc-ic:url("assets/icons/arrow-up.svg")}
+.cc-ic[data-ic="close"]{--cc-ic:url("assets/icons/x.svg")}
+.cc-ic[data-ic="grid"]{--cc-ic:url("assets/icons/layout-grid.svg")}
+.cc-ic[data-ic="news_media"]{--cc-ic:url("assets/icons/newspaper.svg")}
+.cc-ic[data-ic="refresh"]{--cc-ic:url("assets/icons/refresh-cw.svg")}
+.cc-ic[data-ic="res_dataset"]{--cc-ic:url("assets/icons/database.svg")}
+.cc-ic[data-ic="topic_agent"]{--cc-ic:url("assets/icons/bot.svg")}
+
+.cc-ic[data-ic="activity"]{--cc-ic:url("assets/icons/activity.svg")}
+.cc-ic[data-ic="alarm-clock"]{--cc-ic:url("assets/icons/alarm-clock.svg")}
+.cc-ic[data-ic="aperture"]{--cc-ic:url("assets/icons/aperture.svg")}
+.cc-ic[data-ic="archive-restore"]{--cc-ic:url("assets/icons/archive-restore.svg")}
+.cc-ic[data-ic="archive"]{--cc-ic:url("assets/icons/archive.svg")}
+.cc-ic[data-ic="arrow-down"]{--cc-ic:url("assets/icons/arrow-down.svg")}
+.cc-ic[data-ic="arrow-left"]{--cc-ic:url("assets/icons/arrow-left.svg")}
+.cc-ic[data-ic="arrow-right"]{--cc-ic:url("assets/icons/arrow-right.svg")}
+.cc-ic[data-ic="arrow-up-right"]{--cc-ic:url("assets/icons/arrow-up-right.svg")}
+.cc-ic[data-ic="arrow-up"]{--cc-ic:url("assets/icons/arrow-up.svg")}
+.cc-ic[data-ic="at-sign"]{--cc-ic:url("assets/icons/at-sign.svg")}
+.cc-ic[data-ic="atom"]{--cc-ic:url("assets/icons/atom.svg")}
+.cc-ic[data-ic="award"]{--cc-ic:url("assets/icons/award.svg")}
+.cc-ic[data-ic="banknote"]{--cc-ic:url("assets/icons/banknote.svg")}
+.cc-ic[data-ic="bell"]{--cc-ic:url("assets/icons/bell.svg")}
+.cc-ic[data-ic="bike"]{--cc-ic:url("assets/icons/bike.svg")}
+.cc-ic[data-ic="binary"]{--cc-ic:url("assets/icons/binary.svg")}
+.cc-ic[data-ic="biohazard"]{--cc-ic:url("assets/icons/biohazard.svg")}
+.cc-ic[data-ic="blocks"]{--cc-ic:url("assets/icons/blocks.svg")}
+.cc-ic[data-ic="book-marked"]{--cc-ic:url("assets/icons/book-marked.svg")}
+.cc-ic[data-ic="book-open"]{--cc-ic:url("assets/icons/book-open.svg")}
+.cc-ic[data-ic="book"]{--cc-ic:url("assets/icons/book.svg")}
+.cc-ic[data-ic="bookmark"]{--cc-ic:url("assets/icons/bookmark.svg")}
+.cc-ic[data-ic="bot"]{--cc-ic:url("assets/icons/bot.svg")}
+.cc-ic[data-ic="box"]{--cc-ic:url("assets/icons/box.svg")}
+.cc-ic[data-ic="braces"]{--cc-ic:url("assets/icons/braces.svg")}
+.cc-ic[data-ic="brain"]{--cc-ic:url("assets/icons/brain.svg")}
+.cc-ic[data-ic="briefcase"]{--cc-ic:url("assets/icons/briefcase.svg")}
+.cc-ic[data-ic="brush"]{--cc-ic:url("assets/icons/brush.svg")}
+.cc-ic[data-ic="bug"]{--cc-ic:url("assets/icons/bug.svg")}
+.cc-ic[data-ic="building-2"]{--cc-ic:url("assets/icons/building-2.svg")}
+.cc-ic[data-ic="building"]{--cc-ic:url("assets/icons/building.svg")}
+.cc-ic[data-ic="bus"]{--cc-ic:url("assets/icons/bus.svg")}
+.cc-ic[data-ic="calculator"]{--cc-ic:url("assets/icons/calculator.svg")}
+.cc-ic[data-ic="calendar-days"]{--cc-ic:url("assets/icons/calendar-days.svg")}
+.cc-ic[data-ic="calendar"]{--cc-ic:url("assets/icons/calendar.svg")}
+.cc-ic[data-ic="camera"]{--cc-ic:url("assets/icons/camera.svg")}
+.cc-ic[data-ic="car"]{--cc-ic:url("assets/icons/car.svg")}
+.cc-ic[data-ic="chart-bar"]{--cc-ic:url("assets/icons/chart-bar.svg")}
+.cc-ic[data-ic="chart-column"]{--cc-ic:url("assets/icons/chart-column.svg")}
+.cc-ic[data-ic="chart-line"]{--cc-ic:url("assets/icons/chart-line.svg")}
+.cc-ic[data-ic="chart-pie"]{--cc-ic:url("assets/icons/chart-pie.svg")}
+.cc-ic[data-ic="check"]{--cc-ic:url("assets/icons/check.svg")}
+.cc-ic[data-ic="chevron-down"]{--cc-ic:url("assets/icons/chevron-down.svg")}
+.cc-ic[data-ic="chevron-left"]{--cc-ic:url("assets/icons/chevron-left.svg")}
+.cc-ic[data-ic="chevron-right"]{--cc-ic:url("assets/icons/chevron-right.svg")}
+.cc-ic[data-ic="circle-alert"]{--cc-ic:url("assets/icons/circle-alert.svg")}
+.cc-ic[data-ic="circle-check-big"]{--cc-ic:url("assets/icons/circle-check-big.svg")}
+.cc-ic[data-ic="circle-check"]{--cc-ic:url("assets/icons/circle-check.svg")}
+.cc-ic[data-ic="circle-dollar-sign"]{--cc-ic:url("assets/icons/circle-dollar-sign.svg")}
+.cc-ic[data-ic="circle-help"]{--cc-ic:url("assets/icons/circle-help.svg")}
+.cc-ic[data-ic="circle-x"]{--cc-ic:url("assets/icons/circle-x.svg")}
+.cc-ic[data-ic="circle"]{--cc-ic:url("assets/icons/circle.svg")}
+.cc-ic[data-ic="clapperboard"]{--cc-ic:url("assets/icons/clapperboard.svg")}
+.cc-ic[data-ic="clipboard-check"]{--cc-ic:url("assets/icons/clipboard-check.svg")}
+.cc-ic[data-ic="clipboard-copy"]{--cc-ic:url("assets/icons/clipboard-copy.svg")}
+.cc-ic[data-ic="clipboard-list"]{--cc-ic:url("assets/icons/clipboard-list.svg")}
+.cc-ic[data-ic="clock"]{--cc-ic:url("assets/icons/clock.svg")}
+.cc-ic[data-ic="cloud-lightning"]{--cc-ic:url("assets/icons/cloud-lightning.svg")}
+.cc-ic[data-ic="cloud-rain"]{--cc-ic:url("assets/icons/cloud-rain.svg")}
+.cc-ic[data-ic="cloud-snow"]{--cc-ic:url("assets/icons/cloud-snow.svg")}
+.cc-ic[data-ic="cloud-sun"]{--cc-ic:url("assets/icons/cloud-sun.svg")}
+.cc-ic[data-ic="cloud"]{--cc-ic:url("assets/icons/cloud.svg")}
+.cc-ic[data-ic="cloudy"]{--cc-ic:url("assets/icons/cloudy.svg")}
+.cc-ic[data-ic="code"]{--cc-ic:url("assets/icons/code.svg")}
+.cc-ic[data-ic="coffee"]{--cc-ic:url("assets/icons/coffee.svg")}
+.cc-ic[data-ic="command"]{--cc-ic:url("assets/icons/command.svg")}
+.cc-ic[data-ic="compass"]{--cc-ic:url("assets/icons/compass.svg")}
+.cc-ic[data-ic="component"]{--cc-ic:url("assets/icons/component.svg")}
+.cc-ic[data-ic="copy"]{--cc-ic:url("assets/icons/copy.svg")}
+.cc-ic[data-ic="cpu"]{--cc-ic:url("assets/icons/cpu.svg")}
+.cc-ic[data-ic="credit-card"]{--cc-ic:url("assets/icons/credit-card.svg")}
+.cc-ic[data-ic="cross"]{--cc-ic:url("assets/icons/cross.svg")}
+.cc-ic[data-ic="crown"]{--cc-ic:url("assets/icons/crown.svg")}
+.cc-ic[data-ic="database"]{--cc-ic:url("assets/icons/database.svg")}
+.cc-ic[data-ic="diamond"]{--cc-ic:url("assets/icons/diamond.svg")}
+.cc-ic[data-ic="dna-off"]{--cc-ic:url("assets/icons/dna-off.svg")}
+.cc-ic[data-ic="dna"]{--cc-ic:url("assets/icons/dna.svg")}
+.cc-ic[data-ic="download"]{--cc-ic:url("assets/icons/download.svg")}
+.cc-ic[data-ic="droplet"]{--cc-ic:url("assets/icons/droplet.svg")}
+.cc-ic[data-ic="droplets"]{--cc-ic:url("assets/icons/droplets.svg")}
+.cc-ic[data-ic="dumbbell"]{--cc-ic:url("assets/icons/dumbbell.svg")}
+.cc-ic[data-ic="egg"]{--cc-ic:url("assets/icons/egg.svg")}
+.cc-ic[data-ic="eraser"]{--cc-ic:url("assets/icons/eraser.svg")}
+.cc-ic[data-ic="external-link"]{--cc-ic:url("assets/icons/external-link.svg")}
+.cc-ic[data-ic="eye"]{--cc-ic:url("assets/icons/eye.svg")}
+.cc-ic[data-ic="file-code"]{--cc-ic:url("assets/icons/file-code.svg")}
+.cc-ic[data-ic="file-json"]{--cc-ic:url("assets/icons/file-json.svg")}
+.cc-ic[data-ic="file-text"]{--cc-ic:url("assets/icons/file-text.svg")}
+.cc-ic[data-ic="files"]{--cc-ic:url("assets/icons/files.svg")}
+.cc-ic[data-ic="film"]{--cc-ic:url("assets/icons/film.svg")}
+.cc-ic[data-ic="flag"]{--cc-ic:url("assets/icons/flag.svg")}
+.cc-ic[data-ic="flame"]{--cc-ic:url("assets/icons/flame.svg")}
+.cc-ic[data-ic="flask-conical"]{--cc-ic:url("assets/icons/flask-conical.svg")}
+.cc-ic[data-ic="flower-2"]{--cc-ic:url("assets/icons/flower-2.svg")}
+.cc-ic[data-ic="folder-open"]{--cc-ic:url("assets/icons/folder-open.svg")}
+.cc-ic[data-ic="folder"]{--cc-ic:url("assets/icons/folder.svg")}
+.cc-ic[data-ic="gamepad-2"]{--cc-ic:url("assets/icons/gamepad-2.svg")}
+.cc-ic[data-ic="gauge"]{--cc-ic:url("assets/icons/gauge.svg")}
+.cc-ic[data-ic="gem"]{--cc-ic:url("assets/icons/gem.svg")}
+.cc-ic[data-ic="gift"]{--cc-ic:url("assets/icons/gift.svg")}
+.cc-ic[data-ic="git-branch"]{--cc-ic:url("assets/icons/git-branch.svg")}
+.cc-ic[data-ic="git-merge"]{--cc-ic:url("assets/icons/git-merge.svg")}
+.cc-ic[data-ic="globe"]{--cc-ic:url("assets/icons/globe.svg")}
+.cc-ic[data-ic="graduation-cap"]{--cc-ic:url("assets/icons/graduation-cap.svg")}
+.cc-ic[data-ic="hammer"]{--cc-ic:url("assets/icons/hammer.svg")}
+.cc-ic[data-ic="hand"]{--cc-ic:url("assets/icons/hand.svg")}
+.cc-ic[data-ic="handshake"]{--cc-ic:url("assets/icons/handshake.svg")}
+.cc-ic[data-ic="hard-drive"]{--cc-ic:url("assets/icons/hard-drive.svg")}
+.cc-ic[data-ic="headphones"]{--cc-ic:url("assets/icons/headphones.svg")}
+.cc-ic[data-ic="heart"]{--cc-ic:url("assets/icons/heart.svg")}
+.cc-ic[data-ic="highlighter"]{--cc-ic:url("assets/icons/highlighter.svg")}
+.cc-ic[data-ic="history"]{--cc-ic:url("assets/icons/history.svg")}
+.cc-ic[data-ic="horse-mark"]{--cc-ic:url("assets/icons/horse-mark.svg")}
+.cc-ic[data-ic="hourglass"]{--cc-ic:url("assets/icons/hourglass.svg")}
+.cc-ic[data-ic="house"]{--cc-ic:url("assets/icons/house.svg")}
+.cc-ic[data-ic="image"]{--cc-ic:url("assets/icons/image.svg")}
+.cc-ic[data-ic="images"]{--cc-ic:url("assets/icons/images.svg")}
+.cc-ic[data-ic="inbox"]{--cc-ic:url("assets/icons/inbox.svg")}
+.cc-ic[data-ic="info"]{--cc-ic:url("assets/icons/info.svg")}
+.cc-ic[data-ic="japanese-yen"]{--cc-ic:url("assets/icons/japanese-yen.svg")}
+.cc-ic[data-ic="key"]{--cc-ic:url("assets/icons/key.svg")}
+.cc-ic[data-ic="keyboard"]{--cc-ic:url("assets/icons/keyboard.svg")}
+.cc-ic[data-ic="landmark"]{--cc-ic:url("assets/icons/landmark.svg")}
+.cc-ic[data-ic="layers"]{--cc-ic:url("assets/icons/layers.svg")}
+.cc-ic[data-ic="layout-grid"]{--cc-ic:url("assets/icons/layout-grid.svg")}
+.cc-ic[data-ic="layout-list"]{--cc-ic:url("assets/icons/layout-list.svg")}
+.cc-ic[data-ic="leaf"]{--cc-ic:url("assets/icons/leaf.svg")}
+.cc-ic[data-ic="leafy-green"]{--cc-ic:url("assets/icons/leafy-green.svg")}
+.cc-ic[data-ic="library-big"]{--cc-ic:url("assets/icons/library-big.svg")}
+.cc-ic[data-ic="library"]{--cc-ic:url("assets/icons/library.svg")}
+.cc-ic[data-ic="lightbulb"]{--cc-ic:url("assets/icons/lightbulb.svg")}
+.cc-ic[data-ic="link"]{--cc-ic:url("assets/icons/link.svg")}
+.cc-ic[data-ic="list-checks"]{--cc-ic:url("assets/icons/list-checks.svg")}
+.cc-ic[data-ic="list"]{--cc-ic:url("assets/icons/list.svg")}
+.cc-ic[data-ic="lock-open"]{--cc-ic:url("assets/icons/lock-open.svg")}
+.cc-ic[data-ic="lock"]{--cc-ic:url("assets/icons/lock.svg")}
+.cc-ic[data-ic="mail"]{--cc-ic:url("assets/icons/mail.svg")}
+.cc-ic[data-ic="map-pin"]{--cc-ic:url("assets/icons/map-pin.svg")}
+.cc-ic[data-ic="map"]{--cc-ic:url("assets/icons/map.svg")}
+.cc-ic[data-ic="megaphone"]{--cc-ic:url("assets/icons/megaphone.svg")}
+.cc-ic[data-ic="menu"]{--cc-ic:url("assets/icons/menu.svg")}
+.cc-ic[data-ic="merge"]{--cc-ic:url("assets/icons/merge.svg")}
+.cc-ic[data-ic="message-circle"]{--cc-ic:url("assets/icons/message-circle.svg")}
+.cc-ic[data-ic="message-square"]{--cc-ic:url("assets/icons/message-square.svg")}
+.cc-ic[data-ic="mic"]{--cc-ic:url("assets/icons/mic.svg")}
+.cc-ic[data-ic="microscope"]{--cc-ic:url("assets/icons/microscope.svg")}
+.cc-ic[data-ic="milestone"]{--cc-ic:url("assets/icons/milestone.svg")}
+.cc-ic[data-ic="monitor"]{--cc-ic:url("assets/icons/monitor.svg")}
+.cc-ic[data-ic="moon-star"]{--cc-ic:url("assets/icons/moon-star.svg")}
+.cc-ic[data-ic="moon"]{--cc-ic:url("assets/icons/moon.svg")}
+.cc-ic[data-ic="mouse-pointer-click"]{--cc-ic:url("assets/icons/mouse-pointer-click.svg")}
+.cc-ic[data-ic="mouse-pointer"]{--cc-ic:url("assets/icons/mouse-pointer.svg")}
+.cc-ic[data-ic="music"]{--cc-ic:url("assets/icons/music.svg")}
+.cc-ic[data-ic="newspaper"]{--cc-ic:url("assets/icons/newspaper.svg")}
+.cc-ic[data-ic="notebook-pen"]{--cc-ic:url("assets/icons/notebook-pen.svg")}
+.cc-ic[data-ic="octagon"]{--cc-ic:url("assets/icons/octagon.svg")}
+.cc-ic[data-ic="paintbrush"]{--cc-ic:url("assets/icons/paintbrush.svg")}
+.cc-ic[data-ic="palette"]{--cc-ic:url("assets/icons/palette.svg")}
+.cc-ic[data-ic="palmtree"]{--cc-ic:url("assets/icons/palmtree.svg")}
+.cc-ic[data-ic="paperclip"]{--cc-ic:url("assets/icons/paperclip.svg")}
+.cc-ic[data-ic="party-popper"]{--cc-ic:url("assets/icons/party-popper.svg")}
+.cc-ic[data-ic="pause"]{--cc-ic:url("assets/icons/pause.svg")}
+.cc-ic[data-ic="pen-line"]{--cc-ic:url("assets/icons/pen-line.svg")}
+.cc-ic[data-ic="pen-tool"]{--cc-ic:url("assets/icons/pen-tool.svg")}
+.cc-ic[data-ic="pen"]{--cc-ic:url("assets/icons/pen.svg")}
+.cc-ic[data-ic="pencil"]{--cc-ic:url("assets/icons/pencil.svg")}
+.cc-ic[data-ic="piggy-bank"]{--cc-ic:url("assets/icons/piggy-bank.svg")}
+.cc-ic[data-ic="pill"]{--cc-ic:url("assets/icons/pill.svg")}
+.cc-ic[data-ic="pin"]{--cc-ic:url("assets/icons/pin.svg")}
+.cc-ic[data-ic="plane"]{--cc-ic:url("assets/icons/plane.svg")}
+.cc-ic[data-ic="play"]{--cc-ic:url("assets/icons/play.svg")}
+.cc-ic[data-ic="plug"]{--cc-ic:url("assets/icons/plug.svg")}
+.cc-ic[data-ic="plus"]{--cc-ic:url("assets/icons/plus.svg")}
+.cc-ic[data-ic="podcast"]{--cc-ic:url("assets/icons/podcast.svg")}
+.cc-ic[data-ic="printer"]{--cc-ic:url("assets/icons/printer.svg")}
+.cc-ic[data-ic="puzzle"]{--cc-ic:url("assets/icons/puzzle.svg")}
+.cc-ic[data-ic="quote"]{--cc-ic:url("assets/icons/quote.svg")}
+.cc-ic[data-ic="radio"]{--cc-ic:url("assets/icons/radio.svg")}
+.cc-ic[data-ic="receipt"]{--cc-ic:url("assets/icons/receipt.svg")}
+.cc-ic[data-ic="refresh-cw"]{--cc-ic:url("assets/icons/refresh-cw.svg")}
+.cc-ic[data-ic="rocket"]{--cc-ic:url("assets/icons/rocket.svg")}
+.cc-ic[data-ic="route"]{--cc-ic:url("assets/icons/route.svg")}
+.cc-ic[data-ic="rss"]{--cc-ic:url("assets/icons/rss.svg")}
+.cc-ic[data-ic="ruler"]{--cc-ic:url("assets/icons/ruler.svg")}
+.cc-ic[data-ic="salad"]{--cc-ic:url("assets/icons/salad.svg")}
+.cc-ic[data-ic="satellite"]{--cc-ic:url("assets/icons/satellite.svg")}
+.cc-ic[data-ic="save"]{--cc-ic:url("assets/icons/save.svg")}
+.cc-ic[data-ic="scale"]{--cc-ic:url("assets/icons/scale.svg")}
+.cc-ic[data-ic="scan-line"]{--cc-ic:url("assets/icons/scan-line.svg")}
+.cc-ic[data-ic="school"]{--cc-ic:url("assets/icons/school.svg")}
+.cc-ic[data-ic="scissors"]{--cc-ic:url("assets/icons/scissors.svg")}
+.cc-ic[data-ic="scroll-text"]{--cc-ic:url("assets/icons/scroll-text.svg")}
+.cc-ic[data-ic="search"]{--cc-ic:url("assets/icons/search.svg")}
+.cc-ic[data-ic="send"]{--cc-ic:url("assets/icons/send.svg")}
+.cc-ic[data-ic="settings"]{--cc-ic:url("assets/icons/settings.svg")}
+.cc-ic[data-ic="shapes"]{--cc-ic:url("assets/icons/shapes.svg")}
+.cc-ic[data-ic="share-2"]{--cc-ic:url("assets/icons/share-2.svg")}
+.cc-ic[data-ic="shield"]{--cc-ic:url("assets/icons/shield.svg")}
+.cc-ic[data-ic="shopping-bag"]{--cc-ic:url("assets/icons/shopping-bag.svg")}
+.cc-ic[data-ic="shopping-cart"]{--cc-ic:url("assets/icons/shopping-cart.svg")}
+.cc-ic[data-ic="signpost"]{--cc-ic:url("assets/icons/signpost.svg")}
+.cc-ic[data-ic="sliders-horizontal"]{--cc-ic:url("assets/icons/sliders-horizontal.svg")}
+.cc-ic[data-ic="smartphone"]{--cc-ic:url("assets/icons/smartphone.svg")}
+.cc-ic[data-ic="snowflake"]{--cc-ic:url("assets/icons/snowflake.svg")}
+.cc-ic[data-ic="sparkles"]{--cc-ic:url("assets/icons/sparkles.svg")}
+.cc-ic[data-ic="split"]{--cc-ic:url("assets/icons/split.svg")}
+.cc-ic[data-ic="sprout"]{--cc-ic:url("assets/icons/sprout.svg")}
+.cc-ic[data-ic="square-check"]{--cc-ic:url("assets/icons/square-check.svg")}
+.cc-ic[data-ic="square"]{--cc-ic:url("assets/icons/square.svg")}
+.cc-ic[data-ic="star-half"]{--cc-ic:url("assets/icons/star-half.svg")}
+.cc-ic[data-ic="star"]{--cc-ic:url("assets/icons/star.svg")}
+.cc-ic[data-ic="stethoscope"]{--cc-ic:url("assets/icons/stethoscope.svg")}
+.cc-ic[data-ic="sun"]{--cc-ic:url("assets/icons/sun.svg")}
+.cc-ic[data-ic="swords"]{--cc-ic:url("assets/icons/swords.svg")}
+.cc-ic[data-ic="syringe"]{--cc-ic:url("assets/icons/syringe.svg")}
+.cc-ic[data-ic="tag"]{--cc-ic:url("assets/icons/tag.svg")}
+.cc-ic[data-ic="target"]{--cc-ic:url("assets/icons/target.svg")}
+.cc-ic[data-ic="telescope"]{--cc-ic:url("assets/icons/telescope.svg")}
+.cc-ic[data-ic="tent"]{--cc-ic:url("assets/icons/tent.svg")}
+.cc-ic[data-ic="terminal"]{--cc-ic:url("assets/icons/terminal.svg")}
+.cc-ic[data-ic="test-tube"]{--cc-ic:url("assets/icons/test-tube.svg")}
+.cc-ic[data-ic="test-tubes"]{--cc-ic:url("assets/icons/test-tubes.svg")}
+.cc-ic[data-ic="thermometer-sun"]{--cc-ic:url("assets/icons/thermometer-sun.svg")}
+.cc-ic[data-ic="thumbs-up"]{--cc-ic:url("assets/icons/thumbs-up.svg")}
+.cc-ic[data-ic="timer"]{--cc-ic:url("assets/icons/timer.svg")}
+.cc-ic[data-ic="tornado"]{--cc-ic:url("assets/icons/tornado.svg")}
+.cc-ic[data-ic="traffic-cone"]{--cc-ic:url("assets/icons/traffic-cone.svg")}
+.cc-ic[data-ic="train-front"]{--cc-ic:url("assets/icons/train-front.svg")}
+.cc-ic[data-ic="trash-2"]{--cc-ic:url("assets/icons/trash-2.svg")}
+.cc-ic[data-ic="trending-down"]{--cc-ic:url("assets/icons/trending-down.svg")}
+.cc-ic[data-ic="trending-up"]{--cc-ic:url("assets/icons/trending-up.svg")}
+.cc-ic[data-ic="triangle-alert"]{--cc-ic:url("assets/icons/triangle-alert.svg")}
+.cc-ic[data-ic="trophy"]{--cc-ic:url("assets/icons/trophy.svg")}
+.cc-ic[data-ic="tv"]{--cc-ic:url("assets/icons/tv.svg")}
+.cc-ic[data-ic="type"]{--cc-ic:url("assets/icons/type.svg")}
+.cc-ic[data-ic="upload"]{--cc-ic:url("assets/icons/upload.svg")}
+.cc-ic[data-ic="user"]{--cc-ic:url("assets/icons/user.svg")}
+.cc-ic[data-ic="users"]{--cc-ic:url("assets/icons/users.svg")}
+.cc-ic[data-ic="utensils"]{--cc-ic:url("assets/icons/utensils.svg")}
+.cc-ic[data-ic="video"]{--cc-ic:url("assets/icons/video.svg")}
+.cc-ic[data-ic="volume-2"]{--cc-ic:url("assets/icons/volume-2.svg")}
+.cc-ic[data-ic="wallet"]{--cc-ic:url("assets/icons/wallet.svg")}
+.cc-ic[data-ic="waves"]{--cc-ic:url("assets/icons/waves.svg")}
+.cc-ic[data-ic="wheat"]{--cc-ic:url("assets/icons/wheat.svg")}
+.cc-ic[data-ic="wifi"]{--cc-ic:url("assets/icons/wifi.svg")}
+.cc-ic[data-ic="github"]{--cc-ic:url("assets/icons/github.svg")}
+.cc-ic[data-ic="git-fork"]{--cc-ic:url("assets/icons/git-fork.svg")}
+.cc-ic[data-ic="wind"]{--cc-ic:url("assets/icons/wind.svg")}
+.cc-ic[data-ic="workflow"]{--cc-ic:url("assets/icons/workflow.svg")}
+.cc-ic[data-ic="wrench"]{--cc-ic:url("assets/icons/wrench.svg")}
+.cc-ic[data-ic="x"]{--cc-ic:url("assets/icons/x.svg")}
+.cc-ic[data-ic="zap"]{--cc-ic:url("assets/icons/zap.svg")}
+.cc-ic[data-ic="radiation"]{--cc-ic:url("assets/icons/radiation.svg")}
+.cc-ic[data-ic="hard-hat"]{--cc-ic:url("assets/icons/hard-hat.svg")}
+.cc-ic[data-ic="contrast"]{--cc-ic:url("assets/icons/contrast.svg")}
+.cc-ic[data-ic="table"]{--cc-ic:url("assets/icons/table.svg")}
+
+/* ================= 正文配图（恰到好处 · 第2个H2后） ================= */
+figure.cc-body-img{margin:26px auto 22px;max-width:100%;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(15,23,42,.10);line-height:0}
+figure.cc-body-img img{width:100%;height:auto;display:block}
+[data-theme="deep"] figure.cc-body-img{box-shadow:0 4px 22px rgba(0,0,0,.45)}
+.cc-ic[data-ic="wifi-off"]{--cc-ic:url("assets/icons/wifi-off.svg")}
+.cc-ic[data-ic="audio-lines"]{--cc-ic:url("assets/icons/audio-lines.svg")}
+.cc-ic[data-ic="alert-circle"]{--cc-ic:url("assets/icons/alert-circle.svg")}
+.cc-ic[data-ic="arrow-up-down"]{--cc-ic:url("assets/icons/arrow-up-down.svg")}
+.cc-ic[data-ic="badge-check"]{--cc-ic:url("assets/icons/badge-check.svg")}
+.cc-ic[data-ic="ban"]{--cc-ic:url("assets/icons/ban.svg")}
+.cc-ic[data-ic="bar-chart-3"]{--cc-ic:url("assets/icons/bar-chart-3.svg")}
+.cc-ic[data-ic="calendar-clock"]{--cc-ic:url("assets/icons/calendar-clock.svg")}
+.cc-ic[data-ic="check-circle"]{--cc-ic:url("assets/icons/check-circle.svg")}
+.cc-ic[data-ic="chevron-up"]{--cc-ic:url("assets/icons/chevron-up.svg")}
+.cc-ic[data-ic="chevrons-down"]{--cc-ic:url("assets/icons/chevrons-down.svg")}
+.cc-ic[data-ic="chevrons-up"]{--cc-ic:url("assets/icons/chevrons-up.svg")}
+.cc-ic[data-ic="circle-pause"]{--cc-ic:url("assets/icons/circle-pause.svg")}
+.cc-ic[data-ic="circle-play"]{--cc-ic:url("assets/icons/circle-play.svg")}
+.cc-ic[data-ic="corner-down-right"]{--cc-ic:url("assets/icons/corner-down-right.svg")}
+.cc-ic[data-ic="edit"]{--cc-ic:url("assets/icons/edit.svg")}
+.cc-ic[data-ic="file"]{--cc-ic:url("assets/icons/file.svg")}
+.cc-ic[data-ic="filter"]{--cc-ic:url("assets/icons/filter.svg")}
+.cc-ic[data-ic="forward"]{--cc-ic:url("assets/icons/forward.svg")}
+.cc-ic[data-ic="git-compare"]{--cc-ic:url("assets/icons/git-compare.svg")}
+.cc-ic[data-ic="grid-2x2"]{--cc-ic:url("assets/icons/grid-2x2.svg")}
+.cc-ic[data-ic="hash"]{--cc-ic:url("assets/icons/hash.svg")}
+.cc-ic[data-ic="help-circle"]{--cc-ic:url("assets/icons/help-circle.svg")}
+.cc-ic[data-ic="home"]{--cc-ic:url("assets/icons/home.svg")}
+.cc-ic[data-ic="languages"]{--cc-ic:url("assets/icons/languages.svg")}
+.cc-ic[data-ic="list-filter"]{--cc-ic:url("assets/icons/list-filter.svg")}
+.cc-ic[data-ic="list-ordered"]{--cc-ic:url("assets/icons/list-ordered.svg")}
+.cc-ic[data-ic="loader"]{--cc-ic:url("assets/icons/loader.svg")}
+.cc-ic[data-ic="log-in"]{--cc-ic:url("assets/icons/log-in.svg")}
+.cc-ic[data-ic="log-out"]{--cc-ic:url("assets/icons/log-out.svg")}
+.cc-ic[data-ic="maximize"]{--cc-ic:url("assets/icons/maximize.svg")}
+.cc-ic[data-ic="maximize-2"]{--cc-ic:url("assets/icons/maximize-2.svg")}
+.cc-ic[data-ic="minimize"]{--cc-ic:url("assets/icons/minimize.svg")}
+.cc-ic[data-ic="minimize-2"]{--cc-ic:url("assets/icons/minimize-2.svg")}
+.cc-ic[data-ic="move-left"]{--cc-ic:url("assets/icons/move-left.svg")}
+.cc-ic[data-ic="move-right"]{--cc-ic:url("assets/icons/move-right.svg")}
+.cc-ic[data-ic="package-open"]{--cc-ic:url("assets/icons/package-open.svg")}
+.cc-ic[data-ic="panel-left"]{--cc-ic:url("assets/icons/panel-left.svg")}
+.cc-ic[data-ic="panel-right"]{--cc-ic:url("assets/icons/panel-right.svg")}
+.cc-ic[data-ic="pie-chart"]{--cc-ic:url("assets/icons/pie-chart.svg")}
+.cc-ic[data-ic="power"]{--cc-ic:url("assets/icons/power.svg")}
+.cc-ic[data-ic="reply"]{--cc-ic:url("assets/icons/reply.svg")}
+.cc-ic[data-ic="rotate-ccw"]{--cc-ic:url("assets/icons/rotate-ccw.svg")}
+.cc-ic[data-ic="shield-check"]{--cc-ic:url("assets/icons/shield-check.svg")}
+.cc-ic[data-ic="shuffle"]{--cc-ic:url("assets/icons/shuffle.svg")}
+.cc-ic[data-ic="sort-asc"]{--cc-ic:url("assets/icons/sort-asc.svg")}
+.cc-ic[data-ic="square-chevron-down"]{--cc-ic:url("assets/icons/square-chevron-down.svg")}
+.cc-ic[data-ic="square-pen"]{--cc-ic:url("assets/icons/square-pen.svg")}
+.cc-ic[data-ic="sticky-note"]{--cc-ic:url("assets/icons/sticky-note.svg")}
+.cc-ic[data-ic="translate"]{--cc-ic:url("assets/icons/translate.svg")}
+.cc-ic[data-ic="unfold-vertical"]{--cc-ic:url("assets/icons/unfold-vertical.svg")}
+.cc-ic[data-ic="x-circle"]{--cc-ic:url("assets/icons/x-circle.svg")}
+
+/* ============ 图标按钮系统 · 全站按钮矢量图标统一排版 ============ */
+/* 1) 按钮容器：默认行内弹性居中；:where 零优先级，已有布局规则可自由覆盖 */
+:where(button, .btn, .cta, [role="button"], [class*="btn-"], [class*="-btn"]) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45em;
+  text-decoration: none;
+}
+/* 2) 按钮内图标：统一尺寸 + 与文字的间距 */
+:where(button, .btn, .cta, [role="button"], [class*="btn-"], [class*="-btn"]) i.cc-ic {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -.14em;
+  flex: none;
+  opacity: .95;
+}
+/* 3) 图标在末尾（如「了解更多 →」）：左间距，右侧归零 */
+:where(button, .btn, .cta, [role="button"], [class*="btn-"], [class*="-btn"]) i.cc-ic:last-child {
+  margin-inline-start: .1em;
+}
+/* 4) 纯图标按钮（无文字，如关闭/主题切换）：取消文字间距、图标略放大 */
+button.cc-icon-only, .btn.cc-icon-only, .cc-icon-btn, [class*="btn-"].cc-icon-only {
+  gap: 0;
+  padding: .5em;
+  line-height: 1;
+}
+.cc-icon-only i.cc-ic, .cc-icon-btn i.cc-ic {
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0;
+}
+/* 5) 小尺寸按钮内的图标同步缩小 */
+.btn-sm i.cc-ic, .btn-xs i.cc-ic, [class*="btn-sm"] i.cc-ic {
+  width: .95em;
+  height: .95em;
+}
+/* 6) 大尺寸 CTA 按钮内的图标略放大 */
+.btn-lg i.cc-ic, [class*="btn-lg"] i.cc-ic, .hero-cta i.cc-ic {
+  width: 1.15em;
+  height: 1.15em;
+}
+/* 7) 悬停微动效：图标轻微右移（仅尾随箭头类） */
+:where(button, .btn, .cta, [role="button"]) i.cc-ic.cc-ic-arrow {
+  transition: transform .18s ease;
+}
+:where(button, .btn, .cta, [role="button"]):hover i.cc-ic.cc-ic-arrow {
+  transform: translateX(2px);
+}
+.cc-ic[data-ic="ellipsis"]{--cc-ic:url("assets/icons/ellipsis.svg")}
+.cc-ic[data-ic="fast-forward"]{--cc-ic:url("assets/icons/fast-forward.svg")}
+.cc-ic[data-ic="loader-circle"]{--cc-ic:url("assets/icons/loader-circle.svg")}
+.cc-ic[data-ic="more-horizontal"]{--cc-ic:url("assets/icons/more-horizontal.svg")}
+.cc-ic[data-ic="more-vertical"]{--cc-ic:url("assets/icons/more-vertical.svg")}
+.cc-ic[data-ic="rewind"]{--cc-ic:url("assets/icons/rewind.svg")}
+.cc-ic[data-ic="rotate-3d"]{--cc-ic:url("assets/icons/rotate-3d.svg")}
+.cc-ic[data-ic="skip-back"]{--cc-ic:url("assets/icons/skip-back.svg")}
+.cc-ic[data-ic="skip-forward"]{--cc-ic:url("assets/icons/skip-forward.svg")}
+.cc-ic[data-ic="volume-1"]{--cc-ic:url("assets/icons/volume-1.svg")}
+.cc-ic[data-ic="volume-x"]{--cc-ic:url("assets/icons/volume-x.svg")}
+
+/* ==========================================================================
+   2026-10-28 · 品牌图标还原
+   问题：本文件上面的「Logo 渐变字」规则（body nav .logo / body .topbar .logo）
+   和 nebula-skin.css 的 body > nav:not([id]) .logo 都带 background-clip:text，
+   那是给「文字型 logo」用的（如 website/agent.html 的 <div class="logo">AI 创作…</div>）。
+   但现在的 nav 里 .logo 是个图标色块：<span class="logo"><i class="cc-mark"></i></span>，
+   里面没有文字 → 渐变被裁到空文字上就等于没画，只剩圆角和阴影，
+   看上去是个发白的空方块。同时上面那条
+   body nav .logo i{background:none} 又把 .cc-mark 的渐变抹掉，
+   白色马标贴在浅色导航上等于隐形。
+   修法：只针对「.brand 内的图标态 logo」还原，不动文字型 logo。
+   ========================================================================== */
+body nav .brand > .logo,
+body > nav:not([id]) .brand > .logo{
+  background: var(--grad,linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6)) !important;
+  -webkit-background-clip: padding-box !important;
+  background-clip: padding-box !important;
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  padding-right:0 !important;
+  border-right:0 !important;
+  border-radius:10px !important;
+  font-size:19px !important;
+}
+body nav .brand > .logo > i.cc-mark,
+body > nav:not([id]) .brand > .logo > i.cc-mark{
+  background: linear-gradient(135deg,#4f8cff,#38b6ff 55%,#8b5cf6) !important;
+  border-radius:.34em !important;
+  box-shadow: 0 1px 4px rgba(255,255,255,.35) !important;
+}
+body[data-theme="deep"] nav .brand > .logo,
+body[data-theme="deep"] > nav:not([id]) .brand > .logo{
+  background: linear-gradient(120deg,#38e1ff,#5b8cff 45%,#8b5cf6) !important;
+}
+
+/* ==========================================================================
+   2026-10-28 · 手机端遮挡治理 + 圆角归一
+   实测（chapter-01，390×844）有 7 处遮挡：
+     .bj-dock(263,12) 压住导航「学院首页」；#ccowSearchBtn(330,660)、
+     #modReadBtn(12,746)、#modGear(16,784)、#aiTutorFab(208,791) 各自压在正文上；
+     另外目录条条目会滑到右侧关闭按钮底下。
+   思路：① 导航给 dock 让位 ② dock 收窄 ③ 底部悬浮件收成一条贴边工具带
+        ④ 正文留出底部空间 ⑤ 目录条右侧留出关闭按钮宽度
+   ========================================================================== */
+
+/* ---------- 圆角尺度 ----------
+   变量定义已统一收到 design-norms.css（最后加载的一层），这里不再重复定义，
+   否则两套尺度并存，改一处另一处不跟着变。 */
+/* 方形图标按钮统一到 --r-sm（原来是 8/9/10 混用） */
+body nav .nav-actions button,
+body nav .nav-actions a,
+body nav:not(.top) > a,
+body nav:not(.top) .nav-gear,
+body nav .theme-btn,
+body .bj-btn{
+  border-radius: var(--r-sm) !important;
+}
+/* 品牌标记按比例设圆角：原来 .34em 会随字号在 4.25~6.12px 之间飘，
+   视觉上同一排图标圆角不一致。改成百分比，任意尺寸看起来都一致。 */
+body i.cc-mark{ border-radius: 26% !important; }
+/* 文字型胶囊保持全圆，只统一内边距 */
+body .blog-badge,
+body .tag,
+body .chip,
+body .cta-btn,
+body .ci-btn{
+  border-radius: var(--r-pill) !important;
+}
+
+@media (max-width: 760px){
+  /* ① 导航让位给右上角 dock（原来「学院首页」被压掉一半） */
+  body > nav:not(.top){ padding-right: 118px !important; }
+  body > nav:not(.top) > .logo{
+    max-width: 104px !important;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  body > nav:not(.top) > a{ white-space: nowrap; }
+
+  /* ② dock 收窄：手机上「选身份」只留表情，省掉三个字 */
+  .bj-dock{ top: 8px !important; right: 8px !important; padding: 4px !important; gap: 6px !important; }
+  .bj-dock .bj-role-nm{ display: none !important; }
+  .bj-dock .bj-role-chip{ padding: 0 8px !important; }
+
+  /* ③ 底部悬浮件收成一条贴边工具带，不再散落在正文中间 */
+  #modGear{
+    left: 12px !important; bottom: 10px !important;
+    width: 38px !important; height: 38px !important; font-size: 16px !important;
+  }
+  #modReadBtn{
+    left: 58px !important; bottom: 10px !important;
+    height: 38px !important; padding: 0 10px !important; font-size: 12px !important;
+  }
+  #aiTutorFab{
+    right: 12px !important; bottom: 10px !important;
+    padding: 9px 14px !important; font-size: 13px !important;
+  }
+  #ccowSearchBtn{
+    right: 12px !important; bottom: 56px !important;
+    width: 38px !important; height: 38px !important;
+  }
+  #modTop{
+    right: 58px !important; bottom: 56px !important;
+    width: 38px !important; height: 38px !important;
+  }
+
+  /* ④ 正文底部留白，最后一段不会被工具带压住 */
+  article, main, .wrap, .content, .post, .doc{
+    padding-bottom: 84px !important;
+  }
+
+  /* ⑤ 目录条：右侧给关闭按钮留位置，条目不再滑到按钮底下 */
+  #modTocBar{ padding-right: 56px !important; }
+  #modTocBar .t-list{ padding-right: 8px !important; }
+
+  /* ⑥ 底部工具带垫一层渐变底：正文滚到这一带时淡出，
+     视觉上是「工具栏」，而不是「按钮压住了字」。 */
+  body::after{
+    content:''; position:fixed; left:0; right:0; bottom:0; height:108px;
+    background:linear-gradient(to top, var(--bg,#F4F7FC) 62%, rgba(255,255,255,0));
+    pointer-events:none; z-index:9990;
+  }
+  body[data-theme="deep"]::after{
+    background:linear-gradient(to top, #06091c 62%, rgba(6,9,28,0));
+  }
+}
+
+/* ---------- 2026-10-28 · 图表基础样式 ----------
+   章节页里 <figure>/<figcaption>/<table><caption> 之前没有任何样式，
+   换掉重复配图后需要一套最小可用的排版。 */
+body article figure.fig,
+body article figure{
+  margin: 22px 0;
+  text-align: center;
+}
+body article figcaption{
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted, #64748B);
+  margin-top: 10px;
+  text-align: center;
+}
+body article figure svg{ border-radius: 14px; background: #fff; }
+body[data-theme="deep"] body article figure svg{ background: transparent; }
+body article table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 22px 0;
+  font-size: 14px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #E3EBF5);
+  border-radius: 14px;
+  overflow: hidden;
+}
+body article table caption{
+  caption-side: top;
+  text-align: left;
+  font-size: 13px;
+  color: var(--muted, #64748B);
+  padding: 0 0 8px;
+}
+/* 表头沿用全站既有风格（浅蓝底深字，见 site-industrial.css 的 body article th），
+   这里只补内边距与对齐，不再另起一套配色。 */
+body article table th{
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 700;
+}
+body article table td{
+  padding: 9px 12px;
+  border-top: 1px solid var(--line, #E3EBF5);
+  color: var(--text, #1E293B);
+}
+body article table tbody tr:hover td{ background: rgba(79,140,255,.05); }
+
+/* ---------- 2026-10-28 · 手机端滚动时自动收起底部工具带 ----------
+   贴边排布后仍有几何重叠：正文会从按钮底下穿过。
+   阅读时把它们收起来，停手 0.7s 再回来，做到「读的时候零遮挡」。 */
+@media (max-width: 760px){
+  #modGear, #modReadBtn, #ccowSearchBtn, #modTop, #aiTutorFab{
+    transition: opacity .22s ease, transform .22s ease !important;
+  }
+  html.fab-hidden #modGear,
+  html.fab-hidden #modReadBtn,
+  html.fab-hidden #ccowSearchBtn,
+  html.fab-hidden #modTop,
+  html.fab-hidden #aiTutorFab{
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(10px) !important;
+  }
+}
+
+/* ---------- 2026-11-10 · 窄屏阅读安全留白（BRAND.md §5.1 落地） ----------
+   规范写了「桌面 56px / ≤880px 20px / ≤480px 16px」，但此前只落在部分模板：
+   responsive.css 只有 85 页加载，且里面根本没有 ≤600px 的正文规则，
+   于是分站长文与内联布局页常出现两侧 0 空隙、文字顶到屏幕玻璃边。
+   用 :where() 把优先级降为 0：自带 padding 的容器（.pg-wrap 16px 等）保持原值，
+   只有「完全没有留白」的容器被补齐，不会把已有版式撑歪。
+   再叠 env(safe-area-inset-*)，刘海屏 / 曲面屏同样不吃亏。 */
+@media (max-width: 880px) {
+  :where(article, main, .pg-wrap, .pg-content, .wrap, .container, .content,
+         .md, .prose, .reader, .article, .post, section.block) {
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+}
+@media (max-width: 480px) {
+  :where(article, main, .pg-wrap, .pg-content, .wrap, .container, .content,
+         .md, .prose, .reader, .article, .post, section.block) {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+}
+/* 宽表格 / 代码块 / 长图不许把整页撑出横向滚动 */
+:where(pre, table, img, iframe, video) { max-width: 100%; }
+
+/* ---------- 2026-11-20 · 老式 header.nav 身份控件归位 ----------
+   friends / lab/code / learn/open-library 这几页用的是 <header class="nav">，
+   白驹核心脚本把身份芯片、头像、铃铛 append 进来。旧版挂到 header 根节点，
+   它们掉到导航行下面左对齐竖排，390px 下正好压住 hero 标题（截图实锤）。
+   现在 dockHost() 改为挂进 .wrap；这里把它们压成单行、窄屏只留图标，
+   logo 让出空间，返回学习仍靠右，各断点实测不重叠、不溢出。 */
+@media (max-width: 760px){
+  header.nav .wrap{gap:6px !important;flex-wrap:nowrap !important}
+  header.nav .wrap .logo{max-width:88px !important;overflow:hidden;flex-shrink:1}
+  header.nav .wrap .logo span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  header.nav .wrap .home{margin-left:auto !important;font-size:12px !important;flex-shrink:0}
+  header.nav .wrap .bj-idbox .bj-role-nm,
+  header.nav .wrap .bj-idbox .bj-me-nm,
+  header.nav .wrap .bj-idbox .bj-login{display:none !important}
+  header.nav .wrap .bj-idbox .bj-role-chip,
+  header.nav .wrap .bj-idbox .bj-me,
+  header.nav .wrap .bj-bell{padding:0 8px !important;height:30px !important}
+}

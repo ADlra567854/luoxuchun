@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="description" content="不想装 Python？直接打开 网页版一键仿真 （滑杆调参，实时出曲线图） 自动控制原理，P/PI/PID 对比，输出稳态误差/超调/稳定时间。 机械振动二阶系统，输出固有频率/阻尼比/周期。">
+<meta property="og:description" content="不想装 Python？直接打开 网页版一键仿真 （滑杆调参，实时出曲线图） 自动控制原理，P/PI/PID 对比，输出稳态误差/超调/稳定时间。 机械振动二阶系统，输出固有频率/阻尼比/周期。">
+<meta name="keywords" content="工科实训实验室,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工科实训实验室 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"工科实训实验室 · 白驹 ccowork","description":"不想装 Python？直接打开 网页版一键仿真 （滑杆调参，实时出曲线图） 自动控制原理，P/PI/PID 对比，输出稳态误差/超调/稳定时间。 机械振动二阶系统，输出固有频率/阻尼比/周期。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0b1020; --card:#101728; --line:#1e2a44;
+  --blue:#4f8cff; --cyan:#38e1ff; --purple:#8b5cf6; --pink:#ff5c8a; --green:#2fd17b;
+  --text:#e8eefc; --muted:#8fa0c4; --grad:linear-gradient(120deg,#4f8cff,#38e1ff 50%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.8}
+a{color:var(--cyan);text-decoration:none}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(6,8,15,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:17px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links a{color:var(--muted);margin-left:18px;font-size:14px}
+.nav-links a:hover{color:var(--cyan)}
+.hero{padding:70px 24px 40px;background:radial-gradient(900px 460px at 50% -10%,rgba(79,140,255,.14),transparent 60%),var(--bg);display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap;text-align:center}
+.hero h1{font-size:clamp(28px,4.5vw,50px);font-weight:900}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:760px;margin:16px auto 0}
+.hero-left{flex:1;min-width:280px;text-align:center}
+.hero-right{flex:0 0 auto}
+.wrap{max-width:1080px;margin:0 auto;padding:20px 20px 80px}
+.sec{margin:34px 0}
+.sec h2{font-size:24px;margin-bottom:16px;color:var(--cyan)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;transition:.2s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.card b{display:block;font-size:15px;margin-bottom:6px}
+.card code{font-size:12px;color:var(--green);background:#0b1224;border:1px solid var(--line);padding:1px 6px;border-radius:6px;display:inline-block;margin-bottom:6px}
+.card p{font-size:13px;color:var(--muted)}
+.card .links{margin-top:8px;display:flex;gap:10px;flex-wrap:wrap}
+.card .links a{font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid var(--line);background:#0b1224;color:var(--cyan);transition:.15s}
+.card .links a:hover{border-color:var(--cyan);background:rgba(56,225,255,.08)}
+.guide{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+.guide a{font-weight:700}
+</style>
+<link rel="canonical" href="https://ccoworkbaiju.cn/lab/index.html">
+<meta property="og:title" content="工科实训实验室 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/lab/index.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="工科实训实验室 · 白驹 ccowork">
+<meta name="twitter:description" content="工科实训实验室 返回主站 作品库  真能跑 · 真能下载 · 真能实践 编程 / 计算机 / 数控编程 / 工科实训 / 仿真模拟 / 仿真测试——每段代码都可直接运行，每个工具都是开源开箱即用。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav>
+  <div class="logo">工科实训实验室</div>
+  <div class="nav-links"><a href="/">← 回总站</a><a href="../website/works.html">作品库</a></div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<header class="hero">
+  <div class="hero-left">
+    <h1>真能跑 · 真能下载 · <span>真能实践</span></h1>
+    <p>编程 / 计算机 / 数控编程 / 工科实训 / 仿真模拟 / 仿真测试——每段代码都可直接运行，每个工具都是开源开箱即用。</p>
+    <p class="hero-sub">12 个仿真脚本 · 3 套 G 代码 · 从 PID 到波动方程 —— 亲手跑一遍比看 10 篇文章管用</p>
+    <div class="hero-deco">
+      <svg width="300" height="90" viewBox="0 0 300 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="gGear" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#38e1ff"/>
+            <stop offset="100%" stop-color="#4f8cff"/>
+          </linearGradient>
+          <linearGradient id="gWave" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#38e1ff"/>
+          </linearGradient>
+        </defs>
+        <!-- 齿轮主体 -->
+        <g transform="translate(60,45)">
+          <circle r="20" stroke="url(#gGear)" stroke-width="2"/>
+          <circle r="8" fill="#06080f" stroke="url(#gGear)" stroke-width="2"/>
+          <g stroke="url(#gGear)" stroke-width="2" fill="#06080f">
+            <path d="M-3,-24 L3,-24 L3,-30 L-3,-30 Z"/>
+            <path d="M-3,24 L3,24 L3,30 L-3,30 Z"/>
+            <path d="M-24,-3 L-24,3 L-30,3 L-30,-3 Z"/>
+            <path d="M24,-3 L24,3 L30,3 L30,-3 Z"/>
+            <path d="M-18.7,-18.7 L-14.5,-14.5 L-20.2,-8.8 L-24.4,-13 Z"/>
+            <path d="M18.7,-18.7 L14.5,-14.5 L20.2,-8.8 L24.4,-13 Z"/>
+            <path d="M-18.7,18.7 L-14.5,14.5 L-20.2,8.8 L-24.4,13 Z"/>
+            <path d="M18.7,18.7 L14.5,14.5 L20.2,8.8 L24.4,13 Z"/>
+          </g>
+        </g>
+        <!-- 示波器网格 + 波形 -->
+        <g>
+          <rect x="130" y="25" width="150" height="40" stroke="#1e2a44" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+          <line x1="130" y1="45" x2="280" y2="45" stroke="#1e2a44" stroke-width="1"/>
+          <path d="M140,45 Q155,20 170,45 T200,45 T230,45 T260,45" stroke="url(#gWave)" stroke-width="2.2" fill="none"/>
+          <circle cx="260" cy="45" r="3" fill="#38e1ff"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="num">12</span><span class="lbl">仿真脚本</span></div>
+      <div class="stat"><span class="num">3</span><span class="lbl">G 代码</span></div>
+      <div class="stat"><span class="num">10</span><span class="lbl">学习路线</span></div>
+    </div>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  </div>
+  <div class="hero-right">
+    <a href="simlab.html" class="hero-cta">🔬 进网页版仿真实验 →</a>
+  </div>
+</header>
+<main class="wrap">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-lab-index.png" alt="工科实训实验室 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+  <section class="sec">
+    <h2><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>可直接运行的仿真脚本</h2>
+    <p style="margin-bottom:12px"><i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>不想装 Python？直接打开 <a href="simlab.html" style="color:var(--green);font-weight:700">网页版一键仿真 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>（滑杆调参，实时出曲线图）</p>
+    <div class="env-banner">
+      <span class="env-warn">⚠️</span>
+      <div>
+        <div class="env-title">运行环境：Python 3.10+ · matplotlib · scipy · numpy</div>
+        <div class="env-cmd">pip install matplotlib scipy numpy</div>
+      </div>
+    </div>
+    <div class="cat-tabs">
+      <button class="tab active" data-cat="all">全部</button>
+      <button class="tab" data-cat="ctrl">🔧 自动控制</button>
+      <button class="tab" data-cat="mech">⚙️ 力学系统</button>
+      <button class="tab" data-cat="circuit">🔌 电路仿真</button>
+      <button class="tab" data-cat="num">📐 数值/生态</button>
+    </div>
+    <div class="grid">
+      <div class="card" data-category="ctrl">
+        <span class="diff diff-yellow" title="进阶难度">🟡 进阶</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pidg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#38e1ff"/></linearGradient></defs><rect width="120" height="80" fill="#0b1224"/><line x1="10" y1="65" x2="110" y2="65" stroke="#1e2a44" stroke-width="1"/><line x1="10" y1="10" x2="10" y2="70" stroke="#1e2a44" stroke-width="1"/><line x1="10" y1="25" x2="110" y2="25" stroke="#1e2a44" stroke-dasharray="3,3"/><path d="M10,65 L30,65 L38,18 L45,52 L52,30 L58,48 L65,35 L72,45 L80,38 L110,25" stroke="url(#pidg)" stroke-width="2" fill="none"/></svg>
+        </div>
+        <b>PID 控制器仿真</b><code>python 01_pid_controller.py</code><p>自动控制原理，P/PI/PID 对比，输出稳态误差/超调/稳定时间。</p><div class="links"><a href="simulation/01_pid_controller.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div>
+      </div>
+      <div class="card" data-category="mech">
+        <span class="diff diff-yellow" title="进阶难度">🟡 进阶</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="spg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs><rect width="120" height="80" fill="#0b1224"/><line x1="15" y1="40" x2="20" y2="40" stroke="#4f8cff" stroke-width="3"/><path d="M20,40 L26,34 L32,46 L38,34 L44,46 L50,34 L56,46 L62,40" stroke="url(#spg)" stroke-width="2" fill="none"/><rect x="62" y="30" width="18" height="20" rx="2" fill="#38e1ff" fill-opacity=".2" stroke="#38e1ff"/><circle cx="100" cy="30" r="3" fill="#8b5cf6"/><circle cx="105" cy="50" r="3" fill="#4f8cff"/><circle cx="110" cy="35" r="3" fill="#38e1ff"/></svg>
+        </div>
+        <b>弹簧-质量-阻尼</b><code>python 02_spring_mass_damper.py</code><p>机械振动二阶系统，输出固有频率/阻尼比/周期。</p><div class="links"><a href="simulation/02_spring_mass_damper.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div>
+      </div>
+      <div class="card" data-category="mech">
+        <span class="diff diff-green" title="入门难度">🟢 入门</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="prg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#38e1ff"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs><rect width="120" height="80" fill="#0b1224"/><line x1="10" y1="70" x2="115" y2="70" stroke="#1e2a44" stroke-width="1"/><path d="M12,68 Q60,5 112,30" stroke="url(#prg)" stroke-width="2" fill="none"/><circle cx="12" cy="68" r="3" fill="#38e1ff"/><circle cx="60" cy="20" r="3" fill="#8b5cf6"/><circle cx="112" cy="30" r="3" fill="#4f8cff"/><path d="M12,68 L20,58" stroke="#ff5c8a" stroke-width="1.5" fill="none"/><path d="M12,68 L16,74" stroke="#ff5c8a" stroke-width="1.5" fill="none"/></svg>
+        </div>
+        <b>抛体运动</b><code>python 03_projectile.py</code><p>理论力学，含空气阻力，射程与理论值对照。</p><div class="links"><a href="simulation/03_projectile.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div>
+      </div>
+      <div class="card" data-category="circuit">
+        <span class="diff diff-green" title="入门难度">🟢 入门</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rcg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2fd17b"/><stop offset="100%" stop-color="#38e1ff"/></linearGradient></defs><rect width="120" height="80" fill="#0b1224"/><line x1="10" y1="40" x2="25" y2="40" stroke="#2fd17b" stroke-width="1.5"/><path d="M25,34 L35,46 L45,34 L55,46 L65,34" stroke="#2fd17b" stroke-width="1.5" fill="none"/><line x1="65" y1="40" x2="75" y2="40" stroke="#2fd17b" stroke-width="1.5"/><line x1="75" y1="25" x2="75" y2="55" stroke="#38e1ff" stroke-width="2"/><line x1="82" y1="25" x2="82" y2="55" stroke="#38e1ff" stroke-width="2"/><line x1="82" y1="40" x2="110" y2="40" stroke="#2fd17b" stroke-width="1.5"/><line x1="10" y1="65" x2="110" y2="65" stroke="#1e2a44" stroke-width="1"/><path d="M10,65 Q40,42 70,40 T110,40" stroke="url(#rcg)" stroke-width="1.8" fill="none"/></svg>
+        </div>
+        <b>RC 电路暂态</b><code>python 04_rc_circuit.py</code><p>电路时间常数 τ=RC，63.2%/95%/99.3% 关键点验证。</p><div class="links"><a href="simulation/04_rc_circuit.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div>
+      </div>
+      <div class="card" data-category="num">
+        <span class="diff diff-green" title="入门难度">🟢 入门</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="80" fill="#0b1224"/><rect x="15" y="10" width="60" height="60" fill="none" stroke="#1e2a44"/><circle cx="45" cy="40" r="28" fill="none" stroke="#4f8cff"/><circle cx="28" cy="22" r="1.5" fill="#38e1ff"/><circle cx="40" cy="35" r="1.5" fill="#8b5cf6"/><circle cx="55" cy="28" r="1.5" fill="#38e1ff"/><circle cx="32" cy="50" r="1.5" fill="#4f8cff"/><circle cx="58" cy="55" r="1.5" fill="#38e1ff"/><circle cx="20" cy="55" r="1.5" fill="#ff5c8a"/><circle cx="65" cy="20" r="1.5" fill="#ff5c8a"/><circle cx="70" cy="50" r="1.5" fill="#ff5c8a"/><circle cx="50" cy="65" r="1.5" fill="#38e1ff"/><circle cx="78" cy="30" r="1.5" fill="#38e1ff"/><circle cx="85" cy="60" r="1.5" fill="#4f8cff"/></svg>
+        </div>
+        <b>蒙特卡洛</b><code>python 05_monte_carlo.py</code><p>估算 π 与定积分，验证误差 ~1/√N 规律。</p><div class="links"><a href="simulation/05_monte_carlo.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a><a href="simlab.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>在线版</a></div>
+      </div>
+      <div class="card" data-category="tool">
+        <span class="diff diff-green" title="入门难度">🟢 入门</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="80" fill="#0b1224"/><rect x="10" y="18" width="100" height="48" rx="3" fill="none" stroke="#2fd17b"/><rect x="14" y="22" width="40" height="4" fill="#2fd17b" fill-opacity=".4"/><rect x="14" y="30" width="60" height="4" fill="#38e1ff" fill-opacity=".4"/><rect x="14" y="38" width="50" height="4" fill="#8b5cf6" fill-opacity=".4"/><rect x="14" y="46" width="30" height="4" fill="#4f8cff" fill-opacity=".4"/><path d="M14,56 L20,62 L30,50" stroke="#2fd17b" stroke-width="2" fill="none"/></svg>
+        </div>
+        <b>仿真测试</b><code>pytest test_simulation.py -v</code><p>用理论值校验 10 个仿真脚本正确性（13 项断言）。</p><div class="links"><a href="simulation/test_simulation.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div>
+      </div>
+      <div class="card" data-category="mech">
+        <span class="diff diff-yellow" title="进阶难度">🟡 进阶</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pnlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#38e1ff"/></linearGradient></defs><rect width="120" height="80" fill="#0b1224"/><line x1="60" y1="10" x2="60" y2="30" stroke="#8fa0c4" stroke-width="1"/><circle cx="60" cy="10" r="3" fill="#8b5cf6"/><path d="M60,30 Q35,45 30,70" stroke="url(#pnlg)" stroke-width="1.5" fill="none"/><path d="M60,30 Q85,45 90,70" stroke="url(#pnlg)" stroke-width="1.5" fill="none"/><circle cx="30" cy="70" r="6" fill="#38e1ff" fill-opacity=".3" stroke="#38e1ff"/><line x1="60" y1="30" x2="30" y2="70" stroke="#38e1ff" stroke-width="1.5"/><line x1="60" y1="70" x2="90" y2="70" stroke="#1e2a44" stroke-dasharray="2,2"/></svg>
+        </div>
+        <b>单摆</b><code>python 06_single_pendulum.py</code><p>非线性振动，大角度周期延长修正。</p><div class="links"><a href="simulation/06_single_pendulum.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div>
+      </div>
+      <div class="card" data-category="ctrl">
+        <span class="diff diff-yellow" title="进阶难度">🟡 进阶</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="dcmg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ff5c8a"/><stop offset="100%" stop-color="#4f8cff"/></linearGradient></defs><rect width="120" height="80" fill="#0b1224"/><rect x="30" y="20" width="40" height="40" rx="4" fill="none" stroke="#4f8cff"/><circle cx="50" cy="40" r="10" fill="none" stroke="#38e1ff"/><circle cx="50" cy="40" r="2" fill="#38e1ff"/><line x1="30" y1="30" x2="10" y2="30" stroke="#ff5c8a" stroke-width="1.5"/><line x1="30" y1="50" x2="10" y2="50" stroke="#2fd17b" stroke-width="1.5"/><path d="M70,40 Q85,40 90,30 L100,40 L90,50 Q85,40 70,40" stroke="url(#dcmg)" stroke-width="1.5" fill="none"/></svg>
+        </div>
+        <b>直流电机</b><code>python 07_dc_motor.py</code><p>电气+机械耦合启动，堵转电流与稳态对照。</p><div class="links"><a href="simulation/07_dc_motor.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div>
+      </div>
+      <div class="card" data-category="num">
+        <span class="diff diff-red" title="挑战难度">🔴 挑战</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="80" fill="#0b1224"/><defs><linearGradient id="heatg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2fd17b"/><stop offset="50%" stop-color="#38e1ff"/><stop offset="100%" stop-color="#ff5c8a"/></linearGradient></defs><rect x="10" y="15" width="100" height="12" fill="#2fd17b"/><rect x="10" y="30" width="100" height="12" fill="#4f8cff"/><rect x="10" y="45" width="100" height="12" fill="#8b5cf6"/><rect x="10" y="60" width="100" height="8" fill="#ff5c8a"/><text x="14" y="25" font-size="7" fill="#0b1224" font-weight="700">20°C</text><text x="14" y="40" font-size="7" fill="#0b1224" font-weight="700">60°C</text><text x="14" y="55" font-size="7" fill="#fff" font-weight="700">120°C</text><text x="14" y="67" font-size="7" fill="#fff" font-weight="700">200°C</text></svg>
+        </div>
+        <b>一维热传导</b><code>python 08_heat_equation.py</code><p>显式差分 PDE，稳定性条件 r ≤ 0.5。</p><div class="links"><a href="simulation/08_heat_equation.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div>
+      </div>
+      <div class="card" data-category="mech">
+        <span class="diff diff-yellow" title="进阶难度">🟡 进阶</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lokg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff5c8a"/><stop offset="100%" stop-color="#2fd17b"/></linearGradient></defs><rect width="120" height="80" fill="#0b1224"/><line x1="10" y1="70" x2="110" y2="70" stroke="#1e2a44" stroke-width="1"/><line x1="10" y1="10" x2="10" y2="70" stroke="#1e2a44" stroke-width="1"/><path d="M15,40 Q30,30 45,50 Q60,65 75,35 Q90,20 105,55" stroke="#2fd17b" stroke-width="1.8" fill="none"/><path d="M15,60 Q30,65 45,55 Q60,40 75,60 Q90,45 105,65" stroke="#ff5c8a" stroke-width="1.8" fill="none"/></svg>
+        </div>
+        <b>捕食者-猎物</b><code>python 09_lotka_volterra.py</code><p>生态振荡模型，观察相位滞后关系。</p><div class="links"><a href="simulation/09_lotka_volterra.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div>
+      </div>
+      <div class="card" data-category="num">
+        <span class="diff diff-red" title="挑战难度">🔴 挑战</span>
+        <div class="thumb">
+          <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="waveg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8cff"/><stop offset="50%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#38e1ff"/></linearGradient></defs><rect width="120" height="80" fill="#0b1224"/><line x1="0" y1="40" x2="120" y2="40" stroke="#1e2a44" stroke-width="1"/><path d="M0,40 Q10,10 20,40 T40,40 T60,40 T80,40 T100,40 T120,40" stroke="#4f8cff" stroke-width="2" fill="none"/><path d="M0,40 Q10,70 20,40 T40,40 T60,40 T80,40 T100,40 T120,40" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-opacity=".5"/><circle cx="60" cy="40" r="2" fill="#38e1ff"/></svg>
+        </div>
+        <b>一维波动</b><code>python 10_wave_equation.py</code><p>波动方程差分，CFL 条件与反射现象。</p><div class="links"><a href="simulation/10_wave_equation.py" download><i class="cc-ic" data-ic="arrow-down" aria-hidden="true"></i>下载脚本</a></div>
+      </div>
+    </div>
+    <p style="margin-top:14px"><i class="cc-ic" data-ic="book-open" aria-hidden="true"></i>每个脚本都看不懂代码？看 <a href="simulation/仿真脚本图文讲解.html">《仿真脚本图文讲解》<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>（10 篇全解：原理图 + 代码逐行 + 参数表 + 真实输出 + 避坑）</p>
+    <p style="margin-top:8px"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>想用工业级软件干真活？看 <a href="simulation/开源仿真工具-一键安装与第一个案例.html">《开源仿真工具进阶案例》<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>（FreeCAD/KiCad/Gazebo/LTspice/OpenFOAM 各 2-3 个能干活的案例）</p>
+  </section>
+  <section class="sec">
+    <h2><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>数控 G 代码（可下载）</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-index.png" alt="工科实训实验室 · 白驹 ccowork · " loading="lazy"></figure>
+    <div class="grid">
+      <a class="card" href="cnc/01_方形轮廓.nc"><b>方形轮廓</b><p>G0/G1 直线铣削示例。</p></a>
+      <a class="card" href="cnc/02_圆形轮廓.nc"><b>圆形轮廓</b><p>G2 圆弧插补示例。</p></a>
+      <a class="card" href="cnc/03_钻孔循环.nc"><b>钻孔循环</b><p>G81 钻孔循环示例。</p></a>
+    </div>
+  </section>
+  <section class="sec">
+    <h2><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>学习路线与开源工具</h2>
+    <div class="guide"><a href="programming/编程与计算机学习路线.html"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i>编程与计算机学习路线</a> —— 从零到能用 AI 结对写代码</div>
+    <div class="guide"><a href="algorithms/算法与数据结构入门.html"><i class="cc-ic" data-ic="brain" aria-hidden="true"></i>算法与数据结构</a> —— 排序/查找/栈队列/图/动态规划（5 个可跑脚本）</div>
+    <div class="guide"><a href="ml/机器学习入门.html"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>机器学习入门</a> —— 线性回归/KNN/KMeans（纯 Python 可跑）</div>
+    <div class="guide"><a href="numerical/数值计算入门.html"><i class="cc-ic" data-ic="list" aria-hidden="true"></i>数值计算</a> —— 牛顿法/龙格库塔/数值积分/最小二乘/插值</div>
+    <div class="guide"><a href="modeling/数学建模入门.html"><i class="cc-ic" data-ic="ruler" aria-hidden="true"></i>数学建模</a> —— 建模六步 + 微分方程模型 + 国赛美赛</div>
+    <div class="guide"><a href="cnc/数控编程与开源工具.html"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>数控编程与开源工具</a> —— CNCjs / UGS / GRBL / LinuxCNC</div>
+    <div class="guide"><a href="simulation/仿真模拟与开源工具.html"><i class="cc-ic" data-ic="chart-column" aria-hidden="true"></i>仿真模拟与开源工具</a> —— ngspice / Octave / OpenModelica / Gazebo / KiCad</div>
+    <div class="guide"><a href="工科如何学.html"><i class="cc-ic" data-ic="graduation-cap" aria-hidden="true"></i>工科如何学</a> —— 数学是语言、物理是直觉、项目驱动</div>
+    <div class="guide"><a href="工科实训项目.html"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工科实训项目</a> —— 5 大类真动手清单</div>
+    <div class="guide"><a href="cicd/持续集成与部署指南.html"><i class="cc-ic" data-ic="rocket" aria-hidden="true"></i>持续集成与部署（CI/CD）</a> —— GitHub Actions 自动跑 pytest + 自动部署网站</div>
+  </section>
+</main>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<style>
+/* ====== 新增：Hero 副标题 / 装饰 / 统计 / CTA ====== */
+.hero-sub{font-size:clamp(14px,1.8vw,17px);color:var(--text);margin-top:14px !important;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+.hero-deco{margin:18px auto 0;opacity:.9}
+.hero-stats{display:flex;gap:32px;justify-content:center;margin-top:22px}
+.hero-stats .stat{display:flex;flex-direction:column;align-items:center}
+.hero-stats .num{font-size:clamp(22px,3vw,32px);font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+.hero-stats .lbl{font-size:12px;color:var(--muted);margin-top:2px}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;padding:18px 32px;font-size:18px;font-weight:800;color:#fff;background:var(--grad);border-radius:16px;box-shadow:0 8px 30px rgba(79,140,255,.35),0 0 0 1px rgba(255,255,255,.08);transition:transform .2s,box-shadow .2s;text-decoration:none}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(79,140,255,.5),0 0 0 1px rgba(56,225,255,.4)}
+@media(max-width:760px){
+  .hero{flex-direction:column;gap:28px}
+  .hero-cta{padding:14px 22px;font-size:15px}
+}
+
+/* ====== 新增：环境依赖提示条 ====== */
+.env-banner{display:flex;gap:14px;align-items:flex-start;background:#0f1628;border:1px solid #1e2a44;border-left:3px solid var(--cyan);border-radius:12px;padding:14px 18px;margin:12px 0}
+.env-warn{font-size:18px;flex-shrink:0;margin-top:1px}
+.env-title{font-size:14px;color:var(--text);font-weight:600}
+.env-cmd{font-size:12px;color:var(--green);font-family:"JetBrains Mono","Consolas",monospace;background:#06080f;border:1px solid #1e2a44;padding:4px 10px;border-radius:6px;margin-top:6px;display:inline-block}
+
+/* ====== 新增：分类 Tab ====== */
+.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 16px}
+.cat-tabs .tab{padding:8px 16px;font-size:13px;font-weight:700;color:var(--muted);background:#0b1224;border:1px solid var(--line);border-radius:22px;cursor:pointer;transition:.18s}
+.cat-tabs .tab:hover{color:var(--text);border-color:var(--blue)}
+.cat-tabs .tab.active{color:#fff;background:var(--grad);border-color:transparent;box-shadow:0 4px 16px rgba(79,140,255,.3)}
+
+/* ====== 新增：卡片缩略图 + 难度标签 ====== */
+.card .thumb{width:100%;aspect-ratio:3/2;border-radius:10px;overflow:hidden;margin-bottom:10px;background:#0b1224;border:1px solid var(--line)}
+.card .thumb svg{width:100%;height:100%;display:block}
+.card .diff{position:absolute;top:10px;right:10px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(6,8,15,.85);backdrop-filter:blur(4px);z-index:2}
+.diff-green{color:#2fd17b;border:1px solid rgba(47,209,123,.4)}
+.diff-yellow{color:#fbbf24;border:1px solid rgba(251,191,36,.4)}
+.diff-red{color:#ff5c8a;border:1px solid rgba(255,92,138,.4)}
+
+/* ====== Tab 切换：隐藏不匹配的卡片 ====== */
+.grid .card.hide{display:none}
+</style>
+<script>
+/* ====== 分类 Tab 切换 ====== */
+document.addEventListener('DOMContentLoaded',function(){
+  var tabs=document.querySelectorAll('.cat-tabs .tab');
+  var cards=document.querySelectorAll('.sec .grid .card');
+  tabs.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      tabs.forEach(function(t){t.classList.remove('active')});
+      btn.classList.add('active');
+      var cat=btn.getAttribute('data-cat');
+      cards.forEach(function(c){
+        var cc=c.getAttribute('data-category')||'';
+        if(cat==='all'){c.classList.remove('hide');return}
+        if(cc===cat||cat==='all'){c.classList.remove('hide')}
+        else{c.classList.add('hide')}
+      });
+    });
+  });
+});
+</script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

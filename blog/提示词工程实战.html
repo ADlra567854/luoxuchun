@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="要理解提示词工程，先要理解大模型是怎么「思考」的。Google 在 2024 年发布的《Prompt Engineering》白皮书中开宗明义：大语言模型本质上是一个预测引擎——它读取你输入的文本，基于训练数据预测「…">
+<meta name="keywords" content="提示词工程实战,把 AI 用出十倍效果,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta name="description" content="要理解提示词工程，先要理解大模型是怎么「思考」的。Google 在 2024 年发布的《Prompt Engineering》白皮书中开宗明义：大语言模型本质上是一个预测引擎——它读取你输入的文本，基于训练数据预测「…"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>提示词工程实战：把 AI 用出十倍效果 · 白驹 ccowork</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ccoworkbaiju.cn/blog/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98.html">
+<meta property="og:title" content="提示词工程实战：把 AI 用出十倍效果 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/blog/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="提示词工程实战：把 AI 用出十倍效果 · 白驹 ccowork">
+<meta name="twitter:description" content="要理解提示词工程，先要理解大模型是怎么「思考」的。Google 在 2024 年发布的《Prompt Engineering》白皮书中开宗明义：大语言模型本质上是一个预测引擎——它读取你输入的文本，基于训练数据预测「…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"提示词工程实战：把 AI 用出十倍效果","description":"要理解提示词工程，先要理解大模型是怎么「思考」的。Google 在 2024 年发布的《Prompt Engineering》白皮书中开宗明义：大语言模型本质上是一个预测引擎——它读取你输入的文本，基于训练数据预测「…","url":"https://ccoworkbaiju.cn/blog/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ccoworkbaiju.cn/blog/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B%E5%AE%9E%E6%88%98.html"},"image":"https://ccoworkbaiju.cn/assets/img/og-cover.png","datePublished":"2026-08-30","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"dateModified":"2026-10-27","inLanguage":"zh-CN"}</script>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="works"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/sec/blog.jpg" alt="提示词工程实战：把 AI 用出十倍效果" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy" decoding="async"></div>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="提示词工程实战：把 AI 用出十倍效果" style="width:100%;height:auto;border-radius:18px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">提示词工程实战：把 AI 用出十倍效果</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)"></text>
+</svg>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>18 分钟</span><span class="blog-tag">AI 创作</span></div>
+
+  <div class="blog-divider"></div>
+</div>
+<h1>提示词工程实战：把 AI 用出十倍效果</h1>
+<figure><img src="/blog/assets/cover-w-prompt.png" alt="封面" style="width:100%;border-radius:14px"></figure>
+
+<blockquote>很多人用了半年 AI，效率还停留在「复制一句话问一句」的水平。差距不在工具，而在你怎么跟 AI 说话。提示词工程（Prompt Engineering）是一套把模糊需求翻译成 AI 能精准执行指令的方法论——它不是玄学咒语，而是一门可以迭代的工程。</blockquote>
+
+<h2>一、提示词到底是什么</h2>
+
+<p>要理解提示词工程，先要理解大模型是怎么「思考」的。Google 在 2024 年发布的《Prompt Engineering》白皮书中开宗明义：大语言模型本质上是一个<strong>预测引擎</strong>——它读取你输入的文本，基于训练数据预测「下一个最可能出现的词」。你给的信息越完整、结构越清晰，它的预测就越贴合你的真实意图。</p>
+
+<p>所以提示词工程，就是通过精心设计输入，引导这个预测引擎产出更准确、更相关、更有用结果的过程。它和「微调（Fine-tuning）」不同：微调要改模型权重、成本高、周期长；而提示词工程只改输入文本，几乎零成本、即时生效。Anthropic 在官方指南中甚至建议：<strong>先用提示词工程做到极致，再考虑微调</strong>。对绝大多数人和场景，提示词工程已经足够。</p>
+
+<p>Google 白皮书还强调了一个关键认知：提示词工程不是随手写几句，而是一套<strong>持续迭代的工程方法</strong>。它包含六个环节——明确任务与目标、设计初始提示、配置模型参数、观察输出、根据结果调整、在产品中维护。同一段提示，在不同模型版本或不同温度参数下，表现可能完全不同。这也意味着：提示词需要被当作一种「资产」来管理。</p>
+
+<p>这也是为什么同样一个问题，有人得到的答案能直接用、有人得到的答案却像废话——差距几乎全在前端这几行提示词上。把提示词工程练好，往往不需要换更贵的模型、也不需要会写代码，就能把 AI 的产出质量提升一个数量级，这正是本文想说的「十倍效果」。</p>
+
+<h3>一个好提示的六个构件</h3>
+
+<p>把各家官方指南（OpenAI 六策略、Anthropic 七技巧、Google 白皮书）归纳起来，一个高质量提示通常由六个构件组成：角色、任务、上下文、格式、示例、约束。它们的关系可以用下面这张图来理解。</p>
+
+<svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="提示词六大构件示意">
+  <defs>
+    <style>
+      .ttl{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-weight:800;font-size:18px;fill:#f5c26b}
+      .lbl{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-weight:700;font-size:16px}
+      .sub{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;fill:#93a3c7}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="800" height="360" fill="#07090f"/>
+  <text x="400" y="30" text-anchor="middle" class="ttl">提示词的六个构件</text>
+
+  <rect x="40" y="60" width="430" height="38" rx="9" fill="#111a2e" stroke="#4f8cff" stroke-width="1.4"/>
+  <rect x="40" y="60" width="8" height="38" rx="4" fill="#4f8cff"/>
+  <text x="58" y="84" class="lbl" fill="#4f8cff">角色 Role</text>
+  <text x="190" y="84" class="sub">设定身份与专业视角</text>
+
+  <rect x="40" y="106" width="430" height="38" rx="9" fill="#111a2e" stroke="#38e1ff" stroke-width="1.4"/>
+  <rect x="40" y="106" width="8" height="38" rx="4" fill="#38e1ff"/>
+  <text x="58" y="130" class="lbl" fill="#38e1ff">任务 Task</text>
+  <text x="190" y="130" class="sub">明确动词与交付目标</text>
+
+  <rect x="40" y="152" width="430" height="38" rx="9" fill="#111a2e" stroke="#f5c26b" stroke-width="1.4"/>
+  <rect x="40" y="152" width="8" height="38" rx="4" fill="#f5c26b"/>
+  <text x="58" y="176" class="lbl" fill="#f5c26b">上下文 Context</text>
+  <text x="200" y="176" class="sub">背景 / 受众 / 用途</text>
+
+  <rect x="40" y="198" width="430" height="38" rx="9" fill="#111a2e" stroke="#8b5cf6" stroke-width="1.4"/>
+  <rect x="40" y="198" width="8" height="38" rx="4" fill="#8b5cf6"/>
+  <text x="58" y="222" class="lbl" fill="#8b5cf6">格式 Format</text>
+  <text x="190" y="222" class="sub">JSON / 表格 / 大纲</text>
+
+  <rect x="40" y="244" width="430" height="38" rx="9" fill="#111a2e" stroke="#4ade80" stroke-width="1.4"/>
+  <rect x="40" y="244" width="8" height="38" rx="4" fill="#4ade80"/>
+  <text x="58" y="268" class="lbl" fill="#4ade80">示例 Examples</text>
+  <text x="200" y="268" class="sub">少样本示范（3–5 个）</text>
+
+  <rect x="40" y="290" width="430" height="38" rx="9" fill="#111a2e" stroke="#ff8c5a" stroke-width="1.4"/>
+  <rect x="40" y="290" width="8" height="38" rx="4" fill="#ff8c5a"/>
+  <text x="58" y="314" class="lbl" fill="#ff8c5a">约束 Constraints</text>
+  <text x="200" y="314" class="sub">边界与限制条件</text>
+
+  <path d="M 478 195 L 534 195" stroke="#f5c26b" stroke-width="2.5"/>
+  <polygon points="534,188 534,202 548,195" fill="#f5c26b"/>
+  <rect x="552" y="150" width="198" height="92" rx="12" fill="#0c1120" stroke="#f5c26b" stroke-width="2"/>
+  <text x="651" y="186" text-anchor="middle" class="lbl" fill="#f5c26b">高质量</text>
+  <text x="651" y="212" text-anchor="middle" class="lbl" fill="#f5c26b">可预期输出</text>
+</svg>
+
+<p>下一部分，我们就逐一拆解这六个构件怎么写，以及为什么有效。</p>
+
+<h2>二、六大核心技巧</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-提示词工程实战.png" alt="提示词工程实战：把 AI 用出十倍效果 · 白驹 ccowork（离线版） · 二、六大核心技巧" loading="lazy"></figure>
+
+
+<h3>1. 角色（Role）：给 AI 一个身份</h3>
+<p>在系统提示或开头告诉模型「你是谁」，能显著聚焦它的语气、专业视角和知识边界。Google 白皮书称之为 Role Prompting，Anthropic 称之为在 System Prompt 中设定角色。哪怕只是一句话，也会有明显差别：</p>
+<ul>
+<li>模糊：「写一段产品介绍。」</li>
+<li>有角色：「你是一名有 10 年经验的消费电子类资深文案，为这款降噪耳机写一段 150 字的小红书风格卖点介绍。」</li>
+</ul>
+
+<h3>2. 任务（Task）：用明确的动词说清目标</h3>
+<p>OpenAI 把「写清晰的指令」列为六策略之首。模型读不懂你的心思——你越具体，它猜错的概率越低。不要说「写点东西」，要说「为一篇关于远程办公的文章，写 3 个公众号标题，每个不超过 20 字，突出效率提升」。明确指出动词（写 / 总结 / 翻译 / 分类 / 提取）、交付物形态和衡量标准。</p>
+
+<h3>3. 上下文（Context）：补足背景、受众与用途</h3>
+<p>Anthropic 把「补充上下文」列为高优先级技巧：告诉模型这段输出的用途、面向谁、处于什么工作流，它会理解得更准。比如「这是给公司 CEO 看的周报摘要，他只关心成本和风险，请用高管视角、避免技术术语」。</p>
+
+<h3>4. 格式（Format）：指定输出结构</h3>
+<p>OpenAI 建议「通过示例明确表达期望的输出格式」，Google 白皮书里的 System Prompting 也常用来强制 JSON 等结构化输出。与其让模型自由发挥，不如直接规定：以 Markdown 表格返回、字段包含「标题 / 钩子 / 理由」，或以 JSON 返回。</p>
+
+<p>比如要让模型返回结构化数据，可以写：「只返回大写情感标签，可选 POSITIVE / NEGATIVE / NEUTRAL，不要任何解释文字。」这样下游程序才能稳定解析，也避免了模型在答案前后加一堆啰嗦铺垫。</p>
+
+<h3>5. 示例（Examples）：少样本是最稳的捷径</h3>
+<p>Anthropic 把示例称为「最可靠的引导方式之一」，即 Few-shot / Multishot Prompting；Google 白皮书也反复强调 few-shot（常见 3–5 个示例）的价值。示例能一举定下格式、语气和结构，尤其适合分类、结构化抽取、格式转换等任务。一个小技巧：在少样本分类中，各类别的出现顺序最好<strong>打乱</strong>，避免模型依赖列表顺序而非内容本身做判断。</p>
+
+<h3>6. 约束（Constraints）：划清边界</h3>
+<p>约束是任务的「护栏」：字数上限、禁止事项、必须包含的要素等。OpenAI 还特别提醒——与其只说「不要做什么」，不如明确「要做什么」（instructions over constraints）。例如不要写「不要写得太长」，而是写「用 3 到 5 句话描述」。</p>
+
+<h2>三、结构化提示词模板</h2>
+
+<p>把上面六个构件拼起来，就得到一个可复用的「万能骨架」。把它存成模板，每次只替换花括号里的变量，效率和一致性都会大幅提升。下面这个模板可以直接复制使用：</p>
+
+<pre><code>你是一位{角色}，拥有{年数}年{领域}经验。
+
+# 背景
+{任务背景、目标受众、使用场景}
+
+# 任务
+{用明确的动词描述要做什么，例如：为一篇关于远程办公的文章写 3 个标题}
+
+# 输出格式
+{指定结构，例如：以 JSON 返回，字段含 title、hook、reason}
+
+# 示例（可选）
+输入：……
+输出：……
+
+# 约束
+- {限制1，如字数不超过100字}
+- {限制2，如不使用专业术语}
+- {限制3，如必须包含行动号召}</code></pre>
+
+<p>需要提醒的是，模板不是死板的填空。简单任务用一两行即可，复杂任务才需要把六个构件都填上。判断标准很简单：如果第一次跑出来的结果你不满意，就对照这六个构件逐一检查——缺角色就加角色，格式乱就补示例，跑偏了就加约束，直到输出稳定可用。</p>
+
+<p>吴恩达（Andrew Ng）与 OpenAI 的 Isa Fulford 在 DeepLearning.AI 的《ChatGPT Prompt Engineering for Developers》课程中，把写有效提示归纳为<strong>两个关键原则</strong>：一是「清晰具体地写指令」，二是「给模型思考时间」，并强调提示词要<strong>迭代开发</strong>——先零样本跑通，再看结果逐步加角色、加示例、加约束。这套思路和上面模板完全契合。</p>
+
+<h2>四、思维链（CoT）与少样本</h2>
+
+<p>当任务涉及推理、计算或逻辑判断时，光有清晰指令还不够，得让模型「把思考过程说出来」。这就是<strong>思维链（Chain of Thought, CoT）</strong>。</p>
+
+<p>CoT 来自 Jason Wei 等人在 NeurIPS 2022 发表的论文《Chain-of-Thought Prompting Elicits Reasoning in Large Language Models》。核心发现是：在提示中给模型几个「包含中间推理步骤」的范例，模型就会学会先一步步推理、再给最终答案。论文里有个经典例子——食堂苹果题：直接问，模型容易算错；但给它「原有 23 个 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 用掉 20 剩 3 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 又买 6 得 9」的推理示范后，准确率显著提升。论文报告，仅用 8 个 CoT 范例提示 PaLM 540B，就在 GSM8K 数学应用题基准上达到当时最优。</p>
+
+<p>CoT 还有两个常见延伸。其一是 Self-Consistency（自一致性）：让模型对同一个问题生成多条推理路径，再投票选出最常见的答案，可靠性更高；其二是 Tree of Thoughts（思维树）：让模型同时探索多条推理分支，适合需要大量探索的复杂决策。Google 白皮书把它们和 ReAct（推理 + 调用外部工具）一起列为进阶技法，用于更复杂的 Agent 式任务。</p>
+
+<svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="思维链推理示意">
+  <defs>
+    <style>
+      .ttl{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-weight:800;font-size:18px;fill:#f5c26b}
+      .lbl{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-weight:700;font-size:15px}
+      .sub{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;fill:#93a3c7}
+      .ans{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-weight:800;font-size:18px;fill:#f5c26b}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="800" height="360" fill="#07090f"/>
+  <text x="400" y="30" text-anchor="middle" class="ttl">思维链（CoT）：让模型把推理说出来</text>
+
+  <rect x="40" y="64" width="320" height="72" rx="12" fill="#111a2e" stroke="#f5c26b" stroke-width="1.8"/>
+  <text x="60" y="90" class="lbl" fill="#f5c26b">问题</text>
+  <text x="60" y="114" class="sub">食堂原有 23 个苹果，用掉 20 个做午餐，</text>
+  <text x="60" y="132" class="sub">又买了 6 个，现在有几个？</text>
+
+  <path d="M 364 100 L 432 100" stroke="#f5c26b" stroke-width="2.5"/>
+  <polygon points="432,93 432,107 446,100" fill="#f5c26b"/>
+
+  <rect x="450" y="58" width="310" height="46" rx="10" fill="#111a2e" stroke="#38e1ff" stroke-width="1.6"/>
+  <text x="468" y="86" class="lbl" fill="#38e1ff">① 原有 23 个</text>
+
+  <rect x="450" y="118" width="310" height="46" rx="10" fill="#111a2e" stroke="#38e1ff" stroke-width="1.6"/>
+  <text x="468" y="146" class="lbl" fill="#38e1ff">② 用掉 20 个 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 23 - 20 = 3</text>
+
+  <rect x="450" y="178" width="310" height="46" rx="10" fill="#111a2e" stroke="#38e1ff" stroke-width="1.6"/>
+  <text x="468" y="206" class="lbl" fill="#38e1ff">③ 又买 6 个 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 3 + 6 = 9</text>
+
+  <path d="M 470 104 L 470 118" stroke="#38e1ff" stroke-width="2"/>
+  <polygon points="464,118 476,118 470,126" fill="#38e1ff"/>
+  <path d="M 470 164 L 470 178" stroke="#38e1ff" stroke-width="2"/>
+  <polygon points="464,178 476,178 470,186" fill="#38e1ff"/>
+
+  <rect x="450" y="238" width="310" height="58" rx="12" fill="#15110a" stroke="#f5c26b" stroke-width="2"/>
+  <text x="468" y="268" class="ans"><i class="cc-ic" data-ic="check" aria-hidden="true"></i> 答案：9 个</text>
+  <text x="468" y="288" class="sub">对比：直接问常算错；CoT 让 GSM8K 准确率大幅提升（Wei et al., 2022）</text>
+
+  <text x="40" y="338" class="sub">核心：先推理、后作答，把「黑盒」变成可检查的过程。</text>
+</svg>
+
+<h3>零样本、少样本、思维链怎么选</h3>
+<ul>
+<li><strong>Zero-shot</strong>：只给任务描述，不加示例。适合翻译、简单分类等模型本就会的任务，但不够稳定。</li>
+<li><strong>One-shot / Few-shot</strong>：给 1 个或 3–5 个示例，引导格式与风格。Google 白皮书称这是「最重要的实用手段」。</li>
+<li><strong>Chain-of-Thought</strong>：在少样本基础上，让每一步都展示推理。适合数学、逻辑、需要解释的任务。</li>
+</ul>
+
+<p>实战中，可以直接在提示末尾加一句「请一步步思考（Let's think step by step）」，或像下面这样给出带推理过程的范例：</p>
+
+<pre><code># 少样本 + 思维链模板
+
+请参考下面的示例，一步一步思考后再给出答案。
+
+示例1：
+问题： Roger 有 5 个网球，又买了 2 罐，每罐 3 个，他现在有几个？
+思考： Roger 原有 5 个。2 罐每罐 3 个共 6 个。5+6=11。
+答案： 11
+
+示例2：
+问题： 食堂原有 23 个苹果，用掉 20 个做午餐，又买了 6 个，现有几个？
+思考： 原有 23 个，用掉 20 剩 3 个，又买 6 个，3+6=9。
+答案： 9
+
+现在请回答：
+问题： {你的问题}
+思考：
+答案：</code></pre>
+
+<h2>五、常见错误与调优</h2>
+
+<p>即使知道技巧，新手仍会反复踩坑。对照下面这些常见错误，看看你中了几条：</p>
+
+<ul>
+<li><strong>太笼统</strong>：只写「写点东西」「分析一下」，模型只能瞎猜。改成带角色、任务、格式、约束的清晰指令。</li>
+<li><strong>只说不要什么</strong>：写「不要写太长、别太正式」，模型仍不知道你要什么。改成「用 3 句话、口语化」。</li>
+<li><strong>一次塞太多任务</strong>：让模型同时总结、翻译、写诗、做表，结果每项都潦草。复杂任务先拆分（OpenAI 策略三），再逐段拼装。</li>
+<li><strong>不给示例</strong>：对格式敏感的任务，缺示例就靠模型自由发挥。补 3–5 个 few-shot 示例立竿见影。</li>
+<li><strong>忽略参数</strong>：做事实抽取、问答时把温度（temperature）设得很高，输出变随机。OpenAI 建议此类任务用 temperature=0。</li>
+<li><strong>不迭代</strong>：写一次不满意就换话题。正确做法是把它当工程：跑通 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 看短板 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 加角色 / 示例 / 约束 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 再测。</li>
+</ul>
+
+<p>关于参数，还有一个常被忽略的点：推理类模型（如 o 系列）与普通 GPT 模型的提示写法不同——对推理模型应更简洁、直接给任务，过度拆解步骤反而可能干扰它的内部推理。OpenAI 在最佳实践文档中专门区分了这两类模型的写法，实际使用时值得对照参考。</p>
+
+<h3>把提示当作「需要维护的配置资产」</h3>
+
+<p>Google 白皮书特别提醒：模型会更新、训练数据会变，旧提示可能随时间失效。因此要把提示当作一类配置资产来维护，记录四项信息——<strong>使用的模型及版本、当时的提示内容、参数设置（温度、Top-P、最大 token）、效果是否达标</strong>。OpenAI 的第六个策略「系统性测试变化」也是同一逻辑：用一套固定测试集（评估集）对比改动前后的输出，确认改动真的带来整体提升，而不是在个别例子上碰巧变好。</p>
+
+<svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="模糊与清晰提示对比">
+  <defs>
+    <style>
+      .ttl{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-weight:800;font-size:18px;fill:#f5c26b}
+      .hl{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-weight:700;font-size:16px}
+      .sub{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;fill:#93a3c7}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="800" height="360" fill="#07090f"/>
+  <text x="400" y="30" text-anchor="middle" class="ttl">模糊 vs 清晰：同一需求，两种写法</text>
+
+  <rect x="40" y="64" width="350" height="252" rx="14" fill="#111a2e" stroke="#ff5c5c" stroke-width="2"/>
+  <text x="64" y="100" class="hl" fill="#ff7a7a"><i class="cc-ic" data-ic="x" aria-hidden="true"></i> 模糊提示</text>
+  <line x1="64" y1="114" x2="366" y2="114" stroke="#20304f" stroke-width="1"/>
+  <text x="64" y="146" class="sub">· 帮我写个产品介绍</text>
+  <text x="64" y="180" class="sub">· 说说这个功能的优点</text>
+  <text x="64" y="214" class="sub">· 翻译一下这段话</text>
+  <text x="64" y="248" class="sub">· 分析下这份报告</text>
+  <text x="64" y="296" class="sub">（模型只能瞎猜，结果随机）</text>
+
+  <rect x="410" y="64" width="350" height="252" rx="14" fill="#111a2e" stroke="#4ade80" stroke-width="2"/>
+  <text x="434" y="100" class="hl" fill="#7af0a0"><i class="cc-ic" data-ic="check-circle" aria-hidden="true"></i> 清晰提示</text>
+  <line x1="434" y1="114" x2="736" y2="114" stroke="#20304f" stroke-width="1"/>
+  <text x="434" y="146" class="sub">· 你是资深文案，为降噪耳机写 150 字</text>
+  <text x="446" y="170" class="sub">  小红书卖点，强调降噪与续航</text>
+  <text x="434" y="204" class="sub">· 用 3 条 bullet 列功能优势，每条含 1 个数据</text>
+  <text x="434" y="244" class="sub">· 译为商务英文，保留术语，语气正式</text>
+  <text x="434" y="296" class="sub">（角色+任务+格式+约束，结果可控）</text>
+</svg>
+
+<h2>资料来源</h2>
+<ul>
+<li>OpenAI，《Prompt engineering》（官方指南），platform.openai.com，2023–2024，<a href="https://platform.openai.com/docs/guides/prompt-engineering">https://platform.openai.com/docs/guides/prompt-engineering</a></li>
+<li>OpenAI Help Center，《Best practices for prompt engineering with the OpenAI API》，2024，<a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api">https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api</a></li>
+<li>Anthropic，《Prompting best practices / Prompt engineering》（官方文档），docs.anthropic.com，<a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/multishot-prompting">https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering</a></li>
+<li>Lee Boonstra（Google），《Prompt Engineering》白皮书，经 Kaggle 发布，2024，<a href="https://www.kaggle.com/whitepaper-prompt-engineering">https://www.kaggle.com/whitepaper-prompt-engineering</a></li>
+<li>Andrew Ng、Isa Fulford（OpenAI / DeepLearning.AI），《ChatGPT Prompt Engineering for Developers》短课程，2023，<a href="https://www.deeplearning.ai/courses/chatgpt-prompt-eng">https://www.deeplearning.ai/courses/chatgpt-prompt-eng</a></li>
+<li>Jason Wei、Xuezhi Wang、Dale Schuurmans 等，《Chain-of-Thought Prompting Elicits Reasoning in Large Language Models》，NeurIPS 2022，arXiv:2201.11903，<a href="https://arxiv.org/abs/2201.11903">https://arxiv.org/abs/2201.11903</a></li>
+</ul>
+
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="制造业AI应用实战.html" style="color:var(--gold);font-weight:700;text-decoration:none">制造业AI应用实战</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px"><i class="cc-ic" data-ic="library-big" aria-hidden="true"></i>博客目录</a>
+  <span style="font-size:13px"><a href="开源AI进阶-网络安全一人公司与手机操作.html" style="color:var(--gold);font-weight:700;text-decoration:none">开源AI进阶-网络安全一人公司与手机</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:13px;line-height:1.8"><i class="cc-ic" data-ic="pin" aria-hidden="true"></i>出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+
+<section style="margin:34px 0 8px;padding:14px 18px;background:rgba(59,110,246,.07);border-left:3px solid #4f8cff;border-radius:10px;font-size:14px;line-height:1.9">
+<h2 style="margin:0 0 10px;font-size:17px">📚 参考来源</h2>
+<p style="margin:0 0 8px;color:var(--muted);font-size:13px">本篇方法与示例综合自以下一手资料，均已核对可访问：</p>
+<ul style="margin:0;padding-left:20px"><li style="margin:4px 0"><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI 官方文档：Prompt engineering guide</a></li><li style="margin:4px 0"><a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api" target="_blank" rel="noopener">OpenAI 帮助中心：Best practices for prompt engineering</a></li><li style="margin:4px 0"><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/multishot-prompting" target="_blank" rel="noopener">Anthropic 官方文档：Multishot prompting</a></li><li style="margin:4px 0"><a href="https://www.kaggle.com/whitepaper-prompt-engineering" target="_blank" rel="noopener">Google 白皮书：Prompt Engineering（Kaggle）</a></li><li style="margin:4px 0"><a href="https://www.deeplearning.ai/courses/chatgpt-prompt-eng" target="_blank" rel="noopener">DeepLearning.AI 课程：ChatGPT Prompt Engineering for Developers</a></li><li style="margin:4px 0"><a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener">arXiv 论文：Chain-of-Thought Prompting（2201.11903）</a></li></ul>
+</section>
+
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

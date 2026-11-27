@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="按输入输出形态与训练目标穷举的 AI 模型类目表：22 组 110 类，每类给定义、国内外代表型号与 Hugging Face task 名。">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>模型图谱 · 22 组 110 类 · 白驹 ccowork</title>
+<meta name="description" content="按输入输出形态与训练目标穷举的 AI 模型类目表：22 组 110 类，每类给定义、国内外代表型号与 Hugging Face task 名。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/cover.css">
+<meta name="twitter:description" content="按输入输出形态与训练目标穷举的 AI 模型类目表：22 组 110 类，每类给定义、国内外代表型号与 Hugging Face task 名。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/models/atlas.html">
+<meta property="og:title" content="模型图谱 · 22 组 110 类 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/models/atlas.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="模型图谱 · 22 组 110 类 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="models" data-cctitle="模型图谱">
+
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/atlas.jpg" alt="" loading="eager" decoding="async"></div>
+
+  <div class="pg-hero">
+    <div data-cccrumb="模型图谱"></div>
+    <h1>模型图谱 · <em>22 组 110 类</em></h1>
+    <p class="lede">
+      这份表按<b>输入输出形态</b>与<b>训练目标</b>穷举模型类目，而不是按学科方向罗列。
+      每一类给三样东西：一句定义、国内外代表型号、以及 <b>Hugging Face 对应的 task 名</b>——
+      最后一项是判断这个类目是否真实存在的硬标准：能对上 task，说明它已有可复现的模型与数据。
+    </p>
+
+    <div class="pg-stats">
+      <div class="st"><b data-cnt="22">0</b><span>组</span></div>
+      <div class="st"><b data-cnt="110">0</b><span>类目</span></div>
+      <div class="st"><b data-cnt="228">0</b><span>具名型号</span></div>
+      <div class="st"><b data-cnt="8">0</b><span>HF 缺失方向</span></div>
+    </div>
+  </div>
+
+  <div class="pg-note warn">
+    <i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i>
+    <div>
+      <b>HF 有 8 个方向没有对应 task，必须自建类目：</b>音乐生成、世界模型、VLA 具身策略、时序预测、
+      蛋白质结构、独立重排序、语音到语音、决策评分。前七个在开源社区已有成熟模型，只是 Hugging Face 的
+      task 分类尚未收录；第八个只出现在 OpenRouter 的输出模态枚举里（<code>decisions</code>）。
+    </div>
+  </div>
+
+  <div class="pg-toolbar">
+    <label class="q">
+      <i class="cc-ic" data-ic="search" aria-hidden="true"></i>
+      <input id="q" type="search" placeholder="搜类别、定义或代表型号…" autocomplete="off">
+    </label>
+    <select id="grp" aria-label="按组筛选"><option value="">全部 22 组</option></select>
+    <span class="rc">显示 <b id="rc">0</b> / 110 类</span>
+  </div>
+
+  <div id="board"></div>
+
+  <div class="pg-sec" id="howto">
+    <div class="sh"><h2><i class="cc-ic" data-ic="circle-help" aria-hidden="true"></i>怎么用这张表</h2></div>
+    <div class="pg-cols">
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="target" aria-hidden="true"></i></span>
+          <div><h3>选型：先定模态，再定类目</h3></div></div>
+        <p class="desc">先确认你的输入是什么形态（文本、图、音、3D、时序），表里对应 1–2 组；再看这组里的细分是「闭源可调 API」还是「开源可私有化」。跨组比较意义不大——语音识别和世界模型的指标不可通约。</p>
+      </div>
+      <div class="pg-card">
+        <div class="ch"><span class="ic"><i class="cc-ic" data-ic="database" aria-hidden="true"></i></span>
+          <div><h3>建库：直接拿 task 名做字段</h3></div></div>
+        <p class="desc">每类底部那行 <code>code</code> 就是可用的检索键。Hugging Face、ModelScope 都能按这个键列出全部开源实现，比用中文关键词搜准确得多。</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/models/hub.js"></script>
+<script>
+(function () {
+  var MH = window.MH, esc = MH.esc, ic = MH.ic;
+  var board = MH.$('#board'), qIn = MH.$('#q'), grpSel = MH.$('#grp'), rcEl = MH.$('#rc');
+  var DATA = null;
+
+  function card(g, c) {
+    var reps = '';
+    if (c.cn && c.cn.length) {
+      reps += '<div class="rp"><span class="rl">国内</span>' +
+        c.cn.map(function (n) { return '<span class="pg-chip s">' + esc(n) + '</span>'; }).join('') + '</div>';
+    }
+    if (c.in && c.in.length) {
+      reps += '<div class="rp"><span class="rl">国外</span>' +
+        c.in.map(function (n) { return '<span class="pg-chip s">' + esc(n) + '</span>'; }).join('') + '</div>';
+    }
+    return '<div class="pg-card" data-k="' + esc(c.i) + '" data-g="' + esc(g.k) + '">' +
+      '<div class="ch"><span class="ic">' + ic(MH.GIC[g.k] || 'box') + '</span>' +
+      '<div><h3>' + esc(c.n) + '</h3><div class="tag">' + esc(g.n) + ' · ' + esc(g.en) + '</div></div></div>' +
+      '<p class="desc">' + esc(c.d) + '</p>' +
+      (reps ? '<div class="reps">' + reps + '</div>' : '') +
+      '<div class="foot"><span class="lbl">HF task</span><code>' + esc(c.t || '—') + '</code></div>' +
+      '</div>';
+  }
+
+  function render() {
+    var gk = grpSel.value, q = (qIn.value || '').trim().toLowerCase();
+    var html = '', shown = 0;
+
+    DATA.groups.forEach(function (g) {
+      if (gk && g.k !== gk) return;
+      var items = g.it.filter(function (c) {
+        if (!q) return true;
+        var hay = (c.n + ' ' + c.d + ' ' + (c.cn || []).join(' ') + ' ' + (c.in || []).join(' ') + ' ' + (c.t || '')).toLowerCase();
+        return hay.indexOf(q) >= 0;
+      });
+      if (!items.length) return;
+      shown += items.length;
+      html += '<section class="pg-sec" id="g-' + esc(g.k) + '" data-g="' + esc(g.k) + '">' +
+        '<div class="sh"><h2>' + ic(MH.GIC[g.k] || 'box') + esc(g.n) +
+        '<small style="font-size:12px;font-weight:600;color:var(--muted);margin-left:2px">' + esc(g.en) + '</small></h2>' +
+        '<span class="sub">' + esc(g.note) + '</span>' +
+        '<span class="cnt">' + items.length + ' 类</span></div>' +
+        '<div class="pg-grid">' + items.map(function (c) { return card(g, c); }).join('') + '</div>' +
+        '</section>';
+    });
+
+    board.innerHTML = html || MH.empty('没有匹配的类目', '换个关键词，或把筛选切回「全部 22 组」');
+    if (rcEl) rcEl.textContent = shown;
+  }
+
+  MH.getJSON('/data/model-taxonomy.json', function (d) {
+    DATA = d;
+    /* 填充组下拉 */
+    d.groups.forEach(function (g) {
+      var o = document.createElement('option');
+      o.value = g.k; o.textContent = g.n + '（' + g.it.length + '）';
+      grpSel.appendChild(o);
+    });
+    /* 恢复 URL 里带的筛选状态 */
+    var pg = MH.param('g'), pq = MH.param('q');
+    if (pg) grpSel.value = pg;
+    if (pq) qIn.value = pq;
+    render();
+    MH.fillCounts();
+  }, function () {
+    board.innerHTML = MH.empty('分类数据加载失败', '请刷新重试，或直接在 /data/model-taxonomy.json 查看原始数据');
+  });
+
+  var t = null;
+  qIn.addEventListener('input', function () {
+    clearTimeout(t);
+    t = setTimeout(function () { render(); MH.setParam('q', qIn.value.trim()); }, 140);
+  });
+  grpSel.addEventListener('change', function () { render(); MH.setParam('g', grpSel.value); });
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

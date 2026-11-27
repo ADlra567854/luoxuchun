@@ -1,0 +1,60 @@
+/* ============================================================
+   编译模式 COO · 真·本地运行环境 (compile-mode.css)
+   复用 index.html 既有 CSS 变量，与全站主题统一
+   ============================================================ */
+#compile .coo{display:flex;flex-direction:column;gap:12px}
+#compile .coo-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+/* 语言切换 */
+#compile .coo-lang{display:flex;gap:4px;background:#eef4ff;border-radius:10px;padding:4px}
+#compile .coo-lang button{border:none;background:transparent;padding:7px 15px;border-radius:10px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;transition:.15s}
+#compile .coo-lang button:hover{color:var(--gold)}
+#compile .coo-lang button.cur{background:#fff;color:var(--gold);box-shadow:0 2px 8px rgba(79,140,255,.15)}
+
+/* 操作按钮 */
+#compile .coo-acts{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+#compile .coo-acts button{padding:8px 15px;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;transition:.16s;font-family:inherit}
+#compile .coo-acts .run{background:var(--grad);color:#fff}
+#compile .coo-acts .run:hover{filter:brightness(1.07)}
+#compile .coo-acts .sec{background:#eef4ff;color:var(--gold)}
+#compile .coo-acts .sec:hover{background:#e2ecff}
+#compile .coo-acts .ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+#compile .coo-acts .ghost:hover{color:var(--gold);border-color:var(--gold)}
+#compile .coo-acts .ai{background:linear-gradient(120deg,#8b5cf6,#5b8cff);color:#fff}
+#compile .coo-acts .ai:hover{filter:brightness(1.07)}
+
+/* 主区：编辑器 + 输出 */
+#compile .coo-main{display:flex;gap:12px;flex-wrap:wrap}
+#compile .coo-editor-wrap,#compile .coo-out{display:flex;flex-direction:column;flex:1;min-width:300px}
+#compile .coo-editor-wrap label{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:5px;display:flex;justify-content:space-between}
+#compile .coo-editor{flex:1;min-height:320px;font-family:"SF Mono",Consolas,"Courier New",monospace;font-size:13px;line-height:1.6;
+  background:#0f1830;color:#dceaff;border:1px solid #2a3a5e;border-radius:14px;padding:14px;resize:vertical;tab-size:2;white-space:pre;overflow:auto;outline:none}
+#compile .coo-editor:focus{border-color:#3f5a92}
+
+/* 输出区 */
+#compile .coo-out{background:#0f1830;border:1px solid #2a3a5e;border-radius:14px;overflow:hidden}
+#compile .coo-out-head{display:flex;gap:6px;padding:8px 10px;background:#16223f;border-bottom:1px solid #26345a;align-items:center}
+#compile .coo-out-head .t{font-size:12px;font-weight:700;color:#9fb4dd;cursor:pointer;padding:4px 12px;border-radius:10px;transition:.15s}
+#compile .coo-out-head .t:hover{color:#fff}
+#compile .coo-out-head .t.cur{background:#22325a;color:#fff}
+#compile .coo-out-head .meta{margin-left:auto;font-size:11px;color:#5f7299}
+#compile .coo-preview-wrap{width:100%}
+#compile .coo-preview{width:100%;height:340px;border:none;background:#fff;display:block}
+#compile .coo-console{display:none;flex:1;min-height:200px;max-height:380px;overflow:auto;margin:0;padding:10px 12px;
+  font-family:"SF Mono",Consolas,monospace;font-size:12px;line-height:1.6;color:#cdd9f0;white-space:pre-wrap;word-break:break-word}
+#compile .coo-console .ln{display:block;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+#compile .coo-console .log{color:#cdd9f0}
+#compile .coo-console .info{color:#7fd0ff}
+#compile .coo-console .warn{color:#ffce6b}
+#compile .coo-console .err{color:#ff7a9c}
+#compile .coo-console .sys{color:#8aa0c8;font-style:italic}
+#compile .coo-runner{display:none;width:0;height:0;border:0;position:absolute;left:-9999px}
+
+#compile .coo-status{font-size:12px;color:var(--dim);min-height:18px;display:flex;align-items:center;gap:6px}
+#compile .coo-status .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(34,176,125,.18)}
+#compile .coo-status .dot.busy{background:var(--amber);box-shadow:0 0 0 3px rgba(240,169,60,.18)}
+
+@media(max-width:760px){
+  #compile .coo-main{flex-direction:column}
+  #compile .coo-acts{margin-left:0;width:100%}
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 建造大厅 · 工具域 · 白驹 ccowork</title>
+<meta name="description" content="用低代码与 AI 快速搭建小工具、小站点的操作台。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/toolbox/ai-build-hall.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{
+  --build:#f0a93c; --build2:#22b07d;
+  --nav-bg:rgba(255,255,255,.82); --nav-line:rgba(227,235,245,.95);
+  --nav-shadow:0 2px 16px rgba(31,45,77,.07);
+  --card-shadow:0 6px 18px rgba(31,45,77,.04);
+  --card-shadow-h:0 14px 30px rgba(31,45,77,.10);
+  --hero-grad:linear-gradient(120deg,#22b07d,#38b6ff 55%,#f0a93c);
+}
+body[data-theme="deep"]{
+  --build:#f6b45c; --build2:#2ed3a0;
+  --nav-bg:rgba(8,5,28,.70); --nav-line:rgba(255,255,255,.08);
+  --nav-shadow:0 2px 16px rgba(0,0,0,.35);
+  --card-shadow:0 6px 18px rgba(0,0,0,.25);
+  --card-shadow-h:0 14px 30px rgba(0,0,0,.40);
+  --hero-grad:linear-gradient(120deg,#2ed3a0,#4dd6ff 55%,#f6b45c);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+/* 导航 */
+nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:0 28px;height:64px;
+  background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--nav-line);box-shadow:var(--nav-shadow);transition:background .35s ease}
+nav.top .brand{font-size:17px;font-weight:900;display:flex;align-items:center;gap:9px;letter-spacing:.5px;white-space:nowrap}
+nav.top .brand .logo{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 10px rgba(79,140,255,.35);flex:none}
+nav.top .brand .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.top .links{display:flex;gap:2px;margin-left:12px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{padding:9px 13px;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;transition:.18s;white-space:nowrap}
+nav.top .links a:hover{background:rgba(120,160,220,.12);color:var(--blue)}
+nav.top .links a.cur{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(79,140,255,.30)}
+nav.top .nav-actions{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+nav.top .theme-btn{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+nav.top .theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+nav.top .cta{padding:10px 20px;border:none;border-radius:999px;background:var(--grad);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 12px rgba(79,140,255,.30);transition:.2s;white-space:nowrap}
+nav.top .cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(79,140,255,.42)}
+.burger{display:none}
+/* Hero */
+#gate{position:relative;overflow:hidden;background:var(--hero-grad);transition:background .35s ease}
+#gate::before{content:"";position:absolute;width:320px;height:320px;top:-60px;right:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);pointer-events:none}
+body[data-theme="deep"] #gate::before{background:radial-gradient(circle,rgba(34,225,255,.5),transparent 70%)}
+#gate .inner{position:relative;max-width:1080px;margin:0 auto;padding:56px 20px 44px;text-align:center;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
+#gate h1{font-size:clamp(32px,4.8vw,54px);font-weight:900;letter-spacing:1px;color:#fff;line-height:1.25;margin-top:14px;text-shadow:0 2px 20px rgba(16,48,120,.30)}
+#gate .sub{color:rgba(255,255,255,.95);font-size:15px;margin:14px auto 0;max-width:780px;text-shadow:0 1px 8px rgba(16,48,120,.30)}
+.gate-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px auto 0;max-width:800px}
+.gate-chips .chip{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px);transition:.2s;cursor:pointer}
+.gate-chips .chip:hover{background:rgba(255,255,255,.30);transform:translateY(-2px)}
+/* 内容 */
+.wrap{max-width:1120px;margin:0 auto;padding:36px 20px 60px}
+h2.sec{font-size:24px;font-weight:900;margin:38px 0 6px;display:flex;align-items:center;gap:10px}
+h2.sec::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--grad),transparent)}
+p.sec-sub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.concept{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--card-shadow);transition:.22s}
+.concept:hover{box-shadow:var(--card-shadow-h);transform:translateY(-3px)}
+.concept .diff{float:right;font-size:11px;font-weight:900;padding:3px 10px;border-radius:999px;background:var(--grad);color:#fff}
+.concept b{font-size:17px}
+.concept p{font-size:13px;color:var(--muted);margin-top:7px}
+.concept .feats{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.concept .feats span{font-size:12px;font-weight:700;color:var(--blue);background:var(--chip-bg);border:1px solid var(--chip-line);padding:3px 9px;border-radius:999px}
+.concept .apps{margin-top:8px;font-size:12px;color:var(--muted)}
+.concept .apps b{color:var(--text);font-size:12px}
+/* 工具表 */
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--card-shadow)}
+.tool b{font-size:14px}
+.tool p{font-size:13px;color:var(--muted);margin-top:5px}
+/* 行业应用 */
+.app-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:12px;box-shadow:var(--card-shadow)}
+.app-card b{font-size:15px}
+.app-card p{font-size:13px;color:var(--muted);margin-top:6px}
+/* 现场园区 */
+.venue-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:8px}
+.vc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:block;transition:.2s;box-shadow:var(--card-shadow)}
+.vc:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-h);border-color:var(--blue)}
+.vc b{font-size:15px;display:block}
+.vc span{font-size:12px;color:var(--muted)}
+.vc em{display:block;margin-top:8px;font-style:normal;font-size:12px;font-weight:800;color:var(--blue)}
+@media(max-width:760px){
+  nav.top{flex-wrap:wrap;height:auto;padding:10px 16px;gap:10px}
+  nav.top .links{order:3;width:100%;margin-left:0}
+  .burger{display:block;background:none;border:none;font-size:20px;color:var(--text);cursor:pointer}
+  nav.top .links{display:none}
+  nav.top .links.open{display:flex}
+}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+
+</head>
+<body data-ccnav="toolbox" data-cctitle="工具">
+<div class="pg-wrap">
+<article class="merged-content">
+<div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/cover-ai-build-hall.png" alt="AI 智能建造馆" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<!-- 总站导航 -->
+
+<!-- Hero -->
+<section id="gate">
+  <div class="inner">
+    <div class="badge"><i class="cc-ic" data-ic="hard-hat"></i> AI 智能建造馆 · 数字孪生 × 智能制造</div>
+    <h1>工业4.0 · 数字孪生 · 智能工厂<br><span style="background:linear-gradient(120deg,#fff,#d6e9ff);-webkit-background-clip:text;background-clip:text;color:transparent">AI 如何建造未来</span></h1>
+    <p class="sub">展馆一：核心概念（工业4.0 / 数字孪生 / 智能工厂）｜展馆二：工具与平台｜展馆三：行业落地应用｜展馆四：中国 AI 产业园区现场，点「找 AI 园区」一键导航。</p>
+    <div class="gate-chips">
+      <a class="chip" href="#concepts"><i class="cc-ic" data-ic="blocks" aria-hidden="true"></i>核心概念</a>
+      <a class="chip" href="#tools"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>工具平台</a>
+      <a class="chip" href="#apps"><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i>行业应用</a>
+      <a class="chip" href="#parks"><i class="cc-ic" data-ic="map-pin" aria-hidden="true"></i>AI 产业园区</a>
+    </div>
+  </div>
+</section>
+<div class="wrap">
+  <h2 class="sec" id="concepts"><i class="cc-ic" data-ic="blocks" aria-hidden="true"></i>展馆一 · 核心概念</h2>
+  <p class="sec-sub">来自主站《智能制造实训》与《数字孪生与仿真建模》数据 · <span id="dataDate"></span></p>
+  <div class="grid" id="conceptGrid"></div>
+  <h2 class="sec" id="tools"><i class="cc-ic" data-ic="wrench" aria-hidden="true"></i>展馆二 · 工具与平台</h2>
+<figure class="cc-body-img"><img src="/assets/body/bb-ai-build-hall.png" alt="AI 智能建造馆 · 白驹 ccowork · 数字孪生与智能制造 · " loading="lazy"></figure>
+  <p class="sec-sub">智能建造的落地工具链</p>
+  <div class="tools" id="toolBox"></div>
+  <h2 class="sec" id="apps"><i class="cc-ic" data-ic="building-2" aria-hidden="true"></i>展馆三 · 行业应用</h2>
+  <p class="sec-sub">AI 智能建造正在重塑的行业</p>
+  <div id="appBox"></div>
+  <h2 class="sec" id="parks"><i class="cc-ic" data-ic="map-pin" aria-hidden="true"></i>展馆四 · 中国 AI 产业园区现场</h2>
+  <p class="sec-sub">数据来自腾讯位置服务实时查询，点击直达地图指引页导航</p>
+  <div class="venue-cta" id="parkBox"></div>
+</div>
+
+
+
+
+
+<script>
+/* 2026-11-25 修复（既有 bug，非本次改造引入）：
+   本段内联脚本原先在解析到此处（第 151 行）时立即执行，而三个数据源
+   /data/digital-twin.js（第 210 行）、/data/smart-manufacturing.js（211 行）、
+   /data/ai-venues.js（212 行）都写在文件末尾，此刻 window.DIGITAL_TWIN /
+   window.SMART_MANUFACTURING / window.AI_VENUES 必然还是 undefined；
+   因为下面都用了 `if (SM && ...)` 之类兜底，所以不报错、只是各大区块渲染为空。
+   改法：等 DOMContentLoaded 再初始化（该事件一定在所有同步脚本，含末尾数据源执行完之后触发），
+   与标签物理顺序解耦。业务逻辑一行未改。 */
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  var DT = window.DIGITAL_TWIN, SM = window.SMART_MANUFACTURING, V = window.AI_VENUES;
+  // 概念（智能制造 + 数字孪生）
+  var all = [];
+  if (SM && SM.concepts) all = all.concat(SM.concepts);
+  if (DT && DT.concepts) all = all.concat(DT.concepts);
+  var seen = new Set(), uniq = [];
+  all.forEach(function(c){ var k = c.name; if (!seen.has(k)) { seen.add(k); uniq.push(c); } });
+  if (uniq.length) {
+    document.getElementById('dataDate').textContent = (SM && SM.lastUpdated) || (DT && DT.lastUpdated) || '';
+    document.getElementById('conceptGrid').innerHTML = uniq.slice(0, 8).map(function(c){
+      return '<div class="concept"><span class="diff">' + (c.difficulty || '进阶') + '</span><b>' + c.name + '</b><p>' + c.description + '</p>' +
+        (c.keyFeatures && c.keyFeatures.length ? '<div class="feats">' + c.keyFeatures.map(function(f){ return '<span>' + f + '</span>'; }).join('') + '</div>' : '') +
+        (c.applications && c.applications.length ? '<div class="apps"><b>落地场景：</b>' + c.applications.join(' / ') + '</div>' : '') +
+        '</div>';
+    }).join('');
+  }
+  // 工具
+  var tools = [];
+  (SM && SM.tools || []).forEach(function(t){ tools.push({n: (t.name || t), d: t.description || ''}) });
+  (DT && DT.tools || []).forEach(function(t){ tools.push({n: (t.name || t), d: t.description || ''}) });
+  if (tools.length) {
+    document.getElementById('toolBox').innerHTML = tools.slice(0, 8).map(function(t){
+      return '<div class="tool"><b> ' + t.n + '</b>' + (t.d ? '<p>' + t.d + '</p>' : '') + '</div>';
+    }).join('');
+  }
+  // 行业应用
+  var apps = [];
+  (SM && SM.aiApplications || []).forEach(function(a){ apps.push({n: a.name || a, d: a.description || a.desc || ''}) });
+  (SM && SM.industryApplications || []).forEach(function(a){ apps.push({n: a.name || a.industry || a, d: a.description || a.desc || ''}) });
+  (DT && DT.industryApplications || []).forEach(function(a){ apps.push({n: a.name || a.industry || a, d: a.description || a.desc || ''}) });
+  if (apps.length) {
+    document.getElementById('appBox').innerHTML = apps.slice(0, 6).map(function(a){
+      return '<div class="app-card"><b> ' + a.n + '</b>' + (a.d ? '<p>' + a.d + '</p>' : '') + '</div>';
+    }).join('');
+  } else {
+    document.getElementById('appBox').innerHTML = '<div class="app-card"><b>智能制造 · 智能物流 · 智能服务</b><p>工业4.0 以智能制造为核心，全面延伸至物流、服务、能源与城市治理。</p></div>';
+  }
+  // AI 产业园区
+  if (V) {
+    var park = V.categories.find(function(c){ return c.id === 'park'; });
+    if (park) {
+      document.getElementById('parkBox').innerHTML = park.venues.map(function(v){
+        return '<a class="vc" href="/about/map-guide.html#park"><b>' + v.name + '</b><span>' + v.city + ' · ' + v.address + '</span><em>点击导航 </em></a>';
+      }).join('');
+    }
+  }
+})();
+});
+</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.getElementById('themeBtn') && document.getElementById('themeBtn').addEventListener('click', ccoworkTheme);
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('themeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<script src="/data/digital-twin.js"></script>
+<script src="/data/smart-manufacturing.js"></script>
+<script src="/data/ai-venues.js"></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

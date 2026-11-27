@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>测试的组织结构 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：测试的组织结构。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p034.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html" class="on">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 34 / 86 节
+    </div>
+    <h1>测试的组织结构</h1>
+    <h2 id="测试的组织结构"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/99071589c5358114de6324d9aa2643caeee305bd/src/ch11-03-test-organization.md">ch11-03-test-organization.md</a></p>
+<p>本章一开始就提到，测试是一个复杂的概念，而且不同的开发者也采用不同的术语和组织。Rust 社区倾向于根据测试的两个主要分类来考虑问题：<strong>单元测试</strong>（<em>unit tests</em>）与<strong>集成测试</strong>（<em>integration tests</em>）。单元测试倾向于更小而更集中，在隔离的环境中一次测试一个模块，并且可以测试私有接口。而<strong>集成测试</strong>对于你的库来说则完全是外部的。它们与其他外部代码一样，通过相同的方式使用你的代码，只测试公有接口而且每个测试都有可能会测试多个模块。</p>
+<p>为了保证你的库能够按照你的预期运行，从独立和整体的角度编写这两类测试都是非常重要的。</p>
+<h3 id="单元测试"></h3>
+<p>单元测试的目的是在与其他部分隔离的环境中测试每一个单元的代码，以便于快速而准确地验证某个单元的代码功能是否符合预期。单元测试与它们要测试的代码共同存放在位于 <em>src</em> 目录下相同的文件中。规范是在每个文件中创建包含测试函数的 <code>tests</code> 模块，并使用 <code>cfg(test)</code> 标注模块。</p>
+<h4 id="测试模块和-cfgtest"></h4>
+<p>测试模块的 <code>#[cfg(test)]</code> 注解告诉 Rust 只在执行 <code>cargo test</code> 时才编译和运行测试代码，而在运行 <code>cargo build</code> 时不这么做。这在只希望构建库的时候可以节省编译时间，并且因为它们并没有包含测试，所以能减少编译产生的文件的大小。与之对应的集成测试因为位于另一个文件夹，所以它们并不需要 <code>#[cfg(test)]</code> 注解。然而单元测试位于与源码相同的文件中，所以你需要使用 <code>#[cfg(test)]</code> 来指定它们不应该被包含进编译结果中。</p>
+<p>回忆本章第一部分新建的 <code>adder</code> 项目，Cargo 为我们生成了如下代码：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">pub fn add(left: u64, right: u64) -&gt; u64 {
+    left + right
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let result = add(2, 2);
+        assert_eq!(result, 4);
+    }
+}</code></pre>
+<p>上述代码就是自动生成的测试模块。<code>cfg</code> 属性代表<strong>配置</strong>（<em>configuration</em>），它告诉 Rust 接下来的项只有在给定特定配置选项时，才会被包含。在这种情况下，配置选项是 <code>test</code>，即 Rust 所提供的用于编译和运行测试的配置选项。通过使用 <code>cfg</code> 属性，Cargo 只会在我们主动使用 <code>cargo test</code> 运行测试时才编译测试代码。这包括测试模块中可能存在的辅助函数，以及标注为 <code>#[test]</code> 的函数。</p>
+<p><a id="testing-private-functions"></a></p>
+<h4 id="私有函数测试"></h4>
+<p>测试社区中一直存在关于是否应该对私有函数直接进行测试的论战，而在其他语言中想要测试私有函数是一件困难的，甚至是不可能的事。不过无论你坚持哪种测试意识形态，Rust 的私有性规则确实允许你测试私有函数。考虑示例 11-12 中带有私有函数 <code>internal_adder</code> 的代码。</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">pub fn add_two(a: u64) -&gt; u64 {
+    internal_adder(a, 2)
+}
+
+fn internal_adder(left: u64, right: u64) -&gt; u64 {
+    left + right
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn internal() {
+        let result = internal_adder(2, 2);
+        assert_eq!(result, 4);
+    }
+}</code></pre>
+<p><span class="caption">示例 11-12：测试私有函数</span></p>
+<p>注意 <code>internal_adder</code> 函数并没有标记为 <code>pub</code>。测试也只是 Rust 代码，而 <code>tests</code> 模块也只是另一个模块。正如<a href="#引用模块树中项的路径-1">“路径用于引用模块树中的项”</a> 部分所说，子模块中的项可以使用其祖先模块中的项。在这个测试中，我们通过 <code>use super::*</code> 将 <code>tests</code> 模块父模块中的所有项引入作用域，然后测试就可以调用 <code>internal_adder</code>。如果你并不认为应该测试私有函数，Rust 也不会强迫你这么做。</p>
+<h3 id="集成测试"></h3>
+<p>在 Rust 中，集成测试对于你需要测试的库来说完全是外部的。同其他使用库的代码一样使用库文件，也就是说它们只能调用一部分库中的公有 API。集成测试的目的是测试库的多个部分能否一起正常工作。一些单独能正确运行的代码单元集成在一起也可能会出现问题，所以集成测试的覆盖率也是很重要的。为了创建集成测试，你需要先创建一个 <em>tests</em> 目录。</p>
+<h4 id="tests-目录"></h4>
+<p>为了编写集成测试，需要在项目根目录创建一个 <em>tests</em> 目录，与 <em>src</em> 同级。Cargo 知道如何去寻找这个目录中的集成测试文件。接着可以随意在这个目录中创建任意多的测试文件，Cargo 会将每一个文件当作单独的 crate 来编译。</p>
+<p>让我们来创建一个集成测试。保留示例 11-12 中 <em>src/lib.rs</em> 的代码。创建一个 <em>tests</em> 目录，新建一个文件 <em>tests/integration_test.rs</em>。目录结构应该看起来像这样：</p>
+<pre><code class="language-text">adder
+├── Cargo.lock
+├── Cargo.toml
+├── src
+│   └── lib.rs
+└── tests
+    └── integration_test.rs
+</code></pre>
+<p>将示例 11-13 中的代码输入到 <em>tests/integration_test.rs</em> 文件中。</p>
+<p><span class="filename">文件名：tests/integration_test.rs</span></p>
+<pre><code class="language-rust ignore">use adder::add_two;
+
+#[test]
+fn it_adds_two() {
+    let result = add_two(2);
+    assert_eq!(result, 4);
+}</code></pre>
+<p><span class="caption">示例 11-13：一个 <code>adder</code> crate 中函数的集成测试</span></p>
+<p>因为每一个 <em>tests</em> 目录中的测试文件都是完全独立的 crate，所以需要将库引入到每个测试 crate 的作用域中。为此与单元测试不同，我们需要在文件顶部添加 <code>use adder::add_two;</code>，这在单元测试中是不需要的。</p>
+<p>并不需要将 <em>tests/integration_test.rs</em> 中的任何代码标注为 <code>#[cfg(test)]</code>。 <code>tests</code> 文件夹在 Cargo 中是一个特殊的文件夹，Cargo 只会在运行 <code>cargo test</code> 时编译这个目录中的文件。现在就运行 <code>cargo test</code> 试试：</p>
+<pre><code class="language-console">$ cargo test
+   Compiling adder v0.1.0 (file:///projects/adder)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.31s
+     Running unittests src/lib.rs (target/debug/deps/adder-1082c4b063a8fbe6)
+
+running 1 test
+test tests::internal ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration_test.rs (target/debug/deps/integration_test-1082c4b063a8fbe6)
+
+running 1 test
+test it_adds_two ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests adder
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+</code></pre>
+<p>现在有了三个部分的输出：单元测试、集成测试和文档测试。注意如果一个部分的任何测试失败，之后的部分都不会运行。例如如果一个单元测试失败，则不会有任何集成测试和文档测试的输出，因为这些测试只会在所有单元测试都通过后才会执行。</p>
+<p>第一部分单元测试与我们之前见过的一样：每个单元测试一行（示例 11-12 中有一个叫做 <code>internal</code> 的测试），接着是一个单元测试的摘要行。</p>
+<p>集成测试部分以行 <code>Running tests/integration_test.rs</code>开头。接下来每一行是一个集成测试中的测试函数，以及一个位于 <code>Doc-tests adder</code> 部分之前的集成测试的摘要行。</p>
+<p>每一个集成测试文件有对应的测试结果部分，所以如果在 <em>tests</em> 目录中增加更多文件，测试结果中就会有更多集成测试结果部分。</p>
+<p>我们仍然可以通过指定测试函数的名称作为 <code>cargo test</code> 的参数来运行特定集成测试。也可以使用 <code>cargo test</code> 的 <code>--test</code> 后跟文件的名称来运行某个特定集成测试文件中的所有测试：</p>
+<pre><code class="language-console">$ cargo test --test integration_test
+   Compiling adder v0.1.0 (file:///projects/adder)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.64s
+     Running tests/integration_test.rs (target/debug/deps/integration_test-82e7799c1bc62298)
+
+running 1 test
+test it_adds_two ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+</code></pre>
+<p>这个命令只运行 <em>tests/integration_test.rs</em> 文件中的测试。</p>
+<h4 id="集成测试中的子模块"></h4>
+<p>随着集成测试的增加，你可能希望在 <code>tests</code> 目录创建更多文件以便更好地组织它们；例如根据测试的功能来将测试分组。如前所述，<em>tests</em> 目录中的每一个文件都被编译成一个单独的 crate，这有助于创建独立的作用域，以便更接近于最终用户使用你的 crate 的方式。但这意味着，<em>tests</em> 目录中的文件的行为，和你在第七章中学习如何将代码分为模块和文件时，学到的 <em>src</em> 中的文件的行为不一样。</p>
+<p>当你有一些在多个集成测试文件都会用到的帮助函数，而你尝试按照第七章<a href="#将模块拆分成多个文件-1">“将模块移动到其他文件”</a>部分的步骤将它们提取到一个通用的模块中时，<em>tests</em> 目录中文件行为的不同就会凸显出来。例如，如果我们在 <em>tests/common.rs</em> 中创建一个名为 <code>setup</code> 的函数，并希望在多个测试文件的测试函数中调用它，就可以在 <code>setup</code> 中添加想要复用的代码：</p>
+<p><span class="filename">文件名：tests/common.rs</span></p>
+<pre><code class="language-rust noplayground">pub fn setup() {
+    // setup code specific to your library's tests would go here
+}</code></pre>
+<p>如果再次运行测试，将会在测试结果中看到一个新的对应 <em>common.rs</em> 文件的测试结果部分，即便这个文件并没有包含任何测试函数，也没有任何地方调用了 <code>setup</code> 函数：</p>
+<pre><code class="language-console">$ cargo test
+   Compiling adder v0.1.0 (file:///projects/adder)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.89s
+     Running unittests src/lib.rs (target/debug/deps/adder-92948b65e88960b4)
+
+running 1 test
+test tests::internal ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/common.rs (target/debug/deps/common-92948b65e88960b4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration_test.rs (target/debug/deps/integration_test-92948b65e88960b4)
+
+running 1 test
+test it_adds_two ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests adder
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+</code></pre>
+<p>我们并不想要 <code>common</code> 出现在测试结果中显示 <code>running 0 tests</code>。我们只是想与其他集成测试文件共享一些代码而已。为了不让 <code>common</code> 出现在测试输出中，我们将创建 <em>tests/common/mod.rs</em>，而不是创建 <em>tests/common.rs</em> 。现在项目目录结构看起来像这样：</p>
+<pre><code class="language-text">├── Cargo.lock
+├── Cargo.toml
+├── src
+│   └── lib.rs
+└── tests
+    ├── common
+    │   └── mod.rs
+    └── integration_test.rs
+</code></pre>
+<p>这是一种老的命名规范，正如第七章<a href="#替代文件路径">“替代文件路径”</a>中提到的 Rust 仍然理解它们。这样命名告诉 Rust 不要将 <code>common</code> 看作一个集成测试文件。将 <code>setup</code> 函数代码移动到 <em>tests/common/mod.rs</em> 并删除 <em>tests/common.rs</em> 文件之后，测试输出中将不会出现这一部分。<em>tests</em> 目录中的子目录不会被作为单独的 crate 编译或作为一个测试结果部分出现在测试输出中。</p>
+<p>一旦创建了 <em>tests/common/mod.rs</em>，就可以将其作为模块以便在任何集成测试文件中使用。这里是一个 <em>tests/integration_test.rs</em> 中调用 <code>setup</code> 函数的 <code>it_adds_two</code> 测试的示例：</p>
+<p><span class="filename">文件名：tests/integration_test.rs</span></p>
+<pre><code class="language-rust ignore">use adder::add_two;
+
+mod common;
+
+#[test]
+fn it_adds_two() {
+    common::setup();
+
+    let result = add_two(2);
+    assert_eq!(result, 4);
+}</code></pre>
+<p>注意 <code>mod common;</code> 声明与示例 7-21 中展示的模块声明相同。接着在测试函数中就可以调用 <code>common::setup()</code> 了。</p>
+<h4 id="二进制-crate-的集成测试"></h4>
+<p>如果项目是二进制 crate 并且只包含 <em>src/main.rs</em> 而没有 <em>src/lib.rs</em>，这样就不可能在 <em>tests</em> 目录创建集成测试并也无法通过 <code>use</code> 语句将 <em>src/main.rs</em> 中定义的函数引入作用域。只有库 crate 才会向其他 crate 暴露了可供调用和使用的函数；二进制 crate 只意在单独运行。</p>
+<p>这就是许多 Rust 二进制项目使用一个简单的 <em>src/main.rs</em> 调用 <em>src/lib.rs</em> 中的逻辑的原因之一。因为通过这种结构，集成测试<strong>就可以</strong>通过 <code>use</code> 来测试库 crate 中的重要功能了。而如果这些重要的功能没有问题的话，<em>src/main.rs</em> 中的少量代码也就会正常工作且不需要测试。</p>
+<h2 id="总结-10"></h2>
+<p>Rust 的测试功能提供了一个确保即使你改变了函数的实现方式，也能继续以期望的方式运行的途径。单元测试独立地验证库的不同部分，也能够测试私有函数实现细节。集成测试则检查多个部分是否能结合起来正确地工作，并像其他外部代码那样测试库的公有 API。即使 Rust 的类型系统和所有权规则可以帮助避免某些类型的 bug，不过测试对于减少代码中不符合期望行为的逻辑 bug 仍然是很重要的。</p>
+<p>让我们将本章和前面各章所学的知识组合起来，在下一章一起编写一个项目！</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="一个-io-项目构建一个命令行程序"></h1>
+<p><a href="https://github.com/rust-lang/book/blob/d7c0e477a22bcb37fdb290c6046058565d6738c2/src/ch12-00-an-io-project.md">ch12-00-an-io-project.md</a></p>
+<p>本章既是对目前所学诸多技能的一次回顾，也会进一步探索一些标准库功能。我们将构建一个与文件和命令行输入/输出交互的命令行工具，借此练习一些你现在已经掌握的 Rust 概念。</p>
+<p>Rust 的运行速度、安全性、单二进制文件输出和跨平台支持使其成为创建命令行程序的理想语言，所以我们的项目将创建一个我们自己版本的经典命令行搜索工具：<code>grep</code>。grep 是 “<strong>G</strong>lobally search a <strong>R</strong>egular <strong>E</strong>xpression and <strong>P</strong>rint.” 的首字母缩写。<code>grep</code> 最简单的使用场景是在特定文件中搜索指定字符串。为此，<code>grep</code> 获取一个文件路径和一个字符串作为参数，接着读取文件并找到其中包含字符串参数的行，然后打印出这些行。</p>
+<p>在这个过程中，我们还会展示如何让命令行工具使用许多其他命令行工具都会用到的终端特性。我们会读取环境变量的值，让用户能够配置工具的行为；也会将错误信息打印到标准错误流（<code>stderr</code>）而不是标准输出（<code>stdout</code>），这样一来，例如用户就可以把成功输出重定向到文件，同时仍然在屏幕上看到错误信息。</p>
+<p>一位 Rust 社区的成员，Andrew Gallant，已经创建了一个功能完整且非常快速的 <code>grep</code> 版本，名为 <code>ripgrep</code>。相比之下，我们的版本将非常简单，本章将教会你一些帮助理解像 <code>ripgrep</code> 这样真实项目的背景知识。</p>
+<p>我们的 <code>grep</code> 项目将会结合之前所学的一些概念：</p>
+<ul>
+<li>代码组织（<a href="#包crates-与模块">第七章</a>）</li>
+<li>vector 和字符串（<a href="#常见集合">第八章</a>）</li>
+<li>错误处理（<a href="#错误处理">第九章</a>）</li>
+<li>合理地使用 trait 和生命周期（<a href="#泛型trait-和生命周期">第十章</a>）</li>
+<li>编写测试（<a href="#编写自动化测试">第十一章</a>）</li>
+</ul>
+<p>另外还会简要地讲到闭包、迭代器和 trait 对象，它们分别会在<a href="#函数式语言特性迭代器与闭包">第十三章</a>和<a href="#面向对象编程特性">第十八章</a>中详细介绍。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p033.html">← 控制测试如何运行</a><a href="index.html">目录</a><a href="p035.html">接受命令行参数 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

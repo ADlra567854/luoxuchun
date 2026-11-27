@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:title" content="腾讯混元 DFly2 实战：共享稀疏 KV 的长上下文投机解码 · 自学路线 · 白驹 ccowork">
+<meta property="og:description" content="自学路线第44章 · DFly2 草稿模型、KV/Index 双共享、AngelSpec 训练框架与长上下文加速评测">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>腾讯混元 DFly2 实战：共享稀疏 KV 的长上下文投机解码 · 自学路线 · 白驹 ccowork</title>
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+</head>
+<body data-theme="cloud">
+<nav><div class="logo">白驹 ccowork · 离线版</div><a href="../../website/ai-academy.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 学院首页</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics"><i class="cc-ic cc-ic-moon" data-ic="moon" aria-hidden="true"></i><i class="cc-ic cc-ic-sun" data-ic="sun" aria-hidden="true"></i></span></button>
+  </div>
+</nav>
+<article>
+<h1>腾讯混元 DFly2 实战：共享稀疏 KV 的长上下文投机解码</h1>
+<div class="blog-open">
+  <div class="blog-badge">🐎 白驹 ccowork · 自学路线 第44章</div>
+  <div class="blog-meta"><span>📅 2026-11-26</span><span>⏱ 65 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)">🤖 AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="第44章 腾讯混元 DFly2 实战：共享稀疏 KV 的长上下文投机解码" style="width:100%;height:auto;border-radius:16px;margin:0 0 22px;box-shadow:0 10px 28px rgba(31,45,77,.15)">
+  <defs>
+    <linearGradient id="covGrad44" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f8cff"/><stop offset=".5" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#covGrad44)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.10)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.07)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.06)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">自学路线 · 第 44 章 · 每日新增</text>
+  <text x="56" y="142" font-size="46" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">腾讯混元 DFly2 实战：共享稀疏 KV 的长上下文投机解码</text>
+  <text x="56" y="184" font-size="19" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">DFly2 草稿模型、KV/Index 双共享、AngelSpec 训练框架与长上下文加速评测</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">📘</text>
+</svg>
+<h1>第44章 腾讯混元 DFly2 实战：共享稀疏 KV 的长上下文投机解码</h1>
+
+<p>本章聚焦腾讯混元2026年11月最新开源的DFly2共享稀疏KV投机解码方案，帮你厘清其技术定位、核心创新与落地边界，学完可基于官方AngelSpec框架完成适配稀疏注意力大模型的长上下文加速部署，避免将草稿模型误用作通用对话模型、踩错环境配置与兼容性陷阱。</p>
+<h2>事件背景与定位澄清</h2>
+<p>2026年11月26日，腾讯混元AI Infra团队在官方GitHub仓库Tencent/AngelSpec宣布完整开源DFly2的模型权重、训练代码与技术报告，相关论文arXiv:2611.34776于前一日提交，Hugging Face官方合集已开放草稿模型下载，IT之家同日发布相关报道作为二手信息源。需要首先明确的是，DFly2不是替代混元Hy4 flash的新一代通用聊天大模型，而是配合目标大模型运行的投机解码草稿模型（Drafter），本身不具备独立完成通用对话、推理任务的能力，必须绑定对应目标模型才能工作。</p>
+<p>很多开发者看到开源新闻会直接将权重加载作为对话模型测试，这是典型的认知误区：DFly2的所有训练目标都是“尽可能拟合目标模型的token分布、生成高接受率的候选序列”，而非学习通用世界知识与对话能力。官方仓库中同时出现的DFlash、DSpark等方法仅作为论文内的对照基线，本教程不做未经官方验证的横向性能对比，所有性能结论均以官方公开的测试口径为准。</p>
+<p>验证方式：访问GitHub仓库README的Released Models列表与对应模型卡，确认DFly2权重的Architecture为<code>DFly2</code>，并核对其Target字段。</p>
+<h2>投机解码核心基础</h2>
+<p>自回归大模型的解码延迟瓶颈本质是逐token串行生成：每生成1个token都需要执行一次完整的模型前向传播，长上下文场景下注意力计算成本随序列长度增长，单步延迟会进一步升高。投机解码的核心逻辑是用一个更小、更快的草稿模型一次提议N个候选token，再由目标模型并行验证整段候选序列，按照严格的数学规则接受匹配分布的token、拒绝不匹配的位置并从拒绝点重新采样，整套验证机制从数学上保证输出分布和目标模型自回归生成完全一致，不会以牺牲输出质量为代价换取速度。</p>
+<p>投机解码的实际加速比和平均接受长度τ（每次验证平均接受的候选token数量）直接相关：理想状态下τ=N时可实现接近N倍的解码层加速，但实际收益会受草稿模型和目标模型的分布匹配度、验证开销、prefill阶段占比影响。AngelSpec覆盖两类主要草稿路线：一类是块并行草稿（如DFly2、DFlash），一次生成整块候选序列后统一验证；另一类是自回归路线（如Eagle3与MTP），候选生成方式与KV复用机制不同。具体结构以官方draft-model family文档为准，不可把不同架构的配置混用。</p>
+<p>验证方式：运行投机解码最小示例，修改草稿候选长度观察接受长度τ与端到端延迟的对应关系。</p>
+<h2>DFly2核心创新：双共享稀疏设计</h2>
+<p>DFly2的核心设计直觉非常直接：原生稀疏注意力目标模型在解码时已经支付了“从长上下文中选出Top-k相关key位置”的检索成本，草稿模型不需要重复做一次随上下文长度增长的注意力检索，直接复用目标模型已经计算好的结果即可。基于这个思路，DFly2采用层配对设计：每个草稿层和目标模型对应的稀疏注意力层一一绑定，同时实现两项关键复用：一是KV Share，直接复用目标模型已经计算完成的KV Cache，不需要为草稿模型单独维护KV存储；二是Index Share，直接复用目标模型稀疏索引器已经选出的Top-k相关位置，不需要草稿模型单独做注意力评分检索。</p>
+<p>和传统投机解码方案相比，双共享设计从根本上解决了长上下文下草稿模型的成本膨胀问题。传统独立草稿模型在128K上下文下即使做稀疏注意力，也需要自行完成Top-k检索、维护独立KV，草稿本身的开销会随上下文变长逐渐抵消投机带来的加速收益；而DFly2的两项复用完全跳过了这部分冗余计算，草稿层的注意力范围始终和目标模型选出的Top-k位置绑定，不会随上下文长度线性增长。</p>
+<p>验证方式：阅读论文Figure 3的层配对数据流图，对比独立草稿模型与DFly2的KV访问路径差异。</p>
+<h2>官方披露的工程收益与边界</h2>
+<p>根据官方论文与README披露，DFly2的三项核心工程收益均围绕稀疏场景的成本优化展开（以下内容请以官方最新文档为准）：第一，每个草稿token至多关注约2K个key，草稿注意力的计算成本相对上下文长度保持固定，不会因为序列从32K增长到128K出现明显的草稿延迟上涨；第二，不需要为草稿模型单独维护KV Cache，大幅减少额外的KV显存占用，长上下文下显存优势更明显；第三，草稿模型不参与prefill阶段计算，在PD（Prefill-Decode）分离部署架构下，Prefill节点向Decode节点传输数据时，仅需要额外传递一个末层hidden state，不需要传输额外的草稿相关张量，传输开销几乎可以忽略。</p>
+<p>需要特别明确DFly2的适用边界：它不是面向任意稠密注意力大模型的通用即插即用插件，仅适配原生实现了稀疏注意力的目标模型。官方当前明确列出的适配目标模型包括Hy4、Hy4 flash、DeepSeek-V4.1-Flash、GLM-5.3-Flash，对应发布的草稿权重包括AngelSlim/Hy4-flash-DFly2-B6、AngelSlim/DS-V4.1-Flash-DFly2-B6、AngelSlim/GLM-5.3-Flash-DFly2-B6等，后续新增适配模型请以官方仓库的兼容性列表为准，不要尝试将DFly2直接加载到稠密模型上使用。</p>
+<p>验证方式：查看官方README的DFly2说明与Released Models列表，确认目标模型及其对应草稿权重。</p>
+<h2>AngelSpec框架与环境准备</h2>
+<p>AngelSpec是腾讯开源的Torch-native投机草稿模型训练框架，原生支持DFly2、DFly、DFlash、DFlare、Eagle3、DSpark、MTP等多种投机解码方案，训练与在线评估所用的推理GPU worker groups通过Mooncake张量存储连接，官方文档提供vLLM或SGLang后端路径。框架采用模块化设计，用户既可以直接使用官方发布的预训练草稿权重部署加速，也可以基于自定义稀疏目标模型训练新的DFly2草稿模型。</p>
+<p>环境配置必须严格遵循官方README的Quick Start流程，不要直接安装PyPI默认的CUDA 13版本依赖，CUDA 12.x主机需要先按照官方Installation文档安装匹配本地CUDA版本的torch、vLLM wheels，再执行以下命令：</p>
+<pre><code># 克隆官方仓库
+git clone https://github.com/Tencent/AngelSpec.git
+cd AngelSpec
+# 安装带vLLM后端的AngelSpec
+pip install -e ".[vllm]"
+# 安装Mooncake传输引擎
+pip install mooncake-transfer-engine</code></pre>
+<p>需要特别注意：官方仓库中<code>./examples/qwen3-8b-dfly/run.sh</code>是单机8卡（4推理+4训练）的DFly（第一代）流程示例，仅用于跑通AngelSpec基础框架，不是DFly2的复现实例；DFly2的官方多节点示例目录为<code>examples/hy-v4-dfly2/</code>与<code>examples/hy-v4-flash-dfly2/</code>，具体配置、硬件资源需求、启动参数请务必查看仓库最新README与示例脚本，本教程不编造单卡、消费级GPU的部署命令，避免读者在不满足硬件要求的环境下反复踩坑。</p>
+<p>验证方式：按官方Quick Start运行对应示例，并查看示例脚本与配置确认模型和草稿架构；不要用未经官方文档确认的导入或版本命令代替完整验证。</p>
+<h2>评测方法与收益预期</h2>
+<p>阅读DFly2的性能数据前，必须先区分三个核心评测指标的差异：平均接受长度τ是指每次草稿验证平均接受的token数量，仅反映草稿和目标模型的分布匹配度；decode speedup是指纯解码阶段的相对加速比，排除了prefill阶段的开销；end-to-end speedup是指从输入prompt到输出完整响应的端到端加速比，包含prefill、调度、数据传输等所有开销，三者数值依次降低，不能混为一谈。</p>
+<p>官方论文报告的“高并发同速下两套64K测试吞吐提升62%/81%”为论文作者在特定测试环境下的评测结果，并非第三方独立复测结论；IT之家报道的4.2倍加速为特定测试口径下的媒体信息，不能概括为所有场景下的恒定加速比。实际部署的加速收益受多重因素影响：目标模型的稀疏注意力实现效率、草稿模型的接受率、上下文长度、batch大小与并发数、prefill阶段耗时占比、采样温度等，在短上下文、低并发、prefill占比极高的场景下，端到端加速比可能低于1倍（即无加速甚至变慢），这是投机解码的通用特性，不是DFly2的实现问题。</p>
+<table>
+<thead><tr><th>评测指标</th><th>统计范围</th><th>参考价值</th></tr></thead>
+<tbody>
+<tr><td>平均接受长度τ</td><td>仅草稿验证环节</td><td>反映分布匹配度，不代表实际加速</td></tr>
+<tr><td>decode speedup</td><td>纯解码阶段</td><td>反映解码层收益，不包含prefill开销</td></tr>
+<tr><td>end-to-end speedup</td><td>全链路</td><td>真实业务场景的实际收益参考</td></tr>
+</tbody>
+</table>
+<p>验证方式：运行官方示例时，同时记录三个指标的数值，对比不同上下文长度下的指标变化；若示例未直接输出全部指标，以官方评测脚本和文档说明为准。</p>
+<h2>实践任务与合规说明</h2>
+<p>建议读者按照从易到难的顺序完成实践：第一，阅读论文的数据流图，画出目标模型与DFly2草稿模型的层配对、KV/索引复用路径，明确每一步张量的流向与复用逻辑；第二，下载Hugging Face上的DFly2草稿权重，核对模型卡标注的适配目标模型版本，避免出现草稿与目标模型版本不匹配导致的接受率极低问题；第三，在满足官方多GPU硬件要求的环境下，运行官方提供的DFly2示例，记录不同上下文长度下的平均接受长度、单步解码延迟、端到端吞吐；第四，设计一个稠密模型适配DFly2的反例，验证非稀疏模型无法复用索引导致的草稿开销上涨、加速比失效问题。</p>
+<p>合规方面需要特别注意：AngelSpec仓库README明确标注采用自定义AngelSpec License，不属于MIT、Apache 2.0等宽松开源许可证，商业使用前需要仔细阅读许可证条款；目标模型权重与DFly2草稿模型权重的许可证相互独立，需要分别检查对应模型卡的许可要求，不要默认所有开源权重都可商用。</p>
+<p>验证方式：查看仓库根目录LICENSE文件与各Hugging Face模型卡的License板块，确认使用范围符合要求。</p>
+<h2>资料来源与诚实声明</h2>
+<p>本章节所有公开信息均来自以下官方与公开渠道：</p>
+<ul>
+<li><a href="https://github.com/Tencent/AngelSpec" target="_blank" rel="noopener">AngelSpec官方GitHub仓库</a></li>
+<li><a href="https://angelspec.readthedocs.io" target="_blank" rel="noopener">AngelSpec官方文档</a></li>
+<li><a href="https://arxiv.org/abs/2611.34776" target="_blank" rel="noopener">DFly2技术论文（arXiv:2611.34776）</a></li>
+<li><a href="https://huggingface.co/collections/AngelSlim/angelspec" target="_blank" rel="noopener">AngelSpec官方Hugging Face模型合集</a></li>
+<li><a href="http://m.toutiao.com/group/7712395904547897856/" target="_blank" rel="noopener">IT之家相关报道</a></li>
+</ul>
+<p>本章节内容由AI生成，所有涉及的性能数字、安装命令、模型兼容性、许可证条款均以官方最新发布的资料为准，相关性能结果尚需第三方独立复测验证，本教程不构成任何部署或商业使用建议。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>DFly2是适配原生稀疏注意力大模型的投机解码草稿模型，并非通用对话大模型，核心创新是通过KV Share与Index Share双复用机制，避免草稿模型重复支付长上下文下的稀疏检索与KV维护成本。</li>
+<li>DFly2的工程收益集中在长上下文、高并发稀疏模型场景，不是通用即插即用插件，仅适配官方列出的稀疏注意力目标模型，短上下文低并发场景可能无加速。</li>
+<li>AngelSpec框架统一支持多种投机解码方案，环境配置必须匹配本地CUDA版本，官方提供的Qwen示例为第一代DFly流程，DFly2需要使用对应多节点示例，本章不提供未经官方确认的单卡消费级部署方案。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>对照DFly2论文Figure 3，画出目标模型稀疏层与草稿层的配对数据流，标注KV Share与Index Share的具体复用节点，和传统独立草稿模型的数据流做差异对比。</li>
+<li>访问Hugging Face的AngelSlim合集，核对3个官方DFly2-B6草稿权重对应的目标模型版本、支持的最大上下文长度、许可证类型，整理成兼容性对照表。</li>
+<li>在满足官方硬件要求的环境下，运行<code>examples/hy-v4-flash-dfly2/</code>下的官方示例，分别记录32K、64K上下文长度下的平均接受长度、decode speedup、end-to-end speedup，对比不同长度下的收益变化。</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>可延伸阅读Mooncake传输引擎的官方文档，理解PD分离架构下投机解码的张量传输优化逻辑，思考在万卡级集群部署DFly2时，如何通过调度策略优化进一步提升高并发场景下的整体吞吐。</p>
+
+</article>
+<script src="/ccowork.js"></script>
+<script src="/module.js"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');});
+</script>
+</body>
+</html>

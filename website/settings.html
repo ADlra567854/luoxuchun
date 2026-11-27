@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 模型设置 · ccowork · 白驹 ccowork">
+<meta name="description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta property="og:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · <i class="cc-ic" data-ic="settings" aria-hidden="true"></i> 模型设置 · ccowork · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"ccowork · <i class=\"cc-ic\" data-ic=\"settings\" aria-hidden=\"true\"></i> 模型设置 · ccowork","description":"个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#04060c; --bg2:#0a0f1e; --card:#101728; --line:#1e2a44;
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c; --purple:#8b5cf6;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;min-height:100vh;overflow-x:hidden}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:10px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:22px;font-size:14px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+.wrap{position:relative;z-index:5;max-width:980px;margin:0 auto;padding:104px 24px 70px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,44px);letter-spacing:3px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:10px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(10px);margin-top:22px}
+.card h3{font-family:var(--serif);font-size:16px;color:var(--ice);margin-bottom:14px;letter-spacing:1px}
+.card h3 small{font-size:11px;color:var(--dim);font-weight:400;margin-left:8px}
+/* 预设 */
+.presets{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.preset{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:13px 15px;cursor:pointer;transition:.22s;display:flex;flex-direction:column;gap:4px}
+.preset:hover{transform:translateY(-2px);border-color:var(--cyan)}
+.preset b{font-size:14px;color:var(--text)}
+.preset span{font-size:11px;color:var(--dim)}
+.preset em{font-style:normal;font-size:10px;color:var(--gold);font-family:var(--mono)}
+/* 模型表格 */
+.mtable{width:100%;border-collapse:collapse;font-size:13px}
+.mtable th,.mtable td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:middle}
+.mtable th{background:var(--bg2);color:var(--ice);font-weight:600;font-size:12px}
+.mtable tr:hover td{background:rgba(56,225,255,.04)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;margin-right:4px;font-family:var(--mono)}
+.tag.chat{background:rgba(56,225,255,.14);color:var(--cyan)}
+.tag.vision{background:rgba(139,92,246,.16);color:#c4b5fd}
+.tag.image{background:rgba(240,185,92,.14);color:var(--gold)}
+.tag.video{background:rgba(255,92,138,.14);color:#ff9db9}
+.tag.dflt{background:rgba(94,234,212,.16);color:var(--ice)}
+.key-mask{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.op{background:var(--bg2);border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:3px 10px;font-size:11px;cursor:pointer;transition:.2s;margin-right:4px}
+.op:hover{color:var(--cyan);border-color:var(--cyan)}
+.op.del:hover{color:#ff5c8a;border-color:#ff5c8a}
+/* 表单 */
+.form-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:12px;color:var(--dim)}
+.field input,.field select{background:var(--bg2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:9px 12px;font-size:13px;outline:none;font-family:inherit}
+.field input:focus,.field select:focus{border-color:var(--cyan)}
+.btn{padding:11px 26px;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:.25s;font-family:inherit}
+.btn-primary{background:var(--grad);color:#03121a}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,140,255,.4)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hint{font-size:12px;color:var(--dim);margin-top:12px;line-height:1.8}
+.hint b{color:var(--gold)}
+#testResult{margin-top:12px;font-size:12px;color:var(--muted);min-height:20px}
+#testResult.ok{color:var(--ice)}
+#testResult.err{color:#ff9db9}
+@media(max-width:860px){.presets{grid-template-columns:1fr 1fr}}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://ccoworkbaiju.cn/settings.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/settings.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 模型设置 · ccowork · 白驹 ccowork">
+<meta name="twitter:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-theme="cloud"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-settings.png" alt="ccowork ·  模型设置 · ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<canvas id="stars"></canvas>
+<nav>
+  <div class="logo">ccow<i>ork</i></div>
+  <div class="nav-links">
+    <a href="../index.html">首页</a>
+    <a href="../index.html">工作台</a>
+    <a href="./agent.html">智能体</a>
+    <a href="./chat.html">AI 对话</a>
+    <a href="./settings.html" class="active"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>模型设置</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1><i class="cc-ic" data-ic="settings" aria-hidden="true"></i>模型 <span>设置中心</span></h1>
+    <p>管理平台全部 AI 模型：文本对话 / 视觉 / 生图 / 生视频。预设一键添加，也可自定义接口——配置保存在本机浏览器，自动应用到智能体、AI 对话与绘画。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  </div>
+  <div class="card" id="accountCard">
+    <h3><i class="cc-ic" data-ic="user" aria-hidden="true"></i>账号与数据 <small>本地账号 · 隐私仅存本机浏览器</small></h3>
+    <div id="accountArea"></div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="puzzle" aria-hidden="true"></i>快捷添加预设 <small>点击即加入你的模型列表</small></h3>
+    <div class="presets" id="presets"></div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="box" aria-hidden="true"></i>已启用模型 <small id="mcount"></small></h3>
+    <div style="overflow-x:auto">
+      <table class="mtable">
+        <thead><tr><th>名称</th><th>类型</th><th>模型名</th><th>密钥</th><th>操作</th></tr></thead>
+        <tbody id="mtbody"></tbody>
+      </table>
+    </div>
+    <button class="btn btn-ghost" id="testBtn" type="button" style="margin-top:14px"><i class="cc-ic" data-ic="plug" aria-hidden="true"></i>测试默认对话模型</button>
+    <div id="testResult"></div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="plus" aria-hidden="true"></i> 添加自定义模型</h3>
+    <div class="form-grid">
+      <div class="field"><label>名称（如：我的 Kimi）</label><input id="fName" placeholder="自定义模型名"></div>
+      <div class="field"><label>能力类型</label>
+        <select id="fType">
+          <option value="chat">文本对话</option>
+          <option value="vision">文本 + 视觉（识图）</option>
+          <option value="image">生图</option>
+          <option value="video">生视频</option>
+        </select>
+      </div>
+      <div class="field"><label>接口地址（chat/completions 或方舟 v3）</label><input id="fUrl" placeholder="https://api.openai.com/v1/chat/completions"></div>
+      <div class="field"><label>API Key</label><input id="fKey" placeholder="sk-..."></div>
+      <div class="field"><label>模型名</label><input id="fModel" placeholder="gpt-4o / deepseek-chat ..."></div>
+    </div>
+    <button class="btn btn-primary" id="addBtn" type="button" style="margin-top:16px"><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>添加模型</button>
+  </div>
+  <div class="hint">
+    <b>说明：</b>配置仅保存在<b>本机浏览器</b>（localStorage），不会上传。生图/生视频目前内置豆包·方舟（seedream / seedance），云端直连可能被浏览器拦截——本地运行 <code>node server.mjs</code> 后访问 <b>http://localhost:8787</b> 可全功能使用；手机连电脑同一 WiFi 访问 <code>电脑IP:8787</code> 亦可。
+  </div>
+</div>
+<script>
+/* ===== 本地账号与数据管理（独立于模型设置） ===== */
+(function(){
+  'use strict';
+  var ACC='ccowork.account', DB='ccowork.accounts';
+  function ls(k,v){ if(v===undefined){ try{ return JSON.parse(localStorage.getItem(k)||'null') }catch(e){ return null } } try{ localStorage.setItem(k, JSON.stringify(v)) }catch(e){} }
+  var area=document.getElementById('accountArea');
+  var AV=[['','蓝'],['','紫'],['','橙'],['','粉'],['','灰'],['','青'],['','程序员'],['','学生'],['','老师'],['','职场']];
+  function fmt(t){ area.innerHTML=t; }
+  function bind(sel,fn){ var el=area.querySelector(sel); if(el) el.addEventListener('click',fn); }
+  function render(){
+    var me=ls(ACC);
+    if(!me){ renderLogin(); return; }
+    var d=new Date(me.ts||Date.now());
+    fmt(
+      '<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">'+
+        '<div style="width:58px;height:58px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:28px">'+(me.avatar||'')+'</div>'+
+        '<div style="flex:1;min-width:200px"><b style="font-size:17px">'+esc(me.name||'未命名')+'</b>'+
+        '<div style="color:var(--dim);font-size:13px">'+(me.email?esc(me.email):'本地账号')+' · 登录于 '+d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+'</div>'+
+        '<div style="color:var(--dim);font-size:12px">已使用 AI 性格测试：'+(ls('ai.personality')?'是':'否')+' · 收藏等数据都在本机</div></div>'+
+        '<button class="btn btn-ghost" id="editBtn" type="button"> 编辑资料</button>'+
+        '<button class="btn btn-ghost" id="logoutBtn" type="button"> 退出登录</button>'+
+      '</div>'+
+      '<hr style="border:none;border-top:1px solid var(--line);margin:18px 0">'+
+      '<div style="display:flex;gap:10px;flex-wrap:wrap">'+
+        '<button class="btn btn-ghost" id="expBtn" type="button"> 导出全部数据</button>'+
+        '<button class="btn btn-ghost" id="impBtn" type="button"> 导入数据</button>'+
+        '<button class="btn btn-ghost" id="clrBtn" type="button" style="color:var(--pink,#ff5c8a)"> 清空本机数据</button>'+
+      '</div><input type="file" id="impFile" accept="application/json" style="display:none">'
+    );
+    bind('#editBtn', function(){ renderEdit(me) });
+    bind('#logoutBtn', function(){ localStorage.removeItem(ACC); render(); });
+    bind('#expBtn', function(){
+      var all={}; for(var i=0;i<localStorage.length;i++){ var k=localStorage.key(i); if(k.indexOf('ccowork.')===0||k.indexOf('ai.')===0||k.indexOf('portal_')===0||k.indexOf('eco_')===0||k.indexOf('chat_config')===0){ all[k]=localStorage.getItem(k); } }
+      var blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
+      var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='ccowork-backup-'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+      setTimeout(function(){ URL.revokeObjectURL(a.href) },1000);
+    });
+    bind('#impBtn', function(){ area.querySelector('#impFile').click(); });
+    area.querySelector('#impFile').addEventListener('change', function(e){
+      var f=e.target.files[0]; if(!f) return;
+      var r=new FileReader(); r.onload=function(){
+        try{ var d=JSON.parse(r.result); var n=0; Object.keys(d).forEach(function(k){ localStorage.setItem(k,d[k]); n++; }); alert('已导入 '+n+' 项数据'); render(); }catch(err){ alert('导入失败：文件格式不对'); }
+      }; r.readAsText(f); e.target.value='';
+    });
+    bind('#clrBtn', function(){
+      if(!confirm('确定清空全部本机数据？（账号、模型配置、收藏、会话记录）')) return;
+      var keys=[]; for(var i=0;i<localStorage.length;i++){ var k=localStorage.key(i); if(k.indexOf('ccowork.')===0||k.indexOf('ai.')===0||k.indexOf('portal_')===0||k.indexOf('eco_')===0){ keys.push(k); } }
+      keys.forEach(function(k){ localStorage.removeItem(k) }); alert('已清空 '+keys.length+' 项'); location.reload();
+    });
+  }
+  function renderEdit(me){
+    fmt(
+      '<div class="form-grid">'+
+        '<div class="field"><label>昵称</label><input id="eName" value="'+esc(me.name||'')+'"></div>'+
+        '<div class="field"><label>邮箱</label><input id="eMail" type="email" value="'+esc(me.email||'')+'" placeholder="可不填"></div>'+
+      '</div>'+
+      '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap" id="avBox">'+AV.map(function(a,i){ return '<button class="btn btn-ghost" data-a="'+a[0]+'" style="font-size:20px;padding:6px 12px" type="button">'+a[0]+'</button>' }).join('')+'</div>'+
+      '<div style="margin-top:16px;display:flex;gap:10px">'+
+        '<button class="btn btn-primary" id="saveBtn" type="button">保存</button>'+
+        '<button class="btn btn-ghost" id="backBtn" type="button">返回</button>'+
+      '</div>'
+    );
+    var pick=me.avatar||'';
+    area.querySelectorAll('#avBox button').forEach(function(b){ if(b.getAttribute('data-a')===pick) b.style.borderColor='var(--cyan)' });
+    area.querySelector('#avBox').addEventListener('click', function(e){
+      var b=e.target.closest('button'); if(!b) return; pick=b.getAttribute('data-a');
+      area.querySelectorAll('#avBox button').forEach(function(x){ x.style.borderColor='' }); b.style.borderColor='var(--cyan)';
+    });
+    bind('#saveBtn', function(){
+      me.name=area.querySelector('#eName').value.trim()||'未命名'; me.email=area.querySelector('#eMail').value.trim(); me.avatar=pick; me.ts=Date.now();
+      ls(ACC,me); render();
+    });
+    bind('#backBtn', render);
+  }
+  function renderLogin(){
+    fmt(
+      '<div class="form-grid">'+
+        '<div class="field"><label>昵称</label><input id="lName" placeholder="怎么称呼你？"></div>'+
+        '<div class="field"><label>邮箱（可选，作为登录名）</label><input id="lMail" type="email" placeholder="you@example.com"></div>'+
+      '</div>'+
+      '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap" id="avBox">'+AV.map(function(a,i){ return '<button class="btn btn-ghost" data-a="'+a[0]+'" style="font-size:20px;padding:6px 12px" type="button">'+a[0]+'</button>' }).join('')+'</div>'+
+      '<div style="margin-top:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">'+
+        '<button class="btn btn-primary" id="loginBtn" type="button"> 登录 / 创建本地账号</button>'+
+        '<span style="color:var(--dim);font-size:12px">无需密码，纯本地：换个浏览器/设备需重新设置</span>'+
+      '</div>'
+    );
+    var pick='';
+    area.querySelector('#avBox').addEventListener('click', function(e){
+      var b=e.target.closest('button'); if(!b) return; pick=b.getAttribute('data-a');
+      area.querySelectorAll('#avBox button').forEach(function(x){ x.style.borderColor='' }); b.style.borderColor='var(--cyan)';
+    });
+    bind('#loginBtn', function(){
+      var name=area.querySelector('#lName').value.trim(); if(!name){ alert('先填个昵称'); return; }
+      var email=area.querySelector('#lMail').value.trim();
+      ls(ACC,{name:name,email:email,avatar:pick,ts:Date.now()}); render();
+    });
+  }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]}) }
+  render();
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  var LS = 'ccowork.models';
+  // 内置默认模型（首次访问写入）。
+  // 安全说明：此处不再内置任何真实 API Key —— 云端/本地部署时密钥由服务端环境变量
+  // DEEPSEEK_API_KEY / ARK_API_KEY 持有，浏览器通过同源 /api/chat、/api/proxy 代理调用（访客免填 Key）；
+  // 若需要自填 Key（直连模式），在下方表格「编辑」中填入即可（仅存本浏览器 localStorage）。
+  var DEFAULTS = [
+    { id:'deepseek', name:'DeepSeek', type:'chat', baseUrl:'https://api.deepseek.com/chat/completions', apiKey:'', model:'deepseek-chat', def:true },
+    { id:'arkB', name:'豆包·方舟 Key B', type:'vision', baseUrl:'https://ark.cn-beijing.volces.com/api/v3/chat/completions', apiKey:'', model:'doubao-seed-2-1-pro-260628', def:true, imageModel:'doubao-seedream-5-0-260128', videoModel:'doubao-seedance-1-5-pro-251215' },
+    { id:'arkA', name:'豆包·方舟 Key A', type:'vision', baseUrl:'https://ark.cn-beijing.volces.com/api/v3/chat/completions', apiKey:'', model:'doubao-seed-2-1-pro-260628', def:true },
+    { id:'mimo', name:'小米 MiMo', type:'vision', baseUrl:'https://api.xiaomimimo.com/v1/chat/completions', apiKey:'', model:'mimo-v2.5', def:true }
+  ];
+  var PRESETS = [
+    { name:'通义千问 Qwen', type:'chat', baseUrl:'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions', model:'qwen-plus', hint:'阿里云百炼获取 Key' },
+    { name:'Kimi 月之暗面', type:'chat', baseUrl:'https://api.moonshot.cn/v1/chat/completions', model:'kimi-k2', hint:'platform.moonshot.cn' },
+    { name:'智谱 GLM', type:'vision', baseUrl:'https://open.bigmodel.cn/api/paas/v4/chat/completions', model:'glm-4-plus', hint:'open.bigmodel.cn' },
+    { name:'百度文心', type:'vision', baseUrl:'https://qianfan.baidubce.com/v2/chat/completions', model:'ernie-4.0-turbo', hint:'百度千帆' },
+    { name:'本地 Ollama', type:'chat', baseUrl:'http://localhost:11434/v1/chat/completions', model:'qwen2.5:7b', hint:'免费本地模型，无需 Key' },
+    { name:'豆包·方舟（自定义）', type:'vision', baseUrl:'https://ark.cn-beijing.volces.com/api/v3/chat/completions', model:'doubao-seed-2-1-pro-260628', hint:'火山方舟控制台' }
+  ];
+  function read(){ try{ var v=localStorage.getItem(LS); if(v) return JSON.parse(v); }catch(e){} return null; }
+  function write(list){ try{ localStorage.setItem(LS, JSON.stringify(list)); }catch(e){} }
+  var models = read() || DEFAULTS.slice();
+  if(!read()) write(models);
+  // 预设渲染
+  document.getElementById('presets').innerHTML = PRESETS.map(function(p){
+    return '<div class="preset" data-p="'+encodeURIComponent(JSON.stringify(p))+'" role="button"><b>'+p.name+'</b><span>'+(p.type==='chat'?'文本对话':'文本+视觉')+' · '+p.model+'</span><em>'+p.hint+'</em></div>';
+  }).join('');
+  document.getElementById('presets').addEventListener('click', function(e){
+    var el = e.target.closest('.preset'); if(!el) return;
+    var p = JSON.parse(decodeURIComponent(el.dataset.p));
+    models.push({ id:'c'+Date.now(), name:p.name, type:p.type, baseUrl:p.baseUrl, apiKey:'', model:p.model });
+    write(models); render();
+  });
+  // 模型表格渲染
+  var tbody = document.getElementById('mtbody');
+  function render(){
+    document.getElementById('mcount').textContent = '共 ' + models.length + ' 个';
+    tbody.innerHTML = models.map(function(m, i){
+      var tags = '';
+      if(m.def) tags += '<span class="tag dflt">内置</span>';
+      tags += '<span class="tag '+(m.type==='vision'?'vision':m.type==='image'?'image':m.type==='video'?'video':'chat')+'">'+
+        (m.type==='vision'?'文本+视觉':m.type==='image'?'生图':m.type==='video'?'生视频':'文本')+'</span>';
+      if(m.imageModel) tags += '<span class="tag image">生图</span>';
+      if(m.videoModel) tags += '<span class="tag video">生视频</span>';
+      var key = m.apiKey ? m.apiKey.slice(0,8)+'…'+m.apiKey.slice(-4) : '（未填）';
+      return '<tr>'+
+        '<td><b>'+m.name+'</b></td>'+
+        '<td>'+tags+'</td>'+
+        '<td><code style="font-size:11px">'+m.model+'</code></td>'+
+        '<td class="key-mask">'+key+'</td>'+
+        '<td>'+
+          '<button class="op" data-act="edit" data-i="'+i+'" type="button"> 编辑</button>'+
+          '<button class="op del" data-act="del" data-i="'+i+'" type="button"> 删除</button>'+
+        '</td></tr>';
+    }).join('') || '<tr><td colspan="5" style="color:var(--dim)">暂无模型，从上方预设添加或自定义。</td></tr>';
+  }
+  render(); // 首次进入即渲染模型列表（内置默认模型，密钥留空由服务端代理注入）
+  tbody.addEventListener('click', function(e){
+    var b = e.target.closest('.op'); if(!b) return;
+    var i = Number(b.dataset.i); var m = models[i]; if(!m) return;
+    if(b.dataset.act === 'del'){ models.splice(i,1); write(models); render(); return; }
+    if(b.dataset.act === 'edit'){
+      var nm = prompt('模型名称', m.name); if(nm===null) return;
+      var mk = prompt('API Key（留空不变）', m.apiKey||''); if(mk===null) return;
+      var mm = prompt('模型名', m.model); if(mm===null) return;
+      m.name = nm.trim()||m.name; m.apiKey = mk.trim()||m.apiKey; m.model = mm.trim()||m.model;
+      write(models); render();
+    }
+  });
+  // 添加自定义
+  document.getElementById('addBtn').addEventListener('click', function(){
+    var name = document.getElementById('fName').value.trim();
+    var type = document.getElementById('fType').value;
+    var url = document.getElementById('fUrl').value.trim();
+    var key = document.getElementById('fKey').value.trim();
+    var model = document.getElementById('fModel').value.trim();
+    if(!name || !url || !model){ alert('请填写名称、接口地址和模型名'); return; }
+    models.push({ id:'c'+Date.now(), name:name, type:type, baseUrl:url, apiKey:key, model:model });
+    write(models); render();
+    ['fName','fUrl','fKey','fModel'].forEach(function(id){ document.getElementById(id).value=''; });
+  });
+  // 测试默认对话模型（DeepSeek）
+  document.getElementById('testBtn').addEventListener('click', function(){
+    var r = document.getElementById('testResult');
+    var m = models[0];
+    r.className = ''; r.textContent = ' 正在连接 ' + m.name + '…';
+    fetch(m.baseUrl, {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'Authorization':'Bearer '+(m.apiKey||''), 'api-key':m.apiKey||'' },
+      body: JSON.stringify({ model:m.model, messages:[{role:'user',content:'只回复：连通'}], max_tokens:10, stream:false })
+    }).then(function(res){ return res.json(); }).then(function(d){
+      var c = d && d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content;
+      if(c){ r.className='ok'; r.textContent = ' 连接成功：' + (d.model || m.model) + '  ' + c; }
+      else { r.className='err'; r.textContent = ' 未返回内容：' + JSON.stringify(d).slice(0,120); }
+    }).catch(function(err){
+      r.className='err'; r.textContent = ' 连接失败：' + (err && err.message || err) + '（跨域被拦截时请用本地代理）';
+    });
+  });
+  // 粒子
+  var cv=document.getElementById('stars'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;} rs(); addEventListener('resize',rs);
+  var C=['94,234,212','56,225,255','139,92,246','240,185,92'];
+  var n=Math.min(90,Math.floor(W*H/19000));
+  for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,c:C[Math.random()*4|0]});
+  (function dr(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba('+p.c+',.5)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<11000){ctx.strokeStyle='rgba('+p.c+','+(0.11*(1-d2/11000))+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}
+    }
+    requestAnimationFrame(dr);
+  })();
+})();
+</script>
+<script src="../data/news.js"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>高级 trait · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：高级 trait。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p073.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html" class="on">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 73 / 86 节
+    </div>
+    <h1>高级 trait</h1>
+    <h2 id="高级-trait"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/57ff62db22b006e6b319e2e35c9364d932a8b4e5/src/ch20-02-advanced-traits.md">ch20-02-advanced-traits.md</a></p>
+<p>在第十章 <a href="#trait定义共同行为-1">“使用 trait 定义共享行为”</a> 部分，我们第一次接触 trait，不过当时还没有讨论更高级的细节。现在你对 Rust 已经了解更多了，我们可以来深入探究这些细枝末节。</p>
+<h3 id="关联类型"></h3>
+<p><strong>关联类型</strong>（<em>associated types</em>）将一个类型占位符与 trait 相关联，使得该 trait 的方法定义可以在签名中使用这些占位符类型。该 trait 的实现者会为每个具体实现指定要使用的具体类型来替代占位符类型。这样，我们就能在定义 trait 时使用占位符类型，而无需预先知道这些类型的具体内容，直到实现该 trait 时再进行指定。</p>
+<p>我们之前提到，本章所讨论的大多数高级特性都很少需要。关联类型则比较适中：它们的使用频率低于本书其他部分讲解的特性，但又高于本章中许多其他特性。</p>
+<p>一个带有关联类型的 trait 的例子是标准库提供的 <code>Iterator</code> trait。它有一个叫做 <code>Item</code> 的关联类型来替代遍历的值的类型。<code>Iterator</code> trait 的定义如示例 20-13 所示：</p>
+<pre><code class="language-rust noplayground">pub trait Iterator {
+    type Item;
+
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt;;
+}</code></pre>
+<p><span class="caption">示例 20-13: <code>Iterator</code> trait 的定义中带有关联类型 <code>Item</code></span></p>
+<p><code>Item</code> 是一个占位符类型，同时 <code>next</code> 方法的定义表明它返回 <code>Option&lt;Self::Item&gt;</code> 类型的值。<code>Iterator</code> trait 的实现者会指定 <code>Item</code> 的具体类型，于是 <code>next</code> 方法就会返回一个包含该具体类型值的 <code>Option</code>。</p>
+<p>关联类型可能看起来与泛型类似，后者允许我们在定义函数时不必指定它可以处理的类型。为了体现这两者的区别，我们来看一个名为 <code>Counter</code> 的类型上的 <code>Iterator</code> trait 实现，其中指定 <code>Item</code> 的类型为 <code>u32</code>：</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust ignore"><span class="boring">struct Counter {
+</span><span class="boring">    count: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Counter {
+</span><span class="boring">    fn new() -&gt; Counter {
+</span><span class="boring">        Counter { count: 0 }
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Iterator for Counter {
+    type Item = u32;
+
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; {
+        // --snip--
+<span class="boring">        if self.count &lt; 5 {
+</span><span class="boring">            self.count += 1;
+</span><span class="boring">            Some(self.count)
+</span><span class="boring">        } else {
+</span><span class="boring">            None
+</span><span class="boring">        }
+</span><span class="boring">    }
+</span><span class="boring">}</span></code></pre>
+<p>这种语法看起来与泛型类似。那么为什么不直接像示例 20-14 那样，用泛型来定义 <code>Iterator</code> trait 呢？</p>
+<pre><code class="language-rust noplayground">pub trait Iterator&lt;T&gt; {
+    fn next(&amp;mut self) -&gt; Option&lt;T&gt;;
+}</code></pre>
+<p><span class="caption">示例 20-14: 一个使用泛型的 <code>Iterator</code> trait 假想定义</span></p>
+<p>区别在于当如示例 20-14 那样使用泛型时，则不得不在每一个实现中标注类型；这是因为我们也可以实现为 <code>Iterator&lt;String&gt; for Counter</code>，或任何其他类型，这样就可以有多个针对 <code>Counter</code> 的 <code>Iterator</code> 的实现。换句话说，当 trait 有泛型参数时，可以多次实现这个 trait，每次都使用不同的具体泛型参数类型。当我们在 <code>Counter</code> 上调用 <code>next</code> 方法时，就必须通过类型注解来指明要使用哪一个 <code>Iterator</code> 的实现。</p>
+<p>使用关联类型后，则无需标注类型，因为不能对同一个类型多次实现该 trait。在示例 20-13 中使用关联类型的定义里，我们只能为 <code>Item</code> 选择一次具体类型，因为只能有一个 <code>impl Iterator for Counter</code>。当调用 <code>Counter</code> 的 <code>next</code> 时不必每次指定我们需要 <code>u32</code> 值的迭代器。</p>
+<p>关联类型也会成为 trait 契约的一部分：trait 的实现必须提供一个类型来替代关联类型占位符。关联类型通常以它的用途来命名，在 API 文档中对关联类型进行说明也是一种良好实践。</p>
+<h3 id="使用默认泛型类型参数和运算符重载"></h3>
+<p>当使用泛型类型参数时，可以为泛型指定一个默认的具体类型。如果默认类型就足够的话，这消除了为具体类型实现 trait 的需要。为泛型类型指定默认类型的语法是在声明泛型类型时使用 <code>&lt;PlaceholderType=ConcreteType&gt;</code>。</p>
+<p>这种技术的一个很好的示例是 <strong>运算符重载</strong> (<em>operator overloading</em>)，即在特定情况下自定义运算符（比如 <code>+</code>）行为的操作。</p>
+<p>Rust 并不允许创建自定义运算符或重载任意运算符，但可以通过实现 <code>std::ops</code> 中列出的运算符相关 trait 来重载它们。例如，在示例 20-15 中我们重载 <code>+</code> 运算符来将两个 <code>Point</code> 实例相加。我们通过在 <code>Point</code> 结构体上实现 <code>Add</code> trait 来实现这一点。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::ops::Add;
+
+#[derive(Debug, Copy, Clone, PartialEq)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Add for Point {
+    type Output = Point;
+
+    fn add(self, other: Point) -&gt; Point {
+        Point {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
+    }
+}
+
+fn main() {
+    assert_eq!(
+        Point { x: 1, y: 0 } + Point { x: 2, y: 3 },
+        Point { x: 3, y: 3 }
+    );
+}</code></pre>
+<p><span class="caption">示例 20-15: 实现 <code>Add</code> trait 重载 <code>Point</code> 实例的 <code>+</code> 运算符</span></p>
+<p><code>add</code> 方法将两个 <code>Point</code> 实例的 <code>x</code> 值和 <code>y</code> 值分别相加来创建一个新的 <code>Point</code>。<code>Add</code> trait 有一个叫做 <code>Output</code> 的关联类型，它用来决定 <code>add</code> 方法的返回值类型。</p>
+<p>这里默认泛型类型位于 <code>Add</code> trait 中。这里是其定义：</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait Add&lt;Rhs=Self&gt; {
+    type Output;
+
+    fn add(self, rhs: Rhs) -&gt; Self::Output;
+}
+<span class="boring">}</span></code></pre>
+<p>这些代码看来应该很熟悉：一个带有一个方法和一个关联类型的 trait。新增的部分是 <code>Rhs=Self</code>：这个语法叫做 <strong>默认类型参数</strong>（<em>default type parameters</em>）。<code>Rhs</code> 是一个泛型类型参数（“right-hand side” 的缩写），它用于定义 <code>add</code> 方法中的 <code>rhs</code> 参数。如果实现 <code>Add</code> trait 时不指定 <code>Rhs</code> 的具体类型，<code>Rhs</code> 的类型将默认为 <code>Self</code>，即正在实现 <code>Add</code> 的类型。</p>
+<p>当为 <code>Point</code> 实现 <code>Add</code> 时，使用了默认的 <code>Rhs</code>，因为我们希望将两个 <code>Point</code> 实例相加。让我们看看一个实现 <code>Add</code> trait 时希望自定义 <code>Rhs</code> 类型而不是使用默认类型的例子。</p>
+<p>这里有两个存放不同单元值的结构体，<code>Millimeters</code> 和 <code>Meters</code>。这种将现有类型简单封装进另一个结构体的方式被称为 <strong>newtype 模式</strong>（<em>newtype pattern</em>），之后的<a href="#使用-newtype-模式在外部类型上实现外部-trait">“使用 newtype 模式在外部类型上实现外部 trait”</a>部分会做详细介绍。我们希望能够将毫米值与米值相加，并让 <code>Add</code> 的实现正确处理单位转换。可以为 <code>Millimeters</code> 实现 <code>Add</code> 并以 <code>Meters</code> 作为 <code>Rhs</code>，如示例 20-16 所示。</p>
+<p><span class="filename">文件名：src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">use std::ops::Add;
+
+struct Millimeters(u32);
+struct Meters(u32);
+
+impl Add&lt;Meters&gt; for Millimeters {
+    type Output = Millimeters;
+
+    fn add(self, other: Meters) -&gt; Millimeters {
+        Millimeters(self.0 + (other.0 * 1000))
+    }
+}</code></pre>
+<p><span class="caption">示例 20-16: 在 <code>Millimeters</code> 上实现 <code>Add</code>，以便能够将 <code>Millimeters</code> 与 <code>Meters</code> 相加</span></p>
+<p>为了使 <code>Millimeters</code> 和 <code>Meters</code> 能够相加，我们指定 <code>impl Add&lt;Meters&gt;</code> 来设定 <code>Rhs</code> 类型参数的值而不是使用默认的 <code>Self</code>。</p>
+<p>默认参数类型主要用于如下两个方面：</p>
+<ul>
+<li>扩展类型而不破坏现有代码。</li>
+<li>在大部分用户都不需要的特定情况进行自定义。</li>
+</ul>
+<p>标准库的 <code>Add</code> trait 就是第二个目的的一个例子：大部分时候你会将两个相似的类型相加，但 <code>Add</code> trait 也提供了自定义额外行为的能力。在 <code>Add</code> trait 定义中使用默认类型参数意味着大部分时候无需指定额外的参数。换句话说，一小部分实现的样板代码是不必要的，这样使用 trait 就更容易了。</p>
+<p>第一个目的与第二个相似但方向相反：如果需要为现有 trait 增加类型参数，为其提供一个默认类型将允许我们在不破坏现有实现代码的基础上扩展 trait 的功能。</p>
+<h3 id="在同名方法之间消歧义"></h3>
+<p>Rust 既不能避免一个 trait 与另一个 trait 拥有相同名称的方法，也不能阻止为同一类型同时实现这两个 trait。同时还可以直接在类型上实现一个与 trait 方法同名的方法。</p>
+<p>当调用这些同名方法时，需要告诉 Rust 我们想要使用哪一个。考虑一下示例 20-17 中的代码，这里我们定义了两个 trait，<code>Pilot</code> 和 <code>Wizard</code>，它们都拥有名为 <code>fly</code> 的方法。接着在一个本身已经实现了名为 <code>fly</code> 方法的类型 <code>Human</code> 上实现这两个 trait。每一个 <code>fly</code> 方法都进行了不同的操作：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">trait Pilot {
+    fn fly(&amp;self);
+}
+
+trait Wizard {
+    fn fly(&amp;self);
+}
+
+struct Human;
+
+impl Pilot for Human {
+    fn fly(&amp;self) {
+        println!("This is your captain speaking.");
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&amp;self) {
+        println!("Up!");
+    }
+}
+
+impl Human {
+    fn fly(&amp;self) {
+        println!("*waving arms furiously*");
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {}</span></code></pre>
+<p><span class="caption">示例 20-17: 两个 trait 定义为拥有 <code>fly</code> 方法，并在直接定义有 <code>fly</code> 方法的 <code>Human</code> 类型上实现这两个 trait</span></p>
+<p>当调用 <code>Human</code> 实例的 <code>fly</code> 时，编译器默认调用直接实现在该类型上的方法，如示例 20-18 所示。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">trait Pilot {
+</span><span class="boring">    fn fly(&amp;self);
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">trait Wizard {
+</span><span class="boring">    fn fly(&amp;self);
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">struct Human;
+</span><span class="boring">
+</span><span class="boring">impl Pilot for Human {
+</span><span class="boring">    fn fly(&amp;self) {
+</span><span class="boring">        println!("This is your captain speaking.");
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Wizard for Human {
+</span><span class="boring">    fn fly(&amp;self) {
+</span><span class="boring">        println!("Up!");
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Human {
+</span><span class="boring">    fn fly(&amp;self) {
+</span><span class="boring">        println!("*waving arms furiously*");
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn main() {
+    let person = Human;
+    person.fly();
+}</code></pre>
+<p><span class="caption">示例 20-18: 调用一个 <code>Human</code> 实例的 <code>fly</code></span></p>
+<p>运行这段代码会打印出 <code>*waving arms furiously*</code>，这表明 Rust 调用了直接实现在 <code>Human</code> 上的 <code>fly</code> 方法。</p>
+<p>为了能够调用 <code>Pilot</code> trait 或 <code>Wizard</code> trait 的 <code>fly</code> 方法，需要使用更明确的语法来指定具体要调用的 <code>fly</code> 方法。示例 20-19 演示了这种语法。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">trait Pilot {
+</span><span class="boring">    fn fly(&amp;self);
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">trait Wizard {
+</span><span class="boring">    fn fly(&amp;self);
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">struct Human;
+</span><span class="boring">
+</span><span class="boring">impl Pilot for Human {
+</span><span class="boring">    fn fly(&amp;self) {
+</span><span class="boring">        println!("This is your captain speaking.");
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Wizard for Human {
+</span><span class="boring">    fn fly(&amp;self) {
+</span><span class="boring">        println!("Up!");
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Human {
+</span><span class="boring">    fn fly(&amp;self) {
+</span><span class="boring">        println!("*waving arms furiously*");
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn main() {
+    let person = Human;
+    Pilot::fly(&amp;person);
+    Wizard::fly(&amp;person);
+    person.fly();
+}</code></pre>
+<p><span class="caption">示例 20-19: 指定我们希望调用哪一个 trait 的 <code>fly</code> 方法</span></p>
+<p>在方法名前指定 trait 名称可让 Rust 明确我们想调用哪个 <code>fly</code> 实现。也可以选择写成 <code>Human::fly(&amp;person)</code>，这等同于示例 20-19 中的 <code>person.fly()</code>，不过如果无需消歧义的话这么写就有点冗长了。</p>
+<p>运行这段代码会打印出如下内容：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling traits-example v0.1.0 (file:///projects/traits-example)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.46s
+     Running `target/debug/traits-example`
+This is your captain speaking.
+Up!
+*waving arms furiously*
+</code></pre>
+<p>因为 <code>fly</code> 方法获取一个 <code>self</code> 参数，如果有两个<strong>类型</strong>都实现了同一 <strong>trait</strong>，Rust 可以根据 <code>self</code> 的类型计算出应该使用哪一个 trait 实现。</p>
+<p>然而，关联函数中非方法的函数不带有 <code>self</code> 参数。当存在多个类型或者 trait 定义了相同函数名的非方法函数时，Rust 就不总是能计算出我们期望的是哪一个类型，除非使用 <strong>完全限定语法</strong>（<em>fully qualified syntax</em>）。例如示例 20-20 中的创建了一个希望将所有小狗叫做 <em>Spot</em> 的动物收容所的 trait。<code>Animal</code> trait 有一个关联非方法函数 <code>baby_name</code>。结构体 <code>Dog</code> 实现了 <code>Animal</code>，同时又直接提供了关联非方法函数 <code>baby_name</code>。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">trait Animal {
+    fn baby_name() -&gt; String;
+}
+
+struct Dog;
+
+impl Dog {
+    fn baby_name() -&gt; String {
+        String::from("Spot")
+    }
+}
+
+impl Animal for Dog {
+    fn baby_name() -&gt; String {
+        String::from("puppy")
+    }
+}
+
+fn main() {
+    println!("A baby dog is called a {}", Dog::baby_name());
+}</code></pre>
+<p><span class="caption">示例 20-20: 一个带有关联函数的 trait 和一个带有同名关联函数并实现了此 trait 的类型</span></p>
+<p>在 <code>Dog</code> 类型上定义的关联函数 <code>baby_name</code> 中，我们实现了将所有小狗命名为 Spot 的功能。<code>Dog</code> 类型还实现了 <code>Animal</code> trait，它描述了所有动物所共有的特征。小狗被称为 puppy，这表现为 <code>Dog</code> 的 <code>Animal</code> trait 实现中与 <code>Animal</code> trait 相关联的函数 <code>baby_name</code>。</p>
+<p>在 <code>main</code> 调用了 <code>Dog::baby_name</code> 函数，它直接调用了定义于 <code>Dog</code> 之上的关联函数。这段代码会打印出：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling traits-example v0.1.0 (file:///projects/traits-example)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.54s
+     Running `target/debug/traits-example`
+A baby dog is called a Spot
+</code></pre>
+<p>这不是我们想要的输出。我们希望调用的是 <code>Dog</code> 上 <code>Animal</code> trait 实现那部分的 <code>baby_name</code> 函数，这样能够打印出 <code>A baby dog is called a puppy</code>。我们在示例 20-19 中使用的指定 trait 名称的技巧在这里不起作用；如果将 <code>main</code> 改为示例 20-21 中的代码，就会得到编译错误：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">trait Animal {
+</span><span class="boring">    fn baby_name() -&gt; String;
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">struct Dog;
+</span><span class="boring">
+</span><span class="boring">impl Dog {
+</span><span class="boring">    fn baby_name() -&gt; String {
+</span><span class="boring">        String::from("Spot")
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Animal for Dog {
+</span><span class="boring">    fn baby_name() -&gt; String {
+</span><span class="boring">        String::from("puppy")
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn main() {
+    println!("A baby dog is called a {}", Animal::baby_name());
+}</code></pre>
+<p><span class="caption">示例 20-21: 尝试调用 <code>Animal</code> trait 的 <code>baby_name</code> 函数，不过 Rust 并不知道该使用哪一个实现</span></p>
+<p>因为 <code>Animal::baby_name</code> 没有 <code>self</code> 参数，而且可能有其他类型实现了 <code>Animal</code> trait，Rust 无法确定我们想调用哪一个 <code>Animal::baby_name</code> 的实现。此时会得到如下编译错误：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling traits-example v0.1.0 (file:///projects/traits-example)
+error[E0790]: cannot call associated function on trait without specifying the corresponding `impl` type
+  --&gt; src/main.rs:20:43
+   |
+ 2 |     fn baby_name() -&gt; String;
+   |     ------------------------- `Animal::baby_name` defined here
+...
+20 |     println!("A baby dog is called a {}", Animal::baby_name());
+   |                                           ^^^^^^^^^^^^^^^^^^^ cannot call associated function of trait
+   |
+help: use the fully-qualified path to the only available implementation
+   |
+20 |     println!("A baby dog is called a {}", &lt;Dog as Animal&gt;::baby_name());
+   |                                           +++++++       +
+
+For more information about this error, try `rustc --explain E0790`.
+error: could not compile `traits-example` (bin "traits-example") due to 1 previous error
+</code></pre>
+<p>为了消歧义并告诉 Rust 我们希望使用的是 <code>Dog</code> 的 <code>Animal</code> 实现而不是其它类型的 <code>Animal</code> 实现，需要使用<strong>完全限定语法</strong>。示例 20-22 演示了如何使用完全限定语法：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">trait Animal {
+</span><span class="boring">    fn baby_name() -&gt; String;
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">struct Dog;
+</span><span class="boring">
+</span><span class="boring">impl Dog {
+</span><span class="boring">    fn baby_name() -&gt; String {
+</span><span class="boring">        String::from("Spot")
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Animal for Dog {
+</span><span class="boring">    fn baby_name() -&gt; String {
+</span><span class="boring">        String::from("puppy")
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn main() {
+    println!("A baby dog is called a {}", &lt;Dog as Animal&gt;::baby_name());
+}</code></pre>
+<p><span class="caption">示例 20-22: 使用完全限定语法来指定我们希望调用的是 <code>Dog</code> 上 <code>Animal</code> trait 实现中的 <code>baby_name</code> 函数</span></p>
+<p>我们在尖括号中向 Rust 提供了类型注解，这表明我们希望在此次函数调用中将 <code>Dog</code> 类型视为 <code>Animal</code>，从而调用在 <code>Dog</code> 上实现的 <code>Animal</code> trait 中的 <code>baby_name</code> 方法。现在这段代码将打印出我们期望的结果：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling traits-example v0.1.0 (file:///projects/traits-example)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.48s
+     Running `target/debug/traits-example`
+A baby dog is called a puppy
+</code></pre>
+<p>通常，完全限定语法定义为如下：</p>
+<pre><code class="language-rust ignore">&lt;Type as Trait&gt;::function(receiver_if_method, next_arg, ...);</code></pre>
+<p>对于不是方法的关联函数，并没有一个 <code>receiver</code>：故只会有其他参数的列表。可以选择在任何函数或方法调用处使用完全限定语法。然而，允许省略任何 Rust 能够从程序中的其他信息中计算出的部分。只有当存在多个同名实现而 Rust 需要帮助以便知道我们希望调用哪个实现时，才需要使用这个较为冗长的语法。</p>
+<h3 id="使用超-trait"></h3>
+<p>有时我们可能会需要编写一个依赖另一个 trait 的 trait 定义：对于一个实现了第一个 trait 的类型，你希望要求这个类型也实现了第二个 trait。如此就可使 trait 定义使用第二个 trait 的关联项。这个所需的 trait 是我们实现的 trait 的 <strong>超（父）trait</strong>（<em>supertrait</em>）。</p>
+<p>例如我们希望创建一个带有 <code>outline_print</code> 方法的 trait <code>OutlinePrint</code>，它会将给定的值格式化为带有星号框。也就是说，给定一个实现了标准库 <code>Display</code> trait 的并返回 <code>(x, y)</code> 的 <code>Point</code>，当我们对一个 <code>x</code> 为 <code>1</code>、<code>y</code> 为 <code>3</code> 的 <code>Point</code> 实例调用 <code>outline_print</code> 时，它应该打印出如下内容：</p>
+<pre><code class="language-text">**********
+*        *
+* (1, 3) *
+*        *
+**********
+</code></pre>
+<p>在 <code>outline_print</code> 的实现中，我们希望使用 <code>Display</code> trait 的功能。因此，需要说明 <code>OutlinePrint</code> trait 仅适用于那些同时实现了 <code>Display</code> 并提供 <code>OutlinePrint</code> 所需功能的类型。可以通过在 trait 定义中指定 <code>OutlinePrint: Display</code> 来做到这一点。这种技术类似于为 trait 增加 trait 约束。示例 20-23 展示了一个 <code>OutlinePrint</code> trait 的实现：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::fmt;
+
+trait OutlinePrint: fmt::Display {
+    fn outline_print(&amp;self) {
+        let output = self.to_string();
+        let len = output.len();
+        println!("{}", "*".repeat(len + 4));
+        println!("*{}*", " ".repeat(len + 2));
+        println!("* {output} *");
+        println!("*{}*", " ".repeat(len + 2));
+        println!("{}", "*".repeat(len + 4));
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {}</span></code></pre>
+<p><span class="caption">示例 20-23: 实现 <code>OutlinePrint</code> trait，它要求来自 <code>Display</code> 的功能</span></p>
+<p>因为我们已经指定 <code>OutlinePrint</code> 需要 <code>Display</code> trait，因而可以使用自动为任何实现了 <code>Display</code> 的类型提供的 <code>to_string</code> 方法。如果我们在没有在 trait 名称后添加冒号并指定 <code>Display</code> trait 的情况下尝试使用 <code>to_string</code>，就会出现错误，提示在当前作用域中未为类型 <code>&amp;Self</code> 找到名为 <code>to_string</code> 的方法。</p>
+<p>让我们看看如果尝试在一个没有实现 <code>Display</code> 的类型上实现 <code>OutlinePrint</code> 会发生什么，比如 <code>Point</code> 结构体：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">use std::fmt;
+</span><span class="boring">
+</span><span class="boring">trait OutlinePrint: fmt::Display {
+</span><span class="boring">    fn outline_print(&amp;self) {
+</span><span class="boring">        let output = self.to_string();
+</span><span class="boring">        let len = output.len();
+</span><span class="boring">        println!("{}", "*".repeat(len + 4));
+</span><span class="boring">        println!("*{}*", " ".repeat(len + 2));
+</span><span class="boring">        println!("* {output} *");
+</span><span class="boring">        println!("*{}*", " ".repeat(len + 2));
+</span><span class="boring">        println!("{}", "*".repeat(len + 4));
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl OutlinePrint for Point {}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let p = Point { x: 1, y: 3 };
+</span><span class="boring">    p.outline_print();
+</span><span class="boring">}</span></code></pre>
+<p>这样会得到一个错误说 <code>Display</code> 是必须的而未被实现：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling traits-example v0.1.0 (file:///projects/traits-example)
+error[E0277]: `Point` doesn't implement `std::fmt::Display`
+  --&gt; src/main.rs:20:23
+   |
+20 | impl OutlinePrint for Point {}
+   |                       ^^^^^ unsatisfied trait bound
+   |
+help: the trait `std::fmt::Display` is not implemented for `Point`
+  --&gt; src/main.rs:15:1
+   |
+15 | struct Point {
+   | ^^^^^^^^^^^^
+note: required by a bound in `OutlinePrint`
+  --&gt; src/main.rs:3:21
+   |
+ 3 | trait OutlinePrint: fmt::Display {
+   |                     ^^^^^^^^^^^^ required by this bound in `OutlinePrint`
+
+error[E0277]: `Point` doesn't implement `std::fmt::Display`
+  --&gt; src/main.rs:24:7
+   |
+24 |     p.outline_print();
+   |       ^^^^^^^^^^^^^ unsatisfied trait bound
+   |
+help: the trait `std::fmt::Display` is not implemented for `Point`
+  --&gt; src/main.rs:15:1
+   |
+15 | struct Point {
+   | ^^^^^^^^^^^^
+note: required by a bound in `OutlinePrint::outline_print`
+  --&gt; src/main.rs:3:21
+   |
+ 3 | trait OutlinePrint: fmt::Display {
+   |                     ^^^^^^^^^^^^ required by this bound in `OutlinePrint::outline_print`
+ 4 |     fn outline_print(&amp;self) {
+   |        ------------- required by a bound in this associated function
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `traits-example` (bin "traits-example") due to 2 previous errors
+</code></pre>
+<p>为了修复这个问题，我们在 <code>Point</code> 上实现 <code>Display</code> 并满足 <code>OutlinePrint</code> 要求的限制，比如这样：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">trait OutlinePrint: fmt::Display {
+</span><span class="boring">    fn outline_print(&amp;self) {
+</span><span class="boring">        let output = self.to_string();
+</span><span class="boring">        let len = output.len();
+</span><span class="boring">        println!("{}", "*".repeat(len + 4));
+</span><span class="boring">        println!("*{}*", " ".repeat(len + 2));
+</span><span class="boring">        println!("* {output} *");
+</span><span class="boring">        println!("*{}*", " ".repeat(len + 2));
+</span><span class="boring">        println!("{}", "*".repeat(len + 4));
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">struct Point {
+</span><span class="boring">    x: i32,
+</span><span class="boring">    y: i32,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl OutlinePrint for Point {}
+</span><span class="boring">
+</span>use std::fmt;
+
+impl fmt::Display for Point {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, "({}, {})", self.x, self.y)
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let p = Point { x: 1, y: 3 };
+</span><span class="boring">    p.outline_print();
+</span><span class="boring">}</span></code></pre>
+<p>那么在 <code>Point</code> 上实现 <code>OutlinePrint</code> trait 就能成功编译，并可以在 <code>Point</code> 实例上调用 <code>outline_print</code> 将其显示在由星号组成的边框内。</p>
+<h3 id="使用-newtype-模式在外部类型上实现外部-trait"></h3>
+<p>在第十章的 <a href="#为类型实现-trait">“为类型实现 trait”</a> 部分，我们提到了孤儿规则（orphan rule），它规定只有当 trait 或类型至少有一方或两者都对于当前 crate 是本地时，才能在该类型上实现该 trait。一个绕开这个限制的方法是使用 <strong>newtype 模式</strong>（<em>newtype pattern</em>），它涉及到在一个元组结构体（第五章 <a href="#使用元组结构体创建不同的类型">“使用元组结构体创建不同的类型”</a> 部分介绍了元组结构体）中创建一个新类型。这个元组结构体带有一个字段作为希望实现 trait 的类型的简单封装。由于这个封装类型对于 crate 是本地的，这样就可以在这个封装上实现 trait。<em>Newtype</em> 是一个源自 Haskell 编程语言的概念。使用这个模式没有运行时性能惩罚，这个封装类型在编译时就被省略了。</p>
+<p>例如，如果想要在 <code>Vec&lt;T&gt;</code> 上实现 <code>Display</code>，而孤儿规则阻止我们直接这么做，因为 <code>Display</code> trait 和 <code>Vec&lt;T&gt;</code> 都定义于我们的 crate 之外。可以创建一个包含 <code>Vec&lt;T&gt;</code> 实例的 <code>Wrapper</code> 结构体，接着可以如示例 20-24 那样在 <code>Wrapper</code> 上实现 <code>Display</code> 并使用 <code>Vec&lt;T&gt;</code> 的值：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::fmt;
+
+struct Wrapper(Vec&lt;String&gt;);
+
+impl fmt::Display for Wrapper {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, "[{}]", self.0.join(", "))
+    }
+}
+
+fn main() {
+    let w = Wrapper(vec![String::from("hello"), String::from("world")]);
+    println!("w = {w}");
+}</code></pre>
+<p><span class="caption">示例 20-24: 创建 <code>Wrapper</code> 类型封装 <code>Vec&lt;String&gt;</code> 以便能够实现 <code>Display</code></span></p>
+<p><code>Display</code> 的实现使用 <code>self.0</code> 来访问其内部的 <code>Vec&lt;T&gt;</code>，因为 <code>Wrapper</code> 是元组结构体而 <code>Vec&lt;T&gt;</code> 是结构体总位于索引 0 的项。接着就可以使用 <code>Wrapper</code> 中 <code>Display</code> 的功能了。</p>
+<p>这种做法的缺点在于因为 <code>Wrapper</code> 是一个新类型，它并不具备其所封装值的方法。必须直接在 <code>Wrapper</code> 上实现 <code>Vec&lt;T&gt;</code> 的所有方法，这样就可以代理到<code>self.0</code> 上，这就允许我们完全像 <code>Vec&lt;T&gt;</code> 那样对待 <code>Wrapper</code>。如果希望新类型拥有其内部类型的每一个方法，为封装类型实现 <code>Deref</code> trait（第十五章 <a href="#将智能指针视作常规引用">“将智能指针视作常规引用”</a> 部分讨论过）并返回其内部类型是一种解决方案。如果不希望封装类型拥有所有内部类型的方法 —— 比如为了限制封装类型的行为 —— 则只需自行实现所需的方法即可。</p>
+<p>甚至当不涉及 trait 时 newtype 模式也很有用。现在让我们将关注点转移到一些与 Rust 类型系统交互的高级方式上来吧。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p072.html">← 不安全 Rust</a><a href="index.html">目录</a><a href="p074.html">高级类型 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

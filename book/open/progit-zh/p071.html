@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10.5 Git 内部原理 · 引用规范 · Pro Git（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Pro Git：10.5 Git 内部原理 - 引用规范。许可 CC BY-NC-SA 3.0（非商业）。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/progit-zh/p071.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Pro Git · CC BY-NC-SA 3.0</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（100）</b><a href="p001.html">1.1 起步 - 关于版本控制</a><a href="p002.html">1.2 起步 - Git 简史</a><a href="p003.html">1.3 起步 - Git 是什么？</a><a href="p004.html">1.4 起步 - 命令行</a><a href="p005.html">1.5 起步 - 安装 Git</a><a href="p006.html">1.6 起步 - 初次运行 Git 前的配置</a><a href="p007.html">1.7 起步 - 获取帮助</a><a href="p008.html">1.8 起步 - 总结</a><a href="p009.html">2.1 Git 基础 - 获取 Git 仓库</a><a href="p010.html">2.2 Git 基础 - 记录每次更新到仓库</a><a href="p011.html">2.3 Git 基础 - 查看提交历史</a><a href="p012.html">2.4 Git 基础 - 撤消操作</a><a href="p013.html">2.5 Git 基础 - 远程仓库的使用</a><a href="p014.html">2.6 Git 基础 - 打标签</a><a href="p015.html">2.7 Git 基础 - Git 别名</a><a href="p016.html">2.8 Git 基础 - 总结</a><a href="p017.html">3.1 Git 分支 - 分支简介</a><a href="p018.html">3.2 Git 分支 - 分支的新建与合并</a><a href="p019.html">3.3 Git 分支 - 分支管理</a><a href="p020.html">3.4 Git 分支 - 分支开发工作流</a><a href="p021.html">3.5 Git 分支 - 远程分支</a><a href="p022.html">3.6 Git 分支 - 变基</a><a href="p023.html">3.7 Git 分支 - 总结</a><a href="p024.html">4.1 服务器上的 Git - 协议</a><a href="p025.html">4.2 服务器上的 Git - 在服务器上搭建 Git</a><a href="p026.html">4.3 服务器上的 Git - 生成 SSH 公钥</a><a href="p027.html">4.4 服务器上的 Git - 配置服务器</a><a href="p028.html">4.5 服务器上的 Git - Git 守护进程</a><a href="p029.html">4.6 服务器上的 Git - Smart HTTP</a><a href="p030.html">4.7 服务器上的 Git - GitWeb</a><a href="p031.html">4.8 服务器上的 Git - GitLab</a><a href="p032.html">4.9 服务器上的 Git - 第三方托管的选择</a><a href="p033.html">4.10 服务器上的 Git - 总结</a><a href="p034.html">5.1 分布式 Git - 分布式工作流程</a><a href="p035.html">5.2 分布式 Git - 向一个项目贡献</a><a href="p036.html">5.3 分布式 Git - 维护项目</a><a href="p037.html">5.4 分布式 Git - 总结</a><a href="p038.html">6.1 GitHub - 账户的创建和配置</a><a href="p039.html">6.2 GitHub - 对项目做出贡献</a><a href="p040.html">6.3 GitHub - 维护项目</a><a href="p041.html">6.4 GitHub - 管理组织</a><a href="p042.html">6.5 GitHub - 脚本 GitHub</a><a href="p043.html">6.6 GitHub - 总结</a><a href="p044.html">7.1 Git 工具 - 选择修订版本</a><a href="p045.html">7.2 Git 工具 - 交互式暂存</a><a href="p046.html">7.3 Git 工具 - 贮藏与清理</a><a href="p047.html">7.4 Git 工具 - 签署工作</a><a href="p048.html">7.5 Git 工具 - 搜索</a><a href="p049.html">7.6 Git 工具 - 重写历史</a><a href="p050.html">7.7 Git 工具 - 重置揭密</a><a href="p051.html">7.8 Git 工具 - 高级合并</a><a href="p052.html">7.9 Git 工具 - Rerere</a><a href="p053.html">7.10 Git 工具 - 使用 Git 调试</a><a href="p054.html">7.11 Git 工具 - 子模块</a><a href="p055.html">7.12 Git 工具 - 打包</a><a href="p056.html">7.13 Git 工具 - 替换</a><a href="p057.html">7.14 Git 工具 - 凭证存储</a><a href="p058.html">7.15 Git 工具 - 总结</a><a href="p059.html">8.1 自定义 Git - 配置 Git</a><a href="p060.html">8.2 自定义 Git - Git 属性</a><a href="p061.html">8.3 自定义 Git - Git 钩子</a><a href="p062.html">8.4 自定义 Git - 使用强制策略的一个例子</a><a href="p063.html">8.5 自定义 Git - 总结</a><a href="p064.html">9.1 Git 与其他系统 - 作为客户端的 Git</a><a href="p065.html">9.2 Git 与其他系统 - 迁移到 Git</a><a href="p066.html">9.3 Git 与其他系统 - 总结</a><a href="p067.html">10.1 Git 内部原理 - 底层命令与上层命令</a><a href="p068.html">10.2 Git 内部原理 - Git 对象</a><a href="p069.html">10.3 Git 内部原理 - Git 引用</a><a href="p070.html">10.4 Git 内部原理 - 包文件</a><a href="p071.html" class="on">10.5 Git 内部原理 - 引用规范</a><a href="p072.html">10.6 Git 内部原理 - 传输协议</a><a href="p073.html">10.7 Git 内部原理 - 维护与数据恢复</a><a href="p074.html">10.8 Git 内部原理 - 环境变量</a><a href="p075.html">10.9 Git 内部原理 - 总结</a><a href="p076.html">A1.1 附录 A: 在其它环境中使用 Git - 图形界面</a><a href="p077.html">A1.2 附录 A: 在其它环境中使用 Git - Visual Studio 中的 Git</a><a href="p078.html">A1.3 附录 A: 在其它环境中使用 Git - Visual Studio Code 中的 Git</a><a href="p079.html">第 79 节</a><a href="p080.html">A1.5 附录 A: 在其它环境中使用 Git - Sublime Text 中的 Git</a><a href="p081.html">A1.6 附录 A: 在其它环境中使用 Git - Bash 中的 Git</a><a href="p082.html">A1.7 附录 A: 在其它环境中使用 Git - Zsh 中的 Git</a><a href="p083.html">A1.8 附录 A: 在其它环境中使用 Git - PowerShell 中的 Git</a><a href="p084.html">A2.1 附录 B: 在你的应用中嵌入 Git - 命令行 Git 方式</a><a href="p085.html">A2.2 附录 B: 在你的应用中嵌入 Git - Libgit2</a><a href="p086.html">A2.3 附录 B: 在你的应用中嵌入 Git - JGit</a><a href="p087.html">A2.4 附录 B: 在你的应用中嵌入 Git - go-git</a><a href="p088.html">A2.5 附录 B: 在你的应用中嵌入 Git - Dulwich</a><a href="p089.html">A3.1 附录 C: Git 命令 - 设置与配置</a><a href="p090.html">A3.2 附录 C: Git 命令 - 获取与创建项目</a><a href="p091.html">A3.3 附录 C: Git 命令 - 快照基础</a><a href="p092.html">A3.4 附录 C: Git 命令 - 分支与合并</a><a href="p093.html">A3.5 附录 C: Git 命令 - 项目分享与更新</a><a href="p094.html">A3.6 附录 C: Git 命令 - 检查与比较</a><a href="p095.html">A3.7 附录 C: Git 命令 - 调试</a><a href="p096.html">A3.8 附录 C: Git 命令 - 补丁</a><a href="p097.html">A3.9 附录 C: Git 命令 - 邮件</a><a href="p098.html">A3.10 附录 C: Git 命令 - 外部系统</a><a href="p099.html">A3.11 附录 C: Git 命令 - 管理</a><a href="p100.html">A3.12 附录 C: Git 命令 - 底层命令</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Pro Git · 作者 Scott Chacon、Ben Straub · 译者 Pro Git 中文版翻译团队。<br>
+      许可 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a> · 官方主页 <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a> · 仓库 <a href="https://github.com/progit/progit2" target="_blank" rel="noopener">https://github.com/progit/progit2</a><br>
+      <b style="color:#b45309">非商业限制</b>：本许可含 NC（NonCommercial）条款：仅限非商业用途。本站为个人非商业学习站，若用于商业目的须另行取得授权。<br>
+      本站抓取时间 2026-11-24 22:21 · 本节为全书第 71 / 100 节
+    </div>
+    <h1>10.5 Git 内部原理 - 引用规范</h1>
+            <div>
+              <h2 id="_refspec">引用规范</h2>
+<div class="paragraph">
+<p>纵观全书，我们已经使用过一些诸如远程分支到本地引用的简单映射方式，但这种映射可以更复杂。
+假设你已经跟着前几节在本地创建了一个小的 Git 仓库，现在想要添加一个远程仓库：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git remote add origin https://github.com/schacon/simplegit-progit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>运行上述命令会在你仓库中的 <code>.git/config</code> 文件中添加一个小节，
+并在其中指定远程版本库的名称（<code>origin</code>）、URL 和一个用于获取操作的 <strong>引用规范（refspec）</strong>：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini">[remote "origin"]
+	url = https://github.com/schacon/simplegit-progit
+	fetch = +refs/heads/*:refs/remotes/origin/*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>引用规范的格式由一个可选的 <code>+</code> 号和紧随其后的 <code>&lt;src&gt;:&lt;dst&gt;</code> 组成，
+其中 <code>&lt;src&gt;</code> 是一个模式（pattern），代表远程版本库中的引用；
+<code>&lt;dst&gt;</code> 是本地跟踪的远程引用的位置。
+<code>+</code> 号告诉 Git 即使在不能快进的情况下也要（强制）更新引用。</p>
+</div>
+<div class="paragraph">
+<p>默认情况下，引用规范由 <code>git remote add origin</code> 命令自动生成，
+Git 获取服务器中 <code>refs/heads/</code> 下面的所有引用，并将它写入到本地的 <code>refs/remotes/origin/</code> 中。
+所以，如果服务器上有一个 <code>master</code> 分支，你可以在本地通过下面任意一种方式来访问该分支上的提交记录：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git log origin/master
+$ git log remotes/origin/master
+$ git log refs/remotes/origin/master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>上面的三个命令作用相同，因为 Git 会把它们都扩展成 <code>refs/remotes/origin/master</code>。</p>
+</div>
+<div class="paragraph">
+<p>如果想让 Git 每次只拉取远程的 <code>master</code> 分支，而不是所有分支，
+可以把（引用规范的）获取那一行修改为只引用该分支：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>fetch = +refs/heads/master:refs/remotes/origin/master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这仅是针对该远程版本库的 <code>git fetch</code> 操作的默认引用规范。
+如果有某些只希望被执行一次的操作，我们也可以在命令行指定引用规范。
+若要将远程的 <code>master</code> 分支拉到本地的 <code>origin/mymaster</code> 分支，可以运行：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git fetch origin master:refs/remotes/origin/mymaster</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你也可以指定多个引用规范。
+在命令行中，你可以按照如下的方式拉取多个分支：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git fetch origin master:refs/remotes/origin/mymaster \
+	 topic:refs/remotes/origin/topic
+From git@github.com:schacon/simplegit
+ ! [rejected]        master     -&gt; origin/mymaster  (non fast forward)
+ * [new branch]      topic      -&gt; origin/topic</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在这个例子中，对 <code>master</code> 分支的拉取操作被拒绝，因为它不是一个可以快进的引用。
+我们可以通过在引用规范之前指定 <code>+</code> 号来覆盖该规则。</p>
+</div>
+<div class="paragraph">
+<p>你也可以在配置文件中指定多个用于获取操作的引用规范。
+如果想在每次从 <code>origin</code> 远程仓库获取时都包括 <code>master</code> 和 <code>experiment</code> 分支，添加如下两行：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini">[remote "origin"]
+	url = https://github.com/schacon/simplegit-progit
+	fetch = +refs/heads/master:refs/remotes/origin/master
+	fetch = +refs/heads/experiment:refs/remotes/origin/experiment</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>自 Git 2.6.0 起可以在模式中使用部分通配符以匹配多个分支，所以这样是可以工作的：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini">fetch = +refs/heads/qa*:refs/remotes/origin/qa*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>更棒的是，我们可以使用命名空间（或目录）来实现相同的目标，并且更具结构性。
+假设你有一个 QA 团队，他们推送了一系列分支，同时你只想要获取 <code>master</code> 和
+QA 团队的所有分支而不关心其他任何分支，那么可以使用如下配置：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini">[remote "origin"]
+	url = https://github.com/schacon/simplegit-progit
+	fetch = +refs/heads/master:refs/remotes/origin/master
+	fetch = +refs/heads/qa/*:refs/remotes/origin/qa/*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果项目的工作流很复杂，有 QA 团队推送分支、开发人员推送分支、集成团队推送并且在远程分支上展开协作，你就可以像这样（在本地）为这些分支创建各自的命名空间，非常方便。</p>
+</div>
+<div class="sect3">
+<h3 id="_pushing_refspecs">引用规范推送</h3>
+<div class="paragraph">
+<p>像上面这样从远程版本库获取已在命名空间中的引用当然很棒，但 QA 团队最初应该如何将他们的分支放入远程的 <code>qa/</code> 命名空间呢？
+我们可以通过引用规范推送来完成这个任务。</p>
+</div>
+<div class="paragraph">
+<p>如果 QA 团队想把他们的 <code>master</code> 分支推送到远程服务器的 <code>qa/master</code> 分支上，可以运行：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git push origin master:refs/heads/qa/master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果他们希望 Git 每次运行 <code>git push origin</code> 时都像上面这样推送，可以在他们的配置文件中添加一条 <code>push</code> 值：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini">[remote "origin"]
+	url = https://github.com/schacon/simplegit-progit
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	push = refs/heads/master:refs/heads/qa/master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>正如刚才所指出的，这会让 <code>git push origin</code> 默认把本地 <code>master</code> 分支推送到远程 <code>qa/master</code> 分支。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>你无法通过引用规范从一个仓库获取并推送到另一个仓库。
+这样做的示例见 <a href="https://git-scm.com/book/zh/v2/ch00/_fetch_and_push_on_different_repositories">让你的 GitHub 公共仓库保持更新</a>。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h3 id="_删除引用">删除引用</h3>
+<div class="paragraph">
+<p>你还可以借助类似下面的命令通过引用规范从远程服务器上删除引用：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git push origin :topic</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>因为引用规范（的格式）是 <code>&lt;src&gt;:&lt;dst&gt;</code>，所以上述命令把 <code>&lt;src&gt;</code> 留空，意味着把远程版本库的 <code>topic</code> 分支定义为空值，也就是删除它。</p>
+</div>
+<div class="paragraph">
+<p>或者你可以使用更新的语法（自 Git v1.7.0 以后可用）：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ git push origin --delete topic</code></pre>
+</div>
+</div>
+</div>
+<div id="nav"><a href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%8C%85%E6%96%87%E4%BB%B6">prev</a> | <a href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">next</a></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="bk-pager"><a href="p070.html">← 10.4 Git 内部原理 - 包文件</a><a href="index.html">目录</a><a href="p072.html">10.6 Git 内部原理 - 传输协议 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

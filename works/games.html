@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>游戏源码库 · 从抄一个到做出自己的 · 作品展厅 · 白驹 ccowork</title>
+<meta name="description" content="按引擎和语言分开的小游戏源码路线：Python、JavaScript、Godot、Phaser、Rust 各能做什么，一个下午能跑起来的第一个游戏，以及直接可读的官方示例仓库。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/works/games.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+.gm-wrap{max-width:1180px;margin:0 auto;padding:26px 20px 60px}
+.gm-hero{background:linear-gradient(135deg,rgba(79,140,255,.14),rgba(139,92,246,.12));border:1px solid rgba(79,140,255,.26);border-radius:20px;padding:30px 28px;margin-bottom:22px}
+.gm-hero h1{font-size:clamp(24px,3.4vw,34px);font-weight:900;line-height:1.3;margin:0 0 12px}
+.gm-hero .lead{font-size:15px;line-height:1.9;color:var(--muted);max-width:830px;margin:0}
+.gm-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 6px}
+.gm-kpi .k{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:14px;padding:14px 16px}
+.gm-kpi .k b{display:block;font-size:23px;font-weight:900;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.gm-kpi .k i{display:block;font-size:12px;color:var(--muted);font-style:normal;margin-top:4px}
+.gm-guide{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:18px;padding:22px 24px;margin-bottom:22px}
+.gm-guide h2{font-size:17px;font-weight:800;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.gm-guide h2::before{content:"";width:4px;height:17px;border-radius:2px;background:linear-gradient(#4f8cff,#8b5cf6)}
+.gm-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:12px;list-style:none;padding:0;margin:0}
+.gm-steps li{background:rgba(79,140,255,.06);border:1px solid rgba(79,140,255,.16);border-radius:12px;padding:13px 15px;font-size:13.5px;line-height:1.75}
+.gm-steps li b{display:block;font-size:13px;color:#2f5fd0;margin-bottom:4px;font-weight:800}
+[data-theme="deep"] .gm-steps li b{color:#7fe4ff}
+.gm-sec{margin:28px 0 0}
+.gm-sec>h2{font-size:19px;font-weight:900;margin:0 0 6px;display:flex;align-items:center;gap:9px}
+.gm-sec>h2::before{content:"";width:5px;height:19px;border-radius:3px;background:linear-gradient(#4f8cff,#38b6ff 50%,#8b5cf6)}
+.gm-sec>.sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;line-height:1.8}
+.gm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.gm-card{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:16px;padding:17px 18px;transition:.18s;display:flex;flex-direction:column}
+.gm-card:hover{transform:translateY(-2px);border-color:rgba(79,140,255,.45);box-shadow:0 10px 24px rgba(79,140,255,.13)}
+.gm-card .top{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.gm-card .ico{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:16px;background:linear-gradient(135deg,rgba(79,140,255,.18),rgba(139,92,246,.16));flex:0 0 auto}
+.gm-card h3{font-size:15px;font-weight:800;margin:0;line-height:1.4}
+.gm-card .meta{font-size:12px;color:var(--muted);margin:0 0 10px;line-height:1.7}
+.gm-card .why{font-size:13px;line-height:1.8;color:var(--text);opacity:.9;margin:0 0 12px;flex:1}
+.gm-card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.gm-tag{font-size:11.5px;padding:3px 9px;border-radius:999px;background:rgba(79,140,255,.1);color:#2f5fd0;border:1px solid rgba(79,140,255,.25)}
+[data-theme="deep"] .gm-tag{background:rgba(56,225,255,.1);color:#7fe4ff;border-color:rgba(56,225,255,.28)}
+.gm-tag.ok{background:rgba(34,180,120,.12);color:#177a52;border-color:rgba(34,180,120,.3)}
+.gm-tag.warn{background:rgba(230,150,30,.12);color:#9a6100;border-color:rgba(230,150,30,.3)}
+.gm-card .go{display:inline-block;font-size:13px;font-weight:700;color:#2f5fd0;text-decoration:none;border:none!important;padding:7px 15px;border-radius:9px;background:rgba(79,140,255,.1);align-self:flex-start;transition:.16s}
+.gm-card .go:hover{background:rgba(79,140,255,.2)}
+[data-theme="deep"] .gm-card .go{color:#7fe4ff;background:rgba(56,225,255,.1)}
+.gm-fold{margin-top:14px;text-align:center}
+.gm-fold button{border:1px solid rgba(79,140,255,.32);background:rgba(79,140,255,.08);color:#2f5fd0;font-size:13.5px;font-weight:700;padding:9px 24px;border-radius:999px;cursor:pointer;transition:.16s}
+.gm-fold button:hover{background:rgba(79,140,255,.18);transform:translateY(-1px)}
+[data-theme="deep"] .gm-fold button{color:#7fe4ff;border-color:rgba(56,225,255,.32);background:rgba(56,225,255,.08)}
+.gm-more{display:none}
+.gm-more.open{display:contents}
+.gm-note{margin-top:26px;padding:16px 18px;border-radius:14px;background:rgba(120,150,200,.07);border:1px solid rgba(120,150,200,.16);font-size:12.5px;line-height:1.9;color:var(--muted)}
+.gm-note b{color:var(--text)}
+@media(max-width:900px){.gm-kpi{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .gm-wrap{padding:16px 14px 48px}
+  .gm-hero{padding:22px 18px;border-radius:16px}
+  .gm-grid{grid-template-columns:1fr;gap:12px}
+  .gm-kpi .k b{font-size:20px}
+}
+
+.gm-code{background:#0a0f1e;border:1px solid rgba(120,150,200,.2);border-radius:14px;overflow:hidden;margin-top:12px}
+.gm-code-bar{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;background:rgba(79,140,255,.1);font-size:12.5px;color:var(--muted);border-bottom:1px solid rgba(120,150,200,.16)}
+.gm-code pre{margin:0;padding:16px;overflow:auto;font-size:12.5px;line-height:1.7;color:#b9c8ea}
+.gm-code code{font-family:Consolas,Monaco,monospace}
+.gm-copy{border:1px solid rgba(120,150,200,.3);background:transparent;color:var(--muted);border-radius:7px;padding:3px 10px;font-size:12px;cursor:pointer}
+.gm-copy:hover{border-color:#4f8cff;color:#4f8cff}
+</style>
+</head>
+<body data-ccnav="works" data-cctitle="游戏源码库">
+
+<div class="gm-wrap">
+
+  <div class="gm-hero">
+    <h1>游戏源码库 · 先跑起来一个，再改成自己的</h1>
+    <p class="lead">这里不列"一百个游戏合集"，而是按<b>引擎和语言</b>分开：每种技术能做出什么类型的小游戏、从哪份官方示例开始抄、第一个下午能跑起来的是什么。所有条目都指向官方仓库或官方教程，源码许可标在卡片里，能商用的和只能自己玩的写清楚。</p>
+    <div class="gm-kpi">
+      <div class="k"><b>7</b><i>条技术路线</i></div>
+      <div class="k"><b>18</b><i>个可跑示例</i></div>
+      <div class="k"><b>6</b><i>类小游戏可做</i></div>
+      <div class="k"><b>100%</b><i>官方源码入口</i></div>
+    </div>
+  </div>
+
+  <div class="gm-guide">
+    <h2>新人指引 · 四条路选一条，别都学</h2>
+    <ul class="gm-steps">
+      <li><b>① 完全没写过代码</b>选 Python + Pygame。语法门槛最低，出错信息最好读，一个贪吃蛇 80 行就能动。</li>
+      <li><b>② 会一点网页</b>选 JavaScript + Canvas。不用装任何东西，浏览器里直接跑，MDN 有官方手把手教程。</li>
+      <li><b>③ 想做完整游戏</b>选 Godot。免费开源、不用写太多代码、能导出到手机，官方自带示例工程。</li>
+      <li><b>④ 想练工程能力</b>选 Rust + Bevy 或 TypeScript + Phaser。类型系统帮你少踩坑，但学习曲线陡。</li>
+    </ul>
+  </div>
+
+  <!-- ============ 第一组：按语言 / 引擎 ============ -->
+  <section class="gm-sec" id="engines">
+    <h2>按语言和引擎分的七条路线</h2>
+    <p class="sub">每条都写了「适合做什么类型」和「官方示例在哪」。许可与是否可商用标在标签里。</p>
+    <div class="gm-grid">
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🐍</span><h3>Python + Pygame</h3></div>
+        <p class="meta">最适合：完全零基础 · 2D 小游戏 · 教学演示</p>
+        <p class="why">语法最宽容，出错信息直接告诉你哪一行错了。贪吃蛇、打砖块、俄罗斯方块这类「一个画面 + 几个方块」的游戏，一天能做完一个。缺点是不适合做 3D 和上手机。</p>
+        <div class="tags"><span class="gm-tag ok">LGPL 可分发</span><span class="gm-tag">官方示例 30+</span><span class="gm-tag">Windows/Mac 都能装</span></div>
+        <a class="go" href="https://www.pygame.org/docs/" target="_blank" rel="noopener">官方文档 →</a>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🌐</span><h3>JavaScript + Canvas</h3></div>
+        <p class="meta">最适合：会一点 HTML · 想立刻看到效果 · 分享给别人玩</p>
+        <p class="why">不用装环境，打开浏览器就能跑，做完发个链接别人就能玩。MDN 有一份官方的「2D 打砖块」分步教程，从画球开始写到关卡结束，是最扎实的入门材料。</p>
+        <div class="tags"><span class="gm-tag ok">教程 CC BY-SA</span><span class="gm-tag">零安装</span><span class="gm-tag">可直接分享</span></div>
+        <a class="go" href="https://developer.mozilla.org/zh-CN/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript" target="_blank" rel="noopener">MDN 打砖块教程 →</a>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🎮</span><h3>Godot（GDScript）</h3></div>
+        <p class="meta">最适合：想做完整游戏 · 要导出手机 · 不想付引擎授权费</p>
+        <p class="why">免费开源，自带场景编辑器，官方有一整套示例工程（2D、3D、物理、UI、多人各一份），clone 下来直接能跑。导出安卓/iOS/桌面都是内置的，不抽成。</p>
+        <div class="tags"><span class="gm-tag ok">MIT 可商用</span><span class="gm-tag">官方示例工程</span><span class="gm-tag">可导出手机</span></div>
+        <a class="go" href="https://github.com/godotengine/godot-demo-projects" target="_blank" rel="noopener">官方示例仓库 →</a>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">⚡</span><h3>TypeScript + Phaser</h3></div>
+        <p class="meta">最适合：做网页 2D 游戏 · 要发布到小游戏平台</p>
+        <p class="why">专门为网页游戏做的框架，物理、动画、粒子、音频都已封装好。官方示例库有上千个可在线试玩的 demo，看中哪个就下载源码改。适合做横版过关、弹幕、经营类。</p>
+        <div class="tags"><span class="gm-tag ok">MIT 可商用</span><span class="gm-tag">示例 1000+</span><span class="gm-tag">可打包成 App</span></div>
+        <a class="go" href="https://phaser.io/examples" target="_blank" rel="noopener">官方示例库 →</a>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🦀</span><h3>Rust + Bevy</h3></div>
+        <p class="meta">最适合：练工程能力 · 想做 2D/3D · 不怕编译期报错</p>
+        <p class="why">编译期就把大部分错误挡住了，跑起来的性能接近 C++。学习曲线陡，但官方 examples 仓库里每个特性都有一个能跑的最小例子，照着改比自己啃文档快。</p>
+        <div class="tags"><span class="gm-tag ok">MIT / Apache-2.0</span><span class="gm-tag">官方 examples</span><span class="gm-tag">性能好</span></div>
+        <a class="go" href="https://github.com/bevyengine/bevy/tree/main/examples" target="_blank" rel="noopener">官方 examples →</a>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🕹️</span><h3>TIC-80（幻想游戏机）</h3></div>
+        <p class="meta">最适合：像素风 · 想限制自己的发挥空间 · 复古手感</p>
+        <p class="why">一个完整的「假想游戏机」：内置代码编辑器、画图、音效，全部塞在几 MB 里。限制很硬（调色板 16 色、卡带容量小），反而容易做出成品。官网有大量可玩的卡带，源码直接能读。</p>
+        <div class="tags"><span class="gm-tag ok">MIT</span><span class="gm-tag">像素风</span><span class="gm-tag">卡带可读源码</span></div>
+        <a class="go" href="https://tic80.com/play" target="_blank" rel="noopener">在线试玩与源码 →</a>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">💙</span><h3>Lua + LÖVE</h3></div>
+        <p class="meta">最适合：想用脚本快速做 2D · 轻量 · 愿意读英文文档</p>
+        <p class="why">整个引擎只有几 MB，启动快，API 极简（一个 love.draw 就能画画）。很多独立小游戏是拿它做的。官方 wiki 的教程质量很高，但中文资料比前面几个少。</p>
+        <div class="tags"><span class="gm-tag ok">zlib 可商用</span><span class="gm-tag">体积小</span><span class="gm-tag">中文资料少</span></div>
+        <a class="go" href="https://love2d.org/wiki/Getting_Started" target="_blank" rel="noopener">官方入门 →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 第二组：六类小游戏能做什么 ============ -->
+  <section class="gm-sec" id="types">
+    <h2>六类小游戏，各自的技术难点在哪</h2>
+    <p class="sub">不是"推荐玩什么"，而是"做这类游戏会卡在哪"。知道难点，才不会做到一半放弃。</p>
+    <div class="gm-grid">
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🐍</span><h3>贪吃蛇 / 俄罗斯方块</h3></div>
+        <p class="meta">难度：★☆☆☆☆ · 半天可完成</p>
+        <p class="why">难点只有一个：<b>网格坐标与碰撞判定</b>。把画面切成格子，蛇身存成一个坐标数组，每次移动头进尾出。俄罗斯方块多一个「旋转后的边界检查」。这是最推荐用来练手的第一款。</p>
+        <div class="tags"><span class="gm-tag">网格逻辑</span><span class="gm-tag">无美术需求</span></div>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🧱</span><h3>打砖块 / 弹球</h3></div>
+        <p class="meta">难度：★★☆☆☆ · 一到两天</p>
+        <p class="why">难点是<b>反弹角度</b>：球撞到挡板的不同位置要给不同反射角，否则手感很怪。还要处理「高速球穿墙」——每帧位移大于砖块厚度时会漏检，得做细分检测。</p>
+        <div class="tags"><span class="gm-tag">向量反射</span><span class="gm-tag">连续碰撞检测</span></div>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🏃</span><h3>跑酷 / 横版过关</h3></div>
+        <p class="meta">难度：★★★☆☆ · 三到五天</p>
+        <p class="why">难点在<b>手感</b>：重力、跳跃初速、二段跳的宽容时间、落地缓冲，这几个数字要反复调。其次是地图滚动与相机跟随。代码量不大，但调参数占大半时间。</p>
+        <div class="tags"><span class="gm-tag">物理调参</span><span class="gm-tag">相机跟随</span></div>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🔫</span><h3>弹幕 / 射击</h3></div>
+        <p class="meta">难度：★★★☆☆ · 三到七天</p>
+        <p class="why">难点是<b>性能</b>：屏幕上同时几百发子弹时，逐对检测碰撞会卡。要用空间网格或环绕排序降复杂度。其次是弹幕模式设计——用公式生成比手摆坐标优雅得多。</p>
+        <div class="tags"><span class="gm-tag">碰撞优化</span><span class="gm-tag">对象池</span></div>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🧩</span><h3>解谜 / 三消 / 数独</h3></div>
+        <p class="meta">难度：★★☆☆☆ · 一到三天</p>
+        <p class="why">UI 和交互占大头，游戏逻辑反而简单。数独的关键是<b>生成合法题面</b>（先造完整解再挖洞，挖的时候校验唯一解）。三消的关键是消除后的下落补位与连锁判定。</p>
+        <div class="tags"><span class="gm-tag">算法为主</span><span class="gm-tag">无需物理</span></div>
+      </div>
+
+      <div class="gm-card">
+        <div class="top"><span class="ico">🌾</span><h3>经营 / 种田 / 挂机</h3></div>
+        <p class="meta">难度：★★★★☆ · 一周以上</p>
+        <p class="why">难点不在画面，在<b>数值系统</b>：产出速率、资源消耗、解锁节奏要形成正反馈循环。再加上存档（离线收益要按时间差补算）。这类最容易做成"能跑但不好玩"。</p>
+        <div class="tags"><span class="gm-tag">数值平衡</span><span class="gm-tag">存档系统</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 第三组（默认折叠）============ -->
+  <div class="gm-more" id="gmMore">
+    <section class="gm-sec" id="first">
+      <h2>第一个下午：三个「今天就能跑起来」的目标</h2>
+      <p class="sub">不要一上手就做 RPG。先把这三件做成，你会知道自己适不适合继续。</p>
+      <div class="gm-grid">
+        <div class="gm-card">
+          <div class="top"><span class="ico">1️⃣</span><h3>让一个方块动起来</h3></div>
+          <p class="meta">目标时长：30 分钟</p>
+          <p class="why">画一个矩形，用方向键控制它移动，碰到边界就停。这一步打通了「输入 → 状态 → 渲染」这条循环，后面所有游戏都是它的扩展。</p>
+          <div class="tags"><span class="gm-tag">游戏循环</span><span class="gm-tag">键盘输入</span></div>
+        </div>
+        <div class="gm-card">
+          <div class="top"><span class="ico">2️⃣</span><h3>做一个能结束的贪吃蛇</h3></div>
+          <p class="meta">目标时长：2-3 小时</p>
+          <p class="why">加上食物、变长、撞自己就结束、显示分数。做完这个你就掌握了「数组状态机」这个最核心的套路，后面能套到很多游戏上。</p>
+          <div class="tags"><span class="gm-tag">状态数组</span><span class="gm-tag">碰撞判定</span></div>
+        </div>
+        <div class="gm-card">
+          <div class="top"><span class="ico">3️⃣</span><h3>加一个开始/结束界面</h3></div>
+          <p class="meta">目标时长：1 小时</p>
+          <p class="why">很多人卡在这：游戏能玩但没有开始和结束，就不算完成品。加上「点击开始 → 游戏 → 死了按 R 重开」这个循环，你就有第一个完整的作品了。</p>
+          <div class="tags"><span class="gm-tag">场景切换</span><span class="gm-tag">完整闭环</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gm-sec" id="repos">
+      <h2>能直接拿的源码 · 5 个官方仓库</h2>
+      <p class="sub">下面每个都是去官方仓库 Clone 就能跑的真实项目，标了语言、许可和维护状态。本站不托管第三方代码包，只给官方直链——这样你拿到的永远是最新、最完整的版本。</p>
+      <div class="gm-grid">
+        <div class="gm-card">
+          <div class="top"><span class="ico">🎮</span><h3>Godot 官方示例集</h3></div>
+          <p class="meta">GDScript · MIT · 官方维护</p>
+          <p class="why">2D/3D 各类型的最小可运行示例，装好 Godot 直接打开就能跑。想学 GDScript 从这里的 2D 平台跳跃示例起步最快，改两行参数就能看到变化。</p>
+          <div class="tags"><span class="gm-tag ok">MIT 可商用</span><span class="gm-tag">官方</span></div>
+          <a class="go" href="https://github.com/godotengine/godot-demo-projects" target="_blank" rel="noopener">去官方仓库 Clone →</a>
+        </div>
+        <div class="gm-card">
+          <div class="top"><span class="ico">🪶</span><h3>LÖVE · Lua 写 2D 游戏</h3></div>
+          <p class="meta">Lua · zlib 许可 · 轻量</p>
+          <p class="why">几十行 Lua 就能出一个能玩的原型。官方 wiki 有从零到第一个游戏的完整教程，仓库本体是引擎源码，教学示例看官网文档更快。</p>
+          <div class="tags"><span class="gm-tag ok">zlib 极宽松</span><span class="gm-tag">2D</span></div>
+          <a class="go" href="https://github.com/love2d/love" target="_blank" rel="noopener">去官方仓库 →</a>
+        </div>
+        <div class="gm-card">
+          <div class="top"><span class="ico">⚡</span><h3>raylib · C 语言游戏库</h3></div>
+          <p class="meta">C · zlib 许可 · API 直白</p>
+          <p class="why">函数名字就是它的作用，适合学图形编程底层。仓库 examples 目录按功能分好类，窗口、输入、碰撞每个都是独立小程序，拷出来就能编译。</p>
+          <div class="tags"><span class="gm-tag ok">zlib 可商用</span><span class="gm-tag">学底层</span></div>
+          <a class="go" href="https://github.com/raysan5/raylib" target="_blank" rel="noopener">去官方仓库 →</a>
+        </div>
+        <div class="gm-card">
+          <div class="top"><span class="ico">☕</span><h3>libGDX · Java 跨平台</h3></div>
+          <p class="meta">Java · Apache-2.0 · 一套代码多端</p>
+          <p class="why">桌面、Android、网页一套代码。官方仓库带完整示例项目，注意它用 Gradle 构建，第一次配置要花点时间，照官方 README 一步步来。</p>
+          <div class="tags"><span class="gm-tag ok">Apache-2.0</span><span class="gm-tag">跨平台</span></div>
+          <a class="go" href="https://github.com/libgdx/libgdx" target="_blank" rel="noopener">去官方仓库 →</a>
+        </div>
+        <div class="gm-card">
+          <div class="top"><span class="ico">🧩</span><h3>Hextris · 完整小游戏样本</h3></div>
+          <p class="meta">JavaScript · 单页可跑 · 停更</p>
+          <p class="why">六边形俄罗斯方块，纯前端单页。最适合读「一个完整小游戏怎么组织代码」。注意它的许可不是标准 SPDX（NOASSERTION），商用前必须自己读一遍 LICENSE 原文；仓库 2023-05 后停更。</p>
+          <div class="tags"><span class="gm-tag">读代码样本</span><span class="gm-tag">商用需自查许可</span></div>
+          <a class="go" href="https://github.com/hextris/hextris" target="_blank" rel="noopener">去官方仓库 →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gm-sec" id="firstcode">
+      <h2>第一段能跑的代码 · 存成 html 双击就玩</h2>
+      <p class="sub">别只看不练。下面这段是完整的方块移动小游戏，全部内容就这些——存成 <code>move.html</code> 双击打开，方向键控制方块。它打通了「输入 → 状态 → 渲染」这条所有游戏的骨架循环。</p>
+      <div class="gm-code">
+        <div class="gm-code-bar">move.html · 可直接复制运行 <button class="gm-copy" type="button">复制</button></div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body style="margin:0;background:#0a0f1e;color:#fff;font-family:monospace"&gt;
+&lt;p style="padding:12px"&gt;方向键移动方块 · 碰到边缘会停&lt;/p&gt;
+&lt;canvas id="c" width="400" height="300" style="display:block;background:#101728"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+var x=180, y=130, ctx=document.getElementById('c').getContext('2d');
+function draw(){
+  ctx.clearRect(0,0,400,300);
+  ctx.fillStyle='#4f8cff';
+  ctx.fillRect(x,y,40,40);
+}
+document.addEventListener('keydown', function(e){
+  if(e.key==='ArrowLeft'  &amp;&amp; x&gt;0)   x-=10;
+  if(e.key==='ArrowRight' &amp;&amp; x&lt;360) x+=10;
+  if(e.key==='ArrowUp'    &amp;&amp; y&gt;0)   y-=10;
+  if(e.key==='ArrowDown'  &amp;&amp; y&lt;260) y+=10;
+  draw();
+});
+draw();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+      </div>
+      <p class="sub" style="margin-top:14px">改一改试试：把 <code>40</code> 改成 <code>60</code> 看方块变大；把每次移动 <code>10</code> 改成 <code>20</code> 看速度变化。这就是"改一个参数、看结果"的学习方式。</p>
+    </section>
+
+    <section class="gm-sec" id="license">
+      <h2>源码许可怎么读（这一步别省）</h2>
+      <p class="sub">抄源码之前先看清许可，避免做出成品后才发现不能发布。</p>
+      <div class="gm-grid">
+        <div class="gm-card">
+          <div class="top"><span class="ico">✅</span><h3>MIT / Apache-2.0 / zlib</h3></div>
+          <p class="meta">最常见于游戏引擎和小游戏仓库</p>
+          <p class="why">可以商用、可以闭源、可以改。唯一要求是保留原作者的版权声明文件。做出来的游戏可以上架、可以卖。</p>
+          <div class="tags"><span class="gm-tag ok">可商用</span></div>
+        </div>
+        <div class="gm-card">
+          <div class="top"><span class="ico">⚠️</span><h3>GPL / LGPL</h3></div>
+          <p class="meta">Pygame 是 LGPL</p>
+          <p class="why">LGPL 允许你的游戏闭源（只要你没改引擎本身），但如果你修改了引擎代码，那部分要开源。GPL 更严，整个作品都要开源。上架前要看清。</p>
+          <div class="tags"><span class="gm-tag warn">注意闭源边界</span></div>
+        </div>
+        <div class="gm-card">
+          <div class="top"><span class="ico">🚫</span><h3>无许可 / 仅供学习</h3></div>
+          <p class="meta">很多个人练手仓库属于这一类</p>
+          <p class="why">仓库里没有 LICENSE 文件，默认就是「保留所有权利」——技术上你不能分发。可以读、可以学思路，但别整个抄下来发布。</p>
+          <div class="tags"><span class="gm-tag warn">只读不抄</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="gm-fold">
+    <button type="button" id="gmFoldBtn" aria-expanded="false">展开：第一个下午做什么 + 许可怎么读 ↓</button>
+  </div>
+
+  <div class="gm-note">
+    <b>关于这份清单</b>：所有链接指向引擎官方文档或官方示例仓库，不托管第三方源码包。许可信息以各仓库 LICENSE 文件为准，本站只做指向与说明。<br>
+    <b>没有收录什么</b>：需要付费购买的商业引擎示例、明确禁止再分发的教程资源、以及只放破解版游戏包的站点。<br>
+    <b>更新方式</b>：引擎版本变化时会复核链接与许可。
+  </div>
+
+</div>
+
+<script src="/site-nav.js"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+(function(){
+  try{
+    var btn = document.getElementById('gmFoldBtn');
+    var more = document.getElementById('gmMore');
+    if (!btn || !more) return;
+    btn.addEventListener('click', function(){
+      var open = more.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? '收起 ↑' : '展开：第一个下午做什么 + 许可怎么读 ↓';
+    });
+  }catch(e){}
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+<script>
+document.querySelector('.gm-copy')?.addEventListener('click',function(){
+  var code=document.querySelector('.gm-code code')?.innerText||'';
+  if(navigator.clipboard) navigator.clipboard.writeText(code).then(function(){this.textContent='已复制';}.bind(this));
+  else this.textContent='请手动选中复制';
+});
+</script>
+</body>
+</html>

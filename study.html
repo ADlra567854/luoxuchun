@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="description" content="自学编程、UI 设计、网络安全、Python 办公自动化、软件设计/产品——真实可验证案例 + 学习路线，没有围墙的大学。">
+<meta property="og:description" content="自学编程、UI 设计、网络安全、Python 办公自动化、软件设计/产品——真实可验证案例 + 学习路线，没有围墙的大学。">
+<meta name="keywords" content="自学中心,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自学中心 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"自学中心 · 白驹 ccowork","description":"自学编程、UI 设计、网络安全、Python 办公自动化、软件设计/产品——真实可验证案例 + 学习路线，没有围墙的大学。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#0a0e1a; --bg2:#0e1426; --card:#141c33; --line:#243150;
+  --ice:#7dd3fc; --cyan:#4ea8ff; --violet:#a78bfa; --green:#34d399;
+  --txt:#e8eefc; --sub:#9fb0d0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:radial-gradient(1200px 600px at 50% -10%,#16224a 0%,var(--bg) 55%);color:var(--txt);line-height:1.6;min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+.top{display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,14,26,.86);backdrop-filter:blur(8px);z-index:20}
+.top .brand{font-weight:700;font-size:17px}
+.top .brand b{color:var(--cyan)}
+.top .sub{color:var(--sub);font-size:12px;border:1px solid var(--line);padding:2px 8px;border-radius:18px}
+.top .spacer{flex:1}
+.top a.home{color:var(--sub);font-size:14px}
+.top a.home:hover{color:var(--cyan)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.hero{padding:54px 20px 30px;text-align:center}
+.hero .kick{display:inline-block;font-size:13px;letter-spacing:2px;color:var(--ice);border:1px solid var(--line);padding:4px 12px;border-radius:18px;margin-bottom:16px}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.2;background:linear-gradient(120deg,#7dd3fc,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--sub);max-width:720px;margin:16px auto 0;font-size:15px}
+.hero .badges{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.hero .badges div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 18px}
+.hero .badges b{display:block;font-size:22px;color:var(--cyan)}
+.hero .badges span{font-size:12px;color:var(--sub)}
+section.block{padding:40px 0;border-top:1px solid var(--line)}
+.sec-head{text-align:center;margin-bottom:26px}
+.sec-head .kicker{font-size:12px;letter-spacing:3px;color:var(--violet)}
+.sec-head h2{font-size:clamp(22px,3.4vw,30px);margin:6px 0}
+.sec-head p{color:var(--sub);font-size:14px;max-width:680px;margin:8px auto 0}
+/* 路线 tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.tabs button{background:var(--card);border:1px solid var(--line);color:var(--sub);padding:8px 14px;border-radius:26px;cursor:pointer;font-size:14px;transition:.2s}
+.tabs button:hover{border-color:var(--cyan);color:var(--txt)}
+.tabs button.on{background:linear-gradient(120deg,var(--cyan),var(--violet));color:#06101f;border-color:transparent;font-weight:600}
+.road{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;display:none}
+.road.on{display:block;animation:fade .25s ease}
+.road h3{font-size:19px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.road ol{list-style:none;counter-reset:s;display:grid;gap:10px}
+.road li{counter-increment:s;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:12px 14px 12px 46px;position:relative;font-size:14px;color:var(--txt)}
+.road li::before{content:counter(s);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:linear-gradient(120deg,var(--cyan),var(--violet));color:#06101f;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* 案例 */
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.filters button{background:var(--card);border:1px solid var(--line);color:var(--sub);padding:7px 14px;border-radius:26px;cursor:pointer;font-size:13px}
+.filters button.on{border-color:var(--violet);color:var(--txt);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;transition:.2s}
+.card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.card .ctag{font-size:12px;color:var(--ice);border:1px solid var(--line);padding:2px 9px;border-radius:18px;align-self:flex-start}
+.card h3{font-size:16px;line-height:1.4}
+.card .who{font-size:13px;color:var(--violet);font-weight:600}
+.card .lesson{font-size:13px;color:var(--sub);background:var(--bg2);border-left:3px solid var(--green);padding:8px 10px;border-radius:6px}
+.card .src{font-size:12px;color:var(--sub)}
+.card .read{margin-top:auto;font-size:13px;color:var(--cyan);font-weight:600}
+/* 视频入口 */
+.video-cta{background:linear-gradient(120deg,rgba(78,168,255,.16),rgba(167,139,250,.16));border:1px solid var(--line);border-radius:18px;padding:26px;text-align:center}
+.video-cta h3{font-size:20px;margin-bottom:8px}
+.video-cta p{color:var(--sub);font-size:14px;margin-bottom:16px}
+.video-cta a{display:inline-block;background:linear-gradient(120deg,var(--cyan),var(--violet));color:#06101f;font-weight:700;padding:11px 22px;border-radius:26px}
+footer{border-top:1px solid var(--line);padding:30px 20px;text-align:center;color:var(--sub);font-size:13px}
+footer a.btn{display:inline-block;margin-top:10px;border:1px solid var(--line);padding:9px 18px;border-radius:26px;color:var(--cyan)}
+@media(max-width:560px){.hero .badges{gap:10px}.hero .badges div{padding:10px 12px}}
+</style>
+<link rel="canonical" href="https://ccoworkbaiju.cn/study.html">
+<meta property="og:title" content="自学中心 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/study.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="自学中心 · 白驹 ccowork">
+<meta name="twitter:description" content="自学编程、UI 设计、网络安全、Python 办公自动化、软件设计/产品——真实可验证案例 + 学习路线，没有围墙的大学。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-study.png" alt="自学中心 · 白驹 ccowork（分站）" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<nav class="top">
+  <div class="brand"><i class="cc-mark" aria-hidden="true"></i>白驹 <b>· 自学中心</b></div>
+  <span class="sub">分站</span>
+  <span class="spacer"></span>
+  <a class="home" href="/"><i class="cc-ic cc-back" data-ic="arrow-left"></i>← 回总站</a>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<header class="hero wrap">
+  <span class="kick">SELF-TAUGHT HUB · 没有围墙的大学</span>
+  <h1>不会？那就自学。<br>这里全是真有人做到过的路。</h1>
+  <p class="lead">自学编程、UI 设计、网络安全、Python 办公自动化、软件设计 / 产品——每一条线都给你<strong>真实可验证的案例</strong>和<strong>分阶段学习路线</strong>。不画饼，只指路。</p>
+  <div class="badges">
+    <div><b>16</b><span>真实自学案例</span></div>
+    <div><b>5</b><span>条学习路线</span></div>
+    <div><b>23+</b><span>自学视频（新闻页）</span></div>
+    <div><b>0</b><span>门槛 / 学费要求</span></div>
+  </div>
+</header>
+<!-- 学习路线 -->
+<section class="block wrap">
+  <div class="sec-head">
+    <div class="kicker">LEARNING ROADMAPS</div>
+    <h2>五条自学路线，照着走</h2>
+    <p>点开你想要的线，按阶段一步步来。路线是<strong>建议</strong>，不是承诺——快慢因人而异，关键是别停。</p>
+  </div>
+  <div class="tabs" id="roadTabs"></div>
+  <div id="roadBox"></div>
+</section>
+<!-- 自学案例 -->
+<section class="block wrap">
+  <div class="sec-head">
+    <div class="kicker">REAL SELF-TAUGHT CASES</div>
+    <h2>真实自学案例</h2>
+    <p>都是真实人物、真实经历、真实原文链接——点开卡片直达来源，自己看、自己判断。</p>
+  </div>
+  <div class="filters" id="caseFilters"></div>
+  <div class="grid" id="caseGrid"></div>
+</section>
+<!-- 视频入口 -->
+<section class="block wrap">
+  <div class="video-cta">
+    <h3><i class="cc-ic" data-ic="tv" aria-hidden="true"></i>想看视频？去「每日新闻」自学专区</h3>
+    <p>新闻页已聚合 23+ 条真实 B站自学视频（编程 / 网安 / UI / 软设 / 自动化），站内直接播放，不跳 App。</p>
+    <a href="./news.html">前往每日新闻 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i></a>
+  </div>
+</section>
+<footer>
+  <div>自学中心是「白驹 ccowork」的<strong>分站</strong>。所有案例均指向原作者原文，仅作索引，不转存、不洗稿。</div>
+  <a class="btn" href="/"><i class="cc-ic cc-back" data-ic="arrow-left"></i>← 回总站</a>
+</footer>
+<script src="../data/study-cases.js"></script>
+<script>
+(function(){
+  var CATS = window.STUDY_CATS || [];
+  var CASES = window.STUDY_CASES || [];
+  var ROADS = window.STUDY_ROADS || [];
+  var catLabel = {};
+  CATS.forEach(function(c){ catLabel[c.key] = c.label; });
+  // —— 路线 tabs ——
+  var rt = document.getElementById('roadTabs');
+  var box = document.getElementById('roadBox');
+  rt.innerHTML = ROADS.map(function(r,i){
+    return '<button data-i="'+i+'" class="'+(i===0?'on':'')+'">'+r.icon+' '+catLabel[r.cat]+'</button>';
+  }).join('');
+  function showRoad(i){
+    box.innerHTML = ROADS.map(function(r,idx){
+      if(idx!==i) return '';
+      return '<div class="road on"><h3>'+r.icon+' '+r.title+'</h3><ol>'
+        + r.stages.map(function(s){ return '<li>'+s+'</li>'; }).join('')
+        + '</ol></div>';
+    }).join('');
+  }
+  showRoad(0);
+  rt.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    [].forEach.call(rt.children, function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    showRoad(+b.dataset.i);
+  });
+  // —— 案例筛选 ——
+  var f = document.getElementById('caseFilters');
+  var opts = [{key:'all',label:'全部'}].concat(CATS);
+  f.innerHTML = opts.map(function(o,i){
+    return '<button data-k="'+o.key+'" class="'+(i===0?'on':'')+'">'+o.label+'</button>';
+  }).join('');
+  var grid = document.getElementById('caseGrid');
+  function render(k){
+    var list = k==='all' ? CASES : CASES.filter(function(c){ return c.cat===k; });
+    grid.innerHTML = list.map(function(c){
+      return '<div class="card">'
+        + '<span class="ctag">'+catLabel[c.cat]+'</span>'
+        + '<div class="who">'+c.who+'</div>'
+        + '<h3>'+c.title+'</h3>'
+        + '<div class="lesson"> '+c.lesson+'</div>'
+        + '<div class="src">来源：'+c.source+'</div>'
+        + '<a class="read" href="'+c.url+'" target="_blank" rel="noopener noreferrer">阅读原文 </a>'
+        + '</div>';
+    }).join('');
+  }
+  render('all');
+  f.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    [].forEach.call(f.children, function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    render(b.dataset.k);
+  });
+})();
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/search.js"></script>
+<script src="/stats.js"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

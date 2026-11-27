@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 工科实训基地,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 工科实训基地 · 白驹 ccowork">
+<meta name="description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta property="og:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · 工科实训基地 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"ccowork · 工科实训基地 · 白驹 ccowork","description":"个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c; --lime:#a3e635;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(163,230,53,.26);color:#fff}
+::-webkit-scrollbar{width:11px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:10px;border:2px solid #05070d}
+::-webkit-scrollbar-thumb:hover{background:#2b4166}
+#sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+.glow{position:fixed;z-index:0;pointer-events:none;filter:blur(90px);opacity:.45}
+.glow.a{width:560px;height:560px;left:-140px;top:-120px;background:radial-gradient(circle,rgba(163,230,53,.22),transparent 70%)}
+.glow.b{width:640px;height:640px;right:-180px;top:18%;background:radial-gradient(circle,rgba(56,225,255,.2),transparent 70%)}
+.glow.c{width:520px;height:520px;left:30%;bottom:-180px;background:radial-gradient(circle,rgba(91,140,255,.22),transparent 70%)}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--cyan),var(--gold));z-index:200;width:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:15px 42px;background:rgba(4,6,12,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:linear-gradient(120deg,var(--lime),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:22px;font-size:14px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--lime)}
+.nav-cta{padding:8px 18px;border:1px solid rgba(163,230,53,.4);border-radius:999px;color:var(--lime)!important;font-size:13px}
+.nav-cta:hover{background:rgba(163,230,53,.1)}
+@media(max-width:920px){.nav-links a:not(.nav-cta){display:none}}
+.hero{position:relative;z-index:5;padding:150px 24px 60px;text-align:center;max-width:1000px;margin:0 auto}
+.hero .kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--lime);
+  border:1px solid rgba(163,230,53,.3);padding:7px 18px;border-radius:999px;margin-bottom:26px;background:rgba(163,230,53,.05)}
+.hero .kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(38px,6vw,80px);line-height:1.15;letter-spacing:3px}
+.hero h1 span{background:linear-gradient(120deg,var(--lime) 5%,var(--cyan) 55%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:720px;margin:24px auto 0;font-size:clamp(15px,1.6vw,18px)}
+section{position:relative;z-index:5;max-width:1180px;margin:0 auto;padding:80px 24px}
+.sec-head{margin-bottom:40px}
+.sec-head .no{font-family:var(--mono);font-size:12px;letter-spacing:4px;color:var(--lime);display:block;margin-bottom:10px}
+.sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(26px,3.8vw,44px);letter-spacing:2px}
+.sec-head p{color:var(--muted);max-width:720px;margin-top:12px}
+/* 实训项目 */
+.lab{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.lcard{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;backdrop-filter:blur(10px);transition:.32s;overflow:hidden}
+.lcard:hover{transform:translateY(-6px);border-color:rgba(163,230,53,.4);box-shadow:0 20px 46px rgba(0,0,0,.5)}
+.lcard::after{content:"";position:absolute;inset:0;background:radial-gradient(500px 200px at 10% 0%,rgba(163,230,53,.1),transparent 60%);opacity:0;transition:.32s}
+.lcard:hover::after{opacity:1}
+.lcard .idx{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:2px}
+.lcard .ico{font-size:32px;margin:12px 0 10px}
+.lcard h3{font-size:19px;margin-bottom:8px;font-family:var(--serif);letter-spacing:1px}
+.lcard p{color:var(--muted);font-size:14px;margin-bottom:12px}
+.lcard .steps{color:#c9d8ca;font-size:13px;line-height:1.7}
+.lcard .steps b{color:var(--lime)}
+/* 工具目录 */
+.cat-head{display:flex;align-items:center;gap:12px;margin:34px 0 16px}
+.cat-head .n{font-family:var(--mono);font-size:13px;color:var(--gold);letter-spacing:2px}
+.cat-head h2{font-size:20px;font-family:var(--serif);letter-spacing:1px}
+.cat-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;backdrop-filter:blur(8px);transition:.26s;position:relative}
+.tool:hover{transform:translateY(-4px);border-color:rgba(163,230,53,.4)}
+.tool h3{font-size:16px;margin-bottom:5px;color:var(--text)}
+.tool p{color:var(--muted);font-size:13px;margin-bottom:10px}
+.tool .cmd{font-family:var(--mono);font-size:12px;color:var(--lime);background:rgba(163,230,53,.07);border:1px solid var(--line);border-radius:10px;padding:6px 10px;word-break:break-all}
+.cta{position:relative;z-index:5;max-width:860px;margin:0 auto;padding:80px 24px 110px;text-align:center}
+.cta h2{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4.2vw,48px);letter-spacing:2px}
+.cta h2 span{background:linear-gradient(120deg,var(--lime),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta p{color:var(--muted);max-width:620px;margin:16px auto 30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:14px;font-size:15px;font-weight:600;text-decoration:none;transition:.3s}
+.btn-primary{background:linear-gradient(120deg,var(--lime),var(--cyan));color:#04140a;box-shadow:0 10px 34px rgba(163,230,53,.25)}
+.btn-primary:hover{transform:translateY(-3px)}
+footer{position:relative;z-index:5;border-top:1px solid var(--line);padding:42px 24px;text-align:center;color:var(--dim);font-size:13px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://ccoworkbaiju.cn/lab.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/lab.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 工科实训基地 · 白驹 ccowork">
+<meta name="twitter:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-lab.png" alt="ccowork · 工科实训基地 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<canvas id="sky"></canvas>
+<div class="glow a"></div><div class="glow b"></div><div class="glow c"></div>
+<div class="grain"></div>
+<div id="progress"></div>
+<nav>
+  <div class="logo">工科实训基地 <i>· LAB</i></div>
+  <div class="nav-links">
+    <a href="/"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回门户</a>
+    <a href="#projects">实训项目</a>
+    <a href="#tools">开源工具箱</a>
+    <a class="nav-cta" href="./devbase.html"><i class="cc-ic" data-ic="arrow-right"></i> 开发者基地 </a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<header class="hero">
+  <span class="kicker">OPEN HARDWARE · 开箱即用 · 动手实训</span>
+  <h1>从代码到实物，<br>把 AI 与硬件<span>焊在一起</span></h1>
+  <p>工科不是纸上谈兵。这里是开源硬件与工程实训的基地：单片机、电路、3D 打印、CNC、机器人仿真——每个工具都能开箱即用，每个项目都能亲手做出实物。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+</header>
+<section id="projects">
+  <div class="sec-head reveal">
+    <span class="no">PROJECTS · 实训项目</span>
+    <h2>六个能做出实物的实训项目</h2>
+    <p>从入门到进阶，每个项目都给你任务、工具和验收标准。做完一个，比看十篇教程有用。</p>
+  </div>
+  <div class="lab">
+    <div class="lcard reveal"><div class="idx">LAB 01</div><div class="ico"><i class="cc-ic" data-ic="activity" aria-hidden="true"></i></div><h3>智能家居传感器</h3><p>用 ESP32 + 温湿度传感器，把数据传上云。</p><div class="steps"><b>工具</b>：ESP32、DHT11、Arduino IDE<br><b>验收</b>：手机能实时看到温湿度曲线</div></div>
+    <div class="lcard reveal"><div class="idx">LAB 02</div><div class="ico"><i class="cc-ic" data-ic="car" aria-hidden="true"></i></div><h3>循迹小车</h3><p>用 Arduino + 电机驱动 + 红外传感器，做一辆会沿着黑线跑的小车。</p><div class="steps"><b>工具</b>：Arduino、L298N、循迹模块<br><b>验收</b>：小车在黑线上稳定行驶</div></div>
+    <div class="lcard reveal"><div class="idx">LAB 03</div><div class="ico"><i class="cc-ic" data-ic="plug" aria-hidden="true"></i></div><h3>你的第一块 PCB</h3><p>用 KiCad 画原理图和布线，打样一块能点亮的电路板。</p><div class="steps"><b>工具</b>：KiCad、嘉立创打样<br><b>验收</b>：实物板焊完能正常工作</div></div>
+    <div class="lcard reveal"><div class="idx">LAB 04</div><div class="ico"><i class="cc-ic" data-ic="printer" aria-hidden="true"></i></div><h3>3D 打印一个零件</h3><p>用 FreeCAD 设计一个实用小零件，切片打印出来。</p><div class="steps"><b>工具</b>：FreeCAD、Cura、3D 打印机<br><b>验收</b>：打印件能装上、能受力</div></div>
+    <div class="lcard reveal"><div class="idx">LAB 05</div><div class="ico"></div><h3>仿真机械臂</h3><p>用 MuJoCo 或 Gazebo 仿真一台机械臂，学会控制关节。</p><div class="steps"><b>工具</b>：MuJoCo、Python<br><b>验收</b>：机械臂能按规划轨迹运动</div></div>
+    <div class="lcard reveal"><div class="idx">LAB 06</div><div class="ico"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></div><h3>数控小雕刻</h3><p>用 GRBL + Arduino，把一台小雕刻机跑起来。</p><div class="steps"><b>工具</b>：Arduino、GRBL、雕刻机<br><b>验收</b>：能刻出简单图案</div></div>
+  </div>
+</section>
+<section id="tools">
+  <div class="sec-head reveal">
+    <span class="no">TOOLBOX · 开源工具箱</span>
+    <h2>工科实训开源工具，开箱即用</h2>
+<figure class="cc-body-img"><img src="../assets/body/bb-lab.png" alt="ccowork · 工科实训基地 · 白驹 ccowork · 工科实训开源工具，开箱即用" loading="lazy"></figure>
+    <p>全部开源、可免费使用。绿色命令行为最快上手的安装方式，官网可下载安装包。</p>
+  </div>
+  <div id="cats"></div>
+</section>
+<section id="tutorials">
+  <div class="sec-head reveal">
+    <span class="no">TUTORIALS · 实训详细教程</span>
+    <h2>六个实训，一步步带你做出来</h2>
+    <p>从材料清单到验收标准，每一步都写清楚。跟着做，卡住了再回来看。</p>
+  </div>
+  <div class="lab">
+    <div class="lcard reveal"><div class="idx">TUT 01</div><div class="ico"><i class="cc-ic" data-ic="activity" aria-hidden="true"></i></div><h3>智能家居传感器</h3>
+      <div class="steps"><b>材料</b>：ESP32、DHT11、面包板、杜邦线<br><b>步骤</b>：1. 装 Arduino IDE <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 2. 附加开发板地址填 espressif 的 index.json <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 3. 开发板管理器装 ESP32 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 4. 库管理装 DHT sensor library <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 5. 数据脚接 GPIO4、供电接 3.3V <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 6. 上传示例代码<br><b>验收</b>：串口监视器每 2 秒刷新一次温湿度</div></div>
+    <div class="lcard reveal"><div class="idx">TUT 02</div><div class="ico"><i class="cc-ic" data-ic="car" aria-hidden="true"></i></div><h3>循迹小车</h3>
+      <div class="steps"><b>材料</b>：Arduino Uno、L298N、循迹模块 ×2、底盘、18650 电池<br><b>步骤</b>：1. L298N 接电机与电源 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 2. 循迹模块装车头、信号脚接 A0/A1 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 3. 写控制逻辑：左传感器离线则右转、右离线则左转、都在线直行 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 4. 调速度与灵敏度<br><b>验收</b>：小车沿黑线稳定跑完一圈</div></div>
+    <div class="lcard reveal"><div class="idx">TUT 03</div><div class="ico"><i class="cc-ic" data-ic="plug" aria-hidden="true"></i></div><h3>第一块 PCB</h3>
+      <div class="steps"><b>材料</b>：KiCad、嘉立创打样订单<br><b>步骤</b>：1. 新建工程画原理图 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 2. 给元件分配封装 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 3. PCB 编辑器布线 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 4. 规则检查 DRC <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 5. 导出 Gerber 压缩包 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 6. 嘉立创下单<br><b>验收</b>：收到板子焊接后功能正常</div></div>
+    <div class="lcard reveal"><div class="idx">TUT 04</div><div class="ico"><i class="cc-ic" data-ic="printer" aria-hidden="true"></i></div><h3>3D 打印零件</h3>
+      <div class="steps"><b>材料</b>：FreeCAD、Cura、PLA 耗材<br><b>步骤</b>：1. FreeCAD 草图画出截面 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 2. 拉伸成实体 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 3. 导出 STL <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 4. Cura 切片（层高 0.2、填充 20%）<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 5. 打印<br><b>验收</b>：打印件尺寸准确、能装配</div></div>
+    <div class="lcard reveal"><div class="idx">TUT 05</div><div class="ico"></div><h3>仿真机械臂</h3>
+      <div class="steps"><b>材料</b>：MuJoCo、Python<br><b>步骤</b>：1. pip install mujoco <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 2. 下载机械臂 MJCF 模型 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 3. 写控制脚本设定关节角 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 4. viewer 可视化<br><b>验收</b>：机械臂按规划轨迹平滑运动</div></div>
+    <div class="lcard reveal"><div class="idx">TUT 06</div><div class="ico"><i class="cc-ic" data-ic="settings" aria-hidden="true"></i></div><h3>数控小雕刻</h3>
+      <div class="steps"><b>材料</b>：Arduino Uno、CNC 扩展板、小雕刻机<br><b>步骤</b>：1. 给 Arduino 刷 GRBL 固件 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 2. 接步进驱动与限位开关 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 3. 用 UGS 连机 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 4. 发送 G 代码 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 5. 对刀试雕<br><b>验收</b>：能刻出清晰的简单图案</div></div>
+  </div>
+</section>
+<section id="advanced">
+  <div class="sec-head reveal">
+    <span class="no">ADVANCED · 进阶深化</span>
+    <h2>把 AI 焊进硬件：进阶实训与玩法</h2>
+    <p>六个基础实训做完，往下走是"AI + 硬件"。这里不只是动手，是用大模型当你的工程搭档。</p>
+  </div>
+  <div class="sec-head reveal" style="margin-top:10px"><span class="no">PROJECTS · 进阶项目</span><h2 style="font-size:24px">六个进阶实训，做出会"看"会"听"的硬件</h2></div>
+  <div class="lab">
+    <div class="lcard reveal"><div class="idx">ADV 01</div><div class="ico"><i class="cc-ic" data-ic="eye" aria-hidden="true"></i></div><h3>AI 视觉小车</h3><p>ESP32-CAM + 图像识别，从循线升级到识别标志与物体。</p><div class="steps"><b>工具</b>：ESP32-CAM、OpenCV / Edge Impulse<br><b>验收</b>：小车能识别"停止"标志并刹车</div></div>
+    <div class="lcard reveal"><div class="idx">ADV 02</div><div class="ico"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i></div><h3>语音控制家居</h3><p>语音识别模块 + ESP32，喊一句"开灯"就亮。</p><div class="steps"><b>工具</b>：ESP32、语音识别模块、继电器<br><b>验收</b>：离线语音能控制三路开关</div></div>
+    <div class="lcard reveal"><div class="idx">ADV 03</div><div class="ico"></div><h3>机械臂实机</h3><p>六自由度机械臂 + 逆运动学，从仿真走向实物。</p><div class="steps"><b>工具</b>：机械臂套件、ROS / Arduino<br><b>验收</b>：机械臂能抓取并搬运小物体</div></div>
+    <div class="lcard reveal"><div class="idx">ADV 04</div><div class="ico"><i class="cc-ic" data-ic="terminal" aria-hidden="true"></i></div><h3>边缘 AI 部署</h3><p>把轻量模型跑在开发板上，离线识别不联网。</p><div class="steps"><b>工具</b>：ESP32-S3 / 树莓派、TinyML、ONNX<br><b>验收</b>：设备端完成实时图像分类</div></div>
+    <div class="lcard reveal"><div class="idx">ADV 05</div><div class="ico"></div><h3>无人机飞控</h3><p>开源飞控 + 姿态解算，理解无人机怎么稳。</p><div class="steps"><b>工具</b>：开源飞控板、Betaflight / ArduPilot<br><b>验收</b>：飞机能自稳悬停</div></div>
+    <div class="lcard reveal"><div class="idx">ADV 06</div><div class="ico"><i class="cc-ic" data-ic="cloud" aria-hidden="true"></i></div><h3>IoT 物联平台</h3><p>多设备接入 + 云看板，做一套自己的物联网。</p><div class="steps"><b>工具</b>：ESP32、MQTT、Node-RED<br><b>验收</b>：手机看板实时显示多个传感器</div></div>
+  </div>
+  <div class="sec-head reveal" style="margin:50px 0 20px"><span class="no">AI × HARDWARE · AI 当工程搭档</span><h2 style="font-size:24px">五个让 AI 帮你做硬件的方法</h2></div>
+  <div class="lab">
+    <div class="lcard reveal"><div class="idx">玩法 01</div><div class="ico"><i class="cc-ic" data-ic="monitor" aria-hidden="true"></i></div><h3>让 AI 写单片机代码</h3><p>把需求说清楚：芯片型号、引脚、功能，DeepSeek 直接输出可编译的 Arduino / MicroPython 代码，你再微调。</p></div>
+    <div class="lcard reveal"><div class="idx">玩法 02</div><div class="ico"><i class="cc-ic" data-ic="search" aria-hidden="true"></i></div><h3>让 AI 审查电路</h3><p>把原理图描述或截图给 AI，让它找隐患：电源、去耦、上拉、散热、ESD 保护。</p></div>
+    <div class="lcard reveal"><div class="idx">玩法 03</div><div class="ico"><i class="cc-ic" data-ic="ruler" aria-hidden="true"></i></div><h3>让 AI 生成 G 代码</h3><p>描述加工路径和材料，AI 帮你生成 G 代码或给出 CNC 参数建议。</p></div>
+    <div class="lcard reveal"><div class="idx">玩法 04</div><div class="ico"><i class="cc-ic" data-ic="stethoscope" aria-hidden="true"></i></div><h3>让 AI 排查故障</h3><p>把症状说清楚："上电没反应、灯不亮"，AI 给出一套从电源到信号的排查顺序。</p></div>
+    <div class="lcard reveal"><div class="idx">玩法 05</div><div class="ico"></div><h3>让 AI 设计 3D 思路</h3><p>描述零件用途和受力，AI 给出建模步骤、壁厚、支撑与打印方向建议。</p></div>
+  </div>
+  <div class="sec-head reveal" style="margin:50px 0 20px"><span class="no">PROMPTS · 对话实例</span><h2 style="font-size:24px">五个提示词，直接抄着用</h2></div>
+  <div class="lab">
+    <div class="lcard reveal"><div class="idx">实例 01 · 写代码</div><div class="ico"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><h3>让 AI 写 ESP32 温湿度代码</h3><p style="font-family:var(--mono);font-size:13px;background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#c9e8d0;line-height:1.7">"你是嵌入式工程师。我用 ESP32，DHT11 数据脚接 GPIO4。请写 Arduino 代码：每 2 秒读取温湿度并串口打印，要求带注释并说明接线。"</p></div>
+    <div class="lcard reveal"><div class="idx">实例 02 · 审电路</div><div class="ico"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><h3>让 AI 审查 5V 转 3.3V 电路</h3><p style="font-family:var(--mono);font-size:13px;background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#c9e8d0;line-height:1.7">"我画了一个 5V 转 3.3V 供电电路，用 AMS1117-3.3，输出端接 10uF 电容。请指出可能的问题，并给出改进建议。"</p></div>
+    <div class="lcard reveal"><div class="idx">实例 03 · G 代码</div><div class="ico"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><h3>让 AI 生成雕刻 G 代码</h3><p style="font-family:var(--mono);font-size:13px;background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#c9e8d0;line-height:1.7">"用 GRBL 控制 CNC，在 100×100mm 木板中心刻直径 30mm、深 1mm 的圆。请给出安全的下刀路径 G 代码，并解释参数含义。"</p></div>
+    <div class="lcard reveal"><div class="idx">实例 04 · 排故障</div><div class="ico"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><h3>让 AI 排查小车不转</h3><p style="font-family:var(--mono);font-size:13px;background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#c9e8d0;line-height:1.7">"我的 Arduino 小车接电池后板子灯亮但电机不转，L298N 接 12V，Arduino 用 USB 供电。请按从电源到信号的顺序列出排查步骤。"</p></div>
+    <div class="lcard reveal"><div class="idx">实例 05 · 3D 建模</div><div class="ico"><i class="cc-ic" data-ic="message-circle" aria-hidden="true"></i></div><h3>让 AI 给手机支架建模思路</h3><p style="font-family:var(--mono);font-size:13px;background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#c9e8d0;line-height:1.7">"我要设计一个承重 300g 的手机支架，用 PLA 打印。请给出建模步骤，包括壁厚、填充率、支撑和打印方向建议。"</p></div>
+  </div>
+</section>
+<div class="cta reveal">
+  <h2>数字 AI 会想，<span>物理 AI 会动</span></h2>
+  <p>工科实训，是你从"会用 AI"走向"造出实物"的那座桥。</p>
+  <a class="btn btn-primary" href="/"><i class="cc-ic" data-ic="arrow-right"></i> 返回门户首页 </a>
+</div>
+<footer>
+  <div class="logo">白驹 ccowork · 工科实训基地</div>
+  <p>开源硬件与工程实训 · 安装命令以各项目官方文档为准 · 2026</p>
+</footer>
+<script>
+const LAB = [
+  ["电子设计 · EDA","KiCad","开源 PCB 设计，画原理图与布线","官网下载 https://www.kicad.org"],
+  ["电子设计 · EDA","LTspice","免费电路仿真，验证模拟电路","官网下载 https://www.analog.com"],
+  ["电子设计 · EDA","Falstad","在线电路仿真，无需安装","网页打开 falstad.com/circuit"],
+  ["单片机 · 嵌入式","Arduino IDE","开源硬件开发环境，入门首选","官网下载 arduino.cc"],
+  ["单片机 · 嵌入式","PlatformIO","VS Code 里的嵌入式开发平台","VS Code 插件搜索 PlatformIO"],
+  ["单片机 · 嵌入式","ESP32","乐鑫 WiFi/蓝牙芯片，物联网主力","pip install esptool"],
+  ["3D 打印 · 建模","FreeCAD","开源参数化 CAD，机械设计","官网下载 freecad.org"],
+  ["3D 打印 · 建模","OpenSCAD","用代码写 3D 模型，程序员友好","官网下载 openscad.org"],
+  ["3D 打印 · 建模","Blender","开源 3D 建模与动画","官网下载 blender.org"],
+  ["3D 打印 · 建模","Cura","切片软件，把模型转成打印路径","官网下载 ultimaker.com"],
+  ["3D 打印 · 建模","PrusaSlicer","切片软件，多机型支持","官网下载 prusa3d.com"],
+  ["数控 · CNC","LinuxCNC","开源数控系统，驱动机床","官网下载 linuxcnc.org"],
+  ["数控 · CNC","GRBL","开源 G 代码解释器，跑 Arduino","github.com/grbl/grbl"],
+  ["数控 · CNC","grblHAL","GRBL 硬件抽象层，多平台","github.com/grblHAL"],
+  ["机器人 · 具身","ROS 2","机器人操作系统，行业标准","官网安装 docs.ros.org"],
+  ["机器人 · 具身","MuJoCo","物理引擎，机器人仿真与强化学习","pip install mujoco"],
+  ["机器人 · 具身","Gazebo","机器人仿真环境","官网下载 gazebosim.org"],
+  ["机器人 · 具身","Webots","开源机器人仿真，带可视化","官网下载 cyberbotics.com"],
+  ["仿真 · 计算","OpenFOAM","开源流体力学仿真","官网下载 openfoam.org"],
+  ["仿真 · 计算","CalculiX","开源有限元分析 FEM","官网下载 calculix.de"],
+  ["仿真 · 计算","GNU Octave","开源 MATLAB 替代，数值计算","官网下载 octave.org"],
+  ["仿真 · 计算","Jupyter","交互式笔记本，科学计算标配","pip install jupyter"]
+];
+const cats=[...new Set(LAB.map(d=>d[0]))];
+document.getElementById('cats').innerHTML=cats.map((c,i)=>{
+  const cards=LAB.filter(d=>d[0]===c).map(d=>
+    `<div class="tool"><h3>${d[1]}</h3><p>${d[2]}</p><div class="cmd">${d[3]}</div></div>`).join('');
+  return `<div class="cat-head"><span class="n">0${i+1}</span><h2>${c}</h2></div><div class="grid">${cards}</div>`;
+}).join('');
+// 星野
+const c=document.getElementById('sky'),x=c.getContext('2d');let W,H,stars=[];
+function rs(){W=c.width=innerWidth;H=c.height=innerHeight;stars=[];const n=Math.floor(W*H/4800);
+  for(let i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.3,a:Math.random()*.6+.2,v:Math.random()*.2+.04});}
+function draw(){x.clearRect(0,0,W,H);for(const s of stars){s.y-=s.v;if(s.y<0){s.y=H;s.x=Math.random()*W}
+  x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fillStyle='rgba(200,225,255,'+s.a+')';x.fill();}requestAnimationFrame(draw);}
+rs();draw();addEventListener('resize',rs);
+// 进度条
+const bar=document.getElementById('progress');
+addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'});
+// 入场动画
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

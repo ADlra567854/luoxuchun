@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>每日观察 · 11 月 26 日三件事：显存被盘到 PB 级、算力租金打了八折、一条中国标准漂洋过海 · 白驹 ccowork</title>
+<meta name="description" content="11 月 26 日三件事：显存被盘到 PB 级、算力租金打了八折、一条中国标准漂洋过海。全部标注来源，可点回原文。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/feed/picks.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+article.merged-content{max-width:1080px!important}
+.fk-wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px}
+.fk-hero{margin:0 0 26px}
+.fk-date{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;color:#7048d0;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.26);padding:5px 14px;border-radius:999px;margin-bottom:15px}
+[data-theme="deep"] .fk-date{color:#c4a6ff;background:rgba(196,166,255,.1);border-color:rgba(196,166,255,.26)}
+.fk-hero h1{font-size:clamp(24px,3.6vw,36px);font-weight:900;line-height:1.36;margin:0 0 14px;letter-spacing:-.3px}
+.fk-hero .fk-lede{font-size:14.5px;line-height:1.9;color:var(--muted);max-width:800px;margin:0}
+.fk-rule{height:2px;border:0;background:linear-gradient(90deg,rgba(79,140,255,.55),rgba(139,92,246,.18),transparent);margin:24px 0 0}
+.fk-back{display:inline-block;margin-bottom:14px;font-size:13px;font-weight:800;color:#2f5fd0;text-decoration:none}
+.fk-back:hover{text-decoration:underline}
+[data-theme="deep"] .fk-back{color:#7fe4ff}
+
+/* 精选稿：给足留白，读起来像一篇东西而不是一屏卡片 */
+.pk{background:var(--card);border:1px solid rgba(120,150,200,.18);border-left:3px solid rgba(79,140,255,.65);border-radius:4px 16px 16px 4px;padding:24px 26px;margin:0 0 18px;transition:.18s}
+.pk:hover{border-left-color:rgba(139,92,246,.8);box-shadow:0 10px 30px rgba(79,140,255,.09)}
+.pk-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.pk-no{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,#4f8cff,#8b5cf6);width:26px;height:26px;border-radius:8px;display:grid;place-items:center}
+.pk-tag{font-size:11.5px;font-weight:700;color:var(--muted);background:rgba(120,150,200,.1);padding:3px 10px;border-radius:999px}
+.pk-hook{font-size:clamp(17px,2.2vw,21px);font-weight:800;line-height:1.62;margin:0 0 15px;color:var(--text);letter-spacing:-.2px}
+.pk-fact{font-size:14.5px;line-height:1.95;margin:0 0 15px;color:var(--muted);padding-left:14px;border-left:2px solid rgba(120,150,200,.24)}
+.pk-point{font-size:14.5px;line-height:1.95;margin:0 0 16px;color:var(--text);background:rgba(79,140,255,.055);border-radius:11px;padding:14px 16px}
+.pk-point b{display:block;font-size:11.5px;font-weight:800;color:#2f5fd0;letter-spacing:1px;margin-bottom:6px}
+[data-theme="deep"] .pk-point b{color:#7fe4ff}
+.pk-foot{padding-top:2px}
+.pk-src{font-size:12.5px;font-weight:700;color:#2f5fd0;text-decoration:none;border:none!important}
+.pk-src:hover{text-decoration:underline}
+[data-theme="deep"] .pk-src{color:#7fe4ff}
+
+.fl-hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:34px 0 6px;padding-top:26px;border-top:1px solid rgba(120,150,200,.2)}
+.fl-hd h2{font-size:19px;font-weight:900;margin:0}
+.fl-hd span{font-size:12.5px;color:var(--muted)}
+.fl-sec{margin:18px 0 0}
+.fl-sec h3{font-size:14px;font-weight:800;margin:0 0 9px;display:flex;align-items:center;gap:8px}
+.fl-sec h3::before{content:"";width:3px;height:14px;border-radius:2px;background:linear-gradient(#4f8cff,#8b5cf6)}
+.fl-sec h3 em{font-size:11px;font-weight:700;color:var(--muted);font-style:normal;background:rgba(120,150,200,.12);padding:1px 8px;border-radius:999px}
+.fl-list{display:flex;flex-direction:column;gap:5px}
+.fl-row{display:block;text-decoration:none;padding:9px 13px;border-radius:10px;border:1px solid transparent;transition:.14s}
+.fl-row:hover{background:rgba(79,140,255,.055);border-color:rgba(79,140,255,.22)}
+.fl-row b{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.55;margin-bottom:3px}
+.fl-row small{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;font-size:12px;color:var(--muted);line-height:1.6}
+.fl-row i{display:block;font-size:11px;color:var(--muted);opacity:.8;font-style:normal;margin-top:3px}
+.fk-note{margin-top:26px;padding:15px 17px;border-radius:13px;background:rgba(120,150,200,.07);border:1px solid rgba(120,150,200,.16);font-size:12.5px;line-height:1.9;color:var(--muted)}
+.fk-note b{color:var(--text)}
+@media(max-width:640px){
+  .fk-wrap{padding:16px 14px 46px}
+  .pk{padding:18px 17px;margin-bottom:14px;border-radius:3px 13px 13px 3px}
+  .pk-hook{font-size:16.5px;line-height:1.66}
+  .pk-fact,.pk-point{font-size:14px;line-height:1.88}
+  .pk-point{padding:12px 13px}
+}
+</style>
+</head>
+<body data-ccnav="feed" data-cctitle="每日观察">
+
+<div class="fk-wrap" data-bj-comments>
+  <!-- 评论宿主显式指定本容器，避免评论区插到第一张卡片后切断阅读流 -->
+
+  <div class="fk-hero">
+    <a class="fk-back" href="/feed/#post-2026-11-26">← 返回每日前沿</a>
+    <span class="fk-date">2026-11-26 · 每日观察</span>
+    <h1>11 月 26 日三件事：显存被盘到 PB 级、算力租金打了八折、一条中国标准漂洋过海</h1>
+    <p class="fk-lede">每天从几十条 AI 新闻里挑出几条真正有信息量的，说清它<b>改变了什么</b>、<b>跟你有什么关系</b>。不做标题罗列，不搬媒体导语。所有事实都能点回原文。</p>
+    <hr class="fk-rule">
+  </div>
+
+  <article class="pk">
+    <div class="pk-hd"><span class="pk-no">01</span><span class="pk-tag">算力硬件</span></div>
+    <p class="pk-hook">GPU 显存不够用，靠 SSD 来凑——这次凑到了 PB 这个量级。</p>
+    <p class="pk-fact">铠侠 11 月 26 日宣布与英伟达展开面向 AI 应用的概念验证合作，利用英伟达 SCADA 软件结合铠侠 SSD 的性能，探索将 GPU 有效显存扩展至 PB 级。</p>
+    <p class="pk-point"><b>跟你有什么关系</b>显存墙是大模型推理最贵的瓶颈之一。如果 SSD 分层存储真的被验证可用，本地跑大模型的门槛会从「显存预算」变成「硬盘预算」——对自建党的意义比对新卡发布大。</p>
+    <div class="pk-foot"><a class="pk-src" href="https://www.ithome.com/1/032/722.htm" target="_blank" rel="noopener noreferrer nofollow">原文 · IT之家 ↗</a></div>
+  </article>
+  <article class="pk">
+    <div class="pk-hd"><span class="pk-no">02</span><span class="pk-tag">算力市场</span></div>
+    <p class="pk-hook">卖算力的又多了一家，还是那个把火箭送上天的人——而且一上来就打折。</p>
+    <p class="pk-fact">行业研究机构 SemiAnalysis 11 月 25 日发布报告称，SpaceX 正在下调其 AI 计算资源的租赁价格，降幅约 20%~35%，其重要客户包括 Anthropic。</p>
+    <p class="pk-point"><b>跟你有什么关系</b>算力租凭价格松动，最先传导到的是 API 定价和创业公司的成本模型。对个人开发者，这意味着「自己租卡微调」和「直接买 API」之间的账，每个月都要重算一遍。</p>
+    <div class="pk-foot"><a class="pk-src" href="https://www.ithome.com/1/032/716.htm" target="_blank" rel="noopener noreferrer nofollow">原文 · IT之家（引 SemiAnalysis） ↗</a></div>
+  </article>
+  <article class="pk">
+    <div class="pk-hd"><span class="pk-no">03</span><span class="pk-tag">标准治理</span></div>
+    <p class="pk-hook">训练数据怎么才算干净，中国人牵头写的答案，欧洲 30 多个国家开始照着做。</p>
+    <p class="pk-fact">据央视新闻 11 月 26 日报道，由我国专家牵头制定的人工智能训练数据质量国际标准（ISO / IEC 5259-4:2024）已被欧洲相关机构采纳，成为 30 余个欧洲国家 AI 合规评估的重要技术参考。</p>
+    <p class="pk-point"><b>跟你有什么关系</b>AI 合规的「考卷」开始有了统一的出题人。做数据集、卖数据服务的团队，把 5259-4 读一遍，比追每一国各自出台的细则省力得多。</p>
+    <div class="pk-foot"><a class="pk-src" href="https://www.ithome.com/1/032/714.htm" target="_blank" rel="noopener noreferrer nofollow">原文 · IT之家（引央视新闻） ↗</a></div>
+  </article>
+  <article class="pk">
+    <div class="pk-hd"><span class="pk-no">04</span><span class="pk-tag">AI 安全</span></div>
+    <p class="pk-hook">「人类把控制权交给 AI」这句话，被当事人本人当场斥为荒谬。</p>
+    <p class="pk-fact">Anthropic 首席执行官达里奥·阿莫迪 11 月 26 日在 X 平台公开否认外界对其「主张人类应向 AI 交出自由意志」的指控，称这种说法荒谬，并讽刺某些对手口是心非。</p>
+    <p class="pk-point"><b>跟你有什么关系</b>头部实验室创始人下场打嘴仗，说明 AI 安全叙事已经成了竞争阵地。普通人看热闹之余记住一点：谁来定义「安全」本身，正在变成一门生意。</p>
+    <div class="pk-foot"><a class="pk-src" href="https://www.ithome.com/1/032/655.htm" target="_blank" rel="noopener noreferrer nofollow">原文 · IT之家 ↗</a></div>
+  </article>
+
+  <div class="fl-hd">
+    <h2>11 月 26 日其余 8 条</h2>
+    <span>按类归档 · 全部可点回原文 ── 共收 89 条</span>
+  </div>
+
+  <section class="fl-sec">
+    <h3>模型发布<em>1</em></h3>
+    <div class="fl-list">
+      <a class="fl-row" href="https://arxiv.org/abs/2611.33160" target="_blank" rel="noopener noreferrer nofollow">
+        <b>Context Scaling: A New Frontier of AI Scaling</b>
+        <small>arXiv:2611.33160v1 Announce Type: new Abstract: Many failures of deployed AI arise not from weak</small>
+        <i>arXiv cs.AI</i>
+      </a>
+    </div>
+  </section>
+  <section class="fl-sec">
+    <h3>开发工具<em>2</em></h3>
+    <div class="fl-list">
+      <a class="fl-row" href="https://www.oschina.net/news/503823" target="_blank" rel="noopener noreferrer nofollow">
+        <b>污染 0.1% 的预训练数据，就能给 AI 智能体埋下洗不掉的后门</b>
+        <small>只污染 0.1% 的预训练数据，就能给一个 AI 智能体埋下后门。而且用完全干净的数据做微调和强化学习，也清不掉。 这是一篇论文的结论，标题叫《Agentic Backdoors via Pr</small>
+        <i>开源中国</i>
+      </a>
+      <a class="fl-row" href="https://www.oschina.net/news/503822/agents-are-very-harsh-customers" target="_blank" rel="noopener noreferrer nofollow">
+        <b>微软 Copilot 负责人：很多软件的主要客户以后不再是人类</b>
+        <small>“很多软件的主要客户，以后可能不再是人类了。” 说这话的是 Charles Lamanna，微软负责 Copilot、智能体与平台业务的执行副总裁。他在接受 Peter Yang 采访时给出的</small>
+        <i>开源中国</i>
+      </a>
+    </div>
+  </section>
+  <section class="fl-sec">
+    <h3>研究论文<em>1</em></h3>
+    <div class="fl-list">
+      <a class="fl-row" href="https://arxiv.org/abs/2611.33161" target="_blank" rel="noopener noreferrer nofollow">
+        <b>Constraint-Aware Test-Time Scoring for LLM and VLM Candidate Selection</b>
+        <small>arXiv:2611.33161v1 Announce Type: new Abstract: When an LLM or VLM produces several candidate an</small>
+        <i>arXiv cs.AI</i>
+      </a>
+    </div>
+  </section>
+  <section class="fl-sec">
+    <h3>其他<em>4</em></h3>
+    <div class="fl-list">
+      <a class="fl-row" href="https://www.tmtpost.com/8218430.html" target="_blank" rel="noopener noreferrer nofollow">
+        <b>解密奥斯汀208号展位的“幽灵事件”：OpenAI亲手解散机器人团队，机器人行业却要变天？</b>
+        <small>屏幕里的AI改变的只是我们的工作方式，而一旦AI长出了手和脚，它重塑的，将是整个人类文明的物理边界。</small>
+        <i>钛媒体</i>
+      </a>
+      <a class="fl-row" href="https://www.ithome.com/1/032/745.htm" target="_blank" rel="noopener noreferrer nofollow">
+        <b>阿里达摩院玄铁 IP 芯片累计出货超 60 亿颗，安卓 17 正式支持 RISC-V</b>
+        <small>2026 集成电路发展论坛（北京）暨第三十二届集成电路设计业展览会（ICCAD-Expo 2026）于 11 月 19 日-20 日在北京亦庄举办，阿里巴巴达摩院首席科学家孟建熠（IT之家注读</small>
+        <i>IT之家</i>
+      </a>
+      <a class="fl-row" href="https://sspai.com/post/117510" target="_blank" rel="noopener noreferrer nofollow">
+        <b>我用AI做了一张两千年的中国历史地图</b>
+        <small>希望这张地图，能陪更多人走一遍故纸堆里的万里江山。查看全文</small>
+        <i>少数派</i>
+      </a>
+      <a class="fl-row" href="https://www.leiphone.com/category/yanxishe/T2xmmiMAC6WbuuCM.html" target="_blank" rel="noopener noreferrer nofollow">
+        <b>国产模型扎进 AI4S 深水区，几毫秒破译尘封18年密码学悬案</b>
+        <small>作者丨高允毅 编辑丨岑 峰 11月20日， AI for Science 迎来了一个载入史册的日子：Anthropic 数学家联合 Claude 拿下黎曼猜想的关键突破，同一天，以复杂的数学计</small>
+        <i>雷峰网</i>
+      </a>
+    </div>
+  </section>
+
+  <div class="fk-note">
+    <b>为什么只挑几条</b>：原来这一页是 420 条的标题清单，六成是游戏停服、机箱导购、演员八卦这类跟 AI 无关的内容，剩下四成也是把媒体导语整段搬过来。看完记不住任何一件，所以现在改成「几句写透 + 全量可查」。<br>
+    <b>事实边界</b>：精选稿的每个数字都来自下面那批原文摘要，没有额外推断，也没有为了顺口改数字。原文链接都在。<br>
+    <b>写稿方式</b>：人工撰稿（<code>data/front-picks.json</code>），每天 3–5 条。日更脚本负责抓取与归档，不自动生成观点。
+  </div>
+
+</div>
+
+<script src="/site-nav.js"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

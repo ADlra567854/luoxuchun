@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="全部开源仓库 Ollama 185,100 星 Go MIT 推理运行 本地跑模型最短的一条路，一条命令就能对话 185,100 GitHub 星数 Go 主语言 MIT 许可 推理运行 分类 它解决的是哪一步 先把定位…">
+<meta name="keywords" content="白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ollama · 开源项目 · 白驹 ccowork</title>
+<meta name="description" content="全部开源仓库 Ollama 185,100 星 Go MIT 推理运行 本地跑模型最短的一条路，一条命令就能对话 185,100 GitHub 星数 Go 主语言 MIT 许可 推理运行 分类 它解决的是哪一步 先把定位…">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/page-ext.css">
+<link rel="stylesheet" href="/repo-page.css">
+<meta name="twitter:description" content="全部开源仓库 Ollama 185,100 星 Go MIT 推理运行 本地跑模型最短的一条路，一条命令就能对话 185,100 GitHub 星数 Go 主语言 MIT 许可 推理运行 分类 它解决的是哪一步 先把定位…">
+<link rel="canonical" href="https://ccoworkbaiju.cn/toolbox/p/ollama.html">
+<meta property="og:title" content="Ollama · 开源项目 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/toolbox/p/ollama.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ollama · 开源项目 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="toolbox" data-cctitle="Ollama">
+<main class="pg-wrap">
+
+  <div class="pg-hero">
+    <div data-cccrumb="开源仓库"></div>
+    <a class="rp-back" href="/toolbox/repos.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>全部开源仓库</a>
+    <h1>Ollama</h1>
+    <div class="rp-meta"><span class="rp-pill star"><i class="cc-ic" data-ic="star" aria-hidden="true"></i>185,100 星</span><span class="rp-pill"><i class="cc-ic" data-ic="code" aria-hidden="true"></i>Go</span><span class="rp-pill"><i class="cc-ic" data-ic="scale" aria-hidden="true"></i>MIT</span><span class="rp-pill"><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>推理运行</span></div>
+    <p class="lede">本地跑模型最短的一条路，一条命令就能对话</p>
+  </div>
+
+  <div class="rp-cover"><img src="/assets/covers/repos/ollama__ollama.png" alt="Ollama 项目封面" loading="eager" width="1200" height="600"></div>
+
+  <div class="rp-stats">
+    <div class="st"><b>185,100</b><span>GitHub 星数</span></div>
+    <div class="st"><b>Go</b><span>主语言</span></div>
+    <div class="st"><b>MIT</b><span>许可</span></div>
+    <div class="st"><b>推理运行</b><span>分类</span></div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="target" aria-hidden="true"></i>它解决的是哪一步</h2><span class="sub">先把定位说清楚，再决定要不要装</span></div>
+    <div class="rp-lead">它把「下载模型、起服务、开对话」压成了一条 ollama run。底层是 llama.cpp，默认在 11434 端口开一个 OpenAI 兼容接口，所以你的应用不用改代码就能换成本地模型。真正的价值不是能跑，而是把一个原本要折腾半天的环境问题变成了三分钟的事。</div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="terminal" aria-hidden="true"></i>上手三步</h2><span class="sub">按顺序走，卡住基本都在第一步</span></div>
+    <div class="rp-steps">
+      <div class="rp-step"><div class="no">1</div><div class="tx"><b>装客户端</b><p>Windows 和 macOS 直接下安装包；Linux 用 curl -fsSL https://ollama.com/install.sh | sh。装完 ollama -v 能出版本号就算通。</p></div></div>
+      <div class="rp-step"><div class="no">2</div><div class="tx"><b>拉一个模型</b><p>ollama run qwen3 会自动下载并进入对话。模型越大显存吃得越多，8GB 显卡先从小参数版本试，别一上来点满。</p></div></div>
+      <div class="rp-step"><div class="no">3</div><div class="tx"><b>接到自己的程序</b><p>它已经在 http://localhost:11434/v1 暴露了 OpenAI 兼容端点，base_url 指过去、api_key 随便填一个非空值即可。</p></div></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="shield" aria-hidden="true"></i>适合与不适合</h2><span class="sub">不适合的部分比适合更值得看</span></div>
+    <div class="rp-fit">
+      <div class="rp-col yes"><h3><i class="cc-ic" data-ic="circle-check" aria-hidden="true"></i>适合你，如果</h3><ul>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>本地试模型、比较不同参数档的实际手感</li>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>做原型和 Demo，不想先解决部署问题</li>
+        <li><i class="cc-ic" data-ic="check" aria-hidden="true"></i>单机开发环境，自己一个人用</li>
+      </ul></div>
+      <div class="rp-col no"><h3><i class="cc-ic" data-ic="circle-x" aria-hidden="true"></i>换别的，如果</h3><ul>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>5 并发以上的对外服务——吞吐撑不住，换 vLLM</li>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>需要张量并行跑超大模型的多卡场景</li>
+        <li><i class="cc-ic" data-ic="x" aria-hidden="true"></i>要做细粒度的批处理调度和显存配额</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="layers" aria-hidden="true"></i>推理运行里的其他选择</h2><span class="sub">同类不必只看一个</span></div>
+    <div class="rp-sib">
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/ggml-org__llama.cpp.png" alt="" loading="lazy"><span class="tx"><b>llama.cpp</b><span>132,600 星 · C++</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a class="rp-sib-card" href="/toolbox/p/vllm.html"><img src="/assets/covers/repos/vllm-project__vllm.png" alt="" loading="lazy"><span class="tx"><b>vLLM</b><span>62,400 星 · Python</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+      <a class="rp-sib-card" href="/toolbox/repos.html"><img src="/assets/covers/repos/exo-explore__exo.png" alt="" loading="lazy"><span class="tx"><b>exo</b><span>48,100 星 · Python</span></span><i class="cc-ic go" data-ic="arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <div class="rp-src">
+    <a href="https://github.com/ollama/ollama" target="_blank" rel="noopener"><i class="cc-ic" data-ic="github" aria-hidden="true"></i>去 GitHub 看源码</a>
+    <a class="alt" href="/toolbox/repos.html"><i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i>回到开源仓库列表</a>
+  </div>
+
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

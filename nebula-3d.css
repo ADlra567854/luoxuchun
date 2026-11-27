@@ -1,0 +1,241 @@
+/* ============================================================
+   nebula-3d.css · 轻量 3D 交互层（原生 CSS，零依赖）
+   设计目标：真实景深 / 柔和倒角 / 次表面光泽 / 物理抬升
+   性能约束：只动 transform + opacity + box-shadow，不触发重排
+   分层策略：html[data-nb3d] = high|mid|low，低端设备自动降级
+   ============================================================ */
+
+/* ---------- 1. 令牌 ---------- */
+:root {
+  --nb3-ease-spring: cubic-bezier(.16, 1.12, .28, 1);
+  --nb3-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --nb3-vel: .18;          /* 倾斜灵敏度 */
+  --nb3-hi: 0;             /* 高光强度 0-1 */
+  --nb3-sha: 0;            /* 投影浓度 0-1 */
+  --nb3-shx: 0px;
+  --nb3-shy: 8px;
+  --nb3-shb: 26px;
+}
+
+/* 每张卡片的运行时变量（JS 写入，CSS 只读） */
+.nb3d-card {
+  --nb3-rx: 0deg;
+  --nb3-ry: 0deg;
+  --nb3-tz: 0px;
+  --nb3-s: 1;
+  --nb3-mx: 50%;
+  --nb3-my: 50%;
+}
+
+/* ---------- 2. 卡片立体底座 ---------- */
+.nb3d-scene { perspective: 1100px; perspective-origin: 50% 42%; }
+
+.nb3d-card {
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 18px !important;
+  /* 三层：顶部受光倒角 + 底部接触阴影 + 环境扩散阴影 */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .92),
+    inset 0 -1px 0 rgba(11, 18, 48, .045),
+    inset 0 0 0 1px rgba(219, 226, 242, .85),
+    0 1px 2px rgba(15, 32, 68, .04),
+    0 calc(6px + var(--nb3-shy)) calc(18px + var(--nb3-shb)) rgba(15, 32, 68, calc(.05 + var(--nb3-sha) * .12)) !important;
+  transform:
+    translate3d(0, 0, var(--nb3-tz))
+    rotateX(var(--nb3-rx))
+    rotateY(var(--nb3-ry))
+    scale(var(--nb3-s)) !important;
+  transition: box-shadow .34s var(--nb3-ease-out), border-color .3s ease !important;
+  will-change: auto;
+}
+
+/* 高光流动：跟随指针的柔和光斑（只给当前悬停的那一张渲染，控制合成开销） */
+.nb3d-card.is-hot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(220px circle at var(--nb3-mx) var(--nb3-my),
+      rgba(255, 255, 255, .62), rgba(255, 255, 255, .14) 40%, transparent 66%),
+    linear-gradient(135deg, rgba(79, 140, 255, .07), transparent 46%, rgba(139, 92, 246, .07));
+  opacity: var(--nb3-hi);
+  transition: opacity .32s var(--nb3-ease-out);
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+/* 边缘菲涅尔：让四角有玻璃感，同时收住 3D 旋转时的边缘断裂 */
+.nb3d-card.is-hot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5), inset 0 0 22px rgba(79, 140, 255, .05);
+  opacity: calc(var(--nb3-hi) * .9);
+  transition: opacity .32s var(--nb3-ease-out);
+  z-index: 2;
+}
+.nb3d-card > * { position: relative; z-index: 3; }
+
+/* 深色主题下调校：暗底不需要那么强的高光 */
+html[data-theme="deep"] .nb3d-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .12),
+    inset 0 0 0 1px rgba(120, 150, 220, .22),
+    0 1px 2px rgba(0, 0, 0, .3),
+    0 calc(8px + var(--nb3-shy)) calc(22px + var(--nb3-shb)) rgba(0, 0, 0, calc(.24 + var(--nb3-sha) * .2)) !important;
+}
+html[data-theme="deep"] .nb3d-card::before { mix-blend-mode: soft-light; }
+
+/* 卡片内的抬升元素：hover 时浮到 3D 空间前层（显式标记，避免误伤布局） */
+.nb3d-card [data-nb3d-lift] {
+  transform: translateZ(0);
+  transition: transform .42s var(--nb3-ease-out);
+}
+.nb3d-card:hover [data-nb3d-lift] { transform: translateZ(22px); }
+
+/* ---------- 3. 按压形变 ---------- */
+.nb3d-card.is-press {
+  --nb3-s: .972;
+  --nb3-tz: 0px;
+  --nb3-shy: 2px;
+  --nb3-shb: 6px;
+  transition: box-shadow .1s ease !important;
+}
+.nb3d-card.is-press::before { opacity: calc(var(--nb3-hi) * .5 + .2); }
+
+/* ---------- 4. 滚动入场 ----------
+   卡片与普通区块走两条路，避免和卡片的 transform 打架：
+   · 卡片：只做透明度过渡，纵深位移由 JS 写 --nb3-tz 弹簧归零（真 3D 浮出）
+   · 普通区块：直接做 CSS 3D 翻转位移                                    */
+.nb3d-reveal:not(.nb3d-card) {
+  opacity: 0;
+  transform: translate3d(0, 30px, -40px) rotateX(9deg);
+  transition:
+    opacity .62s var(--nb3-ease-out),
+    transform .72s var(--nb3-ease-spring);
+  transform-origin: 50% 100%;
+}
+.nb3d-reveal.in:not(.nb3d-card) { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg); }
+
+.nb3d-reveal[data-nb3d-from="left"]:not(.nb3d-card) { transform: translate3d(-26px, 12px, -30px) rotateY(-6deg); transform-origin: 0% 50%; }
+.nb3d-reveal[data-nb3d-from="right"]:not(.nb3d-card) { transform: translate3d(26px, 12px, -30px) rotateY(6deg); transform-origin: 100% 50%; }
+.nb3d-reveal[data-nb3d-from="left"].in:not(.nb3d-card),
+.nb3d-reveal[data-nb3d-from="right"].in:not(.nb3d-card) { transform: translate3d(0, 0, 0) rotateY(0deg); }
+
+/* 卡片入场：只淡入，纵深由 JS 弹簧补上 */
+.nb3d-card.nb3d-reveal { opacity: 0; transition: opacity .5s var(--nb3-ease-out), box-shadow .34s var(--nb3-ease-out) !important; }
+.nb3d-card.nb3d-reveal.in { opacity: 1; }
+
+/* ---------- 5. 弹窗 / 侧边面板：3D 空间进出场 ---------- */
+/* 遮罩独立成层，弹窗本体不搬家（保留原定位），景深直接写进 transform */
+.nb3d-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 8999;
+  background: rgba(8, 14, 34, .34);
+  -webkit-backdrop-filter: blur(9px) saturate(115%);
+  backdrop-filter: blur(9px) saturate(115%);
+  opacity: 0;
+  transition: opacity .26s ease;
+}
+.nb3d-overlay.in { opacity: 1; }
+.nb3d-overlay.out { opacity: 0; transition-duration: .22s; }
+
+.nb3d-panel {
+  transform: perspective(1200px) translate3d(0, 26px, -160px) rotateX(11deg) scale(.965);
+  transform-origin: 50% 55%;
+  opacity: 0;
+  transition: transform .44s var(--nb3-ease-spring), opacity .3s ease;
+}
+.nb3d-panel.in { transform: perspective(1200px) translate3d(0, 0, 0) rotateX(0deg) scale(1); opacity: 1; }
+.nb3d-panel.out {
+  transform: perspective(1200px) translate3d(0, 14px, -110px) rotateX(-7deg) scale(.975);
+  opacity: 0;
+  transition: transform .24s ease-in, opacity .2s ease-in;
+}
+
+/* 侧边抽屉：从右侧滑入并带轻微 Y 轴旋转 */
+.nb3d-panel[data-nb3d-kind="side"] {
+  transform: perspective(1200px) translate3d(46px, 0, -110px) rotateY(-9deg);
+  transform-origin: 100% 50%;
+}
+.nb3d-panel[data-nb3d-kind="side"].in { transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0deg); }
+.nb3d-panel[data-nb3d-kind="side"].out {
+  transform: perspective(1200px) translate3d(30px, 0, -70px) rotateY(6deg);
+}
+
+/* ---------- 6. 视差分层 ---------- */
+[data-nb3d-depth] {
+  will-change: transform;
+  transform: translate3d(0, calc(var(--nb3-scroll, 0px) * -1 * var(--nb3-depth, .1)), 0);
+}
+
+/* ---------- 6.5 页面自管侧边面板 ----------
+   页面只加 data-nb3d-side，显隐仍归页面自己的 .on / .show 管，本层不碰 DOM 与事件 */
+[data-nb3d-side] {
+  transform-origin: 100% 50%;
+  transition: transform .46s var(--nb3-ease-spring), opacity .28s ease;
+}
+[data-nb3d-side]:not(.on):not(.show) {
+  transform: perspective(1500px) translate3d(104%, 0, -120px) rotateY(-9deg);
+}
+[data-nb3d-side].on,
+[data-nb3d-side].show {
+  transform: perspective(1500px) translate3d(0, 0, 0) rotateY(0deg);
+}
+
+/* ---------- 6.6 双指缩放的承接层 ----------
+   由 data-nb3d-pinch 的宿主写入 --nb3-zoom，目标元素只负责渲染 */
+[data-nb3d-zoom] {
+  transform: scale(var(--nb3-zoom, 1));
+  transform-origin: 50% 50%;
+  transition: transform .18s var(--nb3-ease-out);
+  will-change: transform;
+}
+
+/* ---------- 7. 触屏：手势反馈 ---------- */
+/* 侧边面板展开时让开悬浮宠物，避免压住面板内容 */
+body:has([data-nb3d-side].on) #ccowork-pet,
+body:has([data-nb3d-side].show) #ccowork-pet,
+body:has(.nb3d-panel[data-nb3d-kind="side"].in) #ccowork-pet {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+.nb3d-touch .nb3d-card { transition: transform .2s var(--nb3-ease-out), box-shadow .24s ease !important; }
+.nb3d-touch .nb3d-card.is-hold {
+  --nb3-s: 1.014;
+  --nb3-hi: .8;
+}
+
+/* ---------- 8. 降级 ---------- */
+/* 中低端：去掉 screen 混合与菲涅尔，只留倾斜 + 投影 */
+html[data-nb3d="mid"] .nb3d-card.is-hot::after { display: none; }
+html[data-nb3d="mid"] .nb3d-card.is-hot::before { mix-blend-mode: normal; opacity: calc(var(--nb3-hi) * .55); }
+html[data-nb3d="mid"] .nb3d-overlay { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+
+/* 低端：完全关掉 3D，仅保留按压与淡入入场 */
+html[data-nb3d="low"] .nb3d-card::before,
+html[data-nb3d="low"] .nb3d-card::after { display: none !important; }
+html[data-nb3d="low"] .nb3d-card {
+  transform: none !important;
+  box-shadow: 0 1px 2px rgba(15, 32, 68, .05), 0 10px 24px rgba(15, 32, 68, .07) !important;
+}
+html[data-nb3d="low"] .nb3d-card.is-press { transform: scale(.98) !important; }
+html[data-nb3d="low"] .nb3d-reveal {
+  transform: translate3d(0, 22px, 0);
+  transition: opacity .5s ease, transform .5s ease;
+}
+html[data-nb3d="low"] .nb3d-overlay { background: rgba(8, 14, 34, .5); -webkit-backdrop-filter: none; backdrop-filter: none; }
+html[data-nb3d="low"] .nb3d-panel { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nb3d-card { transform: none !important; }
+  .nb3d-reveal { opacity: 1 !important; transform: none !important; }
+  .nb3d-overlay, .nb3d-panel { transition-duration: .01ms; }
+  [data-nb3d-depth] { transform: none !important; }
+}

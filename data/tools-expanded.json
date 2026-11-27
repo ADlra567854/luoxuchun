@@ -1,0 +1,65 @@
+{
+  "schema": "baiju-tools-expanded/1",
+  "generatedAt": "2026-11-26 20:30",
+  "policy": "工科软件与免费开源软件只给官方下载直链，本站不托管任何第三方安装包（MEMORY 第三节）。下载方式分三档：官方可下载 / 仅在线使用 / 开源自助构建。核验来源逐条标注，不谎称本机 curl 实测。",
+  "verificationPolicy": "本机 curl 出口受限（沙箱隔离）。标 webfetch-tested 者经 WebFetch 独立通道实测取到真实页面；标 official-wellknown 者为长期稳定的官方域名、未在本轮直连。",
+  "groups": [
+    {
+      "id": "ide",
+      "name": "AI 编程 / IDE",
+      "lead": "写代码、做智能体、跑本地模型的入口工具。能否下载逐条标注，只给官方源。",
+      "tools": [
+        {"id":"trae","name":"TRAE · AI 开发工程师","vendor":"字节跳动","download":"官方可下载","license":"免费（版权归字节跳动）","url":"https://www.trae.cn/","verifiedBy":"webfetch-tested","verifiedAt":"2026-11-26","usage":"AI 原生 IDE，中文界面，代码补全与 Agent 模式","build":"桌面端官网下载；也有网页端"},
+        {"id":"vscode","name":"Visual Studio Code","vendor":"Microsoft","download":"官方可下载","license":"MIT（源码）· 二进制免费","url":"https://code.visualstudio.com/","verifiedBy":"webfetch-tested","verifiedAt":"2026-11-26","usage":"通用代码编辑器，扩展生态最大","build":"官网下载 Windows/macOS/Linux 安装包"},
+        {"id":"cursor","name":"Cursor","vendor":"Anysphere","download":"官方可下载","license":"免费额度 + 订阅","url":"https://cursor.com/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"AI 优先的代码编辑器，多文件编辑强","build":"官网下载桌面端"},
+        {"id":"windsurf","name":"Windsurf","vendor":"Windsurf / Cognition","download":"官方可下载","license":"免费额度 + 订阅","url":"https://windsurf.com/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"AI 编程 IDE，Cascade 流式协作","build":"官网下载桌面端"}
+      ]
+    },
+    {
+      "id": "local-model",
+      "name": "本地大模型 / 隐私优先",
+      "lead": "数据不出本机。只给官方客户端与模型源，本站不托管任何模型权重或安装包。",
+      "tools": [
+        {"id":"ollama","name":"Ollama","vendor":"Ollama","download":"官方可下载","license":"MIT（开源）","url":"https://ollama.com/","verifiedBy":"webfetch-tested","verifiedAt":"2026-11-26","usage":"一行命令在本地跑开源大模型","build":"官网下载客户端；模型从官方库 pull"},
+        {"id":"lmstudio","name":"LM Studio","vendor":"LM Studio","download":"官方可下载","license":"免费软件（部分组件闭源）","url":"https://lmstudio.ai/","verifiedBy":"webfetch-tested","verifiedAt":"2026-11-26","usage":"图形界面本地跑模型，带模型搜索与下载","build":"官网下载桌面端；模型内置下载器"},
+        {"id":"llamacpp","name":"llama.cpp","vendor":"Georgi Gerganov 等","download":"开源自助构建","license":"MIT","url":"https://github.com/ggml-org/llama.cpp","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"C/C++ 推理框架，量化后可在普通电脑跑","build":"官方仓库源码，按 README 本地编译"},
+        {"id":"huggingface","name":"Hugging Face 模型库","vendor":"Hugging Face","download":"仅在线使用","license":"模型许可逐条标注","url":"https://huggingface.co/models","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"开源模型与数据集的主要分发平台","build":"在线下载模型需看每个模型的许可"}
+      ]
+    },
+    {
+      "id": "agent-framework",
+      "name": "智能体框架 / 编排",
+      "lead": "都是开源项目，给官方仓库与文档，版本以官方为准。",
+      "tools": [
+        {"id":"langgraph","name":"LangGraph","vendor":"LangChain","download":"开源自助构建","license":"MIT","url":"https://github.com/langchain-ai/langgraph","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"有状态的多智能体工作流编排","build":"pip 安装，官方文档为准"},
+        {"id":"openai-agents","name":"OpenAI Agents SDK","vendor":"OpenAI","download":"开源自助构建","license":"MIT","url":"https://github.com/openai/openai-agents-python","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"轻量 Agent 框架，Handoff/Guardrail/Tracing","build":"pip install openai-agents"},
+        {"id":"mcp","name":"Model Context Protocol","vendor":"Anthropic","download":"开源自助构建","license":"MIT","url":"https://github.com/modelcontextprotocol","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"智能体接工具与数据源的开放协议","build":"官方 SDK 与规范，按文档接入"},
+        {"id":"dify","name":"Dify","vendor":"Dify","download":"开源自助构建","license":"Apache-2.0（含额外条件）","url":"https://github.com/langgenius/dify","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"可视化搭建 RAG 与 Agent 应用","build":"官方仓库 Docker 部署"}
+      ]
+    },
+    {
+      "id": "create",
+      "name": "作图 / 视频 / 剪辑",
+      "lead": "漫剧与内容创作工具。免费额度与商用授权以官网当期说明为准；只给官方入口。",
+      "tools": [
+        {"id":"jimeng","name":"即梦","vendor":"字节跳动","download":"仅在线使用","license":"免费额度 + 会员","url":"https://jimeng.jianying.com/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"AI 作图与视频生成，漫剧分镜与角色设定","build":"网页端使用"},
+        {"id":"kling","name":"可灵 AI","vendor":"快手","download":"仅在线使用","license":"免费额度 + 会员","url":"https://klingai.kuaishou.com/","verifiedBy":"webfetch-tested","verifiedAt":"2026-11-26","usage":"AI 视频生成，分镜推演与动作控制","build":"网页端使用"},
+        {"id":"capcut","name":"剪映专业版","vendor":"字节跳动","download":"官方可下载","license":"免费软件（版权归字节跳动）","url":"https://www.capcut.cn/","verifiedBy":"webfetch-tested","verifiedAt":"2026-11-26","usage":"剪辑、字幕、配音，漫剧成片","build":"官网下载 Windows/macOS 安装包"},
+        {"id":"blender","name":"Blender","vendor":"Blender Foundation","download":"官方可下载","license":"GPL-3.0（开源免费）","url":"https://www.blender.org/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"3D 建模与动画，可做漫剧场景","build":"官网免费下载全平台版"}
+      ]
+    },
+    {
+      "id": "utility",
+      "name": "开发实用 / 开源免费",
+      "lead": "开源免费工具，给官方下载页；本站不镜像、不托管第三方安装包。",
+      "tools": [
+        {"id":"git","name":"Git","vendor":"Git 社区","download":"官方可下载","license":"GPL-2.0","url":"https://git-scm.com/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"版本控制，作品与源码管理必备","build":"官网下载全平台安装包"},
+        {"id":"nodejs","name":"Node.js","vendor":"OpenJS Foundation","download":"官方可下载","license":"MIT","url":"https://nodejs.org/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"JavaScript 运行时，跑本站脚本与前端工具链","build":"官网下载 LTS 安装包"},
+        {"id":"python","name":"Python","vendor":"Python Software Foundation","download":"官方可下载","license":"PSF License","url":"https://www.python.org/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"AI 与仿真的通用语言","build":"官网下载全平台安装包"},
+        {"id":"ffmpeg","name":"FFmpeg","vendor":"FFmpeg 社区","download":"官方可下载","license":"LGPL/GPL（按构建）","url":"https://ffmpeg.org/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"音视频转码、剪辑流水线底层工具","build":"官网下载静态构建或源码编译"},
+        {"id":"obsidian","name":"Obsidian","vendor":"Dynalist Inc.","download":"官方可下载","license":"免费个人使用（软件闭源）","url":"https://obsidian.md/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"本地 Markdown 双链笔记，个人知识库","build":"官网下载桌面端"},
+        {"id":"sqlite","name":"SQLite","vendor":"SQLite 社区","download":"官方可下载","license":"Public Domain（公有领域）","url":"https://www.sqlite.org/","verifiedBy":"official-wellknown","verifiedAt":"2026-11-26","usage":"零配置嵌入式数据库，本地小工具首选","build":"官网下载预编译或源码"}
+      ]
+    }
+  ]
+}

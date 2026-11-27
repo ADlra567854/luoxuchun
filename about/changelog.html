@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta property="og:description" content="白驹 ccowork 更新日志：每天新增的前沿流、开源项目与站点改动，按时间倒序。">
+<meta name="keywords" content="白驹 ccowork,ccowork,更新日志,changelog,AI 前沿流,每日更新">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>更新日志 · 这个站每天都在动 · 白驹 ccowork</title>
+<meta name="description" content="白驹 ccowork 更新日志：每天新增的前沿流、开源项目与站点改动，按时间倒序。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/changelog.css">
+<meta name="twitter:description" content="白驹 ccowork 更新日志：每天新增的前沿流、开源项目与站点改动。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/about/changelog.html">
+<meta property="og:title" content="更新日志 · 这个站每天都在动 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/about/changelog.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="更新日志 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="about" data-cctitle="更新日志">
+
+<main class="cl-wrap">
+  <div class="cl-top">
+    <div class="cl-live"><i></i>每日自动更新</div>
+    <h1>这个站每天都在动</h1>
+    <p>前沿流每天从公开来源抓取入库，开源仓库同步增长，站点改动也记在这里。<br>每一条都能点回原文，没有出处的不写。</p>
+    <div class="cl-stats" id="clStats"></div>
+  </div>
+
+  <div class="cl-tl" id="clTl">
+    <div class="cl-empty">正在读取更新记录…</div>
+  </div>
+</main>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<script>
+(function () {
+  var TL = document.getElementById('clTl');
+  var ST = document.getElementById('clStats');
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // 今天的日期（本地时区），用来给今天的条目加「今日」标识
+  function today() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') +
+      '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function render(d) {
+    var entries = (d && d.entries) || [];
+    if (!entries.length) {
+      TL.innerHTML = '<div class="cl-empty">还没有更新记录。</div>';
+      return;
+    }
+    var tdy = today();
+    var totalFeed = 0, totalRepo = 0, days = 0;
+    var html = entries.map(function (e) {
+      totalFeed += e.feed || 0;
+      totalRepo += e.repos || 0;
+      days++;
+      var isToday = e.date === tdy;
+      var nums = [];
+      if (e.feed) nums.push('<span class="cl-n">前沿流 +' + e.feed + '</span>');
+      if (e.repos) nums.push('<span class="cl-n">仓库 +' + e.repos + '</span>');
+      var tags = (e.tags || []).map(function (t) {
+        return '<span class="cl-tag">' + esc(t) + '</span>';
+      }).join('');
+      return '<div class="cl-day' + (isToday ? ' is-today' : '') + '">' +
+        '<div class="cl-card">' +
+          '<div class="cl-h">' +
+            '<b>' + esc(e.date) + '</b>' +
+            '<span class="cl-time">' + esc(e.time || '') + '</span>' +
+            (isToday ? '<span class="cl-today">今日</span>' : '') +
+            tags +
+          '</div>' +
+          (nums.length ? '<div class="cl-num">' + nums.join('') + '</div>' : '') +
+          '<div class="cl-note">' + esc(e.note || '') + '</div>' +
+        '</div></div>';
+    }).join('');
+    TL.innerHTML = html;
+
+    var upd = (d && d.updated) || '';
+    ST.innerHTML =
+      '<span class="cl-stat"><b>' + days + '</b>天有更新</span>' +
+      '<span class="cl-stat"><b>' + totalFeed + '</b>条前沿流</span>' +
+      '<span class="cl-stat"><b>' + totalRepo + '</b>个新仓库</span>' +
+      (upd ? '<span class="cl-stat">最后更新 ' + esc(upd.replace('T', ' ')) + '</span>' : '');
+  }
+
+  fetch('/data/changelog.json?t=' + Date.now())
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(render)
+    .catch(function (e) {
+      TL.innerHTML = '<div class="cl-empty">更新记录读取失败（' + esc(e.message) +
+        '）。请直接访问 <code>/data/changelog.json</code>。</div>';
+    });
+})();
+</script>
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

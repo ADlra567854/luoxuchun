@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用 AI 做一份能投的简历：从空白到投递的 90 分钟 · 白驹 ccowork</title>
+<meta name="description" content="面向普通人的 AI 简历教程：先手写真实素材，再让 AI 按约束改写成简历句，对着岗位 JD 做关键词对齐，最后排版导出 PDF 并记录投递反馈。含提示词、点击路径、耗时成本与三个常见坑。">
+<meta name="keywords" content="用 AI 做一份能投的简历：从空白到投递的 90 分钟,普通人教程,ccowork,白驹 ccowork,AI 工具">
+<link rel="canonical" href="https://ccoworkbaiju.cn/blog/tutorial-ai-resume.html">
+<meta property="og:title" content="用 AI 做一份能投的简历：从空白到投递的 90 分钟 · 白驹 ccowork">
+<meta property="og:description" content="面向普通人的 AI 简历教程：先手写真实素材，再让 AI 按约束改写成简历句，对着岗位 JD 做关键词对齐，最后排版导出 PDF 并记录投递反馈。含提示词、点击路径、耗时成本与三个常见坑。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ccoworkbaiju.cn/blog/tutorial-ai-resume.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="用 AI 做一份能投的简历：从空白到投递的 90 分钟 · 白驹 ccowork">
+<meta name="twitter:description" content="面向普通人的 AI 简历教程：先手写真实素材，再让 AI 按约束改写成简历句，对着岗位 JD 做关键词对齐，最后排版导出 PDF 并记录投递反馈。含提示词、点击路径、耗时成本与三个常见坑。">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"用 AI 做一份能投的简历：从空白到投递的 90 分钟","description":"面向普通人的 AI 简历教程：先手写真实素材，再让 AI 按约束改写成简历句，对着岗位 JD 做关键词对齐，最后排版导出 PDF 并记录投递反馈。含提示词、点击路径、耗时成本与三个常见坑。","url":"https://ccoworkbaiju.cn/blog/tutorial-ai-resume.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ccoworkbaiju.cn/blog/tutorial-ai-resume.html"},"datePublished":"2026-10-27","dateModified":"2026-10-27","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"inLanguage":"zh-CN"}</script>
+<style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="works" data-theme="cloud"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/sec/works.jpg" alt="用 AI 做一份能投的简历：从空白到投递的 90 分钟" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy" decoding="async"></div>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="用 AI 做一份能投的简历：从空白到投递的 90 分钟" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">用 AI 做一份能投的简历：从空白到投递的 </text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">🤖</text>
+</svg>
+<div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>6 分钟</span><span class="blog-tag">教程 · 求职</span></div>
+<div class="blog-divider"></div>
+<h1>用 AI 做一份能投的简历：从空白到投递的 90 分钟</h1>
+<p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">投了三十份没回音，很多时候不是能力不够，是简历只在写「我负责什么」。本文给一套 90 分钟的流程：手写素材、让 AI 按约束改写、对着真实 JD 对齐关键词、导出 PDF 投出去，全程 0 元起。</p>
+<h2>一 · 简历卡住的真实原因</h2>
+<p>投了三十份没有回音，很多人第一反应是「简历不够花」。打开一看，问题通常是另一个：<strong>整张纸都在说「我负责什么」，没说「我做成了什么」</strong>。招聘的人一天要扫几百份简历，一份停留不超过半分钟，他要找的不是你的岗位描述，而是「你来了能不能马上接手我这摊事」。</p>
+<p>AI 在这里面能帮的忙很具体：把你脑子里散落的经历，压缩成一行一行能读的成果句；把目标岗位的描述拆成关键词，让你知道该突出哪几段。它帮不了的是：替你编经历、替你决定投什么岗。这两件事只能你自己做。</p>
+<p>这篇的做法是：先用手写素材，再让 AI 按约束改写，最后自己核对每一个数字。全程大约 90 分钟，一分钱不花也能完成。</p>
+
+<h2>二 · 你需要准备什么</h2>
+<p>先把工具和账号凑齐，避免做到一半卡在注册上。</p>
+<table><thead><tr><th style="white-space:nowrap">要准备的东西</th><th>具体是什么</th><th style="white-space:nowrap">要不要花钱</th></tr></thead><tbody>
+<tr><td style="white-space:nowrap">一个 AI 对话工具</td><td><a href="https://www.doubao.com/" target="_blank" rel="noopener">豆包</a>、<a href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a>、<a href="https://www.kimi.com/" target="_blank" rel="noopener">Kimi</a> 任选一个，网页版注册即用</td><td>免费</td></tr>
+<tr><td style="white-space:nowrap">一个简历工具</td><td><a href="https://www.wondercv.com/" target="_blank" rel="noopener">超级简历</a>（在线编辑、自动排版）、<a href="https://create.microsoft.com/zh-cn/templates/resumes" target="_blank" rel="noopener">微软官方简历模板</a>（Word 下载）、<a href="https://docs.qq.com/" target="_blank" rel="noopener">腾讯文档</a>（在线 Word）</td><td>基础功能免费，高级模板有付费档</td></tr>
+<tr><td style="white-space:nowrap">一个投递渠道</td><td><a href="https://www.zhipin.com/" target="_blank" rel="noopener">BOSS 直聘</a>、<a href="https://www.zhaopin.com/" target="_blank" rel="noopener">智联招聘</a>、<a href="https://www.liepin.com/" target="_blank" rel="noopener">猎聘</a>、<a href="https://www.51job.com/" target="_blank" rel="noopener">前程无忧</a>，注册账号</td><td>免费</td></tr>
+<tr><td style="white-space:nowrap">旧素材</td><td>过去三年的工作记录、项目文档、绩效表、周报，手机备忘录也行</td><td>—</td></tr>
+<tr><td style="white-space:nowrap">目标岗位</td><td>3–5 条你真正想投的招聘信息，复制全文存到一个文档里</td><td>—</td></tr>
+</tbody></table>
+<p>预算可以按 0 元算。付费项只有两类：一是简历工具的会员（解锁更多模板和导出格式），二是打印和证件照。前者不影响投递，后者按行业习惯决定要不要。</p>
+
+<h2>三 · 一步一步做</h2>
+
+<h3>第 1 步 · 先手写素材，不打开 AI（20 分钟）</h3>
+<p>拿手机备忘录或一张纸，把过去三年做过的事写成 15–20 条。规则只有一条：<strong>每条用「动词开头 + 做了什么 + 结果」</strong>，结果想不出数字就写变化。例如：</p>
+<ul>
+<li>把客服常见问题整理成 60 条话术，新人培训从两周缩到一周</li>
+<li>接手没人管的库存表，改成每天更新，盘点差异从月底发现变成当天发现</li>
+<li>负责 3 个客户的年度续约，其中 2 个续了</li>
+</ul>
+<p>这一步不要美化，越粗糙越好。AI 最怕的是你给它一句「负责日常运营」，这种句子它只能编。</p>
+
+<h3>第 2 步 · 选一个模板，先把骨架立起来（10 分钟）</h3>
+<p>三条路线，按你的电脑水平挑一条：</p>
+<ol>
+<li><strong>最省事</strong>：浏览器打开超级简历官网，注册后点「新建简历」，模板列表里选单栏、无照片的经典款。左侧填内容，右侧实时出稿，不用调字号。</li>
+<li><strong>要 Word 文件</strong>：打开微软官方的简历模板页，在搜索框输入「简历」，挑一个单栏模板点「下载」，用 Word 或 WPS 打开。</li>
+<li><strong>完全不想注册</strong>：打开腾讯文档，点「新建」→「在线文档」，再点顶部「模板」，在求职分类里挑简历模板。</li>
+</ol>
+<p>不管走哪条，<strong>先只填四块</strong>：姓名与联系方式、一句话自我定位、工作经历、教育背景。项目、证书、技能先空着，等素材整理完再补。</p>
+
+<h3>第 3 步 · 让 AI 把素材改成简历句（20 分钟）</h3>
+<p>把第 1 步的 15–20 条素材整段贴给 AI，再附上这段约束：</p>
+<pre><code>你是帮我改简历的编辑，不是替我写经历的人。
+下面是我真实做过的事，请逐条改写成简历用句。
+
+要求：
+1. 每条 25 字以内，动词开头；
+2. 只使用我给的事实，不许新增数字、公司、时间、奖项；
+3. 我给的数字原样保留，没给的不要补；
+4. 不要形容词堆砌（优秀、丰富、深入），要能看见动作；
+5. 同一件事给出两个版本：一个偏结果，一个偏过程，我来挑。
+
+我的素材：
+（粘贴你的 15–20 条）</code></pre>
+<p>拿到结果后，<strong>一条一条对照原始素材</strong>。凡是出现你没说过的数字、没做过的动作，直接删掉。这一步花的时间比生成的时间长，是正常的。</p>
+
+<h3>第 4 步 · 对着岗位描述做关键词对齐（15 分钟）</h3>
+<p>把目标岗位的招聘信息全文复制，连同你改好的简历一起发给 AI，让它做一张对照表：</p>
+<pre><code>下面是一份招聘 JD 和我的简历。
+请输出三列表格：JD 要求的关键词 / 我简历里对应的证据 / 缺口。
+缺口那列不要替我编，只标「无」。</code></pre>
+<p>表格出来后你自己判断两件事：<strong>真的具备但没写到的</strong>，补进简历；<strong>真的不具备的</strong>，别硬凑，换个岗位投。同一个岗位改一版，最多改前三段和技能栏，不要把整份简历推倒重来。</p>
+
+<h3>第 5 步 · 排版、导出、检查（10 分钟）</h3>
+<ul>
+<li>控制在一页。工作超过十年可以两页，但第一页必须能看完核心经历。</li>
+<li>正文字号 10.5–11pt，行距 1.15–1.3，页边距上下左右各 2 厘米左右。</li>
+<li>用系统自带字体（微软雅黑、思源黑体、宋体），不要用没安装的艺术字体，否则对方打开会乱码。</li>
+<li>导出 PDF：超级简历点右上「导出」选 PDF；Word 走「文件」→「另存为」→ 格式选 PDF；腾讯文档点「文件」→「导出为」→ PDF。</li>
+<li>文件名写成「姓名-岗位-城市.pdf」，别用「个人简历最终版3」。</li>
+</ul>
+<p>导出后<strong>自己打开 PDF 翻一遍</strong>：有没有跨页断行、有没有半行字被切掉、联系方式是不是可点。这三样是最常见的翻车点。</p>
+
+<h3>第 6 步 · 投出去，并记下反馈（15 分钟）</h3>
+<p>在 BOSS 直聘里，先完善「在线简历」，再在聊天窗口发「附件简历」；智联和前程无忧是上传附件后系统自动匹配；猎聘偏中高端岗位，建议把项目经历写细。校招网申系统往往要求手动逐栏填写，附件只是补充，别只传文件就关掉页面。</p>
+<p>建一个简单的投递记录表：公司、岗位、投递日期、是否有回音。两周后回看，<strong>如果同一个岗位类型连续没有回音，改的是简历；如果连面试都进不去，改的是目标岗位</strong>。</p>
+
+<h2>四 · 耗时与成本</h2>
+<table><thead><tr><th style="white-space:nowrap">环节</th><th style="white-space:nowrap">耗时</th><th>花费</th></tr></thead><tbody>
+<tr><td style="white-space:nowrap">素材盘点</td><td>20 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">选模板搭骨架</td><td>10 分钟</td><td>0 元（付费模板可选，不影响投递）</td></tr>
+<tr><td style="white-space:nowrap">AI 改写 + 逐条核对</td><td>20 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">关键词对齐</td><td>15 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">排版导出检查</td><td>10 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">投递与记录</td><td>15 分钟</td><td>0 元</td></tr>
+<tr><td style="white-space:nowrap">合计</td><td>约 90 分钟</td><td>0 元起</td></tr>
+</tbody></table>
+<p>第一份简历做完，第二份只需要改关键词，20 分钟就能出一版。真正的时间成本不在写，在核对。</p>
+
+<h2>五 · 三个常见坑</h2>
+
+<h3>坑一 · 让 AI「润色」出你根本没有的数字</h3>
+<p>只要提示词里出现「写得更专业」「突出成果」，模型就有很高概率补一个「提升 30%」。这类数字面试第一轮就会被追问细节。<strong>解决办法是明确写「不许新增数字」，并在成稿后逐条对照素材</strong>。真的要给数字，也必须是你自己能解释来源的。</p>
+
+<h3>坑二 · 一份简历投所有岗位</h3>
+<p>通用简历的问题是关键词对不上筛选系统，也让人看不出你想干什么。做法是保留一份主简历，每投一类岗位复制一份，只改「一句话定位 + 前三条经历 + 技能栏」。改动量小，但命中率差别很大。</p>
+
+<h3>坑三 · 只交附件，不填在线简历</h3>
+<p>BOSS 直聘、智联这类平台的推荐和检索，依赖的是你填写的在线字段。只上传附件、在线简历空着，等于在搜索结果里不存在。<strong>先把在线简历填到 100% 完成度，再发附件</strong>。</p>
+
+<h2>六 · 自检清单</h2>
+<ul>
+<li>一页内看完，第一屏能看到「我是谁、我做成过什么」</li>
+<li>每条经历都是动词开头，能看到动作和结果</li>
+<li>所有数字都能在素材里找到原始出处</li>
+<li>没有「负责」「协助」「参与」开头的空句子</li>
+<li>联系方式的手机号和邮箱核对过，邮箱不是奇怪昵称</li>
+<li>PDF 打开无乱码、无跨页切断、文件名规范</li>
+<li>至少对着一条真实 JD 做过关键词对齐</li>
+<li>投递记录表已建立，两周后能回看哪一版有效</li>
+</ul>
+
+<h2>七 · 延伸阅读</h2>
+<ul>
+<li><a href="tutorial-remove-ai-tone.html">AI 写作怎么去掉「AI 味」</a>：简历句也适用，重点是删掉形容词堆砌。</li>
+<li><a href="tutorial-excel-ai-monthly-report.html">Excel + AI 做月度报表</a>：面试常被问「你平时怎么汇报」，能答出来就是加分项。</li>
+<li><a href="https://www.wondercv.com/" target="_blank" rel="noopener">超级简历</a>、<a href="https://create.microsoft.com/zh-cn/templates/resumes" target="_blank" rel="noopener">微软简历模板</a>：模板来源，都在 2026-10-27 实测可打开。</li>
+</ul>
+
+<hr>
+<p style="font-size:13px;color:var(--muted)">本页为原创教程，工具信息核验于 2026-10-27。</p>
+
+<section class="blog-attribution" style="margin-top:28px;padding:16px 18px;border:1px solid var(--line);border-radius:12px"><h3>出处声明</h3><p>本页由 AI 辅助生成或整理，未逐条人工核验，仅供学习参考；涉及第三方工具、模型、价格、政策及数据的信息以官方发布为准，引用内容请以原始来源及其许可条款为准。</p></section>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="2026-10-27-本周AI大事记-2026年10月第4周.html" style="color:var(--gold);font-weight:700;text-decoration:none">本周 AI 大事记</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px">📚 博客目录</a>
+  <span style="font-size:13px"><a href="tutorial-excel-ai-monthly-report.html" style="color:var(--gold);font-weight:700;text-decoration:none">Excel + AI 做月度报表：不</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8">📌 出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/responsive.js?v=20261028e"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261125a"></script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+<hr>
+<p class="content-attribution" style="color:var(--muted);font-size:12.5px;line-height:1.8">出处声明：本页内容为白驹 ccowork原创或整理；涉及第三方工具、产品、政策与数据的信息请以相关官方发布为准，引用内容遵循原始许可。</p>
+</body></html>

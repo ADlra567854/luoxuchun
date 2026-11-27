@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta property="og:description" content="生成图片不难，难的是可控。这篇讲三类工具各自的取舍、提示词的四段结构、四种提高可控性的手段，以及商用前必须确认的四件事。">
+<meta name="keywords" content="AI绘画从入门到精通,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta name="description" content="生成图片不难，难的是可控。这篇讲三类工具各自的取舍、提示词的四段结构、四种提高可控性的手段，以及商用前必须确认的四件事。"><meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 绘画：三类工具的取舍、四段式提示词与可控性手段 · 白驹 ccowork</title><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+
+
+
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ccoworkbaiju.cn/blog/AI%E7%BB%98%E7%94%BB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A.html">
+<meta property="og:title" content="AI 绘画：三类工具的取舍、四段式提示词与可控性手段 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/blog/AI%E7%BB%98%E7%94%BB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 绘画：三类工具的取舍、四段式提示词与可控性手段 · 白驹 ccowork">
+<meta name="twitter:description" content="生成图片不难，难的是可控。这篇讲三类工具各自的取舍、提示词的四段结构、四种提高可控性的手段，以及商用前必须确认的四件事。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI 绘画：三类工具的取舍、四段式提示词与可控性手段","description":"生成图片不难，难的是可控。这篇讲三类工具各自的取舍、提示词的四段结构、四种提高可控性的手段，以及商用前必须确认的四件事。","url":"https://ccoworkbaiju.cn/blog/AI%E7%BB%98%E7%94%BB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://ccoworkbaiju.cn/blog/AI%E7%BB%98%E7%94%BB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A.html"},"image":"https://ccoworkbaiju.cn/assets/img/og-cover.png","datePublished":"2026-08-30","author":{"@type":"Organization","name":"白驹 ccowork"},"publisher":{"@type":"Organization","name":"白驹 ccowork"},"dateModified":"2026-10-27","inLanguage":"zh-CN"}</script>
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="works"><div style="max-width:1000px;margin:0 auto;padding:0 24px 8px"><img src="/assets/covers/cover-AI绘画从入门到精通.png" alt="AI绘画从入门到精通" style="width:100%;border-radius:18px;box-shadow:0 8px 24px rgba(31,45,77,.12);display:block" loading="lazy"></div>
+<article>
+<svg viewBox="0 0 1200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI 绘画：三类工具的取舍、四段式提示词与可控性手段" style="width:100%;height:auto;border-radius:16px;margin:0 0 24px;box-shadow:0 10px 28px rgba(0,0,0,.35)">
+  <defs>
+    <linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c26b"/><stop offset=".5" stop-color="#ff8c5a"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bgrad)"/>
+  <circle cx="1120" cy="30" r="180" fill="rgba(255,255,255,.12)"/>
+  <circle cx="90" cy="240" r="150" fill="rgba(255,255,255,.08)"/>
+  <circle cx="600" cy="-70" r="210" fill="rgba(255,255,255,.07)"/>
+  <text x="56" y="78" font-size="20" font-weight="700" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文</text>
+  <text x="56" y="142" font-size="42" font-weight="900" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif">AI 绘画：三类工具的取舍、四段式提示词与可</text>
+  <text x="56" y="184" font-size="18" fill="rgba(255,255,255,.92)" font-family="PingFang SC, Microsoft YaHei, sans-serif">白驹 ccowork · 深度长文 · 每日更新</text>
+  <text x="1120" y="205" font-size="96" text-anchor="middle" fill="rgba(255,255,255,.92)">🧰</text>
+</svg>
+<div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>6 分钟</span><span class="blog-tag">AI 创作</span></div>
+<div class="blog-divider"></div>
+<h1>AI 绘画：三类工具的取舍、四段式提示词与可控性手段</h1>
+<p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">具体产品版本的对比表与推荐清单几个月就过期，部分能力描述也无法核实，这里不列。给的是判断方法——工具类别与可控性手段不会因版本更新失效；版权部分只列需要确认的事项，不对法律结论作断言。</p><h2>一 · 三类工具，取舍在哪</h2><table><thead><tr><th style="white-space:nowrap">类型</th><th>优势</th><th>代价</th><th>适合</th></tr></thead><tbody><tr><td style="white-space:nowrap">云端成品服务</td><td>上手快，出图质量稳定</td><td>可控性弱，按次付费，风格受限</td><td>配图、概念探索</td></tr><tr><td style="white-space:nowrap">本地部署</td><td>可控性强（工作流、控制网、局部重绘）</td><td>要显卡、要学节点、要调参</td><td>需要一致性与批量生产</td></tr><tr><td style="white-space:nowrap">设计/文档工具内置</td><td>集成在现有流程里，改动小</td><td>能力受限于产品方，风格统一性一般</td><td>日常配图、快速原型</td></tr></tbody></table><p>选择的依据不是「哪个效果最好」，而是<strong>「我需要多强的可控性」</strong>。只要配图，云端就够了；要做一套风格统一的产品图，就得本地。</p><h2>二 · 提示词不是咒语，是四段结构</h2><p>把提示词当咒语背，永远无法迁移。把它当<strong>四段结构</strong>，就能自己搭。</p><table><thead><tr><th style="white-space:nowrap">段</th><th>写什么</th><th>例子</th></tr></thead><tbody><tr><td style="white-space:nowrap">主体</td><td>谁 / 什么，做什么</td><td>一个穿深色外套的中年男人，坐在窗边</td></tr><tr><td style="white-space:nowrap">环境</td><td>在哪、什么光、什么时间</td><td>清晨的咖啡馆，侧逆光，窗外有雨</td></tr><tr><td style="white-space:nowrap">风格</td><td>参照物或媒介</td><td>纪实摄影风格，胶片颗粒</td></tr><tr><td style="white-space:nowrap">技术</td><td>构图、焦段、比例</td><td>半身构图，50mm 视角，竖版 3:4</td></tr></tbody></table><p>四段齐全，产出才稳定。只写第一段，模型会自己补后三段——每次补的都不一样，这就是「不可控」的来源。</p><h3>两个容易被误用的东西</h3><p><strong>权重写法</strong>（加括号或数字）：能调节元素重要性，但过度使用会让画面变形。建议只在「某元素总是被忽略」时才用。</p><p><strong>负面提示</strong>：用于排除不想要的东西（多余的手指、文字、水印）。它不是万能的——负面提示写太多，画面会变得寡淡。</p><h2>三 · 四种提高可控性的手段</h2><p>这四个手段，是「会用」和「能用」的分界。</p><table><thead><tr><th style="white-space:nowrap">手段</th><th>解决什么</th><th>代价</th></tr></thead><tbody><tr><td style="white-space:nowrap">参考图 / 垫图</td><td>风格与主体的一致性</td><td>需要准备干净的参考图</td></tr><tr><td style="white-space:nowrap">局部重绘</td><td>只改一小块，不动整体</td><td>要会画遮罩</td></tr><tr><td style="white-space:nowrap">控制网（姿态/深度/边缘）</td><td>精确控制构图与动作</td><td>需要额外的条件图</td></tr><tr><td style="white-space:nowrap">固定随机种子</td><td>同提示词复现同一张</td><td>换参数后失效</td></tr></tbody></table><p>第四项最容易被忽略，但对排查问题非常有用：<strong>固定种子，一次只改一个词</strong>，你才能知道是哪个词起了作用。不固定种子，改十个词出十张图，你什么都学不到。</p><h2>四 · 三个场景，难度递增</h2><h3>场景一 · 文章 / 社交配图</h3><p>一致性要求最低，最容易。唯一的注意点是<strong>构图要留出文字位置</strong>——在提示词里加「右侧留空」「上方大量留白」。</p><h3>场景二 · 产品概念图</h3><p>难点是<strong>形体准确</strong>：比例、结构、材质不能错。</p><p>做法：先用参考图锁定外形轮廓，再用局部重绘换材质与光照。指望一次生成对，概率很低。</p><h3>场景三 · 角色设计</h3><p>最难，因为要求<strong>跨图一致</strong>：不同角度、不同表情、不同场景还是同一个人。</p><p>现实的工作流是：先定一张主视觉 → 用参考图 + 控制网做角度变化 → 逐张核对五官与服装细节。<strong>这一步没有捷径，只能逐张检查。</strong></p><h2>五 · 本地部署要算的三笔账</h2><table><thead><tr><th style="white-space:nowrap">账</th><th>内容</th></tr></thead><tbody><tr><td style="white-space:nowrap">显存</td><td>决定你能跑多大模型、多大分辨率、能不能用控制网</td></tr><tr><td style="white-space:nowrap">时间</td><td>生成速度与调试时间，后者通常远大于前者</td></tr><tr><td style="white-space:nowrap">学习成本</td><td>节点、工作流、模型管理，上手期不短</td></tr></tbody></table><p>一个务实的建议：<strong>先用云端把「想要什么」搞清楚</strong>，再决定要不要上本地。很多人是先装环境后学方法，结果环境成了最大的挫败来源。</p><h2>六 · 商用前必须确认的四件事</h2><p style="padding:12px 14px;border-left:3px solid var(--blue);background:rgba(79,140,255,.07);border-radius:0 10px 10px 0;font-size:14px;line-height:1.8;color:var(--muted)">以下只列需要确认的事项，不构成法律意见。具体条款请以各工具的服务协议、各开源仓库的 LICENSE 原文、以及现行规定为准。</p><table><thead><tr><th style="white-space:nowrap">要确认的</th><th>去哪儿确认</th></tr></thead><tbody><tr><td style="white-space:nowrap">工具是否允许商用</td><td>服务条款 / 订阅协议里的「商业使用」条款</td></tr><tr><td style="white-space:nowrap">开源模型的许可证</td><td>仓库根目录的 LICENSE 文件，<strong>读原文</strong></td></tr><tr><td style="white-space:nowrap">素材与字体授权</td><td>你使用的参考图、字体各自的授权范围</td></tr><tr><td style="white-space:nowrap">生成内容的标识义务</td><td>按现行规定，确认发布时的标识方式</td></tr></tbody></table><p>第二项要特别强调：<strong>「开源」不等于「随便商用」</strong>。不同仓库的许可证差别很大，有的限制商用规模，有的要求衍生作品同样开源，有的干脆没放 LICENSE 文件——<strong>没放 LICENSE 的，默认不是随便用</strong>。</p><p>另外，即使工具允许商用，<strong>你生成的内容是否侵犯他人权利（肖像、商标、已有作品）仍由你负责</strong>。这两件事要分开看。</p><h2>附一 · 三套可直接抄的四段式提示词</h2>
+<p>四段式结构：<strong>主体 + 场景/构图 + 风格/材质 + 参数约束</strong>。每段一句话，顺序不要打乱，因为模型对靠前的内容权重更高。</p>
+<pre><code>【产品图】白色陶瓷马克杯，置于浅灰水泥台面，45 度俯拍，左侧柔光箱打亮杯身
+极简产品摄影，中性色调，材质哑光，背景干净
+长焦压缩感，浅景深，画面留白在右侧用于文字
+禁止：文字、logo、水印、多余道具</code></pre>
+<pre><code>【公众号头图】一名年轻人在夜间书桌前用笔记本工作，桌面有台灯与纸笔
+侧逆光，暖色台灯与冷色屏幕形成对比
+扁平插画风格，粗线条，低饱和配色
+横构图 16:9，主体偏左，右侧留空放标题
+禁止：文字、人脸特写过近、杂乱背景</code></pre>
+<pre><code>【人像】一位中年女性的半身肖像，穿浅色衬衫，正面平视
+自然光，窗边，柔和阴影
+写实摄影，皮肤质感保留，不过度磨皮
+竖构图 3:4，肩线水平，眼睛位于画面上三分之一
+禁止：夸张瘦脸、改变五官比例、添加首饰</code></pre>
+<p>这三套的用法是<strong>改一段、测一次</strong>：先固定后三段，只改第一段的主体；确认主体稳定后，再逐段替换。一次改两段以上，出了问题你不知道是哪段造成的。</p>
+<h2>附二 · 可控性验收清单（每张图过一遍）</h2>
+<ul>
+<li><strong>一致性</strong>：同一个提示词连出 4 张，主体是否稳定？只在 1 张里出现的好效果不能算「能复现」。</li>
+<li><strong>局部重绘</strong>：只改手、只改背景时，主体有没有被连带改掉？改完放大检查边缘。</li>
+<li><strong>文字渲染</strong>：图里的文字是否能读？模型生成文字仍不可靠，需要文字的场合直接后期加字。</li>
+<li><strong>分辨率</strong>：目标平台的尺寸要求是多少？先按尺寸生成或放大，再看细节是否发糊。</li>
+<li><strong>物理常识</strong>：手指数量、杯把方向、阴影方向是否合理？这类错误是「一眼假」的主要来源。</li>
+<li><strong>可追溯</strong>：每张成图记下提示词、模型名、种子号，商用或返修时必须能复现。</li>
+</ul>
+<p>商用前还要单独确认四件事：工具服务条款是否允许商业使用、参考图与素材的授权范围、画面里是否出现真实人物肖像、发布平台是否要求标注 AI 生成。<strong>四项缺一项都不要发</strong>，这跟画面好不好看是两件事。</p>
+<h2>附三 · 迭代记录表与局部重绘三步</h2>
+<p>可控性来自记录。每张候选图填一行表，返修和复用才有依据：</p>
+<ul>
+<li>提示词版本号（v1、v2…）与本次只改动的段落</li>
+<li>模型名与版本、种子号、尺寸与比例</li>
+<li>结果判定：可用 / 部分可用 / 失败，失败原因一句话</li>
+<li>人工修图动作：裁切、加字、局部修瑕分别做了什么</li>
+</ul>
+<p><strong>局部重绘三步</strong>：第一步圈定范围，边界比需要修改的区域略大一圈，避免接缝；第二步只写「范围内要变成什么」，不要把整张图重新描述一遍；第三步放大检查接缝、光影方向和材质是否连续，连续性不过关就缩小重绘范围再来一次。</p>
+<p>一次只改一个变量，是这套流程能收敛的唯一原因。同时改构图、风格和光线，出来效果是好是坏都无法归因，下次也复现不了。</p>
+<h2>七 · 练习路径</h2><ul><li>第一周：同一主体，只改「风格」一段，出十张，感受风格词的差异</li><li>第二周：固定种子，一次只改一个词，记录每次的变化</li><li>第三周：用参考图 + 局部重绘，把一张图的三个局部改对</li><li>第四周：做一组「同角色三视图」，逐张核对细节</li></ul><p>四周之后，你对「可控性」的理解会完全不同。<strong>生成好看不难，可控才是技能</strong>。</p>
+
+<div class="blog-prevnext" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:40px 0 10px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card)">
+  <span style="font-size:13px"><a href="AI视频制作实战.html" style="color:var(--gold);font-weight:700;text-decoration:none">AI 视频制作实战：一个人做出一条视</a></span>
+  <a href="index.html" style="color:var(--cyan);font-weight:700;text-decoration:none;font-size:13px">📚 博客目录</a>
+  <span style="font-size:13px"><a href="AI未来趋势-数字物理量子新质材料.html" style="color:var(--gold);font-weight:700;text-decoration:none">AI未来趋势-数字物理量子新质材料</a></span>
+</div>
+<hr>
+<p style="color:var(--muted);font-size:12.5px;line-height:1.8">📌 出处声明：本页内容为白驹 ccowork原创，或已标注引用来源；改编内容遵循原始项目许可证（如 MIT / CC），不侵犯原作者权益。若引用内容涉及版权问题，请联系我们更正。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261125a"></script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

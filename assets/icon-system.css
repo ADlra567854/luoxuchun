@@ -1,0 +1,108 @@
+/* ==========================================================================
+   全站图标系统 · 四级强调阶梯
+   --------------------------------------------------------------------------
+   为什么要有阶梯：用户希望图标「鲜艳一点、眼前一亮」，但把图标全部上色会
+   让密集场景（如 188 张厂商卡）从「专业工具」变成「视觉噪音」。本阶梯照搬
+   Material Design 3 的图标按钮强调度顺序（Filled → Tonal → Outlined →
+   Standard），改造成可直接用 class 的工具。
+
+   依据（可点开核对）：
+   · Material Design · Icon buttons —— 四种颜色样式按强调度排序，并明确要求
+     「Avoid overusing the filled style on a screen. Use them sparingly.」
+     https://material.io/components/icon-buttons/guidelines
+   · 阿联酋政府设计系统 · Iconography —— 建议限制图标颜色组合，指出过度使用
+     图标会导致界面「distracting and visually overwhelming」
+     http://designsystem.gov.ae/guidelines/iconography
+   · WCAG 2.2 AA —— 图形对象对比度需 ≥ 3:1，鲜艳色在浅底常不达标
+     https://icojoy.com/blog/responsive-accessible-iconography-aria-contrast-seo-2026
+
+   用法：
+     <i class="cc-ic" data-ic="spark"></i>            → L1 单色（默认，继承文字色）
+     <i class="cc-ic ico-line" data-ic="globe"></i>  → L2 描边着色（分类色）
+     <i class="cc-ic ico-soft" data-ic="check"></i>  → L3 柔和着色（淡底 + 同色系）
+     <i class="cc-ico-fill ico-blue" data-ic="arrow"></i> → L4 填充色（渐变实底 + 白图标）
+     语义色：.ico-succeed / .ico-warn / .ico-danger（必须同时有形状或文字，
+             不能只靠颜色传达含义 —— Arch Labs 图标规范）
+   ========================================================================== */
+
+/* ---------- L1 单色：继承文字色，最低调，正文行内用 ---------- */
+i.cc-ic{display:inline-block;width:1em;height:1em;vertical-align:-.125em;flex:none;
+  background-color:currentColor;
+  -webkit-mask:var(--cc-ic,var(--ico-none)) center/contain no-repeat;
+  mask:var(--cc-ic,var(--ico-none)) center/contain no-repeat}
+.cc-dot{width:.85em;height:.85em;vertical-align:-.06em}
+/* 未定义图标时的可见占位（宁可淡灰点，也别空白让人以为没内容） */
+:root{--ico-none:linear-gradient(currentColor,currentColor)}
+/* 确实没有图标时：退化成一个小圆点，视觉上仍是"这里有个东西" */
+.cc-ic[data-ic=""]{-webkit-mask:var(--ico-none);mask:var(--ico-none);opacity:.35}
+
+/* ---------- 色彩 token：浅色为准，深色统一提亮 ---------- */
+:root{
+  --ico-blue:#4f8cff;   --ico-cyan:#0e9aa7;   --ico-violet:#7c4ddb;
+  --ico-green:#0f8a5f;  --ico-amber:#b45309;  --ico-red:#dc2626;
+  --ico-ink:#1e293b;    --ico-muted:#94a3b8;
+  --ico-soft-tint:.12;  --ico-soft-tint-2:.10;
+}
+body[data-theme="deep"]{
+  /* 深色底上要提亮 10~15% 才不发浑（依据：icojoy 深色模式色彩规范） */
+  --ico-blue:#7aa9ff;   --ico-cyan:#38d9e8;   --ico-violet:#a78bfa;
+  --ico-green:#34d399;  --ico-amber:#fbbf24;  --ico-red:#f87171;
+  --ico-ink:#e2e8f0;    --ico-muted:#64748b;
+  --ico-soft-tint:.16;  --ico-soft-tint-2:.14;
+}
+
+/* ---------- L2 描边着色：分类色，不填色块，卡片/列表图标 ---------- */
+.ico-line{background-color:var(--ico-c,var(--ico-ink))}
+.ico-blue{--ico-c:var(--ico-blue)} .ico-cyan{--ico-c:var(--ico-cyan)}
+.ico-violet{--ico-c:var(--ico-violet)} .ico-green{--ico-c:var(--ico-green)}
+.ico-amber{--ico-c:var(--ico-amber)} .ico-red{--ico-c:var(--ico-red)}
+.ico-muted{--ico-c:var(--ico-muted)}
+
+/* ---------- L3 柔和着色：淡色底 + 同色系，标签/状态用 ---------- */
+/* 用法：<span class="ico-soft ico-green"><i class="cc-ic" data-ic="check"></i>开源</span> */
+.ico-soft{display:inline-flex;align-items:center;gap:.4em;
+  padding:.2em .62em .28em;border-radius:999px;font-size:.86em;font-weight:750;line-height:1.5;
+  background:var(--ico-soft-bg,rgba(79,140,255,var(--ico-soft-tint)));
+  border:1px solid var(--ico-soft-bd,rgba(79,140,255,.32));
+  color:var(--ico-c,var(--ico-blue))}
+.ico-soft.cc-ic{border-radius:50%}
+/* 让 .ico-soft 直接作用在 <i> 上时（无文字），呈现为圆底图标 */
+i.ico-soft{width:2em;height:2em;padding:0;justify-content:center;border-radius:50%}
+.ico-soft ico-blue{--ico-c:var(--ico-blue)}
+
+/* ---------- L4 填充色：品牌渐变实底 + 白图标，每屏 1~2 个 ---------- */
+.cc-ico-fill{display:inline-flex;align-items:center;justify-content:center;flex:none;
+  width:2.4em;height:2.4em;border-radius:.72em;color:#fff;
+  background:linear-gradient(135deg,#4f8cff,#38b6ff 52%,#8b5cf6);
+  box-shadow:0 3px 10px -4px rgba(79,140,255,.62),inset 0 1px 0 rgba(255,255,255,.28)}
+.cc-ico-fill .cc-ic{width:1.3em;height:1.3em;background-color:#fff}
+/* 语义填充（用于状态点、关键提示） */
+.cc-ico-fill.ico-green{background:linear-gradient(135deg,#10b981,#0f8a5f)}
+.cc-ico-fill.ico-amber{background:linear-gradient(135deg,#f59e0b,#b45309)}
+.cc-ico-fill.ico-red{background:linear-gradient(135deg,#f87171,#dc2626)}
+.cc-ico-fill.ico-violet{background:linear-gradient(135deg,#a78bfa,#7c4ddb)}
+.cc-ico-fill.ico-cyan{background:linear-gradient(135deg,#38d9e8,#0e9aa7)}
+/* 大号英雄图标（首屏/空状态，允许更大面积上色） */
+.cc-ico-xl{width:4.2em;height:4.2em;border-radius:1.1em}
+.cc-ico-xl .cc-ic{width:1.9em;height:1.9em}
+
+/* ---------- 分类色的便捷绑定（用于 .ico-line / .ico-soft） ---------- */
+.ico-c-blue{--ico-c:var(--ico-blue)} .ico-c-cyan{--ico-c:var(--ico-cyan)}
+.ico-c-violet{--ico-c:var(--ico-violet)} .ico-c-green{--ico-c:var(--ico-green)}
+.ico-c-amber{--ico-c:var(--ico-amber)} .ico-c-red{--ico-c:var(--ico-red)}
+
+/* ---------- 无障碍：强制颜色模式下必须保证可见 ---------- */
+@media (forced-colors:active){
+  .cc-ic,.ico-line{forced-color-adjust:none;background-color:CanvasText}
+  .ico-soft,.cc-ico-fill{border:1px solid CanvasText;forced-color-adjust:none}
+  .cc-ico-fill .cc-ic{background-color:CanvasText}
+}
+
+/* ---------- 交互反馈：图标按钮的 hover/focus ---------- */
+button[data-ic]:hover,button:has(>.cc-ic):hover{color:var(--ico-blue)}
+.cc-ico-btn{display:inline-flex;align-items:center;justify-content:center;
+  width:2.4em;height:2.4em;border-radius:.7em;border:1px solid rgba(127,150,180,.32);
+  background:rgba(127,150,180,.08);cursor:pointer;transition:.18s}
+.cc-ico-btn:hover{background:var(--ico-soft-bg,rgba(79,140,255,.14));border-color:var(--ico-blue);
+  color:var(--ico-blue);transform:translateY(-1px)}
+.cc-ico-btn:active{transform:none}

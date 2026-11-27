@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rc&lt;T&gt; 引用计数智能指针 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：Rc&lt;T&gt; 引用计数智能指针。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p053.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html" class="on">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 53 / 86 节
+    </div>
+    <h1>Rc&lt;T&gt; 引用计数智能指针</h1>
+    <h2 id="rct-引用计数智能指针"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/ecef81cbc6f0c2d1c8a67409329b0641258c04c2/src/ch15-04-rc.md">ch15-04-rc.md</a></p>
+<p>大部分情况下所有权是非常明确的：可以准确地知道哪个变量拥有某个值。然而，有些情况单个值可能会有多个所有者。例如，在图数据结构中，多个边可能指向相同的节点，而这个节点从概念上讲为所有指向它的边所拥有。节点在没有任何边指向它从而没有任何所有者之前，都不应该被清理掉。</p>
+<p>为了启用多所有权需要显式地使用 Rust 类型 <code>Rc&lt;T&gt;</code>，其为<strong>引用计数</strong>（<em>reference counting</em>）的缩写。引用计数意味着记录一个值的引用数量来知晓这个值是否仍在被使用。如果某个值有零个引用，就代表没有任何有效引用并可以被清理。</p>
+<p>可以将其想象为客厅中的电视。当一个人进来看电视时，他打开电视。其他人也可以进来看电视。当最后一个人离开房间时，他关掉电视因为它不再被使用了。如果某人在其他人还在看的时候就关掉了电视，正在看电视的人肯定会抓狂的！</p>
+<p><code>Rc&lt;T&gt;</code> 用于当我们希望在堆上分配一些内存供程序的多个部分读取，而且无法在编译时确定程序的哪一部分会最后结束使用它的时候。如果确实知道哪部分是最后一个结束使用的话，就可以令其成为数据的所有者，正常的所有权规则就可以在编译时生效。</p>
+<p>注意，<code>Rc&lt;T&gt;</code> 只能用于单线程场景。等到我们在第十六章讨论并发时，会介绍如何在多线程程序中进行引用计数。</p>
+<h3 id="共享数据"></h3>
+<p>让我们回到示例 15-5 中使用 <code>Box&lt;T&gt;</code> 定义 cons list 的例子。这一次，我们希望创建两个共享第三个列表所有权的列表，其概念将会看起来如图 15-3 所示：</p>
+<img alt="Two lists that share ownership of a third list" src="https://kaisery.github.io/trpl-zh-cn/img/trpl15-03.svg" class="center" />
+<p><span class="caption">图 15-3: 两个列表，<code>b</code> 和 <code>c</code>, 共享第三个列表 <code>a</code> 的所有权</span></p>
+<p>列表 <code>a</code> 包含 <code>5</code> 之后是 <code>10</code>，之后是另两个列表：<code>b</code> 从 <code>3</code> 开始而 <code>c</code> 从 <code>4</code> 开始。<code>b</code> 和 <code>c</code> 会接上包含 <code>5</code> 和 <code>10</code> 的列表 <code>a</code>。换句话说，这两个列表会尝试共享第一个列表所包含的 <code>5</code> 和 <code>10</code>。</p>
+<p>尝试使用 <code>Box&lt;T&gt;</code> 定义的 <code>List</code> 实现并不能工作，如示例 15-17 所示：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">enum List {
+    Cons(i32, Box&lt;List&gt;),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+
+fn main() {
+    let a = Cons(5, Box::new(Cons(10, Box::new(Nil))));
+    let b = Cons(3, Box::new(a));
+    let c = Cons(4, Box::new(a));
+}</code></pre>
+<p><span class="caption">示例 15-17: 展示不能用两个 <code>Box&lt;T&gt;</code> 的列表尝试共享第三个列表的所有权</span></p>
+<p>编译会得出如下错误：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling cons-list v0.1.0 (file:///projects/cons-list)
+error[E0382]: use of moved value: `a`
+  --&gt; src/main.rs:11:30
+   |
+ 9 |     let a = Cons(5, Box::new(Cons(10, Box::new(Nil))));
+   |         - move occurs because `a` has type `List`, which does not implement the `Copy` trait
+10 |     let b = Cons(3, Box::new(a));
+   |                              - value moved here
+11 |     let c = Cons(4, Box::new(a));
+   |                              ^ value used here after move
+   |
+note: if `List` implemented `Clone`, you could clone the value
+  --&gt; src/main.rs:1:1
+   |
+ 1 | enum List {
+   | ^^^^^^^^^ consider implementing `Clone` for this type
+...
+10 |     let b = Cons(3, Box::new(a));
+   |                              - you could clone this value
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `cons-list` (bin "cons-list") due to 1 previous error
+</code></pre>
+<p><code>Cons</code> 变体拥有它所持有的数据，因此当我们创建 <code>b</code> 列表时，<code>a</code> 会被移动进 <code>b</code>，于是 <code>b</code> 就拥有了 <code>a</code>。接着，当我们再次尝试在创建 <code>c</code> 时使用 <code>a</code>，这就不被允许了，因为 <code>a</code> 的所有权已经被移动。</p>
+<p>可以改变 <code>Cons</code> 的定义来存放一个引用，不过接着必须指定生命周期参数。通过指定生命周期参数，表明列表中的每一个元素都至少与列表本身存在的一样久。这是示例 15-17 中元素与列表的情况，但并不是所有情况都如此。</p>
+<p>相反，我们会把 <code>List</code> 的定义改为使用 <code>Rc&lt;T&gt;</code> 来代替 <code>Box&lt;T&gt;</code>，如示例 15-18 所示。现在每个 <code>Cons</code> 变体都持有一个值，以及一个指向 <code>List</code> 的 <code>Rc&lt;T&gt;</code>。当我们创建 <code>b</code> 时，不再获取 <code>a</code> 的所有权，而是克隆 <code>a</code> 持有的 <code>Rc&lt;List&gt;</code>，从而把引用计数从 1 增加到 2，并让 <code>a</code> 和 <code>b</code> 共享这个 <code>Rc&lt;List&gt;</code> 中数据的所有权。创建 <code>c</code> 时，我们也会克隆 <code>a</code>，使引用计数从 2 增加到 3。每次调用 <code>Rc::clone</code>，<code>Rc&lt;List&gt;</code> 内部数据的引用计数都会增加，只有当引用数为零时，数据才会被清理。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">enum List {
+    Cons(i32, Rc&lt;List&gt;),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+use std::rc::Rc;
+
+fn main() {
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let b = Cons(3, Rc::clone(&amp;a));
+    let c = Cons(4, Rc::clone(&amp;a));
+}</code></pre>
+<p><span class="caption">示例 15-18: 使用 <code>Rc&lt;T&gt;</code> 定义的 <code>List</code></span></p>
+<p>需要使用 <code>use</code> 语句将 <code>Rc&lt;T&gt;</code> 引入作用域，因为它不在 prelude 中。在 <code>main</code> 中创建了存放 5 和 10 的列表并将其存放在 <code>a</code> 的新的 <code>Rc&lt;List&gt;</code> 中。接着当创建 <code>b</code> 和 <code>c</code> 时，调用 <code>Rc::clone</code> 函数并传递 <code>a</code> 中 <code>Rc&lt;List&gt;</code> 的引用作为参数。</p>
+<p>我们本来也可以调用 <code>a.clone()</code>，而不是 <code>Rc::clone(&amp;a)</code>，但 Rust 的惯例是在这种情况下使用 <code>Rc::clone</code>。<code>Rc::clone</code> 的实现不像大多数类型的 <code>clone</code> 实现那样，会对所有数据进行深拷贝。调用 <code>Rc::clone</code> 只会增加引用计数，这并不耗时；而数据的深拷贝可能会花费不少时间。通过使用 <code>Rc::clone</code> 来表示引用计数操作，我们可以在视觉上区分“深拷贝式的 clone”和“只增加引用计数的 clone”。这样在查找性能问题时，我们只需要关注深拷贝那类 clone，而可以忽略 <code>Rc::clone</code> 调用。</p>
+<h3 id="克隆会增加引用计数"></h3>
+<p>让我们修改示例 15-18 的代码以便观察创建和丢弃 <code>a</code> 中 <code>Rc&lt;List&gt;</code> 的引用时引用计数的变化。</p>
+<p>在示例 15-19 中，修改了 <code>main</code> 以便将列表 <code>c</code> 置于内部作用域中，这样就可以观察当 <code>c</code> 离开作用域时引用计数如何变化。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">enum List {
+</span><span class="boring">    Cons(i32, Rc&lt;List&gt;),
+</span><span class="boring">    Nil,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">use crate::List::{Cons, Nil};
+</span><span class="boring">use std::rc::Rc;
+</span><span class="boring">
+</span>// --snip--
+
+fn main() {
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    println!("count after creating a = {}", Rc::strong_count(&amp;a));
+    let b = Cons(3, Rc::clone(&amp;a));
+    println!("count after creating b = {}", Rc::strong_count(&amp;a));
+    {
+        let c = Cons(4, Rc::clone(&amp;a));
+        println!("count after creating c = {}", Rc::strong_count(&amp;a));
+    }
+    println!("count after c goes out of scope = {}", Rc::strong_count(&amp;a));
+}</code></pre>
+<p><span class="caption">示例 15-19：打印出引用计数</span></p>
+<p>在程序中每个引用计数发生变化的地方，我们都会打印当前的引用计数，这个值是通过调用 <code>Rc::strong_count</code> 函数得到的。这个函数之所以叫 <code>strong_count</code> 而不是 <code>count</code>，是因为 <code>Rc&lt;T&gt;</code> 还拥有 <code>weak_count</code>；我们会在<a href="#使用-weakt-防止引用循环">“使用 <code>Weak&lt;T&gt;</code> 避免引用循环”</a>一节中看到 <code>weak_count</code> 的用途。</p>
+<p>这段代码会打印出：</p>
+<pre><code class="language-console">$ cargo run
+   Compiling cons-list v0.1.0 (file:///projects/cons-list)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
+     Running `target/debug/cons-list`
+count after creating a = 1
+count after creating b = 2
+count after creating c = 3
+count after c goes out of scope = 2
+</code></pre>
+<p>我们能够看到 <code>a</code> 中 <code>Rc&lt;List&gt;</code> 的初始引用计数为 1，接着每次调用 <code>clone</code>，计数会增加 1。当 <code>c</code> 离开作用域时，计数减 1。不必像调用 <code>Rc::clone</code> 增加引用计数那样调用一个函数来减少计数；<code>Drop</code> trait 的实现当 <code>Rc&lt;T&gt;</code> 值离开作用域时自动减少引用计数。</p>
+<p>从这个例子我们所不能看到的是，在 <code>main</code> 的结尾当 <code>b</code> 然后是 <code>a</code> 离开作用域时，此处计数会是 0，同时 <code>Rc&lt;List&gt;</code> 被完全清理。使用 <code>Rc&lt;T&gt;</code> 允许一个值有多个所有者，引用计数则确保只要任何所有者依然存在其值也保持有效。</p>
+<p>通过不可变引用， <code>Rc&lt;T&gt;</code> 允许在程序的多个部分之间只读地共享数据。如果 <code>Rc&lt;T&gt;</code> 也允许多个可变引用，则会违反第四章讨论的借用规则之一：相同位置的多个可变借用可能造成数据竞争和不一致。不过可以修改数据是非常有用的！在下一部分，我们将讨论内部可变性模式和 <code>RefCell&lt;T&gt;</code> 类型，它可以与 <code>Rc&lt;T&gt;</code> 结合使用来处理不可变性的限制。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p052.html">← 使用 Drop Trait 运行清理代码</a><a href="index.html">目录</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

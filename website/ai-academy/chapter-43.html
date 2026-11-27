@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="System One 模型实战,自学路线,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="System One 模型实战：TypeSafe Jev 让 AI 变成「函数调用」 · 自学路线 · 白驹 ccowork">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>System One 模型实战：TypeSafe Jev 让 AI 变成「函数调用」 · 自学路线 · 白驹 ccowork</title>
+<meta name="description" content="System One 模型实战：理解 Jev 的 Choice、Score、Noul 三类决策原语，对比传统 LLM 的输出方式，并用置信度阈值设计快慢双系统工作流。官方性能数据与局限均单独标注。">
+<meta property="og:description" content="System One 模型实战：理解 Jev 的 Choice、Score、Noul 三类决策原语，对比传统 LLM 的输出方式，并用置信度阈值设计快慢双系统工作流。官方性能数据与局限均单独标注。">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"System One 模型实战：TypeSafe Jev 让 AI 变成「函数调用」 · 自学路线 · 白驹 ccowork","description":"System One 模型实战：理解 Jev 的 Choice、Score、Noul 三类决策原语，对比传统 LLM 的输出方式，并用置信度阈值设计快慢双系统工作流。官方性能数据与局限均单独标注。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<meta name="twitter:description" content="System One 模型实战：理解 Jev 的 Choice、Score、Noul 三类决策原语，对比传统 LLM 的输出方式，并用置信度阈值设计快慢双系统工作流。官方性能数据与局限均单独标注。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/website/ai-academy/chapter-43.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/website/ai-academy/chapter-43.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="System One 模型实战：TypeSafe Jev 让 AI 变成「函数调用」 · 自学路线 · 白驹 ccowork">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<h1>System One 模型实战：TypeSafe Jev 让 AI 变成「函数调用」</h1>
+<div class="blog-open">
+  <div class="blog-badge">白驹 ccowork · 自学路线 第43章</div>
+  <div class="blog-meta"><span>📅 2026-10-27</span><span>⏱ 60 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)">🤖 AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<p>本章介绍 TypeSafe Jev 的 System One 决策模型：它面向分类、路由、打分等快速判断场景，输出符合预定义 Schema 的结构化结果。你将理解 Choice、Score、Noul 三个原语，以及如何用置信度阈值把 Jev 与负责复杂推理的 LLM 组合成快慢双系统。文中性能与成本数据均来自官方自评，尚需第三方复核。</p>
+<h2 id="ch43-热点背景与命名由来">热点背景与命名由来</h2>
+<p>2026年9月14日，前OpenAI研究员、ChatGPT指令跟随技术核心研究者Diogo Almeida创立的TypeSafe AI正式发布首款System One系列模型Jev，早期访问通道已同步开放。本次发布的官方信源包括TypeSafe官方博客（typesafe.ai/blog/introducing-system-one-models-and-jev）、官方文档站（docs.typesafe.ai），以及Every.to、AI/TLDR、Runtime Wire在9月14-15日的独立报道，所有功能、定价、性能参数请以官方最新文档为准。</p>
+<p>模型与系列的命名有明确的学术与经济学渊源：System One系列的命名取自卡尼曼《思考，快与慢》中的「系统一」，对应人类无需刻意思考的快速直觉决策；而模型名Jev取自经济学家William Stanley Jevons，呼应经典的「杰文斯悖论」——当AI决策的效率提升、成本降到足够低时，市场对AI能力的需求会出现爆发式增长，而非被效率提升压缩需求空间。</p>
+<p>你可以直接访问官方博客地址验证发布信息，所有公开报道的链接均已收录在官方博客的引用区。</p>
+<h2 id="ch43-为什么Jev代表AI范式的转折点">为什么Jev代表AI范式的转折点</h2>
+<p>在此前的课程章节中，我们接触的所有LLM都遵循统一范式：输入文本序列，输出逐token生成的文本，本质是「会说话的概率模型」。而Jev代表的System One类别是完全不同的模型设计：输入是任意非结构化的上下文状态，输出是类型安全的结构化决策值，不需要额外解析、不会出现格式错误，是AI从「聊天机器人界面」走向「软件内置原生智能」的关键转折点。</p>
+<p>本章内容和课程其他 Agent 核心章节形成明确的能力互补：<a href="/website/ai-academy/chapter-27.html">第 27 章的 MCP 协议</a>解决「Agent 怎么标准化调用外部工具」的问题，<a href="/website/ai-academy/chapter-28.html">第 28 章的 Harness</a>解决「Agent 运行时怎么管理生命周期」的问题，<a href="/website/ai-academy/chapter-34.html">第 34 章的 NOOA</a>解决「Agent 怎么用对象导向方式组织能力」的问题，而本章的 Jev 解决的是「Agent 怎么做可靠、可校准的快速判断」。四类能力可以按任务需要组合，而不是相互替代。</p>
+<p>你可以对比之前学过的LLM输出解析流程：哪怕用了Function Calling，你也需要写重试逻辑、格式校验、异常捕获来处理LLM的输出幻觉、类型错误、拒答等问题，而Jev从模型层面直接消除了这些成本。</p>
+<h2 id="ch43-核心范式System-One-vs-传统LLM">核心范式：System One vs 传统LLM</h2>
+<p>根据TypeSafe官方博客发布的对比表，两类模型的核心设计目标、能力边界、成本性能差异非常明确，所有数据为官方公开值，实际表现请以官方最新评测为准：</p>
+<table>
+<thead><tr><th>对比维度</th><th>传统前沿LLM</th><th>System One（Jev）</th></tr></thead>
+<tbody>
+<tr><td>训练目标</td><td>RLHF/RLVR，优化人类偏好/可验证奖励</td><td>RLCD（校准决策强化学习），优化决策校准度</td></tr>
+<tr><td>输入形式</td><td>侧重顺序排列的聊天消息</td><td>侧重包含全量上下文的结构化程序状态</td></tr>
+<tr><td>输出形式</td><td>字符串，需解析验证，存在幻觉/拒答/类型错误</td><td>类型安全结构化值，预定义Schema，零类型错误，附带校准置信度</td></tr>
+<tr><td>生成方式</td><td>自回归串行逐token生成</td><td>单次前向传播并行生成所有输出</td></tr>
+<tr><td>定价</td><td>输入$0.20-$10/MTok，输出成本约为输入的5倍</td><td>输入$0.042/MTok，输出成本低到可忽略（官方标注为免费）</td></tr>
+<tr><td>端到端延迟</td><td>3秒-329秒</td><td>70ms-500ms（官方称快40x-200x）</td></tr>
+<tr><td>置信度</td><td>主动要求输出置信度时仍普遍过度自信、不一致</td><td>每个输出附带统计校准的置信度，90%置信度对应90%实际准确率</td></tr>
+<tr><td>核心适用场景</td><td>人在回路的聊天/副驾驶/编程Agent、复杂推理、Demo原型</td><td>智能if语句（分类/路由/打分/提取/分支）、大数据Map-Reduce、100ms级实时应用、LLM输出校验与护栏</td></tr>
+</tbody>
+</table>
+<p>需要特别说明的是，以上性能对比为官方自评结果，尚未经过第三方独立机构的大规模复核，实际业务中的速度、成本收益会因任务类型、部署区域、调用并发量出现差异。你可以访问官方评测站evals.typesafe.ai查看公开的评测脚本与原始数据。</p>
+<h2 id="ch43-核心能力三大原语与State输入">核心能力：三大原语与State输入</h2>
+<p>根据官方文档（docs.typesafe.ai/primitives）的定义，Jev的所有能力都构建在三个极简的决策原语之上，没有任何复杂的提示词工程要求，三个原语可以在单次请求中并行调用多个，是工作流编排的核心基础：</p>
+<ul>
+<li>Choice（选择）：从最多255个预定义选项中选择最匹配的结果，返回<code>choice</code>字段，适合分类、路由场景，例如「工单应该分配给billing/technical/account哪个团队」</li>
+<li>Score（打分）：按照给定的评分规则返回0到N之间的连续数值（支持小数），适合情绪判断、紧急度评估、质量打分场景，例如「客户沮丧程度：0=平静，1=沮丧，2=非常沮丧」，可能返回1.4这类连续值</li>
+<li>Noul（是/否概率）：判断给定命题是否成立，返回0-1之间的校准概率值，适合二元判断场景，例如「这条消息是否包含退款诉求」，返回值越接近1代表概率越高</li>
+</ul>
+<p>和LLM的「聊天消息列表」输入不同，Jev的输入核心是State（状态）：你只需要把所有决策相关的上下文（用户消息、历史交易记录、平台规则、用户标签等）拼接成一段非结构化文本传入即可，不需要做特殊的格式对齐，模型会自动从State中提取信息完成所有并行决策。</p>
+<p>以下是官方Python SDK的最小调用示例（参数格式以官方文档为准）：</p>
+<pre><code>from typesafe import JevClient
+# 初始化客户端，早期访问密钥从官方控制台获取
+client = JevClient(api_key="YOUR_API_KEY")
+# 单次请求并行调用三个原语，不需要多次调用
+response = client.systemone.create(
+    # State为全量决策上下文
+    state="""
+    用户消息：我上周充的会员没到账，你们到底能不能解决？再不行我就投诉了。
+    用户标签：付费会员，历史无投诉记录，上周有一笔19.9元会员订单状态为待确认。
+    平台规则：会员未到账优先转技术团队核实，明确提及投诉的工单标记为高优先级。
+    """,
+    tasks=[
+        {"type": "choice", "id": "team_route", "options": ["billing", "technical", "account"]},
+        {"type": "score", "id": "frustration_level", "max": 2, "description": "0=平静，1=沮丧，2=非常沮丧"},
+        {"type": "noul", "id": "need_refund", "proposition": "用户明确提出退款诉求"}
+    ]
+)
+# 返回结构为类型安全的字典，无需额外解析校验
+print(response.results)</code></pre>
+<p>安装官方SDK可执行<code>pip install typesafe-jev</code>验证，SDK版本与参数请以官方PyPI仓库的最新发布为准。</p>
+<h2 id="ch43-技术创新RLCD与并行采样架构">技术创新：RLCD与并行采样架构</h2>
+<p>Jev能实现远低于LLM的延迟、零类型错误的输出，核心来自两个底层技术创新，首先是RLCD（Reinforcement Learning for Calibrated Decisions，校准决策强化学习）训练方法。和LLM训练目标是「输出符合人类偏好的文本」不同，RLCD的训练目标是让模型输出「认识上诚实的概率」——也就是模型给出的90%置信度，在大规模统计上必须严格对应90%的实际正确率，不会出现传统LLM「言之凿凿但完全错误」的过度自信问题。</p>
+<p>决策校准度是生产环境自动化的核心前提：如果一个模型做决策的成功率是95%，但永远不告诉你哪5%的情况会出错，你就永远需要人工复核所有结果，无法实现真正的自动化；而有了校准的置信度，你就可以设置明确的阈值：比如置信度≥0.9的结果直接自动执行，0.7-0.9的结果进入简化复核流程，<0.7的结果升级到更复杂的模型处理，把人工成本集中在真正需要的场景。</p>
+<p>第二个核心创新是并行采样的非自回归架构：传统LLM是自回归结构，每个token的生成都依赖之前生成的所有token，只能串行计算，哪怕输出很短也需要跑几十步前向传播；而Jev完全放弃了字符串生成任务，所有输出决策值都在单次前向传播中并行计算，不需要逐token生成，因此延迟极低、硬件利用率极高，成本可以降到LLM的几十分之一。</p>
+<h2 id="ch43-官方评测局限与诚实披露">官方评测、局限与诚实披露</h2>
+<p>根据官方博客与公开评测站的数据（目前为官方自评，需第三方独立复核），Jev在工作流类决策任务上位于帕累托前沿的领先位置：在速度/成本和决策准确率的权衡上，官方称对比GPT-6 Astra、Fable 5.1等前沿闭源模型，Jev最高可达193.6倍更快、444.6倍更便宜；同时因为输出Schema是模型原生预定义的，类型错误率数学上为0，不需要任何输出解析逻辑。官方公开的两个演示案例也验证了其低延迟特性：一是用Jev实时玩Doom游戏，每秒发起10次决策查询，每小时总成本约7美元；二是Wikiracing游戏（从一个维基页面跳转到目标页面），Jev比非推理模式的LLM决策更快、跳转步骤更少（注：LLM开启长推理模式时表现会更优）。</p>
+<p>官方在发布博客中明确列出了当前版本的局限与已知问题，这是生产落地前必须明确的边界，也是本章职业道德部分的核心内容：</p>
+<ul>
+<li>速度评测基于美国西海岸服务器，不同地区的网络延迟会有明显差异</li>
+<li>当前公开定价为早期访问价格，长期定价是否可持续需后续验证</li>
+<li>工作流评测集由内部团队构建，可能存在任务选择偏差；参考答案取GPT-6 Astra与Fable 5.1的平均，可能低估DeepSeek等开源模型的相对表现</li>
+<li>Jev不具备文本生成、代码编写、长链推理解释能力，仅能输出结构化决策值</li>
+<li>目前处于早期访问阶段，API参数、功能边界可能发生不兼容变更</li>
+<li>单个Choice任务的选项数量（cardinality）上限为255，高基数选择场景需要设计两阶段路由流程</li>
+<li>仅适合系统一的快思考决策，不适合需要慢思考的复杂推理、创意生成类任务，后者仍是推理型LLM的适用场景</li>
+</ul>
+<p>你可以在官方博客的「Limitations」章节查看完整的局限披露，所有披露内容均为官方公开信息，未做任何夸大或隐瞒。</p>
+<h2 id="ch43-生产落地快慢双系统协作架构">生产落地：快慢双系统协作架构</h2>
+<p>Jev的定位从来不是替代LLM，而是和LLM形成「快慢双系统」的协作架构，这也是未来生产级AI应用的主流设计模式：LLM承担系统二的慢思考职责，负责复杂推理、内容生成、长周期规划、创意类任务；Jev承担系统一的快思考职责，负责分类路由、打分判断、实时响应、质量校验、安全护栏这类毫秒级决策任务，两者结合可以同时实现低延迟、低成本、高准确率的效果。</p>
+<p>最典型的协作流程是分层决策漏斗：首先用Jev对所有进入的请求做快速初筛和分类，置信度≥0.9的高确定性结果直接自动执行（比如常见问题回复、明确的工单路由），不需要调用LLM；置信度在0.7-0.9之间的请求进入简化规则流程；置信度<0.7的低确定性请求再升级到LLM做深度推理处理；等LLM生成结果后，再用Jev做一轮快速校验，检查输出是否包含敏感内容、是否偏离用户需求、是否符合格式要求，校验通过后再返回给用户。</p>
+<p>这种架构的收益取决于请求分布与阈值设置：只有高置信度任务才可以直接执行，低置信度或复杂请求仍应升级给 LLM。评估时应在自己的业务样本上记录自动化率、准确率、端到端延迟和每次请求成本，不能直接把官方测试中的速度或成本比例当成业务收益。</p>
+<p>你可以用官方Playground模拟双系统流程，验证不同置信度阈值下的自动化率和准确率变化。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>Jev代表的System One是和传统LLM平行的全新模型类别，核心特征是输入非结构化状态、输出类型安全的校准决策值，不生成文本，专门解决快速可靠判断的问题，填补了AI在生产工作流场景的能力空白。</li>
+<li>Jev的核心能力基于Choice、Score、Noul三个极简原语，支持单次请求并行调用多个任务，依托RLCD训练方法和非自回归并行架构，实现70-500ms延迟、极低调用成本、数学层面的零类型错误。</li>
+<li>生产环境的最优架构是快慢双系统：Jev负责快思考的分类、路由、校验、护栏，LLM负责慢思考的推理、生成、规划，结合置信度阈值做分层流转，兼顾速度、成本和准确率。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>访问typesafe.ai填写早期访问申请表单，加入waitlist后进入官方文档站，阅读三大原语和State概念的说明，在Playground中完成一个客服场景的三任务并行调用测试（工单分类+情绪打分+退款判断）。</li>
+<li>拿到API密钥后，用官方Python/TypeScript SDK写一个最小智能路由脚本：输入用户消息，Jev返回意图分类、紧急度评分、是否需要人工三个结果，本地写简单的阈值逻辑，实现高置信度自动返回预设回复、低置信度输出「转人工处理」的流程。</li>
+<li>设计一个LLM输出护栏的最小Demo：让 GPT-6 Luna 生成一段客服回复，把回复传入Jev，用三个Noul任务分别判断是否包含敏感内容、是否答非所问、是否符合客服语气，设置阈值拦截不合格的输出。</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>请以官方文档为准，阅读TypeSafe官方博客中关于RLCD训练方法的技术详解，以及官方评测站evals.typesafe.ai的公开评测脚本，思考如何为自己的业务场景设计专属的Jev决策任务，对比传统规则引擎、纯LLM方案的成本和准确率差异。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');});
+</script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

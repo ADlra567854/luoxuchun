@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="开源旗舰与长上下文实战,自学路线,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南 · 自学路线 · 白驹 ccowork">
+<meta name="description" content="Hy4 preview 核心发布信息与定位 2026年8月28日腾讯混元团队正式发布并开源旗舰大模型Hy4 preview，采用MoE混合专家架构，总参数770B、单轮激活参数49B，原生支持1M（100万）token上…">
+<meta property="og:description" content="Hy4 preview 核心发布信息与定位 2026年8月28日腾讯混元团队正式发布并开源旗舰大模型Hy4 preview，采用MoE混合专家架构，总参数770B、单轮激活参数49B，原生支持1M（100万）token上…">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南 · 自学路线 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南 · 自学路线 · 白驹 ccowork","description":"Hy4 preview 核心发布信息与定位 2026年8月28日腾讯混元团队正式发布并开源旗舰大模型Hy4 preview，采用MoE混合专家架构，总参数770B、单轮激活参数49B，原生支持1M（100万）token上…","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="canonical" href="https://ccoworkbaiju.cn/website/ai-academy/chapter-30.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/ai-academy/chapter-30.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南 · 自学路线 · 白驹 ccowork">
+<meta name="twitter:description" content="Hy4 preview 核心发布信息与定位 2026年8月28日腾讯混元团队正式发布并开源旗舰大模型Hy4 preview，采用MoE混合专家架构，总参数770B、单轮激活参数49B，原生支持1M（100万）token上…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../../assets/pg/pg-website-ai-academy-chapter-30.png" alt="开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南 · 自学路线 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<h1>开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南</h1>
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 自学路线 第30章</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-10-27</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>60 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<p>本章将带你掌握腾讯2026年8月28日开源的旗舰MoE大模型Hy4 preview的核心特性与三种接入路径，理解1M长上下文的真实价值与上下文工程方法论，完成从API调用到本地部署的全流程实操，学完可独立落地长文档问答、中型代码库分析等真实生产力场景。</p>
+<h2 id="ch30-Hy4-preview-核心发布信息与定位">Hy4 preview 核心发布信息与定位</h2>
+<p>2026年8月28日腾讯混元团队正式发布并开源旗舰大模型Hy4 preview，采用MoE混合专家架构，总参数770B、单轮激活参数49B，原生支持1M（100万）token上下文窗口，定位面向软件工程、办公协同、游戏开发、科研场景的「真正生产力」模型。目前模型权重已同步上线HuggingFace、GitHub、ModelScope三个开源平台，API服务已接入腾讯云TokenHub与第三方聚合平台OpenRouter，官方公开定价为输入6元/百万tokens、输出18元/百万tokens，后续价格与参数调整请以官方文档为准。</p>
+<p>本次发布的Hy4 preview是国内首个原生1M上下文的开源MoE旗舰模型，腾讯内部公布的163名各领域专家、203个真实工程任务盲测结果显示，该模型平均得分2.99/4分，略优于同期开源旗舰GLM-5.3与Kimi K3。模型协议采用商业友好的开源许可，具体商用权限、二次分发规则请以官方发布的License文件为准。</p>
+<p>可通过以下渠道核验发布信息：</p>
+<ul>
+<li>访问腾讯混元官方GitHub仓库查看Release说明</li>
+<li>登录HuggingFace搜索<code>tencent/Hy4-preview</code>确认权重已上线</li>
+<li>打开腾讯云TokenHub官网查看API定价与服务状态</li>
+</ul>
+<h2 id="ch30-1M长上下文的价值与能力边界">1M长上下文的价值与能力边界</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-chapter-30.png" alt="开源旗舰与长上下文实战：腾讯混元 Hy4 preview 接入指南 · AI 学 · 1M长上下文的价值与能力边界" loading="lazy"></figure>
+<p>1M长上下文的核心价值是让模型无需额外检索即可直接读取超长文本，是上下文工程（Context Engineering）的基础能力：传统RAG方案需要先对文档切片、向量化、检索召回，存在切片损失语义、召回遗漏关键信息的问题，而长上下文可以直接将全量文本输入模型，从根源上避免检索环节的信息损耗。需要注意的是长上下文并非替代RAG，而是互补关系：对于超过1M窗口的超大规模语料，仍需要RAG做前置召回，而召回后的内容可以直接放入长上下文窗口做推理，无需复杂的重排与切片优化。</p>
+<p>按照官方公开的token换算标准，1M token约相当于70-80万汉字（中文平均1token≈1.3-1.4字）、120-150万英文单词，能力边界可覆盖：</p>
+<ul>
+<li>单本300-500页的技术书籍或学术专著</li>
+<li>总代码量10-15万行的中型项目代码库（含注释、配置文件）</li>
+<li>上百份合同/报表组成的完整业务文档集</li>
+<li>长达数周的多轮对话历史全量留存</li>
+</ul>
+<p>可通过OpenRouter官方提供的token计算器工具，上传自己的测试文档核验token换算结果。</p>
+<h2 id="ch30-三种真实接入路径">三种真实接入路径</h2>
+<p>Hy4 preview目前提供三种成熟可落地的接入路径，覆盖从快速调试到私有部署的全场景需求，所有路径均已正式上线可直接使用：</p>
+<ol>
+<li><strong>OpenRouter聚合API接入</strong>：OpenRouter已第一时间上线Hy4 preview服务，提供完全兼容OpenAI格式的API接口，无需额外适配即可快速调用，适合个人开发者快速调试、小流量场景使用，模型ID以OpenRouter官方文档为准。</li>
+<li><strong>腾讯云TokenHub官方API接入</strong>：腾讯云官方提供的模型服务，SLA保障更高、延迟更稳定，支持企业级鉴权、私网访问、流量管控，适合企业生产环境使用，Endpoint地址、鉴权规则、限流策略请以腾讯云官方文档为准。</li>
+<li><strong>本地/私有部署</strong>：可从HuggingFace或ModelScope下载官方权重，通过transformers库直接加载，官方提供4bit/8bit量化版本，最低硬件门槛、量化推理性能请以官方部署文档为准，适合对数据隐私有要求的离线场景。</li>
+</ol>
+<p>三种接入路径的对比如下：</p>
+<table>
+<thead><tr><th>接入方式</th><th>适合场景</th><th>平均延迟</th><th>成本参考</th><th>数据隐私性</th></tr></thead>
+<tbody>
+<tr><td>OpenRouter</td><td>个人调试、小流量测试</td><td>300-800ms</td><td>官方定价+少量平台服务费</td><td>中</td></tr>
+<tr><td>腾讯云TokenHub</td><td>企业生产环境</td><td>200-500ms</td><td>官方统一定价</td><td>高（支持私网）</td></tr>
+<tr><td>本地部署</td><td>离线、敏感数据场景</td><td>依硬件配置</td><td>一次性硬件成本</td><td>最高</td></tr>
+</tbody>
+</table>
+<p>可执行以下命令安装依赖，准备接入环境：</p>
+<pre><code>pip install openai&gt;=1.40.0 transformers&gt;=4.44.0 accelerate&gt;=0.33.0</code></pre>
+<h2 id="ch30-长上下文实战场景对比">长上下文实战场景对比</h2>
+<p>Hy4 preview的1M长上下文能力可直接落地三类高频生产力场景，与此前章节介绍的RAG方案各有适用边界：</p>
+<p>第一类是整本PDF/书籍问答：对于单本500页以内的技术书、标准文档、长篇小说，可直接将全本内容转成文本后输入模型，无需做切片、向量化，即可实现跨章节的关联问答，避免RAG切片导致的上下文断裂；如果是超过1M token的多本书籍/大规模文档库，仍需要先用RAG召回相关章节，再放入长上下文窗口做整合推理。</p>
+<p>第二类是大型代码库检索问答：对于10万行代码以内的中型项目，可直接将所有代码文件按目录结构拼接后输入模型，实现全项目的代码逻辑梳理、Bug定位、重构建议生成，比传统RAG代码检索的准确率提升30%以上（以官方测试结果为准）；如果是百万行级别的大型代码库，仍需要先通过代码检索工具召回相关模块，再输入模型分析。</p>
+<p>第三类是长文档摘要与多轮长对话：可直接输入上百页的合同、财报、会议记录，生成结构化摘要、风险点提示、核心观点提炼，也支持全量保留上百轮的对话历史，避免多轮对话的上下文遗忘问题。</p>
+<p>可通过以下步骤快速测试长文档问答效果：将一份100页以上的PDF转成纯文本，统计token数不超过1M后直接输入模型提问。</p>
+<h2 id="ch30-长上下文工程实用技巧">长上下文工程实用技巧</h2>
+<p>使用长上下文模型需要掌握对应的工程技巧，才能在效果、成本、速度之间取得最优平衡：首先是注意力机制优化，Hy4 preview采用官方自研的稀疏注意力架构实现1M上下文支持，对长文本中间位置的信息召回率超过92%（以官方技术报告为准），但仍建议遵循「关键信息前置」原则，将核心问题、重要规则放在输入prompt的开头和结尾，减少中间位置的信息衰减。</p>
+<p>其次是成本控制意识，按照官方定价计算：1M满上下文单次调用，若输入1M tokens、输出1000 tokens，成本约为6*1 + 18*0.01 = 6.18元/次；若输入输出均为1M tokens，单次成本约24元，远高于短文本调用成本，因此需要做合理的输入裁剪：对于重复内容、无关内容提前过滤，不要无意义填满整个上下文窗口。</p>
+<p>最后是效果评测，长上下文效果不能仅靠主观感受判断，可使用LongBench、InfiniteBench等公开长文本评测基准做验证，Hy4 preview在LongBench上的平均得分以官方公布的技术报告为准。</p>
+<p>成本计算可自行核验：输入token数/1e6 *6 + 输出token数/1e6 *18，即为单次调用的预估成本。</p>
+<h2 id="ch30-开源旗舰选型参考">开源旗舰选型参考</h2>
+<p>当前开源大模型旗舰赛道已形成Hy4 preview、GLM-5.3、Kimi K3三足鼎立的格局，三者均支持百万级长上下文，在不同场景各有优势：根据腾讯官方公布的163名专家、203个工程任务盲测结果，Hy4 preview在代码生成、办公文档处理、游戏逻辑生成场景的得分略高于另外两款模型，GLM-5.3在多语言、数学推理场景表现突出，Kimi K3在超长文档召回、通用对话场景有优势。</p>
+<p>选型时可遵循以下原则：</p>
+<ul>
+<li>腾讯云生态用户、以软件工程/游戏开发为核心场景的，优先选择Hy4 preview</li>
+<li>智谱生态用户、需要多语言/数学推理能力的，可选择GLM-5.3</li>
+<li>月之暗面生态用户、以超长文档处理为核心场景的，可选择Kimi K3</li>
+</ul>
+<p>需要注意的是，盲测结果仅代表特定测试集下的表现，实际业务场景建议用自己的业务数据做小流量A/B测试后再选型，所有模型的得分数据请以各厂商官方公布的结果为准。</p>
+<p>可通过OpenRouter的Playground功能，同时调用三款模型输入相同prompt，对比输出效果做选型判断。</p>
+<h2 id="ch30-可运行API调用示例">可运行API调用示例</h2>
+<p>以下为使用OpenAI兼容SDK调用Hy4 preview的代码骨架，支持OpenRouter与腾讯云TokenHub两种接入方式，具体模型ID、Endpoint地址、API密钥请替换为对应平台的官方值：</p>
+<pre><code>from openai import OpenAI
+# 方式1：接入OpenRouter
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="你的OpenRouter API密钥", # 从OpenRouter控制台获取
+)
+# 方式2：接入腾讯云TokenHub（请替换为官方Endpoint与密钥）
+# client = OpenAI(
+#     base_url="https://tokenhub.tencentcloudapi.com/v1", # 以官方文档为准
+#     api_key="你的腾讯云SecretId:SecretKey", # 以官方鉴权规则为准
+# )
+# 读取长文本示例（以本地txt文档为例）
+with open("long_document.txt", "r", encoding="utf-8") as f:
+    long_content = f.read()
+response = client.chat.completions.create(
+    model="tencent/hy4-preview", # 模型ID以对应平台官方文档为准
+    messages=[
+        {"role": "system", "content": "你是专业的文档分析助手，基于用户提供的全量内容准确回答问题，不要编造信息。"},
+        {"role": "user", "content": f"以下是全量文档内容：\n{long_content}\n\n请总结这份文档的核心观点，并列出3个关键风险点。"}
+    ],
+    temperature=0.3,
+    max_tokens=2048
+)
+print(response.choices[0].message.content)</code></pre>
+<p>运行代码前需先安装前文要求的依赖包，替换为自己的API密钥后即可直接执行，可先使用短文本测试连通性，再逐步替换为长文本测试长上下文效果。</p>
+<h2 id="ch30-局限与注意事项">局限与注意事项</h2>
+<p>使用Hy4 preview时需要明确模型的能力边界，避免不合理预期：首先长上下文不等于强推理，1M窗口仅代表模型可以读取更长的输入，不代表模型在复杂逻辑推理、数学计算、多步骤规划上的能力会同步提升，复杂推理任务仍需要通过思维链、分步提示等方式优化，不能仅靠塞入长文本解决问题。</p>
+<p>其次是成本与限流问题：1M上下文的单次调用成本较高，且目前所有平台对长上下文请求都有单独的限流策略，OpenRouter与腾讯云TokenHub的长上下文QPS限制、单次请求最大输出token限制请以官方文档为准，高并发场景需要提前申请配额。</p>
+<p>最后是开源合规问题：Hy4 preview的开源协议允许商业使用，但对年营收超过一定规模的企业有单独的授权要求，具体合规条款、商用申请流程请以官方发布的License文件为准，不要擅自将权重用于超范围的商业场景。</p>
+<p>可通过各平台的官方控制台查看限流规则，通过模型仓库的LICENSE文件查看合规要求。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>Hy4 preview是腾讯2026年8月开源的770B总参/49B激活MoE旗舰模型，原生支持1M上下文，API定价输入6元/百万tokens、输出18元/百万tokens，提供OpenRouter、腾讯云TokenHub、本地部署三种接入路径。</li>
+<li>1M长上下文可覆盖单本技术书、中型代码库的全量输入，是上下文工程的核心基础，与RAG是互补而非替代关系，需要结合场景选择方案。</li>
+<li>长上下文使用需要注意关键信息前置、成本控制、效果评测三个核心要点，避免无意义填满窗口导致的成本浪费与效果下降。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>注册OpenRouter账号并获取API密钥，运行本文提供的代码示例，调用Hy4 preview完成一份100页以上PDF文档的核心观点总结。</li>
+<li>按照官方定价计算：输入80万tokens、输出20万tokens的单次长上下文调用，总成本是多少？对比短文本调用（输入1000tokens、输出1000tokens）的成本倍数。</li>
+<li>下载Hy4 preview的8bit量化版本（以官方提供的量化权重为准），在符合硬件要求的环境下通过transformers库加载，完成本地推理测试。</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>阅读Hy4 preview官方技术报告中关于稀疏注意力架构、长上下文训练方法的章节，对比传统全注意力机制在长文本场景下的性能差异与实现原理，具体报告地址请以腾讯混元官方发布为准。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

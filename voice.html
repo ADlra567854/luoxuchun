@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="ccowork · 语音台,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="ccowork · 语音台 · 白驹 ccowork">
+<meta name="description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta property="og:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ccowork · 语音台 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"ccowork · 语音台 · 白驹 ccowork","description":"个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<style>
+:root{
+  --bg:#04060c; --panel:rgba(13,19,32,.55); --line:rgba(120,160,220,.14);
+  --ice:#5eead4; --cyan:#38e1ff; --blue:#5b8cff; --gold:#f0b95c;
+  --text:#e9f0fb; --muted:#8fa3bd; --dim:#5a6b85;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code","JetBrains Mono",Consolas,monospace;
+  --grad:linear-gradient(120deg,#5eead4,#38e1ff 40%,#5b8cff 75%,#8b5cf6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(94,234,212,.28);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#05070d}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:10px}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;background:rgba(4,6,12,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#fff}
+.logo i{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:20px;font-size:14px;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;transition:.25s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--ice)}
+.nav-links a.active{color:var(--ice)}
+@media(max-width:900px){nav{padding:12px 20px}.nav-links{display:none}}
+.wrap{position:relative;z-index:5;max-width:880px;margin:0 auto;padding:104px 24px 70px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,44px);letter-spacing:3px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:10px;font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(10px);margin-top:22px}
+.card h3{font-family:var(--serif);font-size:16px;color:var(--ice);margin-bottom:14px;letter-spacing:1px}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.bar label{font-size:13px;color:var(--muted)}
+.bar select,.bar input[type=range]{background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:8px 12px;font-size:13px;outline:none;font-family:inherit}
+.bar select:focus{border-color:var(--ice)}
+textarea{width:100%;background:var(--bg2,#0a0f1e);border:1px solid var(--line);color:var(--text);border-radius:14px;padding:14px 16px;
+  font-size:15px;outline:none;resize:vertical;font-family:inherit;line-height:1.7;min-height:130px}
+textarea:focus{border-color:var(--ice);box-shadow:0 0 0 3px rgba(94,234,212,.12)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{padding:11px 22px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:.25s;border:none;text-decoration:none;display:inline-block}
+.btn-primary{background:var(--grad);color:#03121a}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(79,140,255,.4)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn.stop{background:var(--err,#ff5c8a);color:#fff}
+.btn.rec{background:var(--err,#ff5c8a);color:#fff;animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,92,138,.5)}50%{box-shadow:0 0 0 10px rgba(255,92,138,0)}}
+.status{font-size:13px;color:var(--dim);margin-top:10px;min-height:20px}
+.status b{color:var(--ice)}
+.wave{display:flex;gap:4px;align-items:flex-end;height:34px;margin-top:12px}
+.wave span{width:4px;border-radius:6px;background:var(--grad);animation:wv 1s ease-in-out infinite}
+.wave span:nth-child(2){animation-delay:.12s}.wave span:nth-child(3){animation-delay:.24s}
+.wave span:nth-child(4){animation-delay:.36s}.wave span:nth-child(5){animation-delay:.48s}
+@keyframes wv{0%,100%{height:6px}50%{height:30px}}
+/* 真实声波 canvas（GitHub 式声纹 · Web Audio 实时频谱） */
+.wave-canvas{width:100%;height:46px;margin-top:12px;border-radius:14px;
+  background:rgba(255,255,255,.07);border:1px solid var(--line)}
+.wave-hint{font-size:11px;color:var(--dim);margin-top:6px;text-align:center;letter-spacing:1px}
+/* 识别能力检测条 */
+.sr-check{font-size:12px;color:var(--dim);margin-top:14px;padding:9px 14px;border:1px dashed var(--line);border-radius:10px;line-height:1.7}
+.sr-check.ok{color:var(--ice);border-color:rgba(94,234,212,.4);background:rgba(94,234,212,.06)}
+.sr-check.warn{color:var(--gold);border-color:rgba(240,185,92,.45);background:rgba(240,185,92,.06)}
+.sr-check b{font-weight:700}
+footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;color:var(--dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+</style>
+  <link rel="stylesheet" href="/responsive.css">
+<link rel="canonical" href="https://ccoworkbaiju.cn/voice.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/voice.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccowork · 语音台 · 白驹 ccowork">
+<meta name="twitter:description" content="个人人工智能学习资源分享、AI 开源作品与项目展示、技术博客及工具导航">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-theme="cloud"><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/" class="on" style="color:#2563eb">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="../assets/pg/pg-website-voice.png" alt="ccowork · 语音台 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+<canvas id="stars"></canvas>
+<nav>
+  <div class="logo">AI 创作<i>纪元</i></div>
+  <div class="nav-links">
+    <a href="../index.html">首页</a>
+    <a href="./agent.html">智能体</a>
+    <a href="./quiz.html"><i class="cc-ic" data-ic="pen-line" aria-hidden="true"></i>刷题</a>
+    <a href="./resume.html"><i class="cc-ic" data-ic="file-text" aria-hidden="true"></i>简历</a>
+    <a href="./voice.html" class="active"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i>语音台</a>
+    <a href="./news.html"><i class="cc-ic" data-ic="newspaper" aria-hidden="true"></i>新闻</a>
+  
+    <a href="videos.html">教程视频</a>
+      <a href="ai-money.html">AI赚钱</a>
+      <a href="ai-projects.html">作品大全</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1><i class="cc-ic" data-ic="mic" aria-hidden="true"></i>语音 <span>工作台</span></h1>
+    <p>浏览器原生语音能力：文本朗读（可调语音/语速）、语音听写、语音问答。建议使用 Chrome / Edge。</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="volume-2" aria-hidden="true"></i>文本朗读</h3>
+    <div class="bar">
+      <label>语音</label><select id="voiceSel"></select>
+      <label>语速</label><input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+      <label>音量</label><input type="range" id="vol" min="0" max="1" step="0.1" value="1">
+    </div>
+    <textarea id="ttsText" placeholder="粘贴或输入要朗读的文本…"></textarea>
+    <div class="btns">
+      <button class="btn btn-primary" id="speakBtn" type="button"><i class="cc-ic" data-ic="volume-2" aria-hidden="true"></i>开始朗读</button>
+      <button class="btn btn-ghost" id="stopSpeakBtn" type="button"><i class="cc-ic" data-ic="square" aria-hidden="true"></i>停止</button>
+    </div>
+    <div class="wave" id="speakWave" style="display:none"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="card">
+    <h3><i class="cc-ic" data-ic="mic" aria-hidden="true"></i>语音听写 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 语音问答</h3>
+    <div class="btns" style="margin-top:0">
+      <button class="btn btn-primary rec" id="micBtn" type="button"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i>按住说话 / 点击开始</button>
+      <button class="btn btn-ghost" id="clearBtn" type="button"><i class="cc-ic" data-ic="trash-2" aria-hidden="true"></i>清空</button>
+      <a class="btn btn-ghost" id="askBtn" href="#" target="_blank" rel="noopener"><i class="cc-ic" data-ic="bot" aria-hidden="true"></i>让智能体回答这段语音</a>
+    </div>
+    <div class="sr-check" id="srCheck"><i class="cc-ic" data-ic="search" aria-hidden="true"></i>检测中…</div>
+    <textarea id="asrText" style="margin-top:14px" placeholder="口述内容会实时显示在这里…"></textarea>
+    <div class="wave" id="wave" style="display:none"><span></span><span></span><span></span><span></span><span></span></div>
+    <canvas id="waveCanvas" class="wave-canvas" style="display:none"></canvas>
+    <div class="wave-hint" id="waveHint" style="display:none"><i class="cc-ic" data-ic="mic" aria-hidden="true"></i>实时声纹 · 你说话的声音波形</div>
+    <div class="status" id="status">就绪。点「」开始说话，说完自动停止。</div>
+  </div>
+</div>
+<footer>
+  <div style="font-family:var(--serif);letter-spacing:3px;font-size:15px">白驹 ccowork</div>
+  <p style="margin-top:6px"><a href="/"><i class="cc-ic cc-back" data-ic="arrow-left"></i>← 回总站</a> · Web Speech API · 浏览器本地处理</p>
+</footer>
+<script>
+(function(){
+  'use strict';
+  var status = document.getElementById('status');
+  // ---------- 朗读 ----------
+  var voiceSel = document.getElementById('voiceSel');
+  var voices = [];
+  function loadVoices(){
+    voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    var zh = voices.filter(function(v){ return /zh|Chinese|Hans/i.test(v.lang + v.name); });
+    var list = zh.length ? zh : voices;
+    voiceSel.innerHTML = list.map(function(v,i){ return '<option value="'+i+'">'+v.name+' ('+v.lang+')</option>'; }).join('');
+  }
+  if('speechSynthesis' in window){
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+  document.getElementById('speakBtn').addEventListener('click', function(){
+    var txt = document.getElementById('ttsText').value.trim();
+    if(!txt){ status.innerHTML = '<b></b> 请先输入要朗读的文本'; return; }
+    if(!('speechSynthesis' in window)){ status.innerHTML = '<b></b> 浏览器不支持语音合成'; return; }
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(txt);
+    u.lang = 'zh-CN';
+    u.rate = Number(document.getElementById('rate').value);
+    u.volume = Number(document.getElementById('vol').value);
+    var i = Number(voiceSel.value);
+    if(voices[i]) u.voice = voices[i];
+    u.onstart = function(){ status.innerHTML = '<b> 正在朗读…</b>（点「 停止」可中断）'; document.getElementById('speakWave').style.display = 'flex'; };
+    u.onend = function(){ status.innerHTML = '朗读结束。'; document.getElementById('speakWave').style.display = 'none'; };
+    u.onerror = function(){ document.getElementById('speakWave').style.display = 'none'; };
+    window.speechSynthesis.speak(u);
+  });
+  document.getElementById('stopSpeakBtn').addEventListener('click', function(){
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+    document.getElementById('speakWave').style.display = 'none';
+    status.innerHTML = '已停止朗读。';
+  });
+  // ---------- 听写 ----------
+  var micBtn = document.getElementById('micBtn');
+  var asrText = document.getElementById('asrText');
+  var wave = document.getElementById('wave');
+  var waveCanvas = document.getElementById('waveCanvas');
+  var waveHint = document.getElementById('waveHint');
+  var srCheck = document.getElementById('srCheck');
+  var recognizer = null;
+  // ---- 浏览器识别能力检测 ----
+  (function detectSR(){
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var ua = navigator.userAgent || '';
+    var isChrome = /Chrome\//.test(ua) && !/Edg\//.test(ua);
+    var isEdge = /Edg\//.test(ua);
+    var isSafari = /Safari\//.test(ua) && !/Chrome\//.test(ua) && !/Edg\//.test(ua);
+    var isFile = location.protocol === 'file:';
+    var isSecure = location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    var msgs = [];
+    if(!SR){ msgs.push('本浏览器<b>不支持</b>语音识别'); }
+    else {
+      if(isChrome) msgs.push('检测到 <b>Chrome</b>：语音识别依赖联网服务，国内网络可能<b>识别不到</b>，推荐改用 <b>Edge / Safari</b> 更稳');
+      if(isEdge) msgs.push('检测到 <b>Edge</b>：语音识别可用，识别不到时请检查麦克风权限与网络');
+      if(isSafari) msgs.push('检测到 <b>Safari</b>：语音识别可用，请允许麦克风权限');
+      if(!isSecure) msgs.push('当前为 <b>file://</b> 打开：语音识别可能被浏览器禁用，请用 <code>node server.mjs</code> 后访问 http://localhost:8787');
+    }
+    srCheck.innerHTML = msgs.length ? msgs.join('；') : ' 语音识别就绪';
+    srCheck.className = 'sr-check ' + (msgs.length ? 'warn' : 'ok');
+  })();
+  // ---- 真实声波（Web Audio 频谱  GitHub 式声纹） ----
+  var audioCtx = null, analyser = null, rafId = null, micStream = null;
+  function startWave(){
+    wave.style.display = 'flex';          // CSS 动画兜底（立即有反馈）
+    waveCanvas.style.display = 'none';
+    waveHint.style.display = 'none';
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || audioCtx) return;
+    navigator.mediaDevices.getUserMedia({ audio:true }).then(function(s){
+      micStream = s;
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      var src = audioCtx.createMediaStreamSource(s);
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 256;
+      analyser.smoothingTimeConstant = .82;
+      src.connect(analyser);
+      waveCanvas.style.display = 'block';  // 有真实频谱  切到 canvas
+      waveHint.style.display = 'block';
+      wave.style.display = 'none';
+      drawWave();
+    }).catch(function(){ /* 拿不到麦克风流  保持 CSS 动画 */ });
+  }
+  function drawWave(){
+    if(!analyser) return;
+    var W = waveCanvas.width = waveCanvas.offsetWidth || 620;
+    var H = waveCanvas.height = waveCanvas.offsetHeight || 46;
+    var data = new Uint8Array(analyser.frequencyBinCount);
+    var ctx2 = waveCanvas.getContext('2d');
+    (function loop(){
+      if(!analyser){ return; }
+      analyser.getByteFrequencyData(data);
+      ctx2.clearRect(0,0,W,H);
+      var bars = Math.min(72, Math.floor(W/9));
+      var bw = W / bars;
+      var g = ctx2.createLinearGradient(0,0,0,H);
+      g.addColorStop(0,'#38bdf8'); g.addColorStop(.55,'#818cf8'); g.addColorStop(1,'#f0abfc');
+      // 底部基线
+      ctx2.fillStyle = 'rgba(99,102,241,.12)';
+      ctx2.fillRect(0,H-1,W,1);
+      // 中间发光线
+      ctx2.fillStyle = 'rgba(99,102,241,.18)';
+      ctx2.fillRect(0,H/2-0.5,W,1);
+      for(var i=0;i<bars;i++){
+        var v = data[Math.floor(i*data.length/bars)] / 255;
+        var h = Math.max(3, v*H*.92);
+        var x = i*bw + bw*.14, w = bw*.72, r = Math.min(4,w/2);
+        var yTop = (H-h)/2;
+        // 发光光晕
+        ctx2.shadowColor = 'rgba(129,140,248,.75)';
+        ctx2.shadowBlur = v > .35 ? 10 : 4;
+        ctx2.fillStyle = g;
+        ctx2.beginPath();
+        if(ctx2.roundRect) ctx2.roundRect(x,yTop,w,h,r); else ctx2.rect(x,yTop,w,h);
+        ctx2.fill();
+        ctx2.shadowBlur = 0;
+      }
+      rafId = requestAnimationFrame(loop);
+    })();
+  }
+  function stopWave(){
+    if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    if(micStream){ try{ micStream.getTracks().forEach(function(t){ t.stop(); }); }catch(e){} micStream = null; }
+    if(audioCtx){ try{ audioCtx.close(); }catch(e){} audioCtx = null; analyser = null; }
+    wave.style.display = 'none';
+    waveCanvas.style.display = 'none';
+    waveHint.style.display = 'none';
+    if(waveCanvas.getContext){ waveCanvas.getContext('2d').clearRect(0,0,waveCanvas.width,waveCanvas.height); }
+  }
+  micBtn.addEventListener('click', function(){
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if(!SR){ status.innerHTML = '<b></b> 当前浏览器不支持语音识别（建议 Chrome / Edge）'; return; }
+    if(recognizer){
+      try{ recognizer.stop(); }catch(e){}
+      recognizer = null;
+      micBtn.textContent = ' 按住说话 / 点击开始';
+      micBtn.classList.remove('rec');
+      stopWave();
+      status.innerHTML = '已停止听写。';
+      return;
+    }
+    var rec = new SR();
+    rec.lang = 'zh-CN';
+    rec.continuous = true;
+    rec.interimResults = true;
+    rec.onresult = function(ev){
+      var t = '';
+      for(var i=0;i<ev.results.length;i++){ t += ev.results[i][0].transcript; }
+      asrText.value = t;
+    };
+    rec.onend = function(){
+      recognizer = null;
+      micBtn.textContent = ' 按住说话 / 点击开始';
+      micBtn.classList.remove('rec');
+      stopWave();
+      status.innerHTML = '听写结束。可点「 让智能体回答」继续。';
+    };
+    rec.onerror = function(e){
+      var err = e && e.error || 'unknown';
+      var tips = {
+        'not-allowed': '麦克风权限被拒绝——请点地址栏的「/」图标允许麦克风后重试',
+        'service-not-allowed': '识别服务被禁用（浏览器设置里关闭了语音服务）',
+        'no-speech': '没有检测到声音——请靠近麦克风再试',
+        'audio-capture': '未检测到麦克风设备——请检查麦克风连接',
+        'network': '识别服务网络不可用（Chrome 语音服务在国内可能受限，推荐 Edge / Safari，或直接打字输入）',
+        'aborted': '已取消'
+      };
+      status.innerHTML = '<b></b> ' + (tips[err] || ('识别错误：' + err + '（可改用打字输入）'));
+      stopWave();
+    };
+    recognizer = rec;
+    micBtn.textContent = ' 停止听写';
+    micBtn.classList.add('rec');
+    startWave();
+    status.innerHTML = '<b> 正在聆听…</b> 说你的问题，说完点「 停止听写」。';
+    try{ rec.start(); }catch(e){}
+  });
+  document.getElementById('clearBtn').addEventListener('click', function(){ asrText.value = ''; status.innerHTML = '已清空。'; });
+  document.getElementById('askBtn').addEventListener('click', function(e){
+    var q = asrText.value.trim();
+    if(!q){ e.preventDefault(); status.innerHTML = '<b></b> 请先说一段话或输入问题'; return; }
+    e.target.href = './agent.html?ask=' + encodeURIComponent(q);
+  });
+  // 粒子
+  var cv=document.getElementById('stars'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;} rs(); addEventListener('resize',rs);
+  var C=['94,234,212','56,225,255','91,140,255','240,185,92'];
+  var n=Math.min(90,Math.floor(W*H/19000));
+  for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,c:C[Math.random()*4|0]});
+  (function dr(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba('+p.c+',.5)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+        if(d2<11000){ctx.strokeStyle='rgba('+p.c+','+(0.11*(1-d2/11000))+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}
+    }
+    requestAnimationFrame(dr);
+  })();
+})();
+</script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/responsive.js?v=20261028e"></script>
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+<script>renderVideoSection('#vkHere', { categories: ["语音"], title: 'AI 语音 · 使用视频' });</script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

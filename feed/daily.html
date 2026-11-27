@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cloud">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>每日简报 · 真实源直抓，不生成 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","headline":"每日简报 · 真实源直抓，不生成 | 白驹 ccowork","description":"每日从 18 个公开源直抓 AI 资讯，标注原文出处，不做 AI 改写。","inLanguage":"zh-CN","dateModified":"2026-11-26"}</script>
+<meta name="description" content="每日从 18 个公开源直抓 AI 资讯，标注原文出处，不做 AI 改写。">
+<meta property="og:description" content="每日从 18 个公开源直抓 AI 资讯，标注原文出处，不做 AI 改写。">
+<link rel="stylesheet" href="/site-redesign.css">
+<style>
+:root{
+  --bg:#f7f9fc; --card:#ffffff; --card2:#f2f6fb;
+  --text:#0f172a; --muted:#5b6b83;
+  --line:#dfe7f1; --line2:#cbd8e8;
+  --grad:linear-gradient(120deg,#4f8cff,#38b6ff 52%,#8b5cf6);
+}
+[data-theme="deep"]{
+  --bg:#030014; --card:#101728; --card2:#161f33;
+  --text:#e9f0fb; --muted:#8fa3bd;
+  --line:#1e2d47; --line2:#2a3b5c;
+}
+.b-wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.b-hero{padding:46px 0 20px;border-bottom:1px solid var(--line)}
+.b-hero .b-k{font-size:12.5px;font-weight:800;color:#0e7490;letter-spacing:.08em}
+.b-hero h1{font-size:33px;font-weight:900;margin:8px 0 10px;letter-spacing:-.02em}
+.b-hero .b-meta{font-size:13px;color:var(--muted);line-height:1.9}
+.b-hero .b-meta b{color:var(--text)}
+.b-srcbar{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 0}
+.b-srcdot{font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.b-srcdot.on{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4);color:#0f8a5f}
+.b-srcdot.off{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3);color:#b91c1c;text-decoration:line-through}
+.b-sec{margin:0;max-width:none;padding:30px 0;border-bottom:1px solid var(--line)}
+.b-sec>h2{font-size:22px;font-weight:900;margin:0 0 4px;display:flex;align-items:baseline;gap:11px}
+.b-sec>h2 em{font-style:normal;font-size:12px;font-weight:700;color:var(--muted)}
+.b-sec>.note{font-size:13px;color:var(--muted);margin:0 0 18px}
+.b-lead{display:grid;gap:12px}
+.b-li{margin:0;max-width:none;border:1px solid var(--line);border-radius:13px;padding:16px 18px;background:var(--card);transition:border-color .16s,transform .16s}
+.b-deep .b-big{font-size:15px;line-height:1.95;color:var(--text)}
+.b-top{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:7px}
+.b-rk{font-size:11px;font-weight:900;color:#fff;background:var(--grad);border-radius:6px;padding:2px 8px}
+.b-src{font-size:11.5px;font-weight:800;color:#0e7490;background:rgba(56,225,255,.12);border:1px solid rgba(56,225,255,.3);padding:2px 9px;border-radius:999px}
+.b-dt{font-size:11.5px;color:var(--muted);margin-left:auto}
+.b-tags{display:flex;gap:6px;flex-wrap:wrap}
+.b-srcdot.b-on{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4);color:#0f8a5f}
+.b-srcdot.b-off{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3);color:#b91c1c;text-decoration:line-through}
+.b-li:hover{border-color:#4f8cff;transform:translateY(-2px)}
+.b-li.d- {display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:7px}
+.b-li.d- {font-size:11px;font-weight:900;color:#fff;background:var(--grad);border-radius:6px;padding:2px 8px}
+.b-li.d- {font-size:11.5px;font-weight:800;color:#0e7490;background:rgba(56,225,255,.12);border:1px solid rgba(56,225,255,.3);padding:2px 9px;border-radius:999px}
+.b-li.d- {font-size:11.5px;color:var(--muted);margin-left:auto}
+.b-li h3{margin:0 0 8px;font-size:17px;font-weight:900;line-height:1.5}
+.b-li h3 a{color:inherit;text-decoration:none}
+.b-li h3 a:hover{color:#4f8cff}
+.b-li p{margin:0 0 9px;font-size:13.5px;line-height:1.8;color:var(--muted)}
+.b-tags{display:flex;gap:6px;flex-wrap:wrap}
+.b-tg{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:rgba(120,160,220,.10);border:1px solid rgba(120,160,220,.24);color:var(--muted)}
+.b-quote{margin-top:10px;padding:10px 13px;font-size:12.5px;line-height:1.75;border-left:3px solid #4f8cff;background:rgba(79,140,255,.06);border-radius:0 8px 8px 0}
+.b-quote b{display:block;font-size:10.5px;letter-spacing:.05em;opacity:.66;margin-bottom:3px}
+.b-deep{margin:0;max-width:none;border:1px solid rgba(79,140,255,.34);border-radius:15px;padding:22px 24px;background:linear-gradient(120deg,rgba(79,140,255,.07),rgba(139,92,246,.07))}
+.b-deep h3{margin:8px 0 12px;font-size:21px;font-weight:900;line-height:1.45}
+.b-deep h3 a{color:inherit;text-decoration:none}
+.b-deep.d- {font-size:15px;line-height:1.95;color:var(--text)}
+.b-grid6{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:11px}
+.b-tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+.b-tc{border:1px solid var(--line);border-radius:11px;padding:12px 14px;background:var(--card2)}
+.b-tc b{display:block;font-size:15px;font-weight:900;margin-bottom:4px}
+.b-tc span{display:block;font-size:11.5px;color:var(--muted);line-height:1.6}
+.b-tc a{font-size:11px;color:#0e7490;text-decoration:none}
+.b-disc{border:2px dashed var(--line2);border-radius:15px;padding:26px 24px;text-align:center;background:var(--card)}
+.b-disc h3{margin:0 0 8px;font-size:19px;font-weight:900}
+.b-disc p{margin:0 auto 16px;max-width:640px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+.b-disc .b-placeholder{display:inline-block;font-size:12.5px;font-weight:800;padding:9px 20px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.b-daynav{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 18px}
+.b-daychip{font-size:12.5px;font-weight:800;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);color:var(--muted);text-decoration:none}
+.b-daychip:hover{border-color:#4f8cff;color:#4f8cff}
+.b-daychip b{color:var(--text);margin-left:3px}
+.b-day{padding:16px 0 2px;border-top:1px dashed var(--line)}
+.b-day:first-of-type{border-top:0;padding-top:0}
+.b-day-h{font-size:18px;font-weight:900;margin:0 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;scroll-margin-top:20px}
+.b-day-h time{font-size:13px;font-weight:700;color:#0e7490;letter-spacing:.02em}
+.b-day-cn{font-size:15px;font-weight:900}
+.b-day-h em{font-style:normal;font-size:12px;font-weight:700;color:var(--muted);margin-left:auto}
+.b-foot{padding:26px 0 40px;font-size:12.5px;color:var(--muted);line-height:1.9}
+</style>
+</head>
+<body>
+<div class="b-wrap">
+
+<section class="b-hero">
+  <div class="b-k">DAILY BRIEF</div>
+  <h1>每日简报</h1>
+  <p class="b-meta">
+    采集时间 <b>2026/11/26 14:01:26</b>　·　覆盖最近 <b>7</b> 个自然日（<b>2026-11-20</b> ~ <b>2026-11-26</b>）　·　共 <b>89</b> 条<br>
+    方法：直接抓取各站公开 RSS/Atom，不做任何 AI 生成或改写<br>
+    <b>这一页没有一句是 AI 写的。</b>标题与摘要均来自各站原文，只做去重、排序与打标签；每条都能点回原文。
+  </p>
+  <div class="b-srcbar">
+    <span class="b-srcdot on" title="https://www.qbitai.com/feed">量子位 10</span><span class="b-srcdot on" title="https://www.infoq.cn/feed">InfoQ 中国 20</span><span class="b-srcdot on" title="https://www.ithome.com/rss/">IT之家 60</span><span class="b-srcdot on" title="https://sspai.com/feed">少数派 10</span><span class="b-srcdot on" title="https://www.ifanr.com/feed">爱范儿 20</span><span class="b-srcdot on" title="https://www.oschina.net/news/rss">开源中国 50</span><span class="b-srcdot on" title="https://www.tmtpost.com/rss.xml">钛媒体 19</span><span class="b-srcdot on" title="https://www.leiphone.com/feed">雷峰网 20</span><span class="b-srcdot on" title="https://juejin.cn/rss">稀土掘金 20</span><span class="b-srcdot on" title="https://www.ruanyifeng.com/blog/atom.xml">阮一峰的网络日志 3</span><span class="b-srcdot on" title="https://openai.com/blog/rss.xml">OpenAI 官方博客 30</span><span class="b-srcdot on" title="https://www.theverge.com/rss/index.xml">The Verge 10</span><span class="b-srcdot off" title="https://deepmind.google/blog/rss.xml｜错误：fetch failed">Google DeepMind</span><span class="b-srcdot on" title="https://www.microsoft.com/en-us/research/feed/">Microsoft Research 10</span><span class="b-srcdot on" title="https://aws.amazon.com/blogs/machine-learning/feed/">AWS Machine Learning 20</span><span class="b-srcdot on" title="https://techcrunch.com/feed/">TechCrunch 20</span><span class="b-srcdot on" title="https://www.technologyreview.com/feed/">MIT Technology Review 10</span><span class="b-srcdot on" title="https://www.marktechpost.com/feed/">MarkTechPost 10</span><span class="b-srcdot on" title="https://simonwillison.net/atom/everything/">Simon Willison 30</span><span class="b-srcdot off" title="https://rss.arxiv.org/rss/cs.AI｜错误：The operation was aborted due to timeout">arXiv cs.AI</span>
+  </div>
+</section>
+
+<section class="b-sec b-days" id="days">
+  <h2>逐日简报 <em>最近 7 个自然日 · 每天都有条目</em></h2>
+  <p class="note">按发布日期（Asia/Shanghai 自然日）分组，最近的日期在前，点日期可跳到当天。标题、摘要、链接全部来自各站原文，未做任何改写。窗口内较早的条目在后续抓取中不再出现在 RSS 里，脚本按原链接保留，不补写。</p>
+  <div class="b-daynav">
+    <a class="b-daychip" href="#day-2026-11-26">11 月 26 日<b>15</b></a><a class="b-daychip" href="#day-2026-11-25">11 月 25 日<b>15</b></a><a class="b-daychip" href="#day-2026-11-24">11 月 24 日<b>15</b></a><a class="b-daychip" href="#day-2026-11-23">11 月 23 日<b>15</b></a><a class="b-daychip" href="#day-2026-11-22">11 月 22 日<b>4</b></a><a class="b-daychip" href="#day-2026-11-21">11 月 21 日<b>10</b></a><a class="b-daychip" href="#day-2026-11-20">11 月 20 日<b>15</b></a>
+  </div>
+  
+  <section class="b-day" id="day-2026-11-26" data-date="2026-11-26">
+    <h3 class="b-day-h"><time datetime="2026-11-26">2026-11-26</time><span class="b-day-cn">11 月 26 日 · 周四</span><em>15 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">钛媒体</span><span class="b-dt">13:54</span></div>
+        <h3 style="font-size:15px"><a href="https://www.tmtpost.com/8218431.html" target="_blank" rel="noopener">人效管理为何频踩坑？四个陷阱背后的组织逻辑</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">别急着上人效管理，先看这四个坑你踩了几个。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">钛媒体</span><span class="b-dt">13:49</span></div>
+        <h3 style="font-size:15px"><a href="https://www.tmtpost.com/8218430.html" target="_blank" rel="noopener">解密奥斯汀208号展位的“幽灵事件”：OpenAI亲手解散机器人团队，机器人行业却要变天？</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">屏幕里的AI改变的只是我们的工作方式，而一旦AI长出了手和脚，它重塑的，将是整个人类文明的物理边界。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">稀土掘金</span><span class="b-dt">13:48</span></div>
+        <h3 style="font-size:15px"><a href="https://juejin.cn/post/7712024433762910243" target="_blank" rel="noopener">查帧率、看负载、开日志：hrut_camsys 的 J6X Camsys 调试日常</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">hrut_camsys 是J6X平台统一调试命令管理工具，解决命令分散、平台差异问题。支持标签分类、索引执行、关键词搜索及参数调用，提供交互式与快速执行模式，提升调试效率。</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">13:46</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/032/746.htm" target="_blank" rel="noopener">长城汽车魏建军称现在汽车贬值速度太离谱，格力电器董明珠回应“有些产业害虫该灭就灭”</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">IT之家 11 月 26 日消息，长城汽车董事长魏建军今日（11 月 26 日）在广东珠海与格力电器董事长董明珠会面。据蓝鲸新闻报道，魏建军表示，汽车本是家庭大件财产，但是如今贬值速度已到了离谱的程度，不少车企缺现金流，只能靠降价、压榨供应…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">13:36</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/032/745.htm" target="_blank" rel="noopener">阿里达摩院玄铁 IP 芯片累计出货超 60 亿颗，安卓 17 正式支持 RISC-V</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">IT之家 11 月 26 日消息，2026 集成电路发展论坛（北京）暨第三十二届集成电路设计业展览会（ICCAD-Expo 2026）于 11 月 19 日-20 日在北京亦庄举办，阿里巴巴达摩院首席科学家孟建熠（IT之家注读音：yì）发表…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">arXiv cs.AI</span><span class="b-dt">13:00</span></div>
+        <h3 style="font-size:15px"><a href="https://arxiv.org/abs/2611.33160" target="_blank" rel="noopener">Context Scaling: A New Frontier of AI Scaling</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">arXiv:2611.33160v1 Announce Type: new Abstract: Many failures of deployed AI arise not from weak inference but from a mi…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">模型能力</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">arXiv cs.AI</span><span class="b-dt">13:00</span></div>
+        <h3 style="font-size:15px"><a href="https://arxiv.org/abs/2611.33161" target="_blank" rel="noopener">Constraint-Aware Test-Time Scoring for LLM and VLM Candidate Selection</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">arXiv:2611.33161v1 Announce Type: new Abstract: When an LLM or VLM produces several candidate answers, picking the best …</p>
+        <div class="b-tags"><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">稀土掘金</span><span class="b-dt">12:41</span></div>
+        <h3 style="font-size:15px"><a href="https://juejin.cn/post/7712147556087988251" target="_blank" rel="noopener">为什么要有网络加速？</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">HTTP 直连会因地理距离、跨运营商和路由产生硬性延迟。CDN 通过就近边缘节点、GSLB 智能调度和缓存代理做网络加速，并用命中率与回源率衡量质量。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt">12:28</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ifanr.com/1695371?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">荣耀 700 Pro 上手：4099 元起，主流价位档里的手机异类</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">有诚意、有新意#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt">12:04</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ifanr.com/1695349?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">首款鸿蒙小折叠电脑正式发布，生态创新重新定义折叠电脑体验</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">未来随着更多生态伙伴的加入，鸿蒙电脑还将持续解锁更多场景化创新，为用户带来兼顾便携与高效的桌面生产力新选择。#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt">11:58</span></div>
+        <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503823" target="_blank" rel="noopener">污染 0.1% 的预训练数据，就能给 AI 智能体埋下洗不掉的后门</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">只污染 0.1% 的预训练数据，就能给一个 AI 智能体埋下后门。而且用完全干净的数据做微调和强化学习，也清不掉。 这是一篇论文的结论，标题叫《Agentic Backdoors via Pretraining Poisoning》，作者来…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt">11:28</span></div>
+        <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503822/agents-are-very-harsh-customers" target="_blank" rel="noopener">微软 Copilot 负责人：很多软件的主要客户以后不再是人类</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">“很多软件的主要客户，以后可能不再是人类了。” 说这话的是 Charles Lamanna，微软负责 Copilot、智能体与平台业务的执行副总裁。他在接受 Peter Yang 采访时给出的原话是：「我认为，随着时间推移，很多软件和技术的…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">少数派</span><span class="b-dt">11:13</span></div>
+        <h3 style="font-size:15px"><a href="https://sspai.com/post/117510" target="_blank" rel="noopener">我用AI做了一张两千年的中国历史地图</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">希望这张地图，能陪更多人走一遍故纸堆里的万里江山。查看全文</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">雷峰网</span><span class="b-dt">10:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.leiphone.com/category/industrynews/3zKYASqpb5PEKGwC.html" target="_blank" rel="noopener">从婴儿睡袋到时尚孕产服饰，Nest Designs在 Shopee 找到了新机会</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">柔软的面料、利落的剪裁，带着几分运动休闲服的时尚感。如果不看产品介绍，你或许很难第一眼认出，这是一件专为孕期和产后女性设计的服装。对于越来越多的年轻妈妈而言，怀孕并不意味着要放弃原本的穿衣风格。她们既想要舒适自在，也希望在特殊的人生阶段，依…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">雷峰网</span><span class="b-dt">10:23</span></div>
+        <h3 style="font-size:15px"><a href="https://www.leiphone.com/category/yanxishe/T2xmmiMAC6WbuuCM.html" target="_blank" rel="noopener">国产模型扎进 AI4S 深水区，几毫秒破译尘封18年密码学悬案</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">作者丨高允毅 编辑丨岑 峰 11月20日， AI for Science 迎来了一个载入史册的日子：Anthropic 数学家联合 Claude 拿下黎曼猜想的关键突破，同一天，以复杂的数学计算著称的密码学领域，也被AI撼动。据 MiniM…</p>
+        
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-11-25" data-date="2026-11-25">
+    <h3 class="b-day-h"><time datetime="2026-11-25">2026-11-25</time><span class="b-day-cn">11 月 25 日 · 周三</span><em>15 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">TechCrunch</span><span class="b-dt">23:08</span></div>
+        <h3 style="font-size:15px"><a href="https://techcrunch.com/2026/11/25/allstate-suffers-multi-day-tech-outage-ahead-of-thanksgiving/" target="_blank" rel="noopener">Allstate suffers multiday tech outage ahead of Thanksgiving</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">The disruption comes at a particularly bad time for the insurance giant, as millions of Americans prepare to travel for …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">22:32</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/11/512715.html" target="_blank" rel="noopener">零基础也能做开发，智元灵心平台一年孵化超3万个机器人智能体</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">智元推出行业首个开放且完整的具身智能生态技术体系AIMA</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">雷峰网</span><span class="b-dt">22:29</span></div>
+        <h3 style="font-size:15px"><a href="https://www.leiphone.com/category/industrynews/u4v3A1QiYM6qUcP1.html" target="_blank" rel="noopener">阿维塔06T Max先锋版上新，限时权益后19.99万元</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">2026年11月25日（上海），阿维塔科技宣布，阿维塔06T Max先锋版正式上新，官方售价21.99万元，限时权益后19.99万元。新车定位智美全场景运动轿车，标配华为乾崑896线双光路图像级激光雷达与全新一代分布式电驱后轴双电机，是为年…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">22:21</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/11/512582.html" target="_blank" rel="noopener">算力唤醒真实世界：九章云极发布物理AI工厂与生态开放计划</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">11月25日，以“算力唤醒真实世界”为主题的2026物理AI行业峰会暨九章云极智算生态大会在深圳举行。</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">TechCrunch</span><span class="b-dt">22:20</span></div>
+        <h3 style="font-size:15px"><a href="https://techcrunch.com/2026/11/25/todoist-confirms-6-of-customers-details-were-stolen-in-data-breach/" target="_blank" rel="noopener">Todoist confirms 6% of customers&amp;#8217; details were stolen in data breach</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Todoist said a hacker gained access to its production systems and stole customer data, including email IDs, password has…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">雷峰网</span><span class="b-dt">22:15</span></div>
+        <h3 style="font-size:15px"><a href="https://www.leiphone.com/category/chips/Qz3QPf26nVIVA0ga.html" target="_blank" rel="noopener">算力唤醒真实世界：九章云极发布物理AI工厂与生态开放计划</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">11月25日，以“算力唤醒真实世界”为主题的2026物理AI行业峰会暨九章云极智算生态大会在深圳举行。会议由九章云极DataCanvas主办，深圳市龙华区工业和信息化局支持，清华大学互联网产业研究院为学术指导单位。来自标准机构、高校与科研院…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">研究论文</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">稀土掘金</span><span class="b-dt">21:25</span></div>
+        <h3 style="font-size:15px"><a href="https://juejin.cn/post/7711955915188404224" target="_blank" rel="noopener">机器人如何听声辨位：从唤醒词（KWS）与 VAD 到 DOA 声源定位，以及 ALSA XRUN 避坑</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">喊一声名字，机器人怎么在 300 毫秒内听懂你在叫它并立刻转头对准你，而不是盲扫找人？本文拆解端侧语音唤醒与声源定位的完整链路：PCM/ALSA 采集与 XRUN 防护、VAD 门卫过滤、离线 KW…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">21:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/25/1149808/the-download-ai-open-records-permafrost-fires/" target="_blank" rel="noopener">The Download: AI swamping open records, and firefighting for permafrost</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">This is today&amp;#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&amp;#8217;s…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">稀土掘金</span><span class="b-dt">20:51</span></div>
+        <h3 style="font-size:15px"><a href="https://juejin.cn/post/7711983826453659674" target="_blank" rel="noopener">给娃做个 AI 陪写作业助手：LangChain4j 入门（八）：AI 知道这字哪课学的（SQLite 结构化查询入门）</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">AI 知道这字哪课学的（生字表结构化查询） 开场：模型不认识你家课本 娃问：&quot;字问先生，灌字是哪一课学的呀？&quot; 模型接不住。它训练时没见过你家那本二年级课本，更不知道 2024 秋这一版印次里&quot;灌&quot;排</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">18:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/25/1149702/ai-is-straining-americas-open-records-systems/" target="_blank" rel="noopener">AI is straining America’s open records systems</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">In Panton, Vermont, population 660, town clerk Kyle Rowe did it all. He crafted budgets, paid vendors, handled property …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">少数派</span><span class="b-dt">17:48</span></div>
+        <h3 style="font-size:15px"><a href="https://sspai.com/post/119264" target="_blank" rel="noopener">翻开 2027， 值得入手的新年日历推荐</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">按照中国的农历纪年法，2027年是羊年，《说文解字》说「羊，祥也」。《诗经・小雅・无羊》云「尔羊来思，其角濈濈」，写羊群缓缓归野，安然相聚，恰合丁未岁的平和气象。一只吉羊，一册日历，便是收纳这一年日常 ...查看全文</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt">17:03</span></div>
+        <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503813" target="_blank" rel="noopener">2240 亿参数的 Hy4 flash 模型，现在能跑在 64GB 的 Mac mini 上</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">腾讯混元在 11 月 25 日开源了 Hy4 flash 的 GGUF 量化权重和配套推理代码，工具是他们自己的压缩加速工具箱 AngelSlim。最小的版本权重约为原始的三成，官方实测在 48GB 显存设备上生成速度最高到每秒 89 个 …</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">模型能力</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt">17:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ifanr.com/1691661?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">拓竹 P3C 发布：国补后 6374 元起，下一代 3D 打印机开始卷性价比</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">打印机开始卷手艺#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt">16:33</span></div>
+        <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503810/libreoffice-restricts-llm-use-development" target="_blank" rel="noopener">LibreOffice 收紧 AI 辅助代码贡献政策</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">11 月 24 日，文档基金会（The Document Foundation，TDF）针对 AI 辅助代码贡献发布了更严格的规则。核心有几条： 贡献者在使用大语言模型之前，必须先获得批准； 提交代码时必须披露用了什么 AI 工具、是怎么审…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">少数派</span><span class="b-dt">14:59</span></div>
+        <h3 style="font-size:15px"><a href="https://sspai.com/post/119310" target="_blank" rel="noopener">App+1｜Yab：开源、AI 友好的双内核浏览器，给舍不得 Arc 的你</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Arc 花了很大力气重新设计「人该如何使用浏览器」，YAB 在继承这份交互遗产的同时，又顺手为 AI 打开了另一扇门。查看全文</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-11-24" data-date="2026-11-24">
+    <h3 class="b-day-h"><time datetime="2026-11-24">2026-11-24</time><span class="b-day-cn">11 月 24 日 · 周二</span><em>15 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MarkTechPost</span><span class="b-dt">22:16</span></div>
+        <h3 style="font-size:15px"><a href="https://www.marktechpost.com/2026/11/24/openai-cisco-shirudo-ebpf-linux-runtime/" target="_blank" rel="noopener">OpenAI and Cisco Releases Shirudo: An Open-Source Linux Runtime Allowing Agents to Defend Systems Without Downtime</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">OpenAI and Cisco released Shirudo, a pre-release, BSD-licensed eBPF runtime for Linux. AI agents write signed &quot;shie…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt">21:36</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ifanr.com/1691381?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">18.79 万元起！比亚迪唐 EV 正式上市，砍掉七座换来 850km 续航，还有线控底盘</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">十年之后，比亚迪唐终于卸下了第三排的担子。#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">21:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/24/1149669/the-download-data-centers-gas-ai-consciousness/" target="_blank" rel="noopener">The Download: AI’s gas power boom and a consciousness reality check</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">This is today&amp;#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&amp;#8217;s…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">Google DeepMind</span><span class="b-dt">21:07</span></div>
+        <h3 style="font-size:15px"><a href="https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/" target="_blank" rel="noopener">From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Mass Spec Skills empowers scientists using Google Antigravity to interpret tandem mass spectra.</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">21:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities" target="_blank" rel="noopener">GPT-6 models demonstrate intrinsic protein-design capabilities</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">GPT-6 models design protein structures and sequences using reasoning and code. Lab tests found evidence of binding acros…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt">20:37</span></div>
+        <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503785" target="_blank" rel="noopener">GO 语言社区&amp;问答系统 BBS-GO v4.4.8 发布，支持繁体中文</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">BBS-GO 是一个轻量级社区和问答平台，适合搭建论坛、知识库和讨论社区。项目开源、可自托管、跨平台，基于 Go 和 React 构建，支持帖子 / 文章、评论回复、点赞收藏、关注消息、积分等级、徽章、后台管理以及多语言国际化等能力。 项目…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">20:34</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/031/856.htm" target="_blank" rel="noopener">售 8.99 万元起，奇瑞捷途环游者 EV 纯电方盒子 SUV 上市</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">IT之家 11 月 24 日消息，奇瑞捷途汽车旗下全新纯电动紧凑型 SUV 捷途环游者 EV 已上市，新车共推出 5 款车型，售价区间为 8.99 万元至 12.59 万元。作为捷途品牌推出的首款纯电“方盒子”SUV，环游者 EV 同时提供…</p>
+        <div class="b-tags"><span class="b-tg">商业融资</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">20:26</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/031/838.htm" target="_blank" rel="noopener">我国牵头推动全球首个生成式 AI 治理国际标准提案</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">IT之家 11 月 24 日消息，据央视新闻从市场监管总局今天（24 日）举行的新闻发布会上了解到，我国正深度参与人工智能国际标准体系建设，目前已牵头研制 29 项基础共性国际标准，在国际标准化组织相关机构注册专家近 400 人。市场监管总…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">政策监管</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt">19:04</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ifanr.com/1691355?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">实测小豆：主动办事的背后，AI 正在走向每一个人</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Personal Agent 的下半场，拼的是主动办事#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">19:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/searching-for-distant-planets-with-astra" target="_blank" rel="noopener">Searching for distant planets with Astra</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">See how two amateur astronomers used Codex and Astra to find potential exoplanets in public data from NASA’s Kepler and …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">19:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/24/1149622/data-centers-natural-gas/" target="_blank" rel="noopener">Data centers are getting their own natural gas power plants</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">One of the biggest roadblocks to starting up a data center is getting approval to connect to the electric grid—a wait th…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt">17:38</span></div>
+        <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503783" target="_blank" rel="noopener">:fire: xbatis 1.10.13 正式发版，mybatis 系列最好用最简单最方便的 ORM !!</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">推荐理由： 强、强、强 ，单表？连表？不想连表？让你直接少写 1/3 甚至 2/3 的持久层代码；API 简单 快捷 优雅 简洁 构建 SQL 非常强！用过的 没用过的都来体验，虽然有 AI 了，但是真正好用的 ORM 的还不能忽略的，除非…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">少数派</span><span class="b-dt">17:14</span></div>
+        <h3 style="font-size:15px"><a href="https://sspai.com/post/119492" target="_blank" rel="noopener">社区速递 167｜迪卡侬折叠车、静电白板贴与跨系统设备协同</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">除了首页时间流和侧栏的精选展位，少数派Matrix社区还有很多优秀内容因条件所限无法得到有效曝光，因此我们决定重启Matrix周报，并在此基础上添加更多社区内容、作者投稿新玩意呈现给大家。上周社区速递 ...查看全文</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">少数派</span><span class="b-dt">15:38</span></div>
+        <h3 style="font-size:15px"><a href="https://sspai.com/post/119035" target="_blank" rel="noopener">[限时特惠] 从构思到完稿，让长文写作更有条理：妙笔</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">写一篇短文，我们可能只需要一个能让人打开即用的编辑器，比如说Apple用户最常用的系统备忘录，或者广为人知的桌面应用MicrosoftWord。但当文章的篇幅逐渐变长，一些原本不太起眼的事情也会变得麻 ...查看全文</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">14:52</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/11/512370.html" target="_blank" rel="noopener">Google Cloud 出海峰会报名开启</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">2027 Google Cloud 出海峰会将于 1 月 14 日在北京中关村国际创新中心举行</p>
+        
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-11-23" data-date="2026-11-23">
+    <h3 class="b-day-h"><time datetime="2026-11-23">2026-11-23</time><span class="b-day-cn">11 月 23 日 · 周一</span><em>15 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt">22:50</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ifanr.com/1691103?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">刚刚，黄仁勋重返英伟达！董事会全票通过，盘前大涨 30%</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">皮衣战神回宫#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt">22:30</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ifanr.com/1691096?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">突发！黄仁勋恢复英伟达 CEO 职位，董事会全票通过</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">黄仁勋回来了#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt">21:53</span></div>
+        <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503758" target="_blank" rel="noopener">phimint v0.13.0 发布：Windows 自更新、卸载、路径显示逐条修好；MIT OR Apache-2.0 双协议</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">phimint v0.13.0 已发布（2026-11-23）。phimint 是一个用 Rust 写的终端 AI 编码 agent：一条命令装上，配好 API key，就能在终端里把需求变成跑通的代码。 这一轮要讲的不是新功能，是一批具体…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">21:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/23/1149548/the-download-ai-judgment-problem-carbon-removal-crop-threat/" target="_blank" rel="noopener">The Download: AI’s judgment problem and carbon removal’s crop threat</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">This is today&amp;#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&amp;#8217;s…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">19:01</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/11/512195.html" target="_blank" rel="noopener">实测：1450亿参数塞进笔记本，每秒狂飙80+Token！国产端侧大模型杀疯了</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">零Token成本，断网也能自由Vibe Coding</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">19:00</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/23/1149392/why-using-rocks-for-carbon-removal-could-eventually-reduce-crop-growth/" target="_blank" rel="noopener">Why using rocks for carbon removal could eventually reduce crop growth</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Tech companies are investing a lot of hope and money in rocks. Google, Microsoft, and others have committed hundreds of …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt">18:56</span></div>
+        <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503757" target="_blank" rel="noopener">特斯拉新版 FSD 的炫酷画面，由车机上的 1B 模型实时生成</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">马斯克在 X 上解释了特斯拉新版 FSD 那个看起来非常酷炫的显示效果是怎么做出来的：不是 3D 渲染，是一个 1B 的扩散模型在车机上实时生成视频。 他写得很直白： &quot;We've had a ~pixel-perfect wor…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MarkTechPost</span><span class="b-dt">18:40</span></div>
+        <h3 style="font-size:15px"><a href="https://www.marktechpost.com/2026/11/23/27-ai-cybersecurity-terms/" target="_blank" rel="noopener">27 Cybersecurity Terms to Prepare You for the Age of AI</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">AI now sits on both sides of the security fight, and the vocabulary has changed with it. IBM&amp;#8217;s 2026 Cost of a …</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">18:18</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/031/094.htm" target="_blank" rel="noopener">2027 款岚图泰山旗舰 SUV 预热：搭载华为乾崑 896 线激光雷达，前排换用全新双联屏设计</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">IT之家 11 月 23 日消息，岚图汽车官方昨日宣布，旗下“中式旗舰纯电大六座”SUV —— 2027 款岚图泰山将于 11 月 27 日正式开启预售。今日，岚图汽车官方发布视频，对新车进行了预热。据介绍，2027 款岚图泰山的外观延续前…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">少数派</span><span class="b-dt">18:08</span></div>
+        <h3 style="font-size:15px"><a href="https://sspai.com/post/119438" target="_blank" rel="noopener">派评 | 近期值得关注的 App</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">&gt;下载少数派客户端、关注少数派公众号，解锁全新阅读体验📰&gt;实用、好用的正版软件，少数派为你呈现🚀查看全文</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MarkTechPost</span><span class="b-dt">18:05</span></div>
+        <h3 style="font-size:15px"><a href="https://www.marktechpost.com/2026/11/23/architect-labs-frostbite-ai-designed-cpu-interaction-nets/" target="_blank" rel="noopener">Architect Labs Unveils Frostbite, an Interaction Net CPU Designed by AI</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Architect Labs introduced Frostbite, an AI-designed CPU that runs interaction nets in hardware. Agents took it from theo…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">IT之家</span><span class="b-dt">17:55</span></div>
+        <h3 style="font-size:15px"><a href="https://www.ithome.com/1/031/092.htm" target="_blank" rel="noopener">李健回应华为推出子品牌星芒：对荣耀不用有任何担心，已经走出了自己的道路</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">IT之家 11 月 23 日消息，在今天的荣耀 700 系列追光之旅暨全场景新品发布会后，荣耀 CEO 李健，荣耀产品线总裁方飞，荣耀品牌营销部总裁、全球 CMO 关海涛与媒体对话。日前，华为正式推出子品牌星芒，并发布首款产品。谈及此事，李…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">量子位</span><span class="b-dt">17:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/11/512179.html" target="_blank" rel="noopener">XROGO郑随兵：机器人不能只在视频里，终究要进入工厂“真干活”</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">企业核心需求不是交付设备，而是能持续上岗的劳动力</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">16:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/business/learn/connected-intelligence-for-in-house-legal" target="_blank" rel="noopener">Connected intelligence for in-house legal</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Watch OpenAI’s Stacey Wang and Craig Bruney, Mary O’Carroll of LECG, and Cooley’s Richard Segal explore how AI can help …</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">16:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/business/customer-stories/richpanel-ai-customer-support" target="_blank" rel="noopener">Richpanel helps companies automate 50% of support in 30 days</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Richpanel uses GPT-6 Astra and GPT-6.1 Sol to equip its AI support agents with tools and procedures, and GPT-6 Luna for …</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-11-22" data-date="2026-11-22">
+    <h3 class="b-day-h"><time datetime="2026-11-22">2026-11-22</time><span class="b-day-cn">11 月 22 日 · 周日</span><em>4 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MarkTechPost</span><span class="b-dt">18:36</span></div>
+        <h3 style="font-size:15px"><a href="https://www.marktechpost.com/2026/11/22/best-personal-ai-agents-2026/" target="_blank" rel="noopener">Best Personal AI Agents in 2026: OpenClaw, Hermes Agent, Gemini Spark and More, Compared on Memory, Security and Cost</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Hermes Agent, OpenClaw, Gemini Spark, OpenAI dots, Meta Muse and Perplexity Personal Computer ranked on memory, security…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">09:59</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick/" target="_blank" rel="noopener">Meta ads is now available in AWS Quick</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">AWS Quick now has a Meta ads AI connector. Meta advertisers can use natural language in Quick to create, manage, and ana…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">08:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/perplexity-and-intelligence" target="_blank" rel="noopener">Perplexity and Intelligence</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">How perplexity measures progress in AI models, and why it could help developers establish a shared approach to evaluatin…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">Simon Willison</span><span class="b-dt">07:56</span></div>
+        <h3 style="font-size:15px"><a href="https://simonwillison.net/2026/Nov/21/muru/" target="_blank" rel="noopener">Muru</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Muru Graham Dumpleton started mod_wsgi 20 years ago, and has been thinking about the ideal way to serve Python web appli…</p>
+        
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-11-21" data-date="2026-11-21">
+    <h3 class="b-day-h"><time datetime="2026-11-21">2026-11-21</time><span class="b-day-cn">11 月 21 日 · 周六</span><em>10 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">09:06</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together/" target="_blank" rel="noopener">New in AWS Quick: More capable flows, an updated web experience, and agents that work together</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">AWS Quick is the AI workspace built only for work. Today we're releasing updates that help your team get more done: buil…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">08:14</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/cut-self-hosted-llm-cost-and-latency-with-the-distributed-kv-caching-agent-skill/" target="_blank" rel="noopener">Cut self-hosted LLM cost and latency with the distributed KV caching agent skill</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Self-hosting LLMs on GPUs means paying to recompute the same context on every turn. Distributed KV caching with Amazon E…</p>
+        <div class="b-tags"><span class="b-tg">模型能力</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">07:07</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/introducing-managed-cluster-extensions-for-observability-and-user-management-in-amazon-sagemaker-hyperpod-slurm/" target="_blank" rel="noopener">Introducing managed cluster extensions for observability and user management in Amazon SageMaker HyperPod Slurm</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Amazon SageMaker HyperPod now offers managed cluster extensions for observability and user management, bringing declarat…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">06:35</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/" target="_blank" rel="noopener">Introducing Amazon SageMaker HyperPod Global Inference Gateway: One endpoint across Regions and clusters</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Amazon SageMaker HyperPod introduces the Global Inference Gateway, one managed endpoint that routes inference requests a…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">04:37</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/how-standard-bank-group-automates-ai-risk-assessment-for-generative-ai/" target="_blank" rel="noopener">How Standard Bank Group automates AI risk assessment for generative AI</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Standard Bank Group automated the evidence behind its generative AI approval gates. Working with AWS Professional Servic…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">04:22</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/" target="_blank" rel="noopener">Announcing Amazon Textract Insights: Verifiable generative AI for documents</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Announcing the general availability of Amazon Textract Insights, a new generative AI feature of Amazon Textract. Describ…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">Simon Willison</span><span class="b-dt">03:21</span></div>
+        <h3 style="font-size:15px"><a href="https://simonwillison.net/2026/Nov/20/ravi-vakil/" target="_blank" rel="noopener">Quoting Ravi Vakil</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Alessandro Masullo has a proposed proof of [Generalized Riemann Hypothesis], and Brian Conrad has been looking closely a…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">02:24</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues/" target="_blank" rel="noopener">Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Amazon SageMaker HyperPod now offers enhanced observability to help you diagnose GPU training issues faster. It brings t…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">02:15</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/20/1149399/the-most-misunderstood-graph-in-ai-just-got-a-major-update/" target="_blank" rel="noopener">The most misunderstood graph in AI just got a major update</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">A new report from the AI evaluation nonprofit METR finds that some AI capabilities are continuing to improve along an ex…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">Simon Willison</span><span class="b-dt">00:30</span></div>
+        <h3 style="font-size:15px"><a href="https://simonwillison.net/2026/Nov/20/levent-alpoge/" target="_blank" rel="noopener">Quoting Levent Alpöge</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">I believe I have, working with Claude, discovered a proof of the Riemann Hypothesis. In fact, the method easily extends …</p>
+        
+      </div>
+    </div>
+  </section>
+  <section class="b-day" id="day-2026-11-20" data-date="2026-11-20">
+    <h3 class="b-day-h"><time datetime="2026-11-20">2026-11-20</time><span class="b-day-cn">11 月 20 日 · 周五</span><em>15 条</em></h3>
+    <div class="b-lead">
+      
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">21:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/20/1149371/the-download-quest-to-make-minds-immortal/" target="_blank" rel="noopener">The Download: inside the quest to make our minds immortal</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">This is today&amp;#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&amp;#8217;s…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">21:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/20/1149371/the-download-quest-to-make-minds-immortal/" target="_blank" rel="noopener">The Download: inside the quest to make our minds immortal</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">This is today&amp;#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&amp;#8217;s…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">MIT Technology Review</span><span class="b-dt">21:10</span></div>
+        <h3 style="font-size:15px"><a href="https://www.technologyreview.com/2026/11/20/1149371/the-download-quest-to-make-minds-immortal/" target="_blank" rel="noopener">The Download: inside the quest to make our minds immortal</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">This is today&amp;#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&amp;#8217;s…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">18:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/combatting-adversarial-distillation" target="_blank" rel="noopener">Combatting adversarial distillation</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">18:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/combatting-adversarial-distillation" target="_blank" rel="noopener">Combatting adversarial distillation</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">18:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/index/combatting-adversarial-distillation" target="_blank" rel="noopener">Combatting adversarial distillation</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">Simon Willison</span><span class="b-dt">11:01</span></div>
+        <h3 style="font-size:15px"><a href="https://simonwillison.net/2026/Nov/20/llm-gemini/" target="_blank" rel="noopener">llm-gemini 0.38.1</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Release: llm-gemini 0.38.1 Gemini 4 Carbon only supports low, medium and high reasoning levels - but Gemini 4 Hydrogen a…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">Simon Willison</span><span class="b-dt">11:01</span></div>
+        <h3 style="font-size:15px"><a href="https://simonwillison.net/2026/Nov/20/llm-gemini/" target="_blank" rel="noopener">llm-gemini 0.38.1</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Release: llm-gemini 0.38.1 Gemini 4 Carbon only supports low, medium and high reasoning levels - but Gemini 4 Hydrogen a…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span><span class="b-tg">模型能力</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">Simon Willison</span><span class="b-dt">10:49</span></div>
+        <h3 style="font-size:15px"><a href="https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/" target="_blank" rel="noopener">Token fraud is here and it’s BAD (YouTube)</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Token fraud is here and it’s BAD (YouTube) Claire Vo runs ChatPRD, an AI platform that helps product managers &quot;turn…</p>
+        
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">08:34</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-inference-2026-launches-in-review-part-2/" target="_blank" rel="noopener">Amazon SageMaker Inference: 2026 launches in review, part 2</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">This second installment reviews 13 more Amazon SageMaker AI inference launches from 2026, spanning configuration recomme…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">08:34</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-inference-2026-launches-in-review-part-2/" target="_blank" rel="noopener">Amazon SageMaker Inference: 2026 launches in review, part 2</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">This second installment reviews 13 more Amazon SageMaker AI inference launches from 2026, spanning configuration recomme…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">AWS Machine Learning</span><span class="b-dt">08:33</span></div>
+        <h3 style="font-size:15px"><a href="https://aws.amazon.com/blogs/machine-learning/use-kimi-code-cli-with-models-on-amazon-bedrock/" target="_blank" rel="noopener">Use Kimi Code CLI with models on Amazon Bedrock</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Kimi Code CLI v2.7.0 adds a native Amazon Bedrock provider, so you can connect the open source coding agent to models li…</p>
+        <div class="b-tags"><span class="b-tg">开发工具</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">阮一峰的网络日志</span><span class="b-dt">08:07</span></div>
+        <h3 style="font-size:15px"><a href="http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html" target="_blank" rel="noopener">科技爱好者周刊（第 420 期）：最分心的一年</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">这里记录每周值得分享的科技内容，周五发布。...</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">阮一峰的网络日志</span><span class="b-dt">08:07</span></div>
+        <h3 style="font-size:15px"><a href="http://www.ruanyifeng.com/blog/2026/11/weekly-issue-420.html" target="_blank" rel="noopener">科技爱好者周刊（第 420 期）：最分心的一年</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">这里记录每周值得分享的科技内容，周五发布。...</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+      <div class="b-li">
+        <div class="b-top"><span class="b-src">OpenAI 官方博客</span><span class="b-dt">08:00</span></div>
+        <h3 style="font-size:15px"><a href="https://openai.com/business/customer-stories/hebbia" target="_blank" rel="noopener">Hebbia sees improvements in financial research with GPT-6 Astra</a></h3>
+        <p style="margin:0 0 6px;font-size:12.5px">Hebbia tested GPT-6 Astra for financial research. Its prerelease evaluations found gains in source coverage, citation re…</p>
+        <div class="b-tags"><span class="b-tg">模型发布</span></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="b-sec">
+  <h2>今日三读 <em>要闻</em></h2>
+  <p class="note">按源发布时间排序。摘要为原文摘录，未改写。</p>
+  <div class="b-lead">
+    
+    <div class="b-li">
+      <div class="b-top"><span class="b-rk">1</span><span class="b-src">钛媒体</span><span class="b-dt"></span></div>
+      <h3><a href="https://www.tmtpost.com/8218431.html" target="_blank" rel="noopener">人效管理为何频踩坑？四个陷阱背后的组织逻辑</a></h3>
+      <div class="b-quote"><b>原文摘要</b>别急着上人效管理，先看这四个坑你踩了几个。</div>
+      
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-rk">2</span><span class="b-src">钛媒体</span><span class="b-dt"></span></div>
+      <h3><a href="https://www.tmtpost.com/8218430.html" target="_blank" rel="noopener">解密奥斯汀208号展位的“幽灵事件”：OpenAI亲手解散机器人团队，机器人行业却要变天？</a></h3>
+      <div class="b-quote"><b>原文摘要</b>屏幕里的AI改变的只是我们的工作方式，而一旦AI长出了手和脚，它重塑的，将是整个人类文明的物理边界。</div>
+      
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-rk">3</span><span class="b-src">稀土掘金</span><span class="b-dt"></span></div>
+      <h3><a href="https://juejin.cn/post/7712024433762910243" target="_blank" rel="noopener">查帧率、看负载、开日志：hrut_camsys 的 J6X Camsys 调试日常</a></h3>
+      <div class="b-quote"><b>原文摘要</b>hrut_camsys 是J6X平台统一调试命令管理工具，解决命令分散、平台差异问题。支持标签分类、索引执行、关键词搜索及参数调用，提供交互式与快速执行模式，提升调试效率。</div>
+      <div class="b-tags"><span class="b-tg">开发工具</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="b-sec">
+  <h2>今日主推 <em>深读一篇</em></h2>
+  <p class="note">今日最值得完整读一篇的。点标题直达原文，本站不做转述。</p>
+  <div class="b-deep">
+    <div class="b-top" style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
+      <span class="b-src" style="font-size:11.5px;font-weight:800;color:#0e7490">IT之家</span>
+      <span style="font-size:11.5px;color:var(--muted)"></span>
+    </div>
+    <h3><a href="https://www.ithome.com/1/032/746.htm" target="_blank" rel="noopener">长城汽车魏建军称现在汽车贬值速度太离谱，格力电器董明珠回应“有些产业害虫该灭就灭”</a></h3>
+    <p class="b-big">IT之家 11 月 26 日消息，长城汽车董事长魏建军今日（11 月 26 日）在广东珠海与格力电器董事长董明珠会面。据蓝鲸新闻报道，魏建军表示，汽车本是家庭大件财产，但是如今贬值速度已到了离谱的程度，不少车企缺现金流，只能靠降价、压榨供应商硬撑，陷入恶性循环。董明珠称年轻人容易被舆论忽悠，作为制造者，必须清楚生命才是第一位。董明珠还表示有些产业害虫该灭就灭。另据新浪科技报道，魏建军指出，目前很多汽车企业只是为了流动而活着，实际上都在亏</p>
+    
+  </div>
+</section>
+
+<section class="b-sec">
+  <h2>深度整理 <em>不是资讯聚合，是把一件事讲透</em></h2>
+  <p class="b-note">
+    每日简报是「今天发生了什么」，深度整理是「这件事意味着什么」。
+    事实与分析严格分层：每条事实带可点开出处，分析段落明确标注为编辑判断，未落地的爆料单列「待确认」。
+  </p>
+  <div class="b-dcard">
+    <div class="b-dtop">
+      <span class="b-dtag">第 001 期</span>
+      <span class="b-dno">2026-10-06</span>
+    </div>
+    <h3><a href="./deep-dive.html">国产大模型的资本狂飙：一天之内两笔百亿级消息</a></h3>
+    <p>同一天里，中国两家头部大模型公司各自传出百亿级以上的资本动作：DeepSeek 新一轮融资规模从最初目标 500 亿元一路上调至「至少 800 亿、最终或逼近 1000 亿元」，为 2027 年初的 IPO 铺路；月之暗面完成上市前最后…</p>
+    <div class="b-tags">
+      <a class="b-tg" href="https://news.qq.com/rain/a/20261006A074JI00" target="_blank" rel="noopener">华尔街见闻 / 腾讯新闻</a><a class="b-tg" href="https://www.163.com/dy/article/L8IP5IU90519QIKK.html" target="_blank" rel="noopener">网易转金融界</a><a class="b-tg" href="https://news.qq.com/rain/a/20261006A06UJW00" target="_blank" rel="noopener">智通财经 / 腾讯新闻</a><a class="b-tg" href="https://www.cnenergynews.cn/article/4SOtcr9taTe" target="_blank" rel="noopener">中国能源网</a><a class="b-tg" href="https://www.inewsweek.cn/finance/2026-09-10/32025.shtml" target="_blank" rel="noopener">中国新闻周刊</a>
+    </div>
+    <div class="b-dfoot">
+      <span class="b-dwarn">以上均为彭博社援引知情人士的报道，非官方公告。涉事企业的公开回应状态见「待确认」一节。</span>
+    </div>
+    <a class="b-go" href="./deep-dive.html">读全文 · 事实/判断/待确认 三层分开<i class="b-arrow" aria-hidden="true">→</i></a>
+  </div>
+</section>
+
+
+<section class="b-sec">
+  <h2>今日主题 <em>模型发布 · 6 条</em></h2>
+  <p class="note">按今日出现频次最高的标签聚合，帮你从信息流里挑出一条主线。</p>
+  <div class="b-grid6">
+    
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">arXiv cs.AI</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://arxiv.org/abs/2611.33160" target="_blank" rel="noopener">Context Scaling: A New Frontier of AI Scaling</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.ifanr.com/1695349?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">首款鸿蒙小折叠电脑正式发布，生态创新重新定义折叠电脑体验</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">量子位</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.qbitai.com/2026/11/512582.html" target="_blank" rel="noopener">算力唤醒真实世界：九章云极发布物理AI工厂与生态开放计划</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">雷峰网</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.leiphone.com/category/chips/Qz3QPf26nVIVA0ga.html" target="_blank" rel="noopener">算力唤醒真实世界：九章云极发布物理AI工厂与生态开放计划</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">开源中国</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.oschina.net/news/503813" target="_blank" rel="noopener">2240 亿参数的 Hy4 flash 模型，现在能跑在 64GB 的 Mac mini 上</a></h3>
+    </div>
+    <div class="b-li">
+      <div class="b-top"><span class="b-src">爱范儿</span><span class="b-dt"></span></div>
+      <h3 style="font-size:15px"><a href="https://www.ifanr.com/1691661?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign" target="_blank" rel="noopener">拓竹 P3C 发布：国补后 6374 元起，下一代 3D 打印机开始卷性价比</a></h3>
+    </div>
+  </div>
+</section>
+
+<section class="b-sec">
+  <h2>今日知识点 <em>6 个术语</em></h2>
+  <p class="note">
+    从今日标题里抽取的真实术语，每个都给出<strong>它出现的原文链接</strong>。
+    本站<strong>不提供术语解释</strong>——解释容易变成编造，去原文读更准。
+  </p>
+  <div class="b-tgrid">
+    
+    <div class="b-tc">
+      <b>智能体</b>
+      <span>出自《污染 0.1% 的预训练数据，就能给 AI 智能体埋下洗…》</span>
+      <a href="https://www.oschina.net/news/503823" target="_blank" rel="noopener">开源中国 →</a>
+    </div>
+    <div class="b-tc">
+      <b>模型</b>
+      <span>出自《国产模型扎进 AI4S 深水区，几毫秒破译尘封18年密码…》</span>
+      <a href="https://www.leiphone.com/category/yanxishe/T2xmmiMAC6WbuuCM.html" target="_blank" rel="noopener">雷峰网 →</a>
+    </div>
+    <div class="b-tc">
+      <b>算力</b>
+      <span>出自《算力唤醒真实世界：九章云极发布物理AI工厂与生态开放计划…》</span>
+      <a href="https://www.qbitai.com/2026/11/512582.html" target="_blank" rel="noopener">量子位 →</a>
+    </div>
+    <div class="b-tc">
+      <b>开源</b>
+      <span>出自《App+1｜Yab：开源、AI 友好的双内核浏览器，给舍…》</span>
+      <a href="https://sspai.com/post/119310" target="_blank" rel="noopener">少数派 →</a>
+    </div>
+    <div class="b-tc">
+      <b>Agent</b>
+      <span>出自《OpenAI and Cisco Releases Sh…》</span>
+      <a href="https://www.marktechpost.com/2026/11/24/openai-cisco-shirudo-ebpf-linux-runtime/" target="_blank" rel="noopener">MarkTechPost →</a>
+    </div>
+    <div class="b-tc">
+      <b>agent</b>
+      <span>出自《New in AWS Quick: More capab…》</span>
+      <a href="https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together/" target="_blank" rel="noopener">AWS Machine Learning →</a>
+    </div>
+  </div>
+</section>
+
+<section class="b-sec">
+  <h2>讨论 <em>已接入 · 登录后可发言</em></h2>
+  <p class="note">对上面某条有补充、有异议，或者想贴自己的实践 —— 直接在下面说。别人回复你，右上角铃铛会有提醒。</p>
+  <div id="comments" data-bj-comments></div>
+</section>
+
+<div class="b-foot">
+  标签分布：模型发布 25　·　开发工具 17　·　模型能力 8　·　研究论文 4　·　政策监管 2　·　商业融资 2<br>
+  可用源 18 个　·　本次登记但不可用 2 个（已在上方划掉并注明原因）<br>
+  数据文件：<code>data/daily-brief.json</code>　·　采集脚本：<code>scripts/daily/collect.mjs</code>　·　每日可重复执行，结果覆盖写入
+</div>
+
+</div>
+
+<!-- 全站内核（身份区/导航/主题/评论）：每次重建都必须带上，否则裸页会失去内核 -->
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script src="/responsive.js"></script>
+</body>
+</html>

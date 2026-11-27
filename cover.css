@@ -1,0 +1,113 @@
+/* 真实封面层：卡片顶部用真实照片（板块）/ 开源平台官方的项目卡片（仓库）。
+   照片全部下载到本地 assets/covers/，不热链。 */
+
+/* ---------- 通用 ---------- */
+.cv-photo {
+  position: relative;
+  overflow: hidden;
+  background: #0b1220;
+}
+.cv-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .55s cubic-bezier(.22, .68, .32, 1), filter .3s;
+}
+.cv-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 12, 26, .45) 0%, rgba(6, 12, 26, .05) 42%, rgba(6, 12, 26, .72) 100%);
+  pointer-events: none;
+}
+.cv-photo > * { position: relative; z-index: 1; }
+
+/* 首页/域首页的大卡片 */
+.wcard .cv.cv-photo { height: 148px; }
+.wcard .cv.cv-photo .badge {
+  background: rgba(9, 14, 28, .55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .18);
+}
+.wcard:hover .cv.cv-photo img { transform: scale(1.055); }
+.wcard .cv.cv-photo .cc-ic {
+  position: absolute;
+  right: 12px;
+  bottom: 11px;
+  font-size: 19px;
+  color: #fff;
+  opacity: .92;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .5));
+}
+
+/* ---------- 仓库卡：开源平台自己的项目卡片 ---------- */
+.rpx .cvr {
+  position: relative;
+  display: block;
+  aspect-ratio: 2.06 / 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e9eef7, #cfd9e8);
+  border-bottom: 1px solid var(--line, rgba(148, 163, 184, .22));
+}
+.rpx .cvr img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+  transition: transform .5s cubic-bezier(.22, .68, .32, 1);
+}
+body[data-theme="deep"] .rpx .cvr { background: linear-gradient(135deg, #16203a, #0d1526); }
+body[data-theme="deep"] .rpx .cvr img { filter: brightness(.94) contrast(1.02); }
+.rpx:hover .cvr img { transform: scale(1.035); }
+
+/* 只有带封面的仓库卡才去掉内边距（其它 .rpx 不动） */
+.rpx.has-cvr { padding: 0 !important; }
+.rpx.has-cvr > .rh,
+.rpx.has-cvr > .desc,
+.rpx.has-cvr > .mx { margin-left: 15px; margin-right: 15px; }
+.rpx.has-cvr > .rh { margin-top: 13px; }
+.rpx.has-cvr > .mx { margin-bottom: 15px; }
+
+/* ---------- 板块头图（域首页 / 详情页顶部） ---------- */
+.pg-cover {
+  position: relative;
+  height: 208px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  background: #0b1220;
+}
+.pg-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pg-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(4, 8, 20, .82), rgba(4, 8, 20, .30) 58%, rgba(4, 8, 20, .06));
+}
+.pg-cover .pc-in {
+  position: absolute;
+  left: 26px;
+  bottom: 22px;
+  right: 26px;
+  z-index: 1;
+  color: #fff;
+}
+.pg-cover .pc-in b { display: block; font-size: 21px; letter-spacing: -.4px; font-weight: 800; }
+.pg-cover .pc-in span { display: block; margin-top: 6px; font-size: 13px; color: rgba(255, 255, 255, .78); }
+
+@media (max-width: 760px) {
+  .wcard .cv.cv-photo { height: 128px; }
+  .pg-cover { height: 150px; border-radius: 14px; }
+  .pg-cover .pc-in { left: 16px; bottom: 14px; }
+  .pg-cover .pc-in b { font-size: 17px; }
+}

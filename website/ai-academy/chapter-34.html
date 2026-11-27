@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="自学路线,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta property="og:title" content="NVIDIA NOOA 对象导向智能体框架：让 Agent 成为 Python 对象 · 自学路线 · 白驹 ccowork">
+<meta name="description" content="什么是 NOOA：NVIDIA 开源的对象导向智能体框架 NOOA 全称 NVIDIA Object-Oriented Agents，是 NVIDIA Labs 于 2026-07-27 发布的研究预览版（researc…">
+<meta property="og:description" content="什么是 NOOA：NVIDIA 开源的对象导向智能体框架 NOOA 全称 NVIDIA Object-Oriented Agents，是 NVIDIA Labs 于 2026-07-27 发布的研究预览版（researc…">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NVIDIA NOOA 对象导向智能体框架：让 Agent 成为 Python 对象 · 自学路线 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"NVIDIA NOOA 对象导向智能体框架：让 Agent 成为 Python 对象 · 自学路线 · 白驹 ccowork","description":"本章将带你掌握 NVIDIA 2026 年开源的对象导向智能体框架 NOOA，理解其「Agent 即 Python 对象」的核心设计，学会用原生 Python 类开发可测试、可追溯的智能体，替代碎片化的多抽象层 Agent 开发模式…","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script>
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="canonical" href="https://ccoworkbaiju.cn/website/ai-academy/chapter-34.html">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/ai-academy/chapter-34.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NVIDIA NOOA 对象导向智能体框架：让 Agent 成为 Python 对象 · 自学路线 · 白驹 ccowork">
+<meta name="twitter:description" content="什么是 NOOA：NVIDIA 开源的对象导向智能体框架 NOOA 全称 NVIDIA Object-Oriented Agents，是 NVIDIA Labs 于 2026-10-27 发布的研究预览版（researc…">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/design-norms.css?v=20261029a">
+<link rel="stylesheet" href="/site-page.css?v=20261029a">
+<link rel="stylesheet" href="/site-nav.css?v=20261125a">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body data-ccnav="learn" data-theme="cloud">
+<article>
+<h1>NVIDIA NOOA 对象导向智能体框架：让 Agent 成为 Python 对象</h1>
+<div class="blog-open">
+  <div class="blog-badge"> 白驹 ccowork · 自学路线 第34章</div>
+  <div class="blog-meta"><span> 2026-10-27</span><span> 65 分钟</span><span class="blog-tag">教程</span><span class="blog-tag" style="background:rgba(250,204,21,.14);color:#d97706;border:1px dashed rgba(217,119,6,.4)"> AI 生成 · 以官方为准</span></div>
+  <div class="blog-divider"></div>
+</div>
+<p>本章将带你掌握 NVIDIA 2026 年开源的对象导向智能体框架 NOOA，理解其「Agent 即 Python 对象」的核心设计，学会用原生 Python 类开发可测试、可追溯的智能体，替代碎片化的多抽象层 Agent 开发模式，学完可独立搭建带长期记忆的任务型智能体并查看运行轨迹。</p>
+<h2 id="ch34-什么是-NOOANVIDIA-开源的对象导向智能体框">什么是 NOOA：NVIDIA 开源的对象导向智能体框架</h2>
+<p>NOOA 全称 NVIDIA Object-Oriented Agents，是 NVIDIA Labs 于 2026-07-27 发布的研究预览版（research preview）智能体开发框架，采用 Apache 2.0 开源协议，官方 GitHub 仓库为 <code>NVIDIA-NeMo/labs-OO-Agents</code>，配套技术报告发布于 arXiv（编号 2607.20709），官方发布博客地址为 <code>developer.nvidia.com/blog/six-agent-harness-capabilities-for-higher-model-performance</code>，所有发布信息与版本更新请以官方渠道为准。</p>
+<p>与传统 Agent 框架不同，NOOA 没有引入自定义的 DSL 或工作流配置文件，完全基于原生 Python 语法实现智能体定义。作为研究预览版，当前版本的核心目标是验证对象导向范式对智能体性能、可维护性的提升，而非提供生产级的全场景支持，其核心能力围绕「降低开发心智负担、提升模型调用效率」两个方向设计。</p>
+<p>你可以通过以下命令验证官方仓库的真实性：</p>
+<pre><code># 克隆官方仓库查看最新代码
+git clone https://github.com/NVIDIA-NeMo/labs-OO-Agents.git
+cd labs-OO-Agents &amp;&amp; git log --oneline -n 5</code></pre>
+<h2 id="ch34-核心设计理念Agent-就是普通-Python-对象">核心设计理念：Agent 就是普通 Python 对象</h2>
+<p>NOOA 的核心设计哲学可以总结为一句话：<em>an agent is a Python object</em>，即智能体本身就是一个普通的 Python 类，不需要额外的配置文件、提示词模板或工作流定义，所有智能体相关的要素都收敛到 Python 类的原生语法中：</p>
+<ul>
+<li>类的字段（field）就是智能体的状态（state），支持所有 Python 原生类型与自定义类型</li>
+<li>类的方法（method）就是智能体的能力（capability），方法签名的类型注解就是输入输出的强制契约（contract），框架会自动做类型校验</li>
+<li>方法的 docstring 就是给大模型的提示词（prompt），不需要单独维护模板文件</li>
+<li>方法体如果写为 <code>...</code>（Python 省略号占位符），就是生成式方法（generation method），由大模型在运行时根据上下文补全执行逻辑；如果有真实的 Python 代码，就是确定性方法（deterministic method），直接执行本地逻辑，不调用大模型。</li>
+</ul>
+<p>这种设计完全复用了 Python 开发者已有的编程习惯，不需要学习新的抽象概念。例如一个最简单的计算类智能体，你只需要写类的结构和docstring，不需要写具体实现逻辑：</p>
+<pre><code>from nooa import Agent
+from nooa.llms import LiteLLM
+class CalculatorAgent(Agent):
+    llm = LiteLLM(model="gpt-4o-mini")
+    memory: list[str] = []  # 字段即状态
+    def calculate(self, expression: str) -&gt; float:
+        """计算输入数学表达式的结果，仅返回数值，不要多余解释"""
+        ...  # 省略号方法体，由LLM生成执行逻辑
+    def validate_result(self, value: float) -&gt; bool:
+        """验证计算结果是否为有限数值"""
+        import math
+        return math.isfinite(value)  # 真实方法体，确定性执行</code></pre>
+<p>你可以直接将上述代码保存为普通 Python 文件，不需要额外的配置即可运行，验证方式为执行 <code>python -c "from calculator import CalculatorAgent; print(CalculatorAgent().calculate('1+2*3'))"</code>。</p>
+<h2 id="ch34-为什么需要对象导向的-Agent-范式">为什么需要对象导向的 Agent 范式</h2>
+<p>当前主流 Agent 框架（LangChain/LangGraph/AutoGen 等）普遍存在抽象层碎片化的问题：提示词存在单独的模板文件、工具需要单独定义 Schema 并注册、回调逻辑散落在多个装饰器或配置项、工作流需要单独用图结构定义，一个简单的智能体往往需要维护5-6个不同位置的代码片段，无法直接用传统软件开发的流程做版本管理、Code Review 或单元测试。</p>
+<p>NOOA 用单一 Python 类统一了所有智能体相关的抽象，让 Agent 开发回归传统软件开发的最佳实践：</p>
+<ul>
+<li>可 diff：所有智能体逻辑都在 Python 类中，Git 可以直接对比版本差异</li>
+<li>可 Code Review：所有提示词、能力、状态都在类定义中，不需要跨文件查找逻辑</li>
+<li>可单元测试：确定性方法可以直接用 pytest 写测试用例，生成式方法可以通过 mock LLM 接口测试</li>
+<li>可追溯：所有运行轨迹都绑定到对象方法调用，不需要额外配置链路追踪</li>
+<li>可版本管理：直接用 Git 管理类的版本，不需要维护单独的工作流版本或提示词版本。</li>
+</ul>
+<p>根据官方技术报告的统计，实现相同能力的 SWE-bench 任务智能体，NOOA 的代码量比 LangGraph 版本少 62%，跨文件依赖数从 17 个降到 1 个，新人上手时间从平均 3 天降到 4 小时。</p>
+<h2 id="ch34-六大模型接口核心能力">六大模型接口核心能力</h2>
+<p>NOOA 在框架层实现了六大面向模型的接口设计，这也是其性能优于传统框架的核心原因，所有能力都不需要开发者额外配置，框架自动生效：</p>
+<ol>
+<li><strong>类型化输入输出（Typed I/O）</strong>：所有模型调用都有严格的类型注解，框架自动做参数校验和返回值校验，模型不需要处理自由文本格式的工具调用，参数错误率比传统 JSON Schema 工具调用低 78%（以官方测试数据为准）。</li>
+<li><strong>按引用传递（Pass by reference）</strong>：模型操作的是活动的 Python 对象，只接收对象的有界预览而非全量序列化内容，工具返回的大结果不需要塞进上下文窗口，模型可以通过引用直接访问对象属性，这也是其 token 成本大幅降低的核心原因。</li>
+<li><strong>代码即动作（Code as action）</strong>：模型通过写原生 Python 代码执行动作，支持循环、条件判断、内联方法调用，不需要通过固定的工具调用格式，动作表达能力比传统 ReAct 范式明显提升（幅度随实现与数据而变，需自测）。</li>
+<li><strong>可编程循环工程（Programmable loop engineering）</strong>：智能体的编排循环就是普通 Python 代码，开发者可以写固定循环逻辑，模型也可以在运行时动态修改循环逻辑，不需要提前定义固定的图结构。</li>
+<li><strong>显式对象状态（Explicit object state）</strong>：智能体的持久化状态直接存储在 Agent 对象的字段上，不是仅存在于对话历史中，状态可以直接序列化、备份、恢复。</li>
+<li><strong>模型可调用 Harness API</strong>：框架提供了内置的 Context 块和事件历史 API，模型可以主动检查、清理、修改上下文内容，不需要被动接收固定的上下文窗口。</li>
+</ol>
+<p>你可以通过官方仓库的 <code>examples/0_core_capabilities/</code> 目录查看每个能力的独立示例，运行示例即可验证能力效果。</p>
+<h2 id="ch34-安装与快速上手">安装与快速上手</h2>
+<p>NOOA 官方推荐使用 uv 作为包管理工具，同时支持 pip 安装，核心包安装命令如下：</p>
+<pre><code># 官方推荐：用uv安装核心包
+uv add nooa
+# 或用pip安装
+pip install nooa</code></pre>
+<p>除了核心包之外，NOOA 提供了多个可选子包，你可以根据需求安装：</p>
+<table>
+<thead><tr><th>子包名</th><th>功能说明</th></tr></thead>
+<tbody>
+<tr><td>nooa-cli</td><td>提供命令行工具与本地 Trace 查看器</td></tr>
+<tr><td>nooa-acp</td><td>实现 Agent Client Protocol，可对接 Zed 等编辑器</td></tr>
+<tr><td>nooa-memory</td><td>内置长期记忆子系统</td></tr>
+<tr><td>nooa-bench</td><td>官方基准测试工具集</td></tr>
+</tbody>
+</table>
+<p>NOOA 通过 LiteLLM 对接所有主流大模型，支持 OpenAI、Anthropic、Ollama、vLLM 等所有 LiteLLM 兼容的模型提供商，模型列表以 LiteLLM 官方支持文档为准。安装完成后，你可以通过以下命令验证安装成功：</p>
+<pre><code># 验证核心包安装
+nooa --version
+# 启动本地Trace查看器（默认端口5001，以官方配置为准）
+nooa start-dev</code></pre>
+<h2 id="ch34-长期记忆子系统">长期记忆子系统</h2>
+<p>NOOA 的长期记忆子系统在 <code>nooa-memory</code> 可选包中，基于 SQLite 实现人类可读的本地存储，不需要额外部署向量数据库。智能体通过模型可调用的内置工具主动管理记忆，包括写入、查询、修正记忆记录，每条记忆记录都携带类型、重要性评分、自定义标签。</p>
+<p>与传统扁平的记忆日志不同，NOOA 的记忆系统支持类型化的关系标注，包括 <code>supports</code>（支持）、<code>contradicts</code>（矛盾）、<code>derived-from</code>（派生自）三种核心关系，自动构成记忆知识图谱。框架会在后台运行反思 pass，自动合并重复记忆、链接关联记忆、提炼高层洞察、清除过期的无效信息，所有记忆都支持跨会话持久化。</p>
+<p>启用长期记忆只需要在 Agent 类中添加 Memory 字段即可，不需要额外配置：</p>
+<pre><code>from nooa import Agent
+from nooa_memory import SQLiteMemory
+from nooa.llms import LiteLLM
+class MemoryAgent(Agent):
+    llm = LiteLLM(model="gpt-4o-mini")
+    # 启用SQLite长期记忆，数据存在本地agent_memory.db文件
+    memory = SQLiteMemory(path="./agent_memory.db")
+    def remember_user_info(self, info: str, importance: int) -&gt; None:
+        """记住用户提供的个人信息，importance为1-10的重要性评分"""
+        ...</code></pre>
+<p>你可以通过直接查看本地 SQLite 文件验证记忆存储效果，例如运行 <code>sqlite3 agent_memory.db "select * from memories limit 5;"</code> 即可查看已存储的记忆记录。</p>
+<h2 id="ch34-基准测试表现与框架对比">基准测试表现与框架对比</h2>
+<p>根据官方发布的基准测试结果（所有分数依赖所用模型，以官方最新公布为准），NOOA 在主流 Agent 基准上取得了当前开源框架的第一梯队成绩：</p>
+<table>
+<thead><tr><th>基准测试集</th><th>所用模型</th><th>得分</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>SWE-bench Verified</td><td>GPT-5.5</td><td>82.2%</td><td>仅用约半数 token 与 LLM 调用次数，无需上下文压缩</td></tr>
+<tr><td>CyberGym L1</td><td>GPT-5.5</td><td>86.8%</td><td>无网络访问，当前开源 Agent 最高分</td></tr>
+<tr><td>ARC-AGI-3</td><td>GPT-5.6-sol</td><td>85.1%</td><td>单局成本低于20美元</td></tr>
+</tbody>
+</table>
+<p style="font-size:13px;opacity:.85">说明：上表模型名是厂商公布该组分数时所使用的版本（当时为 GPT-5 系列），本页按核验日 2026-10-27 保留原始口径，不替换为当前型号——替换会让「82.2%」这个分数变成一个没人测过的数字。当前各厂主力档见文末「参考来源」的官方定价页。</p>
+<p>其中 token 成本降低约 50% 主要得益于按引用传递机制与 append-only 追加式转录设计，后者可以最大化大模型的前缀缓存命中率，减少重复计算的 token 消耗。</p>
+<p>与其他主流 Agent 框架的定位差异如下：</p>
+<ul>
+<li>对比 LangGraph：LangGraph 是图编排层，核心抽象是节点和边，NOOA 是对象编排层，核心抽象是类和方法，不需要提前定义图结构</li>
+<li>对比 MCP（Model Context Protocol）：MCP 是跨进程工具协议，NOOA 的方法是类的内置接口，不需要跨进程通信</li>
+<li>对比 DeepSeek Harness：DeepSeek Harness 是插件化运行时框架，核心扩展方式是插件，NOOA 是类化框架，核心扩展方式是继承和 mixin。</li>
+</ul>
+<h2 id="ch34-安全实践与注意事项">安全实践与注意事项</h2>
+<p>NOOA 当前是研究预览版，存在较多粗糙边缘，框架内置的 AST 检查、模块黑名单等机制只是纵深防御手段，不是安全隔离边界：模型生成的 Python 代码可能执行危险操作（例如删除本地文件、访问网络），绝对不能在生产环境或没有隔离的环境中直接运行，真正的安全隔离需要依赖 OS 级沙箱，例如容器、虚拟机或 NVIDIA OpenShell 隔离环境。</p>
+<p>当前版本的 NOOA 存在几个明确的局限：仅支持 Python 语言，不支持其他编程语言的智能体开发；作为研究预览版，API 可能在后续版本发生破坏性变更；智能体的能力高度依赖底层模型的代码能力，基准测试分数会随所用模型的不同发生较大变化；官方文档和第三方生态仍在早期建设阶段，很多场景需要参考源码实现。</p>
+<p>你可以通过官方仓库的 <code>SECURITY.md</code> 文件查看最新的安全建议，运行智能体时建议优先在 Docker 容器中执行，避免影响宿主环境。</p>
+<h2>小结与练习</h2>
+<h3>核心收获</h3>
+<ol>
+<li>NOOA 是 NVIDIA 开源的对象导向智能体框架，核心设计是「Agent 即 Python 对象」，用原生 Python 类统一了状态、能力、提示词、契约所有抽象，解决了传统框架的碎片化问题。</li>
+<li>NOOA 通过类型化IO、按引用传递、代码即动作六大核心设计，在降低开发复杂度的同时，将大模型调用的token成本降低约50%，在主流Agent基准上取得了第一梯队的成绩。</li>
+<li>NOOA 内置基于SQLite的长期记忆子系统，支持记忆关系图谱与自动反思，所有能力都遵循传统软件开发最佳实践，支持diff、Code Review、单元测试。</li>
+</ol>
+<h3>动手练习</h3>
+<ol>
+<li>安装 NOOA 核心包与 nooa-cli，本地启动 Trace 查看器，验证端口 5001 可以正常访问。</li>
+<li>编写一个简单的 TodoAgent 类，包含添加待办、列出待办、标记完成三个方法，其中添加和列出是确定性方法，标记完成的优先级评估为生成式方法，本地运行测试功能。</li>
+<li>为上述 TodoAgent 启用 SQLite 长期记忆，添加3条测试待办后重启Agent，验证待办数据可以跨会话保留。</li>
+</ol>
+<h3>扩展阅读方向</h3>
+<p>可以阅读 NOOA 官方 arXiv 技术报告，重点研究按引用传递机制与可编程循环的具体实现逻辑，对比其与传统ReAct范式的上下文管理差异。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script src="/module.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.textContent=next==='deep'?'':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.textContent=t==='deep'?'':'';});
+</script>
+<script src="/site-nav.js?v=20261125a" defer></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新。</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body>
+</html>

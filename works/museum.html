@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 博物馆 · 十年十四个节点 · 白驹 ccowork</title>
+<meta name="description" content="AI 博物馆：从 2017 年 Transformer 到 2026 年开源追平，14 个真正改变行业走向的节点，外加一间「废墟馆」——记录已经被淘汰的做法。">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css">
+<link rel="stylesheet" href="/site-redesign.css">
+<link rel="stylesheet" href="/design-norms.css">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/site-page.css">
+<link rel="stylesheet" href="/page-ext.css">
+<link rel="stylesheet" href="/cover.css">
+</head>
+<body data-ccnav="works" data-cctitle="AI 博物馆">
+<main class="pg-wrap">
+  <div class="pg-cover"><img src="/assets/covers/sec/museum.jpg" alt="" loading="eager" decoding="async"></div>
+  <div class="pg-hero">
+    <div data-cccrumb="AI 博物馆"></div>
+    <h1>AI 博物馆 · <em>十四个节点，十年</em></h1>
+    <p class="lede">博物馆的价值不在于纪念，而在于<b>看清哪些东西是转折点，哪些只是噪音</b>。这里只收 14 个真正改变了后续走向的事件——判断标准是：如果它没发生，今天的技术栈会明显不一样。</p>
+    <div class="pg-stats">
+      <div class="st"><b>2017</b><span>起点 · Transformer</span></div>
+      <div class="st"><b>14</b><span>个关键节点</span></div>
+      <div class="st"><b>9</b><span>年跨度</span></div>
+      <div class="st"><b>5</b><span>件已进废墟</span></div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="history" aria-hidden="true"></i>主线时间轴</h2>
+      <span class="sub">紫色节点 = 范式转移；蓝色节点 = 能力跃迁</span></div>
+    <div class="tl">
+    <div class="tl-item era" data-t="2017 《Attention Is All You Need》发表 Google 的八位作者提出 Transformer，用自注意力替换循环结构。当时它只是机器翻译领域的一篇论文，没人预料到它会成为之后所有大模型的骨架。 这是整个行业的&lt;b&gt;零点&lt;/b&gt;。今天你看到的一切——GPT、Claude、DeepSeek、Stable Diffusion 的文本编码器——都建立在这个结构上。理解 self-attention 是理解大模型的第一道门槛。">
+      <span class="yr">2017</span>
+      <h3>《Attention Is All You Need》发表</h3>
+      <p>Google 的八位作者提出 Transformer，用自注意力替换循环结构。当时它只是机器翻译领域的一篇论文，没人预料到它会成为之后所有大模型的骨架。</p>
+      <span class="why"><b>为什么重要 · </b>这是整个行业的<b>零点</b>。今天你看到的一切——GPT、Claude、DeepSeek、Stable Diffusion 的文本编码器——都建立在这个结构上。理解 self-attention 是理解大模型的第一道门槛。</span>
+    </div>
+    <div class="tl-item" data-t="2018 · 10 BERT：预训练 + 微调范式确立 Google 用双向 Transformer 在 11 项 NLP 任务上刷新纪录，并公开权重。「先大规模预训练、再小规模微调」成为之后五年的标准做法。 它教会行业一件事：&lt;b&gt;通用预训练可以复用&lt;/b&gt;。自此模型不再为单一任务训练，参数开始变成资产。">
+      <span class="yr">2018 · 10</span>
+      <h3>BERT：预训练 + 微调范式确立</h3>
+      <p>Google 用双向 Transformer 在 11 项 NLP 任务上刷新纪录，并公开权重。「先大规模预训练、再小规模微调」成为之后五年的标准做法。</p>
+      <span class="why"><b>为什么重要 · </b>它教会行业一件事：<b>通用预训练可以复用</b>。自此模型不再为单一任务训练，参数开始变成资产。</span>
+    </div>
+    <div class="tl-item" data-t="2020 · 05 GPT-3：1750 亿参数，涌现能力 OpenAI 把模型放大到 175B，发现规模跨过某个阈值后会「涌现」出未被专门训练的能力：few-shot 学习、简单推理、写代码。 这是&lt;b&gt;「大力出奇迹」被验证&lt;/b&gt;的时刻，也是 Scaling Law 成为行业信仰的起点。同时也埋下后面两年的算力军备竞赛。">
+      <span class="yr">2020 · 05</span>
+      <h3>GPT-3：1750 亿参数，涌现能力</h3>
+      <p>OpenAI 把模型放大到 175B，发现规模跨过某个阈值后会「涌现」出未被专门训练的能力：few-shot 学习、简单推理、写代码。</p>
+      <span class="why"><b>为什么重要 · </b>这是<b>「大力出奇迹」被验证</b>的时刻，也是 Scaling Law 成为行业信仰的起点。同时也埋下后面两年的算力军备竞赛。</span>
+    </div>
+    <div class="tl-item" data-t="2021 · 01 CLIP 与 DALL·E：文与图第一次对齐 OpenAI 用 4 亿图文对训练 CLIP，让「文字」和「图像」进入同一个向量空间；同年 DALL·E 用文字生成图像。 没有 CLIP 就没有后来的 Stable Diffusion。它是&lt;b&gt;文字控制图像&lt;/b&gt;这件事的技术地基，也是今天所有文生图提示词的源头。">
+      <span class="yr">2021 · 01</span>
+      <h3>CLIP 与 DALL·E：文与图第一次对齐</h3>
+      <p>OpenAI 用 4 亿图文对训练 CLIP，让「文字」和「图像」进入同一个向量空间；同年 DALL·E 用文字生成图像。</p>
+      <span class="why"><b>为什么重要 · </b>没有 CLIP 就没有后来的 Stable Diffusion。它是<b>文字控制图像</b>这件事的技术地基，也是今天所有文生图提示词的源头。</span>
+    </div>
+    <div class="tl-item era" data-t="2022 · 08 Stable Diffusion 开源：生成能力的民主化 Stability AI 公开模型权重与代码，消费级显卡（8G 显存）就能本地生成图像。半年内社区产出数十万个 LoRA 与插件。 这是&lt;b&gt;AI 从「服务」变成「工具」&lt;/b&gt;的分水岭。在此之前生图是 API 调用，在此之后它成了一台可以自己拆开修的机器。ComfyUI、A1111 生态都从这里长出来。">
+      <span class="yr">2022 · 08</span>
+      <h3>Stable Diffusion 开源：生成能力的民主化</h3>
+      <p>Stability AI 公开模型权重与代码，消费级显卡（8G 显存）就能本地生成图像。半年内社区产出数十万个 LoRA 与插件。</p>
+      <span class="why"><b>为什么重要 · </b>这是<b>AI 从「服务」变成「工具」</b>的分水岭。在此之前生图是 API 调用，在此之后它成了一台可以自己拆开修的机器。ComfyUI、A1111 生态都从这里长出来。</span>
+    </div>
+    <div class="tl-item" data-t="2022 · 11 · 30 ChatGPT：两个月一亿用户 OpenAI 把 GPT-3.5 包进一个对话框上线。五天一百万用户，两个月一亿——史上增长最快的消费级应用。 技术没变，&lt;b&gt;交互变了&lt;/b&gt;。同一代模型在 API 里躺了半年无人问津，套上聊天框就成了全民产品。这件事至今仍在提醒：模型能力和产品形态是两件事。">
+      <span class="yr">2022 · 11 · 30</span>
+      <h3>ChatGPT：两个月一亿用户</h3>
+      <p>OpenAI 把 GPT-3.5 包进一个对话框上线。五天一百万用户，两个月一亿——史上增长最快的消费级应用。</p>
+      <span class="why"><b>为什么重要 · </b>技术没变，<b>交互变了</b>。同一代模型在 API 里躺了半年无人问津，套上聊天框就成了全民产品。这件事至今仍在提醒：模型能力和产品形态是两件事。</span>
+    </div>
+    <div class="tl-item era" data-t="2023 · 02 LLaMA 泄露与开源权重浪潮 Meta 的 LLaMA 权重被泄露到 4chan，随后引发整个开源社区的微调狂潮；7 月 Meta 正式发布可商用的 Llama 2。 泄露事件意外&lt;b&gt;点燃了开源阵营&lt;/b&gt;。Alpaca、Vicuna、中文的 ChatGLM 与 Qwen 相继出现，模型能力开始从少数公司流向所有人。">
+      <span class="yr">2023 · 02</span>
+      <h3>LLaMA 泄露与开源权重浪潮</h3>
+      <p>Meta 的 LLaMA 权重被泄露到 4chan，随后引发整个开源社区的微调狂潮；7 月 Meta 正式发布可商用的 Llama 2。</p>
+      <span class="why"><b>为什么重要 · </b>泄露事件意外<b>点燃了开源阵营</b>。Alpaca、Vicuna、中文的 ChatGLM 与 Qwen 相继出现，模型能力开始从少数公司流向所有人。</span>
+    </div>
+    <div class="tl-item" data-t="2023 · 03 GPT-4：多模态与专业考试 GPT-4 支持图像输入，在律师资格考试中进入前 10%，在一系列专业测试上接近人类水平。 标志大模型从「能聊天」进入&lt;b&gt;「能做事」&lt;/b&gt;。也是从这一代开始，「跑分」和「实际体验」的差距成为公开讨论的话题。">
+      <span class="yr">2023 · 03</span>
+      <h3>GPT-4：多模态与专业考试</h3>
+      <p>GPT-4 支持图像输入，在律师资格考试中进入前 10%，在一系列专业测试上接近人类水平。</p>
+      <span class="why"><b>为什么重要 · </b>标志大模型从「能聊天」进入<b>「能做事」</b>。也是从这一代开始，「跑分」和「实际体验」的差距成为公开讨论的话题。</span>
+    </div>
+    <div class="tl-item" data-t="2024 · 02 Sora 预览：视频生成的门槛被推高 OpenAI 展示 60 秒连贯视频，物理一致性与镜头语言远超当时所有方案。同期开源侧只能做到几秒。 它暴露了一个结构性差距：&lt;b&gt;视频生成对算力的需求让开源难以追赶&lt;/b&gt;。直到 2025 年 Wan、HunyuanVideo 出现才勉强补上一档。">
+      <span class="yr">2024 · 02</span>
+      <h3>Sora 预览：视频生成的门槛被推高</h3>
+      <p>OpenAI 展示 60 秒连贯视频，物理一致性与镜头语言远超当时所有方案。同期开源侧只能做到几秒。</p>
+      <span class="why"><b>为什么重要 · </b>它暴露了一个结构性差距：<b>视频生成对算力的需求让开源难以追赶</b>。直到 2025 年 Wan、HunyuanVideo 出现才勉强补上一档。</span>
+    </div>
+    <div class="tl-item" data-t="2024 · 11 MCP 协议：给模型一个统一的插座 Anthropic 提出 Model Context Protocol，用统一协议描述工具与数据源。半年内被主流客户端与 IDE 广泛支持。 在它之前，每个 Agent 框架都在自己造工具接口，互相不通用。&lt;b&gt;MCP 把「接工具」变成了标准化动作&lt;/b&gt;，这是 Agent 从演示走向可维护的关键一步。">
+      <span class="yr">2024 · 11</span>
+      <h3>MCP 协议：给模型一个统一的插座</h3>
+      <p>Anthropic 提出 Model Context Protocol，用统一协议描述工具与数据源。半年内被主流客户端与 IDE 广泛支持。</p>
+      <span class="why"><b>为什么重要 · </b>在它之前，每个 Agent 框架都在自己造工具接口，互相不通用。<b>MCP 把「接工具」变成了标准化动作</b>，这是 Agent 从演示走向可维护的关键一步。</span>
+    </div>
+    <div class="tl-item era" data-t="2024 · 12 DeepSeek-V3：成本曲线被改写 深度求索发布 671B 的 MoE 模型，官方论文披露训练用 278.8 万 H800 GPU 小时、约 557.6 万美元——不到同期同级模型的十分之一量级。 &lt;b&gt;「前沿能力必须靠天价算力」这个假设第一次被公开质疑。&lt;/b&gt;MoE 稀疏激活 + 工程优化的组合，让成本成为可优化的变量而非固定门槛。">
+      <span class="yr">2024 · 12</span>
+      <h3>DeepSeek-V3：成本曲线被改写</h3>
+      <p>深度求索发布 671B 的 MoE 模型，官方论文披露训练用 278.8 万 H800 GPU 小时、约 557.6 万美元——不到同期同级模型的十分之一量级。</p>
+      <span class="why"><b>为什么重要 · </b><b>「前沿能力必须靠天价算力」这个假设第一次被公开质疑。</b>MoE 稀疏激活 + 工程优化的组合，让成本成为可优化的变量而非固定门槛。</span>
+    </div>
+    <div class="tl-item" data-t="2025 · 01 DeepSeek-R1：推理链可以被蒸馏 R1 用强化学习训练长链推理，并开源了从大模型蒸馏到小模型的可复现路径。7B 级蒸馏模型在数学与代码任务上超过许多更大的通用模型。 它证明&lt;b&gt;推理能力可以「迁移」而不是「重训」&lt;/b&gt;。此后小模型 + 推理蒸馏成为端侧部署的主流路线。">
+      <span class="yr">2025 · 01</span>
+      <h3>DeepSeek-R1：推理链可以被蒸馏</h3>
+      <p>R1 用强化学习训练长链推理，并开源了从大模型蒸馏到小模型的可复现路径。7B 级蒸馏模型在数学与代码任务上超过许多更大的通用模型。</p>
+      <span class="why"><b>为什么重要 · </b>它证明<b>推理能力可以「迁移」而不是「重训」</b>。此后小模型 + 推理蒸馏成为端侧部署的主流路线。</span>
+    </div>
+    <div class="tl-item" data-t="2025 Agent 元年：从演示到工作流 Claude Code、Cline、Cursor 等编码 Agent 进入日常开发；Dify、Coze 让非工程师也能编排带工具的工作流。 关键变化不是模型更强，而是&lt;b&gt;约束方式变了&lt;/b&gt;：从「让模型自主循环」（AutoGPT 路线）转向「有边界的工作流 + 人在关键节点确认」。可维护性取代了科幻感。">
+      <span class="yr">2025</span>
+      <h3>Agent 元年：从演示到工作流</h3>
+      <p>Claude Code、Cline、Cursor 等编码 Agent 进入日常开发；Dify、Coze 让非工程师也能编排带工具的工作流。</p>
+      <span class="why"><b>为什么重要 · </b>关键变化不是模型更强，而是<b>约束方式变了</b>：从「让模型自主循环」（AutoGPT 路线）转向「有边界的工作流 + 人在关键节点确认」。可维护性取代了科幻感。</span>
+    </div>
+    <div class="tl-item era" data-t="2026 · 现在 开源追平与成本战 Qwen、GLM、Kimi、DeepSeek 的开放权重在多数任务上接近闭源旗舰；端侧 4B 级模型能跑 Agent；推理单价一年内下降一个数量级。 格局从「谁有模型」变成&lt;b&gt;「谁能把模型用对」&lt;/b&gt;。选型、部署、评测、成本控制——这些工程问题取代了模型本身，成为新的分水岭。">
+      <span class="yr">2026 · 现在</span>
+      <h3>开源追平与成本战</h3>
+      <p>Qwen、GLM、Kimi、DeepSeek 的开放权重在多数任务上接近闭源旗舰；端侧 4B 级模型能跑 Agent；推理单价一年内下降一个数量级。</p>
+      <span class="why"><b>为什么重要 · </b>格局从「谁有模型」变成<b>「谁能把模型用对」</b>。选型、部署、评测、成本控制——这些工程问题取代了模型本身，成为新的分水岭。</span>
+    </div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="archive" aria-hidden="true"></i>废墟馆 · 被淘汰的做法</h2>
+      <span class="sub">这一节比上面更有用：知道什么已经不管用了，比知道什么很厉害更省钱</span></div>
+    <div class="pg-grid">
+      <div class="rpx" data-cat="ruin" data-s="0" data-h="1"
+           data-t="Prompt 魔法咒语 「你是一个拥有 20 年经验的专家，请深呼吸，这对我的职业生涯很重要」 这类技巧在 2023 年确实有效，因为早期模型对措辞敏感。现在模型指令跟随能力足够强，结构化的角色/约束/示例/输出格式四段式比咒语稳定得多。">
+        <div class="rh"><div><h3>Prompt 魔法咒语</h3><span class="repo">「你是一个拥有 20 年经验的专家，请深呼吸，这对我的职业生涯很重要」</span></div>
+          <span class="star" style="color:#94a3b8;background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.24)">已废弃</span></div>
+        <p class="desc">这类技巧在 2023 年确实有效，因为早期模型对措辞敏感。现在模型指令跟随能力足够强，结构化的角色/约束/示例/输出格式四段式比咒语稳定得多。</p>
+        <div class="mx"><span class="lv1">沉淀下来的东西：<b>结构化表达</b>。</span></div>
+      </div>
+      <div class="rpx" data-cat="ruin" data-s="0" data-h="1"
+           data-t="微调一切 拿到一个任务就想 fine-tune 一个模型 微调擅长「改变风格与格式」，不擅长「注入新知识」。想让模型知道你的产品文档，RAG 更快更便宜且能随时更新。2026 年的做法是：先提示词，再 RAG，最后才考虑微调。">
+        <div class="rh"><div><h3>微调一切</h3><span class="repo">拿到一个任务就想 fine-tune 一个模型</span></div>
+          <span class="star" style="color:#94a3b8;background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.24)">已废弃</span></div>
+        <p class="desc">微调擅长「改变风格与格式」，不擅长「注入新知识」。想让模型知道你的产品文档，RAG 更快更便宜且能随时更新。2026 年的做法是：先提示词，再 RAG，最后才考虑微调。</p>
+        <div class="mx"><span class="lv1">沉淀下来的东西：<b>LoRA 做风格，RAG 做事实</b>。</span></div>
+      </div>
+      <div class="rpx" data-cat="ruin" data-s="0" data-h="1"
+           data-t="AutoGPT 式全自主 Agent 给模型一个目标，让它自己循环 100 步 无约束的自主循环在第三步就开始幻觉，成本不可控，失败无法定位。现在主流是显式工作流 + 人在关键节点确认，把「智能」花在需要判断的地方。">
+        <div class="rh"><div><h3>AutoGPT 式全自主 Agent</h3><span class="repo">给模型一个目标，让它自己循环 100 步</span></div>
+          <span class="star" style="color:#94a3b8;background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.24)">已废弃</span></div>
+        <p class="desc">无约束的自主循环在第三步就开始幻觉，成本不可控，失败无法定位。现在主流是显式工作流 + 人在关键节点确认，把「智能」花在需要判断的地方。</p>
+        <div class="mx"><span class="lv1">沉淀下来的东西：<b>状态图与护栏</b>。</span></div>
+      </div>
+      <div class="rpx" data-cat="ruin" data-s="0" data-h="1"
+           data-t="向量库军备竞赛 以为换个更强的向量库就能解决 RAG 答不准 RAG 的上限由切分质量和召回策略决定，不由向量库决定。混合检索（BM25 + 向量）、重排序、引用溯源带来的提升远大于换库。">
+        <div class="rh"><div><h3>向量库军备竞赛</h3><span class="repo">以为换个更强的向量库就能解决 RAG 答不准</span></div>
+          <span class="star" style="color:#94a3b8;background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.24)">已废弃</span></div>
+        <p class="desc">RAG 的上限由切分质量和召回策略决定，不由向量库决定。混合检索（BM25 + 向量）、重排序、引用溯源带来的提升远大于换库。</p>
+        <div class="mx"><span class="lv1">沉淀下来的东西：<b>切分与重排</b>。</span></div>
+      </div>
+      <div class="rpx" data-cat="ruin" data-s="0" data-h="1"
+           data-t="参数量排行榜 以为参数越大一定越好 MoE 让「总参数」和「激活参数」分离，一个 671B 的模型每次只用 37B。同时蒸馏让小模型在窄任务上追平大模型。现在该看的是「你的任务上谁够用且便宜」。">
+        <div class="rh"><div><h3>参数量排行榜</h3><span class="repo">以为参数越大一定越好</span></div>
+          <span class="star" style="color:#94a3b8;background:rgba(148,163,184,.12);border-color:rgba(148,163,184,.24)">已废弃</span></div>
+        <p class="desc">MoE 让「总参数」和「激活参数」分离，一个 671B 的模型每次只用 37B。同时蒸馏让小模型在窄任务上追平大模型。现在该看的是「你的任务上谁够用且便宜」。</p>
+        <div class="mx"><span class="lv1">沉淀下来的东西：<b>单位成本下的任务通过率</b>。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-sec">
+    <div class="sh"><h2><i class="cc-ic" data-ic="compass" aria-hidden="true"></i>从这段历史里能读出什么</h2></div>
+    <div class="pg-note">
+      <i class="cc-ic" data-ic="lightbulb" aria-hidden="true"></i>
+      <div>
+        <b>一、每次跃迁都来自「让更多人能做这件事」，而不是「让机器更强」。</b>
+        Stable Diffusion 开源、ChatGPT 的对话框、Dify 这类低门槛编排工具——它们的共同点是把能力从少数人手里交给多数人。
+        <br><br>
+        <b>二、成本下降比能力提升更能改变格局。</b>
+        DeepSeek-V3 的意义不在跑分，在于把训练成本从「必须是大公司」拉回到「一个团队可以想」。
+        <br><br>
+        <b>三、每隔 18 个月换一次「最佳实践」。</b>
+        2023 年教提示词咒语，2024 年教 RAG，2025 年教 Agent 工作流，2026 年教成本与评测。学具体技巧会过期，学<b>判断依据</b>不会。
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="ccfoot">
+  <div class="in">
+    <div class="col"><h4>白驹 ccowork</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:260px">把散落的 AI 工具与知识装进一个大脑。</p></div>
+    <div class="col"><h4>模型</h4>
+      <a href="/models/atlas.html">模型图谱</a><a href="/models/library.html">模型库</a>
+      <a href="/models/leaderboards.html">榜单矩阵</a><a href="/models/vendors.html">厂商阵列</a></div>
+    <div class="col"><h4>工具</h4>
+      <a href="/toolbox/repos.html">开源仓库</a><a href="/toolbox/platforms.html">平台阵列</a>
+      <a href="/learn/deploy.html">部署百科</a><a href="/toolbox/library.html">工具库</a></div>
+    <div class="col"><h4>关于</h4>
+      <a href="/about/">关于本站</a><a href="/works/museum.html">AI 博物馆</a></div>
+  </div>
+  <div class="bd"><span>数据快照 · 2026-10-29</span><span>条目可验证 · 链接直达原始仓库</span></div>
+</footer>
+
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

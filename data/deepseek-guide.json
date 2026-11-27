@@ -1,0 +1,167 @@
+{
+  "title": "DeepSeek使用宝典",
+  "description": "100+条可复制提示词，从入门到精通",
+  "lastUpdated": "2026-08-16",
+  "sections": [
+    {
+      "id": "basics",
+      "name": "基础入门",
+      "items": [
+        {
+          "id": "what-is-deepseek",
+          "title": "DeepSeek是什么",
+          "content": "DeepSeek（深度求索）是当前最火的开源大模型之一，以「高性能 + 低成本」著称。",
+          "features": [
+            "通用对话：问答、写作、翻译、总结、头脑风暴",
+            "深度思考（推理）：先推理再回答，逻辑更强，适合数学/代码/复杂分析",
+            "联网搜索：查最新信息",
+            "文件上传：读文档、读图",
+            "长上下文：一次塞进大量文本"
+          ]
+        },
+        {
+          "id": "how-to-access",
+          "title": "怎么访问",
+          "methods": [
+            "网页版：chat.deepseek.com（免费，无需下载）",
+            "App：应用商店搜索「DeepSeek」（手机端）",
+            "API：platform.deepseek.com（开发者，OpenAI 兼容协议）"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core-switches",
+      "name": "四个核心开关",
+      "items": [
+        {
+          "id": "deep-thinking",
+          "title": "深度思考",
+          "description": "触发推理模式，先想再答",
+          "useCases": ["写代码", "数学题", "复杂策划", "逻辑推理"],
+          "icon": "🧠"
+        },
+        {
+          "id": "web-search",
+          "title": "联网搜索",
+          "description": "实时抓取网页信息",
+          "useCases": ["查新闻", "查最新价格/政策", "事实核查"],
+          "icon": "🌐"
+        },
+        {
+          "id": "file-upload",
+          "title": "文件上传",
+          "description": "上传 PDF/Word/图片/代码文件",
+          "useCases": ["读资料", "总结文档", "看图解题"],
+          "icon": "📎"
+        },
+        {
+          "id": "long-context",
+          "title": "长上下文",
+          "description": "一次理解海量文本",
+          "useCases": ["读整本书", "分析长合同", "多轮长对话"],
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "id": "prompt-formula",
+      "name": "提示词万能公式",
+      "formula": "角色 + 任务 + 约束 + 输出格式",
+      "examples": [
+        {
+          "title": "视频脚本",
+          "prompt": "你是一名百万粉科技博主，请写一段 60 秒的口播稿，主题是「普通人如何用 DeepSeek 做副业」，要求口语化、前 3 秒有钩子、结尾引导关注，输出为分段脚本。"
+        }
+      ],
+      "tips": [
+        "给角色：让 AI 扮演专家，回答更专业",
+        "给约束：字数、语气、受众、避坑点",
+        "定格式：表格 / 分点 / JSON / Markdown",
+        "多轮迭代：先粗后细，追问「再具体一点 / 换个角度 / 补充例子」"
+      ]
+    },
+    {
+      "id": "creation-directions",
+      "name": "四大创作方向",
+      "directions": [
+        {
+          "id": "video",
+          "name": "视频",
+          "icon": "🎬",
+          "deepseek": "脚本、选题、标题、分镜文案",
+          "otherTools": "生图/生视频、TTS 配音、剪辑"
+        },
+        {
+          "id": "novel",
+          "name": "小说",
+          "icon": "📖",
+          "deepseek": "世界观、大纲、逐章扩写、润色",
+          "otherTools": "查资料、配图、封面"
+        },
+        {
+          "id": "blog",
+          "name": "博客",
+          "icon": "✍️",
+          "deepseek": "选题、提纲、成文、SEO",
+          "otherTools": "配图、排版、分发"
+        },
+        {
+          "id": "website",
+          "name": "网站",
+          "icon": "🌐",
+          "deepseek": "写代码、改样式、排错",
+          "otherTools": "部署、域名、图标"
+        }
+      ]
+    },
+    {
+      "id": "common-mistakes",
+      "name": "常见误区",
+      "mistakes": [
+        "一句话提问 → 期望完美结果：要分步、给上下文、多轮追问",
+        "所有任务都开深度思考：慢且没必要",
+        "盲信输出：AI 会「一本正经地错」，重要事实要开联网搜索核实",
+        "直接照搬：成品要人工润色，去掉「AI 味」",
+        "不保存好用的提示词：把反复用到的提示词存起来"
+      ]
+    }
+  ],
+  "promptLibrary": [
+    {
+      "category": "写作类",
+      "prompts": [
+        {
+          "id": "blog-outline",
+          "title": "博客大纲生成",
+          "prompt": "请为我生成一篇关于[主题]的博客文章大纲，包含引言、3-5个主要观点、每个观点的子要点、以及结论。目标读者是[受众]，文章风格应该是[风格]。"
+        },
+        {
+          "id": "article-rewrite",
+          "title": "文章改写",
+          "prompt": "请将以下文章改写为[目标风格]风格，保持核心观点不变，但让语言更加[要求]。原文：[粘贴原文]"
+        }
+      ]
+    },
+    {
+      "category": "学习类",
+      "prompts": [
+        {
+          "id": "concept-explain",
+          "title": "概念解释",
+          "prompt": "请用简单易懂的语言解释[概念]，要求：1) 用日常生活中的例子来类比；2) 避免专业术语；3) 适合[年级]学生理解。"
+        }
+      ]
+    },
+    {
+      "category": "工作类",
+      "prompts": [
+        {
+          "id": "meeting-summary",
+          "title": "会议纪要",
+          "prompt": "请根据以下会议记录生成会议纪要，包含：1) 会议主题；2) 参会人员；3) 主要讨论内容；4) 决议事项；5) 后续行动项（负责人+截止时间）。会议记录：[粘贴内容]"
+        }
+      ]
+    }
+  ]
+}

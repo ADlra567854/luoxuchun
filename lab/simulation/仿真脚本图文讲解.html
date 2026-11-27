@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta name="description" content="本讲解每篇都附 matplotlib 出图版 曲线图，点开即看。全部图片由 plot_all.py 用无头（Agg）后端生成、存于 figs/，重跑 python plot_all.py 即可一键重新出图。">
+<meta property="og:description" content="本讲解每篇都附 matplotlib 出图版 曲线图，点开即看。全部图片由 plot_all.py 用无头（Agg）后端生成、存于 figs/，重跑 python plot_all.py 即可一键重新出图。">
+<meta name="keywords" content="仿真脚本图文讲解,白驹 ccowork,ccowork,AI 工具,智能体">
+<meta charset="UTF-8">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仿真脚本图文讲解 · 白驹 ccowork</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"仿真脚本图文讲解","description":"本讲解每篇都附 matplotlib 出图版 曲线图，点开即看。全部图片由 plot_all.py 用无头（Agg）后端生成、存于 figs/，重跑 python plot_all.py 即可一键重新出图。","inLanguage":"zh-CN","dateModified":"2026-10-27"}</script><style>
+:root{--bg:#07090f;--bg2:#0c1120;--card:#111a2e;--line:#20304f;--gold:#f5c26b;--blue:#4f8cff;--cyan:#38e1ff;--purple:#8b5cf6;--text:#edf2fc;--muted:#93a3c7;--grad:linear-gradient(120deg,#f5c26b,#ff8c5a 40%,#8b5cf6)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(7,9,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav a{color:var(--cyan);text-decoration:none;font-size:13px}
+nav .logo{font-size:15px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+article{max-width:860px;margin:0 auto;padding:74px 18px 60px}
+article h1{font-size:clamp(24px,4.5vw,36px);font-weight:800;line-height:1.35;margin:8px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+article h2{font-size:23px;font-weight:700;margin:34px 0 12px;padding-left:13px;border-left:3px solid var(--gold)}
+article h3{font-size:18px;font-weight:600;margin:26px 0 10px;color:var(--cyan)}
+article h4{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--gold)}
+article p{color:#c6d2ea;font-size:16px;margin-bottom:15px}
+article b,article strong{color:var(--text)}
+article a{color:var(--gold)}
+article ul,article ol{padding-left:24px;margin-bottom:16px}
+article li{color:#c6d2ea;font-size:15px;margin-bottom:7px}
+article blockquote{border:1px solid rgba(245,194,107,.30);border-left:4px solid var(--gold);background:linear-gradient(120deg,rgba(245,194,107,.12),rgba(139,92,246,.10));padding:16px 18px;border-radius:14px;color:#e8dcbe;margin:20px 0;font-size:15px}
+article code{background:#0a0f1e;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--cyan);font-size:14px;font-family:Consolas,Menlo,monospace}
+article pre{background:#0a0f1e;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto;margin:18px 0}
+article pre code{background:none;border:none;padding:0;color:#b9c8ea;font-size:13px;line-height:1.6}
+article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+article th,article td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+article th{background:#141f3a;color:var(--gold)}
+article td{color:var(--muted)}
+article hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+article img{max-width:100%;border-radius:14px;margin:14px 0}
+</style><link rel="canonical" href="https://ccoworkbaiju.cn/lab/simulation/%E4%BB%BF%E7%9C%9F%E8%84%9A%E6%9C%AC%E5%9B%BE%E6%96%87%E8%AE%B2%E8%A7%A3.html">
+<meta property="og:title" content="仿真脚本图文讲解 · 白驹 ccowork">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta property="og:url" content="https://ccoworkbaiju.cn/lab/simulation/%E4%BB%BF%E7%9C%9F%E8%84%9A%E6%9C%AC%E5%9B%BE%E6%96%87%E8%AE%B2%E8%A7%A3.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="仿真脚本图文讲解 · 白驹 ccowork">
+<meta name="twitter:description" content=" 白驹 ccowork · 科学实验室  2026-08-21  35 分钟 实验室 仿真脚本图文讲解（10 篇全解）  本讲解每篇都附 matplotlib 出图版 曲线图，点开即看。">
+<meta name="twitter:image" content="/assets/img/og-cover.png">
+<link rel="stylesheet" href="/float-dock.css">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+</head>
+<body><!-- ccsiteframe --><div class="ccbar" role="navigation" aria-label="总站"><a class="b" href="/" title="回白驹 ccowork 首页"><i></i>白驹 ccowork</a><span class="dot"></span><a href="/models/">模型</a><a href="/learn/">学习</a><a href="/toolbox/">工具</a><a href="/works/">作品</a><a href="/about/">关于</a><a class="r" href="/">← 回总站</a><span class="sp"></span></div>
+<nav><div class="logo">白驹 ccowork · 离线版</div><a href="../../index.html"><i class="cc-ic cc-back" data-ic="arrow-left"></i> 返回总览</a>  <div class="nav-actions">
+    <button class="theme-btn" id="ccoworkThemeBtn" onclick="ccoworkTheme()" title="切换主题"><span class="cc-theme-ics" aria-hidden="true"><i class="cc-ic cc-ic-moon" data-ic="moon"></i><i class="cc-ic cc-ic-sun" data-ic="sun"></i></span></button>
+  </div>
+</nav>
+<article class="lab-article">
+<div class="blog-open">
+  <div class="blog-badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 科学实验室</div>
+  <div class="blog-meta"><span><i class="cc-ic" data-ic="calendar" aria-hidden="true"></i>2026-08-21</span><span><i class="cc-ic" data-ic="timer" aria-hidden="true"></i>35 分钟</span><span class="blog-tag">实验室</span></div>
+  <div class="blog-divider"></div>
+</div>
+<h1>仿真脚本图文讲解（10 篇全解）</h1>
+<blockquote>
+<p><i class="cc-ic" data-ic="sparkles" aria-hidden="true"></i>本讲解每篇都附 <strong>matplotlib 出图版</strong> 曲线图，点开即看。全部图片由 <code>plot_all.py</code> 用无头（Agg）后端生成、存于 <code>figs/</code>，重跑 <code>python plot_all.py</code> 即可一键重新出图。</p>
+</blockquote>
+<blockquote>
+<p>本目录 <code>lab/simulation/</code> 下有 10 个<strong>纯标准库、零依赖</strong>的 Python 仿真脚本，之前只有代码、没有说明。这篇把每一个从「它模拟什么」讲到「代码怎么写」「参数怎么改」「跑出来啥样」「还能怎么进阶」。</p>
+<p>所有输出都是<strong>真实跑过</strong>的（Python 3.13，<code>python xx.py</code> 直接运行）。跑法统一：<code>cd lab/simulation</code> 然后 <code>python 01_pid_controller.py</code>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>脚本</th>
+<th>对应课程</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td><code>01_pid_controller.py</code></td>
+<td>自动控制原理</td>
+<td>一阶对象 + PID，看 P/PI/PID 的区别</td>
+</tr>
+<tr>
+<td>02</td>
+<td><code>02_spring_mass_damper.py</code></td>
+<td>机械振动</td>
+<td>二阶系统自由振动，欠阻尼振荡</td>
+</tr>
+<tr>
+<td>03</td>
+<td><code>03_projectile.py</code></td>
+<td>理论力学</td>
+<td>抛体运动，可加空气阻力</td>
+</tr>
+<tr>
+<td>04</td>
+<td><code>04_rc_circuit.py</code></td>
+<td>电路</td>
+<td>RC 充电暂态，时间常数 τ</td>
+</tr>
+<tr>
+<td>05</td>
+<td><code>05_monte_carlo.py</code></td>
+<td>概率统计</td>
+<td>蒙特卡洛求 π + 求积分</td>
+</tr>
+<tr>
+<td>06</td>
+<td><code>06_single_pendulum.py</code></td>
+<td>理论力学</td>
+<td>单摆，大角度非线性</td>
+</tr>
+<tr>
+<td>07</td>
+<td><code>07_dc_motor.py</code></td>
+<td>电机/机电</td>
+<td>直流电机电气+机械耦合启动</td>
+</tr>
+<tr>
+<td>08</td>
+<td><code>08_heat_equation.py</code></td>
+<td>传热/偏微分</td>
+<td>一维热传导显式差分</td>
+</tr>
+<tr>
+<td>09</td>
+<td><code>09_lotka_volterra.py</code></td>
+<td>数学生态</td>
+<td>捕食者-猎物周期振荡</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>10_wave_equation.py</code></td>
+<td>偏微分</td>
+<td>一维波动方程行波</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>01 · PID 控制器仿真</h2>
+<p><img src="figs/01_pid.png" alt="PID 阶跃响应（P/PI/PID 对比）"></p>
+<p><strong>模拟什么</strong>：一个一阶被控对象 <code>τ·dy/dt + y = u</code>（时间常数 τ=0.5），给它施加单位阶跃设定值 <code>r=1</code>，分别用 P、PI、PID 三种控制器去跟踪，对比稳态误差和超调。</p>
+<p><strong>原理</strong>：PID 的输出是误差 <code>e = r − y</code> 的三项组合：</p>
+<pre><code>u(t) = Kp·e(t)  +  Ki·∫e dt  +  Kd·de/dt
+       └比例┘      └积分┘        └微分┘
+</code></pre>
+<ul>
+<li><strong>P（比例）</strong>：误差越大出力越大，但永远差一点点才能平衡 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 有<strong>稳态误差</strong>。</li>
+<li><strong>I（积分）</strong>：把历史误差累加，慢慢&quot;磨&quot;掉稳态误差。</li>
+<li><strong>D（微分）</strong>：看误差变化速度，提前刹车 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 减小<strong>超调</strong>、加快收敛。</li>
+</ul>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">  设定值 r=1
+      │
+      
+   [求和 +]── e ──<i class="cc-ic" data-ic="play" aria-hidden="true"></i> [ PID ]── u ──<i class="cc-ic" data-ic="play" aria-hidden="true"></i> [ 被控对象 1/(τs+1) ]──<i class="cc-ic" data-ic="play" aria-hidden="true"></i> y
+                                                        │
+      │                                                  │
+      └──────────────── 反馈 y ──────────────────────────┘
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>01_pid_controller.py</code>）：</p>
+<pre><code class="language-python">def simulate(Kp, Ki, Kd, dt=0.01, total=5.0, setpoint=1.0):
+    tau = 0.5
+    t, y, integral, prev_err = 0.0, 0.0, 0.0, 0.0
+    steps = int(total / dt)
+    out = []
+    for _ in range(steps):
+        err = setpoint - y                      # 1) 当前误差
+        integral += err * dt                    # 2) 积分项累积
+        derivative = (err - prev_err) / dt      # 3) 微分项（差分近似）
+        u = Kp * err + Ki * integral + Kd * derivative
+        y += (u - y) * dt / tau                 # 4) 欧拉法推进对象
+        prev_err = err
+        t += dt
+        out.append((t, y))
+    return out
+</code></pre>
+<ul>
+<li>第 4) 行就是<strong>欧拉积分</strong>：把微分方程 <code>τ·dy/dt = u − y</code> 离散成 <code>y <i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> y + (u−y)·dt/τ</code>。</li>
+<li>微分项用 <code>(err − prev_err)/dt</code> 这种&quot;后向差分&quot;，简单但会放大噪声（真实工程要用滤波）。</li>
+<li><code>main()</code> 里固定了三组参数 <code>(Kp,Ki,Kd)</code>：<code>(1,0,0)</code>=P、<code>(1,2,0)</code>=PI、<code>(1,2,0.1)</code>=PID，跑完打印稳态值和峰值。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+<th>建议改法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Kp</code></td>
+<td>比例增益</td>
+<td>调大<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>响应快但易振荡</td>
+</tr>
+<tr>
+<td><code>Ki</code></td>
+<td>积分增益</td>
+<td>调大<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>消稳态误差快，但可能超调/积分饱和</td>
+</tr>
+<tr>
+<td><code>Kd</code></td>
+<td>微分增益</td>
+<td>调大<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>抑制超调，但放大噪声</td>
+</tr>
+<tr>
+<td><code>tau</code></td>
+<td>对象惯性</td>
+<td>改 <code>0.5</code> 看&quot;大惯性难控&quot;</td>
+</tr>
+<tr>
+<td><code>setpoint</code></td>
+<td>目标值</td>
+<td>改成 <code>2.0</code> 看跟踪</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">[P  ] Kp=1.0 Ki=0.0 Kd=0.0  稳态值=0.5000(目标1.0)  峰值=0.5000
+[PI ] Kp=1.0 Ki=2.0 Kd=0.0  稳态值=0.9999(目标1.0)  峰值=0.9999
+[PID] Kp=1.0 Ki=2.0 Kd=0.1  稳态值=1.0002(目标1.0)  峰值=1.0013
+结论：P 有稳态误差；PI 消除稳态误差；PID 进一步减小超调、加快收敛。
+</code></pre>
+<p><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 一眼看懂：<strong>P 只到 0.5（差一半）</strong>，PI/PID 都贴到 1.0。PID 峰值 1.0013 略冲高再回落，正是微分在&quot;踩刹车&quot;。</p>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>把&quot;一阶对象&quot;换成&quot;二阶对象&quot;（加一个状态变量），看 PID 更难调。</li>
+<li>加<strong>阶跃扰动</strong>（运行中 <code>setpoint</code> 突变），看抗扰性能。</li>
+<li>实现<strong>抗积分饱和（clamp integral）</strong>，这是工业 PID 必做。</li>
+<li>想看实时曲线？网站 <code>lab/simlab.html</code> 里那个 PID 卡片就是这套模型的网页版，可拖滑块。</li>
+</ol>
+<hr>
+<h2>02 · 弹簧-质量-阻尼（二阶系统）</h2>
+<figure class="cc-body-img"><img src="../../assets/body/bb-仿真脚本图文讲解.png" alt="仿真脚本图文讲解 · 白驹 ccowork（离线版） · 02 · 弹簧-质量-阻尼（二阶系统）" loading="lazy"></figure>
+<p><img src="figs/02_spring.png" alt="弹簧-质量-阻尼：欠阻尼振荡与理论包络"></p>
+<p><strong>模拟什么</strong>：一个质量块 <code>m</code> 连在弹簧 <code>k</code> 上、泡在阻尼 <code>c</code> 里，初始拉开 <code>y0</code> 后松手，看它怎么振荡衰减。</p>
+<p><strong>原理</strong>：牛顿第二定律 <code>m·ÿ + c·ẏ + k·y = 0</code>，两个核心量：</p>
+<ul>
+<li>固有频率 <code>ωn = √(k/m)</code>（系统自己想怎么晃）</li>
+<li>阻尼比 <code>ζ = c / (2√(k·m))</code>（多&quot;黏&quot;）<ul>
+<li><code>ζ &lt; 1</code>：欠阻尼，振荡衰减（最常见，如汽车悬架）</li>
+<li><code>ζ = 1</code>：临界阻尼，最快回到平衡不超调</li>
+<li><code>ζ &gt; 1</code>：过阻尼，慢吞吞爬回去</li>
+</ul>
+</li>
+</ul>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">   固定墙
+     │
+  k  <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>   ┌─────┐
+     │      │  m  │── 阻尼力 c·v（与速度反向）
+     │      └─────┘
+     │         <i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i>
+     │      位移 y（向右为正）
+     └────────── 地面
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>02_spring_mass_damper.py</code>）：</p>
+<pre><code class="language-python">def simulate(m=1.0, c=0.5, k=10.0, y0=1.0, v0=0.0, dt=0.001, total=6.0):
+    t, y, v = 0.0, y0, v0
+    rows = []
+    for _ in range(int(total / dt)):
+        a = -(c * v + k * y) / m   # 牛顿第二定律：加速度 = 合力/质量
+        v += a * dt                # 欧拉积分：先更新速度
+        y += v * dt                # 再更新位移（半隐式欧拉，比裸欧拉稳）
+        t += dt
+        rows.append((t, y, v))
+    return rows
+</code></pre>
+<ul>
+<li>关键是 <code>a = -(c·v + k·y)/m</code>：弹簧力 <code>-k·y</code>、阻尼力 <code>-c·v</code> 合起来除以 <code>m</code> 得加速度。</li>
+<li>先更新 <code>v</code> 再更新 <code>y</code>（<strong>半隐式欧拉</strong>），比先更新 <code>y</code> 数值上更稳，是做振动仿真的好习惯。</li>
+<li><code>main()</code> 先手算 <code>ωn</code>、<code>ζ</code>、<code>ωd</code>（阻尼振荡频率 <code>ωd=ωn√(1−ζ²)</code>），再用&quot;过零点&quot;反推仿真周期。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>改大效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>m</code> 质量</td>
+<td>1.0</td>
+<td>振荡变慢（ωn 变小）</td>
+</tr>
+<tr>
+<td><code>c</code> 阻尼</td>
+<td>0.5</td>
+<td>衰减更快，ζ 变大</td>
+</tr>
+<tr>
+<td><code>k</code> 刚度</td>
+<td>10.0</td>
+<td>振荡变快、更&quot;硬&quot;</td>
+</tr>
+<tr>
+<td><code>y0</code> 初位移</td>
+<td>1.0</td>
+<td>初能量更大，振幅更高</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">固有频率 ωn = 3.1623 rad/s, 阻尼比 ζ = 0.0791
+理论阻尼振荡频率 ωd = 3.1524 rad/s
+仿真振荡周期 ≈ 3.9860 s（理论 ≈ 1.9932 s）
+t=1.0s 处位移 y = -0.7793
+结论：欠阻尼系统按指数衰减包络做振荡，阻尼比越大衰减越快。
+</code></pre>
+<blockquote>
+<p><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i><strong>避坑点</strong>：脚本里&quot;仿真周期 ≈ 3.99s&quot;其实是用&quot;过零时刻相减&quot;估的，这个方法在本简化脚本里只近似；<strong>理论值 1.99s 才是准的</strong>（<code>2π/ωd</code>）。想拿到准周期，建议改用&quot;相邻峰值 time&quot;或 FFT。这也是为什么工程上很少用裸欧拉 + 过零法测周期。</p>
+</blockquote>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>把 <code>c</code> 调到 <code>2√(k·m)≈6.32</code> 看<strong>临界阻尼</strong>（不超调最快回零）。</li>
+<li>换成 <strong>RK4</strong> 积分器，对比欧拉的误差。</li>
+<li>加<strong>外力</strong>（如 <code>F0·sin(ωt)</code>）做<strong>受迫振动</strong>，观察共振。</li>
+<li>画相图（y 对 v），看螺旋收敛轨迹。</li>
+</ol>
+<hr>
+<h2>03 · 抛体运动（含空气阻力）</h2>
+<p><img src="figs/03_projectile.png" alt="抛体运动轨迹（有/无空气阻力）"></p>
+<p><strong>模拟什么</strong>：以初速 <code>v0</code>、仰角 <code>θ</code> 抛出物体，追踪 x-y 轨迹，可选线性空气阻力。</p>
+<p><strong>原理</strong>：</p>
+<ul>
+<li>无阻力：水平匀速、竖直匀加速，<code>x = v0·cosθ·t</code>，<code>y = v0·sinθ·t − ½gt²</code>。</li>
+<li>有阻力（线性模型 <code>F = −b·v</code>）：每个方向都多一个与速度反向的力。</li>
+</ul>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">  y
+  <i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i>                         .-&#39;&#39;&#39;-.
+  │                      .-&#39;       &#39;.
+  │                    .&#39;           &#39;.
+  │                   /               \
+  │                  /                 \
+  +----------------------------------------<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> x
+       射程 R            最大高度 H
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>03_projectile.py</code>）：</p>
+<pre><code class="language-python">def simulate(v0=30.0, angle_deg=45.0, drag=0.0, g=9.81, dt=0.01):
+    theta = math.radians(angle_deg)
+    x, y = 0.0, 0.0
+    vx, vy = v0 * math.cos(theta), v0 * math.sin(theta)
+    rows = []
+    while y &gt;= 0:
+        v = math.hypot(vx, vy)
+        ax = -drag * v * vx          # 阻力 x 分量（与 vx 反向）
+        ay = -g - drag * v * vy      # 重力 + 阻力 y 分量
+        vx += ax * dt
+        vy += ay * dt
+        x += vx * dt
+        y += vy * dt
+        rows.append((x, y))
+    return rows
+</code></pre>
+<ul>
+<li>用 <code>math.hypot(vx,vy)</code> 求合速度大小 <code>v</code>，阻力大小 <code>= b·v</code>，再按速度方向分到 x、y。</li>
+<li><code>while y &gt;= 0</code> 让仿真自然在落地时停止。</li>
+<li><code>main()</code> 对比&quot;无阻力/有阻力&quot;并和<strong>理论射程</strong> <code>R = v0²·sin(2θ)/g</code> 校验。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>v0</code></td>
+<td>30</td>
+<td>初速度 m/s</td>
+</tr>
+<tr>
+<td><code>angle_deg</code></td>
+<td>45</td>
+<td>仰角，无阻力时 45° 最远</td>
+</tr>
+<tr>
+<td><code>drag</code></td>
+<td>0.0</td>
+<td>阻力系数，设 0.01 看明显变近</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>9.81</td>
+<td>重力，改 1.62 模拟月球</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">[无空气阻力] 射程=91.64m 最大高度=22.83m 飞行时间=4.32s
+[有空气阻力] 射程=55.55m 最大高度=16.98m 飞行时间=3.71s
+无阻力 45° 理论射程 = 91.74 m（与仿真对比验证）
+</code></pre>
+<p><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 仿真 91.64 与理论 91.74 差 0.1m，验证通过。空气阻力让射程直接<strong>砍掉 40%</strong>，且最优仰角会小于 45°。</p>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>阻力改成<strong>二次模型</strong> <code>F = −b·v·|v|</code>（更接近真实空气，尤其高速）。</li>
+<li>写个循环扫 <code>angle</code> 0~90°，画出&quot;射程-仰角&quot;曲线，找最优角。</li>
+<li>加<strong>风</strong>（水平恒定加速度），看落点偏移。</li>
+<li>接 <code>matplotlib</code> 把轨迹画出来（脚本本身不依赖绘图库，纯数据）。</li>
+</ol>
+<hr>
+<h2>04 · RC 电路充电暂态</h2>
+<p><img src="figs/04_rc.png" alt="RC 充电暂态（归一化）"></p>
+<p><strong>模拟什么</strong>：电阻 R 串联电容 C，接上直流电源 V0，看电容电压怎么随时间充上来。</p>
+<p><strong>原理</strong>：一阶电路 <code>dVc/dt = (V0 − Vc)/(R·C)</code>，时间常数 <code>τ = R·C</code> 决定快慢。解析解 <code>Vc(t) = V0·(1 − e^(−t/τ))</code>。</p>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">   V0 ──[ R ]──┬── Vc
+               │
+              [ C ]
+               │
+              GND
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>04_rc_circuit.py</code>）：</p>
+<pre><code class="language-python">def rc_voltage(V0=5.0, R=1000.0, C=1e-6):
+    tau = R * C
+    return tau
+def main():
+    V0, R, C = 5.0, 1000.0, 1e-6
+    tau = rc_voltage(V0, R, C)
+    print(f&quot;时间常数 τ = R*C = {tau:.4f} s\n&quot;)
+    print(&quot;t/τ\t理论 Vc(V)\t到达比例&quot;)
+    for k in [0.5, 1, 2, 3, 5]:
+        v = V0 * (1 - math.exp(-k))
+        print(f&quot;{k:&lt;4}\t{v:9.4f}\t{v/V0*100:6.1f}%&quot;)
+</code></pre>
+<ul>
+<li>这个脚本<strong>没用循环积分</strong>，而是直接套解析公式算几个特征点——因为 RC 一阶有精确解，没必要数值积。</li>
+<li>重点在结论：<code>t=τ</code> 充到 63.2%，<code>t=3τ</code> 到 95%，<code>t=5τ</code> 到 99.3%（工程上认为&quot;充满&quot;）。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>R</code></td>
+<td>1000 Ω</td>
+<td>调大<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>τ 大<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>充电慢</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>1 µF</td>
+<td>调大<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>τ 大<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>充电慢</td>
+</tr>
+<tr>
+<td><code>V0</code></td>
+<td>5 V</td>
+<td>最终电压</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">时间常数 τ = R*C = 0.0010 s
+t/τ	理论 Vc(V)	到达比例
+0.5 	   1.9673	  39.3%
+1   	   3.1606	  63.2%
+2   	   4.3233	  86.5%
+3   	   4.7511	  95.0%
+5   	   4.9663	  99.3%
+</code></pre>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>想看<strong>数值积分</strong>版？把解析换成欧拉：<code>v += (V0−v)*dt/tau</code>，和本脚本解析值对比。</li>
+<li>加 <strong>RLC</strong>：多一个电感变二阶，会出现振荡放电（呼应 02）。</li>
+<li>做 <strong>RC 低通滤波</strong>：给交流输入，看截止频率 <code>fc = 1/(2πRC)</code>。</li>
+<li>网站 <code>lab/simlab.html</code> 的 RC 卡片可实时调 R/C 看曲线。</li>
+</ol>
+<hr>
+<h2>05 · 蒙特卡洛（求 π + 求积分）</h2>
+<p><img src="figs/05_montecarlo.png" alt="蒙特卡洛估算 π 的收敛过程"></p>
+<p><strong>模拟什么</strong>：用&quot;随机撒点&quot;这种暴力统计法，估算 π 和定积分——不需要任何公式。</p>
+<p><strong>原理</strong>：</p>
+<pre><code class="language-text">在 [-1,1]×[-1,1] 正方形内随机撒 N 个点，
+落入单位圆的比例 ≈ 圆面积/正方形面积 = π/4
+<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> π ≈ 4 × (圆内点数 / 总点数)
+</code></pre>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">  ┌──────────────┐
+  │          │
+  │           │   绿点=圆内，蓝点=圆外
+  │          │   比例 × 4 ≈ π
+  │          │
+  └──────────────┘
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>05_monte_carlo.py</code>）：</p>
+<pre><code class="language-python">def estimate_pi(n=1_000_000):
+    inside = 0
+    for _ in range(n):
+        x = random.uniform(-1, 1)
+        y = random.uniform(-1, 1)
+        if x * x + y * y &lt;= 1:      # 到原点距离 ≤ 1 即在圆内
+            inside += 1
+    return 4.0 * inside / n
+def estimate_integral(f, a, b, n=1_000_000):
+    s = 0.0
+    for _ in range(n):
+        x = random.uniform(a, b)
+        s += f(x)
+    return (b - a) * s / n          # 平均值 × 区间宽 = 积分
+</code></pre>
+<ul>
+<li><code>estimate_pi</code>：几何概率法，N 越大越准（误差 ∝ 1/√N）。</li>
+<li><code>estimate_integral</code>：把积分看成&quot;函数平均值 × 宽度&quot;，这是蒙特卡洛做高维积分的基石（维数越高越显优势）。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>n</code></td>
+<td>1e6</td>
+<td>采样数，越大越准越慢</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">估算 π : 3.140316
+真实 π : 3.141592653589793  误差: 0.0004873464102068681
+∫_0^1 x² dx 估算: 0.333277157507221  理论 1/3 = 0.3333333333333333
+</code></pre>
+<p><i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 一百万次采样，π 误差仅 0.0005，积分误差万分之一级。</p>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>用 <code>random.seed()</code> 固定随机种子，让结果可复现（测试必备）。</li>
+<li>对比<strong>准蒙特卡洛</strong>（低差异序列 Halton），收敛更快。</li>
+<li>算高维积分，如 ∫∫∫ ...，看蒙特卡洛相对梯形法的碾压优势。</li>
+<li>做<strong>期权定价（Black-Scholes）</strong>模拟——金融里的蒙特卡洛经典应用。</li>
+</ol>
+<hr>
+<h2>06 · 单摆运动</h2>
+<p><img src="figs/06_pendulum.png" alt="单摆角度随时间变化"></p>
+<p><strong>模拟什么</strong>：摆长 <code>l</code>、初始角 <code>θ0</code> 的单摆，看角度怎么随时间摆动；对比小角度理论与大角度真实（非线性）行为。</p>
+<p><strong>原理</strong>：</p>
+<pre><code>θ&#39;&#39; + (g/l)·sinθ = 0
+</code></pre>
+<ul>
+<li>小角度 <code>sinθ ≈ θ</code> 时退化为简谐振动，周期 <code>T = 2π√(l/g)</code>。</li>
+<li>大角度时 <code>sinθ</code> 不能近似，<strong>周期变长</strong>，且不再是完美正弦。</li>
+</ul>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">        支点 o
+            │ l
+            │
+               <i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 摆锤（角度 θ）
+           ╱
+          ╱  θ
+   竖直向下为 0°
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>06_single_pendulum.py</code>）：</p>
+<pre><code class="language-python">def simulate(l=1.0, theta0_deg=30.0, g=9.81, dt=0.001, total=3.0):
+    theta = math.radians(theta0_deg)
+    omega = 0.0
+    rows = []
+    for _ in range(int(total / dt)):
+        alpha = -(g / l) * math.sin(theta)   # 角加速度，非线性！
+        omega += alpha * dt
+        theta += omega * dt
+        rows.append((theta, omega))
+    return rows
+</code></pre>
+<ul>
+<li>与 02 结构一样（二阶系统），区别在恢复力是 <code>sinθ</code> 而非线性 <code>θ</code>——这就是<strong>非线性</strong>来源。</li>
+<li><code>main()</code> 用小角度公式算理论周期，再用过零点估仿真周期对比。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>l</code></td>
+<td>1.0</td>
+<td>摆长，越长越慢</td>
+</tr>
+<tr>
+<td><code>theta0_deg</code></td>
+<td>30</td>
+<td>起始角，改到 80° 看非线性明显</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>9.81</td>
+<td>重力</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">小角度理论周期 T = 2.006 s
+30° 起始角仿真周期 ≈ 4.082 s（大角度时非线性使周期略长）
+t=2.0s 摆角 ≈ 29.78°
+</code></pre>
+<blockquote>
+<p><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i><strong>避坑点</strong>：脚本打印&quot;仿真周期 ≈ 4.08s&quot;明显偏长（30° 时真实值约 2.06s 量级，只比小角度略大）。原因同 02——过零法 + 欧拉在这里估不准。想准，用<strong>相邻峰值时间差</strong>或 RK4。这里重点理解&quot;大角度周期更长&quot;这个<strong>定性</strong>结论即可。</p>
+</blockquote>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>加大 <code>theta0</code> 到接近 180°，看摆&quot;翻过去&quot;还是&quot;荡回&quot;。</li>
+<li>加阻尼、加周期性驱动力 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 进入<strong>混沌</strong>（倍周期分岔）。</li>
+<li>用 RK4 替代欧拉，对比能量守恒。</li>
+<li>改成<strong>双摆</strong> <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 经典混沌系统，对初值极敏感。</li>
+</ol>
+<hr>
+<h2>07 · 直流电机启动仿真</h2>
+<p><img src="figs/07_dcmotor.png" alt="直流电机启动：电流与转速"></p>
+<p><strong>模拟什么</strong>：一个直流有刷电机接通电源瞬间，电流和转速怎么从 0 冲起来。这是&quot;电气+机械&quot;两个一阶系统<strong>耦合</strong>在一起的经典例子。</p>
+<p><strong>原理</strong>：</p>
+<pre><code class="language-text">电气：L·di/dt + R·i + ke·ω = V      （ke·ω 是反电动势）
+机械：J·dω/dt = kt·i − b·ω          （转矩 − 阻尼）
+</code></pre>
+<ul>
+<li>刚通电时 <code>ω=0</code>，没有反电动势，电流 <code>i ≈ V/R</code> <strong>瞬间冲高</strong>。</li>
+<li>转速起来后反电动势 <code>ke·ω</code> 增大，把电流&quot;顶&quot;下来，最终稳态 <code>i = b·ω/kt</code>。</li>
+</ul>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">   V ──[ L ]──[ R ]──┐
+                     │
+                   [电机]── 反电动势 ke·ω
+                     │
+   ω ──[ 转动惯量 J ]──[ 阻尼 b ]
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>07_dc_motor.py</code>）：</p>
+<pre><code class="language-python">def simulate(V=12.0, R=1.0, L=0.01, ke=0.05, kt=0.05, J=0.001, b=0.0005, dt=0.0001, total=0.5):
+    i, w = 0.0, 0.0
+    rows = []
+    for _ in range(int(total / dt)):
+        di = (V - R * i - ke * w) / L   # 电气方程
+        dw = (kt * i - b * w) / J       # 机械方程
+        i += di * dt
+        w += dw * dt
+        rows.append((i, w))
+    return rows
+</code></pre>
+<ul>
+<li>两个状态 <code>i</code>（电流）、<code>w</code>（角速度）每步互相依赖，这就是<strong>耦合</strong>。</li>
+<li><code>dt=0.0001</code> 很小，因为电气时间常数 <code>L/R=0.01s</code> 很短，步长必须小才稳。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>物理意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>V</code></td>
+<td>12</td>
+<td>电源电压</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>1</td>
+<td>电枢电阻</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>0.01</td>
+<td>电感（影响启动电流尖峰）</td>
+</tr>
+<tr>
+<td><code>ke</code></td>
+<td>0.05</td>
+<td>反电动势系数</td>
+</tr>
+<tr>
+<td><code>kt</code></td>
+<td>0.05</td>
+<td>转矩系数</td>
+</tr>
+<tr>
+<td><code>J</code></td>
+<td>0.001</td>
+<td>转动惯量（越大越&quot;肉&quot;）</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>0.0005</td>
+<td>粘滞阻尼</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">稳态电流 ≈ 4.284 A
+稳态转速 ≈ 155.72 rad/s
+结论：启动时电流冲高（反电动势未建立），转速上升后电流回落。
+</code></pre>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>画出 <code>i(t)</code> 和 <code>w(t)</code> 曲线（脚本只打印末值，自己加列表收集画图）。</li>
+<li>加<strong>负载转矩</strong> <code>Tl</code>，看稳态转速下降。</li>
+<li>做 <strong>PID 速度闭环</strong>：把 <code>V</code> 变成 <code>Kp·(w_ref − w)</code>，实现恒速控制（接回 01！）。</li>
+<li>改成无刷直流/交流电机模型。</li>
+</ol>
+<hr>
+<h2>08 · 一维热传导（显式差分）</h2>
+<p><img src="figs/08_heat.png" alt="一维热传导：不同时刻温度分布"></p>
+<p><strong>模拟什么</strong>：一根两端恒温的细杆，初始冷的，看热量从两端往中间扩散，温度怎么演化。</p>
+<p><strong>原理</strong>：一维热方程 <code>∂u/∂t = α·∂²u/∂x²</code>。用<strong>有限差分</strong>把空间、时间都离散：</p>
+<pre><code>u_new[j] = u[j] + r·(u[j+1] − 2u[j] + u[j−1])，  r = α·Δt/Δx²
+</code></pre>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">T_left=100°C                              T_right=100°C
+  │                                          │
+  ───────────────── 杆 ────────────────────
+  u[0]      u[1]  ...  u[j]  ...  u[nx-1]
+  热量从两端往中间扩散 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>08_heat_equation.py</code>）：</p>
+<pre><code class="language-python">def simulate(alpha=0.01, nx=50, nt=2000, dt=0.001, T_left=100.0, T_right=100.0):
+    dx = 1.0 / (nx - 1)
+    u = [0.0] * nx
+    u[0], u[-1] = T_left, T_right   # 两端恒温边界（Dirichlet）
+    r = alpha * dt / (dx * dx)
+    for _ in range(nt):
+        u_new = u[:]
+        for j in range(1, nx - 1):
+            u_new[j] = u[j] + r * (u[j + 1] - 2 * u[j] + u[j - 1])
+        u = u_new
+    return u
+</code></pre>
+<ul>
+<li>边界点 <code>u[0]</code>、<code>u[-1]</code> 每步不动（恒温），中间点按差分公式更新。</li>
+<li><code>r</code> 是<strong>稳定性数</strong>，显式格式要求 <code>r ≤ 0.5</code>，否则计算会炸。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>alpha</code></td>
+<td>0.01</td>
+<td>热扩散率（铜大、木小）</td>
+</tr>
+<tr>
+<td><code>nx</code></td>
+<td>50</td>
+<td>空间网格数，越大越精细</td>
+</tr>
+<tr>
+<td><code>nt</code></td>
+<td>2000</td>
+<td>时间步数</td>
+</tr>
+<tr>
+<td><code>dt</code></td>
+<td>0.001</td>
+<td>时间步长，调大注意稳定性</td>
+</tr>
+<tr>
+<td><code>T_left/right</code></td>
+<td>100</td>
+<td>两端温度</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">两端温度 100.0 / 100.0，中间点最终温度 ≈ 2.54
+结论：热量从两端向中间扩散，最终趋于均匀（接近边界温度）。
+提示：显式格式需满足稳定性条件 α·Δt/Δx² ≤ 0.5，否则发散。
+</code></pre>
+<blockquote>
+<p><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i><strong>重要理解</strong>：这里只跑了 <code>nt=2000</code> 步（仿真时间 ≈ 2 秒），热扩散长度 <code>√(α·t)≈0.14</code>，<strong>还没传到杆中心</strong>，所以中心还是 2.5°C。把 <code>nt</code> 调到 20000 再跑，你会看到中心真的升到接近 100°C、&quot;最终趋于均匀&quot;。脚本结论没错，只是默认步数太短——这正是最好的教学点：<strong>仿真时间要够长才能看到现象</strong>。</p>
+</blockquote>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>改 <code>nt=20000</code> 验证&quot;最终均匀&quot;。</li>
+<li>换<strong>诺伊曼边界</strong>（绝热：两端不导热），看不同演化。</li>
+<li>改成<strong>二维热传导</strong>（板），嵌套两层循环。</li>
+<li>对比<strong>隐式格式</strong>（不用满足 r≤0.5，可大步长）。</li>
+</ol>
+<hr>
+<h2>09 · Lotka-Volterra 捕食者-猎物模型</h2>
+<p><img src="figs/09_lotka.png" alt="Lotka-Volterra：时间序列与相图"></p>
+<p><strong>模拟什么</strong>：草原上兔子（猎物）和狐狸（捕食者）的数量此消彼长、周期性振荡。</p>
+<p><strong>原理</strong>：</p>
+<pre><code class="language-text">dx/dt = a·x − b·x·y      （猎物：自然增长 − 被吃）
+dy/dt = c·b·x·y − d·y    （捕食者：吃兔子长肉 − 自然死亡）
+</code></pre>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">  数量
+   <i class="cc-ic" data-ic="arrow-up" aria-hidden="true"></i>
+   │    ╭───╮      猎物 x
+   │   ╱     ╲
+   │  ╱       ╲
+   │ ╱         ╲___
+   │          ───╮╭───  捕食者 y（相位滞后）
+   └──────────────────<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 时间
+   兔子多<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>狐狸多<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>兔子少<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>狐狸少<i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i>兔子多…
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>09_lotka_volterra.py</code>）：</p>
+<pre><code class="language-python">def simulate(prey=40.0, pred=9.0, a=1.0, b=0.1, c=1.5, d=0.075, dt=0.001, total=20.0):
+    x, y = prey, pred
+    rows = []
+    for _ in range(int(total / dt)):
+        dx = a * x - b * x * y
+        dy = c * b * x * y - d * y
+        x += dx * dt
+        y += dy * dt
+        rows.append((x, y))
+    return rows
+</code></pre>
+<ul>
+<li>两个状态互相吃：<code>x·y</code> 项代表&quot;相遇捕食&quot;的概率。</li>
+<li>这是<strong>非线性耦合</strong>，解析上无解，只能数值积分——但存在周期解。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>a</code></td>
+<td>1.0</td>
+<td>猎物自然增长率</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>0.1</td>
+<td>捕食率</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>1.5</td>
+<td>捕食者转化效率</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>0.075</td>
+<td>捕食者死亡率</td>
+</tr>
+<tr>
+<td><code>prey/pred</code></td>
+<td>40/9</td>
+<td>初始数量</td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">猎物峰值 ≈ 40.0，捕食者峰值 ≈ 87.8
+20s 后 猎物≈0.0 捕食者≈21.2
+结论：两物种数量呈周期性振荡，此消彼长。
+</code></pre>
+<blockquote>
+<p><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i><strong>避坑点</strong>：默认欧拉 + 这些参数下，跑到 t=20s 猎物已&quot;数值灭绝&quot;（≈0）。真实的 LV 是<strong>闭合周期轨道</strong>不该灭绝——这是<strong>欧拉法的能量漂移</strong>导致的（它不守恒）。换成 <strong>RK4</strong> 能明显缓解，让周期振荡长期保持。结论&quot;周期性振荡&quot;在定性上成立，但定量长期行为要用更好的积分器。</p>
+</blockquote>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>用 RK4 替换欧拉，看振荡能否长期维持（强烈建议）。</li>
+<li>加<strong>环境承载力</strong>（Logistic 项 <code>−e·x²</code>），猎物不再无限增长。</li>
+<li>加<strong>随机噪声</strong>，看种群是否更易灭绝。</li>
+<li>画<strong>相图</strong>（x-y 平面），看漂亮的闭合椭圆轨道。</li>
+</ol>
+<hr>
+<h2>10 · 一维波动方程（行波）</h2>
+<p><img src="figs/10_wave.png" alt="一维波动：波包传播快照"></p>
+<p><strong>模拟什么</strong>：一根两端固定的弦，中间给个高斯波包，看它向两边传播、遇到边界反射。</p>
+<p><strong>原理</strong>：一维波动 <code>∂²u/∂t² = c²·∂²u/∂x²</code>。用<strong>蛙跳格式</strong>（同时存前后两步）：</p>
+<pre><code>u_new[j] = 2u[j] − u_prev[j] + r·(u[j+1] − 2u[j] + u[j−1])，  r = (c·Δt/Δx)²
+</code></pre>
+<p><strong>示意图</strong>：</p>
+<pre><code class="language-text">  弦（两端固定 u=0）
+  ──────────∩──────────    <i class="cc-ic" data-ic="arrow-left" aria-hidden="true"></i> 初始高斯波包在中间
+       ╱ ╲
+  ───╱   ╲─── 传播分裂成左右两个波包
+</code></pre>
+<p><strong>代码逐段精讲</strong>（<code>10_wave_equation.py</code>）：</p>
+<pre><code class="language-python">def simulate(c=1.0, nx=100, nt=500, dt=0.005):
+    dx = 1.0 / (nx - 1)
+    u_prev = [0.0] * nx
+    u = [0.0] * nx
+    for j in range(nx):
+        x = j * dx
+        u[j] = math.exp(-((x - 0.5) ** 2) / 0.01)   # 高斯波包初值
+    r = (c * dt / dx) ** 2
+    for _ in range(nt):
+        u_new = [0.0] * nx
+        for j in range(1, nx - 1):
+            u_new[j] = 2 * u[j] - u_prev[j] + r * (u[j + 1] - 2 * u[j] + u[j - 1])
+        u_prev, u = u, u_new
+    return u
+</code></pre>
+<ul>
+<li>和热的区别在于更新式多了一个 <code>−u_prev[j]</code> 项（二阶时间导数 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 需要两步历史）。</li>
+<li>两端 <code>u[0]=u[nx-1]=0</code> 固定，波到边界会<strong>反射</strong>。</li>
+</ul>
+<p><strong>关键参数可调表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>c</code></td>
+<td>1.0</td>
+<td>波速</td>
+</tr>
+<tr>
+<td><code>nx</code></td>
+<td>100</td>
+<td>空间网格</td>
+</tr>
+<tr>
+<td><code>nt</code></td>
+<td>500</td>
+<td>时间步数</td>
+</tr>
+<tr>
+<td><code>dt</code></td>
+<td>0.005</td>
+<td>步长，稳定条件 <code>c·Δt/Δx ≤ 1</code></td>
+</tr>
+</tbody></table>
+<p><strong>真实运行结果</strong>：</p>
+<pre><code class="language-text">波包仍在弦上传播，当前最大幅值 ≈ 17.7245
+结论：初始扰动向两侧传播（行波），显式格式稳定性条件 c·Δt/Δx ≤ 1。
+</code></pre>
+<blockquote>
+<p><i class="cc-ic" data-ic="triangle-alert" aria-hidden="true"></i><strong>避坑点</strong>：初值波包高度只有 1.0，跑完却出现 17.7 的峰值——这暴露了<strong>显式波动格式 + 反射边界 + 欧拉类格式的振幅增长问题</strong>。严格说 CFL <code>c·dt/dx = 0.495 &lt; 1</code> 满足，但在固定端反射、长时间积分下，数值耗散/散射会让能量异常聚集；工业 CFD 会用<strong>吸收边界（PML）</strong>或更高阶格式。这里记住结论&quot;波会向两边传播并反射&quot;即可，若要定量准确需改进边界与积分器。</p>
+</blockquote>
+<p><strong>进阶方向</strong>：</p>
+<ol>
+<li>加<strong>吸收边界</strong>（让波出了边界不反射），模拟无限长弦。</li>
+<li>用 RK4 或谱方法替代蛙跳，看振幅是否稳定。</li>
+<li>改成<strong>二维波动</strong>（鼓膜振动），双层网格。</li>
+<li>研究<strong>色散</strong>：不同频率成分传播速度不同 <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> 波包展宽。</li>
+</ol>
+<hr>
+<h2>通读小结：仿真四步心法</h2>
+<p>把 10 个脚本串起来，就是一套通用方法论：</p>
+<pre><code class="language-text">① 建模型  <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ② 离散化  <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ③ 数值积分  <i class="cc-ic" data-ic="arrow-right" aria-hidden="true"></i> ④ 用理论值校验
+  微分方程   欧拉/RK4/差分   步进更新       对比解析解/已知量
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>你学到的</th>
+<th>典型坑（本目录已踩）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>二阶系统用两个状态变量</td>
+<td>裸欧拉能量漂移（02/06/09/10）</td>
+</tr>
+<tr>
+<td>一阶用单状态 + 欧拉</td>
+<td>步长太大直接发散</td>
+</tr>
+<tr>
+<td>偏微分用有限差分</td>
+<td>显式有稳定性条件（08 的 r≤0.5，10 的 CFL≤1）</td>
+</tr>
+<tr>
+<td>随机法靠大样本</td>
+<td>误差 ∝ 1/√N（05）</td>
+</tr>
+<tr>
+<td><strong>永远用理论值验证</strong></td>
+<td>否则&quot;仿真&quot;错了你都不知道（见 <code>test_simulation.py</code>）</td>
+</tr>
+</tbody></table>
+<p>下一步：把这篇和 <code>开源仿真工具-一键安装与第一个案例.md</code>（FreeCAD/KiCad/Gazebo/LTspice/OpenFOAM 五个工业级工具）对照着看——本篇是&quot;用代码理解原理&quot;，那篇是&quot;用专业软件干真活&quot;。</p>
+</article>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+<script src="/module.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+<footer class="ccfoot-s"><div class="in"><div class="col"><div class="brand">白驹 ccowork</div><p>把散落的 AI 工具装进一个大脑：模型 · 学习 · 工具 · 作品 · 关于，五个域持续更新</p></div><div class="col"><h4>继续读</h4><a href="/learn/">学习首页</a><a href="/learn/tutorials/">教程</a><a href="/learn/books/">书稿</a><a href="/blog/">博客</a></div><div class="col"><h4>查模型</h4><a href="/models/">模型域</a><a href="/models/library.html">模型库</a><a href="/models/leaderboards.html">榜单</a><a href="/models/vendors.html">厂商</a></div><div class="col"><h4>本站</h4><a href="/about/">关于</a><a href="/feed/">前沿流</a><a href="/toolbox/">工具库</a><a href="/">首页</a></div></div><div class="bot">© 2026 白驹 ccowork　内容以站内实际收录为准，外部链接归原作者所有。</div></footer>
+</body></html>

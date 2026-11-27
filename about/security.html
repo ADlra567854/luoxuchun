@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 安全 · 关于域 · 白驹 ccowork</title>
+<meta name="description" content="使用 AI 时的数据边界、隐私风险与合规要点。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/about/security.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+:root{--bg:#05070d;--card:rgba(15,22,38,.72);--line:rgba(120,160,220,.16);--blue:#5b8cff;--cyan:#38e1ff;--ice:#5eead4;--gold:#f0b95c;--text:#eaf1fc;--muted:#8fa3bd;--grad:linear-gradient(120deg,#5eead4,#38b6ff 55%,#5b8cff)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.8;overflow-x:hidden}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#1c2b45;border-radius:6px}
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(5,7,13,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav a.back{color:var(--muted);text-decoration:none;font-size:14px}
+nav a.back:hover{color:var(--cyan)}
+.hero{position:relative;z-index:5;text-align:center;padding:64px 24px 32px}
+.hero .tag{display:inline-block;font-size:13px;color:var(--ice);border:1px solid rgba(94,234,212,.35);background:rgba(94,234,212,.06);padding:6px 18px;border-radius:999px;letter-spacing:2px;margin-bottom:22px}
+.hero h1{font-size:clamp(28px,4.5vw,48px);font-weight:900;letter-spacing:2px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin-top:14px;font-size:15px;max-width:640px;margin-left:auto;margin-right:auto}
+.wrap{position:relative;z-index:5;max-width:1100px;margin:0 auto;padding:20px 24px 80px}
+.group{margin:40px 0 8px;display:flex;align-items:center;gap:16px}
+.group b{font-size:20px;white-space:nowrap;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.group::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
+.card{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);backdrop-filter:blur(10px);transition:transform .3s ease,border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(56,225,255,.4);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.card .body{padding:18px}
+.card h3{font-size:16px;color:var(--ice);margin-bottom:6px}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+.card .num{position:absolute;top:12px;right:14px;font-size:28px;font-weight:900;color:rgba(56,225,255,.12)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+th{background:rgba(23,35,61,.8);color:var(--ice)}
+blockquote{border-left:3px solid var(--blue);padding:10px 16px;margin:14px 0;background:rgba(18,27,51,.6);border-radius:0 10px 10px 0;color:var(--muted)}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+</style>
+<style>.merged-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;margin:8px 0 22px;line-height:1.25}.merged-appendix{margin-top:56px;padding-top:28px;border-top:1px solid rgba(148,163,184,.28)}.merged-appendix-title{font-size:22px;font-weight:700;margin:0 0 18px}</style>
+<script src="/data/deploy-videos.js"></script>
+<script src="/assets/videokit.js"></script>
+</head>
+<body data-ccnav="about" data-cctitle="关于">
+<div class="pg-wrap">
+<article class="merged-content">
+<figure class="cc-pg-cover" style="margin:0 0 22px;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.10);background:linear-gradient(120deg,#4f8cff22,#8b5cf622);"><img src="/assets/pg/pg-website-security.png" alt="ccowork · AI安全指南 · 白驹 ccowork" loading="lazy" style="display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover;"></figure>
+
+<div class="hero">
+  <span class="tag">安全与防护</span>
+  <h1>AI安全<span>指南</span></h1>
+  <p>8大AI安全风险与防护策略，保护你的数据和隐私</p>
+    <div class="badge"><i class="cc-mark" aria-hidden="true"></i>白驹 ccowork · 本地优先</div>
+</div>
+<div class="wrap">
+<div class="group"><b>AI安全风险与防护指南</b></div>
+<div class="grid">
+<div class="card"><span class="num">01</span><div class="body"><h3>数据隐私泄露</h3><p><strong>风险</strong>：在云端AI输入敏感信息（密码、商业机密、个人隐私）可能被记录或泄露。<br><strong>防护</strong>：1）敏感信息脱敏后再输入；2）使用本地部署模型（Ollama）；3）阅读平台隐私政策；4）定期删除聊天记录。</p></div></div>
+<div class="card"><span class="num">02</span><div class="body"><h3>AI生成虚假信息</h3><p><strong>风险</strong>：AI可能生成看似真实但完全错误的信息（幻觉）。<br><strong>防护</strong>：1）关键信息人工核实；2）要求AI提供信息来源；3）交叉验证多个AI的回答；4）对专业领域保持怀疑。</p></div></div>
+<div class="card"><span class="num">03</span><div class="body"><h3>深度伪造（Deepfake）</h3><p><strong>风险</strong>：AI伪造的音频/视频可能被用于诈骗、诽谤。<br><strong>防护</strong>：1）对可疑音视频保持警惕；2）通过其他渠道验证；3）使用数字水印技术；4）不随意分享个人生物特征信息。</p></div></div>
+<div class="card"><span class="num">04</span><div class="body"><h3>提示词注入攻击</h3><p><strong>风险</strong>：恶意用户通过精心构造的输入，让AI执行非预期操作（如泄露系统提示词）。<br><strong>防护</strong>：1）不在提示词中包含敏感信息；2）对用户输入进行过滤；3）使用系统级提示词隔离用户输入。</p></div></div>
+<div class="card"><span class="num">05</span><div class="body"><h3>模型投毒</h3><p><strong>风险</strong>：攻击者在训练数据中注入恶意样本，影响模型行为。<br><strong>防护</strong>：1）使用可信来源的模型；2）对模型输出进行监控；3）定期更新模型版本。</p></div></div>
+<div class="card"><span class="num">06</span><div class="body"><h3>AI依赖症</h3><p><strong>风险</strong>：过度依赖AI导致自身能力退化。<br><strong>防护</strong>：1）保持独立思考习惯；2）AI做初稿，人做优化；3）定期进行无AI工作训练；4）培养AI无法替代的能力。</p></div></div>
+<div class="card"><span class="num">07</span><div class="body"><h3>版权侵权</h3><p><strong>风险</strong>：AI生成内容可能侵犯他人版权，或自己的内容被AI训练使用。<br><strong>防护</strong>：1）商用前确认平台版权条款；2）不直接复制AI生成内容；3）使用原创内容训练；4）关注AI版权法规动态。</p></div></div>
+<div class="card"><span class="num">08</span><div class="body"><h3>算法偏见</h3><p><strong>风险</strong>：AI可能基于有偏见的训练数据做出歧视性判断。<br><strong>防护</strong>：1）对AI决策保持批判性思维；2）重要决策人工复核；3）关注AI系统的公平性审计报告。</p></div></div>
+</div>
+<blockquote><p><strong>核心原则</strong>：AI是强大的工具，但工具本身无善恶。关键在于使用者的判断力和责任感。在享受AI便利的同时，永远保持警惕和独立思考。</p></blockquote>
+</div>
+
+
+
+  
+<!-- ====== 部署 / 使用 / 连接 · 视频教程 ====== -->
+<section class="block" id="deployVideos">
+  <div class="sec-head"><h2><i class="cc-ic" data-ic="clapperboard" aria-hidden="true"></i>部署 / 使用 / 连接 · 视频教程</h2><span class="tag">真实 B站教程 · 站内直接播</span></div>
+  <div id="vkHere"></div>
+</section>
+
+
+<script>renderVideoSection('#vkHere', { categories: ["安全"], title: '网络安全 · 学习视频' });</script>
+
+<script>
+function ccoworkTheme(){var cur=document.body.getAttribute('data-theme')||'cloud';var next=cur==='cloud'?'deep':'cloud';document.body.setAttribute('data-theme',next);try{localStorage.setItem('ccowork.theme',next)}catch(e){}var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(next==='deep')?'1':'';}
+document.addEventListener('DOMContentLoaded',function(){var t=document.body.getAttribute('data-theme')||'cloud';var b=document.getElementById('ccoworkThemeBtn');if(b)b.dataset.deep=(t==='deep')?'1':'';});
+</script>
+</article>
+</div>
+<script src="/site-nav.js"></script>
+<script src="/baiju-assistant.js" defer></script>
+
+<link rel="stylesheet" href="/assets/baiju-static-qa.css?v=20261115a">
+<script src="/assets/baiju-gate.js?v=20261115a"></script>
+<script src="/assets/baiju-static-qa.js?v=20261115a"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+</body>
+</html>

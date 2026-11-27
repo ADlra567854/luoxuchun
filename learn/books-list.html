@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>书单 · 55 本 AI 相关书籍怎么选 · 学习路径 · 白驹 ccowork</title>
+<meta name="description" content="按「你在什么阶段」分组的 AI 书单：入门通识、原理技术、智能体与提示工程、行业落地、求职学习法、英文原版，共 55 本。每本都写了适合谁看，中文书给微信读书与豆瓣的搜索入口。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/learn/books-list.html">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/theme-cloud.css?v=20261125a">
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/design-norms.css?v=20261030b">
+<link rel="stylesheet" href="/site-redesign.css?v=20261125a">
+<link rel="stylesheet" href="/site-page.css?v=20261030b">
+<link rel="stylesheet" href="/siteframe.css?v=20261029b">
+<style>
+.bl-wrap{max-width:1180px;margin:0 auto;padding:26px 20px 60px}
+article.merged-content{max-width:1180px!important}
+.bl-hero{background:linear-gradient(135deg,rgba(79,140,255,.13),rgba(139,92,246,.11));border:1px solid rgba(79,140,255,.24);border-radius:20px;padding:28px 26px;margin-bottom:18px}
+.bl-hero h1{font-size:clamp(23px,3.2vw,32px);font-weight:900;line-height:1.32;margin:0 0 11px}
+.bl-hero .lead{font-size:14.5px;line-height:1.9;color:var(--muted);max-width:840px;margin:0}
+.bl-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:18px 0 4px}
+.bl-kpi .k{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:13px;padding:13px 15px}
+.bl-kpi .k b{display:block;font-size:22px;font-weight:900;background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.bl-kpi .k i{display:block;font-size:11.5px;color:var(--muted);font-style:normal;margin-top:3px}
+.bl-guide{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:16px;padding:19px 21px;margin-bottom:16px}
+.bl-guide h2{font-size:16px;font-weight:800;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.bl-guide h2::before{content:"";width:4px;height:16px;border-radius:2px;background:linear-gradient(#4f8cff,#8b5cf6)}
+.bl-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;list-style:none;padding:0;margin:0}
+.bl-steps li{background:rgba(79,140,255,.06);border:1px solid rgba(79,140,255,.15);border-radius:11px;padding:12px 14px;font-size:13px;line-height:1.72}
+.bl-steps li b{display:block;font-size:12.5px;color:#2f5fd0;margin-bottom:3px;font-weight:800}
+[data-theme="deep"] .bl-steps li b{color:#7fe4ff}
+.bl-nav{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 20px}
+.bl-nav a{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#2f5fd0;text-decoration:none;padding:7px 14px;border-radius:999px;background:rgba(79,140,255,.09);border:1px solid rgba(79,140,255,.22);transition:.16s}
+.bl-nav a:hover{background:rgba(79,140,255,.19)}
+.bl-nav a b{font-size:11px;opacity:.65;font-weight:800}
+[data-theme="deep"] .bl-nav a{color:#7fe4ff;background:rgba(56,225,255,.08);border-color:rgba(56,225,255,.22)}
+.bl-sec{margin:0 0 30px}
+.bl-sec>h2{font-size:18px;font-weight:900;margin:0 0 5px;display:flex;align-items:center;gap:10px}
+.bl-sec>h2::before{content:"";width:5px;height:18px;border-radius:3px;background:linear-gradient(#4f8cff,#38b6ff 50%,#8b5cf6)}
+.bl-n{font-size:11.5px;font-weight:700;color:var(--muted);background:rgba(120,150,200,.12);padding:2px 9px;border-radius:999px}
+.bl-sub{font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.75}
+.bl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.bl-card{display:flex;gap:13px;background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:14px;padding:13px;transition:.18s;align-items:flex-start}
+.bl-card:hover{transform:translateY(-2px);border-color:rgba(79,140,255,.42);box-shadow:0 9px 22px rgba(79,140,255,.12)}
+.bl-thumb{position:relative;flex:0 0 96px}
+.bl-cv{display:block;border-radius:7px;box-shadow:0 3px 10px rgba(15,23,42,.16)}
+.bl-must{position:absolute;top:-5px;left:-5px;font-size:10.5px;font-weight:900;color:#fff;background:linear-gradient(120deg,#f0b95c,#f97362);padding:2px 8px;border-radius:999px;box-shadow:0 2px 7px rgba(240,150,60,.4)}
+.bl-body{flex:1 1 auto;min-width:0}
+.bl-body h3{font-size:14px;font-weight:800;line-height:1.5;margin:0 0 5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.bl-meta{font-size:11.5px;color:var(--muted);margin:0 0 7px;line-height:1.6}
+.bl-for{font-size:12.5px;line-height:1.7;margin:0 0 9px;color:var(--text);opacity:.88}
+.bl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}
+.bl-tag{font-size:10.5px;padding:2px 8px;border-radius:999px;background:rgba(79,140,255,.1);color:#2f5fd0;border:1px solid rgba(79,140,255,.24)}
+[data-theme="deep"] .bl-tag{background:rgba(56,225,255,.1);color:#7fe4ff;border-color:rgba(56,225,255,.26)}
+.bl-isbn{font-size:10px;color:var(--muted);opacity:.75;padding:2px 0}
+.bl-links{display:flex;gap:6px;flex-wrap:wrap}
+.bl-go{font-size:11.5px;font-weight:700;color:#2f5fd0;text-decoration:none;border:none!important;padding:5px 11px;border-radius:8px;background:rgba(79,140,255,.1);transition:.16s}
+.bl-go:hover{background:rgba(79,140,255,.2)}
+.bl-go.alt{background:rgba(120,150,200,.1);color:var(--muted)}
+.bl-go.alt:hover{background:rgba(120,150,200,.2)}
+[data-theme="deep"] .bl-go{color:#7fe4ff;background:rgba(56,225,255,.1)}
+[data-theme="deep"] .bl-go.alt{color:var(--muted);background:rgba(120,150,200,.12)}
+.bl-note{margin-top:24px;padding:15px 17px;border-radius:13px;background:rgba(120,150,200,.07);border:1px solid rgba(120,150,200,.16);font-size:12px;line-height:1.9;color:var(--muted)}
+.bl-note b{color:var(--text)}
+/* 2026-11-25 筛选条：29 种 tag 太碎（多数只 1-2 本），按阶段 / 年份 / 必读 三维筛才有用 */
+.bl-filter{background:var(--card);border:1px solid rgba(120,150,200,.18);border-radius:14px;padding:14px 16px;margin:0 0 20px}
+.bl-fl-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:9px}
+.bl-fl-row:last-of-type{margin-bottom:0}
+.bl-fl-lbl{font-size:12px;font-weight:800;color:var(--muted);margin-right:2px;flex:0 0 auto}
+.bl-fl{font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:999px;cursor:pointer;border:1px solid rgba(120,150,200,.28);background:transparent;color:var(--muted);transition:.15s;display:inline-flex;align-items:center;gap:5px;font-family:inherit}
+.bl-fl b{font-size:10.5px;opacity:.7;font-weight:800}
+.bl-fl:hover{border-color:rgba(79,140,255,.5);color:#2f5fd0}
+.bl-fl.on{background:linear-gradient(120deg,#4f8cff,#38b6ff 50%,#8b5cf6);color:#fff;border-color:transparent}
+.bl-fl.on b{opacity:.9}
+.bl-fl.must{border-color:rgba(240,185,92,.5);color:#9a6100}
+.bl-fl.must.on{background:linear-gradient(120deg,#f0b95c,#f97362);color:#fff;border-color:transparent}
+[data-theme="deep"] .bl-fl:hover{color:#7fe4ff}
+[data-theme="deep"] .bl-fl.must{color:#f0b95c}
+.bl-fl-msg{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
+@media(max-width:900px){.bl-kpi{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .bl-wrap{padding:14px 13px 46px}
+  .bl-hero{padding:20px 17px;border-radius:16px}
+  .bl-grid{grid-template-columns:1fr;gap:10px}
+  .bl-thumb{flex:0 0 78px}
+  .bl-cv{width:78px;height:104px}
+  .bl-kpi .k b{font-size:19px}
+  .bl-nav{gap:6px}
+  .bl-nav a{font-size:12px;padding:6px 11px}
+}
+</style>
+</head>
+<body data-ccnav="learn" data-cctitle="书单">
+
+<div class="bl-wrap">
+
+  <div class="bl-hero">
+    <h1>书单 · 55 本，按「你在什么阶段」分组</h1>
+    <p class="lead">不按出版年份排，也不按销量排——按<b>你现在处在哪一步</b>排。每本都写清了「适合谁看」，看完这句再决定要不要翻开。中文书给微信读书和豆瓣的搜索入口（都是国内的，能直接打开），英文经典若有官方免费站点就直接给官方站。</p>
+    <div class="bl-kpi">
+      <div class="k"><b>55</b><i>本书目</i></div>
+      <div class="k"><b>6</b><i>个阶段分组</i></div>
+      <div class="k"><b>51</b><i>本有 ISBN 可查</i></div>
+      <div class="k"><b>4</b><i>本标了必读</i></div>
+    </div>
+  </div>
+
+  <div class="bl-guide">
+    <h2>怎么用这份书单</h2>
+    <ul class="bl-steps">
+      <li><b>① 先别看技术书</b>零基础直接翻《深度学习》会放弃。从「入门与通识」拿一本，读完能听懂别人在说什么就够了。</li>
+      <li><b>② 一个阶段只拿一本</b>同组里挑「适合谁看」最像你的一句。同时开三本，一本都读不完。</li>
+      <li><b>③ 标了「必读」的先看</b>只有 4 本标了，全标等于没标。这几本是公认绕不过去的。</li>
+      <li><b>④ 有 ISBN 就能查馆藏</b>51 本带 ISBN，可以拿去省市图书馆或高校图书馆检索，不必买。</li>
+    </ul>
+  </div>
+
+  <!-- 2026-11-25：原来这里还有一行锚点胶囊（入门与通识10 / 原理与技术17 …），
+       与下面筛选条第一行的分组按钮内容完全重复，视觉上两行一样的东西。
+       筛选条的组按钮已经能同时做到「只看这组」，所以去掉跳转那行。 -->
+  <div class="bl-filter" id="blFilter">
+    <div class="bl-fl-row">
+      <span class="bl-fl-lbl">按阶段</span>
+      <button class="bl-fl on" data-f="group" data-v="all">全部<b>55</b></button>
+      <button class="bl-fl" data-f="group" data-v="start">入门与通识<b>10</b></button><button class="bl-fl" data-f="group" data-v="theory">原理与技术<b>17</b></button><button class="bl-fl" data-f="group" data-v="agent">智能体与提示工程<b>5</b></button><button class="bl-fl" data-f="group" data-v="industry">行业落地<b>16</b></button><button class="bl-fl" data-f="group" data-v="career">求职与学习法<b>2</b></button><button class="bl-fl" data-f="group" data-v="en">英文原版<b>5</b></button>
+    </div>
+    <div class="bl-fl-row">
+      <span class="bl-fl-lbl">按年份</span>
+      <button class="bl-fl on" data-f="year" data-v="all">全部</button>
+      <button class="bl-fl" data-f="year" data-v="en">英文原版<b>5</b></button><button class="bl-fl" data-f="year" data-v="2026">2026<b>12</b></button><button class="bl-fl" data-f="year" data-v="2025">2025<b>38</b></button>
+      <button class="bl-fl must" data-f="must" data-v="1">只看必读<b>4</b></button>
+    </div>
+    <p class="bl-fl-msg" id="blFlMsg" hidden></p>
+  </div>
+
+  <section class="bl-sec" id="bl-start" data-g="start">
+  <h2>入门与通识<span class="bl-n">10 本</span></h2>
+  <p class="bl-sub">完全没接触过 AI，从这几本开始不会挫败</p>
+  <div class="bl-grid"><div class="bl-card" data-g="start" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能的技术恐惧研究 的封面示意图">
+  <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h4"><feColorMatrix type="hueRotate" values="-9"/></filter></defs>
+  <g filter="url(#h4)">
+    <rect width="96" height="128" rx="7" fill="url(#g4)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">人文</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能的技术恐惧研究</h3>
+    <p class="bl-meta">赵磊 · 科学出版社 · 2026</p>
+    <p class="bl-for">关心 AI 社会心理与伦理争议的读者</p>
+    <div class="bl-tags"><span class="bl-tag">人文</span><span class="bl-isbn">ISBN 9787030845245</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%8A%80%E6%9C%AF%E6%81%90%E6%83%A7%E7%A0%94%E7%A9%B6" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%8A%80%E6%9C%AF%E6%81%90%E6%83%A7%E7%A0%94%E7%A9%B6" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="DeepSeek全攻略：人人需要的AI通识课 的封面示意图">
+  <defs><linearGradient id="g22" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h22"><feColorMatrix type="hueRotate" values="-18"/></filter></defs>
+  <g filter="url(#h22)">
+    <rect width="96" height="128" rx="7" fill="url(#g22)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">通识</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>DeepSeek全攻略：人人需要的AI通识课</h3>
+    <p class="bl-meta">陈光 · 电子工业出版社 · 2025</p>
+    <p class="bl-for">零基础问答式入门</p>
+    <div class="bl-tags"><span class="bl-tag">通识</span><span class="bl-isbn">ISBN 9787121499029</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=DeepSeek%E5%85%A8%E6%94%BB%E7%95%A5%EF%BC%9A%E4%BA%BA%E4%BA%BA%E9%9C%80%E8%A6%81%E7%9A%84AI%E9%80%9A%E8%AF%86%E8%AF%BE" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=DeepSeek%E5%85%A8%E6%94%BB%E7%95%A5%EF%BC%9A%E4%BA%BA%E4%BA%BA%E9%9C%80%E8%A6%81%E7%9A%84AI%E9%80%9A%E8%AF%86%E8%AF%BE" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能的未来 的封面示意图">
+  <defs><linearGradient id="g31" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h31"><feColorMatrix type="hueRotate" values="0"/></filter></defs>
+  <g filter="url(#h31)">
+    <rect width="96" height="128" rx="7" fill="url(#g31)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">通识</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能的未来</h3>
+    <p class="bl-meta">— · 科学出版社 · 2025</p>
+    <p class="bl-for">起点／拐点／奇点的整体框架</p>
+    <div class="bl-tags"><span class="bl-tag">通识</span><span class="bl-isbn">ISBN 9787030798657</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%9C%AA%E6%9D%A5" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E6%9C%AA%E6%9D%A5" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="智能简史 的封面示意图">
+  <defs><linearGradient id="g32" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h32"><feColorMatrix type="hueRotate" values="-8"/></filter></defs>
+  <g filter="url(#h32)">
+    <rect width="96" height="128" rx="7" fill="url(#g32)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">智</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">历史</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>智能简史</h3>
+    <p class="bl-meta">— · 中译出版社 · 2025</p>
+    <p class="bl-for">从生物智能到人工智能的演化线</p>
+    <div class="bl-tags"><span class="bl-tag">历史</span><span class="bl-isbn">ISBN 9787500181699</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%99%BA%E8%83%BD%E7%AE%80%E5%8F%B2" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%99%BA%E8%83%BD%E7%AE%80%E5%8F%B2" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="智慧的疆界 的封面示意图">
+  <defs><linearGradient id="g33" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h33"><feColorMatrix type="hueRotate" values="-16"/></filter></defs>
+  <g filter="url(#h33)">
+    <rect width="96" height="128" rx="7" fill="url(#g33)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">智</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">历史</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>智慧的疆界</h3>
+    <p class="bl-meta">— · 机械工业出版社 · 2025</p>
+    <p class="bl-for">以辛顿、古德费洛、苏茨克维为线索的 AI 史</p>
+    <div class="bl-tags"><span class="bl-tag">历史</span><span class="bl-isbn">ISBN 9787111778004</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%99%BA%E6%85%A7%E7%9A%84%E7%96%86%E7%95%8C" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%99%BA%E6%85%A7%E7%9A%84%E7%96%86%E7%95%8C" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="AI赋能 的封面示意图">
+  <defs><linearGradient id="g35" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h35"><feColorMatrix type="hueRotate" values="13"/></filter></defs>
+  <g filter="url(#h35)">
+    <rect width="96" height="128" rx="7" fill="url(#g35)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">通识</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>AI赋能</h3>
+    <p class="bl-meta">— · 浙江教育出版社 · 2025</p>
+    <p class="bl-for">从 AI 恐慌到驾驭 AI 的十条原则</p>
+    <div class="bl-tags"><span class="bl-tag">通识</span><span class="bl-isbn">ISBN 9787572298301</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=AI%E8%B5%8B%E8%83%BD" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=AI%E8%B5%8B%E8%83%BD" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="未来之地 的封面示意图">
+  <defs><linearGradient id="g36" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h36"><feColorMatrix type="hueRotate" values="5"/></filter></defs>
+  <g filter="url(#h36)">
+    <rect width="96" height="128" rx="7" fill="url(#g36)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">未</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">思想</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>未来之地</h3>
+    <p class="bl-meta">尼克·博斯特罗姆 · 中信出版集团 · 2025</p>
+    <p class="bl-for">技术饱和之后，人类如何安放意义</p>
+    <div class="bl-tags"><span class="bl-tag">思想</span><span class="bl-isbn">ISBN 9787521771640</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%9C%AA%E6%9D%A5%E4%B9%8B%E5%9C%B0" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%9C%AA%E6%9D%A5%E4%B9%8B%E5%9C%B0" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能时代与人类价值 的封面示意图">
+  <defs><linearGradient id="g37" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h37"><feColorMatrix type="hueRotate" values="-3"/></filter></defs>
+  <g filter="url(#h37)">
+    <rect width="96" height="128" rx="7" fill="url(#g37)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">思想</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能时代与人类价值</h3>
+    <p class="bl-meta">基辛格、蒙迪、施密特 · 中信出版集团 · 2025</p>
+    <p class="bl-for">AI 与权力、战争、人类共同进化</p>
+    <div class="bl-tags"><span class="bl-tag">思想</span><span class="bl-isbn">ISBN 9787521769432</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%97%B6%E4%BB%A3%E4%B8%8E%E4%BA%BA%E7%B1%BB%E4%BB%B7%E5%80%BC" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%97%B6%E4%BB%A3%E4%B8%8E%E4%BA%BA%E7%B1%BB%E4%BB%B7%E5%80%BC" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能与未来社会 的封面示意图">
+  <defs><linearGradient id="g38" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h38"><feColorMatrix type="hueRotate" values="-11"/></filter></defs>
+  <g filter="url(#h38)">
+    <rect width="96" height="128" rx="7" fill="url(#g38)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">人文</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能与未来社会</h3>
+    <p class="bl-meta">《哲学动态》编辑部 · 广西人民出版社 · 2025</p>
+    <p class="bl-for">算法透明性与数据歧视的哲学分析</p>
+    <div class="bl-tags"><span class="bl-tag">人文</span><span class="bl-isbn">ISBN 9787219119402</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E6%9C%AA%E6%9D%A5%E7%A4%BE%E4%BC%9A" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E6%9C%AA%E6%9D%A5%E7%A4%BE%E4%BC%9A" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="start" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="AI时代的文学教育 的封面示意图">
+  <defs><linearGradient id="g40" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h40"><feColorMatrix type="hueRotate" values="18"/></filter></defs>
+  <g filter="url(#h40)">
+    <rect width="96" height="128" rx="7" fill="url(#g40)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">人文</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>AI时代的文学教育</h3>
+    <p class="bl-meta">陈平原 主编 · 北京大学出版社 · 2025</p>
+    <p class="bl-for">文学创作与批评如何应对 AI</p>
+    <div class="bl-tags"><span class="bl-tag">人文</span><span class="bl-isbn">ISBN 9787301364338</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=AI%E6%97%B6%E4%BB%A3%E7%9A%84%E6%96%87%E5%AD%A6%E6%95%99%E8%82%B2" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=AI%E6%97%B6%E4%BB%A3%E7%9A%84%E6%96%87%E5%AD%A6%E6%95%99%E8%82%B2" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div></div>
+</section>
+<section class="bl-sec" id="bl-theory" data-g="theory">
+  <h2>原理与技术<span class="bl-n">17 本</span></h2>
+  <p class="bl-sub">不满足于「它能做什么」，想知道「它怎么算出来的」</p>
+  <div class="bl-grid"><div class="bl-card" data-g="theory" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能算法入门 的封面示意图">
+  <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h3"><feColorMatrix type="hueRotate" values="-1"/></filter></defs>
+  <g filter="url(#h3)">
+    <rect width="96" height="128" rx="7" fill="url(#g3)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">算法</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能算法入门</h3>
+    <p class="bl-meta">陈锐 · 科学出版社 · 2026</p>
+    <p class="bl-for">零基础补算法底子的学生</p>
+    <div class="bl-tags"><span class="bl-tag">算法</span><span class="bl-isbn">ISBN 9787030838186</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="从零构建大模型 的封面示意图">
+  <defs><linearGradient id="g12" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h12"><feColorMatrix type="hueRotate" values="17"/></filter></defs>
+  <g filter="url(#h12)">
+    <rect width="96" height="128" rx="7" fill="url(#g12)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">从</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">大模型</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>从零构建大模型</h3>
+    <p class="bl-meta">塞巴斯蒂安·拉施卡 · 人民邮电出版社 · 2025</p>
+    <p class="bl-for">想亲手训一个小模型的工程人（本站首选）</p>
+    <div class="bl-tags"><span class="bl-tag">大模型</span><span class="bl-isbn">ISBN 9787115666000</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BB%8E%E9%9B%B6%E6%9E%84%E5%BB%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BB%8E%E9%9B%B6%E6%9E%84%E5%BB%BA%E5%A4%A7%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="ChatGPT的基本原理与核心算法 的封面示意图">
+  <defs><linearGradient id="g14" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h14"><feColorMatrix type="hueRotate" values="1"/></filter></defs>
+  <g filter="url(#h14)">
+    <rect width="96" height="128" rx="7" fill="url(#g14)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">C</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">原理</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>ChatGPT的基本原理与核心算法</h3>
+    <p class="bl-meta">— · 清华大学出版社 · 2025</p>
+    <p class="bl-for">要弄清 Transformer 与 RLHF 的读者</p>
+    <div class="bl-tags"><span class="bl-tag">原理</span><span class="bl-isbn">ISBN 9787302682639</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=ChatGPT%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=ChatGPT%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="强化学习的数学原理 的封面示意图">
+  <defs><linearGradient id="g15" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h15"><feColorMatrix type="hueRotate" values="-7"/></filter></defs>
+  <g filter="url(#h15)">
+    <rect width="96" height="128" rx="7" fill="url(#g15)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">强</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">数学</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>强化学习的数学原理</h3>
+    <p class="bl-meta">— · 清华大学出版社 · 2025</p>
+    <p class="bl-for">啃贝尔曼方程与策略梯度的人</p>
+    <div class="bl-tags"><span class="bl-tag">数学</span><span class="bl-isbn">ISBN 9787302685678</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="DeepSeek原理与项目实战：大模型部署、微调与应用开发 的封面示意图">
+  <defs><linearGradient id="g17" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h17"><feColorMatrix type="hueRotate" values="22"/></filter></defs>
+  <g filter="url(#h17)">
+    <rect width="96" height="128" rx="7" fill="url(#g17)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>DeepSeek原理与项目实战：大模型部署、微调与应用开发</h3>
+    <p class="bl-meta">未来智能实验室 · 人民邮电出版社 · 2025</p>
+    <p class="bl-for">要部署与微调 DeepSeek 的人</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787115665584</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=DeepSeek%E5%8E%9F%E7%90%86%E4%B8%8E%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%EF%BC%9A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E3%80%81%E5%BE%AE%E8%B0%83%E4%B8%8E%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=DeepSeek%E5%8E%9F%E7%90%86%E4%B8%8E%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%EF%BC%9A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E3%80%81%E5%BE%AE%E8%B0%83%E4%B8%8E%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="DeepSeek使用指南 的封面示意图">
+  <defs><linearGradient id="g18" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h18"><feColorMatrix type="hueRotate" values="14"/></filter></defs>
+  <g filter="url(#h18)">
+    <rect width="96" height="128" rx="7" fill="url(#g18)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>DeepSeek使用指南</h3>
+    <p class="bl-meta">杜雨、张孜铭、陈博 · 机械工业出版社 · 2025</p>
+    <p class="bl-for">职场高频场景 30+／提示词模板 100+</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787111778820</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=DeepSeek%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=DeepSeek%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="DeepSeek使用秘笈：从入门到精通的100个实用技巧 的封面示意图">
+  <defs><linearGradient id="g19" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h19"><feColorMatrix type="hueRotate" values="6"/></filter></defs>
+  <g filter="url(#h19)">
+    <rect width="96" height="128" rx="7" fill="url(#g19)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>DeepSeek使用秘笈：从入门到精通的100个实用技巧</h3>
+    <p class="bl-meta">— · 机械工业出版社 · 2025</p>
+    <p class="bl-for">想要拿来就用的技巧清单</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787111779353</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=DeepSeek%E4%BD%BF%E7%94%A8%E7%A7%98%E7%AC%88%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%E7%9A%84100%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=DeepSeek%E4%BD%BF%E7%94%A8%E7%A7%98%E7%AC%88%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%E7%9A%84100%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="高效使用DeepSeek 的封面示意图">
+  <defs><linearGradient id="g20" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h20"><feColorMatrix type="hueRotate" values="-2"/></filter></defs>
+  <g filter="url(#h20)">
+    <rect width="96" height="128" rx="7" fill="url(#g20)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">高</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>高效使用DeepSeek</h3>
+    <p class="bl-meta">— · 机械工业出版社 · 2025</p>
+    <p class="bl-for">办公／学习／政务场景入门</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787111778769</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8DeepSeek" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8DeepSeek" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="DeepSeek极简入门与应用 的封面示意图">
+  <defs><linearGradient id="g21" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h21"><feColorMatrix type="hueRotate" values="-10"/></filter></defs>
+  <g filter="url(#h21)">
+    <rect width="96" height="128" rx="7" fill="url(#g21)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>DeepSeek极简入门与应用</h3>
+    <p class="bl-meta">孟健、姚路行 · 电子工业出版社 · 2025</p>
+    <p class="bl-for">结构化提示词模板齐全</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787121499036</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=DeepSeek%E6%9E%81%E7%AE%80%E5%85%A5%E9%97%A8%E4%B8%8E%E5%BA%94%E7%94%A8" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=DeepSeek%E6%9E%81%E7%AE%80%E5%85%A5%E9%97%A8%E4%B8%8E%E5%BA%94%E7%94%A8" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="DeepSeek人人都能学会的AI工具 的封面示意图">
+  <defs><linearGradient id="g23" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h23"><feColorMatrix type="hueRotate" values="19"/></filter></defs>
+  <g filter="url(#h23)">
+    <rect width="96" height="128" rx="7" fill="url(#g23)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>DeepSeek人人都能学会的AI工具</h3>
+    <p class="bl-meta">— · 人民邮电出版社 · 2025</p>
+    <p class="bl-for">生活／副业／学术辅助场景</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787115665812</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=DeepSeek%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%83%BD%E5%AD%A6%E4%BC%9A%E7%9A%84AI%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=DeepSeek%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%83%BD%E5%AD%A6%E4%BC%9A%E7%9A%84AI%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="大模型垂直领域低算力迁移：微调、部署与优化 的封面示意图">
+  <defs><linearGradient id="g26" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h26"><feColorMatrix type="hueRotate" values="-5"/></filter></defs>
+  <g filter="url(#h26)">
+    <rect width="96" height="128" rx="7" fill="url(#g26)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">大</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">工程</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>大模型垂直领域低算力迁移：微调、部署与优化</h3>
+    <p class="bl-meta">— · 机械工业出版社 · 2025</p>
+    <p class="bl-for">算力有限也要落地的团队</p>
+    <div class="bl-tags"><span class="bl-tag">工程</span><span class="bl-isbn">ISBN 9787111767671</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9E%82%E7%9B%B4%E9%A2%86%E5%9F%9F%E4%BD%8E%E7%AE%97%E5%8A%9B%E8%BF%81%E7%A7%BB%EF%BC%9A%E5%BE%AE%E8%B0%83%E3%80%81%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BC%98%E5%8C%96" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9E%82%E7%9B%B4%E9%A2%86%E5%9F%9F%E4%BD%8E%E7%AE%97%E5%8A%9B%E8%BF%81%E7%A7%BB%EF%BC%9A%E5%BE%AE%E8%B0%83%E3%80%81%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BC%98%E5%8C%96" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="AI处理器硬件架构设计 的封面示意图">
+  <defs><linearGradient id="g27" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h27"><feColorMatrix type="hueRotate" values="-13"/></filter></defs>
+  <g filter="url(#h27)">
+    <rect width="96" height="128" rx="7" fill="url(#g27)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">硬件</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>AI处理器硬件架构设计</h3>
+    <p class="bl-meta">— · 机械工业出版社 · 2025</p>
+    <p class="bl-for">向量／矩阵／标量单元的微架构</p>
+    <div class="bl-tags"><span class="bl-tag">硬件</span><span class="bl-isbn">ISBN 9787111778301</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=AI%E5%A4%84%E7%90%86%E5%99%A8%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=AI%E5%A4%84%E7%90%86%E5%99%A8%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="AI芯片：前沿技术与创新未来 的封面示意图">
+  <defs><linearGradient id="g28" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h28"><feColorMatrix type="hueRotate" values="-21"/></filter></defs>
+  <g filter="url(#h28)">
+    <rect width="96" height="128" rx="7" fill="url(#g28)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">硬件</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>AI芯片：前沿技术与创新未来</h3>
+    <p class="bl-meta">张臣雄 · 人民邮电出版社 · 2025</p>
+    <p class="bl-for">深度学习加速芯片与类脑芯片</p>
+    <div class="bl-tags"><span class="bl-tag">硬件</span><span class="bl-isbn">ISBN 9787115666031</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=AI%E8%8A%AF%E7%89%87%EF%BC%9A%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%88%9B%E6%96%B0%E6%9C%AA%E6%9D%A5" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=AI%E8%8A%AF%E7%89%87%EF%BC%9A%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%88%9B%E6%96%B0%E6%9C%AA%E6%9D%A5" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="高效玩转DeepSeek：解锁90%的人都不知道的使用技巧 的封面示意图">
+  <defs><linearGradient id="g43" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h43"><feColorMatrix type="hueRotate" values="-6"/></filter></defs>
+  <g filter="url(#h43)">
+    <rect width="96" height="128" rx="7" fill="url(#g43)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">高</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>高效玩转DeepSeek：解锁90%的人都不知道的使用技巧</h3>
+    <p class="bl-meta">— · 北京联合出版公司 · 2025</p>
+    <p class="bl-for">认知／基础／进阶三段式</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787559683427</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E9%AB%98%E6%95%88%E7%8E%A9%E8%BD%ACDeepSeek%EF%BC%9A%E8%A7%A3%E9%94%8190%25%E7%9A%84%E4%BA%BA%E9%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E9%AB%98%E6%95%88%E7%8E%A9%E8%BD%ACDeepSeek%EF%BC%9A%E8%A7%A3%E9%94%8190%25%E7%9A%84%E4%BA%BA%E9%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="DeepSeek应用能手：7天从入门到精通 的封面示意图">
+  <defs><linearGradient id="g44" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h44"><feColorMatrix type="hueRotate" values="-14"/></filter></defs>
+  <g filter="url(#h44)">
+    <rect width="96" height="128" rx="7" fill="url(#g44)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>DeepSeek应用能手：7天从入门到精通</h3>
+    <p class="bl-meta">— · 广东科技出版社 · 2025</p>
+    <p class="bl-for">7 天计划的节奏型学习</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787535984814</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=DeepSeek%E5%BA%94%E7%94%A8%E8%83%BD%E6%89%8B%EF%BC%9A7%E5%A4%A9%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=DeepSeek%E5%BA%94%E7%94%A8%E8%83%BD%E6%89%8B%EF%BC%9A7%E5%A4%A9%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="搞定DeepSeek，重新定义你的生产力！ 的封面示意图">
+  <defs><linearGradient id="g45" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h45"><feColorMatrix type="hueRotate" values="-22"/></filter></defs>
+  <g filter="url(#h45)">
+    <rect width="96" height="128" rx="7" fill="url(#g45)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">搞</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">DeepSeek</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>搞定DeepSeek，重新定义你的生产力！</h3>
+    <p class="bl-meta">— · 电子工业出版社 · 2025</p>
+    <p class="bl-for">职场办公与写作提效</p>
+    <div class="bl-tags"><span class="bl-tag">DeepSeek</span><span class="bl-isbn">ISBN 9787121502354</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%90%9E%E5%AE%9ADeepSeek%EF%BC%8C%E9%87%8D%E6%96%B0%E5%AE%9A%E4%B9%89%E4%BD%A0%E7%9A%84%E7%94%9F%E4%BA%A7%E5%8A%9B%EF%BC%81" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%90%9E%E5%AE%9ADeepSeek%EF%BC%8C%E9%87%8D%E6%96%B0%E5%AE%9A%E4%B9%89%E4%BD%A0%E7%9A%84%E7%94%9F%E4%BA%A7%E5%8A%9B%EF%BC%81" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="theory" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="模型驱动的深度学习——模型与数据双驱动的人工智能建模方法 的封面示意图">
+  <defs><linearGradient id="g48" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#38b6ff"/><stop offset="1" stop-color="#8b5cf6"/>
+  </linearGradient>
+  <filter id="h48"><feColorMatrix type="hueRotate" values="-1"/></filter></defs>
+  <g filter="url(#h48)">
+    <rect width="96" height="128" rx="7" fill="url(#g48)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">模</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">数学</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>模型驱动的深度学习——模型与数据双驱动的人工智能建模方法</h3>
+    <p class="bl-meta">孙剑、徐宗本 · 科学出版社 · 2025</p>
+    <p class="bl-for">要理解建模范式的进阶读者</p>
+    <div class="bl-tags"><span class="bl-tag">数学</span><span class="bl-isbn">ISBN 9787508867526</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8F%8C%E9%A9%B1%E5%8A%A8%E7%9A%84%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8F%8C%E9%A9%B1%E5%8A%A8%E7%9A%84%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div></div>
+</section>
+<section class="bl-sec" id="bl-agent" data-g="agent">
+  <h2>智能体与提示工程<span class="bl-n">5 本</span></h2>
+  <p class="bl-sub">想自己搭一个 Agent、把提示词写稳的人</p>
+  <div class="bl-grid"><div class="bl-card" data-g="agent" data-tier="2026" data-must="1">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="手搓AI智能体：轻量框架，100行搞定 的封面示意图">
+  <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#e879fa"/>
+  </linearGradient>
+  <filter id="h1"><feColorMatrix type="hueRotate" values="15"/></filter></defs>
+  <g filter="url(#h1)">
+    <rect width="96" height="128" rx="7" fill="url(#g1)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">手</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">智能体</text>
+</svg><span class="bl-must">必读</span></div>
+  <div class="bl-body">
+    <h3>手搓AI智能体：轻量框架，100行搞定</h3>
+    <p class="bl-meta">黄泽洲 · 科学出版社 · 2026</p>
+    <p class="bl-for">不满足调 API、想自己写 Agent 骨架的开发者</p>
+    <div class="bl-tags"><span class="bl-tag">智能体</span><span class="bl-isbn">ISBN 9787030854919</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%89%8B%E6%90%93AI%E6%99%BA%E8%83%BD%E4%BD%93%EF%BC%9A%E8%BD%BB%E9%87%8F%E6%A1%86%E6%9E%B6%EF%BC%8C100%E8%A1%8C%E6%90%9E%E5%AE%9A" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%89%8B%E6%90%93AI%E6%99%BA%E8%83%BD%E4%BD%93%EF%BC%9A%E8%BD%BB%E9%87%8F%E6%A1%86%E6%9E%B6%EF%BC%8C100%E8%A1%8C%E6%90%9E%E5%AE%9A" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="agent" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="AI原生应用开发：提示工程原理与实战 的封面示意图">
+  <defs><linearGradient id="g16" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#e879fa"/>
+  </linearGradient>
+  <filter id="h16"><feColorMatrix type="hueRotate" values="-15"/></filter></defs>
+  <g filter="url(#h16)">
+    <rect width="96" height="128" rx="7" fill="url(#g16)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">提示工程</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>AI原生应用开发：提示工程原理与实战</h3>
+    <p class="bl-meta">魏承东 · 人民邮电出版社 · 2025</p>
+    <p class="bl-for">要把提示写进产品设计的人</p>
+    <div class="bl-tags"><span class="bl-tag">提示工程</span><span class="bl-isbn">ISBN 9787115658012</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=AI%E5%8E%9F%E7%94%9F%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%EF%BC%9A%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E6%88%98" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=AI%E5%8E%9F%E7%94%9F%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%EF%BC%9A%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E6%88%98" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="agent" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="零基础开发AI Agent：手把手教你用扣子做智能体 的封面示意图">
+  <defs><linearGradient id="g24" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#e879fa"/>
+  </linearGradient>
+  <filter id="h24"><feColorMatrix type="hueRotate" values="11"/></filter></defs>
+  <g filter="url(#h24)">
+    <rect width="96" height="128" rx="7" fill="url(#g24)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">零</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">智能体</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>零基础开发AI Agent：手把手教你用扣子做智能体</h3>
+    <p class="bl-meta">— · 电子工业出版社 · 2025</p>
+    <p class="bl-for">不写代码也能搭 Agent</p>
+    <div class="bl-tags"><span class="bl-tag">智能体</span><span class="bl-isbn">ISBN 9787121483714</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91AI%20Agent%EF%BC%9A%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E7%94%A8%E6%89%A3%E5%AD%90%E5%81%9A%E6%99%BA%E8%83%BD%E4%BD%93" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91AI%20Agent%EF%BC%9A%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E7%94%A8%E6%89%A3%E5%AD%90%E5%81%9A%E6%99%BA%E8%83%BD%E4%BD%93" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="agent" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="Manus极简入门：从0到1快速打造你的AI智能体 的封面示意图">
+  <defs><linearGradient id="g25" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#e879fa"/>
+  </linearGradient>
+  <filter id="h25"><feColorMatrix type="hueRotate" values="3"/></filter></defs>
+  <g filter="url(#h25)">
+    <rect width="96" height="128" rx="7" fill="url(#g25)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">M</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">智能体</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>Manus极简入门：从0到1快速打造你的AI智能体</h3>
+    <p class="bl-meta">— · 机械工业出版社 · 2025</p>
+    <p class="bl-for">COKE 框架指令实操</p>
+    <div class="bl-tags"><span class="bl-tag">智能体</span><span class="bl-isbn">ISBN 9787111780861</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=Manus%E6%9E%81%E7%AE%80%E5%85%A5%E9%97%A8%EF%BC%9A%E4%BB%8E0%E5%88%B01%E5%BF%AB%E9%80%9F%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84AI%E6%99%BA%E8%83%BD%E4%BD%93" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=Manus%E6%9E%81%E7%AE%80%E5%85%A5%E9%97%A8%EF%BC%9A%E4%BB%8E0%E5%88%B01%E5%BF%AB%E9%80%9F%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84AI%E6%99%BA%E8%83%BD%E4%BD%93" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="agent" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="如何向AI提问 的封面示意图">
+  <defs><linearGradient id="g30" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#e879fa"/>
+  </linearGradient>
+  <filter id="h30"><feColorMatrix type="hueRotate" values="8"/></filter></defs>
+  <g filter="url(#h30)">
+    <rect width="96" height="128" rx="7" fill="url(#g30)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">如</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">提示工程</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>如何向AI提问</h3>
+    <p class="bl-meta">— · 中国友谊出版公司 · 2025</p>
+    <p class="bl-for">提问公式：角色+背景+目标+要求+规则</p>
+    <div class="bl-tags"><span class="bl-tag">提示工程</span><span class="bl-isbn">ISBN 9787505760899</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E5%A6%82%E4%BD%95%E5%90%91AI%E6%8F%90%E9%97%AE" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E5%A6%82%E4%BD%95%E5%90%91AI%E6%8F%90%E9%97%AE" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div></div>
+</section>
+<section class="bl-sec" id="bl-industry" data-g="industry">
+  <h2>行业落地<span class="bl-n">16 本</span></h2>
+  <p class="bl-sub">看别人怎么把它用在具体行业，不看你用不上的一百个场景</p>
+  <div class="bl-grid"><div class="bl-card" data-g="industry" data-tier="2026" data-must="1">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="算力革命与词元经济——读懂AI时代的底层竞争 的封面示意图">
+  <defs><linearGradient id="g0" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h0"><feColorMatrix type="hueRotate" values="-22"/></filter></defs>
+  <g filter="url(#h0)">
+    <rect width="96" height="128" rx="7" fill="url(#g0)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">算</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">产业</text>
+</svg><span class="bl-must">必读</span></div>
+  <div class="bl-body">
+    <h3>算力革命与词元经济——读懂AI时代的底层竞争</h3>
+    <p class="bl-meta">吴鸣 · 科学出版社 · 2026</p>
+    <p class="bl-for">想搞懂 token 成本与算力定价逻辑的人</p>
+    <div class="bl-tags"><span class="bl-tag">产业</span><span class="bl-isbn">ISBN 9787030862204</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E7%AE%97%E5%8A%9B%E9%9D%A9%E5%91%BD%E4%B8%8E%E8%AF%8D%E5%85%83%E7%BB%8F%E6%B5%8E%E2%80%94%E2%80%94%E8%AF%BB%E6%87%82AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%BA%95%E5%B1%82%E7%AB%9E%E4%BA%89" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E7%AE%97%E5%8A%9B%E9%9D%A9%E5%91%BD%E4%B8%8E%E8%AF%8D%E5%85%83%E7%BB%8F%E6%B5%8E%E2%80%94%E2%80%94%E8%AF%BB%E6%87%82AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%BA%95%E5%B1%82%E7%AB%9E%E4%BA%89" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="给未来教师的人工智能教学手册 的封面示意图">
+  <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h2"><feColorMatrix type="hueRotate" values="7"/></filter></defs>
+  <g filter="url(#h2)">
+    <rect width="96" height="128" rx="7" fill="url(#g2)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">给</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">教育</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>给未来教师的人工智能教学手册</h3>
+    <p class="bl-meta">李逢庆 · 科学出版社 · 2026</p>
+    <p class="bl-for">一线教师备课与课堂落地</p>
+    <div class="bl-tags"><span class="bl-tag">教育</span><span class="bl-isbn">ISBN 9787030856319</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E7%BB%99%E6%9C%AA%E6%9D%A5%E6%95%99%E5%B8%88%E7%9A%84%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%95%99%E5%AD%A6%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E7%BB%99%E6%9C%AA%E6%9D%A5%E6%95%99%E5%B8%88%E7%9A%84%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%95%99%E5%AD%A6%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="心脑协同思维：人工智能时代的人类智慧 的封面示意图">
+  <defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h5"><feColorMatrix type="hueRotate" values="-17"/></filter></defs>
+  <g filter="url(#h5)">
+    <rect width="96" height="128" rx="7" fill="url(#g5)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">心</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">认知</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>心脑协同思维：人工智能时代的人类智慧</h3>
+    <p class="bl-meta">王前 等 · 科学出版社 · 2026</p>
+    <p class="bl-for">想理解人机思维差异的人</p>
+    <div class="bl-tags"><span class="bl-tag">认知</span><span class="bl-isbn">ISBN 9787030855749</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E5%BF%83%E8%84%91%E5%8D%8F%E5%90%8C%E6%80%9D%E7%BB%B4%EF%BC%9A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%97%B6%E4%BB%A3%E7%9A%84%E4%BA%BA%E7%B1%BB%E6%99%BA%E6%85%A7" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E5%BF%83%E8%84%91%E5%8D%8F%E5%90%8C%E6%80%9D%E7%BB%B4%EF%BC%9A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%97%B6%E4%BB%A3%E7%9A%84%E4%BA%BA%E7%B1%BB%E6%99%BA%E6%85%A7" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工自愈——机器自主健康导论 的封面示意图">
+  <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h6"><feColorMatrix type="hueRotate" values="20"/></filter></defs>
+  <g filter="url(#h6)">
+    <rect width="96" height="128" rx="7" fill="url(#g6)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">工业</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工自愈——机器自主健康导论</h3>
+    <p class="bl-meta">高金吉 · 科学出版社 · 2026</p>
+    <p class="bl-for">设备运维与预测性维护方向</p>
+    <div class="bl-tags"><span class="bl-tag">工业</span><span class="bl-isbn">ISBN 9787030853592</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E8%87%AA%E6%84%88%E2%80%94%E2%80%94%E6%9C%BA%E5%99%A8%E8%87%AA%E4%B8%BB%E5%81%A5%E5%BA%B7%E5%AF%BC%E8%AE%BA" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E8%87%AA%E6%84%88%E2%80%94%E2%80%94%E6%9C%BA%E5%99%A8%E8%87%AA%E4%B8%BB%E5%81%A5%E5%BA%B7%E5%AF%BC%E8%AE%BA" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="AI赋能教师数智素养提升 的封面示意图">
+  <defs><linearGradient id="g7" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h7"><feColorMatrix type="hueRotate" values="12"/></filter></defs>
+  <g filter="url(#h7)">
+    <rect width="96" height="128" rx="7" fill="url(#g7)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">教育</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>AI赋能教师数智素养提升</h3>
+    <p class="bl-meta">兰国帅 等 · 科学出版社 · 2026</p>
+    <p class="bl-for">教师培训与师范生</p>
+    <div class="bl-tags"><span class="bl-tag">教育</span><span class="bl-isbn">ISBN 9787030860712</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=AI%E8%B5%8B%E8%83%BD%E6%95%99%E5%B8%88%E6%95%B0%E6%99%BA%E7%B4%A0%E5%85%BB%E6%8F%90%E5%8D%87" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=AI%E8%B5%8B%E8%83%BD%E6%95%99%E5%B8%88%E6%95%B0%E6%99%BA%E7%B4%A0%E5%85%BB%E6%8F%90%E5%8D%87" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能在法庭科学的应用 的封面示意图">
+  <defs><linearGradient id="g8" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h8"><feColorMatrix type="hueRotate" values="4"/></filter></defs>
+  <g filter="url(#h8)">
+    <rect width="96" height="128" rx="7" fill="url(#g8)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">法律</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能在法庭科学的应用</h3>
+    <p class="bl-meta">何晓丹、郭弘 · 科学出版社 · 2026</p>
+    <p class="bl-for">司法鉴定与法律科技从业者</p>
+    <div class="bl-tags"><span class="bl-tag">法律</span><span class="bl-isbn">ISBN 9787030851550</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%9C%A8%E6%B3%95%E5%BA%AD%E7%A7%91%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%9C%A8%E6%B3%95%E5%BA%AD%E7%A7%91%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能与未来食品 的封面示意图">
+  <defs><linearGradient id="g9" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h9"><feColorMatrix type="hueRotate" values="-4"/></filter></defs>
+  <g filter="url(#h9)">
+    <rect width="96" height="128" rx="7" fill="url(#g9)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">行业</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能与未来食品</h3>
+    <p class="bl-meta">庞杰 等 · 科学出版社 · 2026</p>
+    <p class="bl-for">食品工程与供应链</p>
+    <div class="bl-tags"><span class="bl-tag">行业</span><span class="bl-isbn">ISBN 9787030858030</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E6%9C%AA%E6%9D%A5%E9%A3%9F%E5%93%81" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E6%9C%AA%E6%9D%A5%E9%A3%9F%E5%93%81" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="新闻传播的人工智能实践及其反思 的封面示意图">
+  <defs><linearGradient id="g10" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h10"><feColorMatrix type="hueRotate" values="-12"/></filter></defs>
+  <g filter="url(#h10)">
+    <rect width="96" height="128" rx="7" fill="url(#g10)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">新</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">传媒</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>新闻传播的人工智能实践及其反思</h3>
+    <p class="bl-meta">洪杰文 · 科学出版社 · 2026</p>
+    <p class="bl-for">内容生产者与媒体研究者</p>
+    <div class="bl-tags"><span class="bl-tag">传媒</span><span class="bl-isbn">ISBN 9787030858887</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%96%B0%E9%97%BB%E4%BC%A0%E6%92%AD%E7%9A%84%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E8%B7%B5%E5%8F%8A%E5%85%B6%E5%8F%8D%E6%80%9D" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%96%B0%E9%97%BB%E4%BC%A0%E6%92%AD%E7%9A%84%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E8%B7%B5%E5%8F%8A%E5%85%B6%E5%8F%8D%E6%80%9D" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2026" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能与健康传播：基础与应用 的封面示意图">
+  <defs><linearGradient id="g11" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h11"><feColorMatrix type="hueRotate" values="-20"/></filter></defs>
+  <g filter="url(#h11)">
+    <rect width="96" height="128" rx="7" fill="url(#g11)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">医疗</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能与健康传播：基础与应用</h3>
+    <p class="bl-meta">张盛、黄敬意 · 科学出版社 · 2026</p>
+    <p class="bl-for">健康科普与医疗传播方向</p>
+    <div class="bl-tags"><span class="bl-tag">医疗</span><span class="bl-isbn">ISBN 9787030851970</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7%E4%BC%A0%E6%92%AD%EF%BC%9A%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%BA%94%E7%94%A8" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%81%A5%E5%BA%B7%E4%BC%A0%E6%92%AD%EF%BC%9A%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%BA%94%E7%94%A8" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="第四次浪潮 的封面示意图">
+  <defs><linearGradient id="g34" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h34"><feColorMatrix type="hueRotate" values="21"/></filter></defs>
+  <g filter="url(#h34)">
+    <rect width="96" height="128" rx="7" fill="url(#g34)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">第</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">趋势</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>第四次浪潮</h3>
+    <p class="bl-meta">大前研一 · 浙江教育出版社 · 2025</p>
+    <p class="bl-for">把 AI 革命放进长周期看</p>
+    <div class="bl-tags"><span class="bl-tag">趋势</span><span class="bl-isbn">ISBN 9787572288821</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%B5%AA%E6%BD%AE" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E7%AC%AC%E5%9B%9B%E6%AC%A1%E6%B5%AA%E6%BD%AE" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人类还有希望吗：人工智能时代的人文启蒙和教育 的封面示意图">
+  <defs><linearGradient id="g39" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h39"><feColorMatrix type="hueRotate" values="-19"/></filter></defs>
+  <g filter="url(#h39)">
+    <rect width="96" height="128" rx="7" fill="url(#g39)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">教育</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人类还有希望吗：人工智能时代的人文启蒙和教育</h3>
+    <p class="bl-meta">— · 上海三联书店 · 2025</p>
+    <p class="bl-for">共情、实践智慧与隐性知识</p>
+    <div class="bl-tags"><span class="bl-tag">教育</span><span class="bl-isbn">ISBN 9787542688330</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E7%B1%BB%E8%BF%98%E6%9C%89%E5%B8%8C%E6%9C%9B%E5%90%97%EF%BC%9A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%97%B6%E4%BB%A3%E7%9A%84%E4%BA%BA%E6%96%87%E5%90%AF%E8%92%99%E5%92%8C%E6%95%99%E8%82%B2" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E7%B1%BB%E8%BF%98%E6%9C%89%E5%B8%8C%E6%9C%9B%E5%90%97%EF%BC%9A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%97%B6%E4%BB%A3%E7%9A%84%E4%BA%BA%E6%96%87%E5%90%AF%E8%92%99%E5%92%8C%E6%95%99%E8%82%B2" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="教师助手：巧用AI高效教学 的封面示意图">
+  <defs><linearGradient id="g41" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h41"><feColorMatrix type="hueRotate" values="10"/></filter></defs>
+  <g filter="url(#h41)">
+    <rect width="96" height="128" rx="7" fill="url(#g41)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">教</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">教育</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>教师助手：巧用AI高效教学</h3>
+    <p class="bl-meta">汪兵、雷春、秋叶 · 北京大学出版社 · 2025</p>
+    <p class="bl-for">66 个 DeepSeek 教学实战技巧</p>
+    <div class="bl-tags"><span class="bl-tag">教育</span><span class="bl-isbn">ISBN 9787301359136</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%95%99%E5%B8%88%E5%8A%A9%E6%89%8B%EF%BC%9A%E5%B7%A7%E7%94%A8AI%E9%AB%98%E6%95%88%E6%95%99%E5%AD%A6" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%95%99%E5%B8%88%E5%8A%A9%E6%89%8B%EF%BC%9A%E5%B7%A7%E7%94%A8AI%E9%AB%98%E6%95%88%E6%95%99%E5%AD%A6" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="DeepSeek打开财富密码 的封面示意图">
+  <defs><linearGradient id="g42" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h42"><feColorMatrix type="hueRotate" values="2"/></filter></defs>
+  <g filter="url(#h42)">
+    <rect width="96" height="128" rx="7" fill="url(#g42)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">商业</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>DeepSeek打开财富密码</h3>
+    <p class="bl-meta">陈根 · 电子工业出版社 · 2025</p>
+    <p class="bl-for">看 DeepSeek 崛起与行业影响</p>
+    <div class="bl-tags"><span class="bl-tag">商业</span><span class="bl-isbn">ISBN 9787121498794</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=DeepSeek%E6%89%93%E5%BC%80%E8%B4%A2%E5%AF%8C%E5%AF%86%E7%A0%81" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=DeepSeek%E6%89%93%E5%BC%80%E8%B4%A2%E5%AF%8C%E5%AF%86%E7%A0%81" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能与气候金融 的封面示意图">
+  <defs><linearGradient id="g46" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h46"><feColorMatrix type="hueRotate" values="15"/></filter></defs>
+  <g filter="url(#h46)">
+    <rect width="96" height="128" rx="7" fill="url(#g46)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">金融</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能与气候金融</h3>
+    <p class="bl-meta">姬强、郭琨、张大永 · 科学出版社 · 2025</p>
+    <p class="bl-for">气候风险建模与金融应用</p>
+    <div class="bl-tags"><span class="bl-tag">金融</span><span class="bl-isbn">ISBN 9787030841124</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E6%B0%94%E5%80%99%E9%87%91%E8%9E%8D" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E6%B0%94%E5%80%99%E9%87%91%E8%9E%8D" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="数智技术赋能教育变革 的封面示意图">
+  <defs><linearGradient id="g47" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h47"><feColorMatrix type="hueRotate" values="7"/></filter></defs>
+  <g filter="url(#h47)">
+    <rect width="96" height="128" rx="7" fill="url(#g47)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">数</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">教育</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>数智技术赋能教育变革</h3>
+    <p class="bl-meta">郑燕林、任维武 · 科学出版社 · 2025</p>
+    <p class="bl-for">教育数字化转型路径</p>
+    <div class="bl-tags"><span class="bl-tag">教育</span><span class="bl-isbn">ISBN 9787030839695</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E6%95%B0%E6%99%BA%E6%8A%80%E6%9C%AF%E8%B5%8B%E8%83%BD%E6%95%99%E8%82%B2%E5%8F%98%E9%9D%A9" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E6%95%B0%E6%99%BA%E6%8A%80%E6%9C%AF%E8%B5%8B%E8%83%BD%E6%95%99%E8%82%B2%E5%8F%98%E9%9D%A9" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="industry" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="人工智能赋能创新创业理论与实践：全球视角 的封面示意图">
+  <defs><linearGradient id="g49" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0b95c"/><stop offset="1" stop-color="#f97362"/>
+  </linearGradient>
+  <filter id="h49"><feColorMatrix type="hueRotate" values="-9"/></filter></defs>
+  <g filter="url(#h49)">
+    <rect width="96" height="128" rx="7" fill="url(#g49)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">人</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">商业</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>人工智能赋能创新创业理论与实践：全球视角</h3>
+    <p class="bl-meta">李大元 等 · 科学出版社 · 2025</p>
+    <p class="bl-for">AI 创业的全球案例与理论</p>
+    <div class="bl-tags"><span class="bl-tag">商业</span><span class="bl-isbn">ISBN 9787030818348</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%B5%8B%E8%83%BD%E5%88%9B%E6%96%B0%E5%88%9B%E4%B8%9A%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%85%A8%E7%90%83%E8%A7%86%E8%A7%92" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%B5%8B%E8%83%BD%E5%88%9B%E6%96%B0%E5%88%9B%E4%B8%9A%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%85%A8%E7%90%83%E8%A7%86%E8%A7%92" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div></div>
+</section>
+<section class="bl-sec" id="bl-career" data-g="career">
+  <h2>求职与学习法<span class="bl-n">2 本</span></h2>
+  <p class="bl-sub">准备面试、想找一条能走完的学习路线</p>
+  <div class="bl-grid"><div class="bl-card" data-g="career" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="百面大模型 的封面示意图">
+  <defs><linearGradient id="g13" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#22b478"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h13"><feColorMatrix type="hueRotate" values="9"/></filter></defs>
+  <g filter="url(#h13)">
+    <rect width="96" height="128" rx="7" fill="url(#g13)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">百</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">面试</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>百面大模型</h3>
+    <p class="bl-meta">— · 人民邮电出版社 · 2025</p>
+    <p class="bl-for">准备大模型岗位面试的人</p>
+    <div class="bl-tags"><span class="bl-tag">面试</span><span class="bl-isbn">ISBN 9787115662217</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=%E7%99%BE%E9%9D%A2%E5%A4%A7%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=%E7%99%BE%E9%9D%A2%E5%A4%A7%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="career" data-tier="2025" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="AI帮你赢：人人都能用的AI方法论 的封面示意图">
+  <defs><linearGradient id="g29" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#22b478"/><stop offset="1" stop-color="#38b6ff"/>
+  </linearGradient>
+  <filter id="h29"><feColorMatrix type="hueRotate" values="16"/></filter></defs>
+  <g filter="url(#h29)">
+    <rect width="96" height="128" rx="7" fill="url(#g29)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="80" font-size="54" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">方法</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>AI帮你赢：人人都能用的AI方法论</h3>
+    <p class="bl-meta">— · 人民邮电出版社 · 2025</p>
+    <p class="bl-for">把 AI 当方法而不是工具</p>
+    <div class="bl-tags"><span class="bl-tag">方法</span><span class="bl-isbn">ISBN 9787115646637</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://weread.qq.com/web/search/books?keyword=AI%E5%B8%AE%E4%BD%A0%E8%B5%A2%EF%BC%9A%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%83%BD%E7%94%A8%E7%9A%84AI%E6%96%B9%E6%B3%95%E8%AE%BA" target="_blank" rel="noopener">微信读书搜索 →</a><a class="bl-go alt" href="https://search.douban.com/book/subject_search?search_text=AI%E5%B8%AE%E4%BD%A0%E8%B5%A2%EF%BC%9A%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%83%BD%E7%94%A8%E7%9A%84AI%E6%96%B9%E6%B3%95%E8%AE%BA" target="_blank" rel="noopener">豆瓣搜索 →</a></div>
+  </div>
+</div></div>
+</section>
+<section class="bl-sec" id="bl-en" data-g="en">
+  <h2>英文原版<span class="bl-n">5 本</span></h2>
+  <p class="bl-sub">官方免费或权威原版，多数可在官网直接读</p>
+  <div class="bl-grid"><div class="bl-card" data-g="en" data-tier="en" data-must="1">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="Artificial Intelligence: A Modern Approach (4th Edition) 的封面示意图">
+  <defs><linearGradient id="g50" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#64748b"/><stop offset="1" stop-color="#94a3b8"/>
+  </linearGradient>
+  <filter id="h50"><feColorMatrix type="hueRotate" values="-17"/></filter></defs>
+  <g filter="url(#h50)">
+    <rect width="96" height="128" rx="7" fill="url(#g50)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="78" font-size="46" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">EN</text>
+</svg><span class="bl-must">必读</span></div>
+  <div class="bl-body">
+    <h3>Artificial Intelligence: A Modern Approach (4th Edition)</h3>
+    <p class="bl-meta">Stuart Russell, Peter Norvig · Pearson · 2021</p>
+    <p class="bl-for">全球 1500+ 高校采用的 AI 标准教材</p>
+    <div class="bl-tags"><span class="bl-tag">教材</span><span class="bl-isbn">ISBN 9780134610993</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://aima.cs.berkeley.edu/" target="_blank" rel="noopener">官方站点 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="en" data-tier="en" data-must="1">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="Deep Learning 的封面示意图">
+  <defs><linearGradient id="g51" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#64748b"/><stop offset="1" stop-color="#94a3b8"/>
+  </linearGradient>
+  <filter id="h51"><feColorMatrix type="hueRotate" values="20"/></filter></defs>
+  <g filter="url(#h51)">
+    <rect width="96" height="128" rx="7" fill="url(#g51)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="78" font-size="46" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">D</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">EN</text>
+</svg><span class="bl-must">必读</span></div>
+  <div class="bl-body">
+    <h3>Deep Learning</h3>
+    <p class="bl-meta">Ian Goodfellow, Yoshua Bengio, Aaron Courville · MIT Press · 2016</p>
+    <p class="bl-for">深度学习理论基石，官方提供免费在线全文</p>
+    <div class="bl-tags"><span class="bl-tag">教材</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">官方站点 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="en" data-tier="en" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="Attention Is All You Need 的封面示意图">
+  <defs><linearGradient id="g52" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#64748b"/><stop offset="1" stop-color="#94a3b8"/>
+  </linearGradient>
+  <filter id="h52"><feColorMatrix type="hueRotate" values="12"/></filter></defs>
+  <g filter="url(#h52)">
+    <rect width="96" height="128" rx="7" fill="url(#g52)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="78" font-size="46" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">EN</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>Attention Is All You Need</h3>
+    <p class="bl-meta">Vaswani et al. · NeurIPS / arXiv · 2017</p>
+    <p class="bl-for">Transformer 原始论文，读大模型必读的第一篇</p>
+    <div class="bl-tags"><span class="bl-tag">论文</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">官方站点 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="en" data-tier="en" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="GPT-4 Technical Report 的封面示意图">
+  <defs><linearGradient id="g53" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#64748b"/><stop offset="1" stop-color="#94a3b8"/>
+  </linearGradient>
+  <filter id="h53"><feColorMatrix type="hueRotate" values="4"/></filter></defs>
+  <g filter="url(#h53)">
+    <rect width="96" height="128" rx="7" fill="url(#g53)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="78" font-size="46" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">G</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">EN</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>GPT-4 Technical Report</h3>
+    <p class="bl-meta">OpenAI · arXiv · 2023</p>
+    <p class="bl-for">大模型能力评估与安全对齐的官方说明</p>
+    <div class="bl-tags"><span class="bl-tag">论文</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://arxiv.org/abs/2303.08774" target="_blank" rel="noopener">官方站点 →</a></div>
+  </div>
+</div>
+<div class="bl-card" data-g="en" data-tier="en" data-must="0">
+  <div class="bl-thumb"><svg class="bl-cv" viewBox="0 0 96 128" width="96" height="128" role="img" aria-label="Artificial Intelligence: A Modern Approach · 各版本与译本 ISBN 一览 的封面示意图">
+  <defs><linearGradient id="g54" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#64748b"/><stop offset="1" stop-color="#94a3b8"/>
+  </linearGradient>
+  <filter id="h54"><feColorMatrix type="hueRotate" values="-4"/></filter></defs>
+  <g filter="url(#h54)">
+    <rect width="96" height="128" rx="7" fill="url(#g54)"/>
+    <rect x="7" y="7" width="2" height="114" rx="1" fill="rgba(255,255,255,.45)"/>
+  </g>
+  <text x="52" y="78" font-size="46" font-weight="900" fill="#fff" text-anchor="middle"
+        font-family="system-ui,-apple-system,'PingFang SC',sans-serif" opacity=".95">A</text>
+  <text x="52" y="104" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle"
+        font-family="system-ui,sans-serif" letter-spacing="1">EN</text>
+</svg></div>
+  <div class="bl-body">
+    <h3>Artificial Intelligence: A Modern Approach · 各版本与译本 ISBN 一览</h3>
+    <p class="bl-meta">AIMA 官方站 · UC Berkeley · —</p>
+    <p class="bl-for">核对任一版本／译本 ISBN 的官方入口</p>
+    <div class="bl-tags"><span class="bl-tag">书目</span></div>
+    <div class="bl-links"><a class="bl-go" href="https://aima.cs.berkeley.edu/translations.html" target="_blank" rel="noopener">官方站点 →</a></div>
+  </div>
+</div></div>
+</section>
+
+  <div class="bl-note">
+    <b>关于链接</b>：中文书没有稳定的公开详情页，所以给的是<b>微信读书搜索</b>与<b>豆瓣搜索</b>（都是国内可直接打开的站点），点进去是搜索页不是书籍详情页，这里如实说明。<br>
+    <b>关于封面</b>：卡片左侧的封面是按书名首字 + 分组配色程序生成的示意图，不是真实书封——出版社封面有版权、第三方图床有防盗链，本站不引用。<br>
+    <b>关于推荐理由</b>：每本下面那句「适合谁看」来自本站编辑判断，不是出版社宣传语。<br>
+    <b>数据时间</b>：2026-11-26 14:00 · 共 55 本 · ISBN 完整 51 本。
+  </div>
+
+</div>
+
+<script src="/site-nav.js"></script>
+<script src="/ccowork.js?v=20261125a"></script>
+<script>
+/* 2026-11-25 书单筛选：三个维度可组合（阶段 × 年份 × 只看必读）。
+   隐藏用 display:none 而不是删 DOM，切回来不用重渲染。 */
+(function(){
+  try{
+    var box = document.getElementById('blFilter');
+    if (!box) return;
+    var msg = document.getElementById('blFlMsg');
+    var st = { group: 'all', year: 'all', must: false };
+    var secs = [].slice.call(document.querySelectorAll('.bl-sec'));
+
+    function apply(){
+      var shown = 0;
+      secs.forEach(function(sec){
+        var g = sec.getAttribute('data-g');
+        var vis = 0;
+        [].slice.call(sec.querySelectorAll('.bl-card')).forEach(function(c){
+          var ok = (st.group === 'all' || st.group === g);
+          if (ok && st.year !== 'all') ok = c.getAttribute('data-tier') === st.year;
+          if (ok && st.must) ok = c.getAttribute('data-must') === '1';
+          c.style.display = ok ? '' : 'none';
+          if (ok) vis++;
+        });
+        sec.style.display = vis ? '' : 'none';
+        var n = sec.querySelector('.bl-n');
+        if (n) n.textContent = vis + ' 本';
+        shown += vis;
+      });
+      if (msg) {
+        if (shown === 0) { msg.hidden = false; msg.textContent = '这个组合下没有书，换一个筛选条件试试。'; }
+        else { msg.hidden = true; }
+      }
+    }
+
+    box.addEventListener('click', function(e){
+      var b = e.target.closest ? e.target.closest('.bl-fl') : null;
+      if (!b) return;
+      var f = b.getAttribute('data-f'), v = b.getAttribute('data-v');
+      if (f === 'group') {
+        [].slice.call(box.querySelectorAll('[data-f="group"]')).forEach(function(x){ x.classList.remove('on'); });
+        b.classList.add('on'); st.group = v;
+      } else if (f === 'year') {
+        [].slice.call(box.querySelectorAll('[data-f="year"]')).forEach(function(x){ x.classList.remove('on'); });
+        b.classList.add('on'); st.year = v;
+      } else if (f === 'must') {
+        st.must = !st.must;
+        if (st.must) b.classList.add('on'); else b.classList.remove('on');
+      }
+      apply();
+    });
+    apply();
+  }catch(e){}
+})();
+</script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>并发与 async · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：并发与 async。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p061.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html" class="on">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 61 / 86 节
+    </div>
+    <h1>并发与 async</h1>
+    <h2 id="使用-async-实现并发"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/f78ab89d7545ac17780e6a367055cc089f4cd2ec/src/ch17-02-concurrency-with-async.md">ch17-02-concurrency-with-async.md</a></p>
+<p>在这一部分，我们将使用异步来应对一些与第十六章中通过线程解决的相同的并发问题。因为之前我们已经讨论了很多关键理念了，这一部分我们会专注于线程与 future 的区别。</p>
+<p>在很多情况下，使用异步处理并发的 API 与使用线程的非常相似。在其它的一些情况，它们则非常不同。即便线程与异步的 API <em>看起来</em> 很类似，通常它们有着不同的行为，同时它们几乎总是有着不同的性能特点。</p>
+<h3 id="使用-spawn_task-创建新任务"></h3>
+<p>第十六章中我们应付的第一个任务是在两个不同的线程中计数。让我们用异步来完成相同的任务。<code>trpl</code> crate 提供了一个 <code>spawn_task</code> 函数，它看起来非常像 <code>thread::spawn</code> API，和一个 <code>sleep</code> 函数，这是 <code>thread::sleep</code> API 的异步版本。我们可以将它们结合使用，实现与线程示例相同的计数功能，如示例 17-6 所示。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span>use std::time::Duration;
+
+fn main() {
+    trpl::block_on(async {
+        trpl::spawn_task(async {
+            for i in 1..10 {
+                println!("hi number {i} from the first task!");
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+        });
+
+        for i in 1..5 {
+            println!("hi number {i} from the second task!");
+            trpl::sleep(Duration::from_millis(500)).await;
+        }
+    });
+}</code></pre>
+<figcaption>示例 17-6：创建一个新任务，在主任务打印内容的同时打印另一组内容</figcaption>
+</figure>
+<p>作为起点，我们在 <code>main</code> 函数中使用 <code>trpl::block_on</code>，这样顶层函数就可以写成 async 风格。</p>
+<blockquote>
+<p>注意：从这里开始，本章中的每个示例在 <code>main</code> 中都会包含这段几乎完全一样的 <code>trpl::block_on</code> 包装代码，所以之后我们通常会像省略 <code>main</code> 一样把它省掉。记得在你自己的代码里补上它！</p>
+</blockquote>
+<p>然后我们在这个代码块里写了两个循环，每个循环中都调用了 <code>trpl::sleep</code>，在输出下一条消息之前等待半秒（500 毫秒）。其中一个循环放在 <code>trpl::spawn_task</code> 的函数体里，另一个则放在顶层的 <code>for</code> 循环中。我们还在 <code>sleep</code> 调用后加上了 <code>await</code>。</p>
+<p>这段代码的行为和线程版实现很像，包括当你亲自运行时，终端中的消息顺序可能和这里不完全一样：</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">hi number 1 from the second task!
+hi number 1 from the first task!
+hi number 2 from the first task!
+hi number 2 from the second task!
+hi number 3 from the first task!
+hi number 3 from the second task!
+hi number 4 from the first task!
+hi number 4 from the second task!
+hi number 5 from the first task!
+</code></pre>
+<p>这个版本会在主 async 块中的 <code>for</code> 循环一结束就停止，因为当 <code>main</code> 函数结束时，由 <code>spawn_task</code> 生成的任务也会被关闭。如果你想让它一直运行到任务自身完成，就需要使用 join handle 来等待第一个任务结束。在线程的版本中，我们使用 <code>join</code> 方法“阻塞”等待线程运行结束。在示例 17-7 中，我们可以使用 <code>await</code> 做同样的事，因为任务句柄本身就是一个 future。它的 <code>Output</code> 类型是 <code>Result</code>，所以在等待之后还要再 <code>unwrap</code> 一次。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let handle = trpl::spawn_task(async {
+            for i in 1..10 {
+                println!("hi number {i} from the first task!");
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+        });
+
+        for i in 1..5 {
+            println!("hi number {i} from the second task!");
+            trpl::sleep(Duration::from_millis(500)).await;
+        }
+
+        handle.await.unwrap();
+<span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-7：在 join 句柄上使用 `await`，让任务运行到完成</figcaption>
+</figure>
+<p>更新后的版本会一直运行到<em>两个</em>循环都完成为止：</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">hi number 1 from the second task!
+hi number 1 from the first task!
+hi number 2 from the first task!
+hi number 2 from the second task!
+hi number 3 from the first task!
+hi number 3 from the second task!
+hi number 4 from the first task!
+hi number 4 from the second task!
+hi number 5 from the first task!
+hi number 6 from the first task!
+hi number 7 from the first task!
+hi number 8 from the first task!
+hi number 9 from the first task!
+</code></pre>
+<p>到目前为止，看起来 async 和线程只是用不同语法实现了相似效果：在 join handle 上使用 <code>await</code>，而不是调用 <code>join</code>；同时对 <code>sleep</code> 调用也使用 <code>await</code>。</p>
+<p>更大的不同在于，我们根本不需要再创建另一个操作系统线程来做这件事。实际上，这里甚至连任务都不一定要创建。因为 async 代码块会被编译成匿名 future，我们可以把每个循环都放进一个 async 代码块里，然后让运行时使用 <code>trpl::join</code> 让它们都执行到完成。</p>
+<p>在第十六章<a href="#等待所有线程结束">“等待所有线程完成”</a>一节中，我们展示了如何对 <code>std::thread::spawn</code> 返回的 <code>JoinHandle</code> 调用 <code>join</code> 方法。<code>trpl::join</code> 与之类似，不过它面向的是 future。当你把两个 future 传给它时，它会生成一个新的 future；等到<em>两个</em>传入的 future 都完成时，这个新 future 的输出就是一个包含它们各自输出值的元组。因此，在示例 17-8 中，我们用 <code>trpl::join</code> 来等待 <code>fut1</code> 和 <code>fut2</code> 完成。我们<em>不会</em>分别等待 <code>fut1</code> 和 <code>fut2</code>，而是等待 <code>trpl::join</code> 生成的那个新 future。这里我们忽略它的输出，因为那不过是一个包含两个 unit 值的元组。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let fut1 = async {
+            for i in 1..10 {
+                println!("hi number {i} from the first task!");
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+        };
+
+        let fut2 = async {
+            for i in 1..5 {
+                println!("hi number {i} from the second task!");
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+        };
+
+        trpl::join(fut1, fut2).await;
+<span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-8：使用 `trpl::join` 等待两个匿名 future</figcaption>
+</figure>
+<p>运行后，我们会看到两个 future 都执行到了结束：</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">hi number 1 from the first task!
+hi number 1 from the second task!
+hi number 2 from the first task!
+hi number 2 from the second task!
+hi number 3 from the first task!
+hi number 3 from the second task!
+hi number 4 from the first task!
+hi number 4 from the second task!
+hi number 5 from the first task!
+hi number 6 from the first task!
+hi number 7 from the first task!
+hi number 8 from the first task!
+hi number 9 from the first task!
+</code></pre>
+<p>现在你会发现，每次运行时顺序都完全一样，这和线程版本以及示例 17-7 中使用 <code>trpl::spawn_task</code> 的情况非常不同。这是因为 <code>trpl::join</code> 是 <em>fair</em> 的，也就是它会以同样的频率检查每一个 future，在它们之间交替进行；只要另一个 future 已经就绪，它就不会让其中一个一路领先。在线程模型下，由操作系统决定先检查哪个线程、让它运行多久。对于 async Rust，则由运行时决定先检查哪个任务。（在实践中，细节会复杂得多，因为异步运行时可能会在底层借助操作系统线程来实现并发，因此要保证公平性，对运行时来说可能意味着更多工作，但这仍然是可能做到的。）运行时并不一定会为任何给定操作都保证公平性，而且它们通常会提供不同的 API，让你自行决定是否需要公平性。</p>
+<p>尝试这些不同的 await future 的变体来观察它们的效果：</p>
+<ul>
+<li>去掉一个或者两个循环外的异步代码块。</li>
+<li>在定义两个异步代码块后立刻 await 它们。</li>
+<li>只将第一个循环封装进异步代码块，并在第二个循环体之后 await 作为结果的 future。</li>
+</ul>
+<p>作为额外的挑战，看看你能否在运行代码 <em>之前</em> 想出每个情况下的输出！</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="message-passing"></a>
+<a id="counting-up-on-two-tasks-using-message-passing"></a></p>
+<h3 id="通过消息传递在两个任务之间发送数据"></h3>
+<p>在 future 之间共享数据的方式也会让你感到熟悉：我们再次使用消息传递，只不过这次使用的是异步版本的类型和函数。为了展示基于线程的并发和基于 future 的并发之间的一些关键差别，我们会和第十六章<a href="#使用消息传递在线程间通信">“通过消息传递在线程间传送数据”</a>一节稍微走一条不一样的路线。在示例 17-9 中，我们先只使用一个 async 代码块，而<em>不</em>像之前那样显式地创建一个独立任务。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let (tx, mut rx) = trpl::channel();
+
+        let val = String::from("hi");
+        tx.send(val).unwrap();
+
+        let received = rx.recv().await.unwrap();
+        println!("received '{received}'");
+<span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-9：创建一个异步信道（async channel）并赋值其两端为 `tx` 和 `rx`</figcaption>
+</figure>
+<p>这里我们使用了 <code>trpl::channel</code>，一个第十六章用于线程的多生产者、单消费者信道 API 的异步版本。异步版本的 API 与基于线程的版本只有一点微小的区别：它使用一个可变的而不是不可变的 <code>rx</code>，并且它的 <code>recv</code> 方法产生一个需要 await 的 future 而不是直接返回值。现在我们可以发送端向接收端发送消息了。注意我们无需产生一个独立的线程或者任务；只需等待（await） <code>rx.recv</code> 调用。</p>
+<p><code>std::mpsc::channel</code> 中的同步 <code>Receiver::recv</code> 方法阻塞执行直到它接收一个消息。<code>trpl::Receiver::recv</code> 则不会阻塞，因为它是异步的。不同于阻塞，它将控制权交还给运行时，直到接收到一个消息或者信道的发送端关闭。相比之下，我们不用 await <code>send</code>，因为它不会阻塞。也无需阻塞，因为信道的发送端的数量是没有限制的。</p>
+<blockquote>
+<p>注意：因为这些 async 代码都运行在传给 <code>trpl::block_on</code> 的 async 代码块里，所以块中的所有内容都可以避免阻塞。不过，块<em>外部</em>的代码则会阻塞，直到 <code>block_on</code> 返回为止。这正是 <code>trpl::block_on</code> 的意义所在：它让你可以<em>选择</em>在哪一处对一组 async 代码进行阻塞，从而也就决定了在什么地方切换同步和异步代码。</p>
+</blockquote>
+<p>请注意这个示例中的两个地方：首先，消息立刻就会到达！其次，虽然我们使用了 future，但是这里还没有并发。示例中的所有事情都是顺序发生的，就像没涉及到 future 时一样。</p>
+<p>让我们通过发送一系列消息并在之间休眠来解决第一个问题，如示例 17-10 所示：</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let (tx, mut rx) = trpl::channel();
+
+        let vals = vec![
+            String::from("hi"),
+            String::from("from"),
+            String::from("the"),
+            String::from("future"),
+        ];
+
+        for val in vals {
+            tx.send(val).unwrap();
+            trpl::sleep(Duration::from_millis(500)).await;
+        }
+
+        while let Some(value) = rx.recv().await {
+            println!("received '{value}'");
+        }
+<span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-10：通过异步信道发送和接收多个消息并在每个消息之间通过 `await` 休眠</figcaption>
+</figure>
+<p>除了发送消息之外，我们还需要接收它们。在这个例子中我们可以手动接收，就是调用四次 <code>rx.recv().await</code>，因为我们知道进来了多少条消息。然而，在现实世界中，我们通常会等待 <em>未知</em> 数量的消息。这时我们需要一直等待直到可以确认没有更多消息了为止。</p>
+<p>在示例 16-10 中，我们使用 <code>for</code> 循环处理从同步信道接收到的所有条目。不过，Rust 目前还没有办法对<em>异步产生的</em>一系列条目使用 <code>for</code> 循环。因此，我们需要一种前面还没见过的循环：<code>while let</code> 条件循环。它正是我们在第六章<a href="#if-let-和-let-else-简洁控制流-1">“使用 <code>if let</code> 和 <code>let...else</code> 实现简洁控制流”</a>中见过的 <code>if let</code> 结构的循环版本。只要它指定的模式还在持续匹配，循环就会继续执行。</p>
+<p><code>rx.recv</code> 调用产生一个 <code>Future</code>，我们会 await 它。运行时会暂停 <code>Future</code> 直到它就绪。一旦消息到达，future 会解析为 <code>Some(message)</code>，每次消息到达时都会如此。当信道关闭时，不管是否有 <em>任何</em> 消息到达，future 都会解析为 <code>None</code> 来表明没有更多的值了，我们也就应该停止轮询，也就是停止等待。</p>
+<p><code>while let</code> 循环将上述逻辑整合在一起。如果 <code>rx.recv().await</code> 调用的结果是 <code>Some(message)</code>，我们会得到消息并可以在循环体中使用它，就像使用 <code>if let</code> 一样。如果结果是 <code>None</code>，则循环停止。每次循环执行完毕，它会再次触发 await point，如此运行时会再次暂停直到另一条消息到达。</p>
+<p>现在代码可以成功发送和接收所有的消息了。不幸的是，这里还有一些问题。首先，消息并不是按照半秒的间隔到达的。它们在程序启动后两秒（2000 毫秒）后立刻一起到达。其次，程序永远也不会退出！相反它会永远等待新消息。你会需要使用 <span class="keystroke">ctrl-c</span> 来关闭它。</p>
+<h4 id="一个-async-代码块中的代码会线性执行"></h4>
+<p>先来看为什么这些消息会在完整延迟之后一起到达，而不是在每次延迟之后逐条到达。在一个给定的 async 代码块里，代码中 <code>await</code> 出现的顺序，也就是程序运行时它们执行的顺序。</p>
+<p>示例 17-10 中只有一个 async 代码块，所以里面的一切都按线性顺序执行。这里依然没有并发。所有 <code>tx.send</code> 调用，连同 <code>trpl::sleep</code> 调用及其相应的 await 点，都会先全部依次发生。只有在那之后，<code>while let</code> 循环才有机会开始执行 <code>recv</code> 调用上的那些 await 点。</p>
+<p>为了得到我们真正想要的行为，也就是在每条消息之间都出现休眠间隔，我们需要把 <code>tx</code> 和 <code>rx</code> 的操作分别放进各自的 async 代码块中，如示例 17-11 所示。这样运行时就可以像示例 17-8 那样，使用 <code>trpl::join</code> 分别执行它们。我们再次等待的是 <code>trpl::join</code> 调用的结果，而不是分别等待每个 future。要是依次等待它们，我们就又回到了顺序执行的流程，这正是我们<em>不</em>想要的。</p>
+<!-- We cannot test this one because it never stops! -->
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span><span class="boring">        let (tx, mut rx) = trpl::channel();
+</span><span class="boring">
+</span>        let tx_fut = async {
+            let vals = vec![
+                String::from("hi"),
+                String::from("from"),
+                String::from("the"),
+                String::from("future"),
+            ];
+
+            for val in vals {
+                tx.send(val).unwrap();
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+        };
+
+        let rx_fut = async {
+            while let Some(value) = rx.recv().await {
+                println!("received '{value}'");
+            }
+        };
+
+        trpl::join(tx_fut, rx_fut).await;
+<span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-11：将 `send` 和 `recv` 分隔到其各自的 `async` 代码块中并 await 这些代码块的 future</figcaption>
+</figure>
+<p>使用示例 17-11 中更新后的代码后，消息就会以 500 毫秒的间隔输出，而不是在 2 秒之后一次性全部打印出来。</p>
+<h4 id="将所有权移入-async-代码块"></h4>
+<p>但是程序仍然永远也不会退出，这是由于 <code>while let</code> 循环与 <code>trpl::join</code> 的交互方式所致：</p>
+<ul>
+<li><code>trpl::join</code> 返回的 future 只会完成一次，即传递的 <em>两个</em> future 都完成的时候。</li>
+<li><code>tx_fut</code> future 会在发送完 <code>vals</code> 中最后一条消息后，再完成最后一次休眠之后结束。</li>
+<li><code>rx_fut</code> future 则要等到 <code>while let</code> 循环结束时才会结束。</li>
+<li>只有当等待 <code>rx.recv</code> 的结果变成 <code>None</code> 时，<code>while let</code> 循环才会结束。</li>
+<li>只有在信道另一端关闭后，等待 <code>rx.recv</code> 才会返回 <code>None</code>。</li>
+<li>只有在我们调用 <code>rx.close</code>，或者发送端 <code>tx</code> 被 drop 时，信道才会关闭。</li>
+<li>我们根本没有调用 <code>rx.close</code>，而 <code>tx</code> 也要等到传给 <code>trpl::block_on</code> 的最外层 async 代码块结束后才会被 drop。</li>
+<li>但那个最外层 async 代码块又必须等 <code>trpl::join</code> 完成才能结束，于是我们就又回到了这个列表的起点。</li>
+</ul>
+<p>目前，发送消息的那个 async 代码块只是<em>借用</em>了 <code>tx</code>，因为发送消息并不需要取得它的所有权。但如果我们能把 <code>tx</code> <em>move</em> 进那个 async 代码块里，那么一旦该代码块结束，<code>tx</code> 就会被 drop。在第十三章<a href="#捕获引用或移动所有权">“捕获引用或移动所有权”</a>中，你学过如何在闭包上使用 <code>move</code> 关键字；而正如第十六章<a href="#将-move-闭包与线程一同使用">“将 <code>move</code> 闭包与线程一同使用”</a>一节提到的那样，在线程场景下我们也经常需要把数据 move 进闭包。相同的基本原理也适用于 async 代码块，因此 <code>move</code> 关键字同样可以和 async 代码块一起使用。</p>
+<p>在示例 17-12 中，我们把发送消息用的代码块从 <code>async</code> 改为 <code>async move</code>。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let (tx, mut rx) = trpl::channel();
+
+        let tx_fut = async move {
+            // --snip--
+<span class="boring">            let vals = vec![
+</span><span class="boring">                String::from("hi"),
+</span><span class="boring">                String::from("from"),
+</span><span class="boring">                String::from("the"),
+</span><span class="boring">                String::from("future"),
+</span><span class="boring">            ];
+</span><span class="boring">
+</span><span class="boring">            for val in vals {
+</span><span class="boring">                tx.send(val).unwrap();
+</span><span class="boring">                trpl::sleep(Duration::from_millis(500)).await;
+</span><span class="boring">            }
+</span><span class="boring">        };
+</span><span class="boring">
+</span><span class="boring">        let rx_fut = async {
+</span><span class="boring">            while let Some(value) = rx.recv().await {
+</span><span class="boring">                println!("received '{value}'");
+</span><span class="boring">            }
+</span><span class="boring">        };
+</span><span class="boring">
+</span><span class="boring">        trpl::join(tx_fut, rx_fut).await;
+</span><span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-12：对示例 17-11 的修改版本，它会在完成后正确关闭</figcaption>
+</figure>
+<p>运行<em>这个</em>版本的代码后，它就会在最后一条消息发送并接收完之后正常退出。接下来，我们来看看，如果要从多个 future 发送数据，又需要做哪些变化。</p>
+<h4 id="使用-join-宏合并多个-future"></h4>
+<p>这个异步信道同样也是多生产者信道，因此如果我们希望从多个 future 发送消息，就可以对 <code>tx</code> 调用 <code>clone</code>，如示例 17-13 所示。</p>
+<figure class="listing">
+<p><span class="file-name">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">extern crate trpl; // required for mdbook test
+</span><span class="boring">
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    trpl::block_on(async {
+</span>        let (tx, mut rx) = trpl::channel();
+
+        let tx1 = tx.clone();
+        let tx1_fut = async move {
+            let vals = vec![
+                String::from("hi"),
+                String::from("from"),
+                String::from("the"),
+                String::from("future"),
+            ];
+
+            for val in vals {
+                tx1.send(val).unwrap();
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+        };
+
+        let rx_fut = async {
+            while let Some(value) = rx.recv().await {
+                println!("received '{value}'");
+            }
+        };
+
+        let tx_fut = async move {
+            let vals = vec![
+                String::from("more"),
+                String::from("messages"),
+                String::from("for"),
+                String::from("you"),
+            ];
+
+            for val in vals {
+                tx.send(val).unwrap();
+                trpl::sleep(Duration::from_millis(1500)).await;
+            }
+        };
+
+        trpl::join!(tx1_fut, tx_fut, rx_fut);
+<span class="boring">    });
+</span><span class="boring">}</span></code></pre>
+<figcaption>示例 17-13：在 async 代码块中使用多个生产者</figcaption>
+</figure>
+<p>首先，我们克隆 <code>tx</code>，在第一个 async 代码块外创建出 <code>tx1</code>。然后像之前处理 <code>tx</code> 那样，把 <code>tx1</code> move 进这个代码块里。随后，我们再把原始的 <code>tx</code> move 进一个<em>新的</em> async 代码块，在那里以稍慢一点的节奏继续发送更多消息。这里我们把这个新 async 代码块放在接收消息的 async 代码块后面，不过放在前面也同样可以。关键在于 future 被等待的顺序，而不是它们被创建的顺序。</p>
+<p>两个负责发送消息的 async 代码块都必须写成 <code>async move</code>，这样当代码块结束时，<code>tx</code> 和 <code>tx1</code> 都会被 drop。否则，我们又会回到一开始那个无限循环的问题。</p>
+<p>最后，我们从 <code>trpl::join</code> 切换为 <code>trpl::join!</code> 来处理新增的 future。<code>join!</code> 宏可以在 future 数量已知于编译期的情况下，等待任意数量的 future。本章稍后我们还会讨论，如何等待一个数量事先未知的 future 集合。</p>
+<p>现在我们就能看到来自两个发送 future 的所有消息了。由于这两个发送 future 在发送后使用了略微不同的延迟，接收到这些消息的时间间隔也会相应不同：</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">received 'hi'
+received 'more'
+received 'from'
+received 'the'
+received 'messages'
+received 'future'
+received 'for'
+received 'you'
+</code></pre>
+<p>我们已经探索了如何用消息传递在 future 之间发送数据、一个 async 代码块中的代码如何按顺序执行、如何将所有权 move 进 async 代码块，以及如何合并多个 future。接下来，我们来讨论一下，为什么以及如何告诉运行时：它现在可以切换去执行别的任务了。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p060.html">← Futures 和 async 语法</a><a href="index.html">目录</a><a href="p062.html">使用任意数量的 futures →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

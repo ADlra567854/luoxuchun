@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>共享状态并发 · Rust 程序设计语言（全文在线阅读） · 白驹 ccowork</title>
+<meta name="description" content="Rust 程序设计语言：共享状态并发。许可 Apache-2.0 OR MIT，来源 https://kaisery.github.io/trpl-zh-cn/。">
+<link rel="canonical" href="https://ccoworkbaiju.cn/book/open/trpl-zh/p058.html">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/book/open/book.css?v=20261124">
+</head>
+<body>
+<div class="bk-top"><div class="bk-top-in">
+  <span class="bk-brand">白驹 · 开源书全文阅读</span>
+  <span class="bk-meta">Rust 程序设计语言 · Apache-2.0 OR MIT</span>
+  <a href="/book/open/index.html">← 全部开源书</a>
+  <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">官方原站</a>
+</div></div>
+<div class="bk-wrap">
+  <nav class="bk-toc"><b>目录（86）</b><a href="p001.html">安装</a><a href="p002.html">Hello, World!</a><a href="p003.html">Hello, Cargo!</a><a href="p004.html">变量与可变性</a><a href="p005.html">数据类型</a><a href="p006.html">函数</a><a href="p007.html">注释</a><a href="p008.html">控制流</a><a href="p009.html">什么是所有权？</a><a href="p010.html">引用与借用</a><a href="p011.html">Slice 类型</a><a href="p012.html">结构体的定义和实例化</a><a href="p013.html">结构体示例程序</a><a href="p014.html">方法语法</a><a href="p015.html">枚举的定义</a><a href="p016.html">match 控制流结构</a><a href="p017.html">if let 和 let else 简洁控制流</a><a href="p018.html">包和 Crate</a><a href="p019.html">定义模块来控制作用域与私有性</a><a href="p020.html">引用模块树中项的路径</a><a href="p021.html">使用 use 关键字将路径引入作用域</a><a href="p022.html">将模块拆分成多个文件</a><a href="p023.html">使用 Vector 储存列表</a><a href="p024.html">使用字符串储存 UTF-8 编码的文本</a><a href="p025.html">使用 Hash Map 储存键值对</a><a href="p026.html">用 panic! 处理不可恢复的错误</a><a href="p027.html">用 Result 处理可恢复的错误</a><a href="p028.html">要不要 panic!</a><a href="p029.html">泛型数据类型</a><a href="p030.html">Trait：定义共同行为</a><a href="p031.html">生命周期确保引用有效</a><a href="p032.html">如何编写测试</a><a href="p033.html">控制测试如何运行</a><a href="p034.html">测试的组织结构</a><a href="p035.html">接受命令行参数</a><a href="p036.html">读取文件</a><a href="p037.html">重构以改进模块化与错误处理</a><a href="p038.html">采用测试驱动开发完善库的功能</a><a href="p039.html">处理环境变量</a><a href="p040.html">将错误信息输出到标准错误而不是标准输出</a><a href="p041.html">闭包：可以捕获其环境的匿名函数</a><a href="p042.html">使用迭代器处理元素序列</a><a href="p043.html">改进之前的 I/O 项目</a><a href="p044.html">性能比较：循环对迭代器</a><a href="p045.html">采用发布配置自定义构建</a><a href="p046.html">将 crate 发布到 Crates.io</a><a href="p047.html">Cargo 工作空间</a><a href="p048.html">使用 cargo install 安装二进制文件</a><a href="p049.html">Cargo 自定义扩展命令</a><a href="p050.html">使用 Box&lt;T&gt; 指向堆上数据</a><a href="p051.html">使用 Deref Trait 将智能指针当作常规引用处理</a><a href="p052.html">使用 Drop Trait 运行清理代码</a><a href="p053.html">Rc&lt;T&gt; 引用计数智能指针</a><a href="p054.html">RefCell&lt;T&gt; 与内部可变性模式</a><a href="p055.html">引用循环会导致内存泄漏</a><a href="p056.html">使用线程同时地运行代码</a><a href="p057.html">使用消息传递在线程间通信</a><a href="p058.html" class="on">共享状态并发</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发</a><a href="p060.html">Futures 和 async 语法</a><a href="p061.html">并发与 async</a><a href="p062.html">使用任意数量的 futures</a><a href="p063.html">Stream：按顺序出现的 Future</a><a href="p064.html">深入理解 async 相关的 traits</a><a href="p065.html">future、任务和线程</a><a href="p066.html">面向对象语言的特征</a><a href="p067.html">使用 trait object 来抽象出共享行为</a><a href="p068.html">面向对象设计模式的实现</a><a href="p069.html">所有可能会用到模式的位置</a><a href="p070.html">Refutability（可反驳性）: 模式是否会匹配失效</a><a href="p071.html">模式语法</a><a href="p072.html">不安全 Rust</a><a href="p073.html">高级 trait</a><a href="p074.html">高级类型</a><a href="p075.html">高级函数与闭包</a><a href="p076.html">宏</a><a href="p077.html">构建单线程 web server</a><a href="p078.html">将单线程 server 变为多线程 server</a><a href="p079.html">优雅停机与清理</a><a href="p080.html">A - 关键字</a><a href="p081.html">B - 运算符与符号</a><a href="p082.html">C - 可派生的 trait</a><a href="p083.html">D - 实用开发工具</a><a href="p084.html">E - 版本</a><a href="p085.html">F - 本书译本</a><a href="p086.html">G - Rust 是如何开发的与 “Nightly Rust”</a></nav>
+  <main class="bk-main">
+    <div class="bk-lic">
+      <b>来源与许可</b>：Rust 程序设计语言 · 作者 Steve Klabnik、Carol Nichols、Chris Krycho 与 Rust 社区 · 译者 Rust 中文社区。<br>
+      许可 <a href="https://github.com/rust-lang/book/blob/master/COPYRIGHT" target="_blank" rel="noopener">Apache-2.0 OR MIT</a>（允许再分发，保留出处与许可）· 官方主页 <a href="https://kaisery.github.io/trpl-zh-cn/" target="_blank" rel="noopener">https://kaisery.github.io/trpl-zh-cn/</a> · 仓库 <a href="https://github.com/rust-lang/book" target="_blank" rel="noopener">https://github.com/rust-lang/book</a><br>
+      本站抓取时间 2026-11-24 22:17 · 本节为全书第 58 / 86 节
+    </div>
+    <h1>共享状态并发</h1>
+    <h2 id="共享状态并发"></h2>
+<p><a href="https://github.com/rust-lang/book/blob/1500248d8f230566e4ec9f27fcbb8fe9e2898ab1/src/ch16-03-shared-state.md">ch16-03-shared-state.md</a></p>
+<p>消息传递是一个很好的处理并发的方式，但并不是唯一一个。另一种方式是让多个线程访问相同的共享数据。再考虑一下 Go 语言文档中的这句口号：“不要通过共享内存来通讯”。（“do not communicate by sharing memory.”）</p>
+<p>通过共享内存进行通信，会是什么样的代码？此外，为什么喜欢消息传递的人会警告说谨慎使用内存共享？</p>
+<p>在某种程度上，任何编程语言中的信道都类似于单所有权，因为一旦将一个值传送到信道中，将无法再使用这个值。共享内存类似于多所有权：多个线程可以同时访问相同的内存位置。在 15 章中，我们介绍了智能指针可以实现多所有权，然而这会增加额外的复杂性，因为需要管理多个所有者。Rust 的类型系统和所有权规则在正确管理这些问题上提供了极大的帮助：举个例子，让我们来看看互斥器（mutexes），较为常见的共享内存并发原语之一。</p>
+<h3 id="使用互斥器控制访问"></h3>
+<p><strong>互斥器</strong>（<em>mutex</em>）是互相排斥（<em>mutual exclusion</em>）的缩写，因为在同一时刻，它只允许一个线程访问数据。为了访问互斥器中的数据，线程首先需要通过获取互斥器的<strong>锁</strong>（<em>lock</em>）来表明其希望访问数据。锁是一个数据结构，作为互斥器的一部分，它记录谁有数据的专属访问权。因此我们讲，互斥器通过锁系统<strong>保护</strong>（<em>guarding</em>）其数据。</p>
+<p>互斥器以难以使用著称（译注：原文指互斥器在其他编程语言中难以使用），因为你必须记住两个规则：</p>
+<ol>
+<li>在使用数据之前，必须获取锁。</li>
+<li>使用完被互斥器所保护的数据之后，必须解锁数据，这样其他线程才能够获取锁。</li>
+</ol>
+<p>作为一个现实中互斥器的例子，想象一下在某个会议的一次小组座谈会中，只有一个麦克风。如果一位成员要发言，他必须请求或表示希望使用麦克风。得到了麦克风后，他可以畅所欲言，讲完后再将麦克风交给下一位希望讲话的成员。如果一位成员结束发言后忘记将麦克风交还，其他人将无法发言。如果对共享麦克风的管理出现了问题，座谈会将无法正常进行！</p>
+<p>正确的管理互斥器异常复杂，这也是许多人之所以热衷于信道的原因。然而，在 Rust 中，得益于类型系统和所有权，你不可能在锁和解锁上出错。</p>
+<h4 id="mutext-的-api"></h4>
+<p>我们先从在单线程环境中使用互斥器开始，作为展示其用法的一个例子，如示例 16-12 所示：</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::sync::Mutex;
+
+fn main() {
+    let m = Mutex::new(5);
+
+    {
+        let mut num = m.lock().unwrap();
+        *num = 6;
+    }
+
+    println!("m = {m:?}");
+}</code></pre>
+<p><span class="caption">示例 16-12: 出于简单的考虑，在一个单线程上下文中探索 <code>Mutex&lt;T&gt;</code> 的 API</span></p>
+<p>像很多类型一样，我们使用关联函数 <code>new</code> 来创建一个 <code>Mutex&lt;T&gt;</code>。使用 <code>lock</code> 方法来获取锁，从而可以访问互斥器中的数据。这个调用会阻塞当前线程，直到我们拥有锁为止。</p>
+<p>如果另一个线程拥有锁，并且那个线程 panic 了，则 <code>lock</code> 调用会失败。在这种情况下，没人能够再获取锁，所以我们调用 <code>unwrap</code>，使当前线程 panic。</p>
+<p>一旦获取了锁，就可以将返回值（命名为 <code>num</code>）视为一个其内部数据的可变引用了。类型系统确保了我们在使用 <code>m</code> 中的值之前获取锁。<code>m</code> 的类型是 <code>Mutex&lt;i32&gt;</code> 而不是 <code>i32</code>，所以<strong>必须</strong>调用 <code>lock</code> 才能使用这个 <code>i32</code> 值。我们不能忘记这么做，因为如果没有获取锁，类型系统就不允许访问内部的 <code>i32</code> 值。</p>
+<p><code>lock</code> 调用返回一个包裹在 <code>LockResult</code> 中的 <code>MutexGuard</code>，我们通过调用 <code>unwrap</code> 处理了这个 <code>LockResult</code>。<code>MutexGuard</code> 智能指针实现了 <code>Deref</code> 来指向其内部数据；它也实现了 <code>Drop</code>，当 <code>MutexGuard</code> 离开作用域时，自动释放锁（发生在示例 16-12 内部作用域的结尾）。这样一来，就不会有忘记释放锁从而导致互斥器阻塞无法被其他线程使用的潜在风险，因为锁的释放是自动发生的。</p>
+<p>释放锁之后，我们可以打印出互斥器内部的 <code>i32</code> 值，并发现我们刚刚已经将其值改为 6。</p>
+<h4 id="给-mutext-共享访问"></h4>
+<p>现在让我们尝试使用 <code>Mutex&lt;T&gt;</code> 在多个线程间共享同一个值。我们将启动 10 个线程，并在各个线程中对同一个计数器值加 1，这样计数器将从 0 累加到 10。示例 16-13 中的例子会出现编译错误，而我们将通过这些错误来学习如何使用 <code>Mutex&lt;T&gt;</code>，以及 Rust 又是如何帮助我们正确使用它的。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">use std::sync::Mutex;
+use std::thread;
+
+fn main() {
+    let counter = Mutex::new(0);
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
+}</code></pre>
+<p><span class="caption">示例 16-13: 程序启动了 10 个线程，每个线程都通过 <code>Mutex&lt;T&gt;</code> 来增加计数器的值</span></p>
+<p>这里创建了一个 <code>counter</code> 变量来存放内含 <code>i32</code> 的 <code>Mutex&lt;T&gt;</code>，类似示例 16-12 那样。接下来我们遍历一个整数 range 来创建了 10 个线程。我们使用了 <code>thread::spawn</code>，并为所有线程传入了相同的闭包：它们每一个都将计数器移动进线程，调用 <code>lock</code> 方法来获取 <code>Mutex&lt;T&gt;</code> 上的锁，接着将互斥器中的值加一。当一个线程结束执行，<code>num</code> 会离开闭包作用域并释放锁，这样另一个线程就可以获取它了。</p>
+<p>在主线程中，我们像示例 16-2 那样收集了所有的 <code>JoinHandle</code>，并调用它们的 <code>join</code> 方法来等待所有线程结束。然后，主线程会获取锁，并打印出程序的结果。</p>
+<p>之前提示过，这个例子不能编译。现在让我们看看为什么！</p>
+<pre><code class="language-console">$ cargo run
+   Compiling shared-state v0.1.0 (file:///projects/shared-state)
+error[E0382]: borrow of moved value: `counter`
+  --&gt; src/main.rs:21:29
+   |
+ 5 |     let counter = Mutex::new(0);
+   |         ------- move occurs because `counter` has type `std::sync::Mutex&lt;i32&gt;`, which does not implement the `Copy` trait
+...
+ 8 |     for _ in 0..10 {
+   |     -------------- inside of this loop
+ 9 |         let handle = thread::spawn(move || {
+   |                                    ------- value moved into closure here, in previous iteration of loop
+...
+21 |     println!("Result: {}", *counter.lock().unwrap());
+   |                             ^^^^^^^ value borrowed here after move
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `shared-state` (bin "shared-state") due to 1 previous error
+</code></pre>
+<p>错误信息表明 <code>counter</code> 值在上一次循环中被移动了。所以 Rust 告诉我们，不能将 <code>counter</code> 锁的所有权移动到多个线程中。让我们通过一个第 15 章讨论过的多所有权手段，来修复这个编译错误。</p>
+<h4 id="多线程和多所有权"></h4>
+<p>在第 15 章中，我们用智能指针 <code>Rc&lt;T&gt;</code> 来创建引用计数，使得一个值有了多个所有者。让我们做同样的事，看看会发生什么。将示例 16-14 中的 <code>Mutex&lt;T&gt;</code> 封装进 <code>Rc&lt;T&gt;</code> 中，并在将所有权移入线程之前克隆（clone）<code>Rc&lt;T&gt;</code>。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre><code class="language-rust ignore does_not_compile">use std::rc::Rc;
+use std::sync::Mutex;
+use std::thread;
+
+fn main() {
+    let counter = Rc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let counter = Rc::clone(&amp;counter);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
+}</code></pre>
+<p><span class="caption">示例 16-14: 尝试使用 <code>Rc&lt;T&gt;</code> 来允许多个线程拥有 <code>Mutex&lt;T&gt;</code></span></p>
+<p>再一次编译并…出现了不同的错误！编译器真是教会了我们很多！</p>
+<pre><code class="language-console">$ cargo run
+   Compiling shared-state v0.1.0 (file:///projects/shared-state)
+error[E0277]: `Rc&lt;std::sync::Mutex&lt;i32&gt;&gt;` cannot be sent between threads safely
+  --&gt; src/main.rs:11:36
+   |
+11 |           let handle = thread::spawn(move || {
+   |                        ------------- ^------
+   |                        |             |
+   |  ______________________|_____________within this `{closure@src/main.rs:11:36: 11:43}`
+   | |                      |
+   | |                      required by a bound introduced by this call
+12 | |             let mut num = counter.lock().unwrap();
+13 | |
+14 | |             *num += 1;
+15 | |         });
+   | |_________^ `Rc&lt;std::sync::Mutex&lt;i32&gt;&gt;` cannot be sent between threads safely
+   |
+   = help: within `{closure@src/main.rs:11:36: 11:43}`, the trait `Send` is not implemented for `Rc&lt;std::sync::Mutex&lt;i32&gt;&gt;`
+note: required because it's used within this closure
+  --&gt; src/main.rs:11:36
+   |
+11 |         let handle = thread::spawn(move || {
+   |                                    ^^^^^^^
+note: required by a bound in `spawn`
+  --&gt; /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/thread/functions.rs:125:0
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `shared-state` (bin "shared-state") due to 1 previous error
+</code></pre>
+<p>哇哦，错误信息太长不看！下面是重点要关注的内容：<code>`Rc&lt;Mutex&lt;i32&gt;&gt;` cannot be sent between threads safely</code>。编译器也指出了原因：<code>the trait `Send` is not implemented for `Rc&lt;Mutex&lt;i32&gt;&gt;`</code>。下一节我们会讲到 <code>Send</code>：这是一个确保所使用的类型可以用于并发环境的 trait。</p>
+<p>不幸的是，<code>Rc&lt;T&gt;</code> 并不能安全的在线程间共享。当 <code>Rc&lt;T&gt;</code> 管理引用计数时，它必须在每一个 <code>clone</code> 调用时增加计数，并在每一个克隆体被丢弃时减少计数。<code>Rc&lt;T&gt;</code> 并没有使用任何并发原语，无法确保改变计数的操作不会被其他线程打断。这可能使计数出错，并导致诡异的 bug，比如可能会造成内存泄漏，或在使用结束之前就丢弃一个值。我们所需要的是一个与 <code>Rc&lt;T&gt;</code> 完全一致，又以线程安全的方式改变引用计数的类型。</p>
+<h4 id="原子引用计数-arct"></h4>
+<p>所幸 <code>Arc&lt;T&gt;</code> 正是这么一个类似 <code>Rc&lt;T&gt;</code> 并可以安全地用于并发环境的类型。字母 <em>a</em> 代表 <strong>原子性</strong>（<em>atomic</em>），所以这是一个<strong>原子引用计数</strong>（<em>atomically reference counted</em>）类型。<strong>原子类型</strong> (Atomics) 是另一类这里还未涉及到的并发原语：请查看标准库中 <a href="https://doc.rust-lang.org/std/sync/atomic/index.html"><code>std::sync::atomic</code></a> 的文档来获取更多细节。目前我们只需要知道：原子类型就像基本类型一样，可以安全地在线程间共享。</p>
+<p>你可能会好奇，为什么不是所有的基本类型都是原子性的？为什么标准库中的类型没有全部默认使用 <code>Arc&lt;T&gt;</code> 实现？原因在于，线程安全会造成性能损失，我们希望只在必要时才为此买单。如果只是在单线程中对值进行操作，不必强制原子性所提供的保证可以使代码运行得更快。</p>
+<p>回到之前的例子：<code>Arc&lt;T&gt;</code> 和 <code>Rc&lt;T&gt;</code> 有着相同的 API，所以我们只需修改程序中的 <code>use</code> 行、<code>new</code> 调用和 <code>clone</code> 调用。示例 16-15 中的代码最终可以编译并运行。</p>
+<p><span class="filename">文件名：src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">use std::sync::{Arc, Mutex};
+use std::thread;
+
+fn main() {
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let counter = Arc::clone(&amp;counter);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Result: {}", *counter.lock().unwrap());
+}</code></pre>
+<p><span class="caption">示例 16-15: 使用 <code>Arc&lt;T&gt;</code> 包装一个 <code>Mutex&lt;T&gt;</code> 能够实现在多线程之间共享所有权</span></p>
+<p>这段代码会打印出如下：</p>
+<pre><code class="language-text">Result: 10
+</code></pre>
+<p>成功了！我们从 0 数到了 10，这好像没啥大不了的，不过一路上我们确实学习了很多关于 <code>Mutex&lt;T&gt;</code> 和线程安全的知识！这个例子中构建的结构可以用于比增加计数更为复杂的操作。使用这个策略，我们可将计算任务分成独立的部分，并分散到多个线程中，接着使用 <code>Mutex&lt;T&gt;</code> 使用各自的运算结果来更新最终的结果。</p>
+<p>注意，对于简单的数值运算，<a href="https://doc.rust-lang.org/std/sync/atomic/index.html">标准库中 <code>std::sync::atomic</code> 模块</a> 提供了比 <code>Mutex&lt;T&gt;</code> 更简单的类型。针对基本类型，这些类型提供了安全、并发、原子的操作。在上面的例子中，为了专注于讲明白 <code>Mutex&lt;T&gt;</code> 的用法，我们才选择在基本类型上使用 <code>Mutex&lt;T&gt;</code>。（译注：对于上面例子中出现的 <code>i32</code> 加法操作，更好的做法是使用 <code>AtomicI32</code> 类型来完成。具体参考文档。）</p>
+<h3 id="比较-refcelltrct-和-mutextarct"></h3>
+<p>你可能注意到了，尽管 <code>counter</code> 是不可变的，我们仍然可以获取其内部值的可变引用；这意味着 <code>Mutex&lt;T&gt;</code> 提供了内部可变性，就像 <code>Cell</code> 系列类型那样。使用 <code>RefCell&lt;T&gt;</code> 可以改变 <code>Rc&lt;T&gt;</code> 中内容（在 15 章中讲到过），同样地，使用 <code>Mutex&lt;T&gt;</code> 我们也可以改变 <code>Arc&lt;T&gt;</code> 中的内容。</p>
+<p>另一个值得注意的细节是，Rust 不能完全避免使用 <code>Mutex&lt;T&gt;</code> 所带来的逻辑错误。回忆一下，第 15 章中讲过，使用 <code>Rc&lt;T&gt;</code> 就有造成引用循环的风险：两个 <code>Rc&lt;T&gt;</code> 值相互引用，造成内存泄漏。同理，<code>Mutex&lt;T&gt;</code> 也有造成<strong>死锁</strong>（<em>deadlock</em>）的风险：当某个操作需要锁住两个资源，而两个线程分别持有两个资源的其中一个锁时，它们会永远相互等待。如果你对这个话题感兴趣，尝试编写一个带有死锁的 Rust 程序，接着研究其它语言中使用互斥器的死锁规避策略，并尝试在 Rust 中实现它们。标准库中 <code>Mutex&lt;T&gt;</code> 和 <code>MutexGuard</code> 的 API 文档会提供有用的信息。</p>
+<p>作为本章的最后，我们将讨论 <code>Send</code> 和 <code>Sync</code> trait，以及如何将它们用于自定义类型。</p>
+<div style="break-before: page; page-break-before: always;"></div>
+    <div class="bk-pager"><a href="p057.html">← 使用消息传递在线程间通信</a><a href="index.html">目录</a><a href="p059.html">使用 Sync 与 Send Traits 的可扩展并发 →</a></div>
+  </main>
+</div>
+<footer class="bk-legal">本站为个人学习与展示用途，AI 对话由站内服务端代理转发，密钥不下发到浏览器。 · ICP备案号：赣ICP备2026031925号 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a></footer>
+<script src="/ccowork.js?v=20261125a"></script>
+  <script src="/baiju-assistant.js" defer></script>
+</body>
+</html>

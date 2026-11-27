@@ -1,0 +1,297 @@
+/* ==========================================================================
+   float-dock.css · 统一悬浮坞（2026-10-29）
+   --------------------------------------------------------------------------
+   为什么要有这一层：
+     改造前的右下角同时压着 5 个悬浮件，各自 z-index 不同、互不知情：
+       #bj-fab        白驹问答    z 99998   right 18 / bottom 18
+       #ccowork-pet   工作台      z  9999   right 18 / bottom 92
+       #modGear       外观设置    z 16000
+       #modTop        回到顶部    z 12000
+       #ccowSearchBtn 搜索        z 12000
+     桌面上叠成一坨，手机上直接压住正文最后两行。
+
+   现在的规则：
+     ① 全站右下角只有一个入口（.fdock-main）；
+     ② 其余功能收进竖向坞，点开才出现；
+     ③ 原有悬浮件由本层 display:none 接管，但它们的点击逻辑照旧调用
+        （见 float-dock.js 的 proxy），不改 module.js / baiju-widget.js；
+     ④ 白驹对话面板从「贴底」改为「坞左侧」，不再被坞挡住。
+   ========================================================================== */
+
+/* ---------- 一、接管旧悬浮件 ---------- */
+#ccowork-pet,
+#bj-fab,
+#modGear,
+#modTop,
+#ccowSearchBtn { display: none !important; }
+
+/* 旧版为了让底部按钮压住正文时能读，加过一条 108px 渐变遮罩（body::after）。
+   现在底部只剩一个 52px 的坞，遮罩收缩，正文不再被大块渐变吃掉。 */
+@media (max-width: 900px) {
+  body::after { height: 76px !important; }
+}
+
+/* ---------- 二、坞本体 ---------- */
+.fdock {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  font: 13px/1.4 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  /* 收起时整块容器高约 310px。若这里保持 auto，这 52×310 的透明区会拦住页面点击，
+     所以容器本身不接收事件，只由按钮各自打开。 */
+  pointer-events: none;
+}
+.fdock-main { pointer-events: auto; }
+
+/* 主按钮 */
+.fdock-main {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  border-radius: 17px;
+  cursor: pointer;
+  color: #fff;
+  background: var(--grad, linear-gradient(135deg, #4F8CFF, #38B6FF 50%, #8B5CF6));
+  box-shadow: 0 8px 24px rgba(79, 140, 255, .38), 0 2px 6px rgba(15, 23, 42, .18);
+  display: grid;
+  place-items: center;
+  transition: transform .28s cubic-bezier(.22, 1, .36, 1), box-shadow .28s;
+}
+.fdock-main:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(79, 140, 255, .48); }
+.fdock-main:active { transform: scale(.95); }
+.fdock-main:focus-visible { outline: 3px solid rgba(79, 140, 255, .45); outline-offset: 3px; }
+
+/* 标记：一个汉字「驹」的极简字形，避免依赖图标表 */
+.fdock-mark {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  line-height: 1;
+  transform: translateY(-.5px);
+  transition: transform .3s cubic-bezier(.22, 1, .36, 1), opacity .2s;
+}
+.fdock.open .fdock-mark { transform: rotate(135deg) scale(.72); opacity: 0; }
+
+/* 收起态的呼吸环：只做视觉提示，不抢注意力 */
+.fdock-main::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 22px;
+  border: 1.5px solid rgba(79, 140, 255, .32);
+  opacity: 0;
+  animation: fdockPulse 3.6s ease-out infinite;
+  pointer-events: none;
+}
+.fdock.open .fdock-main::before { animation: none; opacity: 0; }
+@keyframes fdockPulse {
+  0%   { transform: scale(.92); opacity: .55; }
+  70%  { transform: scale(1.18); opacity: 0; }
+  100% { transform: scale(1.18); opacity: 0; }
+}
+
+/* 展开后的 × 号（用两条线画，比旋转文字更干净） */
+.fdock-x {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: scale(.4) rotate(-45deg);
+  transition: all .3s cubic-bezier(.22, 1, .36, 1);
+  pointer-events: none;
+}
+.fdock-x::before,
+.fdock-x::after {
+  content: "";
+  position: absolute;
+  width: 19px;
+  height: 2.2px;
+  border-radius: 2px;
+  background: #fff;
+}
+.fdock-x::before { transform: rotate(45deg); }
+.fdock-x::after  { transform: rotate(-45deg); }
+.fdock.open .fdock-x { opacity: 1; transform: scale(1) rotate(0); }
+
+/* 正在使用中的功能（例如面板已开）打一个点 */
+.fdock-main[data-active="1"]::after {
+  content: "";
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .35);
+}
+
+/* ---------- 三、次级按钮 ---------- */
+.fdock-items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 9px;
+  /* 收起时整组不可见、不可点，避免键盘 Tab 到隐藏按钮 */
+  visibility: hidden;
+  pointer-events: none;
+}
+.fdock.open .fdock-items { visibility: visible; pointer-events: auto; }
+.fdock-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 14px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: #334155;
+  background: rgba(255, 255, 255, .86);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, .1);
+  font-size: 17px;
+  /* 收起态：向下缩回主按钮里 */
+  opacity: 0;
+  transform: translateY(14px) scale(.72);
+  transition: opacity .2s ease, transform .32s cubic-bezier(.22, 1, .36, 1), background .18s, color .18s;
+}
+.fdock.open .fdock-btn { opacity: 1; transform: translateY(0) scale(1); }
+/* 从下往上依次弹出 */
+.fdock.open .fdock-btn:nth-child(1) { transition-delay: .10s; }
+.fdock.open .fdock-btn:nth-child(2) { transition-delay: .07s; }
+.fdock.open .fdock-btn:nth-child(3) { transition-delay: .04s; }
+.fdock.open .fdock-btn:nth-child(4) { transition-delay: .02s; }
+.fdock.open .fdock-btn:nth-child(5) { transition-delay: 0s; }
+
+.fdock-btn:hover {
+  background: var(--grad, linear-gradient(135deg, #4F8CFF, #8B5CF6));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(79, 140, 255, .34);
+}
+.fdock-btn:focus-visible { outline: 3px solid rgba(79, 140, 255, .4); outline-offset: 2px; }
+.fdock-btn[data-off="1"] { opacity: .38 !important; cursor: default; }
+.fdock-btn[data-off="1"]:hover { background: rgba(255, 255, 255, .86); color: #334155; box-shadow: 0 4px 14px rgba(15, 23, 42, .1); }
+
+/* 左侧文字标签：桌面 hover 才出，触屏不出现，避免遮挡 */
+.fdock-tip {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, .9);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .16s, transform .16s;
+}
+.fdock-btn:hover .fdock-tip,
+.fdock-btn:focus-visible .fdock-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+/* ---------- 四、深空主题 ---------- */
+body[data-theme="deep"] .fdock-main {
+  background: var(--grad, linear-gradient(135deg, #38E1FF, #5B8CFF 45%, #8B5CF6));
+  box-shadow: 0 8px 26px rgba(56, 225, 255, .28), 0 2px 8px rgba(0, 0, 0, .5);
+}
+body[data-theme="deep"] .fdock-btn {
+  color: #cbd5e1;
+  background: rgba(16, 23, 40, .84);
+  border-color: rgba(120, 160, 220, .26);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .42);
+}
+body[data-theme="deep"] .fdock-btn:hover {
+  color: #04101f;
+  background: linear-gradient(135deg, #38E1FF, #8B5CF6);
+  border-color: transparent;
+}
+body[data-theme="deep"] .fdock-btn:hover .fdock-tip { color: #04101f; background: rgba(233, 240, 251, .94); }
+body[data-theme="deep"] .fdock-main::before { border-color: rgba(56, 225, 255, .3); }
+
+/* ---------- 五、白驹面板改挂到坞的左侧 ---------- */
+/* 原来的 #bj-panel 是 right:18 / bottom:84，正好被坞压住。
+   这里改成贴坞左侧，像侧边抽屉；小屏退化为底部整宽抽屉。 */
+#bj-panel {
+  right: 84px !important;
+  bottom: 18px !important;
+  width: 372px !important;
+  height: 540px !important;
+  max-height: calc(100vh - 36px) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(148, 163, 184, .22);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, .26), 0 4px 14px rgba(15, 23, 42, .12) !important;
+  transform-origin: bottom right;
+  animation: fdockPanelIn .26s cubic-bezier(.22, 1, .36, 1);
+}
+@keyframes fdockPanelIn {
+  from { opacity: 0; transform: translateY(10px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+body[data-theme="deep"] #bj-panel {
+  background: #0e1526 !important;
+  border-color: rgba(120, 160, 220, .24);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .6) !important;
+}
+body[data-theme="deep"] #bj-msgs { background: #080d1a !important; }
+body[data-theme="deep"] #bj-msgs .b { background: #131c30 !important; color: #e6eefb !important; border-color: #24314d !important; }
+body[data-theme="deep"] #bj-foot { background: #0e1526 !important; border-color: #24314d !important; }
+body[data-theme="deep"] #bj-in { background: #131c30 !important; color: #e6eefb !important; border-color: #24314d !important; }
+
+/* ---------- 六、响应式 ---------- */
+@media (max-width: 900px) {
+  .fdock { right: 12px; bottom: 12px; gap: 8px; }
+  .fdock-main { width: 48px; height: 48px; border-radius: 15px; }
+  .fdock-mark { font-size: 17px; }
+  .fdock-btn { width: 42px; height: 42px; border-radius: 13px; font-size: 16px; }
+  /* 触屏没有 hover，标签永久隐藏，省得挡住按钮 */
+  .fdock-tip { display: none; }
+
+  #bj-panel {
+    right: 12px !important;
+    left: 12px !important;
+    bottom: 12px !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: calc(100vh - 96px) !important;
+    border-radius: 18px !important;
+  }
+}
+
+/* 矮屏：面板优先保证输入框可见 */
+@media (max-height: 620px) {
+  #bj-panel { height: calc(100vh - 36px) !important; }
+}
+
+/* 打印与阅读模式不显示坞 */
+@media print { .fdock { display: none !important; } }
+body[data-read="on"] .fdock { display: none !important; }
+
+/* ---------- 七、阅读模式浮标（深色适配）----------
+   它不是坞的成员（留在左下角，避免和坞抢同一个角），
+   但原来在深空主题下仍是白底黑字，和整页极光底不搭，这里补一条。 */
+body[data-theme="deep"] #modReadBtn {
+  color: #cbd5e1 !important;
+  background: rgba(16, 23, 40, .86) !important;
+  border-color: rgba(120, 160, 220, .26) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .42) !important;
+}
+body[data-theme="deep"] #modReadBtn:hover,
+body[data-theme="deep"] #modReadBtn.on {
+  color: #04101f !important;
+  background: linear-gradient(135deg, #38E1FF, #8B5CF6) !important;
+  border-color: transparent !important;
+}
